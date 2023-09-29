@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("version")]
         public System.Int32? Version { get; set; }
 
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        [JsonProperty("permissionsGroupVersions")]
+        public List<PermissionsGroupWithVersion>? PermissionsGroupVersions { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public FeaturePermission Set(
         CloudAccountFeature? Feature = null,
         System.String? PermissionJson = null,
-        System.Int32? Version = null
+        System.Int32? Version = null,
+        List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null
     ) 
     {
         if ( Feature != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Version != null ) {
             this.Version = Version;
+        }
+        if ( PermissionsGroupVersions != null ) {
+            this.PermissionsGroupVersions = PermissionsGroupVersions;
         }
         return this;
     }
@@ -95,6 +104,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "version\n" ;
             } else {
                 s += ind + "version\n" ;
+            }
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (this.PermissionsGroupVersions != null) {
+            var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissionsGroupVersions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -154,6 +175,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Version != null && ec.Excludes("version",true))
         {
             this.Version = null;
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (ec.Includes("permissionsGroupVersions",false))
+        {
+            if(this.PermissionsGroupVersions == null) {
+
+                this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            } else {
+
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            }
+        }
+        else if (this.PermissionsGroupVersions != null && ec.Excludes("permissionsGroupVersions",false))
+        {
+            this.PermissionsGroupVersions = null;
         }
     }
 

@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 71
+    /// Create a new RscQuery object for any of the 42
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, AllArmTemplatesByFeature, AllCdmVersions, AllCloudAccountMissingPermissions, AllCloudAccountSubnetsByRegion, AllCloudAccountSubscriptionsByFeature, AllCloudAccountTenants, AllDiskEncryptionSetsByRegion, AllEncryptionKeys, AllExocomputeConfigsInAccount, AllHostedRegions, AllKeyVaultsByRegion, AllManagedIdentities, AllNativeAvailabilitySetsByRegionFromAzure, AllNativeExportCompatibleDiskTypesByRegionFromAzure, AllNativeExportCompatibleVmSizesByRegionFromAzure, AllNativeResourceGroupsInfoIfExist, AllNativeSecurityGroupsByRegionFromAzure, AllNativeStorageAccountsFromAzure, AllNativeSubnetsByRegionFromAzure, AllNativeVirtualMachineSizes, AllNativeVirtualNetworks, AllNsgs, AllRegions, AllResourceGroups, AllResourceGroupsFrom, AllSqlDatabaseServerElasticPools, AllStorageAccounts, AllSubnets, AllSubscriptionWithExocomputeMappings, AllVnets, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountPermissionConfig, CloudAccountSubscriptionWithFeatures, CloudAccountTenant, CloudAccountTenantWithExoConfigs, DoesNativeResourceGroupExist, IsNativeManagedDiskSnapshotRestorable, IsNativeSqlDatabaseSnapshotPersistent, IsStorageAccountNameAvailable, NativeManagedDisk, NativeManagedDisks, NativeResourceGroup, NativeResourceGroups, NativeRoot, NativeSubscription, NativeSubscriptions, NativeVirtualMachine, NativeVirtualMachines, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, ValidateNativeSqlDatabaseDbNameForExport, or ValidateNativeSqlManagedInstanceDbNameForExport.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 71 operations
+    /// There are 42 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AdDirectories, -AdDirectory, -AdObjectsByType, -AllArmTemplatesByFeature, -AllCdmVersions, -AllCloudAccountMissingPermissions, -AllCloudAccountSubnetsByRegion, -AllCloudAccountSubscriptionsByFeature, -AllCloudAccountTenants, -AllDiskEncryptionSetsByRegion, -AllEncryptionKeys, -AllExocomputeConfigsInAccount, -AllHostedRegions, -AllKeyVaultsByRegion, -AllManagedIdentities, -AllNativeAvailabilitySetsByRegionFromAzure, -AllNativeExportCompatibleDiskTypesByRegionFromAzure, -AllNativeExportCompatibleVmSizesByRegionFromAzure, -AllNativeResourceGroupsInfoIfExist, -AllNativeSecurityGroupsByRegionFromAzure, -AllNativeStorageAccountsFromAzure, -AllNativeSubnetsByRegionFromAzure, -AllNativeVirtualMachineSizes, -AllNativeVirtualNetworks, -AllNsgs, -AllRegions, -AllResourceGroups, -AllResourceGroupsFrom, -AllSqlDatabaseServerElasticPools, -AllStorageAccounts, -AllSubnets, -AllSubscriptionWithExocomputeMappings, -AllVnets, -CheckPersistentStorageSubscriptionCanUnmap, -CloudAccountPermissionConfig, -CloudAccountSubscriptionWithFeatures, -CloudAccountTenant, -CloudAccountTenantWithExoConfigs, -DoesNativeResourceGroupExist, -IsNativeManagedDiskSnapshotRestorable, -IsNativeSqlDatabaseSnapshotPersistent, -IsStorageAccountNameAvailable, -NativeManagedDisk, -NativeManagedDisks, -NativeResourceGroup, -NativeResourceGroups, -NativeRoot, -NativeSubscription, -NativeSubscriptions, -NativeVirtualMachine, -NativeVirtualMachines, -Regions, -ResourceGroups, -SearchAdSnapshot, -SqlDatabase, -SqlDatabaseDbPointInTimeRestoreWindowFromAzure, -SqlDatabaseServer, -SqlDatabaseServers, -SqlDatabases, -SqlManagedInstanceDatabase, -SqlManagedInstanceDatabases, -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, -SqlManagedInstanceServer, -SqlManagedInstanceServers, -StorageAccounts, -Subnets, -Subscriptions, -VNets, -ValidateCloudAccountExocomputeConfigurations, -ValidateNativeSqlDatabaseDbNameForExport, -ValidateNativeSqlManagedInstanceDbNameForExport.
+    /// one of: -AdDirectories, -AdDirectory, -AdObjectsByType, -ArmTemplatesByFeature, -CdmVersions, -CheckPersistentStorageSubscriptionCanUnmap, -CloudAccountMissingPermissions, -CloudAccountPermissionConfig, -CloudAccountSubnetsByRegion, -CloudAccountSubscriptionWithFeatures, -CloudAccountSubscriptionsByFeature, -CloudAccountTenant, -CloudAccountTenantWithExoConfigs, -CloudAccountTenants, -DiskEncryptionSetsByRegion, -EncryptionKeys, -ExocomputeConfigsInAccount, -HostedAzureRegions, -IsStorageAccountNameAvailable, -KeyVaultsByRegion, -ManagedIdentities, -Nsgs, -Regions, -ResourceGroups, -SearchAdSnapshot, -SqlDatabase, -SqlDatabaseDbPointInTimeRestoreWindowFromAzure, -SqlDatabaseServer, -SqlDatabaseServerElasticPools, -SqlDatabaseServers, -SqlDatabases, -SqlManagedInstanceDatabase, -SqlManagedInstanceDatabases, -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, -SqlManagedInstanceServer, -SqlManagedInstanceServers, -StorageAccounts, -Subnets, -SubscriptionWithExocomputeMappings, -Subscriptions, -VNets, -ValidateCloudAccountExocomputeConfigurations.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op AdDirectories,
     /// which is equivalent to specifying -AdDirectories.
@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AllArmTemplatesByFeature operation
+    /// Runs the ArmTemplatesByFeature operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -233,9 +233,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: AllArmTemplatesByFeature
+    /// # API Operation: ArmTemplatesByFeature
     /// 
-    /// $query = New-RscQueryAzure -AllArmTemplatesByFeature
+    /// $query = New-RscQueryAzure -ArmTemplatesByFeature
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -275,7 +275,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AllCdmVersions operation
+    /// Runs the CdmVersions operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -283,9 +283,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: AllCdmVersions
+    /// # API Operation: CdmVersions
     /// 
-    /// $query = New-RscQueryAzure -AllCdmVersions
+    /// $query = New-RscQueryAzure -CdmVersions
     /// 
     /// # REQUIRED
     /// $query.Var.cdmVersionRequest = @{
@@ -300,896 +300,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;AzureCdmVersion&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllCloudAccountMissingPermissions operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllCloudAccountMissingPermissions
-    /// 
-    /// $query = New-RscQueryAzure -AllCloudAccountMissingPermissions
-    /// 
-    /// # REQUIRED
-    /// $query.Var.sessionId = $someString
-    /// # REQUIRED
-    /// $query.Var.subscriptionIds = @(
-    /// 	$someString
-    /// )
-    /// # REQUIRED
-    /// $query.Var.cloudAccountAction = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSubscriptionMissingPermissions&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllCloudAccountSubnetsByRegion operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllCloudAccountSubnetsByRegion
-    /// 
-    /// $query = New-RscQueryAzure -AllCloudAccountSubnetsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeSubnet&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllCloudAccountSubscriptionsByFeature operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllCloudAccountSubscriptionsByFeature
-    /// 
-    /// $query = New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
-    /// 
-    /// # REQUIRED
-    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.subscriptionStatusFilters = @(
-    /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSubscriptionWithFeaturesType&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllCloudAccountTenants operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllCloudAccountTenants
-    /// 
-    /// $query = New-RscQueryAzure -AllCloudAccountTenants
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.features = @(
-    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// )
-    /// # REQUIRED
-    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.includeSubscriptionDetails = $someBoolean
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureCloudAccountTenant&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllDiskEncryptionSetsByRegion operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllDiskEncryptionSetsByRegion
-    /// 
-    /// $query = New-RscQueryAzure -AllDiskEncryptionSetsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeDiskEncryptionSet&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllEncryptionKeys operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllEncryptionKeys
-    /// 
-    /// $query = New-RscQueryAzure -AllEncryptionKeys
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureEncryptionKeysInput = @{
-    /// 	# REQUIRED
-    /// 	cloudAccountId = $someString
-    /// 	# REQUIRED
-    /// 	keyVaultName = $someString
-    /// 	# REQUIRED
-    /// 	resourceGroupName = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureEncryptionKey&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllExocomputeConfigsInAccount operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllExocomputeConfigsInAccount
-    /// 
-    /// $query = New-RscQueryAzure -AllExocomputeConfigsInAccount
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.azureExocomputeSearchQuery = $someString
-    /// # OPTIONAL
-    /// $query.Var.cloudAccountIDs = @(
-    /// 	$someString
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureExocomputeConfigsInAccount&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllHostedRegions operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllHostedRegions
-    /// 
-    /// $query = New-RscQueryAzure -AllHostedRegions
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureRegionsResp
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllKeyVaultsByRegion operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllKeyVaultsByRegion
-    /// 
-    /// $query = New-RscQueryAzure -AllKeyVaultsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureKeyVaultsInput = @{
-    /// 	# REQUIRED
-    /// 	cloudAccountId = $someString
-    /// 	# REQUIRED
-    /// 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
-    /// 	# OPTIONAL
-    /// 	userAssignedManagedIdentityPrincipalId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureKeyVault&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllManagedIdentities operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllManagedIdentities
-    /// 
-    /// $query = New-RscQueryAzure -AllManagedIdentities
-    /// 
-    /// # REQUIRED
-    /// $query.Var.managedIdentitiesRequest = @{
-    /// 	# REQUIRED
-    /// 	cloudAccountId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureManagedIdentity&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeAvailabilitySetsByRegionFromAzure operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeAvailabilitySetsByRegionFromAzure
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.resourceGroupName = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeAvailabilitySet&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeExportCompatibleDiskTypesByRegionFromAzure operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeExportCompatibleDiskTypesByRegionFromAzure
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeExportCompatibleDiskTypes&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeExportCompatibleVmSizesByRegionFromAzure operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeExportCompatibleVmSizesByRegionFromAzure
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.vmSnapshotId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeExportCompatibleVmSizes&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeResourceGroupsInfoIfExist operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeResourceGroupsInfoIfExist
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	sessionId = $someString
-    /// 	# REQUIRED
-    /// 	resourceGroupInputs = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			subscriptionNativeId = $someString
-    /// 			# REQUIRED
-    /// 			resourceGroupName = $someString
-    /// 		}
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureResourceGroupInfo&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeSecurityGroupsByRegionFromAzure operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeSecurityGroupsByRegionFromAzure
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeSecurityGroup&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeStorageAccountsFromAzure operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeStorageAccountsFromAzure
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeStorageAccountsFromAzure
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeStorageAccount&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeSubnetsByRegionFromAzure operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeSubnetsByRegionFromAzure
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeSubnet&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeVirtualMachineSizes operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeVirtualMachineSizes
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeVirtualMachineSizes
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNativeVirtualNetworks operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNativeVirtualNetworks
-    /// 
-    /// $query = New-RscQueryAzure -AllNativeVirtualNetworks
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeVirtualNetwork&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllNsgs operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllNsgs
-    /// 
-    /// $query = New-RscQueryAzure -AllNsgs
-    /// 
-    /// # REQUIRED
-    /// $query.Var.nsgRequest = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	resourceGroup = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllRegions operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllRegions
-    /// 
-    /// $query = New-RscQueryAzure -AllRegions
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureCloudAccountRegion&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllResourceGroups operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllResourceGroups
-    /// 
-    /// $query = New-RscQueryAzure -AllResourceGroups
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// # REQUIRED
-    /// $query.Var.azureRegion = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllResourceGroupsFrom operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllResourceGroupsFrom
-    /// 
-    /// $query = New-RscQueryAzure -AllResourceGroupsFrom
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionNativeId = $someString
-    /// # REQUIRED
-    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureResourceGroup&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllSqlDatabaseServerElasticPools operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllSqlDatabaseServerElasticPools
-    /// 
-    /// $query = New-RscQueryAzure -AllSqlDatabaseServerElasticPools
-    /// 
-    /// # REQUIRED
-    /// $query.Var.subscriptionId = $someString
-    /// # REQUIRED
-    /// $query.Var.resourceGroupName = $someString
-    /// # REQUIRED
-    /// $query.Var.azureSqlDatabaseServerName = $someString
-    /// # REQUIRED
-    /// $query.Var.azureSqlDatabaseServerRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSqlDatabaseServerElasticPool&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllStorageAccounts operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllStorageAccounts
-    /// 
-    /// $query = New-RscQueryAzure -AllStorageAccounts
-    /// 
-    /// # REQUIRED
-    /// $query.Var.storageAccountsRequest = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	resourceGroup = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllSubnets operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllSubnets
-    /// 
-    /// $query = New-RscQueryAzure -AllSubnets
-    /// 
-    /// # REQUIRED
-    /// $query.Var.subnetRequest = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	resourceGroup = $someString
-    /// 	# OPTIONAL
-    /// 	vnetName = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllSubscriptionWithExocomputeMappings operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllSubscriptionWithExocomputeMappings
-    /// 
-    /// $query = New-RscQueryAzure -AllSubscriptionWithExocomputeMappings
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.features = @(
-    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.exocomputeSubscriptionIdsFilter = @(
-    /// 	$someString
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSubscriptionWithExocomputeMapping&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllVnets operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: AllVnets
-    /// 
-    /// $query = New-RscQueryAzure -AllVnets
-    /// 
-    /// # REQUIRED
-    /// $query.Var.vnetRequest = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	resourceGroup = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
     /// 
     /// 
     /// 
@@ -1230,6 +340,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CloudAccountMissingPermissions operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountMissingPermissions
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountMissingPermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.sessionId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.cloudAccountAction = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSubscriptionMissingPermissions&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CloudAccountPermissionConfig operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1258,6 +402,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CloudAccountSubnetsByRegion operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountSubnetsByRegion
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountSubnetsByRegion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeSubnet&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CloudAccountSubscriptionWithFeatures operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1278,6 +452,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AzureCloudAccountSubscriptionWithFeatures
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudAccountSubscriptionsByFeature operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CloudAccountSubscriptionsByFeature
+    /// 
+    /// $query = New-RscQueryAzure -CloudAccountSubscriptionsByFeature
+    /// 
+    /// # REQUIRED
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.subscriptionStatusFilters = @(
+    /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSubscriptionWithFeaturesType&gt;
     /// 
     /// 
     /// 
@@ -1366,7 +572,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DoesNativeResourceGroupExist operation
+    /// Runs the CloudAccountTenants operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -1374,24 +580,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: DoesNativeResourceGroupExist
+    /// # API Operation: CloudAccountTenants
     /// 
-    /// $query = New-RscQueryAzure -DoesNativeResourceGroupExist
+    /// $query = New-RscQueryAzure -CloudAccountTenants
     /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionNativeId = $someString
-    /// # REQUIRED
-    /// $query.Var.resourceGroupName = $someString
+    /// # OPTIONAL
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.includeSubscriptionDetails = $someBoolean
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureCloudAccountTenant&gt;
     /// 
     /// 
     /// 
@@ -1400,7 +606,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the IsNativeManagedDiskSnapshotRestorable operation
+    /// Runs the DiskEncryptionSetsByRegion operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -1408,20 +614,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: IsNativeManagedDiskSnapshotRestorable
+    /// # API Operation: DiskEncryptionSetsByRegion
     /// 
-    /// $query = New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
+    /// $query = New-RscQueryAzure -DiskEncryptionSetsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
     /// # REQUIRED
-    /// $query.Var.diskSnapshotId = $someString
+    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeDiskEncryptionSet&gt;
     /// 
     /// 
     /// 
@@ -1430,7 +636,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the IsNativeSqlDatabaseSnapshotPersistent operation
+    /// Runs the EncryptionKeys operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -1438,18 +644,84 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: IsNativeSqlDatabaseSnapshotPersistent
+    /// # API Operation: EncryptionKeys
     /// 
-    /// $query = New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
+    /// $query = New-RscQueryAzure -EncryptionKeys
     /// 
     /// # REQUIRED
-    /// $query.Var.snapshotId = $someString
+    /// $query.Var.azureEncryptionKeysInput = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	keyVaultName = $someString
+    /// 	# REQUIRED
+    /// 	resourceGroupName = $someString
+    /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureEncryptionKey&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExocomputeConfigsInAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ExocomputeConfigsInAccount
+    /// 
+    /// $query = New-RscQueryAzure -ExocomputeConfigsInAccount
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.azureExocomputeSearchQuery = $someString
+    /// # OPTIONAL
+    /// $query.Var.cloudAccountIDs = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureExocomputeConfigsInAccount&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HostedAzureRegions operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: HostedAzureRegions
+    /// 
+    /// $query = New-RscQueryAzure -HostedAzureRegions
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureRegionsResp
     /// 
     /// 
     /// 
@@ -1488,7 +760,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the NativeManagedDisk operation
+    /// Runs the KeyVaultsByRegion operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -1496,137 +768,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: NativeManagedDisk
+    /// # API Operation: KeyVaultsByRegion
     /// 
-    /// $query = New-RscQueryAzure -NativeManagedDisk
+    /// $query = New-RscQueryAzure -KeyVaultsByRegion
     /// 
     /// # REQUIRED
-    /// $query.Var.azureManagedDiskRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeManagedDisk
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeManagedDisks operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeManagedDisks
-    /// 
-    /// $query = New-RscQueryAzure -NativeManagedDisks
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAzureNativeDiskSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeDiskSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.diskFilters = @{
+    /// $query.Var.azureKeyVaultsInput = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
     /// 	# OPTIONAL
-    /// 	nameSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	resourceGroupFilter = @{
-    /// 		# REQUIRED
-    /// 		resourceGroupNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	diskTypeFilter = @{
-    /// 		# REQUIRED
-    /// 		diskTypes = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	attachedVmFilter = @{
-    /// 		# REQUIRED
-    /// 		virtualMachineIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	relicFilter = @{
-    /// 		# REQUIRED
-    /// 		relic = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	exocomputeConnectedFilter = @{
-    /// 		# REQUIRED
-    /// 		isConnected = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	fileIndexingFilter = @{
-    /// 		# REQUIRED
-    /// 		statuses = @(
-    /// 			$someAzureNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
-    /// 		)
-    /// 	}
+    /// 	userAssignedManagedIdentityPrincipalId = $someString
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeManagedDiskConnection
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureKeyVault&gt;
     /// 
     /// 
     /// 
@@ -1635,7 +795,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the NativeResourceGroup operation
+    /// Runs the ManagedIdentities operation
     /// of the 'Azure' API domain.
     /// <code>
     /// PS &gt;
@@ -1643,368 +803,54 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Azure
-    /// # API Operation: NativeResourceGroup
+    /// # API Operation: ManagedIdentities
     /// 
-    /// $query = New-RscQueryAzure -NativeResourceGroup
+    /// $query = New-RscQueryAzure -ManagedIdentities
     /// 
     /// # REQUIRED
-    /// $query.Var.resourceGroupId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeResourceGroup
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeResourceGroups operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeResourceGroups
-    /// 
-    /// $query = New-RscQueryAzure -NativeResourceGroups
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAzureNativeCommonResourceGroupSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeCommonResourceGroupSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.commonResourceGroupFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// }
-    /// # OPTIONAL
-    /// $query.Var.protectedObjectTypes = @(
-    /// 	$someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.azureNativeProtectionFeatures = @(
-    /// 	$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeResourceGroupConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeRoot operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeRoot
-    /// 
-    /// $query = New-RscQueryAzure -NativeRoot
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeRoot
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeSubscription operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeSubscription
-    /// 
-    /// $query = New-RscQueryAzure -NativeSubscription
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSubscriptionRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeSubscription
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeSubscriptions operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeSubscriptions
-    /// 
-    /// $query = New-RscQueryAzure -NativeSubscriptions
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAzureNativeSubscriptionSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeSubscriptionSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.subscriptionFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// }
-    /// # OPTIONAL
-    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeSubscriptionConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeVirtualMachine operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeVirtualMachine
-    /// 
-    /// $query = New-RscQueryAzure -NativeVirtualMachine
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureVirtualMachineRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeVirtualMachine
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeVirtualMachines operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: NativeVirtualMachines
-    /// 
-    /// $query = New-RscQueryAzure -NativeVirtualMachines
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAzureNativeVirtualMachineSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeVirtualMachineSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.descendantTypeFilter = @(
-    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.virtualMachineFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	resourceGroupFilter = @{
-    /// 		# REQUIRED
-    /// 		resourceGroupNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vmSizeFilter = @{
-    /// 		# REQUIRED
-    /// 		vmSizes = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vnetFilter = @{
-    /// 		# REQUIRED
-    /// 		vnetNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	relicFilter = @{
-    /// 		# REQUIRED
-    /// 		relic = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	exocomputeConnectedFilter = @{
-    /// 		# REQUIRED
-    /// 		isConnected = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	fileIndexingFilter = @{
-    /// 		# REQUIRED
-    /// 		statuses = @(
-    /// 			$someAzureNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	appProtectionStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		isProtectionSetup = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	rbsStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
-    /// 	}
+    /// $query.Var.managedIdentitiesRequest = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AzureNativeVirtualMachineConnection
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureManagedIdentity&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Nsgs operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: Nsgs
+    /// 
+    /// $query = New-RscQueryAzure -Nsgs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.nsgRequest = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	resourceGroup = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
     /// 
     /// 
     /// 
@@ -2056,15 +902,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQueryAzure -ResourceGroups
     /// 
     /// # REQUIRED
-    /// $query.Var.tenantId = $someString
+    /// $query.Var.cloudAccountId = $someString
     /// # REQUIRED
-    /// $query.Var.subscriptionId = $someString
+    /// $query.Var.azureSubscriptionNativeId = $someString
+    /// # REQUIRED
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ResourceGroupConnection
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureResourceGroup&gt;
     /// 
     /// 
     /// 
@@ -2196,6 +1044,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AzureSqlDatabaseServer
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SqlDatabaseServerElasticPools operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: SqlDatabaseServerElasticPools
+    /// 
+    /// $query = New-RscQueryAzure -SqlDatabaseServerElasticPools
+    /// 
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.resourceGroupName = $someString
+    /// # REQUIRED
+    /// $query.Var.azureSqlDatabaseServerName = $someString
+    /// # REQUIRED
+    /// $query.Var.azureSqlDatabaseServerRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSqlDatabaseServerElasticPool&gt;
     /// 
     /// 
     /// 
@@ -2706,6 +1588,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SubscriptionWithExocomputeMappings operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: SubscriptionWithExocomputeMappings
+    /// 
+    /// $query = New-RscQueryAzure -SubscriptionWithExocomputeMappings
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.exocomputeSubscriptionIdsFilter = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureSubscriptionWithExocomputeMapping&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Subscriptions operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -2809,71 +1725,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
-    /// <example>
-    /// Runs the ValidateNativeSqlDatabaseDbNameForExport operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: ValidateNativeSqlDatabaseDbNameForExport
-    /// 
-    /// $query = New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSqlDatabaseName = $someString
-    /// # REQUIRED
-    /// $query.Var.azureSqlDatabaseServerRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ValidateAzureNativeSqlDatabaseDbNameForExportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ValidateNativeSqlManagedInstanceDbNameForExport operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: ValidateNativeSqlManagedInstanceDbNameForExport
-    /// 
-    /// $query = New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
-    /// 
-    /// # REQUIRED
-    /// $query.Var.azureSqlDatabaseName = $someString
-    /// # REQUIRED
-    /// $query.Var.azureSqlManagedInstanceServerRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ValidateAzureNativeSqlManagedInstanceDbNameForExportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
         "RscQueryAzure",
-        DefaultParameterSetName = "VNets")
+        DefaultParameterSetName = "Nsgs")
     ]
     public class New_RscQueryAzure : RscGqlPSCmdlet
     {
@@ -2927,483 +1783,35 @@ Details of the Azure AD objects corresponding to the type.
 
         
         [Parameter(
-            ParameterSetName = "AllArmTemplatesByFeature",
+            ParameterSetName = "ArmTemplatesByFeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'AllArmTemplatesByFeature' operation
+@"Create a query object for the 'ArmTemplatesByFeature' operation
 in the 'Azure' API domain.
 Description of the operation:
 Retrieve ARM templates for role definition and role assignment.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurearmtemplatesbyfeature.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter AllArmTemplatesByFeature { get; set; }
+        public SwitchParameter ArmTemplatesByFeature { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "AllCdmVersions",
+            ParameterSetName = "CdmVersions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'AllCdmVersions' operation
+@"Create a query object for the 'CdmVersions' operation
 in the 'Azure' API domain.
 Description of the operation:
 Get all Rubrik CDM versions in the Azure marketplace.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecdmversions.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter AllCdmVersions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCloudAccountMissingPermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCloudAccountMissingPermissions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountmissingpermissions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCloudAccountMissingPermissions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCloudAccountSubnetsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCloudAccountSubnetsByRegion' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountsubnetsbyregion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCloudAccountSubnetsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCloudAccountSubscriptionsByFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCloudAccountSubscriptionsByFeature' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountsubscriptionsbyfeature.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCloudAccountSubscriptionsByFeature { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCloudAccountTenants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCloudAccountTenants' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccounttenants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCloudAccountTenants { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllDiskEncryptionSetsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllDiskEncryptionSetsByRegion' operation
-in the 'Azure' API domain.
-Description of the operation:
-List of all Azure Disk Encryption Sets in a region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurediskencryptionsetsbyregion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllDiskEncryptionSetsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllEncryptionKeys",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllEncryptionKeys' operation
-in the 'Azure' API domain.
-Description of the operation:
-List of all Encryption Keys in an Azure Key Vault.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureencryptionkeys.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllEncryptionKeys { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllExocomputeConfigsInAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllExocomputeConfigsInAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureexocomputeconfigsinaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllExocomputeConfigsInAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllHostedRegions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllHostedRegions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allhostedazureregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllHostedRegions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllKeyVaultsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllKeyVaultsByRegion' operation
-in the 'Azure' API domain.
-Description of the operation:
-List of all Azure Key Vaults in a region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurekeyvaultsbyregion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllKeyVaultsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllManagedIdentities",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllManagedIdentities' operation
-in the 'Azure' API domain.
-Description of the operation:
-List all managed identities for Azure resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuremanagedidentities.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllManagedIdentities { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeAvailabilitySetsByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeAvailabilitySetsByRegionFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeavailabilitysetsbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeAvailabilitySetsByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeExportCompatibleDiskTypesByRegionFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeexportcompatibledisktypesbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeExportCompatibleDiskTypesByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeExportCompatibleVmSizesByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeExportCompatibleVmSizesByRegionFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeexportcompatiblevmsizesbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeExportCompatibleVmSizesByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeResourceGroupsInfoIfExist",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeResourceGroupsInfoIfExist' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of resource groups with the specified names which exist in the specified account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeresourcegroupsinfoifexist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeResourceGroupsInfoIfExist { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeSecurityGroupsByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeSecurityGroupsByRegionFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativesecuritygroupsbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeSecurityGroupsByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeStorageAccountsFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeStorageAccountsFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves list of all storage Accounts in a subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativestorageaccountsfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeStorageAccountsFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeSubnetsByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeSubnetsByRegionFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativesubnetsbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeSubnetsByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeVirtualMachineSizes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeVirtualMachineSizes' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativevirtualmachinesizes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeVirtualMachineSizes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNativeVirtualNetworks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNativeVirtualNetworks' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativevirtualnetworks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNativeVirtualNetworks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllNsgs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNsgs' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get all available network security groups for Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurensgs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNsgs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllRegions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllRegions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get all available regions for Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllRegions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllResourceGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllResourceGroups' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get resource groups for a service principal in Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureresourcegroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllResourceGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllResourceGroupsFrom",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllResourceGroupsFrom' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list og all resource groups in the specified account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allresourcegroupsfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllResourceGroupsFrom { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllSqlDatabaseServerElasticPools",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllSqlDatabaseServerElasticPools' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresqldatabaseserverelasticpools.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllSqlDatabaseServerElasticPools { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllStorageAccounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllStorageAccounts' operation
-in the 'Azure' API domain.
-Description of the operation:
-List all storage accounts from Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurestorageaccounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllStorageAccounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllSubnets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllSubnets' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get subnets for a given account in Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresubnets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllSubnets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllSubscriptionWithExocomputeMappings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllSubscriptionWithExocomputeMappings' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresubscriptionwithexocomputemappings.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllSubscriptionWithExocomputeMappings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllVnets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllVnets' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get VNets for a given account in Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurevnets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllVnets { get; set; }
+        public SwitchParameter CdmVersions { get; set; }
 
         
         [Parameter(
@@ -3423,6 +1831,22 @@ Checks if we can unmap the archival location from the subscription.
 
         
         [Parameter(
+            ParameterSetName = "CloudAccountMissingPermissions",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CloudAccountMissingPermissions' operation
+in the 'Azure' API domain.
+Description of the operation:
+Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountmissingpermissions.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CloudAccountMissingPermissions { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "CloudAccountPermissionConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -3439,6 +1863,22 @@ Retrieves the configuration consisting of role permissions and feature policy ve
 
         
         [Parameter(
+            ParameterSetName = "CloudAccountSubnetsByRegion",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CloudAccountSubnetsByRegion' operation
+in the 'Azure' API domain.
+Description of the operation:
+Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountsubnetsbyregion.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CloudAccountSubnetsByRegion { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "CloudAccountSubscriptionWithFeatures",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -3452,6 +1892,22 @@ Retrieves the details of the Azure cloud account.
             // No Position -> named parameter only.
         )]
         public SwitchParameter CloudAccountSubscriptionWithFeatures { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CloudAccountSubscriptionsByFeature",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CloudAccountSubscriptionsByFeature' operation
+in the 'Azure' API domain.
+Description of the operation:
+Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountsubscriptionsbyfeature.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CloudAccountSubscriptionsByFeature { get; set; }
 
         
         [Parameter(
@@ -3487,51 +1943,83 @@ Retrieves details about the Azure cloud account tenant including the Exocompute 
 
         
         [Parameter(
-            ParameterSetName = "DoesNativeResourceGroupExist",
+            ParameterSetName = "CloudAccountTenants",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'DoesNativeResourceGroupExist' operation
+@"Create a query object for the 'CloudAccountTenants' operation
 in the 'Azure' API domain.
 Description of the operation:
-Checks if a resource group with the specified name exists in the specified account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/doesazurenativeresourcegroupexist.doc.html]"
+Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccounttenants.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter DoesNativeResourceGroupExist { get; set; }
+        public SwitchParameter CloudAccountTenants { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "IsNativeManagedDiskSnapshotRestorable",
+            ParameterSetName = "DiskEncryptionSetsByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'IsNativeManagedDiskSnapshotRestorable' operation
+@"Create a query object for the 'DiskEncryptionSetsByRegion' operation
 in the 'Azure' API domain.
 Description of the operation:
-Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isazurenativemanageddisksnapshotrestorable.doc.html]"
+List of all Azure Disk Encryption Sets in a region.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurediskencryptionsetsbyregion.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter IsNativeManagedDiskSnapshotRestorable { get; set; }
+        public SwitchParameter DiskEncryptionSetsByRegion { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "IsNativeSqlDatabaseSnapshotPersistent",
+            ParameterSetName = "EncryptionKeys",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'IsNativeSqlDatabaseSnapshotPersistent' operation
+@"Create a query object for the 'EncryptionKeys' operation
 in the 'Azure' API domain.
 Description of the operation:
-Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isazurenativesqldatabasesnapshotpersistent.doc.html]"
+List of all Encryption Keys in an Azure Key Vault.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureencryptionkeys.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter IsNativeSqlDatabaseSnapshotPersistent { get; set; }
+        public SwitchParameter EncryptionKeys { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ExocomputeConfigsInAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ExocomputeConfigsInAccount' operation
+in the 'Azure' API domain.
+Description of the operation:
+Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureexocomputeconfigsinaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ExocomputeConfigsInAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "HostedAzureRegions",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'HostedAzureRegions' operation
+in the 'Azure' API domain.
+Description of the operation:
+Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allhostedazureregions.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter HostedAzureRegions { get; set; }
 
         
         [Parameter(
@@ -3551,147 +2039,51 @@ Specifies whether the given storage account name is valid and available in Azure
 
         
         [Parameter(
-            ParameterSetName = "NativeManagedDisk",
+            ParameterSetName = "KeyVaultsByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'NativeManagedDisk' operation
+@"Create a query object for the 'KeyVaultsByRegion' operation
 in the 'Azure' API domain.
 Description of the operation:
-Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativemanageddisk.doc.html]"
+List of all Azure Key Vaults in a region.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurekeyvaultsbyregion.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter NativeManagedDisk { get; set; }
+        public SwitchParameter KeyVaultsByRegion { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "NativeManagedDisks",
+            ParameterSetName = "ManagedIdentities",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'NativeManagedDisks' operation
+@"Create a query object for the 'ManagedIdentities' operation
 in the 'Azure' API domain.
 Description of the operation:
-Retrieves a paginated list of all Azure Native Managed Disks.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativemanageddisks.doc.html]"
+List all managed identities for Azure resources.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuremanagedidentities.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter NativeManagedDisks { get; set; }
+        public SwitchParameter ManagedIdentities { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "NativeResourceGroup",
+            ParameterSetName = "Nsgs",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'NativeResourceGroup' operation
+@"Create a query object for the 'Nsgs' operation
 in the 'Azure' API domain.
 Description of the operation:
-Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativeresourcegroup.doc.html]"
+Get all available network security groups for Azure.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurensgs.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter NativeResourceGroup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeResourceGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeResourceGroups' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Native Resource Groups.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativeresourcegroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeResourceGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRoot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRoot' operation
-in the 'Azure' API domain.
-Description of the operation:
-Root of Azure native hierarchy.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativeroot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRoot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeSubscription",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeSubscription' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativesubscription.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeSubscription { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeSubscriptions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeSubscriptions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Native Subscriptions.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativesubscriptions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeSubscriptions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeVirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeVirtualMachine' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativevirtualmachine.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeVirtualMachine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeVirtualMachines",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeVirtualMachines' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Virtual Machines (VMs).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativevirtualmachines.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeVirtualMachines { get; set; }
+        public SwitchParameter Nsgs { get; set; }
 
         
         [Parameter(
@@ -3719,8 +2111,8 @@ Gets the Azure regions for the given subscription.
 @"Create a query object for the 'ResourceGroups' operation
 in the 'Azure' API domain.
 Description of the operation:
-Gets the Azure resource groups for the given subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureresourcegroups.doc.html]"
+Retrieves a list og all resource groups in the specified account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allresourcegroupsfromazure.doc.html]"
             // No Position -> named parameter only.
         )]
         public SwitchParameter ResourceGroups { get; set; }
@@ -3788,6 +2180,22 @@ Retrieves an Azure SQL Database Server. Refers to the server that contains the A
             // No Position -> named parameter only.
         )]
         public SwitchParameter SqlDatabaseServer { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "SqlDatabaseServerElasticPools",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'SqlDatabaseServerElasticPools' operation
+in the 'Azure' API domain.
+Description of the operation:
+Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresqldatabaseserverelasticpools.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter SqlDatabaseServerElasticPools { get; set; }
 
         
         [Parameter(
@@ -3935,6 +2343,22 @@ Gets the subnets for the given subscription.
 
         
         [Parameter(
+            ParameterSetName = "SubscriptionWithExocomputeMappings",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'SubscriptionWithExocomputeMappings' operation
+in the 'Azure' API domain.
+Description of the operation:
+Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresubscriptionwithexocomputemappings.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter SubscriptionWithExocomputeMappings { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "Subscriptions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -3981,38 +2405,6 @@ Validates if Azure subnets are correctly configured for running Azure Kubernetes
         )]
         public SwitchParameter ValidateCloudAccountExocomputeConfigurations { get; set; }
 
-        
-        [Parameter(
-            ParameterSetName = "ValidateNativeSqlDatabaseDbNameForExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateNativeSqlDatabaseDbNameForExport' operation
-in the 'Azure' API domain.
-Description of the operation:
-Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateazurenativesqldatabasedbnameforexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateNativeSqlDatabaseDbNameForExport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateNativeSqlManagedInstanceDbNameForExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateNativeSqlManagedInstanceDbNameForExport' operation
-in the 'Azure' API domain.
-Description of the operation:
-Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateazurenativesqlmanagedinstancedbnameforexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateNativeSqlManagedInstanceDbNameForExport { get; set; }
-
 
 
         protected override void ProcessRecord()
@@ -4031,104 +2423,29 @@ Validates the name used for an Managed Instance Database during an export operat
                     case "AdObjectsByType":
                         this.ProcessRecord_AdObjectsByType();
                         break;
-                    case "AllArmTemplatesByFeature":
-                        this.ProcessRecord_AllArmTemplatesByFeature();
+                    case "ArmTemplatesByFeature":
+                        this.ProcessRecord_ArmTemplatesByFeature();
                         break;
-                    case "AllCdmVersions":
-                        this.ProcessRecord_AllCdmVersions();
-                        break;
-                    case "AllCloudAccountMissingPermissions":
-                        this.ProcessRecord_AllCloudAccountMissingPermissions();
-                        break;
-                    case "AllCloudAccountSubnetsByRegion":
-                        this.ProcessRecord_AllCloudAccountSubnetsByRegion();
-                        break;
-                    case "AllCloudAccountSubscriptionsByFeature":
-                        this.ProcessRecord_AllCloudAccountSubscriptionsByFeature();
-                        break;
-                    case "AllCloudAccountTenants":
-                        this.ProcessRecord_AllCloudAccountTenants();
-                        break;
-                    case "AllDiskEncryptionSetsByRegion":
-                        this.ProcessRecord_AllDiskEncryptionSetsByRegion();
-                        break;
-                    case "AllEncryptionKeys":
-                        this.ProcessRecord_AllEncryptionKeys();
-                        break;
-                    case "AllExocomputeConfigsInAccount":
-                        this.ProcessRecord_AllExocomputeConfigsInAccount();
-                        break;
-                    case "AllHostedRegions":
-                        this.ProcessRecord_AllHostedRegions();
-                        break;
-                    case "AllKeyVaultsByRegion":
-                        this.ProcessRecord_AllKeyVaultsByRegion();
-                        break;
-                    case "AllManagedIdentities":
-                        this.ProcessRecord_AllManagedIdentities();
-                        break;
-                    case "AllNativeAvailabilitySetsByRegionFromAzure":
-                        this.ProcessRecord_AllNativeAvailabilitySetsByRegionFromAzure();
-                        break;
-                    case "AllNativeExportCompatibleDiskTypesByRegionFromAzure":
-                        this.ProcessRecord_AllNativeExportCompatibleDiskTypesByRegionFromAzure();
-                        break;
-                    case "AllNativeExportCompatibleVmSizesByRegionFromAzure":
-                        this.ProcessRecord_AllNativeExportCompatibleVmSizesByRegionFromAzure();
-                        break;
-                    case "AllNativeResourceGroupsInfoIfExist":
-                        this.ProcessRecord_AllNativeResourceGroupsInfoIfExist();
-                        break;
-                    case "AllNativeSecurityGroupsByRegionFromAzure":
-                        this.ProcessRecord_AllNativeSecurityGroupsByRegionFromAzure();
-                        break;
-                    case "AllNativeStorageAccountsFromAzure":
-                        this.ProcessRecord_AllNativeStorageAccountsFromAzure();
-                        break;
-                    case "AllNativeSubnetsByRegionFromAzure":
-                        this.ProcessRecord_AllNativeSubnetsByRegionFromAzure();
-                        break;
-                    case "AllNativeVirtualMachineSizes":
-                        this.ProcessRecord_AllNativeVirtualMachineSizes();
-                        break;
-                    case "AllNativeVirtualNetworks":
-                        this.ProcessRecord_AllNativeVirtualNetworks();
-                        break;
-                    case "AllNsgs":
-                        this.ProcessRecord_AllNsgs();
-                        break;
-                    case "AllRegions":
-                        this.ProcessRecord_AllRegions();
-                        break;
-                    case "AllResourceGroups":
-                        this.ProcessRecord_AllResourceGroups();
-                        break;
-                    case "AllResourceGroupsFrom":
-                        this.ProcessRecord_AllResourceGroupsFrom();
-                        break;
-                    case "AllSqlDatabaseServerElasticPools":
-                        this.ProcessRecord_AllSqlDatabaseServerElasticPools();
-                        break;
-                    case "AllStorageAccounts":
-                        this.ProcessRecord_AllStorageAccounts();
-                        break;
-                    case "AllSubnets":
-                        this.ProcessRecord_AllSubnets();
-                        break;
-                    case "AllSubscriptionWithExocomputeMappings":
-                        this.ProcessRecord_AllSubscriptionWithExocomputeMappings();
-                        break;
-                    case "AllVnets":
-                        this.ProcessRecord_AllVnets();
+                    case "CdmVersions":
+                        this.ProcessRecord_CdmVersions();
                         break;
                     case "CheckPersistentStorageSubscriptionCanUnmap":
                         this.ProcessRecord_CheckPersistentStorageSubscriptionCanUnmap();
                         break;
+                    case "CloudAccountMissingPermissions":
+                        this.ProcessRecord_CloudAccountMissingPermissions();
+                        break;
                     case "CloudAccountPermissionConfig":
                         this.ProcessRecord_CloudAccountPermissionConfig();
                         break;
+                    case "CloudAccountSubnetsByRegion":
+                        this.ProcessRecord_CloudAccountSubnetsByRegion();
+                        break;
                     case "CloudAccountSubscriptionWithFeatures":
                         this.ProcessRecord_CloudAccountSubscriptionWithFeatures();
+                        break;
+                    case "CloudAccountSubscriptionsByFeature":
+                        this.ProcessRecord_CloudAccountSubscriptionsByFeature();
                         break;
                     case "CloudAccountTenant":
                         this.ProcessRecord_CloudAccountTenant();
@@ -4136,44 +2453,32 @@ Validates the name used for an Managed Instance Database during an export operat
                     case "CloudAccountTenantWithExoConfigs":
                         this.ProcessRecord_CloudAccountTenantWithExoConfigs();
                         break;
-                    case "DoesNativeResourceGroupExist":
-                        this.ProcessRecord_DoesNativeResourceGroupExist();
+                    case "CloudAccountTenants":
+                        this.ProcessRecord_CloudAccountTenants();
                         break;
-                    case "IsNativeManagedDiskSnapshotRestorable":
-                        this.ProcessRecord_IsNativeManagedDiskSnapshotRestorable();
+                    case "DiskEncryptionSetsByRegion":
+                        this.ProcessRecord_DiskEncryptionSetsByRegion();
                         break;
-                    case "IsNativeSqlDatabaseSnapshotPersistent":
-                        this.ProcessRecord_IsNativeSqlDatabaseSnapshotPersistent();
+                    case "EncryptionKeys":
+                        this.ProcessRecord_EncryptionKeys();
+                        break;
+                    case "ExocomputeConfigsInAccount":
+                        this.ProcessRecord_ExocomputeConfigsInAccount();
+                        break;
+                    case "HostedAzureRegions":
+                        this.ProcessRecord_HostedAzureRegions();
                         break;
                     case "IsStorageAccountNameAvailable":
                         this.ProcessRecord_IsStorageAccountNameAvailable();
                         break;
-                    case "NativeManagedDisk":
-                        this.ProcessRecord_NativeManagedDisk();
+                    case "KeyVaultsByRegion":
+                        this.ProcessRecord_KeyVaultsByRegion();
                         break;
-                    case "NativeManagedDisks":
-                        this.ProcessRecord_NativeManagedDisks();
+                    case "ManagedIdentities":
+                        this.ProcessRecord_ManagedIdentities();
                         break;
-                    case "NativeResourceGroup":
-                        this.ProcessRecord_NativeResourceGroup();
-                        break;
-                    case "NativeResourceGroups":
-                        this.ProcessRecord_NativeResourceGroups();
-                        break;
-                    case "NativeRoot":
-                        this.ProcessRecord_NativeRoot();
-                        break;
-                    case "NativeSubscription":
-                        this.ProcessRecord_NativeSubscription();
-                        break;
-                    case "NativeSubscriptions":
-                        this.ProcessRecord_NativeSubscriptions();
-                        break;
-                    case "NativeVirtualMachine":
-                        this.ProcessRecord_NativeVirtualMachine();
-                        break;
-                    case "NativeVirtualMachines":
-                        this.ProcessRecord_NativeVirtualMachines();
+                    case "Nsgs":
+                        this.ProcessRecord_Nsgs();
                         break;
                     case "Regions":
                         this.ProcessRecord_Regions();
@@ -4192,6 +2497,9 @@ Validates the name used for an Managed Instance Database during an export operat
                         break;
                     case "SqlDatabaseServer":
                         this.ProcessRecord_SqlDatabaseServer();
+                        break;
+                    case "SqlDatabaseServerElasticPools":
+                        this.ProcessRecord_SqlDatabaseServerElasticPools();
                         break;
                     case "SqlDatabaseServers":
                         this.ProcessRecord_SqlDatabaseServers();
@@ -4220,6 +2528,9 @@ Validates the name used for an Managed Instance Database during an export operat
                     case "Subnets":
                         this.ProcessRecord_Subnets();
                         break;
+                    case "SubscriptionWithExocomputeMappings":
+                        this.ProcessRecord_SubscriptionWithExocomputeMappings();
+                        break;
                     case "Subscriptions":
                         this.ProcessRecord_Subscriptions();
                         break;
@@ -4228,12 +2539,6 @@ Validates the name used for an Managed Instance Database during an export operat
                         break;
                     case "ValidateCloudAccountExocomputeConfigurations":
                         this.ProcessRecord_ValidateCloudAccountExocomputeConfigurations();
-                        break;
-                    case "ValidateNativeSqlDatabaseDbNameForExport":
-                        this.ProcessRecord_ValidateNativeSqlDatabaseDbNameForExport();
-                        break;
-                    case "ValidateNativeSqlManagedInstanceDbNameForExport":
-                        this.ProcessRecord_ValidateNativeSqlManagedInstanceDbNameForExport();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -4274,272 +2579,20 @@ Validates the name used for an Managed Instance Database during an export operat
 
         // This parameter set invokes a single graphql operation:
         // allAzureArmTemplatesByFeature.
-        internal void ProcessRecord_AllArmTemplatesByFeature()
+        internal void ProcessRecord_ArmTemplatesByFeature()
         {
-            this._logger.name += " -AllArmTemplatesByFeature";
+            this._logger.name += " -ArmTemplatesByFeature";
             // Create new graphql operation allAzureArmTemplatesByFeature
             InitQueryAllAzureArmTemplatesByFeature();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCdmVersions.
-        internal void ProcessRecord_AllCdmVersions()
+        internal void ProcessRecord_CdmVersions()
         {
-            this._logger.name += " -AllCdmVersions";
+            this._logger.name += " -CdmVersions";
             // Create new graphql operation allAzureCdmVersions
             InitQueryAllAzureCdmVersions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureCloudAccountMissingPermissions.
-        internal void ProcessRecord_AllCloudAccountMissingPermissions()
-        {
-            this._logger.name += " -AllCloudAccountMissingPermissions";
-            // Create new graphql operation allAzureCloudAccountMissingPermissions
-            InitQueryAllAzureCloudAccountMissingPermissions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureCloudAccountSubnetsByRegion.
-        internal void ProcessRecord_AllCloudAccountSubnetsByRegion()
-        {
-            this._logger.name += " -AllCloudAccountSubnetsByRegion";
-            // Create new graphql operation allAzureCloudAccountSubnetsByRegion
-            InitQueryAllAzureCloudAccountSubnetsByRegion();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureCloudAccountSubscriptionsByFeature.
-        internal void ProcessRecord_AllCloudAccountSubscriptionsByFeature()
-        {
-            this._logger.name += " -AllCloudAccountSubscriptionsByFeature";
-            // Create new graphql operation allAzureCloudAccountSubscriptionsByFeature
-            InitQueryAllAzureCloudAccountSubscriptionsByFeature();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureCloudAccountTenants.
-        internal void ProcessRecord_AllCloudAccountTenants()
-        {
-            this._logger.name += " -AllCloudAccountTenants";
-            // Create new graphql operation allAzureCloudAccountTenants
-            InitQueryAllAzureCloudAccountTenants();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureDiskEncryptionSetsByRegion.
-        internal void ProcessRecord_AllDiskEncryptionSetsByRegion()
-        {
-            this._logger.name += " -AllDiskEncryptionSetsByRegion";
-            // Create new graphql operation allAzureDiskEncryptionSetsByRegion
-            InitQueryAllAzureDiskEncryptionSetsByRegion();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureEncryptionKeys.
-        internal void ProcessRecord_AllEncryptionKeys()
-        {
-            this._logger.name += " -AllEncryptionKeys";
-            // Create new graphql operation allAzureEncryptionKeys
-            InitQueryAllAzureEncryptionKeys();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureExocomputeConfigsInAccount.
-        internal void ProcessRecord_AllExocomputeConfigsInAccount()
-        {
-            this._logger.name += " -AllExocomputeConfigsInAccount";
-            // Create new graphql operation allAzureExocomputeConfigsInAccount
-            InitQueryAllAzureExocomputeConfigsInAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allHostedAzureRegions.
-        internal void ProcessRecord_AllHostedRegions()
-        {
-            this._logger.name += " -AllHostedRegions";
-            // Create new graphql operation allHostedAzureRegions
-            InitQueryAllHostedAzureRegions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureKeyVaultsByRegion.
-        internal void ProcessRecord_AllKeyVaultsByRegion()
-        {
-            this._logger.name += " -AllKeyVaultsByRegion";
-            // Create new graphql operation allAzureKeyVaultsByRegion
-            InitQueryAllAzureKeyVaultsByRegion();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureManagedIdentities.
-        internal void ProcessRecord_AllManagedIdentities()
-        {
-            this._logger.name += " -AllManagedIdentities";
-            // Create new graphql operation allAzureManagedIdentities
-            InitQueryAllAzureManagedIdentities();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeAvailabilitySetsByRegionFromAzure.
-        internal void ProcessRecord_AllNativeAvailabilitySetsByRegionFromAzure()
-        {
-            this._logger.name += " -AllNativeAvailabilitySetsByRegionFromAzure";
-            // Create new graphql operation allAzureNativeAvailabilitySetsByRegionFromAzure
-            InitQueryAllAzureNativeAvailabilitySetsByRegionFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeExportCompatibleDiskTypesByRegionFromAzure.
-        internal void ProcessRecord_AllNativeExportCompatibleDiskTypesByRegionFromAzure()
-        {
-            this._logger.name += " -AllNativeExportCompatibleDiskTypesByRegionFromAzure";
-            // Create new graphql operation allAzureNativeExportCompatibleDiskTypesByRegionFromAzure
-            InitQueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeExportCompatibleVmSizesByRegionFromAzure.
-        internal void ProcessRecord_AllNativeExportCompatibleVmSizesByRegionFromAzure()
-        {
-            this._logger.name += " -AllNativeExportCompatibleVmSizesByRegionFromAzure";
-            // Create new graphql operation allAzureNativeExportCompatibleVmSizesByRegionFromAzure
-            InitQueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeResourceGroupsInfoIfExist.
-        internal void ProcessRecord_AllNativeResourceGroupsInfoIfExist()
-        {
-            this._logger.name += " -AllNativeResourceGroupsInfoIfExist";
-            // Create new graphql operation allAzureNativeResourceGroupsInfoIfExist
-            InitQueryAllAzureNativeResourceGroupsInfoIfExist();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeSecurityGroupsByRegionFromAzure.
-        internal void ProcessRecord_AllNativeSecurityGroupsByRegionFromAzure()
-        {
-            this._logger.name += " -AllNativeSecurityGroupsByRegionFromAzure";
-            // Create new graphql operation allAzureNativeSecurityGroupsByRegionFromAzure
-            InitQueryAllAzureNativeSecurityGroupsByRegionFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeStorageAccountsFromAzure.
-        internal void ProcessRecord_AllNativeStorageAccountsFromAzure()
-        {
-            this._logger.name += " -AllNativeStorageAccountsFromAzure";
-            // Create new graphql operation allAzureNativeStorageAccountsFromAzure
-            InitQueryAllAzureNativeStorageAccountsFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeSubnetsByRegionFromAzure.
-        internal void ProcessRecord_AllNativeSubnetsByRegionFromAzure()
-        {
-            this._logger.name += " -AllNativeSubnetsByRegionFromAzure";
-            // Create new graphql operation allAzureNativeSubnetsByRegionFromAzure
-            InitQueryAllAzureNativeSubnetsByRegionFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeVirtualMachineSizes.
-        internal void ProcessRecord_AllNativeVirtualMachineSizes()
-        {
-            this._logger.name += " -AllNativeVirtualMachineSizes";
-            // Create new graphql operation allAzureNativeVirtualMachineSizes
-            InitQueryAllAzureNativeVirtualMachineSizes();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNativeVirtualNetworks.
-        internal void ProcessRecord_AllNativeVirtualNetworks()
-        {
-            this._logger.name += " -AllNativeVirtualNetworks";
-            // Create new graphql operation allAzureNativeVirtualNetworks
-            InitQueryAllAzureNativeVirtualNetworks();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureNsgs.
-        internal void ProcessRecord_AllNsgs()
-        {
-            this._logger.name += " -AllNsgs";
-            // Create new graphql operation allAzureNsgs
-            InitQueryAllAzureNsgs();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureRegions.
-        internal void ProcessRecord_AllRegions()
-        {
-            this._logger.name += " -AllRegions";
-            // Create new graphql operation allAzureRegions
-            InitQueryAllAzureRegions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureResourceGroups.
-        internal void ProcessRecord_AllResourceGroups()
-        {
-            this._logger.name += " -AllResourceGroups";
-            // Create new graphql operation allAzureResourceGroups
-            InitQueryAllAzureResourceGroups();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allResourceGroupsFromAzure.
-        internal void ProcessRecord_AllResourceGroupsFrom()
-        {
-            this._logger.name += " -AllResourceGroupsFrom";
-            // Create new graphql operation allResourceGroupsFromAzure
-            InitQueryAllResourceGroupsFromAzure();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureSqlDatabaseServerElasticPools.
-        internal void ProcessRecord_AllSqlDatabaseServerElasticPools()
-        {
-            this._logger.name += " -AllSqlDatabaseServerElasticPools";
-            // Create new graphql operation allAzureSqlDatabaseServerElasticPools
-            InitQueryAllAzureSqlDatabaseServerElasticPools();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureStorageAccounts.
-        internal void ProcessRecord_AllStorageAccounts()
-        {
-            this._logger.name += " -AllStorageAccounts";
-            // Create new graphql operation allAzureStorageAccounts
-            InitQueryAllAzureStorageAccounts();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureSubnets.
-        internal void ProcessRecord_AllSubnets()
-        {
-            this._logger.name += " -AllSubnets";
-            // Create new graphql operation allAzureSubnets
-            InitQueryAllAzureSubnets();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureSubscriptionWithExocomputeMappings.
-        internal void ProcessRecord_AllSubscriptionWithExocomputeMappings()
-        {
-            this._logger.name += " -AllSubscriptionWithExocomputeMappings";
-            // Create new graphql operation allAzureSubscriptionWithExocomputeMappings
-            InitQueryAllAzureSubscriptionWithExocomputeMappings();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAzureVnets.
-        internal void ProcessRecord_AllVnets()
-        {
-            this._logger.name += " -AllVnets";
-            // Create new graphql operation allAzureVnets
-            InitQueryAllAzureVnets();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4552,6 +2605,15 @@ Validates the name used for an Managed Instance Database during an export operat
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAzureCloudAccountMissingPermissions.
+        internal void ProcessRecord_CloudAccountMissingPermissions()
+        {
+            this._logger.name += " -CloudAccountMissingPermissions";
+            // Create new graphql operation allAzureCloudAccountMissingPermissions
+            InitQueryAllAzureCloudAccountMissingPermissions();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureCloudAccountPermissionConfig.
         internal void ProcessRecord_CloudAccountPermissionConfig()
         {
@@ -4561,12 +2623,30 @@ Validates the name used for an Managed Instance Database during an export operat
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAzureCloudAccountSubnetsByRegion.
+        internal void ProcessRecord_CloudAccountSubnetsByRegion()
+        {
+            this._logger.name += " -CloudAccountSubnetsByRegion";
+            // Create new graphql operation allAzureCloudAccountSubnetsByRegion
+            InitQueryAllAzureCloudAccountSubnetsByRegion();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureCloudAccountSubscriptionWithFeatures.
         internal void ProcessRecord_CloudAccountSubscriptionWithFeatures()
         {
             this._logger.name += " -CloudAccountSubscriptionWithFeatures";
             // Create new graphql operation azureCloudAccountSubscriptionWithFeatures
             InitQueryAzureCloudAccountSubscriptionWithFeatures();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureCloudAccountSubscriptionsByFeature.
+        internal void ProcessRecord_CloudAccountSubscriptionsByFeature()
+        {
+            this._logger.name += " -CloudAccountSubscriptionsByFeature";
+            // Create new graphql operation allAzureCloudAccountSubscriptionsByFeature
+            InitQueryAllAzureCloudAccountSubscriptionsByFeature();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4588,30 +2668,48 @@ Validates the name used for an Managed Instance Database during an export operat
         }
 
         // This parameter set invokes a single graphql operation:
-        // doesAzureNativeResourceGroupExist.
-        internal void ProcessRecord_DoesNativeResourceGroupExist()
+        // allAzureCloudAccountTenants.
+        internal void ProcessRecord_CloudAccountTenants()
         {
-            this._logger.name += " -DoesNativeResourceGroupExist";
-            // Create new graphql operation doesAzureNativeResourceGroupExist
-            InitQueryDoesAzureNativeResourceGroupExist();
+            this._logger.name += " -CloudAccountTenants";
+            // Create new graphql operation allAzureCloudAccountTenants
+            InitQueryAllAzureCloudAccountTenants();
         }
 
         // This parameter set invokes a single graphql operation:
-        // isAzureNativeManagedDiskSnapshotRestorable.
-        internal void ProcessRecord_IsNativeManagedDiskSnapshotRestorable()
+        // allAzureDiskEncryptionSetsByRegion.
+        internal void ProcessRecord_DiskEncryptionSetsByRegion()
         {
-            this._logger.name += " -IsNativeManagedDiskSnapshotRestorable";
-            // Create new graphql operation isAzureNativeManagedDiskSnapshotRestorable
-            InitQueryIsAzureNativeManagedDiskSnapshotRestorable();
+            this._logger.name += " -DiskEncryptionSetsByRegion";
+            // Create new graphql operation allAzureDiskEncryptionSetsByRegion
+            InitQueryAllAzureDiskEncryptionSetsByRegion();
         }
 
         // This parameter set invokes a single graphql operation:
-        // isAzureNativeSqlDatabaseSnapshotPersistent.
-        internal void ProcessRecord_IsNativeSqlDatabaseSnapshotPersistent()
+        // allAzureEncryptionKeys.
+        internal void ProcessRecord_EncryptionKeys()
         {
-            this._logger.name += " -IsNativeSqlDatabaseSnapshotPersistent";
-            // Create new graphql operation isAzureNativeSqlDatabaseSnapshotPersistent
-            InitQueryIsAzureNativeSqlDatabaseSnapshotPersistent();
+            this._logger.name += " -EncryptionKeys";
+            // Create new graphql operation allAzureEncryptionKeys
+            InitQueryAllAzureEncryptionKeys();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureExocomputeConfigsInAccount.
+        internal void ProcessRecord_ExocomputeConfigsInAccount()
+        {
+            this._logger.name += " -ExocomputeConfigsInAccount";
+            // Create new graphql operation allAzureExocomputeConfigsInAccount
+            InitQueryAllAzureExocomputeConfigsInAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allHostedAzureRegions.
+        internal void ProcessRecord_HostedAzureRegions()
+        {
+            this._logger.name += " -HostedAzureRegions";
+            // Create new graphql operation allHostedAzureRegions
+            InitQueryAllHostedAzureRegions();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4624,84 +2722,30 @@ Validates the name used for an Managed Instance Database during an export operat
         }
 
         // This parameter set invokes a single graphql operation:
-        // azureNativeManagedDisk.
-        internal void ProcessRecord_NativeManagedDisk()
+        // allAzureKeyVaultsByRegion.
+        internal void ProcessRecord_KeyVaultsByRegion()
         {
-            this._logger.name += " -NativeManagedDisk";
-            // Create new graphql operation azureNativeManagedDisk
-            InitQueryAzureNativeManagedDisk();
+            this._logger.name += " -KeyVaultsByRegion";
+            // Create new graphql operation allAzureKeyVaultsByRegion
+            InitQueryAllAzureKeyVaultsByRegion();
         }
 
         // This parameter set invokes a single graphql operation:
-        // azureNativeManagedDisks.
-        internal void ProcessRecord_NativeManagedDisks()
+        // allAzureManagedIdentities.
+        internal void ProcessRecord_ManagedIdentities()
         {
-            this._logger.name += " -NativeManagedDisks";
-            // Create new graphql operation azureNativeManagedDisks
-            InitQueryAzureNativeManagedDisks();
+            this._logger.name += " -ManagedIdentities";
+            // Create new graphql operation allAzureManagedIdentities
+            InitQueryAllAzureManagedIdentities();
         }
 
         // This parameter set invokes a single graphql operation:
-        // azureNativeResourceGroup.
-        internal void ProcessRecord_NativeResourceGroup()
+        // allAzureNsgs.
+        internal void ProcessRecord_Nsgs()
         {
-            this._logger.name += " -NativeResourceGroup";
-            // Create new graphql operation azureNativeResourceGroup
-            InitQueryAzureNativeResourceGroup();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureNativeResourceGroups.
-        internal void ProcessRecord_NativeResourceGroups()
-        {
-            this._logger.name += " -NativeResourceGroups";
-            // Create new graphql operation azureNativeResourceGroups
-            InitQueryAzureNativeResourceGroups();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureNativeRoot.
-        internal void ProcessRecord_NativeRoot()
-        {
-            this._logger.name += " -NativeRoot";
-            // Create new graphql operation azureNativeRoot
-            InitQueryAzureNativeRoot();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureNativeSubscription.
-        internal void ProcessRecord_NativeSubscription()
-        {
-            this._logger.name += " -NativeSubscription";
-            // Create new graphql operation azureNativeSubscription
-            InitQueryAzureNativeSubscription();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureNativeSubscriptions.
-        internal void ProcessRecord_NativeSubscriptions()
-        {
-            this._logger.name += " -NativeSubscriptions";
-            // Create new graphql operation azureNativeSubscriptions
-            InitQueryAzureNativeSubscriptions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureNativeVirtualMachine.
-        internal void ProcessRecord_NativeVirtualMachine()
-        {
-            this._logger.name += " -NativeVirtualMachine";
-            // Create new graphql operation azureNativeVirtualMachine
-            InitQueryAzureNativeVirtualMachine();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureNativeVirtualMachines.
-        internal void ProcessRecord_NativeVirtualMachines()
-        {
-            this._logger.name += " -NativeVirtualMachines";
-            // Create new graphql operation azureNativeVirtualMachines
-            InitQueryAzureNativeVirtualMachines();
+            this._logger.name += " -Nsgs";
+            // Create new graphql operation allAzureNsgs
+            InitQueryAllAzureNsgs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4714,12 +2758,12 @@ Validates the name used for an Managed Instance Database during an export operat
         }
 
         // This parameter set invokes a single graphql operation:
-        // azureResourceGroups.
+        // allResourceGroupsFromAzure.
         internal void ProcessRecord_ResourceGroups()
         {
             this._logger.name += " -ResourceGroups";
-            // Create new graphql operation azureResourceGroups
-            InitQueryAzureResourceGroups();
+            // Create new graphql operation allResourceGroupsFromAzure
+            InitQueryAllResourceGroupsFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4756,6 +2800,15 @@ Validates the name used for an Managed Instance Database during an export operat
             this._logger.name += " -SqlDatabaseServer";
             // Create new graphql operation azureSqlDatabaseServer
             InitQueryAzureSqlDatabaseServer();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureSqlDatabaseServerElasticPools.
+        internal void ProcessRecord_SqlDatabaseServerElasticPools()
+        {
+            this._logger.name += " -SqlDatabaseServerElasticPools";
+            // Create new graphql operation allAzureSqlDatabaseServerElasticPools
+            InitQueryAllAzureSqlDatabaseServerElasticPools();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4840,6 +2893,15 @@ Validates the name used for an Managed Instance Database during an export operat
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAzureSubscriptionWithExocomputeMappings.
+        internal void ProcessRecord_SubscriptionWithExocomputeMappings()
+        {
+            this._logger.name += " -SubscriptionWithExocomputeMappings";
+            // Create new graphql operation allAzureSubscriptionWithExocomputeMappings
+            InitQueryAllAzureSubscriptionWithExocomputeMappings();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureSubscriptions.
         internal void ProcessRecord_Subscriptions()
         {
@@ -4864,24 +2926,6 @@ Validates the name used for an Managed Instance Database during an export operat
             this._logger.name += " -ValidateCloudAccountExocomputeConfigurations";
             // Create new graphql operation validateAzureCloudAccountExocomputeConfigurations
             InitQueryValidateAzureCloudAccountExocomputeConfigurations();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // validateAzureNativeSqlDatabaseDbNameForExport.
-        internal void ProcessRecord_ValidateNativeSqlDatabaseDbNameForExport()
-        {
-            this._logger.name += " -ValidateNativeSqlDatabaseDbNameForExport";
-            // Create new graphql operation validateAzureNativeSqlDatabaseDbNameForExport
-            InitQueryValidateAzureNativeSqlDatabaseDbNameForExport();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // validateAzureNativeSqlManagedInstanceDbNameForExport.
-        internal void ProcessRecord_ValidateNativeSqlManagedInstanceDbNameForExport()
-        {
-            this._logger.name += " -ValidateNativeSqlManagedInstanceDbNameForExport";
-            // Create new graphql operation validateAzureNativeSqlManagedInstanceDbNameForExport
-            InitQueryValidateAzureNativeSqlManagedInstanceDbNameForExport();
         }
 
 
@@ -5096,6 +3140,32 @@ $query.Var.cdmVersionRequest = @{
         }
 
         // Create new GraphQL Query:
+        // checkAzurePersistentStorageSubscriptionCanUnmap(cloudAccountId: UUID!, feature: CloudAccountFeature!, unmappingValidationType: UnmappingValidationType!): CheckAzurePersistentStorageSubscriptionCanUnmapReply!
+        internal void InitQueryCheckAzurePersistentStorageSubscriptionCanUnmap()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("unmappingValidationType", "UnmappingValidationType!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCheckAzurePersistentStorageSubscriptionCanUnmap",
+                "($cloudAccountId: UUID!,$feature: CloudAccountFeature!,$unmappingValidationType: UnmappingValidationType!)",
+                "CheckAzurePersistentStorageSubscriptionCanUnmapReply",
+                Query.CheckAzurePersistentStorageSubscriptionCanUnmap_ObjectFieldSpec,
+                Query.CheckAzurePersistentStorageSubscriptionCanUnmapFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.unmappingValidationType = $someUnmappingValidationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureCloudAccountMissingPermissions(sessionId: String!, subscriptionIds: [UUID!]!, cloudAccountAction: CloudAccountAction!): [AzureSubscriptionMissingPermissions!]!
         internal void InitQueryAllAzureCloudAccountMissingPermissions()
         {
@@ -5124,6 +3194,26 @@ $query.Var.cloudAccountAction = $someCloudAccountAction # Call [Enum]::GetValues
         }
 
         // Create new GraphQL Query:
+        // azureCloudAccountPermissionConfig(feature: CloudAccountFeature!): AzureCloudAccountPermissionConfigResponse!
+        internal void InitQueryAzureCloudAccountPermissionConfig()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("feature", "CloudAccountFeature!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountPermissionConfig",
+                "($feature: CloudAccountFeature!)",
+                "AzureCloudAccountPermissionConfigResponse",
+                Query.AzureCloudAccountPermissionConfig_ObjectFieldSpec,
+                Query.AzureCloudAccountPermissionConfigFieldSpec,
+                @"# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureCloudAccountSubnetsByRegion(cloudAccountId: UUID!, region: AzureCloudAccountRegion!): [AzureNativeSubnet!]!
         internal void InitQueryAllAzureCloudAccountSubnetsByRegion()
         {
@@ -5143,6 +3233,26 @@ $query.Var.cloudAccountAction = $someCloudAccountAction # Call [Enum]::GetValues
 $query.Var.cloudAccountId = $someString
 # REQUIRED
 $query.Var.region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!): AzureCloudAccountSubscriptionWithFeatures!
+        internal void InitQueryAzureCloudAccountSubscriptionWithFeatures()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountSubscriptionWithFeatures",
+                "($cloudAccountId: UUID!)",
+                "AzureCloudAccountSubscriptionWithFeatures",
+                Query.AzureCloudAccountSubscriptionWithFeatures_ObjectFieldSpec,
+                Query.AzureCloudAccountSubscriptionWithFeaturesFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString"
             );
         }
 
@@ -5167,6 +3277,90 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
 # REQUIRED
 $query.Var.subscriptionStatusFilters = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureCloudAccountTenant(
+        //     tenantId: UUID!
+        //     feature: CloudAccountFeature!
+        //     subscriptionStatusFilters: [CloudAccountStatus!]!
+        //     subscriptionSearchText: String!
+        //     subscriptionIdsFilter: [UUID!]
+        //   ): AzureCloudAccountTenant!
+        internal void InitQueryAzureCloudAccountTenant()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
+                Tuple.Create("subscriptionSearchText", "String!"),
+                Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountTenant",
+                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
+                "AzureCloudAccountTenant",
+                Query.AzureCloudAccountTenant_ObjectFieldSpec,
+                Query.AzureCloudAccountTenantFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.subscriptionStatusFilters = @(
+	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)
+# REQUIRED
+$query.Var.subscriptionSearchText = $someString
+# OPTIONAL
+$query.Var.subscriptionIdsFilter = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureCloudAccountTenantWithExoConfigs(
+        //     tenantId: UUID!
+        //     feature: CloudAccountFeature!
+        //     subscriptionStatusFilters: [CloudAccountStatus!]!
+        //     subscriptionSearchText: String!
+        //     subscriptionIdsFilter: [UUID!]
+        //   ): AzureCloudAccountTenantWithExoConfigs!
+        internal void InitQueryAzureCloudAccountTenantWithExoConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
+                Tuple.Create("subscriptionSearchText", "String!"),
+                Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureCloudAccountTenantWithExoConfigs",
+                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
+                "AzureCloudAccountTenantWithExoConfigs",
+                Query.AzureCloudAccountTenantWithExoConfigs_ObjectFieldSpec,
+                Query.AzureCloudAccountTenantWithExoConfigsFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.subscriptionStatusFilters = @(
+	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)
+# REQUIRED
+$query.Var.subscriptionSearchText = $someString
+# OPTIONAL
+$query.Var.subscriptionIdsFilter = @(
+	$someString
 )"
             );
         }
@@ -5293,6 +3487,29 @@ $query.Var.cloudAccountIDs = @(
         }
 
         // Create new GraphQL Query:
+        // isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!): Boolean!
+        internal void InitQueryIsAzureStorageAccountNameAvailable()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
+                Tuple.Create("storageAccountName", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsAzureStorageAccountNameAvailable",
+                "($azureSubscriptionRubrikId: UUID!,$storageAccountName: String!)",
+                "System.Boolean",
+                Query.IsAzureStorageAccountNameAvailable_ObjectFieldSpec,
+                Query.IsAzureStorageAccountNameAvailableFieldSpec,
+                @"# REQUIRED
+$query.Var.azureSubscriptionRubrikId = $someString
+# REQUIRED
+$query.Var.storageAccountName = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureKeyVaultsByRegion(azureKeyVaultsInput: AzureKeyVaultsInput!): [AzureKeyVault!]!
         internal void InitQueryAllAzureKeyVaultsByRegion()
         {
@@ -5343,219 +3560,6 @@ $query.Var.managedIdentitiesRequest = @{
         }
 
         // Create new GraphQL Query:
-        // allAzureNativeAvailabilitySetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, resourceGroupName: String!, region: AzureNativeRegion!): [AzureNativeAvailabilitySet!]!
-        internal void InitQueryAllAzureNativeAvailabilitySetsByRegionFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("resourceGroupName", "String!"),
-                Tuple.Create("region", "AzureNativeRegion!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeAvailabilitySetsByRegionFromAzure",
-                "($azureSubscriptionRubrikId: UUID!,$resourceGroupName: String!,$region: AzureNativeRegion!)",
-                "List<AzureNativeAvailabilitySet>",
-                Query.AllAzureNativeAvailabilitySetsByRegionFromAzure_ObjectFieldSpec,
-                Query.AllAzureNativeAvailabilitySetsByRegionFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.resourceGroupName = $someString
-# REQUIRED
-$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeExportCompatibleDiskTypesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeExportCompatibleDiskTypes!]!
-        internal void InitQueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("region", "AzureNativeRegion!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
-                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeExportCompatibleDiskTypes>",
-                Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure_ObjectFieldSpec,
-                Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeExportCompatibleVmSizesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!, vmSnapshotId: UUID!): [AzureNativeExportCompatibleVmSizes!]!
-        internal void InitQueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("region", "AzureNativeRegion!"),
-                Tuple.Create("vmSnapshotId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure",
-                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!,$vmSnapshotId: UUID!)",
-                "List<AzureNativeExportCompatibleVmSizes>",
-                Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure_ObjectFieldSpec,
-                Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-# REQUIRED
-$query.Var.vmSnapshotId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeResourceGroupsInfoIfExist(input: AzureGetResourceGroupsInfoIfExistInput!): [AzureResourceGroupInfo!]!
-        internal void InitQueryAllAzureNativeResourceGroupsInfoIfExist()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AzureGetResourceGroupsInfoIfExistInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeResourceGroupsInfoIfExist",
-                "($input: AzureGetResourceGroupsInfoIfExistInput!)",
-                "List<AzureResourceGroupInfo>",
-                Query.AllAzureNativeResourceGroupsInfoIfExist_ObjectFieldSpec,
-                Query.AllAzureNativeResourceGroupsInfoIfExistFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	sessionId = $someString
-	# REQUIRED
-	resourceGroupInputs = @(
-		@{
-			# REQUIRED
-			subscriptionNativeId = $someString
-			# REQUIRED
-			resourceGroupName = $someString
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeSecurityGroupsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeSecurityGroup!]!
-        internal void InitQueryAllAzureNativeSecurityGroupsByRegionFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("region", "AzureNativeRegion!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeSecurityGroupsByRegionFromAzure",
-                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeSecurityGroup>",
-                Query.AllAzureNativeSecurityGroupsByRegionFromAzure_ObjectFieldSpec,
-                Query.AllAzureNativeSecurityGroupsByRegionFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeStorageAccountsFromAzure(azureSubscriptionRubrikId: UUID!): [AzureNativeStorageAccount!]!
-        internal void InitQueryAllAzureNativeStorageAccountsFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeStorageAccountsFromAzure",
-                "($azureSubscriptionRubrikId: UUID!)",
-                "List<AzureNativeStorageAccount>",
-                Query.AllAzureNativeStorageAccountsFromAzure_ObjectFieldSpec,
-                Query.AllAzureNativeStorageAccountsFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeSubnetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeSubnet!]!
-        internal void InitQueryAllAzureNativeSubnetsByRegionFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("region", "AzureNativeRegion!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeSubnetsByRegionFromAzure",
-                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeSubnet>",
-                Query.AllAzureNativeSubnetsByRegionFromAzure_ObjectFieldSpec,
-                Query.AllAzureNativeSubnetsByRegionFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeVirtualMachineSizes(azureSubscriptionRubrikId: UUID): [String!]!
-        internal void InitQueryAllAzureNativeVirtualMachineSizes()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeVirtualMachineSizes",
-                "($azureSubscriptionRubrikId: UUID)",
-                "List<System.String>",
-                Query.AllAzureNativeVirtualMachineSizes_ObjectFieldSpec,
-                Query.AllAzureNativeVirtualMachineSizesFieldSpec,
-                @"# OPTIONAL
-$query.Var.azureSubscriptionRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureNativeVirtualNetworks(azureSubscriptionRubrikId: UUID): [AzureNativeVirtualNetwork!]!
-        internal void InitQueryAllAzureNativeVirtualNetworks()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureNativeVirtualNetworks",
-                "($azureSubscriptionRubrikId: UUID)",
-                "List<AzureNativeVirtualNetwork>",
-                Query.AllAzureNativeVirtualNetworks_ObjectFieldSpec,
-                Query.AllAzureNativeVirtualNetworksFieldSpec,
-                @"# OPTIONAL
-$query.Var.azureSubscriptionRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
         // allAzureNsgs(nsgRequest: AzureNsgRequest!): [String!]!
         internal void InitQueryAllAzureNsgs()
         {
@@ -5576,983 +3580,6 @@ $query.Var.nsgRequest = @{
 	cloudAccountId = $someString
 	# OPTIONAL
 	resourceGroup = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureRegions(cloudAccountId: String!): [AzureCloudAccountRegion!]!
-        internal void InitQueryAllAzureRegions()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureRegions",
-                "($cloudAccountId: String!)",
-                "List<AzureCloudAccountRegion>",
-                Query.AllAzureRegions_ObjectFieldSpec,
-                Query.AllAzureRegionsFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureResourceGroups(cloudAccountId: String!, azureRegion: String!): [String!]!
-        internal void InitQueryAllAzureResourceGroups()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "String!"),
-                Tuple.Create("azureRegion", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureResourceGroups",
-                "($cloudAccountId: String!,$azureRegion: String!)",
-                "List<System.String>",
-                Query.AllAzureResourceGroups_ObjectFieldSpec,
-                Query.AllAzureResourceGroupsFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString
-# REQUIRED
-$query.Var.azureRegion = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!): [AzureResourceGroup!]!
-        internal void InitQueryAllResourceGroupsFromAzure()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "UUID!"),
-                Tuple.Create("azureSubscriptionNativeId", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllResourceGroupsFromAzure",
-                "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$feature: CloudAccountFeature!)",
-                "List<AzureResourceGroup>",
-                Query.AllResourceGroupsFromAzure_ObjectFieldSpec,
-                Query.AllResourceGroupsFromAzureFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString
-# REQUIRED
-$query.Var.azureSubscriptionNativeId = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureSqlDatabaseServerElasticPools(
-        //     subscriptionId: UUID!
-        //     resourceGroupName: String!
-        //     azureSqlDatabaseServerName: String!
-        //     azureSqlDatabaseServerRubrikId: UUID!
-        //   ): [AzureSqlDatabaseServerElasticPool!]!
-        internal void InitQueryAllAzureSqlDatabaseServerElasticPools()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("subscriptionId", "UUID!"),
-                Tuple.Create("resourceGroupName", "String!"),
-                Tuple.Create("azureSqlDatabaseServerName", "String!"),
-                Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureSqlDatabaseServerElasticPools",
-                "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
-                "List<AzureSqlDatabaseServerElasticPool>",
-                Query.AllAzureSqlDatabaseServerElasticPools_ObjectFieldSpec,
-                Query.AllAzureSqlDatabaseServerElasticPoolsFieldSpec,
-                @"# REQUIRED
-$query.Var.subscriptionId = $someString
-# REQUIRED
-$query.Var.resourceGroupName = $someString
-# REQUIRED
-$query.Var.azureSqlDatabaseServerName = $someString
-# REQUIRED
-$query.Var.azureSqlDatabaseServerRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureStorageAccounts(storageAccountsRequest: AzureStorageAccountsReq!): [String!]!
-        internal void InitQueryAllAzureStorageAccounts()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("storageAccountsRequest", "AzureStorageAccountsReq!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureStorageAccounts",
-                "($storageAccountsRequest: AzureStorageAccountsReq!)",
-                "List<System.String>",
-                Query.AllAzureStorageAccounts_ObjectFieldSpec,
-                Query.AllAzureStorageAccountsFieldSpec,
-                @"# REQUIRED
-$query.Var.storageAccountsRequest = @{
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	resourceGroup = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureSubnets(subnetRequest: AzureSubnetReq!): [String!]!
-        internal void InitQueryAllAzureSubnets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("subnetRequest", "AzureSubnetReq!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureSubnets",
-                "($subnetRequest: AzureSubnetReq!)",
-                "List<System.String>",
-                Query.AllAzureSubnets_ObjectFieldSpec,
-                Query.AllAzureSubnetsFieldSpec,
-                @"# REQUIRED
-$query.Var.subnetRequest = @{
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	resourceGroup = $someString
-	# OPTIONAL
-	vnetName = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]): [AzureSubscriptionWithExocomputeMapping!]!
-        internal void InitQueryAllAzureSubscriptionWithExocomputeMappings()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("features", "[CloudAccountFeature!]"),
-                Tuple.Create("exocomputeSubscriptionIdsFilter", "[UUID!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureSubscriptionWithExocomputeMappings",
-                "($features: [CloudAccountFeature!],$exocomputeSubscriptionIdsFilter: [UUID!])",
-                "List<AzureSubscriptionWithExocomputeMapping>",
-                Query.AllAzureSubscriptionWithExocomputeMappings_ObjectFieldSpec,
-                Query.AllAzureSubscriptionWithExocomputeMappingsFieldSpec,
-                @"# OPTIONAL
-$query.Var.features = @(
-	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-)
-# OPTIONAL
-$query.Var.exocomputeSubscriptionIdsFilter = @(
-	$someString
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allAzureVnets(vnetRequest: AzureVnetReq!): [String!]!
-        internal void InitQueryAllAzureVnets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("vnetRequest", "AzureVnetReq!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAzureVnets",
-                "($vnetRequest: AzureVnetReq!)",
-                "List<System.String>",
-                Query.AllAzureVnets_ObjectFieldSpec,
-                Query.AllAzureVnetsFieldSpec,
-                @"# REQUIRED
-$query.Var.vnetRequest = @{
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	resourceGroup = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // checkAzurePersistentStorageSubscriptionCanUnmap(cloudAccountId: UUID!, feature: CloudAccountFeature!, unmappingValidationType: UnmappingValidationType!): CheckAzurePersistentStorageSubscriptionCanUnmapReply!
-        internal void InitQueryCheckAzurePersistentStorageSubscriptionCanUnmap()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("unmappingValidationType", "UnmappingValidationType!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryCheckAzurePersistentStorageSubscriptionCanUnmap",
-                "($cloudAccountId: UUID!,$feature: CloudAccountFeature!,$unmappingValidationType: UnmappingValidationType!)",
-                "CheckAzurePersistentStorageSubscriptionCanUnmapReply",
-                Query.CheckAzurePersistentStorageSubscriptionCanUnmap_ObjectFieldSpec,
-                Query.CheckAzurePersistentStorageSubscriptionCanUnmapFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$query.Var.unmappingValidationType = $someUnmappingValidationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureCloudAccountPermissionConfig(feature: CloudAccountFeature!): AzureCloudAccountPermissionConfigResponse!
-        internal void InitQueryAzureCloudAccountPermissionConfig()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("feature", "CloudAccountFeature!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureCloudAccountPermissionConfig",
-                "($feature: CloudAccountFeature!)",
-                "AzureCloudAccountPermissionConfigResponse",
-                Query.AzureCloudAccountPermissionConfig_ObjectFieldSpec,
-                Query.AzureCloudAccountPermissionConfigFieldSpec,
-                @"# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!): AzureCloudAccountSubscriptionWithFeatures!
-        internal void InitQueryAzureCloudAccountSubscriptionWithFeatures()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureCloudAccountSubscriptionWithFeatures",
-                "($cloudAccountId: UUID!)",
-                "AzureCloudAccountSubscriptionWithFeatures",
-                Query.AzureCloudAccountSubscriptionWithFeatures_ObjectFieldSpec,
-                Query.AzureCloudAccountSubscriptionWithFeaturesFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureCloudAccountTenant(
-        //     tenantId: UUID!
-        //     feature: CloudAccountFeature!
-        //     subscriptionStatusFilters: [CloudAccountStatus!]!
-        //     subscriptionSearchText: String!
-        //     subscriptionIdsFilter: [UUID!]
-        //   ): AzureCloudAccountTenant!
-        internal void InitQueryAzureCloudAccountTenant()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
-                Tuple.Create("subscriptionSearchText", "String!"),
-                Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureCloudAccountTenant",
-                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
-                "AzureCloudAccountTenant",
-                Query.AzureCloudAccountTenant_ObjectFieldSpec,
-                Query.AzureCloudAccountTenantFieldSpec,
-                @"# REQUIRED
-$query.Var.tenantId = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$query.Var.subscriptionStatusFilters = @(
-	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-)
-# REQUIRED
-$query.Var.subscriptionSearchText = $someString
-# OPTIONAL
-$query.Var.subscriptionIdsFilter = @(
-	$someString
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureCloudAccountTenantWithExoConfigs(
-        //     tenantId: UUID!
-        //     feature: CloudAccountFeature!
-        //     subscriptionStatusFilters: [CloudAccountStatus!]!
-        //     subscriptionSearchText: String!
-        //     subscriptionIdsFilter: [UUID!]
-        //   ): AzureCloudAccountTenantWithExoConfigs!
-        internal void InitQueryAzureCloudAccountTenantWithExoConfigs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
-                Tuple.Create("subscriptionSearchText", "String!"),
-                Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureCloudAccountTenantWithExoConfigs",
-                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
-                "AzureCloudAccountTenantWithExoConfigs",
-                Query.AzureCloudAccountTenantWithExoConfigs_ObjectFieldSpec,
-                Query.AzureCloudAccountTenantWithExoConfigsFieldSpec,
-                @"# REQUIRED
-$query.Var.tenantId = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$query.Var.subscriptionStatusFilters = @(
-	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-)
-# REQUIRED
-$query.Var.subscriptionSearchText = $someString
-# OPTIONAL
-$query.Var.subscriptionIdsFilter = @(
-	$someString
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // doesAzureNativeResourceGroupExist(
-        //     cloudAccountId: UUID!
-        //     azureSubscriptionNativeId: UUID!
-        //     resourceGroupName: String!
-        //     feature: CloudAccountFeature!
-        //   ): Boolean!
-        internal void InitQueryDoesAzureNativeResourceGroupExist()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "UUID!"),
-                Tuple.Create("azureSubscriptionNativeId", "UUID!"),
-                Tuple.Create("resourceGroupName", "String!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryDoesAzureNativeResourceGroupExist",
-                "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$resourceGroupName: String!,$feature: CloudAccountFeature!)",
-                "System.Boolean",
-                Query.DoesAzureNativeResourceGroupExist_ObjectFieldSpec,
-                Query.DoesAzureNativeResourceGroupExistFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString
-# REQUIRED
-$query.Var.azureSubscriptionNativeId = $someString
-# REQUIRED
-$query.Var.resourceGroupName = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isAzureNativeManagedDiskSnapshotRestorable(azureSubscriptionRubrikId: UUID!, diskSnapshotId: UUID!): Boolean!
-        internal void InitQueryIsAzureNativeManagedDiskSnapshotRestorable()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("diskSnapshotId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsAzureNativeManagedDiskSnapshotRestorable",
-                "($azureSubscriptionRubrikId: UUID!,$diskSnapshotId: UUID!)",
-                "System.Boolean",
-                Query.IsAzureNativeManagedDiskSnapshotRestorable_ObjectFieldSpec,
-                Query.IsAzureNativeManagedDiskSnapshotRestorableFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.diskSnapshotId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isAzureNativeSqlDatabaseSnapshotPersistent(snapshotId: UUID!): Boolean!
-        internal void InitQueryIsAzureNativeSqlDatabaseSnapshotPersistent()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snapshotId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsAzureNativeSqlDatabaseSnapshotPersistent",
-                "($snapshotId: UUID!)",
-                "System.Boolean",
-                Query.IsAzureNativeSqlDatabaseSnapshotPersistent_ObjectFieldSpec,
-                Query.IsAzureNativeSqlDatabaseSnapshotPersistentFieldSpec,
-                @"# REQUIRED
-$query.Var.snapshotId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!): Boolean!
-        internal void InitQueryIsAzureStorageAccountNameAvailable()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-                Tuple.Create("storageAccountName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsAzureStorageAccountNameAvailable",
-                "($azureSubscriptionRubrikId: UUID!,$storageAccountName: String!)",
-                "System.Boolean",
-                Query.IsAzureStorageAccountNameAvailable_ObjectFieldSpec,
-                Query.IsAzureStorageAccountNameAvailableFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString
-# REQUIRED
-$query.Var.storageAccountName = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!): AzureNativeManagedDisk!
-        internal void InitQueryAzureNativeManagedDisk()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureManagedDiskRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeManagedDisk",
-                "($azureManagedDiskRubrikId: UUID!)",
-                "AzureNativeManagedDisk",
-                Query.AzureNativeManagedDisk_ObjectFieldSpec,
-                Query.AzureNativeManagedDiskFieldSpec,
-                @"# REQUIRED
-$query.Var.azureManagedDiskRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeManagedDisks(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AzureNativeDiskSortFields
-        //     sortOrder: SortOrder
-        //     diskFilters: AzureNativeDiskFilters
-        //   ): AzureNativeManagedDiskConnection!
-        internal void InitQueryAzureNativeManagedDisks()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AzureNativeDiskSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("diskFilters", "AzureNativeDiskFilters"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeManagedDisks",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: AzureNativeDiskFilters)",
-                "AzureNativeManagedDiskConnection",
-                Query.AzureNativeManagedDisks_ObjectFieldSpec,
-                Query.AzureNativeManagedDisksFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAzureNativeDiskSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeDiskSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.diskFilters = @{
-	# OPTIONAL
-	nameSubstringFilter = @{
-		# REQUIRED
-		nameSubstring = $someString
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	resourceGroupFilter = @{
-		# REQUIRED
-		resourceGroupNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	diskTypeFilter = @{
-		# REQUIRED
-		diskTypes = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	attachedVmFilter = @{
-		# REQUIRED
-		virtualMachineIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	relicFilter = @{
-		# REQUIRED
-		relic = $someBoolean
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	exocomputeConnectedFilter = @{
-		# REQUIRED
-		isConnected = $someBoolean
-	}
-	# OPTIONAL
-	fileIndexingFilter = @{
-		# REQUIRED
-		statuses = @(
-			$someAzureNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
-		)
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeResourceGroup(resourceGroupId: UUID!): AzureNativeResourceGroup!
-        internal void InitQueryAzureNativeResourceGroup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("resourceGroupId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeResourceGroup",
-                "($resourceGroupId: UUID!)",
-                "AzureNativeResourceGroup",
-                Query.AzureNativeResourceGroup_ObjectFieldSpec,
-                Query.AzureNativeResourceGroupFieldSpec,
-                @"# REQUIRED
-$query.Var.resourceGroupId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeResourceGroups(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AzureNativeCommonResourceGroupSortFields
-        //     sortOrder: SortOrder
-        //     commonResourceGroupFilters: AzureNativeCommonResourceGroupFilters
-        //     protectedObjectTypes: [WorkloadLevelHierarchy!]
-        //     azureNativeProtectionFeatures: [AzureNativeProtectionFeature!]
-        //   ): AzureNativeResourceGroupConnection!
-        internal void InitQueryAzureNativeResourceGroups()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AzureNativeCommonResourceGroupSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("commonResourceGroupFilters", "AzureNativeCommonResourceGroupFilters"),
-                Tuple.Create("protectedObjectTypes", "[WorkloadLevelHierarchy!]"),
-                Tuple.Create("azureNativeProtectionFeatures", "[AzureNativeProtectionFeature!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeResourceGroups",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeCommonResourceGroupSortFields,$sortOrder: SortOrder,$commonResourceGroupFilters: AzureNativeCommonResourceGroupFilters,$protectedObjectTypes: [WorkloadLevelHierarchy!],$azureNativeProtectionFeatures: [AzureNativeProtectionFeature!])",
-                "AzureNativeResourceGroupConnection",
-                Query.AzureNativeResourceGroups_ObjectFieldSpec,
-                Query.AzureNativeResourceGroupsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAzureNativeCommonResourceGroupSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeCommonResourceGroupSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.commonResourceGroupFilters = @{
-	# OPTIONAL
-	nameSubstringFilter = @{
-		# REQUIRED
-		nameSubstring = $someString
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-}
-# OPTIONAL
-$query.Var.protectedObjectTypes = @(
-	$someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-)
-# OPTIONAL
-$query.Var.azureNativeProtectionFeatures = @(
-	$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeRoot: AzureNativeRoot!
-        internal void InitQueryAzureNativeRoot()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeRoot",
-                "",
-                "AzureNativeRoot",
-                Query.AzureNativeRoot_ObjectFieldSpec,
-                Query.AzureNativeRootFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeSubscription(azureSubscriptionRubrikId: UUID!): AzureNativeSubscription!
-        internal void InitQueryAzureNativeSubscription()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeSubscription",
-                "($azureSubscriptionRubrikId: UUID!)",
-                "AzureNativeSubscription",
-                Query.AzureNativeSubscription_ObjectFieldSpec,
-                Query.AzureNativeSubscriptionFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSubscriptionRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeSubscriptions(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AzureNativeSubscriptionSortFields
-        //     sortOrder: SortOrder
-        //     subscriptionFilters: AzureNativeSubscriptionFilters
-        //     authorizedOperationFilter: Operation
-        //     workloadHierarchy: WorkloadLevelHierarchy
-        //     azureNativeProtectionFeature: AzureNativeProtectionFeature
-        //   ): AzureNativeSubscriptionConnection!
-        internal void InitQueryAzureNativeSubscriptions()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AzureNativeSubscriptionSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("subscriptionFilters", "AzureNativeSubscriptionFilters"),
-                Tuple.Create("authorizedOperationFilter", "Operation"),
-                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
-                Tuple.Create("azureNativeProtectionFeature", "AzureNativeProtectionFeature"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeSubscriptions",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeSubscriptionSortFields,$sortOrder: SortOrder,$subscriptionFilters: AzureNativeSubscriptionFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$azureNativeProtectionFeature: AzureNativeProtectionFeature)",
-                "AzureNativeSubscriptionConnection",
-                Query.AzureNativeSubscriptions_ObjectFieldSpec,
-                Query.AzureNativeSubscriptionsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAzureNativeSubscriptionSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeSubscriptionSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.subscriptionFilters = @{
-	# OPTIONAL
-	nameSubstringFilter = @{
-		# REQUIRED
-		nameSubstring = $someString
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-}
-# OPTIONAL
-$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
-# OPTIONAL
-$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-# OPTIONAL
-$query.Var.azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!): AzureNativeVirtualMachine!
-        internal void InitQueryAzureNativeVirtualMachine()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureVirtualMachineRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeVirtualMachine",
-                "($azureVirtualMachineRubrikId: UUID!)",
-                "AzureNativeVirtualMachine",
-                Query.AzureNativeVirtualMachine_ObjectFieldSpec,
-                Query.AzureNativeVirtualMachineFieldSpec,
-                @"# REQUIRED
-$query.Var.azureVirtualMachineRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureNativeVirtualMachines(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AzureNativeVirtualMachineSortFields
-        //     sortOrder: SortOrder
-        //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
-        //     virtualMachineFilters: AzureNativeVirtualMachineFilters
-        //   ): AzureNativeVirtualMachineConnection!
-        internal void InitQueryAzureNativeVirtualMachines()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AzureNativeVirtualMachineSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("descendantTypeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("virtualMachineFilters", "AzureNativeVirtualMachineFilters"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureNativeVirtualMachines",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeVirtualMachineSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$virtualMachineFilters: AzureNativeVirtualMachineFilters)",
-                "AzureNativeVirtualMachineConnection",
-                Query.AzureNativeVirtualMachines_ObjectFieldSpec,
-                Query.AzureNativeVirtualMachinesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAzureNativeVirtualMachineSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeVirtualMachineSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.descendantTypeFilter = @(
-	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)
-# OPTIONAL
-$query.Var.virtualMachineFilters = @{
-	# OPTIONAL
-	nameSubstringFilter = @{
-		# REQUIRED
-		nameSubstring = $someString
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	resourceGroupFilter = @{
-		# REQUIRED
-		resourceGroupNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	vmSizeFilter = @{
-		# REQUIRED
-		vmSizes = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	vnetFilter = @{
-		# REQUIRED
-		vnetNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	relicFilter = @{
-		# REQUIRED
-		relic = $someBoolean
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	exocomputeConnectedFilter = @{
-		# REQUIRED
-		isConnected = $someBoolean
-	}
-	# OPTIONAL
-	fileIndexingFilter = @{
-		# REQUIRED
-		statuses = @(
-			$someAzureNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
-		)
-	}
-	# OPTIONAL
-	appProtectionStatusFilter = @{
-		# REQUIRED
-		isProtectionSetup = $someBoolean
-	}
-	# OPTIONAL
-	rbsStatusFilter = @{
-		# REQUIRED
-		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
-	}
 }"
             );
         }
@@ -6581,25 +3608,28 @@ $query.Var.subscriptionId = $someString"
         }
 
         // Create new GraphQL Query:
-        // azureResourceGroups(tenantId: String!, subscriptionId: UUID!): ResourceGroupConnection!
-        internal void InitQueryAzureResourceGroups()
+        // allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!): [AzureResourceGroup!]!
+        internal void InitQueryAllResourceGroupsFromAzure()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("azureSubscriptionNativeId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryAzureResourceGroups",
-                "($tenantId: String!,$subscriptionId: UUID!)",
-                "ResourceGroupConnection",
-                Query.AzureResourceGroups_ObjectFieldSpec,
-                Query.AzureResourceGroupsFieldSpec,
+                "QueryAllResourceGroupsFromAzure",
+                "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$feature: CloudAccountFeature!)",
+                "List<AzureResourceGroup>",
+                Query.AllResourceGroupsFromAzure_ObjectFieldSpec,
+                Query.AllResourceGroupsFromAzureFieldSpec,
                 @"# REQUIRED
-$query.Var.tenantId = $someString
+$query.Var.cloudAccountId = $someString
 # REQUIRED
-$query.Var.subscriptionId = $someString"
+$query.Var.azureSubscriptionNativeId = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
             );
         }
 
@@ -6708,6 +3738,40 @@ $query.Var.azureSqlDatabaseName = $someString"
                 Query.AzureSqlDatabaseServer_ObjectFieldSpec,
                 Query.AzureSqlDatabaseServerFieldSpec,
                 @"# REQUIRED
+$query.Var.azureSqlDatabaseServerRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAzureSqlDatabaseServerElasticPools(
+        //     subscriptionId: UUID!
+        //     resourceGroupName: String!
+        //     azureSqlDatabaseServerName: String!
+        //     azureSqlDatabaseServerRubrikId: UUID!
+        //   ): [AzureSqlDatabaseServerElasticPool!]!
+        internal void InitQueryAllAzureSqlDatabaseServerElasticPools()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("resourceGroupName", "String!"),
+                Tuple.Create("azureSqlDatabaseServerName", "String!"),
+                Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureSqlDatabaseServerElasticPools",
+                "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
+                "List<AzureSqlDatabaseServerElasticPool>",
+                Query.AllAzureSqlDatabaseServerElasticPools_ObjectFieldSpec,
+                Query.AllAzureSqlDatabaseServerElasticPoolsFieldSpec,
+                @"# REQUIRED
+$query.Var.subscriptionId = $someString
+# REQUIRED
+$query.Var.resourceGroupName = $someString
+# REQUIRED
+$query.Var.azureSqlDatabaseServerName = $someString
+# REQUIRED
 $query.Var.azureSqlDatabaseServerRubrikId = $someString"
             );
         }
@@ -7211,6 +4275,33 @@ $query.Var.vNetId = $someString"
         }
 
         // Create new GraphQL Query:
+        // allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]): [AzureSubscriptionWithExocomputeMapping!]!
+        internal void InitQueryAllAzureSubscriptionWithExocomputeMappings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("features", "[CloudAccountFeature!]"),
+                Tuple.Create("exocomputeSubscriptionIdsFilter", "[UUID!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureSubscriptionWithExocomputeMappings",
+                "($features: [CloudAccountFeature!],$exocomputeSubscriptionIdsFilter: [UUID!])",
+                "List<AzureSubscriptionWithExocomputeMapping>",
+                Query.AllAzureSubscriptionWithExocomputeMappings_ObjectFieldSpec,
+                Query.AllAzureSubscriptionWithExocomputeMappingsFieldSpec,
+                @"# OPTIONAL
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
+# OPTIONAL
+$query.Var.exocomputeSubscriptionIdsFilter = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
         // azureSubscriptions(tenantId: String!): AzureSubscriptionConnection!
         internal void InitQueryAzureSubscriptions()
         {
@@ -7289,52 +4380,6 @@ $query.Var.input = @{
 		}
 	)
 }"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // validateAzureNativeSqlDatabaseDbNameForExport(azureSqlDatabaseName: String!, azureSqlDatabaseServerRubrikId: UUID!): ValidateAzureNativeSqlDatabaseDbNameForExportReply!
-        internal void InitQueryValidateAzureNativeSqlDatabaseDbNameForExport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSqlDatabaseName", "String!"),
-                Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryValidateAzureNativeSqlDatabaseDbNameForExport",
-                "($azureSqlDatabaseName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
-                "ValidateAzureNativeSqlDatabaseDbNameForExportReply",
-                Query.ValidateAzureNativeSqlDatabaseDbNameForExport_ObjectFieldSpec,
-                Query.ValidateAzureNativeSqlDatabaseDbNameForExportFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSqlDatabaseName = $someString
-# REQUIRED
-$query.Var.azureSqlDatabaseServerRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // validateAzureNativeSqlManagedInstanceDbNameForExport(azureSqlDatabaseName: String!, azureSqlManagedInstanceServerRubrikId: UUID!): ValidateAzureNativeSqlManagedInstanceDbNameForExportReply!
-        internal void InitQueryValidateAzureNativeSqlManagedInstanceDbNameForExport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("azureSqlDatabaseName", "String!"),
-                Tuple.Create("azureSqlManagedInstanceServerRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryValidateAzureNativeSqlManagedInstanceDbNameForExport",
-                "($azureSqlDatabaseName: String!,$azureSqlManagedInstanceServerRubrikId: UUID!)",
-                "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply",
-                Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport_ObjectFieldSpec,
-                Query.ValidateAzureNativeSqlManagedInstanceDbNameForExportFieldSpec,
-                @"# REQUIRED
-$query.Var.azureSqlDatabaseName = $someString
-# REQUIRED
-$query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
             );
         }
 

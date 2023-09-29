@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20230913-54" ;
+        public static string GraphqlSchemaVersion = "v20230920-39" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1470,8 +1470,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2827,6 +2827,7 @@ namespace RubrikSecurityCloud.Types
             FeatureCdmVersionInput,
             FeatureListMinimumCdmVersionInputType,
             FeatureSpecificDetailsInput,
+            FeatureWithPermissionsGroups,
             FileActivitiesSort,
             FileDetailsInput,
             FileInfo,
@@ -7348,24 +7349,28 @@ namespace RubrikSecurityCloud.Types
             accountSettings,
             activitySeries,
             activitySeriesConnection,
+            addAndJoinSmbDomain,
             addAwsAuthenticationServerBasedCloudAccount,
             addAwsIamUserBasedCloudAccount,
             addAzureCloudAccount,
             addAzureCloudAccountExocomputeConfigurations,
             addAzureCloudAccountWithoutOauth,
+            addCloudNativeSqlServerBackupCredentials,
+            addClusterCertificate,
             addDb2Instance,
             addManagedVolume,
             addMongoSource,
+            addMosaicStore,
             addNodesToCloudCluster,
             addO365Org,
+            addSapHanaSystem,
+            addStorageArrays,
             allAccountOwners,
             allAccountProducts,
-            allAccountsWithExocomputeMappings,
             allAvailabilityZonesByRegionFromAws,
             allAwsCdmVersions,
             allAwsCloudAccountConfigs,
             allAwsCloudAccountsWithFeatures,
-            allAwsComputeSettings,
             allAwsExocomputeConfigs,
             allAwsInstanceProfileNames,
             allAwsPermissionPolicies,
@@ -7391,37 +7396,66 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeVirtualMachineSizes,
             allAzureNativeVirtualNetworks,
             allAzureNsgs,
-            allAzureRegions,
-            allAzureResourceGroups,
             allAzureSqlDatabaseServerElasticPools,
-            allAzureStorageAccounts,
-            allAzureSubnets,
             allAzureSubscriptionWithExocomputeMappings,
-            allAzureVnets,
+            allCloudAccountExocomputeMappings,
+            allCloudNativeFileRecoveryEligibleSnapshots,
+            allCloudNativeLabelKeys,
+            allCloudNativeLabelValues,
+            allCloudNativeTagKeys,
+            allCloudNativeTagValues,
             allClusterGlobalSlas,
             allClusterReplicationTargets,
             allClusterWebCertsAndIpmis,
             allClustersTotpAckStatus,
             allConnectedClusters,
+            allCurrentFeaturePermissionsForCloudAccounts,
             allDbParameterGroupsByRegionFromAws,
             allDbSubnetGroupsByRegionFromAws,
+            allDhrcScores,
             allEc2KeyPairsByRegionFromAws,
+            allEnabledFeaturesForAccount,
+            allFeaturePermissionsForGcpCloudAccount,
+            allGcpCloudAccountMissingPermissionsForAddition,
+            allGcpCloudAccountProjectsByFeature,
+            allGcpCloudAccountProjectsForOauth,
+            allGcpNativeAvailableKmsCryptoKeys,
+            allGcpNativeCompatibleMachineTypes,
+            allGcpNativeNetworks,
+            allGcpNativeProjectsWithAccessibleNetworks,
+            allGcpNativeRegions,
+            allGcpNativeStoredMachineTypes,
+            allGcpNativeStoredMachineTypesInProject,
+            allGcpNativeStoredNetworkNames,
+            allGcpNativeStoredNetworkNamesInProject,
+            allGcpNativeStoredRegions,
+            allGcpNativeStoredRegionsInProject,
             allHostedAzureRegions,
+            allK8sReplicaSnapshotInfos,
             allKmsEncryptionKeysByRegionFromAws,
+            allLatestFeaturePermissionsForCloudAccounts,
             allMssqlDatabaseRestoreFiles,
             allNcdSlaComplianceData,
             allO365AdGroups,
             allO365OrgStatuses,
             allO365SubscriptionsAppTypeCounts,
             allOptionGroupsByRegionFromAws,
+            allQuarantinedDetailsForSnapshots,
             allResourceGroupsFromAzure,
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
+            allSharepointSiteExclusions,
             allSlaSummariesByIds,
+            allSnapshotPvcs,
+            allSnapshotsClosestToPointInTime,
+            allStorageArrays,
             allSupportedAwsRdsDatabaseInstanceClasses,
+            allUsersOnAccount,
+            allValidReplicationTargets,
             allVcenterHotAddProxyVms,
             allVpcsByRegionFromAws,
             allVpcsFromAws,
+            allWebhooks,
             amiTypeForAwsNativeArchivedSnapshotExport,
             archiveK8sCluster,
             assignMssqlSlaDomainProperties,
@@ -7482,7 +7516,6 @@ namespace RubrikSecurityCloud.Types
             azureOauthConsentComplete,
             azureOauthConsentKickoff,
             azureRegions,
-            azureResourceGroups,
             azureSqlDatabase,
             azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
             azureSqlDatabaseServer,
@@ -7498,6 +7531,10 @@ namespace RubrikSecurityCloud.Types
             azureSubscriptions,
             azureVNets,
             backupAzureAdDirectory,
+            backupM365Mailbox,
+            backupM365Onedrive,
+            backupM365SharepointDrive,
+            backupM365Team,
             backupO365Mailbox,
             backupO365Onedrive,
             backupO365SharePointSite,
@@ -7510,20 +7547,37 @@ namespace RubrikSecurityCloud.Types
             batchMountHypervVm,
             batchMountNutanixVm,
             batchOnDemandBackupHypervVm,
+            batchQuarantineSnapshot,
+            batchReleaseFromQuarantineSnapshot,
             beginManagedVolumeSnapshot,
             browseMssqlDatabaseSnapshot,
             browseO365TeamConvChannels,
+            browseSharepointDrive,
+            browseSharepointList,
+            browseSnapshotFileConnection,
+            bulkCreateFilesetTemplates,
+            bulkCreateFilesets,
             bulkCreateOnDemandMssqlBackup,
             bulkDeleteAwsCloudAccountWithoutCft,
             bulkDeleteCassandraSources,
             bulkDeleteFailoverCluster,
+            bulkDeleteFileset,
+            bulkDeleteFilesetTemplate,
+            bulkDeleteHost,
             bulkDeleteMongodbSources,
             bulkOnDemandSnapshotNutanixVm,
+            bulkRefreshHosts,
+            bulkRegisterHost,
+            bulkTierExistingSnapshots,
+            bulkUpdateExchangeDag,
+            bulkUpdateFilesetTemplate,
+            bulkUpdateHost,
             bulkUpdateMssqlDbs,
             bulkUpdateOracleDatabases,
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
             cancelActivitySeries,
+            cancelThreatHunt,
             cassandraColumnFamilies,
             cassandraColumnFamily,
             cassandraColumnFamilyRecoverableRange,
@@ -7534,7 +7588,29 @@ namespace RubrikSecurityCloud.Types
             cassandraSources,
             cdmMssqlLogShippingTarget,
             cdmMssqlLogShippingTargets,
+            certificateSigningRequest,
+            certificateSigningRequests,
+            certificates,
+            certificatesWithKey,
+            changeVfdOnHost,
             checkAzurePersistentStorageSubscriptionCanUnmap,
+            checkCloudNativeLabelRuleNameUniqueness,
+            checkCloudNativeTagRuleNameUniqueness,
+            clearCloudNativeSqlServerBackupCredentials,
+            cloudAccount,
+            cloudNativeCheckArchivedSnapshotsLocked,
+            cloudNativeCheckRbaConnectivity,
+            cloudNativeCheckRequiredPermissionsForFeature,
+            cloudNativeCustomerTags,
+            cloudNativeDownloadFiles,
+            cloudNativeLabelRules,
+            cloudNativeRbaInstallers,
+            cloudNativeSnapshotDetailsForRecovery,
+            cloudNativeSnapshotTypeDetails,
+            cloudNativeSnapshots,
+            cloudNativeSqlServerSetupScript,
+            cloudNativeTagRules,
+            cloudNativeWorkloadVersionedFiles,
             cluster,
             clusterCertificates,
             clusterConnection,
@@ -7562,9 +7638,11 @@ namespace RubrikSecurityCloud.Types
             completeAzureAdAppSetup,
             completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
+            configureSapHanaRestore,
             countOfObjectsProtectedBySlas,
             createAutomaticAwsTargetMapping,
             createAutomaticAzureTargetMapping,
+            createAutomaticRcsTargetMapping,
             createAwsAccount,
             createAwsCluster,
             createAwsComputeSetting,
@@ -7579,24 +7657,49 @@ namespace RubrikSecurityCloud.Types
             createCassandraSource,
             createCloudNativeAwsStorageSetting,
             createCloudNativeAzureStorageSetting,
+            createCloudNativeLabelRule,
             createCloudNativeRcvAzureStorageSetting,
+            createCloudNativeTagRule,
+            createCustomReport,
+            createDownloadSnapshotForVolumeGroup,
+            createExchangeMount,
             createFailoverCluster,
+            createFilesetSnapshot,
+            createGcpReaderTarget,
+            createGcpTarget,
             createGlobalSla,
             createHypervVirtualMachineSnapshotMount,
+            createK8sAgentManifest,
             createK8sCluster,
+            createK8sNamespaceSnapshots,
             createMongodbSource,
             createMssqlLiveMount,
             createMssqlLogShippingConfiguration,
+            createNfsReaderTarget,
+            createNfsTarget,
             createNutanixCluster,
             createNutanixPrismCentral,
             createO365AppComplete,
             createO365AppKickoff,
             createOnDemandDb2Backup,
+            createOnDemandExchangeBackup,
             createOnDemandMssqlBackup,
             createOnDemandNutanixBackup,
+            createOnDemandSapHanaBackup,
             createOraclePdbRestore,
+            createRcsReaderTarget,
+            createRcsTarget,
+            createRcvLocationsFromTemplate,
+            createRcvPrivateEndpointApprovalRequest,
+            createReplicationPair,
+            createSapHanaSystemRefresh,
+            createScheduledReport,
+            createServiceAccount,
+            createTapeReaderTarget,
+            createTapeTarget,
             createVsphereAdvancedTag,
             createVsphereVcenter,
+            createWebhook,
             databaseLogReportForCluster,
             databaseLogReportingPropertiesForCluster,
             db2Database,
@@ -7617,16 +7720,23 @@ namespace RubrikSecurityCloud.Types
             deleteAzureCloudAccountWithoutOauth,
             deleteAzureCluster,
             deleteCassandraSource,
+            deleteCertificate,
+            deleteCloudNativeLabelRule,
+            deleteCloudNativeTagRule,
+            deleteCloudWorkloadSnapshot,
+            deleteCustomReport,
             deleteDb2Database,
             deleteDb2Instance,
+            deleteExchangeSnapshotMount,
             deleteFailoverCluster,
+            deleteFilesetSnapshots,
             deleteHypervVirtualMachineSnapshot,
             deleteHypervVirtualMachineSnapshotMount,
             deleteLdapPrincipals,
             deleteManagedVolume,
             deleteManagedVolumeSnapshotExport,
             deleteMongoSource,
-            deleteMongodbSource,
+            deleteMosaicStore,
             deleteMssqlDbSnapshots,
             deleteMssqlLiveMount,
             deleteNutanixCluster,
@@ -7638,14 +7748,29 @@ namespace RubrikSecurityCloud.Types
             deleteO365Org,
             deleteO365ServiceAccount,
             deleteOracleMount,
+            deleteReplicationPair,
+            deleteSapHanaDbSnapshot,
+            deleteSapHanaSystem,
+            deleteScheduledReport,
+            deleteServiceAccountsFromAccount,
+            deleteSmbDomain,
+            deleteStorageArrays,
+            deleteUsersFromAccount,
             deleteVsphereAdvancedTag,
             deleteVsphereLiveMount,
+            deleteWebhook,
+            disableReplicationPause,
             discoverDb2Instance,
             discoverMongoSource,
             doesAzureNativeResourceGroupExist,
+            downloadAuditLogCsvAsync,
+            downloadCdmUpgradesPdf,
             downloadDb2Snapshot,
             downloadDb2SnapshotsForPointInTimeRecovery,
+            downloadExchangeSnapshot,
             downloadFilesNutanixSnapshot,
+            downloadFilesetSnapshot,
+            downloadFilesetSnapshotFromLocation,
             downloadHypervSnapshotFromLocation,
             downloadHypervVirtualMachineSnapshot,
             downloadHypervVirtualMachineSnapshotFiles,
@@ -7655,15 +7780,43 @@ namespace RubrikSecurityCloud.Types
             downloadMssqlDatabaseFilesFromArchivalLocation,
             downloadNutanixSnapshot,
             downloadNutanixVmFromLocation,
+            downloadObjectFilesCsv,
+            downloadObjectsListCsv,
             downloadOracleDatabaseSnapshot,
+            downloadPackageStatus,
+            downloadReportCsvAsync,
+            downloadReportPdfAsync,
+            downloadResultsCsv,
+            downloadSapHanaSnapshot,
+            downloadSapHanaSnapshotFromLocation,
+            downloadSapHanaSnapshotsForPointInTimeRecovery,
+            downloadSnapshotResultsCsv,
+            downloadThreatHuntCsv,
+            downloadUserActivityCsv,
+            downloadUserFileActivityCsv,
+            downloadVolumeGroupSnapshotFiles,
+            downloadVolumeGroupSnapshotFromLocation,
             downloadVsphereVirtualMachineFiles,
+            downloadedVersionList,
             enableO365SharePoint,
             enableO365Teams,
+            enableReplicationPause,
+            enableThreatMonitoring,
             endManagedVolumeSnapshot,
+            exchangeDag,
+            exchangeDags,
+            exchangeDatabase,
+            exchangeDatabases,
+            exchangeLiveMounts,
+            exchangeServer,
+            exchangeServers,
             excludeAwsNativeEbsVolumesFromSnapshot,
             excludeAzureNativeManagedDisksFromSnapshot,
+            excludeSharepointObjectsFromProtection,
             expireDownloadedDb2Snapshots,
+            expireDownloadedSapHanaSnapshots,
             exportHypervVirtualMachine,
+            exportK8sNamespace,
             exportManagedVolumeSnapshot,
             exportMssqlDatabase,
             exportNutanixSnapshot,
@@ -7671,12 +7824,44 @@ namespace RubrikSecurityCloud.Types
             exportOracleDatabase,
             exportOracleTablespace,
             exportSlaManagedVolumeSnapshot,
+            filesetDownloadSnapshotFiles,
+            filesetExportSnapshotFiles,
+            filesetRecoverFiles,
+            filesetRequestStatus,
+            filesetSnapshot,
+            filesetSnapshotFiles,
+            filesetTemplate,
+            filesetTemplates,
             finalizeAwsCloudAccountDeletion,
             finalizeAwsCloudAccountProtection,
+            gcpCloudAccountAddManualAuthProject,
+            gcpCloudAccountAddProjects,
+            gcpCloudAccountDeleteProjects,
+            gcpCloudAccountOauthComplete,
+            gcpCloudAccountOauthInitiate,
+            gcpCloudAccountUpgradeProjects,
+            gcpGetDefaultCredentialsServiceAccount,
+            gcpNativeDisableProject,
+            gcpNativeDisk,
+            gcpNativeDisks,
+            gcpNativeExcludeDisksFromInstanceSnapshot,
+            gcpNativeExportDisk,
+            gcpNativeExportGceInstance,
+            gcpNativeGceInstance,
+            gcpNativeGceInstances,
+            gcpNativeProject,
+            gcpNativeProjects,
+            gcpNativeRefreshProjects,
+            gcpNativeRestoreGceInstance,
+            gcpNativeStoredDiskLocations,
+            gcpSetDefaultServiceAccountJwtConfig,
             getPendingSlaAssignments,
             globalSlaFilterConnection,
             globalSlaStatuses,
+            hostDiagnosis,
             hostFailoverCluster,
+            hostShare,
+            hostShares,
             hypervCluster,
             hypervDeleteAllSnapshots,
             hypervHostAsyncRequestStatus,
@@ -7703,18 +7888,30 @@ namespace RubrikSecurityCloud.Types
             isAzureNativeManagedDiskSnapshotRestorable,
             isAzureNativeSqlDatabaseSnapshotPersistent,
             isAzureStorageAccountNameAvailable,
+            isCloudNativeFileRecoveryFeasible,
             isTotpAckNecessaryForCluster,
+            joinSmbDomain,
+            k8sAppManifest,
+            k8sCluster,
             k8sClusters,
+            k8sNamespace,
+            k8sNamespaces,
+            k8sSnapshotInfo,
             ldapAuthorizedPrincipalConnection,
             ldapIntegrationConnection,
             ldapPrincipalConnection,
+            legalHoldSnapshotsForSnappable,
+            linuxFileset,
             listO365Apps,
+            lookupAccount,
+            m365Regions,
             managedVolume,
             managedVolumeInventoryStats,
             managedVolumeLiveMounts,
             managedVolumes,
             mapAzureCloudAccountExocomputeSubscription,
             mapAzureCloudAccountToPersistentStorageLocation,
+            mapCloudAccountExocomputeAccount,
             migrateNutanixMountV1,
             mongoBulkRecoverableRanges,
             mongoCollection,
@@ -7725,13 +7922,11 @@ namespace RubrikSecurityCloud.Types
             mongoSource,
             mongoSources,
             mongodbBulkRecoverableRange,
-            mongodbCollection,
             mongodbCollectionRecoverableRange,
-            mongodbCollections,
-            mongodbDatabase,
-            mongodbDatabases,
-            mongodbSource,
-            mongodbSources,
+            mosaicBulkRecoveryRange,
+            mosaicSnapshots,
+            mosaicStores,
+            mosaicVersions,
             mountNutanixSnapshotV1,
             mountOracleDatabase,
             mssqlAvailabilityGroup,
@@ -7747,6 +7942,14 @@ namespace RubrikSecurityCloud.Types
             mssqlLogShippingTargets,
             mssqlRecoverableRanges,
             mssqlTopLevelDescendants,
+            nasFileset,
+            nasNamespace,
+            nasNamespaces,
+            nasShare,
+            nasSystem,
+            nasSystems,
+            nasTopLevelDescendants,
+            nasVolume,
             nutanixBrowseSnapshot,
             nutanixCategory,
             nutanixCategoryValue,
@@ -7818,21 +8021,46 @@ namespace RubrikSecurityCloud.Types
             oracleRacLogBackupConfig,
             oracleRecoverableRanges,
             oracleTopLevelDescendants,
+            overallRansomwareInvestigationSummary,
             patchAwsAuthenticationServerBasedCloudAccount,
             patchAwsIamUserBasedCloudAccount,
             patchDb2Database,
             patchDb2Instance,
             patchMongoSource,
             patchNutanixMountV1,
+            patchSapHanaSystem,
             pauseSla,
+            pendingRansomwareInvestigationResultsCount,
+            physicalHost,
+            physicalHosts,
+            polarisSnapshot,
+            policies,
+            policy,
+            policyDetails,
+            policyObj,
+            policyObjectUsages,
+            policyObjs,
             prepareAwsCloudAccountDeletion,
             prepareFeatureUpdateForAwsCloudAccount,
+            processedRansomwareInvestigationWorkloadCount,
+            protectedRansomwareInvestigationWorkloadCount,
+            putSmbConfiguration,
+            ransomwareDetectionWorkloadLocations,
+            ransomwareInvestigationAnalysisSummary,
+            ransomwareInvestigationEnablement,
+            ransomwareInvestigationWorkloadScannedCount,
+            ransomwareResult,
+            ransomwareResultOpt,
+            ransomwareResults,
+            ransomwareResultsGrouped,
+            rcsArchivalLocationsConsumptionStats,
+            rcvAccountEntitlement,
             rdsInstanceDetailsFromAws,
             recoverCassandraSource,
             recoverCloudCluster,
             recoverMongoSource,
-            recoverMongodbSource,
             refreshDb2Database,
+            refreshHost,
             refreshHypervScvmm,
             refreshHypervServer,
             refreshK8sCluster,
@@ -7840,6 +8068,7 @@ namespace RubrikSecurityCloud.Types
             refreshNutanixPrismCentral,
             refreshO365Org,
             refreshOracleDatabase,
+            refreshStorageArrays,
             refreshVsphereVcenter,
             registerAgentHypervVirtualMachine,
             registerAgentNutanixVm,
@@ -7848,29 +8077,78 @@ namespace RubrikSecurityCloud.Types
             registerHypervScvmm,
             removeCdmCluster,
             removeLdapIntegration,
+            replicationIncomingStats,
+            replicationOutgoingStats,
+            replicationPairs,
+            reportData,
             resizeManagedVolume,
             restoreAzureAdObjectsWithPasswords,
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
+            restoreK8sNamespace,
             restoreMssqlDatabase,
             restoreO365Mailbox,
             restoreO365Snappable,
             restoreO365TeamsConversations,
             restoreO365TeamsFiles,
             restoreOracleLogs,
+            restoreVolumeGroupSnapshotFiles,
             retryAddMongoSource,
+            rotateServiceAccountSecret,
+            s3BucketStateForRecovery,
+            sapHanaDatabase,
+            sapHanaDatabases,
+            sapHanaLogSnapshot,
+            sapHanaLogSnapshots,
+            sapHanaRecoverableRange,
+            sapHanaRecoverableRanges,
+            sapHanaSystem,
+            sapHanaSystems,
+            scheduledReport,
             searchAzureAdSnapshot,
+            searchHost,
             searchNutanixVm,
+            seedInitialPolicies,
+            sendPdfReport,
+            sendScheduledReportAsync,
+            serviceAccounts,
             setAzureCloudAccountCustomerAppCredentials,
             setLdapMfaSetting,
             setO365ServiceAccount,
+            setSsoCertificate,
+            setWebSignedCertificate,
             setupAzureO365Exocompute,
+            setupCloudNativeSqlServerBackup,
+            shareFileset,
+            sharepointSiteDescendants,
+            sharepointSiteSearch,
             slaAuditDetail,
             slaConflictObjects,
             slaDomain,
             slaDomains,
             slaManagedVolume,
             slaManagedVolumes,
+            smbConfiguration,
+            smbDomains,
+            snappableSharepointDriveSearch,
+            snappableSharepointListSearch,
+            snappablesWithLegalHoldSnapshotsSummary,
+            snapshot,
+            snapshotEmailSearch,
+            snapshotEventSearch,
+            snapshotFilesDelta,
+            snapshotFilesDeltaV2,
+            snapshotOfASnappableConnection,
+            snapshotOfSnappablesConnection,
+            snapshotOnedriveSearch,
+            snapshotResults,
+            snapshotSharepointDriveSearch,
+            snapshotsForUnmanagedObject,
+            sonarContentReport,
+            sonarReport,
+            sonarReportRow,
+            sonarUserGroups,
+            sonarUsers,
             startAwsExocomputeDisableJob,
             startAwsNativeAccountDisableJob,
             startAwsNativeEc2InstanceSnapshotsJob,
@@ -7878,27 +8156,42 @@ namespace RubrikSecurityCloud.Types
             startAzureAdAppSetup,
             startAzureAdAppUpdate,
             startAzureCloudAccountOauth,
+            startCloudNativeSnapshotsIndexJob,
+            startClusterReportMigrationJob,
             startCreateAwsNativeEbsVolumeSnapshotsJob,
             startCreateAzureNativeManagedDiskSnapshotsJob,
             startCreateAzureNativeVirtualMachineSnapshotsJob,
             startDisableAzureCloudAccountJob,
             startDisableAzureNativeSubscriptionProtectionJob,
+            startEc2InstanceSnapshotExportJob,
             startExportAwsNativeEbsVolumeSnapshotJob,
             startExportAzureNativeManagedDiskJob,
             startExportAzureNativeVirtualMachineJob,
             startExportAzureSqlDatabaseDbJob,
             startExportAzureSqlManagedInstanceDbJob,
+            startRecoverS3SnapshotJob,
             startRefreshAwsNativeAccountsJob,
             startRefreshAzureNativeSubscriptionsJob,
             startRestoreAwsNativeEc2InstanceSnapshotJob,
             startRestoreAzureNativeVirtualMachineJob,
+            startThreatHunt,
             takeManagedVolumeOnDemandSnapshot,
             takeMssqlLogBackup,
             takeOnDemandOracleDatabaseSnapshot,
             takeOnDemandOracleLogSnapshot,
+            takeOnDemandSnapshot,
+            testExistingWebhook,
+            testWebhook,
+            threatHuntDetail,
+            threatHuntResult,
+            threatHuntSummary,
+            threatHunts,
+            triggerRansomwareDetection,
+            unconfigureSapHanaRestore,
             uniqueHypervServersCount,
             unmapAzureCloudAccountExocomputeSubscription,
             unmapAzurePersistentStorageSubscription,
+            unmapCloudAccountExocomputeAccount,
             updateAutomaticAwsTargetMapping,
             updateAutomaticAzureTargetMapping,
             updateAwsAccount,
@@ -7911,20 +8204,29 @@ namespace RubrikSecurityCloud.Types
             updateAzureCloudAccount,
             updateAzureTarget,
             updateCassandraSource,
+            updateCertificate,
+            updateCertificateHost,
             updateCloudNativeAwsStorageSetting,
             updateCloudNativeAzureStorageSetting,
+            updateCloudNativeIndexingStatus,
+            updateCloudNativeLabelRule,
             updateCloudNativeRcvAzureStorageSetting,
+            updateCloudNativeTagRule,
+            updateCustomReport,
             updateCustomerAppPermissionForAzureSql,
             updateDatabaseLogReportingPropertiesForCluster,
             updateFailoverCluster,
+            updateGcpTarget,
             updateGlobalSla,
             updateHypervVirtualMachine,
             updateHypervVirtualMachineSnapshotMount,
             updateLdapIntegration,
             updateManagedVolume,
             updateMongodbSource,
+            updateMosaicStore,
             updateMssqlDefaultProperties,
             updateMssqlLogShippingConfiguration,
+            updateNfsTarget,
             updateNutanixCluster,
             updateNutanixPrismCentral,
             updateNutanixVm,
@@ -7932,15 +8234,27 @@ namespace RubrikSecurityCloud.Types
             updateO365AppPermissions,
             updateO365OrgCustomName,
             updateOracleDataGuardGroup,
+            updateRcsAutomaticTargetMapping,
+            updateRcvTarget,
+            updateReplicationTarget,
+            updateScheduledReport,
+            updateServiceAccount,
+            updateStorageArrays,
+            updateTapeTarget,
             updateVcenter,
             updateVcenterHotAddBandwidth,
             updateVcenterHotAddNetwork,
             updateVsphereAdvancedTag,
             updateVsphereVm,
+            updateWebhook,
             upgradeAwsCloudAccountFeaturesWithoutCft,
             upgradeAwsIamUserBasedCloudAccountPermissions,
             upgradeAzureCloudAccount,
             upgradeAzureCloudAccountPermissionsWithoutOauth,
+            upgradeGcpCloudAccountPermissionsWithoutOauth,
+            uploadDatabaseSnapshotToBlobstore,
+            userActivityTimeline,
+            userFileActivityTimeline,
             vCenterAdvancedTagPreview,
             vCenterHotAddBandwidth,
             vCenterHotAddNetwork,
@@ -7982,7 +8296,10 @@ namespace RubrikSecurityCloud.Types
             validateAzureNativeSqlManagedInstanceDbNameForExport,
             validateOracleAcoFile,
             validateOracleDatabaseBackups,
+            vappSnapshotInstantRecoveryOptions,
+            vappTemplateSnapshotExportOptions,
             verifySlaWithReplicationToCluster,
+            vmwareDownloadSnapshotFromLocation,
             vsphereBulkOnDemandSnapshot,
             vsphereDeleteVcenter,
             vsphereExcludeVmDisks,
@@ -8015,6 +8332,7 @@ namespace RubrikSecurityCloud.Types
             vsphereVmRegisterAgent,
             vsphereVmwareCdpLiveInfo,
             windowsCluster,
+            windowsFileset,
         }
 
         /// <summary>
@@ -8054,6 +8372,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryActivitySeries",
                         cmdletSwitchName: "List",
                         gqlRootFieldName: "activitySeriesConnection"
+                    )
+                },
+                {
+                    GqlRootFieldName.addAndJoinSmbDomain,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSmb",
+                        cmdletSwitchName: "AddAndJoinDomain",
+                        gqlRootFieldName: "addAndJoinSmbDomain"
                     )
                 },
                 {
@@ -8097,6 +8423,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.addCloudNativeSqlServerBackupCredentials,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "AddSqlServerBackupCredentials",
+                        gqlRootFieldName: "addCloudNativeSqlServerBackupCredentials"
+                    )
+                },
+                {
+                    GqlRootFieldName.addClusterCertificate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCertificate",
+                        cmdletSwitchName: "AddClusterCertificate",
+                        gqlRootFieldName: "addClusterCertificate"
+                    )
+                },
+                {
                     GqlRootFieldName.addDb2Instance,
                     new RscOp(
                         cmdletName: "New-RscMutationDb2",
@@ -8121,6 +8463,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.addMosaicStore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMosaic",
+                        cmdletSwitchName: "AddStore",
+                        gqlRootFieldName: "addMosaicStore"
+                    )
+                },
+                {
                     GqlRootFieldName.addNodesToCloudCluster,
                     new RscOp(
                         cmdletName: "New-RscMutationCluster",
@@ -8134,6 +8484,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationO365",
                         cmdletSwitchName: "AddOrg",
                         gqlRootFieldName: "addO365Org"
+                    )
+                },
+                {
+                    GqlRootFieldName.addSapHanaSystem,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "AddSystem",
+                        gqlRootFieldName: "addSapHanaSystem"
+                    )
+                },
+                {
+                    GqlRootFieldName.addStorageArrays,
+                    new RscOp(
+                        cmdletName: "New-RscMutationStorageArray",
+                        cmdletSwitchName: "Add",
+                        gqlRootFieldName: "addStorageArrays"
                     )
                 },
                 {
@@ -8153,18 +8519,10 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.allAccountsWithExocomputeMappings,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAccount",
-                        cmdletSwitchName: "WithExocomputeMappings",
-                        gqlRootFieldName: "allAccountsWithExocomputeMappings"
-                    )
-                },
-                {
                     GqlRootFieldName.allAvailabilityZonesByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllAvailabilityZonesByRegion",
+                        cmdletSwitchName: "AvailabilityZonesByRegion",
                         gqlRootFieldName: "allAvailabilityZonesByRegionFromAws"
                     )
                 },
@@ -8172,7 +8530,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAwsCdmVersions,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllCdmVersions",
+                        cmdletSwitchName: "CdmVersions",
                         gqlRootFieldName: "allAwsCdmVersions"
                     )
                 },
@@ -8180,7 +8538,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAwsCloudAccountConfigs,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllCloudAccountConfigs",
+                        cmdletSwitchName: "CloudAccountConfigs",
                         gqlRootFieldName: "allAwsCloudAccountConfigs"
                     )
                 },
@@ -8188,23 +8546,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAwsCloudAccountsWithFeatures,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllCloudAccountsWithFeatures",
+                        cmdletSwitchName: "CloudAccountsWithFeatures",
                         gqlRootFieldName: "allAwsCloudAccountsWithFeatures"
-                    )
-                },
-                {
-                    GqlRootFieldName.allAwsComputeSettings,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllComputeSettings",
-                        gqlRootFieldName: "allAwsComputeSettings"
                     )
                 },
                 {
                     GqlRootFieldName.allAwsExocomputeConfigs,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllExocomputeConfigs",
+                        cmdletSwitchName: "ExocomputeConfigs",
                         gqlRootFieldName: "allAwsExocomputeConfigs"
                     )
                 },
@@ -8212,7 +8562,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAwsInstanceProfileNames,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllInstanceProfileNames",
+                        cmdletSwitchName: "InstanceProfileNames",
                         gqlRootFieldName: "allAwsInstanceProfileNames"
                     )
                 },
@@ -8220,7 +8570,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAwsPermissionPolicies,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllPermissionPolicies",
+                        cmdletSwitchName: "PermissionPolicies",
                         gqlRootFieldName: "allAwsPermissionPolicies"
                     )
                 },
@@ -8228,7 +8578,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAwsRegions,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllRegions",
+                        cmdletSwitchName: "Regions",
                         gqlRootFieldName: "allAwsRegions"
                     )
                 },
@@ -8236,7 +8586,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureArmTemplatesByFeature,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllArmTemplatesByFeature",
+                        cmdletSwitchName: "ArmTemplatesByFeature",
                         gqlRootFieldName: "allAzureArmTemplatesByFeature"
                     )
                 },
@@ -8244,7 +8594,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureCdmVersions,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllCdmVersions",
+                        cmdletSwitchName: "CdmVersions",
                         gqlRootFieldName: "allAzureCdmVersions"
                     )
                 },
@@ -8252,7 +8602,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureCloudAccountMissingPermissions,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllCloudAccountMissingPermissions",
+                        cmdletSwitchName: "CloudAccountMissingPermissions",
                         gqlRootFieldName: "allAzureCloudAccountMissingPermissions"
                     )
                 },
@@ -8260,7 +8610,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureCloudAccountSubnetsByRegion,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllCloudAccountSubnetsByRegion",
+                        cmdletSwitchName: "CloudAccountSubnetsByRegion",
                         gqlRootFieldName: "allAzureCloudAccountSubnetsByRegion"
                     )
                 },
@@ -8268,7 +8618,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureCloudAccountSubscriptionsByFeature,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllCloudAccountSubscriptionsByFeature",
+                        cmdletSwitchName: "CloudAccountSubscriptionsByFeature",
                         gqlRootFieldName: "allAzureCloudAccountSubscriptionsByFeature"
                     )
                 },
@@ -8276,7 +8626,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureCloudAccountTenants,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllCloudAccountTenants",
+                        cmdletSwitchName: "CloudAccountTenants",
                         gqlRootFieldName: "allAzureCloudAccountTenants"
                     )
                 },
@@ -8284,7 +8634,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureDiskEncryptionSetsByRegion,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllDiskEncryptionSetsByRegion",
+                        cmdletSwitchName: "DiskEncryptionSetsByRegion",
                         gqlRootFieldName: "allAzureDiskEncryptionSetsByRegion"
                     )
                 },
@@ -8292,7 +8642,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureEncryptionKeys,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllEncryptionKeys",
+                        cmdletSwitchName: "EncryptionKeys",
                         gqlRootFieldName: "allAzureEncryptionKeys"
                     )
                 },
@@ -8300,7 +8650,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureExocomputeConfigsInAccount,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllExocomputeConfigsInAccount",
+                        cmdletSwitchName: "ExocomputeConfigsInAccount",
                         gqlRootFieldName: "allAzureExocomputeConfigsInAccount"
                     )
                 },
@@ -8308,7 +8658,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureKeyVaultsByRegion,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllKeyVaultsByRegion",
+                        cmdletSwitchName: "KeyVaultsByRegion",
                         gqlRootFieldName: "allAzureKeyVaultsByRegion"
                     )
                 },
@@ -8316,79 +8666,79 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureManagedIdentities,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllManagedIdentities",
+                        cmdletSwitchName: "ManagedIdentities",
                         gqlRootFieldName: "allAzureManagedIdentities"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeAvailabilitySetsByRegionFromAzure,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeAvailabilitySetsByRegionFromAzure",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "AvailabilitySetsByRegionFromAzure",
                         gqlRootFieldName: "allAzureNativeAvailabilitySetsByRegionFromAzure"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ExportCompatibleDiskTypesByRegionFromAzure",
                         gqlRootFieldName: "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeExportCompatibleVmSizesByRegionFromAzure",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ExportCompatibleVmSizesByRegionFromAzure",
                         gqlRootFieldName: "allAzureNativeExportCompatibleVmSizesByRegionFromAzure"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeResourceGroupsInfoIfExist",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ResourceGroupsInfoIfExist",
                         gqlRootFieldName: "allAzureNativeResourceGroupsInfoIfExist"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeSecurityGroupsByRegionFromAzure,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeSecurityGroupsByRegionFromAzure",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "SecurityGroupsByRegionFromAzure",
                         gqlRootFieldName: "allAzureNativeSecurityGroupsByRegionFromAzure"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeStorageAccountsFromAzure,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeStorageAccountsFromAzure",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "StorageAccountsFromAzure",
                         gqlRootFieldName: "allAzureNativeStorageAccountsFromAzure"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeSubnetsByRegionFromAzure,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeSubnetsByRegionFromAzure",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "SubnetsByRegionFromAzure",
                         gqlRootFieldName: "allAzureNativeSubnetsByRegionFromAzure"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeVirtualMachineSizes,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeVirtualMachineSizes",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "VirtualMachineSizes",
                         gqlRootFieldName: "allAzureNativeVirtualMachineSizes"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureNativeVirtualNetworks,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNativeVirtualNetworks",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "VirtualNetworks",
                         gqlRootFieldName: "allAzureNativeVirtualNetworks"
                     )
                 },
@@ -8396,71 +8746,79 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureNsgs,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllNsgs",
+                        cmdletSwitchName: "Nsgs",
                         gqlRootFieldName: "allAzureNsgs"
-                    )
-                },
-                {
-                    GqlRootFieldName.allAzureRegions,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllRegions",
-                        gqlRootFieldName: "allAzureRegions"
-                    )
-                },
-                {
-                    GqlRootFieldName.allAzureResourceGroups,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllResourceGroups",
-                        gqlRootFieldName: "allAzureResourceGroups"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllSqlDatabaseServerElasticPools",
+                        cmdletSwitchName: "SqlDatabaseServerElasticPools",
                         gqlRootFieldName: "allAzureSqlDatabaseServerElasticPools"
-                    )
-                },
-                {
-                    GqlRootFieldName.allAzureStorageAccounts,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllStorageAccounts",
-                        gqlRootFieldName: "allAzureStorageAccounts"
-                    )
-                },
-                {
-                    GqlRootFieldName.allAzureSubnets,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllSubnets",
-                        gqlRootFieldName: "allAzureSubnets"
                     )
                 },
                 {
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllSubscriptionWithExocomputeMappings",
+                        cmdletSwitchName: "SubscriptionWithExocomputeMappings",
                         gqlRootFieldName: "allAzureSubscriptionWithExocomputeMappings"
                     )
                 },
                 {
-                    GqlRootFieldName.allAzureVnets,
+                    GqlRootFieldName.allCloudAccountExocomputeMappings,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllVnets",
-                        gqlRootFieldName: "allAzureVnets"
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "ExocomputeMappings",
+                        gqlRootFieldName: "allCloudAccountExocomputeMappings"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCloudNativeFileRecoveryEligibleSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "FileRecoveryEligibleSnapshots",
+                        gqlRootFieldName: "allCloudNativeFileRecoveryEligibleSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCloudNativeLabelKeys,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "LabelKeys",
+                        gqlRootFieldName: "allCloudNativeLabelKeys"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCloudNativeLabelValues,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "LabelValues",
+                        gqlRootFieldName: "allCloudNativeLabelValues"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCloudNativeTagKeys,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "TagKeys",
+                        gqlRootFieldName: "allCloudNativeTagKeys"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCloudNativeTagValues,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "TagValues",
+                        gqlRootFieldName: "allCloudNativeTagValues"
                     )
                 },
                 {
                     GqlRootFieldName.allClusterGlobalSlas,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "GlobalSlas",
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "ClusterGlobals",
                         gqlRootFieldName: "allClusterGlobalSlas"
                     )
                 },
@@ -8497,10 +8855,18 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.allCurrentFeaturePermissionsForCloudAccounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "CurrentFeaturePermissions",
+                        gqlRootFieldName: "allCurrentFeaturePermissionsForCloudAccounts"
+                    )
+                },
+                {
                     GqlRootFieldName.allDbParameterGroupsByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllDbParameterGroupsByRegion",
+                        cmdletSwitchName: "DbParameterGroupsByRegion",
                         gqlRootFieldName: "allDbParameterGroupsByRegionFromAws"
                     )
                 },
@@ -8508,39 +8874,191 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allDbSubnetGroupsByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllDbSubnetGroupsByRegion",
+                        cmdletSwitchName: "DbSubnetGroupsByRegion",
                         gqlRootFieldName: "allDbSubnetGroupsByRegionFromAws"
+                    )
+                },
+                {
+                    GqlRootFieldName.allDhrcScores,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRcs",
+                        cmdletSwitchName: "Dhcores",
+                        gqlRootFieldName: "allDhrcScores"
                     )
                 },
                 {
                     GqlRootFieldName.allEc2KeyPairsByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllEc2KeyPairsByRegion",
+                        cmdletSwitchName: "Ec2KeyPairsByRegion",
                         gqlRootFieldName: "allEc2KeyPairsByRegionFromAws"
+                    )
+                },
+                {
+                    GqlRootFieldName.allEnabledFeaturesForAccount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "EnabledFeatures",
+                        gqlRootFieldName: "allEnabledFeaturesForAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.allFeaturePermissionsForGcpCloudAccount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "FeaturePermissionsForCloudAccount",
+                        gqlRootFieldName: "allFeaturePermissionsForGcpCloudAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpCloudAccountMissingPermissionsForAddition,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "CloudAccountMissingPermissionsForAddition",
+                        gqlRootFieldName: "allGcpCloudAccountMissingPermissionsForAddition"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpCloudAccountProjectsByFeature,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "CloudAccountProjectsByFeature",
+                        gqlRootFieldName: "allGcpCloudAccountProjectsByFeature"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpCloudAccountProjectsForOauth,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "CloudAccountProjectsForOauth",
+                        gqlRootFieldName: "allGcpCloudAccountProjectsForOauth"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeAvailableKmsCryptoKeys,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeAvailableKmsCryptoKeys",
+                        gqlRootFieldName: "allGcpNativeAvailableKmsCryptoKeys"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeCompatibleMachineTypes,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeCompatibleMachineTypes",
+                        gqlRootFieldName: "allGcpNativeCompatibleMachineTypes"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeNetworks,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeNetworks",
+                        gqlRootFieldName: "allGcpNativeNetworks"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeProjectsWithAccessibleNetworks,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeProjectsWithAccessibleNetworks",
+                        gqlRootFieldName: "allGcpNativeProjectsWithAccessibleNetworks"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeRegions,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeRegions",
+                        gqlRootFieldName: "allGcpNativeRegions"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeStoredMachineTypes,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeStoredMachineTypes",
+                        gqlRootFieldName: "allGcpNativeStoredMachineTypes"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeStoredMachineTypesInProject,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeStoredMachineTypesInProject",
+                        gqlRootFieldName: "allGcpNativeStoredMachineTypesInProject"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeStoredNetworkNames,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeStoredNetworkNames",
+                        gqlRootFieldName: "allGcpNativeStoredNetworkNames"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeStoredNetworkNamesInProject,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeStoredNetworkNamesInProject",
+                        gqlRootFieldName: "allGcpNativeStoredNetworkNamesInProject"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeStoredRegions,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeStoredRegions",
+                        gqlRootFieldName: "allGcpNativeStoredRegions"
+                    )
+                },
+                {
+                    GqlRootFieldName.allGcpNativeStoredRegionsInProject,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "NativeStoredRegionsInProject",
+                        gqlRootFieldName: "allGcpNativeStoredRegionsInProject"
                     )
                 },
                 {
                     GqlRootFieldName.allHostedAzureRegions,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllHostedRegions",
+                        cmdletSwitchName: "HostedAzureRegions",
                         gqlRootFieldName: "allHostedAzureRegions"
+                    )
+                },
+                {
+                    GqlRootFieldName.allK8sReplicaSnapshotInfos,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "ReplicaSnapshotInfos",
+                        gqlRootFieldName: "allK8sReplicaSnapshotInfos"
                     )
                 },
                 {
                     GqlRootFieldName.allKmsEncryptionKeysByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllKmsEncryptionKeysByRegion",
+                        cmdletSwitchName: "KmsEncryptionKeysByRegion",
                         gqlRootFieldName: "allKmsEncryptionKeysByRegionFromAws"
+                    )
+                },
+                {
+                    GqlRootFieldName.allLatestFeaturePermissionsForCloudAccounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "LatestFeaturePermissions",
+                        gqlRootFieldName: "allLatestFeaturePermissionsForCloudAccounts"
                     )
                 },
                 {
                     GqlRootFieldName.allMssqlDatabaseRestoreFiles,
                     new RscOp(
                         cmdletName: "New-RscQueryMssql",
-                        cmdletSwitchName: "AllDatabaseRestoreFiles",
+                        cmdletSwitchName: "DatabaseRestoreFiles",
                         gqlRootFieldName: "allMssqlDatabaseRestoreFiles"
                     )
                 },
@@ -8548,7 +9066,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allNcdSlaComplianceData,
                     new RscOp(
                         cmdletName: "New-RscQuerySla",
-                        cmdletSwitchName: "AllNcdComplianceData",
+                        cmdletSwitchName: "NcdComplianceData",
                         gqlRootFieldName: "allNcdSlaComplianceData"
                     )
                 },
@@ -8556,7 +9074,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allO365AdGroups,
                     new RscOp(
                         cmdletName: "New-RscQueryO365",
-                        cmdletSwitchName: "AllAdGroups",
+                        cmdletSwitchName: "AdGroups",
                         gqlRootFieldName: "allO365AdGroups"
                     )
                 },
@@ -8564,7 +9082,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allO365OrgStatuses,
                     new RscOp(
                         cmdletName: "New-RscQueryO365",
-                        cmdletSwitchName: "AllOrgStatuses",
+                        cmdletSwitchName: "OrgStatuses",
                         gqlRootFieldName: "allO365OrgStatuses"
                     )
                 },
@@ -8572,7 +9090,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allO365SubscriptionsAppTypeCounts,
                     new RscOp(
                         cmdletName: "New-RscQueryO365",
-                        cmdletSwitchName: "AllSubscriptionsAppTypeCounts",
+                        cmdletSwitchName: "SubscriptionsAppTypeCounts",
                         gqlRootFieldName: "allO365SubscriptionsAppTypeCounts"
                     )
                 },
@@ -8580,15 +9098,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allOptionGroupsByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllOptionGroupsByRegion",
+                        cmdletSwitchName: "OptionGroupsByRegion",
                         gqlRootFieldName: "allOptionGroupsByRegionFromAws"
+                    )
+                },
+                {
+                    GqlRootFieldName.allQuarantinedDetailsForSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "QuarantinedDetails",
+                        gqlRootFieldName: "allQuarantinedDetailsForSnapshots"
                     )
                 },
                 {
                     GqlRootFieldName.allResourceGroupsFromAzure,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "AllResourceGroupsFrom",
+                        cmdletSwitchName: "ResourceGroups",
                         gqlRootFieldName: "allResourceGroupsFromAzure"
                     )
                 },
@@ -8596,7 +9122,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allS3BucketsDetailsFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllS3BucketsDetails",
+                        cmdletSwitchName: "S3BucketsDetails",
                         gqlRootFieldName: "allS3BucketsDetailsFromAws"
                     )
                 },
@@ -8604,24 +9130,72 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allS3BucketsFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllS3Buckets",
+                        cmdletSwitchName: "S3Buckets",
                         gqlRootFieldName: "allS3BucketsFromAws"
+                    )
+                },
+                {
+                    GqlRootFieldName.allSharepointSiteExclusions,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "SiteExclusions",
+                        gqlRootFieldName: "allSharepointSiteExclusions"
                     )
                 },
                 {
                     GqlRootFieldName.allSlaSummariesByIds,
                     new RscOp(
                         cmdletName: "New-RscQuerySla",
-                        cmdletSwitchName: "AllSummariesByIds",
+                        cmdletSwitchName: "SummariesByIds",
                         gqlRootFieldName: "allSlaSummariesByIds"
+                    )
+                },
+                {
+                    GqlRootFieldName.allSnapshotPvcs,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "Pvcs",
+                        gqlRootFieldName: "allSnapshotPvcs"
+                    )
+                },
+                {
+                    GqlRootFieldName.allSnapshotsClosestToPointInTime,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "ClosestToPointInTime",
+                        gqlRootFieldName: "allSnapshotsClosestToPointInTime"
+                    )
+                },
+                {
+                    GqlRootFieldName.allStorageArrays,
+                    new RscOp(
+                        cmdletName: "New-RscQueryStorageArray",
+                        cmdletSwitchName: "StorageArray",
+                        gqlRootFieldName: "allStorageArrays"
                     )
                 },
                 {
                     GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllSupportedRdsDatabaseInstanceClasses",
+                        cmdletSwitchName: "SupportedRdsDatabaseInstanceClasses",
                         gqlRootFieldName: "allSupportedAwsRdsDatabaseInstanceClasses"
+                    )
+                },
+                {
+                    GqlRootFieldName.allUsersOnAccount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "Users",
+                        gqlRootFieldName: "allUsersOnAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.allValidReplicationTargets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "ValidTargets",
+                        gqlRootFieldName: "allValidReplicationTargets"
                     )
                 },
                 {
@@ -8636,7 +9210,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allVpcsByRegionFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllVpcsByRegion",
+                        cmdletSwitchName: "VpcsByRegion",
                         gqlRootFieldName: "allVpcsByRegionFromAws"
                     )
                 },
@@ -8644,23 +9218,31 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allVpcsFromAws,
                     new RscOp(
                         cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AllVpcs",
+                        cmdletSwitchName: "Vpcs",
                         gqlRootFieldName: "allVpcsFromAws"
+                    )
+                },
+                {
+                    GqlRootFieldName.allWebhooks,
+                    new RscOp(
+                        cmdletName: "New-RscQueryWebhook",
+                        cmdletSwitchName: "Webhook",
+                        gqlRootFieldName: "allWebhooks"
                     )
                 },
                 {
                     GqlRootFieldName.amiTypeForAwsNativeArchivedSnapshotExport,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "AmiTypeForNativeArchivedSnapshotExport",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "AmiTypeForArchivedSnapshotExport",
                         gqlRootFieldName: "amiTypeForAwsNativeArchivedSnapshotExport"
                     )
                 },
                 {
                     GqlRootFieldName.archiveK8sCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "ArchiveK8s",
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "ArchiveCluster",
                         gqlRootFieldName: "archiveK8sCluster"
                     )
                 },
@@ -8708,7 +9290,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.assignSlaToMongoDbCollection,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
-                        cmdletSwitchName: "AssignSlaToDbCollection",
+                        cmdletSwitchName: "AssignSlaToCollection",
                         gqlRootFieldName: "assignSlaToMongoDbCollection"
                     )
                 },
@@ -8771,112 +9353,112 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeAccount,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeAccount",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "Account",
                         gqlRootFieldName: "awsNativeAccount"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeAccounts,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeAccounts",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "Accounts",
                         gqlRootFieldName: "awsNativeAccounts"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeEbsVolume,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeEbsVolume",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "EbsVolume",
                         gqlRootFieldName: "awsNativeEbsVolume"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeEbsVolumes,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeEbsVolumes",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "EbsVolumes",
                         gqlRootFieldName: "awsNativeEbsVolumes"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeEbsVolumesByName,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeEbsVolumesByName",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "EbsVolumesByName",
                         gqlRootFieldName: "awsNativeEbsVolumesByName"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeEc2Instance,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeEc2Instance",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "Ec2Instance",
                         gqlRootFieldName: "awsNativeEc2Instance"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeEc2Instances,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeEc2Instances",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "Ec2Instances",
                         gqlRootFieldName: "awsNativeEc2Instances"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeEc2InstancesByName,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeEc2InstancesByName",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "Ec2InstancesByName",
                         gqlRootFieldName: "awsNativeEc2InstancesByName"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsExportDefaults,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeRdsExportDefaults",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "RdsExportDefaults",
                         gqlRootFieldName: "awsNativeRdsExportDefaults"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsInstance,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeRdsInstance",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "RdsInstance",
                         gqlRootFieldName: "awsNativeRdsInstance"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsInstances,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeRdsInstances",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "RdsInstances",
                         gqlRootFieldName: "awsNativeRdsInstances"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsPointInTimeRestoreWindow,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeRdsPointInTimeRestoreWindow",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "RdsPointInTimeRestoreWindow",
                         gqlRootFieldName: "awsNativeRdsPointInTimeRestoreWindow"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeRoot,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeRoot",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "Root",
                         gqlRootFieldName: "awsNativeRoot"
                     )
                 },
                 {
                     GqlRootFieldName.awsNativeS3Bucket,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "NativeS3Bucket",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "S3Bucket",
                         gqlRootFieldName: "awsNativeS3Bucket"
                     )
                 },
@@ -8947,72 +9529,72 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeManagedDisk,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeManagedDisk",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ManagedDisk",
                         gqlRootFieldName: "azureNativeManagedDisk"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeManagedDisks,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeManagedDisks",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ManagedDisks",
                         gqlRootFieldName: "azureNativeManagedDisks"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeResourceGroup,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeResourceGroup",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ResourceGroup",
                         gqlRootFieldName: "azureNativeResourceGroup"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeResourceGroups,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeResourceGroups",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ResourceGroups",
                         gqlRootFieldName: "azureNativeResourceGroups"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeRoot,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeRoot",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "Root",
                         gqlRootFieldName: "azureNativeRoot"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeSubscription,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeSubscription",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "Subscription",
                         gqlRootFieldName: "azureNativeSubscription"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeSubscriptions,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeSubscriptions",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "Subscriptions",
                         gqlRootFieldName: "azureNativeSubscriptions"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeVirtualMachine,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeVirtualMachine",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "VirtualMachine",
                         gqlRootFieldName: "azureNativeVirtualMachine"
                     )
                 },
                 {
                     GqlRootFieldName.azureNativeVirtualMachines,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "NativeVirtualMachines",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "VirtualMachines",
                         gqlRootFieldName: "azureNativeVirtualMachines"
                     )
                 },
@@ -9126,14 +9708,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAzure",
                         cmdletSwitchName: "Regions",
                         gqlRootFieldName: "azureRegions"
-                    )
-                },
-                {
-                    GqlRootFieldName.azureResourceGroups,
-                    new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "ResourceGroups",
-                        gqlRootFieldName: "azureResourceGroups"
                     )
                 },
                 {
@@ -9257,6 +9831,38 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.backupM365Mailbox,
+                    new RscOp(
+                        cmdletName: "New-RscMutationM365",
+                        cmdletSwitchName: "BackupMailbox",
+                        gqlRootFieldName: "backupM365Mailbox"
+                    )
+                },
+                {
+                    GqlRootFieldName.backupM365Onedrive,
+                    new RscOp(
+                        cmdletName: "New-RscMutationM365",
+                        cmdletSwitchName: "BackupOnedrive",
+                        gqlRootFieldName: "backupM365Onedrive"
+                    )
+                },
+                {
+                    GqlRootFieldName.backupM365SharepointDrive,
+                    new RscOp(
+                        cmdletName: "New-RscMutationM365",
+                        cmdletSwitchName: "BackupSharepointDrive",
+                        gqlRootFieldName: "backupM365SharepointDrive"
+                    )
+                },
+                {
+                    GqlRootFieldName.backupM365Team,
+                    new RscOp(
+                        cmdletName: "New-RscMutationM365",
+                        cmdletSwitchName: "BackupTeam",
+                        gqlRootFieldName: "backupM365Team"
+                    )
+                },
+                {
                     GqlRootFieldName.backupO365Mailbox,
                     new RscOp(
                         cmdletName: "New-RscMutationO365",
@@ -9353,6 +9959,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.batchQuarantineSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "BatchQuarantine",
+                        gqlRootFieldName: "batchQuarantineSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.batchReleaseFromQuarantineSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "BatchReleaseFromQuarantine",
+                        gqlRootFieldName: "batchReleaseFromQuarantineSnapshot"
+                    )
+                },
+                {
                     GqlRootFieldName.beginManagedVolumeSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationManagedVolume",
@@ -9374,6 +9996,46 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryO365",
                         cmdletSwitchName: "BrowseTeamConvChannels",
                         gqlRootFieldName: "browseO365TeamConvChannels"
+                    )
+                },
+                {
+                    GqlRootFieldName.browseSharepointDrive,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "BrowseDrive",
+                        gqlRootFieldName: "browseSharepointDrive"
+                    )
+                },
+                {
+                    GqlRootFieldName.browseSharepointList,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "BrowseList",
+                        gqlRootFieldName: "browseSharepointList"
+                    )
+                },
+                {
+                    GqlRootFieldName.browseSnapshotFileConnection,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "BrowseFileList",
+                        gqlRootFieldName: "browseSnapshotFileConnection"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkCreateFilesetTemplates,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "BulkCreateTemplates",
+                        gqlRootFieldName: "bulkCreateFilesetTemplates"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkCreateFilesets,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "BulkCreate",
+                        gqlRootFieldName: "bulkCreateFilesets"
                     )
                 },
                 {
@@ -9409,10 +10071,34 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.bulkDeleteFileset,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "BulkDelete",
+                        gqlRootFieldName: "bulkDeleteFileset"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkDeleteFilesetTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "BulkDeleteTemplate",
+                        gqlRootFieldName: "bulkDeleteFilesetTemplate"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkDeleteHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHost",
+                        cmdletSwitchName: "BulkDelete",
+                        gqlRootFieldName: "bulkDeleteHost"
+                    )
+                },
+                {
                     GqlRootFieldName.bulkDeleteMongodbSources,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
-                        cmdletSwitchName: "BulkDeletedbSources",
+                        cmdletSwitchName: "BulkDeleteSources",
                         gqlRootFieldName: "bulkDeleteMongodbSources"
                     )
                 },
@@ -9422,6 +10108,54 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationNutanix",
                         cmdletSwitchName: "BulkOnDemandSnapshotVm",
                         gqlRootFieldName: "bulkOnDemandSnapshotNutanixVm"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkRefreshHosts,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHost",
+                        cmdletSwitchName: "BulkRefresh",
+                        gqlRootFieldName: "bulkRefreshHosts"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkRegisterHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHost",
+                        cmdletSwitchName: "BulkRegister",
+                        gqlRootFieldName: "bulkRegisterHost"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkTierExistingSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "BulkTierExistings",
+                        gqlRootFieldName: "bulkTierExistingSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateExchangeDag,
+                    new RscOp(
+                        cmdletName: "New-RscMutationExchange",
+                        cmdletSwitchName: "BulkUpdateDag",
+                        gqlRootFieldName: "bulkUpdateExchangeDag"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateFilesetTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "BulkUpdateTemplate",
+                        gqlRootFieldName: "bulkUpdateFilesetTemplate"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHost",
+                        cmdletSwitchName: "BulkUpdate",
+                        gqlRootFieldName: "bulkUpdateHost"
                     )
                 },
                 {
@@ -9462,6 +10196,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationActivitySeries",
                         cmdletSwitchName: "Cancel",
                         gqlRootFieldName: "cancelActivitySeries"
+                    )
+                },
+                {
+                    GqlRootFieldName.cancelThreatHunt,
+                    new RscOp(
+                        cmdletName: "New-RscMutationThreat",
+                        cmdletSwitchName: "CancelHunt",
+                        gqlRootFieldName: "cancelThreatHunt"
                     )
                 },
                 {
@@ -9545,11 +10287,187 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.certificateSigningRequest,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "SigningRequest",
+                        gqlRootFieldName: "certificateSigningRequest"
+                    )
+                },
+                {
+                    GqlRootFieldName.certificateSigningRequests,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "SigningRequests",
+                        gqlRootFieldName: "certificateSigningRequests"
+                    )
+                },
+                {
+                    GqlRootFieldName.certificates,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "Certificate",
+                        gqlRootFieldName: "certificates"
+                    )
+                },
+                {
+                    GqlRootFieldName.certificatesWithKey,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "WithKey",
+                        gqlRootFieldName: "certificatesWithKey"
+                    )
+                },
+                {
+                    GqlRootFieldName.changeVfdOnHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHost",
+                        cmdletSwitchName: "ChangeVfd",
+                        gqlRootFieldName: "changeVfdOnHost"
+                    )
+                },
+                {
                     GqlRootFieldName.checkAzurePersistentStorageSubscriptionCanUnmap,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
                         cmdletSwitchName: "CheckPersistentStorageSubscriptionCanUnmap",
                         gqlRootFieldName: "checkAzurePersistentStorageSubscriptionCanUnmap"
+                    )
+                },
+                {
+                    GqlRootFieldName.checkCloudNativeLabelRuleNameUniqueness,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "CheckLabelRuleNameUniqueness",
+                        gqlRootFieldName: "checkCloudNativeLabelRuleNameUniqueness"
+                    )
+                },
+                {
+                    GqlRootFieldName.checkCloudNativeTagRuleNameUniqueness,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "CheckTagRuleNameUniqueness",
+                        gqlRootFieldName: "checkCloudNativeTagRuleNameUniqueness"
+                    )
+                },
+                {
+                    GqlRootFieldName.clearCloudNativeSqlServerBackupCredentials,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "ClearSqlServerBackupCredentials",
+                        gqlRootFieldName: "clearCloudNativeSqlServerBackupCredentials"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudAccount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "CloudAccount",
+                        gqlRootFieldName: "cloudAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeCheckArchivedSnapshotsLocked,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "CheckArchivedSnapshotsLocked",
+                        gqlRootFieldName: "cloudNativeCheckArchivedSnapshotsLocked"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeCheckRbaConnectivity,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "CheckRbaConnectivity",
+                        gqlRootFieldName: "cloudNativeCheckRbaConnectivity"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeCheckRequiredPermissionsForFeature,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "CheckRequiredPermissionsForFeature",
+                        gqlRootFieldName: "cloudNativeCheckRequiredPermissionsForFeature"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeCustomerTags,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "CustomerTags",
+                        gqlRootFieldName: "cloudNativeCustomerTags"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeDownloadFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "DownloadFiles",
+                        gqlRootFieldName: "cloudNativeDownloadFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeLabelRules,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "LabelRules",
+                        gqlRootFieldName: "cloudNativeLabelRules"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeRbaInstallers,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "RbaInstallers",
+                        gqlRootFieldName: "cloudNativeRbaInstallers"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeSnapshotDetailsForRecovery,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "SnapshotDetailsForRecovery",
+                        gqlRootFieldName: "cloudNativeSnapshotDetailsForRecovery"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeSnapshotTypeDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "SnapshotTypeDetails",
+                        gqlRootFieldName: "cloudNativeSnapshotTypeDetails"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "Snapshots",
+                        gqlRootFieldName: "cloudNativeSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeSqlServerSetupScript,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "SqlServerSetupScript",
+                        gqlRootFieldName: "cloudNativeSqlServerSetupScript"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeTagRules,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "TagRules",
+                        gqlRootFieldName: "cloudNativeTagRules"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudNativeWorkloadVersionedFiles,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "WorkloadVersionedFiles",
+                        gqlRootFieldName: "cloudNativeWorkloadVersionedFiles"
                     )
                 },
                 {
@@ -9563,8 +10481,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterCertificates,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "Certificates",
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "Cluster",
                         gqlRootFieldName: "clusterCertificates"
                     )
                 },
@@ -9579,8 +10497,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterCsr,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "Csr",
+                        cmdletName: "New-RscQueryRcs",
+                        cmdletSwitchName: "Cluster",
                         gqlRootFieldName: "clusterCsr"
                     )
                 },
@@ -9707,8 +10625,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterSlaDomains,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "SlaDomains",
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "ClusterDomains",
                         gqlRootFieldName: "clusterSlaDomains"
                     )
                 },
@@ -9731,8 +10649,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterWebSignedCertificate,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "WebSignedCertificate",
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "ClusterWebSigned",
                         gqlRootFieldName: "clusterWebSignedCertificate"
                     )
                 },
@@ -9769,6 +10687,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.configureSapHanaRestore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "ConfigureRestore",
+                        gqlRootFieldName: "configureSapHanaRestore"
+                    )
+                },
+                {
                     GqlRootFieldName.countOfObjectsProtectedBySlas,
                     new RscOp(
                         cmdletName: "New-RscQuerySla",
@@ -9790,6 +10716,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "CreateAutomaticTargetMapping",
                         gqlRootFieldName: "createAutomaticAzureTargetMapping"
+                    )
+                },
+                {
+                    GqlRootFieldName.createAutomaticRcsTargetMapping,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcs",
+                        cmdletSwitchName: "CreateAutomaticTargetMapping",
+                        gqlRootFieldName: "createAutomaticRcsTargetMapping"
                     )
                 },
                 {
@@ -9905,6 +10839,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createCloudNativeLabelRule,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "CreateLabelRule",
+                        gqlRootFieldName: "createCloudNativeLabelRule"
+                    )
+                },
+                {
                     GqlRootFieldName.createCloudNativeRcvAzureStorageSetting,
                     new RscOp(
                         cmdletName: "New-RscMutationAzure",
@@ -9913,11 +10855,67 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createCloudNativeTagRule,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "CreateTagRule",
+                        gqlRootFieldName: "createCloudNativeTagRule"
+                    )
+                },
+                {
+                    GqlRootFieldName.createCustomReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "CreateCustom",
+                        gqlRootFieldName: "createCustomReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.createDownloadSnapshotForVolumeGroup,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "CreateDownloadForVolumeGroup",
+                        gqlRootFieldName: "createDownloadSnapshotForVolumeGroup"
+                    )
+                },
+                {
+                    GqlRootFieldName.createExchangeMount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationExchange",
+                        cmdletSwitchName: "CreateMount",
+                        gqlRootFieldName: "createExchangeMount"
+                    )
+                },
+                {
                     GqlRootFieldName.createFailoverCluster,
                     new RscOp(
                         cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "CreateFailover",
                         gqlRootFieldName: "createFailoverCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.createFilesetSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "CreateFileset",
+                        gqlRootFieldName: "createFilesetSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.createGcpReaderTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CreateReaderTarget",
+                        gqlRootFieldName: "createGcpReaderTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.createGcpTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CreateTarget",
+                        gqlRootFieldName: "createGcpTarget"
                     )
                 },
                 {
@@ -9937,18 +10935,34 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createK8sAgentManifest,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "CreateAgentManifest",
+                        gqlRootFieldName: "createK8sAgentManifest"
+                    )
+                },
+                {
                     GqlRootFieldName.createK8sCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "CreateK8s",
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "CreateCluster",
                         gqlRootFieldName: "createK8sCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.createK8sNamespaceSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "CreateNamespaceSnapshots",
+                        gqlRootFieldName: "createK8sNamespaceSnapshots"
                     )
                 },
                 {
                     GqlRootFieldName.createMongodbSource,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
-                        cmdletSwitchName: "CreatedbSource",
+                        cmdletSwitchName: "CreateSource",
                         gqlRootFieldName: "createMongodbSource"
                     )
                 },
@@ -9966,6 +10980,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMssql",
                         cmdletSwitchName: "CreateLogShippingConfiguration",
                         gqlRootFieldName: "createMssqlLogShippingConfiguration"
+                    )
+                },
+                {
+                    GqlRootFieldName.createNfsReaderTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationNfs",
+                        cmdletSwitchName: "CreateReaderTarget",
+                        gqlRootFieldName: "createNfsReaderTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.createNfsTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationNfs",
+                        cmdletSwitchName: "CreateTarget",
+                        gqlRootFieldName: "createNfsTarget"
                     )
                 },
                 {
@@ -10009,6 +11039,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createOnDemandExchangeBackup,
+                    new RscOp(
+                        cmdletName: "New-RscMutationExchange",
+                        cmdletSwitchName: "CreateOnDemandBackup",
+                        gqlRootFieldName: "createOnDemandExchangeBackup"
+                    )
+                },
+                {
                     GqlRootFieldName.createOnDemandMssqlBackup,
                     new RscOp(
                         cmdletName: "New-RscMutationMssql",
@@ -10025,11 +11063,99 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createOnDemandSapHanaBackup,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "CreateOnDemandBackup",
+                        gqlRootFieldName: "createOnDemandSapHanaBackup"
+                    )
+                },
+                {
                     GqlRootFieldName.createOraclePdbRestore,
                     new RscOp(
                         cmdletName: "New-RscMutationOracle",
                         cmdletSwitchName: "CreatePdbRestore",
                         gqlRootFieldName: "createOraclePdbRestore"
+                    )
+                },
+                {
+                    GqlRootFieldName.createRcsReaderTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcs",
+                        cmdletSwitchName: "CreateReaderTarget",
+                        gqlRootFieldName: "createRcsReaderTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.createRcsTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcs",
+                        cmdletSwitchName: "CreateTarget",
+                        gqlRootFieldName: "createRcsTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.createRcvLocationsFromTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcv",
+                        cmdletSwitchName: "CreateLocationsFromTemplate",
+                        gqlRootFieldName: "createRcvLocationsFromTemplate"
+                    )
+                },
+                {
+                    GqlRootFieldName.createRcvPrivateEndpointApprovalRequest,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcv",
+                        cmdletSwitchName: "CreatePrivateEndpointApprovalRequest",
+                        gqlRootFieldName: "createRcvPrivateEndpointApprovalRequest"
+                    )
+                },
+                {
+                    GqlRootFieldName.createReplicationPair,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReplication",
+                        cmdletSwitchName: "CreatePair",
+                        gqlRootFieldName: "createReplicationPair"
+                    )
+                },
+                {
+                    GqlRootFieldName.createSapHanaSystemRefresh,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "CreateSystemRefresh",
+                        gqlRootFieldName: "createSapHanaSystemRefresh"
+                    )
+                },
+                {
+                    GqlRootFieldName.createScheduledReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "CreateScheduled",
+                        gqlRootFieldName: "createScheduledReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.createServiceAccount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationServiceAccount",
+                        cmdletSwitchName: "Create",
+                        gqlRootFieldName: "createServiceAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.createTapeReaderTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationTape",
+                        cmdletSwitchName: "CreateReaderTarget",
+                        gqlRootFieldName: "createTapeReaderTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.createTapeTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationTape",
+                        cmdletSwitchName: "CreateTarget",
+                        gqlRootFieldName: "createTapeTarget"
                     )
                 },
                 {
@@ -10046,6 +11172,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationVcenter",
                         cmdletSwitchName: "Create",
                         gqlRootFieldName: "createVsphereVcenter"
+                    )
+                },
+                {
+                    GqlRootFieldName.createWebhook,
+                    new RscOp(
+                        cmdletName: "New-RscMutationWebhook",
+                        cmdletSwitchName: "Create",
+                        gqlRootFieldName: "createWebhook"
                     )
                 },
                 {
@@ -10209,6 +11343,46 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteCertificate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCertificate",
+                        cmdletSwitchName: "Delete",
+                        gqlRootFieldName: "deleteCertificate"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteCloudNativeLabelRule,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "DeleteLabelRule",
+                        gqlRootFieldName: "deleteCloudNativeLabelRule"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteCloudNativeTagRule,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "DeleteTagRule",
+                        gqlRootFieldName: "deleteCloudNativeTagRule"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteCloudWorkloadSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "DeleteCloudWorkload",
+                        gqlRootFieldName: "deleteCloudWorkloadSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteCustomReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "DeleteCustom",
+                        gqlRootFieldName: "deleteCustomReport"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteDb2Database,
                     new RscOp(
                         cmdletName: "New-RscMutationDb2",
@@ -10225,11 +11399,27 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteExchangeSnapshotMount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationExchange",
+                        cmdletSwitchName: "DeleteSnapshotMount",
+                        gqlRootFieldName: "deleteExchangeSnapshotMount"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteFailoverCluster,
                     new RscOp(
                         cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "DeleteFailover",
                         gqlRootFieldName: "deleteFailoverCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteFilesetSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "DeleteFilesets",
+                        gqlRootFieldName: "deleteFilesetSnapshots"
                     )
                 },
                 {
@@ -10281,11 +11471,11 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.deleteMongodbSource,
+                    GqlRootFieldName.deleteMosaicStore,
                     new RscOp(
-                        cmdletName: "New-RscMutationMongo",
-                        cmdletSwitchName: "DeletedbSource",
-                        gqlRootFieldName: "deleteMongodbSource"
+                        cmdletName: "New-RscMutationMosaic",
+                        cmdletSwitchName: "DeleteStore",
+                        gqlRootFieldName: "deleteMosaicStore"
                     )
                 },
                 {
@@ -10377,6 +11567,70 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteReplicationPair,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReplication",
+                        cmdletSwitchName: "DeletePair",
+                        gqlRootFieldName: "deleteReplicationPair"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteSapHanaDbSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "DeleteDbSnapshot",
+                        gqlRootFieldName: "deleteSapHanaDbSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteSapHanaSystem,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "DeleteSystem",
+                        gqlRootFieldName: "deleteSapHanaSystem"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteScheduledReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "DeleteScheduled",
+                        gqlRootFieldName: "deleteScheduledReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteServiceAccountsFromAccount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationServiceAccount",
+                        cmdletSwitchName: "Delete",
+                        gqlRootFieldName: "deleteServiceAccountsFromAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteSmbDomain,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSmb",
+                        cmdletSwitchName: "DeleteDomain",
+                        gqlRootFieldName: "deleteSmbDomain"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteStorageArrays,
+                    new RscOp(
+                        cmdletName: "New-RscMutationStorageArray",
+                        cmdletSwitchName: "Delete",
+                        gqlRootFieldName: "deleteStorageArrays"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteUsersFromAccount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationAccount",
+                        cmdletSwitchName: "DeleteUsers",
+                        gqlRootFieldName: "deleteUsersFromAccount"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteVsphereAdvancedTag,
                     new RscOp(
                         cmdletName: "New-RscMutationVsphere",
@@ -10390,6 +11644,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationVsphere",
                         cmdletSwitchName: "DeleteLiveMount",
                         gqlRootFieldName: "deleteVsphereLiveMount"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteWebhook,
+                    new RscOp(
+                        cmdletName: "New-RscMutationWebhook",
+                        cmdletSwitchName: "Delete",
+                        gqlRootFieldName: "deleteWebhook"
+                    )
+                },
+                {
+                    GqlRootFieldName.disableReplicationPause,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReplication",
+                        cmdletSwitchName: "DisablePause",
+                        gqlRootFieldName: "disableReplicationPause"
                     )
                 },
                 {
@@ -10411,9 +11681,25 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.doesAzureNativeResourceGroupExist,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "DoesNativeResourceGroupExist",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "DoesResourceGroupExist",
                         gqlRootFieldName: "doesAzureNativeResourceGroupExist"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadAuditLogCsvAsync,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "AuditLogCsvAsync",
+                        gqlRootFieldName: "downloadAuditLogCsvAsync"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadCdmUpgradesPdf,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDownload",
+                        cmdletSwitchName: "CdmUpgradesPdf",
+                        gqlRootFieldName: "downloadCdmUpgradesPdf"
                     )
                 },
                 {
@@ -10433,11 +11719,35 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.downloadExchangeSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ExchangeSnapshot",
+                        gqlRootFieldName: "downloadExchangeSnapshot"
+                    )
+                },
+                {
                     GqlRootFieldName.downloadFilesNutanixSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationNutanix",
                         cmdletSwitchName: "DownloadFilesSnapshot",
                         gqlRootFieldName: "downloadFilesNutanixSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadFilesetSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "FilesetSnapshot",
+                        gqlRootFieldName: "downloadFilesetSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadFilesetSnapshotFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "FilesetSnapshotFromLocation",
+                        gqlRootFieldName: "downloadFilesetSnapshotFromLocation"
                     )
                 },
                 {
@@ -10513,6 +11823,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.downloadObjectFilesCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ObjectFilesCsv",
+                        gqlRootFieldName: "downloadObjectFilesCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadObjectsListCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ObjectsListCsv",
+                        gqlRootFieldName: "downloadObjectsListCsv"
+                    )
+                },
+                {
                     GqlRootFieldName.downloadOracleDatabaseSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationOracle",
@@ -10521,11 +11847,123 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.downloadPackageStatus,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDownload",
+                        cmdletSwitchName: "PackageStatus",
+                        gqlRootFieldName: "downloadPackageStatus"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadReportCsvAsync,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ReportCsvAsync",
+                        gqlRootFieldName: "downloadReportCsvAsync"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadReportPdfAsync,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ReportPdfAsync",
+                        gqlRootFieldName: "downloadReportPdfAsync"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadResultsCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ResultsCsv",
+                        gqlRootFieldName: "downloadResultsCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadSapHanaSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "SapHanaSnapshot",
+                        gqlRootFieldName: "downloadSapHanaSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadSapHanaSnapshotFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "SapHanaSnapshotFromLocation",
+                        gqlRootFieldName: "downloadSapHanaSnapshotFromLocation"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadSapHanaSnapshotsForPointInTimeRecovery,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "SapHanaSnapshotsForPointInTimeRecovery",
+                        gqlRootFieldName: "downloadSapHanaSnapshotsForPointInTimeRecovery"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadSnapshotResultsCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "SnapshotResultsCsv",
+                        gqlRootFieldName: "downloadSnapshotResultsCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadThreatHuntCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ThreatHuntCsv",
+                        gqlRootFieldName: "downloadThreatHuntCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadUserActivityCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationActivitySeries",
+                        cmdletSwitchName: "DownloadUserCsv",
+                        gqlRootFieldName: "downloadUserActivityCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadUserFileActivityCsv,
+                    new RscOp(
+                        cmdletName: "New-RscMutationActivitySeries",
+                        cmdletSwitchName: "DownloadUserFileCsv",
+                        gqlRootFieldName: "downloadUserFileActivityCsv"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadVolumeGroupSnapshotFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "VolumeGroupSnapshotFiles",
+                        gqlRootFieldName: "downloadVolumeGroupSnapshotFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadVolumeGroupSnapshotFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "VolumeGroupSnapshotFromLocation",
+                        gqlRootFieldName: "downloadVolumeGroupSnapshotFromLocation"
+                    )
+                },
+                {
                     GqlRootFieldName.downloadVsphereVirtualMachineFiles,
                     new RscOp(
                         cmdletName: "New-RscMutationVsphere",
                         cmdletSwitchName: "DownloadVirtualMachineFiles",
                         gqlRootFieldName: "downloadVsphereVirtualMachineFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadedVersionList,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDownload",
+                        cmdletSwitchName: "EdVersionList",
+                        gqlRootFieldName: "downloadedVersionList"
                     )
                 },
                 {
@@ -10545,6 +11983,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.enableReplicationPause,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReplication",
+                        cmdletSwitchName: "EnablePause",
+                        gqlRootFieldName: "enableReplicationPause"
+                    )
+                },
+                {
+                    GqlRootFieldName.enableThreatMonitoring,
+                    new RscOp(
+                        cmdletName: "New-RscMutationThreat",
+                        cmdletSwitchName: "EnableMonitoring",
+                        gqlRootFieldName: "enableThreatMonitoring"
+                    )
+                },
+                {
                     GqlRootFieldName.endManagedVolumeSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationManagedVolume",
@@ -10553,19 +12007,83 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.exchangeDag,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "Dag",
+                        gqlRootFieldName: "exchangeDag"
+                    )
+                },
+                {
+                    GqlRootFieldName.exchangeDags,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "Dags",
+                        gqlRootFieldName: "exchangeDags"
+                    )
+                },
+                {
+                    GqlRootFieldName.exchangeDatabase,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "exchangeDatabase"
+                    )
+                },
+                {
+                    GqlRootFieldName.exchangeDatabases,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "exchangeDatabases"
+                    )
+                },
+                {
+                    GqlRootFieldName.exchangeLiveMounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "LiveMounts",
+                        gqlRootFieldName: "exchangeLiveMounts"
+                    )
+                },
+                {
+                    GqlRootFieldName.exchangeServer,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "Server",
+                        gqlRootFieldName: "exchangeServer"
+                    )
+                },
+                {
+                    GqlRootFieldName.exchangeServers,
+                    new RscOp(
+                        cmdletName: "New-RscQueryExchange",
+                        cmdletSwitchName: "Servers",
+                        gqlRootFieldName: "exchangeServers"
+                    )
+                },
+                {
                     GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "ExcludeNativeEbsVolumesFromSnapshot",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "ExcludeEbsVolumesFromSnapshot",
                         gqlRootFieldName: "excludeAwsNativeEbsVolumesFromSnapshot"
                     )
                 },
                 {
                     GqlRootFieldName.excludeAzureNativeManagedDisksFromSnapshot,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "ExcludeNativeManagedDisksFromSnapshot",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "ExcludeManagedDisksFromSnapshot",
                         gqlRootFieldName: "excludeAzureNativeManagedDisksFromSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.excludeSharepointObjectsFromProtection,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSharepoint",
+                        cmdletSwitchName: "ExcludeObjectsFromProtection",
+                        gqlRootFieldName: "excludeSharepointObjectsFromProtection"
                     )
                 },
                 {
@@ -10577,11 +12095,27 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.expireDownloadedSapHanaSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "ExpireDownloadedSnapshots",
+                        gqlRootFieldName: "expireDownloadedSapHanaSnapshots"
+                    )
+                },
+                {
                     GqlRootFieldName.exportHypervVirtualMachine,
                     new RscOp(
                         cmdletName: "New-RscMutationHyperv",
                         cmdletSwitchName: "ExportVirtualMachine",
                         gqlRootFieldName: "exportHypervVirtualMachine"
+                    )
+                },
+                {
+                    GqlRootFieldName.exportK8sNamespace,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "ExportNamespace",
+                        gqlRootFieldName: "exportK8sNamespace"
                     )
                 },
                 {
@@ -10641,6 +12175,70 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.filesetDownloadSnapshotFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "FilesetDownloadFiles",
+                        gqlRootFieldName: "filesetDownloadSnapshotFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetExportSnapshotFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "FilesetExportFiles",
+                        gqlRootFieldName: "filesetExportSnapshotFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetRecoverFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationFileset",
+                        cmdletSwitchName: "RecoverFiles",
+                        gqlRootFieldName: "filesetRecoverFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetRequestStatus,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFileset",
+                        cmdletSwitchName: "RequestStatus",
+                        gqlRootFieldName: "filesetRequestStatus"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "Fileset",
+                        gqlRootFieldName: "filesetSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetSnapshotFiles,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "FilesetFiles",
+                        gqlRootFieldName: "filesetSnapshotFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetTemplate,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFileset",
+                        cmdletSwitchName: "Template",
+                        gqlRootFieldName: "filesetTemplate"
+                    )
+                },
+                {
+                    GqlRootFieldName.filesetTemplates,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFileset",
+                        cmdletSwitchName: "Templates",
+                        gqlRootFieldName: "filesetTemplates"
+                    )
+                },
+                {
                     GqlRootFieldName.finalizeAwsCloudAccountDeletion,
                     new RscOp(
                         cmdletName: "New-RscMutationAws",
@@ -10654,6 +12252,174 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAws",
                         cmdletSwitchName: "FinalizeCloudAccountProtection",
                         gqlRootFieldName: "finalizeAwsCloudAccountProtection"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpCloudAccountAddManualAuthProject,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CloudAccountAddManualAuthProject",
+                        gqlRootFieldName: "gcpCloudAccountAddManualAuthProject"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpCloudAccountAddProjects,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CloudAccountAddProjects",
+                        gqlRootFieldName: "gcpCloudAccountAddProjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpCloudAccountDeleteProjects,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CloudAccountDeleteProjects",
+                        gqlRootFieldName: "gcpCloudAccountDeleteProjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpCloudAccountOauthComplete,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CloudAccountOauthComplete",
+                        gqlRootFieldName: "gcpCloudAccountOauthComplete"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpCloudAccountOauthInitiate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CloudAccountOauthInitiate",
+                        gqlRootFieldName: "gcpCloudAccountOauthInitiate"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpCloudAccountUpgradeProjects,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "CloudAccountUpgradeProjects",
+                        gqlRootFieldName: "gcpCloudAccountUpgradeProjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpGetDefaultCredentialsServiceAccount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcp",
+                        cmdletSwitchName: "GetDefaultCredentialsServiceAccount",
+                        gqlRootFieldName: "gcpGetDefaultCredentialsServiceAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeDisableProject,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcpNative",
+                        cmdletSwitchName: "DisableProject",
+                        gqlRootFieldName: "gcpNativeDisableProject"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeDisk,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "Disk",
+                        gqlRootFieldName: "gcpNativeDisk"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeDisks,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "Disks",
+                        gqlRootFieldName: "gcpNativeDisks"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeExcludeDisksFromInstanceSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcpNative",
+                        cmdletSwitchName: "ExcludeDisksFromInstanceSnapshot",
+                        gqlRootFieldName: "gcpNativeExcludeDisksFromInstanceSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeExportDisk,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcpNative",
+                        cmdletSwitchName: "ExportDisk",
+                        gqlRootFieldName: "gcpNativeExportDisk"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeExportGceInstance,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcpNative",
+                        cmdletSwitchName: "ExportGceInstance",
+                        gqlRootFieldName: "gcpNativeExportGceInstance"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeGceInstance,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "GceInstance",
+                        gqlRootFieldName: "gcpNativeGceInstance"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeGceInstances,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "GceInstances",
+                        gqlRootFieldName: "gcpNativeGceInstances"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeProject,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "Project",
+                        gqlRootFieldName: "gcpNativeProject"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeProjects,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "Projects",
+                        gqlRootFieldName: "gcpNativeProjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeRefreshProjects,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcpNative",
+                        cmdletSwitchName: "RefreshProjects",
+                        gqlRootFieldName: "gcpNativeRefreshProjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeRestoreGceInstance,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcpNative",
+                        cmdletSwitchName: "RestoreGceInstance",
+                        gqlRootFieldName: "gcpNativeRestoreGceInstance"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpNativeStoredDiskLocations,
+                    new RscOp(
+                        cmdletName: "New-RscQueryGcpNative",
+                        cmdletSwitchName: "StoredDiskLocations",
+                        gqlRootFieldName: "gcpNativeStoredDiskLocations"
+                    )
+                },
+                {
+                    GqlRootFieldName.gcpSetDefaultServiceAccountJwtConfig,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "SetDefaultServiceAccountJwtConfig",
+                        gqlRootFieldName: "gcpSetDefaultServiceAccountJwtConfig"
                     )
                 },
                 {
@@ -10681,11 +12447,35 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.hostDiagnosis,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "Diagnosis",
+                        gqlRootFieldName: "hostDiagnosis"
+                    )
+                },
+                {
                     GqlRootFieldName.hostFailoverCluster,
                     new RscOp(
                         cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "HostFailover",
                         gqlRootFieldName: "hostFailoverCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.hostShare,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "Share",
+                        gqlRootFieldName: "hostShare"
+                    )
+                },
+                {
+                    GqlRootFieldName.hostShares,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "Shares",
+                        gqlRootFieldName: "hostShares"
                     )
                 },
                 {
@@ -10851,16 +12641,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAwsNativeEbsVolumeSnapshotRestorable,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "IsNativeEbsVolumeSnapshotRestorable",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "IsEbsVolumeSnapshotRestorable",
                         gqlRootFieldName: "isAwsNativeEbsVolumeSnapshotRestorable"
                     )
                 },
                 {
                     GqlRootFieldName.isAwsNativeRdsInstanceLaunchConfigurationValid,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "IsNativeRdsInstanceLaunchConfigurationValid",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "IsRdsInstanceLaunchConfigurationValid",
                         gqlRootFieldName: "isAwsNativeRdsInstanceLaunchConfigurationValid"
                     )
                 },
@@ -10875,16 +12665,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAzureNativeManagedDiskSnapshotRestorable,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "IsNativeManagedDiskSnapshotRestorable",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "IsManagedDiskSnapshotRestorable",
                         gqlRootFieldName: "isAzureNativeManagedDiskSnapshotRestorable"
                     )
                 },
                 {
                     GqlRootFieldName.isAzureNativeSqlDatabaseSnapshotPersistent,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "IsNativeSqlDatabaseSnapshotPersistent",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "IsSqlDatabaseSnapshotPersistent",
                         gqlRootFieldName: "isAzureNativeSqlDatabaseSnapshotPersistent"
                     )
                 },
@@ -10897,6 +12687,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.isCloudNativeFileRecoveryFeasible,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudNative",
+                        cmdletSwitchName: "IsFileRecoveryFeasible",
+                        gqlRootFieldName: "isCloudNativeFileRecoveryFeasible"
+                    )
+                },
+                {
                     GqlRootFieldName.isTotpAckNecessaryForCluster,
                     new RscOp(
                         cmdletName: "New-RscQueryCluster",
@@ -10905,11 +12703,59 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.joinSmbDomain,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSmb",
+                        cmdletSwitchName: "JoinDomain",
+                        gqlRootFieldName: "joinSmbDomain"
+                    )
+                },
+                {
+                    GqlRootFieldName.k8sAppManifest,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "AppManifest",
+                        gqlRootFieldName: "k8sAppManifest"
+                    )
+                },
+                {
+                    GqlRootFieldName.k8sCluster,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "Cluster",
+                        gqlRootFieldName: "k8sCluster"
+                    )
+                },
+                {
                     GqlRootFieldName.k8sClusters,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "K8s",
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "Clusters",
                         gqlRootFieldName: "k8sClusters"
+                    )
+                },
+                {
+                    GqlRootFieldName.k8sNamespace,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "Namespace",
+                        gqlRootFieldName: "k8sNamespace"
+                    )
+                },
+                {
+                    GqlRootFieldName.k8sNamespaces,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "Namespaces",
+                        gqlRootFieldName: "k8sNamespaces"
+                    )
+                },
+                {
+                    GqlRootFieldName.k8sSnapshotInfo,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "SnapshotInfo",
+                        gqlRootFieldName: "k8sSnapshotInfo"
                     )
                 },
                 {
@@ -10937,11 +12783,43 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.legalHoldSnapshotsForSnappable,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "LegalHoldSnappable",
+                        gqlRootFieldName: "legalHoldSnapshotsForSnappable"
+                    )
+                },
+                {
+                    GqlRootFieldName.linuxFileset,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFileset",
+                        cmdletSwitchName: "Linux",
+                        gqlRootFieldName: "linuxFileset"
+                    )
+                },
+                {
                     GqlRootFieldName.listO365Apps,
                     new RscOp(
                         cmdletName: "New-RscQueryO365",
                         cmdletSwitchName: "ListApps",
                         gqlRootFieldName: "listO365Apps"
+                    )
+                },
+                {
+                    GqlRootFieldName.lookupAccount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "Lookup",
+                        gqlRootFieldName: "lookupAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365Regions,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "Regions",
+                        gqlRootFieldName: "m365Regions"
                     )
                 },
                 {
@@ -10990,6 +12868,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "MapCloudAccountToPersistentStorageLocation",
                         gqlRootFieldName: "mapAzureCloudAccountToPersistentStorageLocation"
+                    )
+                },
+                {
+                    GqlRootFieldName.mapCloudAccountExocomputeAccount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudAccount",
+                        cmdletSwitchName: "MapExocomputeAccount",
+                        gqlRootFieldName: "mapCloudAccountExocomputeAccount"
                     )
                 },
                 {
@@ -11068,64 +12954,48 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.mongodbBulkRecoverableRange,
                     new RscOp(
                         cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbBulkRecoverableRange",
+                        cmdletSwitchName: "BulkRecoverableRange",
                         gqlRootFieldName: "mongodbBulkRecoverableRange"
-                    )
-                },
-                {
-                    GqlRootFieldName.mongodbCollection,
-                    new RscOp(
-                        cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbCollection",
-                        gqlRootFieldName: "mongodbCollection"
                     )
                 },
                 {
                     GqlRootFieldName.mongodbCollectionRecoverableRange,
                     new RscOp(
                         cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbCollectionRecoverableRange",
+                        cmdletSwitchName: "CollectionRecoverableRange",
                         gqlRootFieldName: "mongodbCollectionRecoverableRange"
                     )
                 },
                 {
-                    GqlRootFieldName.mongodbCollections,
+                    GqlRootFieldName.mosaicBulkRecoveryRange,
                     new RscOp(
-                        cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbCollections",
-                        gqlRootFieldName: "mongodbCollections"
+                        cmdletName: "New-RscQueryMosaic",
+                        cmdletSwitchName: "BulkRecoveryRange",
+                        gqlRootFieldName: "mosaicBulkRecoveryRange"
                     )
                 },
                 {
-                    GqlRootFieldName.mongodbDatabase,
+                    GqlRootFieldName.mosaicSnapshots,
                     new RscOp(
-                        cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbDatabase",
-                        gqlRootFieldName: "mongodbDatabase"
+                        cmdletName: "New-RscQueryMosaic",
+                        cmdletSwitchName: "Snapshots",
+                        gqlRootFieldName: "mosaicSnapshots"
                     )
                 },
                 {
-                    GqlRootFieldName.mongodbDatabases,
+                    GqlRootFieldName.mosaicStores,
                     new RscOp(
-                        cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbDatabases",
-                        gqlRootFieldName: "mongodbDatabases"
+                        cmdletName: "New-RscQueryMosaic",
+                        cmdletSwitchName: "Stores",
+                        gqlRootFieldName: "mosaicStores"
                     )
                 },
                 {
-                    GqlRootFieldName.mongodbSource,
+                    GqlRootFieldName.mosaicVersions,
                     new RscOp(
-                        cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbSource",
-                        gqlRootFieldName: "mongodbSource"
-                    )
-                },
-                {
-                    GqlRootFieldName.mongodbSources,
-                    new RscOp(
-                        cmdletName: "New-RscQueryMongo",
-                        cmdletSwitchName: "DbSources",
-                        gqlRootFieldName: "mongodbSources"
+                        cmdletName: "New-RscQueryMosaic",
+                        cmdletSwitchName: "Versions",
+                        gqlRootFieldName: "mosaicVersions"
                     )
                 },
                 {
@@ -11246,6 +13116,70 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMssql",
                         cmdletSwitchName: "TopLevelDescendants",
                         gqlRootFieldName: "mssqlTopLevelDescendants"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasFileset,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "Fileset",
+                        gqlRootFieldName: "nasFileset"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasNamespace,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "Namespace",
+                        gqlRootFieldName: "nasNamespace"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasNamespaces,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "Namespaces",
+                        gqlRootFieldName: "nasNamespaces"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasShare,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "Share",
+                        gqlRootFieldName: "nasShare"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasSystem,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "System",
+                        gqlRootFieldName: "nasSystem"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasSystems,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "Systems",
+                        gqlRootFieldName: "nasSystems"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasTopLevelDescendants,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "TopLevelDescendants",
+                        gqlRootFieldName: "nasTopLevelDescendants"
+                    )
+                },
+                {
+                    GqlRootFieldName.nasVolume,
+                    new RscOp(
+                        cmdletName: "New-RscQueryNas",
+                        cmdletSwitchName: "Volume",
+                        gqlRootFieldName: "nasVolume"
                     )
                 },
                 {
@@ -11817,6 +13751,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.overallRansomwareInvestigationSummary,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "OverallInvestigationSummary",
+                        gqlRootFieldName: "overallRansomwareInvestigationSummary"
+                    )
+                },
+                {
                     GqlRootFieldName.patchAwsAuthenticationServerBasedCloudAccount,
                     new RscOp(
                         cmdletName: "New-RscMutationAws",
@@ -11865,11 +13807,99 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.patchSapHanaSystem,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "PatchSystem",
+                        gqlRootFieldName: "patchSapHanaSystem"
+                    )
+                },
+                {
                     GqlRootFieldName.pauseSla,
                     new RscOp(
                         cmdletName: "New-RscMutationSla",
                         cmdletSwitchName: "Pause",
                         gqlRootFieldName: "pauseSla"
+                    )
+                },
+                {
+                    GqlRootFieldName.pendingRansomwareInvestigationResultsCount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "PendingInvestigationResultsCount",
+                        gqlRootFieldName: "pendingRansomwareInvestigationResultsCount"
+                    )
+                },
+                {
+                    GqlRootFieldName.physicalHost,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "PhysicalHost",
+                        gqlRootFieldName: "physicalHost"
+                    )
+                },
+                {
+                    GqlRootFieldName.physicalHosts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "PhysicalHosts",
+                        gqlRootFieldName: "physicalHosts"
+                    )
+                },
+                {
+                    GqlRootFieldName.polarisSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "Polaris",
+                        gqlRootFieldName: "polarisSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.policies,
+                    new RscOp(
+                        cmdletName: "New-RscQueryPolicy",
+                        cmdletSwitchName: "Policies",
+                        gqlRootFieldName: "policies"
+                    )
+                },
+                {
+                    GqlRootFieldName.policy,
+                    new RscOp(
+                        cmdletName: "New-RscQueryPolicy",
+                        cmdletSwitchName: "Policy",
+                        gqlRootFieldName: "policy"
+                    )
+                },
+                {
+                    GqlRootFieldName.policyDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryPolicy",
+                        cmdletSwitchName: "Details",
+                        gqlRootFieldName: "policyDetails"
+                    )
+                },
+                {
+                    GqlRootFieldName.policyObj,
+                    new RscOp(
+                        cmdletName: "New-RscQueryPolicy",
+                        cmdletSwitchName: "Obj",
+                        gqlRootFieldName: "policyObj"
+                    )
+                },
+                {
+                    GqlRootFieldName.policyObjectUsages,
+                    new RscOp(
+                        cmdletName: "New-RscQueryPolicy",
+                        cmdletSwitchName: "ObjectUsages",
+                        gqlRootFieldName: "policyObjectUsages"
+                    )
+                },
+                {
+                    GqlRootFieldName.policyObjs,
+                    new RscOp(
+                        cmdletName: "New-RscQueryPolicy",
+                        cmdletSwitchName: "Objs",
+                        gqlRootFieldName: "policyObjs"
                     )
                 },
                 {
@@ -11886,6 +13916,110 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAws",
                         cmdletSwitchName: "PrepareFeatureUpdateForCloudAccount",
                         gqlRootFieldName: "prepareFeatureUpdateForAwsCloudAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.processedRansomwareInvestigationWorkloadCount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "ProcessedInvestigationWorkloadCount",
+                        gqlRootFieldName: "processedRansomwareInvestigationWorkloadCount"
+                    )
+                },
+                {
+                    GqlRootFieldName.protectedRansomwareInvestigationWorkloadCount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "ProtectedInvestigationWorkloadCount",
+                        gqlRootFieldName: "protectedRansomwareInvestigationWorkloadCount"
+                    )
+                },
+                {
+                    GqlRootFieldName.putSmbConfiguration,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSmb",
+                        cmdletSwitchName: "PutConfiguration",
+                        gqlRootFieldName: "putSmbConfiguration"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareDetectionWorkloadLocations,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "DetectionWorkloadLocations",
+                        gqlRootFieldName: "ransomwareDetectionWorkloadLocations"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareInvestigationAnalysisSummary,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "InvestigationAnalysisSummary",
+                        gqlRootFieldName: "ransomwareInvestigationAnalysisSummary"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareInvestigationEnablement,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "InvestigationEnablement",
+                        gqlRootFieldName: "ransomwareInvestigationEnablement"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareInvestigationWorkloadScannedCount,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "InvestigationWorkloadScannedCount",
+                        gqlRootFieldName: "ransomwareInvestigationWorkloadScannedCount"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareResult,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "Result",
+                        gqlRootFieldName: "ransomwareResult"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareResultOpt,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "ResultOpt",
+                        gqlRootFieldName: "ransomwareResultOpt"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareResults,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "Results",
+                        gqlRootFieldName: "ransomwareResults"
+                    )
+                },
+                {
+                    GqlRootFieldName.ransomwareResultsGrouped,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRansomware",
+                        cmdletSwitchName: "ResultsGrouped",
+                        gqlRootFieldName: "ransomwareResultsGrouped"
+                    )
+                },
+                {
+                    GqlRootFieldName.rcsArchivalLocationsConsumptionStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRcs",
+                        cmdletSwitchName: "ArchivalLocationsConsumptionStats",
+                        gqlRootFieldName: "rcsArchivalLocationsConsumptionStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.rcvAccountEntitlement,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRcv",
+                        cmdletSwitchName: "AccountEntitlement",
+                        gqlRootFieldName: "rcvAccountEntitlement"
                     )
                 },
                 {
@@ -11921,19 +14055,19 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.recoverMongodbSource,
-                    new RscOp(
-                        cmdletName: "New-RscMutationMongo",
-                        cmdletSwitchName: "RecoverdbSource",
-                        gqlRootFieldName: "recoverMongodbSource"
-                    )
-                },
-                {
                     GqlRootFieldName.refreshDb2Database,
                     new RscOp(
                         cmdletName: "New-RscMutationDb2",
                         cmdletSwitchName: "RefreshDatabase",
                         gqlRootFieldName: "refreshDb2Database"
+                    )
+                },
+                {
+                    GqlRootFieldName.refreshHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHost",
+                        cmdletSwitchName: "Refresh",
+                        gqlRootFieldName: "refreshHost"
                     )
                 },
                 {
@@ -11955,8 +14089,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshK8sCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "RefreshK8s",
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "RefreshCluster",
                         gqlRootFieldName: "refreshK8sCluster"
                     )
                 },
@@ -11990,6 +14124,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationOracle",
                         cmdletSwitchName: "RefreshDatabase",
                         gqlRootFieldName: "refreshOracleDatabase"
+                    )
+                },
+                {
+                    GqlRootFieldName.refreshStorageArrays,
+                    new RscOp(
+                        cmdletName: "New-RscMutationStorageArray",
+                        cmdletSwitchName: "Refresh",
+                        gqlRootFieldName: "refreshStorageArrays"
                     )
                 },
                 {
@@ -12057,6 +14199,38 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.replicationIncomingStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "IncomingStats",
+                        gqlRootFieldName: "replicationIncomingStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.replicationOutgoingStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "OutgoingStats",
+                        gqlRootFieldName: "replicationOutgoingStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.replicationPairs,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "Pairs",
+                        gqlRootFieldName: "replicationPairs"
+                    )
+                },
+                {
+                    GqlRootFieldName.reportData,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "Data",
+                        gqlRootFieldName: "reportData"
+                    )
+                },
+                {
                     GqlRootFieldName.resizeManagedVolume,
                     new RscOp(
                         cmdletName: "New-RscMutationManagedVolume",
@@ -12086,6 +14260,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationHyperv",
                         cmdletSwitchName: "RestoreVirtualMachineSnapshotFiles",
                         gqlRootFieldName: "restoreHypervVirtualMachineSnapshotFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.restoreK8sNamespace,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "RestoreNamespace",
+                        gqlRootFieldName: "restoreK8sNamespace"
                     )
                 },
                 {
@@ -12137,11 +14319,107 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.restoreVolumeGroupSnapshotFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "RestoreVolumeGroupFiles",
+                        gqlRootFieldName: "restoreVolumeGroupSnapshotFiles"
+                    )
+                },
+                {
                     GqlRootFieldName.retryAddMongoSource,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
                         cmdletSwitchName: "RetryAddSource",
                         gqlRootFieldName: "retryAddMongoSource"
+                    )
+                },
+                {
+                    GqlRootFieldName.rotateServiceAccountSecret,
+                    new RscOp(
+                        cmdletName: "New-RscMutationServiceAccount",
+                        cmdletSwitchName: "Rotate",
+                        gqlRootFieldName: "rotateServiceAccountSecret"
+                    )
+                },
+                {
+                    GqlRootFieldName.s3BucketStateForRecovery,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "S3BucketStateForRecovery",
+                        gqlRootFieldName: "s3BucketStateForRecovery"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaDatabase,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "sapHanaDatabase"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaDatabases,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "sapHanaDatabases"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaLogSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "LogSnapshot",
+                        gqlRootFieldName: "sapHanaLogSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaLogSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "LogSnapshots",
+                        gqlRootFieldName: "sapHanaLogSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaRecoverableRange,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "RecoverableRange",
+                        gqlRootFieldName: "sapHanaRecoverableRange"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaRecoverableRanges,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "RecoverableRanges",
+                        gqlRootFieldName: "sapHanaRecoverableRanges"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaSystem,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "System",
+                        gqlRootFieldName: "sapHanaSystem"
+                    )
+                },
+                {
+                    GqlRootFieldName.sapHanaSystems,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySapHana",
+                        cmdletSwitchName: "Systems",
+                        gqlRootFieldName: "sapHanaSystems"
+                    )
+                },
+                {
+                    GqlRootFieldName.scheduledReport,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "Scheduled",
+                        gqlRootFieldName: "scheduledReport"
                     )
                 },
                 {
@@ -12153,11 +14431,51 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.searchHost,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "Search",
+                        gqlRootFieldName: "searchHost"
+                    )
+                },
+                {
                     GqlRootFieldName.searchNutanixVm,
                     new RscOp(
                         cmdletName: "New-RscQueryNutanix",
                         cmdletSwitchName: "SearchVm",
                         gqlRootFieldName: "searchNutanixVm"
+                    )
+                },
+                {
+                    GqlRootFieldName.seedInitialPolicies,
+                    new RscOp(
+                        cmdletName: "New-RscMutationPolicy",
+                        cmdletSwitchName: "Policies",
+                        gqlRootFieldName: "seedInitialPolicies"
+                    )
+                },
+                {
+                    GqlRootFieldName.sendPdfReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "SendPdf",
+                        gqlRootFieldName: "sendPdfReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.sendScheduledReportAsync,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "SendScheduledAsync",
+                        gqlRootFieldName: "sendScheduledReportAsync"
+                    )
+                },
+                {
+                    GqlRootFieldName.serviceAccounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryServiceAccount",
+                        cmdletSwitchName: "ServiceAccount",
+                        gqlRootFieldName: "serviceAccounts"
                     )
                 },
                 {
@@ -12185,11 +14503,59 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.setSsoCertificate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCertificate",
+                        cmdletSwitchName: "SetSso",
+                        gqlRootFieldName: "setSsoCertificate"
+                    )
+                },
+                {
+                    GqlRootFieldName.setWebSignedCertificate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCertificate",
+                        cmdletSwitchName: "SetWebSigned",
+                        gqlRootFieldName: "setWebSignedCertificate"
+                    )
+                },
+                {
                     GqlRootFieldName.setupAzureO365Exocompute,
                     new RscOp(
                         cmdletName: "New-RscMutationAzureO365",
                         cmdletSwitchName: "SetupExocompute",
                         gqlRootFieldName: "setupAzureO365Exocompute"
+                    )
+                },
+                {
+                    GqlRootFieldName.setupCloudNativeSqlServerBackup,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "SetupSqlServerBackup",
+                        gqlRootFieldName: "setupCloudNativeSqlServerBackup"
+                    )
+                },
+                {
+                    GqlRootFieldName.shareFileset,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFileset",
+                        cmdletSwitchName: "Share",
+                        gqlRootFieldName: "shareFileset"
+                    )
+                },
+                {
+                    GqlRootFieldName.sharepointSiteDescendants,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "SiteDescendants",
+                        gqlRootFieldName: "sharepointSiteDescendants"
+                    )
+                },
+                {
+                    GqlRootFieldName.sharepointSiteSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "SiteSearch",
+                        gqlRootFieldName: "sharepointSiteSearch"
                     )
                 },
                 {
@@ -12241,6 +14607,174 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.smbConfiguration,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySmb",
+                        cmdletSwitchName: "Configuration",
+                        gqlRootFieldName: "smbConfiguration"
+                    )
+                },
+                {
+                    GqlRootFieldName.smbDomains,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySmb",
+                        cmdletSwitchName: "Domains",
+                        gqlRootFieldName: "smbDomains"
+                    )
+                },
+                {
+                    GqlRootFieldName.snappableSharepointDriveSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "SnappableDriveSearch",
+                        gqlRootFieldName: "snappableSharepointDriveSearch"
+                    )
+                },
+                {
+                    GqlRootFieldName.snappableSharepointListSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "SnappableListSearch",
+                        gqlRootFieldName: "snappableSharepointListSearch"
+                    )
+                },
+                {
+                    GqlRootFieldName.snappablesWithLegalHoldSnapshotsSummary,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "SnappablesWithLegalHoldsSummary",
+                        gqlRootFieldName: "snappablesWithLegalHoldSnapshotsSummary"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshot,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "Snapshot",
+                        gqlRootFieldName: "snapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotEmailSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "EmailSearch",
+                        gqlRootFieldName: "snapshotEmailSearch"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotEventSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "EventSearch",
+                        gqlRootFieldName: "snapshotEventSearch"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotFilesDelta,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "FilesDelta",
+                        gqlRootFieldName: "snapshotFilesDelta"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotFilesDeltaV2,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "FilesDeltaV2",
+                        gqlRootFieldName: "snapshotFilesDeltaV2"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotOfASnappableConnection,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "SnappableList",
+                        gqlRootFieldName: "snapshotOfASnappableConnection"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotOfSnappablesConnection,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "SnappablesList",
+                        gqlRootFieldName: "snapshotOfSnappablesConnection"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotOnedriveSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "OnedriveSearch",
+                        gqlRootFieldName: "snapshotOnedriveSearch"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotResults,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "Results",
+                        gqlRootFieldName: "snapshotResults"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotSharepointDriveSearch,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySharepoint",
+                        cmdletSwitchName: "SnapshotDriveSearch",
+                        gqlRootFieldName: "snapshotSharepointDriveSearch"
+                    )
+                },
+                {
+                    GqlRootFieldName.snapshotsForUnmanagedObject,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "UnmanagedObject",
+                        gqlRootFieldName: "snapshotsForUnmanagedObject"
+                    )
+                },
+                {
+                    GqlRootFieldName.sonarContentReport,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySonar",
+                        cmdletSwitchName: "ContentReport",
+                        gqlRootFieldName: "sonarContentReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.sonarReport,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySonar",
+                        cmdletSwitchName: "Report",
+                        gqlRootFieldName: "sonarReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.sonarReportRow,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySonar",
+                        cmdletSwitchName: "ReportRow",
+                        gqlRootFieldName: "sonarReportRow"
+                    )
+                },
+                {
+                    GqlRootFieldName.sonarUserGroups,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySonar",
+                        cmdletSwitchName: "UserGroups",
+                        gqlRootFieldName: "sonarUserGroups"
+                    )
+                },
+                {
+                    GqlRootFieldName.sonarUsers,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySonar",
+                        cmdletSwitchName: "Users",
+                        gqlRootFieldName: "sonarUsers"
+                    )
+                },
+                {
                     GqlRootFieldName.startAwsExocomputeDisableJob,
                     new RscOp(
                         cmdletName: "New-RscMutationAws",
@@ -12251,24 +14785,24 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startAwsNativeAccountDisableJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartNativeAccountDisableJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartAccountDisableJob",
                         gqlRootFieldName: "startAwsNativeAccountDisableJob"
                     )
                 },
                 {
                     GqlRootFieldName.startAwsNativeEc2InstanceSnapshotsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartNativeEc2InstanceSnapshotsJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartEc2InstanceSnapshotsJob",
                         gqlRootFieldName: "startAwsNativeEc2InstanceSnapshotsJob"
                     )
                 },
                 {
                     GqlRootFieldName.startAwsNativeRdsInstanceSnapshotsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartNativeRdsInstanceSnapshotsJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartRdsInstanceSnapshotsJob",
                         gqlRootFieldName: "startAwsNativeRdsInstanceSnapshotsJob"
                     )
                 },
@@ -12297,26 +14831,42 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.startCloudNativeSnapshotsIndexJob,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "StartSnapshotsIndexJob",
+                        gqlRootFieldName: "startCloudNativeSnapshotsIndexJob"
+                    )
+                },
+                {
+                    GqlRootFieldName.startClusterReportMigrationJob,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "StartClusterMigrationJob",
+                        gqlRootFieldName: "startClusterReportMigrationJob"
+                    )
+                },
+                {
                     GqlRootFieldName.startCreateAwsNativeEbsVolumeSnapshotsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartCreateNativeEbsVolumeSnapshotsJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartCreateEbsVolumeSnapshotsJob",
                         gqlRootFieldName: "startCreateAwsNativeEbsVolumeSnapshotsJob"
                     )
                 },
                 {
                     GqlRootFieldName.startCreateAzureNativeManagedDiskSnapshotsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartCreateNativeManagedDiskSnapshotsJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartCreateManagedDiskSnapshotsJob",
                         gqlRootFieldName: "startCreateAzureNativeManagedDiskSnapshotsJob"
                     )
                 },
                 {
                     GqlRootFieldName.startCreateAzureNativeVirtualMachineSnapshotsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartCreateNativeVirtualMachineSnapshotsJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartCreateVirtualMachineSnapshotsJob",
                         gqlRootFieldName: "startCreateAzureNativeVirtualMachineSnapshotsJob"
                     )
                 },
@@ -12331,32 +14881,40 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startDisableAzureNativeSubscriptionProtectionJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartDisableNativeSubscriptionProtectionJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartDisableSubscriptionProtectionJob",
                         gqlRootFieldName: "startDisableAzureNativeSubscriptionProtectionJob"
+                    )
+                },
+                {
+                    GqlRootFieldName.startEc2InstanceSnapshotExportJob,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "StartEc2InstanceExportJob",
+                        gqlRootFieldName: "startEc2InstanceSnapshotExportJob"
                     )
                 },
                 {
                     GqlRootFieldName.startExportAwsNativeEbsVolumeSnapshotJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartExportNativeEbsVolumeSnapshotJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartExportEbsVolumeSnapshotJob",
                         gqlRootFieldName: "startExportAwsNativeEbsVolumeSnapshotJob"
                     )
                 },
                 {
                     GqlRootFieldName.startExportAzureNativeManagedDiskJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartExportNativeManagedDiskJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartExportManagedDiskJob",
                         gqlRootFieldName: "startExportAzureNativeManagedDiskJob"
                     )
                 },
                 {
                     GqlRootFieldName.startExportAzureNativeVirtualMachineJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartExportNativeVirtualMachineJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartExportVirtualMachineJob",
                         gqlRootFieldName: "startExportAzureNativeVirtualMachineJob"
                     )
                 },
@@ -12377,35 +14935,51 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.startRecoverS3SnapshotJob,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "StartRecoverS3Job",
+                        gqlRootFieldName: "startRecoverS3SnapshotJob"
+                    )
+                },
+                {
                     GqlRootFieldName.startRefreshAwsNativeAccountsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartRefreshNativeAccountsJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartRefreshAccountsJob",
                         gqlRootFieldName: "startRefreshAwsNativeAccountsJob"
                     )
                 },
                 {
                     GqlRootFieldName.startRefreshAzureNativeSubscriptionsJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartRefreshNativeSubscriptionsJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartRefreshSubscriptionsJob",
                         gqlRootFieldName: "startRefreshAzureNativeSubscriptionsJob"
                     )
                 },
                 {
                     GqlRootFieldName.startRestoreAwsNativeEc2InstanceSnapshotJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAws",
-                        cmdletSwitchName: "StartRestoreNativeEc2InstanceSnapshotJob",
+                        cmdletName: "New-RscMutationAwsNative",
+                        cmdletSwitchName: "StartRestoreEc2InstanceSnapshotJob",
                         gqlRootFieldName: "startRestoreAwsNativeEc2InstanceSnapshotJob"
                     )
                 },
                 {
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob,
                     new RscOp(
-                        cmdletName: "New-RscMutationAzure",
-                        cmdletSwitchName: "StartRestoreNativeVirtualMachineJob",
+                        cmdletName: "New-RscMutationAzureNative",
+                        cmdletSwitchName: "StartRestoreVirtualMachineJob",
                         gqlRootFieldName: "startRestoreAzureNativeVirtualMachineJob"
+                    )
+                },
+                {
+                    GqlRootFieldName.startThreatHunt,
+                    new RscOp(
+                        cmdletName: "New-RscMutationThreat",
+                        cmdletSwitchName: "StartHunt",
+                        gqlRootFieldName: "startThreatHunt"
                     )
                 },
                 {
@@ -12441,6 +15015,78 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.takeOnDemandSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "TakeOnDemand",
+                        gqlRootFieldName: "takeOnDemandSnapshot"
+                    )
+                },
+                {
+                    GqlRootFieldName.testExistingWebhook,
+                    new RscOp(
+                        cmdletName: "New-RscMutationWebhook",
+                        cmdletSwitchName: "TestExisting",
+                        gqlRootFieldName: "testExistingWebhook"
+                    )
+                },
+                {
+                    GqlRootFieldName.testWebhook,
+                    new RscOp(
+                        cmdletName: "New-RscMutationWebhook",
+                        cmdletSwitchName: "Test",
+                        gqlRootFieldName: "testWebhook"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntDetail,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "HuntDetail",
+                        gqlRootFieldName: "threatHuntDetail"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntResult,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "HuntResult",
+                        gqlRootFieldName: "threatHuntResult"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHuntSummary,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "HuntSummary",
+                        gqlRootFieldName: "threatHuntSummary"
+                    )
+                },
+                {
+                    GqlRootFieldName.threatHunts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryThreat",
+                        cmdletSwitchName: "Hunts",
+                        gqlRootFieldName: "threatHunts"
+                    )
+                },
+                {
+                    GqlRootFieldName.triggerRansomwareDetection,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRansomware",
+                        cmdletSwitchName: "TriggerDetection",
+                        gqlRootFieldName: "triggerRansomwareDetection"
+                    )
+                },
+                {
+                    GqlRootFieldName.unconfigureSapHanaRestore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSapHana",
+                        cmdletSwitchName: "UnconfigureRestore",
+                        gqlRootFieldName: "unconfigureSapHanaRestore"
+                    )
+                },
+                {
                     GqlRootFieldName.uniqueHypervServersCount,
                     new RscOp(
                         cmdletName: "New-RscQueryHyperv",
@@ -12462,6 +15108,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "UnmapPersistentStorageSubscription",
                         gqlRootFieldName: "unmapAzurePersistentStorageSubscription"
+                    )
+                },
+                {
+                    GqlRootFieldName.unmapCloudAccountExocomputeAccount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudAccount",
+                        cmdletSwitchName: "UnmapExocomputeAccount",
+                        gqlRootFieldName: "unmapCloudAccountExocomputeAccount"
                     )
                 },
                 {
@@ -12561,6 +15215,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateCertificate,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCertificate",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateCertificate"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateCertificateHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCertificate",
+                        cmdletSwitchName: "UpdateHost",
+                        gqlRootFieldName: "updateCertificateHost"
+                    )
+                },
+                {
                     GqlRootFieldName.updateCloudNativeAwsStorageSetting,
                     new RscOp(
                         cmdletName: "New-RscMutationAws",
@@ -12577,11 +15247,43 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateCloudNativeIndexingStatus,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "UpdateIndexingStatus",
+                        gqlRootFieldName: "updateCloudNativeIndexingStatus"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateCloudNativeLabelRule,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "UpdateLabelRule",
+                        gqlRootFieldName: "updateCloudNativeLabelRule"
+                    )
+                },
+                {
                     GqlRootFieldName.updateCloudNativeRcvAzureStorageSetting,
                     new RscOp(
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "UpdateCloudNativeRcvStorageSetting",
                         gqlRootFieldName: "updateCloudNativeRcvAzureStorageSetting"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateCloudNativeTagRule,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCloudNative",
+                        cmdletSwitchName: "UpdateTagRule",
+                        gqlRootFieldName: "updateCloudNativeTagRule"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateCustomReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "UpdateCustom",
+                        gqlRootFieldName: "updateCustomReport"
                     )
                 },
                 {
@@ -12606,6 +15308,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "UpdateFailover",
                         gqlRootFieldName: "updateFailoverCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateGcpTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateGcpTarget"
                     )
                 },
                 {
@@ -12652,8 +15362,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateMongodbSource,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
-                        cmdletSwitchName: "UpdatedbSource",
+                        cmdletSwitchName: "UpdateSource",
                         gqlRootFieldName: "updateMongodbSource"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateMosaicStore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMosaic",
+                        cmdletSwitchName: "UpdateStore",
+                        gqlRootFieldName: "updateMosaicStore"
                     )
                 },
                 {
@@ -12670,6 +15388,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMssql",
                         cmdletSwitchName: "UpdateLogShippingConfiguration",
                         gqlRootFieldName: "updateMssqlLogShippingConfiguration"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateNfsTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationNfs",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateNfsTarget"
                     )
                 },
                 {
@@ -12729,6 +15455,62 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateRcsAutomaticTargetMapping,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcs",
+                        cmdletSwitchName: "UpdateAutomaticTargetMapping",
+                        gqlRootFieldName: "updateRcsAutomaticTargetMapping"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateRcvTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcv",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateRcvTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateReplicationTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReplication",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateReplicationTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateScheduledReport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "UpdateScheduled",
+                        gqlRootFieldName: "updateScheduledReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateServiceAccount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationServiceAccount",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateServiceAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateStorageArrays,
+                    new RscOp(
+                        cmdletName: "New-RscMutationStorageArray",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateStorageArrays"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateTapeTarget,
+                    new RscOp(
+                        cmdletName: "New-RscMutationTape",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateTapeTarget"
+                    )
+                },
+                {
                     GqlRootFieldName.updateVcenter,
                     new RscOp(
                         cmdletName: "New-RscMutationVcenter",
@@ -12769,6 +15551,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateWebhook,
+                    new RscOp(
+                        cmdletName: "New-RscMutationWebhook",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateWebhook"
+                    )
+                },
+                {
                     GqlRootFieldName.upgradeAwsCloudAccountFeaturesWithoutCft,
                     new RscOp(
                         cmdletName: "New-RscMutationAws",
@@ -12798,6 +15588,38 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "UpgradeCloudAccountPermissionsWithoutOauth",
                         gqlRootFieldName: "upgradeAzureCloudAccountPermissionsWithoutOauth"
+                    )
+                },
+                {
+                    GqlRootFieldName.upgradeGcpCloudAccountPermissionsWithoutOauth,
+                    new RscOp(
+                        cmdletName: "New-RscMutationGcp",
+                        cmdletSwitchName: "UpgradeCloudAccountPermissionsWithoutOauth",
+                        gqlRootFieldName: "upgradeGcpCloudAccountPermissionsWithoutOauth"
+                    )
+                },
+                {
+                    GqlRootFieldName.uploadDatabaseSnapshotToBlobstore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "UploadDatabaseToBlobstore",
+                        gqlRootFieldName: "uploadDatabaseSnapshotToBlobstore"
+                    )
+                },
+                {
+                    GqlRootFieldName.userActivityTimeline,
+                    new RscOp(
+                        cmdletName: "New-RscQueryActivitySeries",
+                        cmdletSwitchName: "UserTimeline",
+                        gqlRootFieldName: "userActivityTimeline"
+                    )
+                },
+                {
+                    GqlRootFieldName.userFileActivityTimeline,
+                    new RscOp(
+                        cmdletName: "New-RscQueryActivitySeries",
+                        cmdletSwitchName: "UserFileTimeline",
+                        gqlRootFieldName: "userFileActivityTimeline"
                     )
                 },
                 {
@@ -13075,16 +15897,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAwsNativeRdsClusterNameForExport,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "ValidateNativeRdsClusterNameForExport",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "ValidateRdsClusterNameForExport",
                         gqlRootFieldName: "validateAwsNativeRdsClusterNameForExport"
                     )
                 },
                 {
                     GqlRootFieldName.validateAwsNativeRdsInstanceNameForExport,
                     new RscOp(
-                        cmdletName: "New-RscQueryAws",
-                        cmdletSwitchName: "ValidateNativeRdsInstanceNameForExport",
+                        cmdletName: "New-RscQueryAwsNative",
+                        cmdletSwitchName: "ValidateRdsInstanceNameForExport",
                         gqlRootFieldName: "validateAwsNativeRdsInstanceNameForExport"
                     )
                 },
@@ -13099,16 +15921,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAzureNativeSqlDatabaseDbNameForExport,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "ValidateNativeSqlDatabaseDbNameForExport",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ValidateSqlDatabaseDbNameForExport",
                         gqlRootFieldName: "validateAzureNativeSqlDatabaseDbNameForExport"
                     )
                 },
                 {
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport,
                     new RscOp(
-                        cmdletName: "New-RscQueryAzure",
-                        cmdletSwitchName: "ValidateNativeSqlManagedInstanceDbNameForExport",
+                        cmdletName: "New-RscQueryAzureNative",
+                        cmdletSwitchName: "ValidateSqlManagedInstanceDbNameForExport",
                         gqlRootFieldName: "validateAzureNativeSqlManagedInstanceDbNameForExport"
                     )
                 },
@@ -13129,11 +15951,35 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.vappSnapshotInstantRecoveryOptions,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "VappInstantRecoveryOptions",
+                        gqlRootFieldName: "vappSnapshotInstantRecoveryOptions"
+                    )
+                },
+                {
+                    GqlRootFieldName.vappTemplateSnapshotExportOptions,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "VappTemplateExportOptions",
+                        gqlRootFieldName: "vappTemplateSnapshotExportOptions"
+                    )
+                },
+                {
                     GqlRootFieldName.verifySlaWithReplicationToCluster,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "VerifySlaWithReplicationTo",
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "VerifyWithReplicationToCluster",
                         gqlRootFieldName: "verifySlaWithReplicationToCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.vmwareDownloadSnapshotFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "VmwareDownloadFromLocation",
+                        gqlRootFieldName: "vmwareDownloadSnapshotFromLocation"
                     )
                 },
                 {
@@ -13392,6 +16238,14 @@ namespace RubrikSecurityCloud.Types
                         gqlRootFieldName: "windowsCluster"
                     )
                 },
+                {
+                    GqlRootFieldName.windowsFileset,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFileset",
+                        cmdletSwitchName: "Windows",
+                        gqlRootFieldName: "windowsFileset"
+                    )
+                },
             };
             if (lookupDict.TryGetValue(rootField, out var rscOp))
             {
@@ -13426,6 +16280,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.activitySeriesConnection
                 },
                 {
+                    "New-RscMutationSmb -AddAndJoinDomain",
+                    GqlRootFieldName.addAndJoinSmbDomain
+                },
+                {
                     "New-RscMutationAws -AddAuthenticationServerBasedCloudAccount",
                     GqlRootFieldName.addAwsAuthenticationServerBasedCloudAccount
                 },
@@ -13446,6 +16304,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addAzureCloudAccountWithoutOauth
                 },
                 {
+                    "New-RscMutationCloudNative -AddSqlServerBackupCredentials",
+                    GqlRootFieldName.addCloudNativeSqlServerBackupCredentials
+                },
+                {
+                    "New-RscMutationCertificate -AddClusterCertificate",
+                    GqlRootFieldName.addClusterCertificate
+                },
+                {
                     "New-RscMutationDb2 -AddInstance",
                     GqlRootFieldName.addDb2Instance
                 },
@@ -13458,12 +16324,24 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addMongoSource
                 },
                 {
+                    "New-RscMutationMosaic -AddStore",
+                    GqlRootFieldName.addMosaicStore
+                },
+                {
                     "New-RscMutationCluster -AddNodesToCloud",
                     GqlRootFieldName.addNodesToCloudCluster
                 },
                 {
                     "New-RscMutationO365 -AddOrg",
                     GqlRootFieldName.addO365Org
+                },
+                {
+                    "New-RscMutationSapHana -AddSystem",
+                    GqlRootFieldName.addSapHanaSystem
+                },
+                {
+                    "New-RscMutationStorageArray -Add",
+                    GqlRootFieldName.addStorageArrays
                 },
                 {
                     "New-RscQueryAccount -Owners",
@@ -13474,159 +16352,155 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAccountProducts
                 },
                 {
-                    "New-RscQueryAccount -WithExocomputeMappings",
-                    GqlRootFieldName.allAccountsWithExocomputeMappings
-                },
-                {
-                    "New-RscQueryAws -AllAvailabilityZonesByRegion",
+                    "New-RscQueryAws -AvailabilityZonesByRegion",
                     GqlRootFieldName.allAvailabilityZonesByRegionFromAws
                 },
                 {
-                    "New-RscQueryAws -AllCdmVersions",
+                    "New-RscQueryAws -CdmVersions",
                     GqlRootFieldName.allAwsCdmVersions
                 },
                 {
-                    "New-RscQueryAws -AllCloudAccountConfigs",
+                    "New-RscQueryAws -CloudAccountConfigs",
                     GqlRootFieldName.allAwsCloudAccountConfigs
                 },
                 {
-                    "New-RscQueryAws -AllCloudAccountsWithFeatures",
+                    "New-RscQueryAws -CloudAccountsWithFeatures",
                     GqlRootFieldName.allAwsCloudAccountsWithFeatures
                 },
                 {
-                    "New-RscQueryAws -AllComputeSettings",
-                    GqlRootFieldName.allAwsComputeSettings
-                },
-                {
-                    "New-RscQueryAws -AllExocomputeConfigs",
+                    "New-RscQueryAws -ExocomputeConfigs",
                     GqlRootFieldName.allAwsExocomputeConfigs
                 },
                 {
-                    "New-RscQueryAws -AllInstanceProfileNames",
+                    "New-RscQueryAws -InstanceProfileNames",
                     GqlRootFieldName.allAwsInstanceProfileNames
                 },
                 {
-                    "New-RscQueryAws -AllPermissionPolicies",
+                    "New-RscQueryAws -PermissionPolicies",
                     GqlRootFieldName.allAwsPermissionPolicies
                 },
                 {
-                    "New-RscQueryAws -AllRegions",
+                    "New-RscQueryAws -Regions",
                     GqlRootFieldName.allAwsRegions
                 },
                 {
-                    "New-RscQueryAzure -AllArmTemplatesByFeature",
+                    "New-RscQueryAzure -ArmTemplatesByFeature",
                     GqlRootFieldName.allAzureArmTemplatesByFeature
                 },
                 {
-                    "New-RscQueryAzure -AllCdmVersions",
+                    "New-RscQueryAzure -CdmVersions",
                     GqlRootFieldName.allAzureCdmVersions
                 },
                 {
-                    "New-RscQueryAzure -AllCloudAccountMissingPermissions",
+                    "New-RscQueryAzure -CloudAccountMissingPermissions",
                     GqlRootFieldName.allAzureCloudAccountMissingPermissions
                 },
                 {
-                    "New-RscQueryAzure -AllCloudAccountSubnetsByRegion",
+                    "New-RscQueryAzure -CloudAccountSubnetsByRegion",
                     GqlRootFieldName.allAzureCloudAccountSubnetsByRegion
                 },
                 {
-                    "New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature",
+                    "New-RscQueryAzure -CloudAccountSubscriptionsByFeature",
                     GqlRootFieldName.allAzureCloudAccountSubscriptionsByFeature
                 },
                 {
-                    "New-RscQueryAzure -AllCloudAccountTenants",
+                    "New-RscQueryAzure -CloudAccountTenants",
                     GqlRootFieldName.allAzureCloudAccountTenants
                 },
                 {
-                    "New-RscQueryAzure -AllDiskEncryptionSetsByRegion",
+                    "New-RscQueryAzure -DiskEncryptionSetsByRegion",
                     GqlRootFieldName.allAzureDiskEncryptionSetsByRegion
                 },
                 {
-                    "New-RscQueryAzure -AllEncryptionKeys",
+                    "New-RscQueryAzure -EncryptionKeys",
                     GqlRootFieldName.allAzureEncryptionKeys
                 },
                 {
-                    "New-RscQueryAzure -AllExocomputeConfigsInAccount",
+                    "New-RscQueryAzure -ExocomputeConfigsInAccount",
                     GqlRootFieldName.allAzureExocomputeConfigsInAccount
                 },
                 {
-                    "New-RscQueryAzure -AllKeyVaultsByRegion",
+                    "New-RscQueryAzure -KeyVaultsByRegion",
                     GqlRootFieldName.allAzureKeyVaultsByRegion
                 },
                 {
-                    "New-RscQueryAzure -AllManagedIdentities",
+                    "New-RscQueryAzure -ManagedIdentities",
                     GqlRootFieldName.allAzureManagedIdentities
                 },
                 {
-                    "New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure",
+                    "New-RscQueryAzureNative -AvailabilitySetsByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeAvailabilitySetsByRegionFromAzure
                 },
                 {
-                    "New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure",
+                    "New-RscQueryAzureNative -ExportCompatibleDiskTypesByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure
                 },
                 {
-                    "New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure",
+                    "New-RscQueryAzureNative -ExportCompatibleVmSizesByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure
                 },
                 {
-                    "New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist",
+                    "New-RscQueryAzureNative -ResourceGroupsInfoIfExist",
                     GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist
                 },
                 {
-                    "New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure",
+                    "New-RscQueryAzureNative -SecurityGroupsByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeSecurityGroupsByRegionFromAzure
                 },
                 {
-                    "New-RscQueryAzure -AllNativeStorageAccountsFromAzure",
+                    "New-RscQueryAzureNative -StorageAccountsFromAzure",
                     GqlRootFieldName.allAzureNativeStorageAccountsFromAzure
                 },
                 {
-                    "New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure",
+                    "New-RscQueryAzureNative -SubnetsByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeSubnetsByRegionFromAzure
                 },
                 {
-                    "New-RscQueryAzure -AllNativeVirtualMachineSizes",
+                    "New-RscQueryAzureNative -VirtualMachineSizes",
                     GqlRootFieldName.allAzureNativeVirtualMachineSizes
                 },
                 {
-                    "New-RscQueryAzure -AllNativeVirtualNetworks",
+                    "New-RscQueryAzureNative -VirtualNetworks",
                     GqlRootFieldName.allAzureNativeVirtualNetworks
                 },
                 {
-                    "New-RscQueryAzure -AllNsgs",
+                    "New-RscQueryAzure -Nsgs",
                     GqlRootFieldName.allAzureNsgs
                 },
                 {
-                    "New-RscQueryAzure -AllRegions",
-                    GqlRootFieldName.allAzureRegions
-                },
-                {
-                    "New-RscQueryAzure -AllResourceGroups",
-                    GqlRootFieldName.allAzureResourceGroups
-                },
-                {
-                    "New-RscQueryAzure -AllSqlDatabaseServerElasticPools",
+                    "New-RscQueryAzure -SqlDatabaseServerElasticPools",
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools
                 },
                 {
-                    "New-RscQueryAzure -AllStorageAccounts",
-                    GqlRootFieldName.allAzureStorageAccounts
-                },
-                {
-                    "New-RscQueryAzure -AllSubnets",
-                    GqlRootFieldName.allAzureSubnets
-                },
-                {
-                    "New-RscQueryAzure -AllSubscriptionWithExocomputeMappings",
+                    "New-RscQueryAzure -SubscriptionWithExocomputeMappings",
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings
                 },
                 {
-                    "New-RscQueryAzure -AllVnets",
-                    GqlRootFieldName.allAzureVnets
+                    "New-RscQueryCloudAccount -ExocomputeMappings",
+                    GqlRootFieldName.allCloudAccountExocomputeMappings
                 },
                 {
-                    "New-RscQueryCluster -GlobalSlas",
+                    "New-RscQueryCloudNative -FileRecoveryEligibleSnapshots",
+                    GqlRootFieldName.allCloudNativeFileRecoveryEligibleSnapshots
+                },
+                {
+                    "New-RscQueryCloudNative -LabelKeys",
+                    GqlRootFieldName.allCloudNativeLabelKeys
+                },
+                {
+                    "New-RscQueryCloudNative -LabelValues",
+                    GqlRootFieldName.allCloudNativeLabelValues
+                },
+                {
+                    "New-RscQueryCloudNative -TagKeys",
+                    GqlRootFieldName.allCloudNativeTagKeys
+                },
+                {
+                    "New-RscQueryCloudNative -TagValues",
+                    GqlRootFieldName.allCloudNativeTagValues
+                },
+                {
+                    "New-RscQuerySla -ClusterGlobals",
                     GqlRootFieldName.allClusterGlobalSlas
                 },
                 {
@@ -13646,87 +16520,199 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allConnectedClusters
                 },
                 {
-                    "New-RscQueryAws -AllDbParameterGroupsByRegion",
+                    "New-RscQueryCloudAccount -CurrentFeaturePermissions",
+                    GqlRootFieldName.allCurrentFeaturePermissionsForCloudAccounts
+                },
+                {
+                    "New-RscQueryAws -DbParameterGroupsByRegion",
                     GqlRootFieldName.allDbParameterGroupsByRegionFromAws
                 },
                 {
-                    "New-RscQueryAws -AllDbSubnetGroupsByRegion",
+                    "New-RscQueryAws -DbSubnetGroupsByRegion",
                     GqlRootFieldName.allDbSubnetGroupsByRegionFromAws
                 },
                 {
-                    "New-RscQueryAws -AllEc2KeyPairsByRegion",
+                    "New-RscQueryRcs -Dhcores",
+                    GqlRootFieldName.allDhrcScores
+                },
+                {
+                    "New-RscQueryAws -Ec2KeyPairsByRegion",
                     GqlRootFieldName.allEc2KeyPairsByRegionFromAws
                 },
                 {
-                    "New-RscQueryAzure -AllHostedRegions",
+                    "New-RscQueryAccount -EnabledFeatures",
+                    GqlRootFieldName.allEnabledFeaturesForAccount
+                },
+                {
+                    "New-RscQueryGcp -FeaturePermissionsForCloudAccount",
+                    GqlRootFieldName.allFeaturePermissionsForGcpCloudAccount
+                },
+                {
+                    "New-RscQueryGcp -CloudAccountMissingPermissionsForAddition",
+                    GqlRootFieldName.allGcpCloudAccountMissingPermissionsForAddition
+                },
+                {
+                    "New-RscQueryGcp -CloudAccountProjectsByFeature",
+                    GqlRootFieldName.allGcpCloudAccountProjectsByFeature
+                },
+                {
+                    "New-RscQueryGcp -CloudAccountProjectsForOauth",
+                    GqlRootFieldName.allGcpCloudAccountProjectsForOauth
+                },
+                {
+                    "New-RscQueryGcp -NativeAvailableKmsCryptoKeys",
+                    GqlRootFieldName.allGcpNativeAvailableKmsCryptoKeys
+                },
+                {
+                    "New-RscQueryGcp -NativeCompatibleMachineTypes",
+                    GqlRootFieldName.allGcpNativeCompatibleMachineTypes
+                },
+                {
+                    "New-RscQueryGcp -NativeNetworks",
+                    GqlRootFieldName.allGcpNativeNetworks
+                },
+                {
+                    "New-RscQueryGcp -NativeProjectsWithAccessibleNetworks",
+                    GqlRootFieldName.allGcpNativeProjectsWithAccessibleNetworks
+                },
+                {
+                    "New-RscQueryGcp -NativeRegions",
+                    GqlRootFieldName.allGcpNativeRegions
+                },
+                {
+                    "New-RscQueryGcp -NativeStoredMachineTypes",
+                    GqlRootFieldName.allGcpNativeStoredMachineTypes
+                },
+                {
+                    "New-RscQueryGcp -NativeStoredMachineTypesInProject",
+                    GqlRootFieldName.allGcpNativeStoredMachineTypesInProject
+                },
+                {
+                    "New-RscQueryGcp -NativeStoredNetworkNames",
+                    GqlRootFieldName.allGcpNativeStoredNetworkNames
+                },
+                {
+                    "New-RscQueryGcp -NativeStoredNetworkNamesInProject",
+                    GqlRootFieldName.allGcpNativeStoredNetworkNamesInProject
+                },
+                {
+                    "New-RscQueryGcp -NativeStoredRegions",
+                    GqlRootFieldName.allGcpNativeStoredRegions
+                },
+                {
+                    "New-RscQueryGcp -NativeStoredRegionsInProject",
+                    GqlRootFieldName.allGcpNativeStoredRegionsInProject
+                },
+                {
+                    "New-RscQueryAzure -HostedAzureRegions",
                     GqlRootFieldName.allHostedAzureRegions
                 },
                 {
-                    "New-RscQueryAws -AllKmsEncryptionKeysByRegion",
+                    "New-RscQueryK8s -ReplicaSnapshotInfos",
+                    GqlRootFieldName.allK8sReplicaSnapshotInfos
+                },
+                {
+                    "New-RscQueryAws -KmsEncryptionKeysByRegion",
                     GqlRootFieldName.allKmsEncryptionKeysByRegionFromAws
                 },
                 {
-                    "New-RscQueryMssql -AllDatabaseRestoreFiles",
+                    "New-RscQueryCloudAccount -LatestFeaturePermissions",
+                    GqlRootFieldName.allLatestFeaturePermissionsForCloudAccounts
+                },
+                {
+                    "New-RscQueryMssql -DatabaseRestoreFiles",
                     GqlRootFieldName.allMssqlDatabaseRestoreFiles
                 },
                 {
-                    "New-RscQuerySla -AllNcdComplianceData",
+                    "New-RscQuerySla -NcdComplianceData",
                     GqlRootFieldName.allNcdSlaComplianceData
                 },
                 {
-                    "New-RscQueryO365 -AllAdGroups",
+                    "New-RscQueryO365 -AdGroups",
                     GqlRootFieldName.allO365AdGroups
                 },
                 {
-                    "New-RscQueryO365 -AllOrgStatuses",
+                    "New-RscQueryO365 -OrgStatuses",
                     GqlRootFieldName.allO365OrgStatuses
                 },
                 {
-                    "New-RscQueryO365 -AllSubscriptionsAppTypeCounts",
+                    "New-RscQueryO365 -SubscriptionsAppTypeCounts",
                     GqlRootFieldName.allO365SubscriptionsAppTypeCounts
                 },
                 {
-                    "New-RscQueryAws -AllOptionGroupsByRegion",
+                    "New-RscQueryAws -OptionGroupsByRegion",
                     GqlRootFieldName.allOptionGroupsByRegionFromAws
                 },
                 {
-                    "New-RscQueryAzure -AllResourceGroupsFrom",
+                    "New-RscQuerySnapshot -QuarantinedDetails",
+                    GqlRootFieldName.allQuarantinedDetailsForSnapshots
+                },
+                {
+                    "New-RscQueryAzure -ResourceGroups",
                     GqlRootFieldName.allResourceGroupsFromAzure
                 },
                 {
-                    "New-RscQueryAws -AllS3BucketsDetails",
+                    "New-RscQueryAws -S3BucketsDetails",
                     GqlRootFieldName.allS3BucketsDetailsFromAws
                 },
                 {
-                    "New-RscQueryAws -AllS3Buckets",
+                    "New-RscQueryAws -S3Buckets",
                     GqlRootFieldName.allS3BucketsFromAws
                 },
                 {
-                    "New-RscQuerySla -AllSummariesByIds",
+                    "New-RscQuerySharepoint -SiteExclusions",
+                    GqlRootFieldName.allSharepointSiteExclusions
+                },
+                {
+                    "New-RscQuerySla -SummariesByIds",
                     GqlRootFieldName.allSlaSummariesByIds
                 },
                 {
-                    "New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses",
+                    "New-RscQuerySnapshot -Pvcs",
+                    GqlRootFieldName.allSnapshotPvcs
+                },
+                {
+                    "New-RscQuerySnapshot -ClosestToPointInTime",
+                    GqlRootFieldName.allSnapshotsClosestToPointInTime
+                },
+                {
+                    "New-RscQueryStorageArray -StorageArray",
+                    GqlRootFieldName.allStorageArrays
+                },
+                {
+                    "New-RscQueryAws -SupportedRdsDatabaseInstanceClasses",
                     GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses
+                },
+                {
+                    "New-RscQueryAccount -Users",
+                    GqlRootFieldName.allUsersOnAccount
+                },
+                {
+                    "New-RscQueryReplication -ValidTargets",
+                    GqlRootFieldName.allValidReplicationTargets
                 },
                 {
                     "New-RscQueryVcenter -HotAddProxy",
                     GqlRootFieldName.allVcenterHotAddProxyVms
                 },
                 {
-                    "New-RscQueryAws -AllVpcsByRegion",
+                    "New-RscQueryAws -VpcsByRegion",
                     GqlRootFieldName.allVpcsByRegionFromAws
                 },
                 {
-                    "New-RscQueryAws -AllVpcs",
+                    "New-RscQueryAws -Vpcs",
                     GqlRootFieldName.allVpcsFromAws
                 },
                 {
-                    "New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport",
+                    "New-RscQueryWebhook -Webhook",
+                    GqlRootFieldName.allWebhooks
+                },
+                {
+                    "New-RscQueryAwsNative -AmiTypeForArchivedSnapshotExport",
                     GqlRootFieldName.amiTypeForAwsNativeArchivedSnapshotExport
                 },
                 {
-                    "New-RscMutationCluster -ArchiveK8s",
+                    "New-RscMutationK8s -ArchiveCluster",
                     GqlRootFieldName.archiveK8sCluster
                 },
                 {
@@ -13750,7 +16736,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.assignSla
                 },
                 {
-                    "New-RscMutationMongo -AssignSlaToDbCollection",
+                    "New-RscMutationMongo -AssignSlaToCollection",
                     GqlRootFieldName.assignSlaToMongoDbCollection
                 },
                 {
@@ -13782,59 +16768,59 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.awsComputeSettings
                 },
                 {
-                    "New-RscQueryAws -NativeAccount",
+                    "New-RscQueryAwsNative -Account",
                     GqlRootFieldName.awsNativeAccount
                 },
                 {
-                    "New-RscQueryAws -NativeAccounts",
+                    "New-RscQueryAwsNative -Accounts",
                     GqlRootFieldName.awsNativeAccounts
                 },
                 {
-                    "New-RscQueryAws -NativeEbsVolume",
+                    "New-RscQueryAwsNative -EbsVolume",
                     GqlRootFieldName.awsNativeEbsVolume
                 },
                 {
-                    "New-RscQueryAws -NativeEbsVolumes",
+                    "New-RscQueryAwsNative -EbsVolumes",
                     GqlRootFieldName.awsNativeEbsVolumes
                 },
                 {
-                    "New-RscQueryAws -NativeEbsVolumesByName",
+                    "New-RscQueryAwsNative -EbsVolumesByName",
                     GqlRootFieldName.awsNativeEbsVolumesByName
                 },
                 {
-                    "New-RscQueryAws -NativeEc2Instance",
+                    "New-RscQueryAwsNative -Ec2Instance",
                     GqlRootFieldName.awsNativeEc2Instance
                 },
                 {
-                    "New-RscQueryAws -NativeEc2Instances",
+                    "New-RscQueryAwsNative -Ec2Instances",
                     GqlRootFieldName.awsNativeEc2Instances
                 },
                 {
-                    "New-RscQueryAws -NativeEc2InstancesByName",
+                    "New-RscQueryAwsNative -Ec2InstancesByName",
                     GqlRootFieldName.awsNativeEc2InstancesByName
                 },
                 {
-                    "New-RscQueryAws -NativeRdsExportDefaults",
+                    "New-RscQueryAwsNative -RdsExportDefaults",
                     GqlRootFieldName.awsNativeRdsExportDefaults
                 },
                 {
-                    "New-RscQueryAws -NativeRdsInstance",
+                    "New-RscQueryAwsNative -RdsInstance",
                     GqlRootFieldName.awsNativeRdsInstance
                 },
                 {
-                    "New-RscQueryAws -NativeRdsInstances",
+                    "New-RscQueryAwsNative -RdsInstances",
                     GqlRootFieldName.awsNativeRdsInstances
                 },
                 {
-                    "New-RscQueryAws -NativeRdsPointInTimeRestoreWindow",
+                    "New-RscQueryAwsNative -RdsPointInTimeRestoreWindow",
                     GqlRootFieldName.awsNativeRdsPointInTimeRestoreWindow
                 },
                 {
-                    "New-RscQueryAws -NativeRoot",
+                    "New-RscQueryAwsNative -Root",
                     GqlRootFieldName.awsNativeRoot
                 },
                 {
-                    "New-RscQueryAws -NativeS3Bucket",
+                    "New-RscQueryAwsNative -S3Bucket",
                     GqlRootFieldName.awsNativeS3Bucket
                 },
                 {
@@ -13870,39 +16856,39 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.azureCloudAccountTenantWithExoConfigs
                 },
                 {
-                    "New-RscQueryAzure -NativeManagedDisk",
+                    "New-RscQueryAzureNative -ManagedDisk",
                     GqlRootFieldName.azureNativeManagedDisk
                 },
                 {
-                    "New-RscQueryAzure -NativeManagedDisks",
+                    "New-RscQueryAzureNative -ManagedDisks",
                     GqlRootFieldName.azureNativeManagedDisks
                 },
                 {
-                    "New-RscQueryAzure -NativeResourceGroup",
+                    "New-RscQueryAzureNative -ResourceGroup",
                     GqlRootFieldName.azureNativeResourceGroup
                 },
                 {
-                    "New-RscQueryAzure -NativeResourceGroups",
+                    "New-RscQueryAzureNative -ResourceGroups",
                     GqlRootFieldName.azureNativeResourceGroups
                 },
                 {
-                    "New-RscQueryAzure -NativeRoot",
+                    "New-RscQueryAzureNative -Root",
                     GqlRootFieldName.azureNativeRoot
                 },
                 {
-                    "New-RscQueryAzure -NativeSubscription",
+                    "New-RscQueryAzureNative -Subscription",
                     GqlRootFieldName.azureNativeSubscription
                 },
                 {
-                    "New-RscQueryAzure -NativeSubscriptions",
+                    "New-RscQueryAzureNative -Subscriptions",
                     GqlRootFieldName.azureNativeSubscriptions
                 },
                 {
-                    "New-RscQueryAzure -NativeVirtualMachine",
+                    "New-RscQueryAzureNative -VirtualMachine",
                     GqlRootFieldName.azureNativeVirtualMachine
                 },
                 {
-                    "New-RscQueryAzure -NativeVirtualMachines",
+                    "New-RscQueryAzureNative -VirtualMachines",
                     GqlRootFieldName.azureNativeVirtualMachines
                 },
                 {
@@ -13960,10 +16946,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAzure -Regions",
                     GqlRootFieldName.azureRegions
-                },
-                {
-                    "New-RscQueryAzure -ResourceGroups",
-                    GqlRootFieldName.azureResourceGroups
                 },
                 {
                     "New-RscQueryAzure -SqlDatabase",
@@ -14026,6 +17008,22 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.backupAzureAdDirectory
                 },
                 {
+                    "New-RscMutationM365 -BackupMailbox",
+                    GqlRootFieldName.backupM365Mailbox
+                },
+                {
+                    "New-RscMutationM365 -BackupOnedrive",
+                    GqlRootFieldName.backupM365Onedrive
+                },
+                {
+                    "New-RscMutationM365 -BackupSharepointDrive",
+                    GqlRootFieldName.backupM365SharepointDrive
+                },
+                {
+                    "New-RscMutationM365 -BackupTeam",
+                    GqlRootFieldName.backupM365Team
+                },
+                {
                     "New-RscMutationO365 -BackupMailbox",
                     GqlRootFieldName.backupO365Mailbox
                 },
@@ -14074,6 +17072,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.batchOnDemandBackupHypervVm
                 },
                 {
+                    "New-RscMutationSnapshot -BatchQuarantine",
+                    GqlRootFieldName.batchQuarantineSnapshot
+                },
+                {
+                    "New-RscMutationSnapshot -BatchReleaseFromQuarantine",
+                    GqlRootFieldName.batchReleaseFromQuarantineSnapshot
+                },
+                {
                     "New-RscMutationManagedVolume -BeginSnapshot",
                     GqlRootFieldName.beginManagedVolumeSnapshot
                 },
@@ -14084,6 +17090,26 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryO365 -BrowseTeamConvChannels",
                     GqlRootFieldName.browseO365TeamConvChannels
+                },
+                {
+                    "New-RscQuerySharepoint -BrowseDrive",
+                    GqlRootFieldName.browseSharepointDrive
+                },
+                {
+                    "New-RscQuerySharepoint -BrowseList",
+                    GqlRootFieldName.browseSharepointList
+                },
+                {
+                    "New-RscQuerySnapshot -BrowseFileList",
+                    GqlRootFieldName.browseSnapshotFileConnection
+                },
+                {
+                    "New-RscMutationFileset -BulkCreateTemplates",
+                    GqlRootFieldName.bulkCreateFilesetTemplates
+                },
+                {
+                    "New-RscMutationFileset -BulkCreate",
+                    GqlRootFieldName.bulkCreateFilesets
                 },
                 {
                     "New-RscMutationMssql -BulkCreateOnDemandBackup",
@@ -14102,12 +17128,48 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.bulkDeleteFailoverCluster
                 },
                 {
-                    "New-RscMutationMongo -BulkDeletedbSources",
+                    "New-RscMutationFileset -BulkDelete",
+                    GqlRootFieldName.bulkDeleteFileset
+                },
+                {
+                    "New-RscMutationFileset -BulkDeleteTemplate",
+                    GqlRootFieldName.bulkDeleteFilesetTemplate
+                },
+                {
+                    "New-RscMutationHost -BulkDelete",
+                    GqlRootFieldName.bulkDeleteHost
+                },
+                {
+                    "New-RscMutationMongo -BulkDeleteSources",
                     GqlRootFieldName.bulkDeleteMongodbSources
                 },
                 {
                     "New-RscMutationNutanix -BulkOnDemandSnapshotVm",
                     GqlRootFieldName.bulkOnDemandSnapshotNutanixVm
+                },
+                {
+                    "New-RscMutationHost -BulkRefresh",
+                    GqlRootFieldName.bulkRefreshHosts
+                },
+                {
+                    "New-RscMutationHost -BulkRegister",
+                    GqlRootFieldName.bulkRegisterHost
+                },
+                {
+                    "New-RscMutationSnapshot -BulkTierExistings",
+                    GqlRootFieldName.bulkTierExistingSnapshots
+                },
+                {
+                    "New-RscMutationExchange -BulkUpdateDag",
+                    GqlRootFieldName.bulkUpdateExchangeDag
+                },
+                {
+                    "New-RscMutationFileset -BulkUpdateTemplate",
+                    GqlRootFieldName.bulkUpdateFilesetTemplate
+                },
+                {
+                    "New-RscMutationHost -BulkUpdate",
+                    GqlRootFieldName.bulkUpdateHost
                 },
                 {
                     "New-RscMutationMssql -BulkUpdateDbs",
@@ -14128,6 +17190,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationActivitySeries -Cancel",
                     GqlRootFieldName.cancelActivitySeries
+                },
+                {
+                    "New-RscMutationThreat -CancelHunt",
+                    GqlRootFieldName.cancelThreatHunt
                 },
                 {
                     "New-RscQueryCassandra -ColumnFamilies",
@@ -14170,15 +17236,103 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cdmMssqlLogShippingTargets
                 },
                 {
+                    "New-RscQueryCertificate -SigningRequest",
+                    GqlRootFieldName.certificateSigningRequest
+                },
+                {
+                    "New-RscQueryCertificate -SigningRequests",
+                    GqlRootFieldName.certificateSigningRequests
+                },
+                {
+                    "New-RscQueryCertificate -Certificate",
+                    GqlRootFieldName.certificates
+                },
+                {
+                    "New-RscQueryCertificate -WithKey",
+                    GqlRootFieldName.certificatesWithKey
+                },
+                {
+                    "New-RscMutationHost -ChangeVfd",
+                    GqlRootFieldName.changeVfdOnHost
+                },
+                {
                     "New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap",
                     GqlRootFieldName.checkAzurePersistentStorageSubscriptionCanUnmap
+                },
+                {
+                    "New-RscQueryCloudNative -CheckLabelRuleNameUniqueness",
+                    GqlRootFieldName.checkCloudNativeLabelRuleNameUniqueness
+                },
+                {
+                    "New-RscQueryCloudNative -CheckTagRuleNameUniqueness",
+                    GqlRootFieldName.checkCloudNativeTagRuleNameUniqueness
+                },
+                {
+                    "New-RscMutationCloudNative -ClearSqlServerBackupCredentials",
+                    GqlRootFieldName.clearCloudNativeSqlServerBackupCredentials
+                },
+                {
+                    "New-RscQueryCloudAccount -CloudAccount",
+                    GqlRootFieldName.cloudAccount
+                },
+                {
+                    "New-RscQueryCloudNative -CheckArchivedSnapshotsLocked",
+                    GqlRootFieldName.cloudNativeCheckArchivedSnapshotsLocked
+                },
+                {
+                    "New-RscMutationCloudNative -CheckRbaConnectivity",
+                    GqlRootFieldName.cloudNativeCheckRbaConnectivity
+                },
+                {
+                    "New-RscQueryCloudNative -CheckRequiredPermissionsForFeature",
+                    GqlRootFieldName.cloudNativeCheckRequiredPermissionsForFeature
+                },
+                {
+                    "New-RscQueryCloudNative -CustomerTags",
+                    GqlRootFieldName.cloudNativeCustomerTags
+                },
+                {
+                    "New-RscMutationCloudNative -DownloadFiles",
+                    GqlRootFieldName.cloudNativeDownloadFiles
+                },
+                {
+                    "New-RscQueryCloudNative -LabelRules",
+                    GqlRootFieldName.cloudNativeLabelRules
+                },
+                {
+                    "New-RscQueryCloudNative -RbaInstallers",
+                    GqlRootFieldName.cloudNativeRbaInstallers
+                },
+                {
+                    "New-RscQueryCloudNative -SnapshotDetailsForRecovery",
+                    GqlRootFieldName.cloudNativeSnapshotDetailsForRecovery
+                },
+                {
+                    "New-RscQueryCloudNative -SnapshotTypeDetails",
+                    GqlRootFieldName.cloudNativeSnapshotTypeDetails
+                },
+                {
+                    "New-RscQueryCloudNative -Snapshots",
+                    GqlRootFieldName.cloudNativeSnapshots
+                },
+                {
+                    "New-RscQueryCloudNative -SqlServerSetupScript",
+                    GqlRootFieldName.cloudNativeSqlServerSetupScript
+                },
+                {
+                    "New-RscQueryCloudNative -TagRules",
+                    GqlRootFieldName.cloudNativeTagRules
+                },
+                {
+                    "New-RscQueryCloudNative -WorkloadVersionedFiles",
+                    GqlRootFieldName.cloudNativeWorkloadVersionedFiles
                 },
                 {
                     "New-RscQueryCluster -Cluster",
                     GqlRootFieldName.cluster
                 },
                 {
-                    "New-RscQueryCluster -Certificates",
+                    "New-RscQueryCertificate -Cluster",
                     GqlRootFieldName.clusterCertificates
                 },
                 {
@@ -14186,7 +17340,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterConnection
                 },
                 {
-                    "New-RscQueryCluster -Csr",
+                    "New-RscQueryRcs -Cluster",
                     GqlRootFieldName.clusterCsr
                 },
                 {
@@ -14250,7 +17404,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterReportMigrationStatus
                 },
                 {
-                    "New-RscQueryCluster -SlaDomains",
+                    "New-RscQuerySla -ClusterDomains",
                     GqlRootFieldName.clusterSlaDomains
                 },
                 {
@@ -14262,7 +17416,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterVlans
                 },
                 {
-                    "New-RscQueryCluster -WebSignedCertificate",
+                    "New-RscQueryCertificate -ClusterWebSigned",
                     GqlRootFieldName.clusterWebSignedCertificate
                 },
                 {
@@ -14282,6 +17436,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.completeAzureCloudAccountOauth
                 },
                 {
+                    "New-RscMutationSapHana -ConfigureRestore",
+                    GqlRootFieldName.configureSapHanaRestore
+                },
+                {
                     "New-RscQuerySla -CountOfObjectsProtected",
                     GqlRootFieldName.countOfObjectsProtectedBySlas
                 },
@@ -14292,6 +17450,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAzure -CreateAutomaticTargetMapping",
                     GqlRootFieldName.createAutomaticAzureTargetMapping
+                },
+                {
+                    "New-RscMutationRcs -CreateAutomaticTargetMapping",
+                    GqlRootFieldName.createAutomaticRcsTargetMapping
                 },
                 {
                     "New-RscMutationAws -CreateAccount",
@@ -14350,12 +17512,44 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createCloudNativeAzureStorageSetting
                 },
                 {
+                    "New-RscMutationCloudNative -CreateLabelRule",
+                    GqlRootFieldName.createCloudNativeLabelRule
+                },
+                {
                     "New-RscMutationAzure -CreateCloudNativeRcvStorageSetting",
                     GqlRootFieldName.createCloudNativeRcvAzureStorageSetting
                 },
                 {
+                    "New-RscMutationCloudNative -CreateTagRule",
+                    GqlRootFieldName.createCloudNativeTagRule
+                },
+                {
+                    "New-RscMutationReport -CreateCustom",
+                    GqlRootFieldName.createCustomReport
+                },
+                {
+                    "New-RscMutationSnapshot -CreateDownloadForVolumeGroup",
+                    GqlRootFieldName.createDownloadSnapshotForVolumeGroup
+                },
+                {
+                    "New-RscMutationExchange -CreateMount",
+                    GqlRootFieldName.createExchangeMount
+                },
+                {
                     "New-RscMutationCluster -CreateFailover",
                     GqlRootFieldName.createFailoverCluster
+                },
+                {
+                    "New-RscMutationSnapshot -CreateFileset",
+                    GqlRootFieldName.createFilesetSnapshot
+                },
+                {
+                    "New-RscMutationGcp -CreateReaderTarget",
+                    GqlRootFieldName.createGcpReaderTarget
+                },
+                {
+                    "New-RscMutationGcp -CreateTarget",
+                    GqlRootFieldName.createGcpTarget
                 },
                 {
                     "New-RscMutationSla -CreateGlobal",
@@ -14366,11 +17560,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount
                 },
                 {
-                    "New-RscMutationCluster -CreateK8s",
+                    "New-RscMutationK8s -CreateAgentManifest",
+                    GqlRootFieldName.createK8sAgentManifest
+                },
+                {
+                    "New-RscMutationK8s -CreateCluster",
                     GqlRootFieldName.createK8sCluster
                 },
                 {
-                    "New-RscMutationMongo -CreatedbSource",
+                    "New-RscMutationK8s -CreateNamespaceSnapshots",
+                    GqlRootFieldName.createK8sNamespaceSnapshots
+                },
+                {
+                    "New-RscMutationMongo -CreateSource",
                     GqlRootFieldName.createMongodbSource
                 },
                 {
@@ -14380,6 +17582,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMssql -CreateLogShippingConfiguration",
                     GqlRootFieldName.createMssqlLogShippingConfiguration
+                },
+                {
+                    "New-RscMutationNfs -CreateReaderTarget",
+                    GqlRootFieldName.createNfsReaderTarget
+                },
+                {
+                    "New-RscMutationNfs -CreateTarget",
+                    GqlRootFieldName.createNfsTarget
                 },
                 {
                     "New-RscMutationNutanix -CreateCluster",
@@ -14402,6 +17612,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createOnDemandDb2Backup
                 },
                 {
+                    "New-RscMutationExchange -CreateOnDemandBackup",
+                    GqlRootFieldName.createOnDemandExchangeBackup
+                },
+                {
                     "New-RscMutationMssql -CreateOnDemandBackup",
                     GqlRootFieldName.createOnDemandMssqlBackup
                 },
@@ -14410,8 +17624,52 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createOnDemandNutanixBackup
                 },
                 {
+                    "New-RscMutationSapHana -CreateOnDemandBackup",
+                    GqlRootFieldName.createOnDemandSapHanaBackup
+                },
+                {
                     "New-RscMutationOracle -CreatePdbRestore",
                     GqlRootFieldName.createOraclePdbRestore
+                },
+                {
+                    "New-RscMutationRcs -CreateReaderTarget",
+                    GqlRootFieldName.createRcsReaderTarget
+                },
+                {
+                    "New-RscMutationRcs -CreateTarget",
+                    GqlRootFieldName.createRcsTarget
+                },
+                {
+                    "New-RscMutationRcv -CreateLocationsFromTemplate",
+                    GqlRootFieldName.createRcvLocationsFromTemplate
+                },
+                {
+                    "New-RscMutationRcv -CreatePrivateEndpointApprovalRequest",
+                    GqlRootFieldName.createRcvPrivateEndpointApprovalRequest
+                },
+                {
+                    "New-RscMutationReplication -CreatePair",
+                    GqlRootFieldName.createReplicationPair
+                },
+                {
+                    "New-RscMutationSapHana -CreateSystemRefresh",
+                    GqlRootFieldName.createSapHanaSystemRefresh
+                },
+                {
+                    "New-RscMutationReport -CreateScheduled",
+                    GqlRootFieldName.createScheduledReport
+                },
+                {
+                    "New-RscMutationServiceAccount -Create",
+                    GqlRootFieldName.createServiceAccount
+                },
+                {
+                    "New-RscMutationTape -CreateReaderTarget",
+                    GqlRootFieldName.createTapeReaderTarget
+                },
+                {
+                    "New-RscMutationTape -CreateTarget",
+                    GqlRootFieldName.createTapeTarget
                 },
                 {
                     "New-RscMutationVsphere -CreateAdvancedTag",
@@ -14420,6 +17678,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationVcenter -Create",
                     GqlRootFieldName.createVsphereVcenter
+                },
+                {
+                    "New-RscMutationWebhook -Create",
+                    GqlRootFieldName.createWebhook
                 },
                 {
                     "New-RscQueryCluster -DatabaseLogReport",
@@ -14502,6 +17764,26 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteCassandraSource
                 },
                 {
+                    "New-RscMutationCertificate -Delete",
+                    GqlRootFieldName.deleteCertificate
+                },
+                {
+                    "New-RscMutationCloudNative -DeleteLabelRule",
+                    GqlRootFieldName.deleteCloudNativeLabelRule
+                },
+                {
+                    "New-RscMutationCloudNative -DeleteTagRule",
+                    GqlRootFieldName.deleteCloudNativeTagRule
+                },
+                {
+                    "New-RscMutationSnapshot -DeleteCloudWorkload",
+                    GqlRootFieldName.deleteCloudWorkloadSnapshot
+                },
+                {
+                    "New-RscMutationReport -DeleteCustom",
+                    GqlRootFieldName.deleteCustomReport
+                },
+                {
                     "New-RscMutationDb2 -DeleteDatabase",
                     GqlRootFieldName.deleteDb2Database
                 },
@@ -14510,8 +17792,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteDb2Instance
                 },
                 {
+                    "New-RscMutationExchange -DeleteSnapshotMount",
+                    GqlRootFieldName.deleteExchangeSnapshotMount
+                },
+                {
                     "New-RscMutationCluster -DeleteFailover",
                     GqlRootFieldName.deleteFailoverCluster
+                },
+                {
+                    "New-RscMutationSnapshot -DeleteFilesets",
+                    GqlRootFieldName.deleteFilesetSnapshots
                 },
                 {
                     "New-RscMutationHyperv -DeleteVirtualMachineSnapshot",
@@ -14538,8 +17828,8 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteMongoSource
                 },
                 {
-                    "New-RscMutationMongo -DeletedbSource",
-                    GqlRootFieldName.deleteMongodbSource
+                    "New-RscMutationMosaic -DeleteStore",
+                    GqlRootFieldName.deleteMosaicStore
                 },
                 {
                     "New-RscMutationMssql -DeleteDbSnapshots",
@@ -14586,12 +17876,52 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteOracleMount
                 },
                 {
+                    "New-RscMutationReplication -DeletePair",
+                    GqlRootFieldName.deleteReplicationPair
+                },
+                {
+                    "New-RscMutationSapHana -DeleteDbSnapshot",
+                    GqlRootFieldName.deleteSapHanaDbSnapshot
+                },
+                {
+                    "New-RscMutationSapHana -DeleteSystem",
+                    GqlRootFieldName.deleteSapHanaSystem
+                },
+                {
+                    "New-RscMutationReport -DeleteScheduled",
+                    GqlRootFieldName.deleteScheduledReport
+                },
+                {
+                    "New-RscMutationServiceAccount -Delete",
+                    GqlRootFieldName.deleteServiceAccountsFromAccount
+                },
+                {
+                    "New-RscMutationSmb -DeleteDomain",
+                    GqlRootFieldName.deleteSmbDomain
+                },
+                {
+                    "New-RscMutationStorageArray -Delete",
+                    GqlRootFieldName.deleteStorageArrays
+                },
+                {
+                    "New-RscMutationAccount -DeleteUsers",
+                    GqlRootFieldName.deleteUsersFromAccount
+                },
+                {
                     "New-RscMutationVsphere -DeleteAdvancedTag",
                     GqlRootFieldName.deleteVsphereAdvancedTag
                 },
                 {
                     "New-RscMutationVsphere -DeleteLiveMount",
                     GqlRootFieldName.deleteVsphereLiveMount
+                },
+                {
+                    "New-RscMutationWebhook -Delete",
+                    GqlRootFieldName.deleteWebhook
+                },
+                {
+                    "New-RscMutationReplication -DisablePause",
+                    GqlRootFieldName.disableReplicationPause
                 },
                 {
                     "New-RscMutationDb2 -DiscoverInstance",
@@ -14602,8 +17932,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.discoverMongoSource
                 },
                 {
-                    "New-RscQueryAzure -DoesNativeResourceGroupExist",
+                    "New-RscQueryAzureNative -DoesResourceGroupExist",
                     GqlRootFieldName.doesAzureNativeResourceGroupExist
+                },
+                {
+                    "New-RscMutationDownload -AuditLogCsvAsync",
+                    GqlRootFieldName.downloadAuditLogCsvAsync
+                },
+                {
+                    "New-RscQueryDownload -CdmUpgradesPdf",
+                    GqlRootFieldName.downloadCdmUpgradesPdf
                 },
                 {
                     "New-RscMutationDb2 -DownloadSnapshot",
@@ -14614,8 +17952,20 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadDb2SnapshotsForPointInTimeRecovery
                 },
                 {
+                    "New-RscMutationDownload -ExchangeSnapshot",
+                    GqlRootFieldName.downloadExchangeSnapshot
+                },
+                {
                     "New-RscMutationNutanix -DownloadFilesSnapshot",
                     GqlRootFieldName.downloadFilesNutanixSnapshot
+                },
+                {
+                    "New-RscMutationDownload -FilesetSnapshot",
+                    GqlRootFieldName.downloadFilesetSnapshot
+                },
+                {
+                    "New-RscMutationDownload -FilesetSnapshotFromLocation",
+                    GqlRootFieldName.downloadFilesetSnapshotFromLocation
                 },
                 {
                     "New-RscMutationHyperv -DownloadSnapshotFromLocation",
@@ -14654,12 +18004,76 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadNutanixVmFromLocation
                 },
                 {
+                    "New-RscMutationDownload -ObjectFilesCsv",
+                    GqlRootFieldName.downloadObjectFilesCsv
+                },
+                {
+                    "New-RscMutationDownload -ObjectsListCsv",
+                    GqlRootFieldName.downloadObjectsListCsv
+                },
+                {
                     "New-RscMutationOracle -DownloadDatabaseSnapshot",
                     GqlRootFieldName.downloadOracleDatabaseSnapshot
                 },
                 {
+                    "New-RscQueryDownload -PackageStatus",
+                    GqlRootFieldName.downloadPackageStatus
+                },
+                {
+                    "New-RscMutationDownload -ReportCsvAsync",
+                    GqlRootFieldName.downloadReportCsvAsync
+                },
+                {
+                    "New-RscMutationDownload -ReportPdfAsync",
+                    GqlRootFieldName.downloadReportPdfAsync
+                },
+                {
+                    "New-RscMutationDownload -ResultsCsv",
+                    GqlRootFieldName.downloadResultsCsv
+                },
+                {
+                    "New-RscMutationDownload -SapHanaSnapshot",
+                    GqlRootFieldName.downloadSapHanaSnapshot
+                },
+                {
+                    "New-RscMutationDownload -SapHanaSnapshotFromLocation",
+                    GqlRootFieldName.downloadSapHanaSnapshotFromLocation
+                },
+                {
+                    "New-RscMutationDownload -SapHanaSnapshotsForPointInTimeRecovery",
+                    GqlRootFieldName.downloadSapHanaSnapshotsForPointInTimeRecovery
+                },
+                {
+                    "New-RscMutationDownload -SnapshotResultsCsv",
+                    GqlRootFieldName.downloadSnapshotResultsCsv
+                },
+                {
+                    "New-RscMutationDownload -ThreatHuntCsv",
+                    GqlRootFieldName.downloadThreatHuntCsv
+                },
+                {
+                    "New-RscMutationActivitySeries -DownloadUserCsv",
+                    GqlRootFieldName.downloadUserActivityCsv
+                },
+                {
+                    "New-RscMutationActivitySeries -DownloadUserFileCsv",
+                    GqlRootFieldName.downloadUserFileActivityCsv
+                },
+                {
+                    "New-RscMutationDownload -VolumeGroupSnapshotFiles",
+                    GqlRootFieldName.downloadVolumeGroupSnapshotFiles
+                },
+                {
+                    "New-RscMutationDownload -VolumeGroupSnapshotFromLocation",
+                    GqlRootFieldName.downloadVolumeGroupSnapshotFromLocation
+                },
+                {
                     "New-RscMutationVsphere -DownloadVirtualMachineFiles",
                     GqlRootFieldName.downloadVsphereVirtualMachineFiles
+                },
+                {
+                    "New-RscQueryDownload -EdVersionList",
+                    GqlRootFieldName.downloadedVersionList
                 },
                 {
                     "New-RscMutationO365 -EnableSharePoint",
@@ -14670,24 +18084,72 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.enableO365Teams
                 },
                 {
+                    "New-RscMutationReplication -EnablePause",
+                    GqlRootFieldName.enableReplicationPause
+                },
+                {
+                    "New-RscMutationThreat -EnableMonitoring",
+                    GqlRootFieldName.enableThreatMonitoring
+                },
+                {
                     "New-RscMutationManagedVolume -EndSnapshot",
                     GqlRootFieldName.endManagedVolumeSnapshot
                 },
                 {
-                    "New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot",
+                    "New-RscQueryExchange -Dag",
+                    GqlRootFieldName.exchangeDag
+                },
+                {
+                    "New-RscQueryExchange -Dags",
+                    GqlRootFieldName.exchangeDags
+                },
+                {
+                    "New-RscQueryExchange -Database",
+                    GqlRootFieldName.exchangeDatabase
+                },
+                {
+                    "New-RscQueryExchange -Databases",
+                    GqlRootFieldName.exchangeDatabases
+                },
+                {
+                    "New-RscQueryExchange -LiveMounts",
+                    GqlRootFieldName.exchangeLiveMounts
+                },
+                {
+                    "New-RscQueryExchange -Server",
+                    GqlRootFieldName.exchangeServer
+                },
+                {
+                    "New-RscQueryExchange -Servers",
+                    GqlRootFieldName.exchangeServers
+                },
+                {
+                    "New-RscMutationAwsNative -ExcludeEbsVolumesFromSnapshot",
                     GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot
                 },
                 {
-                    "New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot",
+                    "New-RscMutationAzureNative -ExcludeManagedDisksFromSnapshot",
                     GqlRootFieldName.excludeAzureNativeManagedDisksFromSnapshot
+                },
+                {
+                    "New-RscMutationSharepoint -ExcludeObjectsFromProtection",
+                    GqlRootFieldName.excludeSharepointObjectsFromProtection
                 },
                 {
                     "New-RscMutationDb2 -ExpireDownloadedSnapshots",
                     GqlRootFieldName.expireDownloadedDb2Snapshots
                 },
                 {
+                    "New-RscMutationSapHana -ExpireDownloadedSnapshots",
+                    GqlRootFieldName.expireDownloadedSapHanaSnapshots
+                },
+                {
                     "New-RscMutationHyperv -ExportVirtualMachine",
                     GqlRootFieldName.exportHypervVirtualMachine
+                },
+                {
+                    "New-RscMutationK8s -ExportNamespace",
+                    GqlRootFieldName.exportK8sNamespace
                 },
                 {
                     "New-RscMutationManagedVolume -ExportSnapshot",
@@ -14718,12 +18180,128 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.exportSlaManagedVolumeSnapshot
                 },
                 {
+                    "New-RscMutationSnapshot -FilesetDownloadFiles",
+                    GqlRootFieldName.filesetDownloadSnapshotFiles
+                },
+                {
+                    "New-RscMutationSnapshot -FilesetExportFiles",
+                    GqlRootFieldName.filesetExportSnapshotFiles
+                },
+                {
+                    "New-RscMutationFileset -RecoverFiles",
+                    GqlRootFieldName.filesetRecoverFiles
+                },
+                {
+                    "New-RscQueryFileset -RequestStatus",
+                    GqlRootFieldName.filesetRequestStatus
+                },
+                {
+                    "New-RscQuerySnapshot -Fileset",
+                    GqlRootFieldName.filesetSnapshot
+                },
+                {
+                    "New-RscQuerySnapshot -FilesetFiles",
+                    GqlRootFieldName.filesetSnapshotFiles
+                },
+                {
+                    "New-RscQueryFileset -Template",
+                    GqlRootFieldName.filesetTemplate
+                },
+                {
+                    "New-RscQueryFileset -Templates",
+                    GqlRootFieldName.filesetTemplates
+                },
+                {
                     "New-RscMutationAws -FinalizeCloudAccountDeletion",
                     GqlRootFieldName.finalizeAwsCloudAccountDeletion
                 },
                 {
                     "New-RscMutationAws -FinalizeCloudAccountProtection",
                     GqlRootFieldName.finalizeAwsCloudAccountProtection
+                },
+                {
+                    "New-RscMutationGcp -CloudAccountAddManualAuthProject",
+                    GqlRootFieldName.gcpCloudAccountAddManualAuthProject
+                },
+                {
+                    "New-RscMutationGcp -CloudAccountAddProjects",
+                    GqlRootFieldName.gcpCloudAccountAddProjects
+                },
+                {
+                    "New-RscMutationGcp -CloudAccountDeleteProjects",
+                    GqlRootFieldName.gcpCloudAccountDeleteProjects
+                },
+                {
+                    "New-RscMutationGcp -CloudAccountOauthComplete",
+                    GqlRootFieldName.gcpCloudAccountOauthComplete
+                },
+                {
+                    "New-RscMutationGcp -CloudAccountOauthInitiate",
+                    GqlRootFieldName.gcpCloudAccountOauthInitiate
+                },
+                {
+                    "New-RscMutationGcp -CloudAccountUpgradeProjects",
+                    GqlRootFieldName.gcpCloudAccountUpgradeProjects
+                },
+                {
+                    "New-RscQueryGcp -GetDefaultCredentialsServiceAccount",
+                    GqlRootFieldName.gcpGetDefaultCredentialsServiceAccount
+                },
+                {
+                    "New-RscMutationGcpNative -DisableProject",
+                    GqlRootFieldName.gcpNativeDisableProject
+                },
+                {
+                    "New-RscQueryGcpNative -Disk",
+                    GqlRootFieldName.gcpNativeDisk
+                },
+                {
+                    "New-RscQueryGcpNative -Disks",
+                    GqlRootFieldName.gcpNativeDisks
+                },
+                {
+                    "New-RscMutationGcpNative -ExcludeDisksFromInstanceSnapshot",
+                    GqlRootFieldName.gcpNativeExcludeDisksFromInstanceSnapshot
+                },
+                {
+                    "New-RscMutationGcpNative -ExportDisk",
+                    GqlRootFieldName.gcpNativeExportDisk
+                },
+                {
+                    "New-RscMutationGcpNative -ExportGceInstance",
+                    GqlRootFieldName.gcpNativeExportGceInstance
+                },
+                {
+                    "New-RscQueryGcpNative -GceInstance",
+                    GqlRootFieldName.gcpNativeGceInstance
+                },
+                {
+                    "New-RscQueryGcpNative -GceInstances",
+                    GqlRootFieldName.gcpNativeGceInstances
+                },
+                {
+                    "New-RscQueryGcpNative -Project",
+                    GqlRootFieldName.gcpNativeProject
+                },
+                {
+                    "New-RscQueryGcpNative -Projects",
+                    GqlRootFieldName.gcpNativeProjects
+                },
+                {
+                    "New-RscMutationGcpNative -RefreshProjects",
+                    GqlRootFieldName.gcpNativeRefreshProjects
+                },
+                {
+                    "New-RscMutationGcpNative -RestoreGceInstance",
+                    GqlRootFieldName.gcpNativeRestoreGceInstance
+                },
+                {
+                    "New-RscQueryGcpNative -StoredDiskLocations",
+                    GqlRootFieldName.gcpNativeStoredDiskLocations
+                },
+                {
+                    "New-RscMutationGcp -SetDefaultServiceAccountJwtConfig",
+                    GqlRootFieldName.gcpSetDefaultServiceAccountJwtConfig
                 },
                 {
                     "New-RscMutationSla -GetPendingAssignments",
@@ -14738,8 +18316,20 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.globalSlaStatuses
                 },
                 {
+                    "New-RscQueryHost -Diagnosis",
+                    GqlRootFieldName.hostDiagnosis
+                },
+                {
                     "New-RscQueryCluster -HostFailover",
                     GqlRootFieldName.hostFailoverCluster
+                },
+                {
+                    "New-RscQueryHost -Share",
+                    GqlRootFieldName.hostShare
+                },
+                {
+                    "New-RscQueryHost -Shares",
+                    GqlRootFieldName.hostShares
                 },
                 {
                     "New-RscQueryHyperv -Cluster",
@@ -14822,11 +18412,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.instantRecoverOracleSnapshot
                 },
                 {
-                    "New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable",
+                    "New-RscQueryAwsNative -IsEbsVolumeSnapshotRestorable",
                     GqlRootFieldName.isAwsNativeEbsVolumeSnapshotRestorable
                 },
                 {
-                    "New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid",
+                    "New-RscQueryAwsNative -IsRdsInstanceLaunchConfigurationValid",
                     GqlRootFieldName.isAwsNativeRdsInstanceLaunchConfigurationValid
                 },
                 {
@@ -14834,11 +18424,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isAwsS3BucketNameAvailable
                 },
                 {
-                    "New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable",
+                    "New-RscQueryAzureNative -IsManagedDiskSnapshotRestorable",
                     GqlRootFieldName.isAzureNativeManagedDiskSnapshotRestorable
                 },
                 {
-                    "New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent",
+                    "New-RscQueryAzureNative -IsSqlDatabaseSnapshotPersistent",
                     GqlRootFieldName.isAzureNativeSqlDatabaseSnapshotPersistent
                 },
                 {
@@ -14846,12 +18436,40 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isAzureStorageAccountNameAvailable
                 },
                 {
+                    "New-RscQueryCloudNative -IsFileRecoveryFeasible",
+                    GqlRootFieldName.isCloudNativeFileRecoveryFeasible
+                },
+                {
                     "New-RscQueryCluster -IsTotpAckNecessary",
                     GqlRootFieldName.isTotpAckNecessaryForCluster
                 },
                 {
-                    "New-RscQueryCluster -K8s",
+                    "New-RscMutationSmb -JoinDomain",
+                    GqlRootFieldName.joinSmbDomain
+                },
+                {
+                    "New-RscQueryK8s -AppManifest",
+                    GqlRootFieldName.k8sAppManifest
+                },
+                {
+                    "New-RscQueryK8s -Cluster",
+                    GqlRootFieldName.k8sCluster
+                },
+                {
+                    "New-RscQueryK8s -Clusters",
                     GqlRootFieldName.k8sClusters
+                },
+                {
+                    "New-RscQueryK8s -Namespace",
+                    GqlRootFieldName.k8sNamespace
+                },
+                {
+                    "New-RscQueryK8s -Namespaces",
+                    GqlRootFieldName.k8sNamespaces
+                },
+                {
+                    "New-RscQueryK8s -SnapshotInfo",
+                    GqlRootFieldName.k8sSnapshotInfo
                 },
                 {
                     "New-RscQueryLdap -AuthorizedPrincipalList",
@@ -14866,8 +18484,24 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.ldapPrincipalConnection
                 },
                 {
+                    "New-RscQuerySnapshot -LegalHoldSnappable",
+                    GqlRootFieldName.legalHoldSnapshotsForSnappable
+                },
+                {
+                    "New-RscQueryFileset -Linux",
+                    GqlRootFieldName.linuxFileset
+                },
+                {
                     "New-RscQueryO365 -ListApps",
                     GqlRootFieldName.listO365Apps
+                },
+                {
+                    "New-RscQueryAccount -Lookup",
+                    GqlRootFieldName.lookupAccount
+                },
+                {
+                    "New-RscQueryM365 -Regions",
+                    GqlRootFieldName.m365Regions
                 },
                 {
                     "New-RscQueryManagedVolume -ManagedVolume",
@@ -14892,6 +18526,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAzure -MapCloudAccountToPersistentStorageLocation",
                     GqlRootFieldName.mapAzureCloudAccountToPersistentStorageLocation
+                },
+                {
+                    "New-RscMutationCloudAccount -MapExocomputeAccount",
+                    GqlRootFieldName.mapCloudAccountExocomputeAccount
                 },
                 {
                     "New-RscMutationNutanix -MigrateMountV1",
@@ -14930,36 +18568,28 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.mongoSources
                 },
                 {
-                    "New-RscQueryMongo -DbBulkRecoverableRange",
+                    "New-RscQueryMongo -BulkRecoverableRange",
                     GqlRootFieldName.mongodbBulkRecoverableRange
                 },
                 {
-                    "New-RscQueryMongo -DbCollection",
-                    GqlRootFieldName.mongodbCollection
-                },
-                {
-                    "New-RscQueryMongo -DbCollectionRecoverableRange",
+                    "New-RscQueryMongo -CollectionRecoverableRange",
                     GqlRootFieldName.mongodbCollectionRecoverableRange
                 },
                 {
-                    "New-RscQueryMongo -DbCollections",
-                    GqlRootFieldName.mongodbCollections
+                    "New-RscQueryMosaic -BulkRecoveryRange",
+                    GqlRootFieldName.mosaicBulkRecoveryRange
                 },
                 {
-                    "New-RscQueryMongo -DbDatabase",
-                    GqlRootFieldName.mongodbDatabase
+                    "New-RscQueryMosaic -Snapshots",
+                    GqlRootFieldName.mosaicSnapshots
                 },
                 {
-                    "New-RscQueryMongo -DbDatabases",
-                    GqlRootFieldName.mongodbDatabases
+                    "New-RscQueryMosaic -Stores",
+                    GqlRootFieldName.mosaicStores
                 },
                 {
-                    "New-RscQueryMongo -DbSource",
-                    GqlRootFieldName.mongodbSource
-                },
-                {
-                    "New-RscQueryMongo -DbSources",
-                    GqlRootFieldName.mongodbSources
+                    "New-RscQueryMosaic -Versions",
+                    GqlRootFieldName.mosaicVersions
                 },
                 {
                     "New-RscMutationNutanix -MountSnapshotV1",
@@ -15020,6 +18650,38 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMssql -TopLevelDescendants",
                     GqlRootFieldName.mssqlTopLevelDescendants
+                },
+                {
+                    "New-RscQueryNas -Fileset",
+                    GqlRootFieldName.nasFileset
+                },
+                {
+                    "New-RscQueryNas -Namespace",
+                    GqlRootFieldName.nasNamespace
+                },
+                {
+                    "New-RscQueryNas -Namespaces",
+                    GqlRootFieldName.nasNamespaces
+                },
+                {
+                    "New-RscQueryNas -Share",
+                    GqlRootFieldName.nasShare
+                },
+                {
+                    "New-RscQueryNas -System",
+                    GqlRootFieldName.nasSystem
+                },
+                {
+                    "New-RscQueryNas -Systems",
+                    GqlRootFieldName.nasSystems
+                },
+                {
+                    "New-RscQueryNas -TopLevelDescendants",
+                    GqlRootFieldName.nasTopLevelDescendants
+                },
+                {
+                    "New-RscQueryNas -Volume",
+                    GqlRootFieldName.nasVolume
                 },
                 {
                     "New-RscQueryNutanix -BrowseSnapshot",
@@ -15306,6 +18968,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.oracleTopLevelDescendants
                 },
                 {
+                    "New-RscQueryRansomware -OverallInvestigationSummary",
+                    GqlRootFieldName.overallRansomwareInvestigationSummary
+                },
+                {
                     "New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount",
                     GqlRootFieldName.patchAwsAuthenticationServerBasedCloudAccount
                 },
@@ -15330,8 +18996,52 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.patchNutanixMountV1
                 },
                 {
+                    "New-RscMutationSapHana -PatchSystem",
+                    GqlRootFieldName.patchSapHanaSystem
+                },
+                {
                     "New-RscMutationSla -Pause",
                     GqlRootFieldName.pauseSla
+                },
+                {
+                    "New-RscQueryRansomware -PendingInvestigationResultsCount",
+                    GqlRootFieldName.pendingRansomwareInvestigationResultsCount
+                },
+                {
+                    "New-RscQueryHost -PhysicalHost",
+                    GqlRootFieldName.physicalHost
+                },
+                {
+                    "New-RscQueryHost -PhysicalHosts",
+                    GqlRootFieldName.physicalHosts
+                },
+                {
+                    "New-RscQuerySnapshot -Polaris",
+                    GqlRootFieldName.polarisSnapshot
+                },
+                {
+                    "New-RscQueryPolicy -Policies",
+                    GqlRootFieldName.policies
+                },
+                {
+                    "New-RscQueryPolicy -Policy",
+                    GqlRootFieldName.policy
+                },
+                {
+                    "New-RscQueryPolicy -Details",
+                    GqlRootFieldName.policyDetails
+                },
+                {
+                    "New-RscQueryPolicy -Obj",
+                    GqlRootFieldName.policyObj
+                },
+                {
+                    "New-RscQueryPolicy -ObjectUsages",
+                    GqlRootFieldName.policyObjectUsages
+                },
+                {
+                    "New-RscQueryPolicy -Objs",
+                    GqlRootFieldName.policyObjs
                 },
                 {
                     "New-RscMutationAws -PrepareCloudAccountDeletion",
@@ -15340,6 +19050,58 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAws -PrepareFeatureUpdateForCloudAccount",
                     GqlRootFieldName.prepareFeatureUpdateForAwsCloudAccount
+                },
+                {
+                    "New-RscQueryRansomware -ProcessedInvestigationWorkloadCount",
+                    GqlRootFieldName.processedRansomwareInvestigationWorkloadCount
+                },
+                {
+                    "New-RscQueryRansomware -ProtectedInvestigationWorkloadCount",
+                    GqlRootFieldName.protectedRansomwareInvestigationWorkloadCount
+                },
+                {
+                    "New-RscMutationSmb -PutConfiguration",
+                    GqlRootFieldName.putSmbConfiguration
+                },
+                {
+                    "New-RscQueryRansomware -DetectionWorkloadLocations",
+                    GqlRootFieldName.ransomwareDetectionWorkloadLocations
+                },
+                {
+                    "New-RscQueryRansomware -InvestigationAnalysisSummary",
+                    GqlRootFieldName.ransomwareInvestigationAnalysisSummary
+                },
+                {
+                    "New-RscQueryRansomware -InvestigationEnablement",
+                    GqlRootFieldName.ransomwareInvestigationEnablement
+                },
+                {
+                    "New-RscQueryRansomware -InvestigationWorkloadScannedCount",
+                    GqlRootFieldName.ransomwareInvestigationWorkloadScannedCount
+                },
+                {
+                    "New-RscQueryRansomware -Result",
+                    GqlRootFieldName.ransomwareResult
+                },
+                {
+                    "New-RscQueryRansomware -ResultOpt",
+                    GqlRootFieldName.ransomwareResultOpt
+                },
+                {
+                    "New-RscQueryRansomware -Results",
+                    GqlRootFieldName.ransomwareResults
+                },
+                {
+                    "New-RscQueryRansomware -ResultsGrouped",
+                    GqlRootFieldName.ransomwareResultsGrouped
+                },
+                {
+                    "New-RscQueryRcs -ArchivalLocationsConsumptionStats",
+                    GqlRootFieldName.rcsArchivalLocationsConsumptionStats
+                },
+                {
+                    "New-RscQueryRcv -AccountEntitlement",
+                    GqlRootFieldName.rcvAccountEntitlement
                 },
                 {
                     "New-RscQueryAws -RdsInstanceDetails",
@@ -15358,12 +19120,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.recoverMongoSource
                 },
                 {
-                    "New-RscMutationMongo -RecoverdbSource",
-                    GqlRootFieldName.recoverMongodbSource
-                },
-                {
                     "New-RscMutationDb2 -RefreshDatabase",
                     GqlRootFieldName.refreshDb2Database
+                },
+                {
+                    "New-RscMutationHost -Refresh",
+                    GqlRootFieldName.refreshHost
                 },
                 {
                     "New-RscMutationHyperv -RefreshScvmm",
@@ -15374,7 +19136,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.refreshHypervServer
                 },
                 {
-                    "New-RscMutationCluster -RefreshK8s",
+                    "New-RscMutationK8s -RefreshCluster",
                     GqlRootFieldName.refreshK8sCluster
                 },
                 {
@@ -15392,6 +19154,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationOracle -RefreshDatabase",
                     GqlRootFieldName.refreshOracleDatabase
+                },
+                {
+                    "New-RscMutationStorageArray -Refresh",
+                    GqlRootFieldName.refreshStorageArrays
                 },
                 {
                     "New-RscMutationVcenter -Refresh",
@@ -15426,6 +19192,22 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.removeLdapIntegration
                 },
                 {
+                    "New-RscQueryReplication -IncomingStats",
+                    GqlRootFieldName.replicationIncomingStats
+                },
+                {
+                    "New-RscQueryReplication -OutgoingStats",
+                    GqlRootFieldName.replicationOutgoingStats
+                },
+                {
+                    "New-RscQueryReplication -Pairs",
+                    GqlRootFieldName.replicationPairs
+                },
+                {
+                    "New-RscQueryReport -Data",
+                    GqlRootFieldName.reportData
+                },
+                {
                     "New-RscMutationManagedVolume -Resize",
                     GqlRootFieldName.resizeManagedVolume
                 },
@@ -15440,6 +19222,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles",
                     GqlRootFieldName.restoreHypervVirtualMachineSnapshotFiles
+                },
+                {
+                    "New-RscMutationK8s -RestoreNamespace",
+                    GqlRootFieldName.restoreK8sNamespace
                 },
                 {
                     "New-RscMutationMssql -RestoreDatabase",
@@ -15466,16 +19252,84 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.restoreOracleLogs
                 },
                 {
+                    "New-RscMutationSnapshot -RestoreVolumeGroupFiles",
+                    GqlRootFieldName.restoreVolumeGroupSnapshotFiles
+                },
+                {
                     "New-RscMutationMongo -RetryAddSource",
                     GqlRootFieldName.retryAddMongoSource
+                },
+                {
+                    "New-RscMutationServiceAccount -Rotate",
+                    GqlRootFieldName.rotateServiceAccountSecret
+                },
+                {
+                    "New-RscQueryAws -S3BucketStateForRecovery",
+                    GqlRootFieldName.s3BucketStateForRecovery
+                },
+                {
+                    "New-RscQuerySapHana -Database",
+                    GqlRootFieldName.sapHanaDatabase
+                },
+                {
+                    "New-RscQuerySapHana -Databases",
+                    GqlRootFieldName.sapHanaDatabases
+                },
+                {
+                    "New-RscQuerySapHana -LogSnapshot",
+                    GqlRootFieldName.sapHanaLogSnapshot
+                },
+                {
+                    "New-RscQuerySapHana -LogSnapshots",
+                    GqlRootFieldName.sapHanaLogSnapshots
+                },
+                {
+                    "New-RscQuerySapHana -RecoverableRange",
+                    GqlRootFieldName.sapHanaRecoverableRange
+                },
+                {
+                    "New-RscQuerySapHana -RecoverableRanges",
+                    GqlRootFieldName.sapHanaRecoverableRanges
+                },
+                {
+                    "New-RscQuerySapHana -System",
+                    GqlRootFieldName.sapHanaSystem
+                },
+                {
+                    "New-RscQuerySapHana -Systems",
+                    GqlRootFieldName.sapHanaSystems
+                },
+                {
+                    "New-RscQueryReport -Scheduled",
+                    GqlRootFieldName.scheduledReport
                 },
                 {
                     "New-RscQueryAzure -SearchAdSnapshot",
                     GqlRootFieldName.searchAzureAdSnapshot
                 },
                 {
+                    "New-RscQueryHost -Search",
+                    GqlRootFieldName.searchHost
+                },
+                {
                     "New-RscQueryNutanix -SearchVm",
                     GqlRootFieldName.searchNutanixVm
+                },
+                {
+                    "New-RscMutationPolicy -Policies",
+                    GqlRootFieldName.seedInitialPolicies
+                },
+                {
+                    "New-RscMutationReport -SendPdf",
+                    GqlRootFieldName.sendPdfReport
+                },
+                {
+                    "New-RscMutationReport -SendScheduledAsync",
+                    GqlRootFieldName.sendScheduledReportAsync
+                },
+                {
+                    "New-RscQueryServiceAccount -ServiceAccount",
+                    GqlRootFieldName.serviceAccounts
                 },
                 {
                     "New-RscMutationAzure -SetCloudAccountCustomerAppCredentials",
@@ -15490,8 +19344,32 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.setO365ServiceAccount
                 },
                 {
+                    "New-RscMutationCertificate -SetSso",
+                    GqlRootFieldName.setSsoCertificate
+                },
+                {
+                    "New-RscMutationCertificate -SetWebSigned",
+                    GqlRootFieldName.setWebSignedCertificate
+                },
+                {
                     "New-RscMutationAzureO365 -SetupExocompute",
                     GqlRootFieldName.setupAzureO365Exocompute
+                },
+                {
+                    "New-RscMutationCloudNative -SetupSqlServerBackup",
+                    GqlRootFieldName.setupCloudNativeSqlServerBackup
+                },
+                {
+                    "New-RscQueryFileset -Share",
+                    GqlRootFieldName.shareFileset
+                },
+                {
+                    "New-RscQuerySharepoint -SiteDescendants",
+                    GqlRootFieldName.sharepointSiteDescendants
+                },
+                {
+                    "New-RscQuerySharepoint -SiteSearch",
+                    GqlRootFieldName.sharepointSiteSearch
                 },
                 {
                     "New-RscQuerySla -AuditDetail",
@@ -15518,19 +19396,103 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.slaManagedVolumes
                 },
                 {
+                    "New-RscQuerySmb -Configuration",
+                    GqlRootFieldName.smbConfiguration
+                },
+                {
+                    "New-RscQuerySmb -Domains",
+                    GqlRootFieldName.smbDomains
+                },
+                {
+                    "New-RscQuerySharepoint -SnappableDriveSearch",
+                    GqlRootFieldName.snappableSharepointDriveSearch
+                },
+                {
+                    "New-RscQuerySharepoint -SnappableListSearch",
+                    GqlRootFieldName.snappableSharepointListSearch
+                },
+                {
+                    "New-RscQuerySnapshot -SnappablesWithLegalHoldsSummary",
+                    GqlRootFieldName.snappablesWithLegalHoldSnapshotsSummary
+                },
+                {
+                    "New-RscQuerySnapshot -Snapshot",
+                    GqlRootFieldName.snapshot
+                },
+                {
+                    "New-RscQuerySnapshot -EmailSearch",
+                    GqlRootFieldName.snapshotEmailSearch
+                },
+                {
+                    "New-RscQuerySnapshot -EventSearch",
+                    GqlRootFieldName.snapshotEventSearch
+                },
+                {
+                    "New-RscQuerySnapshot -FilesDelta",
+                    GqlRootFieldName.snapshotFilesDelta
+                },
+                {
+                    "New-RscQuerySnapshot -FilesDeltaV2",
+                    GqlRootFieldName.snapshotFilesDeltaV2
+                },
+                {
+                    "New-RscQuerySnapshot -SnappableList",
+                    GqlRootFieldName.snapshotOfASnappableConnection
+                },
+                {
+                    "New-RscQuerySnapshot -SnappablesList",
+                    GqlRootFieldName.snapshotOfSnappablesConnection
+                },
+                {
+                    "New-RscQuerySnapshot -OnedriveSearch",
+                    GqlRootFieldName.snapshotOnedriveSearch
+                },
+                {
+                    "New-RscQuerySnapshot -Results",
+                    GqlRootFieldName.snapshotResults
+                },
+                {
+                    "New-RscQuerySharepoint -SnapshotDriveSearch",
+                    GqlRootFieldName.snapshotSharepointDriveSearch
+                },
+                {
+                    "New-RscQuerySnapshot -UnmanagedObject",
+                    GqlRootFieldName.snapshotsForUnmanagedObject
+                },
+                {
+                    "New-RscQuerySonar -ContentReport",
+                    GqlRootFieldName.sonarContentReport
+                },
+                {
+                    "New-RscQuerySonar -Report",
+                    GqlRootFieldName.sonarReport
+                },
+                {
+                    "New-RscQuerySonar -ReportRow",
+                    GqlRootFieldName.sonarReportRow
+                },
+                {
+                    "New-RscQuerySonar -UserGroups",
+                    GqlRootFieldName.sonarUserGroups
+                },
+                {
+                    "New-RscQuerySonar -Users",
+                    GqlRootFieldName.sonarUsers
+                },
+                {
                     "New-RscMutationAws -StartExocomputeDisableJob",
                     GqlRootFieldName.startAwsExocomputeDisableJob
                 },
                 {
-                    "New-RscMutationAws -StartNativeAccountDisableJob",
+                    "New-RscMutationAwsNative -StartAccountDisableJob",
                     GqlRootFieldName.startAwsNativeAccountDisableJob
                 },
                 {
-                    "New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob",
+                    "New-RscMutationAwsNative -StartEc2InstanceSnapshotsJob",
                     GqlRootFieldName.startAwsNativeEc2InstanceSnapshotsJob
                 },
                 {
-                    "New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob",
+                    "New-RscMutationAwsNative -StartRdsInstanceSnapshotsJob",
                     GqlRootFieldName.startAwsNativeRdsInstanceSnapshotsJob
                 },
                 {
@@ -15546,15 +19508,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startAzureCloudAccountOauth
                 },
                 {
-                    "New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob",
+                    "New-RscMutationCloudNative -StartSnapshotsIndexJob",
+                    GqlRootFieldName.startCloudNativeSnapshotsIndexJob
+                },
+                {
+                    "New-RscMutationReport -StartClusterMigrationJob",
+                    GqlRootFieldName.startClusterReportMigrationJob
+                },
+                {
+                    "New-RscMutationAwsNative -StartCreateEbsVolumeSnapshotsJob",
                     GqlRootFieldName.startCreateAwsNativeEbsVolumeSnapshotsJob
                 },
                 {
-                    "New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob",
+                    "New-RscMutationAzureNative -StartCreateManagedDiskSnapshotsJob",
                     GqlRootFieldName.startCreateAzureNativeManagedDiskSnapshotsJob
                 },
                 {
-                    "New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob",
+                    "New-RscMutationAzureNative -StartCreateVirtualMachineSnapshotsJob",
                     GqlRootFieldName.startCreateAzureNativeVirtualMachineSnapshotsJob
                 },
                 {
@@ -15562,19 +19532,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startDisableAzureCloudAccountJob
                 },
                 {
-                    "New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob",
+                    "New-RscMutationAzureNative -StartDisableSubscriptionProtectionJob",
                     GqlRootFieldName.startDisableAzureNativeSubscriptionProtectionJob
                 },
                 {
-                    "New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob",
+                    "New-RscMutationSnapshot -StartEc2InstanceExportJob",
+                    GqlRootFieldName.startEc2InstanceSnapshotExportJob
+                },
+                {
+                    "New-RscMutationAwsNative -StartExportEbsVolumeSnapshotJob",
                     GqlRootFieldName.startExportAwsNativeEbsVolumeSnapshotJob
                 },
                 {
-                    "New-RscMutationAzure -StartExportNativeManagedDiskJob",
+                    "New-RscMutationAzureNative -StartExportManagedDiskJob",
                     GqlRootFieldName.startExportAzureNativeManagedDiskJob
                 },
                 {
-                    "New-RscMutationAzure -StartExportNativeVirtualMachineJob",
+                    "New-RscMutationAzureNative -StartExportVirtualMachineJob",
                     GqlRootFieldName.startExportAzureNativeVirtualMachineJob
                 },
                 {
@@ -15586,20 +19560,28 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startExportAzureSqlManagedInstanceDbJob
                 },
                 {
-                    "New-RscMutationAws -StartRefreshNativeAccountsJob",
+                    "New-RscMutationSnapshot -StartRecoverS3Job",
+                    GqlRootFieldName.startRecoverS3SnapshotJob
+                },
+                {
+                    "New-RscMutationAwsNative -StartRefreshAccountsJob",
                     GqlRootFieldName.startRefreshAwsNativeAccountsJob
                 },
                 {
-                    "New-RscMutationAzure -StartRefreshNativeSubscriptionsJob",
+                    "New-RscMutationAzureNative -StartRefreshSubscriptionsJob",
                     GqlRootFieldName.startRefreshAzureNativeSubscriptionsJob
                 },
                 {
-                    "New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob",
+                    "New-RscMutationAwsNative -StartRestoreEc2InstanceSnapshotJob",
                     GqlRootFieldName.startRestoreAwsNativeEc2InstanceSnapshotJob
                 },
                 {
-                    "New-RscMutationAzure -StartRestoreNativeVirtualMachineJob",
+                    "New-RscMutationAzureNative -StartRestoreVirtualMachineJob",
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob
+                },
+                {
+                    "New-RscMutationThreat -StartHunt",
+                    GqlRootFieldName.startThreatHunt
                 },
                 {
                     "New-RscMutationManagedVolume -TakeOnDemandSnapshot",
@@ -15618,6 +19600,42 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.takeOnDemandOracleLogSnapshot
                 },
                 {
+                    "New-RscMutationSnapshot -TakeOnDemand",
+                    GqlRootFieldName.takeOnDemandSnapshot
+                },
+                {
+                    "New-RscMutationWebhook -TestExisting",
+                    GqlRootFieldName.testExistingWebhook
+                },
+                {
+                    "New-RscMutationWebhook -Test",
+                    GqlRootFieldName.testWebhook
+                },
+                {
+                    "New-RscQueryThreat -HuntDetail",
+                    GqlRootFieldName.threatHuntDetail
+                },
+                {
+                    "New-RscQueryThreat -HuntResult",
+                    GqlRootFieldName.threatHuntResult
+                },
+                {
+                    "New-RscQueryThreat -HuntSummary",
+                    GqlRootFieldName.threatHuntSummary
+                },
+                {
+                    "New-RscQueryThreat -Hunts",
+                    GqlRootFieldName.threatHunts
+                },
+                {
+                    "New-RscMutationRansomware -TriggerDetection",
+                    GqlRootFieldName.triggerRansomwareDetection
+                },
+                {
+                    "New-RscMutationSapHana -UnconfigureRestore",
+                    GqlRootFieldName.unconfigureSapHanaRestore
+                },
+                {
                     "New-RscQueryHyperv -UniqueServersCount",
                     GqlRootFieldName.uniqueHypervServersCount
                 },
@@ -15628,6 +19646,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAzure -UnmapPersistentStorageSubscription",
                     GqlRootFieldName.unmapAzurePersistentStorageSubscription
+                },
+                {
+                    "New-RscMutationCloudAccount -UnmapExocomputeAccount",
+                    GqlRootFieldName.unmapCloudAccountExocomputeAccount
                 },
                 {
                     "New-RscMutationAws -UpdateAutomaticTargetMapping",
@@ -15678,6 +19700,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateCassandraSource
                 },
                 {
+                    "New-RscMutationCertificate -Update",
+                    GqlRootFieldName.updateCertificate
+                },
+                {
+                    "New-RscMutationCertificate -UpdateHost",
+                    GqlRootFieldName.updateCertificateHost
+                },
+                {
                     "New-RscMutationAws -UpdateCloudNativeStorageSetting",
                     GqlRootFieldName.updateCloudNativeAwsStorageSetting
                 },
@@ -15686,8 +19716,24 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateCloudNativeAzureStorageSetting
                 },
                 {
+                    "New-RscMutationCloudNative -UpdateIndexingStatus",
+                    GqlRootFieldName.updateCloudNativeIndexingStatus
+                },
+                {
+                    "New-RscMutationCloudNative -UpdateLabelRule",
+                    GqlRootFieldName.updateCloudNativeLabelRule
+                },
+                {
                     "New-RscMutationAzure -UpdateCloudNativeRcvStorageSetting",
                     GqlRootFieldName.updateCloudNativeRcvAzureStorageSetting
+                },
+                {
+                    "New-RscMutationCloudNative -UpdateTagRule",
+                    GqlRootFieldName.updateCloudNativeTagRule
+                },
+                {
+                    "New-RscMutationReport -UpdateCustom",
+                    GqlRootFieldName.updateCustomReport
                 },
                 {
                     "New-RscMutationAzure -UpdateCustomerAppPermissionForSql",
@@ -15700,6 +19746,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationCluster -UpdateFailover",
                     GqlRootFieldName.updateFailoverCluster
+                },
+                {
+                    "New-RscMutationGcp -UpdateTarget",
+                    GqlRootFieldName.updateGcpTarget
                 },
                 {
                     "New-RscMutationSla -UpdateGlobal",
@@ -15722,8 +19772,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateManagedVolume
                 },
                 {
-                    "New-RscMutationMongo -UpdatedbSource",
+                    "New-RscMutationMongo -UpdateSource",
                     GqlRootFieldName.updateMongodbSource
+                },
+                {
+                    "New-RscMutationMosaic -UpdateStore",
+                    GqlRootFieldName.updateMosaicStore
                 },
                 {
                     "New-RscMutationMssql -UpdateDefaultProperties",
@@ -15732,6 +19786,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMssql -UpdateLogShippingConfiguration",
                     GqlRootFieldName.updateMssqlLogShippingConfiguration
+                },
+                {
+                    "New-RscMutationNfs -UpdateTarget",
+                    GqlRootFieldName.updateNfsTarget
                 },
                 {
                     "New-RscMutationNutanix -UpdateCluster",
@@ -15762,6 +19820,34 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateOracleDataGuardGroup
                 },
                 {
+                    "New-RscMutationRcs -UpdateAutomaticTargetMapping",
+                    GqlRootFieldName.updateRcsAutomaticTargetMapping
+                },
+                {
+                    "New-RscMutationRcv -UpdateTarget",
+                    GqlRootFieldName.updateRcvTarget
+                },
+                {
+                    "New-RscMutationReplication -UpdateTarget",
+                    GqlRootFieldName.updateReplicationTarget
+                },
+                {
+                    "New-RscMutationReport -UpdateScheduled",
+                    GqlRootFieldName.updateScheduledReport
+                },
+                {
+                    "New-RscMutationServiceAccount -Update",
+                    GqlRootFieldName.updateServiceAccount
+                },
+                {
+                    "New-RscMutationStorageArray -Update",
+                    GqlRootFieldName.updateStorageArrays
+                },
+                {
+                    "New-RscMutationTape -UpdateTarget",
+                    GqlRootFieldName.updateTapeTarget
+                },
+                {
                     "New-RscMutationVcenter -Update",
                     GqlRootFieldName.updateVcenter
                 },
@@ -15782,6 +19868,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateVsphereVm
                 },
                 {
+                    "New-RscMutationWebhook -Update",
+                    GqlRootFieldName.updateWebhook
+                },
+                {
                     "New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft",
                     GqlRootFieldName.upgradeAwsCloudAccountFeaturesWithoutCft
                 },
@@ -15796,6 +19886,22 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAzure -UpgradeCloudAccountPermissionsWithoutOauth",
                     GqlRootFieldName.upgradeAzureCloudAccountPermissionsWithoutOauth
+                },
+                {
+                    "New-RscMutationGcp -UpgradeCloudAccountPermissionsWithoutOauth",
+                    GqlRootFieldName.upgradeGcpCloudAccountPermissionsWithoutOauth
+                },
+                {
+                    "New-RscMutationSnapshot -UploadDatabaseToBlobstore",
+                    GqlRootFieldName.uploadDatabaseSnapshotToBlobstore
+                },
+                {
+                    "New-RscQueryActivitySeries -UserTimeline",
+                    GqlRootFieldName.userActivityTimeline
+                },
+                {
+                    "New-RscQueryActivitySeries -UserFileTimeline",
+                    GqlRootFieldName.userFileActivityTimeline
                 },
                 {
                     "New-RscQueryVcenter -AdvancedTagPreview",
@@ -15934,11 +20040,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.validateAndCreateAwsCloudAccount
                 },
                 {
-                    "New-RscQueryAws -ValidateNativeRdsClusterNameForExport",
+                    "New-RscQueryAwsNative -ValidateRdsClusterNameForExport",
                     GqlRootFieldName.validateAwsNativeRdsClusterNameForExport
                 },
                 {
-                    "New-RscQueryAws -ValidateNativeRdsInstanceNameForExport",
+                    "New-RscQueryAwsNative -ValidateRdsInstanceNameForExport",
                     GqlRootFieldName.validateAwsNativeRdsInstanceNameForExport
                 },
                 {
@@ -15946,11 +20052,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.validateAzureCloudAccountExocomputeConfigurations
                 },
                 {
-                    "New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport",
+                    "New-RscQueryAzureNative -ValidateSqlDatabaseDbNameForExport",
                     GqlRootFieldName.validateAzureNativeSqlDatabaseDbNameForExport
                 },
                 {
-                    "New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport",
+                    "New-RscQueryAzureNative -ValidateSqlManagedInstanceDbNameForExport",
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport
                 },
                 {
@@ -15962,8 +20068,20 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.validateOracleDatabaseBackups
                 },
                 {
-                    "New-RscQueryCluster -VerifySlaWithReplicationTo",
+                    "New-RscQuerySnapshot -VappInstantRecoveryOptions",
+                    GqlRootFieldName.vappSnapshotInstantRecoveryOptions
+                },
+                {
+                    "New-RscQuerySnapshot -VappTemplateExportOptions",
+                    GqlRootFieldName.vappTemplateSnapshotExportOptions
+                },
+                {
+                    "New-RscQuerySla -VerifyWithReplicationToCluster",
                     GqlRootFieldName.verifySlaWithReplicationToCluster
+                },
+                {
+                    "New-RscMutationSnapshot -VmwareDownloadFromLocation",
+                    GqlRootFieldName.vmwareDownloadSnapshotFromLocation
                 },
                 {
                     "New-RscMutationVsphere -BulkOnDemandSnapshot",
@@ -16092,6 +20210,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryCluster -Windows",
                     GqlRootFieldName.windowsCluster
+                },
+                {
+                    "New-RscQueryFileset -Windows",
+                    GqlRootFieldName.windowsFileset
                 },
             };
             string key = rscOp.Syntax();
@@ -21529,23 +25651,55 @@ namespace RubrikSecurityCloud.Types
             Account,
             ActivitySeries,
             Aws,
+            AwsNative,
             Azure,
+            AzureNative,
             AzureO365,
             Cassandra,
+            Certificate,
+            CloudAccount,
+            CloudNative,
             Cluster,
             Db2,
+            Download,
+            Exchange,
+            Fileset,
+            Gcp,
+            GcpNative,
+            Host,
             Hyperv,
+            K8s,
             Ldap,
+            M365,
             ManagedVolume,
             Mongo,
+            Mosaic,
             Mssql,
+            Nas,
+            Nfs,
             Nutanix,
             O365,
             Oracle,
+            Policy,
+            Ransomware,
+            Rcs,
+            Rcv,
+            Replication,
+            Report,
+            SapHana,
+            ServiceAccount,
+            Sharepoint,
             Sla,
+            Smb,
+            Snapshot,
+            Sonar,
+            StorageArray,
+            Tape,
+            Threat,
             Vcenter,
             Vsphere,
             VsphereVm,
+            Webhook,
         }
 
 

@@ -23,28 +23,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 16
-    /// operations in the 'MSSQL' API domain:
-    /// AllDatabaseRestoreFiles, AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+    /// operations in the 'Microsoft SQL Server' API domain:
+    /// AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
     /// </summary>
     /// <description>
     /// New-RscQueryMssql creates a new
     /// query object for operations
-    /// in the 'MSSQL' API domain. It only creates a data structure,
+    /// in the 'Microsoft SQL Server' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 16 operations
-    /// in the 'MSSQL' API domain. Select the operation this
+    /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AllDatabaseRestoreFiles, -AvailabilityGroup, -CdmLogShippingTarget, -CdmLogShippingTargets, -CompatibleInstances, -Database, -DatabaseLiveMounts, -DatabaseMissedRecoverableRanges, -DatabaseMissedSnapshots, -DatabaseRestoreEstimate, -Databases, -DefaultProperties, -Instance, -LogShippingTargets, -RecoverableRanges, -TopLevelDescendants.
+    /// one of: -AvailabilityGroup, -CdmLogShippingTarget, -CdmLogShippingTargets, -CompatibleInstances, -Database, -DatabaseLiveMounts, -DatabaseMissedRecoverableRanges, -DatabaseMissedSnapshots, -DatabaseRestoreEstimate, -DatabaseRestoreFiles, -Databases, -DefaultProperties, -Instance, -LogShippingTargets, -RecoverableRanges, -TopLevelDescendants.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AllDatabaseRestoreFiles,
-    /// which is equivalent to specifying -AllDatabaseRestoreFiles.
+    /// -Op parameter, for example: -Op AvailabilityGroup,
+    /// which is equivalent to specifying -AvailabilityGroup.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryMssql -AllDatabaseRestoreFiles).Info().
+    /// (New-RscQueryMssql -AvailabilityGroup).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,58 +71,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryMssql -AllDatabaseRestoreFiles).Info().
+    /// (New-RscQueryMssql -AvailabilityGroup).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the AllDatabaseRestoreFiles operation
-    /// of the 'MSSQL' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
-    /// # API Operation: AllDatabaseRestoreFiles
-    /// 
-    /// $query = New-RscQueryMssql -AllDatabaseRestoreFiles
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	lsn = $someString
-    /// 	# OPTIONAL
-    /// 	recoveryForkGuid = $someString
-    /// 	# OPTIONAL
-    /// 	time = $someDateTime
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: V1MssqlGetRestoreFilesV1Response
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the AvailabilityGroup operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: AvailabilityGroup
     /// 
     /// $query = New-RscQueryMssql -AvailabilityGroup
@@ -144,13 +107,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CdmLogShippingTarget operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: CdmLogShippingTarget
     /// 
     /// $query = New-RscQueryMssql -CdmLogShippingTarget
@@ -172,13 +135,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CdmLogShippingTargets operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: CdmLogShippingTargets
     /// 
     /// $query = New-RscQueryMssql -CdmLogShippingTargets
@@ -220,13 +183,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CompatibleInstances operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: CompatibleInstances
     /// 
     /// $query = New-RscQueryMssql -CompatibleInstances
@@ -255,13 +218,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Database operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: Database
     /// 
     /// $query = New-RscQueryMssql -Database
@@ -283,13 +246,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatabaseLiveMounts operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DatabaseLiveMounts
     /// 
     /// $query = New-RscQueryMssql -DatabaseLiveMounts
@@ -331,13 +294,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatabaseMissedRecoverableRanges operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DatabaseMissedRecoverableRanges
     /// 
     /// $query = New-RscQueryMssql -DatabaseMissedRecoverableRanges
@@ -366,13 +329,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatabaseMissedSnapshots operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DatabaseMissedSnapshots
     /// 
     /// $query = New-RscQueryMssql -DatabaseMissedSnapshots
@@ -401,13 +364,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatabaseRestoreEstimate operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DatabaseRestoreEstimate
     /// 
     /// $query = New-RscQueryMssql -DatabaseRestoreEstimate
@@ -437,14 +400,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the Databases operation
-    /// of the 'MSSQL' API domain.
+    /// Runs the DatabaseRestoreFiles operation
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
+    /// # API Operation: DatabaseRestoreFiles
+    /// 
+    /// $query = New-RscQueryMssql -DatabaseRestoreFiles
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	lsn = $someString
+    /// 	# OPTIONAL
+    /// 	recoveryForkGuid = $someString
+    /// 	# OPTIONAL
+    /// 	time = $someDateTime
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: V1MssqlGetRestoreFilesV1Response
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Databases operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
     /// # API Operation: Databases
     /// 
     /// $query = New-RscQueryMssql -Databases
@@ -514,13 +514,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DefaultProperties operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DefaultProperties
     /// 
     /// $query = New-RscQueryMssql -DefaultProperties
@@ -545,13 +545,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Instance operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: Instance
     /// 
     /// $query = New-RscQueryMssql -Instance
@@ -573,13 +573,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the LogShippingTargets operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: LogShippingTargets
     /// 
     /// $query = New-RscQueryMssql -LogShippingTargets
@@ -622,13 +622,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverableRanges operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: RecoverableRanges
     /// 
     /// $query = New-RscQueryMssql -RecoverableRanges
@@ -657,13 +657,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TopLevelDescendants operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: TopLevelDescendants
     /// 
     /// $query = New-RscQueryMssql -TopLevelDescendants
@@ -745,29 +745,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         [Parameter(
-            ParameterSetName = "AllDatabaseRestoreFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllDatabaseRestoreFiles' operation
-in the 'MSSQL' API domain.
-Description of the operation:
-Provides a list of database files to be restored for the specified restore or export operation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allmssqldatabaserestorefiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllDatabaseRestoreFiles { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "AvailabilityGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'AvailabilityGroup' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 A Microsoft SQL Availability Group.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlavailabilitygroup.doc.html]"
@@ -783,7 +767,7 @@ A Microsoft SQL Availability Group.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CdmLogShippingTarget' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 A single Microsoft SQL log shipping target.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cdmmssqllogshippingtarget.doc.html]"
@@ -799,7 +783,7 @@ A single Microsoft SQL log shipping target.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CdmLogShippingTargets' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Paginated list of Microsoft SQL log shipping target.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cdmmssqllogshippingtargets.doc.html]"
@@ -815,7 +799,7 @@ Paginated list of Microsoft SQL log shipping target.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CompatibleInstances' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Returns all compatible instances for export for the specified recovery time.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlcompatibleinstances.doc.html]"
@@ -831,7 +815,7 @@ Returns all compatible instances for export for the specified recovery time.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Database' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 A Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabase.doc.html]"
@@ -847,7 +831,7 @@ A Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatabaseLiveMounts' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Paginated list of Microsoft SQL Database live mounts.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabaselivemounts.doc.html]"
@@ -863,7 +847,7 @@ Paginated list of Microsoft SQL Database live mounts.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatabaseMissedRecoverableRanges' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 List of missed recoverable ranges for a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabasemissedrecoverableranges.doc.html]"
@@ -879,7 +863,7 @@ List of missed recoverable ranges for a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatabaseMissedSnapshots' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 List of missed snapshots for a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabasemissedsnapshots.doc.html]"
@@ -895,7 +879,7 @@ List of missed snapshots for a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatabaseRestoreEstimate' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Returns a size estimate for a restore, export, or mount.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabaserestoreestimate.doc.html]"
@@ -905,13 +889,29 @@ Returns a size estimate for a restore, export, or mount.
 
         
         [Parameter(
+            ParameterSetName = "DatabaseRestoreFiles",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'DatabaseRestoreFiles' operation
+in the 'Microsoft SQL Server' API domain.
+Description of the operation:
+Provides a list of database files to be restored for the specified restore or export operation.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allmssqldatabaserestorefiles.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DatabaseRestoreFiles { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "Databases",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Databases' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Paginated list of Microsoft SQL Databases.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabases.doc.html]"
@@ -927,7 +927,7 @@ Paginated list of Microsoft SQL Databases.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DefaultProperties' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 The current default properties for Microsoft SQL databases.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldefaultproperties.doc.html]"
@@ -943,7 +943,7 @@ The current default properties for Microsoft SQL databases.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Instance' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 A Microsoft SQL Instance.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlinstance.doc.html]"
@@ -959,7 +959,7 @@ A Microsoft SQL Instance.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'LogShippingTargets' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 List of filtered Microsoft SQL log shipping targets.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqllogshippingtargets.doc.html]"
@@ -975,7 +975,7 @@ List of filtered Microsoft SQL log shipping targets.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'RecoverableRanges' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 List of recoverable ranges for a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlrecoverableranges.doc.html]"
@@ -991,7 +991,7 @@ List of recoverable ranges for a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TopLevelDescendants' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqltopleveldescendants.doc.html]"
@@ -1008,9 +1008,6 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AllDatabaseRestoreFiles":
-                        this.ProcessRecord_AllDatabaseRestoreFiles();
-                        break;
                     case "AvailabilityGroup":
                         this.ProcessRecord_AvailabilityGroup();
                         break;
@@ -1038,6 +1035,9 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
                     case "DatabaseRestoreEstimate":
                         this.ProcessRecord_DatabaseRestoreEstimate();
                         break;
+                    case "DatabaseRestoreFiles":
+                        this.ProcessRecord_DatabaseRestoreFiles();
+                        break;
                     case "Databases":
                         this.ProcessRecord_Databases();
                         break;
@@ -1064,15 +1064,6 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allMssqlDatabaseRestoreFiles.
-        internal void ProcessRecord_AllDatabaseRestoreFiles()
-        {
-            this._logger.name += " -AllDatabaseRestoreFiles";
-            // Create new graphql operation allMssqlDatabaseRestoreFiles
-            InitQueryAllMssqlDatabaseRestoreFiles();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1157,6 +1148,15 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
         }
 
         // This parameter set invokes a single graphql operation:
+        // allMssqlDatabaseRestoreFiles.
+        internal void ProcessRecord_DatabaseRestoreFiles()
+        {
+            this._logger.name += " -DatabaseRestoreFiles";
+            // Create new graphql operation allMssqlDatabaseRestoreFiles
+            InitQueryAllMssqlDatabaseRestoreFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // mssqlDatabases.
         internal void ProcessRecord_Databases()
         {
@@ -1210,35 +1210,6 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
             InitQueryMssqlTopLevelDescendants();
         }
 
-
-        // Create new GraphQL Query:
-        // allMssqlDatabaseRestoreFiles(input: MssqlGetRestoreFilesV1Input!): V1MssqlGetRestoreFilesV1Response!
-        internal void InitQueryAllMssqlDatabaseRestoreFiles()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "MssqlGetRestoreFilesV1Input!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllMssqlDatabaseRestoreFiles",
-                "($input: MssqlGetRestoreFilesV1Input!)",
-                "V1MssqlGetRestoreFilesV1Response",
-                Query.AllMssqlDatabaseRestoreFiles_ObjectFieldSpec,
-                Query.AllMssqlDatabaseRestoreFilesFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	lsn = $someString
-	# OPTIONAL
-	recoveryForkGuid = $someString
-	# OPTIONAL
-	time = $someDateTime
-	# REQUIRED
-	id = $someString
-}"
-            );
-        }
 
         // Create new GraphQL Query:
         // mssqlAvailabilityGroup(fid: UUID!): MssqlAvailabilityGroup!
@@ -1492,6 +1463,35 @@ $query.Var.input = @{
                 "MssqlRestoreEstimateResult",
                 Query.MssqlDatabaseRestoreEstimate_ObjectFieldSpec,
                 Query.MssqlDatabaseRestoreEstimateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	lsn = $someString
+	# OPTIONAL
+	recoveryForkGuid = $someString
+	# OPTIONAL
+	time = $someDateTime
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allMssqlDatabaseRestoreFiles(input: MssqlGetRestoreFilesV1Input!): V1MssqlGetRestoreFilesV1Response!
+        internal void InitQueryAllMssqlDatabaseRestoreFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "MssqlGetRestoreFilesV1Input!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllMssqlDatabaseRestoreFiles",
+                "($input: MssqlGetRestoreFilesV1Input!)",
+                "V1MssqlGetRestoreFilesV1Response",
+                Query.AllMssqlDatabaseRestoreFiles_ObjectFieldSpec,
+                Query.AllMssqlDatabaseRestoreFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL

@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 2
+    /// Create a new RscQuery object for any of the 4
     /// operations in the 'Activity series' API domain:
-    /// ActivitySeries, or List.
+    /// ActivitySeries, List, UserFileTimeline, or UserTimeline.
     /// </summary>
     /// <description>
     /// New-RscQueryActivitySeries creates a new
@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 2 operations
+    /// There are 4 operations
     /// in the 'Activity series' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ActivitySeries, -List.
+    /// one of: -ActivitySeries, -List, -UserFileTimeline, -UserTimeline.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op ActivitySeries,
     /// which is equivalent to specifying -ActivitySeries.
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Activity series
+    /// # API Domain:    ActivitySeries
     /// # API Operation: ActivitySeries
     /// 
     /// $query = New-RscQueryActivitySeries -ActivitySeries
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Activity series
+    /// # API Domain:    ActivitySeries
     /// # API Operation: List
     /// 
     /// $query = New-RscQueryActivitySeries -List
@@ -197,6 +197,83 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UserFileTimeline operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: UserFileTimeline
+    /// 
+    /// $query = New-RscQueryActivitySeries -UserFileTimeline
+    /// 
+    /// # REQUIRED
+    /// $query.Var.userId = $someString
+    /// # OPTIONAL
+    /// $query.Var.resource = @{
+    /// 	# OPTIONAL
+    /// 	snappableFid = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotFid = $someString
+    /// }
+    /// # REQUIRED
+    /// $query.Var.nativePath = $someString
+    /// # REQUIRED
+    /// $query.Var.startDay = $someString
+    /// # REQUIRED
+    /// $query.Var.timezone = $someString
+    /// # REQUIRED
+    /// $query.Var.timeGranularity = $someTimeGranularity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeGranularity]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ActivityTimelineResultConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UserTimeline operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: UserTimeline
+    /// 
+    /// $query = New-RscQueryActivitySeries -UserTimeline
+    /// 
+    /// # REQUIRED
+    /// $query.Var.userId = $someString
+    /// # REQUIRED
+    /// $query.Var.startDay = $someString
+    /// # REQUIRED
+    /// $query.Var.timezone = $someString
+    /// # REQUIRED
+    /// $query.Var.uniqueActivities = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ActivityTimelineResultConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -237,6 +314,38 @@ Description of the operation:
         )]
         public SwitchParameter List { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "UserFileTimeline",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'UserFileTimeline' operation
+in the 'Activity series' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/userfileactivitytimeline.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UserFileTimeline { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UserTimeline",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'UserTimeline' operation
+in the 'Activity series' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/useractivitytimeline.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UserTimeline { get; set; }
+
 
 
         protected override void ProcessRecord()
@@ -251,6 +360,12 @@ Description of the operation:
                         break;
                     case "List":
                         this.ProcessRecord_List();
+                        break;
+                    case "UserFileTimeline":
+                        this.ProcessRecord_UserFileTimeline();
+                        break;
+                    case "UserTimeline":
+                        this.ProcessRecord_UserTimeline();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -278,6 +393,24 @@ Description of the operation:
             this._logger.name += " -List";
             // Create new graphql operation activitySeriesConnection
             InitQueryActivitySeriesConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // userFileActivityTimeline.
+        internal void ProcessRecord_UserFileTimeline()
+        {
+            this._logger.name += " -UserFileTimeline";
+            // Create new graphql operation userFileActivityTimeline
+            InitQueryUserFileActivityTimeline();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // userActivityTimeline.
+        internal void ProcessRecord_UserTimeline()
+        {
+            this._logger.name += " -UserTimeline";
+            // Create new graphql operation userActivityTimeline
+            InitQueryUserActivityTimeline();
         }
 
 
@@ -396,6 +529,87 @@ $query.Var.filters = @{
 		$someString
 	)
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // userFileActivityTimeline(
+        //     userId: String!
+        //     resource: ResourceInput
+        //     nativePath: String!
+        //     startDay: String!
+        //     timezone: String!
+        //     timeGranularity: TimeGranularity!
+        //   ): ActivityTimelineResultConnection!
+        internal void InitQueryUserFileActivityTimeline()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("userId", "String!"),
+                Tuple.Create("resource", "ResourceInput"),
+                Tuple.Create("nativePath", "String!"),
+                Tuple.Create("startDay", "String!"),
+                Tuple.Create("timezone", "String!"),
+                Tuple.Create("timeGranularity", "TimeGranularity!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryUserFileActivityTimeline",
+                "($userId: String!,$resource: ResourceInput,$nativePath: String!,$startDay: String!,$timezone: String!,$timeGranularity: TimeGranularity!)",
+                "ActivityTimelineResultConnection",
+                Query.UserFileActivityTimeline_ObjectFieldSpec,
+                Query.UserFileActivityTimelineFieldSpec,
+                @"# REQUIRED
+$query.Var.userId = $someString
+# OPTIONAL
+$query.Var.resource = @{
+	# OPTIONAL
+	snappableFid = $someString
+	# OPTIONAL
+	snapshotFid = $someString
+}
+# REQUIRED
+$query.Var.nativePath = $someString
+# REQUIRED
+$query.Var.startDay = $someString
+# REQUIRED
+$query.Var.timezone = $someString
+# REQUIRED
+$query.Var.timeGranularity = $someTimeGranularity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeGranularity]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // userActivityTimeline(
+        //     userId: String!
+        //     startDay: String!
+        //     timezone: String!
+        //     uniqueActivities: Boolean!
+        //   ): ActivityTimelineResultConnection!
+        internal void InitQueryUserActivityTimeline()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("userId", "String!"),
+                Tuple.Create("startDay", "String!"),
+                Tuple.Create("timezone", "String!"),
+                Tuple.Create("uniqueActivities", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryUserActivityTimeline",
+                "($userId: String!,$startDay: String!,$timezone: String!,$uniqueActivities: Boolean!)",
+                "ActivityTimelineResultConnection",
+                Query.UserActivityTimeline_ObjectFieldSpec,
+                Query.UserActivityTimelineFieldSpec,
+                @"# REQUIRED
+$query.Var.userId = $someString
+# REQUIRED
+$query.Var.startDay = $someString
+# REQUIRED
+$query.Var.timezone = $someString
+# REQUIRED
+$query.Var.uniqueActivities = $someBoolean"
             );
         }
 

@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 41
+    /// Create a new RscQuery object for any of the 33
     /// operations in the 'AWS' API domain:
-    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, ExcludeNativeEbsVolumesFromSnapshot, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartCreateNativeEbsVolumeSnapshotsJob, StartExocomputeDisableJob, StartExportNativeEbsVolumeSnapshotJob, StartNativeAccountDisableJob, StartNativeEc2InstanceSnapshotsJob, StartNativeRdsInstanceSnapshotsJob, StartRefreshNativeAccountsJob, StartRestoreNativeEc2InstanceSnapshotJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAws creates a new
@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 41 operations
+    /// There are 33 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddAuthenticationServerBasedCloudAccount, -AddIamUserBasedCloudAccount, -BulkDeleteCloudAccountWithoutCft, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateComputeSetting, -CreateExocomputeConfigs, -CreateReaderTarget, -CreateTarget, -DeleteCluster, -DeleteComputeSetting, -DeleteExocomputeConfigs, -ExcludeNativeEbsVolumesFromSnapshot, -FinalizeCloudAccountDeletion, -FinalizeCloudAccountProtection, -PatchAuthenticationServerBasedCloudAccount, -PatchIamUserBasedCloudAccount, -PrepareCloudAccountDeletion, -PrepareFeatureUpdateForCloudAccount, -RegisterFeatureArtifacts, -StartCreateNativeEbsVolumeSnapshotsJob, -StartExocomputeDisableJob, -StartExportNativeEbsVolumeSnapshotJob, -StartNativeAccountDisableJob, -StartNativeEc2InstanceSnapshotsJob, -StartNativeRdsInstanceSnapshotsJob, -StartRefreshNativeAccountsJob, -StartRestoreNativeEc2InstanceSnapshotJob, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudAccountFeature, -UpdateCloudNativeStorageSetting, -UpdateComputeSetting, -UpdateExocomputeConfigs, -UpdateTarget, -UpgradeCloudAccountFeaturesWithoutCft, -UpgradeIamUserBasedCloudAccountPermissions, -ValidateAndCreateCloudAccount.
+    /// one of: -AddAuthenticationServerBasedCloudAccount, -AddIamUserBasedCloudAccount, -BulkDeleteCloudAccountWithoutCft, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateComputeSetting, -CreateExocomputeConfigs, -CreateReaderTarget, -CreateTarget, -DeleteCluster, -DeleteComputeSetting, -DeleteExocomputeConfigs, -FinalizeCloudAccountDeletion, -FinalizeCloudAccountProtection, -PatchAuthenticationServerBasedCloudAccount, -PatchIamUserBasedCloudAccount, -PrepareCloudAccountDeletion, -PrepareFeatureUpdateForCloudAccount, -RegisterFeatureArtifacts, -StartExocomputeDisableJob, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudAccountFeature, -UpdateCloudNativeStorageSetting, -UpdateComputeSetting, -UpdateExocomputeConfigs, -UpdateTarget, -UpgradeCloudAccountFeaturesWithoutCft, -UpgradeIamUserBasedCloudAccountPermissions, -ValidateAndCreateCloudAccount.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op AddAuthenticationServerBasedCloudAccount,
     /// which is equivalent to specifying -AddAuthenticationServerBasedCloudAccount.
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: AddAuthenticationServerBasedCloudAccount
     /// 
     /// $query = New-RscMutationAws -AddAuthenticationServerBasedCloudAccount
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: AddIamUserBasedCloudAccount
     /// 
     /// $query = New-RscMutationAws -AddIamUserBasedCloudAccount
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: BulkDeleteCloudAccountWithoutCft
     /// 
     /// $query = New-RscMutationAws -BulkDeleteCloudAccountWithoutCft
@@ -242,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateAccount
     /// 
     /// $query = New-RscMutationAws -CreateAccount
@@ -279,7 +279,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateAutomaticTargetMapping
     /// 
     /// $query = New-RscMutationAws -CreateAutomaticTargetMapping
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateCloudNativeStorageSetting
     /// 
     /// $query = New-RscMutationAws -CreateCloudNativeStorageSetting
@@ -398,7 +398,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateCluster
     /// 
     /// $query = New-RscMutationAws -CreateCluster
@@ -511,7 +511,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateComputeSetting
     /// 
     /// $query = New-RscMutationAws -CreateComputeSetting
@@ -574,7 +574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateExocomputeConfigs
     /// 
     /// $query = New-RscMutationAws -CreateExocomputeConfigs
@@ -631,7 +631,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateReaderTarget
     /// 
     /// $query = New-RscMutationAws -CreateReaderTarget
@@ -740,7 +740,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CreateTarget
     /// 
     /// $query = New-RscMutationAws -CreateTarget
@@ -852,7 +852,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: DeleteCluster
     /// 
     /// $query = New-RscMutationAws -DeleteCluster
@@ -897,7 +897,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: DeleteComputeSetting
     /// 
     /// $query = New-RscMutationAws -DeleteComputeSetting
@@ -928,7 +928,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: DeleteExocomputeConfigs
     /// 
     /// $query = New-RscMutationAws -DeleteExocomputeConfigs
@@ -954,46 +954,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ExcludeNativeEbsVolumesFromSnapshot operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: ExcludeNativeEbsVolumesFromSnapshot
-    /// 
-    /// $query = New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	awsNativeEc2InstanceId = $someString
-    /// 	# REQUIRED
-    /// 	volumeIdExclusions = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			volumeId = $someString
-    /// 			# REQUIRED
-    /// 			isExcluded = $someBoolean
-    /// 		}
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the FinalizeCloudAccountDeletion operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1001,7 +961,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: FinalizeCloudAccountDeletion
     /// 
     /// $query = New-RscMutationAws -FinalizeCloudAccountDeletion
@@ -1034,7 +994,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: FinalizeCloudAccountProtection
     /// 
     /// $query = New-RscMutationAws -FinalizeCloudAccountProtection
@@ -1116,7 +1076,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: PatchAuthenticationServerBasedCloudAccount
     /// 
     /// $query = New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount
@@ -1171,7 +1131,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: PatchIamUserBasedCloudAccount
     /// 
     /// $query = New-RscMutationAws -PatchIamUserBasedCloudAccount
@@ -1232,7 +1192,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: PrepareCloudAccountDeletion
     /// 
     /// $query = New-RscMutationAws -PrepareCloudAccountDeletion
@@ -1265,7 +1225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: PrepareFeatureUpdateForCloudAccount
     /// 
     /// $query = New-RscMutationAws -PrepareFeatureUpdateForCloudAccount
@@ -1300,7 +1260,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: RegisterFeatureArtifacts
     /// 
     /// $query = New-RscMutationAws -RegisterFeatureArtifacts
@@ -1344,41 +1304,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the StartCreateNativeEbsVolumeSnapshotsJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartCreateNativeEbsVolumeSnapshotsJob
-    /// 
-    /// $query = New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	ebsVolumeIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	retentionSlaId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the StartExocomputeDisableJob operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1386,7 +1311,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: StartExocomputeDisableJob
     /// 
     /// $query = New-RscMutationAws -StartExocomputeDisableJob
@@ -1410,238 +1335,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the StartExportNativeEbsVolumeSnapshotJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartExportNativeEbsVolumeSnapshotJob
-    /// 
-    /// $query = New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
-    /// 	destinationAwsAccountRubrikId = $someString
-    /// 	# REQUIRED
-    /// 	destinationRegionNativeId = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 	# REQUIRED
-    /// 	volumeName = $someString
-    /// 	# REQUIRED
-    /// 	volumeSize = $someInt
-    /// 	# REQUIRED
-    /// 	volumeType = $someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
-    /// 	# REQUIRED
-    /// 	availabilityZone = $someString
-    /// 	# REQUIRED
-    /// 	iops = $someInt
-    /// 	# REQUIRED
-    /// 	shouldCopyTags = $someBoolean
-    /// 	# REQUIRED
-    /// 	shouldReplaceAttached = $someBoolean
-    /// 	# OPTIONAL
-    /// 	kmsKeyId = $someString
-    /// 	# OPTIONAL
-    /// 	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartNativeAccountDisableJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartNativeAccountDisableJob
-    /// 
-    /// $query = New-RscMutationAws -StartNativeAccountDisableJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	awsAccountRubrikId = $someString
-    /// 	# REQUIRED
-    /// 	shouldDeleteNativeSnapshots = $someBoolean
-    /// 	# REQUIRED
-    /// 	awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartNativeEc2InstanceSnapshotsJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartNativeEc2InstanceSnapshotsJob
-    /// 
-    /// $query = New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	ec2InstanceIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	retentionSlaId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartNativeRdsInstanceSnapshotsJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartNativeRdsInstanceSnapshotsJob
-    /// 
-    /// $query = New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	rdsInstanceIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	retentionSlaId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartRefreshNativeAccountsJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartRefreshNativeAccountsJob
-    /// 
-    /// $query = New-RscMutationAws -StartRefreshNativeAccountsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	awsAccountRubrikIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	awsNativeProtectionFeatures = @(
-    /// 		$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartRestoreNativeEc2InstanceSnapshotJob operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: StartRestoreNativeEc2InstanceSnapshotJob
-    /// 
-    /// $query = New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
-    /// 	shouldPowerOn = $someBoolean
-    /// 	# REQUIRED
-    /// 	shouldRestoreTags = $someBoolean
-    /// 	# OPTIONAL
-    /// 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the UpdateAccount operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1649,7 +1342,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateAccount
     /// 
     /// $query = New-RscMutationAws -UpdateAccount
@@ -1688,7 +1381,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateAutomaticTargetMapping
     /// 
     /// $query = New-RscMutationAws -UpdateAutomaticTargetMapping
@@ -1746,7 +1439,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateCloudAccount
     /// 
     /// $query = New-RscMutationAws -UpdateCloudAccount
@@ -1779,7 +1472,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateCloudAccountFeature
     /// 
     /// $query = New-RscMutationAws -UpdateCloudAccountFeature
@@ -1824,7 +1517,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateCloudNativeStorageSetting
     /// 
     /// $query = New-RscMutationAws -UpdateCloudNativeStorageSetting
@@ -1861,7 +1554,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateComputeSetting
     /// 
     /// $query = New-RscMutationAws -UpdateComputeSetting
@@ -1900,7 +1593,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateExocomputeConfigs
     /// 
     /// $query = New-RscMutationAws -UpdateExocomputeConfigs
@@ -1957,7 +1650,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpdateTarget
     /// 
     /// $query = New-RscMutationAws -UpdateTarget
@@ -2059,7 +1752,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpgradeCloudAccountFeaturesWithoutCft
     /// 
     /// $query = New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft
@@ -2094,7 +1787,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: UpgradeIamUserBasedCloudAccountPermissions
     /// 
     /// $query = New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions
@@ -2129,7 +1822,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: ValidateAndCreateCloudAccount
     /// 
     /// $query = New-RscMutationAws -ValidateAndCreateCloudAccount
@@ -2439,22 +2132,6 @@ Deletes AWS Exocompute configs.
 
         
         [Parameter(
-            ParameterSetName = "ExcludeNativeEbsVolumesFromSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeNativeEbsVolumesFromSnapshot' operation
-in the 'AWS' API domain.
-Description of the operation:
-Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/excludeawsnativeebsvolumesfromsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeNativeEbsVolumesFromSnapshot { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "FinalizeCloudAccountDeletion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -2567,22 +2244,6 @@ Registers the AWS account artifacts such as roles in RSC backend while onboardin
 
         
         [Parameter(
-            ParameterSetName = "StartCreateNativeEbsVolumeSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCreateNativeEbsVolumeSnapshotsJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateawsnativeebsvolumesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCreateNativeEbsVolumeSnapshotsJob { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "StartExocomputeDisableJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -2596,102 +2257,6 @@ Starts a job to disable AWS Exocompute feature. When complete, the job will disa
             // No Position -> named parameter only.
         )]
         public SwitchParameter StartExocomputeDisableJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportNativeEbsVolumeSnapshotJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportNativeEbsVolumeSnapshotJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportawsnativeebsvolumesnapshotjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportNativeEbsVolumeSnapshotJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartNativeAccountDisableJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartNativeAccountDisableJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativeaccountdisablejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartNativeAccountDisableJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartNativeEc2InstanceSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartNativeEc2InstanceSnapshotsJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativeec2instancesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartNativeEc2InstanceSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartNativeRdsInstanceSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartNativeRdsInstanceSnapshotsJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativerdsinstancesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartNativeRdsInstanceSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRefreshNativeAccountsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRefreshNativeAccountsJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrefreshawsnativeaccountsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRefreshNativeAccountsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRestoreNativeEc2InstanceSnapshotJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRestoreNativeEc2InstanceSnapshotJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrestoreawsnativeec2instancesnapshotjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRestoreNativeEc2InstanceSnapshotJob { get; set; }
 
         
         [Parameter(
@@ -2920,9 +2485,6 @@ Validate and create AWS cloud account. If validation fails, no error is returned
                     case "DeleteExocomputeConfigs":
                         this.ProcessRecord_DeleteExocomputeConfigs();
                         break;
-                    case "ExcludeNativeEbsVolumesFromSnapshot":
-                        this.ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot();
-                        break;
                     case "FinalizeCloudAccountDeletion":
                         this.ProcessRecord_FinalizeCloudAccountDeletion();
                         break;
@@ -2944,29 +2506,8 @@ Validate and create AWS cloud account. If validation fails, no error is returned
                     case "RegisterFeatureArtifacts":
                         this.ProcessRecord_RegisterFeatureArtifacts();
                         break;
-                    case "StartCreateNativeEbsVolumeSnapshotsJob":
-                        this.ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob();
-                        break;
                     case "StartExocomputeDisableJob":
                         this.ProcessRecord_StartExocomputeDisableJob();
-                        break;
-                    case "StartExportNativeEbsVolumeSnapshotJob":
-                        this.ProcessRecord_StartExportNativeEbsVolumeSnapshotJob();
-                        break;
-                    case "StartNativeAccountDisableJob":
-                        this.ProcessRecord_StartNativeAccountDisableJob();
-                        break;
-                    case "StartNativeEc2InstanceSnapshotsJob":
-                        this.ProcessRecord_StartNativeEc2InstanceSnapshotsJob();
-                        break;
-                    case "StartNativeRdsInstanceSnapshotsJob":
-                        this.ProcessRecord_StartNativeRdsInstanceSnapshotsJob();
-                        break;
-                    case "StartRefreshNativeAccountsJob":
-                        this.ProcessRecord_StartRefreshNativeAccountsJob();
-                        break;
-                    case "StartRestoreNativeEc2InstanceSnapshotJob":
-                        this.ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob();
                         break;
                     case "UpdateAccount":
                         this.ProcessRecord_UpdateAccount();
@@ -3138,15 +2679,6 @@ Validate and create AWS cloud account. If validation fails, no error is returned
         }
 
         // This parameter set invokes a single graphql operation:
-        // excludeAwsNativeEbsVolumesFromSnapshot.
-        internal void ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot()
-        {
-            this._logger.name += " -ExcludeNativeEbsVolumesFromSnapshot";
-            // Create new graphql operation excludeAwsNativeEbsVolumesFromSnapshot
-            InitMutationExcludeAwsNativeEbsVolumesFromSnapshot();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // finalizeAwsCloudAccountDeletion.
         internal void ProcessRecord_FinalizeCloudAccountDeletion()
         {
@@ -3210,75 +2742,12 @@ Validate and create AWS cloud account. If validation fails, no error is returned
         }
 
         // This parameter set invokes a single graphql operation:
-        // startCreateAwsNativeEbsVolumeSnapshotsJob.
-        internal void ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob()
-        {
-            this._logger.name += " -StartCreateNativeEbsVolumeSnapshotsJob";
-            // Create new graphql operation startCreateAwsNativeEbsVolumeSnapshotsJob
-            InitMutationStartCreateAwsNativeEbsVolumeSnapshotsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // startAwsExocomputeDisableJob.
         internal void ProcessRecord_StartExocomputeDisableJob()
         {
             this._logger.name += " -StartExocomputeDisableJob";
             // Create new graphql operation startAwsExocomputeDisableJob
             InitMutationStartAwsExocomputeDisableJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startExportAwsNativeEbsVolumeSnapshotJob.
-        internal void ProcessRecord_StartExportNativeEbsVolumeSnapshotJob()
-        {
-            this._logger.name += " -StartExportNativeEbsVolumeSnapshotJob";
-            // Create new graphql operation startExportAwsNativeEbsVolumeSnapshotJob
-            InitMutationStartExportAwsNativeEbsVolumeSnapshotJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startAwsNativeAccountDisableJob.
-        internal void ProcessRecord_StartNativeAccountDisableJob()
-        {
-            this._logger.name += " -StartNativeAccountDisableJob";
-            // Create new graphql operation startAwsNativeAccountDisableJob
-            InitMutationStartAwsNativeAccountDisableJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startAwsNativeEc2InstanceSnapshotsJob.
-        internal void ProcessRecord_StartNativeEc2InstanceSnapshotsJob()
-        {
-            this._logger.name += " -StartNativeEc2InstanceSnapshotsJob";
-            // Create new graphql operation startAwsNativeEc2InstanceSnapshotsJob
-            InitMutationStartAwsNativeEc2InstanceSnapshotsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startAwsNativeRdsInstanceSnapshotsJob.
-        internal void ProcessRecord_StartNativeRdsInstanceSnapshotsJob()
-        {
-            this._logger.name += " -StartNativeRdsInstanceSnapshotsJob";
-            // Create new graphql operation startAwsNativeRdsInstanceSnapshotsJob
-            InitMutationStartAwsNativeRdsInstanceSnapshotsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startRefreshAwsNativeAccountsJob.
-        internal void ProcessRecord_StartRefreshNativeAccountsJob()
-        {
-            this._logger.name += " -StartRefreshNativeAccountsJob";
-            // Create new graphql operation startRefreshAwsNativeAccountsJob
-            InitMutationStartRefreshAwsNativeAccountsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startRestoreAwsNativeEc2InstanceSnapshotJob.
-        internal void ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob()
-        {
-            this._logger.name += " -StartRestoreNativeEc2InstanceSnapshotJob";
-            // Create new graphql operation startRestoreAwsNativeEc2InstanceSnapshotJob
-            InitMutationStartRestoreAwsNativeEc2InstanceSnapshotJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4146,38 +3615,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // excludeAwsNativeEbsVolumesFromSnapshot(input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!): Void
-        internal void InitMutationExcludeAwsNativeEbsVolumesFromSnapshot()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ExcludeAwsNativeEbsVolumesFromSnapshotInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationExcludeAwsNativeEbsVolumesFromSnapshot",
-                "($input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!)",
-                "System.String",
-                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot_ObjectFieldSpec,
-                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshotFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	awsNativeEc2InstanceId = $someString
-	# REQUIRED
-	volumeIdExclusions = @(
-		@{
-			# REQUIRED
-			volumeId = $someString
-			# REQUIRED
-			isExcluded = $someBoolean
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // finalizeAwsCloudAccountDeletion(input: FinalizeAwsCloudAccountDeletionInput!): FinalizeAwsCloudAccountDeletionReply!
         internal void InitMutationFinalizeAwsCloudAccountDeletion()
         {
@@ -4472,33 +3909,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // startCreateAwsNativeEbsVolumeSnapshotsJob(input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartCreateAwsNativeEbsVolumeSnapshotsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartCreateAwsNativeEbsVolumeSnapshotsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartCreateAwsNativeEbsVolumeSnapshotsJob",
-                "($input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	ebsVolumeIds = @(
-		$someString
-	)
-	# OPTIONAL
-	retentionSlaId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // startAwsExocomputeDisableJob(input: StartAwsExocomputeDisableJobInput!): AsyncJobStatus!
         internal void InitMutationStartAwsExocomputeDisableJob()
         {
@@ -4517,190 +3927,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	cloudAccountId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startExportAwsNativeEbsVolumeSnapshotJob(input: StartExportAwsNativeEbsVolumeSnapshotJobInput!): AsyncJobStatus!
-        internal void InitMutationStartExportAwsNativeEbsVolumeSnapshotJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartExportAwsNativeEbsVolumeSnapshotJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartExportAwsNativeEbsVolumeSnapshotJob",
-                "($input: StartExportAwsNativeEbsVolumeSnapshotJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartExportAwsNativeEbsVolumeSnapshotJob_ObjectFieldSpec,
-                Mutation.StartExportAwsNativeEbsVolumeSnapshotJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
-	destinationAwsAccountRubrikId = $someString
-	# REQUIRED
-	destinationRegionNativeId = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-	# REQUIRED
-	volumeName = $someString
-	# REQUIRED
-	volumeSize = $someInt
-	# REQUIRED
-	volumeType = $someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
-	# REQUIRED
-	availabilityZone = $someString
-	# REQUIRED
-	iops = $someInt
-	# REQUIRED
-	shouldCopyTags = $someBoolean
-	# REQUIRED
-	shouldReplaceAttached = $someBoolean
-	# OPTIONAL
-	kmsKeyId = $someString
-	# OPTIONAL
-	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startAwsNativeAccountDisableJob(input: StartAwsNativeAccountDisableJobInput!): AsyncJobStatus!
-        internal void InitMutationStartAwsNativeAccountDisableJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsNativeAccountDisableJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartAwsNativeAccountDisableJob",
-                "($input: StartAwsNativeAccountDisableJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartAwsNativeAccountDisableJob_ObjectFieldSpec,
-                Mutation.StartAwsNativeAccountDisableJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	awsAccountRubrikId = $someString
-	# REQUIRED
-	shouldDeleteNativeSnapshots = $someBoolean
-	# REQUIRED
-	awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startAwsNativeEc2InstanceSnapshotsJob(input: StartAwsNativeEc2InstanceSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartAwsNativeEc2InstanceSnapshotsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsNativeEc2InstanceSnapshotsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartAwsNativeEc2InstanceSnapshotsJob",
-                "($input: StartAwsNativeEc2InstanceSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartAwsNativeEc2InstanceSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartAwsNativeEc2InstanceSnapshotsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	ec2InstanceIds = @(
-		$someString
-	)
-	# OPTIONAL
-	retentionSlaId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartAwsNativeRdsInstanceSnapshotsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsNativeRdsInstanceSnapshotsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartAwsNativeRdsInstanceSnapshotsJob",
-                "($input: StartAwsNativeRdsInstanceSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartAwsNativeRdsInstanceSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartAwsNativeRdsInstanceSnapshotsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	rdsInstanceIds = @(
-		$someString
-	)
-	# OPTIONAL
-	retentionSlaId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startRefreshAwsNativeAccountsJob(input: StartRefreshAwsNativeAccountsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartRefreshAwsNativeAccountsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartRefreshAwsNativeAccountsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartRefreshAwsNativeAccountsJob",
-                "($input: StartRefreshAwsNativeAccountsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartRefreshAwsNativeAccountsJob_ObjectFieldSpec,
-                Mutation.StartRefreshAwsNativeAccountsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	awsAccountRubrikIds = @(
-		$someString
-	)
-	# REQUIRED
-	awsNativeProtectionFeatures = @(
-		$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startRestoreAwsNativeEc2InstanceSnapshotJob(input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!): AsyncJobStatus!
-        internal void InitMutationStartRestoreAwsNativeEc2InstanceSnapshotJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartRestoreAwsNativeEc2InstanceSnapshotJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartRestoreAwsNativeEc2InstanceSnapshotJob",
-                "($input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob_ObjectFieldSpec,
-                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
-	shouldPowerOn = $someBoolean
-	# REQUIRED
-	shouldRestoreTags = $someBoolean
-	# OPTIONAL
-	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
 }"
             );
         }

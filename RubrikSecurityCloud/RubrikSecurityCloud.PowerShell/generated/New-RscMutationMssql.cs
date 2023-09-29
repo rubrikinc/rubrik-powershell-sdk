@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 17
-    /// operations in the 'MSSQL' API domain:
+    /// operations in the 'Microsoft SQL Server' API domain:
     /// AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// </summary>
     /// <description>
     /// New-RscMutationMssql creates a new
     /// mutation object for operations
-    /// in the 'MSSQL' API domain. It only creates a data structure,
+    /// in the 'Microsoft SQL Server' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 17 operations
-    /// in the 'MSSQL' API domain. Select the operation this
+    /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -AssignSlaDomainProperties, -AssignSlaDomainPropertiesAsync, -BrowseDatabaseSnapshot, -BulkCreateOnDemandBackup, -BulkUpdateDbs, -CreateLiveMount, -CreateLogShippingConfiguration, -CreateOnDemandBackup, -DeleteDbSnapshots, -DeleteLiveMount, -DownloadDatabaseBackupFiles, -DownloadDatabaseFilesFromArchivalLocation, -ExportDatabase, -RestoreDatabase, -TakeLogBackup, -UpdateDefaultProperties, -UpdateLogShippingConfiguration.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the AssignSlaDomainProperties operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: AssignSlaDomainProperties
     /// 
     /// $query = New-RscMutationMssql -AssignSlaDomainProperties
@@ -141,13 +141,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the AssignSlaDomainPropertiesAsync operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: AssignSlaDomainPropertiesAsync
     /// 
     /// $query = New-RscMutationMssql -AssignSlaDomainPropertiesAsync
@@ -205,13 +205,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BrowseDatabaseSnapshot operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: BrowseDatabaseSnapshot
     /// 
     /// $query = New-RscMutationMssql -BrowseDatabaseSnapshot
@@ -288,13 +288,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BulkCreateOnDemandBackup operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: BulkCreateOnDemandBackup
     /// 
     /// $query = New-RscMutationMssql -BulkCreateOnDemandBackup
@@ -349,13 +349,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BulkUpdateDbs operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: BulkUpdateDbs
     /// 
     /// $query = New-RscMutationMssql -BulkUpdateDbs
@@ -458,13 +458,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateLiveMount operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: CreateLiveMount
     /// 
     /// $query = New-RscMutationMssql -CreateLiveMount
@@ -512,13 +512,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateLogShippingConfiguration operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: CreateLogShippingConfiguration
     /// 
     /// $query = New-RscMutationMssql -CreateLogShippingConfiguration
@@ -583,13 +583,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateOnDemandBackup operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: CreateOnDemandBackup
     /// 
     /// $query = New-RscMutationMssql -CreateOnDemandBackup
@@ -626,13 +626,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteDbSnapshots operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DeleteDbSnapshots
     /// 
     /// $query = New-RscMutationMssql -DeleteDbSnapshots
@@ -657,13 +657,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteLiveMount operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DeleteLiveMount
     /// 
     /// $query = New-RscMutationMssql -DeleteLiveMount
@@ -690,13 +690,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadDatabaseBackupFiles operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DownloadDatabaseBackupFiles
     /// 
     /// $query = New-RscMutationMssql -DownloadDatabaseBackupFiles
@@ -735,13 +735,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadDatabaseFilesFromArchivalLocation operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: DownloadDatabaseFilesFromArchivalLocation
     /// 
     /// $query = New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation
@@ -783,13 +783,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportDatabase operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: ExportDatabase
     /// 
     /// $query = New-RscMutationMssql -ExportDatabase
@@ -858,13 +858,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RestoreDatabase operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: RestoreDatabase
     /// 
     /// $query = New-RscMutationMssql -RestoreDatabase
@@ -910,13 +910,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TakeLogBackup operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: TakeLogBackup
     /// 
     /// $query = New-RscMutationMssql -TakeLogBackup
@@ -941,13 +941,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateDefaultProperties operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: UpdateDefaultProperties
     /// 
     /// $query = New-RscMutationMssql -UpdateDefaultProperties
@@ -983,13 +983,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateLogShippingConfiguration operation
-    /// of the 'MSSQL' API domain.
+    /// of the 'Microsoft SQL Server' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    MSSQL
+    /// # API Domain:    Mssql
     /// # API Operation: UpdateLogShippingConfiguration
     /// 
     /// $query = New-RscMutationMssql -UpdateLogShippingConfiguration
@@ -1035,7 +1035,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'AssignSlaDomainProperties' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Assign SLA domain properties to Mssql objects.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignmssqlsladomainproperties.doc.html]"
@@ -1051,7 +1051,7 @@ Assign SLA domain properties to Mssql objects.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'AssignSlaDomainPropertiesAsync' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Assign SLA domain properties to Mssql objects.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignmssqlsladomainpropertiesasync.doc.html]"
@@ -1067,7 +1067,7 @@ Assign SLA domain properties to Mssql objects.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BrowseDatabaseSnapshot' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browsemssqldatabasesnapshot.doc.html]"
@@ -1083,7 +1083,7 @@ List snapshots and logs from a Mssql Database. This endpoint is only used to fet
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BulkCreateOnDemandBackup' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Take a bulk on-demand backup of a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkcreateondemandmssqlbackup.doc.html]"
@@ -1099,7 +1099,7 @@ Take a bulk on-demand backup of a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BulkUpdateDbs' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Update multiple Microsoft SQL databases with the specified properties.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdatemssqldbs.doc.html]"
@@ -1115,7 +1115,7 @@ Update multiple Microsoft SQL databases with the specified properties.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateLiveMount' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Create live mount of a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmssqllivemount.doc.html]"
@@ -1131,7 +1131,7 @@ Create live mount of a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateLogShippingConfiguration' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Create log shipping configuration of a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmssqllogshippingconfiguration.doc.html]"
@@ -1147,7 +1147,7 @@ Create log shipping configuration of a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateOnDemandBackup' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Take an on-demand backup of a Microsoft SQL Database
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemandmssqlbackup.doc.html]"
@@ -1163,7 +1163,7 @@ Take an on-demand backup of a Microsoft SQL Database
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteDbSnapshots' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Delete snapshots of a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemssqldbsnapshots.doc.html]"
@@ -1179,7 +1179,7 @@ Delete snapshots of a Microsoft SQL Database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteLiveMount' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Delete a Live Mount of a SQL Server database
 
@@ -1198,7 +1198,7 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadDatabaseBackupFiles' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Downloads a list of snapshot and log backups from a Microsoft SQL database
 
@@ -1217,7 +1217,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadDatabaseFilesFromArchivalLocation' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Download Microsoft SQL Database backup files from archival location.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmssqldatabasefilesfromarchivallocation.doc.html]"
@@ -1233,7 +1233,7 @@ Download Microsoft SQL Database backup files from archival location.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportDatabase' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Create a request to export a Microsoft SQL database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportmssqldatabase.doc.html]"
@@ -1249,7 +1249,7 @@ Create a request to export a Microsoft SQL database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RestoreDatabase' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Create a request to restore a Microsoft SQL database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoremssqldatabase.doc.html]"
@@ -1265,7 +1265,7 @@ Create a request to restore a Microsoft SQL database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'TakeLogBackup' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Take an on-demand log backup for a Microsoft SQL database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takemssqllogbackup.doc.html]"
@@ -1281,7 +1281,7 @@ Take an on-demand log backup for a Microsoft SQL database.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateDefaultProperties' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Update the default properties for Microsoft SQL databases.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemssqldefaultproperties.doc.html]"
@@ -1297,7 +1297,7 @@ Update the default properties for Microsoft SQL databases.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateLogShippingConfiguration' operation
-in the 'MSSQL' API domain.
+in the 'Microsoft SQL Server' API domain.
 Description of the operation:
 Update log shipping configuration of a Microsoft SQL Database.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemssqllogshippingconfiguration.doc.html]"

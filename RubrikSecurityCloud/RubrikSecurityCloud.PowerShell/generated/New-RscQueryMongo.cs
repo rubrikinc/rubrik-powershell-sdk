@@ -22,29 +22,29 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
-    /// operations in the 'Mongo' API domain:
-    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, DbBulkRecoverableRange, DbCollection, DbCollectionRecoverableRange, DbCollections, DbDatabase, DbDatabases, DbSource, DbSources, RecoverableRanges, Source, or Sources.
+    /// Create a new RscQuery object for any of the 10
+    /// operations in the 'Mongo DB' API domain:
+    /// BulkRecoverableRange, BulkRecoverableRanges, Collection, CollectionRecoverableRange, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
     /// </summary>
     /// <description>
     /// New-RscQueryMongo creates a new
     /// query object for operations
-    /// in the 'Mongo' API domain. It only creates a data structure,
+    /// in the 'Mongo DB' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
-    /// in the 'Mongo' API domain. Select the operation this
+    /// There are 10 operations
+    /// in the 'Mongo DB' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkRecoverableRanges, -Collection, -Collections, -Database, -Databases, -DbBulkRecoverableRange, -DbCollection, -DbCollectionRecoverableRange, -DbCollections, -DbDatabase, -DbDatabases, -DbSource, -DbSources, -RecoverableRanges, -Source, -Sources.
+    /// one of: -BulkRecoverableRange, -BulkRecoverableRanges, -Collection, -CollectionRecoverableRange, -Collections, -Database, -Databases, -RecoverableRanges, -Source, -Sources.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkRecoverableRanges,
-    /// which is equivalent to specifying -BulkRecoverableRanges.
+    /// -Op parameter, for example: -Op BulkRecoverableRange,
+    /// which is equivalent to specifying -BulkRecoverableRange.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryMongo -BulkRecoverableRanges).Info().
+    /// (New-RscQueryMongo -BulkRecoverableRange).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,15 +71,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryMongo -BulkRecoverableRanges).Info().
+    /// (New-RscQueryMongo -BulkRecoverableRange).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
+    /// Runs the BulkRecoverableRange operation
+    /// of the 'Mongo DB' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: BulkRecoverableRange
+    /// 
+    /// $query = New-RscQueryMongo -BulkRecoverableRange
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	recoveryRangeData = @{
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
+    /// 		# REQUIRED
+    /// 		managementObjects = @{
+    /// 			# OPTIONAL
+    /// 			databases = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					dbName = $someString
+    /// 					# OPTIONAL
+    /// 					tables = @(
+    /// 						$someString
+    /// 					)
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MosaicRecoveryRangeResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the BulkRecoverableRanges operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -118,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Collection operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -145,8 +197,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CollectionRecoverableRange operation
+    /// of the 'Mongo DB' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: CollectionRecoverableRange
+    /// 
+    /// $query = New-RscQueryMongo -CollectionRecoverableRange
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	recoveryRangeRequestData = @{
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
+    /// 		# REQUIRED
+    /// 		databaseName = $someString
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
+    /// 		# REQUIRED
+    /// 		tableName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetMosaicRecoverableRangeResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Collections operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -222,7 +316,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Database operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -250,7 +344,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Databases operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -325,414 +419,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DbBulkRecoverableRange operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbBulkRecoverableRange
-    /// 
-    /// $query = New-RscQueryMongo -DbBulkRecoverableRange
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	recoveryRangeData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
-    /// 		# REQUIRED
-    /// 		managementObjects = @{
-    /// 			# OPTIONAL
-    /// 			databases = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					dbName = $someString
-    /// 					# OPTIONAL
-    /// 					tables = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MosaicRecoveryRangeResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbCollection operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbCollection
-    /// 
-    /// $query = New-RscQueryMongo -DbCollection
-    /// 
-    /// # REQUIRED
-    /// $query.Var.fid = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MongodbCollection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbCollectionRecoverableRange operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbCollectionRecoverableRange
-    /// 
-    /// $query = New-RscQueryMongo -DbCollectionRecoverableRange
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	recoveryRangeRequestData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
-    /// 		# REQUIRED
-    /// 		databaseName = $someString
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 		# REQUIRED
-    /// 		tableName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: GetMosaicRecoverableRangeResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbCollections operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbCollections
-    /// 
-    /// $query = New-RscQueryMongo -DbCollections
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MongodbCollectionConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbDatabase operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbDatabase
-    /// 
-    /// $query = New-RscQueryMongo -DbDatabase
-    /// 
-    /// # REQUIRED
-    /// $query.Var.fid = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MongodbDatabase
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbDatabases operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbDatabases
-    /// 
-    /// $query = New-RscQueryMongo -DbDatabases
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MongodbDatabaseConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbSource operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbSource
-    /// 
-    /// $query = New-RscQueryMongo -DbSource
-    /// 
-    /// # REQUIRED
-    /// $query.Var.fid = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MongodbSource
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DbSources operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DbSources
-    /// 
-    /// $query = New-RscQueryMongo -DbSources
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MongodbSourceConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the RecoverableRanges operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -771,7 +459,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Source operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -799,7 +487,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Sources operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -883,13 +571,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         [Parameter(
+            ParameterSetName = "BulkRecoverableRange",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'BulkRecoverableRange' operation
+in the 'Mongo DB' API domain.
+Description of the operation:
+Recoverable range for multiple Management Objects on NoSQL cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbbulkrecoverablerange.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter BulkRecoverableRange { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "BulkRecoverableRanges",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'BulkRecoverableRanges' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongobulkrecoverableranges.doc.html]"
@@ -905,7 +609,7 @@ Provides the bulk recoverable range for MongoDB object recovery, including data 
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Collection' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Provides details for a MongoDB collection identified by the fid.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongocollection.doc.html]"
@@ -915,13 +619,29 @@ Provides details for a MongoDB collection identified by the fid.
 
         
         [Parameter(
+            ParameterSetName = "CollectionRecoverableRange",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CollectionRecoverableRange' operation
+in the 'Mongo DB' API domain.
+Description of the operation:
+Recoverable Range of a MongoDB collection on NoSQL cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbcollectionrecoverablerange.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CollectionRecoverableRange { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "Collections",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Collections' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Paginated list of MongoDB collections.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongocollections.doc.html]"
@@ -937,7 +657,7 @@ Paginated list of MongoDB collections.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Database' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Provides details for a MongoDB database identified by the fid.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodatabase.doc.html]"
@@ -953,7 +673,7 @@ Provides details for a MongoDB database identified by the fid.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Databases' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Paginated list of MongoDB databases.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodatabases.doc.html]"
@@ -963,148 +683,13 @@ Paginated list of MongoDB databases.
 
         
         [Parameter(
-            ParameterSetName = "DbBulkRecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbBulkRecoverableRange' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Recoverable range for multiple Management Objects on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbbulkrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbBulkRecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbCollection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbCollection' operation
-in the 'Mongo' API domain.
-Description of the operation:
-MongoDB collection identified by FID on NoSQL cluster. 
-MongoDB stores data records as documents which are gathered together in collections. 
-For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbcollection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbCollection { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbCollectionRecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbCollectionRecoverableRange' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Recoverable Range of a MongoDB collection on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbcollectionrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbCollectionRecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbCollections",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbCollections' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Paginated list of MongoDB collections on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbcollections.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbCollections { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbDatabase' operation
-in the 'Mongo' API domain.
-Description of the operation:
-MongoDB database identified by FID on NoSQL cluster. 
-MongoDB stores data records as documents which are gathered together in collections. 
-A database stores one or more collections of documents. 
-For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections/
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbdatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbDatabases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbDatabases' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Paginated list of MongoDB databases on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbdatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbDatabases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbSource' operation
-in the 'Mongo' API domain.
-Description of the operation:
-MongoDB source cluster identified by FID on NoSQL cluster. 
-For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster. 
-For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/introduction/
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbsource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbSources",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbSources' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Paginated list of MongoDB sources on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbsources.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbSources { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "RecoverableRanges",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'RecoverableRanges' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Provides the point in time range for MongoDB object recovery.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongorecoverableranges.doc.html]"
@@ -1120,7 +705,7 @@ Provides the point in time range for MongoDB object recovery.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Source' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Provides details for the MongoDB source cluster identified by the fid.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongosource.doc.html]"
@@ -1136,7 +721,7 @@ Provides details for the MongoDB source cluster identified by the fid.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Sources' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Paginated list of MongoDB sources.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongosources.doc.html]"
@@ -1153,11 +738,17 @@ Paginated list of MongoDB sources.
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "BulkRecoverableRange":
+                        this.ProcessRecord_BulkRecoverableRange();
+                        break;
                     case "BulkRecoverableRanges":
                         this.ProcessRecord_BulkRecoverableRanges();
                         break;
                     case "Collection":
                         this.ProcessRecord_Collection();
+                        break;
+                    case "CollectionRecoverableRange":
+                        this.ProcessRecord_CollectionRecoverableRange();
                         break;
                     case "Collections":
                         this.ProcessRecord_Collections();
@@ -1167,30 +758,6 @@ Paginated list of MongoDB sources.
                         break;
                     case "Databases":
                         this.ProcessRecord_Databases();
-                        break;
-                    case "DbBulkRecoverableRange":
-                        this.ProcessRecord_DbBulkRecoverableRange();
-                        break;
-                    case "DbCollection":
-                        this.ProcessRecord_DbCollection();
-                        break;
-                    case "DbCollectionRecoverableRange":
-                        this.ProcessRecord_DbCollectionRecoverableRange();
-                        break;
-                    case "DbCollections":
-                        this.ProcessRecord_DbCollections();
-                        break;
-                    case "DbDatabase":
-                        this.ProcessRecord_DbDatabase();
-                        break;
-                    case "DbDatabases":
-                        this.ProcessRecord_DbDatabases();
-                        break;
-                    case "DbSource":
-                        this.ProcessRecord_DbSource();
-                        break;
-                    case "DbSources":
-                        this.ProcessRecord_DbSources();
                         break;
                     case "RecoverableRanges":
                         this.ProcessRecord_RecoverableRanges();
@@ -1212,6 +779,15 @@ Paginated list of MongoDB sources.
         }
 
         // This parameter set invokes a single graphql operation:
+        // mongodbBulkRecoverableRange.
+        internal void ProcessRecord_BulkRecoverableRange()
+        {
+            this._logger.name += " -BulkRecoverableRange";
+            // Create new graphql operation mongodbBulkRecoverableRange
+            InitQueryMongodbBulkRecoverableRange();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // mongoBulkRecoverableRanges.
         internal void ProcessRecord_BulkRecoverableRanges()
         {
@@ -1227,6 +803,15 @@ Paginated list of MongoDB sources.
             this._logger.name += " -Collection";
             // Create new graphql operation mongoCollection
             InitQueryMongoCollection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongodbCollectionRecoverableRange.
+        internal void ProcessRecord_CollectionRecoverableRange()
+        {
+            this._logger.name += " -CollectionRecoverableRange";
+            // Create new graphql operation mongodbCollectionRecoverableRange
+            InitQueryMongodbCollectionRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1257,78 +842,6 @@ Paginated list of MongoDB sources.
         }
 
         // This parameter set invokes a single graphql operation:
-        // mongodbBulkRecoverableRange.
-        internal void ProcessRecord_DbBulkRecoverableRange()
-        {
-            this._logger.name += " -DbBulkRecoverableRange";
-            // Create new graphql operation mongodbBulkRecoverableRange
-            InitQueryMongodbBulkRecoverableRange();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbCollection.
-        internal void ProcessRecord_DbCollection()
-        {
-            this._logger.name += " -DbCollection";
-            // Create new graphql operation mongodbCollection
-            InitQueryMongodbCollection();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbCollectionRecoverableRange.
-        internal void ProcessRecord_DbCollectionRecoverableRange()
-        {
-            this._logger.name += " -DbCollectionRecoverableRange";
-            // Create new graphql operation mongodbCollectionRecoverableRange
-            InitQueryMongodbCollectionRecoverableRange();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbCollections.
-        internal void ProcessRecord_DbCollections()
-        {
-            this._logger.name += " -DbCollections";
-            // Create new graphql operation mongodbCollections
-            InitQueryMongodbCollections();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbDatabase.
-        internal void ProcessRecord_DbDatabase()
-        {
-            this._logger.name += " -DbDatabase";
-            // Create new graphql operation mongodbDatabase
-            InitQueryMongodbDatabase();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbDatabases.
-        internal void ProcessRecord_DbDatabases()
-        {
-            this._logger.name += " -DbDatabases";
-            // Create new graphql operation mongodbDatabases
-            InitQueryMongodbDatabases();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbSource.
-        internal void ProcessRecord_DbSource()
-        {
-            this._logger.name += " -DbSource";
-            // Create new graphql operation mongodbSource
-            InitQueryMongodbSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbSources.
-        internal void ProcessRecord_DbSources()
-        {
-            this._logger.name += " -DbSources";
-            // Create new graphql operation mongodbSources
-            InitQueryMongodbSources();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // mongoRecoverableRanges.
         internal void ProcessRecord_RecoverableRanges()
         {
@@ -1355,6 +868,50 @@ Paginated list of MongoDB sources.
             InitQueryMongoSources();
         }
 
+
+        // Create new GraphQL Query:
+        // mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!): MosaicRecoveryRangeResponse!
+        internal void InitQueryMongodbBulkRecoverableRange()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "MosaicBulkRecoveryRangeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMongodbBulkRecoverableRange",
+                "($input: MosaicBulkRecoveryRangeInput!)",
+                "MosaicRecoveryRangeResponse",
+                Query.MongodbBulkRecoverableRange_ObjectFieldSpec,
+                Query.MongodbBulkRecoverableRangeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	recoveryRangeData = @{
+		# OPTIONAL
+		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = $someString
+					# OPTIONAL
+					tables = @(
+						$someString
+					)
+				}
+			)
+		}
+		# REQUIRED
+		sourceName = $someString
+	}
+}"
+            );
+        }
 
         // Create new GraphQL Query:
         // mongoBulkRecoverableRanges(input: RecoverableRangeInput!): MongoRecoverableRanges!
@@ -1404,6 +961,40 @@ $query.Var.input = @{
                 Query.MongoCollectionFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!): GetMosaicRecoverableRangeResponse!
+        internal void InitQueryMongodbCollectionRecoverableRange()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMongodbCollectionRecoverableRange",
+                "($input: GetMosaicRecoverableRangeInput!)",
+                "GetMosaicRecoverableRangeResponse",
+                Query.MongodbCollectionRecoverableRange_ObjectFieldSpec,
+                Query.MongodbCollectionRecoverableRangeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	recoveryRangeRequestData = @{
+		# OPTIONAL
+		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
+		# REQUIRED
+		databaseName = $someString
+		# REQUIRED
+		sourceName = $someString
+		# REQUIRED
+		tableName = $someString
+	}
+}"
             );
         }
 
@@ -1530,378 +1121,6 @@ $query.Var.fid = $someString"
                 "MongoDatabaseConnection",
                 Query.MongoDatabases_ObjectFieldSpec,
                 Query.MongoDatabasesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!): MosaicRecoveryRangeResponse!
-        internal void InitQueryMongodbBulkRecoverableRange()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "MosaicBulkRecoveryRangeInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbBulkRecoverableRange",
-                "($input: MosaicBulkRecoveryRangeInput!)",
-                "MosaicRecoveryRangeResponse",
-                Query.MongodbBulkRecoverableRange_ObjectFieldSpec,
-                Query.MongodbBulkRecoverableRangeFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	recoveryRangeData = @{
-		# OPTIONAL
-		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
-		# REQUIRED
-		managementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = $someString
-					# OPTIONAL
-					tables = @(
-						$someString
-					)
-				}
-			)
-		}
-		# REQUIRED
-		sourceName = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbCollection(fid: UUID!): MongodbCollection!
-        internal void InitQueryMongodbCollection()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbCollection",
-                "($fid: UUID!)",
-                "MongodbCollection",
-                Query.MongodbCollection_ObjectFieldSpec,
-                Query.MongodbCollectionFieldSpec,
-                @"# REQUIRED
-$query.Var.fid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!): GetMosaicRecoverableRangeResponse!
-        internal void InitQueryMongodbCollectionRecoverableRange()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbCollectionRecoverableRange",
-                "($input: GetMosaicRecoverableRangeInput!)",
-                "GetMosaicRecoverableRangeResponse",
-                Query.MongodbCollectionRecoverableRange_ObjectFieldSpec,
-                Query.MongodbCollectionRecoverableRangeFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	recoveryRangeRequestData = @{
-		# OPTIONAL
-		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
-		# REQUIRED
-		databaseName = $someString
-		# REQUIRED
-		sourceName = $someString
-		# REQUIRED
-		tableName = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbCollections(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): MongodbCollectionConnection!
-        internal void InitQueryMongodbCollections()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbCollections",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongodbCollectionConnection",
-                Query.MongodbCollections_ObjectFieldSpec,
-                Query.MongodbCollectionsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbDatabase(fid: UUID!): MongodbDatabase!
-        internal void InitQueryMongodbDatabase()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbDatabase",
-                "($fid: UUID!)",
-                "MongodbDatabase",
-                Query.MongodbDatabase_ObjectFieldSpec,
-                Query.MongodbDatabaseFieldSpec,
-                @"# REQUIRED
-$query.Var.fid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbDatabases(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): MongodbDatabaseConnection!
-        internal void InitQueryMongodbDatabases()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbDatabases",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongodbDatabaseConnection",
-                Query.MongodbDatabases_ObjectFieldSpec,
-                Query.MongodbDatabasesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbSource(fid: UUID!): MongodbSource!
-        internal void InitQueryMongodbSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbSource",
-                "($fid: UUID!)",
-                "MongodbSource",
-                Query.MongodbSource_ObjectFieldSpec,
-                Query.MongodbSourceFieldSpec,
-                @"# REQUIRED
-$query.Var.fid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbSources(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): MongodbSourceConnection!
-        internal void InitQueryMongodbSources()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbSources",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongodbSourceConnection",
-                Query.MongodbSources_ObjectFieldSpec,
-                Query.MongodbSourcesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL

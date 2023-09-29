@@ -1,22 +1,12 @@
 # New-RscQueryO365
 ## Subcommands
-### alladgroups
+### adgroups
 All AD Groups belonging to the O365 organization.
 
 - There are 2 arguments.
     - orgId - System.String: Org UUID.
     - adGroupSearchFilter - System.String: AD group search filter.
 - Returns list of AdGroups.
-### allorgstatuses
-Gets the status of each org in the account.
-
-- The allorgstatuses subcommand takes no arguments.
-- Returns list of O365OrgInfos.
-### allsubscriptionsapptypecounts
-Returns the total number of apps of each type, for each O365 org.
-
-- The allsubscriptionsapptypecounts subcommand takes no arguments.
-- Returns list of O365SubscriptionAppTypeCountss.
 ### browseteamconvchannels
 Browse channels in a Teams conversations snapshot.
 
@@ -119,6 +109,11 @@ All O365 orgs for the account.
     - filter - list of Filters: The hierarchy object filter.
     - workloadHierarchy - WorkloadLevelHierarchy: Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
 - Returns O365OrgConnection.
+### orgstatuses
+Gets the status of each org in the account.
+
+- The orgstatuses subcommand takes no arguments.
+- Returns list of O365OrgInfos.
 ### orgsummaries
 - The orgsummaries subcommand takes no arguments.
 - Returns GetImplicitlyAuthorizedObjectSummariesResponse.
@@ -224,6 +219,11 @@ Returns the storage stats of an O365 org.
 
 - There is a single argument of type System.String.
 - Returns GetO365StorageStatsResp.
+### subscriptionsapptypecounts
+Returns the total number of apps of each type, for each O365 org.
+
+- The subscriptionsapptypecounts subcommand takes no arguments.
+- Returns list of O365SubscriptionAppTypeCountss.
 ### team
 Details for the team corresponding to the snappable ID.
 

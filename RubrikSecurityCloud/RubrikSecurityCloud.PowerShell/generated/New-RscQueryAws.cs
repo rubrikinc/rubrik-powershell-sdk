@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 47
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'AWS' API domain:
-    /// AllAvailabilityZonesByRegion, AllCdmVersions, AllCloudAccountConfigs, AllCloudAccountsWithFeatures, AllComputeSettings, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, AllEc2KeyPairsByRegion, AllExocomputeConfigs, AllInstanceProfileNames, AllKmsEncryptionKeysByRegion, AllOptionGroupsByRegion, AllPermissionPolicies, AllRegions, AllS3Buckets, AllS3BucketsDetails, AllSupportedRdsDatabaseInstanceClasses, AllVpcs, AllVpcsByRegion, AmiTypeForNativeArchivedSnapshotExport, ArtifactsToDelete, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, ComputeSettings, IsNativeEbsVolumeSnapshotRestorable, IsNativeRdsInstanceLaunchConfigurationValid, IsS3BucketNameAvailable, NativeAccount, NativeAccounts, NativeEbsVolume, NativeEbsVolumes, NativeEbsVolumesByName, NativeEc2Instance, NativeEc2Instances, NativeEc2InstancesByName, NativeRdsExportDefaults, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, NativeRoot, NativeS3Bucket, RdsInstanceDetails, TrustPolicy, ValidateNativeRdsClusterNameForExport, or ValidateNativeRdsInstanceNameForExport.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -34,17 +34,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 47 operations
+    /// There are 28 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AllAvailabilityZonesByRegion, -AllCdmVersions, -AllCloudAccountConfigs, -AllCloudAccountsWithFeatures, -AllComputeSettings, -AllDbParameterGroupsByRegion, -AllDbSubnetGroupsByRegion, -AllEc2KeyPairsByRegion, -AllExocomputeConfigs, -AllInstanceProfileNames, -AllKmsEncryptionKeysByRegion, -AllOptionGroupsByRegion, -AllPermissionPolicies, -AllRegions, -AllS3Buckets, -AllS3BucketsDetails, -AllSupportedRdsDatabaseInstanceClasses, -AllVpcs, -AllVpcsByRegion, -AmiTypeForNativeArchivedSnapshotExport, -ArtifactsToDelete, -CloudAccountListSecurityGroups, -CloudAccountListSubnets, -CloudAccountListVpcs, -CloudAccountWithFeatures, -ComputeSettings, -IsNativeEbsVolumeSnapshotRestorable, -IsNativeRdsInstanceLaunchConfigurationValid, -IsS3BucketNameAvailable, -NativeAccount, -NativeAccounts, -NativeEbsVolume, -NativeEbsVolumes, -NativeEbsVolumesByName, -NativeEc2Instance, -NativeEc2Instances, -NativeEc2InstancesByName, -NativeRdsExportDefaults, -NativeRdsInstance, -NativeRdsInstances, -NativeRdsPointInTimeRestoreWindow, -NativeRoot, -NativeS3Bucket, -RdsInstanceDetails, -TrustPolicy, -ValidateNativeRdsClusterNameForExport, -ValidateNativeRdsInstanceNameForExport.
+    /// one of: -ArtifactsToDelete, -AvailabilityZonesByRegion, -CdmVersions, -CloudAccountConfigs, -CloudAccountListSecurityGroups, -CloudAccountListSubnets, -CloudAccountListVpcs, -CloudAccountWithFeatures, -CloudAccountsWithFeatures, -ComputeSettings, -DbParameterGroupsByRegion, -DbSubnetGroupsByRegion, -Ec2KeyPairsByRegion, -ExocomputeConfigs, -InstanceProfileNames, -IsS3BucketNameAvailable, -KmsEncryptionKeysByRegion, -OptionGroupsByRegion, -PermissionPolicies, -RdsInstanceDetails, -Regions, -S3BucketStateForRecovery, -S3Buckets, -S3BucketsDetails, -SupportedRdsDatabaseInstanceClasses, -TrustPolicy, -Vpcs, -VpcsByRegion.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AllAvailabilityZonesByRegion,
-    /// which is equivalent to specifying -AllAvailabilityZonesByRegion.
+    /// -Op parameter, for example: -Op ArtifactsToDelete,
+    /// which is equivalent to specifying -ArtifactsToDelete.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryAws -AllAvailabilityZonesByRegion).Info().
+    /// (New-RscQueryAws -ArtifactsToDelete).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,24 +71,59 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryAws -AllAvailabilityZonesByRegion).Info().
+    /// (New-RscQueryAws -ArtifactsToDelete).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the AllAvailabilityZonesByRegion operation
+    /// Runs the ArtifactsToDelete operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllAvailabilityZonesByRegion
+    /// # API Domain:    Aws
+    /// # API Operation: ArtifactsToDelete
     /// 
-    /// $query = New-RscQueryAws -AllAvailabilityZonesByRegion
+    /// $query = New-RscQueryAws -ArtifactsToDelete
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsNativeId = $someString
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsArtifactsToDelete
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AvailabilityZonesByRegion operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: AvailabilityZonesByRegion
+    /// 
+    /// $query = New-RscQueryAws -AvailabilityZonesByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -108,17 +143,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AllCdmVersions operation
+    /// Runs the CdmVersions operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllCdmVersions
+    /// # API Domain:    Aws
+    /// # API Operation: CdmVersions
     /// 
-    /// $query = New-RscQueryAws -AllCdmVersions
+    /// $query = New-RscQueryAws -CdmVersions
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -141,17 +176,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AllCloudAccountConfigs operation
+    /// Runs the CloudAccountConfigs operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllCloudAccountConfigs
+    /// # API Domain:    Aws
+    /// # API Operation: CloudAccountConfigs
     /// 
-    /// $query = New-RscQueryAws -AllCloudAccountConfigs
+    /// $query = New-RscQueryAws -CloudAccountConfigs
     /// 
     /// # REQUIRED
     /// $query.Var.awsCloudAccountsArg = @{
@@ -180,594 +215,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AllCloudAccountsWithFeatures operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllCloudAccountsWithFeatures
-    /// 
-    /// $query = New-RscQueryAws -AllCloudAccountsWithFeatures
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsCloudAccountsArg = @{
-    /// 	# REQUIRED
-    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	# REQUIRED
-    /// 	statusFilters = @(
-    /// 		$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	awsAdminAccountFilter = $someString
-    /// 	# OPTIONAL
-    /// 	columnSearchFilter = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AwsCloudAccountWithFeatures&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllComputeSettings operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllComputeSettings
-    /// 
-    /// $query = New-RscQueryAws -AllComputeSettings
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsCloudComputeSettingQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someAwsCloudComputeSettingFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		text = $someString
-    /// }
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.contextFilter = $someContextFilterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AwsComputeSettings&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllDbParameterGroupsByRegion operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllDbParameterGroupsByRegion
-    /// 
-    /// $query = New-RscQueryAws -AllDbParameterGroupsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.dbEngineVersion = $someString
-    /// # OPTIONAL
-    /// $query.Var.rdsType = $someAwsNativeRdsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsType]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;DbParameterGroup&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllDbSubnetGroupsByRegion operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllDbSubnetGroupsByRegion
-    /// 
-    /// $query = New-RscQueryAws -AllDbSubnetGroupsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;SubnetGroup&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllEc2KeyPairsByRegion operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllEc2KeyPairsByRegion
-    /// 
-    /// $query = New-RscQueryAws -AllEc2KeyPairsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllExocomputeConfigs operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllExocomputeConfigs
-    /// 
-    /// $query = New-RscQueryAws -AllExocomputeConfigs
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsNativeAccountIdOrNamePrefix = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AwsExocomputeConfig&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllInstanceProfileNames operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllInstanceProfileNames
-    /// 
-    /// $query = New-RscQueryAws -AllInstanceProfileNames
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllKmsEncryptionKeysByRegion operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllKmsEncryptionKeysByRegion
-    /// 
-    /// $query = New-RscQueryAws -AllKmsEncryptionKeysByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;KmsEncryptionKey&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllOptionGroupsByRegion operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllOptionGroupsByRegion
-    /// 
-    /// $query = New-RscQueryAws -AllOptionGroupsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.dbEngineVersion = $someString
-    /// # REQUIRED
-    /// $query.Var.majorEngineVersion = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;OptionGroup&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllPermissionPolicies operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllPermissionPolicies
-    /// 
-    /// $query = New-RscQueryAws -AllPermissionPolicies
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-    /// 	# REQUIRED
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	featureSpecificDetails = @{
-    /// 		# OPTIONAL
-    /// 		ec2RecoveryRolePath = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;PermissionPolicy&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllRegions operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllRegions
-    /// 
-    /// $query = New-RscQueryAws -AllRegions
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cloudAccountId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AwsCloudAccountRegion&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllS3Buckets operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllS3Buckets
-    /// 
-    /// $query = New-RscQueryAws -AllS3Buckets
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllS3BucketsDetails operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllS3BucketsDetails
-    /// 
-    /// $query = New-RscQueryAws -AllS3BucketsDetails
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # OPTIONAL
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;S3BucketDetails&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllSupportedRdsDatabaseInstanceClasses operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllSupportedRdsDatabaseInstanceClasses
-    /// 
-    /// $query = New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.dbEngineVersion = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllVpcs operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllVpcs
-    /// 
-    /// $query = New-RscQueryAws -AllVpcs
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AwsVpc&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllVpcsByRegion operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AllVpcsByRegion
-    /// 
-    /// $query = New-RscQueryAws -AllVpcsByRegion
-    /// 
-    /// # REQUIRED
-    /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;AwsVpc&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AmiTypeForNativeArchivedSnapshotExport operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: AmiTypeForNativeArchivedSnapshotExport
-    /// 
-    /// $query = New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
-    /// 	destinationRegionId = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 	# REQUIRED
-    /// 	destinationAwsAccountRubrikId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AmiTypeForAwsNativeArchivedSnapshotExportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ArtifactsToDelete operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: ArtifactsToDelete
-    /// 
-    /// $query = New-RscQueryAws -ArtifactsToDelete
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	awsNativeId = $someString
-    /// 	# REQUIRED
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsArtifactsToDelete
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the CloudAccountListSecurityGroups operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -775,7 +222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CloudAccountListSecurityGroups
     /// 
     /// $query = New-RscQueryAws -CloudAccountListSecurityGroups
@@ -809,7 +256,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CloudAccountListSubnets
     /// 
     /// $query = New-RscQueryAws -CloudAccountListSubnets
@@ -843,7 +290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CloudAccountListVpcs
     /// 
     /// $query = New-RscQueryAws -CloudAccountListVpcs
@@ -875,7 +322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: CloudAccountWithFeatures
     /// 
     /// $query = New-RscQueryAws -CloudAccountWithFeatures
@@ -903,6 +350,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CloudAccountsWithFeatures operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: CloudAccountsWithFeatures
+    /// 
+    /// $query = New-RscQueryAws -CloudAccountsWithFeatures
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsCloudAccountsArg = @{
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	# REQUIRED
+    /// 	statusFilters = @(
+    /// 		$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsAdminAccountFilter = $someString
+    /// 	# OPTIONAL
+    /// 	columnSearchFilter = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsCloudAccountWithFeatures&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ComputeSettings operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -910,7 +396,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: ComputeSettings
     /// 
     /// $query = New-RscQueryAws -ComputeSettings
@@ -931,45 +417,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the IsNativeEbsVolumeSnapshotRestorable operation
+    /// Runs the DbParameterGroupsByRegion operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: IsNativeEbsVolumeSnapshotRestorable
+    /// # API Domain:    Aws
+    /// # API Operation: DbParameterGroupsByRegion
     /// 
-    /// $query = New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
-    /// 
-    /// # REQUIRED
-    /// $query.Var.snapshotId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: IsVolumeSnapshotRestorableReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the IsNativeRdsInstanceLaunchConfigurationValid operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: IsNativeRdsInstanceLaunchConfigurationValid
-    /// 
-    /// $query = New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
+    /// $query = New-RscQueryAws -DbParameterGroupsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
@@ -979,26 +437,132 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
     /// # REQUIRED
     /// $query.Var.dbEngineVersion = $someString
-    /// # REQUIRED
-    /// $query.Var.dbClass = $someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
     /// # OPTIONAL
-    /// $query.Var.databaseInstanceClass = $someString
-    /// # OPTIONAL
-    /// $query.Var.primaryAz = $someString
-    /// # OPTIONAL
-    /// $query.Var.storageType = $someAwsNativeRdsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsStorageType]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.isMultiAz = $someBoolean
-    /// # OPTIONAL
-    /// $query.Var.kmsKeyId = $someString
-    /// # OPTIONAL
-    /// $query.Var.iops = $someInt
+    /// $query.Var.rdsType = $someAwsNativeRdsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsType]) for enum values.
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// Write-Host $result.GetType().Name # prints: List&lt;DbParameterGroup&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DbSubnetGroupsByRegion operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: DbSubnetGroupsByRegion
+    /// 
+    /// $query = New-RscQueryAws -DbSubnetGroupsByRegion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;SubnetGroup&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Ec2KeyPairsByRegion operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: Ec2KeyPairsByRegion
+    /// 
+    /// $query = New-RscQueryAws -Ec2KeyPairsByRegion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExocomputeConfigs operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: ExocomputeConfigs
+    /// 
+    /// $query = New-RscQueryAws -ExocomputeConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsNativeAccountIdOrNamePrefix = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsExocomputeConfig&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the InstanceProfileNames operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: InstanceProfileNames
+    /// 
+    /// $query = New-RscQueryAws -InstanceProfileNames
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
     /// 
     /// 
     /// 
@@ -1014,7 +578,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: IsS3BucketNameAvailable
     /// 
     /// $query = New-RscQueryAws -IsS3BucketNameAvailable
@@ -1037,28 +601,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the NativeAccount operation
+    /// Runs the KmsEncryptionKeysByRegion operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeAccount
+    /// # API Domain:    Aws
+    /// # API Operation: KmsEncryptionKeysByRegion
     /// 
-    /// $query = New-RscQueryAws -NativeAccount
+    /// $query = New-RscQueryAws -KmsEncryptionKeysByRegion
     /// 
     /// # REQUIRED
-    /// $query.Var.awsNativeAccountRubrikId = $someString
+    /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
-    /// $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeAccount
+    /// Write-Host $result.GetType().Name # prints: List&lt;KmsEncryptionKey&gt;
     /// 
     /// 
     /// 
@@ -1067,648 +631,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the NativeAccounts operation
+    /// Runs the OptionGroupsByRegion operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeAccounts
+    /// # API Domain:    Aws
+    /// # API Operation: OptionGroupsByRegion
     /// 
-    /// $query = New-RscQueryAws -NativeAccounts
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsNativeAccountSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeAccountSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.accountFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	cloudTypeFilter = @{
-    /// 		# REQUIRED
-    /// 		cloudTypes = @(
-    /// 			$someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-    /// 		)
-    /// 	}
-    /// }
-    /// # OPTIONAL
-    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeAccountConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeEbsVolume operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeEbsVolume
-    /// 
-    /// $query = New-RscQueryAws -NativeEbsVolume
-    /// 
-    /// # REQUIRED
-    /// $query.Var.ebsVolumeRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeEbsVolume
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeEbsVolumes operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeEbsVolumes
-    /// 
-    /// $query = New-RscQueryAws -NativeEbsVolumes
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsNativeEbsVolumeSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.ebsVolumeFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameOrIdSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameOrIdSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	fileRecoveryStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		statuses = @(
-    /// 			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	typeFilter = @{
-    /// 		# REQUIRED
-    /// 		ebsVolumeTypes = @(
-    /// 			$someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	attachedInstanceFilter = @{
-    /// 		# REQUIRED
-    /// 		ec2InstanceIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	accountFilter = @{
-    /// 		# REQUIRED
-    /// 		accountIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	relicFilter = @{
-    /// 		# REQUIRED
-    /// 		relic = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	orgFilter = @{
-    /// 		# REQUIRED
-    /// 		orgIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeEbsVolumeConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeEbsVolumesByName operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeEbsVolumesByName
-    /// 
-    /// $query = New-RscQueryAws -NativeEbsVolumesByName
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsNativeEbsVolumeSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.ebsVolumeName = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeEbsVolumeConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeEc2Instance operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeEc2Instance
-    /// 
-    /// $query = New-RscQueryAws -NativeEc2Instance
-    /// 
-    /// # REQUIRED
-    /// $query.Var.ec2InstanceRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeEc2Instance
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeEc2Instances operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeEc2Instances
-    /// 
-    /// $query = New-RscQueryAws -NativeEc2Instances
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsNativeEc2InstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.descendantTypeFilter = @(
-    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.ec2InstanceFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameOrIdSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameOrIdSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	accountFilter = @{
-    /// 		# REQUIRED
-    /// 		accountIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	fileRecoveryStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		statuses = @(
-    /// 			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	typeFilter = @{
-    /// 		# REQUIRED
-    /// 		ec2InstanceTypes = @(
-    /// 			$someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vpcFilter = @{
-    /// 		# REQUIRED
-    /// 		vpcIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	relicFilter = @{
-    /// 		# REQUIRED
-    /// 		relic = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	appProtectionStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		isProtectionSetup = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	rbsStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	orgFilter = @{
-    /// 		# REQUIRED
-    /// 		orgIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeEc2InstanceConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeEc2InstancesByName operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeEc2InstancesByName
-    /// 
-    /// $query = New-RscQueryAws -NativeEc2InstancesByName
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsNativeEc2InstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.ec2InstanceName = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeEc2InstanceConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeRdsExportDefaults operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeRdsExportDefaults
-    /// 
-    /// $query = New-RscQueryAws -NativeRdsExportDefaults
-    /// 
-    /// # REQUIRED
-    /// $query.Var.rdsInstanceRubrikId = $someString
-    /// # OPTIONAL
-    /// $query.Var.snapshotId = $someString
-    /// # REQUIRED
-    /// $query.Var.isPointInTime = $someBoolean
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RdsInstanceExportDefaults
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeRdsInstance operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeRdsInstance
-    /// 
-    /// $query = New-RscQueryAws -NativeRdsInstance
-    /// 
-    /// # REQUIRED
-    /// $query.Var.rdsInstanceRubrikId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeRdsInstance
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeRdsInstances operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeRdsInstances
-    /// 
-    /// $query = New-RscQueryAws -NativeRdsInstances
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someAwsNativeRdsInstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsInstanceSortFields]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.rdsInstanceFilters = @{
-    /// 	# OPTIONAL
-    /// 	nameSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	effectiveSlaFilter = @{
-    /// 		# REQUIRED
-    /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	accountFilter = @{
-    /// 		# REQUIRED
-    /// 		accountIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vpcFilter = @{
-    /// 		# REQUIRED
-    /// 		vpcIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	relicFilter = @{
-    /// 		# REQUIRED
-    /// 		relic = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	dbEngineFilter = @{
-    /// 		# REQUIRED
-    /// 		dbEngines = @(
-    /// 			$someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	dbInstanceClassFilter = @{
-    /// 		# REQUIRED
-    /// 		dbInstanceClasses = @(
-    /// 			$someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	orgFilter = @{
-    /// 		# REQUIRED
-    /// 		orgIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeRdsInstanceConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeRdsPointInTimeRestoreWindow operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeRdsPointInTimeRestoreWindow
-    /// 
-    /// $query = New-RscQueryAws -NativeRdsPointInTimeRestoreWindow
+    /// $query = New-RscQueryAws -OptionGroupsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
     /// # REQUIRED
-    /// $query.Var.rdsInstanceName = $someString
-    /// # OPTIONAL
-    /// $query.Var.rdsDatabaseRubrikId = $someString
+    /// $query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.dbEngineVersion = $someString
+    /// # REQUIRED
+    /// $query.Var.majorEngineVersion = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeRdsPointInTimeRestoreWindow
+    /// Write-Host $result.GetType().Name # prints: List&lt;OptionGroup&gt;
     /// 
     /// 
     /// 
@@ -1717,53 +667,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the NativeRoot operation
+    /// Runs the PermissionPolicies operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeRoot
+    /// # API Domain:    Aws
+    /// # API Operation: PermissionPolicies
     /// 
-    /// $query = New-RscQueryAws -NativeRoot
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeRoot
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeS3Bucket operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: NativeS3Bucket
-    /// 
-    /// $query = New-RscQueryAws -NativeS3Bucket
+    /// $query = New-RscQueryAws -PermissionPolicies
     /// 
     /// # REQUIRED
-    /// $query.Var.s3BucketRubrikId = $someString
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	featureSpecificDetails = @{
+    /// 		# OPTIONAL
+    /// 		ec2RecoveryRolePath = $someString
+    /// 	}
+    /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: AwsNativeS3Bucket
+    /// Write-Host $result.GetType().Name # prints: List&lt;PermissionPolicy&gt;
     /// 
     /// 
     /// 
@@ -1779,7 +714,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: RdsInstanceDetails
     /// 
     /// $query = New-RscQueryAws -RdsInstanceDetails
@@ -1806,6 +741,158 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Regions operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: Regions
+    /// 
+    /// $query = New-RscQueryAws -Regions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudAccountId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsCloudAccountRegion&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the S3BucketStateForRecovery operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: S3BucketStateForRecovery
+    /// 
+    /// $query = New-RscQueryAws -S3BucketStateForRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.bucketName = $someString
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetS3BucketStateForRecoveryReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the S3Buckets operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: S3Buckets
+    /// 
+    /// $query = New-RscQueryAws -S3Buckets
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the S3BucketsDetails operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: S3BucketsDetails
+    /// 
+    /// $query = New-RscQueryAws -S3BucketsDetails
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;S3BucketDetails&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SupportedRdsDatabaseInstanceClasses operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: SupportedRdsDatabaseInstanceClasses
+    /// 
+    /// $query = New-RscQueryAws -SupportedRdsDatabaseInstanceClasses
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.dbEngineVersion = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TrustPolicy operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1813,7 +900,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
+    /// # API Domain:    Aws
     /// # API Operation: TrustPolicy
     /// 
     /// $query = New-RscQueryAws -TrustPolicy
@@ -1850,30 +937,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ValidateNativeRdsClusterNameForExport operation
+    /// Runs the Vpcs operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: ValidateNativeRdsClusterNameForExport
+    /// # API Domain:    Aws
+    /// # API Operation: Vpcs
     /// 
-    /// $query = New-RscQueryAws -ValidateNativeRdsClusterNameForExport
+    /// $query = New-RscQueryAws -Vpcs
     /// 
-    /// # REQUIRED
+    /// # OPTIONAL
     /// $query.Var.awsAccountRubrikId = $someString
-    /// # REQUIRED
-    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.rdsClusterName = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ValidateAwsNativeRdsClusterNameForExportReply
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsVpc&gt;
     /// 
     /// 
     /// 
@@ -1882,30 +965,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ValidateNativeRdsInstanceNameForExport operation
+    /// Runs the VpcsByRegion operation
     /// of the 'AWS' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    AWS
-    /// # API Operation: ValidateNativeRdsInstanceNameForExport
+    /// # API Domain:    Aws
+    /// # API Operation: VpcsByRegion
     /// 
-    /// $query = New-RscQueryAws -ValidateNativeRdsInstanceNameForExport
+    /// $query = New-RscQueryAws -VpcsByRegion
     /// 
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.rdsInstanceName = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ValidateAwsNativeRdsInstanceNameForExportReply
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsVpc&gt;
     /// 
     /// 
     /// 
@@ -1917,330 +998,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAws",
-        DefaultParameterSetName = "AllVpcs")
+        DefaultParameterSetName = "Vpcs")
     ]
     public class New_RscQueryAws : RscGqlPSCmdlet
     {
-        
-        [Parameter(
-            ParameterSetName = "AllAvailabilityZonesByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllAvailabilityZonesByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allavailabilityzonesbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllAvailabilityZonesByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCdmVersions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCdmVersions' operation
-in the 'AWS' API domain.
-Description of the operation:
-Get all Rubrik CDM versions in the AWS marketplace.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscdmversions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCdmVersions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCloudAccountConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCloudAccountConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all AWS cloud account configurations with the given search query.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscloudaccountconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCloudAccountConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllCloudAccountsWithFeatures",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllCloudAccountsWithFeatures' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscloudaccountswithfeatures.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllCloudAccountsWithFeatures { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllComputeSettings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllComputeSettings' operation
-in the 'AWS' API domain.
-Description of the operation:
-List all aws compute settings.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscomputesettings.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllComputeSettings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllDbParameterGroupsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllDbParameterGroupsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldbparametergroupsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllDbParameterGroupsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllDbSubnetGroupsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllDbSubnetGroupsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldbsubnetgroupsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllDbSubnetGroupsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllEc2KeyPairsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllEc2KeyPairsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allec2keypairsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllEc2KeyPairsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllExocomputeConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsexocomputeconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllExocomputeConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllInstanceProfileNames",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllInstanceProfileNames' operation
-in the 'AWS' API domain.
-Description of the operation:
-All Rubrik CC-ES instance profiles in the AWS account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsinstanceprofilenames.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllInstanceProfileNames { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllKmsEncryptionKeysByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllKmsEncryptionKeysByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allkmsencryptionkeysbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllKmsEncryptionKeysByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllOptionGroupsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllOptionGroupsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alloptiongroupsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllOptionGroupsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllPermissionPolicies",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllPermissionPolicies' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawspermissionpolicies.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllPermissionPolicies { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllRegions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllRegions' operation
-in the 'AWS' API domain.
-Description of the operation:
-All valid AWS regions for this cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllRegions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllS3Buckets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllS3Buckets' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all S3 bucket names across regions for the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alls3bucketsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllS3Buckets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllS3BucketsDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllS3BucketsDetails' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all S3 bucket details across regions for the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alls3bucketsdetailsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllS3BucketsDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllSupportedRdsDatabaseInstanceClasses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllSupportedRdsDatabaseInstanceClasses' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allsupportedawsrdsdatabaseinstanceclasses.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllSupportedRdsDatabaseInstanceClasses { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllVpcs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllVpcs' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all Virtual Private Clouds (VPCs) in the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvpcsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllVpcs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllVpcsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllVpcsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvpcsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllVpcsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AmiTypeForNativeArchivedSnapshotExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AmiTypeForNativeArchivedSnapshotExport' operation
-in the 'AWS' API domain.
-Description of the operation:
-Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/amitypeforawsnativearchivedsnapshotexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AmiTypeForNativeArchivedSnapshotExport { get; set; }
-
         
         [Parameter(
             ParameterSetName = "ArtifactsToDelete",
@@ -2256,6 +1017,54 @@ Retrieves the AWS artifacts that need to be deleted when an account is being del
             // No Position -> named parameter only.
         )]
         public SwitchParameter ArtifactsToDelete { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "AvailabilityZonesByRegion",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'AvailabilityZonesByRegion' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allavailabilityzonesbyregionfromaws.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter AvailabilityZonesByRegion { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CdmVersions",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CdmVersions' operation
+in the 'AWS' API domain.
+Description of the operation:
+Get all Rubrik CDM versions in the AWS marketplace.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscdmversions.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CdmVersions { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CloudAccountConfigs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CloudAccountConfigs' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of all AWS cloud account configurations with the given search query.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscloudaccountconfigs.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CloudAccountConfigs { get; set; }
 
         
         [Parameter(
@@ -2323,6 +1132,22 @@ List of AWS cloud accounts and the features for each account, classified by ID.
 
         
         [Parameter(
+            ParameterSetName = "CloudAccountsWithFeatures",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CloudAccountsWithFeatures' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscloudaccountswithfeatures.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CloudAccountsWithFeatures { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "ComputeSettings",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -2339,35 +1164,83 @@ Retrieve aws compute settings.
 
         
         [Parameter(
-            ParameterSetName = "IsNativeEbsVolumeSnapshotRestorable",
+            ParameterSetName = "DbParameterGroupsByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'IsNativeEbsVolumeSnapshotRestorable' operation
+@"Create a query object for the 'DbParameterGroupsByRegion' operation
 in the 'AWS' API domain.
 Description of the operation:
-Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isawsnativeebsvolumesnapshotrestorable.doc.html]"
+List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldbparametergroupsbyregionfromaws.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter IsNativeEbsVolumeSnapshotRestorable { get; set; }
+        public SwitchParameter DbParameterGroupsByRegion { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "IsNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "DbSubnetGroupsByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'IsNativeRdsInstanceLaunchConfigurationValid' operation
+@"Create a query object for the 'DbSubnetGroupsByRegion' operation
 in the 'AWS' API domain.
 Description of the operation:
-Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isawsnativerdsinstancelaunchconfigurationvalid.doc.html]"
+All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldbsubnetgroupsbyregionfromaws.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter IsNativeRdsInstanceLaunchConfigurationValid { get; set; }
+        public SwitchParameter DbSubnetGroupsByRegion { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Ec2KeyPairsByRegion",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Ec2KeyPairsByRegion' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allec2keypairsbyregionfromaws.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Ec2KeyPairsByRegion { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ExocomputeConfigs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ExocomputeConfigs' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsexocomputeconfigs.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ExocomputeConfigs { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "InstanceProfileNames",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'InstanceProfileNames' operation
+in the 'AWS' API domain.
+Description of the operation:
+All Rubrik CC-ES instance profiles in the AWS account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsinstanceprofilenames.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter InstanceProfileNames { get; set; }
 
         
         [Parameter(
@@ -2387,227 +1260,51 @@ Specifies whether an S3 bucket name is available for use in AWS or not. When tru
 
         
         [Parameter(
-            ParameterSetName = "NativeAccount",
+            ParameterSetName = "KmsEncryptionKeysByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'NativeAccount' operation
+@"Create a query object for the 'KmsEncryptionKeysByRegion' operation
 in the 'AWS' API domain.
 Description of the operation:
-Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeaccount.doc.html]"
+List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allkmsencryptionkeysbyregionfromaws.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter NativeAccount { get; set; }
+        public SwitchParameter KmsEncryptionKeysByRegion { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "NativeAccounts",
+            ParameterSetName = "OptionGroupsByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'NativeAccounts' operation
+@"Create a query object for the 'OptionGroupsByRegion' operation
 in the 'AWS' API domain.
 Description of the operation:
-Paginated list of all AWS Native accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeaccounts.doc.html]"
+List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alloptiongroupsbyregionfromaws.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter NativeAccounts { get; set; }
+        public SwitchParameter OptionGroupsByRegion { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "NativeEbsVolume",
+            ParameterSetName = "PermissionPolicies",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'NativeEbsVolume' operation
+@"Create a query object for the 'PermissionPolicies' operation
 in the 'AWS' API domain.
 Description of the operation:
-Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeebsvolume.doc.html]"
+Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawspermissionpolicies.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter NativeEbsVolume { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeEbsVolumes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeEbsVolumes' operation
-in the 'AWS' API domain.
-Description of the operation:
-Paginated list of all AWS EBS Volumes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeebsvolumes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeEbsVolumes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeEbsVolumesByName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeEbsVolumesByName' operation
-in the 'AWS' API domain.
-Description of the operation:
-Paginated list of all AWS EBS Volumes by name or substring of name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeebsvolumesbyname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeEbsVolumesByName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeEc2Instance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeEc2Instance' operation
-in the 'AWS' API domain.
-Description of the operation:
-Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeec2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeEc2Instance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeEc2Instances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeEc2Instances' operation
-in the 'AWS' API domain.
-Description of the operation:
-Paginated list of all AWS EC2 Instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeec2instances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeEc2Instances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeEc2InstancesByName' operation
-in the 'AWS' API domain.
-Description of the operation:
-Paginated list of all AWS EC2 Instances by name or substring of name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeec2instancesbyname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeEc2InstancesByName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRdsExportDefaults",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRdsExportDefaults' operation
-in the 'AWS' API domain.
-Description of the operation:
-Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdsexportdefaults.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRdsExportDefaults { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRdsInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRdsInstance' operation
-in the 'AWS' API domain.
-Description of the operation:
-Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdsinstance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRdsInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRdsInstances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRdsInstances' operation
-in the 'AWS' API domain.
-Description of the operation:
-Paginated list of AWS RDS Instances on AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdsinstances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRdsInstances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRdsPointInTimeRestoreWindow' operation
-in the 'AWS' API domain.
-Description of the operation:
-Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdspointintimerestorewindow.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRdsPointInTimeRestoreWindow { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRoot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRoot' operation
-in the 'AWS' API domain.
-Description of the operation:
-Root of AWS native hierarchy.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeroot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRoot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeS3Bucket",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeS3Bucket' operation
-in the 'AWS' API domain.
-Description of the operation:
-Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnatives3bucket.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeS3Bucket { get; set; }
+        public SwitchParameter PermissionPolicies { get; set; }
 
         
         [Parameter(
@@ -2627,6 +1324,86 @@ Details of the RDS Instance in the AWS Native account.
 
         
         [Parameter(
+            ParameterSetName = "Regions",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Regions' operation
+in the 'AWS' API domain.
+Description of the operation:
+All valid AWS regions for this cloud account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsregions.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Regions { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "S3BucketStateForRecovery",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'S3BucketStateForRecovery' operation
+in the 'AWS' API domain.
+Description of the operation:
+Retrieves the versioning and object ACL state of the Amazon S3 bucket, which is required to initiate the recovery process.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/s3bucketstateforrecovery.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter S3BucketStateForRecovery { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "S3Buckets",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'S3Buckets' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of all S3 bucket names across regions for the AWS Native account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alls3bucketsfromaws.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter S3Buckets { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "S3BucketsDetails",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'S3BucketsDetails' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of all S3 bucket details across regions for the AWS Native account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alls3bucketsdetailsfromaws.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter S3BucketsDetails { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "SupportedRdsDatabaseInstanceClasses",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'SupportedRdsDatabaseInstanceClasses' operation
+in the 'AWS' API domain.
+Description of the operation:
+List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allsupportedawsrdsdatabaseinstanceclasses.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter SupportedRdsDatabaseInstanceClasses { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "TrustPolicy",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -2643,35 +1420,35 @@ Retrieves the AWS trust policy that will be attached with each role (cross-accou
 
         
         [Parameter(
-            ParameterSetName = "ValidateNativeRdsClusterNameForExport",
+            ParameterSetName = "Vpcs",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'ValidateNativeRdsClusterNameForExport' operation
+@"Create a query object for the 'Vpcs' operation
 in the 'AWS' API domain.
 Description of the operation:
-Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateawsnativerdsclusternameforexport.doc.html]"
+List of all Virtual Private Clouds (VPCs) in the AWS Native account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvpcsfromaws.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter ValidateNativeRdsClusterNameForExport { get; set; }
+        public SwitchParameter Vpcs { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "ValidateNativeRdsInstanceNameForExport",
+            ParameterSetName = "VpcsByRegion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'ValidateNativeRdsInstanceNameForExport' operation
+@"Create a query object for the 'VpcsByRegion' operation
 in the 'AWS' API domain.
 Description of the operation:
-Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateawsnativerdsinstancenameforexport.doc.html]"
+List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvpcsbyregionfromaws.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter ValidateNativeRdsInstanceNameForExport { get; set; }
+        public SwitchParameter VpcsByRegion { get; set; }
 
 
 
@@ -2682,68 +1459,17 @@ Validates the name used for an RDS Instance during an export operation. Returns 
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AllAvailabilityZonesByRegion":
-                        this.ProcessRecord_AllAvailabilityZonesByRegion();
-                        break;
-                    case "AllCdmVersions":
-                        this.ProcessRecord_AllCdmVersions();
-                        break;
-                    case "AllCloudAccountConfigs":
-                        this.ProcessRecord_AllCloudAccountConfigs();
-                        break;
-                    case "AllCloudAccountsWithFeatures":
-                        this.ProcessRecord_AllCloudAccountsWithFeatures();
-                        break;
-                    case "AllComputeSettings":
-                        this.ProcessRecord_AllComputeSettings();
-                        break;
-                    case "AllDbParameterGroupsByRegion":
-                        this.ProcessRecord_AllDbParameterGroupsByRegion();
-                        break;
-                    case "AllDbSubnetGroupsByRegion":
-                        this.ProcessRecord_AllDbSubnetGroupsByRegion();
-                        break;
-                    case "AllEc2KeyPairsByRegion":
-                        this.ProcessRecord_AllEc2KeyPairsByRegion();
-                        break;
-                    case "AllExocomputeConfigs":
-                        this.ProcessRecord_AllExocomputeConfigs();
-                        break;
-                    case "AllInstanceProfileNames":
-                        this.ProcessRecord_AllInstanceProfileNames();
-                        break;
-                    case "AllKmsEncryptionKeysByRegion":
-                        this.ProcessRecord_AllKmsEncryptionKeysByRegion();
-                        break;
-                    case "AllOptionGroupsByRegion":
-                        this.ProcessRecord_AllOptionGroupsByRegion();
-                        break;
-                    case "AllPermissionPolicies":
-                        this.ProcessRecord_AllPermissionPolicies();
-                        break;
-                    case "AllRegions":
-                        this.ProcessRecord_AllRegions();
-                        break;
-                    case "AllS3Buckets":
-                        this.ProcessRecord_AllS3Buckets();
-                        break;
-                    case "AllS3BucketsDetails":
-                        this.ProcessRecord_AllS3BucketsDetails();
-                        break;
-                    case "AllSupportedRdsDatabaseInstanceClasses":
-                        this.ProcessRecord_AllSupportedRdsDatabaseInstanceClasses();
-                        break;
-                    case "AllVpcs":
-                        this.ProcessRecord_AllVpcs();
-                        break;
-                    case "AllVpcsByRegion":
-                        this.ProcessRecord_AllVpcsByRegion();
-                        break;
-                    case "AmiTypeForNativeArchivedSnapshotExport":
-                        this.ProcessRecord_AmiTypeForNativeArchivedSnapshotExport();
-                        break;
                     case "ArtifactsToDelete":
                         this.ProcessRecord_ArtifactsToDelete();
+                        break;
+                    case "AvailabilityZonesByRegion":
+                        this.ProcessRecord_AvailabilityZonesByRegion();
+                        break;
+                    case "CdmVersions":
+                        this.ProcessRecord_CdmVersions();
+                        break;
+                    case "CloudAccountConfigs":
+                        this.ProcessRecord_CloudAccountConfigs();
                         break;
                     case "CloudAccountListSecurityGroups":
                         this.ProcessRecord_CloudAccountListSecurityGroups();
@@ -2757,71 +1483,65 @@ Validates the name used for an RDS Instance during an export operation. Returns 
                     case "CloudAccountWithFeatures":
                         this.ProcessRecord_CloudAccountWithFeatures();
                         break;
+                    case "CloudAccountsWithFeatures":
+                        this.ProcessRecord_CloudAccountsWithFeatures();
+                        break;
                     case "ComputeSettings":
                         this.ProcessRecord_ComputeSettings();
                         break;
-                    case "IsNativeEbsVolumeSnapshotRestorable":
-                        this.ProcessRecord_IsNativeEbsVolumeSnapshotRestorable();
+                    case "DbParameterGroupsByRegion":
+                        this.ProcessRecord_DbParameterGroupsByRegion();
                         break;
-                    case "IsNativeRdsInstanceLaunchConfigurationValid":
-                        this.ProcessRecord_IsNativeRdsInstanceLaunchConfigurationValid();
+                    case "DbSubnetGroupsByRegion":
+                        this.ProcessRecord_DbSubnetGroupsByRegion();
+                        break;
+                    case "Ec2KeyPairsByRegion":
+                        this.ProcessRecord_Ec2KeyPairsByRegion();
+                        break;
+                    case "ExocomputeConfigs":
+                        this.ProcessRecord_ExocomputeConfigs();
+                        break;
+                    case "InstanceProfileNames":
+                        this.ProcessRecord_InstanceProfileNames();
                         break;
                     case "IsS3BucketNameAvailable":
                         this.ProcessRecord_IsS3BucketNameAvailable();
                         break;
-                    case "NativeAccount":
-                        this.ProcessRecord_NativeAccount();
+                    case "KmsEncryptionKeysByRegion":
+                        this.ProcessRecord_KmsEncryptionKeysByRegion();
                         break;
-                    case "NativeAccounts":
-                        this.ProcessRecord_NativeAccounts();
+                    case "OptionGroupsByRegion":
+                        this.ProcessRecord_OptionGroupsByRegion();
                         break;
-                    case "NativeEbsVolume":
-                        this.ProcessRecord_NativeEbsVolume();
-                        break;
-                    case "NativeEbsVolumes":
-                        this.ProcessRecord_NativeEbsVolumes();
-                        break;
-                    case "NativeEbsVolumesByName":
-                        this.ProcessRecord_NativeEbsVolumesByName();
-                        break;
-                    case "NativeEc2Instance":
-                        this.ProcessRecord_NativeEc2Instance();
-                        break;
-                    case "NativeEc2Instances":
-                        this.ProcessRecord_NativeEc2Instances();
-                        break;
-                    case "NativeEc2InstancesByName":
-                        this.ProcessRecord_NativeEc2InstancesByName();
-                        break;
-                    case "NativeRdsExportDefaults":
-                        this.ProcessRecord_NativeRdsExportDefaults();
-                        break;
-                    case "NativeRdsInstance":
-                        this.ProcessRecord_NativeRdsInstance();
-                        break;
-                    case "NativeRdsInstances":
-                        this.ProcessRecord_NativeRdsInstances();
-                        break;
-                    case "NativeRdsPointInTimeRestoreWindow":
-                        this.ProcessRecord_NativeRdsPointInTimeRestoreWindow();
-                        break;
-                    case "NativeRoot":
-                        this.ProcessRecord_NativeRoot();
-                        break;
-                    case "NativeS3Bucket":
-                        this.ProcessRecord_NativeS3Bucket();
+                    case "PermissionPolicies":
+                        this.ProcessRecord_PermissionPolicies();
                         break;
                     case "RdsInstanceDetails":
                         this.ProcessRecord_RdsInstanceDetails();
                         break;
+                    case "Regions":
+                        this.ProcessRecord_Regions();
+                        break;
+                    case "S3BucketStateForRecovery":
+                        this.ProcessRecord_S3BucketStateForRecovery();
+                        break;
+                    case "S3Buckets":
+                        this.ProcessRecord_S3Buckets();
+                        break;
+                    case "S3BucketsDetails":
+                        this.ProcessRecord_S3BucketsDetails();
+                        break;
+                    case "SupportedRdsDatabaseInstanceClasses":
+                        this.ProcessRecord_SupportedRdsDatabaseInstanceClasses();
+                        break;
                     case "TrustPolicy":
                         this.ProcessRecord_TrustPolicy();
                         break;
-                    case "ValidateNativeRdsClusterNameForExport":
-                        this.ProcessRecord_ValidateNativeRdsClusterNameForExport();
+                    case "Vpcs":
+                        this.ProcessRecord_Vpcs();
                         break;
-                    case "ValidateNativeRdsInstanceNameForExport":
-                        this.ProcessRecord_ValidateNativeRdsInstanceNameForExport();
+                    case "VpcsByRegion":
+                        this.ProcessRecord_VpcsByRegion();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -2834,192 +1554,39 @@ Validates the name used for an RDS Instance during an export operation. Returns 
         }
 
         // This parameter set invokes a single graphql operation:
-        // allAvailabilityZonesByRegionFromAws.
-        internal void ProcessRecord_AllAvailabilityZonesByRegion()
-        {
-            this._logger.name += " -AllAvailabilityZonesByRegion";
-            // Create new graphql operation allAvailabilityZonesByRegionFromAws
-            InitQueryAllAvailabilityZonesByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsCdmVersions.
-        internal void ProcessRecord_AllCdmVersions()
-        {
-            this._logger.name += " -AllCdmVersions";
-            // Create new graphql operation allAwsCdmVersions
-            InitQueryAllAwsCdmVersions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsCloudAccountConfigs.
-        internal void ProcessRecord_AllCloudAccountConfigs()
-        {
-            this._logger.name += " -AllCloudAccountConfigs";
-            // Create new graphql operation allAwsCloudAccountConfigs
-            InitQueryAllAwsCloudAccountConfigs();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsCloudAccountsWithFeatures.
-        internal void ProcessRecord_AllCloudAccountsWithFeatures()
-        {
-            this._logger.name += " -AllCloudAccountsWithFeatures";
-            // Create new graphql operation allAwsCloudAccountsWithFeatures
-            InitQueryAllAwsCloudAccountsWithFeatures();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsComputeSettings.
-        internal void ProcessRecord_AllComputeSettings()
-        {
-            this._logger.name += " -AllComputeSettings";
-            // Create new graphql operation allAwsComputeSettings
-            InitQueryAllAwsComputeSettings();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allDbParameterGroupsByRegionFromAws.
-        internal void ProcessRecord_AllDbParameterGroupsByRegion()
-        {
-            this._logger.name += " -AllDbParameterGroupsByRegion";
-            // Create new graphql operation allDbParameterGroupsByRegionFromAws
-            InitQueryAllDbParameterGroupsByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allDbSubnetGroupsByRegionFromAws.
-        internal void ProcessRecord_AllDbSubnetGroupsByRegion()
-        {
-            this._logger.name += " -AllDbSubnetGroupsByRegion";
-            // Create new graphql operation allDbSubnetGroupsByRegionFromAws
-            InitQueryAllDbSubnetGroupsByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allEc2KeyPairsByRegionFromAws.
-        internal void ProcessRecord_AllEc2KeyPairsByRegion()
-        {
-            this._logger.name += " -AllEc2KeyPairsByRegion";
-            // Create new graphql operation allEc2KeyPairsByRegionFromAws
-            InitQueryAllEc2KeyPairsByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsExocomputeConfigs.
-        internal void ProcessRecord_AllExocomputeConfigs()
-        {
-            this._logger.name += " -AllExocomputeConfigs";
-            // Create new graphql operation allAwsExocomputeConfigs
-            InitQueryAllAwsExocomputeConfigs();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsInstanceProfileNames.
-        internal void ProcessRecord_AllInstanceProfileNames()
-        {
-            this._logger.name += " -AllInstanceProfileNames";
-            // Create new graphql operation allAwsInstanceProfileNames
-            InitQueryAllAwsInstanceProfileNames();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allKmsEncryptionKeysByRegionFromAws.
-        internal void ProcessRecord_AllKmsEncryptionKeysByRegion()
-        {
-            this._logger.name += " -AllKmsEncryptionKeysByRegion";
-            // Create new graphql operation allKmsEncryptionKeysByRegionFromAws
-            InitQueryAllKmsEncryptionKeysByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allOptionGroupsByRegionFromAws.
-        internal void ProcessRecord_AllOptionGroupsByRegion()
-        {
-            this._logger.name += " -AllOptionGroupsByRegion";
-            // Create new graphql operation allOptionGroupsByRegionFromAws
-            InitQueryAllOptionGroupsByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsPermissionPolicies.
-        internal void ProcessRecord_AllPermissionPolicies()
-        {
-            this._logger.name += " -AllPermissionPolicies";
-            // Create new graphql operation allAwsPermissionPolicies
-            InitQueryAllAwsPermissionPolicies();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allAwsRegions.
-        internal void ProcessRecord_AllRegions()
-        {
-            this._logger.name += " -AllRegions";
-            // Create new graphql operation allAwsRegions
-            InitQueryAllAwsRegions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allS3BucketsFromAws.
-        internal void ProcessRecord_AllS3Buckets()
-        {
-            this._logger.name += " -AllS3Buckets";
-            // Create new graphql operation allS3BucketsFromAws
-            InitQueryAllS3BucketsFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allS3BucketsDetailsFromAws.
-        internal void ProcessRecord_AllS3BucketsDetails()
-        {
-            this._logger.name += " -AllS3BucketsDetails";
-            // Create new graphql operation allS3BucketsDetailsFromAws
-            InitQueryAllS3BucketsDetailsFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allSupportedAwsRdsDatabaseInstanceClasses.
-        internal void ProcessRecord_AllSupportedRdsDatabaseInstanceClasses()
-        {
-            this._logger.name += " -AllSupportedRdsDatabaseInstanceClasses";
-            // Create new graphql operation allSupportedAwsRdsDatabaseInstanceClasses
-            InitQueryAllSupportedAwsRdsDatabaseInstanceClasses();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allVpcsFromAws.
-        internal void ProcessRecord_AllVpcs()
-        {
-            this._logger.name += " -AllVpcs";
-            // Create new graphql operation allVpcsFromAws
-            InitQueryAllVpcsFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allVpcsByRegionFromAws.
-        internal void ProcessRecord_AllVpcsByRegion()
-        {
-            this._logger.name += " -AllVpcsByRegion";
-            // Create new graphql operation allVpcsByRegionFromAws
-            InitQueryAllVpcsByRegionFromAws();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // amiTypeForAwsNativeArchivedSnapshotExport.
-        internal void ProcessRecord_AmiTypeForNativeArchivedSnapshotExport()
-        {
-            this._logger.name += " -AmiTypeForNativeArchivedSnapshotExport";
-            // Create new graphql operation amiTypeForAwsNativeArchivedSnapshotExport
-            InitQueryAmiTypeForAwsNativeArchivedSnapshotExport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // awsArtifactsToDelete.
         internal void ProcessRecord_ArtifactsToDelete()
         {
             this._logger.name += " -ArtifactsToDelete";
             // Create new graphql operation awsArtifactsToDelete
             InitQueryAwsArtifactsToDelete();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAvailabilityZonesByRegionFromAws.
+        internal void ProcessRecord_AvailabilityZonesByRegion()
+        {
+            this._logger.name += " -AvailabilityZonesByRegion";
+            // Create new graphql operation allAvailabilityZonesByRegionFromAws
+            InitQueryAllAvailabilityZonesByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAwsCdmVersions.
+        internal void ProcessRecord_CdmVersions()
+        {
+            this._logger.name += " -CdmVersions";
+            // Create new graphql operation allAwsCdmVersions
+            InitQueryAllAwsCdmVersions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAwsCloudAccountConfigs.
+        internal void ProcessRecord_CloudAccountConfigs()
+        {
+            this._logger.name += " -CloudAccountConfigs";
+            // Create new graphql operation allAwsCloudAccountConfigs
+            InitQueryAllAwsCloudAccountConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3059,6 +1626,15 @@ Validates the name used for an RDS Instance during an export operation. Returns 
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAwsCloudAccountsWithFeatures.
+        internal void ProcessRecord_CloudAccountsWithFeatures()
+        {
+            this._logger.name += " -CloudAccountsWithFeatures";
+            // Create new graphql operation allAwsCloudAccountsWithFeatures
+            InitQueryAllAwsCloudAccountsWithFeatures();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // awsComputeSettings.
         internal void ProcessRecord_ComputeSettings()
         {
@@ -3068,21 +1644,48 @@ Validates the name used for an RDS Instance during an export operation. Returns 
         }
 
         // This parameter set invokes a single graphql operation:
-        // isAwsNativeEbsVolumeSnapshotRestorable.
-        internal void ProcessRecord_IsNativeEbsVolumeSnapshotRestorable()
+        // allDbParameterGroupsByRegionFromAws.
+        internal void ProcessRecord_DbParameterGroupsByRegion()
         {
-            this._logger.name += " -IsNativeEbsVolumeSnapshotRestorable";
-            // Create new graphql operation isAwsNativeEbsVolumeSnapshotRestorable
-            InitQueryIsAwsNativeEbsVolumeSnapshotRestorable();
+            this._logger.name += " -DbParameterGroupsByRegion";
+            // Create new graphql operation allDbParameterGroupsByRegionFromAws
+            InitQueryAllDbParameterGroupsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
-        // isAwsNativeRdsInstanceLaunchConfigurationValid.
-        internal void ProcessRecord_IsNativeRdsInstanceLaunchConfigurationValid()
+        // allDbSubnetGroupsByRegionFromAws.
+        internal void ProcessRecord_DbSubnetGroupsByRegion()
         {
-            this._logger.name += " -IsNativeRdsInstanceLaunchConfigurationValid";
-            // Create new graphql operation isAwsNativeRdsInstanceLaunchConfigurationValid
-            InitQueryIsAwsNativeRdsInstanceLaunchConfigurationValid();
+            this._logger.name += " -DbSubnetGroupsByRegion";
+            // Create new graphql operation allDbSubnetGroupsByRegionFromAws
+            InitQueryAllDbSubnetGroupsByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allEc2KeyPairsByRegionFromAws.
+        internal void ProcessRecord_Ec2KeyPairsByRegion()
+        {
+            this._logger.name += " -Ec2KeyPairsByRegion";
+            // Create new graphql operation allEc2KeyPairsByRegionFromAws
+            InitQueryAllEc2KeyPairsByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAwsExocomputeConfigs.
+        internal void ProcessRecord_ExocomputeConfigs()
+        {
+            this._logger.name += " -ExocomputeConfigs";
+            // Create new graphql operation allAwsExocomputeConfigs
+            InitQueryAllAwsExocomputeConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAwsInstanceProfileNames.
+        internal void ProcessRecord_InstanceProfileNames()
+        {
+            this._logger.name += " -InstanceProfileNames";
+            // Create new graphql operation allAwsInstanceProfileNames
+            InitQueryAllAwsInstanceProfileNames();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3095,129 +1698,30 @@ Validates the name used for an RDS Instance during an export operation. Returns 
         }
 
         // This parameter set invokes a single graphql operation:
-        // awsNativeAccount.
-        internal void ProcessRecord_NativeAccount()
+        // allKmsEncryptionKeysByRegionFromAws.
+        internal void ProcessRecord_KmsEncryptionKeysByRegion()
         {
-            this._logger.name += " -NativeAccount";
-            // Create new graphql operation awsNativeAccount
-            InitQueryAwsNativeAccount();
+            this._logger.name += " -KmsEncryptionKeysByRegion";
+            // Create new graphql operation allKmsEncryptionKeysByRegionFromAws
+            InitQueryAllKmsEncryptionKeysByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
-        // awsNativeAccounts.
-        internal void ProcessRecord_NativeAccounts()
+        // allOptionGroupsByRegionFromAws.
+        internal void ProcessRecord_OptionGroupsByRegion()
         {
-            this._logger.name += " -NativeAccounts";
-            // Create new graphql operation awsNativeAccounts
-            InitQueryAwsNativeAccounts();
+            this._logger.name += " -OptionGroupsByRegion";
+            // Create new graphql operation allOptionGroupsByRegionFromAws
+            InitQueryAllOptionGroupsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
-        // awsNativeEbsVolume.
-        internal void ProcessRecord_NativeEbsVolume()
+        // allAwsPermissionPolicies.
+        internal void ProcessRecord_PermissionPolicies()
         {
-            this._logger.name += " -NativeEbsVolume";
-            // Create new graphql operation awsNativeEbsVolume
-            InitQueryAwsNativeEbsVolume();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeEbsVolumes.
-        internal void ProcessRecord_NativeEbsVolumes()
-        {
-            this._logger.name += " -NativeEbsVolumes";
-            // Create new graphql operation awsNativeEbsVolumes
-            InitQueryAwsNativeEbsVolumes();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeEbsVolumesByName.
-        internal void ProcessRecord_NativeEbsVolumesByName()
-        {
-            this._logger.name += " -NativeEbsVolumesByName";
-            // Create new graphql operation awsNativeEbsVolumesByName
-            InitQueryAwsNativeEbsVolumesByName();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeEc2Instance.
-        internal void ProcessRecord_NativeEc2Instance()
-        {
-            this._logger.name += " -NativeEc2Instance";
-            // Create new graphql operation awsNativeEc2Instance
-            InitQueryAwsNativeEc2Instance();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeEc2Instances.
-        internal void ProcessRecord_NativeEc2Instances()
-        {
-            this._logger.name += " -NativeEc2Instances";
-            // Create new graphql operation awsNativeEc2Instances
-            InitQueryAwsNativeEc2Instances();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeEc2InstancesByName.
-        internal void ProcessRecord_NativeEc2InstancesByName()
-        {
-            this._logger.name += " -NativeEc2InstancesByName";
-            // Create new graphql operation awsNativeEc2InstancesByName
-            InitQueryAwsNativeEc2InstancesByName();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeRdsExportDefaults.
-        internal void ProcessRecord_NativeRdsExportDefaults()
-        {
-            this._logger.name += " -NativeRdsExportDefaults";
-            // Create new graphql operation awsNativeRdsExportDefaults
-            InitQueryAwsNativeRdsExportDefaults();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeRdsInstance.
-        internal void ProcessRecord_NativeRdsInstance()
-        {
-            this._logger.name += " -NativeRdsInstance";
-            // Create new graphql operation awsNativeRdsInstance
-            InitQueryAwsNativeRdsInstance();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeRdsInstances.
-        internal void ProcessRecord_NativeRdsInstances()
-        {
-            this._logger.name += " -NativeRdsInstances";
-            // Create new graphql operation awsNativeRdsInstances
-            InitQueryAwsNativeRdsInstances();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeRdsPointInTimeRestoreWindow.
-        internal void ProcessRecord_NativeRdsPointInTimeRestoreWindow()
-        {
-            this._logger.name += " -NativeRdsPointInTimeRestoreWindow";
-            // Create new graphql operation awsNativeRdsPointInTimeRestoreWindow
-            InitQueryAwsNativeRdsPointInTimeRestoreWindow();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeRoot.
-        internal void ProcessRecord_NativeRoot()
-        {
-            this._logger.name += " -NativeRoot";
-            // Create new graphql operation awsNativeRoot
-            InitQueryAwsNativeRoot();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeS3Bucket.
-        internal void ProcessRecord_NativeS3Bucket()
-        {
-            this._logger.name += " -NativeS3Bucket";
-            // Create new graphql operation awsNativeS3Bucket
-            InitQueryAwsNativeS3Bucket();
+            this._logger.name += " -PermissionPolicies";
+            // Create new graphql operation allAwsPermissionPolicies
+            InitQueryAllAwsPermissionPolicies();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3230,6 +1734,51 @@ Validates the name used for an RDS Instance during an export operation. Returns 
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAwsRegions.
+        internal void ProcessRecord_Regions()
+        {
+            this._logger.name += " -Regions";
+            // Create new graphql operation allAwsRegions
+            InitQueryAllAwsRegions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // s3BucketStateForRecovery.
+        internal void ProcessRecord_S3BucketStateForRecovery()
+        {
+            this._logger.name += " -S3BucketStateForRecovery";
+            // Create new graphql operation s3BucketStateForRecovery
+            InitQueryS3BucketStateForRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allS3BucketsFromAws.
+        internal void ProcessRecord_S3Buckets()
+        {
+            this._logger.name += " -S3Buckets";
+            // Create new graphql operation allS3BucketsFromAws
+            InitQueryAllS3BucketsFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allS3BucketsDetailsFromAws.
+        internal void ProcessRecord_S3BucketsDetails()
+        {
+            this._logger.name += " -S3BucketsDetails";
+            // Create new graphql operation allS3BucketsDetailsFromAws
+            InitQueryAllS3BucketsDetailsFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allSupportedAwsRdsDatabaseInstanceClasses.
+        internal void ProcessRecord_SupportedRdsDatabaseInstanceClasses()
+        {
+            this._logger.name += " -SupportedRdsDatabaseInstanceClasses";
+            // Create new graphql operation allSupportedAwsRdsDatabaseInstanceClasses
+            InitQueryAllSupportedAwsRdsDatabaseInstanceClasses();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // awsTrustPolicy.
         internal void ProcessRecord_TrustPolicy()
         {
@@ -3239,23 +1788,50 @@ Validates the name used for an RDS Instance during an export operation. Returns 
         }
 
         // This parameter set invokes a single graphql operation:
-        // validateAwsNativeRdsClusterNameForExport.
-        internal void ProcessRecord_ValidateNativeRdsClusterNameForExport()
+        // allVpcsFromAws.
+        internal void ProcessRecord_Vpcs()
         {
-            this._logger.name += " -ValidateNativeRdsClusterNameForExport";
-            // Create new graphql operation validateAwsNativeRdsClusterNameForExport
-            InitQueryValidateAwsNativeRdsClusterNameForExport();
+            this._logger.name += " -Vpcs";
+            // Create new graphql operation allVpcsFromAws
+            InitQueryAllVpcsFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
-        // validateAwsNativeRdsInstanceNameForExport.
-        internal void ProcessRecord_ValidateNativeRdsInstanceNameForExport()
+        // allVpcsByRegionFromAws.
+        internal void ProcessRecord_VpcsByRegion()
         {
-            this._logger.name += " -ValidateNativeRdsInstanceNameForExport";
-            // Create new graphql operation validateAwsNativeRdsInstanceNameForExport
-            InitQueryValidateAwsNativeRdsInstanceNameForExport();
+            this._logger.name += " -VpcsByRegion";
+            // Create new graphql operation allVpcsByRegionFromAws
+            InitQueryAllVpcsByRegionFromAws();
         }
 
+
+        // Create new GraphQL Query:
+        // awsArtifactsToDelete(input: AwsArtifactsToDeleteInput!): AwsArtifactsToDelete!
+        internal void InitQueryAwsArtifactsToDelete()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AwsArtifactsToDeleteInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsArtifactsToDelete",
+                "($input: AwsArtifactsToDeleteInput!)",
+                "AwsArtifactsToDelete",
+                Query.AwsArtifactsToDelete_ObjectFieldSpec,
+                Query.AwsArtifactsToDeleteFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsNativeId = $someString
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}"
+            );
+        }
 
         // Create new GraphQL Query:
         // allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [String!]!
@@ -3337,6 +1913,128 @@ $query.Var.awsCloudAccountsArg = @{
         }
 
         // Create new GraphQL Query:
+        // awsCloudAccountListSecurityGroups(
+        //     cloudAccountUuid: UUID!
+        //     feature: CloudAccountFeature!
+        //     region: AwsRegion!
+        //     vpcID: String!
+        //   ): AwsCloudAccountListSecurityGroupsResponse!
+        internal void InitQueryAwsCloudAccountListSecurityGroups()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountUuid", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("region", "AwsRegion!"),
+                Tuple.Create("vpcID", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsCloudAccountListSecurityGroups",
+                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
+                "AwsCloudAccountListSecurityGroupsResponse",
+                Query.AwsCloudAccountListSecurityGroups_ObjectFieldSpec,
+                Query.AwsCloudAccountListSecurityGroupsFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountUuid = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+# REQUIRED
+$query.Var.vpcID = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsCloudAccountListSubnets(
+        //     cloudAccountUuid: UUID!
+        //     feature: CloudAccountFeature!
+        //     region: AwsRegion!
+        //     vpcID: String!
+        //   ): AwsCloudAccountListSubnetsResponse!
+        internal void InitQueryAwsCloudAccountListSubnets()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountUuid", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("region", "AwsRegion!"),
+                Tuple.Create("vpcID", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsCloudAccountListSubnets",
+                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
+                "AwsCloudAccountListSubnetsResponse",
+                Query.AwsCloudAccountListSubnets_ObjectFieldSpec,
+                Query.AwsCloudAccountListSubnetsFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountUuid = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+# REQUIRED
+$query.Var.vpcID = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!): AwsCloudAccountListVpcResponse!
+        internal void InitQueryAwsCloudAccountListVpcs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountUuid", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("region", "AwsRegion!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsCloudAccountListVpcs",
+                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
+                "AwsCloudAccountListVpcResponse",
+                Query.AwsCloudAccountListVpcs_ObjectFieldSpec,
+                Query.AwsCloudAccountListVpcsFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountUuid = $someString
+# REQUIRED
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!): AwsCloudAccountWithFeatures!
+        internal void InitQueryAwsCloudAccountWithFeatures()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("awsCloudAccountArg", "AwsCloudAccountWithFeaturesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsCloudAccountWithFeatures",
+                "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)",
+                "AwsCloudAccountWithFeatures",
+                Query.AwsCloudAccountWithFeatures_ObjectFieldSpec,
+                Query.AwsCloudAccountWithFeaturesFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudAccountId = $someString
+# REQUIRED
+$query.Var.awsCloudAccountArg = @{
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAwsCloudAccountsWithFeatures(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!): [AwsCloudAccountWithFeatures!]!
         internal void InitQueryAllAwsCloudAccountsWithFeatures()
         {
@@ -3368,43 +2066,22 @@ $query.Var.awsCloudAccountsArg = @{
         }
 
         // Create new GraphQL Query:
-        // allAwsComputeSettings(
-        //     sortBy: AwsCloudComputeSettingQuerySortByField
-        //     sortOrder: SortOrder
-        //     filter: [AwsCloudComputeSettingFilterInput!]
-        //     contextFilter: ContextFilterTypeEnum
-        //   ): [AwsComputeSettings!]!
-        internal void InitQueryAllAwsComputeSettings()
+        // awsComputeSettings(computeSettingId: UUID!): AwsComputeSettings!
+        internal void InitQueryAwsComputeSettings()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("sortBy", "AwsCloudComputeSettingQuerySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[AwsCloudComputeSettingFilterInput!]"),
-                Tuple.Create("contextFilter", "ContextFilterTypeEnum"),
+                Tuple.Create("computeSettingId", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryAllAwsComputeSettings",
-                "($sortBy: AwsCloudComputeSettingQuerySortByField,$sortOrder: SortOrder,$filter: [AwsCloudComputeSettingFilterInput!],$contextFilter: ContextFilterTypeEnum)",
-                "List<AwsComputeSettings>",
-                Query.AllAwsComputeSettings_ObjectFieldSpec,
-                Query.AllAwsComputeSettingsFieldSpec,
-                @"# OPTIONAL
-$query.Var.sortBy = $someAwsCloudComputeSettingQuerySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someAwsCloudComputeSettingFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingFilterField]) for enum values.
-		# OPTIONAL
-		text = $someString
-}
-)
-# OPTIONAL
-$query.Var.contextFilter = $someContextFilterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values."
+                "QueryAwsComputeSettings",
+                "($computeSettingId: UUID!)",
+                "AwsComputeSettings",
+                Query.AwsComputeSettings_ObjectFieldSpec,
+                Query.AwsComputeSettingsFieldSpec,
+                @"# REQUIRED
+$query.Var.computeSettingId = $someString"
             );
         }
 
@@ -3536,6 +2213,29 @@ $query.Var.region = $someString"
         }
 
         // Create new GraphQL Query:
+        // isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!): Boolean!
+        internal void InitQueryIsAwsS3BucketNameAvailable()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("bucketName", "String!"),
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsAwsS3BucketNameAvailable",
+                "($bucketName: String!,$awsAccountRubrikId: UUID!)",
+                "System.Boolean",
+                Query.IsAwsS3BucketNameAvailable_ObjectFieldSpec,
+                Query.IsAwsS3BucketNameAvailableFieldSpec,
+                @"# REQUIRED
+$query.Var.bucketName = $someString
+# REQUIRED
+$query.Var.awsAccountRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [KmsEncryptionKey!]!
         internal void InitQueryAllKmsEncryptionKeysByRegionFromAws()
         {
@@ -3629,6 +2329,40 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // rdsInstanceDetailsFromAws(
+        //     awsAccountRubrikId: UUID!
+        //     region: AwsNativeRegion!
+        //     rdsInstanceName: String!
+        //     rdsDatabaseRubrikId: UUID
+        //   ): RdsInstanceDetailsFromAws!
+        internal void InitQueryRdsInstanceDetailsFromAws()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("rdsInstanceName", "String!"),
+                Tuple.Create("rdsDatabaseRubrikId", "UUID"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRdsInstanceDetailsFromAws",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
+                "RdsInstanceDetailsFromAws",
+                Query.RdsInstanceDetailsFromAws_ObjectFieldSpec,
+                Query.RdsInstanceDetailsFromAwsFieldSpec,
+                @"# REQUIRED
+$query.Var.awsAccountRubrikId = $someString
+# REQUIRED
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$query.Var.rdsInstanceName = $someString
+# OPTIONAL
+$query.Var.rdsDatabaseRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAwsRegions(cloudAccountId: String!): [AwsCloudAccountRegion!]!
         internal void InitQueryAllAwsRegions()
         {
@@ -3645,6 +2379,32 @@ $query.Var.input = @{
                 Query.AllAwsRegionsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // s3BucketStateForRecovery(bucketName: String!, awsAccountRubrikId: UUID!, region: AwsNativeRegion!): GetS3BucketStateForRecoveryReply!
+        internal void InitQueryS3BucketStateForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("bucketName", "String!"),
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryS3BucketStateForRecovery",
+                "($bucketName: String!,$awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
+                "GetS3BucketStateForRecoveryReply",
+                Query.S3BucketStateForRecovery_ObjectFieldSpec,
+                Query.S3BucketStateForRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.bucketName = $someString
+# REQUIRED
+$query.Var.awsAccountRubrikId = $someString
+# REQUIRED
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
             );
         }
 
@@ -3726,6 +2486,42 @@ $query.Var.dbEngineVersion = $someString"
         }
 
         // Create new GraphQL Query:
+        // awsTrustPolicy(input: AwsTrustPolicyInput!): AwsTrustPolicy!
+        internal void InitQueryAwsTrustPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AwsTrustPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsTrustPolicy",
+                "($input: AwsTrustPolicyInput!)",
+                "AwsTrustPolicy",
+                Query.AwsTrustPolicy_ObjectFieldSpec,
+                Query.AwsTrustPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# REQUIRED
+	awsNativeAccounts = @(
+		@{
+			# OPTIONAL
+			externalId = $someString
+			# REQUIRED
+			id = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allVpcsFromAws(awsAccountRubrikId: UUID): [AwsVpc!]!
         internal void InitQueryAllVpcsFromAws()
         {
@@ -3765,1152 +2561,6 @@ $query.Var.awsAccountRubrikId = $someString"
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
 $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // amiTypeForAwsNativeArchivedSnapshotExport(input: AmiTypeForAwsNativeArchivedSnapshotExportInput!): AmiTypeForAwsNativeArchivedSnapshotExportReply!
-        internal void InitQueryAmiTypeForAwsNativeArchivedSnapshotExport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AmiTypeForAwsNativeArchivedSnapshotExportInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAmiTypeForAwsNativeArchivedSnapshotExport",
-                "($input: AmiTypeForAwsNativeArchivedSnapshotExportInput!)",
-                "AmiTypeForAwsNativeArchivedSnapshotExportReply",
-                Query.AmiTypeForAwsNativeArchivedSnapshotExport_ObjectFieldSpec,
-                Query.AmiTypeForAwsNativeArchivedSnapshotExportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
-	destinationRegionId = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-	# REQUIRED
-	destinationAwsAccountRubrikId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsArtifactsToDelete(input: AwsArtifactsToDeleteInput!): AwsArtifactsToDelete!
-        internal void InitQueryAwsArtifactsToDelete()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AwsArtifactsToDeleteInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsArtifactsToDelete",
-                "($input: AwsArtifactsToDeleteInput!)",
-                "AwsArtifactsToDelete",
-                Query.AwsArtifactsToDelete_ObjectFieldSpec,
-                Query.AwsArtifactsToDeleteFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	awsNativeId = $someString
-	# REQUIRED
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsCloudAccountListSecurityGroups(
-        //     cloudAccountUuid: UUID!
-        //     feature: CloudAccountFeature!
-        //     region: AwsRegion!
-        //     vpcID: String!
-        //   ): AwsCloudAccountListSecurityGroupsResponse!
-        internal void InitQueryAwsCloudAccountListSecurityGroups()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountUuid", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("region", "AwsRegion!"),
-                Tuple.Create("vpcID", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsCloudAccountListSecurityGroups",
-                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
-                "AwsCloudAccountListSecurityGroupsResponse",
-                Query.AwsCloudAccountListSecurityGroups_ObjectFieldSpec,
-                Query.AwsCloudAccountListSecurityGroupsFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountUuid = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-# REQUIRED
-$query.Var.vpcID = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsCloudAccountListSubnets(
-        //     cloudAccountUuid: UUID!
-        //     feature: CloudAccountFeature!
-        //     region: AwsRegion!
-        //     vpcID: String!
-        //   ): AwsCloudAccountListSubnetsResponse!
-        internal void InitQueryAwsCloudAccountListSubnets()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountUuid", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("region", "AwsRegion!"),
-                Tuple.Create("vpcID", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsCloudAccountListSubnets",
-                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
-                "AwsCloudAccountListSubnetsResponse",
-                Query.AwsCloudAccountListSubnets_ObjectFieldSpec,
-                Query.AwsCloudAccountListSubnetsFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountUuid = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-# REQUIRED
-$query.Var.vpcID = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!): AwsCloudAccountListVpcResponse!
-        internal void InitQueryAwsCloudAccountListVpcs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountUuid", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("region", "AwsRegion!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsCloudAccountListVpcs",
-                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
-                "AwsCloudAccountListVpcResponse",
-                Query.AwsCloudAccountListVpcs_ObjectFieldSpec,
-                Query.AwsCloudAccountListVpcsFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountUuid = $someString
-# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!): AwsCloudAccountWithFeatures!
-        internal void InitQueryAwsCloudAccountWithFeatures()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountId", "UUID!"),
-                Tuple.Create("awsCloudAccountArg", "AwsCloudAccountWithFeaturesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsCloudAccountWithFeatures",
-                "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)",
-                "AwsCloudAccountWithFeatures",
-                Query.AwsCloudAccountWithFeatures_ObjectFieldSpec,
-                Query.AwsCloudAccountWithFeaturesFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudAccountId = $someString
-# REQUIRED
-$query.Var.awsCloudAccountArg = @{
-	# REQUIRED
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsComputeSettings(computeSettingId: UUID!): AwsComputeSettings!
-        internal void InitQueryAwsComputeSettings()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("computeSettingId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsComputeSettings",
-                "($computeSettingId: UUID!)",
-                "AwsComputeSettings",
-                Query.AwsComputeSettings_ObjectFieldSpec,
-                Query.AwsComputeSettingsFieldSpec,
-                @"# REQUIRED
-$query.Var.computeSettingId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isAwsNativeEbsVolumeSnapshotRestorable(snapshotId: String!): IsVolumeSnapshotRestorableReply!
-        internal void InitQueryIsAwsNativeEbsVolumeSnapshotRestorable()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snapshotId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsAwsNativeEbsVolumeSnapshotRestorable",
-                "($snapshotId: String!)",
-                "IsVolumeSnapshotRestorableReply",
-                Query.IsAwsNativeEbsVolumeSnapshotRestorable_ObjectFieldSpec,
-                Query.IsAwsNativeEbsVolumeSnapshotRestorableFieldSpec,
-                @"# REQUIRED
-$query.Var.snapshotId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isAwsNativeRdsInstanceLaunchConfigurationValid(
-        //     awsAccountRubrikId: UUID!
-        //     region: AwsNativeRegion!
-        //     dbEngine: AwsNativeRdsDbEngine!
-        //     dbEngineVersion: String!
-        //     dbClass: AwsNativeRdsDbInstanceClass!
-        //     databaseInstanceClass: String
-        //     primaryAz: String
-        //     storageType: AwsNativeRdsStorageType
-        //     isMultiAz: Boolean!
-        //     kmsKeyId: String
-        //     iops: Int
-        //   ): Boolean!
-        internal void InitQueryIsAwsNativeRdsInstanceLaunchConfigurationValid()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsAccountRubrikId", "UUID!"),
-                Tuple.Create("region", "AwsNativeRegion!"),
-                Tuple.Create("dbEngine", "AwsNativeRdsDbEngine!"),
-                Tuple.Create("dbEngineVersion", "String!"),
-                Tuple.Create("dbClass", "AwsNativeRdsDbInstanceClass!"),
-                Tuple.Create("databaseInstanceClass", "String"),
-                Tuple.Create("primaryAz", "String"),
-                Tuple.Create("storageType", "AwsNativeRdsStorageType"),
-                Tuple.Create("isMultiAz", "Boolean!"),
-                Tuple.Create("kmsKeyId", "String"),
-                Tuple.Create("iops", "Int"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsAwsNativeRdsInstanceLaunchConfigurationValid",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$dbClass: AwsNativeRdsDbInstanceClass!,$databaseInstanceClass: String,$primaryAz: String,$storageType: AwsNativeRdsStorageType,$isMultiAz: Boolean!,$kmsKeyId: String,$iops: Int)",
-                "System.Boolean",
-                Query.IsAwsNativeRdsInstanceLaunchConfigurationValid_ObjectFieldSpec,
-                Query.IsAwsNativeRdsInstanceLaunchConfigurationValidFieldSpec,
-                @"# REQUIRED
-$query.Var.awsAccountRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-# REQUIRED
-$query.Var.dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-# REQUIRED
-$query.Var.dbEngineVersion = $someString
-# REQUIRED
-$query.Var.dbClass = $someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
-# OPTIONAL
-$query.Var.databaseInstanceClass = $someString
-# OPTIONAL
-$query.Var.primaryAz = $someString
-# OPTIONAL
-$query.Var.storageType = $someAwsNativeRdsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsStorageType]) for enum values.
-# REQUIRED
-$query.Var.isMultiAz = $someBoolean
-# OPTIONAL
-$query.Var.kmsKeyId = $someString
-# OPTIONAL
-$query.Var.iops = $someInt"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!): Boolean!
-        internal void InitQueryIsAwsS3BucketNameAvailable()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("bucketName", "String!"),
-                Tuple.Create("awsAccountRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryIsAwsS3BucketNameAvailable",
-                "($bucketName: String!,$awsAccountRubrikId: UUID!)",
-                "System.Boolean",
-                Query.IsAwsS3BucketNameAvailable_ObjectFieldSpec,
-                Query.IsAwsS3BucketNameAvailableFieldSpec,
-                @"# REQUIRED
-$query.Var.bucketName = $someString
-# REQUIRED
-$query.Var.awsAccountRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!): AwsNativeAccount!
-        internal void InitQueryAwsNativeAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsNativeAccountRubrikId", "UUID!"),
-                Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeAccount",
-                "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
-                "AwsNativeAccount",
-                Query.AwsNativeAccount_ObjectFieldSpec,
-                Query.AwsNativeAccountFieldSpec,
-                @"# REQUIRED
-$query.Var.awsNativeAccountRubrikId = $someString
-# REQUIRED
-$query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeAccounts(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AwsNativeAccountSortFields
-        //     sortOrder: SortOrder
-        //     accountFilters: AwsNativeAccountFilters
-        //     authorizedOperationFilter: Operation
-        //     awsNativeProtectionFeature: AwsNativeProtectionFeature!
-        //   ): AwsNativeAccountConnection!
-        internal void InitQueryAwsNativeAccounts()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AwsNativeAccountSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("accountFilters", "AwsNativeAccountFilters"),
-                Tuple.Create("authorizedOperationFilter", "Operation"),
-                Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeAccounts",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
-                "AwsNativeAccountConnection",
-                Query.AwsNativeAccounts_ObjectFieldSpec,
-                Query.AwsNativeAccountsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAwsNativeAccountSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeAccountSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.accountFilters = @{
-	# OPTIONAL
-	nameSubstringFilter = @{
-		# REQUIRED
-		nameSubstring = $someString
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	cloudTypeFilter = @{
-		# REQUIRED
-		cloudTypes = @(
-			$someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-		)
-	}
-}
-# OPTIONAL
-$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
-# REQUIRED
-$query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeEbsVolume(ebsVolumeRubrikId: UUID!): AwsNativeEbsVolume!
-        internal void InitQueryAwsNativeEbsVolume()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("ebsVolumeRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeEbsVolume",
-                "($ebsVolumeRubrikId: UUID!)",
-                "AwsNativeEbsVolume",
-                Query.AwsNativeEbsVolume_ObjectFieldSpec,
-                Query.AwsNativeEbsVolumeFieldSpec,
-                @"# REQUIRED
-$query.Var.ebsVolumeRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeEbsVolumes(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AwsNativeEbsVolumeSortFields
-        //     sortOrder: SortOrder
-        //     ebsVolumeFilters: AwsNativeEbsVolumeFilters
-        //   ): AwsNativeEbsVolumeConnection!
-        internal void InitQueryAwsNativeEbsVolumes()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AwsNativeEbsVolumeSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("ebsVolumeFilters", "AwsNativeEbsVolumeFilters"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeEbsVolumes",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeFilters: AwsNativeEbsVolumeFilters)",
-                "AwsNativeEbsVolumeConnection",
-                Query.AwsNativeEbsVolumes_ObjectFieldSpec,
-                Query.AwsNativeEbsVolumesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAwsNativeEbsVolumeSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.ebsVolumeFilters = @{
-	# OPTIONAL
-	nameOrIdSubstringFilter = @{
-		# REQUIRED
-		nameOrIdSubstring = $someString
-	}
-	# OPTIONAL
-	fileRecoveryStatusFilter = @{
-		# REQUIRED
-		statuses = @(
-			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-		)
-	}
-	# OPTIONAL
-	typeFilter = @{
-		# REQUIRED
-		ebsVolumeTypes = @(
-			$someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
-		)
-	}
-	# OPTIONAL
-	attachedInstanceFilter = @{
-		# REQUIRED
-		ec2InstanceIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	accountFilter = @{
-		# REQUIRED
-		accountIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	relicFilter = @{
-		# REQUIRED
-		relic = $someBoolean
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	orgFilter = @{
-		# REQUIRED
-		orgIds = @(
-			$someString
-		)
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeEbsVolumesByName(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AwsNativeEbsVolumeSortFields
-        //     sortOrder: SortOrder
-        //     ebsVolumeName: String!
-        //   ): AwsNativeEbsVolumeConnection!
-        internal void InitQueryAwsNativeEbsVolumesByName()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AwsNativeEbsVolumeSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("ebsVolumeName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeEbsVolumesByName",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)",
-                "AwsNativeEbsVolumeConnection",
-                Query.AwsNativeEbsVolumesByName_ObjectFieldSpec,
-                Query.AwsNativeEbsVolumesByNameFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAwsNativeEbsVolumeSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# REQUIRED
-$query.Var.ebsVolumeName = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeEc2Instance(ec2InstanceRubrikId: UUID!): AwsNativeEc2Instance!
-        internal void InitQueryAwsNativeEc2Instance()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("ec2InstanceRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeEc2Instance",
-                "($ec2InstanceRubrikId: UUID!)",
-                "AwsNativeEc2Instance",
-                Query.AwsNativeEc2Instance_ObjectFieldSpec,
-                Query.AwsNativeEc2InstanceFieldSpec,
-                @"# REQUIRED
-$query.Var.ec2InstanceRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeEc2Instances(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AwsNativeEc2InstanceSortFields
-        //     sortOrder: SortOrder
-        //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
-        //     ec2InstanceFilters: AwsNativeEc2InstanceFilters
-        //   ): AwsNativeEc2InstanceConnection!
-        internal void InitQueryAwsNativeEc2Instances()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AwsNativeEc2InstanceSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("descendantTypeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("ec2InstanceFilters", "AwsNativeEc2InstanceFilters"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeEc2Instances",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$ec2InstanceFilters: AwsNativeEc2InstanceFilters)",
-                "AwsNativeEc2InstanceConnection",
-                Query.AwsNativeEc2Instances_ObjectFieldSpec,
-                Query.AwsNativeEc2InstancesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAwsNativeEc2InstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.descendantTypeFilter = @(
-	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)
-# OPTIONAL
-$query.Var.ec2InstanceFilters = @{
-	# OPTIONAL
-	nameOrIdSubstringFilter = @{
-		# REQUIRED
-		nameOrIdSubstring = $someString
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	accountFilter = @{
-		# REQUIRED
-		accountIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	fileRecoveryStatusFilter = @{
-		# REQUIRED
-		statuses = @(
-			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	typeFilter = @{
-		# REQUIRED
-		ec2InstanceTypes = @(
-			$someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
-		)
-	}
-	# OPTIONAL
-	vpcFilter = @{
-		# REQUIRED
-		vpcIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	relicFilter = @{
-		# REQUIRED
-		relic = $someBoolean
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	appProtectionStatusFilter = @{
-		# REQUIRED
-		isProtectionSetup = $someBoolean
-	}
-	# OPTIONAL
-	rbsStatusFilter = @{
-		# REQUIRED
-		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
-	}
-	# OPTIONAL
-	orgFilter = @{
-		# REQUIRED
-		orgIds = @(
-			$someString
-		)
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeEc2InstancesByName(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AwsNativeEc2InstanceSortFields
-        //     sortOrder: SortOrder
-        //     ec2InstanceName: String!
-        //   ): AwsNativeEc2InstanceConnection!
-        internal void InitQueryAwsNativeEc2InstancesByName()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AwsNativeEc2InstanceSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("ec2InstanceName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeEc2InstancesByName",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)",
-                "AwsNativeEc2InstanceConnection",
-                Query.AwsNativeEc2InstancesByName_ObjectFieldSpec,
-                Query.AwsNativeEc2InstancesByNameFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAwsNativeEc2InstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# REQUIRED
-$query.Var.ec2InstanceName = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!): RdsInstanceExportDefaults!
-        internal void InitQueryAwsNativeRdsExportDefaults()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("rdsInstanceRubrikId", "UUID!"),
-                Tuple.Create("snapshotId", "String"),
-                Tuple.Create("isPointInTime", "Boolean!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeRdsExportDefaults",
-                "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)",
-                "RdsInstanceExportDefaults",
-                Query.AwsNativeRdsExportDefaults_ObjectFieldSpec,
-                Query.AwsNativeRdsExportDefaultsFieldSpec,
-                @"# REQUIRED
-$query.Var.rdsInstanceRubrikId = $someString
-# OPTIONAL
-$query.Var.snapshotId = $someString
-# REQUIRED
-$query.Var.isPointInTime = $someBoolean"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeRdsInstance(rdsInstanceRubrikId: UUID!): AwsNativeRdsInstance!
-        internal void InitQueryAwsNativeRdsInstance()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("rdsInstanceRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeRdsInstance",
-                "($rdsInstanceRubrikId: UUID!)",
-                "AwsNativeRdsInstance",
-                Query.AwsNativeRdsInstance_ObjectFieldSpec,
-                Query.AwsNativeRdsInstanceFieldSpec,
-                @"# REQUIRED
-$query.Var.rdsInstanceRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeRdsInstances(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: AwsNativeRdsInstanceSortFields
-        //     sortOrder: SortOrder
-        //     rdsInstanceFilters: AwsNativeRdsInstanceFilters
-        //   ): AwsNativeRdsInstanceConnection!
-        internal void InitQueryAwsNativeRdsInstances()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "AwsNativeRdsInstanceSortFields"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("rdsInstanceFilters", "AwsNativeRdsInstanceFilters"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeRdsInstances",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters)",
-                "AwsNativeRdsInstanceConnection",
-                Query.AwsNativeRdsInstances_ObjectFieldSpec,
-                Query.AwsNativeRdsInstancesFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortBy = $someAwsNativeRdsInstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsInstanceSortFields]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.rdsInstanceFilters = @{
-	# OPTIONAL
-	nameSubstringFilter = @{
-		# REQUIRED
-		nameSubstring = $someString
-	}
-	# OPTIONAL
-	effectiveSlaFilter = @{
-		# REQUIRED
-		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	accountFilter = @{
-		# REQUIRED
-		accountIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	vpcFilter = @{
-		# REQUIRED
-		vpcIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	relicFilter = @{
-		# REQUIRED
-		relic = $someBoolean
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	dbEngineFilter = @{
-		# REQUIRED
-		dbEngines = @(
-			$someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-		)
-	}
-	# OPTIONAL
-	dbInstanceClassFilter = @{
-		# REQUIRED
-		dbInstanceClasses = @(
-			$someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
-		)
-	}
-	# OPTIONAL
-	orgFilter = @{
-		# REQUIRED
-		orgIds = @(
-			$someString
-		)
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeRdsPointInTimeRestoreWindow(
-        //     awsAccountRubrikId: UUID!
-        //     region: AwsNativeRegion!
-        //     rdsInstanceName: String!
-        //     rdsDatabaseRubrikId: UUID
-        //   ): AwsNativeRdsPointInTimeRestoreWindow!
-        internal void InitQueryAwsNativeRdsPointInTimeRestoreWindow()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsAccountRubrikId", "UUID!"),
-                Tuple.Create("region", "AwsNativeRegion!"),
-                Tuple.Create("rdsInstanceName", "String!"),
-                Tuple.Create("rdsDatabaseRubrikId", "UUID"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeRdsPointInTimeRestoreWindow",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
-                "AwsNativeRdsPointInTimeRestoreWindow",
-                Query.AwsNativeRdsPointInTimeRestoreWindow_ObjectFieldSpec,
-                Query.AwsNativeRdsPointInTimeRestoreWindowFieldSpec,
-                @"# REQUIRED
-$query.Var.awsAccountRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-# REQUIRED
-$query.Var.rdsInstanceName = $someString
-# OPTIONAL
-$query.Var.rdsDatabaseRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeRoot: AwsNativeRoot!
-        internal void InitQueryAwsNativeRoot()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeRoot",
-                "",
-                "AwsNativeRoot",
-                Query.AwsNativeRoot_ObjectFieldSpec,
-                Query.AwsNativeRootFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsNativeS3Bucket(s3BucketRubrikId: UUID!): AwsNativeS3Bucket!
-        internal void InitQueryAwsNativeS3Bucket()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("s3BucketRubrikId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsNativeS3Bucket",
-                "($s3BucketRubrikId: UUID!)",
-                "AwsNativeS3Bucket",
-                Query.AwsNativeS3Bucket_ObjectFieldSpec,
-                Query.AwsNativeS3BucketFieldSpec,
-                @"# REQUIRED
-$query.Var.s3BucketRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // rdsInstanceDetailsFromAws(
-        //     awsAccountRubrikId: UUID!
-        //     region: AwsNativeRegion!
-        //     rdsInstanceName: String!
-        //     rdsDatabaseRubrikId: UUID
-        //   ): RdsInstanceDetailsFromAws!
-        internal void InitQueryRdsInstanceDetailsFromAws()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsAccountRubrikId", "UUID!"),
-                Tuple.Create("region", "AwsNativeRegion!"),
-                Tuple.Create("rdsInstanceName", "String!"),
-                Tuple.Create("rdsDatabaseRubrikId", "UUID"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryRdsInstanceDetailsFromAws",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
-                "RdsInstanceDetailsFromAws",
-                Query.RdsInstanceDetailsFromAws_ObjectFieldSpec,
-                Query.RdsInstanceDetailsFromAwsFieldSpec,
-                @"# REQUIRED
-$query.Var.awsAccountRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-# REQUIRED
-$query.Var.rdsInstanceName = $someString
-# OPTIONAL
-$query.Var.rdsDatabaseRubrikId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // awsTrustPolicy(input: AwsTrustPolicyInput!): AwsTrustPolicy!
-        internal void InitQueryAwsTrustPolicy()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AwsTrustPolicyInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsTrustPolicy",
-                "($input: AwsTrustPolicyInput!)",
-                "AwsTrustPolicy",
-                Query.AwsTrustPolicy_ObjectFieldSpec,
-                Query.AwsTrustPolicyFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	# REQUIRED
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# REQUIRED
-	awsNativeAccounts = @(
-		@{
-			# OPTIONAL
-			externalId = $someString
-			# REQUIRED
-			id = $someString
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // validateAwsNativeRdsClusterNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsClusterName: String!): ValidateAwsNativeRdsClusterNameForExportReply!
-        internal void InitQueryValidateAwsNativeRdsClusterNameForExport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsAccountRubrikId", "UUID!"),
-                Tuple.Create("region", "AwsNativeRegion!"),
-                Tuple.Create("rdsClusterName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryValidateAwsNativeRdsClusterNameForExport",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsClusterName: String!)",
-                "ValidateAwsNativeRdsClusterNameForExportReply",
-                Query.ValidateAwsNativeRdsClusterNameForExport_ObjectFieldSpec,
-                Query.ValidateAwsNativeRdsClusterNameForExportFieldSpec,
-                @"# REQUIRED
-$query.Var.awsAccountRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-# REQUIRED
-$query.Var.rdsClusterName = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // validateAwsNativeRdsInstanceNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!): ValidateAwsNativeRdsInstanceNameForExportReply!
-        internal void InitQueryValidateAwsNativeRdsInstanceNameForExport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsAccountRubrikId", "UUID!"),
-                Tuple.Create("region", "AwsNativeRegion!"),
-                Tuple.Create("rdsInstanceName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryValidateAwsNativeRdsInstanceNameForExport",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)",
-                "ValidateAwsNativeRdsInstanceNameForExportReply",
-                Query.ValidateAwsNativeRdsInstanceNameForExport_ObjectFieldSpec,
-                Query.ValidateAwsNativeRdsInstanceNameForExportFieldSpec,
-                @"# REQUIRED
-$query.Var.awsAccountRubrikId = $someString
-# REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-# REQUIRED
-$query.Var.rdsInstanceName = $someString"
             );
         }
 

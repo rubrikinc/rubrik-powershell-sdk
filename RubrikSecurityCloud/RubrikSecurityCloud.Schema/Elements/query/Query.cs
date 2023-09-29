@@ -4234,7 +4234,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allLatestFeaturePermissionsForCloudAccounts: [CloudAccountFeaturePermission!]! (type)
         public static string AllLatestFeaturePermissionsForCloudAccounts_TypedFieldSpec(List<CloudAccountFeaturePermission> fieldSpec)
         {
-            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\nfeatures: $features\n)";
+            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\nfeatures: $features\nfeaturesWithPermissionsGroups: $featuresWithPermissionsGroups\n)";
             return "allLatestFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";

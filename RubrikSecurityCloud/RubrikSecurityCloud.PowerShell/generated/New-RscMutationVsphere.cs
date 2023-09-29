@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 8
-    /// operations in the 'vSphere' API domain:
+    /// operations in the 'VMware vSphere' API domain:
     /// BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, or UpdateAdvancedTag.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphere creates a new
     /// mutation object for operations
-    /// in the 'vSphere' API domain. It only creates a data structure,
+    /// in the 'VMware vSphere' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 8 operations
-    /// in the 'vSphere' API domain. Select the operation this
+    /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -BulkOnDemandSnapshot, -CreateAdvancedTag, -DeleteAdvancedTag, -DeleteLiveMount, -DownloadVirtualMachineFiles, -ExportSnapshotToStandaloneHostV2, -OnDemandSnapshot, -UpdateAdvancedTag.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BulkOnDemandSnapshot operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: BulkOnDemandSnapshot
     /// 
     /// $query = New-RscMutationVsphere -BulkOnDemandSnapshot
@@ -119,13 +119,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateAdvancedTag operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: CreateAdvancedTag
     /// 
     /// $query = New-RscMutationVsphere -CreateAdvancedTag
@@ -159,13 +159,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteAdvancedTag operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: DeleteAdvancedTag
     /// 
     /// $query = New-RscMutationVsphere -DeleteAdvancedTag
@@ -192,13 +192,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteLiveMount operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: DeleteLiveMount
     /// 
     /// $query = New-RscMutationVsphere -DeleteLiveMount
@@ -225,13 +225,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadVirtualMachineFiles operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: DownloadVirtualMachineFiles
     /// 
     /// $query = New-RscMutationVsphere -DownloadVirtualMachineFiles
@@ -265,13 +265,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportSnapshotToStandaloneHostV2 operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: ExportSnapshotToStandaloneHostV2
     /// 
     /// $query = New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2
@@ -320,13 +320,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the OnDemandSnapshot operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: OnDemandSnapshot
     /// 
     /// $query = New-RscMutationVsphere -OnDemandSnapshot
@@ -358,13 +358,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateAdvancedTag operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: UpdateAdvancedTag
     /// 
     /// $query = New-RscMutationVsphere -UpdateAdvancedTag
@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BulkOnDemandSnapshot' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Trigger a bulk on demand snapshot.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherebulkondemandsnapshot.doc.html]"
@@ -430,7 +430,7 @@ Trigger a bulk on demand snapshot.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateAdvancedTag' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Create a multi-tag filter for vSphere tags
 
@@ -449,7 +449,7 @@ Create a filter consisting of vSphere tags joined with logical operators.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteAdvancedTag' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Remove the multi-tag filter
 
@@ -468,7 +468,7 @@ Remove the multi-tag filter.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteLiveMount' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Delete a Live Mount VM
 
@@ -487,7 +487,7 @@ Create a request to delete a Live Mount virtual machine.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadVirtualMachineFiles' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Download Virtual Machine files from a snapshot
 
@@ -506,7 +506,7 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportSnapshotToStandaloneHostV2' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Export snapshot of a virtual machine to standalone ESXi server.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereexportsnapshottostandalonehostv2.doc.html]"
@@ -522,7 +522,7 @@ Export snapshot of a virtual machine to standalone ESXi server.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'OnDemandSnapshot' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereondemandsnapshot.doc.html]"
@@ -538,7 +538,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateAdvancedTag' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Update the multi-tag filter
 

@@ -7,3 +7,5 @@ Feature along with permissions serialized in JSON format.
   - The permissions required for supporting the feature given by the feature field.
 - version: System.Int32
   - Feature permission version.
+- permissionsGroupVersions: list of PermissionsGroupWithVersions
+  - Permissions group versions.

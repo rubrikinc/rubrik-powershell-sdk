@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'SLA' API domain:
-    /// AllNcdComplianceData, AllSummariesByIds, AuditDetail, ConflictObjects, CountOfObjectsProtected, Domain, Domains, GlobalFilterList, GlobalStatuses, ManagedVolume, or ManagedVolumes.
+    /// AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
     /// </summary>
     /// <description>
     /// New-RscQuerySla creates a new
@@ -34,17 +34,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 14 operations
     /// in the 'SLA' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AllNcdComplianceData, -AllSummariesByIds, -AuditDetail, -ConflictObjects, -CountOfObjectsProtected, -Domain, -Domains, -GlobalFilterList, -GlobalStatuses, -ManagedVolume, -ManagedVolumes.
+    /// one of: -AuditDetail, -ClusterDomains, -ClusterGlobals, -ConflictObjects, -CountOfObjectsProtected, -Domain, -Domains, -GlobalFilterList, -GlobalStatuses, -ManagedVolume, -ManagedVolumes, -NcdComplianceData, -SummariesByIds, -VerifyWithReplicationToCluster.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AllNcdComplianceData,
-    /// which is equivalent to specifying -AllNcdComplianceData.
+    /// -Op parameter, for example: -Op AuditDetail,
+    /// which is equivalent to specifying -AuditDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQuerySla -AllNcdComplianceData).Info().
+    /// (New-RscQuerySla -AuditDetail).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,71 +71,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQuerySla -AllNcdComplianceData).Info().
+    /// (New-RscQuerySla -AuditDetail).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the AllNcdComplianceData operation
-    /// of the 'SLA' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
-    /// # API Operation: AllNcdComplianceData
-    /// 
-    /// $query = New-RscQuerySla -AllNcdComplianceData
-    /// 
-    /// # REQUIRED
-    /// $query.Var.clusters = @(
-    /// 	$someString
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;NcdSlaComplianceData&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllSummariesByIds operation
-    /// of the 'SLA' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
-    /// # API Operation: AllSummariesByIds
-    /// 
-    /// $query = New-RscQuerySla -AllSummariesByIds
-    /// 
-    /// # REQUIRED
-    /// $query.Var.slaIds = @(
-    /// 	$someString
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;SlaDomain&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the AuditDetail operation
@@ -145,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: AuditDetail
     /// 
     /// $query = New-RscQuerySla -AuditDetail
@@ -185,6 +125,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ClusterDomains operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: ClusterDomains
+    /// 
+    /// $query = New-RscQuerySla -ClusterDomains
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClusterSlaDomainConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ClusterGlobals operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: ClusterGlobals
+    /// 
+    /// $query = New-RscQuerySla -ClusterGlobals
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cdmClusterUUID = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;SlaInfo&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ConflictObjects operation
     /// of the 'SLA' API domain.
     /// <code>
@@ -192,7 +194,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: ConflictObjects
     /// 
     /// $query = New-RscQuerySla -ConflictObjects
@@ -222,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: CountOfObjectsProtected
     /// 
     /// $query = New-RscQuerySla -CountOfObjectsProtected
@@ -300,7 +302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: Domain
     /// 
     /// $query = New-RscQuerySla -Domain
@@ -334,7 +336,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: Domains
     /// 
     /// $query = New-RscQuerySla -Domains
@@ -410,7 +412,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: GlobalFilterList
     /// 
     /// $query = New-RscQuerySla -GlobalFilterList
@@ -486,7 +488,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: GlobalStatuses
     /// 
     /// $query = New-RscQuerySla -GlobalStatuses
@@ -531,7 +533,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: ManagedVolume
     /// 
     /// $query = New-RscQuerySla -ManagedVolume
@@ -559,7 +561,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: ManagedVolumes
     /// 
     /// $query = New-RscQuerySla -ManagedVolumes
@@ -627,6 +629,96 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the NcdComplianceData operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: NcdComplianceData
+    /// 
+    /// $query = New-RscQuerySla -NcdComplianceData
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusters = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;NcdSlaComplianceData&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SummariesByIds operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: SummariesByIds
+    /// 
+    /// $query = New-RscQuerySla -SummariesByIds
+    /// 
+    /// # REQUIRED
+    /// $query.Var.slaIds = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;SlaDomain&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the VerifyWithReplicationToCluster operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: VerifyWithReplicationToCluster
+    /// 
+    /// $query = New-RscQuerySla -VerifyWithReplicationToCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cdmClusterUUID = $someString
+    /// # REQUIRED
+    /// $query.Var.includeArchived = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VerifySlaWithReplicationToClusterResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -635,38 +727,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ]
     public class New_RscQuerySla : RscGqlPSCmdlet
     {
-        
-        [Parameter(
-            ParameterSetName = "AllNcdComplianceData",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllNcdComplianceData' operation
-in the 'SLA' API domain.
-Description of the operation:
-NAS Cloud Direct SLA Domain compliance data for the requested clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allncdslacompliancedata.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllNcdComplianceData { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllSummariesByIds",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllSummariesByIds' operation
-in the 'SLA' API domain.
-Description of the operation:
-List of SLA Domain summaries for the given IDs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allslasummariesbyids.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllSummariesByIds { get; set; }
-
         
         [Parameter(
             ParameterSetName = "AuditDetail",
@@ -682,6 +742,38 @@ List of audit details for a given SLA Domain.
             // No Position -> named parameter only.
         )]
         public SwitchParameter AuditDetail { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ClusterDomains",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ClusterDomains' operation
+in the 'SLA' API domain.
+Description of the operation:
+Returns paginated list of SLA domains that were created on Rubrik CDM.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustersladomains.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ClusterDomains { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ClusterGlobals",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ClusterGlobals' operation
+in the 'SLA' API domain.
+Description of the operation:
+Global SLA Domains protecting at least one object on the specified Rubrik cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allclusterglobalslas.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ClusterGlobals { get; set; }
 
         
         [Parameter(
@@ -811,6 +903,54 @@ Paginated list of SLA Managed Volumes.
         )]
         public SwitchParameter ManagedVolumes { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "NcdComplianceData",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'NcdComplianceData' operation
+in the 'SLA' API domain.
+Description of the operation:
+NAS Cloud Direct SLA Domain compliance data for the requested clusters.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allncdslacompliancedata.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter NcdComplianceData { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "SummariesByIds",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'SummariesByIds' operation
+in the 'SLA' API domain.
+Description of the operation:
+List of SLA Domain summaries for the given IDs.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allslasummariesbyids.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter SummariesByIds { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "VerifyWithReplicationToCluster",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'VerifyWithReplicationToCluster' operation
+in the 'SLA' API domain.
+Description of the operation:
+Verify for a Rubrik cluster if it is replication target in any SLA Domain.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/verifyslawithreplicationtocluster.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter VerifyWithReplicationToCluster { get; set; }
+
 
 
         protected override void ProcessRecord()
@@ -820,14 +960,14 @@ Paginated list of SLA Managed Volumes.
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AllNcdComplianceData":
-                        this.ProcessRecord_AllNcdComplianceData();
-                        break;
-                    case "AllSummariesByIds":
-                        this.ProcessRecord_AllSummariesByIds();
-                        break;
                     case "AuditDetail":
                         this.ProcessRecord_AuditDetail();
+                        break;
+                    case "ClusterDomains":
+                        this.ProcessRecord_ClusterDomains();
+                        break;
+                    case "ClusterGlobals":
+                        this.ProcessRecord_ClusterGlobals();
                         break;
                     case "ConflictObjects":
                         this.ProcessRecord_ConflictObjects();
@@ -853,6 +993,15 @@ Paginated list of SLA Managed Volumes.
                     case "ManagedVolumes":
                         this.ProcessRecord_ManagedVolumes();
                         break;
+                    case "NcdComplianceData":
+                        this.ProcessRecord_NcdComplianceData();
+                        break;
+                    case "SummariesByIds":
+                        this.ProcessRecord_SummariesByIds();
+                        break;
+                    case "VerifyWithReplicationToCluster":
+                        this.ProcessRecord_VerifyWithReplicationToCluster();
+                        break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
@@ -864,30 +1013,30 @@ Paginated list of SLA Managed Volumes.
         }
 
         // This parameter set invokes a single graphql operation:
-        // allNcdSlaComplianceData.
-        internal void ProcessRecord_AllNcdComplianceData()
-        {
-            this._logger.name += " -AllNcdComplianceData";
-            // Create new graphql operation allNcdSlaComplianceData
-            InitQueryAllNcdSlaComplianceData();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allSlaSummariesByIds.
-        internal void ProcessRecord_AllSummariesByIds()
-        {
-            this._logger.name += " -AllSummariesByIds";
-            // Create new graphql operation allSlaSummariesByIds
-            InitQueryAllSlaSummariesByIds();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // slaAuditDetail.
         internal void ProcessRecord_AuditDetail()
         {
             this._logger.name += " -AuditDetail";
             // Create new graphql operation slaAuditDetail
             InitQuerySlaAuditDetail();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterSlaDomains.
+        internal void ProcessRecord_ClusterDomains()
+        {
+            this._logger.name += " -ClusterDomains";
+            // Create new graphql operation clusterSlaDomains
+            InitQueryClusterSlaDomains();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allClusterGlobalSlas.
+        internal void ProcessRecord_ClusterGlobals()
+        {
+            this._logger.name += " -ClusterGlobals";
+            // Create new graphql operation allClusterGlobalSlas
+            InitQueryAllClusterGlobalSlas();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -962,50 +1111,33 @@ Paginated list of SLA Managed Volumes.
             InitQuerySlaManagedVolumes();
         }
 
-
-        // Create new GraphQL Query:
-        // allNcdSlaComplianceData(clusters: [UUID!]!): [NcdSlaComplianceData!]!
-        internal void InitQueryAllNcdSlaComplianceData()
+        // This parameter set invokes a single graphql operation:
+        // allNcdSlaComplianceData.
+        internal void ProcessRecord_NcdComplianceData()
         {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusters", "[UUID!]!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllNcdSlaComplianceData",
-                "($clusters: [UUID!]!)",
-                "List<NcdSlaComplianceData>",
-                Query.AllNcdSlaComplianceData_ObjectFieldSpec,
-                Query.AllNcdSlaComplianceDataFieldSpec,
-                @"# REQUIRED
-$query.Var.clusters = @(
-	$someString
-)"
-            );
+            this._logger.name += " -NcdComplianceData";
+            // Create new graphql operation allNcdSlaComplianceData
+            InitQueryAllNcdSlaComplianceData();
         }
 
-        // Create new GraphQL Query:
-        // allSlaSummariesByIds(slaIds: [UUID!]!): [SlaDomain!]!
-        internal void InitQueryAllSlaSummariesByIds()
+        // This parameter set invokes a single graphql operation:
+        // allSlaSummariesByIds.
+        internal void ProcessRecord_SummariesByIds()
         {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("slaIds", "[UUID!]!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllSlaSummariesByIds",
-                "($slaIds: [UUID!]!)",
-                "List<SlaDomain>",
-                Query.AllSlaSummariesByIds_ObjectFieldSpec,
-                Query.AllSlaSummariesByIdsFieldSpec,
-                @"# REQUIRED
-$query.Var.slaIds = @(
-	$someString
-)"
-            );
+            this._logger.name += " -SummariesByIds";
+            // Create new graphql operation allSlaSummariesByIds
+            InitQueryAllSlaSummariesByIds();
         }
+
+        // This parameter set invokes a single graphql operation:
+        // verifySlaWithReplicationToCluster.
+        internal void ProcessRecord_VerifyWithReplicationToCluster()
+        {
+            this._logger.name += " -VerifyWithReplicationToCluster";
+            // Create new graphql operation verifySlaWithReplicationToCluster
+            InitQueryVerifySlaWithReplicationToCluster();
+        }
+
 
         // Create new GraphQL Query:
         // slaAuditDetail(
@@ -1057,6 +1189,60 @@ $query.Var.filter = @(
 )
 # OPTIONAL
 $query.Var.timezone = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // clusterSlaDomains(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //   ): ClusterSlaDomainConnection!
+        internal void InitQueryClusterSlaDomains()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryClusterSlaDomains",
+                "($first: Int,$after: String,$last: Int,$before: String)",
+                "ClusterSlaDomainConnection",
+                Query.ClusterSlaDomains_ObjectFieldSpec,
+                Query.ClusterSlaDomainsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allClusterGlobalSlas(cdmClusterUUID: UUID!): [SlaInfo!]!
+        internal void InitQueryAllClusterGlobalSlas()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cdmClusterUUID", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllClusterGlobalSlas",
+                "($cdmClusterUUID: UUID!)",
+                "List<SlaInfo>",
+                Query.AllClusterGlobalSlas_ObjectFieldSpec,
+                Query.AllClusterGlobalSlasFieldSpec,
+                @"# REQUIRED
+$query.Var.cdmClusterUUID = $someString"
             );
         }
 
@@ -1530,6 +1716,73 @@ $query.Var.filter = @(
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allNcdSlaComplianceData(clusters: [UUID!]!): [NcdSlaComplianceData!]!
+        internal void InitQueryAllNcdSlaComplianceData()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusters", "[UUID!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllNcdSlaComplianceData",
+                "($clusters: [UUID!]!)",
+                "List<NcdSlaComplianceData>",
+                Query.AllNcdSlaComplianceData_ObjectFieldSpec,
+                Query.AllNcdSlaComplianceDataFieldSpec,
+                @"# REQUIRED
+$query.Var.clusters = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allSlaSummariesByIds(slaIds: [UUID!]!): [SlaDomain!]!
+        internal void InitQueryAllSlaSummariesByIds()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("slaIds", "[UUID!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllSlaSummariesByIds",
+                "($slaIds: [UUID!]!)",
+                "List<SlaDomain>",
+                Query.AllSlaSummariesByIds_ObjectFieldSpec,
+                Query.AllSlaSummariesByIdsFieldSpec,
+                @"# REQUIRED
+$query.Var.slaIds = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
+        internal void InitQueryVerifySlaWithReplicationToCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cdmClusterUUID", "UUID!"),
+                Tuple.Create("includeArchived", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVerifySlaWithReplicationToCluster",
+                "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
+                "VerifySlaWithReplicationToClusterResponse",
+                Query.VerifySlaWithReplicationToCluster_ObjectFieldSpec,
+                Query.VerifySlaWithReplicationToClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.cdmClusterUUID = $someString
+# REQUIRED
+$query.Var.includeArchived = $someBoolean"
             );
         }
 

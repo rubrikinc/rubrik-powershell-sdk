@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 3
     /// operations in the 'Activity series' API domain:
-    /// ['Cancel'].
+    /// Cancel, DownloadUserCsv, or DownloadUserFileCsv.
     /// </summary>
     /// <description>
     /// New-RscMutationActivitySeries creates a new
@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 3 operations
     /// in the 'Activity series' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Cancel.
+    /// one of: -Cancel, -DownloadUserCsv, -DownloadUserFileCsv.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op Cancel,
     /// which is equivalent to specifying -Cancel.
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Activity series
+    /// # API Domain:    ActivitySeries
     /// # API Operation: Cancel
     /// 
     /// $query = New-RscMutationActivitySeries -Cancel
@@ -103,6 +103,136 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DownloadUserCsv operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: DownloadUserCsv
+    /// 
+    /// $query = New-RscMutationActivitySeries -DownloadUserCsv
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	filters = @{
+    /// 		# OPTIONAL
+    /// 		openAccessTypes = @(
+    /// 			$someOpenAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OpenAccessType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		stalenessTypes = @(
+    /// 			$someStalenessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StalenessType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		analyzerGroupIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		clusterIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		pathPrefix = $someString
+    /// 		# OPTIONAL
+    /// 		snappableTypes = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchText = $someString
+    /// 		# OPTIONAL
+    /// 		whitelistEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		fileCountTypes = @(
+    /// 			$someFileCountType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileCountType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		accessTypes = @(
+    /// 			$someAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AccessType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		activityTypes = @(
+    /// 			$someActivityAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityAccessType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		inodeTypes = @(
+    /// 			$someInodeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InodeType]) for enum values.
+    /// 		)
+    /// 		# REQUIRED
+    /// 		objectTypes = @(
+    /// 			$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# REQUIRED
+    /// 	day = $someString
+    /// 	# REQUIRED
+    /// 	timezone = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadCsvReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DownloadUserFileCsv operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: DownloadUserFileCsv
+    /// 
+    /// $query = New-RscMutationActivitySeries -DownloadUserFileCsv
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	userId = $someString
+    /// 	# REQUIRED
+    /// 	snapshot = @{
+    /// 		# OPTIONAL
+    /// 		snappableFid = $someString
+    /// 		# OPTIONAL
+    /// 		snapshotFid = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	nativePath = $someString
+    /// 	# REQUIRED
+    /// 	timezone = $someString
+    /// 	# REQUIRED
+    /// 	startDay = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadCsvReply
     /// 
     /// 
     /// 
@@ -134,6 +264,38 @@ Cancel an activity series.
         )]
         public SwitchParameter Cancel { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "DownloadUserCsv",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DownloadUserCsv' operation
+in the 'Activity series' API domain.
+Description of the operation:
+Schedule a download CSV job for a user's activity.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloaduseractivitycsv.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DownloadUserCsv { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "DownloadUserFileCsv",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DownloadUserFileCsv' operation
+in the 'Activity series' API domain.
+Description of the operation:
+Schedule a download CSV job for user activity on a specific file.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloaduserfileactivitycsv.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DownloadUserFileCsv { get; set; }
+
 
 
         protected override void ProcessRecord()
@@ -145,6 +307,12 @@ Cancel an activity series.
                 {
                     case "Cancel":
                         this.ProcessRecord_Cancel();
+                        break;
+                    case "DownloadUserCsv":
+                        this.ProcessRecord_DownloadUserCsv();
+                        break;
+                    case "DownloadUserFileCsv":
+                        this.ProcessRecord_DownloadUserFileCsv();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -163,6 +331,24 @@ Cancel an activity series.
             this._logger.name += " -Cancel";
             // Create new graphql operation cancelActivitySeries
             InitMutationCancelActivitySeries();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadUserActivityCsv.
+        internal void ProcessRecord_DownloadUserCsv()
+        {
+            this._logger.name += " -DownloadUserCsv";
+            // Create new graphql operation downloadUserActivityCsv
+            InitMutationDownloadUserActivityCsv();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadUserFileActivityCsv.
+        internal void ProcessRecord_DownloadUserFileCsv()
+        {
+            this._logger.name += " -DownloadUserFileCsv";
+            // Create new graphql operation downloadUserFileActivityCsv
+            InitMutationDownloadUserFileActivityCsv();
         }
 
 
@@ -187,6 +373,120 @@ $query.Var.input = @{
 	activitySeriesId = $someString
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadUserActivityCsv(input: DownloadUserActivityCsvInput!): DownloadCsvReply!
+        internal void InitMutationDownloadUserActivityCsv()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadUserActivityCsvInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadUserActivityCsv",
+                "($input: DownloadUserActivityCsvInput!)",
+                "DownloadCsvReply",
+                Mutation.DownloadUserActivityCsv_ObjectFieldSpec,
+                Mutation.DownloadUserActivityCsvFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	filters = @{
+		# OPTIONAL
+		openAccessTypes = @(
+			$someOpenAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OpenAccessType]) for enum values.
+		)
+		# OPTIONAL
+		stalenessTypes = @(
+			$someStalenessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StalenessType]) for enum values.
+		)
+		# OPTIONAL
+		analyzerGroupIds = @(
+			$someString
+		)
+		# OPTIONAL
+		clusterIds = @(
+			$someString
+		)
+		# OPTIONAL
+		pathPrefix = $someString
+		# OPTIONAL
+		snappableTypes = @(
+			$someString
+		)
+		# OPTIONAL
+		searchText = $someString
+		# OPTIONAL
+		whitelistEnabled = $someBoolean
+		# OPTIONAL
+		fileCountTypes = @(
+			$someFileCountType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileCountType]) for enum values.
+		)
+		# OPTIONAL
+		accessTypes = @(
+			$someAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AccessType]) for enum values.
+		)
+		# OPTIONAL
+		activityTypes = @(
+			$someActivityAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityAccessType]) for enum values.
+		)
+		# OPTIONAL
+		objectIds = @(
+			$someString
+		)
+		# OPTIONAL
+		inodeTypes = @(
+			$someInodeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InodeType]) for enum values.
+		)
+		# REQUIRED
+		objectTypes = @(
+			$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+		)
+	}
+	# REQUIRED
+	day = $someString
+	# REQUIRED
+	timezone = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadUserFileActivityCsv(input: DownloadUserFileActivityCsvInput!): DownloadCsvReply!
+        internal void InitMutationDownloadUserFileActivityCsv()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadUserFileActivityCsvInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadUserFileActivityCsv",
+                "($input: DownloadUserFileActivityCsvInput!)",
+                "DownloadCsvReply",
+                Mutation.DownloadUserFileActivityCsv_ObjectFieldSpec,
+                Mutation.DownloadUserFileActivityCsvFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	userId = $someString
+	# REQUIRED
+	snapshot = @{
+		# OPTIONAL
+		snappableFid = $someString
+		# OPTIONAL
+		snapshotFid = $someString
+	}
+	# REQUIRED
+	nativePath = $someString
+	# REQUIRED
+	timezone = $someString
+	# REQUIRED
+	startDay = $someString
 }"
             );
         }

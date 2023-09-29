@@ -22,22 +22,22 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
-    /// operations in the 'Mongo' API domain:
-    /// AddSource, AssignSlaToDbCollection, BulkDeletedbSources, CreatedbSource, DeleteSource, DeletedbSource, DiscoverSource, PatchSource, RecoverSource, RecoverdbSource, RetryAddSource, or UpdatedbSource.
+    /// Create a new RscQuery object for any of the 10
+    /// operations in the 'Mongo DB' API domain:
+    /// AddSource, AssignSlaToCollection, BulkDeleteSources, CreateSource, DeleteSource, DiscoverSource, PatchSource, RecoverSource, RetryAddSource, or UpdateSource.
     /// </summary>
     /// <description>
     /// New-RscMutationMongo creates a new
     /// mutation object for operations
-    /// in the 'Mongo' API domain. It only creates a data structure,
+    /// in the 'Mongo DB' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
-    /// in the 'Mongo' API domain. Select the operation this
+    /// There are 10 operations
+    /// in the 'Mongo DB' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddSource, -AssignSlaToDbCollection, -BulkDeletedbSources, -CreatedbSource, -DeleteSource, -DeletedbSource, -DiscoverSource, -PatchSource, -RecoverSource, -RecoverdbSource, -RetryAddSource, -UpdatedbSource.
+    /// one of: -AddSource, -AssignSlaToCollection, -BulkDeleteSources, -CreateSource, -DeleteSource, -DiscoverSource, -PatchSource, -RecoverSource, -RetryAddSource, -UpdateSource.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op AddSource,
     /// which is equivalent to specifying -AddSource.
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the AddSource operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -141,17 +141,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AssignSlaToDbCollection operation
-    /// of the 'Mongo' API domain.
+    /// Runs the AssignSlaToCollection operation
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Mongo
-    /// # API Operation: AssignSlaToDbCollection
+    /// # API Operation: AssignSlaToCollection
     /// 
-    /// $query = New-RscMutationMongo -AssignSlaToDbCollection
+    /// $query = New-RscMutationMongo -AssignSlaToCollection
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -179,17 +179,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the BulkDeletedbSources operation
-    /// of the 'Mongo' API domain.
+    /// Runs the BulkDeleteSources operation
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Mongo
-    /// # API Operation: BulkDeletedbSources
+    /// # API Operation: BulkDeleteSources
     /// 
-    /// $query = New-RscMutationMongo -BulkDeletedbSources
+    /// $query = New-RscMutationMongo -BulkDeleteSources
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -221,17 +221,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CreatedbSource operation
-    /// of the 'Mongo' API domain.
+    /// Runs the CreateSource operation
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Mongo
-    /// # API Operation: CreatedbSource
+    /// # API Operation: CreateSource
     /// 
-    /// $query = New-RscMutationMongo -CreatedbSource
+    /// $query = New-RscMutationMongo -CreateSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteSource operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -348,43 +348,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DeletedbSource operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: DeletedbSource
-    /// 
-    /// $query = New-RscMutationMongo -DeletedbSource
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	sourceName = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the DiscoverSource operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -415,7 +380,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the PatchSource operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -465,7 +430,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverSource operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -526,96 +491,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RecoverdbSource operation
-    /// of the 'Mongo' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: RecoverdbSource
-    /// 
-    /// $query = New-RscMutationMongo -RecoverdbSource
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	recoveryData = @{
-    /// 		# OPTIONAL
-    /// 		destinationManagementObjects = @{
-    /// 			# OPTIONAL
-    /// 			databases = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					dbName = $someString
-    /// 					# OPTIONAL
-    /// 					tables = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		destinationSourceName = $someString
-    /// 		# OPTIONAL
-    /// 		keyspaceConfig = $someString
-    /// 		# OPTIONAL
-    /// 		maxDiskUsage = $someString
-    /// 		# OPTIONAL
-    /// 		restoreDbUserPwd = $someString
-    /// 		# OPTIONAL
-    /// 		restoreDbUsername = $someString
-    /// 		# OPTIONAL
-    /// 		startTimestamp = $someInt
-    /// 		# OPTIONAL
-    /// 		targetEncryptionKey = $someString
-    /// 		# OPTIONAL
-    /// 		targetQuery = $someString
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
-    /// 		# REQUIRED
-    /// 		destinationPath = $someString
-    /// 		# REQUIRED
-    /// 		managementObjects = @{
-    /// 			# OPTIONAL
-    /// 			databases = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					dbName = $someString
-    /// 					# OPTIONAL
-    /// 					tables = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 		# REQUIRED
-    /// 		parameterEncoded = $someBoolean
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 		# REQUIRED
-    /// 		versionTime = $someInt
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the RetryAddSource operation
-    /// of the 'Mongo' API domain.
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -677,17 +554,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdatedbSource operation
-    /// of the 'Mongo' API domain.
+    /// Runs the UpdateSource operation
+    /// of the 'Mongo DB' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Mongo
-    /// # API Operation: UpdatedbSource
+    /// # API Operation: UpdateSource
     /// 
-    /// $query = New-RscMutationMongo -UpdatedbSource
+    /// $query = New-RscMutationMongo -UpdateSource
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -788,7 +665,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'AddSource' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Add a new MongoDB source
 
@@ -801,13 +678,13 @@ Adds a new MongoDB source to the Rubrik Cluster.
 
         
         [Parameter(
-            ParameterSetName = "AssignSlaToDbCollection",
+            ParameterSetName = "AssignSlaToCollection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a mutation object for the 'AssignSlaToDbCollection' operation
-in the 'Mongo' API domain.
+@"Create a mutation object for the 'AssignSlaToCollection' operation
+in the 'Mongo DB' API domain.
 Description of the operation:
 Assign SLA Domain to MongoDB collection objects
 
@@ -816,17 +693,17 @@ Assigns SLA Domain to the given MongoDB collection objects.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignslatomongodbcollection.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter AssignSlaToDbCollection { get; set; }
+        public SwitchParameter AssignSlaToCollection { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "BulkDeletedbSources",
+            ParameterSetName = "BulkDeleteSources",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a mutation object for the 'BulkDeletedbSources' operation
-in the 'Mongo' API domain.
+@"Create a mutation object for the 'BulkDeleteSources' operation
+in the 'Mongo DB' API domain.
 Description of the operation:
 Bulk Delete Sources
 
@@ -834,17 +711,17 @@ Supported in m3.2.0-m4.2.0.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletemongodbsources.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter BulkDeletedbSources { get; set; }
+        public SwitchParameter BulkDeleteSources { get; set; }
 
         
         [Parameter(
-            ParameterSetName = "CreatedbSource",
+            ParameterSetName = "CreateSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a mutation object for the 'CreatedbSource' operation
-in the 'Mongo' API domain.
+@"Create a mutation object for the 'CreateSource' operation
+in the 'Mongo DB' API domain.
 Description of the operation:
 Register a new MongoDB source to NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster.
@@ -852,7 +729,7 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmongodbsource.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter CreatedbSource { get; set; }
+        public SwitchParameter CreateSource { get; set; }
 
         
         [Parameter(
@@ -862,7 +739,7 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteSource' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Delete a MongoDB source
 
@@ -875,29 +752,13 @@ Deletes a specific MongoDB source.
 
         
         [Parameter(
-            ParameterSetName = "DeletedbSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeletedbSource' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Remove a registered MongoDB source from NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemongodbsource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeletedbSource { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "DiscoverSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DiscoverSource' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Discover a MongoDB source on-demand
 
@@ -916,7 +777,7 @@ Initiates an on-demand job to discover a MongoDB source.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'PatchSource' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Edit a MongoDB source
 
@@ -935,7 +796,7 @@ Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB canno
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RecoverSource' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Recover a MongoDB source from Rubrik CDM cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/recovermongosource.doc.html]"
@@ -945,29 +806,13 @@ Recover a MongoDB source from Rubrik CDM cluster.
 
         
         [Parameter(
-            ParameterSetName = "RecoverdbSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverdbSource' operation
-in the 'Mongo' API domain.
-Description of the operation:
-Recover a MongoDB source from NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/recovermongodbsource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverdbSource { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "RetryAddSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RetryAddSource' operation
-in the 'Mongo' API domain.
+in the 'Mongo DB' API domain.
 Description of the operation:
 Update a MongoDB source
 
@@ -980,19 +825,19 @@ Updates a MongoDB source details. You can use this endpoint for updating MongoDB
 
         
         [Parameter(
-            ParameterSetName = "UpdatedbSource",
+            ParameterSetName = "UpdateSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a mutation object for the 'UpdatedbSource' operation
-in the 'Mongo' API domain.
+@"Create a mutation object for the 'UpdateSource' operation
+in the 'Mongo DB' API domain.
 Description of the operation:
 Modifies configuration for a registered MongoDB source in NoSQL cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemongodbsource.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter UpdatedbSource { get; set; }
+        public SwitchParameter UpdateSource { get; set; }
 
 
 
@@ -1006,20 +851,17 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
                     case "AddSource":
                         this.ProcessRecord_AddSource();
                         break;
-                    case "AssignSlaToDbCollection":
-                        this.ProcessRecord_AssignSlaToDbCollection();
+                    case "AssignSlaToCollection":
+                        this.ProcessRecord_AssignSlaToCollection();
                         break;
-                    case "BulkDeletedbSources":
-                        this.ProcessRecord_BulkDeletedbSources();
+                    case "BulkDeleteSources":
+                        this.ProcessRecord_BulkDeleteSources();
                         break;
-                    case "CreatedbSource":
-                        this.ProcessRecord_CreatedbSource();
+                    case "CreateSource":
+                        this.ProcessRecord_CreateSource();
                         break;
                     case "DeleteSource":
                         this.ProcessRecord_DeleteSource();
-                        break;
-                    case "DeletedbSource":
-                        this.ProcessRecord_DeletedbSource();
                         break;
                     case "DiscoverSource":
                         this.ProcessRecord_DiscoverSource();
@@ -1030,14 +872,11 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
                     case "RecoverSource":
                         this.ProcessRecord_RecoverSource();
                         break;
-                    case "RecoverdbSource":
-                        this.ProcessRecord_RecoverdbSource();
-                        break;
                     case "RetryAddSource":
                         this.ProcessRecord_RetryAddSource();
                         break;
-                    case "UpdatedbSource":
-                        this.ProcessRecord_UpdatedbSource();
+                    case "UpdateSource":
+                        this.ProcessRecord_UpdateSource();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -1060,27 +899,27 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
 
         // This parameter set invokes a single graphql operation:
         // assignSlaToMongoDbCollection.
-        internal void ProcessRecord_AssignSlaToDbCollection()
+        internal void ProcessRecord_AssignSlaToCollection()
         {
-            this._logger.name += " -AssignSlaToDbCollection";
+            this._logger.name += " -AssignSlaToCollection";
             // Create new graphql operation assignSlaToMongoDbCollection
             InitMutationAssignSlaToMongoDbCollection();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteMongodbSources.
-        internal void ProcessRecord_BulkDeletedbSources()
+        internal void ProcessRecord_BulkDeleteSources()
         {
-            this._logger.name += " -BulkDeletedbSources";
+            this._logger.name += " -BulkDeleteSources";
             // Create new graphql operation bulkDeleteMongodbSources
             InitMutationBulkDeleteMongodbSources();
         }
 
         // This parameter set invokes a single graphql operation:
         // createMongodbSource.
-        internal void ProcessRecord_CreatedbSource()
+        internal void ProcessRecord_CreateSource()
         {
-            this._logger.name += " -CreatedbSource";
+            this._logger.name += " -CreateSource";
             // Create new graphql operation createMongodbSource
             InitMutationCreateMongodbSource();
         }
@@ -1092,15 +931,6 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
             this._logger.name += " -DeleteSource";
             // Create new graphql operation deleteMongoSource
             InitMutationDeleteMongoSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteMongodbSource.
-        internal void ProcessRecord_DeletedbSource()
-        {
-            this._logger.name += " -DeletedbSource";
-            // Create new graphql operation deleteMongodbSource
-            InitMutationDeleteMongodbSource();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1131,15 +961,6 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
         }
 
         // This parameter set invokes a single graphql operation:
-        // recoverMongodbSource.
-        internal void ProcessRecord_RecoverdbSource()
-        {
-            this._logger.name += " -RecoverdbSource";
-            // Create new graphql operation recoverMongodbSource
-            InitMutationRecoverMongodbSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // retryAddMongoSource.
         internal void ProcessRecord_RetryAddSource()
         {
@@ -1150,9 +971,9 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
 
         // This parameter set invokes a single graphql operation:
         // updateMongodbSource.
-        internal void ProcessRecord_UpdatedbSource()
+        internal void ProcessRecord_UpdateSource()
         {
-            this._logger.name += " -UpdatedbSource";
+            this._logger.name += " -UpdateSource";
             // Create new graphql operation updateMongodbSource
             InitMutationUpdateMongodbSource();
         }
@@ -1389,33 +1210,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // deleteMongodbSource(input: DeleteMosaicSourceInput!): MosaicAsyncResponse!
-        internal void InitMutationDeleteMongodbSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteMosaicSourceInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteMongodbSource",
-                "($input: DeleteMosaicSourceInput!)",
-                "MosaicAsyncResponse",
-                Mutation.DeleteMongodbSource_ObjectFieldSpec,
-                Mutation.DeleteMongodbSourceFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	sourceName = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // discoverMongoSource(input: DiscoverMongoSourceInput!): AsyncRequestStatus!
         internal void InitMutationDiscoverMongoSource()
         {
@@ -1529,86 +1323,6 @@ $query.Var.input = @{
 		sourceMongoClusterId = $someString
 		# REQUIRED
 		targetMongoClusterId = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // recoverMongodbSource(input: MosaicRestoreDataInput!): MosaicAsyncResponse!
-        internal void InitMutationRecoverMongodbSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "MosaicRestoreDataInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRecoverMongodbSource",
-                "($input: MosaicRestoreDataInput!)",
-                "MosaicAsyncResponse",
-                Mutation.RecoverMongodbSource_ObjectFieldSpec,
-                Mutation.RecoverMongodbSourceFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	recoveryData = @{
-		# OPTIONAL
-		destinationManagementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = $someString
-					# OPTIONAL
-					tables = @(
-						$someString
-					)
-				}
-			)
-		}
-		# OPTIONAL
-		destinationSourceName = $someString
-		# OPTIONAL
-		keyspaceConfig = $someString
-		# OPTIONAL
-		maxDiskUsage = $someString
-		# OPTIONAL
-		restoreDbUserPwd = $someString
-		# OPTIONAL
-		restoreDbUsername = $someString
-		# OPTIONAL
-		startTimestamp = $someInt
-		# OPTIONAL
-		targetEncryptionKey = $someString
-		# OPTIONAL
-		targetQuery = $someString
-		# OPTIONAL
-		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
-		# REQUIRED
-		destinationPath = $someString
-		# REQUIRED
-		managementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = $someString
-					# OPTIONAL
-					tables = @(
-						$someString
-					)
-				}
-			)
-		}
-		# REQUIRED
-		parameterEncoded = $someBoolean
-		# REQUIRED
-		sourceName = $someString
-		# REQUIRED
-		versionTime = $someInt
 	}
 }"
             );

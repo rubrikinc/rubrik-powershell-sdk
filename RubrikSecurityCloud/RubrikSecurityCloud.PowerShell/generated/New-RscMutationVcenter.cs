@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 6
-    /// operations in the 'vSphere vCenter' API domain:
+    /// operations in the 'VMware vSphere vCenter' API domain:
     /// Create, Delete, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
     /// </summary>
     /// <description>
     /// New-RscMutationVcenter creates a new
     /// mutation object for operations
-    /// in the 'vSphere vCenter' API domain. It only creates a data structure,
+    /// in the 'VMware vSphere vCenter' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 6 operations
-    /// in the 'vSphere vCenter' API domain. Select the operation this
+    /// in the 'VMware vSphere vCenter' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -Create, -Delete, -Refresh, -Update, -UpdateHotAddBandwidth, -UpdateHotAddNetwork.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Create operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: Create
     /// 
     /// $query = New-RscMutationVcenter -Create
@@ -140,13 +140,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Delete operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: Delete
     /// 
     /// $query = New-RscMutationVcenter -Delete
@@ -171,13 +171,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Refresh operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: Refresh
     /// 
     /// $query = New-RscMutationVcenter -Refresh
@@ -204,13 +204,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Update operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: Update
     /// 
     /// $query = New-RscMutationVcenter -Update
@@ -263,13 +263,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateHotAddBandwidth operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: UpdateHotAddBandwidth
     /// 
     /// $query = New-RscMutationVcenter -UpdateHotAddBandwidth
@@ -301,13 +301,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateHotAddNetwork operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: UpdateHotAddNetwork
     /// 
     /// $query = New-RscMutationVcenter -UpdateHotAddNetwork
@@ -366,7 +366,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'Create' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Add a vCenter server.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createvspherevcenter.doc.html]"
@@ -382,7 +382,7 @@ Add a vCenter server.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'Delete' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Remove vCenter Server
 
@@ -401,7 +401,7 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'Refresh' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Refresh vCenter Server metadata
 
@@ -420,7 +420,7 @@ Create a job to refresh the metadata for the specified vCenter Server.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'Update' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Update vCenter Server
 
@@ -439,7 +439,7 @@ Update the address, username and password of the specified vCenter Server object
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateHotAddBandwidth' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Set the ingest and export bandwidth limits for HotAdd with the vCenter
 
@@ -458,7 +458,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateHotAddNetwork' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Set the user-configured network for HotAdd backup and recovery
 

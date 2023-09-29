@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: AuthorizedPrincipalList
     /// 
     /// $query = New-RscQueryLdap -AuthorizedPrincipalList
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: IntegrationList
     /// 
     /// $query = New-RscQueryLdap -IntegrationList
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: PrincipalList
     /// 
     /// $query = New-RscQueryLdap -PrincipalList

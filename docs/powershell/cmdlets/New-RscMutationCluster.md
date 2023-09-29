@@ -5,11 +5,6 @@ Add nodes to cloud cluster.
 
 - There is a single argument of type AddNodesToCloudClusterInput.
 - Returns CcProvisionJobReply.
-### archivek8s
-Archive a Kubernetes cluster.
-
-- There is a single argument of type ArchiveK8sClusterInput.
-- Returns ArchiveK8sClusterReply.
 ### bulkdeletefailover
 Delete the provided failover clusters
 
@@ -26,11 +21,6 @@ Create a failover cluster.
 
 - There is a single argument of type CreateFailoverClusterInput.
 - Returns CreateFailoverClusterReply.
-### createk8s
-Add a Kubernetes cluster.
-
-- There is a single argument of type CreateK8sClusterInput.
-- Returns CreateK8sClusterReply.
 ### deletefailover
 Delete a failover cluster
 
@@ -44,11 +34,6 @@ Recover a Rubrik Cloud Cluster.
 
 - There is a single argument of type RecoverCloudClusterInput.
 - Returns CcProvisionJobReply.
-### refreshk8s
-Refresh resources of a Kubernetes cluster.
-
-- There is a single argument of type RefreshK8sClusterInput.
-- Returns CreateOnDemandJobReply.
 ### registercloud
 Register a cloud cluster.
 

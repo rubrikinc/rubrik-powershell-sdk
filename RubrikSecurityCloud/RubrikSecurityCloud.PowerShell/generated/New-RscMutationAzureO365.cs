@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 1
-    /// operations in the 'AzureO365' API domain:
+    /// operations in the 'Azure Office365' API domain:
     /// ['SetupExocompute'].
     /// </summary>
     /// <description>
     /// New-RscMutationAzureO365 creates a new
     /// mutation object for operations
-    /// in the 'AzureO365' API domain. It only creates a data structure,
+    /// in the 'Azure Office365' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 1 operations
-    /// in the 'AzureO365' API domain. Select the operation this
+    /// in the 'Azure Office365' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -SetupExocompute.
     /// Alternatively, you can specify the operation by setting the
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SetupExocompute operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'SetupExocompute' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Sets up Exocompute for an O365 subscription.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setupazureo365exocompute.doc.html]"

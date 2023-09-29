@@ -20,6 +20,24 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscMutationAccount -DeleteUsers
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAccount -DeleteUsers).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAccount -DeleteUsers
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
 # New-RscMutationActivitySeries -Cancel
 # -------------------------------------------------------------------
 
@@ -27,6 +45,40 @@ if ($GetGqlRequest) {
     (New-RscMutationActivitySeries -Cancel).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationActivitySeries -Cancel
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationActivitySeries -DownloadUserCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationActivitySeries -DownloadUserCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationActivitySeries -DownloadUserCsv
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationActivitySeries -DownloadUserFileCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationActivitySeries -DownloadUserFileCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationActivitySeries -DownloadUserFileCsv
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -276,23 +328,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationAws -FinalizeCloudAccountDeletion
 # -------------------------------------------------------------------
 
@@ -412,23 +447,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationAws -StartExocomputeDisableJob
 # -------------------------------------------------------------------
 
@@ -436,108 +454,6 @@ if ($GetGqlRequest) {
     (New-RscMutationAws -StartExocomputeDisableJob).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationAws -StartExocomputeDisableJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -StartNativeAccountDisableJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartNativeAccountDisableJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartNativeAccountDisableJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -StartRefreshNativeAccountsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartRefreshNativeAccountsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartRefreshNativeAccountsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -725,6 +641,143 @@ if ($GetGqlRequest) {
     (New-RscMutationAws -ValidateAndCreateCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationAws -ValidateAndCreateCloudAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -ExcludeEbsVolumesFromSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -ExcludeEbsVolumesFromSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -ExcludeEbsVolumesFromSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartAccountDisableJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartAccountDisableJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartAccountDisableJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartCreateEbsVolumeSnapshotsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartCreateEbsVolumeSnapshotsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartCreateEbsVolumeSnapshotsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartEc2InstanceSnapshotsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartEc2InstanceSnapshotsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartEc2InstanceSnapshotsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartExportEbsVolumeSnapshotJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartExportEbsVolumeSnapshotJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartExportEbsVolumeSnapshotJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartRdsInstanceSnapshotsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartRdsInstanceSnapshotsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartRdsInstanceSnapshotsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartRefreshAccountsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartRefreshAccountsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartRefreshAccountsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAwsNative -StartRestoreEc2InstanceSnapshotJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAwsNative -StartRestoreEc2InstanceSnapshotJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAwsNative -StartRestoreEc2InstanceSnapshotJob
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -1076,23 +1129,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationAzure -MapCloudAccountExocomputeSubscription
 # -------------------------------------------------------------------
 
@@ -1246,40 +1282,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationAzure -StartDisableCloudAccountJob
 # -------------------------------------------------------------------
 
@@ -1287,57 +1289,6 @@ if ($GetGqlRequest) {
     (New-RscMutationAzure -StartDisableCloudAccountJob).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationAzure -StartDisableCloudAccountJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -StartExportNativeManagedDiskJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartExportNativeManagedDiskJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartExportNativeManagedDiskJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -StartExportNativeVirtualMachineJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartExportNativeVirtualMachineJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartExportNativeVirtualMachineJob
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -1372,40 +1323,6 @@ if ($GetGqlRequest) {
     (New-RscMutationAzure -StartExportSqlManagedInstanceDbJob).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationAzure -StartExportSqlManagedInstanceDbJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -StartRefreshNativeSubscriptionsJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartRefreshNativeSubscriptionsJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartRefreshNativeSubscriptionsJob
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -StartRestoreNativeVirtualMachineJob
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationAzure -StartRestoreNativeVirtualMachineJob).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationAzure -StartRestoreNativeVirtualMachineJob
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -1604,6 +1521,143 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
+# New-RscMutationAzureNative -ExcludeManagedDisksFromSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -ExcludeManagedDisksFromSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -ExcludeManagedDisksFromSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartCreateManagedDiskSnapshotsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartCreateManagedDiskSnapshotsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartCreateManagedDiskSnapshotsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartCreateVirtualMachineSnapshotsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartCreateVirtualMachineSnapshotsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartCreateVirtualMachineSnapshotsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartDisableSubscriptionProtectionJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartDisableSubscriptionProtectionJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartDisableSubscriptionProtectionJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartExportManagedDiskJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartExportManagedDiskJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartExportManagedDiskJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartExportVirtualMachineJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartExportVirtualMachineJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartExportVirtualMachineJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartRefreshSubscriptionsJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartRefreshSubscriptionsJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartRefreshSubscriptionsJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzureNative -StartRestoreVirtualMachineJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzureNative -StartRestoreVirtualMachineJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzureNative -StartRestoreVirtualMachineJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
 # New-RscMutationAzureO365 -SetupExocompute
 # -------------------------------------------------------------------
 
@@ -1708,13 +1762,13 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
-# New-RscMutationCluster -AddNodesToCloud
+# New-RscMutationCertificate -AddClusterCertificate
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscMutationCluster -AddNodesToCloud).GqlRequest().SaveQueryToFile()
+    (New-RscMutationCertificate -AddClusterCertificate).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscMutationCluster -AddNodesToCloud
+    $query = New-RscMutationCertificate -AddClusterCertificate
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -1725,13 +1779,356 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationCluster -ArchiveK8s
+# New-RscMutationCertificate -Delete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscMutationCluster -ArchiveK8s).GqlRequest().SaveQueryToFile()
+    (New-RscMutationCertificate -Delete).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscMutationCluster -ArchiveK8s
+    $query = New-RscMutationCertificate -Delete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -SetSso
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCertificate -SetSso).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCertificate -SetSso
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -SetWebSigned
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCertificate -SetWebSigned).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCertificate -SetWebSigned
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -Update
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCertificate -Update).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCertificate -Update
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -UpdateHost
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCertificate -UpdateHost).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCertificate -UpdateHost
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudAccount -MapExocomputeAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudAccount -MapExocomputeAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudAccount -MapExocomputeAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudAccount -UnmapExocomputeAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudAccount -UnmapExocomputeAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudAccount -UnmapExocomputeAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -AddSqlServerBackupCredentials
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -AddSqlServerBackupCredentials).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -AddSqlServerBackupCredentials
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -CheckRbaConnectivity
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -CheckRbaConnectivity).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -CheckRbaConnectivity
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -ClearSqlServerBackupCredentials
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -ClearSqlServerBackupCredentials).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -ClearSqlServerBackupCredentials
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -CreateLabelRule
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -CreateLabelRule).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -CreateLabelRule
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -CreateTagRule
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -CreateTagRule).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -CreateTagRule
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -DeleteLabelRule
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -DeleteLabelRule).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -DeleteLabelRule
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -DeleteTagRule
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -DeleteTagRule).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -DeleteTagRule
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -DownloadFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -DownloadFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -DownloadFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -SetupSqlServerBackup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -SetupSqlServerBackup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -SetupSqlServerBackup
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -StartSnapshotsIndexJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -StartSnapshotsIndexJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -StartSnapshotsIndexJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -UpdateIndexingStatus
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -UpdateIndexingStatus).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -UpdateIndexingStatus
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -UpdateLabelRule
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -UpdateLabelRule).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -UpdateLabelRule
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCloudNative -UpdateTagRule
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCloudNative -UpdateTagRule).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCloudNative -UpdateTagRule
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationCluster -AddNodesToCloud
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationCluster -AddNodesToCloud).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationCluster -AddNodesToCloud
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -1776,23 +2173,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationCluster -CreateK8s
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationCluster -CreateK8s).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationCluster -CreateK8s
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationCluster -DeleteFailover
 # -------------------------------------------------------------------
 
@@ -1817,23 +2197,6 @@ if ($GetGqlRequest) {
     (New-RscMutationCluster -RecoverCloud).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationCluster -RecoverCloud
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationCluster -RefreshK8s
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationCluster -RefreshK8s).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationCluster -RefreshK8s
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2090,6 +2453,845 @@ if ($GetGqlRequest) {
     (New-RscMutationDb2 -RefreshDatabase).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationDb2 -RefreshDatabase
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -AuditLogCsvAsync
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -AuditLogCsvAsync).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -AuditLogCsvAsync
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ExchangeSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ExchangeSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ExchangeSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -FilesetSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -FilesetSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -FilesetSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -FilesetSnapshotFromLocation
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -FilesetSnapshotFromLocation).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -FilesetSnapshotFromLocation
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ObjectFilesCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ObjectFilesCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ObjectFilesCsv
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ObjectsListCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ObjectsListCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ObjectsListCsv
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ReportCsvAsync
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ReportCsvAsync).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ReportCsvAsync
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ReportPdfAsync
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ReportPdfAsync).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ReportPdfAsync
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ResultsCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ResultsCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ResultsCsv
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -SapHanaSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -SapHanaSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -SapHanaSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -SapHanaSnapshotFromLocation
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -SapHanaSnapshotFromLocation).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -SapHanaSnapshotFromLocation
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -SapHanaSnapshotsForPointInTimeRecovery
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -SapHanaSnapshotsForPointInTimeRecovery).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -SapHanaSnapshotsForPointInTimeRecovery
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -SnapshotResultsCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -SnapshotResultsCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -SnapshotResultsCsv
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -ThreatHuntCsv
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -ThreatHuntCsv).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -ThreatHuntCsv
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -VolumeGroupSnapshotFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -VolumeGroupSnapshotFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -VolumeGroupSnapshotFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationDownload -VolumeGroupSnapshotFromLocation
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationDownload -VolumeGroupSnapshotFromLocation).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationDownload -VolumeGroupSnapshotFromLocation
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationExchange -BulkUpdateDag
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationExchange -BulkUpdateDag).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationExchange -BulkUpdateDag
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationExchange -CreateMount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationExchange -CreateMount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationExchange -CreateMount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationExchange -CreateOnDemandBackup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationExchange -CreateOnDemandBackup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationExchange -CreateOnDemandBackup
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationExchange -DeleteSnapshotMount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationExchange -DeleteSnapshotMount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationExchange -DeleteSnapshotMount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationFileset -BulkCreate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationFileset -BulkCreate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationFileset -BulkCreate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationFileset -BulkCreateTemplates
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationFileset -BulkCreateTemplates).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationFileset -BulkCreateTemplates
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationFileset -BulkDelete
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationFileset -BulkDelete).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationFileset -BulkDelete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationFileset -BulkDeleteTemplate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationFileset -BulkDeleteTemplate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationFileset -BulkDeleteTemplate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationFileset -BulkUpdateTemplate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationFileset -BulkUpdateTemplate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationFileset -BulkUpdateTemplate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationFileset -RecoverFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationFileset -RecoverFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationFileset -RecoverFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CloudAccountAddManualAuthProject
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CloudAccountAddManualAuthProject).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CloudAccountAddManualAuthProject
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CloudAccountAddProjects
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CloudAccountAddProjects).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CloudAccountAddProjects
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CloudAccountDeleteProjects
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CloudAccountDeleteProjects).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CloudAccountDeleteProjects
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CloudAccountOauthComplete
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CloudAccountOauthComplete).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CloudAccountOauthComplete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CloudAccountOauthInitiate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CloudAccountOauthInitiate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CloudAccountOauthInitiate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CloudAccountUpgradeProjects
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CloudAccountUpgradeProjects).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CloudAccountUpgradeProjects
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CreateReaderTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CreateReaderTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CreateReaderTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -CreateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -CreateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -CreateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -SetDefaultServiceAccountJwtConfig
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -SetDefaultServiceAccountJwtConfig).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -SetDefaultServiceAccountJwtConfig
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -UpdateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -UpdateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -UpdateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcp -UpgradeCloudAccountPermissionsWithoutOauth
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcp -UpgradeCloudAccountPermissionsWithoutOauth).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcp -UpgradeCloudAccountPermissionsWithoutOauth
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationGcpNative -DisableProject
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcpNative -DisableProject).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcpNative -DisableProject
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcpNative -ExcludeDisksFromInstanceSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcpNative -ExcludeDisksFromInstanceSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcpNative -ExcludeDisksFromInstanceSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcpNative -ExportDisk
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcpNative -ExportDisk).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcpNative -ExportDisk
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcpNative -ExportGceInstance
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcpNative -ExportGceInstance).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcpNative -ExportGceInstance
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcpNative -RefreshProjects
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcpNative -RefreshProjects).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcpNative -RefreshProjects
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationGcpNative -RestoreGceInstance
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationGcpNative -RestoreGceInstance).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationGcpNative -RestoreGceInstance
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -BulkDelete
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationHost -BulkDelete).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationHost -BulkDelete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -BulkRefresh
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationHost -BulkRefresh).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationHost -BulkRefresh
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -BulkRegister
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationHost -BulkRegister).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationHost -BulkRegister
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -BulkUpdate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationHost -BulkUpdate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationHost -BulkUpdate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -ChangeVfd
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationHost -ChangeVfd).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationHost -ChangeVfd
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -Refresh
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationHost -Refresh).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationHost -Refresh
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2493,6 +3695,126 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
+# New-RscMutationK8s -ArchiveCluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -ArchiveCluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -ArchiveCluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationK8s -CreateAgentManifest
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -CreateAgentManifest).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -CreateAgentManifest
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationK8s -CreateCluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -CreateCluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -CreateCluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationK8s -CreateNamespaceSnapshots
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -CreateNamespaceSnapshots).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -CreateNamespaceSnapshots
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationK8s -ExportNamespace
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -ExportNamespace).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -ExportNamespace
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationK8s -RefreshCluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -RefreshCluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -RefreshCluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationK8s -RestoreNamespace
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationK8s -RestoreNamespace).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationK8s -RestoreNamespace
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
 # New-RscMutationLdap -DeletePrincipals
 # -------------------------------------------------------------------
 
@@ -2551,6 +3873,75 @@ if ($GetGqlRequest) {
     (New-RscMutationLdap -UpdateIntegration).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationLdap -UpdateIntegration
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationM365 -BackupMailbox
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationM365 -BackupMailbox).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationM365 -BackupMailbox
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationM365 -BackupOnedrive
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationM365 -BackupOnedrive).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationM365 -BackupOnedrive
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationM365 -BackupSharepointDrive
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationM365 -BackupSharepointDrive).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationM365 -BackupSharepointDrive
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationM365 -BackupTeam
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationM365 -BackupTeam).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationM365 -BackupTeam
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2767,13 +4158,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationMongo -AssignSlaToDbCollection
+# New-RscMutationMongo -AssignSlaToCollection
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscMutationMongo -AssignSlaToDbCollection).GqlRequest().SaveQueryToFile()
+    (New-RscMutationMongo -AssignSlaToCollection).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscMutationMongo -AssignSlaToDbCollection
+    $query = New-RscMutationMongo -AssignSlaToCollection
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2784,13 +4175,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationMongo -BulkDeletedbSources
+# New-RscMutationMongo -BulkDeleteSources
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscMutationMongo -BulkDeletedbSources).GqlRequest().SaveQueryToFile()
+    (New-RscMutationMongo -BulkDeleteSources).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscMutationMongo -BulkDeletedbSources
+    $query = New-RscMutationMongo -BulkDeleteSources
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2801,13 +4192,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationMongo -CreatedbSource
+# New-RscMutationMongo -CreateSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscMutationMongo -CreatedbSource).GqlRequest().SaveQueryToFile()
+    (New-RscMutationMongo -CreateSource).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscMutationMongo -CreatedbSource
+    $query = New-RscMutationMongo -CreateSource
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2825,23 +4216,6 @@ if ($GetGqlRequest) {
     (New-RscMutationMongo -DeleteSource).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationMongo -DeleteSource
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationMongo -DeletedbSource
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationMongo -DeletedbSource).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationMongo -DeletedbSource
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2903,23 +4277,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationMongo -RecoverdbSource
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscMutationMongo -RecoverdbSource).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscMutationMongo -RecoverdbSource
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationMongo -RetryAddSource
 # -------------------------------------------------------------------
 
@@ -2937,13 +4294,65 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationMongo -UpdatedbSource
+# New-RscMutationMongo -UpdateSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscMutationMongo -UpdatedbSource).GqlRequest().SaveQueryToFile()
+    (New-RscMutationMongo -UpdateSource).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscMutationMongo -UpdatedbSource
+    $query = New-RscMutationMongo -UpdateSource
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationMosaic -AddStore
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationMosaic -AddStore).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationMosaic -AddStore
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMosaic -DeleteStore
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationMosaic -DeleteStore).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationMosaic -DeleteStore
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMosaic -UpdateStore
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationMosaic -UpdateStore).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationMosaic -UpdateStore
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -3234,6 +4643,58 @@ if ($GetGqlRequest) {
     (New-RscMutationMssql -UpdateLogShippingConfiguration).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationMssql -UpdateLogShippingConfiguration
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationNfs -CreateReaderTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationNfs -CreateReaderTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationNfs -CreateReaderTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationNfs -CreateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationNfs -CreateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationNfs -CreateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationNfs -UpdateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationNfs -UpdateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationNfs -UpdateTarget
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -4506,6 +5967,644 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
+# New-RscMutationPolicy -Policies
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationPolicy -Policies).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationPolicy -Policies
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationRansomware -TriggerDetection
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRansomware -TriggerDetection).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRansomware -TriggerDetection
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationRcs -CreateAutomaticTargetMapping
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcs -CreateAutomaticTargetMapping).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcs -CreateAutomaticTargetMapping
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationRcs -CreateReaderTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcs -CreateReaderTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcs -CreateReaderTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationRcs -CreateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcs -CreateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcs -CreateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationRcs -UpdateAutomaticTargetMapping
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcs -UpdateAutomaticTargetMapping).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcs -UpdateAutomaticTargetMapping
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationRcv -CreateLocationsFromTemplate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcv -CreateLocationsFromTemplate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcv -CreateLocationsFromTemplate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationRcv -CreatePrivateEndpointApprovalRequest
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcv -CreatePrivateEndpointApprovalRequest).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcv -CreatePrivateEndpointApprovalRequest
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationRcv -UpdateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationRcv -UpdateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationRcv -UpdateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationReplication -CreatePair
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReplication -CreatePair).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReplication -CreatePair
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReplication -DeletePair
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReplication -DeletePair).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReplication -DeletePair
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReplication -DisablePause
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReplication -DisablePause).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReplication -DisablePause
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReplication -EnablePause
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReplication -EnablePause).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReplication -EnablePause
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReplication -UpdateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReplication -UpdateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReplication -UpdateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -CreateCustom
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -CreateCustom).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -CreateCustom
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -CreateScheduled
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -CreateScheduled).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -CreateScheduled
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -DeleteCustom
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -DeleteCustom).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -DeleteCustom
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -DeleteScheduled
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -DeleteScheduled).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -DeleteScheduled
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -SendPdf
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -SendPdf).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -SendPdf
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -SendScheduledAsync
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -SendScheduledAsync).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -SendScheduledAsync
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -StartClusterMigrationJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -StartClusterMigrationJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -StartClusterMigrationJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -UpdateCustom
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -UpdateCustom).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -UpdateCustom
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationReport -UpdateScheduled
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationReport -UpdateScheduled).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationReport -UpdateScheduled
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -AddSystem
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -AddSystem).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -AddSystem
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -ConfigureRestore
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -ConfigureRestore).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -ConfigureRestore
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -CreateOnDemandBackup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -CreateOnDemandBackup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -CreateOnDemandBackup
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -CreateSystemRefresh
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -CreateSystemRefresh).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -CreateSystemRefresh
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -DeleteDbSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -DeleteDbSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -DeleteDbSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -DeleteSystem
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -DeleteSystem).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -DeleteSystem
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -ExpireDownloadedSnapshots
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -ExpireDownloadedSnapshots).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -ExpireDownloadedSnapshots
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -PatchSystem
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -PatchSystem).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -PatchSystem
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSapHana -UnconfigureRestore
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSapHana -UnconfigureRestore).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSapHana -UnconfigureRestore
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationServiceAccount -Create
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationServiceAccount -Create).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationServiceAccount -Create
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationServiceAccount -Delete
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationServiceAccount -Delete).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationServiceAccount -Delete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationServiceAccount -Rotate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationServiceAccount -Rotate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationServiceAccount -Rotate
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationServiceAccount -Update
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationServiceAccount -Update).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationServiceAccount -Update
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationSharepoint -ExcludeObjectsFromProtection
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSharepoint -ExcludeObjectsFromProtection).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSharepoint -ExcludeObjectsFromProtection
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
 # New-RscMutationSla -Assign
 # -------------------------------------------------------------------
 
@@ -4649,6 +6748,504 @@ if ($GetGqlRequest) {
     (New-RscMutationSla -UpdateGlobal).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscMutationSla -UpdateGlobal
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationSmb -AddAndJoinDomain
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSmb -AddAndJoinDomain).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSmb -AddAndJoinDomain
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSmb -DeleteDomain
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSmb -DeleteDomain).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSmb -DeleteDomain
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSmb -JoinDomain
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSmb -JoinDomain).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSmb -JoinDomain
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSmb -PutConfiguration
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSmb -PutConfiguration).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSmb -PutConfiguration
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -BatchQuarantine
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -BatchQuarantine).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -BatchQuarantine
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -BatchReleaseFromQuarantine
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -BatchReleaseFromQuarantine).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -BatchReleaseFromQuarantine
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -BulkTierExistings
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -BulkTierExistings).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -BulkTierExistings
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -CreateDownloadForVolumeGroup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -CreateDownloadForVolumeGroup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -CreateDownloadForVolumeGroup
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -CreateFileset
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -CreateFileset).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -CreateFileset
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -DeleteCloudWorkload
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -DeleteCloudWorkload).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -DeleteCloudWorkload
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -DeleteFilesets
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -DeleteFilesets).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -DeleteFilesets
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -FilesetDownloadFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -FilesetDownloadFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -FilesetDownloadFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -FilesetExportFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -FilesetExportFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -FilesetExportFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -RestoreVolumeGroupFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -RestoreVolumeGroupFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -RestoreVolumeGroupFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -StartEc2InstanceExportJob
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -StartEc2InstanceExportJob).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -StartEc2InstanceExportJob
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -StartRecoverS3Job
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -StartRecoverS3Job).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -StartRecoverS3Job
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -TakeOnDemand
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -TakeOnDemand).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -TakeOnDemand
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -UploadDatabaseToBlobstore
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -UploadDatabaseToBlobstore).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -UploadDatabaseToBlobstore
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -VmwareDownloadFromLocation
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationSnapshot -VmwareDownloadFromLocation).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationSnapshot -VmwareDownloadFromLocation
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationStorageArray -Add
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationStorageArray -Add).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationStorageArray -Add
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationStorageArray -Delete
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationStorageArray -Delete).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationStorageArray -Delete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationStorageArray -Refresh
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationStorageArray -Refresh).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationStorageArray -Refresh
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationStorageArray -Update
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationStorageArray -Update).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationStorageArray -Update
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationTape -CreateReaderTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationTape -CreateReaderTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationTape -CreateReaderTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationTape -CreateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationTape -CreateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationTape -CreateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationTape -UpdateTarget
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationTape -UpdateTarget).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationTape -UpdateTarget
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscMutationThreat -CancelHunt
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationThreat -CancelHunt).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationThreat -CancelHunt
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationThreat -EnableMonitoring
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationThreat -EnableMonitoring).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationThreat -EnableMonitoring
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationThreat -StartHunt
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationThreat -StartHunt).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationThreat -StartHunt
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5309,6 +7906,109 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
+# New-RscMutationWebhook -Create
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationWebhook -Create).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationWebhook -Create
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationWebhook -Delete
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationWebhook -Delete).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationWebhook -Delete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationWebhook -Test
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationWebhook -Test).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationWebhook -Test
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationWebhook -TestExisting
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationWebhook -TestExisting).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationWebhook -TestExisting
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationWebhook -Update
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationWebhook -Update).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationWebhook -Update
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryAccount -EnabledFeatures
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAccount -EnabledFeatures).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAccount -EnabledFeatures
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAccount -Id
 # -------------------------------------------------------------------
 
@@ -5316,6 +8016,23 @@ if ($GetGqlRequest) {
     (New-RscQueryAccount -Id).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryAccount -Id
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAccount -Lookup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAccount -Lookup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAccount -Lookup
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5377,13 +8094,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAccount -WithExocomputeMappings
+# New-RscQueryAccount -Users
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAccount -WithExocomputeMappings).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAccount -Users).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAccount -WithExocomputeMappings
+    $query = New-RscQueryAccount -Users
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5428,15 +8145,14 @@ if ($GetGqlRequest) {
     $query.Var.ToString()
 }
 
-
 # -------------------------------------------------------------------
-# New-RscQueryAws -AllAvailabilityZonesByRegion
+# New-RscQueryActivitySeries -UserFileTimeline
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -AllAvailabilityZonesByRegion).GqlRequest().SaveQueryToFile()
+    (New-RscQueryActivitySeries -UserFileTimeline).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -AllAvailabilityZonesByRegion
+    $query = New-RscQueryActivitySeries -UserFileTimeline
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5447,13 +8163,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -AllCdmVersions
+# New-RscQueryActivitySeries -UserTimeline
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -AllCdmVersions).GqlRequest().SaveQueryToFile()
+    (New-RscQueryActivitySeries -UserTimeline).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -AllCdmVersions
+    $query = New-RscQueryActivitySeries -UserTimeline
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5463,311 +8179,6 @@ if ($GetGqlRequest) {
     $query.Var.ToString()
 }
 
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllCloudAccountConfigs
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllCloudAccountConfigs).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllCloudAccountConfigs
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllCloudAccountsWithFeatures
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllCloudAccountsWithFeatures).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllCloudAccountsWithFeatures
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllComputeSettings
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllComputeSettings).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllComputeSettings
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllDbParameterGroupsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllDbParameterGroupsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllDbParameterGroupsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllDbSubnetGroupsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllDbSubnetGroupsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllDbSubnetGroupsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllEc2KeyPairsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllEc2KeyPairsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllEc2KeyPairsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllExocomputeConfigs
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllExocomputeConfigs).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllExocomputeConfigs
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllInstanceProfileNames
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllInstanceProfileNames).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllInstanceProfileNames
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllKmsEncryptionKeysByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllKmsEncryptionKeysByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllKmsEncryptionKeysByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllOptionGroupsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllOptionGroupsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllOptionGroupsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllPermissionPolicies
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllPermissionPolicies).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllPermissionPolicies
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllRegions
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllRegions).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllRegions
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllS3Buckets
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllS3Buckets).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllS3Buckets
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllS3BucketsDetails
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllS3BucketsDetails).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllS3BucketsDetails
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllVpcs
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllVpcs).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllVpcs
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AllVpcsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AllVpcsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AllVpcsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
 
 # -------------------------------------------------------------------
 # New-RscQueryAws -ArtifactsToDelete
@@ -5777,6 +8188,57 @@ if ($GetGqlRequest) {
     (New-RscQueryAws -ArtifactsToDelete).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryAws -ArtifactsToDelete
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -AvailabilityZonesByRegion
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -AvailabilityZonesByRegion).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -AvailabilityZonesByRegion
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -CdmVersions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -CdmVersions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -CdmVersions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -CloudAccountConfigs
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -CloudAccountConfigs).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -CloudAccountConfigs
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5855,6 +8317,23 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAws -CloudAccountsWithFeatures
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -CloudAccountsWithFeatures).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -CloudAccountsWithFeatures
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAws -ComputeSettings
 # -------------------------------------------------------------------
 
@@ -5872,13 +8351,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
+# New-RscQueryAws -DbParameterGroupsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -DbParameterGroupsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
+    $query = New-RscQueryAws -DbParameterGroupsByRegion
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5889,13 +8368,64 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
+# New-RscQueryAws -DbSubnetGroupsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -DbSubnetGroupsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
+    $query = New-RscQueryAws -DbSubnetGroupsByRegion
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -Ec2KeyPairsByRegion
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -Ec2KeyPairsByRegion).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -Ec2KeyPairsByRegion
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -ExocomputeConfigs
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -ExocomputeConfigs).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -ExocomputeConfigs
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -InstanceProfileNames
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -InstanceProfileNames).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -InstanceProfileNames
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5923,13 +8453,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -NativeAccount
+# New-RscQueryAws -KmsEncryptionKeysByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeAccount).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -KmsEncryptionKeysByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -NativeAccount
+    $query = New-RscQueryAws -KmsEncryptionKeysByRegion
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5940,13 +8470,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -NativeAccounts
+# New-RscQueryAws -OptionGroupsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeAccounts).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -OptionGroupsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -NativeAccounts
+    $query = New-RscQueryAws -OptionGroupsByRegion
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -5957,200 +8487,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -NativeEbsVolume
+# New-RscQueryAws -PermissionPolicies
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeEbsVolume).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -PermissionPolicies).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -NativeEbsVolume
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeEbsVolumes
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeEbsVolumes).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeEbsVolumes
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeEbsVolumesByName
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeEbsVolumesByName).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeEbsVolumesByName
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeEc2Instance
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeEc2Instance).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeEc2Instance
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeEc2Instances
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeEc2Instances).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeEc2Instances
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeEc2InstancesByName
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeEc2InstancesByName).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeEc2InstancesByName
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeRdsExportDefaults
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeRdsExportDefaults).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeRdsExportDefaults
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeRdsInstance
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeRdsInstance).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeRdsInstance
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeRdsInstances
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeRdsInstances).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeRdsInstances
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeRdsPointInTimeRestoreWindow
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeRdsPointInTimeRestoreWindow).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeRdsPointInTimeRestoreWindow
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeRoot
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeRoot).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeRoot
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAws -NativeS3Bucket
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAws -NativeS3Bucket).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAws -NativeS3Bucket
+    $query = New-RscQueryAws -PermissionPolicies
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6178,6 +8521,91 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAws -Regions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -Regions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -Regions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -S3BucketStateForRecovery
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -S3BucketStateForRecovery).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -S3BucketStateForRecovery
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -S3Buckets
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -S3Buckets).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -S3Buckets
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -S3BucketsDetails
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -S3BucketsDetails).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -S3BucketsDetails
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAws -SupportedRdsDatabaseInstanceClasses
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAws -SupportedRdsDatabaseInstanceClasses).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAws -SupportedRdsDatabaseInstanceClasses
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAws -TrustPolicy
 # -------------------------------------------------------------------
 
@@ -6195,13 +8623,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -ValidateNativeRdsClusterNameForExport
+# New-RscQueryAws -Vpcs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -ValidateNativeRdsClusterNameForExport).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -Vpcs).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -ValidateNativeRdsClusterNameForExport
+    $query = New-RscQueryAws -Vpcs
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6212,13 +8640,337 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAws -ValidateNativeRdsInstanceNameForExport
+# New-RscQueryAws -VpcsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAws -ValidateNativeRdsInstanceNameForExport).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAws -VpcsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAws -ValidateNativeRdsInstanceNameForExport
+    $query = New-RscQueryAws -VpcsByRegion
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -Account
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -Account).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -Account
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -Accounts
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -Accounts).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -Accounts
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -AmiTypeForArchivedSnapshotExport
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -AmiTypeForArchivedSnapshotExport).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -AmiTypeForArchivedSnapshotExport
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -EbsVolume
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -EbsVolume).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -EbsVolume
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -EbsVolumes
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -EbsVolumes).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -EbsVolumes
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -EbsVolumesByName
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -EbsVolumesByName).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -EbsVolumesByName
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -Ec2Instance
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -Ec2Instance).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -Ec2Instance
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -Ec2Instances
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -Ec2Instances).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -Ec2Instances
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -Ec2InstancesByName
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -Ec2InstancesByName).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -Ec2InstancesByName
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -IsEbsVolumeSnapshotRestorable
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -IsEbsVolumeSnapshotRestorable).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -IsEbsVolumeSnapshotRestorable
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -IsRdsInstanceLaunchConfigurationValid
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -IsRdsInstanceLaunchConfigurationValid).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -IsRdsInstanceLaunchConfigurationValid
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -RdsExportDefaults
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -RdsExportDefaults).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -RdsExportDefaults
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -RdsInstance
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -RdsInstance).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -RdsInstance
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -RdsInstances
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -RdsInstances).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -RdsInstances
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -RdsPointInTimeRestoreWindow
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -RdsPointInTimeRestoreWindow).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -RdsPointInTimeRestoreWindow
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -Root
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -Root).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -Root
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -S3Bucket
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -S3Bucket).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -S3Bucket
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -ValidateRdsClusterNameForExport
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -ValidateRdsClusterNameForExport).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -ValidateRdsClusterNameForExport
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAwsNative -ValidateRdsInstanceNameForExport
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAwsNative -ValidateRdsInstanceNameForExport).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAwsNative -ValidateRdsInstanceNameForExport
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6281,13 +9033,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -AllArmTemplatesByFeature
+# New-RscQueryAzure -ArmTemplatesByFeature
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllArmTemplatesByFeature).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -ArmTemplatesByFeature).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -AllArmTemplatesByFeature
+    $query = New-RscQueryAzure -ArmTemplatesByFeature
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6298,489 +9050,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -AllCdmVersions
+# New-RscQueryAzure -CdmVersions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllCdmVersions).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -CdmVersions).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -AllCdmVersions
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllCloudAccountMissingPermissions
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllCloudAccountMissingPermissions).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllCloudAccountMissingPermissions
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllCloudAccountSubnetsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllCloudAccountSubnetsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllCloudAccountSubnetsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllCloudAccountTenants
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllCloudAccountTenants).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllCloudAccountTenants
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllDiskEncryptionSetsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllDiskEncryptionSetsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllDiskEncryptionSetsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllEncryptionKeys
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllEncryptionKeys).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllEncryptionKeys
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllExocomputeConfigsInAccount
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllExocomputeConfigsInAccount).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllExocomputeConfigsInAccount
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllHostedRegions
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllHostedRegions).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllHostedRegions
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllKeyVaultsByRegion
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllKeyVaultsByRegion).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllKeyVaultsByRegion
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllManagedIdentities
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllManagedIdentities).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllManagedIdentities
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeStorageAccountsFromAzure
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeStorageAccountsFromAzure).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeStorageAccountsFromAzure
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeVirtualMachineSizes
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeVirtualMachineSizes).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeVirtualMachineSizes
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNativeVirtualNetworks
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNativeVirtualNetworks).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNativeVirtualNetworks
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllNsgs
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllNsgs).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllNsgs
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllRegions
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllRegions).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllRegions
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllResourceGroups
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllResourceGroups).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllResourceGroups
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllResourceGroupsFrom
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllResourceGroupsFrom).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllResourceGroupsFrom
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllSqlDatabaseServerElasticPools
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllSqlDatabaseServerElasticPools).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllSqlDatabaseServerElasticPools
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllStorageAccounts
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllStorageAccounts).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllStorageAccounts
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllSubnets
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllSubnets).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllSubnets
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllSubscriptionWithExocomputeMappings
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllSubscriptionWithExocomputeMappings).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllSubscriptionWithExocomputeMappings
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -AllVnets
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -AllVnets).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -AllVnets
+    $query = New-RscQueryAzure -CdmVersions
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6808,6 +9084,23 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAzure -CloudAccountMissingPermissions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -CloudAccountMissingPermissions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -CloudAccountMissingPermissions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAzure -CloudAccountPermissionConfig
 # -------------------------------------------------------------------
 
@@ -6825,6 +9118,23 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAzure -CloudAccountSubnetsByRegion
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -CloudAccountSubnetsByRegion).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -CloudAccountSubnetsByRegion
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAzure -CloudAccountSubscriptionWithFeatures
 # -------------------------------------------------------------------
 
@@ -6832,6 +9142,23 @@ if ($GetGqlRequest) {
     (New-RscQueryAzure -CloudAccountSubscriptionWithFeatures).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryAzure -CloudAccountSubscriptionWithFeatures
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -CloudAccountSubscriptionsByFeature
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -CloudAccountSubscriptionsByFeature).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -CloudAccountSubscriptionsByFeature
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6876,13 +9203,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -DoesNativeResourceGroupExist
+# New-RscQueryAzure -CloudAccountTenants
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -DoesNativeResourceGroupExist).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -CloudAccountTenants).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -DoesNativeResourceGroupExist
+    $query = New-RscQueryAzure -CloudAccountTenants
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6893,13 +9220,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
+# New-RscQueryAzure -DiskEncryptionSetsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -DiskEncryptionSetsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
+    $query = New-RscQueryAzure -DiskEncryptionSetsByRegion
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6910,13 +9237,47 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
+# New-RscQueryAzure -EncryptionKeys
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -EncryptionKeys).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
+    $query = New-RscQueryAzure -EncryptionKeys
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -ExocomputeConfigsInAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -ExocomputeConfigsInAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -ExocomputeConfigsInAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -HostedAzureRegions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -HostedAzureRegions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -HostedAzureRegions
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6944,13 +9305,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -NativeManagedDisk
+# New-RscQueryAzure -KeyVaultsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeManagedDisk).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -KeyVaultsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -NativeManagedDisk
+    $query = New-RscQueryAzure -KeyVaultsByRegion
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6961,13 +9322,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -NativeManagedDisks
+# New-RscQueryAzure -ManagedIdentities
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeManagedDisks).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -ManagedIdentities).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -NativeManagedDisks
+    $query = New-RscQueryAzure -ManagedIdentities
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -6978,115 +9339,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -NativeResourceGroup
+# New-RscQueryAzure -Nsgs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeResourceGroup).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzure -Nsgs).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -NativeResourceGroup
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -NativeResourceGroups
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeResourceGroups).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -NativeResourceGroups
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -NativeRoot
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeRoot).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -NativeRoot
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -NativeSubscription
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeSubscription).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -NativeSubscription
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -NativeSubscriptions
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeSubscriptions).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -NativeSubscriptions
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -NativeVirtualMachine
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeVirtualMachine).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -NativeVirtualMachine
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryAzure -NativeVirtualMachines
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryAzure -NativeVirtualMachines).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryAzure -NativeVirtualMachines
+    $query = New-RscQueryAzure -Nsgs
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -7189,6 +9448,23 @@ if ($GetGqlRequest) {
     (New-RscQueryAzure -SqlDatabaseServer).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryAzure -SqlDatabaseServer
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -SqlDatabaseServerElasticPools
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -SqlDatabaseServerElasticPools).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -SqlDatabaseServerElasticPools
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -7352,6 +9628,23 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAzure -SubscriptionWithExocomputeMappings
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -SubscriptionWithExocomputeMappings).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -SubscriptionWithExocomputeMappings
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAzure -Subscriptions
 # -------------------------------------------------------------------
 
@@ -7402,14 +9695,15 @@ if ($GetGqlRequest) {
     $query.Var.ToString()
 }
 
+
 # -------------------------------------------------------------------
-# New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
+# New-RscQueryAzureNative -AvailabilitySetsByRegionFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzureNative -AvailabilitySetsByRegionFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
+    $query = New-RscQueryAzureNative -AvailabilitySetsByRegionFromAzure
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -7420,13 +9714,370 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
+# New-RscQueryAzureNative -DoesResourceGroupExist
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport).GqlRequest().SaveQueryToFile()
+    (New-RscQueryAzureNative -DoesResourceGroupExist).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
+    $query = New-RscQueryAzureNative -DoesResourceGroupExist
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ExportCompatibleDiskTypesByRegionFromAzure
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ExportCompatibleDiskTypesByRegionFromAzure).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ExportCompatibleDiskTypesByRegionFromAzure
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ExportCompatibleVmSizesByRegionFromAzure
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ExportCompatibleVmSizesByRegionFromAzure).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ExportCompatibleVmSizesByRegionFromAzure
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -IsManagedDiskSnapshotRestorable
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -IsManagedDiskSnapshotRestorable).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -IsManagedDiskSnapshotRestorable
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -IsSqlDatabaseSnapshotPersistent
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -IsSqlDatabaseSnapshotPersistent).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -IsSqlDatabaseSnapshotPersistent
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ManagedDisk
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ManagedDisk).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ManagedDisk
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ManagedDisks
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ManagedDisks).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ManagedDisks
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ResourceGroup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ResourceGroup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ResourceGroup
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ResourceGroups
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ResourceGroups).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ResourceGroups
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ResourceGroupsInfoIfExist
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ResourceGroupsInfoIfExist).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ResourceGroupsInfoIfExist
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -Root
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -Root).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -Root
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -SecurityGroupsByRegionFromAzure
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -SecurityGroupsByRegionFromAzure).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -SecurityGroupsByRegionFromAzure
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -StorageAccountsFromAzure
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -StorageAccountsFromAzure).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -StorageAccountsFromAzure
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -SubnetsByRegionFromAzure
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -SubnetsByRegionFromAzure).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -SubnetsByRegionFromAzure
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -Subscription
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -Subscription).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -Subscription
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -Subscriptions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -Subscriptions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -Subscriptions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ValidateSqlDatabaseDbNameForExport
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ValidateSqlDatabaseDbNameForExport).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ValidateSqlDatabaseDbNameForExport
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -ValidateSqlManagedInstanceDbNameForExport
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -ValidateSqlManagedInstanceDbNameForExport).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -ValidateSqlManagedInstanceDbNameForExport
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -VirtualMachine
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -VirtualMachine).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -VirtualMachine
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -VirtualMachineSizes
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -VirtualMachineSizes).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -VirtualMachineSizes
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -VirtualMachines
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -VirtualMachines).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -VirtualMachines
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzureNative -VirtualNetworks
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzureNative -VirtualNetworks).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzureNative -VirtualNetworks
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -7763,13 +10414,13 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
-# New-RscQueryCluster -Certificates
+# New-RscQueryCertificate -Certificate
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryCluster -Certificates).GqlRequest().SaveQueryToFile()
+    (New-RscQueryCertificate -Certificate).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryCluster -Certificates
+    $query = New-RscQueryCertificate -Certificate
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -7778,6 +10429,485 @@ if ($GetGqlRequest) {
     $query.Var.Example()
     $query.Var.ToString()
 }
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -Cluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCertificate -Cluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCertificate -Cluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -ClusterWebSigned
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCertificate -ClusterWebSigned).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCertificate -ClusterWebSigned
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -SigningRequest
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCertificate -SigningRequest).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCertificate -SigningRequest
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -SigningRequests
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCertificate -SigningRequests).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCertificate -SigningRequests
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -WithKey
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCertificate -WithKey).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCertificate -WithKey
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudAccount -CloudAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudAccount -CloudAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudAccount -CloudAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudAccount -CurrentFeaturePermissions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudAccount -CurrentFeaturePermissions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudAccount -CurrentFeaturePermissions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudAccount -ExocomputeMappings
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudAccount -ExocomputeMappings).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudAccount -ExocomputeMappings
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudAccount -LatestFeaturePermissions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudAccount -LatestFeaturePermissions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudAccount -LatestFeaturePermissions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -CheckArchivedSnapshotsLocked
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -CheckArchivedSnapshotsLocked).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -CheckArchivedSnapshotsLocked
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -CheckLabelRuleNameUniqueness
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -CheckLabelRuleNameUniqueness).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -CheckLabelRuleNameUniqueness
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -CheckRequiredPermissionsForFeature
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -CheckRequiredPermissionsForFeature).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -CheckRequiredPermissionsForFeature
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -CheckTagRuleNameUniqueness
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -CheckTagRuleNameUniqueness).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -CheckTagRuleNameUniqueness
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -CustomerTags
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -CustomerTags).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -CustomerTags
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -FileRecoveryEligibleSnapshots
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -FileRecoveryEligibleSnapshots).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -FileRecoveryEligibleSnapshots
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -IsFileRecoveryFeasible
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -IsFileRecoveryFeasible).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -IsFileRecoveryFeasible
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -LabelKeys
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -LabelKeys).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -LabelKeys
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -LabelRules
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -LabelRules).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -LabelRules
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -LabelValues
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -LabelValues).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -LabelValues
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -RbaInstallers
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -RbaInstallers).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -RbaInstallers
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -SnapshotDetailsForRecovery
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -SnapshotDetailsForRecovery).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -SnapshotDetailsForRecovery
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -SnapshotTypeDetails
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -SnapshotTypeDetails).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -SnapshotTypeDetails
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -Snapshots
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -Snapshots).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -Snapshots
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -SqlServerSetupScript
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -SqlServerSetupScript).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -SqlServerSetupScript
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -TagKeys
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -TagKeys).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -TagKeys
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -TagRules
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -TagRules).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -TagRules
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -TagValues
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -TagValues).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -TagValues
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCloudNative -WorkloadVersionedFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryCloudNative -WorkloadVersionedFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryCloudNative -WorkloadVersionedFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
 
 # -------------------------------------------------------------------
 # New-RscQueryCluster -Cluster
@@ -7804,23 +10934,6 @@ if ($GetGqlRequest) {
     (New-RscQueryCluster -Connected).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryCluster -Connected
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryCluster -Csr
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryCluster -Csr).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryCluster -Csr
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -7916,23 +11029,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryCluster -GlobalSlas
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryCluster -GlobalSlas).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryCluster -GlobalSlas
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscQueryCluster -GroupByList
 # -------------------------------------------------------------------
 
@@ -8008,23 +11104,6 @@ if ($GetGqlRequest) {
     (New-RscQueryCluster -IsTotpAckNecessary).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryCluster -IsTotpAckNecessary
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryCluster -K8s
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryCluster -K8s).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryCluster -K8s
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -8222,23 +11301,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryCluster -SlaDomains
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryCluster -SlaDomains).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryCluster -SlaDomains
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscQueryCluster -TotpAckStatus
 # -------------------------------------------------------------------
 
@@ -8273,23 +11335,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQueryCluster -VerifySlaWithReplicationTo
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryCluster -VerifySlaWithReplicationTo).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryCluster -VerifySlaWithReplicationTo
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
 # New-RscQueryCluster -Vlans
 # -------------------------------------------------------------------
 
@@ -8314,23 +11359,6 @@ if ($GetGqlRequest) {
     (New-RscQueryCluster -WebCertsAndIpmis).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryCluster -WebCertsAndIpmis
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryCluster -WebSignedCertificate
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryCluster -WebSignedCertificate).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryCluster -WebSignedCertificate
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -8502,6 +11530,777 @@ if ($GetGqlRequest) {
     (New-RscQueryDb2 -RecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryDb2 -RecoverableRanges
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryDownload -CdmUpgradesPdf
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryDownload -CdmUpgradesPdf).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryDownload -CdmUpgradesPdf
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryDownload -EdVersionList
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryDownload -EdVersionList).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryDownload -EdVersionList
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryDownload -PackageStatus
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryDownload -PackageStatus).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryDownload -PackageStatus
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -Dag
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -Dag).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -Dag
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -Dags
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -Dags).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -Dags
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -Database
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -Database).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -Database
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -Databases
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -Databases).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -Databases
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -LiveMounts
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -LiveMounts).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -LiveMounts
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -Server
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -Server).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -Server
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryExchange -Servers
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryExchange -Servers).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryExchange -Servers
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryFileset -Linux
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryFileset -Linux).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryFileset -Linux
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryFileset -RequestStatus
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryFileset -RequestStatus).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryFileset -RequestStatus
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryFileset -Share
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryFileset -Share).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryFileset -Share
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryFileset -Template
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryFileset -Template).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryFileset -Template
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryFileset -Templates
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryFileset -Templates).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryFileset -Templates
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryFileset -Windows
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryFileset -Windows).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryFileset -Windows
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -CloudAccountMissingPermissionsForAddition
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -CloudAccountMissingPermissionsForAddition).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -CloudAccountMissingPermissionsForAddition
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -CloudAccountProjectsByFeature
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -CloudAccountProjectsByFeature).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -CloudAccountProjectsByFeature
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -CloudAccountProjectsForOauth
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -CloudAccountProjectsForOauth).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -CloudAccountProjectsForOauth
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -FeaturePermissionsForCloudAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -FeaturePermissionsForCloudAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -FeaturePermissionsForCloudAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -GetDefaultCredentialsServiceAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -GetDefaultCredentialsServiceAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -GetDefaultCredentialsServiceAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeAvailableKmsCryptoKeys
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeAvailableKmsCryptoKeys).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeAvailableKmsCryptoKeys
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeCompatibleMachineTypes
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeCompatibleMachineTypes).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeCompatibleMachineTypes
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeNetworks
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeNetworks).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeNetworks
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeProjectsWithAccessibleNetworks
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeProjectsWithAccessibleNetworks).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeProjectsWithAccessibleNetworks
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeRegions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeRegions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeRegions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeStoredMachineTypes
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeStoredMachineTypes).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeStoredMachineTypes
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeStoredMachineTypesInProject
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeStoredMachineTypesInProject).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeStoredMachineTypesInProject
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeStoredNetworkNames
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeStoredNetworkNames).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeStoredNetworkNames
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeStoredNetworkNamesInProject
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeStoredNetworkNamesInProject).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeStoredNetworkNamesInProject
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeStoredRegions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeStoredRegions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeStoredRegions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcp -NativeStoredRegionsInProject
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcp -NativeStoredRegionsInProject).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcp -NativeStoredRegionsInProject
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -Disk
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -Disk).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -Disk
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -Disks
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -Disks).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -Disks
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -GceInstance
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -GceInstance).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -GceInstance
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -GceInstances
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -GceInstances).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -GceInstances
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -Project
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -Project).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -Project
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -Projects
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -Projects).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -Projects
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryGcpNative -StoredDiskLocations
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryGcpNative -StoredDiskLocations).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryGcpNative -StoredDiskLocations
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryHost -Diagnosis
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryHost -Diagnosis).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryHost -Diagnosis
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryHost -PhysicalHost
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryHost -PhysicalHost).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryHost -PhysicalHost
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryHost -PhysicalHosts
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryHost -PhysicalHosts).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryHost -PhysicalHosts
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryHost -Search
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryHost -Search).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryHost -Search
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryHost -Share
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryHost -Share).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryHost -Share
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryHost -Shares
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryHost -Shares).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryHost -Shares
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -8752,6 +12551,126 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
+# New-RscQueryK8s -AppManifest
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -AppManifest).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -AppManifest
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryK8s -Cluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -Cluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -Cluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryK8s -Clusters
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -Clusters).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -Clusters
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryK8s -Namespace
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -Namespace).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -Namespace
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryK8s -Namespaces
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -Namespaces).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -Namespaces
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryK8s -ReplicaSnapshotInfos
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -ReplicaSnapshotInfos).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -ReplicaSnapshotInfos
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryK8s -SnapshotInfo
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryK8s -SnapshotInfo).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryK8s -SnapshotInfo
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
 # New-RscQueryLdap -AuthorizedPrincipalList
 # -------------------------------------------------------------------
 
@@ -8793,6 +12712,24 @@ if ($GetGqlRequest) {
     (New-RscQueryLdap -PrincipalList).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryLdap -PrincipalList
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryM365 -Regions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryM365 -Regions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryM365 -Regions
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -8873,6 +12810,23 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
+# New-RscQueryMongo -BulkRecoverableRange
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryMongo -BulkRecoverableRange).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryMongo -BulkRecoverableRange
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryMongo -BulkRecoverableRanges
 # -------------------------------------------------------------------
 
@@ -8897,6 +12851,23 @@ if ($GetGqlRequest) {
     (New-RscQueryMongo -Collection).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryMongo -Collection
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMongo -CollectionRecoverableRange
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryMongo -CollectionRecoverableRange).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryMongo -CollectionRecoverableRange
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -8948,142 +12919,6 @@ if ($GetGqlRequest) {
     (New-RscQueryMongo -Databases).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryMongo -Databases
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbBulkRecoverableRange
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbBulkRecoverableRange).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbBulkRecoverableRange
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbCollection
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbCollection).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbCollection
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbCollectionRecoverableRange
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbCollectionRecoverableRange).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbCollectionRecoverableRange
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbCollections
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbCollections).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbCollections
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbDatabase
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbDatabase).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbDatabase
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbDatabases
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbDatabases).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbDatabases
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbSource
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbSource).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbSource
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryMongo -DbSources
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryMongo -DbSources).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryMongo -DbSources
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -9146,13 +12981,13 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
-# New-RscQueryMssql -AllDatabaseRestoreFiles
+# New-RscQueryMosaic -BulkRecoveryRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryMssql -AllDatabaseRestoreFiles).GqlRequest().SaveQueryToFile()
+    (New-RscQueryMosaic -BulkRecoveryRange).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryMssql -AllDatabaseRestoreFiles
+    $query = New-RscQueryMosaic -BulkRecoveryRange
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -9161,6 +12996,58 @@ if ($GetGqlRequest) {
     $query.Var.Example()
     $query.Var.ToString()
 }
+
+# -------------------------------------------------------------------
+# New-RscQueryMosaic -Snapshots
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryMosaic -Snapshots).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryMosaic -Snapshots
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMosaic -Stores
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryMosaic -Stores).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryMosaic -Stores
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMosaic -Versions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryMosaic -Versions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryMosaic -Versions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
 
 # -------------------------------------------------------------------
 # New-RscQueryMssql -AvailabilityGroup
@@ -9316,6 +13203,23 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryMssql -DatabaseRestoreFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryMssql -DatabaseRestoreFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryMssql -DatabaseRestoreFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryMssql -Databases
 # -------------------------------------------------------------------
 
@@ -9408,6 +13312,143 @@ if ($GetGqlRequest) {
     (New-RscQueryMssql -TopLevelDescendants).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryMssql -TopLevelDescendants
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -Fileset
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -Fileset).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -Fileset
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -Namespace
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -Namespace).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -Namespace
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -Namespaces
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -Namespaces).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -Namespaces
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -Share
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -Share).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -Share
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -System
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -System).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -System
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -Systems
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -Systems).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -Systems
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -TopLevelDescendants
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -TopLevelDescendants).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -TopLevelDescendants
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryNas -Volume
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryNas -Volume).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryNas -Volume
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -9726,47 +13767,13 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
-# New-RscQueryO365 -AllAdGroups
+# New-RscQueryO365 -AdGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQueryO365 -AllAdGroups).GqlRequest().SaveQueryToFile()
+    (New-RscQueryO365 -AdGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQueryO365 -AllAdGroups
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryO365 -AllOrgStatuses
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryO365 -AllOrgStatuses).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryO365 -AllOrgStatuses
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscQueryO365 -AllSubscriptionsAppTypeCounts
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (New-RscQueryO365 -AllSubscriptionsAppTypeCounts).GqlRequest().SaveQueryToFile()
-} else {
-    $query = New-RscQueryO365 -AllSubscriptionsAppTypeCounts
+    $query = New-RscQueryO365 -AdGroups
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -9971,6 +13978,23 @@ if ($GetGqlRequest) {
     (New-RscQueryO365 -OrgAtSnappableLevel).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryO365 -OrgAtSnappableLevel
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryO365 -OrgStatuses
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryO365 -OrgStatuses).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryO365 -OrgStatuses
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -10226,6 +14250,23 @@ if ($GetGqlRequest) {
     (New-RscQueryO365 -StorageStats).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryO365 -StorageStats
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryO365 -SubscriptionsAppTypeCounts
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryO365 -SubscriptionsAppTypeCounts).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryO365 -SubscriptionsAppTypeCounts
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -10629,13 +14670,13 @@ if ($GetGqlRequest) {
 
 
 # -------------------------------------------------------------------
-# New-RscQuerySla -AllNcdComplianceData
+# New-RscQueryPolicy -Details
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQuerySla -AllNcdComplianceData).GqlRequest().SaveQueryToFile()
+    (New-RscQueryPolicy -Details).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQuerySla -AllNcdComplianceData
+    $query = New-RscQueryPolicy -Details
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -10646,13 +14687,13 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscQuerySla -AllSummariesByIds
+# New-RscQueryPolicy -Obj
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (New-RscQuerySla -AllSummariesByIds).GqlRequest().SaveQueryToFile()
+    (New-RscQueryPolicy -Obj).GqlRequest().SaveQueryToFile()
 } else {
-    $query = New-RscQuerySla -AllSummariesByIds
+    $query = New-RscQueryPolicy -Obj
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -10661,6 +14702,746 @@ if ($GetGqlRequest) {
     $query.Var.Example()
     $query.Var.ToString()
 }
+
+# -------------------------------------------------------------------
+# New-RscQueryPolicy -ObjectUsages
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryPolicy -ObjectUsages).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryPolicy -ObjectUsages
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryPolicy -Objs
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryPolicy -Objs).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryPolicy -Objs
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryPolicy -Policies
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryPolicy -Policies).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryPolicy -Policies
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryPolicy -Policy
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryPolicy -Policy).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryPolicy -Policy
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -DetectionWorkloadLocations
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -DetectionWorkloadLocations).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -DetectionWorkloadLocations
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -InvestigationAnalysisSummary
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -InvestigationAnalysisSummary).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -InvestigationAnalysisSummary
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -InvestigationEnablement
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -InvestigationEnablement).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -InvestigationEnablement
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -InvestigationWorkloadScannedCount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -InvestigationWorkloadScannedCount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -InvestigationWorkloadScannedCount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -OverallInvestigationSummary
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -OverallInvestigationSummary).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -OverallInvestigationSummary
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -PendingInvestigationResultsCount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -PendingInvestigationResultsCount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -PendingInvestigationResultsCount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -ProcessedInvestigationWorkloadCount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -ProcessedInvestigationWorkloadCount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -ProcessedInvestigationWorkloadCount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -ProtectedInvestigationWorkloadCount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -ProtectedInvestigationWorkloadCount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -ProtectedInvestigationWorkloadCount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -Result
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -Result).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -Result
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -ResultOpt
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -ResultOpt).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -ResultOpt
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -Results
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -Results).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -Results
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRansomware -ResultsGrouped
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRansomware -ResultsGrouped).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRansomware -ResultsGrouped
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryRcs -ArchivalLocationsConsumptionStats
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRcs -ArchivalLocationsConsumptionStats).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRcs -ArchivalLocationsConsumptionStats
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRcs -Cluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRcs -Cluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRcs -Cluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRcs -Dhcores
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRcs -Dhcores).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRcs -Dhcores
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryRcv -AccountEntitlement
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryRcv -AccountEntitlement).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryRcv -AccountEntitlement
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryReplication -IncomingStats
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryReplication -IncomingStats).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryReplication -IncomingStats
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryReplication -OutgoingStats
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryReplication -OutgoingStats).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryReplication -OutgoingStats
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryReplication -Pairs
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryReplication -Pairs).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryReplication -Pairs
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryReplication -ValidTargets
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryReplication -ValidTargets).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryReplication -ValidTargets
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryReport -Data
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryReport -Data).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryReport -Data
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryReport -Scheduled
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryReport -Scheduled).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryReport -Scheduled
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -Database
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -Database).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -Database
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -Databases
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -Databases).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -Databases
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -LogSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -LogSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -LogSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -LogSnapshots
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -LogSnapshots).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -LogSnapshots
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -RecoverableRange
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -RecoverableRange).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -RecoverableRange
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -RecoverableRanges
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -RecoverableRanges).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -RecoverableRanges
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -System
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -System).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -System
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySapHana -Systems
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySapHana -Systems).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySapHana -Systems
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryServiceAccount -ServiceAccount
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryServiceAccount -ServiceAccount).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryServiceAccount -ServiceAccount
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -BrowseDrive
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -BrowseDrive).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -BrowseDrive
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -BrowseList
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -BrowseList).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -BrowseList
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -SiteDescendants
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -SiteDescendants).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -SiteDescendants
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -SiteExclusions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -SiteExclusions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -SiteExclusions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -SiteSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -SiteSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -SiteSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -SnappableDriveSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -SnappableDriveSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -SnappableDriveSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -SnappableListSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -SnappableListSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -SnappableListSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySharepoint -SnapshotDriveSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySharepoint -SnapshotDriveSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySharepoint -SnapshotDriveSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
 
 # -------------------------------------------------------------------
 # New-RscQuerySla -AuditDetail
@@ -10670,6 +15451,40 @@ if ($GetGqlRequest) {
     (New-RscQuerySla -AuditDetail).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQuerySla -AuditDetail
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySla -ClusterDomains
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySla -ClusterDomains).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySla -ClusterDomains
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySla -ClusterGlobals
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySla -ClusterGlobals).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySla -ClusterGlobals
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -10806,6 +15621,623 @@ if ($GetGqlRequest) {
     (New-RscQuerySla -ManagedVolumes).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQuerySla -ManagedVolumes
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySla -NcdComplianceData
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySla -NcdComplianceData).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySla -NcdComplianceData
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySla -SummariesByIds
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySla -SummariesByIds).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySla -SummariesByIds
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySla -VerifyWithReplicationToCluster
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySla -VerifyWithReplicationToCluster).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySla -VerifyWithReplicationToCluster
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQuerySmb -Configuration
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySmb -Configuration).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySmb -Configuration
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySmb -Domains
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySmb -Domains).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySmb -Domains
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -BrowseFileList
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -BrowseFileList).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -BrowseFileList
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -ClosestToPointInTime
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -ClosestToPointInTime).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -ClosestToPointInTime
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -EmailSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -EmailSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -EmailSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -EventSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -EventSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -EventSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -FilesDelta
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -FilesDelta).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -FilesDelta
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -FilesDeltaV2
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -FilesDeltaV2).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -FilesDeltaV2
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -Fileset
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -Fileset).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -Fileset
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -FilesetFiles
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -FilesetFiles).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -FilesetFiles
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -LegalHoldSnappable
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -LegalHoldSnappable).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -LegalHoldSnappable
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -OnedriveSearch
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -OnedriveSearch).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -OnedriveSearch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -Polaris
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -Polaris).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -Polaris
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -Pvcs
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -Pvcs).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -Pvcs
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -QuarantinedDetails
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -QuarantinedDetails).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -QuarantinedDetails
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -Results
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -Results).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -Results
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -SnappableList
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -SnappableList).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -SnappableList
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -SnappablesList
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -SnappablesList).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -SnappablesList
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -SnappablesWithLegalHoldsSummary
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -SnappablesWithLegalHoldsSummary).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -SnappablesWithLegalHoldsSummary
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -Snapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -Snapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -Snapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -UnmanagedObject
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -UnmanagedObject).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -UnmanagedObject
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -VappInstantRecoveryOptions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -VappInstantRecoveryOptions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -VappInstantRecoveryOptions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySnapshot -VappTemplateExportOptions
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySnapshot -VappTemplateExportOptions).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySnapshot -VappTemplateExportOptions
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQuerySonar -ContentReport
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySonar -ContentReport).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySonar -ContentReport
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySonar -Report
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySonar -Report).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySonar -Report
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySonar -ReportRow
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySonar -ReportRow).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySonar -ReportRow
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySonar -UserGroups
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySonar -UserGroups).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySonar -UserGroups
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQuerySonar -Users
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQuerySonar -Users).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQuerySonar -Users
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryStorageArray -StorageArray
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryStorageArray -StorageArray).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryStorageArray -StorageArray
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryThreat -HuntDetail
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryThreat -HuntDetail).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryThreat -HuntDetail
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryThreat -HuntResult
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryThreat -HuntResult).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryThreat -HuntResult
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryThreat -HuntSummary
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryThreat -HuntSummary).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryThreat -HuntSummary
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryThreat -Hunts
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryThreat -Hunts).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryThreat -Hunts
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -11455,6 +16887,24 @@ if ($GetGqlRequest) {
     (New-RscQueryVsphereVm -RecoverableRangeInBatch).GqlRequest().SaveQueryToFile()
 } else {
     $query = New-RscQueryVsphereVm -RecoverableRangeInBatch
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+
+# -------------------------------------------------------------------
+# New-RscQueryWebhook -Webhook
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryWebhook -Webhook).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryWebhook -Webhook
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)

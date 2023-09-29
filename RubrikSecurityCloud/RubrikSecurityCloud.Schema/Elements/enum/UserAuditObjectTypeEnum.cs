@@ -234,6 +234,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_SHAREPOINT_SITE")]
         O365_SHAREPOINT_SITE,
 
+        [EnumMember(Value = "OAUTH_TOKEN")]
+        OAUTH_TOKEN,
+
         [EnumMember(Value = "ORACLE_MOUNT")]
         ORACLE_MOUNT,
 

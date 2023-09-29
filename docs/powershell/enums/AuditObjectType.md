@@ -115,3 +115,4 @@ Represents all the object types for which we expect to see audits.
 - TPR_POLICY - TPR policy.
 - TPR_REQUEST - TPR request.
 - TPR_CONFIG - TPR configuration.
+- OAUTH_TOKEN - OAuth token.

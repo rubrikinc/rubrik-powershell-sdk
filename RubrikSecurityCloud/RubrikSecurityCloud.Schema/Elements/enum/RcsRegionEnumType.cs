@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUSTRALIA_EAST")]
         AUSTRALIA_EAST,
 
+        [EnumMember(Value = "AUSTRALIA_SOUTHEAST")]
+        AUSTRALIA_SOUTHEAST,
+
         [EnumMember(Value = "CANADA_EAST")]
         CANADA_EAST,
 

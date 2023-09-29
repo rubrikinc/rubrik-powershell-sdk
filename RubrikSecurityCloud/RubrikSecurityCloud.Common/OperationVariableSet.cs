@@ -66,11 +66,11 @@ namespace RubrikSecurityCloud
             return variables;
         }
 
-        private JToken? processVariable(object obj)
+        private JToken processVariable(object obj)
         {
             if (obj is null)
             {
-                return null;
+                return JValue.CreateNull();
             }
             if (obj is DateTime dtVal)
             {
@@ -86,17 +86,12 @@ namespace RubrikSecurityCloud
             // identify such scalar types
             if (obj is IConvertible || obj.GetType().IsEnum)
             {
-                return JToken.FromObject(
-                        obj,
-                        JsonSerializer.Create(_serializerSettings)
-                );
+                return new JValue(obj);
             }
             if (obj is string[] sarrVal)
             {
                 return new JArray(sarrVal);
             }
-
-
             if (obj is object[] objArrVal)
             {
                 var arr = new JArray();

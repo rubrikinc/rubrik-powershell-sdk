@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: DeletePrincipals
     /// 
     /// $query = New-RscMutationLdap -DeletePrincipals
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: RemoveIntegration
     /// 
     /// $query = New-RscMutationLdap -RemoveIntegration
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: SetMfaSetting
     /// 
     /// $query = New-RscMutationLdap -SetMfaSetting
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    LDAP
+    /// # API Domain:    Ldap
     /// # API Operation: UpdateIntegration
     /// 
     /// $query = New-RscMutationLdap -UpdateIntegration

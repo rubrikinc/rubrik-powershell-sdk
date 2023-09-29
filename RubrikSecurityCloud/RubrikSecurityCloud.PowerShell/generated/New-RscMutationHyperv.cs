@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 23
-    /// operations in the 'Hyperv' API domain:
+    /// operations in the 'Microsoft Hyper-V' API domain:
     /// BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
     /// </summary>
     /// <description>
     /// New-RscMutationHyperv creates a new
     /// mutation object for operations
-    /// in the 'Hyperv' API domain. It only creates a data structure,
+    /// in the 'Microsoft Hyper-V' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 23 operations
-    /// in the 'Hyperv' API domain. Select the operation this
+    /// in the 'Microsoft Hyper-V' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -BatchExportVm, -BatchInstantRecoverVm, -BatchMountVm, -BatchOnDemandBackupVm, -CreateVirtualMachineSnapshotMount, -DeleteAllSnapshots, -DeleteVirtualMachineSnapshot, -DeleteVirtualMachineSnapshotMount, -DownloadSnapshotFromLocation, -DownloadVirtualMachineSnapshot, -DownloadVirtualMachineSnapshotFiles, -ExportVirtualMachine, -InstantRecoverVirtualMachineSnapshot, -OnDemandSnapshot, -RefreshScvmm, -RefreshServer, -RegisterAgentVirtualMachine, -RegisterScvmm, -RestoreVirtualMachineSnapshotFiles, -ScvmmDelete, -ScvmmUpdate, -UpdateVirtualMachine, -UpdateVirtualMachineSnapshotMount.
     /// Alternatively, you can specify the operation by setting the
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchExportVm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchInstantRecoverVm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchMountVm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchOnDemandBackupVm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -305,7 +305,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateVirtualMachineSnapshotMount operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -349,7 +349,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteAllSnapshots operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -380,7 +380,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteVirtualMachineSnapshot operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -413,7 +413,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteVirtualMachineSnapshotMount operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -446,7 +446,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadSnapshotFromLocation operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -484,7 +484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadVirtualMachineSnapshot operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -515,7 +515,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadVirtualMachineSnapshotFiles operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -560,7 +560,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportVirtualMachine operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -606,7 +606,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InstantRecoverVirtualMachineSnapshot operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -644,7 +644,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the OnDemandSnapshot operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -682,7 +682,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RefreshScvmm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -713,7 +713,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RefreshServer operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -744,7 +744,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RegisterAgentVirtualMachine operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -775,7 +775,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RegisterScvmm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -815,7 +815,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RestoreVirtualMachineSnapshotFiles operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -860,7 +860,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ScvmmDelete operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -891,7 +891,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ScvmmUpdate operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -933,7 +933,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateVirtualMachine operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -978,7 +978,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateVirtualMachineSnapshotMount operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1028,7 +1028,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchExportVm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Exports a snapshot from each member of a set of virtual machines
 
@@ -1047,7 +1047,7 @@ Export a snapshot from each member of a set of virtual machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchInstantRecoverVm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Instantly recovers snapshots from multiple virtual machines
 
@@ -1066,7 +1066,7 @@ Instantly recovers a batch of snapshots from a group of specified virtual machin
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchMountVm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Mount snapshots from multiple virtual machines
 
@@ -1085,7 +1085,7 @@ Mounts a batch of snapshots from a group of specified virtual machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchOnDemandBackupVm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Takes bulk on-demand backup of Hyper-V virtual machines
 
@@ -1104,7 +1104,7 @@ Takes on-demand backup of multiple specified Hyper-V virtual machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateVirtualMachineSnapshotMount' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Create a live mount request
 
@@ -1123,7 +1123,7 @@ Create a live mount request with given configuration.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteAllSnapshots' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Delete all snapshots of VM
 
@@ -1142,7 +1142,7 @@ Delete all snapshots of a virtual machine.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteVirtualMachineSnapshot' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Delete VM snapshot
 
@@ -1161,7 +1161,7 @@ Delete a snapshot by expiring it. Snapshot is expired only if it is a manual sna
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteVirtualMachineSnapshotMount' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Requst to delete a live mount
 
@@ -1180,7 +1180,7 @@ Create a request to delete a live mount.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadSnapshotFromLocation' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Download a snapshot from a replication target
 
@@ -1199,7 +1199,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadVirtualMachineSnapshot' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Creates a download from archival request
 
@@ -1218,7 +1218,7 @@ Download a snapshot from archival.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadVirtualMachineSnapshotFiles' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Download files from a Hyper-V VM backup
 
@@ -1237,7 +1237,7 @@ Start an asynchronous job to download multiple files and folders from a specifie
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportVirtualMachine' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Export VM snapshot
 
@@ -1256,7 +1256,7 @@ Export snapshot of a vm.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InstantRecoverVirtualMachineSnapshot' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
 
@@ -1275,7 +1275,7 @@ The VM will be started with networking enabled. If the VM does not exist anymore
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'OnDemandSnapshot' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Create on-demand VM snapshot
 
@@ -1294,7 +1294,7 @@ Create an on-demand snapshot for the given VM ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RefreshScvmm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Refresh a given HyperV SCVMM.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshhypervscvmm.doc.html]"
@@ -1310,7 +1310,7 @@ Refresh a given HyperV SCVMM.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RefreshServer' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Refresh Hyper-V host metadata
 
@@ -1329,7 +1329,7 @@ Create a job to refresh the metadata for the specified Hyper-V host.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RegisterAgentVirtualMachine' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Register the agent installed in VM
 
@@ -1348,7 +1348,7 @@ Register the agent that installed in VM.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RegisterScvmm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Register HyperV SCVMM to Rubrik Cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registerhypervscvmm.doc.html]"
@@ -1364,7 +1364,7 @@ Register HyperV SCVMM to Rubrik Cluster.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RestoreVirtualMachineSnapshotFiles' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Restore files from snapshot
 
@@ -1383,7 +1383,7 @@ Restore files from a snapshot to the original source location.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ScvmmDelete' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Delete a given HyperV SCVMM.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmmdelete.doc.html]"
@@ -1399,7 +1399,7 @@ Delete a given HyperV SCVMM.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ScvmmUpdate' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Update properties for a given HyperV SCVMM.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmmupdate.doc.html]"
@@ -1415,7 +1415,7 @@ Update properties for a given HyperV SCVMM.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateVirtualMachine' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Update VM
 
@@ -1434,7 +1434,7 @@ Update VM with specified properties.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateVirtualMachineSnapshotMount' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Power a Live Mount on and off
 

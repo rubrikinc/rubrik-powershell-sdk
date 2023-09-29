@@ -1,10 +1,20 @@
 # New-RscQueryAccount
 ## Subcommands
+### enabledfeatures
+Provides a list of all features enabled for the Rubrik account.
+
+- The enabledfeatures subcommand takes no arguments.
+- Returns AllEnabledFeaturesForAccountReply.
 ### id
 Account ID.
 
 - The id subcommand takes no arguments.
 - Returns System.String.
+### lookup
+Retrieve account information.
+
+- There is a single argument of type LookupAccountInput.
+- Returns LookupAccountReply.
 ### owners
 List of account owners.
 
@@ -23,11 +33,12 @@ This endpoint is deprecated.
 
 - The settings subcommand takes no arguments.
 - Returns AccountSetting.
-### withexocomputemappings
-Retrieves the list of all accounts with their Exocompute account mapping, if exists.
+### users
+All the users on the current account.
 
-- There are 3 arguments.
-    - cloudVendor - CloudVendor: Vendor of the cloud account.
-    - features - list of CloudAccountFeatures: Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
-    - exocomputeAccountIdsFilter - list of System.Strings: List of mapped Exocompute account IDs.
-- Returns list of CloudAccountWithExocomputeMappings.
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+- Returns list of Users.

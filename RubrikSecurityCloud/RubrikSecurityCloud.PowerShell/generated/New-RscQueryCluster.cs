@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 36
+    /// Create a new RscQuery object for any of the 29
     /// operations in the 'Cluster' API domain:
-    /// Certificates, Cluster, Connected, Csr, DatabaseLogReport, DatabaseLogReportingProperties, DefaultGateway, Dns, FloatingIps, GlobalSlas, GroupByList, HostFailover, Ipmi, Ipv6Mode, IsTotpAckNecessary, K8s, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RegistrationProductInfo, ReplicationTargets, ReportMigrationCount, ReportMigrationJobStatus, ReportMigrationStatus, SlaDomains, TotpAckStatus, TypeList, VerifySlaWithReplicationTo, Vlans, WebCertsAndIpmis, WebSignedCertificate, Windows, or WithUpgradesInfo.
+    /// Cluster, Connected, DatabaseLogReport, DatabaseLogReportingProperties, DefaultGateway, Dns, FloatingIps, GroupByList, HostFailover, Ipmi, Ipv6Mode, IsTotpAckNecessary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RegistrationProductInfo, ReplicationTargets, ReportMigrationCount, ReportMigrationJobStatus, ReportMigrationStatus, TotpAckStatus, TypeList, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -34,17 +34,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 36 operations
+    /// There are 29 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Certificates, -Cluster, -Connected, -Csr, -DatabaseLogReport, -DatabaseLogReportingProperties, -DefaultGateway, -Dns, -FloatingIps, -GlobalSlas, -GroupByList, -HostFailover, -Ipmi, -Ipv6Mode, -IsTotpAckNecessary, -K8s, -List, -NetworkInterfaces, -Nodes, -NtpServers, -OperationJobProgress, -Proxy, -RegistrationProductInfo, -ReplicationTargets, -ReportMigrationCount, -ReportMigrationJobStatus, -ReportMigrationStatus, -SlaDomains, -TotpAckStatus, -TypeList, -VerifySlaWithReplicationTo, -Vlans, -WebCertsAndIpmis, -WebSignedCertificate, -Windows, -WithUpgradesInfo.
+    /// one of: -Cluster, -Connected, -DatabaseLogReport, -DatabaseLogReportingProperties, -DefaultGateway, -Dns, -FloatingIps, -GroupByList, -HostFailover, -Ipmi, -Ipv6Mode, -IsTotpAckNecessary, -List, -NetworkInterfaces, -Nodes, -NtpServers, -OperationJobProgress, -Proxy, -RegistrationProductInfo, -ReplicationTargets, -ReportMigrationCount, -ReportMigrationJobStatus, -ReportMigrationStatus, -TotpAckStatus, -TypeList, -Vlans, -WebCertsAndIpmis, -Windows, -WithUpgradesInfo.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Certificates,
-    /// which is equivalent to specifying -Certificates.
+    /// -Op parameter, for example: -Op Cluster,
+    /// which is equivalent to specifying -Cluster.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCluster -Certificates).Info().
+    /// (New-RscQueryCluster -Cluster).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,58 +71,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCluster -Certificates).Info().
+    /// (New-RscQueryCluster -Cluster).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the Certificates operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: Certificates
-    /// 
-    /// $query = New-RscQueryCluster -Certificates
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	description = $someString
-    /// 	# OPTIONAL
-    /// 	expiration = $someString
-    /// 	# OPTIONAL
-    /// 	hasKey = $someBoolean
-    /// 	# OPTIONAL
-    /// 	includeExpired = $someBoolean
-    /// 	# OPTIONAL
-    /// 	isTrusted = $someBoolean
-    /// 	# OPTIONAL
-    /// 	name = $someString
-    /// 	# OPTIONAL
-    /// 	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CertificateSummaryListResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the Cluster operation
@@ -173,37 +126,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;DataLocationSupportedCluster&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Csr operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: Csr
-    /// 
-    /// $query = New-RscQueryCluster -Csr
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ClusterCsr
     /// 
     /// 
     /// 
@@ -374,34 +296,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: InternalGetClusterIpsResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the GlobalSlas operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: GlobalSlas
-    /// 
-    /// $query = New-RscQueryCluster -GlobalSlas
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cdmClusterUUID = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;SlaInfo&gt;
     /// 
     /// 
     /// 
@@ -626,82 +520,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the K8s operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: K8s
-    /// 
-    /// $query = New-RscQueryCluster -K8s
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	@{
-    /// 		# OPTIONAL
-    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-    /// 		# OPTIONAL
-    /// 		texts = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectTypeFilterParams = @(
-    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		awsNativeProtectionFeatureNames = @(
-    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNegative = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isSlowSearchEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		azureNativeProtectionFeatureNames = @(
-    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		unmanagedObjectAvailabilityFilter = @(
-    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-    /// 		)
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: K8sClusterConnection
     /// 
     /// 
     /// 
@@ -1127,40 +945,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the SlaDomains operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: SlaDomains
-    /// 
-    /// $query = New-RscQueryCluster -SlaDomains
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ClusterSlaDomainConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the TotpAckStatus operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -1210,36 +994,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;GroupCount&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the VerifySlaWithReplicationTo operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: VerifySlaWithReplicationTo
-    /// 
-    /// $query = New-RscQueryCluster -VerifySlaWithReplicationTo
-    /// 
-    /// # REQUIRED
-    /// $query.Var.cdmClusterUUID = $someString
-    /// # REQUIRED
-    /// $query.Var.includeArchived = $someBoolean
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: VerifySlaWithReplicationToClusterResponse
     /// 
     /// 
     /// 
@@ -1306,37 +1060,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;ClusterWebCertAndIpmi&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the WebSignedCertificate operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: WebSignedCertificate
-    /// 
-    /// $query = New-RscQueryCluster -WebSignedCertificate
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ClusterWebSignedCertificateReply
     /// 
     /// 
     /// 
@@ -1475,25 +1198,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         [Parameter(
-            ParameterSetName = "Certificates",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Certificates' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get all certificates
-
-Supported in v5.1+
-Get all certificates.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustercertificates.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Certificates { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "Cluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -1523,25 +1227,6 @@ List all connected clusters.
             // No Position -> named parameter only.
         )]
         public SwitchParameter Connected { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Csr",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Csr' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get the cluster certificate signing request
-
-Supported in v7.0+
-Returns the certificate signing request generated from the private key of the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustercsr.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Csr { get; set; }
 
         
         [Parameter(
@@ -1638,22 +1323,6 @@ Get a list of a cluster's always-available Ips.
 
         
         [Parameter(
-            ParameterSetName = "GlobalSlas",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GlobalSlas' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allclusterglobalslas.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GlobalSlas { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "GroupByList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -1734,22 +1403,6 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
             // No Position -> named parameter only.
         )]
         public SwitchParameter IsTotpAckNecessary { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "K8s",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'K8s' operation
-in the 'Cluster' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8sclusters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter K8s { get; set; }
 
         
         [Parameter(
@@ -1938,22 +1591,6 @@ Retrieve details of the Rubrik clusters' reports migration.
 
         
         [Parameter(
-            ParameterSetName = "SlaDomains",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SlaDomains' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Returns paginated list of SLA domains that were created on Rubrik CDM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustersladomains.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SlaDomains { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "TotpAckStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -1986,22 +1623,6 @@ Description of the operation:
 
         
         [Parameter(
-            ParameterSetName = "VerifySlaWithReplicationTo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VerifySlaWithReplicationTo' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Verify for a Rubrik cluster if it is replication target in any SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/verifyslawithreplicationtocluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VerifySlaWithReplicationTo { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "Vlans",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -2031,25 +1652,6 @@ Get web server certificate and IPMI details for multiple clusters.
             // No Position -> named parameter only.
         )]
         public SwitchParameter WebCertsAndIpmis { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "WebSignedCertificate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'WebSignedCertificate' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get the signed certificate for Web server
-
-Supported in v5.2+
-If the web server uses a signed certificate, fetch it.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterwebsignedcertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter WebSignedCertificate { get; set; }
 
         
         [Parameter(
@@ -2092,17 +1694,11 @@ Description of the operation:
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "Certificates":
-                        this.ProcessRecord_Certificates();
-                        break;
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
                     case "Connected":
                         this.ProcessRecord_Connected();
-                        break;
-                    case "Csr":
-                        this.ProcessRecord_Csr();
                         break;
                     case "DatabaseLogReport":
                         this.ProcessRecord_DatabaseLogReport();
@@ -2119,9 +1715,6 @@ Description of the operation:
                     case "FloatingIps":
                         this.ProcessRecord_FloatingIps();
                         break;
-                    case "GlobalSlas":
-                        this.ProcessRecord_GlobalSlas();
-                        break;
                     case "GroupByList":
                         this.ProcessRecord_GroupByList();
                         break;
@@ -2136,9 +1729,6 @@ Description of the operation:
                         break;
                     case "IsTotpAckNecessary":
                         this.ProcessRecord_IsTotpAckNecessary();
-                        break;
-                    case "K8s":
-                        this.ProcessRecord_K8s();
                         break;
                     case "List":
                         this.ProcessRecord_List();
@@ -2173,26 +1763,17 @@ Description of the operation:
                     case "ReportMigrationStatus":
                         this.ProcessRecord_ReportMigrationStatus();
                         break;
-                    case "SlaDomains":
-                        this.ProcessRecord_SlaDomains();
-                        break;
                     case "TotpAckStatus":
                         this.ProcessRecord_TotpAckStatus();
                         break;
                     case "TypeList":
                         this.ProcessRecord_TypeList();
                         break;
-                    case "VerifySlaWithReplicationTo":
-                        this.ProcessRecord_VerifySlaWithReplicationTo();
-                        break;
                     case "Vlans":
                         this.ProcessRecord_Vlans();
                         break;
                     case "WebCertsAndIpmis":
                         this.ProcessRecord_WebCertsAndIpmis();
-                        break;
-                    case "WebSignedCertificate":
-                        this.ProcessRecord_WebSignedCertificate();
                         break;
                     case "Windows":
                         this.ProcessRecord_Windows();
@@ -2211,15 +1792,6 @@ Description of the operation:
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterCertificates.
-        internal void ProcessRecord_Certificates()
-        {
-            this._logger.name += " -Certificates";
-            // Create new graphql operation clusterCertificates
-            InitQueryClusterCertificates();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // cluster.
         internal void ProcessRecord_Cluster()
         {
@@ -2235,15 +1807,6 @@ Description of the operation:
             this._logger.name += " -Connected";
             // Create new graphql operation allConnectedClusters
             InitQueryAllConnectedClusters();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // clusterCsr.
-        internal void ProcessRecord_Csr()
-        {
-            this._logger.name += " -Csr";
-            // Create new graphql operation clusterCsr
-            InitQueryClusterCsr();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2292,15 +1855,6 @@ Description of the operation:
         }
 
         // This parameter set invokes a single graphql operation:
-        // allClusterGlobalSlas.
-        internal void ProcessRecord_GlobalSlas()
-        {
-            this._logger.name += " -GlobalSlas";
-            // Create new graphql operation allClusterGlobalSlas
-            InitQueryAllClusterGlobalSlas();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // clusterGroupByConnection.
         internal void ProcessRecord_GroupByList()
         {
@@ -2343,15 +1897,6 @@ Description of the operation:
             this._logger.name += " -IsTotpAckNecessary";
             // Create new graphql operation isTotpAckNecessaryForCluster
             InitQueryIsTotpAckNecessaryForCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // k8sClusters.
-        internal void ProcessRecord_K8s()
-        {
-            this._logger.name += " -K8s";
-            // Create new graphql operation k8sClusters
-            InitQueryK8sClusters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2454,15 +1999,6 @@ Description of the operation:
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterSlaDomains.
-        internal void ProcessRecord_SlaDomains()
-        {
-            this._logger.name += " -SlaDomains";
-            // Create new graphql operation clusterSlaDomains
-            InitQueryClusterSlaDomains();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // allClustersTotpAckStatus.
         internal void ProcessRecord_TotpAckStatus()
         {
@@ -2478,15 +2014,6 @@ Description of the operation:
             this._logger.name += " -TypeList";
             // Create new graphql operation clusterTypeList
             InitQueryClusterTypeList();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // verifySlaWithReplicationToCluster.
-        internal void ProcessRecord_VerifySlaWithReplicationTo()
-        {
-            this._logger.name += " -VerifySlaWithReplicationTo";
-            // Create new graphql operation verifySlaWithReplicationToCluster
-            InitQueryVerifySlaWithReplicationToCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2508,15 +2035,6 @@ Description of the operation:
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterWebSignedCertificate.
-        internal void ProcessRecord_WebSignedCertificate()
-        {
-            this._logger.name += " -WebSignedCertificate";
-            // Create new graphql operation clusterWebSignedCertificate
-            InitQueryClusterWebSignedCertificate();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // windowsCluster.
         internal void ProcessRecord_Windows()
         {
@@ -2534,45 +2052,6 @@ Description of the operation:
             InitQueryClusterWithUpgradesInfo();
         }
 
-
-        // Create new GraphQL Query:
-        // clusterCertificates(input: QueryCertificatesInput!): CertificateSummaryListResponse!
-        internal void InitQueryClusterCertificates()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "QueryCertificatesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterCertificates",
-                "($input: QueryCertificatesInput!)",
-                "CertificateSummaryListResponse",
-                Query.ClusterCertificates_ObjectFieldSpec,
-                Query.ClusterCertificatesFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	description = $someString
-	# OPTIONAL
-	expiration = $someString
-	# OPTIONAL
-	hasKey = $someBoolean
-	# OPTIONAL
-	includeExpired = $someBoolean
-	# OPTIONAL
-	isTrusted = $someBoolean
-	# OPTIONAL
-	name = $someString
-	# OPTIONAL
-	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
-	# OPTIONAL
-	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
-}"
-            );
-        }
 
         // Create new GraphQL Query:
         // cluster(clusterUuid: UUID!): Cluster!
@@ -2611,29 +2090,6 @@ $query.Var.clusterUuid = $someString"
                 Query.AllConnectedClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.clusterFilterArg = $someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values."
-            );
-        }
-
-        // Create new GraphQL Query:
-        // clusterCsr(input: GetClusterCsrInput!): ClusterCsr!
-        internal void InitQueryClusterCsr()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetClusterCsrInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterCsr",
-                "($input: GetClusterCsrInput!)",
-                "ClusterCsr",
-                Query.ClusterCsr_ObjectFieldSpec,
-                Query.ClusterCsrFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
-}"
             );
         }
 
@@ -2764,26 +2220,6 @@ $query.Var.input = @{
 	# REQUIRED
 	clusterUuid = $someString
 }"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allClusterGlobalSlas(cdmClusterUUID: UUID!): [SlaInfo!]!
-        internal void InitQueryAllClusterGlobalSlas()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cdmClusterUUID", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllClusterGlobalSlas",
-                "($cdmClusterUUID: UUID!)",
-                "List<SlaInfo>",
-                Query.AllClusterGlobalSlas_ObjectFieldSpec,
-                Query.AllClusterGlobalSlasFieldSpec,
-                @"# REQUIRED
-$query.Var.cdmClusterUUID = $someString"
             );
         }
 
@@ -2982,84 +2418,6 @@ $query.Var.input = @{
                 Query.IsTotpAckNecessaryForClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // k8sClusters(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): K8sClusterConnection!
-        internal void InitQueryK8sClusters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryK8sClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "K8sClusterConnection",
-                Query.K8sClusters_ObjectFieldSpec,
-                Query.K8sClustersFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
             );
         }
 
@@ -3419,40 +2777,6 @@ $query.Var.before = $someString"
         }
 
         // Create new GraphQL Query:
-        // clusterSlaDomains(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): ClusterSlaDomainConnection!
-        internal void InitQueryClusterSlaDomains()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterSlaDomains",
-                "($first: Int,$after: String,$last: Int,$before: String)",
-                "ClusterSlaDomainConnection",
-                Query.ClusterSlaDomains_ObjectFieldSpec,
-                Query.ClusterSlaDomainsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
         // allClustersTotpAckStatus(listClusterUuid: [UUID!]!): [Boolean!]!
         internal void InitQueryAllClustersTotpAckStatus()
         {
@@ -3489,29 +2813,6 @@ $query.Var.listClusterUuid = @(
                 Query.ClusterTypeList_ObjectFieldSpec,
                 Query.ClusterTypeListFieldSpec,
                 @""
-            );
-        }
-
-        // Create new GraphQL Query:
-        // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
-        internal void InitQueryVerifySlaWithReplicationToCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cdmClusterUUID", "UUID!"),
-                Tuple.Create("includeArchived", "Boolean!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVerifySlaWithReplicationToCluster",
-                "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                "VerifySlaWithReplicationToClusterResponse",
-                Query.VerifySlaWithReplicationToCluster_ObjectFieldSpec,
-                Query.VerifySlaWithReplicationToClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.cdmClusterUUID = $someString
-# REQUIRED
-$query.Var.includeArchived = $someBoolean"
             );
         }
 
@@ -3561,29 +2862,6 @@ $query.Var.input = @{
 	clusterUuids = @(
 		$someString
 	)
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // clusterWebSignedCertificate(input: ClusterWebSignedCertificateInput!): ClusterWebSignedCertificateReply!
-        internal void InitQueryClusterWebSignedCertificate()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ClusterWebSignedCertificateInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterWebSignedCertificate",
-                "($input: ClusterWebSignedCertificateInput!)",
-                "ClusterWebSignedCertificateReply",
-                Query.ClusterWebSignedCertificate_ObjectFieldSpec,
-                Query.ClusterWebSignedCertificateFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someString
 }"
             );
         }

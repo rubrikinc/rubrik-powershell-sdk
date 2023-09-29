@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Cluster' API domain:
-    /// AddNodesToCloud, ArchiveK8s, BulkDeleteFailover, CreateFailover, CreateK8s, DeleteFailover, RecoverCloud, RefreshK8s, RegisterCloud, RemoveCdm, UpdateDatabaseLogReportingProperties, or UpdateFailover.
+    /// AddNodesToCloud, BulkDeleteFailover, CreateFailover, DeleteFailover, RecoverCloud, RegisterCloud, RemoveCdm, UpdateDatabaseLogReportingProperties, or UpdateFailover.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
+    /// There are 9 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddNodesToCloud, -ArchiveK8s, -BulkDeleteFailover, -CreateFailover, -CreateK8s, -DeleteFailover, -RecoverCloud, -RefreshK8s, -RegisterCloud, -RemoveCdm, -UpdateDatabaseLogReportingProperties, -UpdateFailover.
+    /// one of: -AddNodesToCloud, -BulkDeleteFailover, -CreateFailover, -DeleteFailover, -RecoverCloud, -RegisterCloud, -RemoveCdm, -UpdateDatabaseLogReportingProperties, -UpdateFailover.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op AddNodesToCloud,
     /// which is equivalent to specifying -AddNodesToCloud.
@@ -117,37 +117,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ArchiveK8s operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: ArchiveK8s
-    /// 
-    /// $query = New-RscMutationCluster -ArchiveK8s
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ArchiveK8sClusterReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the BulkDeleteFailover operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -217,67 +186,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateFailoverClusterReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the CreateK8s operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: CreateK8s
-    /// 
-    /// $query = New-RscMutationCluster -CreateK8s
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	cdmClusterId = $someString
-    /// 	# REQUIRED
-    /// 	hostList = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	port = $someInt
-    /// 	# REQUIRED
-    /// 	rbsPortRanges = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			portMin = $someInt
-    /// 			# OPTIONAL
-    /// 			portMax = $someInt
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	userDrivenPortRanges = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			portMin = $someInt
-    /// 			# OPTIONAL
-    /// 			portMax = $someInt
-    /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	type = $someK8sClusterProtoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.K8sClusterProtoType]) for enum values.
-    /// 	# OPTIONAL
-    /// 	proxyUrl = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreateK8sClusterReply
     /// 
     /// 
     /// 
@@ -418,37 +326,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the RefreshK8s operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: RefreshK8s
-    /// 
-    /// $query = New-RscMutationCluster -RefreshK8s
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	k8sClusterId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreateOnDemandJobReply
     /// 
     /// 
     /// 
@@ -605,7 +482,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationCluster",
-        DefaultParameterSetName = "CreateK8s")
+        DefaultParameterSetName = "List")
     ]
     public class New_RscMutationCluster : RscGqlPSCmdlet
     {
@@ -624,22 +501,6 @@ Add nodes to cloud cluster.
             // No Position -> named parameter only.
         )]
         public SwitchParameter AddNodesToCloud { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ArchiveK8s",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ArchiveK8s' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Archive a Kubernetes cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/archivek8scluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ArchiveK8s { get; set; }
 
         
         [Parameter(
@@ -681,22 +542,6 @@ Create a failover cluster.
 
         
         [Parameter(
-            ParameterSetName = "CreateK8s",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateK8s' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Add a Kubernetes cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createk8scluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateK8s { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "DeleteFailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -729,22 +574,6 @@ Recover a Rubrik Cloud Cluster.
             // No Position -> named parameter only.
         )]
         public SwitchParameter RecoverCloud { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshK8s",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshK8s' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Refresh resources of a Kubernetes cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshk8scluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshK8s { get; set; }
 
         
         [Parameter(
@@ -828,26 +657,17 @@ Update failover cluster with specified properties.
                     case "AddNodesToCloud":
                         this.ProcessRecord_AddNodesToCloud();
                         break;
-                    case "ArchiveK8s":
-                        this.ProcessRecord_ArchiveK8s();
-                        break;
                     case "BulkDeleteFailover":
                         this.ProcessRecord_BulkDeleteFailover();
                         break;
                     case "CreateFailover":
                         this.ProcessRecord_CreateFailover();
                         break;
-                    case "CreateK8s":
-                        this.ProcessRecord_CreateK8s();
-                        break;
                     case "DeleteFailover":
                         this.ProcessRecord_DeleteFailover();
                         break;
                     case "RecoverCloud":
                         this.ProcessRecord_RecoverCloud();
-                        break;
-                    case "RefreshK8s":
-                        this.ProcessRecord_RefreshK8s();
                         break;
                     case "RegisterCloud":
                         this.ProcessRecord_RegisterCloud();
@@ -881,15 +701,6 @@ Update failover cluster with specified properties.
         }
 
         // This parameter set invokes a single graphql operation:
-        // archiveK8sCluster.
-        internal void ProcessRecord_ArchiveK8s()
-        {
-            this._logger.name += " -ArchiveK8s";
-            // Create new graphql operation archiveK8sCluster
-            InitMutationArchiveK8sCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // bulkDeleteFailoverCluster.
         internal void ProcessRecord_BulkDeleteFailover()
         {
@@ -908,15 +719,6 @@ Update failover cluster with specified properties.
         }
 
         // This parameter set invokes a single graphql operation:
-        // createK8sCluster.
-        internal void ProcessRecord_CreateK8s()
-        {
-            this._logger.name += " -CreateK8s";
-            // Create new graphql operation createK8sCluster
-            InitMutationCreateK8sCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // deleteFailoverCluster.
         internal void ProcessRecord_DeleteFailover()
         {
@@ -932,15 +734,6 @@ Update failover cluster with specified properties.
             this._logger.name += " -RecoverCloud";
             // Create new graphql operation recoverCloudCluster
             InitMutationRecoverCloudCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // refreshK8sCluster.
-        internal void ProcessRecord_RefreshK8s()
-        {
-            this._logger.name += " -RefreshK8s";
-            // Create new graphql operation refreshK8sCluster
-            InitMutationRefreshK8sCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1012,29 +805,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // archiveK8sCluster(input: ArchiveK8sClusterInput!): ArchiveK8sClusterReply!
-        internal void InitMutationArchiveK8sCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ArchiveK8sClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationArchiveK8sCluster",
-                "($input: ArchiveK8sClusterInput!)",
-                "ArchiveK8sClusterReply",
-                Mutation.ArchiveK8sCluster_ObjectFieldSpec,
-                Mutation.ArchiveK8sClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!): ResponseSuccess!
         internal void InitMutationBulkDeleteFailoverCluster()
         {
@@ -1091,59 +861,6 @@ $query.Var.input = @{
 		# REQUIRED
 		name = $someString
 	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createK8sCluster(input: CreateK8sClusterInput!): CreateK8sClusterReply!
-        internal void InitMutationCreateK8sCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateK8sClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateK8sCluster",
-                "($input: CreateK8sClusterInput!)",
-                "CreateK8sClusterReply",
-                Mutation.CreateK8sCluster_ObjectFieldSpec,
-                Mutation.CreateK8sClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	cdmClusterId = $someString
-	# REQUIRED
-	hostList = @(
-		$someString
-	)
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	port = $someInt
-	# REQUIRED
-	rbsPortRanges = @(
-		@{
-			# OPTIONAL
-			portMin = $someInt
-			# OPTIONAL
-			portMax = $someInt
-		}
-	)
-	# OPTIONAL
-	userDrivenPortRanges = @(
-		@{
-			# OPTIONAL
-			portMin = $someInt
-			# OPTIONAL
-			portMax = $someInt
-		}
-	)
-	# REQUIRED
-	type = $someK8sClusterProtoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.K8sClusterProtoType]) for enum values.
-	# OPTIONAL
-	proxyUrl = $someString
 }"
             );
         }
@@ -1268,29 +985,6 @@ $query.Var.input = @{
 	ntpServers = @(
 		$someString
 	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // refreshK8sCluster(input: RefreshK8sClusterInput!): CreateOnDemandJobReply!
-        internal void InitMutationRefreshK8sCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RefreshK8sClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRefreshK8sCluster",
-                "($input: RefreshK8sClusterInput!)",
-                "CreateOnDemandJobReply",
-                Mutation.RefreshK8sCluster_ObjectFieldSpec,
-                Mutation.RefreshK8sClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	k8sClusterId = $someString
 }"
             );
         }

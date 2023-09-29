@@ -475,7 +475,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationDb2",
-        DefaultParameterSetName = "AddInstance")
+        DefaultParameterSetName = "Instances")
     ]
     public class New_RscMutationDb2 : RscGqlPSCmdlet
     {

@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 23
-    /// operations in the 'vSphere' API domain:
+    /// operations in the 'VMware vSphere' API domain:
     /// ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, or VmwareCdpLiveInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphere creates a new
     /// query object for operations
-    /// in the 'vSphere' API domain. It only creates a data structure,
+    /// in the 'VMware vSphere' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 23 operations
-    /// in the 'vSphere' API domain. Select the operation this
+    /// in the 'VMware vSphere' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -ComputeCluster, -ComputeClusters, -Datacenter, -Datastore, -DatastoreCluster, -DatastoreClusters, -DatastoreList, -Folder, -Folders, -Host, -HostDetails, -HostList, -HostsByFids, -LiveMounts, -Mount, -MountList, -Network, -ResourcePool, -RootRecoveryHierarchy, -Tag, -TagCategory, -TopLevelDescendantsList, -VmwareCdpLiveInfo.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ComputeCluster operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: ComputeCluster
     /// 
     /// $query = New-RscQueryVsphere -ComputeCluster
@@ -107,13 +107,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ComputeClusters operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: ComputeClusters
     /// 
     /// $query = New-RscQueryVsphere -ComputeClusters
@@ -183,13 +183,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Datacenter operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Datacenter
     /// 
     /// $query = New-RscQueryVsphere -Datacenter
@@ -211,13 +211,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Datastore operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Datastore
     /// 
     /// $query = New-RscQueryVsphere -Datastore
@@ -239,13 +239,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatastoreCluster operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: DatastoreCluster
     /// 
     /// $query = New-RscQueryVsphere -DatastoreCluster
@@ -267,13 +267,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatastoreClusters operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: DatastoreClusters
     /// 
     /// $query = New-RscQueryVsphere -DatastoreClusters
@@ -343,13 +343,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DatastoreList operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: DatastoreList
     /// 
     /// $query = New-RscQueryVsphere -DatastoreList
@@ -419,13 +419,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Folder operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Folder
     /// 
     /// $query = New-RscQueryVsphere -Folder
@@ -447,13 +447,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Folders operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Folders
     /// 
     /// $query = New-RscQueryVsphere -Folders
@@ -523,13 +523,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Host operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Host
     /// 
     /// $query = New-RscQueryVsphere -Host
@@ -551,13 +551,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HostDetails operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: HostDetails
     /// 
     /// $query = New-RscQueryVsphere -HostDetails
@@ -582,13 +582,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HostList operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: HostList
     /// 
     /// $query = New-RscQueryVsphere -HostList
@@ -658,13 +658,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HostsByFids operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: HostsByFids
     /// 
     /// $query = New-RscQueryVsphere -HostsByFids
@@ -688,13 +688,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the LiveMounts operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: LiveMounts
     /// 
     /// $query = New-RscQueryVsphere -LiveMounts
@@ -736,13 +736,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Mount operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Mount
     /// 
     /// $query = New-RscQueryVsphere -Mount
@@ -764,13 +764,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the MountList operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: MountList
     /// 
     /// $query = New-RscQueryVsphere -MountList
@@ -813,13 +813,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Network operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Network
     /// 
     /// $query = New-RscQueryVsphere -Network
@@ -841,13 +841,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ResourcePool operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: ResourcePool
     /// 
     /// $query = New-RscQueryVsphere -ResourcePool
@@ -869,13 +869,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RootRecoveryHierarchy operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: RootRecoveryHierarchy
     /// 
     /// $query = New-RscQueryVsphere -RootRecoveryHierarchy
@@ -945,13 +945,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Tag operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: Tag
     /// 
     /// $query = New-RscQueryVsphere -Tag
@@ -973,13 +973,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TagCategory operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: TagCategory
     /// 
     /// $query = New-RscQueryVsphere -TagCategory
@@ -1001,13 +1001,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TopLevelDescendantsList operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: TopLevelDescendantsList
     /// 
     /// $query = New-RscQueryVsphere -TopLevelDescendantsList
@@ -1081,13 +1081,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the VmwareCdpLiveInfo operation
-    /// of the 'vSphere' API domain.
+    /// of the 'VMware vSphere' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere
+    /// # API Domain:    Vsphere
     /// # API Operation: VmwareCdpLiveInfo
     /// 
     /// $query = New-RscQueryVsphere -VmwareCdpLiveInfo
@@ -1125,7 +1125,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ComputeCluster' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherecomputecluster.doc.html]"
@@ -1141,7 +1141,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ComputeClusters' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Query compute clusters
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherecomputeclusters.doc.html]"
@@ -1157,7 +1157,7 @@ Query compute clusters
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Datacenter' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatacenter.doc.html]"
@@ -1173,7 +1173,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Datastore' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Vsphere datastore based on id passed in.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastore.doc.html]"
@@ -1189,7 +1189,7 @@ Vsphere datastore based on id passed in.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatastoreCluster' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Vsphere datastore cluster based on id passed in.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastorecluster.doc.html]"
@@ -1205,7 +1205,7 @@ Vsphere datastore cluster based on id passed in.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatastoreClusters' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Query vSphere datastore clusters.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastoreclusters.doc.html]"
@@ -1221,7 +1221,7 @@ Query vSphere datastore clusters.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'DatastoreList' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastoreconnection.doc.html]"
@@ -1237,7 +1237,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Folder' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherefolder.doc.html]"
@@ -1253,7 +1253,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Folders' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Get all the vSphere folders.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherefolders.doc.html]"
@@ -1269,7 +1269,7 @@ Get all the vSphere folders.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Host' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehost.doc.html]"
@@ -1285,7 +1285,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HostDetails' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Get details of a ESXi hypervisor
 
@@ -1304,7 +1304,7 @@ Get details of a ESXi hypervisor.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HostList' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehostconnection.doc.html]"
@@ -1320,7 +1320,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HostsByFids' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 All of the VSphere hosts based on fids passed in.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehostsbyfids.doc.html]"
@@ -1336,7 +1336,7 @@ All of the VSphere hosts based on fids passed in.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'LiveMounts' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 List of vSphere Live Mounts.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherelivemounts.doc.html]"
@@ -1352,7 +1352,7 @@ List of vSphere Live Mounts.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Mount' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 Get a vSphere Live Mount by id
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheremount.doc.html]"
@@ -1368,7 +1368,7 @@ Get a vSphere Live Mount by id
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'MountList' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 vSphere Live Mount Connection
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheremountconnection.doc.html]"
@@ -1384,7 +1384,7 @@ vSphere Live Mount Connection
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Network' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherenetwork.doc.html]"
@@ -1400,7 +1400,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ResourcePool' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereresourcepool.doc.html]"
@@ -1416,7 +1416,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'RootRecoveryHierarchy' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphererootrecoveryhierarchy.doc.html]"
@@ -1432,7 +1432,7 @@ The root hierarchy for VMware export, which includes VMware compute clusters and
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Tag' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheretag.doc.html]"
@@ -1448,7 +1448,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TagCategory' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheretagcategory.doc.html]"
@@ -1464,7 +1464,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TopLevelDescendantsList' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheretopleveldescendantsconnection.doc.html]"
@@ -1480,7 +1480,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'VmwareCdpLiveInfo' operation
-in the 'vSphere' API domain.
+in the 'VMware vSphere' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmwarecdpliveinfo.doc.html]"

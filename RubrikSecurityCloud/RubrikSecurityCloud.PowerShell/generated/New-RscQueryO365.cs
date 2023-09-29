@@ -23,28 +23,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 37
-    /// operations in the 'O365' API domain:
-    /// AllAdGroups, AllOrgStatuses, AllSubscriptionsAppTypeCounts, BrowseTeamConvChannels, Calendar, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// operations in the 'Office 365' API domain:
+    /// AdGroups, BrowseTeamConvChannels, Calendar, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
     /// </summary>
     /// <description>
     /// New-RscQueryO365 creates a new
     /// query object for operations
-    /// in the 'O365' API domain. It only creates a data structure,
+    /// in the 'Office 365' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 37 operations
-    /// in the 'O365' API domain. Select the operation this
+    /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AllAdGroups, -AllOrgStatuses, -AllSubscriptionsAppTypeCounts, -BrowseTeamConvChannels, -Calendar, -Groups, -License, -ListApps, -Mailbox, -Mailboxes, -ObjectAncestors, -Onedrive, -Onedrives, -Org, -OrgAtSnappableLevel, -OrgSummaries, -Orgs, -ServiceAccount, -ServiceStatus, -SharepointDrive, -SharepointDrives, -SharepointList, -SharepointLists, -SharepointObjectList, -SharepointObjects, -SharepointSite, -SharepointSites, -Site, -Sites, -StorageStats, -Team, -TeamChannels, -TeamConversationsFolderID, -TeamPostedBy, -Teams, -User, -UserObjects.
+    /// one of: -AdGroups, -BrowseTeamConvChannels, -Calendar, -Groups, -License, -ListApps, -Mailbox, -Mailboxes, -ObjectAncestors, -Onedrive, -Onedrives, -Org, -OrgAtSnappableLevel, -OrgStatuses, -OrgSummaries, -Orgs, -ServiceAccount, -ServiceStatus, -SharepointDrive, -SharepointDrives, -SharepointList, -SharepointLists, -SharepointObjectList, -SharepointObjects, -SharepointSite, -SharepointSites, -Site, -Sites, -StorageStats, -SubscriptionsAppTypeCounts, -Team, -TeamChannels, -TeamConversationsFolderID, -TeamPostedBy, -Teams, -User, -UserObjects.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AllAdGroups,
-    /// which is equivalent to specifying -AllAdGroups.
+    /// -Op parameter, for example: -Op AdGroups,
+    /// which is equivalent to specifying -AdGroups.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryO365 -AllAdGroups).Info().
+    /// (New-RscQueryO365 -AdGroups).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,24 +71,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryO365 -AllAdGroups).Info().
+    /// (New-RscQueryO365 -AdGroups).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the AllAdGroups operation
-    /// of the 'O365' API domain.
+    /// Runs the AdGroups operation
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    O365
-    /// # API Operation: AllAdGroups
+    /// # API Operation: AdGroups
     /// 
-    /// $query = New-RscQueryO365 -AllAdGroups
+    /// $query = New-RscQueryO365 -AdGroups
     /// 
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -108,62 +108,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the AllOrgStatuses operation
-    /// of the 'O365' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    O365
-    /// # API Operation: AllOrgStatuses
-    /// 
-    /// $query = New-RscQueryO365 -AllOrgStatuses
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;O365OrgInfo&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the AllSubscriptionsAppTypeCounts operation
-    /// of the 'O365' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    O365
-    /// # API Operation: AllSubscriptionsAppTypeCounts
-    /// 
-    /// $query = New-RscQueryO365 -AllSubscriptionsAppTypeCounts
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;O365SubscriptionAppTypeCounts&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the BrowseTeamConvChannels operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -205,7 +151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Calendar operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -233,7 +179,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Groups operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -313,7 +259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the License operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -340,7 +286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ListApps operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -388,7 +334,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Mailbox operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -416,7 +362,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Mailboxes operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -494,7 +440,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ObjectAncestors operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -522,7 +468,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Onedrive operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -550,7 +496,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Onedrives operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -628,7 +574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Org operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -656,7 +602,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the OrgAtSnappableLevel operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -685,8 +631,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the OrgStatuses operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: OrgStatuses
+    /// 
+    /// $query = New-RscQueryO365 -OrgStatuses
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;O365OrgInfo&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the OrgSummaries operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -713,7 +686,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Orgs operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -791,7 +764,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ServiceAccount operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -819,7 +792,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ServiceStatus operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -847,7 +820,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointDrive operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -875,7 +848,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointDrives operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -953,7 +926,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointList operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -981,7 +954,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointLists operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1059,7 +1032,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointObjectList operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1143,7 +1116,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointObjects operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1221,7 +1194,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointSite operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1249,7 +1222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SharepointSites operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1327,7 +1300,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Site operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1355,7 +1328,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Sites operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1435,7 +1408,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the StorageStats operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1462,8 +1435,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SubscriptionsAppTypeCounts operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: SubscriptionsAppTypeCounts
+    /// 
+    /// $query = New-RscQueryO365 -SubscriptionsAppTypeCounts
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;O365SubscriptionAppTypeCounts&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Team operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1491,7 +1491,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TeamChannels operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1529,7 +1529,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TeamConversationsFolderID operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1561,7 +1561,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TeamPostedBy operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1597,7 +1597,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Teams operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1675,7 +1675,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the User operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1703,7 +1703,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UserObjects operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1789,51 +1789,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         [Parameter(
-            ParameterSetName = "AllAdGroups",
+            ParameterSetName = "AdGroups",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'AllAdGroups' operation
-in the 'O365' API domain.
+@"Create a query object for the 'AdGroups' operation
+in the 'Office 365' API domain.
 Description of the operation:
 All AD Groups belonging to the O365 organization.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365adgroups.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter AllAdGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllOrgStatuses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllOrgStatuses' operation
-in the 'O365' API domain.
-Description of the operation:
-Gets the status of each org in the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365orgstatuses.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllOrgStatuses { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AllSubscriptionsAppTypeCounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AllSubscriptionsAppTypeCounts' operation
-in the 'O365' API domain.
-Description of the operation:
-Returns the total number of apps of each type, for each O365 org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365subscriptionsapptypecounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AllSubscriptionsAppTypeCounts { get; set; }
+        public SwitchParameter AdGroups { get; set; }
 
         
         [Parameter(
@@ -1843,7 +1811,7 @@ Returns the total number of apps of each type, for each O365 org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'BrowseTeamConvChannels' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Browse channels in a Teams conversations snapshot.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browseo365teamconvchannels.doc.html]"
@@ -1859,7 +1827,7 @@ Browse channels in a Teams conversations snapshot.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Calendar' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details of the Exchange calendar pertaining to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365calendar.doc.html]"
@@ -1875,7 +1843,7 @@ Details of the Exchange calendar pertaining to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Groups' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of O365 Groups in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365groups.doc.html]"
@@ -1891,7 +1859,7 @@ List of O365 Groups in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'License' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Retrieve o365 licence details.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365license.doc.html]"
@@ -1907,7 +1875,7 @@ Retrieve o365 licence details.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ListApps' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Lists the O365 apps.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/listo365apps.doc.html]"
@@ -1923,7 +1891,7 @@ Lists the O365 apps.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Mailbox' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the Exchange mailbox corresponding to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365mailbox.doc.html]"
@@ -1939,7 +1907,7 @@ Details for the Exchange mailbox corresponding to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Mailboxes' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of Mailboxes in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365mailboxes.doc.html]"
@@ -1955,7 +1923,7 @@ List of Mailboxes in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ObjectAncestors' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365objectancestors.doc.html]"
@@ -1971,7 +1939,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Onedrive' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the OneDrive corresponding to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365onedrive.doc.html]"
@@ -1987,7 +1955,7 @@ Details for the OneDrive corresponding to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Onedrives' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of Onedrives in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365onedrives.doc.html]"
@@ -2003,7 +1971,7 @@ List of Onedrives in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Org' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details of the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365org.doc.html]"
@@ -2019,7 +1987,7 @@ Details of the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'OrgAtSnappableLevel' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details of the O365Org at snappable level, given the snappable type.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365orgatsnappablelevel.doc.html]"
@@ -2029,13 +1997,29 @@ Details of the O365Org at snappable level, given the snappable type.
 
         
         [Parameter(
+            ParameterSetName = "OrgStatuses",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'OrgStatuses' operation
+in the 'Office 365' API domain.
+Description of the operation:
+Gets the status of each org in the account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365orgstatuses.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter OrgStatuses { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "OrgSummaries",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'OrgSummaries' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365orgsummaries.doc.html]"
@@ -2051,7 +2035,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Orgs' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 All O365 orgs for the account.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365orgs.doc.html]"
@@ -2067,7 +2051,7 @@ All O365 orgs for the account.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ServiceAccount' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Gets the service account for the given org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365serviceaccount.doc.html]"
@@ -2083,7 +2067,7 @@ Gets the service account for the given org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ServiceStatus' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Returns the service status of the O365 service running on MSFT server.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365servicestatus.doc.html]"
@@ -2099,7 +2083,7 @@ Returns the service status of the O365 service running on MSFT server.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointDrive' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the SharePoint drive corresponding to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointdrive.doc.html]"
@@ -2115,7 +2099,7 @@ Details for the SharePoint drive corresponding to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointDrives' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of sharepoint drives (document libraries) in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointdrives.doc.html]"
@@ -2131,7 +2115,7 @@ List of sharepoint drives (document libraries) in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointList' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the SharePoint list corresponding to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointlist.doc.html]"
@@ -2147,7 +2131,7 @@ Details for the SharePoint list corresponding to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointLists' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Paginated list of sharepoint lists in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointlists.doc.html]"
@@ -2163,7 +2147,7 @@ Paginated list of sharepoint lists in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointObjectList' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointobjectlist.doc.html]"
@@ -2179,7 +2163,7 @@ Returns the sharepoint objects after filtering on the object types and includeEn
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointObjects' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointobjects.doc.html]"
@@ -2195,7 +2179,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointSite' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the SharePoint site corresponding to the site ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointsite.doc.html]"
@@ -2211,7 +2195,7 @@ Details for the SharePoint site corresponding to the site ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'SharepointSites' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Paginated list of sharepoint sites in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointsites.doc.html]"
@@ -2227,7 +2211,7 @@ Paginated list of sharepoint sites in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Site' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the SharePoint site corresponding to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365site.doc.html]"
@@ -2243,7 +2227,7 @@ Details for the SharePoint site corresponding to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Sites' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of sites in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sites.doc.html]"
@@ -2259,7 +2243,7 @@ List of sites in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'StorageStats' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Returns the storage stats of an O365 org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365storagestats.doc.html]"
@@ -2269,13 +2253,29 @@ Returns the storage stats of an O365 org.
 
         
         [Parameter(
+            ParameterSetName = "SubscriptionsAppTypeCounts",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'SubscriptionsAppTypeCounts' operation
+in the 'Office 365' API domain.
+Description of the operation:
+Returns the total number of apps of each type, for each O365 org.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365subscriptionsapptypecounts.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter SubscriptionsAppTypeCounts { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "Team",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Team' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the team corresponding to the snappable ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365team.doc.html]"
@@ -2291,7 +2291,7 @@ Details for the team corresponding to the snappable ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TeamChannels' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of Channels for the O365Team.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teamchannels.doc.html]"
@@ -2307,7 +2307,7 @@ List of Channels for the O365Team.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TeamConversationsFolderID' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 ID for the conversations folder in the Team's Group Mailbox.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teamconversationsfolderid.doc.html]"
@@ -2323,7 +2323,7 @@ ID for the conversations folder in the Team's Group Mailbox.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TeamPostedBy' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Users who have posted in a team.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teampostedby.doc.html]"
@@ -2339,7 +2339,7 @@ Users who have posted in a team.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Teams' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 List of O365 Teams in the O365Org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teams.doc.html]"
@@ -2355,7 +2355,7 @@ List of O365 Teams in the O365Org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'User' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Details for the O365 user corresponding to the ID.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365user.doc.html]"
@@ -2371,7 +2371,7 @@ Details for the O365 user corresponding to the ID.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'UserObjects' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Name, id, object type, and mail address of user descendant object.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365userobjects.doc.html]"
@@ -2388,14 +2388,8 @@ Name, id, object type, and mail address of user descendant object.
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AllAdGroups":
-                        this.ProcessRecord_AllAdGroups();
-                        break;
-                    case "AllOrgStatuses":
-                        this.ProcessRecord_AllOrgStatuses();
-                        break;
-                    case "AllSubscriptionsAppTypeCounts":
-                        this.ProcessRecord_AllSubscriptionsAppTypeCounts();
+                    case "AdGroups":
+                        this.ProcessRecord_AdGroups();
                         break;
                     case "BrowseTeamConvChannels":
                         this.ProcessRecord_BrowseTeamConvChannels();
@@ -2432,6 +2426,9 @@ Name, id, object type, and mail address of user descendant object.
                         break;
                     case "OrgAtSnappableLevel":
                         this.ProcessRecord_OrgAtSnappableLevel();
+                        break;
+                    case "OrgStatuses":
+                        this.ProcessRecord_OrgStatuses();
                         break;
                     case "OrgSummaries":
                         this.ProcessRecord_OrgSummaries();
@@ -2478,6 +2475,9 @@ Name, id, object type, and mail address of user descendant object.
                     case "StorageStats":
                         this.ProcessRecord_StorageStats();
                         break;
+                    case "SubscriptionsAppTypeCounts":
+                        this.ProcessRecord_SubscriptionsAppTypeCounts();
+                        break;
                     case "Team":
                         this.ProcessRecord_Team();
                         break;
@@ -2511,29 +2511,11 @@ Name, id, object type, and mail address of user descendant object.
 
         // This parameter set invokes a single graphql operation:
         // allO365AdGroups.
-        internal void ProcessRecord_AllAdGroups()
+        internal void ProcessRecord_AdGroups()
         {
-            this._logger.name += " -AllAdGroups";
+            this._logger.name += " -AdGroups";
             // Create new graphql operation allO365AdGroups
             InitQueryAllO365AdGroups();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allO365OrgStatuses.
-        internal void ProcessRecord_AllOrgStatuses()
-        {
-            this._logger.name += " -AllOrgStatuses";
-            // Create new graphql operation allO365OrgStatuses
-            InitQueryAllO365OrgStatuses();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allO365SubscriptionsAppTypeCounts.
-        internal void ProcessRecord_AllSubscriptionsAppTypeCounts()
-        {
-            this._logger.name += " -AllSubscriptionsAppTypeCounts";
-            // Create new graphql operation allO365SubscriptionsAppTypeCounts
-            InitQueryAllO365SubscriptionsAppTypeCounts();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2642,6 +2624,15 @@ Name, id, object type, and mail address of user descendant object.
             this._logger.name += " -OrgAtSnappableLevel";
             // Create new graphql operation o365OrgAtSnappableLevel
             InitQueryO365OrgAtSnappableLevel();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allO365OrgStatuses.
+        internal void ProcessRecord_OrgStatuses()
+        {
+            this._logger.name += " -OrgStatuses";
+            // Create new graphql operation allO365OrgStatuses
+            InitQueryAllO365OrgStatuses();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2780,6 +2771,15 @@ Name, id, object type, and mail address of user descendant object.
         }
 
         // This parameter set invokes a single graphql operation:
+        // allO365SubscriptionsAppTypeCounts.
+        internal void ProcessRecord_SubscriptionsAppTypeCounts()
+        {
+            this._logger.name += " -SubscriptionsAppTypeCounts";
+            // Create new graphql operation allO365SubscriptionsAppTypeCounts
+            InitQueryAllO365SubscriptionsAppTypeCounts();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // o365Team.
         internal void ProcessRecord_Team()
         {
@@ -2863,42 +2863,6 @@ Name, id, object type, and mail address of user descendant object.
 $query.Var.orgId = $someString
 # REQUIRED
 $query.Var.adGroupSearchFilter = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allO365OrgStatuses: [O365OrgInfo!]!
-        internal void InitQueryAllO365OrgStatuses()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllO365OrgStatuses",
-                "",
-                "List<O365OrgInfo>",
-                Query.AllO365OrgStatuses_ObjectFieldSpec,
-                Query.AllO365OrgStatusesFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allO365SubscriptionsAppTypeCounts: [O365SubscriptionAppTypeCounts!]!
-        internal void InitQueryAllO365SubscriptionsAppTypeCounts()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllO365SubscriptionsAppTypeCounts",
-                "",
-                "List<O365SubscriptionAppTypeCounts>",
-                Query.AllO365SubscriptionsAppTypeCounts_ObjectFieldSpec,
-                Query.AllO365SubscriptionsAppTypeCountsFieldSpec,
-                @""
             );
         }
 
@@ -3388,6 +3352,24 @@ $query.Var.fid = $someString"
 $query.Var.fid = $someString
 # REQUIRED
 $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allO365OrgStatuses: [O365OrgInfo!]!
+        internal void InitQueryAllO365OrgStatuses()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllO365OrgStatuses",
+                "",
+                "List<O365OrgInfo>",
+                Query.AllO365OrgStatuses_ObjectFieldSpec,
+                Query.AllO365OrgStatusesFieldSpec,
+                @""
             );
         }
 
@@ -4134,6 +4116,24 @@ $query.Var.excludeChildSites = $someBoolean"
                 Query.O365StorageStatsFieldSpec,
                 @"# OPTIONAL
 $query.Var.orgID = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allO365SubscriptionsAppTypeCounts: [O365SubscriptionAppTypeCounts!]!
+        internal void InitQueryAllO365SubscriptionsAppTypeCounts()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllO365SubscriptionsAppTypeCounts",
+                "",
+                "List<O365SubscriptionAppTypeCounts>",
+                Query.AllO365SubscriptionsAppTypeCounts_ObjectFieldSpec,
+                Query.AllO365SubscriptionsAppTypeCountsFieldSpec,
+                @""
             );
         }
 

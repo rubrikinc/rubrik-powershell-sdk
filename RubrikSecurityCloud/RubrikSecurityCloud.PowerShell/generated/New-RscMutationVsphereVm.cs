@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 24
-    /// operations in the 'vSphere VM' API domain:
+    /// operations in the 'VMware vSphere VM' API domain:
     /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, or Update.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphereVm creates a new
     /// mutation object for operations
-    /// in the 'vSphere VM' API domain. It only creates a data structure,
+    /// in the 'VMware vSphere VM' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 24 operations
-    /// in the 'vSphere VM' API domain. Select the operation this
+    /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -BatchExport, -BatchExportV3, -BatchInPlaceRecovery, -DeleteSnapshot, -DownloadSnapshot, -DownloadSnapshotFiles, -ExcludeVmDisks, -ExportSnapshotV2, -ExportSnapshotV3, -ExportSnapshotWithDownloadFromCloud, -InitiateBatchInstantRecovery, -InitiateBatchLiveMountV2, -InitiateDiskMount, -InitiateInPlaceRecovery, -InitiateInstantRecoveryV2, -InitiateLiveMountV2, -ListEsxiDatastores, -MountRelocate, -MountRelocateV2, -PowerOnOffLiveMount, -RecoverFiles, -RecoverFilesNew, -RegisterAgent, -Update.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchExport operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: BatchExport
     /// 
     /// $query = New-RscMutationVsphereVm -BatchExport
@@ -188,13 +188,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchExportV3 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: BatchExportV3
     /// 
     /// $query = New-RscMutationVsphereVm -BatchExportV3
@@ -306,13 +306,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BatchInPlaceRecovery operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: BatchInPlaceRecovery
     /// 
     /// $query = New-RscMutationVsphereVm -BatchInPlaceRecovery
@@ -365,13 +365,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteSnapshot operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: DeleteSnapshot
     /// 
     /// $query = New-RscMutationVsphereVm -DeleteSnapshot
@@ -398,13 +398,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadSnapshot operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: DownloadSnapshot
     /// 
     /// $query = New-RscMutationVsphereVm -DownloadSnapshot
@@ -429,13 +429,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DownloadSnapshotFiles operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: DownloadSnapshotFiles
     /// 
     /// $query = New-RscMutationVsphereVm -DownloadSnapshotFiles
@@ -474,13 +474,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExcludeVmDisks operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: ExcludeVmDisks
     /// 
     /// $query = New-RscMutationVsphereVm -ExcludeVmDisks
@@ -509,13 +509,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportSnapshotV2 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: ExportSnapshotV2
     /// 
     /// $query = New-RscMutationVsphereVm -ExportSnapshotV2
@@ -600,13 +600,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportSnapshotV3 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: ExportSnapshotV3
     /// 
     /// $query = New-RscMutationVsphereVm -ExportSnapshotV3
@@ -700,13 +700,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportSnapshotWithDownloadFromCloud operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: ExportSnapshotWithDownloadFromCloud
     /// 
     /// $query = New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud
@@ -791,13 +791,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InitiateBatchInstantRecovery operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: InitiateBatchInstantRecovery
     /// 
     /// $query = New-RscMutationVsphereVm -InitiateBatchInstantRecovery
@@ -923,13 +923,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InitiateBatchLiveMountV2 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: InitiateBatchLiveMountV2
     /// 
     /// $query = New-RscMutationVsphereVm -InitiateBatchLiveMountV2
@@ -1061,13 +1061,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InitiateDiskMount operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: InitiateDiskMount
     /// 
     /// $query = New-RscMutationVsphereVm -InitiateDiskMount
@@ -1103,13 +1103,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InitiateInPlaceRecovery operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: InitiateInPlaceRecovery
     /// 
     /// $query = New-RscMutationVsphereVm -InitiateInPlaceRecovery
@@ -1146,13 +1146,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InitiateInstantRecoveryV2 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: InitiateInstantRecoveryV2
     /// 
     /// $query = New-RscMutationVsphereVm -InitiateInstantRecoveryV2
@@ -1262,13 +1262,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InitiateLiveMountV2 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: InitiateLiveMountV2
     /// 
     /// $query = New-RscMutationVsphereVm -InitiateLiveMountV2
@@ -1382,13 +1382,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ListEsxiDatastores operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: ListEsxiDatastores
     /// 
     /// $query = New-RscMutationVsphereVm -ListEsxiDatastores
@@ -1422,13 +1422,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the MountRelocate operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: MountRelocate
     /// 
     /// $query = New-RscMutationVsphereVm -MountRelocate
@@ -1458,13 +1458,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the MountRelocateV2 operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: MountRelocateV2
     /// 
     /// $query = New-RscMutationVsphereVm -MountRelocateV2
@@ -1518,13 +1518,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the PowerOnOffLiveMount operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: PowerOnOffLiveMount
     /// 
     /// $query = New-RscMutationVsphereVm -PowerOnOffLiveMount
@@ -1556,13 +1556,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverFiles operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: RecoverFiles
     /// 
     /// $query = New-RscMutationVsphereVm -RecoverFiles
@@ -1619,13 +1619,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverFilesNew operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: RecoverFilesNew
     /// 
     /// $query = New-RscMutationVsphereVm -RecoverFilesNew
@@ -1694,13 +1694,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RegisterAgent operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: RegisterAgent
     /// 
     /// $query = New-RscMutationVsphereVm -RegisterAgent
@@ -1725,13 +1725,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Update operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: Update
     /// 
     /// $query = New-RscMutationVsphereVm -Update
@@ -1838,7 +1838,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchExport' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Create a mass export for a group of virtual machines.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmbatchexport.doc.html]"
@@ -1854,7 +1854,7 @@ Create a mass export for a group of virtual machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchExportV3' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Create a batch export for a group of virtual machines with datastore cluster support.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmbatchexportv3.doc.html]"
@@ -1870,7 +1870,7 @@ Create a batch export for a group of virtual machines with datastore cluster sup
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BatchInPlaceRecovery' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Supported in v6.0+. Export a snapshot each from a set of virtual machines.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmbatchinplacerecovery.doc.html]"
@@ -1886,7 +1886,7 @@ Supported in v6.0+. Export a snapshot each from a set of virtual machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteSnapshot' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmdeletesnapshot.doc.html]"
@@ -1902,7 +1902,7 @@ Designate a snapshot as expired and available for garbage collection. The snapsh
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadSnapshot' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Download snapshot from archive
 
@@ -1921,7 +1921,7 @@ Provides a method for retrieving a snapshot, that is not available locally, from
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DownloadSnapshotFiles' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Download files from snapshot.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmdownloadsnapshotfiles.doc.html]"
@@ -1937,7 +1937,7 @@ Download files from snapshot.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExcludeVmDisks' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Exclude or include virtual disks during snapshot.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereexcludevmdisks.doc.html]"
@@ -1953,7 +1953,7 @@ Exclude or include virtual disks during snapshot.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportSnapshotV2' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Create a vSphere Export from a snapshot or a point-in-time.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmexportsnapshotv2.doc.html]"
@@ -1969,7 +1969,7 @@ Create a vSphere Export from a snapshot or a point-in-time.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportSnapshotV3' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmexportsnapshotv3.doc.html]"
@@ -1985,7 +1985,7 @@ Create a vSphere Export from a snapshot or a point-in-time with datastore cluste
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportSnapshotWithDownloadFromCloud' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
 
@@ -2004,7 +2004,7 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InitiateBatchInstantRecovery' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Initiate a mass instant recovery for a group of VMs.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatebatchinstantrecovery.doc.html]"
@@ -2020,7 +2020,7 @@ Initiate a mass instant recovery for a group of VMs.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InitiateBatchLiveMountV2' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Initiate a mass live mount for a group of VMs.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatebatchlivemountv2.doc.html]"
@@ -2036,7 +2036,7 @@ Initiate a mass live mount for a group of VMs.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InitiateDiskMount' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Attaching disks from a snapshot to an existing virtual machine
 
@@ -2055,7 +2055,7 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InitiateInPlaceRecovery' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Trigger an in-place recovery from a snapshot or point-in-time.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiateinplacerecovery.doc.html]"
@@ -2071,7 +2071,7 @@ Trigger an in-place recovery from a snapshot or point-in-time.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InitiateInstantRecoveryV2' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiateinstantrecoveryv2.doc.html]"
@@ -2087,7 +2087,7 @@ Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InitiateLiveMountV2' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Create a vSphere Live Mount from a snapshot or point-in-time.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatelivemountv2.doc.html]"
@@ -2103,7 +2103,7 @@ Create a vSphere Live Mount from a snapshot or point-in-time.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ListEsxiDatastores' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 List ESXi datastores
 
@@ -2122,7 +2122,7 @@ Retrieve a list of the datastores for a specified ESXi host.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'MountRelocate' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Relocate a virtual machine to another datastore
 
@@ -2141,7 +2141,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'MountRelocateV2' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmmountrelocatev2.doc.html]"
@@ -2157,7 +2157,7 @@ Create a Live Mount migration to a datastore or datastore cluster with virtual d
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'PowerOnOffLiveMount' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Power a Live Mount on and off
 
@@ -2176,7 +2176,7 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RecoverFiles' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Restores multiple files/directories from snapshot.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverfiles.doc.html]"
@@ -2192,7 +2192,7 @@ Restores multiple files/directories from snapshot.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RecoverFilesNew' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Restores multiple files/directories from snapshot.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverfilesnew.doc.html]"
@@ -2208,7 +2208,7 @@ Restores multiple files/directories from snapshot.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RegisterAgent' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Register Rubrik Backup Service
 
@@ -2227,7 +2227,7 @@ Register the Rubrik Backup Service that is running on a specified host with the 
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'Update' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 Update VM
 

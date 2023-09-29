@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 51
+    /// Create a new RscQuery object for any of the 43
     /// operations in the 'Azure' API domain:
-    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, ExcludeNativeManagedDisksFromSnapshot, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartCreateNativeManagedDiskSnapshotsJob, StartCreateNativeVirtualMachineSnapshotsJob, StartDisableCloudAccountJob, StartDisableNativeSubscriptionProtectionJob, StartExportNativeManagedDiskJob, StartExportNativeVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, StartRefreshNativeSubscriptionsJob, StartRestoreNativeVirtualMachineJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// </summary>
     /// <description>
     /// New-RscMutationAzure creates a new
@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 51 operations
+    /// There are 43 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddCloudAccount, -AddCloudAccountExocomputeConfigurations, -AddCloudAccountWithoutOauth, -BackupAdDirectory, -CompleteAdAppSetup, -CompleteAdAppUpdate, -CompleteCloudAccountOauth, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeRcvStorageSetting, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateReaderTarget, -CreateSaasAppAad, -CreateTarget, -DeleteAdDirectory, -DeleteCloudAccount, -DeleteCloudAccountExocomputeConfigurations, -DeleteCloudAccountWithoutOauth, -DeleteCluster, -ExcludeNativeManagedDisksFromSnapshot, -MapCloudAccountExocomputeSubscription, -MapCloudAccountToPersistentStorageLocation, -OauthConsentComplete, -OauthConsentKickoff, -RestoreAdObjectsWithPasswords, -SetCloudAccountCustomerAppCredentials, -StartAdAppSetup, -StartAdAppUpdate, -StartCloudAccountOauth, -StartCreateNativeManagedDiskSnapshotsJob, -StartCreateNativeVirtualMachineSnapshotsJob, -StartDisableCloudAccountJob, -StartDisableNativeSubscriptionProtectionJob, -StartExportNativeManagedDiskJob, -StartExportNativeVirtualMachineJob, -StartExportSqlDatabaseDbJob, -StartExportSqlManagedInstanceDbJob, -StartRefreshNativeSubscriptionsJob, -StartRestoreNativeVirtualMachineJob, -UnmapCloudAccountExocomputeSubscription, -UnmapPersistentStorageSubscription, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudNativeRcvStorageSetting, -UpdateCloudNativeStorageSetting, -UpdateCustomerAppPermissionForSql, -UpdateTarget, -UpgradeCloudAccount, -UpgradeCloudAccountPermissionsWithoutOauth.
+    /// one of: -AddCloudAccount, -AddCloudAccountExocomputeConfigurations, -AddCloudAccountWithoutOauth, -BackupAdDirectory, -CompleteAdAppSetup, -CompleteAdAppUpdate, -CompleteCloudAccountOauth, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeRcvStorageSetting, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateReaderTarget, -CreateSaasAppAad, -CreateTarget, -DeleteAdDirectory, -DeleteCloudAccount, -DeleteCloudAccountExocomputeConfigurations, -DeleteCloudAccountWithoutOauth, -DeleteCluster, -MapCloudAccountExocomputeSubscription, -MapCloudAccountToPersistentStorageLocation, -OauthConsentComplete, -OauthConsentKickoff, -RestoreAdObjectsWithPasswords, -SetCloudAccountCustomerAppCredentials, -StartAdAppSetup, -StartAdAppUpdate, -StartCloudAccountOauth, -StartDisableCloudAccountJob, -StartExportSqlDatabaseDbJob, -StartExportSqlManagedInstanceDbJob, -UnmapCloudAccountExocomputeSubscription, -UnmapPersistentStorageSubscription, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudNativeRcvStorageSetting, -UpdateCloudNativeStorageSetting, -UpdateCustomerAppPermissionForSql, -UpdateTarget, -UpgradeCloudAccount, -UpgradeCloudAccountPermissionsWithoutOauth.
     /// Alternatively, you can specify the operation by setting the
     /// -Op parameter, for example: -Op AddCloudAccount,
     /// which is equivalent to specifying -AddCloudAccount.
@@ -1256,46 +1256,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ExcludeNativeManagedDisksFromSnapshot operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: ExcludeNativeManagedDisksFromSnapshot
-    /// 
-    /// $query = New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	virtualMachineRubrikId = $someString
-    /// 	# REQUIRED
-    /// 	managedDiskExclusions = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			managedDiskRubrikId = $someString
-    /// 			# REQUIRED
-    /// 			isExcludedFromSnapshot = $someBoolean
-    /// 		}
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the MapCloudAccountExocomputeSubscription operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1645,76 +1605,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the StartCreateNativeManagedDiskSnapshotsJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartCreateNativeManagedDiskSnapshotsJob
-    /// 
-    /// $query = New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	managedDiskRubrikIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	retentionSlaId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartCreateNativeVirtualMachineSnapshotsJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartCreateNativeVirtualMachineSnapshotsJob
-    /// 
-    /// $query = New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	virtualMachineRubrikIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	retentionSlaId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the StartDisableCloudAccountJob operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1742,161 +1632,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartDisableNativeSubscriptionProtectionJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartDisableNativeSubscriptionProtectionJob
-    /// 
-    /// $query = New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	azureSubscriptionRubrikId = $someString
-    /// 	# REQUIRED
-    /// 	shouldDeleteNativeSnapshots = $someBoolean
-    /// 	# REQUIRED
-    /// 	azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartExportNativeManagedDiskJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartExportNativeManagedDiskJob
-    /// 
-    /// $query = New-RscMutationAzure -StartExportNativeManagedDiskJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
-    /// 	diskName = $someString
-    /// 	# OPTIONAL
-    /// 	diskEncryptionSetNativeId = $someString
-    /// 	# REQUIRED
-    /// 	diskStorageTier = $someAzureNativeManagedDiskType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeManagedDiskType]) for enum values.
-    /// 	# REQUIRED
-    /// 	diskSize = $someInt
-    /// 	# REQUIRED
-    /// 	resourceGroup = $someString
-    /// 	# REQUIRED
-    /// 	destinationRegion = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 	# OPTIONAL
-    /// 	destinationAvailabilityZone = $someString
-    /// 	# OPTIONAL
-    /// 	destinationSubscriptionRubrikId = $someString
-    /// 	# REQUIRED
-    /// 	shouldExportTags = $someBoolean
-    /// 	# REQUIRED
-    /// 	shouldReplaceAttachedManagedDisk = $someBoolean
-    /// 	# OPTIONAL
-    /// 	shouldUseReplica = $someBoolean
-    /// 	# OPTIONAL
-    /// 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartExportNativeVirtualMachineJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartExportNativeVirtualMachineJob
-    /// 
-    /// $query = New-RscMutationAzure -StartExportNativeVirtualMachineJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
-    /// 	virtualMachineName = $someString
-    /// 	# OPTIONAL
-    /// 	diskEncryptionSetNativeId = $someString
-    /// 	# REQUIRED
-    /// 	resourceGroupName = $someString
-    /// 	# REQUIRED
-    /// 	destinationRegion = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 	# OPTIONAL
-    /// 	destinationAvailabilityZone = $someString
-    /// 	# OPTIONAL
-    /// 	destinationSubscriptionRubrikId = $someString
-    /// 	# REQUIRED
-    /// 	virtualMachineSize = $someString
-    /// 	# REQUIRED
-    /// 	subnetNativeId = $someString
-    /// 	# OPTIONAL
-    /// 	networkSecurityGroupNativeId = $someString
-    /// 	# REQUIRED
-    /// 	shouldExportTags = $someBoolean
-    /// 	# REQUIRED
-    /// 	shouldPowerOff = $someBoolean
-    /// 	# OPTIONAL
-    /// 	shouldUseReplica = $someBoolean
-    /// 	# OPTIONAL
-    /// 	availabilitySetNativeId = $someString
-    /// 	# OPTIONAL
-    /// 	shouldEnableAcceleratedNetworking = $someBoolean
-    /// 	# OPTIONAL
-    /// 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
-    /// 	# OPTIONAL
-    /// 	recoveryDiskIds = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
     /// 
     /// 
     /// 
@@ -2044,80 +1779,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	serviceTier = $someString
     /// 	# OPTIONAL
     /// 	serviceObjectiveName = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartRefreshNativeSubscriptionsJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartRefreshNativeSubscriptionsJob
-    /// 
-    /// $query = New-RscMutationAzure -StartRefreshNativeSubscriptionsJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	azureSubscriptionRubrikIds = @(
-    /// 		$someString
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the StartRestoreNativeVirtualMachineJob operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: StartRestoreNativeVirtualMachineJob
-    /// 
-    /// $query = New-RscMutationAzure -StartRestoreNativeVirtualMachineJob
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
-    /// 	shouldPowerOn = $someBoolean
-    /// 	# REQUIRED
-    /// 	shouldRestoreTags = $someBoolean
-    /// 	# OPTIONAL
-    /// 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeForRestoreIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeForRestoreIfSourceExpired]) for enum values.
-    /// 	# OPTIONAL
-    /// 	recoveryDiskIds = @(
-    /// 		$someString
-    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -3022,22 +2683,6 @@ Delete a Rubrik Cloud Cluster on Azure.
 
         
         [Parameter(
-            ParameterSetName = "ExcludeNativeManagedDisksFromSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeNativeManagedDisksFromSnapshot' operation
-in the 'Azure' API domain.
-Description of the operation:
-Exclude the Managed Disks from snapshots, for the specified virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/excludeazurenativemanageddisksfromsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeNativeManagedDisksFromSnapshot { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "MapCloudAccountExocomputeSubscription",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -3182,38 +2827,6 @@ Initiates a session before doing Azure OAuth flow. If a custom app is configured
 
         
         [Parameter(
-            ParameterSetName = "StartCreateNativeManagedDiskSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCreateNativeManagedDiskSnapshotsJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateazurenativemanageddisksnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCreateNativeManagedDiskSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartCreateNativeVirtualMachineSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCreateNativeVirtualMachineSnapshotsJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateazurenativevirtualmachinesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCreateNativeVirtualMachineSnapshotsJob { get; set; }
-
-        
-        [Parameter(
             ParameterSetName = "StartDisableCloudAccountJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -3227,54 +2840,6 @@ Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. 
             // No Position -> named parameter only.
         )]
         public SwitchParameter StartDisableCloudAccountJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartDisableNativeSubscriptionProtectionJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartDisableNativeSubscriptionProtectionJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to disable protection for a specified Azure subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startdisableazurenativesubscriptionprotectionjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartDisableNativeSubscriptionProtectionJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportNativeManagedDiskJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportNativeManagedDiskJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to export the specified Azure Native Managed Disks to the desired destination.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportazurenativemanageddiskjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportNativeManagedDiskJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportNativeVirtualMachineJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportNativeVirtualMachineJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportazurenativevirtualmachinejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportNativeVirtualMachineJob { get; set; }
 
         
         [Parameter(
@@ -3307,38 +2872,6 @@ Start a job to export Azure SQL Managed Instance database. The job creates a new
             // No Position -> named parameter only.
         )]
         public SwitchParameter StartExportSqlManagedInstanceDbJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRefreshNativeSubscriptionsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRefreshNativeSubscriptionsJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrefreshazurenativesubscriptionsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRefreshNativeSubscriptionsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRestoreNativeVirtualMachineJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRestoreNativeVirtualMachineJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrestoreazurenativevirtualmachinejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRestoreNativeVirtualMachineJob { get; set; }
 
         
         [Parameter(
@@ -3585,9 +3118,6 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
                     case "DeleteCluster":
                         this.ProcessRecord_DeleteCluster();
                         break;
-                    case "ExcludeNativeManagedDisksFromSnapshot":
-                        this.ProcessRecord_ExcludeNativeManagedDisksFromSnapshot();
-                        break;
                     case "MapCloudAccountExocomputeSubscription":
                         this.ProcessRecord_MapCloudAccountExocomputeSubscription();
                         break;
@@ -3615,35 +3145,14 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
                     case "StartCloudAccountOauth":
                         this.ProcessRecord_StartCloudAccountOauth();
                         break;
-                    case "StartCreateNativeManagedDiskSnapshotsJob":
-                        this.ProcessRecord_StartCreateNativeManagedDiskSnapshotsJob();
-                        break;
-                    case "StartCreateNativeVirtualMachineSnapshotsJob":
-                        this.ProcessRecord_StartCreateNativeVirtualMachineSnapshotsJob();
-                        break;
                     case "StartDisableCloudAccountJob":
                         this.ProcessRecord_StartDisableCloudAccountJob();
-                        break;
-                    case "StartDisableNativeSubscriptionProtectionJob":
-                        this.ProcessRecord_StartDisableNativeSubscriptionProtectionJob();
-                        break;
-                    case "StartExportNativeManagedDiskJob":
-                        this.ProcessRecord_StartExportNativeManagedDiskJob();
-                        break;
-                    case "StartExportNativeVirtualMachineJob":
-                        this.ProcessRecord_StartExportNativeVirtualMachineJob();
                         break;
                     case "StartExportSqlDatabaseDbJob":
                         this.ProcessRecord_StartExportSqlDatabaseDbJob();
                         break;
                     case "StartExportSqlManagedInstanceDbJob":
                         this.ProcessRecord_StartExportSqlManagedInstanceDbJob();
-                        break;
-                    case "StartRefreshNativeSubscriptionsJob":
-                        this.ProcessRecord_StartRefreshNativeSubscriptionsJob();
-                        break;
-                    case "StartRestoreNativeVirtualMachineJob":
-                        this.ProcessRecord_StartRestoreNativeVirtualMachineJob();
                         break;
                     case "UnmapCloudAccountExocomputeSubscription":
                         this.ProcessRecord_UnmapCloudAccountExocomputeSubscription();
@@ -3869,15 +3378,6 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
         }
 
         // This parameter set invokes a single graphql operation:
-        // excludeAzureNativeManagedDisksFromSnapshot.
-        internal void ProcessRecord_ExcludeNativeManagedDisksFromSnapshot()
-        {
-            this._logger.name += " -ExcludeNativeManagedDisksFromSnapshot";
-            // Create new graphql operation excludeAzureNativeManagedDisksFromSnapshot
-            InitMutationExcludeAzureNativeManagedDisksFromSnapshot();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // mapAzureCloudAccountExocomputeSubscription.
         internal void ProcessRecord_MapCloudAccountExocomputeSubscription()
         {
@@ -3959,57 +3459,12 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
         }
 
         // This parameter set invokes a single graphql operation:
-        // startCreateAzureNativeManagedDiskSnapshotsJob.
-        internal void ProcessRecord_StartCreateNativeManagedDiskSnapshotsJob()
-        {
-            this._logger.name += " -StartCreateNativeManagedDiskSnapshotsJob";
-            // Create new graphql operation startCreateAzureNativeManagedDiskSnapshotsJob
-            InitMutationStartCreateAzureNativeManagedDiskSnapshotsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startCreateAzureNativeVirtualMachineSnapshotsJob.
-        internal void ProcessRecord_StartCreateNativeVirtualMachineSnapshotsJob()
-        {
-            this._logger.name += " -StartCreateNativeVirtualMachineSnapshotsJob";
-            // Create new graphql operation startCreateAzureNativeVirtualMachineSnapshotsJob
-            InitMutationStartCreateAzureNativeVirtualMachineSnapshotsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // startDisableAzureCloudAccountJob.
         internal void ProcessRecord_StartDisableCloudAccountJob()
         {
             this._logger.name += " -StartDisableCloudAccountJob";
             // Create new graphql operation startDisableAzureCloudAccountJob
             InitMutationStartDisableAzureCloudAccountJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startDisableAzureNativeSubscriptionProtectionJob.
-        internal void ProcessRecord_StartDisableNativeSubscriptionProtectionJob()
-        {
-            this._logger.name += " -StartDisableNativeSubscriptionProtectionJob";
-            // Create new graphql operation startDisableAzureNativeSubscriptionProtectionJob
-            InitMutationStartDisableAzureNativeSubscriptionProtectionJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startExportAzureNativeManagedDiskJob.
-        internal void ProcessRecord_StartExportNativeManagedDiskJob()
-        {
-            this._logger.name += " -StartExportNativeManagedDiskJob";
-            // Create new graphql operation startExportAzureNativeManagedDiskJob
-            InitMutationStartExportAzureNativeManagedDiskJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startExportAzureNativeVirtualMachineJob.
-        internal void ProcessRecord_StartExportNativeVirtualMachineJob()
-        {
-            this._logger.name += " -StartExportNativeVirtualMachineJob";
-            // Create new graphql operation startExportAzureNativeVirtualMachineJob
-            InitMutationStartExportAzureNativeVirtualMachineJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4028,24 +3483,6 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
             this._logger.name += " -StartExportSqlManagedInstanceDbJob";
             // Create new graphql operation startExportAzureSqlManagedInstanceDbJob
             InitMutationStartExportAzureSqlManagedInstanceDbJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startRefreshAzureNativeSubscriptionsJob.
-        internal void ProcessRecord_StartRefreshNativeSubscriptionsJob()
-        {
-            this._logger.name += " -StartRefreshNativeSubscriptionsJob";
-            // Create new graphql operation startRefreshAzureNativeSubscriptionsJob
-            InitMutationStartRefreshAzureNativeSubscriptionsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startRestoreAzureNativeVirtualMachineJob.
-        internal void ProcessRecord_StartRestoreNativeVirtualMachineJob()
-        {
-            this._logger.name += " -StartRestoreNativeVirtualMachineJob";
-            // Create new graphql operation startRestoreAzureNativeVirtualMachineJob
-            InitMutationStartRestoreAzureNativeVirtualMachineJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -5166,38 +4603,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // excludeAzureNativeManagedDisksFromSnapshot(input: ExcludeAzureNativeManagedDisksFromSnapshotInput!): Void
-        internal void InitMutationExcludeAzureNativeManagedDisksFromSnapshot()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ExcludeAzureNativeManagedDisksFromSnapshotInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationExcludeAzureNativeManagedDisksFromSnapshot",
-                "($input: ExcludeAzureNativeManagedDisksFromSnapshotInput!)",
-                "System.String",
-                Mutation.ExcludeAzureNativeManagedDisksFromSnapshot_ObjectFieldSpec,
-                Mutation.ExcludeAzureNativeManagedDisksFromSnapshotFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	virtualMachineRubrikId = $someString
-	# REQUIRED
-	managedDiskExclusions = @(
-		@{
-			# REQUIRED
-			managedDiskRubrikId = $someString
-			# REQUIRED
-			isExcludedFromSnapshot = $someBoolean
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // mapAzureCloudAccountExocomputeSubscription(input: MapAzureCloudAccountExocomputeSubscriptionInput!): MapAzureCloudAccountExocomputeSubscriptionReply!
         internal void InitMutationMapAzureCloudAccountExocomputeSubscription()
         {
@@ -5474,60 +4879,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // startCreateAzureNativeManagedDiskSnapshotsJob(input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartCreateAzureNativeManagedDiskSnapshotsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartCreateAzureNativeManagedDiskSnapshotsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartCreateAzureNativeManagedDiskSnapshotsJob",
-                "($input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartCreateAzureNativeManagedDiskSnapshotsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	managedDiskRubrikIds = @(
-		$someString
-	)
-	# OPTIONAL
-	retentionSlaId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startCreateAzureNativeVirtualMachineSnapshotsJob(input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartCreateAzureNativeVirtualMachineSnapshotsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartCreateAzureNativeVirtualMachineSnapshotsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartCreateAzureNativeVirtualMachineSnapshotsJob",
-                "($input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	virtualMachineRubrikIds = @(
-		$someString
-	)
-	# OPTIONAL
-	retentionSlaId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // startDisableAzureCloudAccountJob(input: StartDisableAzureCloudAccountJobInput!): BatchAsyncJobStatus!
         internal void InitMutationStartDisableAzureCloudAccountJob()
         {
@@ -5548,137 +4899,6 @@ $query.Var.input = @{
 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	# REQUIRED
 	cloudAccountIds = @(
-		$someString
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startDisableAzureNativeSubscriptionProtectionJob(input: StartDisableAzureNativeSubscriptionProtectionJobInput!): AsyncJobStatus!
-        internal void InitMutationStartDisableAzureNativeSubscriptionProtectionJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartDisableAzureNativeSubscriptionProtectionJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartDisableAzureNativeSubscriptionProtectionJob",
-                "($input: StartDisableAzureNativeSubscriptionProtectionJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartDisableAzureNativeSubscriptionProtectionJob_ObjectFieldSpec,
-                Mutation.StartDisableAzureNativeSubscriptionProtectionJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	azureSubscriptionRubrikId = $someString
-	# REQUIRED
-	shouldDeleteNativeSnapshots = $someBoolean
-	# REQUIRED
-	azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startExportAzureNativeManagedDiskJob(input: StartExportAzureNativeManagedDiskJobInput!): AsyncJobStatus!
-        internal void InitMutationStartExportAzureNativeManagedDiskJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartExportAzureNativeManagedDiskJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartExportAzureNativeManagedDiskJob",
-                "($input: StartExportAzureNativeManagedDiskJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartExportAzureNativeManagedDiskJob_ObjectFieldSpec,
-                Mutation.StartExportAzureNativeManagedDiskJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
-	diskName = $someString
-	# OPTIONAL
-	diskEncryptionSetNativeId = $someString
-	# REQUIRED
-	diskStorageTier = $someAzureNativeManagedDiskType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeManagedDiskType]) for enum values.
-	# REQUIRED
-	diskSize = $someInt
-	# REQUIRED
-	resourceGroup = $someString
-	# REQUIRED
-	destinationRegion = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-	# OPTIONAL
-	destinationAvailabilityZone = $someString
-	# OPTIONAL
-	destinationSubscriptionRubrikId = $someString
-	# REQUIRED
-	shouldExportTags = $someBoolean
-	# REQUIRED
-	shouldReplaceAttachedManagedDisk = $someBoolean
-	# OPTIONAL
-	shouldUseReplica = $someBoolean
-	# OPTIONAL
-	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startExportAzureNativeVirtualMachineJob(input: StartExportAzureNativeVirtualMachineJobInput!): AsyncJobStatus!
-        internal void InitMutationStartExportAzureNativeVirtualMachineJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartExportAzureNativeVirtualMachineJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartExportAzureNativeVirtualMachineJob",
-                "($input: StartExportAzureNativeVirtualMachineJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartExportAzureNativeVirtualMachineJob_ObjectFieldSpec,
-                Mutation.StartExportAzureNativeVirtualMachineJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
-	virtualMachineName = $someString
-	# OPTIONAL
-	diskEncryptionSetNativeId = $someString
-	# REQUIRED
-	resourceGroupName = $someString
-	# REQUIRED
-	destinationRegion = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-	# OPTIONAL
-	destinationAvailabilityZone = $someString
-	# OPTIONAL
-	destinationSubscriptionRubrikId = $someString
-	# REQUIRED
-	virtualMachineSize = $someString
-	# REQUIRED
-	subnetNativeId = $someString
-	# OPTIONAL
-	networkSecurityGroupNativeId = $someString
-	# REQUIRED
-	shouldExportTags = $someBoolean
-	# REQUIRED
-	shouldPowerOff = $someBoolean
-	# OPTIONAL
-	shouldUseReplica = $someBoolean
-	# OPTIONAL
-	availabilitySetNativeId = $someString
-	# OPTIONAL
-	shouldEnableAcceleratedNetworking = $someBoolean
-	# OPTIONAL
-	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
-	# OPTIONAL
-	recoveryDiskIds = @(
 		$someString
 	)
 }"
@@ -5819,64 +5039,6 @@ $query.Var.input = @{
 	serviceTier = $someString
 	# OPTIONAL
 	serviceObjectiveName = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startRefreshAzureNativeSubscriptionsJob(input: StartRefreshAzureNativeSubscriptionsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartRefreshAzureNativeSubscriptionsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartRefreshAzureNativeSubscriptionsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartRefreshAzureNativeSubscriptionsJob",
-                "($input: StartRefreshAzureNativeSubscriptionsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartRefreshAzureNativeSubscriptionsJob_ObjectFieldSpec,
-                Mutation.StartRefreshAzureNativeSubscriptionsJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	azureSubscriptionRubrikIds = @(
-		$someString
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startRestoreAzureNativeVirtualMachineJob(input: StartRestoreAzureNativeVirtualMachineJobInput!): AsyncJobStatus!
-        internal void InitMutationStartRestoreAzureNativeVirtualMachineJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartRestoreAzureNativeVirtualMachineJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartRestoreAzureNativeVirtualMachineJob",
-                "($input: StartRestoreAzureNativeVirtualMachineJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartRestoreAzureNativeVirtualMachineJob_ObjectFieldSpec,
-                Mutation.StartRestoreAzureNativeVirtualMachineJobFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
-	shouldPowerOn = $someBoolean
-	# REQUIRED
-	shouldRestoreTags = $someBoolean
-	# OPTIONAL
-	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeForRestoreIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeForRestoreIfSourceExpired]) for enum values.
-	# OPTIONAL
-	recoveryDiskIds = @(
-		$someString
-	)
 }"
             );
         }

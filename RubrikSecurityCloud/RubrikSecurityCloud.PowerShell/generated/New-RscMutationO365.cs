@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 31
-    /// operations in the 'O365' API domain:
+    /// operations in the 'Office 365' API domain:
     /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// </summary>
     /// <description>
     /// New-RscMutationO365 creates a new
     /// mutation object for operations
-    /// in the 'O365' API domain. It only creates a data structure,
+    /// in the 'Office 365' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 31 operations
-    /// in the 'O365' API domain. Select the operation this
+    /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -AddOrg, -BackupMailbox, -BackupOnedrive, -BackupSharePointSite, -BackupSharepointDrive, -BackupSharepointList, -BackupTeam, -CreateAppComplete, -CreateAppKickoff, -DeleteAzureApp, -DeleteOrg, -DeleteServiceAccount, -EnableSharePoint, -EnableTeams, -ExportMailbox, -InsertCustomerApp, -OauthConsentComplete, -OauthConsentKickoff, -PdlGroups, -RefreshOrg, -RestoreMailbox, -RestoreSnappable, -RestoreTeamsConversations, -RestoreTeamsFiles, -SaaSSetupKickoff, -SaasSetupComplete, -SetServiceAccount, -SetupKickoff, -UpdateAppAuthStatus, -UpdateAppPermissions, -UpdateOrgCustomName.
     /// Alternatively, you can specify the operation by setting the
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the AddOrg operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BackupMailbox operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BackupOnedrive operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BackupSharePointSite operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -212,7 +212,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BackupSharepointDrive operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -245,7 +245,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BackupSharepointList operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -276,7 +276,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the BackupTeam operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateAppComplete operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -344,7 +344,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CreateAppKickoff operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -377,7 +377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteAzureApp operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -407,7 +407,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteOrg operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -435,7 +435,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the DeleteServiceAccount operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -463,7 +463,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the EnableSharePoint operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -494,7 +494,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the EnableTeams operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -522,7 +522,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ExportMailbox operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -570,7 +570,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the InsertCustomerApp operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -611,7 +611,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the OauthConsentComplete operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -650,7 +650,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the OauthConsentKickoff operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -683,7 +683,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the PdlGroups operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -723,7 +723,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RefreshOrg operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -751,7 +751,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RestoreMailbox operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -799,7 +799,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RestoreSnappable operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1383,7 +1383,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RestoreTeamsConversations operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1495,7 +1495,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RestoreTeamsFiles operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1614,7 +1614,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SaaSSetupKickoff operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1641,7 +1641,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SaasSetupComplete operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1699,7 +1699,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SetServiceAccount operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1731,7 +1731,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the SetupKickoff operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1758,7 +1758,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateAppAuthStatus operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1791,7 +1791,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateAppPermissions operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1824,7 +1824,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UpdateOrgCustomName operation
-    /// of the 'O365' API domain.
+    /// of the 'Office 365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -1871,7 +1871,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'AddOrg' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Adds an O365 org to the account.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addo365org.doc.html]"
@@ -1887,7 +1887,7 @@ Adds an O365 org to the account.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BackupMailbox' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Backup mailbox workload.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365mailbox.doc.html]"
@@ -1903,7 +1903,7 @@ Backup mailbox workload.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BackupOnedrive' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Take on-demand snapshot for Onedrive.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365onedrive.doc.html]"
@@ -1919,7 +1919,7 @@ Take on-demand snapshot for Onedrive.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BackupSharePointSite' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Take on-demand snapshot for a SharePoint site.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365sharepointsite.doc.html]"
@@ -1935,7 +1935,7 @@ Take on-demand snapshot for a SharePoint site.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BackupSharepointDrive' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Take on-demand snapshot for Sharepoint drive.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365sharepointdrive.doc.html]"
@@ -1951,7 +1951,7 @@ Take on-demand snapshot for Sharepoint drive.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BackupSharepointList' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Take on-demand snapshot for SharePoint list.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365sharepointlist.doc.html]"
@@ -1967,7 +1967,7 @@ Take on-demand snapshot for SharePoint list.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'BackupTeam' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Take on-demand snapshot for Teams.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365team.doc.html]"
@@ -1983,7 +1983,7 @@ Take on-demand snapshot for Teams.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateAppComplete' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Completes the creation flow for an O365 Azure AD App.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createo365appcomplete.doc.html]"
@@ -1999,7 +1999,7 @@ Completes the creation flow for an O365 Azure AD App.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'CreateAppKickoff' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Kicks off the creation flow for an O365 Azure AD App.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createo365appkickoff.doc.html]"
@@ -2015,7 +2015,7 @@ Kicks off the creation flow for an O365 Azure AD App.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteAzureApp' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Deletes an O365 Azure AD App from the account.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteo365azureapp.doc.html]"
@@ -2031,7 +2031,7 @@ Deletes an O365 Azure AD App from the account.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteOrg' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Deletes an O365 org from the account.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteo365org.doc.html]"
@@ -2047,7 +2047,7 @@ Deletes an O365 org from the account.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'DeleteServiceAccount' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Deletes the service account for an org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteo365serviceaccount.doc.html]"
@@ -2063,7 +2063,7 @@ Deletes the service account for an org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'EnableSharePoint' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Enables SharePoint protection in the exocompute cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/enableo365sharepoint.doc.html]"
@@ -2079,7 +2079,7 @@ Enables SharePoint protection in the exocompute cluster.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'EnableTeams' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Enables Teams protection in the exocompute cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/enableo365teams.doc.html]"
@@ -2095,7 +2095,7 @@ Enables Teams protection in the exocompute cluster.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'ExportMailbox' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Exports an Exchange mailbox.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exporto365mailbox.doc.html]"
@@ -2111,7 +2111,7 @@ Exports an Exchange mailbox.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'InsertCustomerApp' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Inserts a Customer-hosted O365 Azure AD App.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/insertcustomero365app.doc.html]"
@@ -2127,7 +2127,7 @@ Inserts a Customer-hosted O365 Azure AD App.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'OauthConsentComplete' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Completes the OAuth consent flow for an O365 Azure AD App.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365oauthconsentcomplete.doc.html]"
@@ -2143,7 +2143,7 @@ Completes the OAuth consent flow for an O365 Azure AD App.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'OauthConsentKickoff' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Kicks off the OAuth consent flow for an O365 Azure AD App.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365oauthconsentkickoff.doc.html]"
@@ -2159,7 +2159,7 @@ Kicks off the OAuth consent flow for an O365 Azure AD App.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'PdlGroups' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365pdlgroups.doc.html]"
@@ -2175,7 +2175,7 @@ Retrieve or create the groups corresponding to the preferred data location and w
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RefreshOrg' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Refreshes an O365 org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refresho365org.doc.html]"
@@ -2191,7 +2191,7 @@ Refreshes an O365 org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RestoreMailbox' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Restores an Exchange mailbox.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365mailbox.doc.html]"
@@ -2207,7 +2207,7 @@ Restores an Exchange mailbox.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RestoreSnappable' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Restores an O365 snappable.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365snappable.doc.html]"
@@ -2223,7 +2223,7 @@ Restores an O365 snappable.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RestoreTeamsConversations' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Restore Team conversations.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365teamsconversations.doc.html]"
@@ -2239,7 +2239,7 @@ Restore Team conversations.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'RestoreTeamsFiles' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Restore Team files.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365teamsfiles.doc.html]"
@@ -2255,7 +2255,7 @@ Restore Team files.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'SaaSSetupKickoff' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365saassetupkickoff.doc.html]"
@@ -2271,7 +2271,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'SaasSetupComplete' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Completes a Rubrik-Hosted setup flow.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365saassetupcomplete.doc.html]"
@@ -2287,7 +2287,7 @@ Completes a Rubrik-Hosted setup flow.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'SetServiceAccount' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Sets the service account for the org.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/seto365serviceaccount.doc.html]"
@@ -2303,7 +2303,7 @@ Sets the service account for the org.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'SetupKickoff' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Kicks off an O365 subscription setup flow.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365setupkickoff.doc.html]"
@@ -2319,7 +2319,7 @@ Kicks off an O365 subscription setup flow.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateAppAuthStatus' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Update O365 App authentication status to applicable app version.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateo365appauthstatus.doc.html]"
@@ -2335,7 +2335,7 @@ Update O365 App authentication status to applicable app version.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateAppPermissions' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Update O365 Azure app permission in Azure AD portal.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateo365apppermissions.doc.html]"
@@ -2351,7 +2351,7 @@ Update O365 Azure app permission in Azure AD portal.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a mutation object for the 'UpdateOrgCustomName' operation
-in the 'O365' API domain.
+in the 'Office 365' API domain.
 Description of the operation:
 Update the custom name for an O365 Organization.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateo365orgcustomname.doc.html]"

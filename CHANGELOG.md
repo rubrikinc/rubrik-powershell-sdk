@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.16
+
+New Features:
+
+- Total query and mutation cmdlets is now at 52,
+  see: [docs/domains_and_operations.md](docs/domains_and_operations.md)
+
 ## Version 0.15
 
 New Features:

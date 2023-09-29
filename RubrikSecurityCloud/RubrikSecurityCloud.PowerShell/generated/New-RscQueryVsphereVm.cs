@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 6
-    /// operations in the 'vSphere VM' API domain:
+    /// operations in the 'VMware vSphere VM' API domain:
     /// AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, or RecoverableRangeInBatch.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphereVm creates a new
     /// query object for operations
-    /// in the 'vSphere VM' API domain. It only creates a data structure,
+    /// in the 'VMware vSphere VM' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 6 operations
-    /// in the 'vSphere VM' API domain. Select the operation this
+    /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -AsyncRequestStatus, -MissedRecoverableRange, -New, -NewList, -RecoverableRange, -RecoverableRangeInBatch.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the AsyncRequestStatus operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: AsyncRequestStatus
     /// 
     /// $query = New-RscQueryVsphereVm -AsyncRequestStatus
@@ -109,13 +109,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the MissedRecoverableRange operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: MissedRecoverableRange
     /// 
     /// $query = New-RscQueryVsphereVm -MissedRecoverableRange
@@ -141,13 +141,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the New operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: New
     /// 
     /// $query = New-RscQueryVsphereVm -New
@@ -169,13 +169,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the NewList operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: NewList
     /// 
     /// $query = New-RscQueryVsphereVm -NewList
@@ -245,13 +245,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverableRange operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: RecoverableRange
     /// 
     /// $query = New-RscQueryVsphereVm -RecoverableRange
@@ -277,13 +277,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverableRangeInBatch operation
-    /// of the 'vSphere VM' API domain.
+    /// of the 'VMware vSphere VM' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere VM
+    /// # API Domain:    VsphereVm
     /// # API Operation: RecoverableRangeInBatch
     /// 
     /// $query = New-RscQueryVsphereVm -RecoverableRangeInBatch
@@ -328,7 +328,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'AsyncRequestStatus' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmasyncrequeststatus.doc.html]"
@@ -344,7 +344,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'MissedRecoverableRange' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmmissedrecoverablerange.doc.html]"
@@ -360,7 +360,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'New' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmnew.doc.html]"
@@ -376,7 +376,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'NewList' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmnewconnection.doc.html]"
@@ -392,7 +392,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'RecoverableRange' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverablerange.doc.html]"
@@ -408,7 +408,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'RecoverableRangeInBatch' operation
-in the 'vSphere VM' API domain.
+in the 'VMware vSphere VM' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverablerangeinbatch.doc.html]"

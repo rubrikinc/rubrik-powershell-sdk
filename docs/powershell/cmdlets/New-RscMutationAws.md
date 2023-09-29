@@ -58,11 +58,6 @@ Deletes AWS Exocompute configs.
 
 - There is a single argument of type DeleteAwsExocomputeConfigsInput.
 - Returns DeleteAwsExocomputeConfigsReply.
-### excludenativeebsvolumesfromsnapshot
-Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
-
-- There is a single argument of type ExcludeAwsNativeEbsVolumesFromSnapshotInput.
-- Returns System.String.
 ### finalizecloudaccountdeletion
 Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
 
@@ -98,45 +93,10 @@ Registers the AWS account artifacts such as roles in RSC backend while onboardin
 
 - There is a single argument of type RegisterAwsFeatureArtifactsInput.
 - Returns RegisterAwsFeatureArtifactsReply.
-### startcreatenativeebsvolumesnapshotsjob
-Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
-
-- There is a single argument of type StartCreateAwsNativeEbsVolumeSnapshotsJobInput.
-- Returns BatchAsyncJobStatus.
 ### startexocomputedisablejob
 Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
 
 - There is a single argument of type StartAwsExocomputeDisableJobInput.
-- Returns AsyncJobStatus.
-### startexportnativeebsvolumesnapshotjob
-Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
-
-- There is a single argument of type StartExportAwsNativeEbsVolumeSnapshotJobInput.
-- Returns AsyncJobStatus.
-### startnativeaccountdisablejob
-Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
-
-- There is a single argument of type StartAwsNativeAccountDisableJobInput.
-- Returns AsyncJobStatus.
-### startnativeec2instancesnapshotsjob
-Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
-
-- There is a single argument of type StartAwsNativeEc2InstanceSnapshotsJobInput.
-- Returns BatchAsyncJobStatus.
-### startnativerdsinstancesnapshotsjob
-Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
-
-- There is a single argument of type StartAwsNativeRdsInstanceSnapshotsJobInput.
-- Returns BatchAsyncJobStatus.
-### startrefreshnativeaccountsjob
-Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
-
-- There is a single argument of type StartRefreshAwsNativeAccountsJobInput.
-- Returns BatchAsyncJobStatus.
-### startrestorenativeec2instancesnapshotjob
-Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
-
-- There is a single argument of type StartRestoreAwsNativeEc2InstanceSnapshotJobInput.
 - Returns AsyncJobStatus.
 ### updateaccount
 - There is a single argument of type UpdateAwsAccountInput.

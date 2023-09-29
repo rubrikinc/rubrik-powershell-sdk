@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 14
-    /// operations in the 'Hyperv' API domain:
+    /// operations in the 'Microsoft Hyper-V' API domain:
     /// Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachines, or VmDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryHyperv creates a new
     /// query object for operations
-    /// in the 'Hyperv' API domain. It only creates a data structure,
+    /// in the 'Microsoft Hyper-V' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 14 operations
-    /// in the 'Hyperv' API domain. Select the operation this
+    /// in the 'Microsoft Hyper-V' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -Cluster, -HostAsyncRequestStatus, -Mounts, -Scvmm, -ScvmmAsyncRequestStatus, -Scvmms, -Server, -Servers, -TopLevelDescendants, -UniqueServersCount, -VirtualMachine, -VirtualMachineAsyncRequestStatus, -VirtualMachines, -VmDetail.
     /// Alternatively, you can specify the operation by setting the
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Cluster operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HostAsyncRequestStatus operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -140,7 +140,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Mounts operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Scvmm operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ScvmmAsyncRequestStatus operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Scvmms operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -325,7 +325,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Server operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Servers operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -400,7 +400,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the TopLevelDescendants operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -480,7 +480,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the UniqueServersCount operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -548,7 +548,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the VirtualMachine operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -576,7 +576,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the VirtualMachineAsyncRequestStatus operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -609,7 +609,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the VirtualMachines operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -685,7 +685,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the VmDetail operation
-    /// of the 'Hyperv' API domain.
+    /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -730,7 +730,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Cluster' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Details of the given Hyper-V Cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervcluster.doc.html]"
@@ -746,7 +746,7 @@ Details of the given Hyper-V Cluster.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HostAsyncRequestStatus' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Get Hyper-V host async request
 
@@ -765,7 +765,7 @@ Get details about a Hyper-V host related async request.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Mounts' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 HyperV Live Mount Connection.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervmounts.doc.html]"
@@ -781,7 +781,7 @@ HyperV Live Mount Connection.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Scvmm' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Details of the given Hyper-V SCVMM.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmm.doc.html]"
@@ -797,7 +797,7 @@ Details of the given Hyper-V SCVMM.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ScvmmAsyncRequestStatus' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Get Hyper-V SCVMM async request
 
@@ -816,7 +816,7 @@ Get details about a Hyper-V SCVMM related async request.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Scvmms' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Paginated list of HyperV SCVMMs.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmms.doc.html]"
@@ -832,7 +832,7 @@ Paginated list of HyperV SCVMMs.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Server' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Details of the given Hyper-V Server.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervserver.doc.html]"
@@ -848,7 +848,7 @@ Details of the given Hyper-V Server.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Servers' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Get summary of all the Hyper-V hosts
 
@@ -867,7 +867,7 @@ Get summary of all the Hyper-V hosts.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'TopLevelDescendants' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Paginated list of the highest-level HyperV Objects accessible by the current user.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervtopleveldescendants.doc.html]"
@@ -883,7 +883,7 @@ Paginated list of the highest-level HyperV Objects accessible by the current use
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'UniqueServersCount' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Count of unique HyperV Servers.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/uniquehypervserverscount.doc.html]"
@@ -899,7 +899,7 @@ Count of unique HyperV Servers.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'VirtualMachine' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Details of the given Hyper-V Virtual Machine.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachine.doc.html]"
@@ -915,7 +915,7 @@ Details of the given Hyper-V Virtual Machine.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'VirtualMachineAsyncRequestStatus' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Get VM async request details
 
@@ -934,7 +934,7 @@ Get details about a Hyper-V vm related async request.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'VirtualMachines' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 Paginated list of HyperV Virtual Machines.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachines.doc.html]"
@@ -950,7 +950,7 @@ Paginated list of HyperV Virtual Machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'VmDetail' operation
-in the 'Hyperv' API domain.
+in the 'Microsoft Hyper-V' API domain.
 Description of the operation:
 HyperV Virtual Machine detail from CDM.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvmdetail.doc.html]"

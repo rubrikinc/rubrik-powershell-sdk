@@ -1,10 +1,5 @@
 # New-RscQueryMssql
 ## Subcommands
-### alldatabaserestorefiles
-Provides a list of database files to be restored for the specified restore or export operation.
-
-- There is a single argument of type MssqlGetRestoreFilesV1Input.
-- Returns V1MssqlGetRestoreFilesV1Response.
 ### availabilitygroup
 A Microsoft SQL Availability Group.
 
@@ -58,6 +53,11 @@ Returns a size estimate for a restore, export, or mount.
 
 - There is a single argument of type MssqlRestoreEstimateV1Input.
 - Returns MssqlRestoreEstimateResult.
+### databaserestorefiles
+Provides a list of database files to be restored for the specified restore or export operation.
+
+- There is a single argument of type MssqlGetRestoreFilesV1Input.
+- Returns V1MssqlGetRestoreFilesV1Response.
 ### databases
 Paginated list of Microsoft SQL Databases.
 

@@ -22,9 +22,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Account' API domain:
-    /// Id, Owners, Products, Settings, or WithExocomputeMappings.
+    /// EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
     /// </summary>
     /// <description>
     /// New-RscQueryAccount creates a new
@@ -34,17 +34,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 7 operations
     /// in the 'Account' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Id, -Owners, -Products, -Settings, -WithExocomputeMappings.
+    /// one of: -EnabledFeatures, -Id, -Lookup, -Owners, -Products, -Settings, -Users.
     /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Id,
-    /// which is equivalent to specifying -Id.
+    /// -Op parameter, for example: -Op EnabledFeatures,
+    /// which is equivalent to specifying -EnabledFeatures.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryAccount -Id).Info().
+    /// (New-RscQueryAccount -EnabledFeatures).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -71,11 +71,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryAccount -Id).Info().
+    /// (New-RscQueryAccount -EnabledFeatures).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the EnabledFeatures operation
+    /// of the 'Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Account
+    /// # API Operation: EnabledFeatures
+    /// 
+    /// $query = New-RscQueryAccount -EnabledFeatures
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AllEnabledFeaturesForAccountReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the Id operation
@@ -97,6 +124,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Lookup operation
+    /// of the 'Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Account
+    /// # API Operation: Lookup
+    /// 
+    /// $query = New-RscQueryAccount -Lookup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	includeExpiryDate = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: LookupAccountReply
     /// 
     /// 
     /// 
@@ -201,7 +259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the WithExocomputeMappings operation
+    /// Runs the Users operation
     /// of the 'Account' API domain.
     /// <code>
     /// PS &gt;
@@ -209,26 +267,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Account
-    /// # API Operation: WithExocomputeMappings
+    /// # API Operation: Users
     /// 
-    /// $query = New-RscQueryAccount -WithExocomputeMappings
+    /// $query = New-RscQueryAccount -Users
     /// 
-    /// # REQUIRED
-    /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.features = @(
-    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// )
-    /// # REQUIRED
-    /// $query.Var.exocomputeAccountIdsFilter = @(
-    /// 	$someString
-    /// )
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;CloudAccountWithExocomputeMapping&gt;
+    /// Write-Host $result.GetType().Name # prints: List&lt;User&gt;
     /// 
     /// 
     /// 
@@ -246,6 +302,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         [Parameter(
+            ParameterSetName = "EnabledFeatures",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'EnabledFeatures' operation
+in the 'Account' API domain.
+Description of the operation:
+Provides a list of all features enabled for the Rubrik account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allenabledfeaturesforaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter EnabledFeatures { get; set; }
+
+        
+        [Parameter(
             ParameterSetName = "Id",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -259,6 +331,22 @@ Account ID.
             // No Position -> named parameter only.
         )]
         public SwitchParameter Id { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Lookup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Lookup' operation
+in the 'Account' API domain.
+Description of the operation:
+Retrieve account information.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/lookupaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Lookup { get; set; }
 
         
         [Parameter(
@@ -310,19 +398,19 @@ This endpoint is deprecated.
 
         
         [Parameter(
-            ParameterSetName = "WithExocomputeMappings",
+            ParameterSetName = "Users",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a query object for the 'WithExocomputeMappings' operation
+@"Create a query object for the 'Users' operation
 in the 'Account' API domain.
 Description of the operation:
-Retrieves the list of all accounts with their Exocompute account mapping, if exists.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allaccountswithexocomputemappings.doc.html]"
+All the users on the current account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allusersonaccount.doc.html]"
             // No Position -> named parameter only.
         )]
-        public SwitchParameter WithExocomputeMappings { get; set; }
+        public SwitchParameter Users { get; set; }
 
 
 
@@ -333,8 +421,14 @@ Retrieves the list of all accounts with their Exocompute account mapping, if exi
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "EnabledFeatures":
+                        this.ProcessRecord_EnabledFeatures();
+                        break;
                     case "Id":
                         this.ProcessRecord_Id();
+                        break;
+                    case "Lookup":
+                        this.ProcessRecord_Lookup();
                         break;
                     case "Owners":
                         this.ProcessRecord_Owners();
@@ -345,8 +439,8 @@ Retrieves the list of all accounts with their Exocompute account mapping, if exi
                     case "Settings":
                         this.ProcessRecord_Settings();
                         break;
-                    case "WithExocomputeMappings":
-                        this.ProcessRecord_WithExocomputeMappings();
+                    case "Users":
+                        this.ProcessRecord_Users();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -359,12 +453,30 @@ Retrieves the list of all accounts with their Exocompute account mapping, if exi
         }
 
         // This parameter set invokes a single graphql operation:
+        // allEnabledFeaturesForAccount.
+        internal void ProcessRecord_EnabledFeatures()
+        {
+            this._logger.name += " -EnabledFeatures";
+            // Create new graphql operation allEnabledFeaturesForAccount
+            InitQueryAllEnabledFeaturesForAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // accountId.
         internal void ProcessRecord_Id()
         {
             this._logger.name += " -Id";
             // Create new graphql operation accountId
             InitQueryAccountId();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // lookupAccount.
+        internal void ProcessRecord_Lookup()
+        {
+            this._logger.name += " -Lookup";
+            // Create new graphql operation lookupAccount
+            InitQueryLookupAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -395,14 +507,32 @@ Retrieves the list of all accounts with their Exocompute account mapping, if exi
         }
 
         // This parameter set invokes a single graphql operation:
-        // allAccountsWithExocomputeMappings.
-        internal void ProcessRecord_WithExocomputeMappings()
+        // allUsersOnAccount.
+        internal void ProcessRecord_Users()
         {
-            this._logger.name += " -WithExocomputeMappings";
-            // Create new graphql operation allAccountsWithExocomputeMappings
-            InitQueryAllAccountsWithExocomputeMappings();
+            this._logger.name += " -Users";
+            // Create new graphql operation allUsersOnAccount
+            InitQueryAllUsersOnAccount();
         }
 
+
+        // Create new GraphQL Query:
+        // allEnabledFeaturesForAccount: AllEnabledFeaturesForAccountReply!
+        internal void InitQueryAllEnabledFeaturesForAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllEnabledFeaturesForAccount",
+                "",
+                "AllEnabledFeaturesForAccountReply",
+                Query.AllEnabledFeaturesForAccount_ObjectFieldSpec,
+                Query.AllEnabledFeaturesForAccountFieldSpec,
+                @""
+            );
+        }
 
         // Create new GraphQL Query:
         // accountId: String!
@@ -419,6 +549,29 @@ Retrieves the list of all accounts with their Exocompute account mapping, if exi
                 Query.AccountId_ObjectFieldSpec,
                 Query.AccountIdFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // lookupAccount(input: LookupAccountInput!): LookupAccountReply!
+        internal void InitQueryLookupAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "LookupAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryLookupAccount",
+                "($input: LookupAccountInput!)",
+                "LookupAccountReply",
+                Query.LookupAccount_ObjectFieldSpec,
+                Query.LookupAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	includeExpiryDate = $someBoolean
+}"
             );
         }
 
@@ -503,32 +656,36 @@ $query.Var.endDateArg = $someDateTime"
         }
 
         // Create new GraphQL Query:
-        // allAccountsWithExocomputeMappings(cloudVendor: CloudVendor!, features: [CloudAccountFeature!]! = [], exocomputeAccountIdsFilter: [UUID!]! = []): [CloudAccountWithExocomputeMapping!]!
-        internal void InitQueryAllAccountsWithExocomputeMappings()
+        // allUsersOnAccount(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //   ): [User!]!
+        internal void InitQueryAllUsersOnAccount()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudVendor", "CloudVendor!"),
-                Tuple.Create("features", "[CloudAccountFeature!]!"),
-                Tuple.Create("exocomputeAccountIdsFilter", "[UUID!]!"),
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryAllAccountsWithExocomputeMappings",
-                "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)",
-                "List<CloudAccountWithExocomputeMapping>",
-                Query.AllAccountsWithExocomputeMappings_ObjectFieldSpec,
-                Query.AllAccountsWithExocomputeMappingsFieldSpec,
-                @"# REQUIRED
-$query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
-# REQUIRED
-$query.Var.features = @(
-	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-)
-# REQUIRED
-$query.Var.exocomputeAccountIdsFilter = @(
-	$someString
-)"
+                "QueryAllUsersOnAccount",
+                "($first: Int,$after: String,$last: Int,$before: String)",
+                "List<User>",
+                Query.AllUsersOnAccount_ObjectFieldSpec,
+                Query.AllUsersOnAccountFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString"
             );
         }
 

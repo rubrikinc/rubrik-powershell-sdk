@@ -73,6 +73,7 @@ User audit object type.
 - TPR_CONFIG - TPR configuration type.
 - CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
 - EXCHANGE_SERVER - Exchange Server type.
+- OAUTH_TOKEN - OAuth token.
 - ENCRYPTION_MANAGEMENT - Encryption Management type.
 - ManagedVolume - Managed Volume type.
 - Vcd - VCD type.

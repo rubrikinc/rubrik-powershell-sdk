@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: Assign
     /// 
     /// $query = New-RscMutationSla -Assign
@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: AssignRetentionToSnappables
     /// 
     /// $query = New-RscMutationSla -AssignRetentionToSnappables
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: AssignRetentionToSnapshots
     /// 
     /// $query = New-RscMutationSla -AssignRetentionToSnapshots
@@ -208,7 +208,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: AssignsForSnappableHierarchies
     /// 
     /// $query = New-RscMutationSla -AssignsForSnappableHierarchies
@@ -254,7 +254,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: CreateGlobal
     /// 
     /// $query = New-RscMutationSla -CreateGlobal
@@ -766,7 +766,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: ExportManagedVolumeSnapshot
     /// 
     /// $query = New-RscMutationSla -ExportManagedVolumeSnapshot
@@ -839,7 +839,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: GetPendingAssignments
     /// 
     /// $query = New-RscMutationSla -GetPendingAssignments
@@ -875,7 +875,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: Pause
     /// 
     /// $query = New-RscMutationSla -Pause
@@ -912,7 +912,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    SLA
+    /// # API Domain:    Sla
     /// # API Operation: UpdateGlobal
     /// 
     /// $query = New-RscMutationSla -UpdateGlobal

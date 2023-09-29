@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 9
-    /// operations in the 'vSphere vCenter' API domain:
+    /// operations in the 'VMware vSphere vCenter' API domain:
     /// AdvancedTagPreview, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// </summary>
     /// <description>
     /// New-RscQueryVcenter creates a new
     /// query object for operations
-    /// in the 'vSphere vCenter' API domain. It only creates a data structure,
+    /// in the 'VMware vSphere vCenter' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 9 operations
-    /// in the 'vSphere vCenter' API domain. Select the operation this
+    /// in the 'VMware vSphere vCenter' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -AdvancedTagPreview, -HotAddBandwidth, -HotAddNetwork, -HotAddProxy, -List, -Networks, -NumProxiesNeeded, -PreAddInfo, -Vcenter.
     /// Alternatively, you can specify the operation by setting the
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the AdvancedTagPreview operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: AdvancedTagPreview
     /// 
     /// $query = New-RscQueryVcenter -AdvancedTagPreview
@@ -116,13 +116,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HotAddBandwidth operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: HotAddBandwidth
     /// 
     /// $query = New-RscQueryVcenter -HotAddBandwidth
@@ -147,13 +147,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HotAddNetwork operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: HotAddNetwork
     /// 
     /// $query = New-RscQueryVcenter -HotAddNetwork
@@ -178,13 +178,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the HotAddProxy operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: HotAddProxy
     /// 
     /// $query = New-RscQueryVcenter -HotAddProxy
@@ -208,13 +208,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the List operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: List
     /// 
     /// $query = New-RscQueryVcenter -List
@@ -284,13 +284,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Networks operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: Networks
     /// 
     /// $query = New-RscQueryVcenter -Networks
@@ -315,13 +315,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the NumProxiesNeeded operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: NumProxiesNeeded
     /// 
     /// $query = New-RscQueryVcenter -NumProxiesNeeded
@@ -346,13 +346,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the PreAddInfo operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: PreAddInfo
     /// 
     /// $query = New-RscQueryVcenter -PreAddInfo
@@ -393,13 +393,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Vcenter operation
-    /// of the 'vSphere vCenter' API domain.
+    /// of the 'VMware vSphere vCenter' API domain.
     /// <code>
     /// PS &gt;
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    vSphere vCenter
+    /// # API Domain:    Vcenter
     /// # API Operation: Vcenter
     /// 
     /// $query = New-RscQueryVcenter -Vcenter
@@ -435,7 +435,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'AdvancedTagPreview' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Preview list of virtual machines of a proposed filter condition
 
@@ -454,7 +454,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HotAddBandwidth' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Get the ingest and export bandwidth limits for HotAdd with the vCenter
 
@@ -473,7 +473,7 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HotAddNetwork' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Retrieve the user-configured network for HotAdd operations
 
@@ -492,7 +492,7 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'HotAddProxy' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Get a list of HotAdd proxy virtual machines
 
@@ -511,7 +511,7 @@ Retrieve summary information for all HotAdd proxy virtual machines.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'List' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevcenterconnection.doc.html]"
@@ -527,7 +527,7 @@ Description of the operation:
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Networks' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Get the user-configured networks in the vCenter
 
@@ -546,7 +546,7 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'NumProxiesNeeded' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Get the number of HotAdd proxies needed for the vCenter
 
@@ -565,7 +565,7 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'PreAddInfo' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 Get preAddInfo for a vcenter.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenterpreaddinfo.doc.html]"
@@ -581,7 +581,7 @@ Get preAddInfo for a vcenter.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Vcenter' operation
-in the 'vSphere vCenter' API domain.
+in the 'VMware vSphere vCenter' API domain.
 Description of the operation:
 
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevcenter.doc.html]"

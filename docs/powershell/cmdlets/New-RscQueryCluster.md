@@ -1,13 +1,5 @@
 # New-RscQueryCluster
 ## Subcommands
-### certificates
-Get all certificates
-
-Supported in v5.1+
-Get all certificates.
-
-- There is a single argument of type QueryCertificatesInput.
-- Returns CertificateSummaryListResponse.
 ### cluster
 A cluster object.
 
@@ -18,14 +10,6 @@ List all connected clusters.
 
 - There is a single argument of type ClusterTypeEnum.
 - Returns list of DataLocationSupportedClusters.
-### csr
-Get the cluster certificate signing request
-
-Supported in v7.0+
-Returns the certificate signing request generated from the private key of the Rubrik cluster.
-
-- There is a single argument of type GetClusterCsrInput.
-- Returns ClusterCsr.
 ### databaselogreport
 Get the database log backup delay information
 
@@ -64,11 +48,6 @@ Get a list of a cluster's always-available Ips.
 
 - There is a single argument of type GetClusterIpsInput.
 - Returns InternalGetClusterIpsResponse.
-### globalslas
-Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-
-- There is a single argument of type System.String.
-- Returns list of SlaInfos.
 ### groupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -102,14 +81,6 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
-### k8s
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns K8sClusterConnection.
 ### list
 List of the available cluster objects.
 
@@ -189,15 +160,6 @@ Retrieve details of the Rubrik clusters' reports migration.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ReportMigrationStatusConnection.
-### sladomains
-Returns paginated list of SLA domains that were created on Rubrik CDM.
-
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns ClusterSlaDomainConnection.
 ### totpackstatus
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 
@@ -206,13 +168,6 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 ### typelist
 - The typelist subcommand takes no arguments.
 - Returns list of GroupCounts.
-### verifyslawithreplicationto
-Verify for a Rubrik cluster if it is replication target in any SLA Domain.
-
-- There are 2 arguments.
-    - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
-    - includeArchived - System.Boolean: Include Archived SLA.
-- Returns VerifySlaWithReplicationToClusterResponse.
 ### vlans
 Rubrik cluster VLAN information.
 
@@ -223,14 +178,6 @@ Get web server certificate and IPMI details for multiple clusters.
 
 - There is a single argument of type BulkClusterWebCertAndIpmiInput.
 - Returns list of ClusterWebCertAndIpmis.
-### websignedcertificate
-Get the signed certificate for Web server
-
-Supported in v5.2+
-If the web server uses a signed certificate, fetch it.
-
-- There is a single argument of type ClusterWebSignedCertificateInput.
-- Returns ClusterWebSignedCertificateReply.
 ### windows
 A Windows Cluster.
 

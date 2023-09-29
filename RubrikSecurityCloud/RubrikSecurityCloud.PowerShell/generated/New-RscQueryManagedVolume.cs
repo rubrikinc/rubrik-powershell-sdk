@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: InventoryStats
     /// 
     /// $query = New-RscQueryManagedVolume -InventoryStats
@@ -112,7 +112,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: LiveMounts
     /// 
     /// $query = New-RscQueryManagedVolume -LiveMounts
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: ManagedVolume
     /// 
     /// $query = New-RscQueryManagedVolume -ManagedVolume
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: ManagedVolumes
     /// 
     /// $query = New-RscQueryManagedVolume -ManagedVolumes

@@ -3,7 +3,8 @@
 Utilities for RSC Toolkit development
 #>
 param (
-    [switch]$Quiet
+    [switch]$Quiet,
+    [switch]$Connect
 )
 
 . "$PSScriptRoot\..\Private\FileUtils.ps1"
@@ -11,6 +12,9 @@ param (
 
 if ( ! $Quiet ) {
     Write-Host "`nRubrikSecurityCloud module imported from Output directory."
+}
+if ( $Connect ) {
+    Connect-Rsc
 }
 
 $tkdir = (Get-Item $PSScriptRoot).Parent

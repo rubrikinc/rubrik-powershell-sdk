@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: Add
     /// 
     /// $query = New-RscMutationManagedVolume -Add
@@ -202,7 +202,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: BeginSnapshot
     /// 
     /// $query = New-RscMutationManagedVolume -BeginSnapshot
@@ -258,7 +258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: Delete
     /// 
     /// $query = New-RscMutationManagedVolume -Delete
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: DeleteSnapshotExport
     /// 
     /// $query = New-RscMutationManagedVolume -DeleteSnapshotExport
@@ -322,7 +322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: DownloadFiles
     /// 
     /// $query = New-RscMutationManagedVolume -DownloadFiles
@@ -365,7 +365,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: DownloadFromLocation
     /// 
     /// $query = New-RscMutationManagedVolume -DownloadFromLocation
@@ -403,7 +403,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: EndSnapshot
     /// 
     /// $query = New-RscMutationManagedVolume -EndSnapshot
@@ -448,7 +448,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: ExportSnapshot
     /// 
     /// $query = New-RscMutationManagedVolume -ExportSnapshot
@@ -512,7 +512,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: Resize
     /// 
     /// $query = New-RscMutationManagedVolume -Resize
@@ -548,7 +548,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: TakeOnDemandSnapshot
     /// 
     /// $query = New-RscMutationManagedVolume -TakeOnDemandSnapshot
@@ -587,7 +587,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// 
     /// # Create an RscQuery object for:
-    /// # API Domain:    Managed Volume
+    /// # API Domain:    ManagedVolume
     /// # API Operation: Update
     /// 
     /// $query = New-RscMutationManagedVolume -Update

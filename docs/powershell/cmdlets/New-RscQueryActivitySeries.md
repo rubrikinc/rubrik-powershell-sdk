@@ -15,3 +15,19 @@ Retrieve an activity series.
     - sortBy - ActivitySeriesSortField: Sort activity series by field.
     - filters - ActivitySeriesFilter
 - Returns ActivitySeriesConnection.
+### userfiletimeline
+- There are 6 arguments.
+    - userId - System.String
+    - resource - ResourceInput
+    - nativePath - System.String
+    - startDay - System.String: Start time, in string format (YYYY-MM-DD).
+    - timezone - System.String
+    - timeGranularity - TimeGranularity
+- Returns ActivityTimelineResultConnection.
+### usertimeline
+- There are 4 arguments.
+    - userId - System.String
+    - startDay - System.String: Start time, in string format (YYYY-MM-DD).
+    - timezone - System.String
+    - uniqueActivities - System.Boolean
+- Returns ActivityTimelineResultConnection.

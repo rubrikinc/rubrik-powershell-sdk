@@ -23,19 +23,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Create a new RscQuery object for any of the 11
-    /// operations in the 'AzureO365' API domain:
+    /// operations in the 'Azure Office365' API domain:
     /// CheckNSGOutboundRules, CheckNetworkSubnet, CheckResourceGroupName, CheckStorageAccountAccessibility, CheckStorageAccountName, CheckSubscriptionQuota, CheckVirtualNetworkName, Exocompute, GetAzureHostType, GetNetworkSubnetUnusedAddr, or ValidateUserRoles.
     /// </summary>
     /// <description>
     /// New-RscQueryAzureO365 creates a new
     /// query object for operations
-    /// in the 'AzureO365' API domain. It only creates a data structure,
+    /// in the 'Azure Office365' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
     /// There are 11 operations
-    /// in the 'AzureO365' API domain. Select the operation this
+    /// in the 'Azure Office365' API domain. Select the operation this
     /// query is for by specifying the appropriate switch parameter;
     /// one of: -CheckNSGOutboundRules, -CheckNetworkSubnet, -CheckResourceGroupName, -CheckStorageAccountAccessibility, -CheckStorageAccountName, -CheckSubscriptionQuota, -CheckVirtualNetworkName, -Exocompute, -GetAzureHostType, -GetNetworkSubnetUnusedAddr, -ValidateUserRoles.
     /// Alternatively, you can specify the operation by setting the
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckNSGOutboundRules operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckNetworkSubnet operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckResourceGroupName operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckStorageAccountAccessibility operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckStorageAccountName operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -251,7 +251,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckSubscriptionQuota operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -283,7 +283,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the CheckVirtualNetworkName operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -317,7 +317,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Exocompute operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -347,7 +347,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the GetAzureHostType operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -374,7 +374,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the GetNetworkSubnetUnusedAddr operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -412,7 +412,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the ValidateUserRoles operation
-    /// of the 'AzureO365' API domain.
+    /// of the 'Azure Office365' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -456,7 +456,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckNSGOutboundRules' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the NSG Outbound rules of the Azure resources.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checknsgoutboundrules.doc.html]"
@@ -472,7 +472,7 @@ Checks the NSG Outbound rules of the Azure resources.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckNetworkSubnet' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the network subnet of the Azure resources.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checknetworksubnet.doc.html]"
@@ -488,7 +488,7 @@ Checks the network subnet of the Azure resources.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckResourceGroupName' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the resource group name.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkresourcegroupname.doc.html]"
@@ -504,7 +504,7 @@ Checks the resource group name.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckStorageAccountAccessibility' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the accessibility of the storage account.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkstorageaccountaccessibility.doc.html]"
@@ -520,7 +520,7 @@ Checks the accessibility of the storage account.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckStorageAccountName' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the storage account name.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkstorageaccountname.doc.html]"
@@ -536,7 +536,7 @@ Checks the storage account name.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckSubscriptionQuota' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the Azure subscription quota.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checksubscriptionquota.doc.html]"
@@ -552,7 +552,7 @@ Checks the Azure subscription quota.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'CheckVirtualNetworkName' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Checks the virtual network name.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkvirtualnetworkname.doc.html]"
@@ -568,7 +568,7 @@ Checks the virtual network name.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'Exocompute' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Gets the exocompute details of the given cluster.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365exocompute.doc.html]"
@@ -584,7 +584,7 @@ Gets the exocompute details of the given cluster.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'GetAzureHostType' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Retrieves the AzureHostType of the account.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365getazurehosttype.doc.html]"
@@ -600,7 +600,7 @@ Retrieves the AzureHostType of the account.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'GetNetworkSubnetUnusedAddr' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Retrieves the unused addresses available in a subnet.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365getnetworksubnetunusedaddr.doc.html]"
@@ -616,7 +616,7 @@ Retrieves the unused addresses available in a subnet.
             ValueFromPipeline = false,
             HelpMessage =
 @"Create a query object for the 'ValidateUserRoles' operation
-in the 'AzureO365' API domain.
+in the 'Azure Office365' API domain.
 Description of the operation:
 Validates the user roles in the subscription.
 [GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365validateuserroles.doc.html]"
