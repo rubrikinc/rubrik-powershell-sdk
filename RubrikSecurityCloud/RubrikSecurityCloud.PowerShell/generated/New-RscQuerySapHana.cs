@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'SAP HANA' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Database, -Databases, -LogSnapshot, -LogSnapshots, -RecoverableRange, -RecoverableRanges, -System, -Systems.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Database,
-    /// which is equivalent to specifying -Database.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Database, Databases, LogSnapshot, LogSnapshots, RecoverableRange, RecoverableRanges, System, or Systems.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -455,139 +454,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQuerySapHana",
-        DefaultParameterSetName = "System")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQuerySapHana : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Database' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Details of a SAP HANA database for a given FID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanadatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Database { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Database",
+                "Databases",
+                "LogSnapshot",
+                "LogSnapshots",
+                "RecoverableRange",
+                "RecoverableRanges",
+                "System",
+                "Systems",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Databases' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Connection of filtered SAP HANA databases based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanadatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LogSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LogSnapshot' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Details of a SAP HANA log snapshot for a given FID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanalogsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LogSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LogSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LogSnapshots' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Connection of all log snapshots for SAP HANA.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanalogsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LogSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRange' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Details of a SAP HANA recoverable range for a given FID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanarecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRanges' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Connection of all recoverable ranges for SAP HANA.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanarecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "System",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'System' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Details of a SAP HANA system for a given FID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanasystem.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter System { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Systems",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Systems' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Connection of filtered SAP HANA systems based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/saphanasystems.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Systems { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

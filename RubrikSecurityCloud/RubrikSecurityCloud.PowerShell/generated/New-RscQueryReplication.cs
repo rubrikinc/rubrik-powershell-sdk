@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Replication' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -IncomingStats, -OutgoingStats, -Pairs, -ValidTargets.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op IncomingStats,
-    /// which is equivalent to specifying -IncomingStats.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: IncomingStats, OutgoingStats, Pairs, or ValidTargets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -240,75 +239,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryReplication",
-        DefaultParameterSetName = "Pairs")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryReplication : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "IncomingStats",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IncomingStats' operation
-in the 'Replication' API domain.
-Description of the operation:
-Get a time series of total incoming bandwidth to the replication clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/replicationincomingstats.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IncomingStats { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "IncomingStats",
+                "OutgoingStats",
+                "Pairs",
+                "ValidTargets",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "OutgoingStats",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OutgoingStats' operation
-in the 'Replication' API domain.
-Description of the operation:
-Get the time series of total outgoing bandwidth from the replication clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/replicationoutgoingstats.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OutgoingStats { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Pairs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Pairs' operation
-in the 'Replication' API domain.
-Description of the operation:
-List of all replication pair Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/replicationpairs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Pairs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidTargets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidTargets' operation
-in the 'Replication' API domain.
-Description of the operation:
-List all valid replication target clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvalidreplicationtargets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidTargets { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

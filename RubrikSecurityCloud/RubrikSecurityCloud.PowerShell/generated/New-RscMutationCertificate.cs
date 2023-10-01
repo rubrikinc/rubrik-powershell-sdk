@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Certificates' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddClusterCertificate, -Delete, -SetSso, -SetWebSigned, -Update, -UpdateHost.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddClusterCertificate,
-    /// which is equivalent to specifying -AddClusterCertificate.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddClusterCertificate, Delete, SetSso, SetWebSigned, Update, or UpdateHost.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -289,113 +288,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationCertificate",
-        DefaultParameterSetName = "Update")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationCertificate : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddClusterCertificate",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddClusterCertificate' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Import a certificate
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddClusterCertificate",
+                "Delete",
+                "SetSso",
+                "SetWebSigned",
+                "Update",
+                "UpdateHost",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v5.1+
-Import a certificate.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addclustercertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddClusterCertificate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Delete' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Delete Certificate.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Delete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetSso",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetSso' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Set User defined SSO certs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setssocertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetSso { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetWebSigned",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetWebSigned' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Set a signed certificate for Web server
-
-Supported in v5.3+
-Setting the given certificate for each node's web server to use.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setwebsignedcertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetWebSigned { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Edit Certificate.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateHost",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateHost' operation
-in the 'Certificates' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecertificatehost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateHost { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

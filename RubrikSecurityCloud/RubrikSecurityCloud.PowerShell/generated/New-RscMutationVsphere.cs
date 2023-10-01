@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkOnDemandSnapshot, -CreateAdvancedTag, -DeleteAdvancedTag, -DeleteLiveMount, -DownloadVirtualMachineFiles, -ExportSnapshotToStandaloneHostV2, -OnDemandSnapshot, -UpdateAdvancedTag.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkOnDemandSnapshot,
-    /// which is equivalent to specifying -BulkOnDemandSnapshot.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, or UpdateAdvancedTag.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -402,154 +401,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationVsphere",
-        DefaultParameterSetName = "DeleteLiveMount")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationVsphere : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkOnDemandSnapshot",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkOnDemandSnapshot' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Trigger a bulk on demand snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherebulkondemandsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkOnDemandSnapshot { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkOnDemandSnapshot",
+                "CreateAdvancedTag",
+                "DeleteAdvancedTag",
+                "DeleteLiveMount",
+                "DownloadVirtualMachineFiles",
+                "ExportSnapshotToStandaloneHostV2",
+                "OnDemandSnapshot",
+                "UpdateAdvancedTag",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CreateAdvancedTag",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAdvancedTag' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Create a multi-tag filter for vSphere tags
-
-Supported in v7.0+
-Create a filter consisting of vSphere tags joined with logical operators.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createvsphereadvancedtag.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAdvancedTag { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteAdvancedTag",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteAdvancedTag' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Remove the multi-tag filter
-
-Supported in v7.0+
-Remove the multi-tag filter.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletevsphereadvancedtag.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteAdvancedTag { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteLiveMount' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Delete a Live Mount VM
-
-Supported in v5.0+
-Create a request to delete a Live Mount virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletevspherelivemount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteLiveMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadVirtualMachineFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadVirtualMachineFiles' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Download Virtual Machine files from a snapshot
-
-Supported in v9.0+
-Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadvspherevirtualmachinefiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadVirtualMachineFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHostV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportSnapshotToStandaloneHostV2' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Export snapshot of a virtual machine to standalone ESXi server.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereexportsnapshottostandalonehostv2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportSnapshotToStandaloneHostV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OnDemandSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'OnDemandSnapshot' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereondemandsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OnDemandSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAdvancedTag",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAdvancedTag' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Update the multi-tag filter
-
-Supported in v7.0+
-Updates the name, condition, and description of the specified multi-tag filter.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatevsphereadvancedtag.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAdvancedTag { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

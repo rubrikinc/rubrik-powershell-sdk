@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'Mosaic' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddStore, -DeleteStore, -UpdateStore.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddStore,
-    /// which is equivalent to specifying -AddStore.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddStore, DeleteStore, or UpdateStore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -206,67 +205,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationMosaic",
-        DefaultParameterSetName = "AddStore")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationMosaic : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddStore",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddStore' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-Add a New Store
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddStore",
+                "DeleteStore",
+                "UpdateStore",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in m3.2.0-m4.2.0
-Add a new store to Mosaic cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addmosaicstore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddStore { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteStore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteStore' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-Remove the store by store_name
-
-Supported in m3.2.0-m4.2.0
-Remove a store from Mosaic cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemosaicstore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteStore { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateStore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateStore' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-Modify a store
-
-Supported in m3.2.0-m4.2.0.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemosaicstore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateStore { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 5 operations
     /// in the 'Replication' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CreatePair, -DeletePair, -DisablePause, -EnablePause, -UpdateTarget.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CreatePair,
-    /// which is equivalent to specifying -CreatePair.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CreatePair, DeletePair, DisablePause, EnablePause, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -312,91 +311,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationReplication",
-        DefaultParameterSetName = "DeletePair")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationReplication : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CreatePair",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreatePair' operation
-in the 'Replication' API domain.
-Description of the operation:
-Creates replication pairing between two Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createreplicationpair.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreatePair { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CreatePair",
+                "DeletePair",
+                "DisablePause",
+                "EnablePause",
+                "UpdateTarget",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "DeletePair",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeletePair' operation
-in the 'Replication' API domain.
-Description of the operation:
-Deletes replication pairing between two Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletereplicationpair.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeletePair { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DisablePause",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DisablePause' operation
-in the 'Replication' API domain.
-Description of the operation:
-A single Rubrik cluster can be the replication target for multiple source Rubrik clusters. For each source cluster specified, this resumes replication from that source cluster to the target cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/disablereplicationpause.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DisablePause { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EnablePause",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'EnablePause' operation
-in the 'Replication' API domain.
-Description of the operation:
-A single Rubrik cluster can be the replication target for multiple source Rubrik clusters. For each source cluster specified, this pauses replication from that source cluster to the target cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/enablereplicationpause.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EnablePause { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTarget' operation
-in the 'Replication' API domain.
-Description of the operation:
-Update the setup information, address, username, and password for the replication target.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatereplicationtarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -20,7 +20,7 @@ Describe -Name "Test field specs for interface fields" -Fixture {
         Write-Host "Found $($impls.Count) implementations of interface $inf"
         # Build exploration field spec for 
         # New-RscQueryMssql -TopLevelDescendant invokes
-        $fieldSpecString = (New-RscQueryMssql -TopLevelDescendant).Field.AsFieldSpec()
+        $fieldSpecString = (New-RscQueryMssql -Op TopLevelDescendants).Field.AsFieldSpec()
         # The built up field spec should have an inline fragment
         # for each implementation of the interface
         $inlineFragments = [regex]::Matches($fieldSpecString, '\.\.\. on (\w+)')

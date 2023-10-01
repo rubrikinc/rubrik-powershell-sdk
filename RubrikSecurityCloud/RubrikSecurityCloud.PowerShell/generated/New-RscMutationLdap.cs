@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'LDAP' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -DeletePrincipals, -RemoveIntegration, -SetMfaSetting, -UpdateIntegration.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op DeletePrincipals,
-    /// which is equivalent to specifying -DeletePrincipals.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: DeletePrincipals, RemoveIntegration, SetMfaSetting, or UpdateIntegration.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -233,75 +232,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationLdap",
-        DefaultParameterSetName = "SetMfaSetting")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationLdap : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "DeletePrincipals",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeletePrincipals' operation
-in the 'LDAP' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "DeletePrincipals",
+                "RemoveIntegration",
+                "SetMfaSetting",
+                "UpdateIntegration",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteldapprincipals.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeletePrincipals { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RemoveIntegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RemoveIntegration' operation
-in the 'LDAP' API domain.
-Description of the operation:
-Remove LDAP integration.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/removeldapintegration.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RemoveIntegration { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetMfaSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetMfaSetting' operation
-in the 'LDAP' API domain.
-Description of the operation:
-Update the MFA settings for the given LDAP integration. Return true when the operation succeeds.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setldapmfasetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetMfaSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateIntegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateIntegration' operation
-in the 'LDAP' API domain.
-Description of the operation:
-Mutate LDAP integration.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateldapintegration.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateIntegration { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

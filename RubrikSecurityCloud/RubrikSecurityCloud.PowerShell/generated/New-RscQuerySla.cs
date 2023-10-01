@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 14 operations
     /// in the 'SLA' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AuditDetail, -ClusterDomains, -ClusterGlobals, -ConflictObjects, -CountOfObjectsProtected, -Domain, -Domains, -GlobalFilterList, -GlobalStatuses, -ManagedVolume, -ManagedVolumes, -NcdComplianceData, -SummariesByIds, -VerifyWithReplicationToCluster.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AuditDetail,
-    /// which is equivalent to specifying -AuditDetail.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -723,235 +722,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQuerySla",
-        DefaultParameterSetName = "Domain")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQuerySla : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AuditDetail",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AuditDetail' operation
-in the 'SLA' API domain.
-Description of the operation:
-List of audit details for a given SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/slaauditdetail.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AuditDetail { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AuditDetail",
+                "ClusterDomains",
+                "ClusterGlobals",
+                "ConflictObjects",
+                "CountOfObjectsProtected",
+                "Domain",
+                "Domains",
+                "GlobalFilterList",
+                "GlobalStatuses",
+                "ManagedVolume",
+                "ManagedVolumes",
+                "NcdComplianceData",
+                "SummariesByIds",
+                "VerifyWithReplicationToCluster",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "ClusterDomains",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClusterDomains' operation
-in the 'SLA' API domain.
-Description of the operation:
-Returns paginated list of SLA domains that were created on Rubrik CDM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustersladomains.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClusterDomains { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ClusterGlobals",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClusterGlobals' operation
-in the 'SLA' API domain.
-Description of the operation:
-Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allclusterglobalslas.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClusterGlobals { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ConflictObjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ConflictObjects' operation
-in the 'SLA' API domain.
-Description of the operation:
-Conflicting objects for an SLA Domain assignment.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/slaconflictobjects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ConflictObjects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CountOfObjectsProtected",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CountOfObjectsProtected' operation
-in the 'SLA' API domain.
-Description of the operation:
-The number of objects protected by the SLA Domains.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/countofobjectsprotectedbyslas.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CountOfObjectsProtected { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Domain",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Domain' operation
-in the 'SLA' API domain.
-Description of the operation:
-Query that retrieves an SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sladomain.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Domain { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Domains",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Domains' operation
-in the 'SLA' API domain.
-Description of the operation:
-Retrieves a list of SLA Domains.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sladomains.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Domains { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GlobalFilterList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GlobalFilterList' operation
-in the 'SLA' API domain.
-Description of the operation:
-Retrieves a list of SLA Domains.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/globalslafilterconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GlobalFilterList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GlobalStatuses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GlobalStatuses' operation
-in the 'SLA' API domain.
-Description of the operation:
-Status on the clusters where global SLA is synced.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/globalslastatuses.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GlobalStatuses { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedVolume",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedVolume' operation
-in the 'SLA' API domain.
-Description of the operation:
-Details of a SLA Managed Volume object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/slamanagedvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedVolume { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedVolumes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedVolumes' operation
-in the 'SLA' API domain.
-Description of the operation:
-Paginated list of SLA Managed Volumes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/slamanagedvolumes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedVolumes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NcdComplianceData",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NcdComplianceData' operation
-in the 'SLA' API domain.
-Description of the operation:
-NAS Cloud Direct SLA Domain compliance data for the requested clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allncdslacompliancedata.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NcdComplianceData { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SummariesByIds",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SummariesByIds' operation
-in the 'SLA' API domain.
-Description of the operation:
-List of SLA Domain summaries for the given IDs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allslasummariesbyids.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SummariesByIds { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VerifyWithReplicationToCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VerifyWithReplicationToCluster' operation
-in the 'SLA' API domain.
-Description of the operation:
-Verify for a Rubrik cluster if it is replication target in any SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/verifyslawithreplicationtocluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VerifyWithReplicationToCluster { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

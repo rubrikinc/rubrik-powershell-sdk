@@ -137,7 +137,7 @@ function New-SlaDomain {
       "objectTypes"                = $ObjectTypes
       "isRetentionLockedSla"       = $IsRetentionLockedSla
     }
-    $query = New-RscMutationSla -CreateGlobal -Var $vars -FieldProfile $fieldProfile
+    $query = New-RscMutationSla -Op CreateGlobal -Var $vars -FieldProfile $fieldProfile
 
     # Send request to the API server
     $result = Invoke-Rsc $query

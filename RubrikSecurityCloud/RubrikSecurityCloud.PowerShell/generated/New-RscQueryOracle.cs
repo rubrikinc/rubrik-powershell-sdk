@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 16 operations
     /// in the 'Oracle' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AcoExampleDownloadLink, -AcoParameters, -DataGuardGroup, -Database, -DatabaseLogBackupConfig, -Databases, -Host, -HostLogBackupConfig, -LiveMounts, -MissedRecoverableRanges, -MissedSnapshots, -PdbDetails, -Rac, -RacLogBackupConfig, -RecoverableRanges, -TopLevelDescendants.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AcoExampleDownloadLink,
-    /// which is equivalent to specifying -AcoExampleDownloadLink.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -704,285 +703,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryOracle",
-        DefaultParameterSetName = "Host")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryOracle : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AcoExampleDownloadLink",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AcoExampleDownloadLink' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Link to download the Advanced Recovery Options example file
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AcoExampleDownloadLink",
+                "AcoParameters",
+                "DataGuardGroup",
+                "Database",
+                "DatabaseLogBackupConfig",
+                "Databases",
+                "Host",
+                "HostLogBackupConfig",
+                "LiveMounts",
+                "MissedRecoverableRanges",
+                "MissedSnapshots",
+                "PdbDetails",
+                "Rac",
+                "RacLogBackupConfig",
+                "RecoverableRanges",
+                "TopLevelDescendants",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v5.3+
-Link to download the Advanced Recovery Options example file which can be used to customize Oracle recoveries.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracleacoexampledownloadlink.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AcoExampleDownloadLink { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AcoParameters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AcoParameters' operation
-in the 'Oracle' API domain.
-Description of the operation:
-List of supported Advanced Cloning Options
-
-Supported in v6.0+
-Get the list of supported Advanced Cloning Options (ACO) parameters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracleacoparameters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AcoParameters { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DataGuardGroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DataGuardGroup' operation
-in the 'Oracle' API domain.
-Description of the operation:
-An Oracle Data Guard Group.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledataguardgroup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DataGuardGroup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Database' operation
-in the 'Oracle' API domain.
-Description of the operation:
-An Oracle Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Database { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseLogBackupConfig",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseLogBackupConfig' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Oracle log backup configuration for an Oracle Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledatabaselogbackupconfig.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseLogBackupConfig { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Databases' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Paginated list of Oracle Databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Host",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Host' operation
-in the 'Oracle' API domain.
-Description of the operation:
-An Oracle Host.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclehost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public new SwitchParameter Host { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HostLogBackupConfig",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostLogBackupConfig' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Oracle Log backup configuration for Oracle Host.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclehostlogbackupconfig.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostLogBackupConfig { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LiveMounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LiveMounts' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Paginated list of Oracle Live Mounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclelivemounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LiveMounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MissedRecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'MissedRecoverableRanges' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Get missed recoverable ranges of a Oracle database
-
-Supported in v5.0+
-Retrieve a list of missed recoverable ranges for a Oracle database. For each run of one type of error, the first and last occurrence of the error are given.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclemissedrecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MissedRecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MissedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'MissedSnapshots' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Get missed snapshots for an Oracle database
-
-Supported in v5.0+
-Retrieve summary information about the missed snapshots of an Oracle database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclemissedsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MissedSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PdbDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PdbDetails' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Get PDB details
-
-Supported in v8.0+
-Retrieves information about available pluggable databases (PDBs) for a given recovery point.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclepdbdetails.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PdbDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Rac",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Rac' operation
-in the 'Oracle' API domain.
-Description of the operation:
-An Oracle Real Application Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclerac.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Rac { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RacLogBackupConfig",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RacLogBackupConfig' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Oracle log backup configuration for an Oracle RAC.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracleraclogbackupconfig.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RacLogBackupConfig { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRanges' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Get recoverable ranges of a Oracle database
-
-Supported in v5.0+
-Retrieve the recoverable ranges for a specified Oracle database. A begin and/or end timestamp can be provided to retrieve only the ranges that fall within the window.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclerecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TopLevelDescendants' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Paginated list of the highest-level Oracle Objects accessible by the current user.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracletopleveldescendants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

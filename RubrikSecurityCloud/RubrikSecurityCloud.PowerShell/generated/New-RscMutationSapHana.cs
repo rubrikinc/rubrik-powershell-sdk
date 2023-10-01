@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 9 operations
     /// in the 'SAP HANA' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddSystem, -ConfigureRestore, -CreateOnDemandBackup, -CreateSystemRefresh, -DeleteDbSnapshot, -DeleteSystem, -ExpireDownloadedSnapshots, -PatchSystem, -UnconfigureRestore.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddSystem,
-    /// which is equivalent to specifying -AddSystem.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -457,184 +456,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationSapHana",
-        DefaultParameterSetName = "AddSystem")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationSapHana : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddSystem",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddSystem' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Add a SAP HANA system
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddSystem",
+                "ConfigureRestore",
+                "CreateOnDemandBackup",
+                "CreateSystemRefresh",
+                "DeleteDbSnapshot",
+                "DeleteSystem",
+                "ExpireDownloadedSnapshots",
+                "PatchSystem",
+                "UnconfigureRestore",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v5.3+
-Add a SAP HANA system to the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addsaphanasystem.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddSystem { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ConfigureRestore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ConfigureRestore' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Configure the target database for system copy restore
-
-Supported in v6.0+
-Initiates a job to configure the specified target database for a system copy restore by sending metadata about the source database. System copy restore in SAP HANA is done across different databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/configuresaphanarestore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ConfigureRestore { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateOnDemandBackup' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Create on demand database snapshot
-
-Supported in v5.3+
-Initiates a job to take an on demand full snapshot of a specified SAP HANA database object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemandsaphanabackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateOnDemandBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateSystemRefresh",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateSystemRefresh' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Refresh SAP HANA system metadata
-
-Supported in v5.3+
-Initiates a job to refresh metadata of a SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createsaphanasystemrefresh.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateSystemRefresh { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteDbSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteDbSnapshot' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Delete a particular full snapshot of a SAP HANA database
-
-Supported in v5.3+
-Initiates a request to delete a particular full snapshot of a SAP HANA database. If the log retention period for the database is still in effect, the snapshot will be deleted when the log retention period ends.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletesaphanadbsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteDbSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSystem",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSystem' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Delete a SAP HANA system
-
-Supported in v5.3+
-Initiates a job to delete a SAP HANA system object. GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletesaphanasystem.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSystem { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExpireDownloadedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExpireDownloadedSnapshots' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Expire downloaded snapshots of an SAP HANA database
-
-Supported in v8.0+
-Requests an asynchronous job to expire all downloaded data and log snapshots. You can specify a begin time or an end time or both to provide a time range to expire only the downloaded data and log snapshots that were taken within the specified time range. The time is relative to when the snapshot was originally taken, not when it was downloaded. You can also configure a flag to expire only the log snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/expiredownloadedsaphanasnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExpireDownloadedSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchSystem",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchSystem' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-v5.3-v8.1: Update the SLA Domain for a SAP HANA system
-v9.0+: Update the system properties of the SAP HANA system
-
-Supported in v5.3+
-v5.3-v8.1: Update the SLA Domain that is configured for a SAP HANA system.
-v9.0+: Update the system properties for the SAP HANA system.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchsaphanasystem.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchSystem { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UnconfigureRestore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UnconfigureRestore' operation
-in the 'SAP HANA' API domain.
-Description of the operation:
-Reset the configuration for system copy restore on target database
-
-Supported in v6.0+
-Initiates a job to reset the configuration for the system copy restore on the specified target database. System copy restore in SAP HANA is done across different databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/unconfiguresaphanarestore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UnconfigureRestore { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -73,6 +73,12 @@ function Get-RscCluster {
 
     Retrieves a cluster by id, with details.
 
+    .EXAMPLE
+    $query = Get-RscCluster -First 1 -AsQuery
+    $query = New-RscQuery -Copy $query -AddField Nodes.SnapshotCount
+    $query | Invoke-Rsc
+
+    Amends a query object to add a field, and sends it.
     #>
 
     [CmdletBinding(
@@ -118,7 +124,12 @@ function Get-RscCluster {
             ParameterSetName = "Id",
             Mandatory = $false
         )]
-        [Switch]$Detail
+        [Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false
+        )]
+        [Switch]$AsQuery
     )
     
     Process {
@@ -126,7 +137,7 @@ function Get-RscCluster {
         Connect-Rsc -ErrorAction Stop | Out-Null
 
         if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
-            $r = (New-RscQueryCluster -List -RemoveField Nodes).Invoke()
+            $r = (New-RscQueryCluster -Op List -RemoveField Nodes).Invoke()
             # Object's 'Count' property is hidden by the 'Count' method
             # so we can't do `$r.Count`
             $clusterCount = $r | Select-Object -ExpandProperty Count
@@ -160,6 +171,11 @@ function Get-RscCluster {
             }
         }
         $query = New-RscQueryCluster -Op $operation -Var $vars -FieldProfile $fieldProfile
+
+        # Skip sending, return query object
+        if ( $AsQuery ) {
+            return $query
+        }
 
         # Send request to the API server
         $result = Invoke-Rsc $query

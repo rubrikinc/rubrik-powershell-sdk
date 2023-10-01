@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 43 operations
     /// in the 'Azure' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddCloudAccount, -AddCloudAccountExocomputeConfigurations, -AddCloudAccountWithoutOauth, -BackupAdDirectory, -CompleteAdAppSetup, -CompleteAdAppUpdate, -CompleteCloudAccountOauth, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeRcvStorageSetting, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateReaderTarget, -CreateSaasAppAad, -CreateTarget, -DeleteAdDirectory, -DeleteCloudAccount, -DeleteCloudAccountExocomputeConfigurations, -DeleteCloudAccountWithoutOauth, -DeleteCluster, -MapCloudAccountExocomputeSubscription, -MapCloudAccountToPersistentStorageLocation, -OauthConsentComplete, -OauthConsentKickoff, -RestoreAdObjectsWithPasswords, -SetCloudAccountCustomerAppCredentials, -StartAdAppSetup, -StartAdAppUpdate, -StartCloudAccountOauth, -StartDisableCloudAccountJob, -StartExportSqlDatabaseDbJob, -StartExportSqlManagedInstanceDbJob, -UnmapCloudAccountExocomputeSubscription, -UnmapPersistentStorageSubscription, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudNativeRcvStorageSetting, -UpdateCloudNativeStorageSetting, -UpdateCustomerAppPermissionForSql, -UpdateTarget, -UpgradeCloudAccount, -UpgradeCloudAccountPermissionsWithoutOauth.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddCloudAccount,
-    /// which is equivalent to specifying -AddCloudAccount.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -2357,699 +2356,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationAzure",
-        DefaultParameterSetName = "CreateTarget")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationAzure : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddCloudAccount",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddCloudAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-Add the Azure Subscriptions cloud account for the given feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addazurecloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddCloudAccount { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddCloudAccount",
+                "AddCloudAccountExocomputeConfigurations",
+                "AddCloudAccountWithoutOauth",
+                "BackupAdDirectory",
+                "CompleteAdAppSetup",
+                "CompleteAdAppUpdate",
+                "CompleteCloudAccountOauth",
+                "CreateAccount",
+                "CreateAutomaticTargetMapping",
+                "CreateCloudNativeRcvStorageSetting",
+                "CreateCloudNativeStorageSetting",
+                "CreateCluster",
+                "CreateReaderTarget",
+                "CreateSaasAppAad",
+                "CreateTarget",
+                "DeleteAdDirectory",
+                "DeleteCloudAccount",
+                "DeleteCloudAccountExocomputeConfigurations",
+                "DeleteCloudAccountWithoutOauth",
+                "DeleteCluster",
+                "MapCloudAccountExocomputeSubscription",
+                "MapCloudAccountToPersistentStorageLocation",
+                "OauthConsentComplete",
+                "OauthConsentKickoff",
+                "RestoreAdObjectsWithPasswords",
+                "SetCloudAccountCustomerAppCredentials",
+                "StartAdAppSetup",
+                "StartAdAppUpdate",
+                "StartCloudAccountOauth",
+                "StartDisableCloudAccountJob",
+                "StartExportSqlDatabaseDbJob",
+                "StartExportSqlManagedInstanceDbJob",
+                "UnmapCloudAccountExocomputeSubscription",
+                "UnmapPersistentStorageSubscription",
+                "UpdateAccount",
+                "UpdateAutomaticTargetMapping",
+                "UpdateCloudAccount",
+                "UpdateCloudNativeRcvStorageSetting",
+                "UpdateCloudNativeStorageSetting",
+                "UpdateCustomerAppPermissionForSql",
+                "UpdateTarget",
+                "UpgradeCloudAccount",
+                "UpgradeCloudAccountPermissionsWithoutOauth",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "AddCloudAccountExocomputeConfigurations",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddCloudAccountExocomputeConfigurations' operation
-in the 'Azure' API domain.
-Description of the operation:
-Add Exocompute configurations for an Azure Cloud Account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addazurecloudaccountexocomputeconfigurations.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddCloudAccountExocomputeConfigurations { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AddCloudAccountWithoutOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddCloudAccountWithoutOauth' operation
-in the 'Azure' API domain.
-Description of the operation:
-Add the Azure Subscription cloud account for the given feature without OAuth.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addazurecloudaccountwithoutoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddCloudAccountWithoutOauth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupAdDirectory",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupAdDirectory' operation
-in the 'Azure' API domain.
-Description of the operation:
-Backs up the Azure AD directory.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupazureaddirectory.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupAdDirectory { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CompleteAdAppSetup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CompleteAdAppSetup' operation
-in the 'Azure' API domain.
-Description of the operation:
-Completes the creation flow for an Azure AD app.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/completeazureadappsetup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CompleteAdAppSetup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CompleteAdAppUpdate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CompleteAdAppUpdate' operation
-in the 'Azure' API domain.
-Description of the operation:
-Completes an update to the Azure AD directory app.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/completeazureadappupdate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CompleteAdAppUpdate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CompleteCloudAccountOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CompleteCloudAccountOauth' operation
-in the 'Azure' API domain.
-Description of the operation:
-Complete the Azure OAuth flow and pass the authorization code.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/completeazurecloudaccountoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CompleteCloudAccountOauth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createazureaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAutomaticTargetMapping' operation
-in the 'Azure' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createautomaticazuretargetmapping.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAutomaticTargetMapping { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateCloudNativeRcvStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCloudNativeRcvStorageSetting' operation
-in the 'Azure' API domain.
-Description of the operation:
-Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcloudnativercvazurestoragesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCloudNativeRcvStorageSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateCloudNativeStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCloudNativeStorageSetting' operation
-in the 'Azure' API domain.
-Description of the operation:
-Creates Storage Settings for the archival of azure cloud native protected objects
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcloudnativeazurestoragesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCloudNativeStorageSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCluster' operation
-in the 'Azure' API domain.
-Description of the operation:
-Create a Rubrik Cloud Cluster on Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createazurecluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateReaderTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateReaderTarget' operation
-in the 'Azure' API domain.
-Description of the operation:
-Creates reader type for Azure archival location on a CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createazurereadertarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateReaderTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateSaasAppAad",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateSaasAppAad' operation
-in the 'Azure' API domain.
-Description of the operation:
-Create or get an Azure AAD application.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createazuresaasappaad.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateSaasAppAad { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateTarget' operation
-in the 'Azure' API domain.
-Description of the operation:
-Creates an Azure archival target on the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createazuretarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteAdDirectory",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteAdDirectory' operation
-in the 'Azure' API domain.
-Description of the operation:
-Deletes an Azure AD directory.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteazureaddirectory.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteAdDirectory { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCloudAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-Delete the Azure Subscriptions cloud account for the given feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteazurecloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCloudAccountExocomputeConfigurations",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCloudAccountExocomputeConfigurations' operation
-in the 'Azure' API domain.
-Description of the operation:
-Delete Exocompute configurations for an Azure Cloud Account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteazurecloudaccountexocomputeconfigurations.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCloudAccountExocomputeConfigurations { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCloudAccountWithoutOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCloudAccountWithoutOauth' operation
-in the 'Azure' API domain.
-Description of the operation:
-Delete the Azure Subscriptions cloud account for the given feature without OAuth.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteazurecloudaccountwithoutoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCloudAccountWithoutOauth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCluster' operation
-in the 'Azure' API domain.
-Description of the operation:
-Delete a Rubrik Cloud Cluster on Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteazurecluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MapCloudAccountExocomputeSubscription",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MapCloudAccountExocomputeSubscription' operation
-in the 'Azure' API domain.
-Description of the operation:
-Map Azure cloud accounts to an Exocompute subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mapazurecloudaccountexocomputesubscription.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MapCloudAccountExocomputeSubscription { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MapCloudAccountToPersistentStorageLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MapCloudAccountToPersistentStorageLocation' operation
-in the 'Azure' API domain.
-Description of the operation:
-Map Azure cloud accounts to a persistent storage location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mapazurecloudaccounttopersistentstoragelocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MapCloudAccountToPersistentStorageLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OauthConsentComplete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'OauthConsentComplete' operation
-in the 'Azure' API domain.
-Description of the operation:
-Completes an OAuth consent flow for Azure resource access.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureoauthconsentcomplete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OauthConsentComplete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OauthConsentKickoff",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'OauthConsentKickoff' operation
-in the 'Azure' API domain.
-Description of the operation:
-Kicks off an OAuth consent flow for Azure resource access.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureoauthconsentkickoff.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OauthConsentKickoff { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreAdObjectsWithPasswords",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreAdObjectsWithPasswords' operation
-in the 'Azure' API domain.
-Description of the operation:
-Restores the Azure AD directory with multiple passwords.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreazureadobjectswithpasswords.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreAdObjectsWithPasswords { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetCloudAccountCustomerAppCredentials",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetCloudAccountCustomerAppCredentials' operation
-in the 'Azure' API domain.
-Description of the operation:
-Set credentials for the customer application, for the tenant domain name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setazurecloudaccountcustomerappcredentials.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetCloudAccountCustomerAppCredentials { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartAdAppSetup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartAdAppSetup' operation
-in the 'Azure' API domain.
-Description of the operation:
-Initiates the Azure AD app creation workflow.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startazureadappsetup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartAdAppSetup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartAdAppUpdate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartAdAppUpdate' operation
-in the 'Azure' API domain.
-Description of the operation:
-Initiates an update to the Azure AD directory app.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startazureadappupdate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartAdAppUpdate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartCloudAccountOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCloudAccountOauth' operation
-in the 'Azure' API domain.
-Description of the operation:
-Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startazurecloudaccountoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCloudAccountOauth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartDisableCloudAccountJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartDisableCloudAccountJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startdisableazurecloudaccountjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartDisableCloudAccountJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportSqlDatabaseDbJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportSqlDatabaseDbJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportazuresqldatabasedbjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportSqlDatabaseDbJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportSqlManagedInstanceDbJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportSqlManagedInstanceDbJob' operation
-in the 'Azure' API domain.
-Description of the operation:
-Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportazuresqlmanagedinstancedbjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportSqlManagedInstanceDbJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UnmapCloudAccountExocomputeSubscription",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UnmapCloudAccountExocomputeSubscription' operation
-in the 'Azure' API domain.
-Description of the operation:
-Unmap Azure cloud accounts from the mapped Exocompute subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/unmapazurecloudaccountexocomputesubscription.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UnmapCloudAccountExocomputeSubscription { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UnmapPersistentStorageSubscription",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UnmapPersistentStorageSubscription' operation
-in the 'Azure' API domain.
-Description of the operation:
-Unmaps the archival location from the subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/unmapazurepersistentstoragesubscription.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UnmapPersistentStorageSubscription { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateazureaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAutomaticTargetMapping' operation
-in the 'Azure' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateautomaticazuretargetmapping.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCloudAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-Update names of the Azure Subscriptions cloud account and regions for the given feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateazurecloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCloudNativeRcvStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCloudNativeRcvStorageSetting' operation
-in the 'Azure' API domain.
-Description of the operation:
-Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativercvazurestoragesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCloudNativeRcvStorageSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCloudNativeStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCloudNativeStorageSetting' operation
-in the 'Azure' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativeazurestoragesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCloudNativeStorageSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCustomerAppPermissionForSql",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCustomerAppPermissionForSql' operation
-in the 'Azure' API domain.
-Description of the operation:
-Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecustomerapppermissionforazuresql.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCustomerAppPermissionForSql { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTarget' operation
-in the 'Azure' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateazuretarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpgradeCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpgradeCloudAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-Update permissions of the Azure Subscriptions cloud account for given feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradeazurecloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpgradeCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpgradeCloudAccountPermissionsWithoutOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpgradeCloudAccountPermissionsWithoutOauth' operation
-in the 'Azure' API domain.
-Description of the operation:
-Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradeazurecloudaccountpermissionswithoutoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpgradeCloudAccountPermissionsWithoutOauth { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

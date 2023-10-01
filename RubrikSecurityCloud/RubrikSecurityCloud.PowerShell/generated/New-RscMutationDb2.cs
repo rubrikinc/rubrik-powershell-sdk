@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 11 operations
     /// in the 'Db2' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddInstance, -CreateOnDemandBackup, -DeleteDatabase, -DeleteInstance, -DiscoverInstance, -DownloadSnapshot, -DownloadSnapshotsForPointInTimeRecovery, -ExpireDownloadedSnapshots, -PatchDatabase, -PatchInstance, -RefreshDatabase.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddInstance,
-    /// which is equivalent to specifying -AddInstance.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddInstance, CreateOnDemandBackup, DeleteDatabase, DeleteInstance, DiscoverInstance, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, PatchInstance, or RefreshDatabase.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -475,211 +474,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationDb2",
-        DefaultParameterSetName = "Instances")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationDb2 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddInstance",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddInstance' operation
-in the 'Db2' API domain.
-Description of the operation:
-Mutation to add a new Db2 instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/adddb2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddInstance { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddInstance",
+                "CreateOnDemandBackup",
+                "DeleteDatabase",
+                "DeleteInstance",
+                "DiscoverInstance",
+                "DownloadSnapshot",
+                "DownloadSnapshotsForPointInTimeRecovery",
+                "ExpireDownloadedSnapshots",
+                "PatchDatabase",
+                "PatchInstance",
+                "RefreshDatabase",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateOnDemandBackup' operation
-in the 'Db2' API domain.
-Description of the operation:
-Create on demand database snapshot
-
-Supported in v8.0+
-Initiates a job to take an on demand, full snapshot of a specified Db2 database object. Use the GET /db2/db/request/{id} endpoint to monitor the progress of the job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemanddb2backup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateOnDemandBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteDatabase' operation
-in the 'Db2' API domain.
-Description of the operation:
-Delete Db2 database
-
-Supported in v8.1+
-Deletes a Db2 database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletedb2database.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteInstance' operation
-in the 'Db2' API domain.
-Description of the operation:
-Mutation to delete existing Db2 instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletedb2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DiscoverInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DiscoverInstance' operation
-in the 'Db2' API domain.
-Description of the operation:
-On-demand discovery of a Db2 instance
-
-Supported in v7.0+
-Initiates an on-demand job to discover a Db2 instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/discoverdb2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DiscoverInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadSnapshot' operation
-in the 'Db2' API domain.
-Description of the operation:
-Download Db2 database snapshot from archive
-
-Supported in v8.0+
-Downloads a specific Db2 database snapshot from the specified archival location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloaddb2snapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadSnapshotsForPointInTimeRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadSnapshotsForPointInTimeRecovery' operation
-in the 'Db2' API domain.
-Description of the operation:
-Download Db2 database snapshots from archive for a point in time recovery
-
-Supported in v8.0+
-Downloads the most recent full snapshot and the log snapshots taken after the full snapshot, required for the point in time recovery of a Db2 database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloaddb2snapshotsforpointintimerecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadSnapshotsForPointInTimeRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExpireDownloadedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExpireDownloadedSnapshots' operation
-in the 'Db2' API domain.
-Description of the operation:
-Expire downloaded snapshots of a Db2 database
-
-Supported in v8.0+
-Requests an asynchronous job to expire all downloaded data and log snapshots. You can specify a begin time or an end time or both to provide a time range to expire only the downloaded data and log snapshots that were taken within the specified time range. The time is relative to when the snapshot was originally taken, not when it was downloaded. You can also configure a flag to expire only the log snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/expiredownloadeddb2snapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExpireDownloadedSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchDatabase' operation
-in the 'Db2' API domain.
-Description of the operation:
-Update a Db2 database
-
-Supported in v9.0+
-Updating a Db2 database involves modifying the metadata associated with the Db2 database using the provided input values.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchdb2database.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchInstance' operation
-in the 'Db2' API domain.
-Description of the operation:
-Mutation to update an existing Db2 instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchdb2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshDatabase' operation
-in the 'Db2' API domain.
-Description of the operation:
-On-demand refresh of a Db2 database
-
-Supported in v8.1+
-Initiates an on-demand job to refresh a Db2 database. Currently, this is allowed only for Db2 HADR databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshdb2database.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshDatabase { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

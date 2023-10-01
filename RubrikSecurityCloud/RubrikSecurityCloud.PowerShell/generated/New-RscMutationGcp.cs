@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 11 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CloudAccountAddManualAuthProject, -CloudAccountAddProjects, -CloudAccountDeleteProjects, -CloudAccountOauthComplete, -CloudAccountOauthInitiate, -CloudAccountUpgradeProjects, -CreateReaderTarget, -CreateTarget, -SetDefaultServiceAccountJwtConfig, -UpdateTarget, -UpgradeCloudAccountPermissionsWithoutOauth.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CloudAccountAddManualAuthProject,
-    /// which is equivalent to specifying -CloudAccountAddManualAuthProject.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -557,187 +556,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationGcp",
-        DefaultParameterSetName = "CreateTarget")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationGcp : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CloudAccountAddManualAuthProject",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CloudAccountAddManualAuthProject' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Adds a new cloud account for the GCP project which is not already added.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpcloudaccountaddmanualauthproject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountAddManualAuthProject { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CloudAccountAddManualAuthProject",
+                "CloudAccountAddProjects",
+                "CloudAccountDeleteProjects",
+                "CloudAccountOauthComplete",
+                "CloudAccountOauthInitiate",
+                "CloudAccountUpgradeProjects",
+                "CreateReaderTarget",
+                "CreateTarget",
+                "SetDefaultServiceAccountJwtConfig",
+                "UpdateTarget",
+                "UpgradeCloudAccountPermissionsWithoutOauth",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountAddProjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CloudAccountAddProjects' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Add cloud account for GCP projects for the given features.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpcloudaccountaddprojects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountAddProjects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountDeleteProjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CloudAccountDeleteProjects' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Delete cloud account for the given GCP project cloud account IDs and feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpcloudaccountdeleteprojects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountDeleteProjects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountOauthComplete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CloudAccountOauthComplete' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Complete the OAuth flow and pass the authorization code.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpcloudaccountoauthcomplete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountOauthComplete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountOauthInitiate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CloudAccountOauthInitiate' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Initiate a session before doing Gcp OAuth flow.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpcloudaccountoauthinitiate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountOauthInitiate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountUpgradeProjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CloudAccountUpgradeProjects' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Upgrade cloud account for the given GCP project cloud account IDs and feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpcloudaccountupgradeprojects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountUpgradeProjects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateReaderTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateReaderTarget' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Creates reader type for GCP archival location on a CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/creategcpreadertarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateReaderTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateTarget' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/creategcptarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetDefaultServiceAccountJwtConfig",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetDefaultServiceAccountJwtConfig' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Sets the default GCP service account authorization key.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpsetdefaultserviceaccountjwtconfig.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetDefaultServiceAccountJwtConfig { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTarget' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updategcptarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpgradeCloudAccountPermissionsWithoutOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpgradeCloudAccountPermissionsWithoutOauth' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Set GCP Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradegcpcloudaccountpermissionswithoutoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpgradeCloudAccountPermissionsWithoutOauth { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

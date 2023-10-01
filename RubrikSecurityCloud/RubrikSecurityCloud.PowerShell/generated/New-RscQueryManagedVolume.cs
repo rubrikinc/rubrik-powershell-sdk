@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Managed Volume' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -InventoryStats, -LiveMounts, -ManagedVolume, -ManagedVolumes.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op InventoryStats,
-    /// which is equivalent to specifying -InventoryStats.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: InventoryStats, LiveMounts, ManagedVolume, or ManagedVolumes.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -288,75 +287,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryManagedVolume",
-        DefaultParameterSetName = "LiveMounts")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryManagedVolume : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "InventoryStats",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'InventoryStats' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Aggregated inventory information for Managed Volume.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/managedvolumeinventorystats.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InventoryStats { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "InventoryStats",
+                "LiveMounts",
+                "ManagedVolume",
+                "ManagedVolumes",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "LiveMounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LiveMounts' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Paginated list of Live Mounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/managedvolumelivemounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LiveMounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedVolume",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedVolume' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Details of a Managed Volume Object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/managedvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedVolume { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedVolumes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedVolumes' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Paginated list of Managed Volumes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/managedvolumes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedVolumes { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

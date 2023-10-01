@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'Threat' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CancelHunt, -EnableMonitoring, -StartHunt.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CancelHunt,
-    /// which is equivalent to specifying -CancelHunt.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CancelHunt, EnableMonitoring, or StartHunt.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -265,59 +264,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationThreat",
-        DefaultParameterSetName = "StartHunt")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationThreat : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CancelHunt",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CancelHunt' operation
-in the 'Threat' API domain.
-Description of the operation:
-Cancel an in-progress threat hunt.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cancelthreathunt.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CancelHunt { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CancelHunt",
+                "EnableMonitoring",
+                "StartHunt",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "EnableMonitoring",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'EnableMonitoring' operation
-in the 'Threat' API domain.
-Description of the operation:
-Enable or disable Threat Monitoring on a Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/enablethreatmonitoring.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EnableMonitoring { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartHunt",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartHunt' operation
-in the 'Threat' API domain.
-Description of the operation:
-Start a threat hunt on a cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startthreathunt.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartHunt { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

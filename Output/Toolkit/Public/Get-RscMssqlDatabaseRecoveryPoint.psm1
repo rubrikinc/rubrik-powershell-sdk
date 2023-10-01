@@ -76,7 +76,7 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         
         $vars = @{"id"=$id}
         $recoveryRangeFields = Get-RscType -Name MssqlRecoverableRangeListResponse -InitialProperties @("data.begintime", "data.endtime")
-        $query = New-RscQueryMssql -RecoverableRange -Var $vars -Field $recoveryRangeFields
+        $query = New-RscQueryMssql -Op RecoverableRanges -Var $vars -Field $recoveryRangeFields
         
         $result = Invoke-Rsc $query
         

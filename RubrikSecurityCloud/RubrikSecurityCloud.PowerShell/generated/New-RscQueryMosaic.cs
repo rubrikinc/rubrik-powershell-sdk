@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Mosaic' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkRecoveryRange, -Snapshots, -Stores, -Versions.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkRecoveryRange,
-    /// which is equivalent to specifying -BulkRecoveryRange.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkRecoveryRange, Snapshots, Stores, or Versions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -260,75 +259,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryMosaic",
-        DefaultParameterSetName = "Stores")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryMosaic : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkRecoveryRange",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BulkRecoveryRange' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-Get recoverable range for multiple Management Objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mosaicbulkrecoveryrange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkRecoveryRange { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkRecoveryRange",
+                "Snapshots",
+                "Stores",
+                "Versions",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Snapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Snapshots' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-List snapshots of a mosaic object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mosaicsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Snapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Stores",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Stores' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-List all stores on mosaic cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mosaicstores.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Stores { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Versions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Versions' operation
-in the 'Mosaic' API domain.
-Description of the operation:
-List versions of a mosaic object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mosaicversions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Versions { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

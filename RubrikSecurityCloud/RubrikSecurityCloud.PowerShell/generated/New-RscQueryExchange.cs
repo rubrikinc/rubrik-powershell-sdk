@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 7 operations
     /// in the 'Microsoft Exchange' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Dag, -Dags, -Database, -Databases, -LiveMounts, -Server, -Servers.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Dag,
-    /// which is equivalent to specifying -Dag.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Dag, Dags, Database, Databases, LiveMounts, Server, or Servers.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -441,123 +440,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryExchange",
-        DefaultParameterSetName = "Dag")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryExchange : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Dag",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Dag' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Details of an Exchange DAG for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangedag.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Dag { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Dag",
+                "Dags",
+                "Database",
+                "Databases",
+                "LiveMounts",
+                "Server",
+                "Servers",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Dags",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Dags' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Connection of filtered Exchange DAGs based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangedags.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Dags { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Database' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Details of an Exchange Database for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangedatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Database { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Databases' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Connection of filtered Exchange Databases based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangedatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LiveMounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LiveMounts' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Paginated list of Exchange Database live mounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangelivemounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LiveMounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Server",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Server' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Details of an Exchange Server for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangeserver.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Server { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Servers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Servers' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Connection of filtered Exchange Servers based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exchangeservers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Servers { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

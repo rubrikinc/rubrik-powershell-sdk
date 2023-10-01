@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 29 operations
     /// in the 'Cluster' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Cluster, -Connected, -DatabaseLogReport, -DatabaseLogReportingProperties, -DefaultGateway, -Dns, -FloatingIps, -GroupByList, -HostFailover, -Ipmi, -Ipv6Mode, -IsTotpAckNecessary, -List, -NetworkInterfaces, -Nodes, -NtpServers, -OperationJobProgress, -Proxy, -RegistrationProductInfo, -ReplicationTargets, -ReportMigrationCount, -ReportMigrationJobStatus, -ReportMigrationStatus, -TotpAckStatus, -TypeList, -Vlans, -WebCertsAndIpmis, -Windows, -WithUpgradesInfo.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Cluster,
-    /// which is equivalent to specifying -Cluster.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Cluster, Connected, DatabaseLogReport, DatabaseLogReportingProperties, DefaultGateway, Dns, FloatingIps, GroupByList, HostFailover, Ipmi, Ipv6Mode, IsTotpAckNecessary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RegistrationProductInfo, ReplicationTargets, ReportMigrationCount, ReportMigrationJobStatus, ReportMigrationStatus, TotpAckStatus, TypeList, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1192,500 +1191,54 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryCluster",
-        DefaultParameterSetName = "Cluster")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryCluster : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Cluster' operation
-in the 'Cluster' API domain.
-Description of the operation:
-A cluster object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cluster { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Cluster",
+                "Connected",
+                "DatabaseLogReport",
+                "DatabaseLogReportingProperties",
+                "DefaultGateway",
+                "Dns",
+                "FloatingIps",
+                "GroupByList",
+                "HostFailover",
+                "Ipmi",
+                "Ipv6Mode",
+                "IsTotpAckNecessary",
+                "List",
+                "NetworkInterfaces",
+                "Nodes",
+                "NtpServers",
+                "OperationJobProgress",
+                "Proxy",
+                "RegistrationProductInfo",
+                "ReplicationTargets",
+                "ReportMigrationCount",
+                "ReportMigrationJobStatus",
+                "ReportMigrationStatus",
+                "TotpAckStatus",
+                "TypeList",
+                "Vlans",
+                "WebCertsAndIpmis",
+                "Windows",
+                "WithUpgradesInfo",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Connected",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Connected' operation
-in the 'Cluster' API domain.
-Description of the operation:
-List all connected clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allconnectedclusters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Connected { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseLogReport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseLogReport' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get the database log backup delay information
-
-Supported in v5.3+
-v5.3: 
-v6.0+: Get the database log backup delay information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/databaselogreportforcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseLogReport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseLogReportingProperties",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseLogReportingProperties' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get the database log backup report properties
-
-Supported in v5.3+
-Get the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/databaselogreportingpropertiesforcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseLogReportingProperties { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DefaultGateway",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DefaultGateway' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get current default gateway
-
-Supported in v5.0+
-Get current default gateway.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterdefaultgateway.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DefaultGateway { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Dns",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Dns' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Rubrik cluster DNS information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterdns.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Dns { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FloatingIps",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'FloatingIps' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get a list of a cluster's always-available Ips
-
-Supported in v5.0+
-Get a list of a cluster's always-available Ips.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterfloatingips.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FloatingIps { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GroupByList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GroupByList' operation
-in the 'Cluster' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustergroupbyconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GroupByList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HostFailover",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostFailover' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get details of the given host failover cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hostfailovercluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostFailover { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Ipmi",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Ipmi' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get IPMI details
-
-Supported in v5.0+
-get IPMI details of availability and enabled access in the cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusteripmi.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Ipmi { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Ipv6Mode",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Ipv6Mode' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Rubrik cluster IPv6 mode.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusteripv6mode.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Ipv6Mode { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsTotpAckNecessary",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsTotpAckNecessary' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/istotpacknecessaryforcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsTotpAckNecessary { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'List' operation
-in the 'Cluster' API domain.
-Description of the operation:
-List of the available cluster objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter List { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NetworkInterfaces",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NetworkInterfaces' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get network interfaces for a Rubrik Cluster cluster
-
-Supported in v5.0+
-Retrieves network interfaces(including VLANs) on bond0/bond1.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusternetworkinterfaces.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NetworkInterfaces { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Nodes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Nodes' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get list of nodes in this Rubrik cluster
-
-Supported in v5.0+
-Returns the list of all Rubrik nodes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusternodes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Nodes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NtpServers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NtpServers' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get NTP Servers
-
-Supported in v5.0+
-Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption keys are not reported.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterntpservers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NtpServers { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OperationJobProgress",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OperationJobProgress' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get updates on the job progress of the Rubrik cluster operation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusteroperationjobprogress.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OperationJobProgress { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Proxy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Proxy' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Rubrik cluster proxy information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterproxy.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Proxy { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegistrationProductInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RegistrationProductInfo' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Info about the cluster product types the user is entitled to.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterregistrationproductinfo.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegistrationProductInfo { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReplicationTargets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ReplicationTargets' operation
-in the 'Cluster' API domain.
-Description of the operation:
-All replication targets for a cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allclusterreplicationtargets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReplicationTargets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReportMigrationCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ReportMigrationCount' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Retrieve the counts of the Rubrik cluster reports migration.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterreportmigrationcount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReportMigrationCount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReportMigrationJobStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ReportMigrationJobStatus' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Retrieve the status of the cluster report migration job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterreportmigrationjobstatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReportMigrationJobStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReportMigrationStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ReportMigrationStatus' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Retrieve details of the Rubrik clusters' reports migration.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterreportmigrationstatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReportMigrationStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TotpAckStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TotpAckStatus' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allclusterstotpackstatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TotpAckStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TypeList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TypeList' operation
-in the 'Cluster' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustertypelist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TypeList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Vlans",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Vlans' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Rubrik cluster VLAN information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustervlans.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Vlans { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "WebCertsAndIpmis",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'WebCertsAndIpmis' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Get web server certificate and IPMI details for multiple clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allclusterwebcertsandipmis.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter WebCertsAndIpmis { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Windows",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Windows' operation
-in the 'Cluster' API domain.
-Description of the operation:
-A Windows Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/windowscluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Windows { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "WithUpgradesInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'WithUpgradesInfo' operation
-in the 'Cluster' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterwithupgradesinfo.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter WithUpgradesInfo { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'Azure Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ExcludeManagedDisksFromSnapshot, -StartCreateManagedDiskSnapshotsJob, -StartCreateVirtualMachineSnapshotsJob, -StartDisableSubscriptionProtectionJob, -StartExportManagedDiskJob, -StartExportVirtualMachineJob, -StartRefreshSubscriptionsJob, -StartRestoreVirtualMachineJob.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ExcludeManagedDisksFromSnapshot,
-    /// which is equivalent to specifying -ExcludeManagedDisksFromSnapshot.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ExcludeManagedDisksFromSnapshot, StartCreateManagedDiskSnapshotsJob, StartCreateVirtualMachineSnapshotsJob, StartDisableSubscriptionProtectionJob, StartExportManagedDiskJob, StartExportVirtualMachineJob, StartRefreshSubscriptionsJob, or StartRestoreVirtualMachineJob.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -420,139 +419,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationAzureNative",
-        DefaultParameterSetName = "StartExportManagedDiskJob")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationAzureNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ExcludeManagedDisksFromSnapshot",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeManagedDisksFromSnapshot' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Exclude the Managed Disks from snapshots, for the specified virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/excludeazurenativemanageddisksfromsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeManagedDisksFromSnapshot { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ExcludeManagedDisksFromSnapshot",
+                "StartCreateManagedDiskSnapshotsJob",
+                "StartCreateVirtualMachineSnapshotsJob",
+                "StartDisableSubscriptionProtectionJob",
+                "StartExportManagedDiskJob",
+                "StartExportVirtualMachineJob",
+                "StartRefreshSubscriptionsJob",
+                "StartRestoreVirtualMachineJob",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "StartCreateManagedDiskSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCreateManagedDiskSnapshotsJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateazurenativemanageddisksnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCreateManagedDiskSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartCreateVirtualMachineSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCreateVirtualMachineSnapshotsJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateazurenativevirtualmachinesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCreateVirtualMachineSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartDisableSubscriptionProtectionJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartDisableSubscriptionProtectionJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to disable protection for a specified Azure subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startdisableazurenativesubscriptionprotectionjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartDisableSubscriptionProtectionJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportManagedDiskJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportManagedDiskJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to export the specified Azure Native Managed Disks to the desired destination.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportazurenativemanageddiskjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportManagedDiskJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportVirtualMachineJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportVirtualMachineJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportazurenativevirtualmachinejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportVirtualMachineJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRefreshSubscriptionsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRefreshSubscriptionsJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrefreshazurenativesubscriptionsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRefreshSubscriptionsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRestoreVirtualMachineJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRestoreVirtualMachineJob' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrestoreazurenativevirtualmachinejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRestoreVirtualMachineJob { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

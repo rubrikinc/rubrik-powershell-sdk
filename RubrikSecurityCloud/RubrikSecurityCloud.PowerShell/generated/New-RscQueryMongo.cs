@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 10 operations
     /// in the 'Mongo DB' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkRecoverableRange, -BulkRecoverableRanges, -Collection, -CollectionRecoverableRange, -Collections, -Database, -Databases, -RecoverableRanges, -Source, -Sources.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkRecoverableRange,
-    /// which is equivalent to specifying -BulkRecoverableRange.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkRecoverableRange, BulkRecoverableRanges, Collection, CollectionRecoverableRange, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -565,171 +564,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryMongo",
-        DefaultParameterSetName = "Source")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryMongo : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkRecoverableRange",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BulkRecoverableRange' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Recoverable range for multiple Management Objects on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbbulkrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkRecoverableRange { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkRecoverableRange",
+                "BulkRecoverableRanges",
+                "Collection",
+                "CollectionRecoverableRange",
+                "Collections",
+                "Database",
+                "Databases",
+                "RecoverableRanges",
+                "Source",
+                "Sources",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BulkRecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BulkRecoverableRanges' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongobulkrecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkRecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Collection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Collection' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Provides details for a MongoDB collection identified by the fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongocollection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Collection { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CollectionRecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CollectionRecoverableRange' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Recoverable Range of a MongoDB collection on NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodbcollectionrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CollectionRecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Collections",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Collections' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Paginated list of MongoDB collections.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongocollections.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Collections { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Database' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Provides details for a MongoDB database identified by the fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Database { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Databases' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Paginated list of MongoDB databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongodatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRanges' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Provides the point in time range for MongoDB object recovery.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongorecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Source' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Provides details for the MongoDB source cluster identified by the fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Source { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Sources",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Sources' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Paginated list of MongoDB sources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mongosources.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Sources { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

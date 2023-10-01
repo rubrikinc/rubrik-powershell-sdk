@@ -179,6 +179,14 @@ namespace RubrikSecurityCloud.Types
             return fieldspecs;
         }
 
+        public static List<string> SelectedFields(this List<MongoCollectionSetPhysicalChildType> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<MongoCollectionSetPhysicalChildType> list, 
             ExplorationContext ec)

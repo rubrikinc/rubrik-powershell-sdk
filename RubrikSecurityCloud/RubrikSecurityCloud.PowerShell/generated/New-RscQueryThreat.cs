@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Threat' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -HuntDetail, -HuntResult, -HuntSummary, -Hunts.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op HuntDetail,
-    /// which is equivalent to specifying -HuntDetail.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: HuntDetail, HuntResult, HuntSummary, or Hunts.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -221,75 +220,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryThreat",
-        DefaultParameterSetName = "Hunts")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryThreat : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "HuntDetail",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HuntDetail' operation
-in the 'Threat' API domain.
-Description of the operation:
-The details of a threat hunt.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/threathuntdetail.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HuntDetail { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "HuntDetail",
+                "HuntResult",
+                "HuntSummary",
+                "Hunts",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "HuntResult",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HuntResult' operation
-in the 'Threat' API domain.
-Description of the operation:
-The results of the Threat Hunt.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/threathuntresult.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HuntResult { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HuntSummary",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HuntSummary' operation
-in the 'Threat' API domain.
-Description of the operation:
-The summary of a threat hunt.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/threathuntsummary.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HuntSummary { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Hunts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Hunts' operation
-in the 'Threat' API domain.
-Description of the operation:
-List of Threat Hunts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/threathunts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Hunts { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

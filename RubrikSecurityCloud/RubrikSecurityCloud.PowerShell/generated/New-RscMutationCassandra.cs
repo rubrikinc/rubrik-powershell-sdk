@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 5 operations
     /// in the 'Cassandra' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkDeleteSources, -CreateSource, -DeleteSource, -RecoverSource, -UpdateSource.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkDeleteSources,
-    /// which is equivalent to specifying -BulkDeleteSources.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkDeleteSources, CreateSource, DeleteSource, RecoverSource, or UpdateSource.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -438,91 +437,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationCassandra",
-        DefaultParameterSetName = "CreateSource")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationCassandra : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkDeleteSources",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDeleteSources' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Bulk Delete cassandra sources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletecassandrasources.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDeleteSources { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkDeleteSources",
+                "CreateSource",
+                "DeleteSource",
+                "RecoverSource",
+                "UpdateSource",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CreateSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateSource' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Create a cassandra source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcassandrasource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSource' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Delete a cassandra source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecassandrasource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverSource' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Recover a cassandra source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/recovercassandrasource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateSource' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Update a cassandra source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecassandrasource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateSource { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

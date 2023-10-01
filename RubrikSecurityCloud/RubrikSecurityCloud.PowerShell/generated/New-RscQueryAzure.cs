@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 42 operations
     /// in the 'Azure' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AdDirectories, -AdDirectory, -AdObjectsByType, -ArmTemplatesByFeature, -CdmVersions, -CheckPersistentStorageSubscriptionCanUnmap, -CloudAccountMissingPermissions, -CloudAccountPermissionConfig, -CloudAccountSubnetsByRegion, -CloudAccountSubscriptionWithFeatures, -CloudAccountSubscriptionsByFeature, -CloudAccountTenant, -CloudAccountTenantWithExoConfigs, -CloudAccountTenants, -DiskEncryptionSetsByRegion, -EncryptionKeys, -ExocomputeConfigsInAccount, -HostedAzureRegions, -IsStorageAccountNameAvailable, -KeyVaultsByRegion, -ManagedIdentities, -Nsgs, -Regions, -ResourceGroups, -SearchAdSnapshot, -SqlDatabase, -SqlDatabaseDbPointInTimeRestoreWindowFromAzure, -SqlDatabaseServer, -SqlDatabaseServerElasticPools, -SqlDatabaseServers, -SqlDatabases, -SqlManagedInstanceDatabase, -SqlManagedInstanceDatabases, -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, -SqlManagedInstanceServer, -SqlManagedInstanceServers, -StorageAccounts, -Subnets, -SubscriptionWithExocomputeMappings, -Subscriptions, -VNets, -ValidateCloudAccountExocomputeConfigurations.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AdDirectories,
-    /// which is equivalent to specifying -AdDirectories.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1729,683 +1728,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAzure",
-        DefaultParameterSetName = "Nsgs")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryAzure : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AdDirectories",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AdDirectories' operation
-in the 'Azure' API domain.
-Description of the operation:
-Lists all Azure AD directories for the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureaddirectories.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AdDirectories { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AdDirectories",
+                "AdDirectory",
+                "AdObjectsByType",
+                "ArmTemplatesByFeature",
+                "CdmVersions",
+                "CheckPersistentStorageSubscriptionCanUnmap",
+                "CloudAccountMissingPermissions",
+                "CloudAccountPermissionConfig",
+                "CloudAccountSubnetsByRegion",
+                "CloudAccountSubscriptionWithFeatures",
+                "CloudAccountSubscriptionsByFeature",
+                "CloudAccountTenant",
+                "CloudAccountTenantWithExoConfigs",
+                "CloudAccountTenants",
+                "DiskEncryptionSetsByRegion",
+                "EncryptionKeys",
+                "ExocomputeConfigsInAccount",
+                "HostedAzureRegions",
+                "IsStorageAccountNameAvailable",
+                "KeyVaultsByRegion",
+                "ManagedIdentities",
+                "Nsgs",
+                "Regions",
+                "ResourceGroups",
+                "SearchAdSnapshot",
+                "SqlDatabase",
+                "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                "SqlDatabaseServer",
+                "SqlDatabaseServerElasticPools",
+                "SqlDatabaseServers",
+                "SqlDatabases",
+                "SqlManagedInstanceDatabase",
+                "SqlManagedInstanceDatabases",
+                "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                "SqlManagedInstanceServer",
+                "SqlManagedInstanceServers",
+                "StorageAccounts",
+                "Subnets",
+                "SubscriptionWithExocomputeMappings",
+                "Subscriptions",
+                "VNets",
+                "ValidateCloudAccountExocomputeConfigurations",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "AdDirectory",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AdDirectory' operation
-in the 'Azure' API domain.
-Description of the operation:
-Details of the Azure AD corresponding to the workload ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureaddirectory.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AdDirectory { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AdObjectsByType",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AdObjectsByType' operation
-in the 'Azure' API domain.
-Description of the operation:
-Details of the Azure AD objects corresponding to the type.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureadobjectsbytype.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AdObjectsByType { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ArmTemplatesByFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ArmTemplatesByFeature' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieve ARM templates for role definition and role assignment.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurearmtemplatesbyfeature.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ArmTemplatesByFeature { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CdmVersions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CdmVersions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get all Rubrik CDM versions in the Azure marketplace.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecdmversions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CdmVersions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckPersistentStorageSubscriptionCanUnmap",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckPersistentStorageSubscriptionCanUnmap' operation
-in the 'Azure' API domain.
-Description of the operation:
-Checks if we can unmap the archival location from the subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/checkazurepersistentstoragesubscriptioncanunmap.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckPersistentStorageSubscriptionCanUnmap { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountMissingPermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountMissingPermissions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountmissingpermissions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountMissingPermissions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountPermissionConfig",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountPermissionConfig' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurecloudaccountpermissionconfig.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountPermissionConfig { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountSubnetsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountSubnetsByRegion' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountsubnetsbyregion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountSubnetsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountSubscriptionWithFeatures",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountSubscriptionWithFeatures' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves the details of the Azure cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurecloudaccountsubscriptionwithfeatures.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountSubscriptionWithFeatures { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountSubscriptionsByFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountSubscriptionsByFeature' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccountsubscriptionsbyfeature.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountSubscriptionsByFeature { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountTenant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountTenant' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurecloudaccounttenant.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountTenant { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountTenantWithExoConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountTenantWithExoConfigs' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurecloudaccounttenantwithexoconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountTenantWithExoConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountTenants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountTenants' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurecloudaccounttenants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountTenants { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DiskEncryptionSetsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DiskEncryptionSetsByRegion' operation
-in the 'Azure' API domain.
-Description of the operation:
-List of all Azure Disk Encryption Sets in a region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurediskencryptionsetsbyregion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DiskEncryptionSetsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EncryptionKeys",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EncryptionKeys' operation
-in the 'Azure' API domain.
-Description of the operation:
-List of all Encryption Keys in an Azure Key Vault.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureencryptionkeys.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EncryptionKeys { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExocomputeConfigsInAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ExocomputeConfigsInAccount' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazureexocomputeconfigsinaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExocomputeConfigsInAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HostedAzureRegions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostedAzureRegions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allhostedazureregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostedAzureRegions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsStorageAccountNameAvailable",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsStorageAccountNameAvailable' operation
-in the 'Azure' API domain.
-Description of the operation:
-Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isazurestorageaccountnameavailable.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsStorageAccountNameAvailable { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "KeyVaultsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'KeyVaultsByRegion' operation
-in the 'Azure' API domain.
-Description of the operation:
-List of all Azure Key Vaults in a region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurekeyvaultsbyregion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter KeyVaultsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedIdentities",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedIdentities' operation
-in the 'Azure' API domain.
-Description of the operation:
-List all managed identities for Azure resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuremanagedidentities.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedIdentities { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Nsgs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Nsgs' operation
-in the 'Azure' API domain.
-Description of the operation:
-Get all available network security groups for Azure.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurensgs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Nsgs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Regions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Regions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Gets the Azure regions for the given subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Regions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResourceGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResourceGroups' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list og all resource groups in the specified account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allresourcegroupsfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResourceGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SearchAdSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SearchAdSnapshot' operation
-in the 'Azure' API domain.
-Description of the operation:
-Search for azureAdObjects in a snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/searchazureadsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SearchAdSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlDatabase' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqldatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlDatabaseDbPointInTimeRestoreWindowFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqldatabasedbpointintimerestorewindowfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlDatabaseDbPointInTimeRestoreWindowFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlDatabaseServer",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlDatabaseServer' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqldatabaseserver.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlDatabaseServer { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlDatabaseServerElasticPools",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlDatabaseServerElasticPools' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresqldatabaseserverelasticpools.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlDatabaseServerElasticPools { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlDatabaseServers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlDatabaseServers' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure SQL Database Servers.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqldatabaseservers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlDatabaseServers { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlDatabases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlDatabases' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure SQL Databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqldatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlDatabases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlManagedInstanceDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlManagedInstanceDatabase' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqlmanagedinstancedatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlManagedInstanceDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlManagedInstanceDatabases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlManagedInstanceDatabases' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure SQL Managed Instance Databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqlmanagedinstancedatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlManagedInstanceDatabases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure' operation
-in the 'Azure' API domain.
-Description of the operation:
-Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqlmanagedinstancedbpointintimerestorewindowfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlManagedInstanceServer",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlManagedInstanceServer' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqlmanagedinstanceserver.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlManagedInstanceServer { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlManagedInstanceServers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlManagedInstanceServers' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure SQL Managed Instance Servers.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresqlmanagedinstanceservers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlManagedInstanceServers { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StorageAccounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'StorageAccounts' operation
-in the 'Azure' API domain.
-Description of the operation:
-Gets the storage accounts for the given subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurestorageaccounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StorageAccounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Subnets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Subnets' operation
-in the 'Azure' API domain.
-Description of the operation:
-Gets the subnets for the given subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresubnets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Subnets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SubscriptionWithExocomputeMappings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SubscriptionWithExocomputeMappings' operation
-in the 'Azure' API domain.
-Description of the operation:
-Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazuresubscriptionwithexocomputemappings.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SubscriptionWithExocomputeMappings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Subscriptions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Subscriptions' operation
-in the 'Azure' API domain.
-Description of the operation:
-Gets the subscriptions for the given Azure tenant.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azuresubscriptions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Subscriptions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VNets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VNets' operation
-in the 'Azure' API domain.
-Description of the operation:
-Gets the VNets for the given subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurevnets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VNets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateCloudAccountExocomputeConfigurations",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateCloudAccountExocomputeConfigurations' operation
-in the 'Azure' API domain.
-Description of the operation:
-Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateazurecloudaccountexocomputeconfigurations.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateCloudAccountExocomputeConfigurations { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

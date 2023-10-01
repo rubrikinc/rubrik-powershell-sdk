@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 23 operations
     /// in the 'VMware vSphere' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ComputeCluster, -ComputeClusters, -Datacenter, -Datastore, -DatastoreCluster, -DatastoreClusters, -DatastoreList, -Folder, -Folders, -Host, -HostDetails, -HostList, -HostsByFids, -LiveMounts, -Mount, -MountList, -Network, -ResourcePool, -RootRecoveryHierarchy, -Tag, -TagCategory, -TopLevelDescendantsList, -VmwareCdpLiveInfo.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ComputeCluster,
-    /// which is equivalent to specifying -ComputeCluster.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, or VmwareCdpLiveInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1113,382 +1112,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryVsphere",
-        DefaultParameterSetName = "Host")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryVsphere : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ComputeCluster",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ComputeCluster' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ComputeCluster",
+                "ComputeClusters",
+                "Datacenter",
+                "Datastore",
+                "DatastoreCluster",
+                "DatastoreClusters",
+                "DatastoreList",
+                "Folder",
+                "Folders",
+                "Host",
+                "HostDetails",
+                "HostList",
+                "HostsByFids",
+                "LiveMounts",
+                "Mount",
+                "MountList",
+                "Network",
+                "ResourcePool",
+                "RootRecoveryHierarchy",
+                "Tag",
+                "TagCategory",
+                "TopLevelDescendantsList",
+                "VmwareCdpLiveInfo",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherecomputecluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ComputeCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ComputeClusters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ComputeClusters' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Query compute clusters
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherecomputeclusters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ComputeClusters { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Datacenter",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Datacenter' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatacenter.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Datacenter { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Datastore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Datastore' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Vsphere datastore based on id passed in.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Datastore { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatastoreCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatastoreCluster' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Vsphere datastore cluster based on id passed in.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastorecluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatastoreCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatastoreClusters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatastoreClusters' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Query vSphere datastore clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastoreclusters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatastoreClusters { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatastoreList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatastoreList' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredatastoreconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatastoreList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Folder",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Folder' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherefolder.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Folder { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Folders",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Folders' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Get all the vSphere folders.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherefolders.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Folders { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Host",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Host' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public new SwitchParameter Host { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HostDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostDetails' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Get details of a ESXi hypervisor
-
-Supported in v5.0+
-Get details of a ESXi hypervisor.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehostdetails.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HostList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostList' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehostconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HostsByFids",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostsByFids' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-All of the VSphere hosts based on fids passed in.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherehostsbyfids.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostsByFids { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LiveMounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LiveMounts' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-List of vSphere Live Mounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherelivemounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LiveMounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Mount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Mount' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-Get a vSphere Live Mount by id
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheremount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Mount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MountList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'MountList' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-vSphere Live Mount Connection
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheremountconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MountList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Network",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Network' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherenetwork.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Network { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResourcePool",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResourcePool' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereresourcepool.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResourcePool { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RootRecoveryHierarchy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RootRecoveryHierarchy' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphererootrecoveryhierarchy.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RootRecoveryHierarchy { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Tag",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Tag' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheretag.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Tag { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TagCategory",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TagCategory' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheretagcategory.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TagCategory { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TopLevelDescendantsList' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheretopleveldescendantsconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TopLevelDescendantsList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VmwareCdpLiveInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VmwareCdpLiveInfo' operation
-in the 'VMware vSphere' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmwarecdpliveinfo.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VmwareCdpLiveInfo { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

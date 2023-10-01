@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Microsoft Exchange' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkUpdateDag, -CreateMount, -CreateOnDemandBackup, -DeleteSnapshotMount.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkUpdateDag,
-    /// which is equivalent to specifying -BulkUpdateDag.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkUpdateDag, CreateMount, CreateOnDemandBackup, or DeleteSnapshotMount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -244,87 +243,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationExchange",
-        DefaultParameterSetName = "CreateMount")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationExchange : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkUpdateDag",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdateDag' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Update multiple Exchange DAGs
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkUpdateDag",
+                "CreateMount",
+                "CreateOnDemandBackup",
+                "DeleteSnapshotMount",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v8.0+
-Update multiple Exchange DAGs with the specified properties.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdateexchangedag.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdateDag { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateMount' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Create a request to mount a Microsoft Exchange database snapshot
-
-Supported in v8.0+
-Create a request to mount a Microsoft Exchange database snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createexchangemount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateOnDemandBackup' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Take an on-demand backup of a Microsoft Exchange database
-
-Supported in v8.0+
-Takes an on-demand backup of a Microsoft Exchange database. The forceFullSnapshot property can be set to true to force a full snapshot. To check the result of the request, poll /exchange/request/{id}.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemandexchangebackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateOnDemandBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSnapshotMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSnapshotMount' operation
-in the 'Microsoft Exchange' API domain.
-Description of the operation:
-Request to delete a mount for the Microsoft Exchange database snapshot
-
-Supported in v8.0+
-Request to delete a mount for Microsoft Exchange database snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteexchangesnapshotmount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSnapshotMount { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

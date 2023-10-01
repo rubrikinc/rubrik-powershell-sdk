@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 28 operations
     /// in the 'AWS' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ArtifactsToDelete, -AvailabilityZonesByRegion, -CdmVersions, -CloudAccountConfigs, -CloudAccountListSecurityGroups, -CloudAccountListSubnets, -CloudAccountListVpcs, -CloudAccountWithFeatures, -CloudAccountsWithFeatures, -ComputeSettings, -DbParameterGroupsByRegion, -DbSubnetGroupsByRegion, -Ec2KeyPairsByRegion, -ExocomputeConfigs, -InstanceProfileNames, -IsS3BucketNameAvailable, -KmsEncryptionKeysByRegion, -OptionGroupsByRegion, -PermissionPolicies, -RdsInstanceDetails, -Regions, -S3BucketStateForRecovery, -S3Buckets, -S3BucketsDetails, -SupportedRdsDatabaseInstanceClasses, -TrustPolicy, -Vpcs, -VpcsByRegion.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ArtifactsToDelete,
-    /// which is equivalent to specifying -ArtifactsToDelete.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -998,459 +997,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAws",
-        DefaultParameterSetName = "Vpcs")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryAws : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ArtifactsToDelete",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ArtifactsToDelete' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves the AWS artifacts that need to be deleted when an account is being deleted.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsartifactstodelete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ArtifactsToDelete { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ArtifactsToDelete",
+                "AvailabilityZonesByRegion",
+                "CdmVersions",
+                "CloudAccountConfigs",
+                "CloudAccountListSecurityGroups",
+                "CloudAccountListSubnets",
+                "CloudAccountListVpcs",
+                "CloudAccountWithFeatures",
+                "CloudAccountsWithFeatures",
+                "ComputeSettings",
+                "DbParameterGroupsByRegion",
+                "DbSubnetGroupsByRegion",
+                "Ec2KeyPairsByRegion",
+                "ExocomputeConfigs",
+                "InstanceProfileNames",
+                "IsS3BucketNameAvailable",
+                "KmsEncryptionKeysByRegion",
+                "OptionGroupsByRegion",
+                "PermissionPolicies",
+                "RdsInstanceDetails",
+                "Regions",
+                "S3BucketStateForRecovery",
+                "S3Buckets",
+                "S3BucketsDetails",
+                "SupportedRdsDatabaseInstanceClasses",
+                "TrustPolicy",
+                "Vpcs",
+                "VpcsByRegion",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "AvailabilityZonesByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AvailabilityZonesByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allavailabilityzonesbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AvailabilityZonesByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CdmVersions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CdmVersions' operation
-in the 'AWS' API domain.
-Description of the operation:
-Get all Rubrik CDM versions in the AWS marketplace.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscdmversions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CdmVersions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all AWS cloud account configurations with the given search query.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscloudaccountconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountListSecurityGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountListSecurityGroups' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awscloudaccountlistsecuritygroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountListSecurityGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountListSubnets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountListSubnets' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awscloudaccountlistsubnets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountListSubnets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountListVpcs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountListVpcs' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awscloudaccountlistvpcs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountListVpcs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountWithFeatures",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountWithFeatures' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of AWS cloud accounts and the features for each account, classified by ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awscloudaccountwithfeatures.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountWithFeatures { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountsWithFeatures",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountsWithFeatures' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawscloudaccountswithfeatures.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountsWithFeatures { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ComputeSettings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ComputeSettings' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieve aws compute settings.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awscomputesettings.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ComputeSettings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbParameterGroupsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbParameterGroupsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldbparametergroupsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbParameterGroupsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DbSubnetGroupsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DbSubnetGroupsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldbsubnetgroupsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DbSubnetGroupsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Ec2KeyPairsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Ec2KeyPairsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allec2keypairsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Ec2KeyPairsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ExocomputeConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsexocomputeconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExocomputeConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InstanceProfileNames",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'InstanceProfileNames' operation
-in the 'AWS' API domain.
-Description of the operation:
-All Rubrik CC-ES instance profiles in the AWS account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsinstanceprofilenames.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InstanceProfileNames { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsS3BucketNameAvailable",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsS3BucketNameAvailable' operation
-in the 'AWS' API domain.
-Description of the operation:
-Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isawss3bucketnameavailable.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsS3BucketNameAvailable { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "KmsEncryptionKeysByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'KmsEncryptionKeysByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allkmsencryptionkeysbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter KmsEncryptionKeysByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OptionGroupsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OptionGroupsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alloptiongroupsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OptionGroupsByRegion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PermissionPolicies",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PermissionPolicies' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawspermissionpolicies.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PermissionPolicies { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RdsInstanceDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RdsInstanceDetails' operation
-in the 'AWS' API domain.
-Description of the operation:
-Details of the RDS Instance in the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/rdsinstancedetailsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RdsInstanceDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Regions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Regions' operation
-in the 'AWS' API domain.
-Description of the operation:
-All valid AWS regions for this cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allawsregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Regions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "S3BucketStateForRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'S3BucketStateForRecovery' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves the versioning and object ACL state of the Amazon S3 bucket, which is required to initiate the recovery process.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/s3bucketstateforrecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter S3BucketStateForRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "S3Buckets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'S3Buckets' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all S3 bucket names across regions for the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alls3bucketsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter S3Buckets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "S3BucketsDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'S3BucketsDetails' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all S3 bucket details across regions for the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alls3bucketsdetailsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter S3BucketsDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SupportedRdsDatabaseInstanceClasses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SupportedRdsDatabaseInstanceClasses' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allsupportedawsrdsdatabaseinstanceclasses.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SupportedRdsDatabaseInstanceClasses { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TrustPolicy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TrustPolicy' operation
-in the 'AWS' API domain.
-Description of the operation:
-Retrieves the AWS trust policy that will be attached with each role (cross-account, exocompute, etc.) in the customer's environment.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awstrustpolicy.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TrustPolicy { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Vpcs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Vpcs' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all Virtual Private Clouds (VPCs) in the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvpcsfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Vpcs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VpcsByRegion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VpcsByRegion' operation
-in the 'AWS' API domain.
-Description of the operation:
-List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvpcsbyregionfromaws.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VpcsByRegion { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud
         public static bool SaveApiTrafficToFile = false;
 
         /// <summary>
+        /// If true, logging to file will replace console logging.
+        /// </summary>
+        public static bool LogToFile = false;
+
+        /// <summary>
         /// The amount of time before token expiration (in minutes)
         /// at which point any further cmdlet calls will refresh the token.
         /// </summary>
@@ -48,12 +53,14 @@ namespace RubrikSecurityCloud
             "^description$" ,
             "^email$" ,
             "^endcursor$" ,
-            "^id$" ,
+            "id$" ,
+            "^message$",
             "^name$" ,
             "^numworkloaddescendants$" ,
             "^objecttype$" ,
             "^slaassignment$" ,
             "^startcursor$" ,
+            "^success$",
             "^total$",
             "^type$" ,
             "^username$" ,

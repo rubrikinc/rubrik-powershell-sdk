@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 11 operations
     /// in the 'Managed Volume' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Add, -BeginSnapshot, -Delete, -DeleteSnapshotExport, -DownloadFiles, -DownloadFromLocation, -EndSnapshot, -ExportSnapshot, -Resize, -TakeOnDemandSnapshot, -Update.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Add,
-    /// which is equivalent to specifying -Add.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Add, BeginSnapshot, Delete, DeleteSnapshotExport, DownloadFiles, DownloadFromLocation, EndSnapshot, ExportSnapshot, Resize, TakeOnDemandSnapshot, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -681,220 +680,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationManagedVolume",
-        DefaultParameterSetName = "Add")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationManagedVolume : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Add",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Add' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Create a Managed Volume
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Add",
+                "BeginSnapshot",
+                "Delete",
+                "DeleteSnapshotExport",
+                "DownloadFiles",
+                "DownloadFromLocation",
+                "EndSnapshot",
+                "ExportSnapshot",
+                "Resize",
+                "TakeOnDemandSnapshot",
+                "Update",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v7.0+
-v7.0: Initiates an asynchronous job to create a Managed Volume stack.
-v8.0+: Start an asynchronous job to create a Managed Volume stack.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addmanagedvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Add { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BeginSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BeginSnapshot' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Begin Managed Volume snapshot
-
-Supported in v7.0+
-Opens the Managed Volume for writes. All data written to the Managed Volume until the next end-snapshot call will be part of this snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/beginmanagedvolumesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BeginSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Delete' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Delete a Managed Volume
-
-Supported in v7.0+
-Delete a Managed Volume.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemanagedvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Delete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSnapshotExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSnapshotExport' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Delete an exported Managed Volume snapshot
-
-Supported in v7.0+
-Deletes an exported Managed Volume snapshot, identified by the snapshot ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemanagedvolumesnapshotexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSnapshotExport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadFiles' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Download files from a managed volume backup
-
-Supported in v5.0+
-Start an asynchronous job to download multiple files and folders from a specified managed volume backup. The response returns an asynchronous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'managed-volume/request/{id}'.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmanagedvolumefiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadFromLocation' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Download a snapshot from a remote target
-
-Supported in v7.0+
-Initiates a job to download a snapshot from the specified
-location when the snapshot does not exist locally.
-The specified location has to be a remote target connected to this Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmanagedvolumefromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadFromLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EndSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'EndSnapshot' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-End Managed Volume snapshot
-
-Supported in v7.0+
-Close a Managed Volume for writes. A snapshot will be created containing all writes since the last begin-snapshot call.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/endmanagedvolumesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EndSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportSnapshot' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Create a request to export a snapshot
-
-Supported in v5.0+
-Export a managed volume snapshot as a share.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportmanagedvolumesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Resize",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Resize' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Resize managed volume
-
-Supported in v5.3+
-Resize the managed volume to a larger size. Once a volume size has been increased, it can not be decreased.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/resizemanagedvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Resize { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TakeOnDemandSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'TakeOnDemandSnapshot' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Take an on-demand snapshot of an SLA Managed Volume
-
-Supported in v5.3+
-Create a job for an on-demand snapshot of an SLA Managed Volume. The response returns a request ID. To see the status of the request, poll 'managed-volume/request/{id}' with the request ID obtained in the response.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takemanagedvolumeondemandsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TakeOnDemandSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'Managed Volume' API domain.
-Description of the operation:
-Mutation to update an existing Managed Volume.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemanagedvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -179,6 +179,14 @@ namespace RubrikSecurityCloud.Types
             return fieldspecs;
         }
 
+        public static List<string> SelectedFields(this List<HypervServerLogicalChildType> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<HypervServerLogicalChildType> list, 
             ExplorationContext ec)

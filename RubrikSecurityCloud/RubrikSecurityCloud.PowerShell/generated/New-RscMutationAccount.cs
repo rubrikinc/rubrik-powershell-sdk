@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 1 operations
     /// in the 'Account' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -DeleteUsers.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op DeleteUsers,
-    /// which is equivalent to specifying -DeleteUsers.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ['DeleteUsers'].
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -111,27 +110,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationAccount",
-        DefaultParameterSetName = "DeleteUsers")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationAccount : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "DeleteUsers",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteUsers' operation
-in the 'Account' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "DeleteUsers",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteusersfromaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteUsers { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

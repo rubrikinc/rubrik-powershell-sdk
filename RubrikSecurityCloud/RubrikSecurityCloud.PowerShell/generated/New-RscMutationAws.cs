@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 33 operations
     /// in the 'AWS' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddAuthenticationServerBasedCloudAccount, -AddIamUserBasedCloudAccount, -BulkDeleteCloudAccountWithoutCft, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateComputeSetting, -CreateExocomputeConfigs, -CreateReaderTarget, -CreateTarget, -DeleteCluster, -DeleteComputeSetting, -DeleteExocomputeConfigs, -FinalizeCloudAccountDeletion, -FinalizeCloudAccountProtection, -PatchAuthenticationServerBasedCloudAccount, -PatchIamUserBasedCloudAccount, -PrepareCloudAccountDeletion, -PrepareFeatureUpdateForCloudAccount, -RegisterFeatureArtifacts, -StartExocomputeDisableJob, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudAccountFeature, -UpdateCloudNativeStorageSetting, -UpdateComputeSetting, -UpdateExocomputeConfigs, -UpdateTarget, -UpgradeCloudAccountFeaturesWithoutCft, -UpgradeIamUserBasedCloudAccountPermissions, -ValidateAndCreateCloudAccount.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddAuthenticationServerBasedCloudAccount,
-    /// which is equivalent to specifying -AddAuthenticationServerBasedCloudAccount.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1902,539 +1901,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationAws",
-        DefaultParameterSetName = "CreateTarget")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationAws : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddAuthenticationServerBasedCloudAccount",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddAuthenticationServerBasedCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addawsauthenticationserverbasedcloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddAuthenticationServerBasedCloudAccount { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddAuthenticationServerBasedCloudAccount",
+                "AddIamUserBasedCloudAccount",
+                "BulkDeleteCloudAccountWithoutCft",
+                "CreateAccount",
+                "CreateAutomaticTargetMapping",
+                "CreateCloudNativeStorageSetting",
+                "CreateCluster",
+                "CreateComputeSetting",
+                "CreateExocomputeConfigs",
+                "CreateReaderTarget",
+                "CreateTarget",
+                "DeleteCluster",
+                "DeleteComputeSetting",
+                "DeleteExocomputeConfigs",
+                "FinalizeCloudAccountDeletion",
+                "FinalizeCloudAccountProtection",
+                "PatchAuthenticationServerBasedCloudAccount",
+                "PatchIamUserBasedCloudAccount",
+                "PrepareCloudAccountDeletion",
+                "PrepareFeatureUpdateForCloudAccount",
+                "RegisterFeatureArtifacts",
+                "StartExocomputeDisableJob",
+                "UpdateAccount",
+                "UpdateAutomaticTargetMapping",
+                "UpdateCloudAccount",
+                "UpdateCloudAccountFeature",
+                "UpdateCloudNativeStorageSetting",
+                "UpdateComputeSetting",
+                "UpdateExocomputeConfigs",
+                "UpdateTarget",
+                "UpgradeCloudAccountFeaturesWithoutCft",
+                "UpgradeIamUserBasedCloudAccountPermissions",
+                "ValidateAndCreateCloudAccount",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "AddIamUserBasedCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddIamUserBasedCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addawsiamuserbasedcloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddIamUserBasedCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkDeleteCloudAccountWithoutCft",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDeleteCloudAccountWithoutCft' operation
-in the 'AWS' API domain.
-Description of the operation:
-Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeleteawscloudaccountwithoutcft.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDeleteCloudAccountWithoutCft { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawsaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAutomaticTargetMapping' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createautomaticawstargetmapping.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAutomaticTargetMapping { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateCloudNativeStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCloudNativeStorageSetting' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcloudnativeawsstoragesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCloudNativeStorageSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCluster' operation
-in the 'AWS' API domain.
-Description of the operation:
-Create a Rubrik Cloud Cluster on AWS.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawscluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateComputeSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateComputeSetting' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawscomputesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateComputeSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateExocomputeConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-Create AWS Exocompute configs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawsexocomputeconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateExocomputeConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateReaderTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateReaderTarget' operation
-in the 'AWS' API domain.
-Description of the operation:
-Create a reader type for AWS archival location on a Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawsreadertarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateReaderTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateTarget' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawstarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCluster' operation
-in the 'AWS' API domain.
-Description of the operation:
-Delete a Rubrik Cloud Cluster on AWS.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteawscluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteComputeSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteComputeSetting' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteawscomputesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteComputeSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteExocomputeConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-Deletes AWS Exocompute configs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteawsexocomputeconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteExocomputeConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FinalizeCloudAccountDeletion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'FinalizeCloudAccountDeletion' operation
-in the 'AWS' API domain.
-Description of the operation:
-Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/finalizeawscloudaccountdeletion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FinalizeCloudAccountDeletion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FinalizeCloudAccountProtection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'FinalizeCloudAccountProtection' operation
-in the 'AWS' API domain.
-Description of the operation:
-Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/finalizeawscloudaccountprotection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FinalizeCloudAccountProtection { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchAuthenticationServerBasedCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchAuthenticationServerBasedCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchawsauthenticationserverbasedcloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchAuthenticationServerBasedCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchIamUserBasedCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchIamUserBasedCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchawsiamuserbasedcloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchIamUserBasedCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PrepareCloudAccountDeletion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PrepareCloudAccountDeletion' operation
-in the 'AWS' API domain.
-Description of the operation:
-Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/prepareawscloudaccountdeletion.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PrepareCloudAccountDeletion { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PrepareFeatureUpdateForCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PrepareFeatureUpdateForCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Prepare manual update features to latest version.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/preparefeatureupdateforawscloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PrepareFeatureUpdateForCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegisterFeatureArtifacts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RegisterFeatureArtifacts' operation
-in the 'AWS' API domain.
-Description of the operation:
-Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registerawsfeatureartifacts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegisterFeatureArtifacts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExocomputeDisableJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExocomputeDisableJob' operation
-in the 'AWS' API domain.
-Description of the operation:
-Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsexocomputedisablejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExocomputeDisableJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawsaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAutomaticTargetMapping' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateautomaticawstargetmapping.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Update properties for a given AWS cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawscloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCloudAccountFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCloudAccountFeature' operation
-in the 'AWS' API domain.
-Description of the operation:
-Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawscloudaccountfeature.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCloudAccountFeature { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCloudNativeStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCloudNativeStorageSetting' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativeawsstoragesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCloudNativeStorageSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateComputeSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateComputeSetting' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawscomputesetting.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateComputeSetting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateExocomputeConfigs' operation
-in the 'AWS' API domain.
-Description of the operation:
-Update AWS Exocompute configs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawsexocomputeconfigs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateExocomputeConfigs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTarget' operation
-in the 'AWS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawstarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpgradeCloudAccountFeaturesWithoutCft",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpgradeCloudAccountFeaturesWithoutCft' operation
-in the 'AWS' API domain.
-Description of the operation:
-Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradeawscloudaccountfeatureswithoutcft.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpgradeCloudAccountFeaturesWithoutCft { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpgradeIamUserBasedCloudAccountPermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpgradeIamUserBasedCloudAccountPermissions' operation
-in the 'AWS' API domain.
-Description of the operation:
-Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradeawsiamuserbasedcloudaccountpermissions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpgradeIamUserBasedCloudAccountPermissions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateAndCreateCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ValidateAndCreateCloudAccount' operation
-in the 'AWS' API domain.
-Description of the operation:
-Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateandcreateawscloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateAndCreateCloudAccount { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

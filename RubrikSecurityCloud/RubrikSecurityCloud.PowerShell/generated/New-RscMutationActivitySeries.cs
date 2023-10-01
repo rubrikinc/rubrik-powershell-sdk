@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'Activity series' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Cancel, -DownloadUserCsv, -DownloadUserFileCsv.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Cancel,
-    /// which is equivalent to specifying -Cancel.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Cancel, DownloadUserCsv, or DownloadUserFileCsv.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -244,59 +243,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationActivitySeries",
-        DefaultParameterSetName = "Cancel")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationActivitySeries : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Cancel",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Cancel' operation
-in the 'Activity series' API domain.
-Description of the operation:
-Cancel an activity series.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cancelactivityseries.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cancel { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Cancel",
+                "DownloadUserCsv",
+                "DownloadUserFileCsv",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "DownloadUserCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadUserCsv' operation
-in the 'Activity series' API domain.
-Description of the operation:
-Schedule a download CSV job for a user's activity.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloaduseractivitycsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadUserCsv { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadUserFileCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadUserFileCsv' operation
-in the 'Activity series' API domain.
-Description of the operation:
-Schedule a download CSV job for user activity on a specific file.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloaduserfileactivitycsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadUserFileCsv { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

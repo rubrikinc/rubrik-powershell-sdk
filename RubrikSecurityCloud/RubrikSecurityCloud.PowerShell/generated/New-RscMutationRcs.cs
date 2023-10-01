@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'RCS' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CreateAutomaticTargetMapping, -CreateReaderTarget, -CreateTarget, -UpdateAutomaticTargetMapping.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CreateAutomaticTargetMapping,
-    /// which is equivalent to specifying -CreateAutomaticTargetMapping.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CreateAutomaticTargetMapping, CreateReaderTarget, CreateTarget, or UpdateAutomaticTargetMapping.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -262,75 +261,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationRcs",
-        DefaultParameterSetName = "CreateTarget")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationRcs : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CreateAutomaticTargetMapping",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAutomaticTargetMapping' operation
-in the 'RCS' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CreateAutomaticTargetMapping",
+                "CreateReaderTarget",
+                "CreateTarget",
+                "UpdateAutomaticTargetMapping",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createautomaticrcstargetmapping.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAutomaticTargetMapping { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateReaderTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateReaderTarget' operation
-in the 'RCS' API domain.
-Description of the operation:
-Creates reader type for RCS Azure archival location on a CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/creatercsreadertarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateReaderTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateTarget' operation
-in the 'RCS' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/creatercstarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAutomaticTargetMapping' operation
-in the 'RCS' API domain.
-Description of the operation:
-Update RCS automatic target mapping.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatercsautomatictargetmapping.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

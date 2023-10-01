@@ -536,6 +536,14 @@ namespace RubrikSecurityCloud.Types
             return list[0].AsFieldSpec(conf.Child());
         }
 
+        public static List<string> SelectedFields(this List<BootstrappableNodeInfo> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<BootstrappableNodeInfo> list, 
             ExplorationContext ec)

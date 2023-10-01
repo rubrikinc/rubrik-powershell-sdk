@@ -13,19 +13,21 @@ using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.Types;
 using GraphQL;
+using System.Management.Automation.Language;
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
+
 
 namespace RubrikSecurityCloud.PowerShell.Private
 {
     /// <summary>
     /// Base class for all RSC PowerShell cmdlets.
     /// </summary>
+    [CmdletBinding()]
     public class RscBasePSCmdlet : PSCmdlet
     {
         internal RscLogger _logger = null;
-        internal List<string> _switches = new List<string>();
         internal RscGraphQLClient _rbkClient = null;
         internal bool _retrieveConnection = false;
 
@@ -177,9 +179,59 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 this.GetType(), typeof(CmdletAttribute));
             if (attr == null)
             {
-                return null;
+                return "";
             }
             return $"{attr.VerbName}-{attr.NounName}";
+        }
+
+        virtual public SchemaMeta.ApiDomainName ApiDomainName()
+        {
+            return SchemaMeta.ApiDomainNameByCmdletName(
+                this.GetCmdletName());
+        }
+
+        public string ValidateOperation(
+            string op,
+            bool unknownOk = true)
+        {
+
+            var domain = this.ApiDomainName();
+            List<string> validOps =
+                SchemaMeta.ApiOperationsByApiDomainName(domain);
+
+            if (op.ToLower() == "unknown")
+            {
+                if (unknownOk)
+                {
+                    return "";
+                }
+                throw new Exception($"Unknown operation. Valid operations are: {string.Join(", ", validOps)}");
+            }
+
+            // Check if op matches any entry in validOps, regardless of case.
+            var matchedOp = validOps.FirstOrDefault(v => v.Equals(op, StringComparison.OrdinalIgnoreCase));
+            if (matchedOp != null)
+            {
+                return matchedOp;
+            }
+            // See if it's a GraphQL root field name:
+            var _rscOp = (new RscOp(gqlRootFieldName: op)).Finalize();
+            if (_rscOp.IsDetermined())
+            {
+                if (_rscOp.CmdletName == this.GetCmdletName())
+                {
+                    return _rscOp.OpName();
+                }
+                if (!unknownOk)
+                {
+                    throw new Exception($"GraphQL root field '{op}' is not supported by this cmdlet. Use {_rscOp.Syntax()} instead.");
+                }
+            }
+            if (unknownOk)
+            {
+                return "";
+            }
+            throw new Exception($"Unknown operation '{op}'. Valid operations are: {string.Join(", ", validOps)}");
         }
 
         protected string GetSessionCWD()
@@ -330,7 +382,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
         // using introspection to get the names of the parameters.
         internal string BuildCmdletParametersReport(int indent = 0)
         {
-            _switches.Clear();
             List<string> lines = new();
             var indentStr = new string(' ', indent);
             lines.Add($"{indentStr}Cmdlet Inputs:");
@@ -362,7 +413,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         {
                             continue; // skip false switch parameters
                         }
-                        _switches.Add(prop.Name);
                     }
                     var paramValueStr = StringUtils.FormatObjectForLogging(propVal);
 

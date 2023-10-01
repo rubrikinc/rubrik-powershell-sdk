@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Certificates' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Certificate, -Cluster, -ClusterWebSigned, -SigningRequest, -SigningRequests, -WithKey.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Certificate,
-    /// which is equivalent to specifying -Certificate.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Certificate, Cluster, ClusterWebSigned, SigningRequest, SigningRequests, or WithKey.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -299,113 +298,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryCertificate",
-        DefaultParameterSetName = "Certificate")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryCertificate : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Certificate",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Certificate' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Browse certificates.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/certificates.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Certificate { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Certificate",
+                "Cluster",
+                "ClusterWebSigned",
+                "SigningRequest",
+                "SigningRequests",
+                "WithKey",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Cluster' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Get all certificates
-
-Supported in v5.1+
-Get all certificates.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustercertificates.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ClusterWebSigned",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClusterWebSigned' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Get the signed certificate for Web server
-
-Supported in v5.2+
-If the web server uses a signed certificate, fetch it.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterwebsignedcertificate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClusterWebSigned { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SigningRequest",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SigningRequest' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Get Certificate Signing Request (CSR).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/certificatesigningrequest.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SigningRequest { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SigningRequests",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SigningRequests' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Browse Certificate Signing Requests (CSRs).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/certificatesigningrequests.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SigningRequests { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "WithKey",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'WithKey' operation
-in the 'Certificates' API domain.
-Description of the operation:
-Certificates having private key.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/certificateswithkey.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter WithKey { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

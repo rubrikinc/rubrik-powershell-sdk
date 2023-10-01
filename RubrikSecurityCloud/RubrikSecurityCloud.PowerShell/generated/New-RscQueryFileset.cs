@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Fileset' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Linux, -RequestStatus, -Share, -Template, -Templates, -Windows.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Linux,
-    /// which is equivalent to specifying -Linux.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Linux, RequestStatus, Share, Template, Templates, or Windows.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -304,110 +303,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryFileset",
-        DefaultParameterSetName = "Linux")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryFileset : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Linux",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Linux' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Information about a Linux fileset.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/linuxfileset.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Linux { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Linux",
+                "RequestStatus",
+                "Share",
+                "Template",
+                "Templates",
+                "Windows",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "RequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RequestStatus' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Get details about an async request
-
-Supported in v5.0+
-Get details about a fileset related async request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesetrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Share",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Share' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Information about a NAS share fileset.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sharefileset.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Share { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Template",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Template' operation
-in the 'Fileset' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesettemplate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Template { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Templates",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Templates' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Get a summary of all fileset templates.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesettemplates.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Templates { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Windows",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Windows' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Information about a Windows fileset.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/windowsfileset.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Windows { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

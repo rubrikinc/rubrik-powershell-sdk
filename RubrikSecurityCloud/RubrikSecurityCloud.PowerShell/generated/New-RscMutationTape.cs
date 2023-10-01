@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'Tape' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CreateReaderTarget, -CreateTarget, -UpdateTarget.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CreateReaderTarget,
-    /// which is equivalent to specifying -CreateReaderTarget.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CreateReaderTarget, CreateTarget, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -218,59 +217,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationTape",
-        DefaultParameterSetName = "CreateTarget")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationTape : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CreateReaderTarget",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateReaderTarget' operation
-in the 'Tape' API domain.
-Description of the operation:
-Creates a reader location for a Tape archival location on a CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createtapereadertarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateReaderTarget { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CreateReaderTarget",
+                "CreateTarget",
+                "UpdateTarget",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CreateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateTarget' operation
-in the 'Tape' API domain.
-Description of the operation:
-Creates Tape archival location on a CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createtapetarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTarget' operation
-in the 'Tape' API domain.
-Description of the operation:
-Update Tape archival location on a CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatetapetarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

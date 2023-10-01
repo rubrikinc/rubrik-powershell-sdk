@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 37 operations
     /// in the 'Office 365' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AdGroups, -BrowseTeamConvChannels, -Calendar, -Groups, -License, -ListApps, -Mailbox, -Mailboxes, -ObjectAncestors, -Onedrive, -Onedrives, -Org, -OrgAtSnappableLevel, -OrgStatuses, -OrgSummaries, -Orgs, -ServiceAccount, -ServiceStatus, -SharepointDrive, -SharepointDrives, -SharepointList, -SharepointLists, -SharepointObjectList, -SharepointObjects, -SharepointSite, -SharepointSites, -Site, -Sites, -StorageStats, -SubscriptionsAppTypeCounts, -Team, -TeamChannels, -TeamConversationsFolderID, -TeamPostedBy, -Teams, -User, -UserObjects.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AdGroups,
-    /// which is equivalent to specifying -AdGroups.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1783,603 +1782,62 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryO365",
-        DefaultParameterSetName = "Org")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryO365 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AdGroups",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AdGroups' operation
-in the 'Office 365' API domain.
-Description of the operation:
-All AD Groups belonging to the O365 organization.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365adgroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AdGroups { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AdGroups",
+                "BrowseTeamConvChannels",
+                "Calendar",
+                "Groups",
+                "License",
+                "ListApps",
+                "Mailbox",
+                "Mailboxes",
+                "ObjectAncestors",
+                "Onedrive",
+                "Onedrives",
+                "Org",
+                "OrgAtSnappableLevel",
+                "OrgStatuses",
+                "OrgSummaries",
+                "Orgs",
+                "ServiceAccount",
+                "ServiceStatus",
+                "SharepointDrive",
+                "SharepointDrives",
+                "SharepointList",
+                "SharepointLists",
+                "SharepointObjectList",
+                "SharepointObjects",
+                "SharepointSite",
+                "SharepointSites",
+                "Site",
+                "Sites",
+                "StorageStats",
+                "SubscriptionsAppTypeCounts",
+                "Team",
+                "TeamChannels",
+                "TeamConversationsFolderID",
+                "TeamPostedBy",
+                "Teams",
+                "User",
+                "UserObjects",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BrowseTeamConvChannels",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BrowseTeamConvChannels' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Browse channels in a Teams conversations snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browseo365teamconvchannels.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BrowseTeamConvChannels { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Calendar",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Calendar' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details of the Exchange calendar pertaining to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365calendar.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Calendar { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Groups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Groups' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of O365 Groups in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365groups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Groups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "License",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'License' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Retrieve o365 licence details.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365license.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter License { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ListApps",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ListApps' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Lists the O365 apps.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/listo365apps.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ListApps { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Mailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Mailbox' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the Exchange mailbox corresponding to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365mailbox.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Mailbox { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Mailboxes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Mailboxes' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of Mailboxes in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365mailboxes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Mailboxes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ObjectAncestors",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ObjectAncestors' operation
-in the 'Office 365' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365objectancestors.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ObjectAncestors { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Onedrive",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Onedrive' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the OneDrive corresponding to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365onedrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Onedrive { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Onedrives",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Onedrives' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of Onedrives in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365onedrives.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Onedrives { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Org",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Org' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details of the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365org.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Org { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OrgAtSnappableLevel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OrgAtSnappableLevel' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details of the O365Org at snappable level, given the snappable type.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365orgatsnappablelevel.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OrgAtSnappableLevel { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OrgStatuses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OrgStatuses' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Gets the status of each org in the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365orgstatuses.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OrgStatuses { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OrgSummaries",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OrgSummaries' operation
-in the 'Office 365' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365orgsummaries.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OrgSummaries { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Orgs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Orgs' operation
-in the 'Office 365' API domain.
-Description of the operation:
-All O365 orgs for the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365orgs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Orgs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ServiceAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ServiceAccount' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Gets the service account for the given org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365serviceaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ServiceAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ServiceStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ServiceStatus' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Returns the service status of the O365 service running on MSFT server.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365servicestatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ServiceStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointDrive",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointDrive' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the SharePoint drive corresponding to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointdrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointDrive { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointDrives",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointDrives' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of sharepoint drives (document libraries) in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointdrives.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointDrives { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointList' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the SharePoint list corresponding to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointlist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointLists",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointLists' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Paginated list of sharepoint lists in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointlists.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointLists { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointObjectList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointObjectList' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointobjectlist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointObjectList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointObjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointObjects' operation
-in the 'Office 365' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointobjects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointObjects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointSite",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointSite' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the SharePoint site corresponding to the site ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointsite.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointSite { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SharepointSites",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SharepointSites' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Paginated list of sharepoint sites in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sharepointsites.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SharepointSites { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Site",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Site' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the SharePoint site corresponding to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365site.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Site { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Sites",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Sites' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of sites in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365sites.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Sites { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StorageStats",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'StorageStats' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Returns the storage stats of an O365 org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365storagestats.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StorageStats { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SubscriptionsAppTypeCounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SubscriptionsAppTypeCounts' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Returns the total number of apps of each type, for each O365 org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allo365subscriptionsapptypecounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SubscriptionsAppTypeCounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Team",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Team' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the team corresponding to the snappable ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365team.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Team { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TeamChannels",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TeamChannels' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of Channels for the O365Team.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teamchannels.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TeamChannels { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TeamConversationsFolderID",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TeamConversationsFolderID' operation
-in the 'Office 365' API domain.
-Description of the operation:
-ID for the conversations folder in the Team's Group Mailbox.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teamconversationsfolderid.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TeamConversationsFolderID { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TeamPostedBy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TeamPostedBy' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Users who have posted in a team.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teampostedby.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TeamPostedBy { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Teams",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Teams' operation
-in the 'Office 365' API domain.
-Description of the operation:
-List of O365 Teams in the O365Org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365teams.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Teams { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "User",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'User' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Details for the O365 user corresponding to the ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365user.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter User { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UserObjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'UserObjects' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Name, id, object type, and mail address of user descendant object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365userobjects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UserObjects { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

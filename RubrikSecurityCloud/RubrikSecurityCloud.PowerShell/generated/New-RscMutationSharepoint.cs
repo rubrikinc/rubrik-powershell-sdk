@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 1 operations
     /// in the 'Sharepoint' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ExcludeObjectsFromProtection.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ExcludeObjectsFromProtection,
-    /// which is equivalent to specifying -ExcludeObjectsFromProtection.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ['ExcludeObjectsFromProtection'].
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -132,27 +131,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationSharepoint",
-        DefaultParameterSetName = "ExcludeObjectsFromProtection")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationSharepoint : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ExcludeObjectsFromProtection",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeObjectsFromProtection' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Exclude Sharepoint site objects from protection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/excludesharepointobjectsfromprotection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeObjectsFromProtection { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ExcludeObjectsFromProtection",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -20,6 +20,50 @@ namespace RubrikSecurityCloud
             return char.ToUpper(input[0]) + input.Substring(1);
         }
 
+        public static List<string> FieldSpecStringToList(string s)
+        {
+            return s.Split(new[] { '\n', '\r' },
+                        StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => StringUtils.StrictPascalCase(s))
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToList().OrderBy(s => s).ToList();
+        }
+
+        public static List<string> FlattenFieldToFieldSpecList(
+            List<string> flat)
+        {
+            return flat.Select(s => StringUtils.StrictPascalCase(s))
+                .Where(s => !string.IsNullOrEmpty(s))
+                .ToList().OrderBy(s => s).ToList();
+        }
+
+        public static List<string> BuildUnselectedList(
+            List<string> allFields, List<string> selectedFields)
+        {
+            if (allFields.Count == 0)
+            {
+                return new List<string>();
+            }
+            // If there are no selected fields, return all fields
+            if (selectedFields.Count == 0)
+            {
+                return allFields;
+            }
+            // If all fields are selected, return empty list
+            if (allFields.Count == selectedFields.Count)
+            {
+                return new List<string>();
+            }
+            var allFieldsSet = new HashSet<string>(allFields);
+            var selectedFieldsSet = new HashSet<string>(selectedFields);
+
+            // Subtract selected fields from all fields
+            allFieldsSet.ExceptWith(selectedFieldsSet);
+
+            // Sort it
+            return allFieldsSet.ToList().OrderBy(s => s).ToList();
+        }
+
         public static string StrictPascalCase(string s)
         {
             if (string.IsNullOrEmpty(s))
@@ -27,6 +71,23 @@ namespace RubrikSecurityCloud
                 throw new ArgumentException(
                     "StrictPascalCase: Input string cannot be null or empty.");
             }
+
+            // Split by dots
+            string[] parts = s.Split('.');
+
+            // Convert each part to PascalCase
+            for (int i = 0; i < parts.Length; i++)
+            {
+                parts[i] = _StrictPascalCase(parts[i]);
+            }
+
+            // Join back together with dots
+            return string.Join(".", parts);
+        }
+
+        internal static string _StrictPascalCase(string s)
+        {
+
             // from snake case:
             if (s.Contains("_"))
             {
@@ -165,12 +226,12 @@ namespace RubrikSecurityCloud
             {
                 return url;
             }
-            
+
             if (gqlType.StartsWith("List<"))
             {
                 gqlType = gqlType.Substring(5, gqlType.Length - 6);
             }
-            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower().Replace("system.","").Trim();
+            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower().Replace("system.", "").Trim();
             if (t == "int" || t == "string" || t == "boolean" || t == "bool" || t == "float" || t == "double" || t == "id" || t == "datetime")
             {
                 return gqlType;
@@ -276,7 +337,7 @@ namespace RubrikSecurityCloud
             if (match.Success)
             {
                 string vars = match.Groups[1].Value.Trim();
-                vars = vars.Replace("Variables:","");
+                vars = vars.Replace("Variables:", "");
                 string q = query.Substring(match.Index + match.Length).Trim();
                 return (vars, q);
             }

@@ -58,6 +58,14 @@ namespace RubrikSecurityCloud.Types
             return fieldspecs;
         }
 
+        public static List<string> SelectedFields(this List<CdmSnapshotGroupByInfo> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotGroupByInfo> list, 
             ExplorationContext ec)

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Host' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Diagnosis, -PhysicalHost, -PhysicalHosts, -Search, -Share, -Shares.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Diagnosis,
-    /// which is equivalent to specifying -Diagnosis.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, or Shares.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -351,110 +350,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryHost",
-        DefaultParameterSetName = "Share")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryHost : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Diagnosis",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Diagnosis' operation
-in the 'Host' API domain.
-Description of the operation:
-Get host availability statuses
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Diagnosis",
+                "PhysicalHost",
+                "PhysicalHosts",
+                "Search",
+                "Share",
+                "Shares",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v5.0+
-Retrieve the availability status for each host registered with a specified Rubrik CDM instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hostdiagnosis.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Diagnosis { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PhysicalHost",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PhysicalHost' operation
-in the 'Host' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/physicalhost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PhysicalHost { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PhysicalHosts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PhysicalHosts' operation
-in the 'Host' API domain.
-Description of the operation:
-Get list of physical hosts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/physicalhosts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PhysicalHosts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Search",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Search' operation
-in the 'Host' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/searchhost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Search { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Share",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Share' operation
-in the 'Host' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hostshare.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Share { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Shares",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Shares' operation
-in the 'Host' API domain.
-Description of the operation:
-Get all host shares.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hostshares.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Shares { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

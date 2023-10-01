@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 5 operations
     /// in the 'Webhook' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Create, -Delete, -Test, -TestExisting, -Update.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Create,
-    /// which is equivalent to specifying -Create.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Create, Delete, Test, TestExisting, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -377,91 +376,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationWebhook",
-        DefaultParameterSetName = "Test")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationWebhook : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Create' operation
-in the 'Webhook' API domain.
-Description of the operation:
-Create a webhook.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createwebhook.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Create { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Create",
+                "Delete",
+                "Test",
+                "TestExisting",
+                "Update",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Delete' operation
-in the 'Webhook' API domain.
-Description of the operation:
-Delete a webhook.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletewebhook.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Delete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Test",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Test' operation
-in the 'Webhook' API domain.
-Description of the operation:
-Test a webhook configuration.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/testwebhook.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Test { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TestExisting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'TestExisting' operation
-in the 'Webhook' API domain.
-Description of the operation:
-Test an existing webhook.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/testexistingwebhook.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TestExisting { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'Webhook' API domain.
-Description of the operation:
-Update a webhook.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatewebhook.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

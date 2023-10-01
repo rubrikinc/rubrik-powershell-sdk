@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 1 operations
     /// in the 'Service Account' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ServiceAccount.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ServiceAccount,
-    /// which is equivalent to specifying -ServiceAccount.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ['ServiceAccount'].
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -125,27 +124,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryServiceAccount",
-        DefaultParameterSetName = "ServiceAccount")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryServiceAccount : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ServiceAccount",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ServiceAccount' operation
-in the 'Service Account' API domain.
-Description of the operation:
-Browse service accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/serviceaccounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ServiceAccount { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ServiceAccount",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

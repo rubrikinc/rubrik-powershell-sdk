@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 1 operations
     /// in the 'Azure Office365' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -SetupExocompute.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op SetupExocompute,
-    /// which is equivalent to specifying -SetupExocompute.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ['SetupExocompute'].
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -171,27 +170,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationAzureO365",
-        DefaultParameterSetName = "SetupExocompute")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationAzureO365 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "SetupExocompute",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetupExocompute' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Sets up Exocompute for an O365 subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setupazureo365exocompute.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetupExocompute { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "SetupExocompute",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

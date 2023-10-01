@@ -209,6 +209,14 @@ namespace RubrikSecurityCloud.Types
             return fieldspecs;
         }
 
+        public static List<string> SelectedFields(this List<CdmHierarchySnappableNew> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<CdmHierarchySnappableNew> list, 
             ExplorationContext ec)

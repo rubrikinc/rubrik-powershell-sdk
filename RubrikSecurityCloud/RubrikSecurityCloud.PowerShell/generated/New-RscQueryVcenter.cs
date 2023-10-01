@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 9 operations
     /// in the 'VMware vSphere vCenter' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AdvancedTagPreview, -HotAddBandwidth, -HotAddNetwork, -HotAddProxy, -List, -Networks, -NumProxiesNeeded, -PreAddInfo, -Vcenter.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AdvancedTagPreview,
-    /// which is equivalent to specifying -AdvancedTagPreview.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AdvancedTagPreview, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -423,173 +422,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryVcenter",
-        DefaultParameterSetName = "Vcenter")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryVcenter : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AdvancedTagPreview",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AdvancedTagPreview' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Preview list of virtual machines of a proposed filter condition
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AdvancedTagPreview",
+                "HotAddBandwidth",
+                "HotAddNetwork",
+                "HotAddProxy",
+                "List",
+                "Networks",
+                "NumProxiesNeeded",
+                "PreAddInfo",
+                "Vcenter",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v7.0+
-Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenteradvancedtagpreview.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AdvancedTagPreview { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HotAddBandwidth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HotAddBandwidth' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Get the ingest and export bandwidth limits for HotAdd with the vCenter
-
-Supported in v5.3+
-Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vCenter. These limits are shared across all HotAdd proxies for the Center.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenterhotaddbandwidth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HotAddBandwidth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HotAddNetwork",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HotAddNetwork' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Retrieve the user-configured network for HotAdd operations
-
-Supported in v5.3+
-Retrieve the user-configured network for HotAdd backup and recovery operations on VMware on AWS.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenterhotaddnetwork.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HotAddNetwork { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "HotAddProxy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HotAddProxy' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Get a list of HotAdd proxy virtual machines
-
-Supported in v5.3+
-Retrieve summary information for all HotAdd proxy virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allvcenterhotaddproxyvms.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HotAddProxy { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'List' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevcenterconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter List { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Networks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Networks' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Get the user-configured networks in the vCenter
-
-Supported in v5.3+
-Get the names and IDs of the user configured networks in the vCenter. This information enables users to choose a desired network for backups to go through for VMware Cloud on AWS setups.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenternetworks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Networks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NumProxiesNeeded",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NumProxiesNeeded' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Get the number of HotAdd proxies needed for the vCenter
-
-Supported in v5.3+
-Get the number of HotAdd proxies that need to be deployed to the vCenter to support the maximum number of ingest jobs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenternumproxiesneeded.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NumProxiesNeeded { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PreAddInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PreAddInfo' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Get preAddInfo for a vcenter.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vcenterpreaddinfo.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PreAddInfo { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Vcenter",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Vcenter' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevcenter.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Vcenter { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

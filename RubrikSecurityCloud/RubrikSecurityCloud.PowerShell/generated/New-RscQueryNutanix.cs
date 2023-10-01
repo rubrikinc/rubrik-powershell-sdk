@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 18 operations
     /// in the 'Nutanix' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BrowseSnapshot, -Category, -CategoryValue, -Cluster, -ClusterAsyncRequestStatus, -ClusterContainers, -ClusterNetworks, -Clusters, -Mounts, -PrismCentral, -PrismCentrals, -SearchVm, -SnapshotDetail, -TopLevelDescendants, -Vm, -VmAsyncRequestStatus, -VmMissedSnapshots, -Vms.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BrowseSnapshot,
-    /// which is equivalent to specifying -BrowseSnapshot.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, TopLevelDescendants, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -841,327 +840,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryNutanix",
-        DefaultParameterSetName = "Cluster")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryNutanix : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BrowseSnapshot",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BrowseSnapshot' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Lists all files in VM snapshot
-v8.1+: Lists all files in virtual machine snapshot
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BrowseSnapshot",
+                "Category",
+                "CategoryValue",
+                "Cluster",
+                "ClusterAsyncRequestStatus",
+                "ClusterContainers",
+                "ClusterNetworks",
+                "Clusters",
+                "Mounts",
+                "PrismCentral",
+                "PrismCentrals",
+                "SearchVm",
+                "SnapshotDetail",
+                "TopLevelDescendants",
+                "Vm",
+                "VmAsyncRequestStatus",
+                "VmMissedSnapshots",
+                "Vms",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v5.0+
-Lists all files and directories in a given path.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixbrowsesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BrowseSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Category",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Category' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Details of the given category.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixcategory.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Category { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CategoryValue",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CategoryValue' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Details of the given category value.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixcategoryvalue.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CategoryValue { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Cluster' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-A Nutanix Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ClusterAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClusterAsyncRequestStatus' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Get Nutanix cluster async request
-
-Supported in v5.0+
-Get details about a Nutanix cluster-related async request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclusterasyncrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClusterAsyncRequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ClusterContainers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClusterContainers' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Get list of containers on this cluster
-
-Supported in v5.0+
-Query the nutanix cluster to get the list of containers, used for export purposes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclustercontainers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClusterContainers { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ClusterNetworks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClusterNetworks' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Get list of networks on this cluster
-
-Supported in v8.1+
-Retrieves the list of networks by querying the Nutanix cluster. The list of networks is used for restore purposes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclusternetworks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClusterNetworks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Clusters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Clusters' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Paginated list of Nutanix Clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclusters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Clusters { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Mounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Mounts' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Nutanix Live Mount Connection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixmounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Mounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PrismCentral",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PrismCentral' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Details of the given Prism Central.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixprismcentral.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PrismCentral { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PrismCentrals",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PrismCentrals' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Paginated list of Nutanix Prism Central objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixprismcentrals.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PrismCentrals { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SearchVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SearchVm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Search for file in Nutanix VM
-v8.1+: Search for file in Nutanix virtual machine
-
-Supported in v5.0+
-Search for a file within the Nutanix Virtual Machine. Search via full path prefix or filename prefix.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/searchnutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SearchVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnapshotDetail",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnapshotDetail' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Supported in v5.0+. Get Nutanix virtual machine snapshot details.
- Retrieve detailed information about a snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixsnapshotdetail.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnapshotDetail { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TopLevelDescendants' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Paginated list of the highest-level Nutanix Objects accessible by the current user.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixtopleveldescendants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Vm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Vm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-A Nutanix Virtual Machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Vm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VmAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VmAsyncRequestStatus' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Get VM async request details
-v8.1+: Get virtual machine async request details
-
-Supported in v5.0+
-v5.0-v8.0: Get details about a Nutanix VM-related async request.
-v8.1+: Get details about a Nutanix virtual machine-related async request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvmasyncrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VmAsyncRequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VmMissedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VmMissedSnapshots' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Get details about missed snapshots for a VM
-v8.1+: Get details about missed snapshots for a virtual machine
-
-Supported in v5.0+
-v5.0-v8.0: Retrieve the time of the day when the snapshots were missed specific to a vm.
-v8.1+: Retrieve the time of the day when the snapshots were missed specific to a virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvmmissedsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VmMissedSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Vms",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Vms' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Paginated list of Nutanix Virtual Machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvms.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Vms { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 1 operations
     /// in the 'RCV' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AccountEntitlement.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AccountEntitlement,
-    /// which is equivalent to specifying -AccountEntitlement.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ['AccountEntitlement'].
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -108,27 +107,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryRcv",
-        DefaultParameterSetName = "AccountEntitlement")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryRcv : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AccountEntitlement",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AccountEntitlement' operation
-in the 'RCV' API domain.
-Description of the operation:
-Rubrik Cloud Vault (RCV) Account entitlement details.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/rcvaccountentitlement.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AccountEntitlement { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AccountEntitlement",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

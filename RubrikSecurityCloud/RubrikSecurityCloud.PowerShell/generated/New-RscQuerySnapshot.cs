@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 21 operations
     /// in the 'Snapshot' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BrowseFileList, -ClosestToPointInTime, -EmailSearch, -EventSearch, -FilesDelta, -FilesDeltaV2, -Fileset, -FilesetFiles, -LegalHoldSnappable, -OnedriveSearch, -Polaris, -Pvcs, -QuarantinedDetails, -Results, -SnappableList, -SnappablesList, -SnappablesWithLegalHoldsSummary, -Snapshot, -UnmanagedObject, -VappInstantRecoveryOptions, -VappTemplateExportOptions.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BrowseFileList,
-    /// which is equivalent to specifying -BrowseFileList.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1162,350 +1161,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQuerySnapshot",
-        DefaultParameterSetName = "Snapshot")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQuerySnapshot : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BrowseFileList",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BrowseFileList' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Returns a list files whose name is prefixed by the query in the given snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browsesnapshotfileconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BrowseFileList { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BrowseFileList",
+                "ClosestToPointInTime",
+                "EmailSearch",
+                "EventSearch",
+                "FilesDelta",
+                "FilesDeltaV2",
+                "Fileset",
+                "FilesetFiles",
+                "LegalHoldSnappable",
+                "OnedriveSearch",
+                "Polaris",
+                "Pvcs",
+                "QuarantinedDetails",
+                "Results",
+                "SnappableList",
+                "SnappablesList",
+                "SnappablesWithLegalHoldsSummary",
+                "Snapshot",
+                "UnmanagedObject",
+                "VappInstantRecoveryOptions",
+                "VappTemplateExportOptions",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "ClosestToPointInTime",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ClosestToPointInTime' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Details of the unexpired snapshot closest to the specified point in time for each provided workload ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allsnapshotsclosesttopointintime.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClosestToPointInTime { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EmailSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EmailSearch' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotemailsearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EmailSearch { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EventSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EventSearch' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshoteventsearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EventSearch { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesDelta",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'FilesDelta' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Browse or search the given path for files and directories along with their deltas in a given snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotfilesdelta.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesDelta { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesDeltaV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'FilesDeltaV2' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Browse or search the given path for files and directories along with their deltas in a given snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotfilesdeltav2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesDeltaV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Fileset",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Fileset' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesetsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Fileset { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesetFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'FilesetFiles' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Lists all files and directories in a given path
-
-Supported in v5.0+
-Lists all files and directories in a given path.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesetsnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesetFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LegalHoldSnappable",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LegalHoldSnappable' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-List of legal hold snapshots for a workload.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/legalholdsnapshotsforsnappable.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LegalHoldSnappable { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OnedriveSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OnedriveSearch' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotonedrivesearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OnedriveSearch { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Polaris",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Polaris' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Returns the RSC snapshot according to ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/polarissnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Polaris { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Pvcs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Pvcs' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-All PVCs in a snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allsnapshotpvcs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Pvcs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "QuarantinedDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'QuarantinedDetails' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Quarantine details of all snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allquarantineddetailsforsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter QuarantinedDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Results",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Results' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Returns snapshot results for a workload.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotresults.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Results { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnappableList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnappableList' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Returns a list of snapshots for a workload.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotofasnappableconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnappableList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnappablesList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnappablesList' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Returns list of snapshots for a list of workloads.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotofsnappablesconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnappablesList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnappablesWithLegalHoldsSummary",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnappablesWithLegalHoldsSummary' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-List of workloads with legal hold snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snappableswithlegalholdsnapshotssummary.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnappablesWithLegalHoldsSummary { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Snapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Snapshot' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Returns a single snapshot by snapshot forever UUID and cluster UUID. In case cluster UUID is not provided, the snapshot forever UUID is used to resolve it. Cluster UUID is beneficial for fetching the same snapshot in a different replication target Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Snapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UnmanagedObject",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'UnmanagedObject' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-List of snapshots for unmanaged objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotsforunmanagedobject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UnmanagedObject { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VappInstantRecoveryOptions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VappInstantRecoveryOptions' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Options for instantly recovering a vApp snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vappsnapshotinstantrecoveryoptions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VappInstantRecoveryOptions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VappTemplateExportOptions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VappTemplateExportOptions' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Export options for a vApp snapshot template.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vapptemplatesnapshotexportoptions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VappTemplateExportOptions { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

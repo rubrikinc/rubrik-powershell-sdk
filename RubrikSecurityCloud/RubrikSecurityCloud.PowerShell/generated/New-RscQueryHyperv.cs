@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 14 operations
     /// in the 'Microsoft Hyper-V' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Cluster, -HostAsyncRequestStatus, -Mounts, -Scvmm, -ScvmmAsyncRequestStatus, -Scvmms, -Server, -Servers, -TopLevelDescendants, -UniqueServersCount, -VirtualMachine, -VirtualMachineAsyncRequestStatus, -VirtualMachines, -VmDetail.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Cluster,
-    /// which is equivalent to specifying -Cluster.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachines, or VmDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -718,247 +717,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryHyperv",
-        DefaultParameterSetName = "Cluster")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryHyperv : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Cluster' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Details of the given Hyper-V Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cluster { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Cluster",
+                "HostAsyncRequestStatus",
+                "Mounts",
+                "Scvmm",
+                "ScvmmAsyncRequestStatus",
+                "Scvmms",
+                "Server",
+                "Servers",
+                "TopLevelDescendants",
+                "UniqueServersCount",
+                "VirtualMachine",
+                "VirtualMachineAsyncRequestStatus",
+                "VirtualMachines",
+                "VmDetail",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "HostAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'HostAsyncRequestStatus' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Get Hyper-V host async request
-
-Supported in v5.0+
-Get details about a Hyper-V host related async request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervhostasyncrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter HostAsyncRequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Mounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Mounts' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-HyperV Live Mount Connection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervmounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Mounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Scvmm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Scvmm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Details of the given Hyper-V SCVMM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Scvmm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ScvmmAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ScvmmAsyncRequestStatus' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Get Hyper-V SCVMM async request
-
-Supported in v5.0+
-Get details about a Hyper-V SCVMM related async request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmmasyncrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ScvmmAsyncRequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Scvmms",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Scvmms' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Paginated list of HyperV SCVMMs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmms.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Scvmms { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Server",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Server' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Details of the given Hyper-V Server.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervserver.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Server { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Servers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Servers' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Get summary of all the Hyper-V hosts
-
-Supported in v5.0+
-Get summary of all the Hyper-V hosts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervservers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Servers { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TopLevelDescendants' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Paginated list of the highest-level HyperV Objects accessible by the current user.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervtopleveldescendants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UniqueServersCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'UniqueServersCount' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Count of unique HyperV Servers.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/uniquehypervserverscount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UniqueServersCount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualMachine' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Details of the given Hyper-V Virtual Machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachine.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualMachine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualMachineAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualMachineAsyncRequestStatus' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Get VM async request details
-
-Supported in v5.0+
-Get details about a Hyper-V vm related async request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachineasyncrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualMachineAsyncRequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualMachines",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualMachines' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Paginated list of HyperV Virtual Machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachines.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualMachines { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VmDetail",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VmDetail' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-HyperV Virtual Machine detail from CDM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvmdetail.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VmDetail { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

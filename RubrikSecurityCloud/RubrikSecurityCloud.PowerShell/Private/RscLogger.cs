@@ -123,25 +123,60 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     switch (method)
                     {
                         case 'V':
-                            _cmdlet.WriteVerbose(message);
+                            if (RubrikSecurityCloud.Config.LogToFile)
+                            {
+                                LogToFile("VERBOSE", message);
+                            }
+                            else
+                            {
+                                _cmdlet.WriteVerbose(message);
+                            }
                             break;
                         case 'D':
-                            _cmdlet.WriteDebug(message);
+                            if (RubrikSecurityCloud.Config.LogToFile)
+                            {
+                                LogToFile("DEBUG", message);
+                            }
+                            else
+                            {
+                                _cmdlet.WriteDebug(message);
+                            }
                             break;
                         case 'W':
-                            _cmdlet.WriteWarning(message);
+                            if (RubrikSecurityCloud.Config.LogToFile)
+                            {
+                                LogToFile("WARNING", message);
+                            }
+                            else
+                            {
+                                _cmdlet.WriteWarning(message);
+                            }
                             break;
                         case 'E':
-                            _cmdlet.WriteError(
-                                new ErrorRecord(
-                                    new Exception(message),
-                                    "RscError",
-                                    ErrorCategory.NotSpecified,
-                                    null));
+                            if (RubrikSecurityCloud.Config.LogToFile)
+                            {
+                                LogToFile("ERROR", message);
+                            }
+                            else
+                            {
+                                _cmdlet.WriteError(
+                                    new ErrorRecord(
+                                        new Exception(message),
+                                        "RscError",
+                                        ErrorCategory.NotSpecified,
+                                        null));
+                            }
                             break;
                         case 'I':
-                            _cmdlet.WriteInformation(
-                                new InformationRecord(message, name));
+                            if (RubrikSecurityCloud.Config.LogToFile)
+                            {
+                                LogToFile("INFO", message);
+                            }
+                            else
+                            {
+                                _cmdlet.WriteInformation(
+                                    new InformationRecord(message, name));
+                            }
                             break;
 
                         default:
@@ -167,6 +202,24 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         }
 
+        private static string logFileName = "";
+        internal void LogToFile(string level, string message)
+        {
+            if (logFileName == "")
+            {
+                logFileName = "RscLog_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
+            }
+            // Create file is it doesn't exist
+            if (!System.IO.File.Exists(logFileName))
+            {
+                System.IO.File.Create(logFileName).Dispose();
+            }
+            // Append text to the file
+            using (System.IO.StreamWriter sw = System.IO.File.AppendText(logFileName))
+            {
+                sw.WriteLine($"{level}: {message}");
+            }
+        }
 
     }
 }

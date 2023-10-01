@@ -266,6 +266,14 @@ namespace RubrikSecurityCloud.Types
             return list[0].AsFieldSpec(conf.Child());
         }
 
+        public static List<string> SelectedFields(this List<RoleTemplate> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<RoleTemplate> list, 
             ExplorationContext ec)

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 16 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AvailabilityGroup, -CdmLogShippingTarget, -CdmLogShippingTargets, -CompatibleInstances, -Database, -DatabaseLiveMounts, -DatabaseMissedRecoverableRanges, -DatabaseMissedSnapshots, -DatabaseRestoreEstimate, -DatabaseRestoreFiles, -Databases, -DefaultProperties, -Instance, -LogShippingTargets, -RecoverableRanges, -TopLevelDescendants.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AvailabilityGroup,
-    /// which is equivalent to specifying -AvailabilityGroup.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -739,267 +738,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryMssql",
-        DefaultParameterSetName = "Instance")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryMssql : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AvailabilityGroup",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AvailabilityGroup' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-A Microsoft SQL Availability Group.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlavailabilitygroup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AvailabilityGroup { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AvailabilityGroup",
+                "CdmLogShippingTarget",
+                "CdmLogShippingTargets",
+                "CompatibleInstances",
+                "Database",
+                "DatabaseLiveMounts",
+                "DatabaseMissedRecoverableRanges",
+                "DatabaseMissedSnapshots",
+                "DatabaseRestoreEstimate",
+                "DatabaseRestoreFiles",
+                "Databases",
+                "DefaultProperties",
+                "Instance",
+                "LogShippingTargets",
+                "RecoverableRanges",
+                "TopLevelDescendants",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CdmLogShippingTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CdmLogShippingTarget' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-A single Microsoft SQL log shipping target.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cdmmssqllogshippingtarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CdmLogShippingTarget { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CdmLogShippingTargets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CdmLogShippingTargets' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Paginated list of Microsoft SQL log shipping target.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cdmmssqllogshippingtargets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CdmLogShippingTargets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CompatibleInstances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CompatibleInstances' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Returns all compatible instances for export for the specified recovery time.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlcompatibleinstances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CompatibleInstances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Database' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-A Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Database { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseLiveMounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseLiveMounts' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Paginated list of Microsoft SQL Database live mounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabaselivemounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseLiveMounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseMissedRecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseMissedRecoverableRanges' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-List of missed recoverable ranges for a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabasemissedrecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseMissedRecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseMissedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseMissedSnapshots' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-List of missed snapshots for a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabasemissedsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseMissedSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseRestoreEstimate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseRestoreEstimate' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Returns a size estimate for a restore, export, or mount.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabaserestoreestimate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseRestoreEstimate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DatabaseRestoreFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DatabaseRestoreFiles' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Provides a list of database files to be restored for the specified restore or export operation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allmssqldatabaserestorefiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DatabaseRestoreFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Databases' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Paginated list of Microsoft SQL Databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DefaultProperties",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DefaultProperties' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-The current default properties for Microsoft SQL databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqldefaultproperties.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DefaultProperties { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Instance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Instance' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-A Microsoft SQL Instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlinstance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Instance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LogShippingTargets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LogShippingTargets' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-List of filtered Microsoft SQL log shipping targets.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqllogshippingtargets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LogShippingTargets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRanges' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-List of recoverable ranges for a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqlrecoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRanges { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TopLevelDescendants' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqltopleveldescendants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

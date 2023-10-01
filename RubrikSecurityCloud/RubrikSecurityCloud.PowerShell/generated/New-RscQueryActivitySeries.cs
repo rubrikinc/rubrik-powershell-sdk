@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Activity series' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ActivitySeries, -List, -UserFileTimeline, -UserTimeline.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ActivitySeries,
-    /// which is equivalent to specifying -ActivitySeries.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ActivitySeries, List, UserFileTimeline, or UserTimeline.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -278,75 +277,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryActivitySeries",
-        DefaultParameterSetName = "ActivitySeries")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryActivitySeries : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ActivitySeries",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ActivitySeries' operation
-in the 'Activity series' API domain.
-Description of the operation:
-Retrieve an activity series.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/activityseries.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ActivitySeries { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ActivitySeries",
+                "List",
+                "UserFileTimeline",
+                "UserTimeline",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'List' operation
-in the 'Activity series' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/activityseriesconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter List { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UserFileTimeline",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'UserFileTimeline' operation
-in the 'Activity series' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/userfileactivitytimeline.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UserFileTimeline { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UserTimeline",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'UserTimeline' operation
-in the 'Activity series' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/useractivitytimeline.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UserTimeline { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -12,7 +12,7 @@ function Get-RscPages {
     arguments via the PowerShell automatic variable $args.
 
     .EXAMPLE
-    $nodes = Get-RscPages { New-RscQueryCluster -List -Var $args[0] }
+    $nodes = Get-RscPages { New-RscQueryCluster -Op List -Var $args[0] }
 
     Retrieves all clusters in the Rubrik cluster.
     #>

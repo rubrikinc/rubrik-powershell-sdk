@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 15 operations
     /// in the 'Snapshot' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BatchQuarantine, -BatchReleaseFromQuarantine, -BulkTierExistings, -CreateDownloadForVolumeGroup, -CreateFileset, -DeleteCloudWorkload, -DeleteFilesets, -FilesetDownloadFiles, -FilesetExportFiles, -RestoreVolumeGroupFiles, -StartEc2InstanceExportJob, -StartRecoverS3Job, -TakeOnDemand, -UploadDatabaseToBlobstore, -VmwareDownloadFromLocation.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BatchQuarantine,
-    /// which is equivalent to specifying -BatchQuarantine.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -731,266 +730,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationSnapshot",
-        DefaultParameterSetName = "TakeOnDemand")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationSnapshot : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BatchQuarantine",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchQuarantine' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Batch quarantine snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchquarantinesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchQuarantine { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BatchQuarantine",
+                "BatchReleaseFromQuarantine",
+                "BulkTierExistings",
+                "CreateDownloadForVolumeGroup",
+                "CreateFileset",
+                "DeleteCloudWorkload",
+                "DeleteFilesets",
+                "FilesetDownloadFiles",
+                "FilesetExportFiles",
+                "RestoreVolumeGroupFiles",
+                "StartEc2InstanceExportJob",
+                "StartRecoverS3Job",
+                "TakeOnDemand",
+                "UploadDatabaseToBlobstore",
+                "VmwareDownloadFromLocation",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BatchReleaseFromQuarantine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchReleaseFromQuarantine' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Release snapshots from quarantine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchreleasefromquarantinesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchReleaseFromQuarantine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkTierExistings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkTierExistings' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Bulk tier existing snapshots to cold storage
-
-Supported in v6.0+
-Schedules a job to tier existing snapshots of the specified objects to cold storage.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulktierexistingsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkTierExistings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateDownloadForVolumeGroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateDownloadForVolumeGroup' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Creates a download from archival request
-
-Supported in v5.0+
-Download a snapshot from archival.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createdownloadsnapshotforvolumegroup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateDownloadForVolumeGroup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateFileset",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateFileset' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createfilesetsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateFileset { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCloudWorkload",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCloudWorkload' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Deletes the Rubrik Security Cloud on-demand snapshot by ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecloudworkloadsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCloudWorkload { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteFilesets",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteFilesets' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletefilesetsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteFilesets { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesetDownloadFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'FilesetDownloadFiles' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Download files from a fileset backup
-
-Supported in v5.0+
-Start an asynchronous job to download multiple files and folders from a specified fileset backup. The response returns an asynchronous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'fileset/request/{id}'.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesetdownloadsnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesetDownloadFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesetExportFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'FilesetExportFiles' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Create an export job to export multiple files or directories
-
-Supported in v5.0+
-Starts a job that exports one or more files or folders from a fileset backup to the destination host. Returns the job status as of the job creation time. This job status includes the job ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesetexportsnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesetExportFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreVolumeGroupFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreVolumeGroupFiles' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Restore files from the Volume Group snapshot
-
-Supported in v5.0+
-Restore filess to the original Host.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restorevolumegroupsnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreVolumeGroupFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartEc2InstanceExportJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartEc2InstanceExportJob' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Starts a job to export an EC2 Instance snapshot. The job creates a new EC2 Instance with the same properties as that of the snapshot that is exported.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startec2instancesnapshotexportjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartEc2InstanceExportJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRecoverS3Job",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRecoverS3Job' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Starts an on-demand snapshot recovery job for the specified AWS S3 bucket. Returns the ID of the taskchain initiated for the recovery job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrecovers3snapshotjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRecoverS3Job { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TakeOnDemand",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'TakeOnDemand' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Triggers on-demand snapshot for the given workloads.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takeondemandsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TakeOnDemand { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UploadDatabaseToBlobstore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UploadDatabaseToBlobstore' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-Start a job to upload a database snapshot to a target blobstore.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/uploaddatabasesnapshottoblobstore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UploadDatabaseToBlobstore { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VmwareDownloadFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'VmwareDownloadFromLocation' operation
-in the 'Snapshot' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vmwaredownloadsnapshotfromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VmwareDownloadFromLocation { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

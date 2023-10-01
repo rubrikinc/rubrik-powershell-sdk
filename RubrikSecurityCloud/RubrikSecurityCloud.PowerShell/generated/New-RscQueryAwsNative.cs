@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 19 operations
     /// in the 'AWS Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Account, -Accounts, -AmiTypeForArchivedSnapshotExport, -EbsVolume, -EbsVolumes, -EbsVolumesByName, -Ec2Instance, -Ec2Instances, -Ec2InstancesByName, -IsEbsVolumeSnapshotRestorable, -IsRdsInstanceLaunchConfigurationValid, -RdsExportDefaults, -RdsInstance, -RdsInstances, -RdsPointInTimeRestoreWindow, -Root, -S3Bucket, -ValidateRdsClusterNameForExport, -ValidateRdsInstanceNameForExport.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Account,
-    /// which is equivalent to specifying -Account.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -991,315 +990,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAwsNative",
-        DefaultParameterSetName = "Root")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryAwsNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Account",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Account' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Account { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Account",
+                "Accounts",
+                "AmiTypeForArchivedSnapshotExport",
+                "EbsVolume",
+                "EbsVolumes",
+                "EbsVolumesByName",
+                "Ec2Instance",
+                "Ec2Instances",
+                "Ec2InstancesByName",
+                "IsEbsVolumeSnapshotRestorable",
+                "IsRdsInstanceLaunchConfigurationValid",
+                "RdsExportDefaults",
+                "RdsInstance",
+                "RdsInstances",
+                "RdsPointInTimeRestoreWindow",
+                "Root",
+                "S3Bucket",
+                "ValidateRdsClusterNameForExport",
+                "ValidateRdsInstanceNameForExport",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Accounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Accounts' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Paginated list of all AWS Native accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeaccounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Accounts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AmiTypeForArchivedSnapshotExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AmiTypeForArchivedSnapshotExport' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/amitypeforawsnativearchivedsnapshotexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AmiTypeForArchivedSnapshotExport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EbsVolume",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EbsVolume' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeebsvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EbsVolume { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EbsVolumes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EbsVolumes' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Paginated list of all AWS EBS Volumes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeebsvolumes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EbsVolumes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EbsVolumesByName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EbsVolumesByName' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Paginated list of all AWS EBS Volumes by name or substring of name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeebsvolumesbyname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EbsVolumesByName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Ec2Instance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Ec2Instance' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeec2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Ec2Instance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Ec2Instances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Ec2Instances' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Paginated list of all AWS EC2 Instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeec2instances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Ec2Instances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Ec2InstancesByName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Ec2InstancesByName' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Paginated list of all AWS EC2 Instances by name or substring of name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeec2instancesbyname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Ec2InstancesByName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsEbsVolumeSnapshotRestorable",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsEbsVolumeSnapshotRestorable' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isawsnativeebsvolumesnapshotrestorable.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsEbsVolumeSnapshotRestorable { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsRdsInstanceLaunchConfigurationValid",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsRdsInstanceLaunchConfigurationValid' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isawsnativerdsinstancelaunchconfigurationvalid.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsRdsInstanceLaunchConfigurationValid { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RdsExportDefaults",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RdsExportDefaults' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdsexportdefaults.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RdsExportDefaults { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RdsInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RdsInstance' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdsinstance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RdsInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RdsInstances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RdsInstances' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Paginated list of AWS RDS Instances on AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdsinstances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RdsInstances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RdsPointInTimeRestoreWindow",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RdsPointInTimeRestoreWindow' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativerdspointintimerestorewindow.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RdsPointInTimeRestoreWindow { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Root",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Root' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Root of AWS native hierarchy.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnativeroot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Root { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "S3Bucket",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'S3Bucket' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/awsnatives3bucket.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter S3Bucket { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateRdsClusterNameForExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateRdsClusterNameForExport' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateawsnativerdsclusternameforexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateRdsClusterNameForExport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateRdsInstanceNameForExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateRdsInstanceNameForExport' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateawsnativerdsinstancenameforexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateRdsInstanceNameForExport { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

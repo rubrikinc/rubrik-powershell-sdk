@@ -6,7 +6,7 @@ Describe -Name "Send a generic GraphQL call" -Fixture {
     It -Name 'Invoke-RscGraphQLCall' -Test {
 
         # Query object
-        $q = New-RscQueryCluster -List -Var @{first = 1 }
+        $q = New-RscQueryCluster -Op List -Var @{first = 1 }
         { Invoke-Rsc $q } | Should -Not -Throw
         
         # Query string
@@ -36,7 +36,7 @@ Describe -Name "Send a generic GraphQL call" -Fixture {
         $clusters.Nodes.Count | Should -BeExactly 2
 
         # Different ways to pass a quey object
-        $q = New-RscQueryCluster -List -RemoveField Nodes
+        $q = New-RscQueryCluster -Op List -RemoveField Nodes
         $clusters1 = Invoke-Rsc $q
         
     }

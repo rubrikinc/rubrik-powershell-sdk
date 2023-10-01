@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'LDAP' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AuthorizedPrincipalList, -IntegrationList, -PrincipalList.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AuthorizedPrincipalList,
-    /// which is equivalent to specifying -AuthorizedPrincipalList.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AuthorizedPrincipalList, IntegrationList, or PrincipalList.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -205,59 +204,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryLdap",
-        DefaultParameterSetName = "PrincipalList")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryLdap : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AuthorizedPrincipalList",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AuthorizedPrincipalList' operation
-in the 'LDAP' API domain.
-Description of the operation:
-Browse LDAP-authorized principals.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ldapauthorizedprincipalconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AuthorizedPrincipalList { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AuthorizedPrincipalList",
+                "IntegrationList",
+                "PrincipalList",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "IntegrationList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IntegrationList' operation
-in the 'LDAP' API domain.
-Description of the operation:
-Browse LDAP integrations.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ldapintegrationconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IntegrationList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PrincipalList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PrincipalList' operation
-in the 'LDAP' API domain.
-Description of the operation:
-Search LDAP Principals.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ldapprincipalconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PrincipalList { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

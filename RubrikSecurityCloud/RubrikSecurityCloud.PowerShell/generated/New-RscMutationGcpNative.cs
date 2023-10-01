@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Google Cloud Platform Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -DisableProject, -ExcludeDisksFromInstanceSnapshot, -ExportDisk, -ExportGceInstance, -RefreshProjects, -RestoreGceInstance.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op DisableProject,
-    /// which is equivalent to specifying -DisableProject.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: DisableProject, ExcludeDisksFromInstanceSnapshot, ExportDisk, ExportGceInstance, RefreshProjects, or RestoreGceInstance.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -356,107 +355,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationGcpNative",
-        DefaultParameterSetName = "ExportDisk")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationGcpNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "DisableProject",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DisableProject' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Triggers GCP native disable project job for the given project ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativedisableproject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DisableProject { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "DisableProject",
+                "ExcludeDisksFromInstanceSnapshot",
+                "ExportDisk",
+                "ExportGceInstance",
+                "RefreshProjects",
+                "RestoreGceInstance",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "ExcludeDisksFromInstanceSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeDisksFromInstanceSnapshot' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativeexcludedisksfrominstancesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeDisksFromInstanceSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportDisk",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportDisk' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Triggers GCP native export disk job for the given disk snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativeexportdisk.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportDisk { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportGceInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportGceInstance' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Triggers GCP native export instance job for the given GCE instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativeexportgceinstance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportGceInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshProjects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshProjects' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Trigger GCP native refresh project job for the given project IDs
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativerefreshprojects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshProjects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreGceInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreGceInstance' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Triggers GCP native restore instance job for the given snapshot Rubrik ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativerestoregceinstance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreGceInstance { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

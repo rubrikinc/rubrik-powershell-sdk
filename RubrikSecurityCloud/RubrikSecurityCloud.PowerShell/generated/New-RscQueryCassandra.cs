@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'Cassandra' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ColumnFamilies, -ColumnFamily, -ColumnFamilyRecoverableRange, -ColumnFamilySchema, -Keyspace, -Keyspaces, -Source, -Sources.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ColumnFamilies,
-    /// which is equivalent to specifying -ColumnFamilies.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ColumnFamilies, ColumnFamily, ColumnFamilyRecoverableRange, ColumnFamilySchema, Keyspace, Keyspaces, Source, or Sources.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -477,139 +476,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryCassandra",
-        DefaultParameterSetName = "Source")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryCassandra : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ColumnFamilies",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ColumnFamilies' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Paginated list of cassandra column families.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandracolumnfamilies.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ColumnFamilies { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ColumnFamilies",
+                "ColumnFamily",
+                "ColumnFamilyRecoverableRange",
+                "ColumnFamilySchema",
+                "Keyspace",
+                "Keyspaces",
+                "Source",
+                "Sources",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "ColumnFamily",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ColumnFamily' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Details of a cassandra column family.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandracolumnfamily.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ColumnFamily { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ColumnFamilyRecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ColumnFamilyRecoverableRange' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Get Recoverable Range of a Cassandra Column Family.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandracolumnfamilyrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ColumnFamilyRecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ColumnFamilySchema",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ColumnFamilySchema' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Get Schema of a Cassandra Column Family.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandracolumnfamilyschema.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ColumnFamilySchema { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Keyspace",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Keyspace' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Details of a cassandra keyspace.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandrakeyspace.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Keyspace { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Keyspaces",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Keyspaces' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Paginated list of cassandra keyspaces.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandrakeyspaces.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Keyspaces { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Source' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Details of a cassandra source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandrasource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Source { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Sources",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Sources' operation
-in the 'Cassandra' API domain.
-Description of the operation:
-Paginated list of cassandra sources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cassandrasources.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Sources { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

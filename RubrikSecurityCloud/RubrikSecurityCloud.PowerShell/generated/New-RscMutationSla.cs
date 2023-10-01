@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 9 operations
     /// in the 'SLA' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Assign, -AssignRetentionToSnappables, -AssignRetentionToSnapshots, -AssignsForSnappableHierarchies, -CreateGlobal, -ExportManagedVolumeSnapshot, -GetPendingAssignments, -Pause, -UpdateGlobal.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Assign,
-    /// which is equivalent to specifying -Assign.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, or UpdateGlobal.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1436,161 +1435,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationSla",
-        DefaultParameterSetName = "Pause")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationSla : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Assign",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Assign' operation
-in the 'SLA' API domain.
-Description of the operation:
-Endpoint to assign SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignsla.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Assign { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Assign",
+                "AssignRetentionToSnappables",
+                "AssignRetentionToSnapshots",
+                "AssignsForSnappableHierarchies",
+                "CreateGlobal",
+                "ExportManagedVolumeSnapshot",
+                "GetPendingAssignments",
+                "Pause",
+                "UpdateGlobal",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "AssignRetentionToSnappables",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AssignRetentionToSnappables' operation
-in the 'SLA' API domain.
-Description of the operation:
-Endpoint to assign retention SLA Domain to workloads.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignretentionslatosnappables.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AssignRetentionToSnappables { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AssignRetentionToSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AssignRetentionToSnapshots' operation
-in the 'SLA' API domain.
-Description of the operation:
-Endpoint to assign retention SLA Domain to snapshots.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignretentionslatosnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AssignRetentionToSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AssignsForSnappableHierarchies",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AssignsForSnappableHierarchies' operation
-in the 'SLA' API domain.
-Description of the operation:
-Assign SLA Domain to workloads with multiple hierarchies.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignslasforsnappablehierarchies.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AssignsForSnappableHierarchies { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateGlobal",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateGlobal' operation
-in the 'SLA' API domain.
-Description of the operation:
-Create SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createglobalsla.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateGlobal { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportManagedVolumeSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportManagedVolumeSnapshot' operation
-in the 'SLA' API domain.
-Description of the operation:
-Create a request to export a snapshot and mount it on a host
-
-Supported in v5.3+
-Export a managed volume snapshot as a share and mount it on a given host.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportslamanagedvolumesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportManagedVolumeSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GetPendingAssignments",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'GetPendingAssignments' operation
-in the 'SLA' API domain.
-Description of the operation:
-Get pending SLA Domain assignments on selected managed objects
-
-Supported in v5.2+
-Retrieve the details of pending SLA Domain assignments on the given managed objects. For objects with pending assignments, return the SLA Domain that is pending. For objects without pending assignments, return the current SLA Domain information. Explicitly list invalid object IDs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/getpendingslaassignments.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GetPendingAssignments { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Pause",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Pause' operation
-in the 'SLA' API domain.
-Description of the operation:
-Pause or resume SLA Domain on the given Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/pausesla.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Pause { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateGlobal",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateGlobal' operation
-in the 'SLA' API domain.
-Description of the operation:
-Update SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateglobalsla.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateGlobal { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 23 operations
     /// in the 'Azure Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AvailabilitySetsByRegionFromAzure, -DoesResourceGroupExist, -ExportCompatibleDiskTypesByRegionFromAzure, -ExportCompatibleVmSizesByRegionFromAzure, -IsManagedDiskSnapshotRestorable, -IsSqlDatabaseSnapshotPersistent, -ManagedDisk, -ManagedDisks, -ResourceGroup, -ResourceGroups, -ResourceGroupsInfoIfExist, -Root, -SecurityGroupsByRegionFromAzure, -StorageAccountsFromAzure, -SubnetsByRegionFromAzure, -Subscription, -Subscriptions, -ValidateSqlDatabaseDbNameForExport, -ValidateSqlManagedInstanceDbNameForExport, -VirtualMachine, -VirtualMachineSizes, -VirtualMachines, -VirtualNetworks.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AvailabilitySetsByRegionFromAzure,
-    /// which is equivalent to specifying -AvailabilitySetsByRegionFromAzure.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1036,379 +1035,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAzureNative",
-        DefaultParameterSetName = "Root")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryAzureNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AvailabilitySetsByRegionFromAzure",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AvailabilitySetsByRegionFromAzure' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeavailabilitysetsbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AvailabilitySetsByRegionFromAzure { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AvailabilitySetsByRegionFromAzure",
+                "DoesResourceGroupExist",
+                "ExportCompatibleDiskTypesByRegionFromAzure",
+                "ExportCompatibleVmSizesByRegionFromAzure",
+                "IsManagedDiskSnapshotRestorable",
+                "IsSqlDatabaseSnapshotPersistent",
+                "ManagedDisk",
+                "ManagedDisks",
+                "ResourceGroup",
+                "ResourceGroups",
+                "ResourceGroupsInfoIfExist",
+                "Root",
+                "SecurityGroupsByRegionFromAzure",
+                "StorageAccountsFromAzure",
+                "SubnetsByRegionFromAzure",
+                "Subscription",
+                "Subscriptions",
+                "ValidateSqlDatabaseDbNameForExport",
+                "ValidateSqlManagedInstanceDbNameForExport",
+                "VirtualMachine",
+                "VirtualMachineSizes",
+                "VirtualMachines",
+                "VirtualNetworks",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "DoesResourceGroupExist",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DoesResourceGroupExist' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Checks if a resource group with the specified name exists in the specified account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/doesazurenativeresourcegroupexist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DoesResourceGroupExist { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportCompatibleDiskTypesByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ExportCompatibleDiskTypesByRegionFromAzure' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeexportcompatibledisktypesbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportCompatibleDiskTypesByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportCompatibleVmSizesByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ExportCompatibleVmSizesByRegionFromAzure' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeexportcompatiblevmsizesbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportCompatibleVmSizesByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsManagedDiskSnapshotRestorable",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsManagedDiskSnapshotRestorable' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isazurenativemanageddisksnapshotrestorable.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsManagedDiskSnapshotRestorable { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsSqlDatabaseSnapshotPersistent",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsSqlDatabaseSnapshotPersistent' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/isazurenativesqldatabasesnapshotpersistent.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsSqlDatabaseSnapshotPersistent { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedDisk",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedDisk' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativemanageddisk.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedDisk { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ManagedDisks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ManagedDisks' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Native Managed Disks.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativemanageddisks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ManagedDisks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResourceGroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResourceGroup' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativeresourcegroup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResourceGroup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResourceGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResourceGroups' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Native Resource Groups.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativeresourcegroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResourceGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResourceGroupsInfoIfExist",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResourceGroupsInfoIfExist' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves a list of resource groups with the specified names which exist in the specified account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativeresourcegroupsinfoifexist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResourceGroupsInfoIfExist { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Root",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Root' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Root of Azure native hierarchy.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativeroot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Root { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SecurityGroupsByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SecurityGroupsByRegionFromAzure' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativesecuritygroupsbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SecurityGroupsByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StorageAccountsFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'StorageAccountsFromAzure' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves list of all storage Accounts in a subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativestorageaccountsfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StorageAccountsFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SubnetsByRegionFromAzure",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SubnetsByRegionFromAzure' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativesubnetsbyregionfromazure.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SubnetsByRegionFromAzure { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Subscription",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Subscription' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativesubscription.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Subscription { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Subscriptions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Subscriptions' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Native Subscriptions.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativesubscriptions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Subscriptions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateSqlDatabaseDbNameForExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateSqlDatabaseDbNameForExport' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateazurenativesqldatabasedbnameforexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateSqlDatabaseDbNameForExport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateSqlManagedInstanceDbNameForExport",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateSqlManagedInstanceDbNameForExport' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateazurenativesqlmanagedinstancedbnameforexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateSqlManagedInstanceDbNameForExport { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualMachine' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativevirtualmachine.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualMachine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualMachineSizes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualMachineSizes' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativevirtualmachinesizes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualMachineSizes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualMachines",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualMachines' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves a paginated list of all Azure Virtual Machines (VMs).
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azurenativevirtualmachines.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualMachines { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VirtualNetworks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'VirtualNetworks' operation
-in the 'Azure Native' API domain.
-Description of the operation:
-Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allazurenativevirtualnetworks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VirtualNetworks { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

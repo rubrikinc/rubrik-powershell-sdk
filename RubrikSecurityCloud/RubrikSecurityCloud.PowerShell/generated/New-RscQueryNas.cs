@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'NAS' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Fileset, -Namespace, -Namespaces, -Share, -System, -Systems, -TopLevelDescendants, -Volume.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Fileset,
-    /// which is equivalent to specifying -Fileset.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Fileset, Namespace, Namespaces, Share, System, Systems, TopLevelDescendants, or Volume.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -453,139 +452,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryNas",
-        DefaultParameterSetName = "Share")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryNas : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Fileset",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Fileset' operation
-in the 'NAS' API domain.
-Description of the operation:
-A NAS Fileset.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nasfileset.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Fileset { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Fileset",
+                "Namespace",
+                "Namespaces",
+                "Share",
+                "System",
+                "Systems",
+                "TopLevelDescendants",
+                "Volume",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Namespace",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Namespace' operation
-in the 'NAS' API domain.
-Description of the operation:
-A NAS Namespace.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nasnamespace.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Namespace { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Namespaces",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Namespaces' operation
-in the 'NAS' API domain.
-Description of the operation:
-Paginated list of NAS Namespaces.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nasnamespaces.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Namespaces { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Share",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Share' operation
-in the 'NAS' API domain.
-Description of the operation:
-A NAS Share.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nasshare.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Share { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "System",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'System' operation
-in the 'NAS' API domain.
-Description of the operation:
-A NAS System.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nassystem.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter System { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Systems",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Systems' operation
-in the 'NAS' API domain.
-Description of the operation:
-Paginated list of NAS Systems.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nassystems.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Systems { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TopLevelDescendants' operation
-in the 'NAS' API domain.
-Description of the operation:
-Paginated list of the highest-level NAS Objects accessible by the current user.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nastopleveldescendants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Volume",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Volume' operation
-in the 'NAS' API domain.
-Description of the operation:
-A NAS Volume.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nasvolume.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Volume { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

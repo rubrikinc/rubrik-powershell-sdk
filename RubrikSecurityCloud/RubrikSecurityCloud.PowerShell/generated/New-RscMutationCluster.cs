@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 9 operations
     /// in the 'Cluster' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddNodesToCloud, -BulkDeleteFailover, -CreateFailover, -DeleteFailover, -RecoverCloud, -RegisterCloud, -RemoveCdm, -UpdateDatabaseLogReportingProperties, -UpdateFailover.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddNodesToCloud,
-    /// which is equivalent to specifying -AddNodesToCloud.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddNodesToCloud, BulkDeleteFailover, CreateFailover, DeleteFailover, RecoverCloud, RegisterCloud, RemoveCdm, UpdateDatabaseLogReportingProperties, or UpdateFailover.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -482,170 +481,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationCluster",
-        DefaultParameterSetName = "List")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationCluster : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddNodesToCloud",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddNodesToCloud' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Add nodes to cloud cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addnodestocloudcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddNodesToCloud { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddNodesToCloud",
+                "BulkDeleteFailover",
+                "CreateFailover",
+                "DeleteFailover",
+                "RecoverCloud",
+                "RegisterCloud",
+                "RemoveCdm",
+                "UpdateDatabaseLogReportingProperties",
+                "UpdateFailover",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BulkDeleteFailover",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDeleteFailover' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Delete the provided failover clusters
-
-Supported in v5.3+
-Delete the provided failover clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletefailovercluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDeleteFailover { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateFailover",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateFailover' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Create a failover cluster
-
-Supported in v5.2+
-Create a failover cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createfailovercluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateFailover { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteFailover",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteFailover' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Delete a failover cluster
-
-Supported in v5.2+
-Delete a failover cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletefailovercluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteFailover { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverCloud",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverCloud' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Recover a Rubrik Cloud Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/recovercloudcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverCloud { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegisterCloud",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RegisterCloud' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Register a cloud cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registercloudcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegisterCloud { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RemoveCdm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RemoveCdm' operation
-in the 'Cluster' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/removecdmcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RemoveCdm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateDatabaseLogReportingProperties",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateDatabaseLogReportingProperties' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Update the database log backup report properties
-
-Supported in v5.3+
-Update the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatedatabaselogreportingpropertiesforcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateDatabaseLogReportingProperties { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateFailover",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateFailover' operation
-in the 'Cluster' API domain.
-Description of the operation:
-Update a failover cluster
-
-Supported in v5.2+
-Update failover cluster with specified properties.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatefailovercluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateFailover { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

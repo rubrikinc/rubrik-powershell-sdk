@@ -8,7 +8,7 @@ function Remove-NullProperties {
     This function removes null properties from a pscustomobject or list of pscustomobjects.
 
     .EXAMPLE
-    $nodes=((New-RscQueryCluster -List).Nodes | Remove-NullProperties)
+    $nodes=((New-RscQueryCluster -Op List).Nodes | Remove-NullProperties)
 
     Retrieves all clusters in the Rubrik cluster and removes null properties.
     #>

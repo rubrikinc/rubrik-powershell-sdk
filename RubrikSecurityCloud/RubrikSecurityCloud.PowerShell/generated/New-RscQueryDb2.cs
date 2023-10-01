@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'Db2' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Database, -Databases, -Instance, -Instances, -LogSnapshot, -LogSnapshots, -RecoverableRange, -RecoverableRanges.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Database,
-    /// which is equivalent to specifying -Database.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Database, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -455,139 +454,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryDb2",
-        DefaultParameterSetName = "Instances")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryDb2 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Database' operation
-in the 'Db2' API domain.
-Description of the operation:
-Details of a db2 database for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2database.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Database { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Database",
+                "Databases",
+                "Instance",
+                "Instances",
+                "LogSnapshot",
+                "LogSnapshots",
+                "RecoverableRange",
+                "RecoverableRanges",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Databases' operation
-in the 'Db2' API domain.
-Description of the operation:
-Connection of filtered db2 databases based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2databases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Instance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Instance' operation
-in the 'Db2' API domain.
-Description of the operation:
-Details of a db2 instance for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2instance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Instance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Instances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Instances' operation
-in the 'Db2' API domain.
-Description of the operation:
-Connection of filtered db2 instances based on specific filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2instances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Instances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LogSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LogSnapshot' operation
-in the 'Db2' API domain.
-Description of the operation:
-Details of a Db2 log snapshot for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2logsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LogSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LogSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LogSnapshots' operation
-in the 'Db2' API domain.
-Description of the operation:
-Connection of all log snapshots for Db2.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2logsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LogSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRange' operation
-in the 'Db2' API domain.
-Description of the operation:
-Details of a Db2 recoverable range for a given fid.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2recoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRanges' operation
-in the 'Db2' API domain.
-Description of the operation:
-Connection of all recoverable ranges for Db2.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2recoverableranges.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRanges { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

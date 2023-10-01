@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 12 operations
     /// in the 'Ransomware' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -DetectionWorkloadLocations, -InvestigationAnalysisSummary, -InvestigationEnablement, -InvestigationWorkloadScannedCount, -OverallInvestigationSummary, -PendingInvestigationResultsCount, -ProcessedInvestigationWorkloadCount, -ProtectedInvestigationWorkloadCount, -Result, -ResultOpt, -Results, -ResultsGrouped.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op DetectionWorkloadLocations,
-    /// which is equivalent to specifying -DetectionWorkloadLocations.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, InvestigationWorkloadScannedCount, OverallInvestigationSummary, PendingInvestigationResultsCount, ProcessedInvestigationWorkloadCount, ProtectedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -497,203 +496,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryRansomware",
-        DefaultParameterSetName = "Result")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryRansomware : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "DetectionWorkloadLocations",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'DetectionWorkloadLocations' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get the list of workload locations on which Ransomware Investigation has run.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwaredetectionworkloadlocations.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DetectionWorkloadLocations { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "DetectionWorkloadLocations",
+                "InvestigationAnalysisSummary",
+                "InvestigationEnablement",
+                "InvestigationWorkloadScannedCount",
+                "OverallInvestigationSummary",
+                "PendingInvestigationResultsCount",
+                "ProcessedInvestigationWorkloadCount",
+                "ProtectedInvestigationWorkloadCount",
+                "Result",
+                "ResultOpt",
+                "Results",
+                "ResultsGrouped",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "InvestigationAnalysisSummary",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'InvestigationAnalysisSummary' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get a per day summary of the radar analysis results from start day to end day.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareinvestigationanalysissummary.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InvestigationAnalysisSummary { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InvestigationEnablement",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'InvestigationEnablement' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get the enablement status of entities on which Ransomware Monitoring can be enabled.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareinvestigationenablement.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InvestigationEnablement { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InvestigationWorkloadScannedCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'InvestigationWorkloadScannedCount' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get the total number of times that Radar has scanned a workload.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareinvestigationworkloadscannedcount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InvestigationWorkloadScannedCount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OverallInvestigationSummary",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'OverallInvestigationSummary' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Overall ransomware investigation summary.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/overallransomwareinvestigationsummary.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OverallInvestigationSummary { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PendingInvestigationResultsCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PendingInvestigationResultsCount' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get information about workloads passing through the Radar pipeline.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/pendingransomwareinvestigationresultscount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PendingInvestigationResultsCount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ProcessedInvestigationWorkloadCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ProcessedInvestigationWorkloadCount' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get the number of workloads that have passed through the Radar pipeline in the past 24 hours.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/processedransomwareinvestigationworkloadcount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ProcessedInvestigationWorkloadCount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ProtectedInvestigationWorkloadCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ProtectedInvestigationWorkloadCount' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Get the total number of workloads protected by Radar.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/protectedransomwareinvestigationworkloadcount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ProtectedInvestigationWorkloadCount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Result",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Result' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Result of the Ransomware Investigation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareresult.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Result { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResultOpt",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResultOpt' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Optional result of the Ransomware Investigation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareresultopt.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResultOpt { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Results",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Results' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Results for Ransomware Investigations.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareresults.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Results { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResultsGrouped",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ResultsGrouped' operation
-in the 'Ransomware' API domain.
-Description of the operation:
-Results for the Ransomware Investigations grouped by an argument.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/ransomwareresultsgrouped.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResultsGrouped { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

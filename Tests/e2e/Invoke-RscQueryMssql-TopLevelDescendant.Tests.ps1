@@ -1,7 +1,7 @@
 BeforeAll {
     . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
 }
-Describe -Name 'New-RscQueryMssql -TopLevelDescendant' -Fixture {
+Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
     It -Name 'PhysicalHost' -Test {
         $physicalHostFields =
         Get-RscType -Name PhysicalHost -InitialProperties @(
@@ -13,7 +13,7 @@ Describe -Name 'New-RscQueryMssql -TopLevelDescendant' -Fixture {
         Get-RscType -Name MssqlInstance -InitialProperties ("Id", "Name")
         $fields = Get-RscType -Name MssqlTopLevelDescendantTypeConnection
         $fields.nodes = $physicalHostFields
-        $sqlObjects = (New-RscQueryMssql -TopLevelDescendant -Field $fields).Invoke()
+        $sqlObjects = (New-RscQueryMssql -Op TopLevelDescendants -Field $fields).Invoke()
         $sqlObjects.nodes | Should -Not -BeNullOrEmpty
     }
 }

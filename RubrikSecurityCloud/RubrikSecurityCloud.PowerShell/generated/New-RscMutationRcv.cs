@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'RCV' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CreateLocationsFromTemplate, -CreatePrivateEndpointApprovalRequest, -UpdateTarget.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CreateLocationsFromTemplate,
-    /// which is equivalent to specifying -CreateLocationsFromTemplate.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -216,59 +215,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationRcv",
-        DefaultParameterSetName = "UpdateTarget")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationRcv : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CreateLocationsFromTemplate",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateLocationsFromTemplate' operation
-in the 'RCV' API domain.
-Description of the operation:
-Creates Rubrik Cloud Vault locations from given location template.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/creatercvlocationsfromtemplate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateLocationsFromTemplate { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CreateLocationsFromTemplate",
+                "CreatePrivateEndpointApprovalRequest",
+                "UpdateTarget",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CreatePrivateEndpointApprovalRequest",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreatePrivateEndpointApprovalRequest' operation
-in the 'RCV' API domain.
-Description of the operation:
-Create RCV private endpoint approval request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/creatercvprivateendpointapprovalrequest.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreatePrivateEndpointApprovalRequest { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTarget' operation
-in the 'RCV' API domain.
-Description of the operation:
-Updates the Rubrik Cloud Vault archival location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatercvtarget.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

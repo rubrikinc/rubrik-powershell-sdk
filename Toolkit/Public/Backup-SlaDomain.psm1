@@ -91,7 +91,7 @@ function Backup-SlaDomain {
       "existingSnapshotRetention"       = $ExistingSnapshotRetention
       "userNote"                        = $UserNote
     }
-    $query = New-RscMutationSla -Assign -Var $vars -FieldProfile "Detail"
+    $query = New-RscMutationSla -Op Assign -Var $vars -FieldProfile "Detail"
 
     # Invoke, i.e. send request to the API server
     $result = Invoke-Rsc $query

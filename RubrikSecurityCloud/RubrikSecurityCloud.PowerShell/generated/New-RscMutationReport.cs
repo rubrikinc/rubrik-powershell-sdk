@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 9 operations
     /// in the 'Report' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CreateCustom, -CreateScheduled, -DeleteCustom, -DeleteScheduled, -SendPdf, -SendScheduledAsync, -StartClusterMigrationJob, -UpdateCustom, -UpdateScheduled.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CreateCustom,
-    /// which is equivalent to specifying -CreateCustom.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduled, SendPdf, SendScheduledAsync, StartClusterMigrationJob, UpdateCustom, or UpdateScheduled.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -790,155 +789,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationReport",
-        DefaultParameterSetName = "SendPdf")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationReport : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CreateCustom",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCustom' operation
-in the 'Report' API domain.
-Description of the operation:
-Create a custom report.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcustomreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCustom { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CreateCustom",
+                "CreateScheduled",
+                "DeleteCustom",
+                "DeleteScheduled",
+                "SendPdf",
+                "SendScheduledAsync",
+                "StartClusterMigrationJob",
+                "UpdateCustom",
+                "UpdateScheduled",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CreateScheduled",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateScheduled' operation
-in the 'Report' API domain.
-Description of the operation:
-Create a scheduled report.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createscheduledreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateScheduled { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCustom",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCustom' operation
-in the 'Report' API domain.
-Description of the operation:
-Delete a custom report.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecustomreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCustom { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteScheduled",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteScheduled' operation
-in the 'Report' API domain.
-Description of the operation:
-Delete a scheduled report.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletescheduledreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteScheduled { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SendPdf",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SendPdf' operation
-in the 'Report' API domain.
-Description of the operation:
-DHRC PDF report generation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sendpdfreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SendPdf { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SendScheduledAsync",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SendScheduledAsync' operation
-in the 'Report' API domain.
-Description of the operation:
-Send a scheduled report now asynchronously via email.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sendscheduledreportasync.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SendScheduledAsync { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartClusterMigrationJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartClusterMigrationJob' operation
-in the 'Report' API domain.
-Description of the operation:
-Start a job to migrate reports from Rubrik cluster to RSC.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startclusterreportmigrationjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartClusterMigrationJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCustom",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCustom' operation
-in the 'Report' API domain.
-Description of the operation:
-Update a custom report.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecustomreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCustom { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateScheduled",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateScheduled' operation
-in the 'Report' API domain.
-Description of the operation:
-Update a scheduled report.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatescheduledreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateScheduled { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

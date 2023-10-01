@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Storage Arrays' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Add, -Delete, -Refresh, -Update.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Add,
-    /// which is equivalent to specifying -Add.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Add, Delete, Refresh, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -261,75 +260,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationStorageArray",
-        DefaultParameterSetName = "Add")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationStorageArray : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Add",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Add' operation
-in the 'Storage Arrays' API domain.
-Description of the operation:
-Add storage arrays to Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addstoragearrays.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Add { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Add",
+                "Delete",
+                "Refresh",
+                "Update",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Delete' operation
-in the 'Storage Arrays' API domain.
-Description of the operation:
-Delete storage arrays from Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletestoragearrays.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Delete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Refresh",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Refresh' operation
-in the 'Storage Arrays' API domain.
-Description of the operation:
-Refresh storage arrays in Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshstoragearrays.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Refresh { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'Storage Arrays' API domain.
-Description of the operation:
-Update storage arrays in Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatestoragearrays.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -12,6 +12,7 @@ namespace RubrikSecurityCloud
     /// </summary>
     public class RscOp
     {
+        public static RscOp NullRscOp = new RscOp();
         public delegate bool SchemaMeta_FillInRscOp(RscOp rscOp);
         public static SchemaMeta_FillInRscOp? FillInRscOp = null;
 
@@ -70,12 +71,12 @@ namespace RubrikSecurityCloud
         public string DomainName()
         {
             var kind = this.OpKind();
-            if ( kind == "query" )
+            if (kind == "query")
             {
                 // assume CmdletName is like "New-RscQueryXxx"
                 return this.CmdletName.Replace("New-RscQuery", "");
             }
-            if ( kind == "mutation" )
+            if (kind == "mutation")
             {
                 // assume CmdletName is like "New-RscMutationXxx"
                 return this.CmdletName.Replace("New-RscMutation", "");
@@ -104,28 +105,35 @@ namespace RubrikSecurityCloud
             return $"{this.CmdletName} -{this.CmdletSwitchName}";
         }
 
+        public List<Tuple<string, string>> Info()
+        {
+            return new List<Tuple<string, string>>() {
+                new Tuple<string,string>(
+                "API Domain",
+                    this.DomainName()
+                ),
+                new Tuple<string,string>(
+                    "API Operation",
+                    this.OpName()
+                ),
+                new Tuple<string,string>(
+                    "Invocation",
+                    this.Syntax()
+                ),
+                new Tuple<string,string>(
+                    "GQL Root Field",
+                    this.GqlRootFieldName
+                ),
+                new Tuple<string,string>(
+                    "GQL Return Type",
+                    this.GqlReturnTypeName
+                ),
+            };
+        }
+
         public override string ToString()
         {
-            var s = this.Syntax() + "# Gql: ";
-            if (string.IsNullOrEmpty(this.GqlRootFieldName) ||
-                this.GqlRootFieldName.ToLower() == "unknown")
-            {
-                s += "Unknown";
-            }
-            else
-            {
-                s += this.GqlRootFieldName;
-            }
-            if (string.IsNullOrEmpty(this.GqlReturnTypeName) ||
-                this.GqlReturnTypeName.ToLower() == "unknown")
-            {
-                s += " (Unknown)";
-            }
-            else
-            {
-                s += $" ({this.GqlReturnTypeName})";
-            }
-            return s;
+            return this.DomainName() + "." + this.OpName();
         }
     }
 }

@@ -4,6 +4,15 @@
 
 New Features:
 
+- New methods on Field objects: `SelectedFields()`,
+  `UnselectedFields()` and `AllFields()`.
+- `New-RscQuery` and `New-RscMutation` for generic queries and mutations.
+  For example to amend an existing query:
+  `$query = New-RscQuery -Copy $query -AddField ..`
+  or to create a new query based off a GraphQL root field:
+  `New-RscQuery -GqlQuery clusterConnection -AddField ..`
+- New param to `Get-RscCluster`:
+  `Get-RscCluster -AsQuery` returns the query object instead of executing it.
 - Total query and mutation cmdlets is now at 52,
   see: [docs/domains_and_operations.md](docs/domains_and_operations.md)
 

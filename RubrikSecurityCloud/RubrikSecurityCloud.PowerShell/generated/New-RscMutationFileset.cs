@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Fileset' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkCreate, -BulkCreateTemplates, -BulkDelete, -BulkDeleteTemplate, -BulkUpdateTemplate, -RecoverFiles.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkCreate,
-    /// which is equivalent to specifying -BulkCreate.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, or RecoverFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -433,119 +432,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationFileset",
-        DefaultParameterSetName = "BulkCreate")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationFileset : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkCreate",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkCreate' operation
-in the 'Fileset' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkCreate",
+                "BulkCreateTemplates",
+                "BulkDelete",
+                "BulkDeleteTemplate",
+                "BulkUpdateTemplate",
+                "RecoverFiles",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkcreatefilesets.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkCreate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkCreateTemplates",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkCreateTemplates' operation
-in the 'Fileset' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkcreatefilesettemplates.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkCreateTemplates { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkDelete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDelete' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Delete filesets
-
-Supported in v5.0+
-Delete filesets by specifying the fileset IDs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletefileset.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDelete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkDeleteTemplate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDeleteTemplate' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Delete fileset templates
-
-Supported in v5.0+
-Deletes specfied fileset templates. Detaches and retains all associated filesets as independent filesets with the existing values.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletefilesettemplate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDeleteTemplate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkUpdateTemplate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdateTemplate' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Modify fileset templates
-
-Supported in v5.0+
-Modify the values of specified fileset templates.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdatefilesettemplate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdateTemplate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverFiles' operation
-in the 'Fileset' API domain.
-Description of the operation:
-Create restore job to restore multiple files/directories
-
-Supported in v5.0+
-Initiate a job to copy one or more file or folder from a fileset backup to the source host. Returns the job instance ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/filesetrecoverfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverFiles { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

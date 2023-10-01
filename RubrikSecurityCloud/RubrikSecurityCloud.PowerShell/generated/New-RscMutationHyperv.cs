@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 23 operations
     /// in the 'Microsoft Hyper-V' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BatchExportVm, -BatchInstantRecoverVm, -BatchMountVm, -BatchOnDemandBackupVm, -CreateVirtualMachineSnapshotMount, -DeleteAllSnapshots, -DeleteVirtualMachineSnapshot, -DeleteVirtualMachineSnapshotMount, -DownloadSnapshotFromLocation, -DownloadVirtualMachineSnapshot, -DownloadVirtualMachineSnapshotFiles, -ExportVirtualMachine, -InstantRecoverVirtualMachineSnapshot, -OnDemandSnapshot, -RefreshScvmm, -RefreshServer, -RegisterAgentVirtualMachine, -RegisterScvmm, -RestoreVirtualMachineSnapshotFiles, -ScvmmDelete, -ScvmmUpdate, -UpdateVirtualMachine, -UpdateVirtualMachineSnapshotMount.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BatchExportVm,
-    /// which is equivalent to specifying -BatchExportVm.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1016,436 +1015,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationHyperv",
-        DefaultParameterSetName = "ScvmmUpdate")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationHyperv : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BatchExportVm",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchExportVm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Exports a snapshot from each member of a set of virtual machines
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BatchExportVm",
+                "BatchInstantRecoverVm",
+                "BatchMountVm",
+                "BatchOnDemandBackupVm",
+                "CreateVirtualMachineSnapshotMount",
+                "DeleteAllSnapshots",
+                "DeleteVirtualMachineSnapshot",
+                "DeleteVirtualMachineSnapshotMount",
+                "DownloadSnapshotFromLocation",
+                "DownloadVirtualMachineSnapshot",
+                "DownloadVirtualMachineSnapshotFiles",
+                "ExportVirtualMachine",
+                "InstantRecoverVirtualMachineSnapshot",
+                "OnDemandSnapshot",
+                "RefreshScvmm",
+                "RefreshServer",
+                "RegisterAgentVirtualMachine",
+                "RegisterScvmm",
+                "RestoreVirtualMachineSnapshotFiles",
+                "ScvmmDelete",
+                "ScvmmUpdate",
+                "UpdateVirtualMachine",
+                "UpdateVirtualMachineSnapshotMount",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v7.0+
-Export a snapshot from each member of a set of virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchexporthypervvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchExportVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BatchInstantRecoverVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchInstantRecoverVm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Instantly recovers snapshots from multiple virtual machines
-
-Supported in v7.0+
-Instantly recovers a batch of snapshots from a group of specified virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchinstantrecoverhypervvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchInstantRecoverVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BatchMountVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchMountVm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Mount snapshots from multiple virtual machines
-
-Supported in v7.0+
-Mounts a batch of snapshots from a group of specified virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchmounthypervvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchMountVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BatchOnDemandBackupVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchOnDemandBackupVm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Takes bulk on-demand backup of Hyper-V virtual machines
-
-Supported in v9.0+
-Takes on-demand backup of multiple specified Hyper-V virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchondemandbackuphypervvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchOnDemandBackupVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateVirtualMachineSnapshotMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateVirtualMachineSnapshotMount' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Create a live mount request
-
-Supported in v5.0+
-Create a live mount request with given configuration.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createhypervvirtualmachinesnapshotmount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateVirtualMachineSnapshotMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteAllSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteAllSnapshots' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Delete all snapshots of VM
-
-Supported in v5.0+
-Delete all snapshots of a virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervdeleteallsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteAllSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteVirtualMachineSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteVirtualMachineSnapshot' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Delete VM snapshot
-
-Supported in v5.0+
-Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected vm.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletehypervvirtualmachinesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteVirtualMachineSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteVirtualMachineSnapshotMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteVirtualMachineSnapshotMount' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Requst to delete a live mount
-
-Supported in v5.0+
-Create a request to delete a live mount.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletehypervvirtualmachinesnapshotmount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteVirtualMachineSnapshotMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadSnapshotFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadSnapshotFromLocation' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Download a snapshot from a replication target
-
-Supported in v7.0+
-Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadhypervsnapshotfromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadSnapshotFromLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadVirtualMachineSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadVirtualMachineSnapshot' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Creates a download from archival request
-
-Supported in v5.0+
-Download a snapshot from archival.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadhypervvirtualmachinesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadVirtualMachineSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadVirtualMachineSnapshotFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadVirtualMachineSnapshotFiles' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Download files from a Hyper-V VM backup
-
-Supported in v5.0+
-Start an asynchronous job to download multiple files and folders from a specified Hyper-V VM backup. The response returns an asynchrounous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'hyperv/vm/request/{id}'.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadhypervvirtualmachinesnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadVirtualMachineSnapshotFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportVirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportVirtualMachine' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Export VM snapshot
-
-Supported in v5.0+
-Export snapshot of a vm.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exporthypervvirtualmachine.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportVirtualMachine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InstantRecoverVirtualMachineSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InstantRecoverVirtualMachineSnapshot' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
-
-Supported in v5.0+
-The VM will be started with networking enabled. If the VM does not exist anymore, a new VM will be created.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/instantrecoverhypervvirtualmachinesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InstantRecoverVirtualMachineSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OnDemandSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'OnDemandSnapshot' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Create on-demand VM snapshot
-
-Supported in v5.0+
-Create an on-demand snapshot for the given VM ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervondemandsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OnDemandSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshScvmm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshScvmm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Refresh a given HyperV SCVMM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshhypervscvmm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshScvmm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshServer",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshServer' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Refresh Hyper-V host metadata
-
-Supported in v5.0+
-Create a job to refresh the metadata for the specified Hyper-V host.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshhypervserver.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshServer { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegisterAgentVirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RegisterAgentVirtualMachine' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Register the agent installed in VM
-
-Supported in v5.0+
-Register the agent that installed in VM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registeragenthypervvirtualmachine.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegisterAgentVirtualMachine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegisterScvmm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RegisterScvmm' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Register HyperV SCVMM to Rubrik Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registerhypervscvmm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegisterScvmm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreVirtualMachineSnapshotFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreVirtualMachineSnapshotFiles' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Restore files from snapshot
-
-Supported in v5.0+
-Restore files from a snapshot to the original source location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restorehypervvirtualmachinesnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreVirtualMachineSnapshotFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ScvmmDelete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ScvmmDelete' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Delete a given HyperV SCVMM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmmdelete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ScvmmDelete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ScvmmUpdate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ScvmmUpdate' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Update properties for a given HyperV SCVMM.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmmupdate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ScvmmUpdate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateVirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateVirtualMachine' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Update VM
-
-Supported in v5.0+
-Update VM with specified properties.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatehypervvirtualmachine.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateVirtualMachine { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateVirtualMachineSnapshotMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateVirtualMachineSnapshotMount' operation
-in the 'Microsoft Hyper-V' API domain.
-Description of the operation:
-Power a Live Mount on and off
-
-Supported in v5.0+
-Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatehypervvirtualmachinesnapshotmount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateVirtualMachineSnapshotMount { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

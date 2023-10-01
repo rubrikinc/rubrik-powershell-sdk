@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AsyncRequestStatus, -MissedRecoverableRange, -New, -NewList, -RecoverableRange, -RecoverableRangeInBatch.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AsyncRequestStatus,
-    /// which is equivalent to specifying -AsyncRequestStatus.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, or RecoverableRangeInBatch.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -316,107 +315,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryVsphereVm",
-        DefaultParameterSetName = "New")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryVsphereVm : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AsyncRequestStatus",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AsyncRequestStatus' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AsyncRequestStatus",
+                "MissedRecoverableRange",
+                "New",
+                "NewList",
+                "RecoverableRange",
+                "RecoverableRangeInBatch",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmasyncrequeststatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AsyncRequestStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MissedRecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'MissedRecoverableRange' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmmissedrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MissedRecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "New",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'New' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmnew.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter New { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NewList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NewList' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmnewconnection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NewList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRange' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverablerange.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRange { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverableRangeInBatch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RecoverableRangeInBatch' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverablerangeinbatch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverableRangeInBatch { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

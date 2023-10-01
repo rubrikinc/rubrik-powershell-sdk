@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'AWS Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ExcludeEbsVolumesFromSnapshot, -StartAccountDisableJob, -StartCreateEbsVolumeSnapshotsJob, -StartEc2InstanceSnapshotsJob, -StartExportEbsVolumeSnapshotJob, -StartRdsInstanceSnapshotsJob, -StartRefreshAccountsJob, -StartRestoreEc2InstanceSnapshotJob.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ExcludeEbsVolumesFromSnapshot,
-    /// which is equivalent to specifying -ExcludeEbsVolumesFromSnapshot.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ExcludeEbsVolumesFromSnapshot, StartAccountDisableJob, StartCreateEbsVolumeSnapshotsJob, StartEc2InstanceSnapshotsJob, StartExportEbsVolumeSnapshotJob, StartRdsInstanceSnapshotsJob, StartRefreshAccountsJob, or StartRestoreEc2InstanceSnapshotJob.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -388,139 +387,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationAwsNative",
-        DefaultParameterSetName = "StartAccountDisableJob")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationAwsNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ExcludeEbsVolumesFromSnapshot",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeEbsVolumesFromSnapshot' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/excludeawsnativeebsvolumesfromsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeEbsVolumesFromSnapshot { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ExcludeEbsVolumesFromSnapshot",
+                "StartAccountDisableJob",
+                "StartCreateEbsVolumeSnapshotsJob",
+                "StartEc2InstanceSnapshotsJob",
+                "StartExportEbsVolumeSnapshotJob",
+                "StartRdsInstanceSnapshotsJob",
+                "StartRefreshAccountsJob",
+                "StartRestoreEc2InstanceSnapshotJob",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "StartAccountDisableJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartAccountDisableJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativeaccountdisablejob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartAccountDisableJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartCreateEbsVolumeSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartCreateEbsVolumeSnapshotsJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateawsnativeebsvolumesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartCreateEbsVolumeSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartEc2InstanceSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartEc2InstanceSnapshotsJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativeec2instancesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartEc2InstanceSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartExportEbsVolumeSnapshotJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartExportEbsVolumeSnapshotJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportawsnativeebsvolumesnapshotjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartExportEbsVolumeSnapshotJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRdsInstanceSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRdsInstanceSnapshotsJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativerdsinstancesnapshotsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRdsInstanceSnapshotsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRefreshAccountsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRefreshAccountsJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrefreshawsnativeaccountsjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRefreshAccountsJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartRestoreEc2InstanceSnapshotJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartRestoreEc2InstanceSnapshotJob' operation
-in the 'AWS Native' API domain.
-Description of the operation:
-Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrestoreawsnativeec2instancesnapshotjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartRestoreEc2InstanceSnapshotJob { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

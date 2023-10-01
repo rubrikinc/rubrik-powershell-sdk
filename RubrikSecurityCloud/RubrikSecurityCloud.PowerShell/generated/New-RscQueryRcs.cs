@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'RCS' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ArchivalLocationsConsumptionStats, -Cluster, -Dhcores.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ArchivalLocationsConsumptionStats,
-    /// which is equivalent to specifying -ArchivalLocationsConsumptionStats.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ArchivalLocationsConsumptionStats, Cluster, or Dhcores.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -183,62 +182,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryRcs",
-        DefaultParameterSetName = "Cluster")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryRcs : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ArchivalLocationsConsumptionStats",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ArchivalLocationsConsumptionStats' operation
-in the 'RCS' API domain.
-Description of the operation:
-RCS Azure archival location consumption stats.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/rcsarchivallocationsconsumptionstats.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ArchivalLocationsConsumptionStats { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ArchivalLocationsConsumptionStats",
+                "Cluster",
+                "Dhcores",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Cluster' operation
-in the 'RCS' API domain.
-Description of the operation:
-Get the cluster certificate signing request
-
-Supported in v7.0+
-Returns the certificate signing request generated from the private key of the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustercsr.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Dhcores",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Dhcores' operation
-in the 'RCS' API domain.
-Description of the operation:
-DHRC scores for the requested categories and time span.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alldhrcscores.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Dhcores { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

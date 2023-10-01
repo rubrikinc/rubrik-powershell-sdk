@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 10 operations
     /// in the 'Mongo DB' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddSource, -AssignSlaToCollection, -BulkDeleteSources, -CreateSource, -DeleteSource, -DiscoverSource, -PatchSource, -RecoverSource, -RetryAddSource, -UpdateSource.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddSource,
-    /// which is equivalent to specifying -AddSource.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddSource, AssignSlaToCollection, BulkDeleteSources, CreateSource, DeleteSource, DiscoverSource, PatchSource, RecoverSource, RetryAddSource, or UpdateSource.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -653,193 +652,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationMongo",
-        DefaultParameterSetName = "AddSource")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationMongo : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddSource",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Add a new MongoDB source
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddSource",
+                "AssignSlaToCollection",
+                "BulkDeleteSources",
+                "CreateSource",
+                "DeleteSource",
+                "DiscoverSource",
+                "PatchSource",
+                "RecoverSource",
+                "RetryAddSource",
+                "UpdateSource",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v8.1+
-Adds a new MongoDB source to the Rubrik Cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addmongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "AssignSlaToCollection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AssignSlaToCollection' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Assign SLA Domain to MongoDB collection objects
-
-Supported in v8.1+
-Assigns SLA Domain to the given MongoDB collection objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignslatomongodbcollection.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AssignSlaToCollection { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkDeleteSources",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDeleteSources' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Bulk Delete Sources
-
-Supported in m3.2.0-m4.2.0.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletemongodbsources.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDeleteSources { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Register a new MongoDB source to NoSQL cluster. 
-For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster.
-For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmongodbsource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Delete a MongoDB source
-
-Supported in v8.1+
-Deletes a specific MongoDB source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DiscoverSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DiscoverSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Discover a MongoDB source on-demand
-
-Supported in v8.1+
-Initiates an on-demand job to discover a MongoDB source.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/discovermongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DiscoverSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Edit a MongoDB source
-
-Supported in v8.1+
-Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB cannot be changed once added.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchmongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Recover a MongoDB source from Rubrik CDM cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/recovermongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RetryAddSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RetryAddSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Update a MongoDB source
-
-Supported in v8.1+
-Updates a MongoDB source details. You can use this endpoint for updating MongoDB source details when the request to add a source fails.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/retryaddmongosource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RetryAddSource { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateSource' operation
-in the 'Mongo DB' API domain.
-Description of the operation:
-Modifies configuration for a registered MongoDB source in NoSQL cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemongodbsource.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateSource { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

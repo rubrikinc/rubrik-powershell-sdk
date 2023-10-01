@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 16 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CloudAccountMissingPermissionsForAddition, -CloudAccountProjectsByFeature, -CloudAccountProjectsForOauth, -FeaturePermissionsForCloudAccount, -GetDefaultCredentialsServiceAccount, -NativeAvailableKmsCryptoKeys, -NativeCompatibleMachineTypes, -NativeNetworks, -NativeProjectsWithAccessibleNetworks, -NativeRegions, -NativeStoredMachineTypes, -NativeStoredMachineTypesInProject, -NativeStoredNetworkNames, -NativeStoredNetworkNamesInProject, -NativeStoredRegions, -NativeStoredRegionsInProject.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CloudAccountMissingPermissionsForAddition,
-    /// which is equivalent to specifying -CloudAccountMissingPermissionsForAddition.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -545,267 +544,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryGcp",
-        DefaultParameterSetName = "NativeRegions")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryGcp : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CloudAccountMissingPermissionsForAddition",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountMissingPermissionsForAddition' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Check GCP projects permissions for addition.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpcloudaccountmissingpermissionsforaddition.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountMissingPermissionsForAddition { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CloudAccountMissingPermissionsForAddition",
+                "CloudAccountProjectsByFeature",
+                "CloudAccountProjectsForOauth",
+                "FeaturePermissionsForCloudAccount",
+                "GetDefaultCredentialsServiceAccount",
+                "NativeAvailableKmsCryptoKeys",
+                "NativeCompatibleMachineTypes",
+                "NativeNetworks",
+                "NativeProjectsWithAccessibleNetworks",
+                "NativeRegions",
+                "NativeStoredMachineTypes",
+                "NativeStoredMachineTypesInProject",
+                "NativeStoredNetworkNames",
+                "NativeStoredNetworkNamesInProject",
+                "NativeStoredRegions",
+                "NativeStoredRegionsInProject",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountProjectsByFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountProjectsByFeature' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of GCP projects configured for a feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpcloudaccountprojectsbyfeature.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountProjectsByFeature { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CloudAccountProjectsForOauth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccountProjectsForOauth' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of GCP projects to add after successful authorization.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpcloudaccountprojectsforoauth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccountProjectsForOauth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FeaturePermissionsForCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'FeaturePermissionsForCloudAccount' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of permissions required to enable the given feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allfeaturepermissionsforgcpcloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FeaturePermissionsForCloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GetDefaultCredentialsServiceAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GetDefaultCredentialsServiceAccount' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-Returns the service account corresponding to global credentials. Return empty string if global credentials are absent
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpgetdefaultcredentialsserviceaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GetDefaultCredentialsServiceAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeAvailableKmsCryptoKeys",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeAvailableKmsCryptoKeys' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of GCP KMS Crypto keys accessible in the provided region.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativeavailablekmscryptokeys.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeAvailableKmsCryptoKeys { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeCompatibleMachineTypes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeCompatibleMachineTypes' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of compatible machine types for instance.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativecompatiblemachinetypes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeCompatibleMachineTypes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeNetworks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeNetworks' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of networks available in a GCP project along with subnetworks and firewall rules.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativenetworks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeNetworks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeProjectsWithAccessibleNetworks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeProjectsWithAccessibleNetworks' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the GCP projects with accessible networks in this service project.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativeprojectswithaccessiblenetworks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeProjectsWithAccessibleNetworks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeRegions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeRegions' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of regions available to a GCP project along with zones.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativeregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeRegions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeStoredMachineTypes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeStoredMachineTypes' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the distinct machine types of the GCP instances stored with Polaris.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativestoredmachinetypes.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeStoredMachineTypes { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeStoredMachineTypesInProject",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeStoredMachineTypesInProject' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the distinct machine types of the GCP instances stored with Polaris.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativestoredmachinetypesinproject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeStoredMachineTypesInProject { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeStoredNetworkNames",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeStoredNetworkNames' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the distinct network names of the GCP instances stored with Polaris.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativestorednetworknames.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeStoredNetworkNames { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeStoredNetworkNamesInProject",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeStoredNetworkNamesInProject' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the distinct network names of the GCP instances stored with Polaris.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativestorednetworknamesinproject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeStoredNetworkNamesInProject { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeStoredRegions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeStoredRegions' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the distinct regions of the GCP instances stored with Polaris.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativestoredregions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeStoredRegions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "NativeStoredRegionsInProject",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'NativeStoredRegionsInProject' operation
-in the 'Google Cloud Platform' API domain.
-Description of the operation:
-List of all the distinct regions of the GCP instances stored with Polaris.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allgcpnativestoredregionsinproject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter NativeStoredRegionsInProject { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

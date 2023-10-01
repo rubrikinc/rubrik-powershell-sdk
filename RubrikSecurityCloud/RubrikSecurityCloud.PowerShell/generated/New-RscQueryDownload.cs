@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 3 operations
     /// in the 'Report Download' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CdmUpgradesPdf, -EdVersionList, -PackageStatus.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CdmUpgradesPdf,
-    /// which is equivalent to specifying -CdmUpgradesPdf.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CdmUpgradesPdf, EdVersionList, or PackageStatus.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -201,59 +200,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryDownload",
-        DefaultParameterSetName = "EdVersionList")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryDownload : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CdmUpgradesPdf",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CdmUpgradesPdf' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download cdm upgrades table pdf.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadcdmupgradespdf.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CdmUpgradesPdf { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CdmUpgradesPdf",
+                "EdVersionList",
+                "PackageStatus",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "EdVersionList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EdVersionList' operation
-in the 'Report Download' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadedversionlist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EdVersionList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PackageStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'PackageStatus' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Get Status of download package job.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadpackagestatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PackageStatus { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

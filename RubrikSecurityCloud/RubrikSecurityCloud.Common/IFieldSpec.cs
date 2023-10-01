@@ -35,7 +35,8 @@ namespace RubrikSecurityCloud.Types
     public interface IFieldSpec
     {
         string AsFieldSpec(FieldSpecConfig? conf=null);
-        void SelectForRetrieval();
+        List<string> SelectedFields();
         void ApplyExploratoryFieldSpec(ExplorationContext ec);
+        void SelectForRetrieval();
     }
 }

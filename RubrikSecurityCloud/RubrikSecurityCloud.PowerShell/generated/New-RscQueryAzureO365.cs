@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 11 operations
     /// in the 'Azure Office365' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CheckNSGOutboundRules, -CheckNetworkSubnet, -CheckResourceGroupName, -CheckStorageAccountAccessibility, -CheckStorageAccountName, -CheckSubscriptionQuota, -CheckVirtualNetworkName, -Exocompute, -GetAzureHostType, -GetNetworkSubnetUnusedAddr, -ValidateUserRoles.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CheckNSGOutboundRules,
-    /// which is equivalent to specifying -CheckNSGOutboundRules.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CheckNSGOutboundRules, CheckNetworkSubnet, CheckResourceGroupName, CheckStorageAccountAccessibility, CheckStorageAccountName, CheckSubscriptionQuota, CheckVirtualNetworkName, Exocompute, GetAzureHostType, GetNetworkSubnetUnusedAddr, or ValidateUserRoles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -444,187 +443,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAzureO365",
-        DefaultParameterSetName = "Exocompute")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryAzureO365 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CheckNSGOutboundRules",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckNSGOutboundRules' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the NSG Outbound rules of the Azure resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checknsgoutboundrules.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckNSGOutboundRules { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CheckNSGOutboundRules",
+                "CheckNetworkSubnet",
+                "CheckResourceGroupName",
+                "CheckStorageAccountAccessibility",
+                "CheckStorageAccountName",
+                "CheckSubscriptionQuota",
+                "CheckVirtualNetworkName",
+                "Exocompute",
+                "GetAzureHostType",
+                "GetNetworkSubnetUnusedAddr",
+                "ValidateUserRoles",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CheckNetworkSubnet",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckNetworkSubnet' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the network subnet of the Azure resources.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checknetworksubnet.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckNetworkSubnet { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckResourceGroupName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckResourceGroupName' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the resource group name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkresourcegroupname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckResourceGroupName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckStorageAccountAccessibility",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckStorageAccountAccessibility' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the accessibility of the storage account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkstorageaccountaccessibility.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckStorageAccountAccessibility { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckStorageAccountName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckStorageAccountName' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the storage account name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkstorageaccountname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckStorageAccountName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckSubscriptionQuota",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckSubscriptionQuota' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the Azure subscription quota.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checksubscriptionquota.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckSubscriptionQuota { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckVirtualNetworkName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckVirtualNetworkName' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Checks the virtual network name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkvirtualnetworkname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckVirtualNetworkName { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Exocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Exocompute' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Gets the exocompute details of the given cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365exocompute.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Exocompute { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GetAzureHostType",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GetAzureHostType' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Retrieves the AzureHostType of the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365getazurehosttype.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GetAzureHostType { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GetNetworkSubnetUnusedAddr",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GetNetworkSubnetUnusedAddr' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Retrieves the unused addresses available in a subnet.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365getnetworksubnetunusedaddr.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GetNetworkSubnetUnusedAddr { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateUserRoles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ValidateUserRoles' operation
-in the 'Azure Office365' API domain.
-Description of the operation:
-Validates the user roles in the subscription.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365validateuserroles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateUserRoles { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

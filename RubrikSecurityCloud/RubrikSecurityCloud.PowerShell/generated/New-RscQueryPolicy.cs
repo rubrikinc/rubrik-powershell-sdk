@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Policy' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Details, -Obj, -ObjectUsages, -Objs, -Policies, -Policy.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Details,
-    /// which is equivalent to specifying -Details.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Details, Obj, ObjectUsages, Objs, Policies, or Policy.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -334,107 +333,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryPolicy",
-        DefaultParameterSetName = "Policy")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryPolicy : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Details",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Details' operation
-in the 'Policy' API domain.
-Description of the operation:
-Returns active policies for an account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/policydetails.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Details { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Details",
+                "Obj",
+                "ObjectUsages",
+                "Objs",
+                "Policies",
+                "Policy",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Obj",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Obj' operation
-in the 'Policy' API domain.
-Description of the operation:
-Returns details for one policy object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/policyobj.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Obj { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ObjectUsages",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ObjectUsages' operation
-in the 'Policy' API domain.
-Description of the operation:
-Returns the policies assigned to each object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/policyobjectusages.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ObjectUsages { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Objs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Objs' operation
-in the 'Policy' API domain.
-Description of the operation:
-Returns status for all objects at a specified timestamp.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/policyobjs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Objs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Policies",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Policies' operation
-in the 'Policy' API domain.
-Description of the operation:
-Returns active policies for an account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/policies.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Policies { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Policy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Policy' operation
-in the 'Policy' API domain.
-Description of the operation:
-Returns detailed policy information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/policy.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Policy { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

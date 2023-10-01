@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Service Account' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Create, -Delete, -Rotate, -Update.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Create,
-    /// which is equivalent to specifying -Create.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Create, Delete, Rotate, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -215,75 +214,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationServiceAccount",
-        DefaultParameterSetName = "Create")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationServiceAccount : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Create' operation
-in the 'Service Account' API domain.
-Description of the operation:
-Create a service account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createserviceaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Create { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Create",
+                "Delete",
+                "Rotate",
+                "Update",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Delete' operation
-in the 'Service Account' API domain.
-Description of the operation:
-Delete specified service accounts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteserviceaccountsfromaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Delete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Rotate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Rotate' operation
-in the 'Service Account' API domain.
-Description of the operation:
-Rotate service account secret.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/rotateserviceaccountsecret.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Rotate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'Service Account' API domain.
-Description of the operation:
-Update the specified service account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateserviceaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

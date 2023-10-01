@@ -6,7 +6,7 @@ Describe -Name "TEST Json serialization" -Fixture {
         $typeFilter = @(
             [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::WINDOWS_CLUSTER ,
             [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::PHYSICAL_HOST)
-        $q = New-RscQueryVsphere -TopLevelDescendantsList -Var @{
+        $q = New-RscQueryVsphere -Op TopLevelDescendantsList -Var @{
             typeFilter = $typeFilter
         }
         { $g = $q.GqlRequest() } | Should -Not -Throw

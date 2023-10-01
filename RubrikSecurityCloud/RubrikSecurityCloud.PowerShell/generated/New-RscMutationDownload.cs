@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 16 operations
     /// in the 'Report Download' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AuditLogCsvAsync, -ExchangeSnapshot, -FilesetSnapshot, -FilesetSnapshotFromLocation, -ObjectFilesCsv, -ObjectsListCsv, -ReportCsvAsync, -ReportPdfAsync, -ResultsCsv, -SapHanaSnapshot, -SapHanaSnapshotFromLocation, -SapHanaSnapshotsForPointInTimeRecovery, -SnapshotResultsCsv, -ThreatHuntCsv, -VolumeGroupSnapshotFiles, -VolumeGroupSnapshotFromLocation.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AuditLogCsvAsync,
-    /// which is equivalent to specifying -AuditLogCsvAsync.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1232,288 +1231,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationDownload",
-        DefaultParameterSetName = "ResultsCsv")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationDownload : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AuditLogCsvAsync",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AuditLogCsvAsync' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download audit log in CSV format asynchronously.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadauditlogcsvasync.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AuditLogCsvAsync { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AuditLogCsvAsync",
+                "ExchangeSnapshot",
+                "FilesetSnapshot",
+                "FilesetSnapshotFromLocation",
+                "ObjectFilesCsv",
+                "ObjectsListCsv",
+                "ReportCsvAsync",
+                "ReportPdfAsync",
+                "ResultsCsv",
+                "SapHanaSnapshot",
+                "SapHanaSnapshotFromLocation",
+                "SapHanaSnapshotsForPointInTimeRecovery",
+                "SnapshotResultsCsv",
+                "ThreatHuntCsv",
+                "VolumeGroupSnapshotFiles",
+                "VolumeGroupSnapshotFromLocation",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "ExchangeSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExchangeSnapshot' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download exchange database snapshot from archive
-
-Supported in v8.0+
-Downloads a Microsoft Exchange database snapshot from the specified archival location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadexchangesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExchangeSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesetSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'FilesetSnapshot' operation
-in the 'Report Download' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadfilesetsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesetSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FilesetSnapshotFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'FilesetSnapshotFromLocation' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download a snapshot from a replication target
-
-Supported in v7.0+
-Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadfilesetsnapshotfromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FilesetSnapshotFromLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ObjectFilesCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ObjectFilesCsv' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Schedule a download CSV job for cross object files.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadobjectfilescsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ObjectFilesCsv { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ObjectsListCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ObjectsListCsv' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Schedule a download CSV job for objects list.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadobjectslistcsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ObjectsListCsv { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReportCsvAsync",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ReportCsvAsync' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download a report in CSV format asynchronously.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadreportcsvasync.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReportCsvAsync { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReportPdfAsync",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ReportPdfAsync' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download a report asynchronously in PDF format.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadreportpdfasync.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReportPdfAsync { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ResultsCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ResultsCsv' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download file results in CSV format.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadresultscsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ResultsCsv { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SapHanaSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SapHanaSnapshot' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download SAP HANA database snapshot from archive
-
-Supported in v8.0+
-Downloads a specific SAP HANA database snapshot from the specified archival location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadsaphanasnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SapHanaSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SapHanaSnapshotFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SapHanaSnapshotFromLocation' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download a snapshot from the remote location
-
-Supported in v8.1+
-Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location can be replication target or archival location. If SLA Domain is not selected, the snapshot will be retained forever.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadsaphanasnapshotfromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SapHanaSnapshotFromLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SapHanaSnapshotsForPointInTimeRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SapHanaSnapshotsForPointInTimeRecovery' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download SAP HANA database snapshots from archive for a point in time recovery
-
-Supported in v8.0+
-Downloads the most recent full snapshot and the log snapshots taken after the full snapshot, required for the point in time recovery of an SAP HANA database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadsaphanasnapshotsforpointintimerecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SapHanaSnapshotsForPointInTimeRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnapshotResultsCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SnapshotResultsCsv' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download snapshot policy results in CSV format.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadsnapshotresultscsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnapshotResultsCsv { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ThreatHuntCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ThreatHuntCsv' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download threat hunt result in CSV format.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadthreathuntcsv.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ThreatHuntCsv { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VolumeGroupSnapshotFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'VolumeGroupSnapshotFiles' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download files from Volume Group snapshot
-
-Supported in v5.0+
-Create a download files request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadvolumegroupsnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VolumeGroupSnapshotFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "VolumeGroupSnapshotFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'VolumeGroupSnapshotFromLocation' operation
-in the 'Report Download' API domain.
-Description of the operation:
-Download a snapshot from a replication target
-
-Supported in v7.0+
-Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadvolumegroupsnapshotfromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter VolumeGroupSnapshotFromLocation { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

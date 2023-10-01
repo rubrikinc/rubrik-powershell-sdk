@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 5 operations
     /// in the 'Sonar' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -ContentReport, -Report, -ReportRow, -UserGroups, -Users.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op ContentReport,
-    /// which is equivalent to specifying -ContentReport.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: ContentReport, Report, ReportRow, UserGroups, or Users.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -339,91 +338,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQuerySonar",
-        DefaultParameterSetName = "Users")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQuerySonar : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "ContentReport",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ContentReport' operation
-in the 'Sonar' API domain.
-Description of the operation:
-Returns groupBy results for SonarContentReport.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sonarcontentreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ContentReport { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "ContentReport",
+                "Report",
+                "ReportRow",
+                "UserGroups",
+                "Users",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Report",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Report' operation
-in the 'Sonar' API domain.
-Description of the operation:
-Returns groupBy for SonarReport.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sonarreport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Report { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReportRow",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ReportRow' operation
-in the 'Sonar' API domain.
-Description of the operation:
-Returns rows for SonarReport table.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sonarreportrow.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReportRow { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UserGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'UserGroups' operation
-in the 'Sonar' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sonarusergroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UserGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Users",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Users' operation
-in the 'Sonar' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sonarusers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Users { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

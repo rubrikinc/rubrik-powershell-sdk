@@ -142,7 +142,7 @@ function Export-RscMssqlDatabase {
         # API Operation: ExportDatabase
         # Response Type: AsyncRequestStatus
         # Request all fields on the response object
-        $query = New-RscMutationMssql -ExportDatabase -Var $vars -FieldProfile FULL
+        $query = New-RscMutationMssql -Op ExportDatabase -Var $vars -FieldProfile FULL
 
 
         # Invoke, i.e. send request to the API server

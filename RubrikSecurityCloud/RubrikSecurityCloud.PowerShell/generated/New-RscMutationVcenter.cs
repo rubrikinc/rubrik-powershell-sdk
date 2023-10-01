@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'VMware vSphere vCenter' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Create, -Delete, -Refresh, -Update, -UpdateHotAddBandwidth, -UpdateHotAddNetwork.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Create,
-    /// which is equivalent to specifying -Create.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Create, Delete, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -354,122 +353,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationVcenter",
-        DefaultParameterSetName = "Create")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationVcenter : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Create' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Add a vCenter server.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createvspherevcenter.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Create { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Create",
+                "Delete",
+                "Refresh",
+                "Update",
+                "UpdateHotAddBandwidth",
+                "UpdateHotAddNetwork",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Delete' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Remove vCenter Server
-
-Supported in v5.0+
-Initiates an asynchronous job to remove a vCenter Server object. The vCenter Server cannot have VMs mounted through the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspheredeletevcenter.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Delete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Refresh",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Refresh' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Refresh vCenter Server metadata
-
-Supported in v5.0+
-Create a job to refresh the metadata for the specified vCenter Server.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshvspherevcenter.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Refresh { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Update vCenter Server
-
-Supported in v5.0+
-Update the address, username and password of the specified vCenter Server object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatevcenter.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateHotAddBandwidth",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateHotAddBandwidth' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Set the ingest and export bandwidth limits for HotAdd with the vCenter
-
-Supported in v5.3+
-Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vCenter. These limits are shared across all HotAdd proxies for the Center.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatevcenterhotaddbandwidth.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateHotAddBandwidth { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateHotAddNetwork",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateHotAddNetwork' operation
-in the 'VMware vSphere vCenter' API domain.
-Description of the operation:
-Set the user-configured network for HotAdd backup and recovery
-
-Supported in v5.3+
-Set the user-configured network for HotAdd backup and recovery operations on VMware on AWS.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatevcenterhotaddnetwork.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateHotAddNetwork { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

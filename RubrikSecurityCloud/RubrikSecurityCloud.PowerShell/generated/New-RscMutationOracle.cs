@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 18 operations
     /// in the 'Oracle' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkUpdateDatabases, -BulkUpdateHosts, -BulkUpdateRacs, -CreatePdbRestore, -DeleteAllDatabaseSnapshots, -DeleteMount, -DownloadDatabaseSnapshot, -ExportDatabase, -ExportTablespace, -InstantRecoverSnapshot, -MountDatabase, -RefreshDatabase, -RestoreLogs, -TakeOnDemandDatabaseSnapshot, -TakeOnDemandLogSnapshot, -UpdateDataGuardGroup, -ValidateAcoFile, -ValidateDatabaseBackups.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkUpdateDatabases,
-    /// which is equivalent to specifying -BulkUpdateDatabases.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkUpdateDatabases, BulkUpdateHosts, BulkUpdateRacs, CreatePdbRestore, DeleteAllDatabaseSnapshots, DeleteMount, DownloadDatabaseSnapshot, ExportDatabase, ExportTablespace, InstantRecoverSnapshot, MountDatabase, RefreshDatabase, RestoreLogs, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, UpdateDataGuardGroup, ValidateAcoFile, or ValidateDatabaseBackups.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1040,354 +1039,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationOracle",
-        DefaultParameterSetName = "DeleteMount")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationOracle : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkUpdateDatabases",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdateDatabases' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Update Oracle Databases
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkUpdateDatabases",
+                "BulkUpdateHosts",
+                "BulkUpdateRacs",
+                "CreatePdbRestore",
+                "DeleteAllDatabaseSnapshots",
+                "DeleteMount",
+                "DownloadDatabaseSnapshot",
+                "ExportDatabase",
+                "ExportTablespace",
+                "InstantRecoverSnapshot",
+                "MountDatabase",
+                "RefreshDatabase",
+                "RestoreLogs",
+                "TakeOnDemandDatabaseSnapshot",
+                "TakeOnDemandLogSnapshot",
+                "UpdateDataGuardGroup",
+                "ValidateAcoFile",
+                "ValidateDatabaseBackups",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v5.2+
-Update the properties of the objects that represent the specified Oracle Databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdateoracledatabases.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdateDatabases { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkUpdateHosts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdateHosts' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Update Oracle Hosts
-
-Supported in v5.2+
-Update properties to Oracle Host objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdateoraclehosts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdateHosts { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkUpdateRacs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdateRacs' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Update Oracle RACs
-
-Supported in v5.2+
-Update the properties of the objects that represent the specified Oracle RAC.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdateoracleracs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdateRacs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreatePdbRestore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreatePdbRestore' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Restore PDBs on an Oracle database
-
-Supported in v8.0+
-Initiates an asynchronous request to restore PDBs on an Oracle database from a specified snapshot or timestamp.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createoraclepdbrestore.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreatePdbRestore { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteAllDatabaseSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteAllDatabaseSnapshots' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Delete Oracle database snapshots
-
-Supported in v5.0+
-Delete all snapshots for a specified Oracle database object. For the operation to succeed the referenced database must not be assigned to an SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletealloracledatabasesnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteAllDatabaseSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteMount' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Delete an Oracle database Live Mount
-
-Supported in v5.0+
-Request an asynchronous job to delete a specified Live Mount of an Oracle database snapshot. Poll the job status by using /oracle/request/{id}.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteoraclemount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadDatabaseSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadDatabaseSnapshot' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Download Oracle snapshot from cloud
-
-Supported in v5.0+
-Create an asynchronous job to download an Oracle database snapshot and associated logs using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadoracledatabasesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadDatabaseSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportDatabase' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Export an Oracle database
-
-Supported in v5.0+
-Request an asynchronous job to export an Oracle database from a specified snapshot or timestamp.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportoracledatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportTablespace",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportTablespace' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Export an Oracle tablespace
-
-Supported in v5.0+
-Request an asynchronous job to export an Oracle tablespace from a specified snapshot or timestamp.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportoracletablespace.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportTablespace { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InstantRecoverSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InstantRecoverSnapshot' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Instant recovery of a database
-
-Supported in v5.0+
-Creates an instant recover request that restores a target database from the given snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/instantrecoveroraclesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InstantRecoverSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MountDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MountDatabase' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Live Mount an Oracle database snapshot
-
-Supported in v5.0+
-Create an asynchronous job to Live Mount an Oracle database from a snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mountoracledatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MountDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshDatabase' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Refresh an Oracle database
-
-Supported in v6.0+
-Starts an asynchronous job to refresh the Oracle database metadata by querying the database instances on all the underlying hosts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshoracledatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreLogs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreLogs' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Restore archive logs of an Oracle database
-
-Supported in v6.0+
-v6.0: Create an asynchronous job to restore archive logs of an Oracle database.
-v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreoraclelogs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreLogs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TakeOnDemandDatabaseSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'TakeOnDemandDatabaseSnapshot' operation
-in the 'Oracle' API domain.
-Description of the operation:
-On-demand backup of an Oracle database
-
-Supported in v5.0+
-Create an asynchronous job for an on-demand snapshot of an Oracle database. The response includes an ID for the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takeondemandoracledatabasesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TakeOnDemandDatabaseSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TakeOnDemandLogSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'TakeOnDemandLogSnapshot' operation
-in the 'Oracle' API domain.
-Description of the operation:
-On-demand log backup for an Oracle database log
-
-Supported in v5.0+
-Create an asynchronous job for an on-demand backup of an Oracle database log. The response includes an ID for the asynchronous job request.  To see the status of the request, poll /oracle/request/{id}.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takeondemandoraclelogsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TakeOnDemandLogSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateDataGuardGroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateDataGuardGroup' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Update an Oracle Data Guard group
-
-Supported in v6.0+
-Update properties of an Oracle Data Guard group object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateoracledataguardgroup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateDataGuardGroup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateAcoFile",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ValidateAcoFile' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Validate Oracle ACO file
-
-Supported in v6.0+
-Validate the provided Oracle ACO (Advanced Cloning Options) file.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateoracleacofile.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateAcoFile { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ValidateDatabaseBackups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ValidateDatabaseBackups' operation
-in the 'Oracle' API domain.
-Description of the operation:
-Validate Oracle database backups
-
-Supported in v5.3+
-Queue a job to validate Oracle backups for a database snapshot or a specified timestamp.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateoracledatabasebackups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ValidateDatabaseBackups { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

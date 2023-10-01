@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 13 operations
     /// in the 'Cloud Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddSqlServerBackupCredentials, -CheckRbaConnectivity, -ClearSqlServerBackupCredentials, -CreateLabelRule, -CreateTagRule, -DeleteLabelRule, -DeleteTagRule, -DownloadFiles, -SetupSqlServerBackup, -StartSnapshotsIndexJob, -UpdateIndexingStatus, -UpdateLabelRule, -UpdateTagRule.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddSqlServerBackupCredentials,
-    /// which is equivalent to specifying -AddSqlServerBackupCredentials.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, or UpdateTagRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -670,219 +669,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationCloudNative",
-        DefaultParameterSetName = "CreateTagRule")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationCloudNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddSqlServerBackupCredentials",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddSqlServerBackupCredentials' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Add credentials for the user in the databases with authorization to perform backups.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addcloudnativesqlserverbackupcredentials.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddSqlServerBackupCredentials { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddSqlServerBackupCredentials",
+                "CheckRbaConnectivity",
+                "ClearSqlServerBackupCredentials",
+                "CreateLabelRule",
+                "CreateTagRule",
+                "DeleteLabelRule",
+                "DeleteTagRule",
+                "DownloadFiles",
+                "SetupSqlServerBackup",
+                "StartSnapshotsIndexJob",
+                "UpdateIndexingStatus",
+                "UpdateLabelRule",
+                "UpdateTagRule",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CheckRbaConnectivity",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CheckRbaConnectivity' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Check Rubrik Backup Agent (RBA) connectivity for the VMs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativecheckrbaconnectivity.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckRbaConnectivity { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ClearSqlServerBackupCredentials",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ClearSqlServerBackupCredentials' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Clear credentials for the user with authorization to perform database backups. Credentials are cleared from the object to which they were assigned directly.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clearcloudnativesqlserverbackupcredentials.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ClearSqlServerBackupCredentials { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateLabelRule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateLabelRule' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Create cloud native label rule
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcloudnativelabelrule.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateLabelRule { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateTagRule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateTagRule' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Create cloud native tag rule
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcloudnativetagrule.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateTagRule { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteLabelRule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteLabelRule' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Delete cloud native label rule.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecloudnativelabelrule.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteLabelRule { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteTagRule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteTagRule' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Delete cloud native tag rule.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecloudnativetagrule.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteTagRule { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadFiles' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Download files from a cloud-native snapshot to a cloud download location or a virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativedownloadfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetupSqlServerBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetupSqlServerBackup' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Setup backups on the SQL Server databases using the admin credentials.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/setupcloudnativesqlserverbackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetupSqlServerBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StartSnapshotsIndexJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'StartSnapshotsIndexJob' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Create index of cloudnative snapshots
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcloudnativesnapshotsindexjob.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StartSnapshotsIndexJob { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateIndexingStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateIndexingStatus' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Update indexing status for cloudnative snappables
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativeindexingstatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateIndexingStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateLabelRule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateLabelRule' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Update cloud native label rule
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativelabelrule.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateLabelRule { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateTagRule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateTagRule' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Update cloud native tag rule
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativetagrule.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateTagRule { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

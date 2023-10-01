@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 19 operations
     /// in the 'Cloud Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CheckArchivedSnapshotsLocked, -CheckLabelRuleNameUniqueness, -CheckRequiredPermissionsForFeature, -CheckTagRuleNameUniqueness, -CustomerTags, -FileRecoveryEligibleSnapshots, -IsFileRecoveryFeasible, -LabelKeys, -LabelRules, -LabelValues, -RbaInstallers, -SnapshotDetailsForRecovery, -SnapshotTypeDetails, -Snapshots, -SqlServerSetupScript, -TagKeys, -TagRules, -TagValues, -WorkloadVersionedFiles.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CheckArchivedSnapshotsLocked,
-    /// which is equivalent to specifying -CheckArchivedSnapshotsLocked.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagValues, or WorkloadVersionedFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -694,315 +693,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryCloudNative",
-        DefaultParameterSetName = "TagKeys")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryCloudNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CheckArchivedSnapshotsLocked",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckArchivedSnapshotsLocked' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Archived snapshot locking related details for a workload. If no snapshots IDs are passed, all the expired source snapshots and the source snapshots that have a unexpired archival copy will be checked.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativecheckarchivedsnapshotslocked.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckArchivedSnapshotsLocked { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CheckArchivedSnapshotsLocked",
+                "CheckLabelRuleNameUniqueness",
+                "CheckRequiredPermissionsForFeature",
+                "CheckTagRuleNameUniqueness",
+                "CustomerTags",
+                "FileRecoveryEligibleSnapshots",
+                "IsFileRecoveryFeasible",
+                "LabelKeys",
+                "LabelRules",
+                "LabelValues",
+                "RbaInstallers",
+                "SnapshotDetailsForRecovery",
+                "SnapshotTypeDetails",
+                "Snapshots",
+                "SqlServerSetupScript",
+                "TagKeys",
+                "TagRules",
+                "TagValues",
+                "WorkloadVersionedFiles",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "CheckLabelRuleNameUniqueness",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckLabelRuleNameUniqueness' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Check if label rule name is unique or not
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/checkcloudnativelabelrulenameuniqueness.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckLabelRuleNameUniqueness { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckRequiredPermissionsForFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckRequiredPermissionsForFeature' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Queries whether Polaris has the required permissions for a particular feature.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativecheckrequiredpermissionsforfeature.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckRequiredPermissionsForFeature { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CheckTagRuleNameUniqueness",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CheckTagRuleNameUniqueness' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Check if tag rule name is unique or not
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/checkcloudnativetagrulenameuniqueness.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CheckTagRuleNameUniqueness { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CustomerTags",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CustomerTags' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Retrieves the list of all customer-specified tags and the corresponding value indicating whether resource tags should be overridden by customer-specified tags for a specific cloud type.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativecustomertags.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CustomerTags { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "FileRecoveryEligibleSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'FileRecoveryEligibleSnapshots' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of snapshots for which file recovery is feasible.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcloudnativefilerecoveryeligiblesnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter FileRecoveryEligibleSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "IsFileRecoveryFeasible",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'IsFileRecoveryFeasible' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of snapshots with their file recovery feasibility status
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/iscloudnativefilerecoveryfeasible.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter IsFileRecoveryFeasible { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LabelKeys",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LabelKeys' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of cloud native label keys matched by substring.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcloudnativelabelkeys.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LabelKeys { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LabelRules",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LabelRules' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Cloud native label rules.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativelabelrules.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LabelRules { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LabelValues",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LabelValues' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of cloud native label values matched by substring.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcloudnativelabelvalues.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LabelValues { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RbaInstallers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'RbaInstallers' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Fetches the URLs for the windows, linux and debian RBA installers.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativerbainstallers.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RbaInstallers { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnapshotDetailsForRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnapshotDetailsForRecovery' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Details of snapshot types available for recovery.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativesnapshotdetailsforrecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnapshotDetailsForRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnapshotTypeDetails",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnapshotTypeDetails' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Details of the available snapshot types.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativesnapshottypedetails.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnapshotTypeDetails { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Snapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Snapshots' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of all files and directories in a given path with the given prefix in name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativesnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Snapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SqlServerSetupScript",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SqlServerSetupScript' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Returns the script to setup backup for a SQL Server database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativesqlserversetupscript.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SqlServerSetupScript { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TagKeys",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TagKeys' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of cloud native tag keys matched by substring.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcloudnativetagkeys.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TagKeys { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TagRules",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TagRules' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-Cloud native tag rules.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativetagrules.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TagRules { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TagValues",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'TagValues' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List of cloud native tag values matched by substring.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcloudnativetagvalues.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TagValues { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "WorkloadVersionedFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'WorkloadVersionedFiles' operation
-in the 'Cloud Native' API domain.
-Description of the operation:
-List all files and directories in a given snappable with the given prefix in name.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudnativeworkloadversionedfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter WorkloadVersionedFiles { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

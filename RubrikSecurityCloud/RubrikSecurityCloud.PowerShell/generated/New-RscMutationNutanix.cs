@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 25 operations
     /// in the 'Nutanix' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BatchExportVm, -BatchMountVm, -BulkOnDemandSnapshotVm, -CreateCluster, -CreateOnDemandBackup, -CreatePrismCentral, -DeleteCluster, -DeleteMountV1, -DeletePrismCentral, -DeleteSnapshot, -DeleteSnapshots, -DownloadFilesSnapshot, -DownloadSnapshot, -DownloadVmFromLocation, -ExportSnapshot, -MigrateMountV1, -MountSnapshotV1, -PatchMountV1, -RefreshCluster, -RefreshPrismCentral, -RegisterAgentVm, -RestoreFilesSnapshot, -UpdateCluster, -UpdatePrismCentral, -UpdateVm.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BatchExportVm,
-    /// which is equivalent to specifying -BatchExportVm.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1137,502 +1136,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationNutanix",
-        DefaultParameterSetName = "UpdateVm")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationNutanix : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BatchExportVm",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchExportVm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Exports a snapshot from each member of a set of virtual machines
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BatchExportVm",
+                "BatchMountVm",
+                "BulkOnDemandSnapshotVm",
+                "CreateCluster",
+                "CreateOnDemandBackup",
+                "CreatePrismCentral",
+                "DeleteCluster",
+                "DeleteMountV1",
+                "DeletePrismCentral",
+                "DeleteSnapshot",
+                "DeleteSnapshots",
+                "DownloadFilesSnapshot",
+                "DownloadSnapshot",
+                "DownloadVmFromLocation",
+                "ExportSnapshot",
+                "MigrateMountV1",
+                "MountSnapshotV1",
+                "PatchMountV1",
+                "RefreshCluster",
+                "RefreshPrismCentral",
+                "RegisterAgentVm",
+                "RestoreFilesSnapshot",
+                "UpdateCluster",
+                "UpdatePrismCentral",
+                "UpdateVm",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-Supported in v7.0+
-Export a snapshot from each member of a set of virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchexportnutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchExportVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BatchMountVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchMountVm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Mount snapshots from multiple virtual machines
-
-Supported in v7.0+
-Mounts a batch of snapshots from a group of specified virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/batchmountnutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchMountVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkOnDemandSnapshotVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkOnDemandSnapshotVm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Take an on-demand snapshot for selected Nutanix virtual machines
-
-Supported in v9.0+
-Take bulk backups for multiple Nutanix virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkondemandsnapshotnutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkOnDemandSnapshotVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateCluster' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Add Nutanix cluster
-
-Supported in v5.0+
-Create a Nutanix cluster object by providing an address and account credentials for Prism. Initiates an asynchronous job to establish a connection with the cluster and retrieve all metadata. Use GET /nutanix_cluster/{id}/status to check status.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createnutanixcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateOnDemandBackup' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Create on-demand VM snapshot
-v8.1+: Create on-demand virtual machine snapshot
-
-Supported in v5.0+
-v5.0-v5.3: Create an on-demand snapshot for the given VM ID
-v6.0-v8.0: Create an on-demand snapshot for the given VM ID.
-v8.1+: Create an on-demand snapshot for the given virtual machine ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemandnutanixbackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateOnDemandBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreatePrismCentral",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreatePrismCentral' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Add Nutanix Prism Central and it's corresponding Prism Elements
-
-Supported in v9.0+
-Create a Nutanix Prism Central object and refresh the Prism Elements present in it.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createnutanixprismcentral.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreatePrismCentral { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteCluster' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Remove Nutanix cluster
-
-Supported in v5.0+
-Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cluster cannot have VMs mounted through the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletenutanixcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteMountV1",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteMountV1' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Remove a Live Mount of a Nutanix virtual machine snapshot
-
-Supported in v6.0+
-Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot identified by the ID of the Live Mount.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletenutanixmountv1.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteMountV1 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeletePrismCentral",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeletePrismCentral' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Remove Nutanix Prism Central
-
-Supported in v9.0+
-Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nutanix Clusters attached to the Prism Central cannot have Virtual Machines mounted through the Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletenutanixprismcentral.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeletePrismCentral { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSnapshot' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Delete VM snapshot
-v8.1+: Delete virtual machine snapshot
-
-Supported in v5.0+
-v5.0-v8.0: Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected vm.
-v8.1+: Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletenutanixsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSnapshots' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Delete all snapshots of VM
-v8.1+: Delete all snapshots of virtual machine
-
-Supported in v5.0+
-Delete all snapshots of a virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletenutanixsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadFilesSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadFilesSnapshot' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Download files from a Nutanix VM backup
-v8.1+: Download files from a Nutanix virtual machine backup
-
-Supported in v5.0+
-v5.0-v8.0: Start an asynchronous job to download multiple files and folders from a specified Nutanix VM backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.
-v8.1+: Start an asynchronous job to download multiple files and folders from a specified Nutanix virtual machine backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadfilesnutanixsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadFilesSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadSnapshot' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Creates a download from archival request
-
-Supported in v5.0+
-Download a snapshot from archival.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadnutanixsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadVmFromLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadVmFromLocation' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Download a snapshot from a replication target
-
-Supported in v7.0+
-Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadnutanixvmfromlocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadVmFromLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportSnapshot' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Export VM snapshot
-v8.1+: Export virtual machine snapshot
-
-Supported in v5.0+
-v5.0-v8.0: Export snapshot of a vm.
-v8.1+: Export snapshot of a virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportnutanixsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MigrateMountV1",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MigrateMountV1' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Relocate a Nutanix virtual machine to another storage container
-
-Supported in v6.0+
-Initiate a request to migrate the virtual disks of a specified Nutanix Live Mount to another storage container. The destination storage container has been specified when the Live Mount was created. The Live Mount will be deleted when the relocation succeeds.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/migratenutanixmountv1.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MigrateMountV1 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MountSnapshotV1",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MountSnapshotV1' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Initiate a Live Mount of a Nutanix virtual machine snapshot
-
-Supported in v6.0+
-Initiates a request to perform a Live Mount of a Nutanix virtual machine snapshot identified by the snapshot ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mountnutanixsnapshotv1.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MountSnapshotV1 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PatchMountV1",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PatchMountV1' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Change Nutanix Live Mount power status
-
-Supported in v6.0+
-Changes the power status of a mounted Nutanix virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchnutanixmountv1.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PatchMountV1 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshCluster' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Refresh Nutanix cluster metadata
-
-Supported in v5.0+
-Create a job to refresh the metadata for the specified Nutanix cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshnutanixcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshPrismCentral",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshPrismCentral' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Refresh Nutanix Prism Central metadata
-
-Supported in v9.0+
-Initiates a job to refresh the metadata for the specified Nutanix Prism Central and all its associated clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshnutanixprismcentral.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshPrismCentral { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegisterAgentVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RegisterAgentVm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Register the agent installed on the Nutanix VM
-v8.1+: Register the agent installed on the Nutanix virtual machine
-
-Supported in v5.0+
-v5.0-v5.3: Register the agent installed on the Nutanix VM
-v6.0-v8.0: Register the agent installed on the Nutanix VM.
-v8.1+: Register the agent installed on the Nutanix virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registeragentnutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegisterAgentVm { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreFilesSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreFilesSnapshot' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Restore files
-
-Supported in v5.0+
-Restore files from a snapshot to the source Nutanix virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restorefilesnutanixsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreFilesSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateCluster' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Patch Nutanix cluster
-
-Supported in v5.0+
-Patch the host, credentials, and/or CA certs of the specified Nutanix cluster object.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatenutanixcluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateCluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdatePrismCentral",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdatePrismCentral' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-Patch Nutanix Prism Central
-
-Supported in v9.0+
-Patch the host and credentials of Nutanix Prism Central.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatenutanixprismcentral.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdatePrismCentral { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateVm' operation
-in the 'Nutanix' API domain.
-Description of the operation:
-v5.0-v8.0: Patch VM
-v8.1+: Patch virtual machine
-
-Supported in v5.0+
-v5.0-v5.3: Patch VM with specified properties
-v6.0-v8.0: Patch VM with specified properties.
-v8.1+: Patch virtual machine with specified properties.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatenutanixvm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateVm { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

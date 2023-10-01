@@ -601,6 +601,12 @@
             The variables to supply to the GraphQL query.
             </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQuery.RootFieldKind">
+            <summary>
+            The kind of root field this object is:
+            a Query, a Mutation, or something unknown.
+            </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAccount">
              <summary>
              Create a new RscQuery object for any of the 1
@@ -617,11 +623,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Account' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -DeleteUsers.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op DeleteUsers,
-             which is equivalent to specifying -DeleteUsers.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['DeleteUsers'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -705,11 +709,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'Activity series' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Cancel, -DownloadUserCsv, -DownloadUserFileCsv.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Cancel,
-             which is equivalent to specifying -Cancel.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Cancel, DownloadUserCsv, or DownloadUserFileCsv.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -926,11 +928,9 @@
              Invoke-Rsc.
              There are 33 operations
              in the 'AWS' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddAuthenticationServerBasedCloudAccount, -AddIamUserBasedCloudAccount, -BulkDeleteCloudAccountWithoutCft, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateComputeSetting, -CreateExocomputeConfigs, -CreateReaderTarget, -CreateTarget, -DeleteCluster, -DeleteComputeSetting, -DeleteExocomputeConfigs, -FinalizeCloudAccountDeletion, -FinalizeCloudAccountProtection, -PatchAuthenticationServerBasedCloudAccount, -PatchIamUserBasedCloudAccount, -PrepareCloudAccountDeletion, -PrepareFeatureUpdateForCloudAccount, -RegisterFeatureArtifacts, -StartExocomputeDisableJob, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudAccountFeature, -UpdateCloudNativeStorageSetting, -UpdateComputeSetting, -UpdateExocomputeConfigs, -UpdateTarget, -UpgradeCloudAccountFeaturesWithoutCft, -UpgradeIamUserBasedCloudAccountPermissions, -ValidateAndCreateCloudAccount.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddAuthenticationServerBasedCloudAccount,
-             which is equivalent to specifying -AddAuthenticationServerBasedCloudAccount.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -2805,11 +2805,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'AWS Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ExcludeEbsVolumesFromSnapshot, -StartAccountDisableJob, -StartCreateEbsVolumeSnapshotsJob, -StartEc2InstanceSnapshotsJob, -StartExportEbsVolumeSnapshotJob, -StartRdsInstanceSnapshotsJob, -StartRefreshAccountsJob, -StartRestoreEc2InstanceSnapshotJob.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ExcludeEbsVolumesFromSnapshot,
-             which is equivalent to specifying -ExcludeEbsVolumesFromSnapshot.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ExcludeEbsVolumesFromSnapshot, StartAccountDisableJob, StartCreateEbsVolumeSnapshotsJob, StartEc2InstanceSnapshotsJob, StartExportEbsVolumeSnapshotJob, StartRdsInstanceSnapshotsJob, StartRefreshAccountsJob, or StartRestoreEc2InstanceSnapshotJob.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -3170,11 +3168,9 @@
              Invoke-Rsc.
              There are 43 operations
              in the 'Azure' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddCloudAccount, -AddCloudAccountExocomputeConfigurations, -AddCloudAccountWithoutOauth, -BackupAdDirectory, -CompleteAdAppSetup, -CompleteAdAppUpdate, -CompleteCloudAccountOauth, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeRcvStorageSetting, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateReaderTarget, -CreateSaasAppAad, -CreateTarget, -DeleteAdDirectory, -DeleteCloudAccount, -DeleteCloudAccountExocomputeConfigurations, -DeleteCloudAccountWithoutOauth, -DeleteCluster, -MapCloudAccountExocomputeSubscription, -MapCloudAccountToPersistentStorageLocation, -OauthConsentComplete, -OauthConsentKickoff, -RestoreAdObjectsWithPasswords, -SetCloudAccountCustomerAppCredentials, -StartAdAppSetup, -StartAdAppUpdate, -StartCloudAccountOauth, -StartDisableCloudAccountJob, -StartExportSqlDatabaseDbJob, -StartExportSqlManagedInstanceDbJob, -UnmapCloudAccountExocomputeSubscription, -UnmapPersistentStorageSubscription, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudNativeRcvStorageSetting, -UpdateCloudNativeStorageSetting, -UpdateCustomerAppPermissionForSql, -UpdateTarget, -UpgradeCloudAccount, -UpgradeCloudAccountPermissionsWithoutOauth.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddCloudAccount,
-             which is equivalent to specifying -AddCloudAccount.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -5504,11 +5500,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'Azure Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ExcludeManagedDisksFromSnapshot, -StartCreateManagedDiskSnapshotsJob, -StartCreateVirtualMachineSnapshotsJob, -StartDisableSubscriptionProtectionJob, -StartExportManagedDiskJob, -StartExportVirtualMachineJob, -StartRefreshSubscriptionsJob, -StartRestoreVirtualMachineJob.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ExcludeManagedDisksFromSnapshot,
-             which is equivalent to specifying -ExcludeManagedDisksFromSnapshot.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ExcludeManagedDisksFromSnapshot, StartCreateManagedDiskSnapshotsJob, StartCreateVirtualMachineSnapshotsJob, StartDisableSubscriptionProtectionJob, StartExportManagedDiskJob, StartExportVirtualMachineJob, StartRefreshSubscriptionsJob, or StartRestoreVirtualMachineJob.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -5901,11 +5895,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Azure Office365' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -SetupExocompute.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op SetupExocompute,
-             which is equivalent to specifying -SetupExocompute.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['SetupExocompute'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -6049,11 +6041,9 @@
              Invoke-Rsc.
              There are 5 operations
              in the 'Cassandra' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkDeleteSources, -CreateSource, -DeleteSource, -RecoverSource, -UpdateSource.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkDeleteSources,
-             which is equivalent to specifying -BulkDeleteSources.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkDeleteSources, CreateSource, DeleteSource, RecoverSource, or UpdateSource.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -6464,11 +6454,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Certificates' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddClusterCertificate, -Delete, -SetSso, -SetWebSigned, -Update, -UpdateHost.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddClusterCertificate,
-             which is equivalent to specifying -AddClusterCertificate.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddClusterCertificate, Delete, SetSso, SetWebSigned, Update, or UpdateHost.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -6730,11 +6718,9 @@
              Invoke-Rsc.
              There are 2 operations
              in the 'Cloud Account' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -MapExocomputeAccount, -UnmapExocomputeAccount.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op MapExocomputeAccount,
-             which is equivalent to specifying -MapExocomputeAccount.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: MapExocomputeAccount, or UnmapExocomputeAccount.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -6860,11 +6846,9 @@
              Invoke-Rsc.
              There are 13 operations
              in the 'Cloud Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddSqlServerBackupCredentials, -CheckRbaConnectivity, -ClearSqlServerBackupCredentials, -CreateLabelRule, -CreateTagRule, -DeleteLabelRule, -DeleteTagRule, -DownloadFiles, -SetupSqlServerBackup, -StartSnapshotsIndexJob, -UpdateIndexingStatus, -UpdateLabelRule, -UpdateTagRule.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddSqlServerBackupCredentials,
-             which is equivalent to specifying -AddSqlServerBackupCredentials.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, or UpdateTagRule.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -7507,11 +7491,9 @@
              Invoke-Rsc.
              There are 9 operations
              in the 'Cluster' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddNodesToCloud, -BulkDeleteFailover, -CreateFailover, -DeleteFailover, -RecoverCloud, -RegisterCloud, -RemoveCdm, -UpdateDatabaseLogReportingProperties, -UpdateFailover.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddNodesToCloud,
-             which is equivalent to specifying -AddNodesToCloud.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddNodesToCloud, BulkDeleteFailover, CreateFailover, DeleteFailover, RecoverCloud, RegisterCloud, RemoveCdm, UpdateDatabaseLogReportingProperties, or UpdateFailover.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -7966,11 +7948,9 @@
              Invoke-Rsc.
              There are 11 operations
              in the 'Db2' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddInstance, -CreateOnDemandBackup, -DeleteDatabase, -DeleteInstance, -DiscoverInstance, -DownloadSnapshot, -DownloadSnapshotsForPointInTimeRecovery, -ExpireDownloadedSnapshots, -PatchDatabase, -PatchInstance, -RefreshDatabase.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddInstance,
-             which is equivalent to specifying -AddInstance.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddInstance, CreateOnDemandBackup, DeleteDatabase, DeleteInstance, DiscoverInstance, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, PatchInstance, or RefreshDatabase.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -8418,11 +8398,9 @@
              Invoke-Rsc.
              There are 16 operations
              in the 'Report Download' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AuditLogCsvAsync, -ExchangeSnapshot, -FilesetSnapshot, -FilesetSnapshotFromLocation, -ObjectFilesCsv, -ObjectsListCsv, -ReportCsvAsync, -ReportPdfAsync, -ResultsCsv, -SapHanaSnapshot, -SapHanaSnapshotFromLocation, -SapHanaSnapshotsForPointInTimeRecovery, -SnapshotResultsCsv, -ThreatHuntCsv, -VolumeGroupSnapshotFiles, -VolumeGroupSnapshotFromLocation.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AuditLogCsvAsync,
-             which is equivalent to specifying -AuditLogCsvAsync.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -9627,11 +9605,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Microsoft Exchange' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkUpdateDag, -CreateMount, -CreateOnDemandBackup, -DeleteSnapshotMount.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkUpdateDag,
-             which is equivalent to specifying -BulkUpdateDag.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkUpdateDag, CreateMount, CreateOnDemandBackup, or DeleteSnapshotMount.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -9848,11 +9824,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Fileset' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkCreate, -BulkCreateTemplates, -BulkDelete, -BulkDeleteTemplate, -BulkUpdateTemplate, -RecoverFiles.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkCreate,
-             which is equivalent to specifying -BulkCreate.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkCreate, BulkCreateTemplates, BulkDelete, BulkDeleteTemplate, BulkUpdateTemplate, or RecoverFiles.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -10258,11 +10232,9 @@
              Invoke-Rsc.
              There are 11 operations
              in the 'Google Cloud Platform' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CloudAccountAddManualAuthProject, -CloudAccountAddProjects, -CloudAccountDeleteProjects, -CloudAccountOauthComplete, -CloudAccountOauthInitiate, -CloudAccountUpgradeProjects, -CreateReaderTarget, -CreateTarget, -SetDefaultServiceAccountJwtConfig, -UpdateTarget, -UpgradeCloudAccountPermissionsWithoutOauth.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CloudAccountAddManualAuthProject,
-             which is equivalent to specifying -CloudAccountAddManualAuthProject.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -10792,11 +10764,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Google Cloud Platform Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -DisableProject, -ExcludeDisksFromInstanceSnapshot, -ExportDisk, -ExportGceInstance, -RefreshProjects, -RestoreGceInstance.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op DisableProject,
-             which is equivalent to specifying -DisableProject.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: DisableProject, ExcludeDisksFromInstanceSnapshot, ExportDisk, ExportGceInstance, RefreshProjects, or RestoreGceInstance.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -11125,11 +11095,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Host' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkDelete, -BulkRefresh, -BulkRegister, -BulkUpdate, -ChangeVfd, -Refresh.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkDelete,
-             which is equivalent to specifying -BulkDelete.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkDelete, BulkRefresh, BulkRegister, BulkUpdate, ChangeVfd, or Refresh.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -11539,11 +11507,9 @@
              Invoke-Rsc.
              There are 23 operations
              in the 'Microsoft Hyper-V' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BatchExportVm, -BatchInstantRecoverVm, -BatchMountVm, -BatchOnDemandBackupVm, -CreateVirtualMachineSnapshotMount, -DeleteAllSnapshots, -DeleteVirtualMachineSnapshot, -DeleteVirtualMachineSnapshotMount, -DownloadSnapshotFromLocation, -DownloadVirtualMachineSnapshot, -DownloadVirtualMachineSnapshotFiles, -ExportVirtualMachine, -InstantRecoverVirtualMachineSnapshot, -OnDemandSnapshot, -RefreshScvmm, -RefreshServer, -RegisterAgentVirtualMachine, -RegisterScvmm, -RestoreVirtualMachineSnapshotFiles, -ScvmmDelete, -ScvmmUpdate, -UpdateVirtualMachine, -UpdateVirtualMachineSnapshotMount.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BatchExportVm,
-             which is equivalent to specifying -BatchExportVm.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -12532,11 +12498,9 @@
              Invoke-Rsc.
              There are 7 operations
              in the 'Kubernetes' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ArchiveCluster, -CreateAgentManifest, -CreateCluster, -CreateNamespaceSnapshots, -ExportNamespace, -RefreshCluster, -RestoreNamespace.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ArchiveCluster,
-             which is equivalent to specifying -ArchiveCluster.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, ExportNamespace, RefreshCluster, or RestoreNamespace.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -12886,11 +12850,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'LDAP' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -DeletePrincipals, -RemoveIntegration, -SetMfaSetting, -UpdateIntegration.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op DeletePrincipals,
-             which is equivalent to specifying -DeletePrincipals.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: DeletePrincipals, RemoveIntegration, SetMfaSetting, or UpdateIntegration.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -13096,11 +13058,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Microsoft 365' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BackupMailbox, -BackupOnedrive, -BackupSharepointDrive, -BackupTeam.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BackupMailbox,
-             which is equivalent to specifying -BackupMailbox.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BackupMailbox, BackupOnedrive, BackupSharepointDrive, or BackupTeam.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -13286,11 +13246,9 @@
              Invoke-Rsc.
              There are 11 operations
              in the 'Managed Volume' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Add, -BeginSnapshot, -Delete, -DeleteSnapshotExport, -DownloadFiles, -DownloadFromLocation, -EndSnapshot, -ExportSnapshot, -Resize, -TakeOnDemandSnapshot, -Update.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Add,
-             which is equivalent to specifying -Add.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Add, BeginSnapshot, Delete, DeleteSnapshotExport, DownloadFiles, DownloadFromLocation, EndSnapshot, ExportSnapshot, Resize, TakeOnDemandSnapshot, or Update.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -13944,11 +13902,9 @@
              Invoke-Rsc.
              There are 10 operations
              in the 'Mongo DB' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddSource, -AssignSlaToCollection, -BulkDeleteSources, -CreateSource, -DeleteSource, -DiscoverSource, -PatchSource, -RecoverSource, -RetryAddSource, -UpdateSource.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddSource,
-             which is equivalent to specifying -AddSource.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddSource, AssignSlaToCollection, BulkDeleteSources, CreateSource, DeleteSource, DiscoverSource, PatchSource, RecoverSource, RetryAddSource, or UpdateSource.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -14574,11 +14530,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'Mosaic' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddStore, -DeleteStore, -UpdateStore.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddStore,
-             which is equivalent to specifying -AddStore.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddStore, DeleteStore, or UpdateStore.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -14757,11 +14711,9 @@
              Invoke-Rsc.
              There are 17 operations
              in the 'Microsoft SQL Server' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AssignSlaDomainProperties, -AssignSlaDomainPropertiesAsync, -BrowseDatabaseSnapshot, -BulkCreateOnDemandBackup, -BulkUpdateDbs, -CreateLiveMount, -CreateLogShippingConfiguration, -CreateOnDemandBackup, -DeleteDbSnapshots, -DeleteLiveMount, -DownloadDatabaseBackupFiles, -DownloadDatabaseFilesFromArchivalLocation, -ExportDatabase, -RestoreDatabase, -TakeLogBackup, -UpdateDefaultProperties, -UpdateLogShippingConfiguration.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AssignSlaDomainProperties,
-             which is equivalent to specifying -AssignSlaDomainProperties.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -15757,11 +15709,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'NFS' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CreateReaderTarget, -CreateTarget, -UpdateTarget.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CreateReaderTarget,
-             which is equivalent to specifying -CreateReaderTarget.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CreateReaderTarget, CreateTarget, or UpdateTarget.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -15962,11 +15912,9 @@
              Invoke-Rsc.
              There are 25 operations
              in the 'Nutanix' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BatchExportVm, -BatchMountVm, -BulkOnDemandSnapshotVm, -CreateCluster, -CreateOnDemandBackup, -CreatePrismCentral, -DeleteCluster, -DeleteMountV1, -DeletePrismCentral, -DeleteSnapshot, -DeleteSnapshots, -DownloadFilesSnapshot, -DownloadSnapshot, -DownloadVmFromLocation, -ExportSnapshot, -MigrateMountV1, -MountSnapshotV1, -PatchMountV1, -RefreshCluster, -RefreshPrismCentral, -RegisterAgentVm, -RestoreFilesSnapshot, -UpdateCluster, -UpdatePrismCentral, -UpdateVm.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BatchExportVm,
-             which is equivalent to specifying -BatchExportVm.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BatchExportVm, BatchMountVm, BulkOnDemandSnapshotVm, CreateCluster, CreateOnDemandBackup, CreatePrismCentral, DeleteCluster, DeleteMountV1, DeletePrismCentral, DeleteSnapshot, DeleteSnapshots, DownloadFilesSnapshot, DownloadSnapshot, DownloadVmFromLocation, ExportSnapshot, MigrateMountV1, MountSnapshotV1, PatchMountV1, RefreshCluster, RefreshPrismCentral, RegisterAgentVm, RestoreFilesSnapshot, UpdateCluster, UpdatePrismCentral, or UpdateVm.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -17076,11 +17024,9 @@
              Invoke-Rsc.
              There are 31 operations
              in the 'Office 365' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddOrg, -BackupMailbox, -BackupOnedrive, -BackupSharePointSite, -BackupSharepointDrive, -BackupSharepointList, -BackupTeam, -CreateAppComplete, -CreateAppKickoff, -DeleteAzureApp, -DeleteOrg, -DeleteServiceAccount, -EnableSharePoint, -EnableTeams, -ExportMailbox, -InsertCustomerApp, -OauthConsentComplete, -OauthConsentKickoff, -PdlGroups, -RefreshOrg, -RestoreMailbox, -RestoreSnappable, -RestoreTeamsConversations, -RestoreTeamsFiles, -SaaSSetupKickoff, -SaasSetupComplete, -SetServiceAccount, -SetupKickoff, -UpdateAppAuthStatus, -UpdateAppPermissions, -UpdateOrgCustomName.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddOrg,
-             which is equivalent to specifying -AddOrg.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -18912,11 +18858,9 @@
              Invoke-Rsc.
              There are 18 operations
              in the 'Oracle' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkUpdateDatabases, -BulkUpdateHosts, -BulkUpdateRacs, -CreatePdbRestore, -DeleteAllDatabaseSnapshots, -DeleteMount, -DownloadDatabaseSnapshot, -ExportDatabase, -ExportTablespace, -InstantRecoverSnapshot, -MountDatabase, -RefreshDatabase, -RestoreLogs, -TakeOnDemandDatabaseSnapshot, -TakeOnDemandLogSnapshot, -UpdateDataGuardGroup, -ValidateAcoFile, -ValidateDatabaseBackups.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkUpdateDatabases,
-             which is equivalent to specifying -BulkUpdateDatabases.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkUpdateDatabases, BulkUpdateHosts, BulkUpdateRacs, CreatePdbRestore, DeleteAllDatabaseSnapshots, DeleteMount, DownloadDatabaseSnapshot, ExportDatabase, ExportTablespace, InstantRecoverSnapshot, MountDatabase, RefreshDatabase, RestoreLogs, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, UpdateDataGuardGroup, ValidateAcoFile, or ValidateDatabaseBackups.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -19929,11 +19873,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Policy' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Policies.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Policies,
-             which is equivalent to specifying -Policies.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['Policies'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -20014,11 +19956,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Ransomware' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -TriggerDetection.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op TriggerDetection,
-             which is equivalent to specifying -TriggerDetection.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['TriggerDetection'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -20109,11 +20049,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'RCS' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CreateAutomaticTargetMapping, -CreateReaderTarget, -CreateTarget, -UpdateAutomaticTargetMapping.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CreateAutomaticTargetMapping,
-             which is equivalent to specifying -CreateAutomaticTargetMapping.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CreateAutomaticTargetMapping, CreateReaderTarget, CreateTarget, or UpdateAutomaticTargetMapping.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -20348,11 +20286,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'RCV' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CreateLocationsFromTemplate, -CreatePrivateEndpointApprovalRequest, -UpdateTarget.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CreateLocationsFromTemplate,
-             which is equivalent to specifying -CreateLocationsFromTemplate.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -20541,11 +20477,9 @@
              Invoke-Rsc.
              There are 5 operations
              in the 'Replication' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CreatePair, -DeletePair, -DisablePause, -EnablePause, -UpdateTarget.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CreatePair,
-             which is equivalent to specifying -CreatePair.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CreatePair, DeletePair, DisablePause, EnablePause, or UpdateTarget.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -20830,11 +20764,9 @@
              Invoke-Rsc.
              There are 9 operations
              in the 'Report' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CreateCustom, -CreateScheduled, -DeleteCustom, -DeleteScheduled, -SendPdf, -SendScheduledAsync, -StartClusterMigrationJob, -UpdateCustom, -UpdateScheduled.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CreateCustom,
-             which is equivalent to specifying -CreateCustom.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduled, SendPdf, SendScheduledAsync, StartClusterMigrationJob, UpdateCustom, or UpdateScheduled.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -21597,11 +21529,9 @@
              Invoke-Rsc.
              There are 9 operations
              in the 'SAP HANA' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddSystem, -ConfigureRestore, -CreateOnDemandBackup, -CreateSystemRefresh, -DeleteDbSnapshot, -DeleteSystem, -ExpireDownloadedSnapshots, -PatchSystem, -UnconfigureRestore.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddSystem,
-             which is equivalent to specifying -AddSystem.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -22031,11 +21961,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Service Account' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Create, -Delete, -Rotate, -Update.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Create,
-             which is equivalent to specifying -Create.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Create, Delete, Rotate, or Update.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -22223,11 +22151,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Sharepoint' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ExcludeObjectsFromProtection.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ExcludeObjectsFromProtection,
-             which is equivalent to specifying -ExcludeObjectsFromProtection.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['ExcludeObjectsFromProtection'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -22332,11 +22258,9 @@
              Invoke-Rsc.
              There are 9 operations
              in the 'SLA' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Assign, -AssignRetentionToSnappables, -AssignRetentionToSnapshots, -AssignsForSnappableHierarchies, -CreateGlobal, -ExportManagedVolumeSnapshot, -GetPendingAssignments, -Pause, -UpdateGlobal.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Assign,
-             which is equivalent to specifying -Assign.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, or UpdateGlobal.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -23745,11 +23669,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'SMB' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AddAndJoinDomain, -DeleteDomain, -JoinDomain, -PutConfiguration.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AddAndJoinDomain,
-             which is equivalent to specifying -AddAndJoinDomain.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AddAndJoinDomain, DeleteDomain, JoinDomain, or PutConfiguration.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -23971,11 +23893,9 @@
              Invoke-Rsc.
              There are 15 operations
              in the 'Snapshot' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BatchQuarantine, -BatchReleaseFromQuarantine, -BulkTierExistings, -CreateDownloadForVolumeGroup, -CreateFileset, -DeleteCloudWorkload, -DeleteFilesets, -FilesetDownloadFiles, -FilesetExportFiles, -RestoreVolumeGroupFiles, -StartEc2InstanceExportJob, -StartRecoverS3Job, -TakeOnDemand, -UploadDatabaseToBlobstore, -VmwareDownloadFromLocation.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BatchQuarantine,
-             which is equivalent to specifying -BatchQuarantine.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -24679,11 +24599,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Storage Arrays' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Add, -Delete, -Refresh, -Update.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Add,
-             which is equivalent to specifying -Add.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Add, Delete, Refresh, or Update.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -24917,11 +24835,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'Tape' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CreateReaderTarget, -CreateTarget, -UpdateTarget.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CreateReaderTarget,
-             which is equivalent to specifying -CreateReaderTarget.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CreateReaderTarget, CreateTarget, or UpdateTarget.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -25112,11 +25028,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'Threat' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CancelHunt, -EnableMonitoring, -StartHunt.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CancelHunt,
-             which is equivalent to specifying -CancelHunt.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CancelHunt, EnableMonitoring, or StartHunt.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -25354,11 +25268,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'VMware vSphere vCenter' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Create, -Delete, -Refresh, -Update, -UpdateHotAddBandwidth, -UpdateHotAddNetwork.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Create,
-             which is equivalent to specifying -Create.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Create, Delete, Refresh, Update, UpdateHotAddBandwidth, or UpdateHotAddNetwork.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -25685,11 +25597,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'VMware vSphere' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkOnDemandSnapshot, -CreateAdvancedTag, -DeleteAdvancedTag, -DeleteLiveMount, -DownloadVirtualMachineFiles, -ExportSnapshotToStandaloneHostV2, -OnDemandSnapshot, -UpdateAdvancedTag.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkOnDemandSnapshot,
-             which is equivalent to specifying -BulkOnDemandSnapshot.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkOnDemandSnapshot, CreateAdvancedTag, DeleteAdvancedTag, DeleteLiveMount, DownloadVirtualMachineFiles, ExportSnapshotToStandaloneHostV2, OnDemandSnapshot, or UpdateAdvancedTag.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -26064,11 +25974,9 @@
              Invoke-Rsc.
              There are 24 operations
              in the 'VMware vSphere VM' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BatchExport, -BatchExportV3, -BatchInPlaceRecovery, -DeleteSnapshot, -DownloadSnapshot, -DownloadSnapshotFiles, -ExcludeVmDisks, -ExportSnapshotV2, -ExportSnapshotV3, -ExportSnapshotWithDownloadFromCloud, -InitiateBatchInstantRecovery, -InitiateBatchLiveMountV2, -InitiateDiskMount, -InitiateInPlaceRecovery, -InitiateInstantRecoveryV2, -InitiateLiveMountV2, -ListEsxiDatastores, -MountRelocate, -MountRelocateV2, -PowerOnOffLiveMount, -RecoverFiles, -RecoverFilesNew, -RegisterAgent, -Update.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BatchExport,
-             which is equivalent to specifying -BatchExport.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, or Update.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -27867,11 +27775,9 @@
              Invoke-Rsc.
              There are 5 operations
              in the 'Webhook' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Create, -Delete, -Test, -TestExisting, -Update.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Create,
-             which is equivalent to specifying -Create.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Create, Delete, Test, TestExisting, or Update.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -28221,11 +28127,9 @@
              Invoke-Rsc.
              There are 7 operations
              in the 'Account' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -EnabledFeatures, -Id, -Lookup, -Owners, -Products, -Settings, -Users.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op EnabledFeatures,
-             which is equivalent to specifying -EnabledFeatures.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -28494,11 +28398,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Activity series' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ActivitySeries, -List, -UserFileTimeline, -UserTimeline.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ActivitySeries,
-             which is equivalent to specifying -ActivitySeries.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ActivitySeries, List, UserFileTimeline, or UserTimeline.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -28749,11 +28651,9 @@
              Invoke-Rsc.
              There are 28 operations
              in the 'AWS' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ArtifactsToDelete, -AvailabilityZonesByRegion, -CdmVersions, -CloudAccountConfigs, -CloudAccountListSecurityGroups, -CloudAccountListSubnets, -CloudAccountListVpcs, -CloudAccountWithFeatures, -CloudAccountsWithFeatures, -ComputeSettings, -DbParameterGroupsByRegion, -DbSubnetGroupsByRegion, -Ec2KeyPairsByRegion, -ExocomputeConfigs, -InstanceProfileNames, -IsS3BucketNameAvailable, -KmsEncryptionKeysByRegion, -OptionGroupsByRegion, -PermissionPolicies, -RdsInstanceDetails, -Regions, -S3BucketStateForRecovery, -S3Buckets, -S3BucketsDetails, -SupportedRdsDatabaseInstanceClasses, -TrustPolicy, -Vpcs, -VpcsByRegion.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ArtifactsToDelete,
-             which is equivalent to specifying -ArtifactsToDelete.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, Vpcs, or VpcsByRegion.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -29724,11 +29624,9 @@
              Invoke-Rsc.
              There are 19 operations
              in the 'AWS Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Account, -Accounts, -AmiTypeForArchivedSnapshotExport, -EbsVolume, -EbsVolumes, -EbsVolumesByName, -Ec2Instance, -Ec2Instances, -Ec2InstancesByName, -IsEbsVolumeSnapshotRestorable, -IsRdsInstanceLaunchConfigurationValid, -RdsExportDefaults, -RdsInstance, -RdsInstances, -RdsPointInTimeRestoreWindow, -Root, -S3Bucket, -ValidateRdsClusterNameForExport, -ValidateRdsInstanceNameForExport.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Account,
-             which is equivalent to specifying -Account.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -30692,11 +30590,9 @@
              Invoke-Rsc.
              There are 42 operations
              in the 'Azure' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AdDirectories, -AdDirectory, -AdObjectsByType, -ArmTemplatesByFeature, -CdmVersions, -CheckPersistentStorageSubscriptionCanUnmap, -CloudAccountMissingPermissions, -CloudAccountPermissionConfig, -CloudAccountSubnetsByRegion, -CloudAccountSubscriptionWithFeatures, -CloudAccountSubscriptionsByFeature, -CloudAccountTenant, -CloudAccountTenantWithExoConfigs, -CloudAccountTenants, -DiskEncryptionSetsByRegion, -EncryptionKeys, -ExocomputeConfigsInAccount, -HostedAzureRegions, -IsStorageAccountNameAvailable, -KeyVaultsByRegion, -ManagedIdentities, -Nsgs, -Regions, -ResourceGroups, -SearchAdSnapshot, -SqlDatabase, -SqlDatabaseDbPointInTimeRestoreWindowFromAzure, -SqlDatabaseServer, -SqlDatabaseServerElasticPools, -SqlDatabaseServers, -SqlDatabases, -SqlManagedInstanceDatabase, -SqlManagedInstanceDatabases, -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, -SqlManagedInstanceServer, -SqlManagedInstanceServers, -StorageAccounts, -Subnets, -SubscriptionWithExocomputeMappings, -Subscriptions, -VNets, -ValidateCloudAccountExocomputeConfigurations.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AdDirectories,
-             which is equivalent to specifying -AdDirectories.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -32398,11 +32294,9 @@
              Invoke-Rsc.
              There are 23 operations
              in the 'Azure Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AvailabilitySetsByRegionFromAzure, -DoesResourceGroupExist, -ExportCompatibleDiskTypesByRegionFromAzure, -ExportCompatibleVmSizesByRegionFromAzure, -IsManagedDiskSnapshotRestorable, -IsSqlDatabaseSnapshotPersistent, -ManagedDisk, -ManagedDisks, -ResourceGroup, -ResourceGroups, -ResourceGroupsInfoIfExist, -Root, -SecurityGroupsByRegionFromAzure, -StorageAccountsFromAzure, -SubnetsByRegionFromAzure, -Subscription, -Subscriptions, -ValidateSqlDatabaseDbNameForExport, -ValidateSqlManagedInstanceDbNameForExport, -VirtualMachine, -VirtualMachineSizes, -VirtualMachines, -VirtualNetworks.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AvailabilitySetsByRegionFromAzure,
-             which is equivalent to specifying -AvailabilitySetsByRegionFromAzure.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AvailabilitySetsByRegionFromAzure, DoesResourceGroupExist, ExportCompatibleDiskTypesByRegionFromAzure, ExportCompatibleVmSizesByRegionFromAzure, IsManagedDiskSnapshotRestorable, IsSqlDatabaseSnapshotPersistent, ManagedDisk, ManagedDisks, ResourceGroup, ResourceGroups, ResourceGroupsInfoIfExist, Root, SecurityGroupsByRegionFromAzure, StorageAccountsFromAzure, SubnetsByRegionFromAzure, Subscription, Subscriptions, ValidateSqlDatabaseDbNameForExport, ValidateSqlManagedInstanceDbNameForExport, VirtualMachine, VirtualMachineSizes, VirtualMachines, or VirtualNetworks.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -33411,11 +33305,9 @@
              Invoke-Rsc.
              There are 11 operations
              in the 'Azure Office365' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CheckNSGOutboundRules, -CheckNetworkSubnet, -CheckResourceGroupName, -CheckStorageAccountAccessibility, -CheckStorageAccountName, -CheckSubscriptionQuota, -CheckVirtualNetworkName, -Exocompute, -GetAzureHostType, -GetNetworkSubnetUnusedAddr, -ValidateUserRoles.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CheckNSGOutboundRules,
-             which is equivalent to specifying -CheckNSGOutboundRules.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CheckNSGOutboundRules, CheckNetworkSubnet, CheckResourceGroupName, CheckStorageAccountAccessibility, CheckStorageAccountName, CheckSubscriptionQuota, CheckVirtualNetworkName, Exocompute, GetAzureHostType, GetNetworkSubnetUnusedAddr, or ValidateUserRoles.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -33832,11 +33724,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'Cassandra' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ColumnFamilies, -ColumnFamily, -ColumnFamilyRecoverableRange, -ColumnFamilySchema, -Keyspace, -Keyspaces, -Source, -Sources.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ColumnFamilies,
-             which is equivalent to specifying -ColumnFamilies.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ColumnFamilies, ColumnFamily, ColumnFamilyRecoverableRange, ColumnFamilySchema, Keyspace, Keyspaces, Source, or Sources.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -34286,11 +34176,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Certificates' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Certificate, -Cluster, -ClusterWebSigned, -SigningRequest, -SigningRequests, -WithKey.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Certificate,
-             which is equivalent to specifying -Certificate.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Certificate, Cluster, ClusterWebSigned, SigningRequest, SigningRequests, or WithKey.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -34562,11 +34450,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Cloud Account' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CloudAccount, -CurrentFeaturePermissions, -ExocomputeMappings, -LatestFeaturePermissions.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CloudAccount,
-             which is equivalent to specifying -CloudAccount.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CloudAccount, CurrentFeaturePermissions, ExocomputeMappings, or LatestFeaturePermissions.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -34759,11 +34645,9 @@
              Invoke-Rsc.
              There are 19 operations
              in the 'Cloud Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CheckArchivedSnapshotsLocked, -CheckLabelRuleNameUniqueness, -CheckRequiredPermissionsForFeature, -CheckTagRuleNameUniqueness, -CustomerTags, -FileRecoveryEligibleSnapshots, -IsFileRecoveryFeasible, -LabelKeys, -LabelRules, -LabelValues, -RbaInstallers, -SnapshotDetailsForRecovery, -SnapshotTypeDetails, -Snapshots, -SqlServerSetupScript, -TagKeys, -TagRules, -TagValues, -WorkloadVersionedFiles.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CheckArchivedSnapshotsLocked,
-             which is equivalent to specifying -CheckArchivedSnapshotsLocked.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagValues, or WorkloadVersionedFiles.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -35430,11 +35314,9 @@
              Invoke-Rsc.
              There are 29 operations
              in the 'Cluster' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Cluster, -Connected, -DatabaseLogReport, -DatabaseLogReportingProperties, -DefaultGateway, -Dns, -FloatingIps, -GroupByList, -HostFailover, -Ipmi, -Ipv6Mode, -IsTotpAckNecessary, -List, -NetworkInterfaces, -Nodes, -NtpServers, -OperationJobProgress, -Proxy, -RegistrationProductInfo, -ReplicationTargets, -ReportMigrationCount, -ReportMigrationJobStatus, -ReportMigrationStatus, -TotpAckStatus, -TypeList, -Vlans, -WebCertsAndIpmis, -Windows, -WithUpgradesInfo.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Cluster,
-             which is equivalent to specifying -Cluster.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Cluster, Connected, DatabaseLogReport, DatabaseLogReportingProperties, DefaultGateway, Dns, FloatingIps, GroupByList, HostFailover, Ipmi, Ipv6Mode, IsTotpAckNecessary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RegistrationProductInfo, ReplicationTargets, ReportMigrationCount, ReportMigrationJobStatus, ReportMigrationStatus, TotpAckStatus, TypeList, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -36599,11 +36481,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'Db2' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Database, -Databases, -Instance, -Instances, -LogSnapshot, -LogSnapshots, -RecoverableRange, -RecoverableRanges.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Database,
-             which is equivalent to specifying -Database.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Database, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -37031,11 +36911,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'Report Download' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CdmUpgradesPdf, -EdVersionList, -PackageStatus.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CdmUpgradesPdf,
-             which is equivalent to specifying -CdmUpgradesPdf.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CdmUpgradesPdf, EdVersionList, or PackageStatus.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -37209,11 +37087,9 @@
              Invoke-Rsc.
              There are 7 operations
              in the 'Microsoft Exchange' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Dag, -Dags, -Database, -Databases, -LiveMounts, -Server, -Servers.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Dag,
-             which is equivalent to specifying -Dag.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Dag, Dags, Database, Databases, LiveMounts, Server, or Servers.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -37627,11 +37503,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Fileset' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Linux, -RequestStatus, -Share, -Template, -Templates, -Windows.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Linux,
-             which is equivalent to specifying -Linux.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Linux, RequestStatus, Share, Template, Templates, or Windows.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -37908,11 +37782,9 @@
              Invoke-Rsc.
              There are 16 operations
              in the 'Google Cloud Platform' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -CloudAccountMissingPermissionsForAddition, -CloudAccountProjectsByFeature, -CloudAccountProjectsForOauth, -FeaturePermissionsForCloudAccount, -GetDefaultCredentialsServiceAccount, -NativeAvailableKmsCryptoKeys, -NativeCompatibleMachineTypes, -NativeNetworks, -NativeProjectsWithAccessibleNetworks, -NativeRegions, -NativeStoredMachineTypes, -NativeStoredMachineTypesInProject, -NativeStoredNetworkNames, -NativeStoredNetworkNamesInProject, -NativeStoredRegions, -NativeStoredRegionsInProject.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op CloudAccountMissingPermissionsForAddition,
-             which is equivalent to specifying -CloudAccountMissingPermissionsForAddition.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -38430,11 +38302,9 @@
              Invoke-Rsc.
              There are 7 operations
              in the 'Google Cloud Platform Native' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Disk, -Disks, -GceInstance, -GceInstances, -Project, -Projects, -StoredDiskLocations.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Disk,
-             which is equivalent to specifying -Disk.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Disk, Disks, GceInstance, GceInstances, Project, Projects, or StoredDiskLocations.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -38869,11 +38739,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Host' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Diagnosis, -PhysicalHost, -PhysicalHosts, -Search, -Share, -Shares.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Diagnosis,
-             which is equivalent to specifying -Diagnosis.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Diagnosis, PhysicalHost, PhysicalHosts, Search, Share, or Shares.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -39197,11 +39065,9 @@
              Invoke-Rsc.
              There are 14 operations
              in the 'Microsoft Hyper-V' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Cluster, -HostAsyncRequestStatus, -Mounts, -Scvmm, -ScvmmAsyncRequestStatus, -Scvmms, -Server, -Servers, -TopLevelDescendants, -UniqueServersCount, -VirtualMachine, -VirtualMachineAsyncRequestStatus, -VirtualMachines, -VmDetail.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Cluster,
-             which is equivalent to specifying -Cluster.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachines, or VmDetail.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -39892,11 +39758,9 @@
              Invoke-Rsc.
              There are 7 operations
              in the 'Kubernetes' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AppManifest, -Cluster, -Clusters, -Namespace, -Namespaces, -ReplicaSnapshotInfos, -SnapshotInfo.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AppManifest,
-             which is equivalent to specifying -AppManifest.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AppManifest, Cluster, Clusters, Namespace, Namespaces, ReplicaSnapshotInfos, or SnapshotInfo.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -40258,11 +40122,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'LDAP' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AuthorizedPrincipalList, -IntegrationList, -PrincipalList.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AuthorizedPrincipalList,
-             which is equivalent to specifying -AuthorizedPrincipalList.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AuthorizedPrincipalList, IntegrationList, or PrincipalList.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -40440,11 +40302,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Microsoft 365' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Regions.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Regions,
-             which is equivalent to specifying -Regions.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['Regions'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -40526,11 +40386,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Managed Volume' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -InventoryStats, -LiveMounts, -ManagedVolume, -ManagedVolumes.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op InventoryStats,
-             which is equivalent to specifying -InventoryStats.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: InventoryStats, LiveMounts, ManagedVolume, or ManagedVolumes.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -40791,11 +40649,9 @@
              Invoke-Rsc.
              There are 10 operations
              in the 'Mongo DB' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkRecoverableRange, -BulkRecoverableRanges, -Collection, -CollectionRecoverableRange, -Collections, -Database, -Databases, -RecoverableRanges, -Source, -Sources.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkRecoverableRange,
-             which is equivalent to specifying -BulkRecoverableRange.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkRecoverableRange, BulkRecoverableRanges, Collection, CollectionRecoverableRange, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -41333,11 +41189,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Mosaic' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BulkRecoveryRange, -Snapshots, -Stores, -Versions.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BulkRecoveryRange,
-             which is equivalent to specifying -BulkRecoveryRange.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BulkRecoveryRange, Snapshots, Stores, or Versions.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -41570,11 +41424,9 @@
              Invoke-Rsc.
              There are 16 operations
              in the 'Microsoft SQL Server' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AvailabilityGroup, -CdmLogShippingTarget, -CdmLogShippingTargets, -CompatibleInstances, -Database, -DatabaseLiveMounts, -DatabaseMissedRecoverableRanges, -DatabaseMissedSnapshots, -DatabaseRestoreEstimate, -DatabaseRestoreFiles, -Databases, -DefaultProperties, -Instance, -LogShippingTargets, -RecoverableRanges, -TopLevelDescendants.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AvailabilityGroup,
-             which is equivalent to specifying -AvailabilityGroup.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -42286,11 +42138,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'NAS' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Fileset, -Namespace, -Namespaces, -Share, -System, -Systems, -TopLevelDescendants, -Volume.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Fileset,
-             which is equivalent to specifying -Fileset.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Fileset, Namespace, Namespaces, Share, System, Systems, TopLevelDescendants, or Volume.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -42716,11 +42566,9 @@
              Invoke-Rsc.
              There are 18 operations
              in the 'Nutanix' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BrowseSnapshot, -Category, -CategoryValue, -Cluster, -ClusterAsyncRequestStatus, -ClusterContainers, -ClusterNetworks, -Clusters, -Mounts, -PrismCentral, -PrismCentrals, -SearchVm, -SnapshotDetail, -TopLevelDescendants, -Vm, -VmAsyncRequestStatus, -VmMissedSnapshots, -Vms.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BrowseSnapshot,
-             which is equivalent to specifying -BrowseSnapshot.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, TopLevelDescendants, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -43534,11 +43382,9 @@
              Invoke-Rsc.
              There are 37 operations
              in the 'Office 365' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AdGroups, -BrowseTeamConvChannels, -Calendar, -Groups, -License, -ListApps, -Mailbox, -Mailboxes, -ObjectAncestors, -Onedrive, -Onedrives, -Org, -OrgAtSnappableLevel, -OrgStatuses, -OrgSummaries, -Orgs, -ServiceAccount, -ServiceStatus, -SharepointDrive, -SharepointDrives, -SharepointList, -SharepointLists, -SharepointObjectList, -SharepointObjects, -SharepointSite, -SharepointSites, -Site, -Sites, -StorageStats, -SubscriptionsAppTypeCounts, -Team, -TeamChannels, -TeamConversationsFolderID, -TeamPostedBy, -Teams, -User, -UserObjects.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AdGroups,
-             which is equivalent to specifying -AdGroups.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AdGroups, BrowseTeamConvChannels, Calendar, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -45294,11 +45140,9 @@
              Invoke-Rsc.
              There are 16 operations
              in the 'Oracle' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AcoExampleDownloadLink, -AcoParameters, -DataGuardGroup, -Database, -DatabaseLogBackupConfig, -Databases, -Host, -HostLogBackupConfig, -LiveMounts, -MissedRecoverableRanges, -MissedSnapshots, -PdbDetails, -Rac, -RacLogBackupConfig, -RecoverableRanges, -TopLevelDescendants.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AcoExampleDownloadLink,
-             which is equivalent to specifying -AcoExampleDownloadLink.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -45975,11 +45819,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'Policy' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Details, -Obj, -ObjectUsages, -Objs, -Policies, -Policy.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Details,
-             which is equivalent to specifying -Details.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Details, Obj, ObjectUsages, Objs, Policies, or Policy.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -46286,11 +46128,9 @@
              Invoke-Rsc.
              There are 12 operations
              in the 'Ransomware' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -DetectionWorkloadLocations, -InvestigationAnalysisSummary, -InvestigationEnablement, -InvestigationWorkloadScannedCount, -OverallInvestigationSummary, -PendingInvestigationResultsCount, -ProcessedInvestigationWorkloadCount, -ProtectedInvestigationWorkloadCount, -Result, -ResultOpt, -Results, -ResultsGrouped.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op DetectionWorkloadLocations,
-             which is equivalent to specifying -DetectionWorkloadLocations.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, InvestigationWorkloadScannedCount, OverallInvestigationSummary, PendingInvestigationResultsCount, ProcessedInvestigationWorkloadCount, ProtectedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -46760,11 +46600,9 @@
              Invoke-Rsc.
              There are 3 operations
              in the 'RCS' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ArchivalLocationsConsumptionStats, -Cluster, -Dhcores.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ArchivalLocationsConsumptionStats,
-             which is equivalent to specifying -ArchivalLocationsConsumptionStats.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ArchivalLocationsConsumptionStats, Cluster, or Dhcores.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -46920,11 +46758,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'RCV' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AccountEntitlement.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AccountEntitlement,
-             which is equivalent to specifying -AccountEntitlement.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['AccountEntitlement'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -47005,11 +46841,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Replication' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -IncomingStats, -OutgoingStats, -Pairs, -ValidTargets.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op IncomingStats,
-             which is equivalent to specifying -IncomingStats.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: IncomingStats, OutgoingStats, Pairs, or ValidTargets.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -47222,11 +47056,9 @@
              Invoke-Rsc.
              There are 2 operations
              in the 'Report' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Data, -Scheduled.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Data,
-             which is equivalent to specifying -Data.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Data, or Scheduled.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -47375,11 +47207,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'SAP HANA' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Database, -Databases, -LogSnapshot, -LogSnapshots, -RecoverableRange, -RecoverableRanges, -System, -Systems.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Database,
-             which is equivalent to specifying -Database.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Database, Databases, LogSnapshot, LogSnapshots, RecoverableRange, RecoverableRanges, System, or Systems.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -47807,11 +47637,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Service Account' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ServiceAccount.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ServiceAccount,
-             which is equivalent to specifying -ServiceAccount.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['ServiceAccount'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -47909,11 +47737,9 @@
              Invoke-Rsc.
              There are 8 operations
              in the 'Sharepoint' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BrowseDrive, -BrowseList, -SiteDescendants, -SiteExclusions, -SiteSearch, -SnappableDriveSearch, -SnappableListSearch, -SnapshotDriveSearch.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BrowseDrive,
-             which is equivalent to specifying -BrowseDrive.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BrowseDrive, BrowseList, SiteDescendants, SiteExclusions, SiteSearch, SnappableDriveSearch, SnappableListSearch, or SnapshotDriveSearch.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -48591,11 +48417,9 @@
              Invoke-Rsc.
              There are 14 operations
              in the 'SLA' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AuditDetail, -ClusterDomains, -ClusterGlobals, -ConflictObjects, -CountOfObjectsProtected, -Domain, -Domains, -GlobalFilterList, -GlobalStatuses, -ManagedVolume, -ManagedVolumes, -NcdComplianceData, -SummariesByIds, -VerifyWithReplicationToCluster.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AuditDetail,
-             which is equivalent to specifying -AuditDetail.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -49291,11 +49115,9 @@
              Invoke-Rsc.
              There are 2 operations
              in the 'SMB' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Configuration, -Domains.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Configuration,
-             which is equivalent to specifying -Configuration.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: Configuration, or Domains.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -49428,11 +49250,9 @@
              Invoke-Rsc.
              There are 21 operations
              in the 'Snapshot' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -BrowseFileList, -ClosestToPointInTime, -EmailSearch, -EventSearch, -FilesDelta, -FilesDeltaV2, -Fileset, -FilesetFiles, -LegalHoldSnappable, -OnedriveSearch, -Polaris, -Pvcs, -QuarantinedDetails, -Results, -SnappableList, -SnappablesList, -SnappablesWithLegalHoldsSummary, -Snapshot, -UnmanagedObject, -VappInstantRecoveryOptions, -VappTemplateExportOptions.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op BrowseFileList,
-             which is equivalent to specifying -BrowseFileList.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -50567,11 +50387,9 @@
              Invoke-Rsc.
              There are 5 operations
              in the 'Sonar' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ContentReport, -Report, -ReportRow, -UserGroups, -Users.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ContentReport,
-             which is equivalent to specifying -ContentReport.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ContentReport, Report, ReportRow, UserGroups, or Users.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -50883,11 +50701,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Storage Arrays' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -StorageArray.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op StorageArray,
-             which is equivalent to specifying -StorageArray.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['StorageArray'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -50971,11 +50787,9 @@
              Invoke-Rsc.
              There are 4 operations
              in the 'Threat' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -HuntDetail, -HuntResult, -HuntSummary, -Hunts.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op HuntDetail,
-             which is equivalent to specifying -HuntDetail.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: HuntDetail, HuntResult, HuntSummary, or Hunts.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -51169,11 +50983,9 @@
              Invoke-Rsc.
              There are 9 operations
              in the 'VMware vSphere vCenter' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AdvancedTagPreview, -HotAddBandwidth, -HotAddNetwork, -HotAddProxy, -List, -Networks, -NumProxiesNeeded, -PreAddInfo, -Vcenter.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AdvancedTagPreview,
-             which is equivalent to specifying -AdvancedTagPreview.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AdvancedTagPreview, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -51569,11 +51381,9 @@
              Invoke-Rsc.
              There are 23 operations
              in the 'VMware vSphere' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -ComputeCluster, -ComputeClusters, -Datacenter, -Datastore, -DatastoreCluster, -DatastoreClusters, -DatastoreList, -Folder, -Folders, -Host, -HostDetails, -HostList, -HostsByFids, -LiveMounts, -Mount, -MountList, -Network, -ResourcePool, -RootRecoveryHierarchy, -Tag, -TagCategory, -TopLevelDescendantsList, -VmwareCdpLiveInfo.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op ComputeCluster,
-             which is equivalent to specifying -ComputeCluster.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ComputeCluster, ComputeClusters, Datacenter, Datastore, DatastoreCluster, DatastoreClusters, DatastoreList, Folder, Folders, Host, HostDetails, HostList, HostsByFids, LiveMounts, Mount, MountList, Network, ResourcePool, RootRecoveryHierarchy, Tag, TagCategory, TopLevelDescendantsList, or VmwareCdpLiveInfo.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -52659,11 +52469,9 @@
              Invoke-Rsc.
              There are 6 operations
              in the 'VMware vSphere VM' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -AsyncRequestStatus, -MissedRecoverableRange, -New, -NewList, -RecoverableRange, -RecoverableRangeInBatch.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op AsyncRequestStatus,
-             which is equivalent to specifying -AsyncRequestStatus.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, or RecoverableRangeInBatch.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -52952,11 +52760,9 @@
              Invoke-Rsc.
              There are 1 operations
              in the 'Webhook' API domain. Select the operation this
-             query is for by specifying the appropriate switch parameter;
-             one of: -Webhook.
-             Alternatively, you can specify the operation by setting the
-             -Op parameter, for example: -Op Webhook,
-             which is equivalent to specifying -Webhook.
+             query is for by specifying the appropriate value for the
+             -Operation parameter;
+             one of: ['Webhook'].
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -53359,7 +53165,7 @@
             and returns the field object.
             </summary>
         </member>
-        <member name="M:RubrikSecurityCloud.RscQuery.#ctor(System.String,RubrikSecurityCloud.RscGqlVars,System.Object,RubrikSecurityCloud.RscGqlOperation)">
+        <member name="M:RubrikSecurityCloud.RscQuery.#ctor(RubrikSecurityCloud.RscOp,RubrikSecurityCloud.RscGqlVars,System.Object,RubrikSecurityCloud.RscGqlOperation)">
             <summary>
             Create a new RscQuery object.
             </summary>
@@ -53378,11 +53184,10 @@
             The name of the underlying GQL operation.
             </summary>
         </member>
-        <member name="M:RubrikSecurityCloud.RscQuery.FlattenField">
+        <member name="M:RubrikSecurityCloud.RscQuery.AllFields">
             <summary>
-            Return the flattened list of fields in the Field object.
+            Return a flattened list of all the fields in the Field object.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:RubrikSecurityCloud.RscQuery.Info">
             <summary>

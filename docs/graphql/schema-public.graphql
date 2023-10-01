@@ -2733,7 +2733,7 @@ type Query {
 
   # Decrypt Export URL.
   decryptExportUrl(
-    # The fid of the workload.
+    # Optional FID of the workload.
     workloadFid: UUID,
 
     # Encrypted string of Export URL Specs containing arbitrary characters
@@ -2897,6 +2897,14 @@ type Query {
 
   # Customer facing Polaris deployment name.
   externalDeploymentName: String!
+
+  # Information on Microsoft 365 restore failed items.
+  failedRestoreItemsInfo(
+    # The FID of the workload.
+    workloadFid: UUID!,
+
+    # Taskchain ID.
+    taskchainId: String!): FailedRestoreItemsInfoReply!
 
   # Get details of the given failover cluster app.
   failoverClusterApp(
@@ -3186,7 +3194,9 @@ type Query {
   getGroupCountByPrechecksStatus: [GroupCount!]!
   getGroupCountByUpgradeJobStatus: [GroupCount!]!
   getGroupCountByVersionStatus: [GroupCount!]!
-  getKorgTaskchainStatus(taskchainId: String!): GetTaskchainStatusReply! @deprecated(reason: "This endpoint is not properly named.")
+  getKorgTaskchainStatus(
+    # Taskchain ID.
+    taskchainId: String!): GetTaskchainStatusReply! @deprecated(reason: "This endpoint is not properly named.")
   getPermissions(
     # ID of the role.
     roleId: String!): [Permission!]!
@@ -4145,8 +4155,20 @@ type Query {
 
   # Returns all compatible instances for export for the specified recovery time.
   mssqlCompatibleInstances(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
     # Input for V1GetCompatibleMssqlInstancesV1.
-    input: GetCompatibleMssqlInstancesV1Input!): MssqlInstanceSummaryListResponse!
+    input: GetCompatibleMssqlInstancesV1Input!,
+
+    # Sort by argument for MSSQL compatible instances.
+    sortBy: MssqlCompatibleInstancesSortByInput,
+
+    # Filters for MSSQL compatible instances.
+    filters: [MssqlCompatibleInstancesFilterInput!]): MssqlInstanceSummaryListResponse!
 
   # A Microsoft SQL Database.
   mssqlDatabase(
@@ -4675,7 +4697,7 @@ type Query {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): O365OrgConnection!
 
   # Gets the service account for the given org.
@@ -7818,7 +7840,9 @@ type Mutation {
     clusterUuid: UUID!): CancelJobReply!
 
   # Cancels the taskchain.
-  cancelTaskchain(taskchainId: String!): RequestStatus!
+  cancelTaskchain(
+    # Taskchain ID.
+    taskchainId: String!): RequestStatus!
 
   # Cancel an in-progress threat hunt.
   cancelThreatHunt(
@@ -24924,7 +24948,7 @@ type CassandraKeyspace implements HierarchyObject , PolarisHierarchyObject , Cas
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): CassandraKeyspaceDescendantTypeConnection!
 
   # List of physical children.
@@ -24947,7 +24971,7 @@ type CassandraKeyspace implements HierarchyObject , PolarisHierarchyObject , Cas
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): CassandraKeyspacePhysicalChildTypeConnection!
 
   # Parent source connection.
@@ -25219,7 +25243,7 @@ type CassandraSource implements HierarchyObject , PolarisHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): CassandraSourceDescendantTypeConnection!
 
   # List of physical children.
@@ -25242,7 +25266,7 @@ type CassandraSource implements HierarchyObject , PolarisHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): CassandraSourcePhysicalChildTypeConnection!
 
   # Mosaic cluster information.
@@ -26287,7 +26311,7 @@ type CdmInventorySubHierarchyRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): CdmHierarchyObjectConnection!
 
   # List of descendants.
@@ -26310,7 +26334,7 @@ type CdmInventorySubHierarchyRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): CdmHierarchyObjectConnection!
 
   # List of top-level descendants (with respect to RBAC).
@@ -34837,7 +34861,7 @@ type Db2Instance implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): Db2InstanceDescendantTypeConnection!
 
   # List of physical children.
@@ -34860,7 +34884,7 @@ type Db2Instance implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): Db2InstancePhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -36961,6 +36985,9 @@ enum DownloadIdentifierEnum {
   # Threat hunt result CSV.
   ORION_THREAT_HUNT_DOWNLOAD
 
+  # CDM API metrics in CSV format.
+  PRECHECKS_CDM_API_METRICS_CSV_DOWNLOAD
+
   # Download report CSV/PDF.
   REPORT
 
@@ -37609,11 +37636,17 @@ input EventDigestConfig {
   # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, K8S, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, and Index.
+  auditType: [UserAuditTypeEnum!]
+
   # Activity severities to include in event digest.
   activitySeverity: [ActivitySeverityEnum!]
 
   # Clusters to include in event digest.
   clusters: [String!]
+
+  # Email addresses of the event digest recipients.
+  emailAddresses: [String!]
 }
 # Represents the Calendar event to be restored.
 input EventInfo {
@@ -38251,7 +38284,7 @@ type ExchangeDag implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): ExchangeDagDescendantTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -38839,7 +38872,7 @@ type ExchangeServer implements CdmHierarchyObject , HierarchyObject , PhysicalHo
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): ExchangeServerDescendantTypeConnection!
 
   # Host parent for the Exchange Server.
@@ -39577,6 +39610,13 @@ input ExternalArtifacts {
   # AWS unique identifier of the external artifact.
   externalArtifactValue: String
 }
+# Represents information on Microsoft 365 restore
+# failed items performed by Rubrik.
+type FailedRestoreItemsInfoReply {
+  # Click the link to download a CSV file containing
+  # the Microsoft 365 failed items.
+  csvDownloadLink: URL!
+}
 type FailoverChart {
   name: String!
   focus: ReportFocusEnum!
@@ -39625,7 +39665,7 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): FailoverClusterAppDescendantTypeConnection!
 
   # List of physical children.
@@ -39648,7 +39688,7 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): FailoverClusterAppPhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -41179,7 +41219,7 @@ type FilesetTemplate implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): FilesetTemplateDescendantTypeConnection!
 
   # List of physical children.
@@ -41202,7 +41242,7 @@ type FilesetTemplate implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): FilesetTemplatePhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -42883,7 +42923,7 @@ type GcpNativeProject implements PolarisHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): GcpNativeProjectLogicalChildTypeConnection!
 
   # List of all GCE instances under this GCP project.
@@ -46453,7 +46493,7 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HostFailoverClusterDescendantTypeConnection!
 
   # List of physical children.
@@ -46476,7 +46516,7 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HostFailoverClusterPhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -46878,7 +46918,7 @@ type HostShare implements CdmHierarchyObject , HierarchyObject , PhysicalHostDes
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HostShareDescendantTypeConnection!
 
   # List of physical children.
@@ -46901,7 +46941,7 @@ type HostShare implements CdmHierarchyObject , HierarchyObject , PhysicalHostDes
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HostSharePhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -47511,7 +47551,7 @@ type HyperVCluster implements HierarchyObject , CdmHierarchyObject , HyperVSCVMM
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HyperVClusterDescendantTypeConnection!
 
   # List of logical children.
@@ -47534,7 +47574,7 @@ type HyperVCluster implements HierarchyObject , CdmHierarchyObject , HyperVSCVMM
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HyperVClusterLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -47886,7 +47926,7 @@ type HyperVSCVMM implements HierarchyObject , CdmHierarchyObject , PhysicalHostD
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HyperVSCVMMDescendantTypeConnection!
 
   # List of logical children.
@@ -47909,7 +47949,7 @@ type HyperVSCVMM implements HierarchyObject , CdmHierarchyObject , PhysicalHostD
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HyperVSCVMMLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -48905,7 +48945,7 @@ type HypervServer implements HierarchyObject , CdmHierarchyObject , PhysicalHost
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HypervServerDescendantTypeConnection!
 
   # List of logical children.
@@ -48928,7 +48968,7 @@ type HypervServer implements HierarchyObject , CdmHierarchyObject , PhysicalHost
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HypervServerLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -50001,7 +50041,7 @@ type InventoryRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HierarchyObjectConnection!
 }
 type InventorySubHierarchyRoot {
@@ -50027,7 +50067,7 @@ type InventorySubHierarchyRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HierarchyObjectConnection!
 
   # List of descendants.
@@ -50050,7 +50090,7 @@ type InventorySubHierarchyRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): HierarchyObjectConnection!
 
   # List of top-level descendants (with respect to RBAC).
@@ -50363,7 +50403,7 @@ type K8sCluster implements HierarchyObject , PolarisHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): K8sClusterDescendantConnection!
 
   # Namespaces belonging to the Kubernetes cluster.
@@ -52722,7 +52762,7 @@ type ManagedVolume implements HierarchyObject , CdmHierarchyObject , CdmHierarch
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): ManagedVolumeDescendantTypeConnection!
 
   # List of physical children.
@@ -52745,7 +52785,7 @@ type ManagedVolume implements HierarchyObject , CdmHierarchyObject , CdmHierarch
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): ManagedVolumePhysicalChildTypeConnection!
 
   # Cdm cluster information.
@@ -53125,7 +53165,7 @@ type ManagedVolumeConnection {
   # Total number of ManagedVolume objects matching the request arguments.
   count: Int!
 }
-# Managed Volume descendant type, eg. ManagedVolumeMount, PhysicalHost.
+# Managed Volume descendant type. For example, ManagedVolumeMount.
 interface ManagedVolumeDescendantType {
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -53355,52 +53395,6 @@ type ManagedVolumeMount implements HierarchyObject , CdmHierarchyObject , Manage
   # Channel metadata of the Managed Volume mount.
   channels: [ManagedVolumeExportChannel!]!
 
-  # List of descendants.
-  descendantConnection(
-    # Returns the first n elements from the list.
-    first: Int,
-
-    # Returns the elements in the list that come after the specified cursor.
-    after: String,
-
-    # Sort hierarchy objects by hierarchy field.
-    sortBy: HierarchySortByField,
-
-    # Sorting order for the results.
-    sortOrder: SortOrder,
-
-    # Types of objects to include.
-    typeFilter: [HierarchyObjectTypeEnum!],
-
-    # The hierarchy object filter.
-    filter: [Filter!],
-
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
-    workloadHierarchy: WorkloadLevelHierarchy): ManagedVolumeMountDescendantTypeConnection!
-
-  # List of physical children.
-  physicalChildConnection(
-    # Returns the first n elements from the list.
-    first: Int,
-
-    # Returns the elements in the list that come after the specified cursor.
-    after: String,
-
-    # Sort hierarchy objects by hierarchy field.
-    sortBy: HierarchySortByField,
-
-    # Sorting order for the results.
-    sortOrder: SortOrder,
-
-    # Types of objects to include.
-    typeFilter: [HierarchyObjectTypeEnum!],
-
-    # The hierarchy object filter.
-    filter: [Filter!],
-
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
-    workloadHierarchy: WorkloadLevelHierarchy): ManagedVolumeMountPhysicalChildTypeConnection!
-
   # Managed Volume for the export.
   managedVolume: ManagedVolume!
 
@@ -53484,96 +53478,6 @@ type ManagedVolumeMountConnection {
   # Total number of ManagedVolumeMount objects matching the request arguments.
   count: Int!
 }
-# Descendant type of Managed Volume Export, eg. PhysicalHost.
-interface ManagedVolumeMountDescendantType {
-  # Rubrik cluster where this object originated.
-  cluster: Cluster!
-
-  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-  primaryClusterLocation: DataLocation!
-
-  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-  pendingSla: SlaDomain
-
-  # Mapping from objectID to pending object deletion status.
-  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-
-  # Objects either replicated by this object or related to this object by replication.
-  replicatedObjects: [CdmHierarchyObject!]!
-
-  # Latest User note information.
-  latestUserNote: LatestUserNote
-
-  # The number of objects either replicated by this object or related to this object by replication.
-  replicatedObjectCount: Int!
-
-  # The authorized operations on the object.
-  authorizedOperations: [Operation!]!
-
-  # The FID of the hierarchy object.
-  id: UUID!
-
-  # The name of the hierarchy object.
-  name: String!
-
-  # The type of this object.
-  objectType: HierarchyObjectTypeEnum!
-
-  # The SLA Domain assignment type for this object.
-  slaAssignment: SlaAssignmentTypeEnum!
-
-  # The effective SLA Domain of the hierarchy object.
-  effectiveSlaDomain: SlaDomain!
-
-  # The pause status of the effective SLA Domain of the hierarchy object.
-  slaPauseStatus: Boolean!
-
-  # The distribution of the snapshots of the hierarchy object.
-  snapshotDistribution: SnapshotDistribution!
-
-  # The effective retention of the SLA Domain of the hierarchy object.
-  effectiveRetentionSlaDomain: SlaDomain
-
-  # The SLA Domain configured for the hierarchy object.
-  configuredSlaDomain: SlaDomain!
-
-  # The path node of the effective SLA Domain source.
-  effectiveSlaSourceObject: PathNode
-
-  # A sequential list of this object's logical ancestors.
-  logicalPath: [PathNode!]!
-
-  # A sequential list of this object's physical ancestors.
-  physicalPath: [PathNode!]!
-
-  # The number of descendant workloads of this object.
-  numWorkloadDescendants: Int!
-
-  # The organizations to which this hierarchy object belongs.
-  allOrgs: [Org!]!
-}
-# Paginated list of ManagedVolumeMountDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
-type ManagedVolumeMountDescendantTypeConnection {
-  # List of ManagedVolumeMountDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
-  edges: [ManagedVolumeMountDescendantTypeEdge!]!
-
-  # List of ManagedVolumeMountDescendantType objects.
-  nodes: [ManagedVolumeMountDescendantType!]!
-
-  # General information about this page of results.
-  pageInfo: PageInfo!
-
-  # Total number of ManagedVolumeMountDescendantType objects matching the request arguments.
-  count: Int!
-}
-# Wrapper around the ManagedVolumeMountDescendantType object. This wrapper is used for pagination.
-type ManagedVolumeMountDescendantTypeEdge {
-  # String used to identify this edge.
-  cursor: String!
-
-  # The actual ManagedVolumeMountDescendantType object wrapped by this edge.
-  node: ManagedVolumeMountDescendantType!
-}
 # Wrapper around the ManagedVolumeMount object. This wrapper is used for pagination.
 type ManagedVolumeMountEdge {
   # String used to identify this edge.
@@ -53581,96 +53485,6 @@ type ManagedVolumeMountEdge {
 
   # The actual ManagedVolumeMount object wrapped by this edge.
   node: ManagedVolumeMount!
-}
-# Managed Volume Export physical child type, eg. PhysicalHost.
-interface ManagedVolumeMountPhysicalChildType {
-  # Rubrik cluster where this object originated.
-  cluster: Cluster!
-
-  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-  primaryClusterLocation: DataLocation!
-
-  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-  pendingSla: SlaDomain
-
-  # Mapping from objectID to pending object deletion status.
-  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-
-  # Objects either replicated by this object or related to this object by replication.
-  replicatedObjects: [CdmHierarchyObject!]!
-
-  # Latest User note information.
-  latestUserNote: LatestUserNote
-
-  # The number of objects either replicated by this object or related to this object by replication.
-  replicatedObjectCount: Int!
-
-  # The authorized operations on the object.
-  authorizedOperations: [Operation!]!
-
-  # The FID of the hierarchy object.
-  id: UUID!
-
-  # The name of the hierarchy object.
-  name: String!
-
-  # The type of this object.
-  objectType: HierarchyObjectTypeEnum!
-
-  # The SLA Domain assignment type for this object.
-  slaAssignment: SlaAssignmentTypeEnum!
-
-  # The effective SLA Domain of the hierarchy object.
-  effectiveSlaDomain: SlaDomain!
-
-  # The pause status of the effective SLA Domain of the hierarchy object.
-  slaPauseStatus: Boolean!
-
-  # The distribution of the snapshots of the hierarchy object.
-  snapshotDistribution: SnapshotDistribution!
-
-  # The effective retention of the SLA Domain of the hierarchy object.
-  effectiveRetentionSlaDomain: SlaDomain
-
-  # The SLA Domain configured for the hierarchy object.
-  configuredSlaDomain: SlaDomain!
-
-  # The path node of the effective SLA Domain source.
-  effectiveSlaSourceObject: PathNode
-
-  # A sequential list of this object's logical ancestors.
-  logicalPath: [PathNode!]!
-
-  # A sequential list of this object's physical ancestors.
-  physicalPath: [PathNode!]!
-
-  # The number of descendant workloads of this object.
-  numWorkloadDescendants: Int!
-
-  # The organizations to which this hierarchy object belongs.
-  allOrgs: [Org!]!
-}
-# Paginated list of ManagedVolumeMountPhysicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
-type ManagedVolumeMountPhysicalChildTypeConnection {
-  # List of ManagedVolumeMountPhysicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
-  edges: [ManagedVolumeMountPhysicalChildTypeEdge!]!
-
-  # List of ManagedVolumeMountPhysicalChildType objects.
-  nodes: [ManagedVolumeMountPhysicalChildType!]!
-
-  # General information about this page of results.
-  pageInfo: PageInfo!
-
-  # Total number of ManagedVolumeMountPhysicalChildType objects matching the request arguments.
-  count: Int!
-}
-# Wrapper around the ManagedVolumeMountPhysicalChildType object. This wrapper is used for pagination.
-type ManagedVolumeMountPhysicalChildTypeEdge {
-  # String used to identify this edge.
-  cursor: String!
-
-  # The actual ManagedVolumeMountPhysicalChildType object wrapped by this edge.
-  node: ManagedVolumeMountPhysicalChildType!
 }
 # Mount Specification for the Managed Volume.
 type ManagedVolumeMountSpec {
@@ -53809,7 +53623,7 @@ input ManagedVolumePatchSlaClientConfigInput {
   # Specifies whether to disable the execution of the optional pre-backup script.
   shouldDisablePreBackupScript: Boolean!
 }
-# Managed Volume physical child type, eg. ManagedVolumeMount.
+# Managed Volume physical child type eg. ManagedVolumeMount.
 interface ManagedVolumePhysicalChildType {
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -54755,7 +54569,7 @@ type MongoCollectionSet implements HierarchyObject , CdmHierarchyObject , MongoS
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongoCollectionSetDescendantTypeConnection!
 
   # List of physical children.
@@ -54778,7 +54592,7 @@ type MongoCollectionSet implements HierarchyObject , CdmHierarchyObject , MongoS
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongoCollectionSetPhysicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -55207,7 +55021,7 @@ type MongoDatabase implements HierarchyObject , CdmHierarchyObject , MongoSource
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongoDatabaseDescendantTypeConnection!
 
   # List of physical children.
@@ -55230,7 +55044,7 @@ type MongoDatabase implements HierarchyObject , CdmHierarchyObject , MongoSource
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongoDatabasePhysicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -55713,7 +55527,7 @@ type MongoSource implements HierarchyObject , CdmHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongoSourceDescendantTypeConnection!
 
   # List of physical children.
@@ -55736,7 +55550,7 @@ type MongoSource implements HierarchyObject , CdmHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongoSourcePhysicalChildTypeConnection!
 
   # Information about CDM cluster for this MongoDB cluster.
@@ -56309,7 +56123,7 @@ type MongodbDatabase implements HierarchyObject , PolarisHierarchyObject , Mongo
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongodbDatabaseDescendantTypeConnection!
 
   # List of physical children.
@@ -56332,7 +56146,7 @@ type MongodbDatabase implements HierarchyObject , PolarisHierarchyObject , Mongo
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongodbDatabasePhysicalChildTypeConnection!
 
   # Parent source connection.
@@ -56594,7 +56408,7 @@ type MongodbSource implements HierarchyObject , PolarisHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongodbSourceDescendantTypeConnection!
 
   # List of physical children.
@@ -56617,7 +56431,7 @@ type MongodbSource implements HierarchyObject , PolarisHierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MongodbSourcePhysicalChildTypeConnection!
 
   # Information about NoSql cluster for this MongoDB cluster.
@@ -57946,7 +57760,7 @@ type MssqlAvailabilityGroup implements HierarchyObject , CdmHierarchyObject , Ms
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MssqlAvailabilityGroupDescendantTypeConnection!
 
   # List of logical children.
@@ -57969,7 +57783,7 @@ type MssqlAvailabilityGroup implements HierarchyObject , CdmHierarchyObject , Ms
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MssqlAvailabilityGroupLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -58329,6 +58143,38 @@ enum MssqlCbtStatusType {
   MSSQL_CBT_STATUS_TYPE_DEFAULT
   MSSQL_CBT_STATUS_TYPE_DISABLED
   MSSQL_CBT_STATUS_TYPE_ENABLED
+}
+# Filter for MSSQL compatible instances.
+enum MssqlCompatibleInstancesFilterField {
+  # Unspecified filter field for MSSQL compatible instances.
+  FILTER_UNSPECIFIED
+
+  # Name filter field for MSSQL compatible instances.
+  NAME
+}
+# Filter MSSQL compatible instances.
+input MssqlCompatibleInstancesFilterInput {
+  # Type of filter.
+  field: MssqlCompatibleInstancesFilterField = FILTER_UNSPECIFIED
+
+  # Values for the filter type.
+  texts: [String!] = []
+}
+# Parameters to sort MSSQL compatible instances.
+enum MssqlCompatibleInstancesSortByField {
+  # Name sort by field for MSSQL compatible instances results.
+  NAME
+
+  # Unspecified sort by field for MSSQL compatible instances results.
+  SORT_UNSPECIFIED
+}
+# Sort MSSQL compatible instances.
+input MssqlCompatibleInstancesSortByInput {
+  # Field for MSSQL compatible instances sort by.
+  field: MssqlCompatibleInstancesSortByField = SORT_UNSPECIFIED
+
+  # Specify the sorting order for MSSQL compatible instances.
+  sortOrder: SortOrder = ASC
 }
 # The SLA Domain configuration for SQL Server database.
 type MssqlConfig {
@@ -59188,7 +59034,7 @@ type MssqlInstance implements HierarchyObject , CdmHierarchyObject , MssqlTopLev
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MssqlInstanceDescendantTypeConnection!
 
   # List of logical children.
@@ -59211,7 +59057,7 @@ type MssqlInstance implements HierarchyObject , CdmHierarchyObject , MssqlTopLev
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): MssqlInstanceLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -60641,7 +60487,7 @@ type NasNamespace implements CdmHierarchyObject , HierarchyObject , NasSystemDes
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasNamespaceDescendantTypeConnection!
 
   # List of logical children.
@@ -60664,7 +60510,7 @@ type NasNamespace implements CdmHierarchyObject , HierarchyObject , NasSystemDes
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasNamespaceLogicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -60993,7 +60839,7 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasShareDescendantTypeConnection!
 
   # List of logical children.
@@ -61016,7 +60862,7 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasShareLogicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -61326,7 +61172,7 @@ type NasSystem implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasSystemDescendantTypeConnection!
 
   # List of logical children.
@@ -61349,7 +61195,7 @@ type NasSystem implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasSystemLogicalChildTypeConnection!
 
   # The total number of volumes in this NAS system.
@@ -61753,7 +61599,7 @@ type NasVolume implements CdmHierarchyObject , HierarchyObject , NasSystemDescen
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasVolumeDescendantTypeConnection!
 
   # List of logical children.
@@ -61776,7 +61622,7 @@ type NasVolume implements CdmHierarchyObject , HierarchyObject , NasSystemDescen
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NasVolumeLogicalChildTypeConnection!
 
   # The NAS System to which this NAS Volume belongs.
@@ -62922,7 +62768,7 @@ type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPr
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryDescendantTypeConnection!
 
   # List of logical children.
@@ -62945,7 +62791,7 @@ type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPr
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryLogicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -63228,7 +63074,7 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryValueDescendantTypeConnection!
 
   # List of logical children.
@@ -63251,7 +63097,7 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryValueLogicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -63546,7 +63392,7 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixClusterDescendantTypeConnection!
 
   # List of logical children.
@@ -63569,7 +63415,7 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixClusterLogicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -64046,6 +63892,9 @@ type NutanixLiveMount {
 
   # Power Status of the Virtual Machine. It is set to 'ON' or 'OFF'. If the CDM cluster is disconnected, then it is set to  'Unknown'.
   powerStatus: String!
+
+  # Mount Status of the Virtual Machine. If the CDM cluster is disconnected, then None is  returned.
+  mountStatus: NutanixVmMountStatus
 }
 # Paginated list of NutanixLiveMount objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type NutanixLiveMountConnection {
@@ -64247,7 +64096,7 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixPrismCentralDescendantTypeConnection!
 
   # List of logical children.
@@ -64270,7 +64119,7 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixPrismCentralLogicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -68605,6 +68454,9 @@ enum Operation {
 
   # View cluster licenses.
   VIEW_CLUSTER_LICENSES
+
+  # View CORS settings.
+  VIEW_CORS_SETTINGS
   VIEW_DASHBOARD
   VIEW_DATA_CLASS_GLOBAL
 
@@ -68822,7 +68674,7 @@ type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmH
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): OracleDataGuardGroupDescendantTypeConnection!
 
   # List of logical children.
@@ -68845,7 +68697,7 @@ type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmH
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): OracleDataGuardGroupLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -69846,7 +69698,7 @@ type OracleHost implements HierarchyObject , CdmHierarchyObject , OracleTopLevel
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): OracleHostDescendantTypeConnection!
 
   # List of logical children.
@@ -69869,7 +69721,7 @@ type OracleHost implements HierarchyObject , CdmHierarchyObject , OracleTopLevel
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): OracleHostLogicalChildTypeConnection!
 
   # Source host of the Oracle database.
@@ -70548,7 +70400,7 @@ type OracleRac implements HierarchyObject , CdmHierarchyObject , OracleTopLevelD
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): OracleRacDescendantTypeConnection!
 
   # List of logical children.
@@ -70571,7 +70423,7 @@ type OracleRac implements HierarchyObject , CdmHierarchyObject , OracleTopLevelD
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): OracleRacLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -71862,7 +71714,7 @@ type PhoenixRolloutProgress {
   # The number of Exchange users that have not yet completed their first full snapshot.
   numIncompleteFirstFull: Int!
 }
-type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLevelDescendantType , Db2InstanceDescendantType , Db2InstancePhysicalChildType , ManagedVolumeDescendantType , ManagedVolumeMountDescendantType , ManagedVolumeMountPhysicalChildType , MongoSourceDescendantType , MongoSourcePhysicalChildType {
+type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLevelDescendantType , Db2InstanceDescendantType , Db2InstancePhysicalChildType , MongoSourceDescendantType , MongoSourcePhysicalChildType {
   cdmId: String!
   ipAddresses: [String!]!
   osName: String
@@ -71921,7 +71773,7 @@ type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLeve
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): PhysicalHostDescendantTypeConnection!
 
   # List of physical children.
@@ -71944,7 +71796,7 @@ type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLeve
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): PhysicalHostPhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -72460,7 +72312,7 @@ type PolarisInventorySubHierarchyRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): PolarisHierarchyObjectConnection!
 
   # List of descendants.
@@ -72483,7 +72335,7 @@ type PolarisInventorySubHierarchyRoot {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): PolarisHierarchyObjectConnection!
 
   # List of top-level descendants (with respect to RBAC).
@@ -78269,7 +78121,7 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): SapHanaSystemDescendantTypeConnection!
 
   # List of physical children.
@@ -78292,7 +78144,7 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): SapHanaSystemPhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -87603,6 +87455,9 @@ enum UserAuditObjectTypeEnum {
   # Active Directory domain controller type.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
 
+  # Atlassian site.
+  ATLASSIAN_SITE
+
   # AWS native S3 bucket.
   AWS_NATIVE_S3_BUCKET
 
@@ -87731,6 +87586,12 @@ enum UserAuditObjectTypeEnum {
 
   # IP whitelist type.
   IpWhitelist
+
+  # Atlassian Jira project.
+  JIRA_PROJECT
+
+  # Atlassian Jira settings.
+  JIRA_SETTINGS
 
   # Job instance type.
   JobInstance
@@ -88778,7 +88639,7 @@ type Vcd implements HierarchyObject , CdmHierarchyObject , VcdTopLevelDescendant
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdDescendantTypeConnection!
 
   # List of logical children.
@@ -88801,7 +88662,7 @@ type Vcd implements HierarchyObject , CdmHierarchyObject , VcdTopLevelDescendant
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -89203,7 +89064,7 @@ type VcdOrg implements HierarchyObject , CdmHierarchyObject , VcdDescendantType 
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdOrgDescendantTypeConnection!
 
   # List of logical children.
@@ -89226,7 +89087,7 @@ type VcdOrg implements HierarchyObject , CdmHierarchyObject , VcdDescendantType 
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdOrgLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -89494,7 +89355,7 @@ type VcdOrgVdc implements HierarchyObject , CdmHierarchyObject , VcdDescendantTy
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdOrgVdcDescendantTypeConnection!
 
   # List of logical children.
@@ -89517,7 +89378,7 @@ type VcdOrgVdc implements HierarchyObject , CdmHierarchyObject , VcdDescendantTy
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdOrgVdcLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -89881,7 +89742,7 @@ type VcdVapp implements HierarchyObject , CdmHierarchyObject , HierarchySnappabl
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VcdVappLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.
@@ -91675,7 +91536,7 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereComputeClusterDescendantTypeConnection!
 
   # List of physical children.
@@ -91698,7 +91559,7 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereComputeClusterPhysicalChildTypeConnection!
 
   # List of recoveryTarget children.
@@ -91721,11 +91582,34 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereComputeClusterPhysicalChildTypeConnection!
 
+  # Paginated list of recovery target descendants.
+  recoveryTargetDescendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereComputeClusterDescendantTypeConnection!
+
   # This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
-  hasDatastoresForRecovery: Boolean!
+  hasDatastoresForRecovery: Boolean! @deprecated(reason: "Use recoveryTargetDescendantConnection field directly instead")
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -92017,7 +91901,7 @@ type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , Vsphere
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereDatacenterDescendantTypeConnection!
 
   # List of logical children.
@@ -92040,7 +91924,7 @@ type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , Vsphere
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereDatacenterLogicalChildTypeConnection!
 
   # List of physical children.
@@ -92063,7 +91947,7 @@ type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , Vsphere
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereDatacenterPhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -92654,7 +92538,7 @@ type VsphereDatastoreCluster implements CdmHierarchyObject , HierarchyObject , V
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereDatastoreClusterDescendantTypeConnection!
 
   # List of physical children.
@@ -92677,7 +92561,7 @@ type VsphereDatastoreCluster implements CdmHierarchyObject , HierarchyObject , V
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereDatastoreClusterPhysicalChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -93016,7 +92900,7 @@ type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcen
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereFolderDescendantTypeConnection!
 
   # List of logical children.
@@ -93039,7 +92923,7 @@ type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcen
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereFolderLogicalChildTypeConnection!
 
   # Datacenter ID of the vSphere folder.
@@ -93339,7 +93223,7 @@ type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcente
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereHostDescendantTypeConnection!
 
   # List of physical children.
@@ -93362,7 +93246,7 @@ type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcente
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereHostPhysicalChildTypeConnection!
 
   # List of recoveryTarget children.
@@ -93385,11 +93269,34 @@ type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcente
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereHostPhysicalChildTypeConnection!
 
+  # Paginated list of recovery target descendants.
+  recoveryTargetDescendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereHostDescendantTypeConnection!
+
   # This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
-  hasDatastoresForRecovery: Boolean!
+  hasDatastoresForRecovery: Boolean! @deprecated(reason: "Use recoveryTargetDescendantConnection field directly instead")
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -94001,7 +93908,7 @@ type VsphereResourcePool implements CdmHierarchyObject , HierarchyObject , Vsphe
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereResourcePoolDescendantTypeConnection!
 
   # List of physical children.
@@ -94024,7 +93931,7 @@ type VsphereResourcePool implements CdmHierarchyObject , HierarchyObject , Vsphe
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereResourcePoolPhysicalChildTypeConnection!
 
   # List of recoveryTarget children.
@@ -94047,11 +93954,34 @@ type VsphereResourcePool implements CdmHierarchyObject , HierarchyObject , Vsphe
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereResourcePoolPhysicalChildTypeConnection!
 
+  # Paginated list of recovery target descendants.
+  recoveryTargetDescendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereResourcePoolDescendantTypeConnection!
+
   # This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
-  hasDatastoresForRecovery: Boolean!
+  hasDatastoresForRecovery: Boolean! @deprecated(reason: "Use recoveryTargetDescendantConnection field directly instead")
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -94336,7 +94266,7 @@ type VsphereTag implements CdmHierarchyObject , HierarchyObject , VsphereVcenter
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereTagTagChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -94432,7 +94362,7 @@ type VsphereTagCategory implements CdmHierarchyObject , HierarchyObject , Vspher
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereTagCategoryTagChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -94852,7 +94782,7 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereVcenterDescendantTypeConnection!
 
   # List of logical children.
@@ -94875,7 +94805,7 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereVcenterLogicalChildTypeConnection!
 
   # List of physical children.
@@ -94898,7 +94828,7 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereVcenterPhysicalChildTypeConnection!
 
   # List of tag children.
@@ -94921,7 +94851,7 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereVcenterTagChildTypeConnection!
 
   # Rubrik cluster where this object originated.
@@ -96144,7 +96074,7 @@ type WindowsCluster implements HierarchyObject , CdmHierarchyObject , MssqlTopLe
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): WindowsClusterDescendantTypeConnection!
 
   # List of logical children.
@@ -96167,7 +96097,7 @@ type WindowsCluster implements HierarchyObject , CdmHierarchyObject , MssqlTopLe
     # The hierarchy object filter.
     filter: [Filter!],
 
-    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): WindowsClusterLogicalChildTypeConnection!
 
   # The FID of the hierarchy object.

@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 8 operations
     /// in the 'Sharepoint' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BrowseDrive, -BrowseList, -SiteDescendants, -SiteExclusions, -SiteSearch, -SnappableDriveSearch, -SnappableListSearch, -SnapshotDriveSearch.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BrowseDrive,
-    /// which is equivalent to specifying -BrowseDrive.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BrowseDrive, BrowseList, SiteDescendants, SiteExclusions, SiteSearch, SnappableDriveSearch, SnappableListSearch, or SnapshotDriveSearch.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -705,139 +704,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQuerySharepoint",
-        DefaultParameterSetName = "SiteSearch")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQuerySharepoint : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BrowseDrive",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BrowseDrive' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Browse SharePoint  drive files and folders.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browsesharepointdrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BrowseDrive { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BrowseDrive",
+                "BrowseList",
+                "SiteDescendants",
+                "SiteExclusions",
+                "SiteSearch",
+                "SnappableDriveSearch",
+                "SnappableListSearch",
+                "SnapshotDriveSearch",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BrowseList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'BrowseList' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Browse list objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browsesharepointlist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BrowseList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SiteDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SiteDescendants' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Browse site and descendants objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sharepointsitedescendants.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SiteDescendants { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SiteExclusions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SiteExclusions' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Sharepoint site objects excluded from protection.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allsharepointsiteexclusions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SiteExclusions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SiteSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SiteSearch' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Search site and descendant objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/sharepointsitesearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SiteSearch { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnappableDriveSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnappableDriveSearch' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snappablesharepointdrivesearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnappableDriveSearch { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnappableListSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnappableListSearch' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-Search list objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snappablesharepointlistsearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnappableListSearch { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnapshotDriveSearch",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnapshotDriveSearch' operation
-in the 'Sharepoint' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/snapshotsharepointdrivesearch.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnapshotDriveSearch { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

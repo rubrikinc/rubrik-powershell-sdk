@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 24 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BatchExport, -BatchExportV3, -BatchInPlaceRecovery, -DeleteSnapshot, -DownloadSnapshot, -DownloadSnapshotFiles, -ExcludeVmDisks, -ExportSnapshotV2, -ExportSnapshotV3, -ExportSnapshotWithDownloadFromCloud, -InitiateBatchInstantRecovery, -InitiateBatchLiveMountV2, -InitiateDiskMount, -InitiateInPlaceRecovery, -InitiateInstantRecoveryV2, -InitiateLiveMountV2, -ListEsxiDatastores, -MountRelocate, -MountRelocateV2, -PowerOnOffLiveMount, -RecoverFiles, -RecoverFilesNew, -RegisterAgent, -Update.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BatchExport,
-    /// which is equivalent to specifying -BatchExport.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, or Update.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1826,419 +1825,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationVsphereVm",
-        DefaultParameterSetName = "Update")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationVsphereVm : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BatchExport",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchExport' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Create a mass export for a group of virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmbatchexport.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchExport { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BatchExport",
+                "BatchExportV3",
+                "BatchInPlaceRecovery",
+                "DeleteSnapshot",
+                "DownloadSnapshot",
+                "DownloadSnapshotFiles",
+                "ExcludeVmDisks",
+                "ExportSnapshotV2",
+                "ExportSnapshotV3",
+                "ExportSnapshotWithDownloadFromCloud",
+                "InitiateBatchInstantRecovery",
+                "InitiateBatchLiveMountV2",
+                "InitiateDiskMount",
+                "InitiateInPlaceRecovery",
+                "InitiateInstantRecoveryV2",
+                "InitiateLiveMountV2",
+                "ListEsxiDatastores",
+                "MountRelocate",
+                "MountRelocateV2",
+                "PowerOnOffLiveMount",
+                "RecoverFiles",
+                "RecoverFilesNew",
+                "RegisterAgent",
+                "Update",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BatchExportV3",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchExportV3' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Create a batch export for a group of virtual machines with datastore cluster support.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmbatchexportv3.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchExportV3 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BatchInPlaceRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BatchInPlaceRecovery' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Supported in v6.0+. Export a snapshot each from a set of virtual machines.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmbatchinplacerecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BatchInPlaceRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteSnapshot' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmdeletesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadSnapshot' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Download snapshot from archive
-
-Supported in v5.0+
-Provides a method for retrieving a snapshot, that is not available locally, from an archival location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmdownloadsnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadSnapshotFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadSnapshotFiles' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Download files from snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmdownloadsnapshotfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadSnapshotFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExcludeVmDisks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExcludeVmDisks' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Exclude or include virtual disks during snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vsphereexcludevmdisks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExcludeVmDisks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportSnapshotV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportSnapshotV2' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Create a vSphere Export from a snapshot or a point-in-time.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmexportsnapshotv2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportSnapshotV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportSnapshotV3",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportSnapshotV3' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmexportsnapshotv3.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportSnapshotV3 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportSnapshotWithDownloadFromCloud",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportSnapshotWithDownloadFromCloud' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
-
-Supported in v5.3+
-Download a snapshot from an archival location and then export a virtual machine using the downloaded snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmexportsnapshotwithdownloadfromcloud.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportSnapshotWithDownloadFromCloud { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InitiateBatchInstantRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InitiateBatchInstantRecovery' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Initiate a mass instant recovery for a group of VMs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatebatchinstantrecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InitiateBatchInstantRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InitiateBatchLiveMountV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InitiateBatchLiveMountV2' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Initiate a mass live mount for a group of VMs.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatebatchlivemountv2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InitiateBatchLiveMountV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InitiateDiskMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InitiateDiskMount' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Attaching disks from a snapshot to an existing virtual machine
-
-Supported in v5.0+
-Requests a snapshot mount to attach disks to an existing virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatediskmount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InitiateDiskMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InitiateInPlaceRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InitiateInPlaceRecovery' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Trigger an in-place recovery from a snapshot or point-in-time.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiateinplacerecovery.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InitiateInPlaceRecovery { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InitiateInstantRecoveryV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InitiateInstantRecoveryV2' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiateinstantrecoveryv2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InitiateInstantRecoveryV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InitiateLiveMountV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InitiateLiveMountV2' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Create a vSphere Live Mount from a snapshot or point-in-time.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevminitiatelivemountv2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InitiateLiveMountV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ListEsxiDatastores",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ListEsxiDatastores' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-List ESXi datastores
-
-Supported in v5.0+
-Retrieve a list of the datastores for a specified ESXi host.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmlistesxidatastores.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ListEsxiDatastores { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MountRelocate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MountRelocate' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Relocate a virtual machine to another datastore
-
-Supported in v5.0+
-Run storage VMotion to relocate a specified Live Mount into another data store.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmmountrelocate.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MountRelocate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "MountRelocateV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'MountRelocateV2' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmmountrelocatev2.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter MountRelocateV2 { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PowerOnOffLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PowerOnOffLiveMount' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Power a Live Mount on and off
-
-Supported in v5.0+
-Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmpoweronofflivemount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PowerOnOffLiveMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverFiles' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Restores multiple files/directories from snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RecoverFilesNew",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RecoverFilesNew' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Restores multiple files/directories from snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmrecoverfilesnew.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RecoverFilesNew { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RegisterAgent",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RegisterAgent' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Register Rubrik Backup Service
-
-Supported in v5.0+
-Register the Rubrik Backup Service that is running on a specified host with the specified Rubrik cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/vspherevmregisteragent.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RegisterAgent { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Update' operation
-in the 'VMware vSphere VM' API domain.
-Description of the operation:
-Update VM
-
-Supported in v5.0+
-Update a virtual machine with specified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatevspherevm.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Update { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

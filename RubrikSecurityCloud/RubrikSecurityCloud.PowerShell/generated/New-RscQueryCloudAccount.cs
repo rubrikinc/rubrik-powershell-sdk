@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Cloud Account' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -CloudAccount, -CurrentFeaturePermissions, -ExocomputeMappings, -LatestFeaturePermissions.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op CloudAccount,
-    /// which is equivalent to specifying -CloudAccount.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: CloudAccount, CurrentFeaturePermissions, ExocomputeMappings, or LatestFeaturePermissions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -220,75 +219,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryCloudAccount",
-        DefaultParameterSetName = "CloudAccount")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryCloudAccount : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "CloudAccount",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CloudAccount' operation
-in the 'Cloud Account' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "CloudAccount",
+                "CurrentFeaturePermissions",
+                "ExocomputeMappings",
+                "LatestFeaturePermissions",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cloudaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CloudAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CurrentFeaturePermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'CurrentFeaturePermissions' operation
-in the 'Cloud Account' API domain.
-Description of the operation:
-Current permissions are the set of permissions the client has given to Rubrik. This will retrieve permissions for all the features currently active in the account. If these permissions are older than the latest set of permissions we require, the account will go in Update Permissions state
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcurrentfeaturepermissionsforcloudaccounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CurrentFeaturePermissions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExocomputeMappings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ExocomputeMappings' operation
-in the 'Cloud Account' API domain.
-Description of the operation:
-List the mappings from accounts to Exocompute cloud accounts with specified filters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allcloudaccountexocomputemappings.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExocomputeMappings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "LatestFeaturePermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'LatestFeaturePermissions' operation
-in the 'Cloud Account' API domain.
-Description of the operation:
-Latest Permissions are the most recent set of permissions we require for a feature. This will retrieve the permissions for all the features currently active in the accounts along with the features passed in the call.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/alllatestfeaturepermissionsforcloudaccounts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter LatestFeaturePermissions { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

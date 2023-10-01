@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 7 operations
     /// in the 'Google Cloud Platform Native' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -Disk, -Disks, -GceInstance, -GceInstances, -Project, -Projects, -StoredDiskLocations.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op Disk,
-    /// which is equivalent to specifying -Disk.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: Disk, Disks, GceInstance, GceInstances, Project, Projects, or StoredDiskLocations.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -462,123 +461,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryGcpNative",
-        DefaultParameterSetName = "Disk")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryGcpNative : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "Disk",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Disk' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Get details of a GCP Disk
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativedisk.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Disk { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "Disk",
+                "Disks",
+                "GceInstance",
+                "GceInstances",
+                "Project",
+                "Projects",
+                "StoredDiskLocations",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Disks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Disks' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-List of GCP disks.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativedisks.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Disks { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GceInstance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GceInstance' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Get details of a GCE Instance
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativegceinstance.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GceInstance { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "GceInstances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'GceInstances' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-List of GCE instances.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativegceinstances.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter GceInstances { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Project",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Project' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-Get details of a GCP Project
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativeproject.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Project { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Projects",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Projects' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-List of GCP projects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativeprojects.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Projects { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "StoredDiskLocations",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'StoredDiskLocations' operation
-in the 'Google Cloud Platform Native' API domain.
-Description of the operation:
-lists distinct regions and zones of the GCP disks stored with Polaris
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/gcpnativestoreddisklocations.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter StoredDiskLocations { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

@@ -231,6 +231,14 @@ namespace RubrikSecurityCloud.Types
             return list[0].AsFieldSpec(conf.Child());
         }
 
+        public static List<string> SelectedFields(this List<CloudNativeSnapshotTypeDetails> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeSnapshotTypeDetails> list, 
             ExplorationContext ec)

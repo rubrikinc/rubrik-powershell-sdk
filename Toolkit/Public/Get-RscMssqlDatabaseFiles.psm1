@@ -64,7 +64,7 @@ function Get-RscMssqlDatabaseFiles {
 
   Process {
 
-    $query = New-RscQueryMssql -AllDatabaseRestoreFiles -FieldProfile $fieldProfile
+    $query = New-RscQueryMssql -Op AllDatabaseRestoreFiles -FieldProfile $fieldProfile
 
     # Customize inputs
     $inputValues = @{

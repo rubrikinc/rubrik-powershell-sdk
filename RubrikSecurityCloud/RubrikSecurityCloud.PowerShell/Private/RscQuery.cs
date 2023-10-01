@@ -15,6 +15,9 @@ using System.Management.Automation.Runspaces;
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
 
+// until we use #nullable enable
+#pragma warning disable CS8632
+
 // namespace is RubrikSecurityCloud (and not private)
 // because this class is used by the public cmdlets
 // and is visible to the user
@@ -34,6 +37,9 @@ namespace RubrikSecurityCloud
         internal IRscLogger Logger = null;
         internal string OperationsDir = null;
         internal string CustomOperationsDir = null;
+
+        // temporary until Op becomes an RscOp
+        internal RscOp? rscOp { get; set; } = null;
 
         /// <summary>
         /// Method that returns the query document as a string.
@@ -62,12 +68,13 @@ namespace RubrikSecurityCloud
         /// Create a new RscQuery object.
         /// </summary>
         public RscQuery(
-            string op,
+            RscOp op,
             RscGqlVars vars,
             System.Object field,
             RscGqlOperation gqlOperation)
         {
-            this.Op = op;
+            this.Op = op.OpName();
+            this.rscOp = op;
             this.Var = vars;
             this.Field = field;
             _gqlOperation = gqlOperation;
@@ -120,10 +127,9 @@ namespace RubrikSecurityCloud
         }
 
         /// <summary>
-        /// Return the flattened list of fields in the Field object.
+        /// Return a flattened list of all the fields in the Field object.
         /// </summary>
-        /// <returns></returns>
-        public List<string> FlattenField()
+        public List<string> AllFields()
         {
             return ReflectionUtils.FlattenField(this._gqlOperation.ReturnType);
         }

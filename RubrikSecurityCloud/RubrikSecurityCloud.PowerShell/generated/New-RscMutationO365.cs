@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 31 operations
     /// in the 'Office 365' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AddOrg, -BackupMailbox, -BackupOnedrive, -BackupSharePointSite, -BackupSharepointDrive, -BackupSharepointList, -BackupTeam, -CreateAppComplete, -CreateAppKickoff, -DeleteAzureApp, -DeleteOrg, -DeleteServiceAccount, -EnableSharePoint, -EnableTeams, -ExportMailbox, -InsertCustomerApp, -OauthConsentComplete, -OauthConsentKickoff, -PdlGroups, -RefreshOrg, -RestoreMailbox, -RestoreSnappable, -RestoreTeamsConversations, -RestoreTeamsFiles, -SaaSSetupKickoff, -SaasSetupComplete, -SetServiceAccount, -SetupKickoff, -UpdateAppAuthStatus, -UpdateAppPermissions, -UpdateOrgCustomName.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AddOrg,
-    /// which is equivalent to specifying -AddOrg.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreMailbox, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1859,507 +1858,56 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationO365",
-        DefaultParameterSetName = "AddOrg")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationO365 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AddOrg",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AddOrg' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Adds an O365 org to the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addo365org.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AddOrg { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AddOrg",
+                "BackupMailbox",
+                "BackupOnedrive",
+                "BackupSharePointSite",
+                "BackupSharepointDrive",
+                "BackupSharepointList",
+                "BackupTeam",
+                "CreateAppComplete",
+                "CreateAppKickoff",
+                "DeleteAzureApp",
+                "DeleteOrg",
+                "DeleteServiceAccount",
+                "EnableSharePoint",
+                "EnableTeams",
+                "ExportMailbox",
+                "InsertCustomerApp",
+                "OauthConsentComplete",
+                "OauthConsentKickoff",
+                "PdlGroups",
+                "RefreshOrg",
+                "RestoreMailbox",
+                "RestoreSnappable",
+                "RestoreTeamsConversations",
+                "RestoreTeamsFiles",
+                "SaaSSetupKickoff",
+                "SaasSetupComplete",
+                "SetServiceAccount",
+                "SetupKickoff",
+                "UpdateAppAuthStatus",
+                "UpdateAppPermissions",
+                "UpdateOrgCustomName",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BackupMailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupMailbox' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Backup mailbox workload.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365mailbox.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupMailbox { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupOnedrive",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupOnedrive' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Take on-demand snapshot for Onedrive.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365onedrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupOnedrive { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupSharePointSite",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupSharePointSite' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Take on-demand snapshot for a SharePoint site.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365sharepointsite.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupSharePointSite { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupSharepointDrive",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupSharepointDrive' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Take on-demand snapshot for Sharepoint drive.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365sharepointdrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupSharepointDrive { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupSharepointList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupSharepointList' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Take on-demand snapshot for SharePoint list.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365sharepointlist.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupSharepointList { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupTeam",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupTeam' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Take on-demand snapshot for Teams.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupo365team.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupTeam { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateAppComplete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAppComplete' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Completes the creation flow for an O365 Azure AD App.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createo365appcomplete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAppComplete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateAppKickoff",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateAppKickoff' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Kicks off the creation flow for an O365 Azure AD App.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createo365appkickoff.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateAppKickoff { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteAzureApp",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteAzureApp' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Deletes an O365 Azure AD App from the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteo365azureapp.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteAzureApp { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteOrg",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteOrg' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Deletes an O365 org from the account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteo365org.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteOrg { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteServiceAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteServiceAccount' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Deletes the service account for an org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteo365serviceaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteServiceAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EnableSharePoint",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'EnableSharePoint' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Enables SharePoint protection in the exocompute cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/enableo365sharepoint.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EnableSharePoint { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "EnableTeams",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'EnableTeams' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Enables Teams protection in the exocompute cluster.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/enableo365teams.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EnableTeams { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportMailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportMailbox' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Exports an Exchange mailbox.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exporto365mailbox.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportMailbox { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "InsertCustomerApp",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'InsertCustomerApp' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Inserts a Customer-hosted O365 Azure AD App.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/insertcustomero365app.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter InsertCustomerApp { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OauthConsentComplete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'OauthConsentComplete' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Completes the OAuth consent flow for an O365 Azure AD App.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365oauthconsentcomplete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OauthConsentComplete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "OauthConsentKickoff",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'OauthConsentKickoff' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Kicks off the OAuth consent flow for an O365 Azure AD App.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365oauthconsentkickoff.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter OauthConsentKickoff { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "PdlGroups",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'PdlGroups' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365pdlgroups.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter PdlGroups { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RefreshOrg",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RefreshOrg' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Refreshes an O365 org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refresho365org.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RefreshOrg { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreMailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreMailbox' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Restores an Exchange mailbox.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365mailbox.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreMailbox { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreSnappable",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreSnappable' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Restores an O365 snappable.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365snappable.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreSnappable { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreTeamsConversations",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreTeamsConversations' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Restore Team conversations.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365teamsconversations.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreTeamsConversations { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreTeamsFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreTeamsFiles' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Restore Team files.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoreo365teamsfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreTeamsFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SaaSSetupKickoff",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SaaSSetupKickoff' operation
-in the 'Office 365' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365saassetupkickoff.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SaaSSetupKickoff { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SaasSetupComplete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SaasSetupComplete' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Completes a Rubrik-Hosted setup flow.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365saassetupcomplete.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SaasSetupComplete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetServiceAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetServiceAccount' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Sets the service account for the org.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/seto365serviceaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetServiceAccount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SetupKickoff",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'SetupKickoff' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Kicks off an O365 subscription setup flow.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/o365setupkickoff.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SetupKickoff { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAppAuthStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAppAuthStatus' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Update O365 App authentication status to applicable app version.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateo365appauthstatus.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAppAuthStatus { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateAppPermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateAppPermissions' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Update O365 Azure app permission in Azure AD portal.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateo365apppermissions.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateAppPermissions { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateOrgCustomName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateOrgCustomName' operation
-in the 'Office 365' API domain.
-Description of the operation:
-Update the custom name for an O365 Organization.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateo365orgcustomname.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateOrgCustomName { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

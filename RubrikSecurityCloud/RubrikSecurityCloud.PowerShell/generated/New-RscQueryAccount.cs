@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 7 operations
     /// in the 'Account' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -EnabledFeatures, -Id, -Lookup, -Owners, -Products, -Settings, -Users.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op EnabledFeatures,
-    /// which is equivalent to specifying -EnabledFeatures.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -296,123 +295,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryAccount",
-        DefaultParameterSetName = "Id")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryAccount : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "EnabledFeatures",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'EnabledFeatures' operation
-in the 'Account' API domain.
-Description of the operation:
-Provides a list of all features enabled for the Rubrik account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allenabledfeaturesforaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter EnabledFeatures { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "EnabledFeatures",
+                "Id",
+                "Lookup",
+                "Owners",
+                "Products",
+                "Settings",
+                "Users",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Id",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Id' operation
-in the 'Account' API domain.
-Description of the operation:
-Account ID.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/accountid.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Id { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Lookup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Lookup' operation
-in the 'Account' API domain.
-Description of the operation:
-Retrieve account information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/lookupaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Lookup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Owners",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Owners' operation
-in the 'Account' API domain.
-Description of the operation:
-List of account owners.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allaccountowners.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Owners { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Products",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Products' operation
-in the 'Account' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allaccountproducts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Products { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Settings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Settings' operation
-in the 'Account' API domain.
-Description of the operation:
-This endpoint is deprecated.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/accountsettings.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Settings { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Users",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Users' operation
-in the 'Account' API domain.
-Description of the operation:
-All the users on the current account.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allusersonaccount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Users { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

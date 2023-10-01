@@ -1,9 +1,9 @@
 BeforeAll {
     & "$PSScriptRoot\..\..\Utils\import.ps1"
 }
-Describe -Name 'New-RscQueryMssql -TopLevelDescendant' -Fixture {
+Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
     It -Name 'PhysicalHost' -Test {
-        $query=(New-RscQueryMssql -Topleveldescendant)
+        $query=(New-RscQueryMssql -Op TopLevelDescendants)
 
         # Field is a MssqlTopLevelDescendantTypeConnection
         $query.Field.GetType().Name | Should -Be 'MssqlTopLevelDescendantTypeConnection'

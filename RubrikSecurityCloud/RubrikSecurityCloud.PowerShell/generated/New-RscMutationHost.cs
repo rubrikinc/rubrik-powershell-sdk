@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 6 operations
     /// in the 'Host' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BulkDelete, -BulkRefresh, -BulkRegister, -BulkUpdate, -ChangeVfd, -Refresh.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BulkDelete,
-    /// which is equivalent to specifying -BulkDelete.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkUpdate, ChangeVfd, or Refresh.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -437,110 +436,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationHost",
-        DefaultParameterSetName = "Refresh")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationHost : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BulkDelete",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkDelete' operation
-in the 'Host' API domain.
-Description of the operation:
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BulkDelete",
+                "BulkRefresh",
+                "BulkRegister",
+                "BulkUpdate",
+                "ChangeVfd",
+                "Refresh",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletehost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkDelete { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkRefresh",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkRefresh' operation
-in the 'Host' API domain.
-Description of the operation:
-Refresh multiple hosts with a single request.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkrefreshhosts.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkRefresh { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkRegister",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkRegister' operation
-in the 'Host' API domain.
-Description of the operation:
-Register hosts
-
-Supported in v5.0+
-Register hosts with Rubrik clusters.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkregisterhost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkRegister { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkUpdate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdate' operation
-in the 'Host' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdatehost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdate { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ChangeVfd",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ChangeVfd' operation
-in the 'Host' API domain.
-Description of the operation:
-Install or uninstall volume filter driver on hosts.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/changevfdonhost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ChangeVfd { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Refresh",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'Refresh' operation
-in the 'Host' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/refreshhost.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Refresh { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

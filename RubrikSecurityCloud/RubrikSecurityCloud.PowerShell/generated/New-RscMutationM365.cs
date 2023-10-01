@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 4 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -BackupMailbox, -BackupOnedrive, -BackupSharepointDrive, -BackupTeam.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op BackupMailbox,
-    /// which is equivalent to specifying -BackupMailbox.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: BackupMailbox, BackupOnedrive, BackupSharepointDrive, or BackupTeam.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -213,75 +212,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationM365",
-        DefaultParameterSetName = "BackupTeam")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationM365 : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "BackupMailbox",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupMailbox' operation
-in the 'Microsoft 365' API domain.
-Description of the operation:
-Backup mailbox workload.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupm365mailbox.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupMailbox { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "BackupMailbox",
+                "BackupOnedrive",
+                "BackupSharepointDrive",
+                "BackupTeam",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "BackupOnedrive",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupOnedrive' operation
-in the 'Microsoft 365' API domain.
-Description of the operation:
-Take on-demand snapshot for Onedrive.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupm365onedrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupOnedrive { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupSharepointDrive",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupSharepointDrive' operation
-in the 'Microsoft 365' API domain.
-Description of the operation:
-Take on-demand snapshot for Sharepoint drive.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupm365sharepointdrive.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupSharepointDrive { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BackupTeam",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BackupTeam' operation
-in the 'Microsoft 365' API domain.
-Description of the operation:
-Take on-demand snapshot for Teams.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/backupm365team.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BackupTeam { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

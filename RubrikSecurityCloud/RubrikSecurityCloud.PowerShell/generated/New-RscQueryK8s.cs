@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 7 operations
     /// in the 'Kubernetes' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AppManifest, -Cluster, -Clusters, -Namespace, -Namespaces, -ReplicaSnapshotInfos, -SnapshotInfo.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AppManifest,
-    /// which is equivalent to specifying -AppManifest.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AppManifest, Cluster, Clusters, Namespace, Namespaces, ReplicaSnapshotInfos, or SnapshotInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -389,123 +388,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscQueryK8s",
-        DefaultParameterSetName = "Cluster")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscQueryK8s : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AppManifest",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'AppManifest' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-Kubernetes Rubrik Backup Service manifest.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8sappmanifest.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AppManifest { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AppManifest",
+                "Cluster",
+                "Clusters",
+                "Namespace",
+                "Namespaces",
+                "ReplicaSnapshotInfos",
+                "SnapshotInfo",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Cluster' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8scluster.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Cluster { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Clusters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Clusters' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8sclusters.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Clusters { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Namespace",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Namespace' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8snamespace.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Namespace { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "Namespaces",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'Namespaces' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8snamespaces.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter Namespaces { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ReplicaSnapshotInfos",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'ReplicaSnapshotInfos' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-Information of all replicas for a Kubernetes snapshot.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/allk8sreplicasnapshotinfos.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ReplicaSnapshotInfos { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "SnapshotInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a query object for the 'SnapshotInfo' operation
-in the 'Kubernetes' API domain.
-Description of the operation:
-Kubernetes snapshot information.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/k8ssnapshotinfo.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter SnapshotInfo { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {

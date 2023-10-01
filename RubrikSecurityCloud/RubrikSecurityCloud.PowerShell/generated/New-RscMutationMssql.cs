@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using RubrikSecurityCloud;
@@ -36,11 +37,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Invoke-Rsc.
     /// There are 17 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
-    /// query is for by specifying the appropriate switch parameter;
-    /// one of: -AssignSlaDomainProperties, -AssignSlaDomainPropertiesAsync, -BrowseDatabaseSnapshot, -BulkCreateOnDemandBackup, -BulkUpdateDbs, -CreateLiveMount, -CreateLogShippingConfiguration, -CreateOnDemandBackup, -DeleteDbSnapshots, -DeleteLiveMount, -DownloadDatabaseBackupFiles, -DownloadDatabaseFilesFromArchivalLocation, -ExportDatabase, -RestoreDatabase, -TakeLogBackup, -UpdateDefaultProperties, -UpdateLogShippingConfiguration.
-    /// Alternatively, you can specify the operation by setting the
-    /// -Op parameter, for example: -Op AssignSlaDomainProperties,
-    /// which is equivalent to specifying -AssignSlaDomainProperties.
+    /// query is for by specifying the appropriate value for the
+    /// -Operation parameter;
+    /// one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1023,289 +1022,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "New",
         "RscMutationMssql",
-        DefaultParameterSetName = "BulkUpdateDbs")
+        DefaultParameterSetName = "Operation")
     ]
     public class New_RscMutationMssql : RscGqlPSCmdlet
     {
-        
         [Parameter(
-            ParameterSetName = "AssignSlaDomainProperties",
-            Mandatory = false,
+            Mandatory = true, 
+            ParameterSetName = "Operation",
+            HelpMessage = "API Operation. The set of operations depends on the API domain. See reference at: https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/docs/domains_and_operations.md",
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AssignSlaDomainProperties' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Assign SLA domain properties to Mssql objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignmssqlsladomainproperties.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AssignSlaDomainProperties { get; set; }
+            ValueFromPipeline = true)]
+            [ValidateSet(
+                "AssignSlaDomainProperties",
+                "AssignSlaDomainPropertiesAsync",
+                "BrowseDatabaseSnapshot",
+                "BulkCreateOnDemandBackup",
+                "BulkUpdateDbs",
+                "CreateLiveMount",
+                "CreateLogShippingConfiguration",
+                "CreateOnDemandBackup",
+                "DeleteDbSnapshots",
+                "DeleteLiveMount",
+                "DownloadDatabaseBackupFiles",
+                "DownloadDatabaseFilesFromArchivalLocation",
+                "ExportDatabase",
+                "RestoreDatabase",
+                "TakeLogBackup",
+                "UpdateDefaultProperties",
+                "UpdateLogShippingConfiguration",
+                IgnoreCase = true)]
+        public string Operation { get; set; } = "";
 
-        
-        [Parameter(
-            ParameterSetName = "AssignSlaDomainPropertiesAsync",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'AssignSlaDomainPropertiesAsync' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Assign SLA domain properties to Mssql objects.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignmssqlsladomainpropertiesasync.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter AssignSlaDomainPropertiesAsync { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BrowseDatabaseSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BrowseDatabaseSnapshot' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browsemssqldatabasesnapshot.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BrowseDatabaseSnapshot { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkCreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkCreateOnDemandBackup' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Take a bulk on-demand backup of a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkcreateondemandmssqlbackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkCreateOnDemandBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "BulkUpdateDbs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'BulkUpdateDbs' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Update multiple Microsoft SQL databases with the specified properties.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdatemssqldbs.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter BulkUpdateDbs { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateLiveMount' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Create live mount of a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmssqllivemount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateLiveMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateLogShippingConfiguration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateLogShippingConfiguration' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Create log shipping configuration of a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmssqllogshippingconfiguration.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateLogShippingConfiguration { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "CreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'CreateOnDemandBackup' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Take an on-demand backup of a Microsoft SQL Database
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemandmssqlbackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter CreateOnDemandBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteDbSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteDbSnapshots' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Delete snapshots of a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemssqldbsnapshots.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteDbSnapshots { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DeleteLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DeleteLiveMount' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Delete a Live Mount of a SQL Server database
-
-Supported in v5.0+
-Create an async request to delete a Live Mount of a SQL Server database. Poll the task status by using /mssql/request/{id}.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemssqllivemount.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DeleteLiveMount { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadDatabaseBackupFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadDatabaseBackupFiles' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Downloads a list of snapshot and log backups from a Microsoft SQL database
-
-Supported in v5.2+
-Downloads a list of snapshot and log backups from a Microsoft SQL database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmssqldatabasebackupfiles.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadDatabaseBackupFiles { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "DownloadDatabaseFilesFromArchivalLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'DownloadDatabaseFilesFromArchivalLocation' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Download Microsoft SQL Database backup files from archival location.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmssqldatabasefilesfromarchivallocation.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter DownloadDatabaseFilesFromArchivalLocation { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "ExportDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'ExportDatabase' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Create a request to export a Microsoft SQL database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportmssqldatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter ExportDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "RestoreDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'RestoreDatabase' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Create a request to restore a Microsoft SQL database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoremssqldatabase.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter RestoreDatabase { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "TakeLogBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'TakeLogBackup' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Take an on-demand log backup for a Microsoft SQL database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takemssqllogbackup.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter TakeLogBackup { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateDefaultProperties",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateDefaultProperties' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Update the default properties for Microsoft SQL databases.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemssqldefaultproperties.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateDefaultProperties { get; set; }
-
-        
-        [Parameter(
-            ParameterSetName = "UpdateLogShippingConfiguration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a mutation object for the 'UpdateLogShippingConfiguration' operation
-in the 'Microsoft SQL Server' API domain.
-Description of the operation:
-Update log shipping configuration of a Microsoft SQL Database.
-[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemssqllogshippingconfiguration.doc.html]"
-            // No Position -> named parameter only.
-        )]
-        public SwitchParameter UpdateLogShippingConfiguration { get; set; }
-
-
+        internal override string GetOperationParameter()
+        {
+            return this.Operation;
+        }
 
         protected override void ProcessRecord()
         {
