@@ -52,10 +52,10 @@ function Get-RscCluster {
         #region Create Query
         switch ( $PSCmdlet.ParameterSetName ){
             "List" {
-                $query = New-RscQueryCluster -List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
             }
             "Name"{
-                $query = New-RscQueryCluster -List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
                 $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
                 $query.Var.filter.Name = $Name
             }
