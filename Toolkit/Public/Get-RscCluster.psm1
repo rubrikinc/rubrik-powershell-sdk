@@ -170,7 +170,7 @@ function Get-RscCluster {
                 $vars.first = $First
             }
         }
-        $query = New-RscQueryCluster -Op $operation -Var $vars -FieldProfile $fieldProfile
+        $query = New-RscQueryCluster -Op $operation -Var $vars -FieldProfile $fieldProfile -RemoveField Nodes.IsHealthy
 
         # Skip sending, return query object
         if ( $AsQuery ) {
