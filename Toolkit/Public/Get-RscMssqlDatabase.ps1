@@ -72,7 +72,15 @@ function Get-RscMssqlDatabase {
                 $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile -AddField Nodes.PhysicalPath 
             }
             "Name"{
-                $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile -AddField Nodes.PhysicalPath
+                $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile `
+                    -AddField Nodes.PhysicalPath, `
+                    Nodes.PostBackupScript, `
+                    Nodes.PreBackupScript, `
+                    Nodes.ConfiguredSlaDomain, `
+                    Nodes.CopyOnly, `
+                    Nodes.HostLogRetention, `
+                    Nodes.LogBackupFrequencyInSeconds, `
+                    Nodes.LogBackupRetentionInHours       
                 $query.Var.filter = @()
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH

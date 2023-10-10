@@ -15,10 +15,7 @@ function Set-RscMssqlDatabase {
     ___ Add example here ___
     #>
 
-    [CmdletBinding(
-        # ___ Example ___
-        DefaultParameterSetName = ""
-    )]
+    [CmdletBinding()]
     Param(
         [Parameter(
             Mandatory = $true, 
@@ -26,41 +23,39 @@ function Set-RscMssqlDatabase {
         )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
         [Parameter(Mandatory = $true)]
-        [String]$clusterId,
+        [String]$ClusterId,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "updateProperties")]
+        [Parameter(Mandatory = $false)]
         [String]$SlaDomainId,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "updateProperties")]
-        [bool]$isPaused,
+        [Parameter(Mandatory = $false)]
+        [bool]$IsPaused,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "updateProperties")]
-        [int]$maxDataStreams,
+        [Parameter(Mandatory = $false)]
+        [int]$MaxDataStreams,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "updateProperties")]
-        [bool]$shouldForceFull,
-
-        [Parameter(Mandatory = $false, ParameterSetName = "Add Pre-BackupScript")]
-        [Switch]$AddPreBackupScript,
-
-        [Parameter(Mandatory = $false, ParameterSetName = "Add Post-BackupScript")]
-        [Switch]$AddPostBackupScript,
+        [Parameter(Mandatory = $false)]
+        [bool]$ShouldForceFull,
 
         [Parameter(Mandatory = $false, ParameterSetName = "Add Pre-BackupScript")]
-        [Parameter(Mandatory = $false, ParameterSetName = "Add Post-BackupScript")]
-        [Parameter(Mandatory = $false,  ParameterSetName = "pre/postBackupScript")]
         [ValidateSet("SCRIPT_ERROR_ACTION_ABORT", "SCRIPT_ERROR_ACTION_CONTINUE")]
-        [String]$scriptErrorAction,
+        [String]$PreBackupScriptErrorAction,
 
         [Parameter(Mandatory = $false, ParameterSetName = "Add Pre-BackupScript")]
-        [Parameter(Mandatory = $false, ParameterSetName = "Add Post-BackupScript")]
-        [Parameter(Mandatory = $false,  ParameterSetName = "pre/postBackupScript")]
-        [String]$scriptPath,
+        [String]$PreBackupScriptPath,
 
         [Parameter(Mandatory = $false, ParameterSetName = "Add Pre-BackupScript")]
+        [int]$PreBackupScriptTimeoutMs,
+        
         [Parameter(Mandatory = $false, ParameterSetName = "Add Post-BackupScript")]
-        [Parameter(Mandatory = $false,  ParameterSetName = "pre/postBackupScript")]
-        [int]$timeoutMs,
+        [ValidateSet("SCRIPT_ERROR_ACTION_ABORT", "SCRIPT_ERROR_ACTION_CONTINUE")]
+        [String]$PostBackupScriptErrorAction,
+
+        [Parameter(Mandatory = $false, ParameterSetName = "Add Post-BackupScript")]
+        [String]$PostBackupScriptPath,
+
+        [Parameter(Mandatory = $false, ParameterSetName = "Add Post-BackupScript")]
+        [int]$PostBackupScriptTimeoutMs,
 
         [Parameter(Mandatory = $false, ParameterSetName = "Remove Pre-BackupScript")]
         [Switch]$RemovePreBackupScript,
@@ -68,20 +63,20 @@ function Set-RscMssqlDatabase {
         [Parameter(Mandatory = $false, ParameterSetName = "Remove Post-BackupScript")]
         [Switch]$RemovePostBackupScript,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "mssqlSlaRelatedProperties")]
-        [bool]$copyOnly,
+        [Parameter(Mandatory = $false)]
+        [bool]$CopyOnly,
         
-        [Parameter(Mandatory = $false, ParameterSetName = "mssqlSlaRelatedProperties")]
-        [bool]$hasLogConfigFromSla,
+        [Parameter(Mandatory = $false)]
+        [bool]$HasLogConfigFromSla,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "mssqlSlaRelatedProperties")]
-        [int]$hostLogRetention,
+        [Parameter(Mandatory = $false)]
+        [int]$HostLogRetention,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "mssqlSlaRelatedProperties")]
-        [int]$logBackupFrequencyInSeconds,
+        [Parameter(Mandatory = $false)]
+        [int]$LogBackupFrequencyInSeconds,
 
-        [Parameter(Mandatory = $false, ParameterSetName = "mssqlSlaRelatedProperties")]
-        [int]$logRetentionHours
+        [Parameter(Mandatory = $false)]
+        [int]$LogRetentionHours
     )
     
     Process {
@@ -107,10 +102,10 @@ function Set-RscMssqlDatabase {
         # $query.Var.input.dbsUpdateProperties.updateProperties.mssqlSlaPatchProperties.configuredSLADomainId = 
         # $query.Var.input.dbsUpdateProperties.updateProperties.mssqlSlaPatchProperties.mssqlSlaRelatedProperties = 
         # $query.Var.input.dbsUpdateProperties.updateProperties.mssqlSlaPatchProperties.useConfiguredDefaultLogRetention = 
-
+        
+        $dbsUpdateProperties.updateProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDbUpdateInput
         switch ( $PSCmdlet.ParameterSetName ){
             "updateProperties"{
-                $dbsUpdateProperties.updateProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDbUpdateInput
                 if($PSBoundParameters.ContainsKey('configuredSLADomainId')){
                     $dbsUpdateProperties.updateProperties.configuredSLADomainId = $SlaDomainId
                 }
@@ -138,15 +133,15 @@ function Set-RscMssqlDatabase {
             }
             "Remove Pre-BackupScript"{
                 $dbsUpdateProperties.updateProperties.preBackupScript = New-Object -TypeName RubrikSecurityCloud.Types.MssqlScriptDetailInput
-                # $dbsUpdateProperties.updateProperties.preBackupScript.scriptErrorAction = ""
-                # $dbsUpdateProperties.updateProperties.preBackupScript.scriptPath = $null
-                # $dbsUpdateProperties.updateProperties.preBackupScript.timeoutMs = $null
+                $dbsUpdateProperties.updateProperties.preBackupScript.scriptErrorAction = $null
+                $dbsUpdateProperties.updateProperties.preBackupScript.scriptPath = $null
+                $dbsUpdateProperties.updateProperties.preBackupScript.timeoutMs = $null
             }
             "Remove Post-BackupScript"{
                 $dbsUpdateProperties.updateProperties.postBackupScript = New-Object -TypeName RubrikSecurityCloud.Types.MssqlScriptDetailInput
-                # $dbsUpdateProperties.updateProperties.postBackupScript.scriptErrorAction = $null
-                # $dbsUpdateProperties.updateProperties.postBackupScript.scriptPath = $null
-                # $dbsUpdateProperties.updateProperties.postBackupScript.timeoutMs = $null
+                $dbsUpdateProperties.updateProperties.postBackupScript.scriptErrorAction = $null
+                $dbsUpdateProperties.updateProperties.postBackupScript.scriptPath = $null
+                $dbsUpdateProperties.updateProperties.postBackupScript.timeoutMs = $null
             }
             "mssqlSlaRelatedProperties"{
                 $dbsUpdateProperties.updateProperties.mssqlSlaRelatedProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaRelatedPropertiesInput
@@ -160,5 +155,6 @@ function Set-RscMssqlDatabase {
         $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
         #endregion
         $query.Invoke()
+        
     } 
 }
