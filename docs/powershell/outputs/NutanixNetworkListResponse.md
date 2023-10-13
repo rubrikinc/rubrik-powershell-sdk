@@ -10,3 +10,6 @@ Supported in v8.1+
 - total: System.Int32
   - Supported in v8.1+
   Total list responses.
+- nextCursor: System.String
+  - Supported in v9.0+
+  Cursor to fetch the next set of results.

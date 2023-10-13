@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOrgAdmin")]
         public System.Boolean? IsOrgAdmin { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public SsoGroup Set(
         System.String? Id = null,
-        System.Boolean? IsOrgAdmin = null
+        System.Boolean? IsOrgAdmin = null,
+        System.String? Name = null
     ) 
     {
         if ( Id != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOrgAdmin != null ) {
             this.IsOrgAdmin = IsOrgAdmin;
+        }
+        if ( Name != null ) {
+            this.Name = Name;
         }
         return this;
     }
@@ -77,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isOrgAdmin\n" ;
             } else {
                 s += ind + "isOrgAdmin\n" ;
+            }
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
             }
         }
         return s;
@@ -119,6 +137,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsOrgAdmin != null && ec.Excludes("isOrgAdmin",true))
         {
             this.IsOrgAdmin = null;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (ec.Includes("name",true))
+        {
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 

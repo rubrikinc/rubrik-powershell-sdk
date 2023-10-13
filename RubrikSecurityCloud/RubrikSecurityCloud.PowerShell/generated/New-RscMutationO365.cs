@@ -1363,6 +1363,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 		}
+    /// 		# OPTIONAL
+    /// 		inplaceRestoreConfig = @{
+    /// 			# REQUIRED
+    /// 			nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
@@ -3420,6 +3425,11 @@ $query.Var.input = @{
 					snapshotNum = $someInt
 				}
 			)
+		}
+		# OPTIONAL
+		inplaceRestoreConfig = @{
+			# REQUIRED
+			nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
 		}
 	}
 	# REQUIRED

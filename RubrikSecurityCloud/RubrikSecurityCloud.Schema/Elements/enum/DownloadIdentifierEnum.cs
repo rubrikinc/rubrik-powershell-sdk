@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORION_THREAT_HUNT_DOWNLOAD")]
         ORION_THREAT_HUNT_DOWNLOAD,
 
+        [EnumMember(Value = "PRECHECKS_CDM_API_METRICS_CSV_DOWNLOAD")]
+        PRECHECKS_CDM_API_METRICS_CSV_DOWNLOAD,
+
         [EnumMember(Value = "REPORT")]
         REPORT,
 

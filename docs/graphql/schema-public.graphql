@@ -311,10 +311,15 @@ type Query {
     # Rubrik ID of the Azure SQL Database Server.
     azureSqlDatabaseServerRubrikId: UUID!): [AzureSqlDatabaseServerElasticPool!]!
 
-  # List all storage accounts from Azure.
+  # List all Azure storage accounts by resource group.
   allAzureStorageAccounts(
-    # Storage accounts request params for Azure.
+    # Azure storage accounts request parameters by resource group.
     storageAccountsRequest: AzureStorageAccountsReq!): [String!]!
+
+  # List all Azure storage accounts by region.
+  allAzureStorageAccountsByRegion(
+    # Azure storage accounts request parameters by region.
+    input: AzureStorageAccountsByRegionInput!): [AzureStorageAccountCcprovision!]!
 
   # Get subnets for a given account in Azure.
   allAzureSubnets(
@@ -852,6 +857,9 @@ type Query {
   allQuarantinedDetailsForWorkload(
     # The ID of the workload.
     workloadId: String!): [QuarantineSpec!]!
+
+  # Rubrik Cloud Vault (RCV) account entitlements with their respective order numbers.
+  allRcvAccountEntitlements: AllRcvAccountEntitlements!
 
   # Retrieves a list og all resource groups in the specified account.
   allResourceGroupsFromAzure(
@@ -2635,6 +2643,14 @@ type Query {
   db2Database(
     # The Rubrik UUID for the object.
     fid: UUID!): Db2Database!
+
+  # Retrieve the status of a Db2 database job request
+  # 
+  # Supported in v8.0+
+  # Retrieve details about a Db2 database-related request which includes the status of the database-related job.
+  db2DatabaseJobStatus(
+    # Input for V1GetDb2DatabaseAsyncRequestStatus.
+    input: GetDb2DatabaseAsyncRequestStatusInput!): AsyncRequestStatus!
 
   # Connection of filtered db2 databases based on specific filters.
   db2Databases(
@@ -5299,6 +5315,12 @@ type Query {
 
     # Filter for the given list of security identifiers.
     sids: [String!],
+
+    # Filter objects with insights metadata ID.
+    insightsMetadataId: String,
+
+    # Specifies whether to include the insights marker.
+    includeInsightsMarker: Boolean,
 
     # Filter objects with user access enabled.
     userAccessObjectsFilter: Boolean! = false,
@@ -12811,6 +12833,11 @@ input AllEventDigestsInput {
   # User IDs of recipients whose event digests must be retrieved.
   recipientUserIds: [String!]!
 }
+# Rubrik Cloud Vault (RCV) account entitlements with their respective order numbers.
+type AllRcvAccountEntitlements {
+  # Rubrik Cloud Vault (RCV) entitlements with their respective order numbers.
+  entitlements: [RcvEntitlementWithOrderNumber!]
+}
 # Storage arrays added to Rubrik clusters, grouped by cluster.
 type AllStorageArraysReply {
   # List of storage arrays in Rubrik clusters.
@@ -14564,6 +14591,9 @@ enum AuditType {
 
   # Recovery audit.
   RECOVERY
+
+  # Orchestrated Application Recovery schedule audit.
+  RECOVERY_SCHEDULE
 
   # Search audit.
   SEARCH
@@ -16455,6 +16485,54 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is c4.xlarge.
   C4_XLARGE
 
+  # EC2 instance type is c5ad.12xlarge.
+  C5AD_12XLARGE
+
+  # EC2 instance type is c5ad.16xlarge.
+  C5AD_16XLARGE
+
+  # EC2 instance type is c5ad.24xlarge.
+  C5AD_24XLARGE
+
+  # EC2 instance type is c5ad.2xlarge.
+  C5AD_2XLARGE
+
+  # EC2 instance type is c5ad.4xlarge.
+  C5AD_4XLARGE
+
+  # EC2 instance type is c5ad.8xlarge.
+  C5AD_8XLARGE
+
+  # EC2 instance type is c5ad.large.
+  C5AD_LARGE
+
+  # EC2 instance type is c5ad.xlarge.
+  C5AD_XLARGE
+
+  # EC2 instance type is c5a.12xlarge.
+  C5A_12XLARGE
+
+  # EC2 instance type is c5a.16xlarge.
+  C5A_16XLARGE
+
+  # EC2 instance type is c5a.24xlarge.
+  C5A_24XLARGE
+
+  # EC2 instance type is c5a.2xlarge.
+  C5A_2XLARGE
+
+  # EC2 instance type is c5a.4xlarge.
+  C5A_4XLARGE
+
+  # EC2 instance type is c5a.8xlarge.
+  C5A_8XLARGE
+
+  # EC2 instance type is c5a.large.
+  C5A_LARGE
+
+  # EC2 instance type is c5a.xlarge.
+  C5A_XLARGE
+
   # EC2 instance type is c5d.12xlarge.
   C5D_12XLARGE
 
@@ -16497,6 +16575,9 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is c5n.large.
   C5N_LARGE
 
+  # EC2 instance type is c5n.metal.
+  C5N_METAL
+
   # EC2 instance type is c5n.xlarge.
   C5N_XLARGE
 
@@ -16527,6 +16608,309 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is c5.xlarge.
   C5_XLARGE
 
+  # EC2 instance type is c6a.12xlarge.
+  C6A_12XLARGE
+
+  # EC2 instance type is c6a.16xlarge.
+  C6A_16XLARGE
+
+  # EC2 instance type is c6a.24xlarge.
+  C6A_24XLARGE
+
+  # EC2 instance type is c6a.2xlarge.
+  C6A_2XLARGE
+
+  # EC2 instance type is c6a.32xlarge.
+  C6A_32XLARGE
+
+  # EC2 instance type is c6a.48xlarge.
+  C6A_48XLARGE
+
+  # EC2 instance type is c6a.4xlarge.
+  C6A_4XLARGE
+
+  # EC2 instance type is c6a.8xlarge.
+  C6A_8XLARGE
+
+  # EC2 instance type is c6a.large.
+  C6A_LARGE
+
+  # EC2 instance type is c6a.metal.
+  C6A_METAL
+
+  # EC2 instance type is c6a.xlarge.
+  C6A_XLARGE
+
+  # EC2 instance type is c6gd.12xlarge.
+  C6GD_12XLARGE
+
+  # EC2 instance type is c6gd.16xlarge.
+  C6GD_16XLARGE
+
+  # EC2 instance type is c6gd.2xlarge.
+  C6GD_2XLARGE
+
+  # EC2 instance type is c6gd.4xlarge.
+  C6GD_4XLARGE
+
+  # EC2 instance type is c6gd.8xlarge.
+  C6GD_8XLARGE
+
+  # EC2 instance type is c6gd.large.
+  C6GD_LARGE
+
+  # EC2 instance type is c6gd.medium.
+  C6GD_MEDIUM
+
+  # EC2 instance type is c6gd.metal.
+  C6GD_METAL
+
+  # EC2 instance type is c6gd.xlarge.
+  C6GD_XLARGE
+
+  # EC2 instance type is c6gn.12xlarge.
+  C6GN_12XLARGE
+
+  # EC2 instance type is c6gn.16xlarge.
+  C6GN_16XLARGE
+
+  # EC2 instance type is c6gn.2xlarge.
+  C6GN_2XLARGE
+
+  # EC2 instance type is c6gn.4xlarge.
+  C6GN_4XLARGE
+
+  # EC2 instance type is c6gn.8xlarge.
+  C6GN_8XLARGE
+
+  # EC2 instance type is c6gn.large.
+  C6GN_LARGE
+
+  # EC2 instance type is c6gn.medium.
+  C6GN_MEDIUM
+
+  # EC2 instance type is c6gn.xlarge.
+  C6GN_XLARGE
+
+  # EC2 instance type is c6g.12xlarge.
+  C6G_12XLARGE
+
+  # EC2 instance type is c6g.16xlarge.
+  C6G_16XLARGE
+
+  # EC2 instance type is c6g.2xlarge.
+  C6G_2XLARGE
+
+  # EC2 instance type is c6g.4xlarge.
+  C6G_4XLARGE
+
+  # EC2 instance type is c6g.8xlarge.
+  C6G_8XLARGE
+
+  # EC2 instance type is c6g.large.
+  C6G_LARGE
+
+  # EC2 instance type is c6g.medium.
+  C6G_MEDIUM
+
+  # EC2 instance type is c6g.metal.
+  C6G_METAL
+
+  # EC2 instance type is c6g.xlarge.
+  C6G_XLARGE
+
+  # EC2 instance type is c6id.12xlarge.
+  C6ID_12XLARGE
+
+  # EC2 instance type is c6id.16xlarge.
+  C6ID_16XLARGE
+
+  # EC2 instance type is c6id.24xlarge.
+  C6ID_24XLARGE
+
+  # EC2 instance type is c6id.2xlarge.
+  C6ID_2XLARGE
+
+  # EC2 instance type is c6id.32xlarge.
+  C6ID_32XLARGE
+
+  # EC2 instance type is c6id.4xlarge.
+  C6ID_4XLARGE
+
+  # EC2 instance type is c6id.8xlarge.
+  C6ID_8XLARGE
+
+  # EC2 instance type is c6id.large.
+  C6ID_LARGE
+
+  # EC2 instance type is c6id.metal.
+  C6ID_METAL
+
+  # EC2 instance type is c6id.xlarge.
+  C6ID_XLARGE
+
+  # EC2 instance type is c6in.12xlarge.
+  C6IN_12XLARGE
+
+  # EC2 instance type is c6in.16xlarge.
+  C6IN_16XLARGE
+
+  # EC2 instance type is c6in.24xlarge.
+  C6IN_24XLARGE
+
+  # EC2 instance type is c6in.2xlarge.
+  C6IN_2XLARGE
+
+  # EC2 instance type is c6in.32xlarge.
+  C6IN_32XLARGE
+
+  # EC2 instance type is c6in.4xlarge.
+  C6IN_4XLARGE
+
+  # EC2 instance type is c6in.8xlarge.
+  C6IN_8XLARGE
+
+  # EC2 instance type is c6in.large.
+  C6IN_LARGE
+
+  # EC2 instance type is c6in.metal.
+  C6IN_METAL
+
+  # EC2 instance type is c6in.xlarge.
+  C6IN_XLARGE
+
+  # EC2 instance type is c6i.12xlarge.
+  C6I_12XLARGE
+
+  # EC2 instance type is c6i.16xlarge.
+  C6I_16XLARGE
+
+  # EC2 instance type is c6i.24xlarge.
+  C6I_24XLARGE
+
+  # EC2 instance type is c6i.2xlarge.
+  C6I_2XLARGE
+
+  # EC2 instance type is c6i.32xlarge.
+  C6I_32XLARGE
+
+  # EC2 instance type is c6i.4xlarge.
+  C6I_4XLARGE
+
+  # EC2 instance type is c6i.8xlarge.
+  C6I_8XLARGE
+
+  # EC2 instance type is c6i.large.
+  C6I_LARGE
+
+  # EC2 instance type is c6i.metal.
+  C6I_METAL
+
+  # EC2 instance type is c6i.xlarge.
+  C6I_XLARGE
+
+  # EC2 instance type is c7gd.12xlarge.
+  C7GD_12XLARGE
+
+  # EC2 instance type is c7gd.16xlarge.
+  C7GD_16XLARGE
+
+  # EC2 instance type is c7gd.2xlarge.
+  C7GD_2XLARGE
+
+  # EC2 instance type is c7gd.4xlarge.
+  C7GD_4XLARGE
+
+  # EC2 instance type is c7gd.8xlarge.
+  C7GD_8XLARGE
+
+  # EC2 instance type is c7gd.large.
+  C7GD_LARGE
+
+  # EC2 instance type is c7gd.medium.
+  C7GD_MEDIUM
+
+  # EC2 instance type is c7gd.xlarge.
+  C7GD_XLARGE
+
+  # EC2 instance type is c7gn.12xlarge.
+  C7GN_12XLARGE
+
+  # EC2 instance type is c7gn.16xlarge.
+  C7GN_16XLARGE
+
+  # EC2 instance type is c7gn.2xlarge.
+  C7GN_2XLARGE
+
+  # EC2 instance type is c7gn.4xlarge.
+  C7GN_4XLARGE
+
+  # EC2 instance type is c7gn.8xlarge.
+  C7GN_8XLARGE
+
+  # EC2 instance type is c7gn.large.
+  C7GN_LARGE
+
+  # EC2 instance type is c7gn.medium.
+  C7GN_MEDIUM
+
+  # EC2 instance type is c7gn.xlarge.
+  C7GN_XLARGE
+
+  # EC2 instance type is c7g.12xlarge.
+  C7G_12XLARGE
+
+  # EC2 instance type is c7g.16xlarge.
+  C7G_16XLARGE
+
+  # EC2 instance type is c7g.2xlarge.
+  C7G_2XLARGE
+
+  # EC2 instance type is c7g.4xlarge.
+  C7G_4XLARGE
+
+  # EC2 instance type is c7g.8xlarge.
+  C7G_8XLARGE
+
+  # EC2 instance type is c7g.large.
+  C7G_LARGE
+
+  # EC2 instance type is c7g.medium.
+  C7G_MEDIUM
+
+  # EC2 instance type is c7g.metal.
+  C7G_METAL
+
+  # EC2 instance type is c7g.xlarge.
+  C7G_XLARGE
+
+  # EC2 instance type is c7i.12xlarge.
+  C7I_12XLARGE
+
+  # EC2 instance type is c7i.16xlarge.
+  C7I_16XLARGE
+
+  # EC2 instance type is c7i.24xlarge.
+  C7I_24XLARGE
+
+  # EC2 instance type is c7i.2xlarge.
+  C7I_2XLARGE
+
+  # EC2 instance type is c7i.48xlarge.
+  C7I_48XLARGE
+
+  # EC2 instance type is c7i.4xlarge.
+  C7I_4XLARGE
+
+  # EC2 instance type is c7i.8xlarge.
+  C7I_8XLARGE
+
+  # EC2 instance type is c7i.large.
+  C7I_LARGE
+
+  # EC2 instance type is c7i.xlarge.
+  C7I_XLARGE
+
   # EC2 instance type is cc1.4xlarge.
   CC1_4XLARGE
 
@@ -16550,6 +16934,39 @@ enum AwsNativeEc2InstanceType {
 
   # EC2 instance type is d2.xlarge.
   D2_XLARGE
+
+  # EC2 instance type is d3en.12xlarge.
+  D3EN_12XLARGE
+
+  # EC2 instance type is d3en.2xlarge.
+  D3EN_2XLARGE
+
+  # EC2 instance type is d3en.4xlarge.
+  D3EN_4XLARGE
+
+  # EC2 instance type is d3en.6xlarge.
+  D3EN_6XLARGE
+
+  # EC2 instance type is d3en.8xlarge.
+  D3EN_8XLARGE
+
+  # EC2 instance type is d3en.xlarge.
+  D3EN_XLARGE
+
+  # EC2 instance type is d3.2xlarge.
+  D3_2XLARGE
+
+  # EC2 instance type is d3.4xlarge.
+  D3_4XLARGE
+
+  # EC2 instance type is d3.8xlarge.
+  D3_8XLARGE
+
+  # EC2 instance type is d3.xlarge.
+  D3_XLARGE
+
+  # EC2 instance type is dl1.24xlarge.
+  DL1_24XLARGE
 
   # EC2 instance type is f1.16xlarge.
   F1_16XLARGE
@@ -16578,23 +16995,83 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is g3.8xlarge.
   G3_8XLARGE
 
-  # EC2 instance type is g4dn.2xlarge.
+  # EC2 instance type is g4ad.16xlarge.
+  G4AD_16XLARGE
+
+  # EC2 instance type is g4ad.2xlarge.
+  G4AD_2XLARGE
+
+  # EC2 instance type is g4ad.4xlarge.
+  G4AD_4XLARGE
+
+  # EC2 instance type is g4ad.8xlarge.
+  G4AD_8XLARGE
+
+  # EC2 instance type is g4ad.xlarge.
+  G4AD_XLARGE
+
+  # EC2 instance type is g4dn.12xlarge.
   G4DN_12XLARGE
 
-  # EC2 instance type is g4dn.2xlarge.
+  # EC2 instance type is g4dn.16xlarge.
   G4DN_16XLARGE
 
   # EC2 instance type is g4dn.2xlarge.
   G4DN_2XLARGE
 
-  # EC2 instance type is g4dn.2xlarge.
+  # EC2 instance type is g4dn.4xlarge.
   G4DN_4XLARGE
 
-  # EC2 instance type is g4dn.2xlarge.
+  # EC2 instance type is g4dn.8xlarge.
   G4DN_8XLARGE
 
-  # EC2 instance type is g4dn.2xlarge.
+  # EC2 instance type is g4dn.metal.
+  G4DN_METAL
+
+  # EC2 instance type is g4dn.xlarge.
   G4DN_XLARGE
+
+  # EC2 instance type is g5g.16xlarge.
+  G5G_16XLARGE
+
+  # EC2 instance type is g5g.2xlarge.
+  G5G_2XLARGE
+
+  # EC2 instance type is g5g.4xlarge.
+  G5G_4XLARGE
+
+  # EC2 instance type is g5g.8xlarge.
+  G5G_8XLARGE
+
+  # EC2 instance type is g5g.metal.
+  G5G_METAL
+
+  # EC2 instance type is g5g.xlarge.
+  G5G_XLARGE
+
+  # EC2 instance type is g5.12xlarge.
+  G5_12XLARGE
+
+  # EC2 instance type is g5.16xlarge.
+  G5_16XLARGE
+
+  # EC2 instance type is g5.24xlarge.
+  G5_24XLARGE
+
+  # EC2 instance type is g5.2xlarge.
+  G5_2XLARGE
+
+  # EC2 instance type is g5.48xlarge.
+  G5_48XLARGE
+
+  # EC2 instance type is g5.4xlarge.
+  G5_4XLARGE
+
+  # EC2 instance type is g5.8xlarge.
+  G5_8XLARGE
+
+  # EC2 instance type is g5.xlarge.
+  G5_XLARGE
 
   # EC2 instance type is h1.16xlarge.
   H1_16XLARGE
@@ -16608,8 +17085,17 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is h1.8xlarge.
   H1_8XLARGE
 
-  # EC2 instance type is hI1.4xlarge.
+  # EC2 instance type is hi1.4xlarge.
   HI1_4XLARGE
+
+  # EC2 instance type is hpc7g.16xlarge.
+  HPC7G_16XLARGE
+
+  # EC2 instance type is hpc7g.4xlarge.
+  HPC7G_4XLARGE
+
+  # EC2 instance type is hpc7g.8xlarge.
+  HPC7G_8XLARGE
 
   # EC2 instance type is hs1.8xlarge.
   HS1_8XLARGE
@@ -16671,6 +17157,66 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is i3.xlarge.
   I3_XLARGE
 
+  # EC2 instance type is i4g.16xlarge.
+  I4G_16XLARGE
+
+  # EC2 instance type is i4g.2xlarge.
+  I4G_2XLARGE
+
+  # EC2 instance type is i4g.4xlarge.
+  I4G_4XLARGE
+
+  # EC2 instance type is i4g.8xlarge.
+  I4G_8XLARGE
+
+  # EC2 instance type is i4g.large.
+  I4G_LARGE
+
+  # EC2 instance type is i4g.xlarge.
+  I4G_XLARGE
+
+  # EC2 instance type is i4i.16xlarge.
+  I4I_16XLARGE
+
+  # EC2 instance type is i4i.2xlarge.
+  I4I_2XLARGE
+
+  # EC2 instance type is i4i.32xlarge.
+  I4I_32XLARGE
+
+  # EC2 instance type is i4i.4xlarge.
+  I4I_4XLARGE
+
+  # EC2 instance type is i4i.8xlarge.
+  I4I_8XLARGE
+
+  # EC2 instance type is i4i.large.
+  I4I_LARGE
+
+  # EC2 instance type is i4i.metal.
+  I4I_METAL
+
+  # EC2 instance type is i4i.xlarge.
+  I4I_XLARGE
+
+  # EC2 instance type is im4gn.16xlarge.
+  IM4GN_16XLARGE
+
+  # EC2 instance type is im4gn.2xlarge.
+  IM4GN_2XLARGE
+
+  # EC2 instance type is im4gn.4xlarge.
+  IM4GN_4XLARGE
+
+  # EC2 instance type is im4gn.8xlarge.
+  IM4GN_8XLARGE
+
+  # EC2 instance type is im4gn.large.
+  IM4GN_LARGE
+
+  # EC2 instance type is im4gn.xlarge.
+  IM4GN_XLARGE
+
   # EC2 instance type is inf1.24xlarge.
   INF1_24XLARGE
 
@@ -16682,6 +17228,36 @@ enum AwsNativeEc2InstanceType {
 
   # EC2 instance type is inf1.xlarge.
   INF1_XLARGE
+
+  # EC2 instance type is inf2.24xlarge.
+  INF2_24XLARGE
+
+  # EC2 instance type is inf2.48xlarge.
+  INF2_48XLARGE
+
+  # EC2 instance type is inf2.8xlarge.
+  INF2_8XLARGE
+
+  # EC2 instance type is inf2.xlarge.
+  INF2_XLARGE
+
+  # EC2 instance type is is4gen.2xlarge.
+  IS4GEN_2XLARGE
+
+  # EC2 instance type is is4gen.4xlarge.
+  IS4GEN_4XLARGE
+
+  # EC2 instance type is is4gen.8xlarge.
+  IS4GEN_8XLARGE
+
+  # EC2 instance type is is4gen.large.
+  IS4GEN_LARGE
+
+  # EC2 instance type is is4gen.medium.
+  IS4GEN_MEDIUM
+
+  # EC2 instance type is is4gen.xlarge.
+  IS4GEN_XLARGE
 
   # EC2 instance type is m1.large.
   M1_LARGE
@@ -16803,6 +17379,9 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is m5dn.large.
   M5DN_LARGE
 
+  # EC2 instance type is m5dn.metal.
+  M5DN_METAL
+
   # EC2 instance type is m5dn.xlarge.
   M5DN_XLARGE
 
@@ -16854,8 +17433,32 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is m5n.large.
   M5N_LARGE
 
+  # EC2 instance type is m5n.metal.
+  M5N_METAL
+
   # EC2 instance type is m5n.xlarge.
   M5N_XLARGE
+
+  # EC2 instance type is m5zn.12xlarge.
+  M5ZN_12XLARGE
+
+  # EC2 instance type is m5zn.2xlarge.
+  M5ZN_2XLARGE
+
+  # EC2 instance type is m5zn.3xlarge.
+  M5ZN_3XLARGE
+
+  # EC2 instance type is m5zn.6xlarge.
+  M5ZN_6XLARGE
+
+  # EC2 instance type is m5zn.large.
+  M5ZN_LARGE
+
+  # EC2 instance type is m5zn.metal.
+  M5ZN_METAL
+
+  # EC2 instance type is m5zn.xlarge.
+  M5ZN_XLARGE
 
   # EC2 instance type is m5.12xlarge.
   M5_12XLARGE
@@ -16884,7 +17487,349 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is m5.xlarge.
   M5_XLARGE
 
-  # EC2 instance type is not specified.
+  # EC2 instance type is m6a.12xlarge.
+  M6A_12XLARGE
+
+  # EC2 instance type is m6a.16xlarge.
+  M6A_16XLARGE
+
+  # EC2 instance type is m6a.24xlarge.
+  M6A_24XLARGE
+
+  # EC2 instance type is m6a.2xlarge.
+  M6A_2XLARGE
+
+  # EC2 instance type is m6a.32xlarge.
+  M6A_32XLARGE
+
+  # EC2 instance type is m6a.48xlarge.
+  M6A_48XLARGE
+
+  # EC2 instance type is m6a.4xlarge.
+  M6A_4XLARGE
+
+  # EC2 instance type is m6a.8xlarge.
+  M6A_8XLARGE
+
+  # EC2 instance type is m6a.large.
+  M6A_LARGE
+
+  # EC2 instance type is m6a.metal.
+  M6A_METAL
+
+  # EC2 instance type is m6a.xlarge.
+  M6A_XLARGE
+
+  # EC2 instance type is m6gd.12xlarge.
+  M6GD_12XLARGE
+
+  # EC2 instance type is m6gd.16xlarge.
+  M6GD_16XLARGE
+
+  # EC2 instance type is m6gd.2xlarge.
+  M6GD_2XLARGE
+
+  # EC2 instance type is m6gd.4xlarge.
+  M6GD_4XLARGE
+
+  # EC2 instance type is m6gd.8xlarge.
+  M6GD_8XLARGE
+
+  # EC2 instance type is m6gd.large.
+  M6GD_LARGE
+
+  # EC2 instance type is m6gd.medium.
+  M6GD_MEDIUM
+
+  # EC2 instance type is m6gd.metal.
+  M6GD_METAL
+
+  # EC2 instance type is m6gd.xlarge.
+  M6GD_XLARGE
+
+  # EC2 instance type is m6g.12xlarge.
+  M6G_12XLARGE
+
+  # EC2 instance type is m6g.16xlarge.
+  M6G_16XLARGE
+
+  # EC2 instance type is m6g.2xlarge.
+  M6G_2XLARGE
+
+  # EC2 instance type is m6g.4xlarge.
+  M6G_4XLARGE
+
+  # EC2 instance type is m6g.8xlarge.
+  M6G_8XLARGE
+
+  # EC2 instance type is m6g.large.
+  M6G_LARGE
+
+  # EC2 instance type is m6g.medium.
+  M6G_MEDIUM
+
+  # EC2 instance type is m6g.metal.
+  M6G_METAL
+
+  # EC2 instance type is m6g.xlarge.
+  M6G_XLARGE
+
+  # EC2 instance type is m6idn.12xlarge.
+  M6IDN_12XLARGE
+
+  # EC2 instance type is m6idn.16xlarge.
+  M6IDN_16XLARGE
+
+  # EC2 instance type is m6idn.24xlarge.
+  M6IDN_24XLARGE
+
+  # EC2 instance type is m6idn.2xlarge.
+  M6IDN_2XLARGE
+
+  # EC2 instance type is m6idn.32xlarge.
+  M6IDN_32XLARGE
+
+  # EC2 instance type is m6idn.4xlarge.
+  M6IDN_4XLARGE
+
+  # EC2 instance type is m6idn.8xlarge.
+  M6IDN_8XLARGE
+
+  # EC2 instance type is m6idn.large.
+  M6IDN_LARGE
+
+  # EC2 instance type is m6idn.metal.
+  M6IDN_METAL
+
+  # EC2 instance type is m6idn.xlarge.
+  M6IDN_XLARGE
+
+  # EC2 instance type is m6id.12xlarge.
+  M6ID_12XLARGE
+
+  # EC2 instance type is m6id.16xlarge.
+  M6ID_16XLARGE
+
+  # EC2 instance type is m6id.24xlarge.
+  M6ID_24XLARGE
+
+  # EC2 instance type is m6id.2xlarge.
+  M6ID_2XLARGE
+
+  # EC2 instance type is m6id.32xlarge.
+  M6ID_32XLARGE
+
+  # EC2 instance type is m6id.4xlarge.
+  M6ID_4XLARGE
+
+  # EC2 instance type is m6id.8xlarge.
+  M6ID_8XLARGE
+
+  # EC2 instance type is m6id.large.
+  M6ID_LARGE
+
+  # EC2 instance type is m6id.metal.
+  M6ID_METAL
+
+  # EC2 instance type is m6id.xlarge.
+  M6ID_XLARGE
+
+  # EC2 instance type is m6in.12xlarge.
+  M6IN_12XLARGE
+
+  # EC2 instance type is m6in.16xlarge.
+  M6IN_16XLARGE
+
+  # EC2 instance type is m6in.24xlarge.
+  M6IN_24XLARGE
+
+  # EC2 instance type is m6in.2xlarge.
+  M6IN_2XLARGE
+
+  # EC2 instance type is m6in.32xlarge.
+  M6IN_32XLARGE
+
+  # EC2 instance type is m6in.4xlarge.
+  M6IN_4XLARGE
+
+  # EC2 instance type is m6in.8xlarge.
+  M6IN_8XLARGE
+
+  # EC2 instance type is m6in.large.
+  M6IN_LARGE
+
+  # EC2 instance type is m6in.metal.
+  M6IN_METAL
+
+  # EC2 instance type is m6in.xlarge.
+  M6IN_XLARGE
+
+  # EC2 instance type is m6i.12xlarge.
+  M6I_12XLARGE
+
+  # EC2 instance type is m6i.16xlarge.
+  M6I_16XLARGE
+
+  # EC2 instance type is m6i.24xlarge.
+  M6I_24XLARGE
+
+  # EC2 instance type is m6i.2xlarge.
+  M6I_2XLARGE
+
+  # EC2 instance type is m6i.32xlarge.
+  M6I_32XLARGE
+
+  # EC2 instance type is m6i.4xlarge.
+  M6I_4XLARGE
+
+  # EC2 instance type is m6i.8xlarge.
+  M6I_8XLARGE
+
+  # EC2 instance type is m6i.large.
+  M6I_LARGE
+
+  # EC2 instance type is m6i.metal.
+  M6I_METAL
+
+  # EC2 instance type is m6i.xlarge.
+  M6I_XLARGE
+
+  # EC2 instance type is m7a.12xlarge.
+  M7A_12XLARGE
+
+  # EC2 instance type is m7a.16xlarge.
+  M7A_16XLARGE
+
+  # EC2 instance type is m7a.24xlarge.
+  M7A_24XLARGE
+
+  # EC2 instance type is m7a.2xlarge.
+  M7A_2XLARGE
+
+  # EC2 instance type is m7a.32xlarge.
+  M7A_32XLARGE
+
+  # EC2 instance type is m7a.48xlarge.
+  M7A_48XLARGE
+
+  # EC2 instance type is m7a.4xlarge.
+  M7A_4XLARGE
+
+  # EC2 instance type is m7a.8xlarge.
+  M7A_8XLARGE
+
+  # EC2 instance type is m7a.large.
+  M7A_LARGE
+
+  # EC2 instance type is m7a.medium.
+  M7A_MEDIUM
+
+  # EC2 instance type is m7a.metal-48xl.
+  M7A_METAL_48XL
+
+  # EC2 instance type is m7a.xlarge.
+  M7A_XLARGE
+
+  # EC2 instance type is m7gd.12xlarge.
+  M7GD_12XLARGE
+
+  # EC2 instance type is m7gd.16xlarge.
+  M7GD_16XLARGE
+
+  # EC2 instance type is m7gd.2xlarge.
+  M7GD_2XLARGE
+
+  # EC2 instance type is m7gd.4xlarge.
+  M7GD_4XLARGE
+
+  # EC2 instance type is m7gd.8xlarge.
+  M7GD_8XLARGE
+
+  # EC2 instance type is m7gd.large.
+  M7GD_LARGE
+
+  # EC2 instance type is m7gd.medium.
+  M7GD_MEDIUM
+
+  # EC2 instance type is m7gd.xlarge.
+  M7GD_XLARGE
+
+  # EC2 instance type is m7g.12xlarge.
+  M7G_12XLARGE
+
+  # EC2 instance type is m7g.16xlarge.
+  M7G_16XLARGE
+
+  # EC2 instance type is m7g.2xlarge.
+  M7G_2XLARGE
+
+  # EC2 instance type is m7g.4xlarge.
+  M7G_4XLARGE
+
+  # EC2 instance type is m7g.8xlarge.
+  M7G_8XLARGE
+
+  # EC2 instance type is m7g.large.
+  M7G_LARGE
+
+  # EC2 instance type is m7g.medium.
+  M7G_MEDIUM
+
+  # EC2 instance type is m7g.metal.
+  M7G_METAL
+
+  # EC2 instance type is m7g.xlarge.
+  M7G_XLARGE
+
+  # EC2 instance type is m7i.12xlarge.
+  M7I_12XLARGE
+
+  # EC2 instance type is m7i.16xlarge.
+  M7I_16XLARGE
+
+  # EC2 instance type is m7i.24xlarge.
+  M7I_24XLARGE
+
+  # EC2 instance type is m7i.2xlarge.
+  M7I_2XLARGE
+
+  # EC2 instance type is m7i.48xlarge.
+  M7I_48XLARGE
+
+  # EC2 instance type is m7i.4xlarge.
+  M7I_4XLARGE
+
+  # EC2 instance type is m7i.8xlarge.
+  M7I_8XLARGE
+
+  # EC2 instance type is m7i-flex.2xlarge.
+  M7I_FLEX_2XLARGE
+
+  # EC2 instance type is m7i-flex.4xlarge.
+  M7I_FLEX_4XLARGE
+
+  # EC2 instance type is m7i-flex.8xlarge.
+  M7I_FLEX_8XLARGE
+
+  # EC2 instance type is m7i-flex.large.
+  M7I_FLEX_LARGE
+
+  # EC2 instance type is m7i-flex.xlarge.
+  M7I_FLEX_XLARGE
+
+  # EC2 instance type is m7i.large.
+  M7I_LARGE
+
+  # EC2 instance type is m7i.xlarge.
+  M7I_XLARGE
+
+  # EC2 instance type is mac1.metal.
+  MAC1_METAL
+
+  # EC2 instance type is mac2.metal.
+  MAC2_METAL
+
+  # EC2 instance type is .
   NOT_SPECIFIED
 
   # EC2 instance type is p2.16xlarge.
@@ -16907,6 +17852,12 @@ enum AwsNativeEc2InstanceType {
 
   # EC2 instance type is p3.8xlarge.
   P3_8XLARGE
+
+  # EC2 instance type is p4d.24xlarge.
+  P4D_24XLARGE
+
+  # EC2 instance type is p5.48xlarge.
+  P5_48XLARGE
 
   # EC2 instance type is r3.2xlarge.
   R3_2XLARGE
@@ -16989,6 +17940,33 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is r5a.xlarge.
   R5A_XLARGE
 
+  # EC2 instance type is r5b.12xlarge.
+  R5B_12XLARGE
+
+  # EC2 instance type is r5b.16xlarge.
+  R5B_16XLARGE
+
+  # EC2 instance type is r5b.24xlarge.
+  R5B_24XLARGE
+
+  # EC2 instance type is r5b.2xlarge.
+  R5B_2XLARGE
+
+  # EC2 instance type is r5b.4xlarge.
+  R5B_4XLARGE
+
+  # EC2 instance type is r5b.8xlarge.
+  R5B_8XLARGE
+
+  # EC2 instance type is r5b.large.
+  R5B_LARGE
+
+  # EC2 instance type is r5b.metal.
+  R5B_METAL
+
+  # EC2 instance type is r5b.xlarge.
+  R5B_XLARGE
+
   # EC2 instance type is r5dn.12xlarge.
   R5DN_12XLARGE
 
@@ -17009,6 +17987,9 @@ enum AwsNativeEc2InstanceType {
 
   # EC2 instance type is r5dn.large.
   R5DN_LARGE
+
+  # EC2 instance type is r5dn.metal.
+  R5DN_METAL
 
   # EC2 instance type is r5dn.xlarge.
   R5DN_XLARGE
@@ -17061,6 +18042,9 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is r5n.large.
   R5N_LARGE
 
+  # EC2 instance type is r5n.metal.
+  R5N_METAL
+
   # EC2 instance type is r5n.xlarge.
   R5N_XLARGE
 
@@ -17090,6 +18074,321 @@ enum AwsNativeEc2InstanceType {
 
   # EC2 instance type is r5.xlarge.
   R5_XLARGE
+
+  # EC2 instance type is r6a.12xlarge.
+  R6A_12XLARGE
+
+  # EC2 instance type is r6a.16xlarge.
+  R6A_16XLARGE
+
+  # EC2 instance type is r6a.24xlarge.
+  R6A_24XLARGE
+
+  # EC2 instance type is r6a.2xlarge.
+  R6A_2XLARGE
+
+  # EC2 instance type is r6a.32xlarge.
+  R6A_32XLARGE
+
+  # EC2 instance type is r6a.48xlarge.
+  R6A_48XLARGE
+
+  # EC2 instance type is r6a.4xlarge.
+  R6A_4XLARGE
+
+  # EC2 instance type is r6a.8xlarge.
+  R6A_8XLARGE
+
+  # EC2 instance type is r6a.large.
+  R6A_LARGE
+
+  # EC2 instance type is r6a.metal.
+  R6A_METAL
+
+  # EC2 instance type is r6a.xlarge.
+  R6A_XLARGE
+
+  # EC2 instance type is r6gd.12xlarge.
+  R6GD_12XLARGE
+
+  # EC2 instance type is r6gd.16xlarge.
+  R6GD_16XLARGE
+
+  # EC2 instance type is r6gd.2xlarge.
+  R6GD_2XLARGE
+
+  # EC2 instance type is r6gd.4xlarge.
+  R6GD_4XLARGE
+
+  # EC2 instance type is r6gd.8xlarge.
+  R6GD_8XLARGE
+
+  # EC2 instance type is r6gd.large.
+  R6GD_LARGE
+
+  # EC2 instance type is r6gd.medium.
+  R6GD_MEDIUM
+
+  # EC2 instance type is r6gd.metal.
+  R6GD_METAL
+
+  # EC2 instance type is r6gd.xlarge.
+  R6GD_XLARGE
+
+  # EC2 instance type is r6g.12xlarge.
+  R6G_12XLARGE
+
+  # EC2 instance type is r6g.16xlarge.
+  R6G_16XLARGE
+
+  # EC2 instance type is r6g.2xlarge.
+  R6G_2XLARGE
+
+  # EC2 instance type is r6g.4xlarge.
+  R6G_4XLARGE
+
+  # EC2 instance type is r6g.8xlarge.
+  R6G_8XLARGE
+
+  # EC2 instance type is r6g.large.
+  R6G_LARGE
+
+  # EC2 instance type is r6g.medium.
+  R6G_MEDIUM
+
+  # EC2 instance type is r6g.metal.
+  R6G_METAL
+
+  # EC2 instance type is r6g.xlarge.
+  R6G_XLARGE
+
+  # EC2 instance type is r6idn.12xlarge.
+  R6IDN_12XLARGE
+
+  # EC2 instance type is r6idn.16xlarge.
+  R6IDN_16XLARGE
+
+  # EC2 instance type is r6idn.24xlarge.
+  R6IDN_24XLARGE
+
+  # EC2 instance type is r6idn.2xlarge.
+  R6IDN_2XLARGE
+
+  # EC2 instance type is r6idn.32xlarge.
+  R6IDN_32XLARGE
+
+  # EC2 instance type is r6idn.4xlarge.
+  R6IDN_4XLARGE
+
+  # EC2 instance type is r6idn.8xlarge.
+  R6IDN_8XLARGE
+
+  # EC2 instance type is r6idn.large.
+  R6IDN_LARGE
+
+  # EC2 instance type is r6idn.metal.
+  R6IDN_METAL
+
+  # EC2 instance type is r6idn.xlarge.
+  R6IDN_XLARGE
+
+  # EC2 instance type is r6id.12xlarge.
+  R6ID_12XLARGE
+
+  # EC2 instance type is r6id.16xlarge.
+  R6ID_16XLARGE
+
+  # EC2 instance type is r6id.24xlarge.
+  R6ID_24XLARGE
+
+  # EC2 instance type is r6id.2xlarge.
+  R6ID_2XLARGE
+
+  # EC2 instance type is r6id.32xlarge.
+  R6ID_32XLARGE
+
+  # EC2 instance type is r6id.4xlarge.
+  R6ID_4XLARGE
+
+  # EC2 instance type is r6id.8xlarge.
+  R6ID_8XLARGE
+
+  # EC2 instance type is r6id.large.
+  R6ID_LARGE
+
+  # EC2 instance type is r6id.metal.
+  R6ID_METAL
+
+  # EC2 instance type is r6id.xlarge.
+  R6ID_XLARGE
+
+  # EC2 instance type is r6in.12xlarge.
+  R6IN_12XLARGE
+
+  # EC2 instance type is r6in.16xlarge.
+  R6IN_16XLARGE
+
+  # EC2 instance type is r6in.24xlarge.
+  R6IN_24XLARGE
+
+  # EC2 instance type is r6in.2xlarge.
+  R6IN_2XLARGE
+
+  # EC2 instance type is r6in.32xlarge.
+  R6IN_32XLARGE
+
+  # EC2 instance type is r6in.4xlarge.
+  R6IN_4XLARGE
+
+  # EC2 instance type is r6in.8xlarge.
+  R6IN_8XLARGE
+
+  # EC2 instance type is r6in.large.
+  R6IN_LARGE
+
+  # EC2 instance type is r6in.metal.
+  R6IN_METAL
+
+  # EC2 instance type is r6in.xlarge.
+  R6IN_XLARGE
+
+  # EC2 instance type is r6i.12xlarge.
+  R6I_12XLARGE
+
+  # EC2 instance type is r6i.16xlarge.
+  R6I_16XLARGE
+
+  # EC2 instance type is r6i.24xlarge.
+  R6I_24XLARGE
+
+  # EC2 instance type is r6i.2xlarge.
+  R6I_2XLARGE
+
+  # EC2 instance type is r6i.32xlarge.
+  R6I_32XLARGE
+
+  # EC2 instance type is r6i.4xlarge.
+  R6I_4XLARGE
+
+  # EC2 instance type is r6i.8xlarge.
+  R6I_8XLARGE
+
+  # EC2 instance type is r6i.large.
+  R6I_LARGE
+
+  # EC2 instance type is r6i.metal.
+  R6I_METAL
+
+  # EC2 instance type is r6i.xlarge.
+  R6I_XLARGE
+
+  # EC2 instance type is r7a.12xlarge.
+  R7A_12XLARGE
+
+  # EC2 instance type is r7a.16xlarge.
+  R7A_16XLARGE
+
+  # EC2 instance type is r7a.24xlarge.
+  R7A_24XLARGE
+
+  # EC2 instance type is r7a.2xlarge.
+  R7A_2XLARGE
+
+  # EC2 instance type is r7a.32xlarge.
+  R7A_32XLARGE
+
+  # EC2 instance type is r7a.48xlarge.
+  R7A_48XLARGE
+
+  # EC2 instance type is r7a.4xlarge.
+  R7A_4XLARGE
+
+  # EC2 instance type is r7a.8xlarge.
+  R7A_8XLARGE
+
+  # EC2 instance type is r7a.large.
+  R7A_LARGE
+
+  # EC2 instance type is r7a.medium.
+  R7A_MEDIUM
+
+  # EC2 instance type is r7a.xlarge.
+  R7A_XLARGE
+
+  # EC2 instance type is r7gd.12xlarge.
+  R7GD_12XLARGE
+
+  # EC2 instance type is r7gd.16xlarge.
+  R7GD_16XLARGE
+
+  # EC2 instance type is r7gd.2xlarge.
+  R7GD_2XLARGE
+
+  # EC2 instance type is r7gd.4xlarge.
+  R7GD_4XLARGE
+
+  # EC2 instance type is r7gd.8xlarge.
+  R7GD_8XLARGE
+
+  # EC2 instance type is r7gd.large.
+  R7GD_LARGE
+
+  # EC2 instance type is r7gd.medium.
+  R7GD_MEDIUM
+
+  # EC2 instance type is r7gd.xlarge.
+  R7GD_XLARGE
+
+  # EC2 instance type is r7g.12xlarge.
+  R7G_12XLARGE
+
+  # EC2 instance type is r7g.16xlarge.
+  R7G_16XLARGE
+
+  # EC2 instance type is r7g.2xlarge.
+  R7G_2XLARGE
+
+  # EC2 instance type is r7g.4xlarge.
+  R7G_4XLARGE
+
+  # EC2 instance type is r7g.8xlarge.
+  R7G_8XLARGE
+
+  # EC2 instance type is r7g.large.
+  R7G_LARGE
+
+  # EC2 instance type is r7g.medium.
+  R7G_MEDIUM
+
+  # EC2 instance type is r7g.metal.
+  R7G_METAL
+
+  # EC2 instance type is r7g.xlarge.
+  R7G_XLARGE
+
+  # EC2 instance type is r7iz.12xlarge.
+  R7IZ_12XLARGE
+
+  # EC2 instance type is r7iz.16xlarge.
+  R7IZ_16XLARGE
+
+  # EC2 instance type is r7iz.2xlarge.
+  R7IZ_2XLARGE
+
+  # EC2 instance type is r7iz.32xlarge.
+  R7IZ_32XLARGE
+
+  # EC2 instance type is r7iz.4xlarge.
+  R7IZ_4XLARGE
+
+  # EC2 instance type is r7iz.8xlarge.
+  R7IZ_8XLARGE
+
+  # EC2 instance type is r7iz.large.
+  R7IZ_LARGE
+
+  # EC2 instance type is r7iz.xlarge.
+  R7IZ_XLARGE
 
   # EC2 instance type is t1.micro.
   T1_MICRO
@@ -17157,23 +18456,83 @@ enum AwsNativeEc2InstanceType {
   # EC2 instance type is t3.xlarge.
   T3_XLARGE
 
+  # EC2 instance type is t4g.2xlarge.
+  T4G_2XLARGE
+
+  # EC2 instance type is t4g.large.
+  T4G_LARGE
+
+  # EC2 instance type is t4g.medium.
+  T4G_MEDIUM
+
+  # EC2 instance type is t4g.micro.
+  T4G_MICRO
+
+  # EC2 instance type is t4g.nano.
+  T4G_NANO
+
+  # EC2 instance type is t4g.small.
+  T4G_SMALL
+
+  # EC2 instance type is t4g.xlarge.
+  T4G_XLARGE
+
+  # EC2 instance type is trn1n.32xlarge.
+  TRN1N_32XLARGE
+
+  # EC2 instance type is trn1.2xlarge.
+  TRN1_2XLARGE
+
+  # EC2 instance type is trn1.32xlarge.
+  TRN1_32XLARGE
+
   # EC2 instance type is unknown.
   UNKNOWN
+
+  # EC2 instance type is u-12tb1.112xlarge.
+  U_12TB1_112XLARGE
 
   # EC2 instance type is u-12tb1.metal.
   U_12TB1_METAL
 
+  # EC2 instance type is u-18tb1.112xlarge.
+  U_18TB1_112XLARGE
+
   # EC2 instance type is u-18tb1.metal.
   U_18TB1_METAL
+
+  # EC2 instance type is u-24tb1.112xlarge.
+  U_24TB1_112XLARGE
 
   # EC2 instance type is u-24tb1.metal.
   U_24TB1_METAL
 
+  # EC2 instance type is u-3tb1.56xlarge.
+  U_3TB1_56XLARGE
+
+  # EC2 instance type is u-6tb1.112xlarge.
+  U_6TB1_112XLARGE
+
+  # EC2 instance type is u-6tb1.56xlarge.
+  U_6TB1_56XLARGE
+
   # EC2 instance type is u-6tb1.metal.
   U_6TB1_METAL
 
+  # EC2 instance type is u-9tb1.112xlarge.
+  U_9TB1_112XLARGE
+
   # EC2 instance type is u-9tb1.metal.
   U_9TB1_METAL
+
+  # EC2 instance type is vt1.24xlarge.
+  VT1_24XLARGE
+
+  # EC2 instance type is vt1.3xlarge.
+  VT1_3XLARGE
+
+  # EC2 instance type is vt1.6xlarge.
+  VT1_6XLARGE
 
   # EC2 instance type is x1e.16xlarge.
   X1E_16XLARGE
@@ -17198,6 +18557,87 @@ enum AwsNativeEc2InstanceType {
 
   # EC2 instance type is x1.32xlarge.
   X1_32XLARGE
+
+  # EC2 instance type is x2gd.12xlarge.
+  X2GD_12XLARGE
+
+  # EC2 instance type is x2gd.16xlarge.
+  X2GD_16XLARGE
+
+  # EC2 instance type is x2gd.2xlarge.
+  X2GD_2XLARGE
+
+  # EC2 instance type is x2gd.4xlarge.
+  X2GD_4XLARGE
+
+  # EC2 instance type is x2gd.8xlarge.
+  X2GD_8XLARGE
+
+  # EC2 instance type is x2gd.large.
+  X2GD_LARGE
+
+  # EC2 instance type is x2gd.medium.
+  X2GD_MEDIUM
+
+  # EC2 instance type is x2gd.metal.
+  X2GD_METAL
+
+  # EC2 instance type is x2gd.xlarge.
+  X2GD_XLARGE
+
+  # EC2 instance type is x2idn.16xlarge.
+  X2IDN_16XLARGE
+
+  # EC2 instance type is x2idn.24xlarge.
+  X2IDN_24XLARGE
+
+  # EC2 instance type is x2idn.32xlarge.
+  X2IDN_32XLARGE
+
+  # EC2 instance type is x2idn.metal.
+  X2IDN_METAL
+
+  # EC2 instance type is x2iedn.16xlarge.
+  X2IEDN_16XLARGE
+
+  # EC2 instance type is x2iedn.24xlarge.
+  X2IEDN_24XLARGE
+
+  # EC2 instance type is x2iedn.2xlarge.
+  X2IEDN_2XLARGE
+
+  # EC2 instance type is x2iedn.32xlarge.
+  X2IEDN_32XLARGE
+
+  # EC2 instance type is x2iedn.4xlarge.
+  X2IEDN_4XLARGE
+
+  # EC2 instance type is x2iedn.8xlarge.
+  X2IEDN_8XLARGE
+
+  # EC2 instance type is x2iedn.metal.
+  X2IEDN_METAL
+
+  # EC2 instance type is x2iedn.xlarge.
+  X2IEDN_XLARGE
+
+  # EC2 instance type is x2iezn.12xlarge.
+  X2IEZN_12XLARGE
+
+  # EC2 instance type is x2iezn.2xlarge.
+  X2IEZN_2XLARGE
+
+  # EC2 instance type is x2iezn.4xlarge.
+  X2IEZN_4XLARGE
+
+  # EC2 instance type is x2iezn.6xlarge.
+  X2IEZN_6XLARGE
+
+  # EC2 instance type is x2iezn.8xlarge.
+  X2IEZN_8XLARGE
+
+  # EC2 instance type is x2iezn.metal.
+  X2IEZN_METAL
 
   # EC2 instance type is z1d.12xlarge.
   Z1D_12XLARGE
@@ -19926,6 +21366,9 @@ input AzureExocomputeAddConfigInputType {
 
   # Native ID of the subnet where the Exocompute pods should be launched.
   podSubnetNativeId: String
+
+  # The CIDR range for pods if Exocompute is launched with the CNI overlay network plugin.
+  podOverlayNetworkCidr: String
 }
 # Exocompute configurations details.
 type AzureExocomputeConfigDetails {
@@ -19940,6 +21383,9 @@ type AzureExocomputeConfigDetails {
 
   # Native ID of cluster subnet corresponding to the Exocompute configuration. This subnet will be used to allocate IP addresses to the nodes of the cluster. For more details, visit https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni.
   podSubnetNativeId: String!
+
+  # The CIDR range assigned to pods when launching Exocompute with the CNI overlay network plugin mode. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay.
+  podOverlayNetworkCidr: String!
 
   # Specifies if Exocompute is managed by RSC.
   isRscManaged: Boolean!
@@ -19976,6 +21422,12 @@ type AzureExocomputeConfigValidationInfo {
   # Specifies whether the size of the pod subnet provided for the exocompute configuration is smaller than desired to create exo-cluster.
   isPodSubnetSizeTooSmall: Boolean!
 
+  # Specifies whether there is an overlap between the pod CIDR range used for the CNI overlay network and the cluster subnet CIDR range. Make sure that there is no overlap between the pod CIDR range and the cluster subnet to prevent conflicts. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay#ip-address-planning.
+  isPodCidrAndSubnetCidrOverlap: Boolean!
+
+  # Specifies whether the size of the pod CIDR range provided for Exocompute configuration using CNI overlay network mode is smaller than desired for creating an exo-cluster. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay#ip-address-planning.
+  isPodCidrRangeTooSmall: Boolean!
+
   # Error received while validating Exocompute configuration.
   errorMessage: String!
 }
@@ -20006,6 +21458,9 @@ type AzureExocomputeGetConfigResponse {
 
   # Native ID of cluster subnet corresponding to the Exocompute configuration. This subnet will be used to allocate IP addresses to the nodes of the cluster. For more details, visit https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni.
   podSubnetNativeId: String!
+
+  # The CIDR range assigned to pods when launching Exocompute with the CNI overlay network plugin mode. For more details, visit https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay.
+  podOverlayNetworkCidr: String!
 
   # Specifies if Exocompute is managed by RSC.
   isRscManaged: Boolean!
@@ -23349,7 +24804,23 @@ type AzureStorageAccount implements PolarisHierarchyObject , PolarisHierarchySna
   # The newest snapshot that is indexed and unexpired, and therefore restorable.
   newestIndexedSnapshot: PolarisSnapshot
 }
-# AzureStorageAccountsReq input for Azure account.
+# Azure storage account information.
+type AzureStorageAccountCcprovision {
+  # Azure storage account name.
+  name: String!
+
+  # Azure storage account resource group.
+  resourceGroup: String!
+}
+# Azure storage accounts input by region.
+input AzureStorageAccountsByRegionInput {
+  # Cloud account ID.
+  cloudAccountId: String = ""
+
+  # Azure region.
+  region: String = ""
+}
+# Azure storage accounts input by resource group.
 input AzureStorageAccountsReq {
   # Cloud account ID.
   cloudAccountId: String = ""
@@ -24188,7 +25659,8 @@ type BootstrappableNodeInfoListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 input BrowseDirectoryFiltersInput {
@@ -24269,7 +25741,8 @@ type BrowseResponseListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for getting web certificate and IPMI information for multiple clusters.
@@ -24300,7 +25773,8 @@ type BulkCreateFilesetTemplatesReply {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for creating multiple filesets.
@@ -24326,7 +25800,8 @@ type BulkCreateFilesetsReply {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v7.0+
@@ -24507,7 +25982,8 @@ type BulkRegisterHostReply {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input to initiate bulk tiering of existing archived snapshots.
@@ -27829,7 +29305,8 @@ type CertificateSummaryListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 input ChangePasswordInput {
@@ -34789,8 +36266,14 @@ enum Db2DatabaseType {
   # Db2 database is an HADR database.
   HADR
 
+  # Db2 database is a PureScale HADR database.
+  HADR_PURESCALE
+
   # Db2 database is a Partitioned database.
   PARTITIONED
+
+  # Db2 database is a PureScale database.
+  PURESCALE
 
   # Db2 database is a Standalone database.
   STANDALONE
@@ -34840,6 +36323,9 @@ type Db2Instance implements CdmHierarchyObject , HierarchyObject {
 
   # Specifies whether the Db2 instance contains an HADR database.
   containsHadrDatabase: Boolean!
+
+  # Type of Db2 instance: STANDALONE, PARTITIONED, PURESCALE, or UNSPECIFIED.
+  instanceType: Db2InstanceType!
 
   # List of descendants.
   descendantConnection(
@@ -35271,6 +36757,20 @@ enum Db2InstanceSummaryStatus {
   # The Db2 instance is in WARNING state.
   DB2_INSTANCE_SUMMARY_STATUS_WARNING
 }
+# Db2 instance type.
+enum Db2InstanceType {
+  # Unable to determine the type of the Db2 instance.
+  INSTANCETYPE_UNSPECIFIED
+
+  # The Db2 instance is a Partitioned instance.
+  PARTITIONED
+
+  # The Db2 instance is a PureScale instance.
+  PURESCALE
+
+  # The Db2 instance is a Standalone instance.
+  STANDALONE
+}
 # Backup file associated with the Db2 log back object.
 type Db2LogBackupFile {
   # Size of the db2 log backup.
@@ -35560,7 +37060,8 @@ type DbLogReportSummaryListReply {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 
   # Supported in v5.3+
@@ -37636,7 +39137,7 @@ input EventDigestConfig {
   # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, K8S, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
-  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, and Index.
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, and Index.
   auditType: [UserAuditTypeEnum!]
 
   # Activity severities to include in event digest.
@@ -39357,6 +40858,12 @@ input ExportOracleDbConfigInput {
   # Supported in v8.1+
   # Indicates whether to skip dropping the database in undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
+
+  # List of RAC host simple IDs to recover the database during the clone.
+  targetRacHostIds: [String!] = []
+
+  # Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.
+  targetRacPrimaryHostId: String
 
   # Supported in v9.0+
   # A boolean value determines if the database can be renamed back to the source Oracle host or RAC during the clone.
@@ -41796,7 +43303,8 @@ type FilterPreviewResultListResponse {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input to process and finalize deletion of AWS cloud account.
@@ -43681,6 +45189,14 @@ type GetDashboardSummaryReply {
   analyzerResults: [AnalyzerResult!]!
   policyResults: [AnalyzerGroupResult!]!
 }
+# Input for retrieving details about a Db2 database-related job.
+input GetDb2DatabaseAsyncRequestStatusInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. ID of the request object used to poll the status.
+  id: String!
+}
 # Input for getting default properties of SQL Server databases.
 input GetDefaultDbPropertiesV1Input {
   # Required. UUID used to identify the cluster the request goes to.
@@ -44221,7 +45737,8 @@ type GlobalFileSearchReply {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Global manager connectivity status.
@@ -44694,7 +46211,8 @@ type GuestCredentialDetailListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Guest OS Credential.
@@ -45320,6 +46838,9 @@ enum HierarchyFilterField {
 
   # Filter Exchange Server by the ID of the Exchange Dag.
   EXCHANGE_SERVER_BY_DAG_ID
+
+  # Filter to exclude root resource pool.
+  EXCLUDED_ROOT_RESOURCE_POOL_TYPE
 
   # Filter SharePoint Libraries by excluding list template types.
   EXCLUDED_SHAREPOINT_LIBRARY_TYPE
@@ -47502,7 +49023,8 @@ type HotAddProxyVmInfoListResponse {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.3+
@@ -54303,7 +55825,8 @@ type MissedSnapshotListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 enum MissedSnapshotSortByEnum {
@@ -59403,7 +60926,8 @@ type MssqlInstanceSummaryListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -59566,7 +61090,8 @@ type MssqlLogShippingSummaryV2ListResponse {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # SQL Server log shipping target.
@@ -59747,7 +61272,8 @@ type MssqlMissedRecoverableRangeListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0
@@ -59807,7 +61333,8 @@ type MssqlRecoverableRangeListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -60800,6 +62327,9 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
 
   # Rubrik CDM ID of the registered NAS system.
   cdmId: UUID!
+
+  # Specifies whether the NAS shares are manually configured on the NAS system.
+  isNasShareManuallyAdded: Boolean!
 
   # Object ID.
   id: UUID!
@@ -62039,7 +63569,8 @@ type NetworkInfoListResponse {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -62089,7 +63620,8 @@ type NetworkInterfaceListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -62198,7 +63730,8 @@ type NetworkThrottleSummaryListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -62533,7 +64066,8 @@ type NodeStatusListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Request parameters for getting the ID of the node to replace on a Rubrik cluster.
@@ -62627,7 +64161,8 @@ type NtpServerConfigurationListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -63769,7 +65304,8 @@ type NutanixContainerListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -64027,7 +65563,8 @@ type NutanixNetworkListResponse {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v9.0+
@@ -68374,6 +69911,9 @@ enum Operation {
   MANAGE_GUEST_OS_CREDENTIAL
   MANAGE_LEGAL_HOLD
 
+  # Manage migration dashboard.
+  MANAGE_MIGRATION_DASHBOARD
+
   # Manage recoveries within Orchestrated Recovery.
   MANAGE_ORCHESTRATED_RECOVERY
   MANAGE_PROTECTION
@@ -70219,7 +71759,8 @@ type OracleMissedRecoverableRangeListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -70755,7 +72296,8 @@ type OracleRecoverableRangeListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -71223,7 +72765,7 @@ type PasswordComplexityPolicyTemplate {
   maxValue: Int!
 
   # Specifies if the password complexity policy field is being used.
-  active: Boolean!
+  isActive: Boolean!
 
   # Default value for the password complexity policy field.
   defaultValue: Int!
@@ -72688,6 +74230,9 @@ type PolicyObj {
 
   # Change in the user count for various risk levels.
   deltaUserCounts: PrincipalCounts
+
+  # Specifies whether the object has insights or not.
+  hasInsights: Boolean!
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -73116,6 +74661,9 @@ enum ProductName {
 
   # AppFlows.
   APPFLOWS
+
+  # Atlassian Jira protection.
+  ATLASSIAN_JIRA
 
   # Cloud Cluster ES.
   CC_ES
@@ -74149,6 +75697,28 @@ type RcvEntitlement {
 
   # Rubrik Cloud Vault (RCV) Entitlement tier.
   tier: RcvTier!
+}
+# Rubrik Cloud Vault (RCV) entitlement with expiration date.
+type RcvEntitlementWithExpirationDate {
+  # Rubrik Cloud Vault (RCV) entitlement capacity in TB.
+  capacity: Float!
+
+  # Rubrik Cloud Vault (RCV) entitlement expiration date.
+  expirationDate: DateTime
+
+  # Rubrik Cloud Vault (RCV) region bundle.
+  bundle: RcvRegionBundle!
+
+  # Rubrik Cloud Vault (RCV) entitlement tier.
+  tier: RcvTier!
+}
+# Rubrik Cloud Vault (RCV) entitlement with order number.
+type RcvEntitlementWithOrderNumber {
+  # Rubrik Cloud Vault (RCV) entitlement capacity in TB.
+  entitlement: RcvEntitlementWithExpirationDate
+
+  # Rubrik Cloud Vault (RCV) entitlement order number.
+  orderNumber: String!
 }
 # Rubrik Cloud Vault (RCV) Entitlement and usage details.
 type RcvEntitlementsUsageDetails {
@@ -78851,7 +80421,8 @@ type SearchResponseListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 type SecurityGroup {
@@ -80491,8 +82062,11 @@ type Snappable {
   dataReduction: Float
   logicalDataReduction: Float
 
-  # The organization name related to the workload.
-  orgName: String
+  # Specifies the owner organization of the workload.
+  workloadOrg: WorkloadOrganization
+
+  # The organization name related to the workload. This is deprecated.
+  orgName: String @deprecated(reason: "`snappableOrg` field captures the basic org details.")
 }
 # The aggregation data of some workload statistics.
 type SnappableAggregation {
@@ -83427,7 +85001,8 @@ type SyslogExportRuleSummaryListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for updating a syslog export rule.
@@ -84034,8 +85609,11 @@ type TaskDetail {
   # The organization ID related to the task.
   orgId: String
 
-  # The organization name related to the task.
-  orgName: String
+  # Specifies the owner organization of the workload task detail.
+  taskOrg: WorkloadOrganization
+
+  # The organization name related to the task. This is deprecated.
+  orgName: String @deprecated(reason: "`taskOrg` field captures the basic org details.")
 }
 type TaskDetailChart {
   name: String!
@@ -87855,6 +89433,9 @@ enum UserAuditTypeEnum {
 
   # Audit type for quarantine usecases.
   QUARANTINE
+
+  # Audit type for recovery schedule use cases.
+  RECOVERY_SCHEDULE
   Recovery
   Search
   SlaAssignment
@@ -90493,7 +92074,8 @@ type VirtualMachineFilesReply {
   total: Int
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -90708,7 +92290,8 @@ type VlanConfigListResponse {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Details of VLAN IP.
@@ -95829,7 +97412,8 @@ type VsphereVmListEsxiDatastoresReply {
   total: Long
 
   # Supported in v9.0+
-  # Cursor to fetch the next set of results.
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for relocating vSphere mount.
@@ -96756,6 +98340,17 @@ enum WorkloadLevelHierarchy {
 type WorkloadLocation {
   # Workload location.
   location: String!
+}
+# Details of an organization associated with a workload.
+type WorkloadOrganization {
+  # Name of the organization.
+  name: String!
+
+  # Full Name of the organization.
+  fullName: String!
+
+  # ID of the organization.
+  id: UUID!
 }
 # Workload recovery info.
 type WorkloadRecoveryInfo {

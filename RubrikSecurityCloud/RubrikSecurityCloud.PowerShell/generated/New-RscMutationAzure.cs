@@ -315,6 +315,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	workloadFids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	snapshotRetentionSlaId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3170,6 +3172,8 @@ $query.Var.input = @{
 	workloadFids = @(
 		$someString
 	)
+	# OPTIONAL
+	snapshotRetentionSlaId = $someString
 }"
             );
         }

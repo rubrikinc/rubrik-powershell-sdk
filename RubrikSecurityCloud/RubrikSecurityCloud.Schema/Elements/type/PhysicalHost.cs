@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region PhysicalHost
  
-    public class PhysicalHost: BaseType, CdmHierarchyObject, Db2InstanceDescendantType, Db2InstancePhysicalChildType, HierarchyObject, ManagedVolumeDescendantType, ManagedVolumeMountDescendantType, ManagedVolumeMountPhysicalChildType, MongoSourceDescendantType, MongoSourcePhysicalChildType, MssqlTopLevelDescendantType
+    public class PhysicalHost: BaseType, CdmHierarchyObject, Db2InstanceDescendantType, Db2InstancePhysicalChildType, HierarchyObject, MongoSourceDescendantType, MongoSourcePhysicalChildType, MssqlTopLevelDescendantType
     {
         #region members
 

@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nonRubrikUserEmails")]
         public List<System.String>? NonRubrikUserEmails { get; set; }
 
+        //      C# -> List<ReportAttachmentType>? AttachmentTypes
+        // GraphQL -> attachmentTypes: [ReportAttachmentType!] (enum)
+        [JsonProperty("attachmentTypes")]
+        public List<ReportAttachmentType>? AttachmentTypes { get; set; }
+
 
         #endregion
 

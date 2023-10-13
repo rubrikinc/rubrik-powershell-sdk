@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasMore")]
         public System.Boolean? HasMore { get; set; }
 
+        //      C# -> System.String? NextCursor
+        // GraphQL -> nextCursor: String (scalar)
+        [JsonProperty("nextCursor")]
+        public System.String? NextCursor { get; set; }
+
         //      C# -> System.Int64? Total
         // GraphQL -> total: Long (scalar)
         [JsonProperty("total")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public HypervHostSummaryListResponse Set(
         System.Boolean? HasMore = null,
+        System.String? NextCursor = null,
         System.Int64? Total = null,
         List<HypervHostSummary>? Data = null
     ) 
     {
         if ( HasMore != null ) {
             this.HasMore = HasMore;
+        }
+        if ( NextCursor != null ) {
+            this.NextCursor = NextCursor;
         }
         if ( Total != null ) {
             this.Total = Total;
@@ -77,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasMore\n" ;
             } else {
                 s += ind + "hasMore\n" ;
+            }
+        }
+        //      C# -> System.String? NextCursor
+        // GraphQL -> nextCursor: String (scalar)
+        if (this.NextCursor != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nextCursor\n" ;
+            } else {
+                s += ind + "nextCursor\n" ;
             }
         }
         //      C# -> System.Int64? Total
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasMore != null && ec.Excludes("hasMore",true))
         {
             this.HasMore = null;
+        }
+        //      C# -> System.String? NextCursor
+        // GraphQL -> nextCursor: String (scalar)
+        if (ec.Includes("nextCursor",true))
+        {
+            if(this.NextCursor == null) {
+
+                this.NextCursor = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NextCursor != null && ec.Excludes("nextCursor",true))
+        {
+            this.NextCursor = null;
         }
         //      C# -> System.Int64? Total
         // GraphQL -> total: Long (scalar)

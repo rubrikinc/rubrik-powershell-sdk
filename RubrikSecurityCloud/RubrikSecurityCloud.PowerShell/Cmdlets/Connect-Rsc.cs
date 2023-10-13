@@ -313,8 +313,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             this._rbkClient,
                             ScopedItemOptions.AllScope));
 
-                    this._rbkClient.SetClientName();
-
                     RscSessionInfo sessionInfo = new RscSessionInfo(
                         this._rbkClient, new RscLogger(this));
 

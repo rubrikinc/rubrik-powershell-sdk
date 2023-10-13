@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activityType")]
         public List<System.String>? ActivityType { get; set; }
 
+        //      C# -> List<UserAuditTypeEnum>? AuditType
+        // GraphQL -> auditType: [UserAuditTypeEnum!] (enum)
+        [JsonProperty("auditType")]
+        public List<UserAuditTypeEnum>? AuditType { get; set; }
+
         //      C# -> List<ActivitySeverityEnum>? ActivitySeverity
         // GraphQL -> activitySeverity: [ActivitySeverityEnum!] (enum)
         [JsonProperty("activitySeverity")]
@@ -43,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusters: [String!] (scalar)
         [JsonProperty("clusters")]
         public List<System.String>? Clusters { get; set; }
+
+        //      C# -> List<System.String>? EmailAddresses
+        // GraphQL -> emailAddresses: [String!] (scalar)
+        [JsonProperty("emailAddresses")]
+        public List<System.String>? EmailAddresses { get; set; }
 
 
         #endregion

@@ -429,8 +429,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_UNMANAGED_OBJECT")]
         IS_UNMANAGED_OBJECT,
 
-        [EnumMember(Value = "JIRA_PROJECT_KEY")]
-        JIRA_PROJECT_KEY,
+        [EnumMember(Value = "JIRA_PROJECT_KEY_OR_NAME")]
+        JIRA_PROJECT_KEY_OR_NAME,
 
         [EnumMember(Value = "JIRA_PROJECT_LEAD")]
         JIRA_PROJECT_LEAD,

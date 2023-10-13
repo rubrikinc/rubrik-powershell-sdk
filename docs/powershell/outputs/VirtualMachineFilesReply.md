@@ -10,3 +10,6 @@ List of Virtual Machine file info.
 - total: System.Int32
   - Supported in v9.0+
   Total list responses.
+- nextCursor: System.String
+  - Supported in v9.0+
+  Cursor to fetch the next set of results.

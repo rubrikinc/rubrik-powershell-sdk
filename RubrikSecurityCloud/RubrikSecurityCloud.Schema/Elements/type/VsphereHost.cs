@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
 
+        //      C# -> System.Boolean? HasDatastoresForRecovery
+        // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)
+        [JsonProperty("hasDatastoresForRecovery")]
+        public System.Boolean? HasDatastoresForRecovery { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -151,6 +156,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> VsphereHostPhysicalChildTypeConnection? RecoveryTargetChildConnection
+        // GraphQL -> recoveryTargetChildConnection: VsphereHostPhysicalChildTypeConnection! (type)
+        [JsonProperty("recoveryTargetChildConnection")]
+        public VsphereHostPhysicalChildTypeConnection? RecoveryTargetChildConnection { get; set; }
+
+        //      C# -> VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection
+        // GraphQL -> recoveryTargetDescendantConnection: VsphereHostDescendantTypeConnection! (type)
+        [JsonProperty("recoveryTargetDescendantConnection")]
+        public VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -175,6 +190,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CdmId = null,
+        System.Boolean? HasDatastoresForRecovery = null,
         System.String? Id = null,
         System.String? IoFilterStatus = null,
         System.Boolean? IsStandaloneHost = null,
@@ -192,6 +208,8 @@ namespace RubrikSecurityCloud.Types
         VsphereHostPhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        VsphereHostPhysicalChildTypeConnection? RecoveryTargetChildConnection = null,
+        VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
@@ -221,6 +239,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
+        }
+        if ( HasDatastoresForRecovery != null ) {
+            this.HasDatastoresForRecovery = HasDatastoresForRecovery;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -272,6 +293,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( RecoveryTargetChildConnection != null ) {
+            this.RecoveryTargetChildConnection = RecoveryTargetChildConnection;
+        }
+        if ( RecoveryTargetDescendantConnection != null ) {
+            this.RecoveryTargetDescendantConnection = RecoveryTargetDescendantConnection;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -381,6 +408,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdmId\n" ;
             } else {
                 s += ind + "cdmId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasDatastoresForRecovery
+        // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)
+        if (this.HasDatastoresForRecovery != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasDatastoresForRecovery\n" ;
+            } else {
+                s += ind + "hasDatastoresForRecovery\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -563,6 +599,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereHostPhysicalChildTypeConnection? RecoveryTargetChildConnection
+        // GraphQL -> recoveryTargetChildConnection: VsphereHostPhysicalChildTypeConnection! (type)
+        if (this.RecoveryTargetChildConnection != null) {
+            var fspec = this.RecoveryTargetChildConnection.AsFieldSpec(conf.Child("recoveryTargetChildConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryTargetChildConnection {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection
+        // GraphQL -> recoveryTargetDescendantConnection: VsphereHostDescendantTypeConnection! (type)
+        if (this.RecoveryTargetDescendantConnection != null) {
+            var fspec = this.RecoveryTargetDescendantConnection.AsFieldSpec(conf.Child("recoveryTargetDescendantConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryTargetDescendantConnection {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -767,6 +827,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CdmId != null && ec.Excludes("cdmId",true))
         {
             this.CdmId = null;
+        }
+        //      C# -> System.Boolean? HasDatastoresForRecovery
+        // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)
+        if (ec.Includes("hasDatastoresForRecovery",true))
+        {
+            if(this.HasDatastoresForRecovery == null) {
+
+                this.HasDatastoresForRecovery = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasDatastoresForRecovery != null && ec.Excludes("hasDatastoresForRecovery",true))
+        {
+            this.HasDatastoresForRecovery = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -1076,6 +1153,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> VsphereHostPhysicalChildTypeConnection? RecoveryTargetChildConnection
+        // GraphQL -> recoveryTargetChildConnection: VsphereHostPhysicalChildTypeConnection! (type)
+        if (ec.Includes("recoveryTargetChildConnection",false))
+        {
+            if(this.RecoveryTargetChildConnection == null) {
+
+                this.RecoveryTargetChildConnection = new VsphereHostPhysicalChildTypeConnection();
+                this.RecoveryTargetChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryTargetChildConnection"));
+
+            } else {
+
+                this.RecoveryTargetChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryTargetChildConnection"));
+
+            }
+        }
+        else if (this.RecoveryTargetChildConnection != null && ec.Excludes("recoveryTargetChildConnection",false))
+        {
+            this.RecoveryTargetChildConnection = null;
+        }
+        //      C# -> VsphereHostDescendantTypeConnection? RecoveryTargetDescendantConnection
+        // GraphQL -> recoveryTargetDescendantConnection: VsphereHostDescendantTypeConnection! (type)
+        if (ec.Includes("recoveryTargetDescendantConnection",false))
+        {
+            if(this.RecoveryTargetDescendantConnection == null) {
+
+                this.RecoveryTargetDescendantConnection = new VsphereHostDescendantTypeConnection();
+                this.RecoveryTargetDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryTargetDescendantConnection"));
+
+            } else {
+
+                this.RecoveryTargetDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryTargetDescendantConnection"));
+
+            }
+        }
+        else if (this.RecoveryTargetDescendantConnection != null && ec.Excludes("recoveryTargetDescendantConnection",false))
+        {
+            this.RecoveryTargetDescendantConnection = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

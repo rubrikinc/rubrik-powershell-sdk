@@ -55,3 +55,5 @@ Nutanix virtual machine live mount.
   - Source snapshot of the Live Mount.
 - powerStatus: System.String
   - Power Status of the Virtual Machine. It is set to 'ON' or 'OFF'. If the CDM cluster is disconnected, then it is set to  'Unknown'.
+- mountStatus: NutanixVmMountStatus
+  - Mount Status of the Virtual Machine. If the CDM cluster is disconnected, then None is  returned.

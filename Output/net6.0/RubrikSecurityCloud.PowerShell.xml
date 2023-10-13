@@ -3446,6 +3446,8 @@
              	workloadFids = @(
              		$someString
              	)
+             	# OPTIONAL
+             	snapshotRetentionSlaId = $someString
              }
              
              # Execute the query
@@ -18350,6 +18352,11 @@
              				}
              			)
              		}
+             		# OPTIONAL
+             		inplaceRestoreConfig = @{
+             			# REQUIRED
+             			nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+             		}
              	}
              	# REQUIRED
              	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
@@ -19753,6 +19760,8 @@
              			# OPTIONAL
              			sectionSizeInGb = $someInt
              		}
+             		# OPTIONAL
+             		shouldUseSepsWallet = $someBoolean
              	}
              }
              
@@ -21192,6 +21201,10 @@
              	# OPTIONAL
              	nonRubrikUserEmails = @(
              		$someString
+             	)
+             	# OPTIONAL
+             	attachmentTypes = @(
+             		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
              	)
              }
              
@@ -24268,6 +24281,8 @@
              	# REQUIRED
              	config = @{
              		# OPTIONAL
+             		hostId = $someString
+             		# OPTIONAL
              		ignoreErrors = $someBoolean
              		# OPTIONAL
              		shareId = $someString
@@ -24283,8 +24298,6 @@
              				}
              			}
              		)
-             		# REQUIRED
-             		hostId = $someString
              	}
              	# REQUIRED
              	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -41580,6 +41593,10 @@
              
              $query = New-RscQueryMssql -CompatibleInstances
              
+             # OPTIONAL
+             $query.Var.first = $someInt
+             # OPTIONAL
+             $query.Var.after = $someString
              # REQUIRED
              $query.Var.input = @{
              	# OPTIONAL
@@ -41589,6 +41606,24 @@
              	# REQUIRED
              	id = $someString
              }
+             # OPTIONAL
+             $query.Var.sortBy = @{
+             	# OPTIONAL
+             	field = $someMssqlCompatibleInstancesSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCompatibleInstancesSortByField]) for enum values.
+             	# OPTIONAL
+             	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+             }
+             # OPTIONAL
+             $query.Var.filters = @(
+             	@{
+             		# OPTIONAL
+             		field = $someMssqlCompatibleInstancesFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCompatibleInstancesFilterField]) for enum values.
+             		# OPTIONAL
+             		texts = @(
+             			$someString
+             		)
+             }
+             )
              
              # Execute the query
              

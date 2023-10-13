@@ -193,6 +193,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryMssql -CompatibleInstances
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
@@ -202,6 +206,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someMssqlCompatibleInstancesSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCompatibleInstancesSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someMssqlCompatibleInstancesFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCompatibleInstancesFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -1073,21 +1095,35 @@ $query.Var.filters = @(
         }
 
         // Create new GraphQL Query:
-        // mssqlCompatibleInstances(input: GetCompatibleMssqlInstancesV1Input!): MssqlInstanceSummaryListResponse!
+        // mssqlCompatibleInstances(
+        //     first: Int
+        //     after: String
+        //     input: GetCompatibleMssqlInstancesV1Input!
+        //     sortBy: MssqlCompatibleInstancesSortByInput
+        //     filters: [MssqlCompatibleInstancesFilterInput!]
+        //   ): MssqlInstanceSummaryListResponse!
         internal void InitQueryMssqlCompatibleInstances()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
                 Tuple.Create("input", "GetCompatibleMssqlInstancesV1Input!"),
+                Tuple.Create("sortBy", "MssqlCompatibleInstancesSortByInput"),
+                Tuple.Create("filters", "[MssqlCompatibleInstancesFilterInput!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryMssqlCompatibleInstances",
-                "($input: GetCompatibleMssqlInstancesV1Input!)",
+                "($first: Int,$after: String,$input: GetCompatibleMssqlInstancesV1Input!,$sortBy: MssqlCompatibleInstancesSortByInput,$filters: [MssqlCompatibleInstancesFilterInput!])",
                 "MssqlInstanceSummaryListResponse",
                 Query.MssqlCompatibleInstances_ObjectFieldSpec,
                 Query.MssqlCompatibleInstancesFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
 	recoveryTime = $someDateTime
@@ -1095,7 +1131,25 @@ $query.Var.input = @{
 	recoveryType = $someV1GetCompatibleMssqlInstancesV1RequestRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1GetCompatibleMssqlInstancesV1RequestRecoveryType]) for enum values.
 	# REQUIRED
 	id = $someString
-}"
+}
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someMssqlCompatibleInstancesSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCompatibleInstancesSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}
+# OPTIONAL
+$query.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = $someMssqlCompatibleInstancesFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCompatibleInstancesFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+}
+)"
             );
         }
 

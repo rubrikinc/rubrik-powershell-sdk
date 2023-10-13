@@ -7,6 +7,12 @@
   - List of descendants.
 - physicalChildConnection: VsphereComputeClusterPhysicalChildTypeConnection
   - List of physical children.
+- recoveryTargetChildConnection: VsphereComputeClusterPhysicalChildTypeConnection
+  - List of recoveryTarget children.
+- recoveryTargetDescendantConnection: VsphereComputeClusterDescendantTypeConnection
+  - Paginated list of recovery target descendants.
+- hasDatastoresForRecovery: System.Boolean
+  - This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

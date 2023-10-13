@@ -240,6 +240,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_TEAM")]
         O365_TEAM,
 
+        [EnumMember(Value = "OAUTH_TOKEN")]
+        OAUTH_TOKEN,
+
         [EnumMember(Value = "OBJECT_PROTECTION")]
         OBJECT_PROTECTION,
 

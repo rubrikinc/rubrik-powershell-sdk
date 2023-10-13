@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleUpdateCommon")]
         public OracleUpdateCommonInput? OracleUpdateCommon { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseSepsWallet
+        // GraphQL -> shouldUseSepsWallet: Boolean (scalar)
+        [JsonProperty("shouldUseSepsWallet")]
+        public System.Boolean? ShouldUseSepsWallet { get; set; }
+
 
         #endregion
 

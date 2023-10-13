@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ATLASSIAN_SITE")]
+        ATLASSIAN_SITE,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -149,6 +152,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IpWhitelist")]
         IP_WHITELIST,
+
+        [EnumMember(Value = "JIRA_PROJECT")]
+        JIRA_PROJECT,
+
+        [EnumMember(Value = "JIRA_SETTINGS")]
+        JIRA_SETTINGS,
 
         [EnumMember(Value = "JobInstance")]
         JOB_INSTANCE,

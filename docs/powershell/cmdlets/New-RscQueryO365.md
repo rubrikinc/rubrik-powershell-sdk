@@ -107,7 +107,7 @@ All O365 orgs for the account.
     - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
 - Returns O365OrgConnection.
 ### orgstatuses
 Gets the status of each org in the account.

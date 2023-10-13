@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFIGURE_DATA_CLASS_GLOBAL")]
         CONFIGURE_DATA_CLASS_GLOBAL,
 
+        [EnumMember(Value = "CONFIGURE_DB_LOG_REPORT_PROPERTIES")]
+        CONFIGURE_DB_LOG_REPORT_PROPERTIES,
+
         [EnumMember(Value = "CREATE_REPORT")]
         CREATE_REPORT,
 
@@ -186,6 +189,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_CLUSTER_SETTINGS")]
         MANAGE_CLUSTER_SETTINGS,
 
+        [EnumMember(Value = "MANAGE_CORS_SETTINGS")]
+        MANAGE_CORS_SETTINGS,
+
         [EnumMember(Value = "MANAGE_DATA_SOURCE")]
         MANAGE_DATA_SOURCE,
 
@@ -197,6 +203,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
+
+        [EnumMember(Value = "MANAGE_MIGRATION_DASHBOARD")]
+        MANAGE_MIGRATION_DASHBOARD,
 
         [EnumMember(Value = "MANAGE_ORCHESTRATED_RECOVERY")]
         MANAGE_ORCHESTRATED_RECOVERY,
@@ -333,6 +342,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_CLUSTER_LICENSES")]
         VIEW_CLUSTER_LICENSES,
 
+        [EnumMember(Value = "VIEW_CORS_SETTINGS")]
+        VIEW_CORS_SETTINGS,
+
         [EnumMember(Value = "VIEW_DASHBOARD")]
         VIEW_DASHBOARD,
 
@@ -341,6 +353,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_DATA_SECURITY_DETAILS")]
         VIEW_DATA_SECURITY_DETAILS,
+
+        [EnumMember(Value = "VIEW_DB_LOG_REPORT_PROPERTIES")]
+        VIEW_DB_LOG_REPORT_PROPERTIES,
 
         [EnumMember(Value = "VIEW_EVENT_CLUSTER_SETTING")]
         VIEW_EVENT_CLUSTER_SETTING,

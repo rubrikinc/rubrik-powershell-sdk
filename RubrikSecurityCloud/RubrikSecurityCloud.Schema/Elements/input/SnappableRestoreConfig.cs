@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("contactsRestoreConfig")]
         public ContactsRestoreConfig? ContactsRestoreConfig { get; set; }
 
+        //      C# -> InplaceRestoreConfig? InplaceRestoreConfig
+        // GraphQL -> inplaceRestoreConfig: InplaceRestoreConfig (input)
+        [JsonProperty("inplaceRestoreConfig")]
+        public InplaceRestoreConfig? InplaceRestoreConfig { get; set; }
+
 
         #endregion
 

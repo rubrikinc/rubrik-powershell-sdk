@@ -237,7 +237,7 @@
 - SAASAPPS_NATURAL_ID - Filter according to the natural ID field of the SaaS app resource.
 - HYPERV_VM_BY_AGENT_STATUS - Filter Hyper-V virtual machines by the agent's connection status.
 - JIRA_PROJECT_TYPE - Filter by the Jira project type.
-- JIRA_PROJECT_KEY - Filter by the Jira project key.
+- JIRA_PROJECT_KEY_OR_NAME - Filter by the Jira project key or name.
 - JIRA_PROJECT_LEAD - Filter by the Jira project lead.
 - NUTANIX_SHOW_ONLY_STANDALONE_CLUSTERS - Filter out the standalone Nutanix cluster objects that are not
  associated with any Prism Central object.

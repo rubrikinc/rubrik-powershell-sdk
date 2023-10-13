@@ -932,6 +932,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			sectionSizeInGb = $someInt
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUseSepsWallet = $someBoolean
     /// 	}
     /// }
     /// 
@@ -2049,6 +2051,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			sectionSizeInGb = $someInt
 		}
+		# OPTIONAL
+		shouldUseSepsWallet = $someBoolean
 	}
 }"
             );

@@ -7,3 +7,4 @@ Identifier for download files.
 - SNAPSHOT_FILES_DOWNLOAD - Files Downloaded from a Snapshot.
 - ORION_THREAT_HUNT_DOWNLOAD - Threat hunt result CSV.
 - SLA_WITH_REPLICATION - CSV report of SLA Domains with replication enabled to this Rubrik cluster.
+- PRECHECKS_CDM_API_METRICS_CSV_DOWNLOAD - CDM API metrics in CSV format.

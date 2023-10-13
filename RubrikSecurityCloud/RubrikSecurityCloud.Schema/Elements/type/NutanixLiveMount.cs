@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> NutanixVmMountStatus? MountStatus
+        // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
+        [JsonProperty("mountStatus")]
+        public NutanixVmMountStatus? MountStatus { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -165,6 +170,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public NutanixLiveMount Set(
+        NutanixVmMountStatus? MountStatus = null,
         System.String? CdmId = null,
         System.String? Id = null,
         System.Boolean? IsMigrationDisabled = null,
@@ -194,6 +200,9 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? SourceSnapshot = null
     ) 
     {
+        if ( MountStatus != null ) {
+            this.MountStatus = MountStatus;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
@@ -286,6 +295,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> NutanixVmMountStatus? MountStatus
+        // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
+        if (this.MountStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mountStatus\n" ;
+            } else {
+                s += ind + "mountStatus\n" ;
+            }
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
@@ -542,6 +560,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> NutanixVmMountStatus? MountStatus
+        // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
+        if (ec.Includes("mountStatus",true))
+        {
+            if(this.MountStatus == null) {
+
+                this.MountStatus = new NutanixVmMountStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountStatus != null && ec.Excludes("mountStatus",true))
+        {
+            this.MountStatus = null;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (ec.Includes("cdmId",true))

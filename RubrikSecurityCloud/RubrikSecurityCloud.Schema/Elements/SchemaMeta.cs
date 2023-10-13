@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20230920-45" ;
+        public static string GraphqlSchemaVersion = "v20231004-20" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -64,8 +64,6 @@ namespace RubrikSecurityCloud.Types
             HypervTopLevelDescendantType,
             K8sClusterDescendant,
             ManagedVolumeDescendantType,
-            ManagedVolumeMountDescendantType,
-            ManagedVolumeMountPhysicalChildType,
             ManagedVolumePhysicalChildType,
             MongoCollectionSetDescendantType,
             MongoCollectionSetPhysicalChildType,
@@ -822,6 +820,7 @@ namespace RubrikSecurityCloud.Types
             ExocomputeStorageAccountIds,
             ExportUrlSpecs,
             ExternalArtifactMapReply,
+            FailedRestoreItemsInfoReply,
             FailoverChart,
             FailoverClusterApp,
             FailoverClusterAppConfig,
@@ -1156,11 +1155,7 @@ namespace RubrikSecurityCloud.Types
             ManagedVolumeInventoryStats,
             ManagedVolumeMount,
             ManagedVolumeMountConnection,
-            ManagedVolumeMountDescendantTypeConnection,
-            ManagedVolumeMountDescendantTypeEdge,
             ManagedVolumeMountEdge,
-            ManagedVolumeMountPhysicalChildTypeConnection,
-            ManagedVolumeMountPhysicalChildTypeEdge,
             ManagedVolumeMountSpec,
             ManagedVolumePatchConfig,
             ManagedVolumePhysicalChildTypeConnection,
@@ -2988,6 +2983,7 @@ namespace RubrikSecurityCloud.Types
             IndicatorOfCompromiseInput,
             InPlaceRecoveryJobConfigForBatchInput,
             InPlaceRecoveryJobConfigV2Input,
+            InplaceRestoreConfig,
             InsertCustomerO365AppInput,
             InstallIoFilterInput,
             InstantRecoverHypervVirtualMachineSnapshotInput,
@@ -3093,6 +3089,8 @@ namespace RubrikSecurityCloud.Types
             MssqlBackupJobConfigInput,
             MssqlBackupSelectionInput,
             MssqlBatchBackupJobConfigInput,
+            MssqlCompatibleInstancesFilterInput,
+            MssqlCompatibleInstancesSortByInput,
             MssqlConfigInput,
             MssqlDatabaseLiveMountFilterInput,
             MssqlDatabaseLiveMountSortByInput,
@@ -3997,6 +3995,7 @@ namespace RubrikSecurityCloud.Types
             exchangeServer,
             exchangeServers,
             externalDeploymentName,
+            failedRestoreItemsInfo,
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
@@ -4039,6 +4038,7 @@ namespace RubrikSecurityCloud.Types
             hasIdpConfigured,
             helpContentSnippets,
             hierarchyObject,
+            hierarchyObjectRecoveryTarget,
             hierarchyObjects,
             hierarchySnappables,
             hostDiagnosis,
@@ -5431,6 +5431,8 @@ namespace RubrikSecurityCloud.Types
             MssqlBackupType,
             MssqlCbtEffectiveStatusType,
             MssqlCbtStatusType,
+            MssqlCompatibleInstancesFilterField,
+            MssqlCompatibleInstancesSortByField,
             MssqlDatabaseFileType,
             MssqlDatabaseLiveMountFilterField,
             MssqlDatabaseLiveMountSortByField,
@@ -5444,6 +5446,7 @@ namespace RubrikSecurityCloud.Types
             MssqlLogShippingTargetSortByField,
             MssqlRootPropertiesRootType,
             MssqlUnprotectableType,
+            NameCollisionRule,
             NameValidity,
             NasSystemConnectivityStatus,
             NasVendorType,
@@ -5458,6 +5461,7 @@ namespace RubrikSecurityCloud.Types
             NutanixSnapshotConsistencyMandate,
             NutanixVirtualMachineScriptDetailFailureHandling,
             NutanixVmAgentConnectionStatus,
+            NutanixVmMountStatus,
             O365AppType,
             O365AzureCloudType,
             O365CalendarSearchObjectType,
@@ -6237,20 +6241,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     "ManagedVolumeDescendantType",
                     new HashSet<string> {
+                    "ManagedVolumeDescendantType",
                     "ManagedVolumeMount",
-                    "PhysicalHost",
-                    }
-                },
-                {
-                    "ManagedVolumeMountDescendantType",
-                    new HashSet<string> {
-                    "PhysicalHost",
-                    }
-                },
-                {
-                    "ManagedVolumeMountPhysicalChildType",
-                    new HashSet<string> {
-                    "PhysicalHost",
                     }
                 },
                 {
@@ -21501,6 +21493,10 @@ namespace RubrikSecurityCloud.Types
                         "decryptExportUrl",
                     }
                 },
+                {   "FailedRestoreItemsInfoReply", new List<string> {
+                        "failedRestoreItemsInfo",
+                    }
+                },
                 {   "FailoverClusterApp", new List<string> {
                         "failoverClusterApp",
                     }
@@ -21756,6 +21752,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "HierarchyObject", new List<string> {
                         "hierarchyObject",
+                        "hierarchyObjectRecoveryTarget",
                     }
                 },
                 {   "HierarchyObjectConnection", new List<string> {
@@ -24703,6 +24700,7 @@ namespace RubrikSecurityCloud.Types
                 { "exchangeServer", "ExchangeServer"},
                 { "exchangeServers", "ExchangeServerConnection"},
                 { "decryptExportUrl", "ExportUrlSpecs"},
+                { "failedRestoreItemsInfo", "FailedRestoreItemsInfoReply"},
                 { "failoverClusterApp", "FailoverClusterApp"},
                 { "failoverClusterApps", "FailoverClusterAppConnection"},
                 { "failoverClusterTopLevelDescendants", "FailoverClusterTopLevelDescendantTypeConnection"},
@@ -24771,6 +24769,7 @@ namespace RubrikSecurityCloud.Types
                 { "guestCredentialsV2", "GuestOsCredentialConnection"},
                 { "helpContentSnippets", "HelpContentSnippetConnection"},
                 { "hierarchyObject", "HierarchyObject"},
+                { "hierarchyObjectRecoveryTarget", "HierarchyObject"},
                 { "globalSearchResults", "HierarchyObjectConnection"},
                 { "hierarchySnappables", "HierarchySnappableConnection"},
                 { "hostDiagnosis", "HostDiagnosisSummary"},

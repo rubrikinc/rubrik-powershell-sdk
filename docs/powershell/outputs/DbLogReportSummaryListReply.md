@@ -7,6 +7,9 @@ Supported in v5.3+
 - total: System.Int32
   - Supported in v5.3+
   Total list responses.
+- nextCursor: System.String
+  - Supported in v9.0+
+  Cursor to fetch the next set of results.
 - hasMore: System.Boolean
   - Supported in v5.3+
   If there is more.

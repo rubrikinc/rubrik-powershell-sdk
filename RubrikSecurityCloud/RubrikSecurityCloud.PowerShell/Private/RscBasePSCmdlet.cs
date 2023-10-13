@@ -13,6 +13,7 @@ using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.Types;
 using GraphQL;
+using System.Collections.ObjectModel;
 using System.Management.Automation.Language;
 
 // ignore warning 'Missing XML comment'
@@ -49,6 +50,22 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         protected Dictionary<string, string> GetMetricTags()
         {
+
+            // Traverse PowerShell stack
+            string caller = "Unknown";
+            Collection<PSObject> callStack = this.InvokeCommand.InvokeScript("Get-PSCallStack");
+            foreach (PSObject stackFrame in callStack)
+            {
+                CallStackFrame frame = (CallStackFrame)stackFrame.BaseObject;
+                if (!string.IsNullOrEmpty(frame.ScriptName) &&
+                    !frame.ScriptName.Contains("Toolkit/Public/"))
+                {
+                    string[] path = frame.ScriptName.Split('/');
+                    caller = path[path.Length - 1];
+                    break;
+                }
+            }
+
             string version =
                 this
                     .MyInvocation
@@ -56,10 +73,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     .Module
                     .Version
                     .ToString();
-            string clientName =
-                (this._rbkClient == null) ? "" : this._rbkClient.ClientName;
+
             return new Dictionary<string, string>{
-                {"Sdk-Caller", clientName},
+                {"Sdk-Caller", caller},
                 {"Sdk-Language", "PowerShell"},
                 {"Sdk-Rsc-Version", SchemaMeta.GraphqlSchemaVersion},
                 {"Sdk-Version", version}

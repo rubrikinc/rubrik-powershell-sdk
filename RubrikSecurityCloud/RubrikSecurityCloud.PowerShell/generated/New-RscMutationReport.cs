@@ -466,6 +466,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	nonRubrikUserEmails = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	attachmentTypes = @(
+    /// 		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1296,6 +1300,10 @@ $query.Var.input = @{
 	# OPTIONAL
 	nonRubrikUserEmails = @(
 		$someString
+	)
+	# OPTIONAL
+	attachmentTypes = @(
+		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
 	)
 }"
             );

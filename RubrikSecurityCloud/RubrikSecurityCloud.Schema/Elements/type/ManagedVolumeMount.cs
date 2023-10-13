@@ -111,11 +111,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
-        //      C# -> ManagedVolumeMountDescendantTypeConnection? DescendantConnection
-        // GraphQL -> descendantConnection: ManagedVolumeMountDescendantTypeConnection! (type)
-        [JsonProperty("descendantConnection")]
-        public ManagedVolumeMountDescendantTypeConnection? DescendantConnection { get; set; }
-
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -140,11 +135,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         [JsonProperty("pendingObjectDeletionStatus")]
         public PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus { get; set; }
-
-        //      C# -> ManagedVolumeMountPhysicalChildTypeConnection? PhysicalChildConnection
-        // GraphQL -> physicalChildConnection: ManagedVolumeMountPhysicalChildTypeConnection! (type)
-        [JsonProperty("physicalChildConnection")]
-        public ManagedVolumeMountPhysicalChildTypeConnection? PhysicalChildConnection { get; set; }
 
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
@@ -194,13 +184,11 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<ManagedVolumeExportChannel>? Channels = null,
         Cluster? Cluster = null,
-        ManagedVolumeMountDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
         ManagedVolume? ManagedVolume = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
-        ManagedVolumeMountPhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
         SnapshotDistribution? SnapshotDistribution = null,
@@ -261,9 +249,6 @@ namespace RubrikSecurityCloud.Types
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
-        if ( DescendantConnection != null ) {
-            this.DescendantConnection = DescendantConnection;
-        }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
@@ -278,9 +263,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PendingObjectDeletionStatus != null ) {
             this.PendingObjectDeletionStatus = PendingObjectDeletionStatus;
-        }
-        if ( PhysicalChildConnection != null ) {
-            this.PhysicalChildConnection = PhysicalChildConnection;
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
@@ -491,18 +473,6 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
-        //      C# -> ManagedVolumeMountDescendantTypeConnection? DescendantConnection
-        // GraphQL -> descendantConnection: ManagedVolumeMountDescendantTypeConnection! (type)
-        if (this.DescendantConnection != null) {
-            var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                if (conf.Flat) {
-                    s += conf.Prefix + fspec;
-                } else {
-                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
-                }
-            }
-        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
@@ -560,18 +530,6 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
-                }
-            }
-        }
-        //      C# -> ManagedVolumeMountPhysicalChildTypeConnection? PhysicalChildConnection
-        // GraphQL -> physicalChildConnection: ManagedVolumeMountPhysicalChildTypeConnection! (type)
-        if (this.PhysicalChildConnection != null) {
-            var fspec = this.PhysicalChildConnection.AsFieldSpec(conf.Child("physicalChildConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                if (conf.Flat) {
-                    s += conf.Prefix + fspec;
-                } else {
-                    s += ind + "physicalChildConnection {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -972,25 +930,6 @@ namespace RubrikSecurityCloud.Types
         {
             this.Cluster = null;
         }
-        //      C# -> ManagedVolumeMountDescendantTypeConnection? DescendantConnection
-        // GraphQL -> descendantConnection: ManagedVolumeMountDescendantTypeConnection! (type)
-        if (ec.Includes("descendantConnection",false))
-        {
-            if(this.DescendantConnection == null) {
-
-                this.DescendantConnection = new ManagedVolumeMountDescendantTypeConnection();
-                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
-
-            } else {
-
-                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
-
-            }
-        }
-        else if (this.DescendantConnection != null && ec.Excludes("descendantConnection",false))
-        {
-            this.DescendantConnection = null;
-        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (ec.Includes("effectiveSlaSourceObject",false))
@@ -1085,25 +1024,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.PendingObjectDeletionStatus != null && ec.Excludes("pendingObjectDeletionStatus",false))
         {
             this.PendingObjectDeletionStatus = null;
-        }
-        //      C# -> ManagedVolumeMountPhysicalChildTypeConnection? PhysicalChildConnection
-        // GraphQL -> physicalChildConnection: ManagedVolumeMountPhysicalChildTypeConnection! (type)
-        if (ec.Includes("physicalChildConnection",false))
-        {
-            if(this.PhysicalChildConnection == null) {
-
-                this.PhysicalChildConnection = new ManagedVolumeMountPhysicalChildTypeConnection();
-                this.PhysicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("physicalChildConnection"));
-
-            } else {
-
-                this.PhysicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("physicalChildConnection"));
-
-            }
-        }
-        else if (this.PhysicalChildConnection != null && ec.Excludes("physicalChildConnection",false))
-        {
-            this.PhysicalChildConnection = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)

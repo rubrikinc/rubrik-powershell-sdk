@@ -480,6 +480,41 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> HierarchyObject? HierarchyObjectRecoveryTarget
+        // GraphQL -> hierarchyObjectRecoveryTarget: HierarchyObject! (interface)
+        public static string HierarchyObjectRecoveryTarget_TypedFieldSpec(HierarchyObject fieldSpec)
+        {
+            string args = "\n(\nfid: $fid\n)";
+            return "hierarchyObjectRecoveryTarget" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string HierarchyObjectRecoveryTarget_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return HierarchyObjectRecoveryTarget((HierarchyObject)fieldSpecObj);
+        }
+        public static string HierarchyObjectRecoveryTarget(HierarchyObject fieldSpec)
+        {
+            return HierarchyObjectRecoveryTarget_TypedFieldSpec(fieldSpec);
+        }
+        public static string HierarchyObjectRecoveryTarget(object fieldSpecObj)
+        {
+            return HierarchyObjectRecoveryTarget_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object HierarchyObjectRecoveryTargetFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var list = new List<HierarchyObject>();
+            list.ApplyExploratoryFieldSpec(ec);
+            var fieldSpecObj = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(list);
+            if (fieldSpecObj == null) {
+                throw new InvalidOperationException("Could not create HierarchyObject composite object");
+            }
+            return fieldSpecObj;
+        }
+
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject!]! (interface)
         public static string HierarchyObjects_TypedFieldSpec(List<HierarchyObject> fieldSpec)
@@ -10678,6 +10713,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> FailedRestoreItemsInfoReply? FailedRestoreItemsInfo
+        // GraphQL -> failedRestoreItemsInfo: FailedRestoreItemsInfoReply! (type)
+        public static string FailedRestoreItemsInfo_TypedFieldSpec(FailedRestoreItemsInfoReply fieldSpec)
+        {
+            string args = "\n(\nworkloadFid: $workloadFid\ntaskchainId: $taskchainId\n)";
+            return "failedRestoreItemsInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string FailedRestoreItemsInfo_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return FailedRestoreItemsInfo((FailedRestoreItemsInfoReply)fieldSpecObj);
+        }
+        public static string FailedRestoreItemsInfo(FailedRestoreItemsInfoReply fieldSpec)
+        {
+            return FailedRestoreItemsInfo_TypedFieldSpec(fieldSpec);
+        }
+        public static string FailedRestoreItemsInfo(object fieldSpecObj)
+        {
+            return FailedRestoreItemsInfo_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object FailedRestoreItemsInfoFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new FailedRestoreItemsInfoReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> FailoverClusterApp? FailoverClusterApp
         // GraphQL -> failoverClusterApp: FailoverClusterApp! (type)
         public static string FailoverClusterApp_TypedFieldSpec(FailoverClusterApp fieldSpec)
@@ -14309,7 +14375,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlCompatibleInstances: MssqlInstanceSummaryListResponse! (type)
         public static string MssqlCompatibleInstances_TypedFieldSpec(MssqlInstanceSummaryListResponse fieldSpec)
         {
-            string args = "\n(\ninput: $input\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\ninput: $input\nsortBy: $sortBy\nfilters: $filters\n)";
             return "mssqlCompatibleInstances" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";

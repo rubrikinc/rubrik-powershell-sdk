@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nicsInSnapshot")]
         public System.Int32? NicsInSnapshot { get; set; }
 
+        //      C# -> List<System.String>? SnapshotNetworkUuids
+        // GraphQL -> snapshotNetworkUuids: [String!]! (scalar)
+        [JsonProperty("snapshotNetworkUuids")]
+        public List<System.String>? SnapshotNetworkUuids { get; set; }
+
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         [JsonProperty("vmName")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public NutanixVmSnapshotSummary Set(
         System.Int32? NicsInSnapshot = null,
+        List<System.String>? SnapshotNetworkUuids = null,
         System.String? VmName = null,
         BaseSnapshotSummary? BaseSnapshotSummary = null
     ) 
     {
         if ( NicsInSnapshot != null ) {
             this.NicsInSnapshot = NicsInSnapshot;
+        }
+        if ( SnapshotNetworkUuids != null ) {
+            this.SnapshotNetworkUuids = SnapshotNetworkUuids;
         }
         if ( VmName != null ) {
             this.VmName = VmName;
@@ -77,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nicsInSnapshot\n" ;
             } else {
                 s += ind + "nicsInSnapshot\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SnapshotNetworkUuids
+        // GraphQL -> snapshotNetworkUuids: [String!]! (scalar)
+        if (this.SnapshotNetworkUuids != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotNetworkUuids\n" ;
+            } else {
+                s += ind + "snapshotNetworkUuids\n" ;
             }
         }
         //      C# -> System.String? VmName
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NicsInSnapshot != null && ec.Excludes("nicsInSnapshot",true))
         {
             this.NicsInSnapshot = null;
+        }
+        //      C# -> List<System.String>? SnapshotNetworkUuids
+        // GraphQL -> snapshotNetworkUuids: [String!]! (scalar)
+        if (ec.Includes("snapshotNetworkUuids",true))
+        {
+            if(this.SnapshotNetworkUuids == null) {
+
+                this.SnapshotNetworkUuids = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotNetworkUuids != null && ec.Excludes("snapshotNetworkUuids",true))
+        {
+            this.SnapshotNetworkUuids = null;
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)

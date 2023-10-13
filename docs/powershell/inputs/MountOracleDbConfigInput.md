@@ -33,13 +33,13 @@ Supported in v5.0+
       List of PDB names to be live mounted in the target database.
 - targetRacHostIds: list of System.Strings
   - Supported in v9.0+
-      List of RAC host IDs to recover the database during the Live Mount.
+      List of RAC host simple IDs to recover the database during the Live Mount.
 - lmDbName: System.String
   - Supported in v9.0+
       The new value of the db_name parameter for a LM operation. This is used to specify the new target database name of the live mounted database.
 - targetRacPrimaryHostId: System.String
   - Supported in v9.0+
-      Specifies the host ID for the primary RAC node, which will be used for recovery. The provided host ID must be among the list of host IDs specified in targetRacHostIds.
+      Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.
 - shouldAllowRenameToSource: System.Boolean
   - Supported in v9.0+
       Boolean value that determines whether to allow renaming the database back to the source Oracle host or RAC during a Live Mount.

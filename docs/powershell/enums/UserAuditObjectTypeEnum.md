@@ -26,6 +26,7 @@ User audit object type.
 - O365Group - Office 365 Group type.
 - NutanixVm - Nutanix virtual machine type.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
+- ATLASSIAN_SITE - Atlassian site.
 - MONGODB_SOURCE - MongoDB source type.
 - HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.
@@ -93,6 +94,7 @@ User audit object type.
 - Sla - SLA Domain type.
 - Blueprint - Blueprint type.
 - Ec2Instance - EC2 instance type.
+- JIRA_PROJECT - Atlassian Jira project.
 - StorageArrayVolumeGroup - Storage array volume group type.
 - StorageSettings - Storage settings type.
 - K8S_RESOURCE_SET - Kubernetes Resource Set type.
@@ -106,6 +108,7 @@ User audit object type.
 - FailoverClusterApp - Failover cluster app type.
 - Host - Host type.
 - GcpNativeDisk - GCP native disk type.
+- JIRA_SETTINGS - Atlassian Jira settings.
 - NutanixCluster - Nutanix cluster type.
 - ORACLE_MOUNT - Oracle Mount type.
 - CASSANDRA_KEYSPACE - Cassandra keyspace type.

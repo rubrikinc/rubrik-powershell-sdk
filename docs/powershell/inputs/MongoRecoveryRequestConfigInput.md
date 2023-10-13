@@ -28,9 +28,11 @@ Configuration for recovering MongoDB databases or collections from source to tar
   - Required. Supported in v9.0+
       Timestamp of the snapshot version to be used for restore.
 - restoreThrottleInBytesPerSecond: System.Int64
-  - Rate limit restore data ingestion on target MongoDB cluster.
+  - Supported in v9.0+
+      Rate limit restore data ingestion on target MongoDB cluster.
 - isRestoreWithIndex: System.Boolean
-  - Boolean flag to restore MongoDB collections with index.
+  - Supported in v9.0+
+      Boolean flag to restore MongoDB collections with index.
 - sourceMongoClusterId: System.String
   - Required. Supported in v9.0+
       ID of the MongoDB source cluster.

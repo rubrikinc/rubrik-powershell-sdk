@@ -22,7 +22,12 @@ Paginated list of Microsoft SQL log shipping target.
 ### compatibleinstances
 Returns all compatible instances for export for the specified recovery time.
 
-- There is a single argument of type GetCompatibleMssqlInstancesV1Input.
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - input - GetCompatibleMssqlInstancesV1Input: Input for V1GetCompatibleMssqlInstancesV1.
+    - sortBy - MssqlCompatibleInstancesSortByInput: Sort by argument for MSSQL compatible instances.
+    - filters - list of MssqlCompatibleInstancesFilterInputs: Filters for MSSQL compatible instances.
 - Returns MssqlInstanceSummaryListResponse.
 ### database
 A Microsoft SQL Database.

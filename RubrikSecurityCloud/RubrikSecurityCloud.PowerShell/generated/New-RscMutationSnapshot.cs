@@ -412,6 +412,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		hostId = $someString
+    /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		shareId = $someString
@@ -427,8 +429,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		hostId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -1237,6 +1237,8 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# OPTIONAL
+		hostId = $someString
+		# OPTIONAL
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		shareId = $someString
@@ -1252,8 +1254,6 @@ $query.Var.input = @{
 				}
 			}
 		)
-		# REQUIRED
-		hostId = $someString
 	}
 	# REQUIRED
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> NutanixVmMountStatus? MountStatus
+        // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
+        [JsonProperty("mountStatus")]
+        public NutanixVmMountStatus? MountStatus { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -39,11 +44,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountRequestId: String (scalar)
         [JsonProperty("mountRequestId")]
         public System.String? MountRequestId { get; set; }
-
-        //      C# -> System.String? MountStatus
-        // GraphQL -> mountStatus: String (scalar)
-        [JsonProperty("mountStatus")]
-        public System.String? MountStatus { get; set; }
 
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)
@@ -115,11 +115,11 @@ namespace RubrikSecurityCloud.Types
     }
 
     public NutanixVmMountSummary Set(
+        NutanixVmMountStatus? MountStatus = null,
         System.String? Id = null,
         System.Boolean? IsReady = null,
         System.String? MigrationStatus = null,
         System.String? MountRequestId = null,
-        System.String? MountStatus = null,
         DateTime? MountedDate = null,
         System.String? MountedVmId = null,
         System.String? MountedVmIpAddress = null,
@@ -134,6 +134,9 @@ namespace RubrikSecurityCloud.Types
         System.String? VmName = null
     ) 
     {
+        if ( MountStatus != null ) {
+            this.MountStatus = MountStatus;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -145,9 +148,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MountRequestId != null ) {
             this.MountRequestId = MountRequestId;
-        }
-        if ( MountStatus != null ) {
-            this.MountStatus = MountStatus;
         }
         if ( MountedDate != null ) {
             this.MountedDate = MountedDate;
@@ -196,6 +196,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> NutanixVmMountStatus? MountStatus
+        // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
+        if (this.MountStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mountStatus\n" ;
+            } else {
+                s += ind + "mountStatus\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -230,15 +239,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mountRequestId\n" ;
             } else {
                 s += ind + "mountRequestId\n" ;
-            }
-        }
-        //      C# -> System.String? MountStatus
-        // GraphQL -> mountStatus: String (scalar)
-        if (this.MountStatus != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "mountStatus\n" ;
-            } else {
-                s += ind + "mountStatus\n" ;
             }
         }
         //      C# -> DateTime? MountedDate
@@ -356,6 +356,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> NutanixVmMountStatus? MountStatus
+        // GraphQL -> mountStatus: NutanixVmMountStatus (enum)
+        if (ec.Includes("mountStatus",true))
+        {
+            if(this.MountStatus == null) {
+
+                this.MountStatus = new NutanixVmMountStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountStatus != null && ec.Excludes("mountStatus",true))
+        {
+            this.MountStatus = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))
@@ -423,23 +440,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.MountRequestId != null && ec.Excludes("mountRequestId",true))
         {
             this.MountRequestId = null;
-        }
-        //      C# -> System.String? MountStatus
-        // GraphQL -> mountStatus: String (scalar)
-        if (ec.Includes("mountStatus",true))
-        {
-            if(this.MountStatus == null) {
-
-                this.MountStatus = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.MountStatus != null && ec.Excludes("mountStatus",true))
-        {
-            this.MountStatus = null;
         }
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)
