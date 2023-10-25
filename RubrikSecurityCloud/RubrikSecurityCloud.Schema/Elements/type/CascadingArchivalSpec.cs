@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalLocation {\n" + fspec + ind + "}\n";
+                    s += ind + "CascadingArchivalSpec_INTERFACE_FIELD_archivalLocation: archivalLocation{\n" + fspec + ind + "}\n";
                 }
             }
         }

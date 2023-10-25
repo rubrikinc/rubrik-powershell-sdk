@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n";
+                    s += ind + "ClassificationPolicyWhitelistDetailedEntry_INTERFACE_FIELD_snappable: snappable{\n" + fspec + ind + "}\n";
                 }
             }
         }

@@ -349,7 +349,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "O365Onedrive_INTERFACE_FIELD_configuredSlaDomain: configuredSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -361,7 +361,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "O365Onedrive_INTERFACE_FIELD_effectiveRetentionSlaDomain: effectiveRetentionSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -373,7 +373,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "O365Onedrive_INTERFACE_FIELD_effectiveSlaDomain: effectiveSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }

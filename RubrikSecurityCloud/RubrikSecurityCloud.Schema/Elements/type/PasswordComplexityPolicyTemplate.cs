@@ -20,15 +20,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? Active
-        // GraphQL -> active: Boolean! (scalar)
-        [JsonProperty("active")]
-        public System.Boolean? Active { get; set; }
-
         //      C# -> System.Int32? DefaultValue
         // GraphQL -> defaultValue: Int! (scalar)
         [JsonProperty("defaultValue")]
         public System.Int32? DefaultValue { get; set; }
+
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean! (scalar)
+        [JsonProperty("isActive")]
+        public System.Boolean? IsActive { get; set; }
 
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)
@@ -50,17 +50,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PasswordComplexityPolicyTemplate Set(
-        System.Boolean? Active = null,
         System.Int32? DefaultValue = null,
+        System.Boolean? IsActive = null,
         System.Int32? MaxValue = null,
         System.Int32? MinValue = null
     ) 
     {
-        if ( Active != null ) {
-            this.Active = Active;
-        }
         if ( DefaultValue != null ) {
             this.DefaultValue = DefaultValue;
+        }
+        if ( IsActive != null ) {
+            this.IsActive = IsActive;
         }
         if ( MaxValue != null ) {
             this.MaxValue = MaxValue;
@@ -79,15 +79,6 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.Boolean? Active
-        // GraphQL -> active: Boolean! (scalar)
-        if (this.Active != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "active\n" ;
-            } else {
-                s += ind + "active\n" ;
-            }
-        }
         //      C# -> System.Int32? DefaultValue
         // GraphQL -> defaultValue: Int! (scalar)
         if (this.DefaultValue != null) {
@@ -95,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "defaultValue\n" ;
             } else {
                 s += ind + "defaultValue\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean! (scalar)
+        if (this.IsActive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isActive\n" ;
+            } else {
+                s += ind + "isActive\n" ;
             }
         }
         //      C# -> System.Int32? MaxValue
@@ -122,23 +122,6 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> System.Boolean? Active
-        // GraphQL -> active: Boolean! (scalar)
-        if (ec.Includes("active",true))
-        {
-            if(this.Active == null) {
-
-                this.Active = true;
-
-            } else {
-
-
-            }
-        }
-        else if (this.Active != null && ec.Excludes("active",true))
-        {
-            this.Active = null;
-        }
         //      C# -> System.Int32? DefaultValue
         // GraphQL -> defaultValue: Int! (scalar)
         if (ec.Includes("defaultValue",true))
@@ -155,6 +138,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DefaultValue != null && ec.Excludes("defaultValue",true))
         {
             this.DefaultValue = null;
+        }
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean! (scalar)
+        if (ec.Includes("isActive",true))
+        {
+            if(this.IsActive == null) {
+
+                this.IsActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsActive != null && ec.Excludes("isActive",true))
+        {
+            this.IsActive = null;
         }
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)

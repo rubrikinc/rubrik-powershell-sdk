@@ -10,6 +10,7 @@ User audit type.
 - ISOLATED_RECOVERY
 - Configuration
 - ENCRYPTION_MANAGEMENT_OPERATION - Audit type for encryption management use cases.
+- RECOVERY_SCHEDULE - Audit type for recovery schedule use cases.
 - QUARANTINE - Audit type for quarantine usecases.
 - Login
 - LOCAL_RECOVERY

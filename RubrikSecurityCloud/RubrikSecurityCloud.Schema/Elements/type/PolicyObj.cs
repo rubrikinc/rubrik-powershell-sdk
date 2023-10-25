@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snappable")]
         public HierarchyObject? Snappable { get; set; }
 
+        //      C# -> System.Boolean? HasInsights
+        // GraphQL -> hasInsights: Boolean! (scalar)
+        [JsonProperty("hasInsights")]
+        public System.Boolean? HasInsights { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -156,6 +161,7 @@ namespace RubrikSecurityCloud.Types
         RiskLevelType? RiskLevel = null,
         DataGovShareType? ShareType = null,
         HierarchyObject? Snappable = null,
+        System.Boolean? HasInsights = null,
         System.String? Id = null,
         System.Boolean? IsUserAccessEnabledObject = null,
         System.String? SnapshotFid = null,
@@ -193,6 +199,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Snappable != null ) {
             this.Snappable = Snappable;
+        }
+        if ( HasInsights != null ) {
+            this.HasInsights = HasInsights;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -312,8 +321,17 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n";
+                    s += ind + "PolicyObj_INTERFACE_FIELD_snappable: snappable{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.Boolean? HasInsights
+        // GraphQL -> hasInsights: Boolean! (scalar)
+        if (this.HasInsights != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasInsights\n" ;
+            } else {
+                s += ind + "hasInsights\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -632,6 +650,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Snappable != null && ec.Excludes("snappable",false))
         {
             this.Snappable = null;
+        }
+        //      C# -> System.Boolean? HasInsights
+        // GraphQL -> hasInsights: Boolean! (scalar)
+        if (ec.Includes("hasInsights",true))
+        {
+            if(this.HasInsights == null) {
+
+                this.HasInsights = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasInsights != null && ec.Excludes("hasInsights",true))
+        {
+            this.HasInsights = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

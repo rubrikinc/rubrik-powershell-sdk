@@ -305,7 +305,41 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 throw new System.Net.Http.HttpRequestException(msg);
             }
 
+            JObject reply = response.Data as JObject;
+            RenameInterfaceFields(reply);
             return response.Data;
+        }
+
+        private void RenameInterfaceFields(JObject replyObject)
+        {
+            const string interfaceFieldId = "_INTERFACE_FIELD_";
+            foreach (JProperty field in replyObject.Properties().ToList())
+            {
+                if (field.Name.Contains(interfaceFieldId))
+                {
+                    string fieldname = field.Name
+                        .Split(
+                            new[] { interfaceFieldId },
+                            StringSplitOptions.RemoveEmptyEntries
+                        )
+                        .Last();
+                    JProperty newField =
+                        new JProperty(fieldname, field.Value);
+                    field.Replace(newField);
+                }
+
+                if (field.Value.Type == JTokenType.Object)
+                {
+                    RenameInterfaceFields(field.Value as JObject);
+                }
+                else if (field.Value.Type == JTokenType.Array)
+                {
+                    foreach (JObject subfield in field.Value)
+                    {
+                        RenameInterfaceFields(subfield);
+                    }
+                }
+            }
         }
 
         private string GraphQLRequestToString(GraphQLRequest request)
@@ -388,6 +422,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             logContent.Append("Data:");
             if (response.Data != null)
             {
+
                 var text = JsonConvert.SerializeObject(response.Data, Formatting.Indented);
                 logContent.AppendLine("\n\n" + text + "\n");
             }

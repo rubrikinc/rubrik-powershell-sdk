@@ -137,8 +137,8 @@ function Get-RscToolkitStatus {
     $tkDir = $Toolkit.Dir
     $tkOutputDir = $Toolkit.OutputDir
     if ( $Brief ) {
-        $tkDir = $tkDir -Replace $Toolkit.SdkDir, "<SDK root>"
-        $tkOutputDir = $tkOutputDir -Replace $Toolkit.SdkDir, "<SDK root>"
+        $tkDir = $tkDir -Replace [regex]::Escape($Toolkit.SdkDir), "<SDK root>"
+        $tkOutputDir = $tkOutputDir -Replace [regex]::Escape($Toolkit.SdkDir), "<SDK root>"
     }
     Write-Host "`nToolkit status:"
     Write-Host "---------------`n " -ForegroundColor Green

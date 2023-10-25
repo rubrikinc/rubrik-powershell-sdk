@@ -80,7 +80,8 @@ namespace RubrikSecurityCloud
             "^data$",
             "^items$",
             "^nodes$",
-            "^pageinfo$"
+            "^pageinfo$",
+            "^asyncrequeststatus$"
         };
 
         /// <summary>

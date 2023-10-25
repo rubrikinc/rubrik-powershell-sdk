@@ -456,7 +456,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "CustomReportFilters_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }

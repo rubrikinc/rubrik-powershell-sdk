@@ -231,6 +231,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> WorkloadOrganization? WorkloadOrg
+        // GraphQL -> workloadOrg: WorkloadOrganization (type)
+        [JsonProperty("workloadOrg")]
+        public WorkloadOrganization? WorkloadOrg { get; set; }
+
 
         #endregion
 
@@ -282,7 +287,8 @@ namespace RubrikSecurityCloud.Types
         System.Int32? TotalSnapshots = null,
         System.Int64? TransferredBytes = null,
         System.Int64? UsedBytes = null,
-        Cluster? Cluster = null
+        Cluster? Cluster = null,
+        WorkloadOrganization? WorkloadOrg = null
     ) 
     {
         if ( ArchivalComplianceStatus != null ) {
@@ -411,6 +417,9 @@ namespace RubrikSecurityCloud.Types
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
+        if ( WorkloadOrg != null ) {
+            this.WorkloadOrg = WorkloadOrg;
+        }
         return this;
     }
 
@@ -475,7 +484,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "Snappable_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -803,6 +812,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> WorkloadOrganization? WorkloadOrg
+        // GraphQL -> workloadOrg: WorkloadOrganization (type)
+        if (this.WorkloadOrg != null) {
+            var fspec = this.WorkloadOrg.AsFieldSpec(conf.Child("workloadOrg"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadOrg {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1535,6 +1556,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> WorkloadOrganization? WorkloadOrg
+        // GraphQL -> workloadOrg: WorkloadOrganization (type)
+        if (ec.Includes("workloadOrg",false))
+        {
+            if(this.WorkloadOrg == null) {
+
+                this.WorkloadOrg = new WorkloadOrganization();
+                this.WorkloadOrg.ApplyExploratoryFieldSpec(ec.NewChild("workloadOrg"));
+
+            } else {
+
+                this.WorkloadOrg.ApplyExploratoryFieldSpec(ec.NewChild("workloadOrg"));
+
+            }
+        }
+        else if (this.WorkloadOrg != null && ec.Excludes("workloadOrg",false))
+        {
+            this.WorkloadOrg = null;
         }
     }
 

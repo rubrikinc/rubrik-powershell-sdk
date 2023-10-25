@@ -50,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPodAndClusterVnetDifferent")]
         public System.Boolean? IsPodAndClusterVnetDifferent { get; set; }
 
+        //      C# -> System.Boolean? IsPodCidrAndSubnetCidrOverlap
+        // GraphQL -> isPodCidrAndSubnetCidrOverlap: Boolean! (scalar)
+        [JsonProperty("isPodCidrAndSubnetCidrOverlap")]
+        public System.Boolean? IsPodCidrAndSubnetCidrOverlap { get; set; }
+
+        //      C# -> System.Boolean? IsPodCidrRangeTooSmall
+        // GraphQL -> isPodCidrRangeTooSmall: Boolean! (scalar)
+        [JsonProperty("isPodCidrRangeTooSmall")]
+        public System.Boolean? IsPodCidrRangeTooSmall { get; set; }
+
         //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
         // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)
         [JsonProperty("isPodSubnetSizeTooSmall")]
@@ -81,6 +91,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsClusterSubnetSizeTooSmall = null,
         System.Boolean? IsPodAndClusterSubnetSame = null,
         System.Boolean? IsPodAndClusterVnetDifferent = null,
+        System.Boolean? IsPodCidrAndSubnetCidrOverlap = null,
+        System.Boolean? IsPodCidrRangeTooSmall = null,
         System.Boolean? IsPodSubnetSizeTooSmall = null,
         System.Boolean? IsSubnetDelegated = null,
         AzureExocomputeRegionConfig? Config = null
@@ -103,6 +115,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsPodAndClusterVnetDifferent != null ) {
             this.IsPodAndClusterVnetDifferent = IsPodAndClusterVnetDifferent;
+        }
+        if ( IsPodCidrAndSubnetCidrOverlap != null ) {
+            this.IsPodCidrAndSubnetCidrOverlap = IsPodCidrAndSubnetCidrOverlap;
+        }
+        if ( IsPodCidrRangeTooSmall != null ) {
+            this.IsPodCidrRangeTooSmall = IsPodCidrRangeTooSmall;
         }
         if ( IsPodSubnetSizeTooSmall != null ) {
             this.IsPodSubnetSizeTooSmall = IsPodSubnetSizeTooSmall;
@@ -176,6 +194,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isPodAndClusterVnetDifferent\n" ;
             } else {
                 s += ind + "isPodAndClusterVnetDifferent\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPodCidrAndSubnetCidrOverlap
+        // GraphQL -> isPodCidrAndSubnetCidrOverlap: Boolean! (scalar)
+        if (this.IsPodCidrAndSubnetCidrOverlap != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPodCidrAndSubnetCidrOverlap\n" ;
+            } else {
+                s += ind + "isPodCidrAndSubnetCidrOverlap\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPodCidrRangeTooSmall
+        // GraphQL -> isPodCidrRangeTooSmall: Boolean! (scalar)
+        if (this.IsPodCidrRangeTooSmall != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPodCidrRangeTooSmall\n" ;
+            } else {
+                s += ind + "isPodCidrRangeTooSmall\n" ;
             }
         }
         //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
@@ -316,6 +352,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsPodAndClusterVnetDifferent != null && ec.Excludes("isPodAndClusterVnetDifferent",true))
         {
             this.IsPodAndClusterVnetDifferent = null;
+        }
+        //      C# -> System.Boolean? IsPodCidrAndSubnetCidrOverlap
+        // GraphQL -> isPodCidrAndSubnetCidrOverlap: Boolean! (scalar)
+        if (ec.Includes("isPodCidrAndSubnetCidrOverlap",true))
+        {
+            if(this.IsPodCidrAndSubnetCidrOverlap == null) {
+
+                this.IsPodCidrAndSubnetCidrOverlap = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPodCidrAndSubnetCidrOverlap != null && ec.Excludes("isPodCidrAndSubnetCidrOverlap",true))
+        {
+            this.IsPodCidrAndSubnetCidrOverlap = null;
+        }
+        //      C# -> System.Boolean? IsPodCidrRangeTooSmall
+        // GraphQL -> isPodCidrRangeTooSmall: Boolean! (scalar)
+        if (ec.Includes("isPodCidrRangeTooSmall",true))
+        {
+            if(this.IsPodCidrRangeTooSmall == null) {
+
+                this.IsPodCidrRangeTooSmall = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPodCidrRangeTooSmall != null && ec.Excludes("isPodCidrRangeTooSmall",true))
+        {
+            this.IsPodCidrRangeTooSmall = null;
         }
         //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
         // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)

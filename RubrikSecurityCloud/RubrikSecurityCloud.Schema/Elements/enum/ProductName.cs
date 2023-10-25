@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPFLOWS")]
         APPFLOWS,
 
+        [EnumMember(Value = "ATLASSIAN_JIRA")]
+        ATLASSIAN_JIRA,
+
         [EnumMember(Value = "CC_ES")]
         CC_ES,
 

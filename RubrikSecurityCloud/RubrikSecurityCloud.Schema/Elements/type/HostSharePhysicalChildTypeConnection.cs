@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "nodes {\n" + fspec + ind + "}\n";
+                    s += ind + "HostSharePhysicalChildTypeConnection_INTERFACE_FIELD_nodes: nodes{\n" + fspec + ind + "}\n";
                 }
             }
         }

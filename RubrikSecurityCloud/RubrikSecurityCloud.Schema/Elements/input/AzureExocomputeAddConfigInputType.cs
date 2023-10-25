@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("podSubnetNativeId")]
         public System.String? PodSubnetNativeId { get; set; }
 
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String (scalar)
+        [JsonProperty("podOverlayNetworkCidr")]
+        public System.String? PodOverlayNetworkCidr { get; set; }
+
 
         #endregion
 

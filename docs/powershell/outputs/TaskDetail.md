@@ -75,5 +75,7 @@ Task details.
   - Logical data reduction of the task.
 - orgId: System.String
   - The organization ID related to the task.
+- taskOrg: WorkloadOrganization
+  - Specifies the owner organization of the workload task detail.
 - orgName: System.String
-  - The organization name related to the task.
+  - The organization name related to the task. This is deprecated.

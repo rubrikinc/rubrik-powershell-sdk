@@ -9,3 +9,5 @@ Azure exocompute configuration to add.
   - Specifies if this configuration is managed by Rubrik.
 - podSubnetNativeId: System.String
   - Native ID of the subnet where the Exocompute pods should be launched.
+- podOverlayNetworkCidr: System.String
+  - The CIDR range for pods if Exocompute is launched with the CNI overlay network plugin.

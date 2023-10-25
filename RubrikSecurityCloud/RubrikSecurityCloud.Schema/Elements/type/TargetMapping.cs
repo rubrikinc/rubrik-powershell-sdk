@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "targetTemplate {\n" + fspec + ind + "}\n";
+                    s += ind + "TargetMapping_INTERFACE_FIELD_targetTemplate: targetTemplate{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "targets {\n" + fspec + ind + "}\n";
+                    s += ind + "TargetMapping_INTERFACE_FIELD_targets: targets{\n" + fspec + ind + "}\n";
                 }
             }
         }

@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "currentSlaSummary {\n" + fspec + ind + "}\n";
+                    s += ind + "SlaAuditDetail_INTERFACE_FIELD_currentSlaSummary: currentSlaSummary{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "previousSlaSummary {\n" + fspec + ind + "}\n";
+                    s += ind + "SlaAuditDetail_INTERFACE_FIELD_previousSlaSummary: previousSlaSummary{\n" + fspec + ind + "}\n";
                 }
             }
         }

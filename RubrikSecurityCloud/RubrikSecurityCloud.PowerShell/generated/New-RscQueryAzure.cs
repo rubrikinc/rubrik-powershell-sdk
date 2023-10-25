@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 42
+    /// Create a new RscQuery object for any of the 43
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 42 operations
+    /// There are 43 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1555,6 +1555,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StorageAccountsByRegion operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: StorageAccountsByRegion
+    /// 
+    /// $query = New-RscQueryAzure -StorageAccountsByRegion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	region = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureStorageAccountCcprovision&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Subnets operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1708,6 +1741,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isRscManaged = $someBoolean
     /// 			# OPTIONAL
     /// 			podSubnetNativeId = $someString
+    /// 			# OPTIONAL
+    /// 			podOverlayNetworkCidr = $someString
     /// 		}
     /// 	)
     /// }
@@ -1777,6 +1812,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SqlManagedInstanceServer",
                 "SqlManagedInstanceServers",
                 "StorageAccounts",
+                "StorageAccountsByRegion",
                 "Subnets",
                 "SubscriptionWithExocomputeMappings",
                 "Subscriptions",
@@ -1907,6 +1943,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StorageAccounts":
                         this.ProcessRecord_StorageAccounts();
+                        break;
+                    case "StorageAccountsByRegion":
+                        this.ProcessRecord_StorageAccountsByRegion();
                         break;
                     case "Subnets":
                         this.ProcessRecord_Subnets();
@@ -2264,6 +2303,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StorageAccounts";
             // Create new graphql operation azureStorageAccounts
             InitQueryAzureStorageAccounts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureStorageAccountsByRegion.
+        internal void ProcessRecord_StorageAccountsByRegion()
+        {
+            this._logger.name += " -StorageAccountsByRegion";
+            // Create new graphql operation allAzureStorageAccountsByRegion
+            InitQueryAllAzureStorageAccountsByRegion();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3632,6 +3680,31 @@ $query.Var.regionName = $someString"
         }
 
         // Create new GraphQL Query:
+        // allAzureStorageAccountsByRegion(input: AzureStorageAccountsByRegionInput!): [AzureStorageAccountCcprovision!]!
+        internal void InitQueryAllAzureStorageAccountsByRegion()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AzureStorageAccountsByRegionInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureStorageAccountsByRegion",
+                "($input: AzureStorageAccountsByRegionInput!)",
+                "List<AzureStorageAccountCcprovision>",
+                Query.AllAzureStorageAccountsByRegion_ObjectFieldSpec,
+                Query.AllAzureStorageAccountsByRegionFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	region = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!): SubnetConnection!
         internal void InitQueryAzureSubnets()
         {
@@ -3760,6 +3833,8 @@ $query.Var.input = @{
 			isRscManaged = $someBoolean
 			# OPTIONAL
 			podSubnetNativeId = $someString
+			# OPTIONAL
+			podOverlayNetworkCidr = $someString
 		}
 	)
 }"

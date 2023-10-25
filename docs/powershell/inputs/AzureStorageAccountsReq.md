@@ -1,5 +1,5 @@
 ### AzureStorageAccountsReq
-AzureStorageAccountsReq input for Azure account.
+Azure storage accounts input by resource group.
 
 - cloudAccountId: System.String
   - Cloud account ID.

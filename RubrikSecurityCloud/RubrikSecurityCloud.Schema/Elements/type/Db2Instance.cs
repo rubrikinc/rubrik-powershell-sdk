@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> Db2InstanceType? InstanceType
+        // GraphQL -> instanceType: Db2InstanceType! (enum)
+        [JsonProperty("instanceType")]
+        public Db2InstanceType? InstanceType { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -187,6 +192,7 @@ namespace RubrikSecurityCloud.Types
 
     public Db2Instance Set(
         List<Operation>? AuthorizedOperations = null,
+        Db2InstanceType? InstanceType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         Db2Status? Status = null,
@@ -221,6 +227,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( InstanceType != null ) {
+            this.InstanceType = InstanceType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -332,6 +341,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "authorizedOperations\n" ;
             }
         }
+        //      C# -> Db2InstanceType? InstanceType
+        // GraphQL -> instanceType: Db2InstanceType! (enum)
+        if (this.InstanceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceType\n" ;
+            } else {
+                s += ind + "instanceType\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -367,7 +385,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "Db2Instance_INTERFACE_FIELD_configuredSlaDomain: configuredSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -379,7 +397,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "Db2Instance_INTERFACE_FIELD_effectiveRetentionSlaDomain: effectiveRetentionSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -391,7 +409,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "Db2Instance_INTERFACE_FIELD_effectiveSlaDomain: effectiveSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -403,7 +421,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                    s += ind + "Db2Instance_INTERFACE_FIELD_pendingSla: pendingSla{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -415,7 +433,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+                    s += ind + "Db2Instance_INTERFACE_FIELD_replicatedObjects: replicatedObjects{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -673,6 +691,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> Db2InstanceType? InstanceType
+        // GraphQL -> instanceType: Db2InstanceType! (enum)
+        if (ec.Includes("instanceType",true))
+        {
+            if(this.InstanceType == null) {
+
+                this.InstanceType = new Db2InstanceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceType != null && ec.Excludes("instanceType",true))
+        {
+            this.InstanceType = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

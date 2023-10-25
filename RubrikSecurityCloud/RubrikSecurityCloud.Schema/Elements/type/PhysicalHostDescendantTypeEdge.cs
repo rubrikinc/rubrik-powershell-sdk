@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "node {\n" + fspec + ind + "}\n";
+                    s += ind + "PhysicalHostDescendantTypeEdge_INTERFACE_FIELD_node: node{\n" + fspec + ind + "}\n";
                 }
             }
         }

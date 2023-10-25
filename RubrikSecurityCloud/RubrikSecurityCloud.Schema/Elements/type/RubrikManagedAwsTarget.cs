@@ -484,7 +484,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+                    s += ind + "RubrikManagedAwsTarget_INTERFACE_FIELD_cloudAccount: cloudAccount{\n" + fspec + ind + "}\n";
                 }
             }
         }

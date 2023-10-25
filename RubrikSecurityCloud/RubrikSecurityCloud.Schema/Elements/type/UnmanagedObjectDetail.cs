@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "UnmanagedObjectDetail_INTERFACE_FIELD_effectiveSlaDomain: effectiveSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                    s += ind + "UnmanagedObjectDetail_INTERFACE_FIELD_pendingSla: pendingSla{\n" + fspec + ind + "}\n";
                 }
             }
         }

@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "DuplicatedVm_INTERFACE_FIELD_effectiveSlaDomain: effectiveSlaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }

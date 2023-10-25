@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("message")]
         public System.String? Message { get; set; }
 
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String! (scalar)
+        [JsonProperty("podOverlayNetworkCidr")]
+        public System.String? PodOverlayNetworkCidr { get; set; }
+
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
         [JsonProperty("podSubnetNativeId")]
@@ -69,6 +74,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ConfigUuid = null,
         System.Boolean? IsRscManaged = null,
         System.String? Message = null,
+        System.String? PodOverlayNetworkCidr = null,
         System.String? PodSubnetNativeId = null,
         System.String? SubnetNativeId = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Message != null ) {
             this.Message = Message;
+        }
+        if ( PodOverlayNetworkCidr != null ) {
+            this.PodOverlayNetworkCidr = PodOverlayNetworkCidr;
         }
         if ( PodSubnetNativeId != null ) {
             this.PodSubnetNativeId = PodSubnetNativeId;
@@ -140,6 +149,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "message\n" ;
             } else {
                 s += ind + "message\n" ;
+            }
+        }
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String! (scalar)
+        if (this.PodOverlayNetworkCidr != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "podOverlayNetworkCidr\n" ;
+            } else {
+                s += ind + "podOverlayNetworkCidr\n" ;
             }
         }
         //      C# -> System.String? PodSubnetNativeId
@@ -246,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Message != null && ec.Excludes("message",true))
         {
             this.Message = null;
+        }
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String! (scalar)
+        if (ec.Includes("podOverlayNetworkCidr",true))
+        {
+            if(this.PodOverlayNetworkCidr == null) {
+
+                this.PodOverlayNetworkCidr = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PodOverlayNetworkCidr != null && ec.Excludes("podOverlayNetworkCidr",true))
+        {
+            this.PodOverlayNetworkCidr = null;
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)

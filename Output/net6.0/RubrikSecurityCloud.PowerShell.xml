@@ -3314,6 +3314,8 @@
              			isRscManaged = $someBoolean
              			# OPTIONAL
              			podSubnetNativeId = $someString
+             			# OPTIONAL
+             			podOverlayNetworkCidr = $someString
              		}
              	)
              	# OPTIONAL
@@ -30589,9 +30591,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure">
              <summary>
-             Create a new RscQuery object for any of the 42
+             Create a new RscQuery object for any of the 43
              operations in the 'Azure' API domain:
-             AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+             AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              </summary>
              <description>
              New-RscQueryAzure creates a new
@@ -30601,11 +30603,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 42 operations
+             There are 43 operations
              in the 'Azure' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -32121,6 +32123,39 @@
              </example>
             
              <example>
+             Runs the StorageAccountsByRegion operation
+             of the 'Azure' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Azure
+             # API Operation: StorageAccountsByRegion
+             
+             $query = New-RscQueryAzure -StorageAccountsByRegion
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# OPTIONAL
+             	cloudAccountId = $someString
+             	# OPTIONAL
+             	region = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: List&lt;AzureStorageAccountCcprovision&gt;
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
              Runs the Subnets operation
              of the 'Azure' API domain.
              <code>
@@ -32274,6 +32309,8 @@
              			isRscManaged = $someBoolean
              			# OPTIONAL
              			podSubnetNativeId = $someString
+             			# OPTIONAL
+             			podOverlayNetworkCidr = $someString
              		}
              	)
              }
@@ -36480,9 +36517,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryDb2">
              <summary>
-             Create a new RscQuery object for any of the 8
+             Create a new RscQuery object for any of the 9
              operations in the 'Db2' API domain:
-             Database, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
+             Database, DatabaseJobStatus, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
              </summary>
              <description>
              New-RscQueryDb2 creates a new
@@ -36492,11 +36529,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 8 operations
+             There are 9 operations
              in the 'Db2' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: Database, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
+             one of: Database, DatabaseJobStatus, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -36554,6 +36591,39 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: Db2Database
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the DatabaseJobStatus operation
+             of the 'Db2' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Db2
+             # API Operation: DatabaseJobStatus
+             
+             $query = New-RscQueryDb2 -DatabaseJobStatus
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	clusterUuid = $someString
+             	# REQUIRED
+             	id = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AsyncRequestStatus
              
              
              
@@ -46035,6 +46105,10 @@
              $query.Var.sids = @(
              	$someString
              )
+             # OPTIONAL
+             $query.Var.insightsMetadataId = $someString
+             # OPTIONAL
+             $query.Var.includeInsightsMarker = $someBoolean
              # REQUIRED
              $query.Var.userAccessObjectsFilter = $someBoolean
              # OPTIONAL
@@ -46779,9 +46853,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryRcv">
              <summary>
-             Create a new RscQuery object for any of the 1
+             Create a new RscQuery object for any of the 2
              operations in the 'RCV' API domain:
-             ['AccountEntitlement'].
+             AccountEntitlement, or AccountEntitlements.
              </summary>
              <description>
              New-RscQueryRcv creates a new
@@ -46791,11 +46865,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 1 operations
+             There are 2 operations
              in the 'RCV' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: ['AccountEntitlement'].
+             one of: AccountEntitlement, or AccountEntitlements.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -46852,6 +46926,33 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: RcvAccountEntitlement
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the AccountEntitlements operation
+             of the 'RCV' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Rcv
+             # API Operation: AccountEntitlements
+             
+             $query = New-RscQueryRcv -AccountEntitlements
+             
+             # No variables for this query.
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AllRcvAccountEntitlements
              
              
              

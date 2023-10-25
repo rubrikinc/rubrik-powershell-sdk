@@ -3180,6 +3180,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<AzureStorageAccountCcprovision>? AllAzureStorageAccountsByRegion
+        // GraphQL -> allAzureStorageAccountsByRegion: [AzureStorageAccountCcprovision!]! (type)
+        public static string AllAzureStorageAccountsByRegion_TypedFieldSpec(List<AzureStorageAccountCcprovision> fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "allAzureStorageAccountsByRegion" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllAzureStorageAccountsByRegion_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllAzureStorageAccountsByRegion((List<AzureStorageAccountCcprovision>)fieldSpecObj);
+        }
+        public static string AllAzureStorageAccountsByRegion(List<AzureStorageAccountCcprovision> fieldSpec)
+        {
+            return AllAzureStorageAccountsByRegion_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllAzureStorageAccountsByRegion(object fieldSpecObj)
+        {
+            return AllAzureStorageAccountsByRegion_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllAzureStorageAccountsByRegionFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<AzureStorageAccountCcprovision>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<AzureSubscriptionWithExocomputeMapping>? AllAzureSubscriptionWithExocomputeMappings
         // GraphQL -> allAzureSubscriptionWithExocomputeMappings: [AzureSubscriptionWithExocomputeMapping!]! (type)
         public static string AllAzureSubscriptionWithExocomputeMappings_TypedFieldSpec(List<AzureSubscriptionWithExocomputeMapping> fieldSpec)
@@ -4788,6 +4819,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new List<QuarantineSpec>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AllRcvAccountEntitlements? AllRcvAccountEntitlements
+        // GraphQL -> allRcvAccountEntitlements: AllRcvAccountEntitlements! (type)
+        public static string AllRcvAccountEntitlements_TypedFieldSpec(AllRcvAccountEntitlements fieldSpec)
+        {
+            string args = "";
+            return "allRcvAccountEntitlements" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllRcvAccountEntitlements_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllRcvAccountEntitlements((AllRcvAccountEntitlements)fieldSpecObj);
+        }
+        public static string AllRcvAccountEntitlements(AllRcvAccountEntitlements fieldSpec)
+        {
+            return AllRcvAccountEntitlements_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllRcvAccountEntitlements(object fieldSpecObj)
+        {
+            return AllRcvAccountEntitlements_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllRcvAccountEntitlementsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AllRcvAccountEntitlements() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10027,6 +10089,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new Db2Database() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? Db2DatabaseJobStatus
+        // GraphQL -> db2DatabaseJobStatus: AsyncRequestStatus! (type)
+        public static string Db2DatabaseJobStatus_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "db2DatabaseJobStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string Db2DatabaseJobStatus_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return Db2DatabaseJobStatus((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string Db2DatabaseJobStatus(AsyncRequestStatus fieldSpec)
+        {
+            return Db2DatabaseJobStatus_TypedFieldSpec(fieldSpec);
+        }
+        public static string Db2DatabaseJobStatus(object fieldSpecObj)
+        {
+            return Db2DatabaseJobStatus_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object Db2DatabaseJobStatusFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17878,7 +17971,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyObjs: PolicyObjConnection! (type)
         public static string PolicyObjs_TypedFieldSpec(PolicyObjConnection fieldSpec)
         {
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\nuserAccessObjectsFilter: $userAccessObjectsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";

@@ -6,6 +6,50 @@ type Query {
   accountSettings: AccountSetting!
   activeCustomAnalyzers: AnalyzerConnection!
 
+  # Summary of the given Active Directory domain.
+  activeDirectoryDomain(
+    # The Rubrik UUID for the object.
+    fid: UUID!): ActiveDirectoryDomain!
+
+  # Summary of the given Active Directory domain controller.
+  activeDirectoryDomainController(
+    # The Rubrik UUID for the object.
+    fid: UUID!): ActiveDirectoryDomainController!
+
+  # Summary of all Active Directory domain controllers.
+  activeDirectoryDomainControllers(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): ActiveDirectoryDomainControllerConnection!
+
+  # Summary of all Active Directory domains.
+  activeDirectoryDomains(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): ActiveDirectoryDomainConnection!
+
   # Retrieve an activity series.
   activitySeries(
     # Input for retrieving an activity series.
@@ -28,6 +72,20 @@ type Query {
 
     # Sort activity series by field.
     sortBy: ActivitySeriesSortField, filters: ActivitySeriesFilter): ActivitySeriesConnection!
+
+  # Active Directory volume export connection.
+  adVolumeExports(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filter for Active Directory volume exports.
+    filters: [AdVolumeExportFilter!],
+
+    # Sort by argument for Active Directory volume exports.
+    sortBy: AdVolumeExportSortByInput): AdVolumeExportConnection!
 
   # List of account owners.
   allAccountOwners: [User!]!
@@ -1055,7 +1113,10 @@ type Query {
     sortBy: ListValidReplicationTargetsSortByField,
 
     # Sort order.
-    sortOrder: SortOrder): ValidReplicationTargetConnection!
+    sortOrder: SortOrder,
+
+    # Specification for replication targets to be retrieved - local or cross-account.
+    isCrossAccount: Boolean): ValidReplicationTargetConnection!
 
   # Get a list of HotAdd proxy virtual machines
   # 
@@ -3369,6 +3430,11 @@ type Query {
   # Determine whether the current organization has configured identity providers.
   hasIdpConfigured: Boolean!
 
+  # Checks if Microsoft Entra ID has relic snapshots.
+  hasRelicAzureAdSnapshot(
+    # Input to check if Microsoft Entra ID has relic snapshots.
+    input: HasRelicAzureAdSnapshotInput!): HasRelicAzureAdSnapshotReplyType!
+
   # Paginated list of help content snippets.
   helpContentSnippets(
     # Returns the first n elements from the list.
@@ -4370,6 +4436,11 @@ type Query {
   ncdObjectProtectionStatus(
     # List of Rubrik clusters to filter.
     clusters: [UUID!]!): NcdObjectProtectionStatus
+
+  # NAS Cloud Direct virtual machine image download URL.
+  ncdVmImageUrl(
+    # Input for getting NAS Cloud Direct virtual machine image download URL.
+    input: VmImageUrlInput!): NcdVmImageUrl!
 
   # Network Throttle Information.
   networkThrottle(
@@ -5760,7 +5831,7 @@ type Query {
   # Retrieve details of a scheduled report.
   scheduledReport(id: Int!): ScheduledReport
 
-  # Retrieve details of scheduled reports.
+  # Retrieve details of scheduled reports. If the reportId is None, return schedules of all reports. Otherwise, return the schedules of reportId.
   scheduledReports(
     # Returns the first n elements from the list.
     first: Int,
@@ -7916,6 +7987,14 @@ type Mutation {
   configureSapHanaRestore(
     # Input for V1ConfigureSapHanaRestore.
     input: ConfigureSapHanaRestoreInput!): AsyncRequestStatus!
+
+  # Initiate a Live Mount of an Active Directory Domain Controller snapshot
+  # 
+  # Supported in v9.0+
+  # Initiates a job to perform a Live Mount of an Active Directory Domain Controller snapshot. Returns the job instance ID.
+  createActiveDirectoryLiveMount(
+    # Input for V1CreateActiveDirectoryLiveMount.
+    input: CreateActiveDirectoryLiveMountInput!): AsyncRequestStatus!
   createAutomaticAwsTargetMapping(
     # Request for creating a new AWS target mapping.
     input: CreateAutomaticAwsTargetMappingInput!): TargetMapping! @deprecated(reason: "This mutation is deprecated.")
@@ -8003,6 +8082,14 @@ type Mutation {
 
     # Room of the report.
     reportRoom: String): CreateCustomReportReply!
+
+  # On-demand snapshot of an Active Directory Domain Controller
+  # 
+  # Supported in v9.0+
+  # Initiates an on-demand snapshot job of a specified Active Directory Domain Controller.
+  createDomainControllerSnapshot(
+    # Input for V1TakeOnDemandSnapshotOfDomainController.
+    input: CreateDomainControllerSnapshotInput!): AsyncRequestStatus!
 
   # Creates a download from archival request
   # 
@@ -8615,7 +8702,7 @@ type Mutation {
   # Initiates a request to delete a particular full snapshot of a SAP HANA database. If the log retention period for the database is still in effect, the snapshot will be deleted when the log retention period ends.
   deleteSapHanaDbSnapshot(
     # Input for V1DeleteSapHanaDbSnapshot.
-    input: DeleteSapHanaDbSnapshotInput!): ResponseSuccess!
+    input: DeleteSapHanaDbSnapshotInput!): ResponseSuccess! @deprecated(reason: "Please use deleteUnmanagedSnapshots mutation instead or use the RSC UI delete button from snapshots page")
 
   # Delete a SAP HANA system
   # 
@@ -8736,6 +8823,14 @@ type Mutation {
   discoverMongoSource(
     # Input for V1DiscoverMongoSource.
     input: DiscoverMongoSourceInput!): AsyncRequestStatus!
+
+  # Download a snapshot from a remote target
+  # 
+  # Supported in v9.0+
+  # Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
+  downloadActiveDirectorySnapshotFromLocation(
+    # Input for V1DownloadActiveDirectorySnapshotFromLocation.
+    input: DownloadActiveDirectorySnapshotFromLocationInput!): AsyncRequestStatus!
 
   # Download audit log in CSV format asynchronously.
   downloadAuditLogCsvAsync(
@@ -9382,6 +9477,14 @@ type Mutation {
     # Input for V1CreateNutanixVmMountMigration.
     input: MigrateNutanixMountV1Input!): AsyncRequestStatus!
 
+  # Modifies a Live Mount of an Active Directory domain controller snapshot
+  # 
+  # Supported in v9.0+
+  # Modifies the parameters of a Live Mount of an Active Directory domain controller snapshot.
+  modifyActiveDirectoryLiveMount(
+    # Input for V1ModifyActiveDirectoryLiveMount.
+    input: ModifyActiveDirectoryLiveMountInput!): Void
+
   # Modify IPMI settings
   # 
   # Supported in v5.0+
@@ -9561,6 +9664,11 @@ type Mutation {
   refreshDb2Database(
     # Input for V1RefreshDb2Database.
     input: RefreshDb2DatabaseInput!): AsyncRequestStatus!
+
+  # Initiates an on-demand refresh job of a specified Active Directory domain.
+  refreshDomain(
+    # Input for V1RefreshDomain.
+    input: RefreshDomainInput!): AsyncRequestStatus!
   refreshGlobalManagerConnectivityStatus(
     # The Rubrik cluster ID.
     clusterUuid: UUID!): GlobalManagerConnectivity!
@@ -9785,10 +9893,26 @@ type Mutation {
     # Input for V1ResolveVolumeGroupsConflict.
     input: ResolveVolumeGroupsConflictInput!): RequestSuccess!
 
+  # Restore the given objects to the Active Directory
+  # 
+  # Supported in v9.0+
+  # Initiates a recovery for the given Active Directory objects.
+  restoreActiveDirectoryObjects(
+    # Input for V1RestoreObjects.
+    input: RestoreActiveDirectoryObjectsInput!): AsyncRequestStatus!
+
   # Restores the Azure AD directory with multiple passwords.
   restoreAzureAdObjectsWithPasswords(
     # The input for restoring the Azure AD directory with multiple passwords.
     input: RestoreAzureAdObjectsWithPasswordsInput!): RestoreAzureAdObjectsWithPasswordsReply!
+
+  # Initiate Active Directory restore job
+  # 
+  # Supported in v9.0+
+  # Initiates a job to restore Active Directory snapshots to their corresponding Domain Controllers or alternate hosts. Returns the job instance ID.
+  restoreDomainControllerSnapshot(
+    # Input for V1CreateActiveDirectoryRestoreJob.
+    input: RestoreDomainControllerSnapshotInput!): AsyncRequestStatus!
 
   # Restore files
   # 
@@ -11278,6 +11402,727 @@ type ActiveDirectoryAppMetadata {
   # Count of different type of objects in the snapshot.
   objectsCount: ActiveDirectoryObjectsCount
 }
+# Supported in v9.0+
+input ActiveDirectoryContainerRestoreOptionsInput {
+  # Supported in v9.0+
+  # Whether to delete the objects within a container if Active Directory contains those children objects, but they are missing in the backup copy.
+  shouldDeleteExtraObjects: Boolean
+
+  # Supported in v9.0+
+  # Whether to create the objects within a container only when they are missing in the Active Directory. If set to true, the existing objects will remain untouched.
+  shouldOnlyRecreateMissingObjects: Boolean
+}
+# Active Directory Domain.
+type ActiveDirectoryDomain implements CdmHierarchyObject , HierarchyObject {
+  # ID of the Rubrik CDM cluster.
+  cdmId: String!
+
+  # Name of the Active Directory domain.
+  domainName: String!
+
+  # ID of the Active Directory domain.
+  domainSid: String
+
+  # Rubrik cluster.
+  cluster: Cluster!
+
+  # List of descendants.
+  descendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): ActiveDirectoryDomainDescendantTypeConnection!
+
+  # List of physical children.
+  physicalChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): ActiveDirectoryDomainPhysicalChildTypeConnection!
+
+  # SMB Domain.
+  smbDomain: SmbDomain
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of ActiveDirectoryDomain objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ActiveDirectoryDomainConnection {
+  # List of ActiveDirectoryDomain objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ActiveDirectoryDomainEdge!]!
+
+  # List of ActiveDirectoryDomain objects.
+  nodes: [ActiveDirectoryDomain!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ActiveDirectoryDomain objects matching the request arguments.
+  count: Int!
+}
+# Active Directory Domain Controller.
+type ActiveDirectoryDomainController implements CdmHierarchyObject , HierarchyObject , ActiveDirectoryDomainDescendantType , ActiveDirectoryDomainPhysicalChildType , HierarchySnappable , CdmHierarchySnappableNew {
+  # ID of the Rubrik CDM cluster.
+  cdmId: String!
+
+  # Specifies whether the domain controller is a relic.
+  isRelic: Boolean!
+
+  # UUID of the agent.
+  agentUuid: String
+
+  # Name of the host.
+  hostname: String!
+
+  # RBS status.
+  rbsStatus: HostConnectionStatus!
+
+  # Service status of the Active Directory.
+  adServiceStatus: ActiveDirectoryServiceStatus!
+
+  # Different master roles played by the Domain Controller.
+  fsmoRoles: [FsmoRoles!]!
+
+  # Mentions if services like DNS or DHCP are hosted.
+  serverRoles: [ServerRoles!]!
+
+  # Includes statistics for the protected objects, for example, archive storage.
+  reportWorkload: Snappable
+
+  # Active Directory Domain to which this domain controller belongs to.
+  activeDirectoryDomain: ActiveDirectoryDomain!
+
+  # Rubrik cluster UUID.
+  cluster: Cluster!
+
+  # Physical location of the Domain Controller.
+  dcLocation: String
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # A link to view the workload on the CDM cluster. For dev use only.
+  cdmLink: String!
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput): MissedSnapshotCommonConnection
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput,
+
+    # Group snapshots by field.
+    groupBy: MissedSnapshotGroupByTime!,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0): MissedSnapshotGroupByConnection
+
+  # The list of snapshots taken for this workload.
+  snapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Sorts snapshots by field.
+    sortBy: CdmSnapshotSortByEnum = Date,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder): CdmSnapshotConnection
+
+  # GroupBy connection for the snapshots of this workload.
+  snapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupByConnection
+
+  # GroupBy connection for the snapshots of this workload.
+  snapshotGroupBySummary(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent snapshot of this workload.
+  newestSnapshot: CdmSnapshot
+
+  # The oldest snapshot of this workload.
+  oldestSnapshot: CdmSnapshot
+
+  # The number of on-demand snapshots.
+  onDemandSnapshotCount: Int!
+
+  # The newest snapshot archived to AWS.
+  newestArchivedSnapshot: CdmSnapshot
+
+  # The newest snapshot replicated to a cluster.
+  newestReplicatedSnapshot: CdmSnapshot
+}
+# Paginated list of ActiveDirectoryDomainController objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ActiveDirectoryDomainControllerConnection {
+  # List of ActiveDirectoryDomainController objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ActiveDirectoryDomainControllerEdge!]!
+
+  # List of ActiveDirectoryDomainController objects.
+  nodes: [ActiveDirectoryDomainController!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ActiveDirectoryDomainController objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ActiveDirectoryDomainController object. This wrapper is used for pagination.
+type ActiveDirectoryDomainControllerEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ActiveDirectoryDomainController object wrapped by this edge.
+  node: ActiveDirectoryDomainController!
+}
+# Active Directory domain descendant type, eg. ActiveDirectoryDomainController.
+interface ActiveDirectoryDomainDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of ActiveDirectoryDomainDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ActiveDirectoryDomainDescendantTypeConnection {
+  # List of ActiveDirectoryDomainDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ActiveDirectoryDomainDescendantTypeEdge!]!
+
+  # List of ActiveDirectoryDomainDescendantType objects.
+  nodes: [ActiveDirectoryDomainDescendantType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ActiveDirectoryDomainDescendantType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ActiveDirectoryDomainDescendantType object. This wrapper is used for pagination.
+type ActiveDirectoryDomainDescendantTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ActiveDirectoryDomainDescendantType object wrapped by this edge.
+  node: ActiveDirectoryDomainDescendantType!
+}
+# Wrapper around the ActiveDirectoryDomain object. This wrapper is used for pagination.
+type ActiveDirectoryDomainEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ActiveDirectoryDomain object wrapped by this edge.
+  node: ActiveDirectoryDomain!
+}
+# Active Directory domain physical child type, eg. ActiveDirectoryDomainController.
+interface ActiveDirectoryDomainPhysicalChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of ActiveDirectoryDomainPhysicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ActiveDirectoryDomainPhysicalChildTypeConnection {
+  # List of ActiveDirectoryDomainPhysicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ActiveDirectoryDomainPhysicalChildTypeEdge!]!
+
+  # List of ActiveDirectoryDomainPhysicalChildType objects.
+  nodes: [ActiveDirectoryDomainPhysicalChildType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ActiveDirectoryDomainPhysicalChildType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ActiveDirectoryDomainPhysicalChildType object. This wrapper is used for pagination.
+type ActiveDirectoryDomainPhysicalChildTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ActiveDirectoryDomainPhysicalChildType object wrapped by this edge.
+  node: ActiveDirectoryDomainPhysicalChildType!
+}
+# Configuration for creating Active Directory Live Mount.
+input ActiveDirectoryLiveMountConfigInput {
+  # Supported in v9.0+
+  # List of valid usernames in the domain that can access the SMB share for this Live Mount.
+  validUsers: [String!] = []
+
+  # Supported in v9.0+
+  # List of valid SMB host IP addresses that can access the SMB share for this Live Mount.
+  validIps: [String!] = []
+
+  # Supported in v9.0+
+  # Password to authenticate the mounting of the share on host.
+  password: String
+
+  # Supported in v9.0+
+  # Valid Active Directory domain name for users accessing this Live Mount over SMB.
+  domainName: String
+
+  # Supported in v9.0+
+  # IP subnet specifying an outgoing VLAN interface for a Rubrik node. This is a required value when creating an export on a Rubrik node that has multiple VLAN interfaces.
+  subnet: String
+}
+# Configuration for modifying the Active Directory Live Mount.
+input ActiveDirectoryModifyLiveMountConfigInput {
+  # Supported in v9.0+
+  # List of valid SMB host IP addresses that can access the SMB share for this Live Mount.
+  validIps: [String!] = []
+
+  # Supported in v9.0+
+  # Password to authenticate mounting the share on a host.
+  password: String
+
+  # Supported in v9.0+
+  # IP subnet specifying an outgoing VLAN interface for a Rubrik node. You must provide the IP subnet when creating a Managed Volume on a Rubrik node with multiple VLAN interfaces.
+  subnet: String
+}
+# Supported in v9.0+
+# Options for objects that have been moved across Organizational Units (OUs) or Containers.
+enum ActiveDirectoryObjectMovedOption {
+  # This option is not supported.
+  ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_MOVE_BACK_AND_RESTORE_ATTRIBUTES
+
+  # In case object has moved to different OU/Container, set the attributes for the moved object.
+  ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_RESTORE_ATTRIBUTES
+
+  # In case object has moved to different OU/Container, skip setting the attributes for the moved object.
+  ACTIVE_DIRECTORY_OBJECT_MOVED_OPTION_SKIP
+}
+# Supported in v9.0+
+# Options for objects that have been moved across Organizational Units (OUs) or Containers.
+enum ActiveDirectoryObjectNameConflictOption {
+  # In case we find samAccount name conflicts with another object, restore the attributes in the object matching the same SamAccount name.
+  ACTIVE_DIRECTORY_OBJECT_NAME_CONFLICT_OPTION_RESTORE_ATTRIBUTES
+
+  # Skip setting the attributes objects having samAccount name conflict.
+  ACTIVE_DIRECTORY_OBJECT_NAME_CONFLICT_OPTION_SKIP
+}
+# Supported in v9.0+
+input ActiveDirectoryObjectRecoveryConfigInput {
+  # Supported in v9.0+
+  # Options for restoring user accounts.
+  userRestoreOptions: ActiveDirectoryUserRestoreOptionsInput
+
+  # Supported in v9.0+
+  # Restore the objects to a different container.
+  restoreToDifferentContainer: String
+
+  # Supported in v9.0+
+  # Proceed with the recovery process even if you encounter errors.
+  shouldContinueOnError: Boolean
+
+  # Supported in v9.0+
+  # Specifies whether to remove the attribute if it is not present in the backup copy but is present in the Active Directory live copy.
+  clearUpAttrsIfNullInBackup: Boolean
+
+  # Supported in v9.0+
+  # Credentials required for LDAP binding.
+  credsForRestore: ActiveDirectoryRecoveryLdapCredsInput
+
+  # Supported in v9.0+
+  # Whether to restore the parent objects of the provided Distinguished Name Tag if the parent objects are absent.
+  shouldCreateMissingParents: Boolean
+
+  # Supported in v9.0+
+  # Options for restoring Containers and Organizational Units (OUs).
+  containerRestoreOptions: ActiveDirectoryContainerRestoreOptionsInput
+
+  # Supported in v9.0+
+  # ID of the archival or replication location.
+  locationId: String
+
+  # Supported in v9.0+
+  # Behavior to be followed when an object name conflicts with an existing object in Active Directory.
+  nameConflict: ActiveDirectoryObjectNameConflictOption
+
+  # Supported in v9.0+
+  # Behavior to be followed when an object has been moved across Organizational Units (OUs) or Containers.
+  objectMovedOptions: ActiveDirectoryObjectMovedOption
+
+  # Required. Supported in v9.0+
+  # Distinguished Name Tag of the objects to be restored.
+  domainControllerRecoveryObjects: [ActiveDirectoryRecoveryObjectInput!]!
+}
+# Supported in v9.0+
+# The supported Active Directory object types.
+enum ActiveDirectoryObjectType {
+  # Active Directory built-in domain.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_BUILTIN_DOMAIN
+
+  # Active Directory child domain.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_CHILD_DOMAIN
+
+  # Active Directory computer object type.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_COMPUTER
+
+  # Active Directory contact object type.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_CONTACT
+
+  # Active Directory container object type.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_CONTAINER
+
+  # Active Directory domain root.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_DOMAIN_ROOT
+
+  # Active Directory group.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP
+
+  # Active Directory group policy.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_GROUP_POLICY_OBJECT
+
+  # Active Directory organization unit.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_ORGANIZATION_UNIT
+
+  # Unknown object type.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_UNKNOWN
+
+  # Active Directory user object type.
+  ACTIVE_DIRECTORY_OBJECT_TYPE_USER
+}
 # Count of different type of Active Directory objects in the snapshot.
 type ActiveDirectoryObjectsCount {
   # Count of users in the snapshot.
@@ -11300,6 +12145,86 @@ type ActiveDirectoryObjectsCount {
 
   # Count of group policies in the snapshot.
   gpos: Long
+}
+# Supported in v9.0+
+input ActiveDirectoryRecoveryLdapCredsInput {
+  # Required. Supported in v9.0+
+  # Password for the specified LDAP user.
+  password: String!
+
+  # Required. Supported in v9.0+
+  # LDAP username.
+  username: String!
+}
+# Supported in v9.0+
+input ActiveDirectoryRecoveryObjectInput {
+  # Supported in v9.0+
+  # Type of the object.
+  objectType: ActiveDirectoryObjectType
+
+  # Required. Supported in v9.0+
+  # Distinguished Name Tag of the objects to be restored.
+  dnt: Long!
+}
+# Input for Active Directory objects restore.
+input ActiveDirectoryRestoreConfigInput {
+  # Supported in v9.0+
+  # ID of the snapshot to be used for authoritative restore.
+  snapshotForAuthoritativeRestore: String
+
+  # Required. Restore configuration for each Active Directory Domain Controller.
+  domainControllerRestoreConfigs: [DomainControllerRestoreConfigInput!]!
+
+  # Required. Whether to perform authoritative Active Directory objects restore or not.
+  shouldPerformAuthoritativeAdObjectsRestore: Boolean!
+
+  # Required. Supported in v9.0+
+  # Whether to perform authoritative SYSVOL restore or not.
+  shouldPerformAuthoritativeSysvolRestore: Boolean!
+}
+# Host connectivity status.
+type ActiveDirectoryServiceStatus {
+  # Connectivity status of host.
+  serviceStatus: ServiceStatus!
+
+  # Timestamp when status was updated.
+  timestampMillis: DateTime
+}
+# Supported in v9.0+
+input ActiveDirectorySnapshotDownloadConfigInput {
+  # Supported in v9.0+
+  # ID of the SLA Domain to manage retention of the downloaded snapshot.
+  slaId: String
+}
+# Supported in v9.0+
+# Recovery options for users.
+enum ActiveDirectoryUserPasswordRecoveryOption {
+  # No password would be set for the objects that would be recovered from Tombstoned state or the new objects that would be created. User will be left in not enabled state.
+  ACTIVE_DIRECTORY_USER_PASSWORD_RECOVERY_OPTION_DONT_RESTORE_PASSWORD
+
+  # The new users that would be created or the users that would be recovered from Tombstoned state, would have the same password as in the backup copy.
+  ACTIVE_DIRECTORY_USER_PASSWORD_RECOVERY_OPTION_RESTORE_PASSWORD_FROM_BACKUP_COPY
+
+  # While recovering the user from recycle bin, retain the same password as that what user had before it was deleted.
+  ACTIVE_DIRECTORY_USER_PASSWORD_RECOVERY_OPTION_RETAIN_RECYCLE_BIN_PASSWORD
+}
+# Supported in v9.0+
+input ActiveDirectoryUserRestoreOptionsInput {
+  # Supported in v9.0+
+  # Whether to enable the user after restore operation.
+  shouldEnableUser: Boolean
+
+  # Supported in v9.0+
+  # Whether the user should be prompted to change the password upon their next login.
+  shouldChangePassword: Boolean
+
+  # Supported in v9.0+
+  # Set the specified password for all users that have been restored.
+  password: String
+
+  # Supported in v9.0+
+  # Options for the recovery of the user's password.
+  passwordOptions: ActiveDirectoryUserPasswordRecoveryOption
 }
 # An activity that occurred on RSC or a Rubrik cluster.
 type Activity {
@@ -11536,8 +12461,8 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is Kubernetes Cluster.
   K8S_CLUSTER
 
-  # Specifies that the activity object type is Kubernetes Resource Set.
-  K8S_RESOURCE_SET
+  # Specifies that the activity object type is Kubernetes Protection Set.
+  K8S_PROTECTION_SET
 
   # Specifies that the activity object type is Kubernetes Cluster.
   KuprCluster
@@ -12156,6 +13081,117 @@ type AdGroup {
   # Display name of the AD Group.
   displayName: String!
 }
+# Active Directory volume export.
+type AdVolumeExport {
+  # Specifies whether the export is active or not.
+  isActive: Boolean!
+
+  # Last updated time of the export.
+  internalTimestamp: Long!
+
+  # Floating IP address of the volume export.
+  floatingIp: String
+
+  # Mount directory for the volume export.
+  mountDir: String!
+
+  # Determines if the export created is visible to user.
+  isUserVisible: Boolean!
+
+  # UUID of the corresponding domain controller.
+  domainControllerId: String!
+
+  # Name of the corresponding domain controller.
+  domainControllerName: String!
+
+  # The whitelisted IP addresses that can access Active Directory live mount.
+  smbValidIps: [String!]!
+
+  # Fid of the volume export.
+  id: UUID!
+
+  # Source snapshot of the volume export.
+  sourceSnapshot: CdmSnapshot!
+
+  # Rubrik cluster of the volume export.
+  cluster: Cluster!
+
+  # CDM node specification for the volume export.
+  node: ClusterNode
+}
+# Paginated list of AdVolumeExport objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type AdVolumeExportConnection {
+  # List of AdVolumeExport objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [AdVolumeExportEdge!]!
+
+  # List of AdVolumeExport objects.
+  nodes: [AdVolumeExport!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of AdVolumeExport objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the AdVolumeExport object. This wrapper is used for pagination.
+type AdVolumeExportEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual AdVolumeExport object wrapped by this edge.
+  node: AdVolumeExport!
+}
+# Filter Active Directory volume export results.
+input AdVolumeExportFilter {
+  # Type of filter.
+  field: AdVolumeExportFilterField = FILTER_UNSPECIFIED
+
+  # Values for the filter type.
+  texts: [String!] = []
+}
+# Filters for Active Directory volume export results.
+enum AdVolumeExportFilterField {
+  # Filter the results by FID of the domain.
+  ACTIVE_DIRECTORY_DOMAIN
+
+  # Filter the results by FID of the Domain Controller.
+  ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
+
+  # Filter the results by UUID of the Rubrik cluster.
+  CLUSTER_UUID
+
+  # Filter is not specified. Any filter text will
+  # not be considered.
+  FILTER_UNSPECIFIED
+
+  # Filter the results based on whether the export is
+  # active.
+  IS_ACTIVE
+
+  # Filter the results based on whether the export is visible
+  # to user not not.
+  IS_USER_VISIBLE
+
+  # Filter the results by the FID of snapshot.
+  SNAPSHOT
+}
+# Sort by fields for Active Directory volume export results.
+enum AdVolumeExportSortByField {
+  # Sort by field is not specified. Any filter text would
+  # not be considered.
+  SORT_UNSPECIFIED
+
+  # Sort by Creation Date.
+  TIME
+}
+# Sort AD Volume exports results.
+input AdVolumeExportSortByInput {
+  # Field used to sort AD Volume exports.
+  field: AdVolumeExportSortByField = SORT_UNSPECIFIED
+
+  # Sort order for AD Volume exports.
+  sortOrder: SortOrder = ASC
+}
 # Configuration for the addition of Azure AD Groups.
 input AddAdGroupsToHierarchyInput {
   # UUID of the org.
@@ -12592,8 +13628,14 @@ input AddNodesToCloudClusterInput {
   # Number of nodes to add.
   numberOfNodes: Int = 0
 
-  # Specifies whether node resources like logs and environment should be saved when the add node operation fails.
+  # Specifies whether node resources are preserved if the add node operation fails.
   shouldKeepResourcesOnFailure: Boolean = false
+
+  # AWS AMI ID to deploy to add nodes to an AWS Cloud Cluster without the marketplace.
+  awsImageId: String = ""
+
+  # Azure image name to deploy to add nodes to an Azure Cloud Cluster without the marketplace.
+  azureImageName: String = ""
 
   # Customer cloud account UUID.
   cloudAccountId: UUID!
@@ -14316,8 +15358,8 @@ enum AuditObjectType {
   # Kubernetes cluster object.
   K8S_CLUSTER
 
-  # Kubernetes resource set object.
-  K8S_RESOURCE_SET
+  # Kubernetes protection set object.
+  K8S_PROTECTION_SET
 
   # LDAP audit object.
   LDAP
@@ -15057,6 +16099,9 @@ enum AwsCloudAccountRegion {
 
   # AWS cloud EU (Paris) region.
   EU_WEST_3
+
+  # AWS cloud Israel (Tel Aviv) region.
+  IL_CENTRAL_1
 
   # AWS cloud Middle East (Bahrain) region.
   ME_SOUTH_1
@@ -19675,6 +20720,9 @@ enum AwsNativeRegion {
   # AWS native EU (Paris) region.
   EU_WEST_3
 
+  # AWS Israel (Tel Aviv) region.
+  IL_CENTRAL_1
+
   # AWS native Middle East (Bahrain) region.
   ME_SOUTH_1
 
@@ -19765,6 +20813,9 @@ enum AwsNativeRegionForReplication {
 
   # AWS native for replication EU (Paris) region.
   EU_WEST_3
+
+  # AWS native for replication Israel (Tel Aviv) region.
+  IL_CENTRAL_1
 
   # AWS native for replication Middle East (Bahrain) region.
   ME_SOUTH_1
@@ -20130,6 +21181,9 @@ enum AwsRegion {
 
   # AWS EU (Paris) region.
   EU_WEST_3
+
+  # Israel (tel aviv) region.
+  IL_CENTRAL_1
 
   # AWS Middle East (Bahrain) region.
   ME_SOUTH_1
@@ -23332,6 +24386,9 @@ type AzureO365ExocomputeCluster {
 
   # Specifies the KEK backup start time to determine the last time the backup was run.
   kekBackupStartTime: DateTime
+
+  # Storage account used for exocompute internal storage.
+  exocomputeInternalStorageAccountId: String!
 
   # KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
   kmsHostType: AzureHostType!
@@ -28580,6 +29637,9 @@ input CdmSnapshotFilterInput {
   snapshotId: [UUID!]
   timeRange: TimeRangeInput
   isOnDemandSnapshot: Boolean
+
+  # Filter on whether the snapshot is indexed.
+  isIndexed: Boolean
 }
 # Snapshot data with groupby information applied to it.
 type CdmSnapshotGroupBy {
@@ -33411,6 +34471,14 @@ enum CrawlStatusEnum {
   IN_PROGRESS
   IN_PROGRESS_WITH_FAIL
 }
+# Input for creating an Active Directory Live Mount.
+input CreateActiveDirectoryLiveMountInput {
+  # Required. Configuration for the Live Mount request.
+  config: ActiveDirectoryLiveMountConfigInput!
+
+  # Required. ID of the snapshot to be used to create the Live Mount.
+  id: String!
+}
 # Input for creating an AWS target mapping.
 input CreateAutomaticAwsTargetMappingInput {
   # Field for specifying name of the target mapping.
@@ -34050,6 +35118,17 @@ type CreateCustomReportReply {
 
     # Returns the elements in the list that come before the specified cursor.
     before: String): ScheduledReportConnection!
+}
+# Input for creating Active Directory Domain Controller snapshot.
+input CreateDomainControllerSnapshotInput {
+  # Configuration for the on-demand backup.
+  config: BaseOnDemandSnapshotConfigInput
+
+  # Required. ID of the Active Directory Domain Controller.
+  id: String!
+
+  # Required. User note to associate with audits.
+  userNote: String
 }
 input CreateDownloadSnapshotForVolumeGroupInput {
   # Required. ID of snapshot.
@@ -37261,9 +38340,6 @@ input DeleteCloudWorkloadSnapshotInput {
 }
 # Input required for deleting a certificate signing request (CSR).
 input DeleteCsrInput {
-  # IDs of the CSRs to delete.
-  csrIds: [Long!]
-
   # FIDs of the CSRs to delete.
   csrFids: [UUID!]!
 }
@@ -38353,6 +39429,26 @@ type DlsArchivalLocation {
   # Type of target.
   targetType: TargetType
 }
+# Config for each of the Active Directory Domain Controller to be restored.
+input DomainControllerRestoreConfigInput {
+  # Supported in v9.0+
+  # ID of the alternate host on which the restore must be performed.
+  hostId: String
+
+  # Required. ID of the snapshot to be used to restore the Active Directory Domain Controller.
+  snapshotId: String!
+}
+# Input for downloading an Active Directory domain controller snapshot from a replicated or archived location.
+input DownloadActiveDirectorySnapshotFromLocationInput {
+  # Additional configuration for the operation. This consists of the SLA Domain to be applied to the snapshot after it is downloaded.
+  downloadConfig: ActiveDirectorySnapshotDownloadConfigInput
+
+  # Required. ID of the replication location.
+  locationId: String!
+
+  # Required. ID of the snapshot to be downloaded.
+  snapshotId: String!
+}
 # Input for asynchronously downloading an audit log in CSV format.
 input DownloadAuditLogCsvAsyncInput {
   # Audit log filters.
@@ -38885,6 +39981,9 @@ type ElasticStorageConfig {
 
   # Specifies whether the Cloud Cluster is using immutable cloud storage.
   isImmutable: Boolean!
+
+  # Specifies whether the Cloud Cluster is using managed identities to authenticate to Azure cloud storage.
+  isUsingManagedIdentity: Boolean!
 }
 # Email address and to/from/both.
 input EmailAddressFilter {
@@ -39303,8 +40402,8 @@ enum EventObjectType {
   # Kubernetes Cluster object.
   K8S_CLUSTER
 
-  # Kubernetes Resource Set object.
-  K8S_RESOURCE_SET
+  # Kubernetes Protection Set object.
+  K8S_PROTECTION_SET
 
   # Kubernetes cluster object.
   KUPR_CLUSTER
@@ -41010,6 +42109,9 @@ input ExportSnapshotJobConfigV2Input {
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
 
+  # ID of the content library to which the new content library item is being exported.
+  contentLibraryId: String
+
   # Specifies whether Export converts the recovered virtual machine to a template.
   shouldConvertToTemplate: Boolean
 
@@ -41058,6 +42160,9 @@ input ExportSnapshotJobConfigV3Input {
 
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
+
+  # ID of the content library to which the new content library item is being exported.
+  contentLibraryId: String
 
   # Specifies whether Export converts the recovered virtual machine to a template.
   shouldConvertToTemplate: Boolean
@@ -42108,9 +43213,18 @@ input FileInfo {
   fileSnapshotsToRestore: [FileSnapshotInfo!]!
   channelInfo: TeamsChannelInfo
 }
+# Enum for file modes of files in snapshot.
 enum FileModeEnum {
+  # File mode is directory.
   DIRECTORY
+
+  # File mode is file.
   FILE
+
+  # File mode is share.
+  SHARE
+
+  # File mode is symlink.
   SYMLINK
 }
 # Cloud-native file recovery feasibility.
@@ -43389,6 +44503,26 @@ input FolderInfo {
   snapshotId: UUID!
   snapshotNum: Int!
   channelInfo: TeamsChannelInfo
+}
+# A Domain Controller can perform a wide range of roles.
+enum FsmoRoles {
+  # Domain Naming Master.
+  DOMAIN_NAMING_MASTER
+
+  # Infrastructure Master.
+  INFRASTRUCTURE_MASTER
+
+  # Primary Domain Controller Emulator.
+  PDC_EMULATOR
+
+  # Relative ID Master.
+  RID_MASTER
+
+  # Schema master.
+  SCHEMA_MASTER
+
+  # Unknown role.
+  UNKNOWN_ROLE
 }
 # SharePoint object excluded from protection.
 type FullSpObjectExclusion {
@@ -45179,9 +46313,6 @@ input GetContainersInput {
 }
 # Input required for retrieving a specific Certificate Signing Request (CSR).
 input GetCsrInput {
-  # ID of the CSR to retrieve.
-  csrId: Long
-
   # FID of the CSR to retrieve.
   csrFid: UUID!
 }
@@ -46100,6 +47231,9 @@ enum GroupByFieldEnum {
   TIME
   TIME_ISSUES
   TIME_VIOLATIONS
+
+  # Bytes transferred group by object type.
+  TRANSFERRED_BYTES_OBJECT_TYPE
   TargetSite
   TaskDetailClusterType
   TaskDetailObjectType
@@ -46325,6 +47459,16 @@ enum HardwareHealthPolicyName {
 
   # Policy to check health of power supply.
   P_S_U_CHECKER
+}
+# Configuration to check if Microsoft Entra ID has relic snapshots.
+input HasRelicAzureAdSnapshotInput {
+  # Domain name of the Microsoft Entra ID for which relic snapshots are being checked.
+  domainName: String!
+}
+# Response of the operation that checks if Microsoft Entra ID has relic snapshots.
+type HasRelicAzureAdSnapshotReplyType {
+  # Specifies whether the Microsoft Entra ID has relic snapshots.
+  hasRelicSnapshots: Boolean!
 }
 # Supported in v6.0+
 type HashDetail {
@@ -47222,6 +48366,9 @@ enum HierarchyFilterField {
   # Filter vCD vApps by type.
   VCD_VAPP_TYPE
 
+  # Filter template type of VMware virtual machines.
+  VMWARE_VM_TEMPLATE_TYPE
+
   # Filter isLocal of virtualhost.descendant.
   VSPHERE_DATASTORE_IS_LOCAL
 
@@ -47390,11 +48537,11 @@ enum HierarchyObjectTypeEnum {
   # Jira project.
   JIRA_PROJECT
 
-  # Kubernetes Cluster
+  # Kubernetes cluster.
   K8S_CLUSTER
 
-  # Kubernetes Resource Set
-  K8S_RESOURCE_SET
+  # Kubernetes Protection Set.
+  K8S_PROTECTION_SET
   KuprCluster
   KuprNamespace
   LinuxFileset
@@ -49353,7 +50500,7 @@ type HyperVLiveMount {
   # Name of the live mount.
   name: String!
 
-  # Name of the source HyperV VM.
+  # Name of the source virtual machine.
   sourceVm: String!
 
   # Specification of the live mount in JSON string.
@@ -49364,6 +50511,15 @@ type HyperVLiveMount {
 
   # Time when the snapshot was mounted.
   mountTime: DateTime
+
+  # Describes if the mount is a disk mount.
+  isDiskLevelMount: Boolean!
+
+  # Name of the target virtual machine for disk mount.
+  targetVm: String
+
+  # Number of disks attached to the target virtual machine.
+  attachedDiskCount: Int!
 
   # Power Status of HyperV Live Mount.
   mountedVmStatus: HypervMountedVmStatusType!
@@ -49385,6 +50541,9 @@ type HyperVLiveMount {
 
   # Cluster of the live mount.
   cluster: Cluster!
+
+  # ID of the target virtual machine for disk mount.
+  targetVmFid: UUID
 }
 # Paginated list of HyperVLiveMount objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type HyperVLiveMountConnection {
@@ -53996,11 +55155,11 @@ enum ManagedObjectType {
   # Jira project.
   JIRA_PROJECT
 
-  # On-prem Kubernetes Cluster
+  # On-prem Kubernetes Cluster.
   K8S_CLUSTER
 
-  # On-prem Kubernetes Resource Set
-  K8S_RESOURCE_SET
+  # On-prem Kubernetes Protection Set.
+  K8S_PROTECTION_SET
 
   # Kubernetes cluster.
   KUPR_CLUSTER
@@ -55842,6 +57001,14 @@ type MissedSnapshotTimeUnitConfig {
   dayOfTime: MissedSnapshotDayOfTimeUnit
   timeUnit: SlaTimeUnit!
 }
+# Input to modify an Active Directory Live Mount.
+input ModifyActiveDirectoryLiveMountInput {
+  # Required. Live Mount request configuration.
+  config: ActiveDirectoryModifyLiveMountConfigInput!
+
+  # Required. ID of the Live Mount.
+  id: String!
+}
 input ModifyIpmiInput {
   # Required. ID of the Rubrik cluster or *me* for self.
   id: String!
@@ -55872,6 +57039,12 @@ input ModifyMosaicStoreInput {
 
   # Required. Modify store request object with modified details of a store.
   modifyStoreData: MosaicModifyStoreRequestInput!
+}
+# Type of user authentication used when adding the MongoDB cluster.
+# 
+enum MongoAuthenticationType {
+  MONGO_AUTHENTICATION_TYPE_LDAP
+  MONGO_AUTHENTICATION_TYPE_SCRAM
 }
 # Supported in v8.1+
 # MongoDB client host information.
@@ -57178,6 +58351,9 @@ input MongoSourceAddRequestConfigInput {
   # Type of MongoDB cluster.
   mongoType: MongoType!
 
+  # Type of user authentication used when adding the MongoDB cluster.
+  sourceAuthenticationType: MongoAuthenticationType
+
   # Supported in v8.1+
   # Specifies whether SSL certificates are required for the connection.
   sslCertificateRequired: MongoSslCertificateRequirement
@@ -57327,6 +58503,9 @@ input MongoSourcePatchRequestConfigInput {
 
   # Path to the SSL certificate file.
   sslCertfilePath: String
+
+  # Type of user authentication used when adding the MongoDB cluster.
+  sourceAuthenticationType: MongoAuthenticationType
 
   # Supported in v8.1+
   # Specifies whether SSL certificates are required for the connection.
@@ -63434,6 +64613,20 @@ type NcdFrontEndCapacity {
   # The front-end capacity usage in bytes.
   usageInBytes: Long!
 }
+# Type of NAS Cloud Direct virtual machine disk.
+enum NcdHypervisorType {
+  # HyperV Hypervisor Type.
+  HYPERV_HYPERVISOR_TYPE
+
+  # KVM Hypervisor Type.
+  KVM_HYPERVISOR_TYPE
+
+  # Nutanix Hypervisor Type.
+  NUTANIX_AHV_HYPERVISOR_TYPE
+
+  # VMware Hypervisor Type.
+  VMWARE_HYPERVISOR_TYPE
+}
 # ObjectProtectionStatusReply is returned in response to a
 # ObjectProtectionStatusReq and holds the requested object protection statuses.
 type NcdObjectProtectionStatus {
@@ -63532,6 +64725,17 @@ type NcdUsageOverTimeData {
 
   # The timestamp of the data point.
   timestamp: DateTime
+}
+# NAS Cloud Direct virtual machine download URL information.
+type NcdVmImageUrl {
+  # URL to download NAS Cloud Direct virtual machine image.
+  downloadUrl: String!
+
+  # Sha256 checksum value of the download image.
+  sha256: String!
+
+  # Size of the NAS Cloud Direct virtual machine image.
+  size: Long!
 }
 # Represents a GCP native network host project.
 type NetworkHostProject {
@@ -65258,6 +66462,9 @@ input NutanixClusterPatchInput {
 
   # Supported in v5.0+
   username: String
+
+  # Consistency level mandated for this Nutanix cluster.
+  snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
 }
 # Supported in v5.0+
 type NutanixClusterSummary {
@@ -65274,6 +66481,7 @@ type NutanixClusterSummary {
   # Required. Supported in v5.0+
   username: String!
   slaAssignable: SlaAssignable
+  snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
 
   # Supported in v5.3+
   # Describes any pending SLA Domain assignment on this object.
@@ -69703,8 +70911,8 @@ enum ObjectTypeEnum {
   # Jira project.
   JIRA_PROJECT
 
-  # Kubernetes Resource Set.
-  K8S_RESOURCE_SET
+  # Kubernetes Protection Set.
+  K8S_PROTECTION_SET
   KuprNamespace
   LinuxFileset
 
@@ -72548,9 +73756,6 @@ type Org {
   # Allowed clusters for the organization.
   allowedClusters: [String!]!
 
-  # Physical storage used by the organization.
-  physicalStorageUsed: Long!
-
   # Health of the tenant networks associated with the organization.
   tenantNetworkHealth: TenantNetworkHealth!
 
@@ -72571,6 +73776,9 @@ type Org {
 
   # SSO groups authorized for the organization.
   ssoGroups: [SsoGroup!]!
+
+  # Physical storage used by the organization.
+  physicalStorageUsed: Long!
 
   # All URLs associated with the organization.
   allUrls: [String!]!
@@ -72769,6 +73977,9 @@ type PasswordComplexityPolicyTemplate {
 
   # Default value for the password complexity policy field.
   defaultValue: Int!
+
+  # Specifies if the current value is inherited by a stronger policy.
+  isInherited: Boolean!
 }
 # Specifies the format of each password policy field.
 input PasswordComplexityPolicyTemplateInput {
@@ -73202,6 +74413,11 @@ enum PermissionsGroup {
   # Represents the basic set of permissions required to onboard a feature.
   # These permissions are applicable to all the features.
   BASIC
+
+  # Represents the set of permissions required for Cloud Cluster ES
+  # operation. These permissions are applicable to the cloud native
+  # protection feature.
+  CLOUD_CLUSTER_ES
 
   # Represents the set of permissions required for encryption
   # operation. These permissions are applicable to the cloud native archival
@@ -75982,6 +77198,11 @@ input RefreshDb2DatabaseInput {
   # Required. ID of the Db2 database.
   id: String!
 }
+# Input for refreshing an Active Directory domain.
+input RefreshDomainInput {
+  # Required. ID of the domain.
+  id: String!
+}
 # Refresh the connection to the host.
 input RefreshHostInput {
   # Required. ID assigned to a host object.
@@ -77100,6 +78321,14 @@ type ResponseSuccess {
   # Indicates whether the request returned successfully.
   success: Boolean!
 }
+# Input for restoring the active directory objects.
+input RestoreActiveDirectoryObjectsInput {
+  # Required. Configuration for the object recovery.
+  config: ActiveDirectoryObjectRecoveryConfigInput!
+
+  # Required. Snapshot ID to be used for recovering objects.
+  id: String!
+}
 # Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
 input RestoreAzureAdObjectsWithPasswordsInput {
   # Workload Fid of the Azure AD Directory to recover.
@@ -77136,6 +78365,11 @@ input RestoreConfig {
   shouldRestoreXAttrs: Boolean
   deltaTypeFilter: [DeltaType!] = []
   nextSnapshotFid: String = ""
+}
+# Input for RestoreDomainControllerSnapshotInput.
+input RestoreDomainControllerSnapshotInput {
+  # Required. Configuration for the restore job.
+  config: ActiveDirectoryRestoreConfigInput!
 }
 input RestoreFileConfig {
   path: String = ""
@@ -80521,6 +81755,17 @@ type SensitiveHits {
   # Total sensitive hits.
   totalHits: SummaryHits
 }
+# A server can perform a wide range of roles.
+enum ServerRoles {
+  # DHCP.
+  DHCP
+
+  # DNS.
+  DNS
+
+  # Unknown server role.
+  UNKNOWN_SERVER_ROLE
+}
 # Service Account.
 type ServiceAccount {
   # Client ID of the service account.
@@ -80564,6 +81809,35 @@ type ServiceAccountEdge {
 enum ServiceAccountSortBy {
   # Name of the service account.
   NAME
+}
+# Status of the Active Directory service.
+enum ServiceStatus {
+  # Active Directory service is pending to continue.
+  CONTINUE_PENDING
+
+  # Active Directory service is paused.
+  PAUSED
+
+  # Active Directory service is pending to pause.
+  PAUSE_PENDING
+
+  # Active Directory service status is refreshing.
+  REFRESHING
+
+  # Active Directory service is running.
+  RUNNING
+
+  # Active Directory service is pending to start.
+  START_PENDING
+
+  # Active Directory service is stopped.
+  STOPPED
+
+  # Active Directory service is pending to be stopped.
+  STOP_PENDING
+
+  # Active Directory service status is unknown.
+  UNKNOWN
 }
 # Azure native service tiers.
 enum ServiceTier {
@@ -81114,6 +82388,9 @@ input SharePointObject {
 
   # Sequence number of the snapshot.
   snapshotNum: Int!
+
+  # Site owner for restored site.
+  siteOwnerEmail: String
 }
 # Parameters for SharePoint site descendant search.
 input SharePointSearchFilter {
@@ -82281,6 +83558,9 @@ enum SnappableGroupByEnum {
   PullTimeWithOffset
   Quarter
   SlaDomain
+
+  # Bytes transferred group by object type.
+  TRANSFERRED_BYTES_OBJECT_TYPE
   Week
   Year
 }
@@ -86258,6 +87538,9 @@ type ThreatHuntStats {
 
   # Total unique paths for which malware was found which are also quarantined.
   totalUniqueQuarantinedPaths: Long!
+
+  # Total objects scanned.
+  totalObjectsScanned: Long!
 }
 # Status of the running threat hunt.
 enum ThreatHuntStatus {
@@ -89177,8 +90460,8 @@ enum UserAuditObjectTypeEnum {
   # Kubernetes Cluster type.
   K8S_CLUSTER
 
-  # Kubernetes Resource Set type.
-  K8S_RESOURCE_SET
+  # Kubernetes Protection Set type.
+  K8S_PROTECTION_SET
 
   # LDAP type.
   Ldap
@@ -89763,6 +91046,9 @@ type ValidReplicationTarget {
   # Version of the Rubrik cluster.
   version: String!
 
+  # The account name that the cluster is associated with.
+  accountName: String!
+
   # UUID of the Rubrik cluster.
   uuid: UUID!
 }
@@ -89899,6 +91185,9 @@ input ValidateOracleAcoFileInput {
 
   # ID of the Oracle database.
   dbId: String!
+
+  # Optional. Specifies whether the Clone or Live Mount is being performed with a target database name that is different from the source database name.
+  isDifferentTargetDbName: Boolean
 }
 # Supported in v6.0+
 type ValidateOracleAcoFileReply {
@@ -92169,6 +93458,7 @@ type VirtualMachineSummary {
   instanceUuid: String
   snappable: CdmWorkload
   snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate!
+  templateType: VirtualMachineTemplateType
 
   # Supported in v5.0+
   # The status of the Rubrik Backup Service agent for virtual machines.
@@ -92188,6 +93478,14 @@ enum VirtualMachineSummarySnapshotConsistencyMandate {
   VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_INCONSISTENT
   VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_UNKNOWN
   VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_VSS_CONSISTENT
+}
+# Supported in v9.1
+# Virtual machine template type.
+enum VirtualMachineTemplateType {
+  VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM
+  VIRTUAL_MACHINE_TEMPLATE_TYPE_TEMPLATE
+  VIRTUAL_MACHINE_TEMPLATE_TYPE_UNDEFINED
+  VIRTUAL_MACHINE_TEMPLATE_TYPE_VM
 }
 # Supported in v5.0+
 input VirtualMachineUpdateInput {
@@ -92329,6 +93627,14 @@ input VmDownloadLocationDetailsInput {
 
   # The path where the files will be downloaded on the target virtual machine. When downloading to the source virtual machine, this field must be empty to recover to the original path.
   pathToRecover: String
+}
+# Input for getting NAS Cloud Direct virtual machine image download URL.
+input VmImageUrlInput {
+  # NAS Cloud Direct site UUID to get virtual machine image from.
+  clusterUuid: UUID!
+
+  # Type of hypervisor.
+  hypervisorType: NcdHypervisorType!
 }
 # Vapp virtual machine IP addressing mode.
 enum VmNetworkAddressingMode {
@@ -92644,6 +93950,26 @@ input VmwareStorageIdWithDeviceKeyV2Input {
 
   # Required. Supported in Rubrik CDM version 9.0 and later. The VMware disk device key.
   deviceKey: Int!
+}
+# VMware virtual machine template type.
+enum VmwareTemplateType {
+  # Temporarily deployed virtual machine from a content library item.
+  DEPLOYED_VM
+
+  # Content library virtual machine template item.
+  LIBRARY_ITEM
+
+  # Virtual machine template.
+  TEMPLATE
+
+  # Temporary virtual machine converted from a template.
+  TEMPORARY_VM
+
+  # Undefined virtual machine template type.
+  UNDEFINED
+
+  # Virtual machine.
+  VM
 }
 type VmwareVmConfig {
   logRetentionSeconds: Long!
@@ -96960,8 +98286,8 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
   # ID of guest credential assigned to the virtual machine.
   guestCredentialId: String!
 
-  # Specifies whether the virtual machine is a template or not.
-  isTemplate: Boolean!
+  # VMware virtual machine template type.
+  templateType: VmwareTemplateType!
 
   # Parent ID of this workload.
   parentWorkloadIdOpt: UUID

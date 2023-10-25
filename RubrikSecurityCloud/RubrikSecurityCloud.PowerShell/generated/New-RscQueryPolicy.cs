@@ -218,6 +218,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.sids = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.insightsMetadataId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeInsightsMarker = $someBoolean
     /// # REQUIRED
     /// $query.Var.userAccessObjectsFilter = $someBoolean
     /// # OPTIONAL
@@ -530,6 +534,8 @@ $query.Var.objectIds = @(
         //     subscriptionIdsFilter: [String!]
         //     includeWhitelistedResults: Boolean
         //     sids: [String!]
+        //     insightsMetadataId: String
+        //     includeInsightsMarker: Boolean
         //     userAccessObjectsFilter: Boolean! = false
         //     first: Int
         //     after: String
@@ -552,6 +558,8 @@ $query.Var.objectIds = @(
                 Tuple.Create("subscriptionIdsFilter", "[String!]"),
                 Tuple.Create("includeWhitelistedResults", "Boolean"),
                 Tuple.Create("sids", "[String!]"),
+                Tuple.Create("insightsMetadataId", "String"),
+                Tuple.Create("includeInsightsMarker", "Boolean"),
                 Tuple.Create("userAccessObjectsFilter", "Boolean!"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
@@ -562,7 +570,7 @@ $query.Var.objectIds = @(
                 argDefs,
                 "query",
                 "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$userAccessObjectsFilter: Boolean!,$first: Int,$after: String,$last: Int,$before: String)",
+                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$first: Int,$after: String,$last: Int,$before: String)",
                 "PolicyObjConnection",
                 Query.PolicyObjs_ObjectFieldSpec,
                 Query.PolicyObjsFieldSpec,
@@ -606,6 +614,10 @@ $query.Var.includeWhitelistedResults = $someBoolean
 $query.Var.sids = @(
 	$someString
 )
+# OPTIONAL
+$query.Var.insightsMetadataId = $someString
+# OPTIONAL
+$query.Var.includeInsightsMarker = $someBoolean
 # REQUIRED
 $query.Var.userAccessObjectsFilter = $someBoolean
 # OPTIONAL

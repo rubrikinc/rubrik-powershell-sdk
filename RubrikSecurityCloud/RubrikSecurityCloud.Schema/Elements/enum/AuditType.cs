@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
 
+        [EnumMember(Value = "RECOVERY_SCHEDULE")]
+        RECOVERY_SCHEDULE,
+
         [EnumMember(Value = "SEARCH")]
         SEARCH,
 

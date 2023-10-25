@@ -475,7 +475,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                    s += ind + "CdmSnapshot_INTERFACE_FIELD_pendingSla: pendingSla{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -487,7 +487,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "CdmSnapshot_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -499,7 +499,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappableNew {\n" + fspec + ind + "}\n";
+                    s += ind + "CdmSnapshot_INTERFACE_FIELD_snappableNew: snappableNew{\n" + fspec + ind + "}\n";
                 }
             }
         }

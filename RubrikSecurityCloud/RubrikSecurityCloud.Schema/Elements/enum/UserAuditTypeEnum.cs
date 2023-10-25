@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "QUARANTINE")]
         QUARANTINE,
 
+        [EnumMember(Value = "RECOVERY_SCHEDULE")]
+        RECOVERY_SCHEDULE,
+
         [EnumMember(Value = "Recovery")]
         RECOVERY,
 

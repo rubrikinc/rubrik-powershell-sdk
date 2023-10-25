@@ -251,3 +251,4 @@
 - RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT - Filter by objects with at least one snapshot.
 - K8S_CLUSTER_NAME - Filter based on Kubernetes cluster name.
 - HOST_DOMAIN_CONTROLLER_FID - Filter hosts based on the domain controller FID.
+- EXCLUDED_ROOT_RESOURCE_POOL_TYPE - Filter to exclude root resource pool.

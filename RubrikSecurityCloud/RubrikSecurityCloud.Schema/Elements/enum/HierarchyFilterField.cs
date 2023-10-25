@@ -276,6 +276,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCHANGE_SERVER_BY_DAG_ID")]
         EXCHANGE_SERVER_BY_DAG_ID,
 
+        [EnumMember(Value = "EXCLUDED_ROOT_RESOURCE_POOL_TYPE")]
+        EXCLUDED_ROOT_RESOURCE_POOL_TYPE,
+
         [EnumMember(Value = "EXCLUDED_SHAREPOINT_LIBRARY_TYPE")]
         EXCLUDED_SHAREPOINT_LIBRARY_TYPE,
 

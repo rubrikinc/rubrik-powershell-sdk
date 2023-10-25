@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "displayableValue {\n" + fspec + ind + "}\n";
+                    s += ind + "CellData_INTERFACE_FIELD_displayableValue: displayableValue{\n" + fspec + ind + "}\n";
                 }
             }
         }

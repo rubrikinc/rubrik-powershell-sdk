@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hierarchyObject {\n" + fspec + ind + "}\n";
+                    s += ind + "PolicyObjectUsage_INTERFACE_FIELD_hierarchyObject: hierarchyObject{\n" + fspec + ind + "}\n";
                 }
             }
         }

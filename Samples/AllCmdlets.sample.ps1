@@ -21395,6 +21395,44 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAzure -Op StorageAccountsByRegion
+# -------------------------------------------------------------------
+
+$query = New-RscQueryAzure -Op StorageAccountsByRegion
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryAzure.StorageAccountsByRegion" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryAzure.StorageAccountsByRegion" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryAzure.StorageAccountsByRegion" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryAzure -Operation StorageAccountsByRegion
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAzure -Op Subnets
 # -------------------------------------------------------------------
 
@@ -25421,6 +25459,44 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscQueryDb2 -Operation Database
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryDb2 -Op DatabaseJobStatus
+# -------------------------------------------------------------------
+
+$query = New-RscQueryDb2 -Op DatabaseJobStatus
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryDb2.DatabaseJobStatus" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryDb2.DatabaseJobStatus" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryDb2.DatabaseJobStatus" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryDb2 -Operation DatabaseJobStatus
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -33499,6 +33575,44 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscQueryRcv -Operation AccountEntitlement
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryRcv -Op AccountEntitlements
+# -------------------------------------------------------------------
+
+$query = New-RscQueryRcv -Op AccountEntitlements
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryRcv.AccountEntitlements" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryRcv.AccountEntitlements" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryRcv.AccountEntitlements" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryRcv -Operation AccountEntitlements
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)

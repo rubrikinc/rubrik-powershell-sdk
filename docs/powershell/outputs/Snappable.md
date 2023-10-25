@@ -71,5 +71,7 @@ An object that can be backed-up by taking snapshots.
 - dataReduction: System.Single
   - The change from transferred bytes to physical bytes.
 - logicalDataReduction: System.Single
+- workloadOrg: WorkloadOrganization
+  - Specifies the owner organization of the workload.
 - orgName: System.String
-  - The organization name related to the workload.
+  - The organization name related to the workload. This is deprecated.

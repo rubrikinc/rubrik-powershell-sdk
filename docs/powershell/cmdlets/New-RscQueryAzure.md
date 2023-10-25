@@ -275,6 +275,11 @@ Gets the storage accounts for the given subscription.
     - subscriptionId - System.String
     - regionName - System.String
 - Returns StorageAccountConnection.
+### storageaccountsbyregion
+List all Azure storage accounts by region.
+
+- There is a single argument of type AzureStorageAccountsByRegionInput.
+- Returns list of AzureStorageAccountCcprovisions.
 ### subnets
 Gets the subnets for the given subscription.
 

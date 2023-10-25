@@ -15,6 +15,8 @@ Db2 Instance details object.
   - Additional information about the current status of the Db2 instance.
 - containsHadrDatabase: System.Boolean
   - Specifies whether the Db2 instance contains an HADR database.
+- instanceType: Db2InstanceType
+  - Type of Db2 instance: STANDALONE, PARTITIONED, PURESCALE, or UNSPECIFIED.
 - descendantConnection: Db2InstanceDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: Db2InstancePhysicalChildTypeConnection

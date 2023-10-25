@@ -331,7 +331,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "polarisSpecificSnapshot {\n" + fspec + ind + "}\n";
+                    s += ind + "PolarisSnapshot_INTERFACE_FIELD_polarisSpecificSnapshot: polarisSpecificSnapshot{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -343,7 +343,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "PolarisSnapshot_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
                 }
             }
         }

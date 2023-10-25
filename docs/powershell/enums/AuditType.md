@@ -25,3 +25,4 @@ Represents audit types.
 - THREAT_HUNT - Threat hunt audit.
 - BULK_RECOVERY - Bulk recovery audit.
 - ENCRYPTION_MANAGEMENT_OPERATION - Encryption management audit.
+- RECOVERY_SCHEDULE - Orchestrated Application Recovery schedule audit.

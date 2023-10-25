@@ -10,10 +10,10 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | [Account (7,1)](#account-domain) | [Cluster (29,9)](#cluster-domain) | [Microsoft 365 (1,4)](#microsoft-365-domain) | [Ransomware (12,1)](#ransomware-domain) | [Sonar (5,0)](#sonar-domain) |
-| [Activity series (4,3)](#activity-series-domain) | [Db2 (8,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [RCS (3,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
-| [AWS (28,33)](#aws-domain) | [Report Download (3,16)](#report-download-domain) | [Mongo DB (10,10)](#mongo-db-domain) | [RCV (1,3)](#rcv-domain) | [Tape (0,3)](#tape-domain) |
+| [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [RCS (3,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [AWS (28,33)](#aws-domain) | [Report Download (3,16)](#report-download-domain) | [Mongo DB (10,10)](#mongo-db-domain) | [RCV (2,3)](#rcv-domain) | [Tape (0,3)](#tape-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mosaic (4,3)](#mosaic-domain) | [Replication (4,5)](#replication-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure (42,43)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Microsoft SQL Server (16,17)](#microsoft-sql-server-domain) | [Report (2,9)](#report-domain) | [VMware vSphere vCenter (9,6)](#vmware-vsphere-vcenter-domain) |
+| [Azure (43,43)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Microsoft SQL Server (16,17)](#microsoft-sql-server-domain) | [Report (2,9)](#report-domain) | [VMware vSphere vCenter (9,6)](#vmware-vsphere-vcenter-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [NAS (8,0)](#nas-domain) | [SAP HANA (8,9)](#sap-hana-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NFS (0,3)](#nfs-domain) | [Service Account (1,4)](#service-account-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,6)](#host-domain) | [Nutanix (18,25)](#nutanix-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [Webhook (1,5)](#webhook-domain) |
@@ -243,6 +243,7 @@ Cmdlets: `New-RscQueryAzure` and `New-RscMutationAzure`
 | SqlManagedInstanceServer | Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of. | `New-RscQueryAzure -Operation SqlManagedInstanceServer`<BR> | [azureSqlManagedInstanceServer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SqlManagedInstanceServers | Retrieves a paginated list of all Azure SQL Managed Instance Servers. | `New-RscQueryAzure -Operation SqlManagedInstanceServers`<BR> | [azureSqlManagedInstanceServers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | StorageAccounts | Gets the storage accounts for the given subscription. | `New-RscQueryAzure -Operation StorageAccounts`<BR> | [azureStorageAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StorageAccountsByRegion | List all Azure storage accounts by region. | `New-RscQueryAzure -Operation StorageAccountsByRegion`<BR> | [allAzureStorageAccountsByRegion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Subnets | Gets the subnets for the given subscription. | `New-RscQueryAzure -Operation Subnets`<BR> | [azureSubnets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SubscriptionWithExocomputeMappings | Retrieves a list of all Azure subscriptions with Exocompute subscription mapping. | `New-RscQueryAzure -Operation SubscriptionWithExocomputeMappings`<BR> | [allAzureSubscriptionWithExocomputeMappings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Subscriptions | Gets the subscriptions for the given Azure tenant. | `New-RscQueryAzure -Operation Subscriptions`<BR> | [azureSubscriptions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -632,6 +633,10 @@ Cmdlets: `New-RscQueryDb2` and `New-RscMutationDb2`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | Database | Details of a db2 database for a given fid. | `New-RscQueryDb2 -Operation Database`<BR> | [db2Database](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseJobStatus | Retrieve the status of a Db2 database job request  
+  
+Supported in v8.0+  
+Retrieve details about a Db2 database-related request which includes the status of the database-related job. | `New-RscQueryDb2 -Operation DatabaseJobStatus`<BR> | [db2DatabaseJobStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Databases | Connection of filtered db2 databases based on specific filters. | `New-RscQueryDb2 -Operation Databases`<BR> | [db2Databases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Instance | Details of a db2 instance for a given fid. | `New-RscQueryDb2 -Operation Instance`<BR> | [db2Instance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Instances | Connection of filtered db2 instances based on specific filters. | `New-RscQueryDb2 -Operation Instances`<BR> | [db2Instances](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1891,6 +1896,7 @@ Cmdlets: `New-RscQueryRcv` and `New-RscMutationRcv`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | AccountEntitlement | Rubrik Cloud Vault (RCV) Account entitlement details. | `New-RscQueryRcv -Operation AccountEntitlement`<BR> | [rcvAccountEntitlement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AccountEntitlements | Rubrik Cloud Vault (RCV) account entitlements with their respective order numbers. | `New-RscQueryRcv -Operation AccountEntitlements`<BR> | [allRcvAccountEntitlements](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations

@@ -5,6 +5,14 @@ Details of a db2 database for a given fid.
 
 - There is a single argument of type System.String.
 - Returns Db2Database.
+### databasejobstatus
+Retrieve the status of a Db2 database job request
+
+Supported in v8.0+
+Retrieve details about a Db2 database-related request which includes the status of the database-related job.
+
+- There is a single argument of type GetDb2DatabaseAsyncRequestStatusInput.
+- Returns AsyncRequestStatus.
 ### databases
 Connection of filtered db2 databases based on specific filters.
 

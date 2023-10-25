@@ -210,6 +210,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userName")]
         public System.String? UserName { get; set; }
 
+        //      C# -> WorkloadOrganization? TaskOrg
+        // GraphQL -> taskOrg: WorkloadOrganization (type)
+        [JsonProperty("taskOrg")]
+        public WorkloadOrganization? TaskOrg { get; set; }
+
 
         #endregion
 
@@ -257,7 +262,8 @@ namespace RubrikSecurityCloud.Types
         System.String? TaskCategory = null,
         System.String? TaskType = null,
         System.Int64? TotalFilesTransferred = null,
-        System.String? UserName = null
+        System.String? UserName = null,
+        WorkloadOrganization? TaskOrg = null
     ) 
     {
         if ( ArchivalTarget != null ) {
@@ -373,6 +379,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UserName != null ) {
             this.UserName = UserName;
+        }
+        if ( TaskOrg != null ) {
+            this.TaskOrg = TaskOrg;
         }
         return this;
     }
@@ -725,6 +734,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "userName\n" ;
             } else {
                 s += ind + "userName\n" ;
+            }
+        }
+        //      C# -> WorkloadOrganization? TaskOrg
+        // GraphQL -> taskOrg: WorkloadOrganization (type)
+        if (this.TaskOrg != null) {
+            var fspec = this.TaskOrg.AsFieldSpec(conf.Child("taskOrg"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "taskOrg {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -1379,6 +1400,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.UserName != null && ec.Excludes("userName",true))
         {
             this.UserName = null;
+        }
+        //      C# -> WorkloadOrganization? TaskOrg
+        // GraphQL -> taskOrg: WorkloadOrganization (type)
+        if (ec.Includes("taskOrg",false))
+        {
+            if(this.TaskOrg == null) {
+
+                this.TaskOrg = new WorkloadOrganization();
+                this.TaskOrg.ApplyExploratoryFieldSpec(ec.NewChild("taskOrg"));
+
+            } else {
+
+                this.TaskOrg.ApplyExploratoryFieldSpec(ec.NewChild("taskOrg"));
+
+            }
+        }
+        else if (this.TaskOrg != null && ec.Excludes("taskOrg",false))
+        {
+            this.TaskOrg = null;
         }
     }
 

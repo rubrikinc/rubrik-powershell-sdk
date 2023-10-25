@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "object {\n" + fspec + ind + "}\n";
+                    s += ind + "ThreatHuntResultObjectsSummary_INTERFACE_FIELD_object: object{\n" + fspec + ind + "}\n";
                 }
             }
         }

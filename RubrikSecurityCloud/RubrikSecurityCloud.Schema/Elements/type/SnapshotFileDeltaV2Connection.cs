@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "currentSnapshot {\n" + fspec + ind + "}\n";
+                    s += ind + "SnapshotFileDeltaV2Connection_INTERFACE_FIELD_currentSnapshot: currentSnapshot{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "previousSnapshot {\n" + fspec + ind + "}\n";
+                    s += ind + "SnapshotFileDeltaV2Connection_INTERFACE_FIELD_previousSnapshot: previousSnapshot{\n" + fspec + ind + "}\n";
                 }
             }
         }

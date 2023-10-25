@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20231004-20" ;
+        public static string GraphqlSchemaVersion = "v20231011-37" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -220,6 +220,7 @@ namespace RubrikSecurityCloud.Types
             AgentStatus,
             AggregatedValues,
             AllEnabledFeaturesForAccountReply,
+            AllRcvAccountEntitlements,
             AllStorageArraysReply,
             AmiTypeForAwsNativeArchivedSnapshotExportReply,
             Analyzer,
@@ -424,6 +425,7 @@ namespace RubrikSecurityCloud.Types
             AzureSqlManagedInstanceServerConnection,
             AzureSqlManagedInstanceServerEdge,
             AzureStorageAccount,
+            AzureStorageAccountCcprovision,
             AzureSubscription,
             AzureSubscriptionConnection,
             AzureSubscriptionEdge,
@@ -1681,6 +1683,8 @@ namespace RubrikSecurityCloud.Types
             RcvAccountEntitlement,
             RcvEntitlement,
             RcvEntitlementsUsageDetails,
+            RcvEntitlementWithExpirationDate,
+            RcvEntitlementWithOrderNumber,
             RdsInstanceDetailsFromAws,
             RdsInstanceExportDefaults,
             ReadIntegrationReply,
@@ -2270,6 +2274,7 @@ namespace RubrikSecurityCloud.Types
             WorkloadFields,
             WorkloadIdToSnapshotIds,
             WorkloadLocation,
+            WorkloadOrganization,
             WorkloadRecoveryInfo,
             WorkloadScanned,
             WorkloadTypeToBackupSetupSpecs,
@@ -2445,6 +2450,7 @@ namespace RubrikSecurityCloud.Types
             AzureSqlManagedInstanceServerResourceGroupFilter,
             AzureSqlManagedInstanceServerSubscriptionFilter,
             AzureSqlPersistentBackupExportInput,
+            AzureStorageAccountsByRegionInput,
             AzureStorageAccountsReq,
             AzureSubnetReq,
             AzureSubscriptionInput,
@@ -2893,6 +2899,7 @@ namespace RubrikSecurityCloud.Types
             GetComputeClusterInput,
             GetContainersInput,
             GetCsrInput,
+            GetDb2DatabaseAsyncRequestStatusInput,
             GetDefaultDbPropertiesV1Input,
             GetDefaultGatewayInput,
             GetFilesetAsyncRequestStatusInput,
@@ -3716,6 +3723,7 @@ namespace RubrikSecurityCloud.Types
             allAzureResourceGroups,
             allAzureSqlDatabaseServerElasticPools,
             allAzureStorageAccounts,
+            allAzureStorageAccountsByRegion,
             allAzureSubnets,
             allAzureSubscriptionWithExocomputeMappings,
             allAzureVnets,
@@ -3788,6 +3796,7 @@ namespace RubrikSecurityCloud.Types
             allPendingActions,
             allQuarantinedDetailsForSnapshots,
             allQuarantinedDetailsForWorkload,
+            allRcvAccountEntitlements,
             allResourceGroupsFromAzure,
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
@@ -3969,6 +3978,7 @@ namespace RubrikSecurityCloud.Types
             databaseLogReportingPropertiesForCluster,
             datagovSecDesc,
             db2Database,
+            db2DatabaseJobStatus,
             db2Databases,
             db2Instance,
             db2Instances,
@@ -5266,6 +5276,7 @@ namespace RubrikSecurityCloud.Types
             Db2DatabaseStatus,
             Db2DatabaseType,
             Db2InstanceSummaryStatus,
+            Db2InstanceType,
             Db2LogSnapshotSortBy,
             Db2RecoverableRangeSortBy,
             Db2SnapshotType,
@@ -7389,6 +7400,7 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeVirtualNetworks,
             allAzureNsgs,
             allAzureSqlDatabaseServerElasticPools,
+            allAzureStorageAccountsByRegion,
             allAzureSubscriptionWithExocomputeMappings,
             allCloudAccountExocomputeMappings,
             allCloudNativeFileRecoveryEligibleSnapshots,
@@ -7433,6 +7445,7 @@ namespace RubrikSecurityCloud.Types
             allO365SubscriptionsAppTypeCounts,
             allOptionGroupsByRegionFromAws,
             allQuarantinedDetailsForSnapshots,
+            allRcvAccountEntitlements,
             allResourceGroupsFromAzure,
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
@@ -7695,6 +7708,7 @@ namespace RubrikSecurityCloud.Types
             databaseLogReportForCluster,
             databaseLogReportingPropertiesForCluster,
             db2Database,
+            db2DatabaseJobStatus,
             db2Databases,
             db2Instance,
             db2Instances,
@@ -8751,6 +8765,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.allAzureStorageAccountsByRegion,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "StorageAccountsByRegion",
+                        gqlRootFieldName: "allAzureStorageAccountsByRegion"
+                    )
+                },
+                {
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
@@ -9100,6 +9122,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQuerySnapshot",
                         cmdletSwitchName: "QuarantinedDetails",
                         gqlRootFieldName: "allQuarantinedDetailsForSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.allRcvAccountEntitlements,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRcv",
+                        cmdletSwitchName: "AccountEntitlements",
+                        gqlRootFieldName: "allRcvAccountEntitlements"
                     )
                 },
                 {
@@ -11196,6 +11226,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryDb2",
                         cmdletSwitchName: "Database",
                         gqlRootFieldName: "db2Database"
+                    )
+                },
+                {
+                    GqlRootFieldName.db2DatabaseJobStatus,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "DatabaseJobStatus",
+                        gqlRootFieldName: "db2DatabaseJobStatus"
                     )
                 },
                 {
@@ -16464,6 +16502,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools
                 },
                 {
+                    "New-RscQueryAzure -StorageAccountsByRegion",
+                    GqlRootFieldName.allAzureStorageAccountsByRegion
+                },
+                {
                     "New-RscQueryAzure -SubscriptionWithExocomputeMappings",
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings
                 },
@@ -16638,6 +16680,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQuerySnapshot -QuarantinedDetails",
                     GqlRootFieldName.allQuarantinedDetailsForSnapshots
+                },
+                {
+                    "New-RscQueryRcv -AccountEntitlements",
+                    GqlRootFieldName.allRcvAccountEntitlements
                 },
                 {
                     "New-RscQueryAzure -ResourceGroups",
@@ -17686,6 +17732,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryDb2 -Database",
                     GqlRootFieldName.db2Database
+                },
+                {
+                    "New-RscQueryDb2 -DatabaseJobStatus",
+                    GqlRootFieldName.db2DatabaseJobStatus
                 },
                 {
                     "New-RscQueryDb2 -Databases",
@@ -20349,6 +20399,10 @@ namespace RubrikSecurityCloud.Types
                         "allEnabledFeaturesForAccount",
                     }
                 },
+                {   "AllRcvAccountEntitlements", new List<string> {
+                        "allRcvAccountEntitlements",
+                    }
+                },
                 {   "AllStorageArraysReply", new List<string> {
                         "allStorageArrays",
                     }
@@ -20444,6 +20498,7 @@ namespace RubrikSecurityCloud.Types
                         "createOnDemandVolumeGroupBackup",
                         "createOraclePdbRestore",
                         "createSapHanaSystemRefresh",
+                        "db2DatabaseJobStatus",
                         "deleteDb2Database",
                         "deleteDb2Instance",
                         "deleteExchangeSnapshotMount",
@@ -23808,6 +23863,10 @@ namespace RubrikSecurityCloud.Types
                         "allAzureSqlDatabaseServerElasticPools",
                     }
                 },
+                {   "[AzureStorageAccountCcprovision]", new List<string> {
+                        "allAzureStorageAccountsByRegion",
+                    }
+                },
                 {   "[AzureSubscriptionMissingPermissions]", new List<string> {
                         "allAzureCloudAccountMissingPermissions",
                     }
@@ -24204,6 +24263,7 @@ namespace RubrikSecurityCloud.Types
                 { "addSyslogExportRule", "AddSyslogExportRuleReply"},
                 { "addVmAppConsistentSpecs", "AddVmAppConsistentSpecsReply"},
                 { "allEnabledFeaturesForAccount", "AllEnabledFeaturesForAccountReply"},
+                { "allRcvAccountEntitlements", "AllRcvAccountEntitlements"},
                 { "allStorageArrays", "AllStorageArraysReply"},
                 { "amiTypeForAwsNativeArchivedSnapshotExport", "AmiTypeForAwsNativeArchivedSnapshotExportReply"},
                 { "createCustomAnalyzer", "Analyzer"},
@@ -24259,6 +24319,7 @@ namespace RubrikSecurityCloud.Types
                 { "createOnDemandVolumeGroupBackup", "AsyncRequestStatus"},
                 { "createOraclePdbRestore", "AsyncRequestStatus"},
                 { "createSapHanaSystemRefresh", "AsyncRequestStatus"},
+                { "db2DatabaseJobStatus", "AsyncRequestStatus"},
                 { "deleteDb2Database", "AsyncRequestStatus"},
                 { "deleteDb2Instance", "AsyncRequestStatus"},
                 { "deleteExchangeSnapshotMount", "AsyncRequestStatus"},
@@ -25443,6 +25504,7 @@ namespace RubrikSecurityCloud.Types
                 { "allAzureNativeResourceGroupsInfoIfExist", "[AzureResourceGroupInfo]"},
                 { "allResourceGroupsFromAzure", "[AzureResourceGroup]"},
                 { "allAzureSqlDatabaseServerElasticPools", "[AzureSqlDatabaseServerElasticPool]"},
+                { "allAzureStorageAccountsByRegion", "[AzureStorageAccountCcprovision]"},
                 { "allAzureCloudAccountMissingPermissions", "[AzureSubscriptionMissingPermissions]"},
                 { "allAzureSubscriptionWithExocomputeMappings", "[AzureSubscriptionWithExocomputeMapping]"},
                 { "allAzureCloudAccountSubscriptionsByFeature", "[AzureSubscriptionWithFeaturesType]"},
@@ -26022,6 +26084,7 @@ namespace RubrikSecurityCloud.Types
                     "StartExportSqlDatabaseDbJob",
                     "StartExportSqlManagedInstanceDbJob",
                     "StorageAccounts",
+                    "StorageAccountsByRegion",
                     "Subnets",
                     "SubscriptionWithExocomputeMappings",
                     "Subscriptions",
@@ -26225,6 +26288,7 @@ namespace RubrikSecurityCloud.Types
                     "AddInstance",
                     "CreateOnDemandBackup",
                     "Database",
+                    "DatabaseJobStatus",
                     "Databases",
                     "DeleteDatabase",
                     "DeleteInstance",
@@ -26772,6 +26836,7 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Rcv,
                     new List<string> {
                     "AccountEntitlement",
+                    "AccountEntitlements",
                     "CreateLocationsFromTemplate",
                     "CreatePrivateEndpointApprovalRequest",
                     "UpdateTarget",

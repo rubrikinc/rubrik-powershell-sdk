@@ -21,8 +21,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HADR")]
         HADR,
 
+        [EnumMember(Value = "HADR_PURESCALE")]
+        HADR_PURESCALE,
+
         [EnumMember(Value = "PARTITIONED")]
         PARTITIONED,
+
+        [EnumMember(Value = "PURESCALE")]
+        PURESCALE,
 
         [EnumMember(Value = "STANDALONE")]
         STANDALONE

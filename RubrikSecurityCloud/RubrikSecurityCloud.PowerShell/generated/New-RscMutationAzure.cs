@@ -183,6 +183,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isRscManaged = $someBoolean
     /// 			# OPTIONAL
     /// 			podSubnetNativeId = $someString
+    /// 			# OPTIONAL
+    /// 			podOverlayNetworkCidr = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -3056,6 +3058,8 @@ $query.Var.input = @{
 			isRscManaged = $someBoolean
 			# OPTIONAL
 			podSubnetNativeId = $someString
+			# OPTIONAL
+			podOverlayNetworkCidr = $someString
 		}
 	)
 	# OPTIONAL

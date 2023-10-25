@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 2
     /// operations in the 'RCV' API domain:
-    /// ['AccountEntitlement'].
+    /// AccountEntitlement, or AccountEntitlements.
     /// </summary>
     /// <description>
     /// New-RscQueryRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 2 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ['AccountEntitlement'].
+    /// one of: AccountEntitlement, or AccountEntitlements.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -103,6 +103,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the AccountEntitlements operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: AccountEntitlements
+    /// 
+    /// $query = New-RscQueryRcv -AccountEntitlements
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AllRcvAccountEntitlements
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -120,6 +147,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AccountEntitlement",
+                "AccountEntitlements",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -137,6 +165,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AccountEntitlement":
                         this.ProcessRecord_AccountEntitlement();
+                        break;
+                    case "AccountEntitlements":
+                        this.ProcessRecord_AccountEntitlements();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -157,6 +188,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryRcvAccountEntitlement();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // allRcvAccountEntitlements.
+        internal void ProcessRecord_AccountEntitlements()
+        {
+            this._logger.name += " -AccountEntitlements";
+            // Create new graphql operation allRcvAccountEntitlements
+            InitQueryAllRcvAccountEntitlements();
+        }
+
 
         // Create new GraphQL Query:
         // rcvAccountEntitlement: RcvAccountEntitlement!
@@ -172,6 +212,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RcvAccountEntitlement",
                 Query.RcvAccountEntitlement_ObjectFieldSpec,
                 Query.RcvAccountEntitlementFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allRcvAccountEntitlements: AllRcvAccountEntitlements!
+        internal void InitQueryAllRcvAccountEntitlements()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllRcvAccountEntitlements",
+                "",
+                "AllRcvAccountEntitlements",
+                Query.AllRcvAccountEntitlements_ObjectFieldSpec,
+                Query.AllRcvAccountEntitlementsFieldSpec,
                 @""
             );
         }
