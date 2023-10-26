@@ -1,5 +1,30 @@
 # Changelog
 
+## Version 0.17
+
+New Features:
+
+New toolkit scripts:
+
+- Backup-SlaDomain
+- Export-RscMssqlDatabase
+- Get-RscManagedVolume
+- Get-RscMssqlAvailabilityGroup
+- Get-RscMssqlDatabaseFiles
+- Get-RscMssqlDatabase
+- Get-RscMssqlDatabaseRecoverableRanges
+- Get-RscMssqlDatabaseRecoveryPoint
+- Get-RscMssqlInstance
+- Get-RscMssqlLiveMount
+- New-RscMssqlLiveMount
+- New-RscMssqlLogBackup
+- New-RscMssqlRestore
+- New-RscMssqlSnapshot
+- Remove-RscMssqlLiveMount
+- Set-RscMssqlDatabase
+- Start-RscManagedVolumeSnapshot
+- Stop-RscManagedVolumeSnapshot
+
 ## Version 0.16
 
 New Features:
