@@ -92,11 +92,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalLocation: Target (interface)
         if (this.ArchivalLocation != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ArchivalLocation).AsFieldSpec(conf.Child("archivalLocation"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "CascadingArchivalSpec_INTERFACE_FIELD_archivalLocation: archivalLocation{\n" + fspec + ind + "}\n";
+                    s += ind + "archivalLocation {\n" + fspec + ind + "}\n";
                 }
             }
         }

@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20231011-37" ;
+        public static string GraphqlSchemaVersion = "v20231011-41" ;
 
         /// <summary>
         /// All GraphQL interface names.

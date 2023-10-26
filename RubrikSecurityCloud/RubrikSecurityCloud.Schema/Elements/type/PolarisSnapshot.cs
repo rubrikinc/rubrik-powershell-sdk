@@ -327,11 +327,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
         if (this.PolarisSpecificSnapshot != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PolarisSpecificSnapshot).AsFieldSpec(conf.Child("polarisSpecificSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "PolarisSnapshot_INTERFACE_FIELD_polarisSpecificSnapshot: polarisSpecificSnapshot{\n" + fspec + ind + "}\n";
+                    s += ind + "polarisSpecificSnapshot {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -339,11 +340,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(conf.Child("slaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "PolarisSnapshot_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
+                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
                 }
             }
         }

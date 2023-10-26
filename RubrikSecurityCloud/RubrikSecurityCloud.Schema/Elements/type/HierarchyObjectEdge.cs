@@ -65,11 +65,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> node: HierarchyObject! (interface)
         if (this.Node != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Node).AsFieldSpec(conf.Child("node"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "HierarchyObjectEdge_INTERFACE_FIELD_node: node{\n" + fspec + ind + "}\n";
+                    s += ind + "node {\n" + fspec + ind + "}\n";
                 }
             }
         }

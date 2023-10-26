@@ -36753,6 +36753,9 @@ type DataLocationSupportedCluster {
 
   # Version of the supported Rubrik cluster.
   version: String!
+
+  # API version of the supported Rubrik cluster.
+  apiVersion: String!
 }
 # Supported in v5.0+
 type DataStoreSummary {
@@ -43506,6 +43509,10 @@ input FilesetDownloadFilesJobConfigInput {
   # Supported in v5.2+
   # An optional argument containing a Boolean parameter to depict if the download is being triggered for Legal Hold use case.
   legalHoldDownloadConfig: LegalHoldDownloadConfigInput
+
+  # Supported in v9.0
+  # Password to protect generated zip with.
+  zipPassword: String
 
   # Required. Supported in v5.0+
   # An array containing the full source path of each file and folder that is part of the download job. The array must contain at least one path.
@@ -82819,6 +82826,12 @@ enum SlaMigrationIneligibilityReason {
   # Rubrik cluster associated with the SLA Domain is disconnected.
   CLUSTER_DISCONNECTED
 
+  # To upgrade to a retention-locked RSC SLA Domain in Compliance mode, make sure quorum authorization is enabled in RSC and your cluster is running CDM 7.0.2 or later. You also need access to Compliance mode for retention lock, which you can get by contacting Rubrik Support.
+  COMPLIANCE_RETENTION_LOCK_CONFIGURED
+
+  # To upgrade to a retention-locked RSC SLA Domain in Governance mode, make sure quorum authorization is enabled in RSC and your cluster is running CDM 9.0.1 or later.
+  GOVERNANCE_RETENTION_LOCK_CONFIGURED
+
   # This SLA Domain has cascading archival configured. However, the Rubrik CDM version on the replication target cluster does not support migration of SLA Domains with cascading archival configured.
   INVALID_CASCADING_ARCHIVAL_VERSION
 
@@ -91049,6 +91062,9 @@ type ValidReplicationTarget {
   # The account name that the cluster is associated with.
   accountName: String!
 
+  # API version of the Rubrik cluster.
+  apiVersion: String!
+
   # UUID of the Rubrik cluster.
   uuid: UUID!
 }
@@ -98629,6 +98645,10 @@ input VsphereVmDownloadSnapshotFilesInput {
 
   # User note to associate with audits.
   userNote: String
+
+  # Supported in 9.0.1+.
+  # v9.0.1+: Password for zip archive created.
+  zipPassword: String
 }
 # Input for downloading vSphere snapshot from archive.
 input VsphereVmDownloadSnapshotInput {

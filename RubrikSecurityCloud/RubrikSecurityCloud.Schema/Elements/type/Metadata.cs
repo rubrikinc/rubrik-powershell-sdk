@@ -65,11 +65,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> value: Value (interface)
         if (this.Value != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(conf.Child("value"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "Metadata_INTERFACE_FIELD_value: value{\n" + fspec + ind + "}\n";
+                    s += ind + "value {\n" + fspec + ind + "}\n";
                 }
             }
         }

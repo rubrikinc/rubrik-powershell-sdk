@@ -313,53 +313,6 @@
             of the input fields object
             </summary>
         </member>
-        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase">
-            <summary>
-            Retrieve one or more Mssql Databases managed by
-            Rubrik Security Cloud (Rsc).
-            </summary>
-            <description>
-            The Get-RscMssqlDatabase cmdlet is used to get one or more Mssql DBs
-            known to RSC. The -Id parameter will return a single DB. All other
-            parameters will return a list of matching DBs.
-            </description>
-            <example>
-            Get a list of all Mssql DBs from the RSC instance.
-            <code>Get-RscMssqlDatabase</code>
-            </example>
-            <example>
-            Get a list of Mssql DBs, matching a name pattern.
-            <code>Get-RscMssqlDatabase -Name devVM</code>
-            </example>
-            <example>
-            Get a Mssql DB by Id, with default fields selected.
-            <code>Get-RscMssqlDatabase -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</code>
-            </example>
-            <example>
-            Get a Mssql DB by Id, with custom fields selected (Id, Name)
-            <code>
-            $myFields = Get-RscType -Name MssqlDatabase -InitialFields @("Id","Name")
-            Get-RscMssqlDatabase -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d -Fields $myFields
-            </code>
-            </example>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase.Name">
-            <summary>
-            Filter Mssql Databases by name
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase.Id">
-            <summary>
-            Retrieve a single Mssql Database by Id
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase.Fields">
-            <summary>
-            An object to use as a field selector for the query.
-            Values from the API for fields set to not-null values in this object
-            will be returned.
-            </summary>
-        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot">
             <summary>
             Retrieves all of the snapshots (backups) for any given object

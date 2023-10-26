@@ -101,11 +101,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> currentSnapshot: GenericSnapshot! (interface)
         if (this.CurrentSnapshot != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSnapshot).AsFieldSpec(conf.Child("currentSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "SnapshotFileDeltaV2Connection_INTERFACE_FIELD_currentSnapshot: currentSnapshot{\n" + fspec + ind + "}\n";
+                    s += ind + "currentSnapshot {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -113,11 +114,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> previousSnapshot: GenericSnapshot (interface)
         if (this.PreviousSnapshot != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSnapshot).AsFieldSpec(conf.Child("previousSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "SnapshotFileDeltaV2Connection_INTERFACE_FIELD_previousSnapshot: previousSnapshot{\n" + fspec + ind + "}\n";
+                    s += ind + "previousSnapshot {\n" + fspec + ind + "}\n";
                 }
             }
         }

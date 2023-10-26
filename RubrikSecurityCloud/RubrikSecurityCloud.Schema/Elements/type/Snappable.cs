@@ -480,11 +480,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(conf.Child("slaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "Snappable_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
+                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
                 }
             }
         }

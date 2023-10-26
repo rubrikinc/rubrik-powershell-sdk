@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Tests
                 };
             var ind = new string(' ', 2);
 
-            string expected = "VsphereVm_INTERFACE_FIELD_effectiveSlaDomain:effectiveSlaDomain{...onClusterSlaDomain{idname}}idname";
+            string expected = "effectiveSlaDomain{...onClusterSlaDomain{idname}}idname";
 
             //Act
             string result = inputObject.AsFieldSpec();

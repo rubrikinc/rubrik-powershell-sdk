@@ -354,11 +354,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(conf.Child("configuredSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "HyperVscvmm_INTERFACE_FIELD_configuredSlaDomain: configuredSlaDomain{\n" + fspec + ind + "}\n";
+                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -366,11 +367,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(conf.Child("effectiveRetentionSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "HyperVscvmm_INTERFACE_FIELD_effectiveRetentionSlaDomain: effectiveRetentionSlaDomain{\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -378,11 +380,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(conf.Child("effectiveSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "HyperVscvmm_INTERFACE_FIELD_effectiveSlaDomain: effectiveSlaDomain{\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -390,11 +393,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(conf.Child("pendingSla"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "HyperVscvmm_INTERFACE_FIELD_pendingSla: pendingSla{\n" + fspec + ind + "}\n";
+                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -402,11 +406,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         if (this.ReplicatedObjects != null) {
                 var fspec = this.ReplicatedObjects.AsFieldSpec(conf.Child("replicatedObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "HyperVscvmm_INTERFACE_FIELD_replicatedObjects: replicatedObjects{\n" + fspec + ind + "}\n";
+                    s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
                 }
             }
         }

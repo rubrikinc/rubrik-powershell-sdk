@@ -198,7 +198,8 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     typename = item.GetType().Name;
                 }
-                if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+                if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                     if ( conf.Flat ) {
                         fieldspecs += conf.Prefix + fspec;
                     } else {

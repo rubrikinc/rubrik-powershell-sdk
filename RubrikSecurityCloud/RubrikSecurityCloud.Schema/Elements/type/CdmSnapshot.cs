@@ -471,11 +471,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(conf.Child("pendingSla"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "CdmSnapshot_INTERFACE_FIELD_pendingSla: pendingSla{\n" + fspec + ind + "}\n";
+                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -483,11 +484,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(conf.Child("slaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "CdmSnapshot_INTERFACE_FIELD_slaDomain: slaDomain{\n" + fspec + ind + "}\n";
+                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -495,11 +497,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappableNew: CdmHierarchySnappableNew! (interface)
         if (this.SnappableNew != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SnappableNew).AsFieldSpec(conf.Child("snappableNew"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "CdmSnapshot_INTERFACE_FIELD_snappableNew: snappableNew{\n" + fspec + ind + "}\n";
+                    s += ind + "snappableNew {\n" + fspec + ind + "}\n";
                 }
             }
         }

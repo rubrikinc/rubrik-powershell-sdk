@@ -146,11 +146,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetTemplate: TargetTemplate (interface)
         if (this.TargetTemplate != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.TargetTemplate).AsFieldSpec(conf.Child("targetTemplate"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "TargetMapping_INTERFACE_FIELD_targetTemplate: targetTemplate{\n" + fspec + ind + "}\n";
+                    s += ind + "targetTemplate {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -158,11 +159,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targets: [Target!] (interface)
         if (this.Targets != null) {
                 var fspec = this.Targets.AsFieldSpec(conf.Child("targets"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "TargetMapping_INTERFACE_FIELD_targets: targets{\n" + fspec + ind + "}\n";
+                    s += ind + "targets {\n" + fspec + ind + "}\n";
                 }
             }
         }

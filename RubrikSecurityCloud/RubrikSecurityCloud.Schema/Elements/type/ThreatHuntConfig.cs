@@ -137,11 +137,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
         if (this.Objects != null) {
                 var fspec = this.Objects.AsFieldSpec(conf.Child("objects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ThreatHuntConfig_INTERFACE_FIELD_objects: objects{\n" + fspec + ind + "}\n";
+                    s += ind + "objects {\n" + fspec + ind + "}\n";
                 }
             }
         }

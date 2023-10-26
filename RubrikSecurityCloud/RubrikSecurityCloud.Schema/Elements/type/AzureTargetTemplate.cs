@@ -147,11 +147,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudAccount: CloudAccount! (interface)
         if (this.CloudAccount != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(conf.Child("cloudAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "AzureTargetTemplate_INTERFACE_FIELD_cloudAccount: cloudAccount{\n" + fspec + ind + "}\n";
+                    s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
                 }
             }
         }

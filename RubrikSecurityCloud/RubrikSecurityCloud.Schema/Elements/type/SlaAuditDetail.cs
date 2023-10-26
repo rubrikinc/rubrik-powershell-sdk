@@ -119,11 +119,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
         if (this.CurrentSlaSummary != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSlaSummary).AsFieldSpec(conf.Child("currentSlaSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "SlaAuditDetail_INTERFACE_FIELD_currentSlaSummary: currentSlaSummary{\n" + fspec + ind + "}\n";
+                    s += ind + "currentSlaSummary {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -131,11 +132,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
         if (this.PreviousSlaSummary != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSlaSummary).AsFieldSpec(conf.Child("previousSlaSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "SlaAuditDetail_INTERFACE_FIELD_previousSlaSummary: previousSlaSummary{\n" + fspec + ind + "}\n";
+                    s += ind + "previousSlaSummary {\n" + fspec + ind + "}\n";
                 }
             }
         }

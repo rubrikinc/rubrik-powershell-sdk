@@ -65,11 +65,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> displayableValue: DisplayableValue (interface)
         if (this.DisplayableValue != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.DisplayableValue).AsFieldSpec(conf.Child("displayableValue"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "CellData_INTERFACE_FIELD_displayableValue: displayableValue{\n" + fspec + ind + "}\n";
+                    s += ind + "displayableValue {\n" + fspec + ind + "}\n";
                 }
             }
         }

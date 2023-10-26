@@ -317,11 +317,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappable: HierarchyObject (interface)
         if (this.Snappable != null) {
                 var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(conf.Child("snappable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "PolicyObj_INTERFACE_FIELD_snappable: snappable{\n" + fspec + ind + "}\n";
+                    s += ind + "snappable {\n" + fspec + ind + "}\n";
                 }
             }
         }

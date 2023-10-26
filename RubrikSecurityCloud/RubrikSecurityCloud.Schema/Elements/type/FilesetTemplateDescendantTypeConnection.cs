@@ -83,11 +83,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nodes: [FilesetTemplateDescendantType!]! (interface)
         if (this.Nodes != null) {
                 var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "FilesetTemplateDescendantTypeConnection_INTERFACE_FIELD_nodes: nodes{\n" + fspec + ind + "}\n";
+                    s += ind + "nodes {\n" + fspec + ind + "}\n";
                 }
             }
         }
