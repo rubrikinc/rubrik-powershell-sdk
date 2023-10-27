@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SlaDomain")]
         SLA_DOMAIN,
 
+        [EnumMember(Value = "TRANSFERRED_BYTES_OBJECT_TYPE")]
+        TRANSFERRED_BYTES_OBJECT_TYPE,
+
         [EnumMember(Value = "Week")]
         WEEK,
 

@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20231011-41" ;
+        public static string GraphqlSchemaVersion = "v20231018-24" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -967,6 +967,7 @@ namespace RubrikSecurityCloud.Types
             GuestOsCredentialConnection,
             GuestOsCredentialEdge,
             HashDetail,
+            HasRelicAzureAdSnapshotReplyType,
             HdfsBaseConfig,
             HdfsHost,
             HealthPolicyStatus,
@@ -1340,6 +1341,7 @@ namespace RubrikSecurityCloud.Types
             NcdSlaComplianceData,
             NcdTaskData,
             NcdUsageOverTimeData,
+            NcdVmImageUrl,
             NetworkHostProject,
             NetworkInfo,
             NetworkInfoListResponse,
@@ -2947,6 +2949,7 @@ namespace RubrikSecurityCloud.Types
             GuestCredentialDefinitionInput,
             GuestOsCredentialFilterInput,
             GuestOsCredentialSortBy,
+            HasRelicAzureAdSnapshotInput,
             HdfsBaseConfigInput,
             HdfsConfigInput,
             HdfsHostInput,
@@ -3611,6 +3614,7 @@ namespace RubrikSecurityCloud.Types
             VlanConfigInput,
             VlanIpInput,
             VmDownloadLocationDetailsInput,
+            VmImageUrlInput,
             VmRestorePathPairInput,
             VmwareAdaptiveThrottlingSettingsInput,
             VmwareDatastoreFreespaceThresholdInput,
@@ -4046,6 +4050,7 @@ namespace RubrikSecurityCloud.Types
             guestCredentials,
             guestCredentialsV2,
             hasIdpConfigured,
+            hasRelicAzureAdSnapshot,
             helpContentSnippets,
             hierarchyObject,
             hierarchyObjectRecoveryTarget,
@@ -4161,6 +4166,7 @@ namespace RubrikSecurityCloud.Types
             ncdBackEndCapacity,
             ncdFrontEndCapacity,
             ncdObjectProtectionStatus,
+            ncdVmImageUrl,
             networkThrottle,
             nfAnomalyResults,
             nfAnomalyResultsGrouped,
@@ -5461,6 +5467,7 @@ namespace RubrikSecurityCloud.Types
             NameValidity,
             NasSystemConnectivityStatus,
             NasVendorType,
+            NcdHypervisorType,
             NcdTaskStatus,
             NetworkInterfaceType,
             NetworkThrottleResourceId,
@@ -7864,6 +7871,7 @@ namespace RubrikSecurityCloud.Types
             getPendingSlaAssignments,
             globalSlaFilterConnection,
             globalSlaStatuses,
+            hasRelicAzureAdSnapshot,
             hostDiagnosis,
             hostFailoverCluster,
             hostShare,
@@ -12474,6 +12482,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQuerySla",
                         cmdletSwitchName: "GlobalStatuses",
                         gqlRootFieldName: "globalSlaStatuses"
+                    )
+                },
+                {
+                    GqlRootFieldName.hasRelicAzureAdSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "HasRelicAdSnapshot",
+                        gqlRootFieldName: "hasRelicAzureAdSnapshot"
                     )
                 },
                 {
@@ -18358,6 +18374,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.globalSlaStatuses
                 },
                 {
+                    "New-RscQueryAzure -HasRelicAdSnapshot",
+                    GqlRootFieldName.hasRelicAzureAdSnapshot
+                },
+                {
                     "New-RscQueryHost -Diagnosis",
                     GqlRootFieldName.hostDiagnosis
                 },
@@ -21801,6 +21821,10 @@ namespace RubrikSecurityCloud.Types
                         "guestCredentialsV2",
                     }
                 },
+                {   "HasRelicAzureAdSnapshotReplyType", new List<string> {
+                        "hasRelicAzureAdSnapshot",
+                    }
+                },
                 {   "HelpContentSnippetConnection", new List<string> {
                         "helpContentSnippets",
                     }
@@ -22242,6 +22266,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "NcdObjectProtectionStatus", new List<string> {
                         "ncdObjectProtectionStatus",
+                    }
+                },
+                {   "NcdVmImageUrl", new List<string> {
+                        "ncdVmImageUrl",
                     }
                 },
                 {   "NetworkInfoListResponse", new List<string> {
@@ -24828,6 +24856,7 @@ namespace RubrikSecurityCloud.Types
                 { "getGroupCountByCdmClusterStatus", "GroupCountListWithTotal"},
                 { "guestCredentials", "GuestCredentialDetailListResponse"},
                 { "guestCredentialsV2", "GuestOsCredentialConnection"},
+                { "hasRelicAzureAdSnapshot", "HasRelicAzureAdSnapshotReplyType"},
                 { "helpContentSnippets", "HelpContentSnippetConnection"},
                 { "hierarchyObject", "HierarchyObject"},
                 { "hierarchyObjectRecoveryTarget", "HierarchyObject"},
@@ -24959,6 +24988,7 @@ namespace RubrikSecurityCloud.Types
                 { "ncdBackEndCapacity", "NcdBackEndCapacity"},
                 { "ncdFrontEndCapacity", "NcdFrontEndCapacity"},
                 { "ncdObjectProtectionStatus", "NcdObjectProtectionStatus"},
+                { "ncdVmImageUrl", "NcdVmImageUrl"},
                 { "vCenterNetworks", "NetworkInfoListResponse"},
                 { "clusterNetworkInterfaces", "NetworkInterfaceListResponse"},
                 { "networkThrottle", "NetworkThrottleSummaryListResponse"},
@@ -26052,6 +26082,7 @@ namespace RubrikSecurityCloud.Types
                     "DiskEncryptionSetsByRegion",
                     "EncryptionKeys",
                     "ExocomputeConfigsInAccount",
+                    "HasRelicAdSnapshot",
                     "HostedAzureRegions",
                     "IsStorageAccountNameAvailable",
                     "KeyVaultsByRegion",

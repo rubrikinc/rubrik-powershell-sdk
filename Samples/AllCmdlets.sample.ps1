@@ -20635,6 +20635,44 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryAzure -Op HasRelicAdSnapshot
+# -------------------------------------------------------------------
+
+$query = New-RscQueryAzure -Op HasRelicAdSnapshot
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryAzure.HasRelicAdSnapshot" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryAzure.HasRelicAdSnapshot" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryAzure.HasRelicAdSnapshot" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryAzure -Operation HasRelicAdSnapshot
+    $query.Info()
+    $query.VarTemplate()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryAzure -Op HostedAzureRegions
 # -------------------------------------------------------------------
 

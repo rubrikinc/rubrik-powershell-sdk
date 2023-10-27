@@ -11759,6 +11759,9 @@ type ActiveDirectoryDomainController implements CdmHierarchyObject , HierarchyOb
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -22406,6 +22409,9 @@ input AzureEsConfigInput {
 
   # Specifies whether to enable support for immutable filesystem in SDFS.
   enableImmutability: Boolean = false
+
+  # Azure managed identity information.
+  managedIdentity: AzureManagedIdentityName
 }
 # Azure exocompute configuration to add.
 input AzureExocomputeAddConfigInputType {
@@ -22639,6 +22645,20 @@ type AzureManagedIdentity {
 
   # Managed identity client ID.
   clientId: String!
+
+  # Managed identity resource group.
+  resourceGroup: String!
+}
+# Managed identity information.
+input AzureManagedIdentityName {
+  # Managed identity name.
+  name: String = ""
+
+  # Managed identity client ID.
+  clientId: String = ""
+
+  # Managed identity resource group.
+  resourceGroup: String = ""
 }
 # Mapped Azure subscription for launching Exocompute.
 type AzureMappedExocomputeSubscription {
@@ -28750,6 +28770,9 @@ interface CdmHierarchySnappableNew {
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
@@ -37276,6 +37299,9 @@ type Db2Database implements CdmHierarchyObject , CdmHierarchySnappableNew , Hier
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -41292,6 +41318,9 @@ type ExchangeDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew ,
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
@@ -51111,6 +51140,9 @@ type HyperVVirtualMachine implements HierarchyObject , CdmHierarchyObject , CdmH
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -54370,6 +54402,9 @@ type LinuxFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -55728,6 +55763,9 @@ type ManagedVolume implements HierarchyObject , CdmHierarchyObject , CdmHierarch
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
@@ -57470,6 +57508,9 @@ type MongoCollectionSet implements HierarchyObject , CdmHierarchyObject , MongoS
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -58089,6 +58130,9 @@ input MongoRecoveryRequestConfigInput {
   # Supported in v9.0+
   # Boolean flag to restore MongoDB collections with index.
   isRestoreWithIndex: Boolean
+
+  # Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+  targetAuthenticationType: MongoAuthenticationType
 
   # Required. Supported in v9.0+
   # ID of the MongoDB source cluster.
@@ -61192,6 +61236,9 @@ type MssqlDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarch
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -63156,6 +63203,9 @@ type NasFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hiera
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
@@ -67520,6 +67570,9 @@ type NutanixVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -70912,7 +70965,7 @@ enum ObjectTypeEnum {
   Hdfs
   HypervVirtualMachine
 
-  # Jira fixed object.
+  # Jira settings.
   JIRA_FIXED_OBJECT
 
   # Jira project.
@@ -71627,6 +71680,9 @@ type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmH
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -72084,6 +72140,9 @@ type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarc
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
@@ -78427,6 +78486,10 @@ input RestoreFilesJobConfigInput {
   # v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
   guestCredentialId: String
 
+  # Supported in v9.1
+  # Boolean field specifying whether to mount disks during restore jobs. When the value is 'true', the VMDK disks of the snapshot are mounted on the target VM for recovering the files and the parameter 'shouldUseAgent' is ignored. When the value is 'false', RSC may or may not use agent.
+  shouldUseMountDisks: Boolean
+
   # Required. Supported in v5.0+
   # v5.0-v5.3: Absolute file path and restore path if not restored back to itself
   # v6.0-v7.0: Absolute file path and restore path if not restored back to itself.
@@ -80407,6 +80470,9 @@ type SapHanaDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -82261,6 +82327,9 @@ type ShareFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
@@ -92803,6 +92872,9 @@ type VcdVapp implements HierarchyObject , CdmHierarchyObject , HierarchySnappabl
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -98564,6 +98636,9 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
 
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot
 
@@ -99482,6 +99557,9 @@ type WindowsFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , H
 
     # Groups snapshots by field.
     groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
 
   # The most recent snapshot of this workload.
   newestSnapshot: CdmSnapshot

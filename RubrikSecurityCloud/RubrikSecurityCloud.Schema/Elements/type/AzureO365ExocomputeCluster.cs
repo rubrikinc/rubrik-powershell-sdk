@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("colossusBackupStorageAccountId")]
         public System.String? ColossusBackupStorageAccountId { get; set; }
 
+        //      C# -> System.String? ExocomputeInternalStorageAccountId
+        // GraphQL -> exocomputeInternalStorageAccountId: String! (scalar)
+        [JsonProperty("exocomputeInternalStorageAccountId")]
+        public System.String? ExocomputeInternalStorageAccountId { get; set; }
+
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         [JsonProperty("groupName")]
@@ -179,6 +184,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AksVersion = null,
         System.String? AzureAppId = null,
         System.String? ColossusBackupStorageAccountId = null,
+        System.String? ExocomputeInternalStorageAccountId = null,
         System.String? GroupName = null,
         System.String? Id = null,
         System.Boolean? IsProvisioned = null,
@@ -226,6 +232,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ColossusBackupStorageAccountId != null ) {
             this.ColossusBackupStorageAccountId = ColossusBackupStorageAccountId;
+        }
+        if ( ExocomputeInternalStorageAccountId != null ) {
+            this.ExocomputeInternalStorageAccountId = ExocomputeInternalStorageAccountId;
         }
         if ( GroupName != null ) {
             this.GroupName = GroupName;
@@ -374,6 +383,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "colossusBackupStorageAccountId\n" ;
             } else {
                 s += ind + "colossusBackupStorageAccountId\n" ;
+            }
+        }
+        //      C# -> System.String? ExocomputeInternalStorageAccountId
+        // GraphQL -> exocomputeInternalStorageAccountId: String! (scalar)
+        if (this.ExocomputeInternalStorageAccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeInternalStorageAccountId\n" ;
+            } else {
+                s += ind + "exocomputeInternalStorageAccountId\n" ;
             }
         }
         //      C# -> System.String? GroupName
@@ -718,6 +736,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ColossusBackupStorageAccountId != null && ec.Excludes("colossusBackupStorageAccountId",true))
         {
             this.ColossusBackupStorageAccountId = null;
+        }
+        //      C# -> System.String? ExocomputeInternalStorageAccountId
+        // GraphQL -> exocomputeInternalStorageAccountId: String! (scalar)
+        if (ec.Includes("exocomputeInternalStorageAccountId",true))
+        {
+            if(this.ExocomputeInternalStorageAccountId == null) {
+
+                this.ExocomputeInternalStorageAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeInternalStorageAccountId != null && ec.Excludes("exocomputeInternalStorageAccountId",true))
+        {
+            this.ExocomputeInternalStorageAccountId = null;
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)

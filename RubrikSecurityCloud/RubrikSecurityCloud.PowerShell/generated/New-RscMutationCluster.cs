@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	numberOfNodes = $someInt
     /// 	# OPTIONAL
     /// 	shouldKeepResourcesOnFailure = $someBoolean
+    /// 	# OPTIONAL
+    /// 	awsImageId = $someString
+    /// 	# OPTIONAL
+    /// 	azureImageName = $someString
     /// 	# REQUIRED
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
@@ -657,6 +661,10 @@ $query.Var.input = @{
 	numberOfNodes = $someInt
 	# OPTIONAL
 	shouldKeepResourcesOnFailure = $someBoolean
+	# OPTIONAL
+	awsImageId = $someString
+	# OPTIONAL
+	azureImageName = $someString
 	# REQUIRED
 	cloudAccountId = $someString
 	# REQUIRED

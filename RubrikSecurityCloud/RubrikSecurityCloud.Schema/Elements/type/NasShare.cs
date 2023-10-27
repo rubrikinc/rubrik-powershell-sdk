@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isHidden")]
         public System.Boolean? IsHidden { get; set; }
 
+        //      C# -> System.Boolean? IsNasShareManuallyAdded
+        // GraphQL -> isNasShareManuallyAdded: Boolean! (scalar)
+        [JsonProperty("isNasShareManuallyAdded")]
+        public System.Boolean? IsNasShareManuallyAdded { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -227,6 +232,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsChangelistEnabled = null,
         System.Boolean? IsHidden = null,
+        System.Boolean? IsNasShareManuallyAdded = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsStale = null,
         System.String? Name = null,
@@ -296,6 +302,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHidden != null ) {
             this.IsHidden = IsHidden;
+        }
+        if ( IsNasShareManuallyAdded != null ) {
+            this.IsNasShareManuallyAdded = IsNasShareManuallyAdded;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -530,6 +539,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHidden\n" ;
             } else {
                 s += ind + "isHidden\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsNasShareManuallyAdded
+        // GraphQL -> isNasShareManuallyAdded: Boolean! (scalar)
+        if (this.IsNasShareManuallyAdded != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isNasShareManuallyAdded\n" ;
+            } else {
+                s += ind + "isNasShareManuallyAdded\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1059,6 +1077,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHidden != null && ec.Excludes("isHidden",true))
         {
             this.IsHidden = null;
+        }
+        //      C# -> System.Boolean? IsNasShareManuallyAdded
+        // GraphQL -> isNasShareManuallyAdded: Boolean! (scalar)
+        if (ec.Includes("isNasShareManuallyAdded",true))
+        {
+            if(this.IsNasShareManuallyAdded == null) {
+
+                this.IsNasShareManuallyAdded = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNasShareManuallyAdded != null && ec.Excludes("isNasShareManuallyAdded",true))
+        {
+            this.IsNasShareManuallyAdded = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

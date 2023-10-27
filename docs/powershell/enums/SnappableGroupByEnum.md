@@ -8,6 +8,7 @@
 - Day
 - SlaDomain
 - Week
+- TRANSFERRED_BYTES_OBJECT_TYPE - Bytes transferred group by object type.
 - Hour
 - Cluster
 - PullTimeWithOffset

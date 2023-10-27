@@ -29,6 +29,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldKeepResourcesOnFailure")]
         public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
 
+        //      C# -> System.String? AwsImageId
+        // GraphQL -> awsImageId: String (scalar)
+        [JsonProperty("awsImageId")]
+        public System.String? AwsImageId { get; set; }
+
+        //      C# -> System.String? AzureImageName
+        // GraphQL -> azureImageName: String (scalar)
+        [JsonProperty("azureImageName")]
+        public System.String? AzureImageName { get; set; }
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         [Required]

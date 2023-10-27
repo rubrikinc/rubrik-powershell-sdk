@@ -26,6 +26,7 @@
 - TIME_ISSUES
 - WEEK - Group by week.
 - Week
+- TRANSFERRED_BYTES_OBJECT_TYPE - Bytes transferred group by object type.
 - IS_ANOMALY - Specifies whether the result is an anomaly.
 - UserAuditType
 - POLICY

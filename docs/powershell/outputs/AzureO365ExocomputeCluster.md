@@ -32,6 +32,8 @@ Azure O365 Exocompute cluster details.
   - Database IDs used for Zeus data store.
 - kekBackupStartTime: DateTime
   - Specifies the KEK backup start time to determine the last time the backup was run.
+- exocomputeInternalStorageAccountId: System.String
+  - Storage account used for exocompute internal storage.
 - kmsHostType: AzureHostType
   - KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
 - hostType: AzureHostType

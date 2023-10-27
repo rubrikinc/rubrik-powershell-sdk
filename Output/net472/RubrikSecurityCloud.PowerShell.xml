@@ -7506,6 +7506,10 @@
              	numberOfNodes = $someInt
              	# OPTIONAL
              	shouldKeepResourcesOnFailure = $someBoolean
+             	# OPTIONAL
+             	awsImageId = $someString
+             	# OPTIONAL
+             	azureImageName = $someString
              	# REQUIRED
              	cloudAccountId = $someString
              	# REQUIRED
@@ -19302,6 +19306,12 @@
              			# OPTIONAL
              			shouldSkipDropDbInUndo = $someBoolean
              			# OPTIONAL
+             			targetRacHostIds = @(
+             				$someString
+             			)
+             			# OPTIONAL
+             			targetRacPrimaryHostId = $someString
+             			# OPTIONAL
              			shouldAllowRenameToSource = $someBoolean
              			# REQUIRED
              			recoveryPoint = @{
@@ -30544,9 +30554,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure">
              <summary>
-             Create a new RscQuery object for any of the 43
+             Create a new RscQuery object for any of the 44
              operations in the 'Azure' API domain:
-             AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+             AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              </summary>
              <description>
              New-RscQueryAzure creates a new
@@ -30556,11 +30566,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 43 operations
+             There are 44 operations
              in the 'Azure' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -31215,6 +31225,37 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: List&lt;AzureExocomputeConfigsInAccount&gt;
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the HasRelicAdSnapshot operation
+             of the 'Azure' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Azure
+             # API Operation: HasRelicAdSnapshot
+             
+             $query = New-RscQueryAzure -HasRelicAdSnapshot
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	domainName = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: HasRelicAzureAdSnapshotReplyType
              
              
              

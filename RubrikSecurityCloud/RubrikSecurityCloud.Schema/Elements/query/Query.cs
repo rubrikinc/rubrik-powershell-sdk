@@ -12015,6 +12015,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> HasRelicAzureAdSnapshotReplyType? HasRelicAzureAdSnapshot
+        // GraphQL -> hasRelicAzureAdSnapshot: HasRelicAzureAdSnapshotReplyType! (type)
+        public static string HasRelicAzureAdSnapshot_TypedFieldSpec(HasRelicAzureAdSnapshotReplyType fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "hasRelicAzureAdSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string HasRelicAzureAdSnapshot_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return HasRelicAzureAdSnapshot((HasRelicAzureAdSnapshotReplyType)fieldSpecObj);
+        }
+        public static string HasRelicAzureAdSnapshot(HasRelicAzureAdSnapshotReplyType fieldSpec)
+        {
+            return HasRelicAzureAdSnapshot_TypedFieldSpec(fieldSpec);
+        }
+        public static string HasRelicAzureAdSnapshot(object fieldSpecObj)
+        {
+            return HasRelicAzureAdSnapshot_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object HasRelicAzureAdSnapshotFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new HasRelicAzureAdSnapshotReplyType() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> HelpContentSnippetConnection? HelpContentSnippets
         // GraphQL -> helpContentSnippets: HelpContentSnippetConnection! (type)
         public static string HelpContentSnippets_TypedFieldSpec(HelpContentSnippetConnection fieldSpec)
@@ -15173,6 +15204,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new NcdObjectProtectionStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> NcdVmImageUrl? NcdVmImageUrl
+        // GraphQL -> ncdVmImageUrl: NcdVmImageUrl! (type)
+        public static string NcdVmImageUrl_TypedFieldSpec(NcdVmImageUrl fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "ncdVmImageUrl" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string NcdVmImageUrl_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return NcdVmImageUrl((NcdVmImageUrl)fieldSpecObj);
+        }
+        public static string NcdVmImageUrl(NcdVmImageUrl fieldSpec)
+        {
+            return NcdVmImageUrl_TypedFieldSpec(fieldSpec);
+        }
+        public static string NcdVmImageUrl(object fieldSpecObj)
+        {
+            return NcdVmImageUrl_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object NcdVmImageUrlFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new NcdVmImageUrl() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

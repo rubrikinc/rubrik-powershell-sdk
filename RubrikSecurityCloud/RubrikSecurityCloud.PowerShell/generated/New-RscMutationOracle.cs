@@ -519,6 +519,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldSkipDropDbInUndo = $someBoolean
     /// 			# OPTIONAL
+    /// 			targetRacHostIds = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			targetRacPrimaryHostId = $someString
+    /// 			# OPTIONAL
     /// 			shouldAllowRenameToSource = $someBoolean
     /// 			# REQUIRED
     /// 			recoveryPoint = @{
@@ -1701,6 +1707,12 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldSkipDropDbInUndo = $someBoolean
+			# OPTIONAL
+			targetRacHostIds = @(
+				$someString
+			)
+			# OPTIONAL
+			targetRacPrimaryHostId = $someString
 			# OPTIONAL
 			shouldAllowRenameToSource = $someBoolean
 			# REQUIRED

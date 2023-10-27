@@ -15,6 +15,8 @@ NAS share instance of a registered NAS system.
   - Specifies whether this object is a relic.
 - cdmId: System.String
   - Rubrik CDM ID of the registered NAS system.
+- isNasShareManuallyAdded: System.Boolean
+  - Specifies whether the NAS shares are manually configured on the NAS system.
 - id: System.String
   - Object ID.
 - nasSystem: NasSystem

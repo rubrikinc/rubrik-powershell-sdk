@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 43
+    /// Create a new RscQuery object for any of the 44
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 43 operations
+    /// There are 44 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -694,6 +694,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;AzureExocomputeConfigsInAccount&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HasRelicAdSnapshot operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: HasRelicAdSnapshot
+    /// 
+    /// $query = New-RscQueryAzure -HasRelicAdSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	domainName = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HasRelicAzureAdSnapshotReplyType
     /// 
     /// 
     /// 
@@ -1792,6 +1823,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DiskEncryptionSetsByRegion",
                 "EncryptionKeys",
                 "ExocomputeConfigsInAccount",
+                "HasRelicAdSnapshot",
                 "HostedAzureRegions",
                 "IsStorageAccountNameAvailable",
                 "KeyVaultsByRegion",
@@ -1883,6 +1915,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExocomputeConfigsInAccount":
                         this.ProcessRecord_ExocomputeConfigsInAccount();
+                        break;
+                    case "HasRelicAdSnapshot":
+                        this.ProcessRecord_HasRelicAdSnapshot();
                         break;
                     case "HostedAzureRegions":
                         this.ProcessRecord_HostedAzureRegions();
@@ -2123,6 +2158,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExocomputeConfigsInAccount";
             // Create new graphql operation allAzureExocomputeConfigsInAccount
             InitQueryAllAzureExocomputeConfigsInAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hasRelicAzureAdSnapshot.
+        internal void ProcessRecord_HasRelicAdSnapshot()
+        {
+            this._logger.name += " -HasRelicAdSnapshot";
+            // Create new graphql operation hasRelicAzureAdSnapshot
+            InitQueryHasRelicAzureAdSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2896,6 +2940,29 @@ $query.Var.azureExocomputeSearchQuery = $someString
 $query.Var.cloudAccountIDs = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hasRelicAzureAdSnapshot(input: HasRelicAzureAdSnapshotInput!): HasRelicAzureAdSnapshotReplyType!
+        internal void InitQueryHasRelicAzureAdSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "HasRelicAzureAdSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHasRelicAzureAdSnapshot",
+                "($input: HasRelicAzureAdSnapshotInput!)",
+                "HasRelicAzureAdSnapshotReplyType",
+                Query.HasRelicAzureAdSnapshot_ObjectFieldSpec,
+                Query.HasRelicAzureAdSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	domainName = $someString
+}"
             );
         }
 

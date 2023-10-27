@@ -111,6 +111,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TIME_VIOLATIONS")]
         TIME_VIOLATIONS,
 
+        [EnumMember(Value = "TRANSFERRED_BYTES_OBJECT_TYPE")]
+        TRANSFERRED_BYTES_OBJECT_TYPE,
+
         [EnumMember(Value = "TargetSite")]
         TARGET_SITE,
 

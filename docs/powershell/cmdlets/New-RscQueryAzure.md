@@ -122,6 +122,11 @@ Retrieves a list of Azure Exocompute configurations filtered by a cloud account 
     - azureExocomputeSearchQuery - System.String: A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
     - cloudAccountIDs - list of System.Strings: IDs of cloud accounts.
 - Returns list of AzureExocomputeConfigsInAccounts.
+### hasrelicadsnapshot
+Checks if Microsoft Entra ID has relic snapshots.
+
+- There is a single argument of type HasRelicAzureAdSnapshotInput.
+- Returns HasRelicAzureAdSnapshotReplyType.
 ### hostedazureregions
 Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
 

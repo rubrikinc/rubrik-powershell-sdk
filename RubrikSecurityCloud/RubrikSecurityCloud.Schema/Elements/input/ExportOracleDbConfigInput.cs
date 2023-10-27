@@ -84,6 +84,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldSkipDropDbInUndo")]
         public System.Boolean? ShouldSkipDropDbInUndo { get; set; }
 
+        //      C# -> List<System.String>? TargetRacHostIds
+        // GraphQL -> targetRacHostIds: [String!] (scalar)
+        [JsonProperty("targetRacHostIds")]
+        public List<System.String>? TargetRacHostIds { get; set; }
+
+        //      C# -> System.String? TargetRacPrimaryHostId
+        // GraphQL -> targetRacPrimaryHostId: String (scalar)
+        [JsonProperty("targetRacPrimaryHostId")]
+        public System.String? TargetRacPrimaryHostId { get; set; }
+
         //      C# -> System.Boolean? ShouldAllowRenameToSource
         // GraphQL -> shouldAllowRenameToSource: Boolean (scalar)
         [JsonProperty("shouldAllowRenameToSource")]

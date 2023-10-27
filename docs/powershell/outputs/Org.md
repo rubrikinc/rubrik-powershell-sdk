@@ -17,8 +17,6 @@ Details of an org.
   - Specifies whether organization is forced to use Rubrik Envoy to connect their hosts.
 - allowedClusters: list of System.Strings
   - Allowed clusters for the organization.
-- physicalStorageUsed: System.Int64
-  - Physical storage used by the organization.
 - tenantNetworkHealth: TenantNetworkHealth
   - Health of the tenant networks associated with the organization.
 - hasOwnIdpConfigured: System.Boolean
@@ -33,5 +31,7 @@ Details of an org.
   - Self-service permissions assigned to the organization.
 - ssoGroups: list of SsoGroups
   - SSO groups authorized for the organization.
+- physicalStorageUsed: System.Int64
+  - Physical storage used by the organization.
 - allUrls: list of System.Strings
   - All URLs associated with the organization.
