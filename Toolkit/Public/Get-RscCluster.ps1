@@ -3,13 +3,12 @@ function Get-RscCluster {
 <#
     .SYNOPSIS
     Retrieve info about clusters
+    
     .DESCRIPTION
     By default, retrieve info about all clusters.
-    `Get-RscCluster` defaults to `Get-RscCluster -List -First 1000`
-    which returns the first 1000 clusters.
-    To get info about a specific cluster, use the `-Id` parameter.
     By default, responses contain a minimal set of fields: mostly ids and names.
     To get more details, use the `-Detail` parameter.
+    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
@@ -18,51 +17,27 @@ function Get-RscCluster {
     
     The Cluster type:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html
-    .EXAMPLE
-    Get-RscCluster -First 3
-    Id                                   Name            Type
-    --                                   ----            ----
-    1eb06571-e013-49b2-a635-33c309c5227a test-brik01    POLARIS
-    2f6c2b76-df80-400b-ad9e-53a67203cbbc test-brik02    POLARIS
-    3b429c53-21fe-44b5-b4e4-e3a4308a69fe test-brik03    POLARIS
-    This example lists the first 3 clusters.
-    .EXAMPLE
-    (Get-RscCluster -First 3).Id
-    1eb06571-e013-49b2-a635-33c309c5227a
-    2f6c2b76-df80-400b-ad9e-53a67203cbbc
-    3b429c53-21fe-44b5-b4e4-e3a4308a69fe
     
-    This example lists the first 3 clusters, and only get their ids.
     .EXAMPLE
-    $firstId = (Get-RscCluster -First 1).Id
-    Saves the first id.
+    Return a list of all clusters managed by RSC
+    
+    Get-RscCluster -List
+    
     .EXAMPLE
-    Get-RscCluster -Id $firstId
-    Retrieves a cluster by id.
+    Return a information about a cluster based on the name
+
+    Get-RscCluster -Name vault-r-london
+    
+    
     .EXAMPLE
-    Get-RscCluster -Id $firstId -Detail
-    EncryptionEnabled  : False
-    EstimatedRunway    : -1
-    Id                 : 1eb06571-e013-49b2-a635-33c309c5227a
-    IsHealthy          : True
-    Name               : test-brik01
-    NoSqlWorkloadCount : 0
-    RegistrationTime   : 4/13/2023 2:51:55 AM
-    SnapshotCount      : -1
-    Version            : 8.0.2-p2-22662
-    LicensedProducts   : {}
-    PauseStatus        : UNKNOWN
-    ProductType        : POC
-    Status             : DISCONNECTED
-    SubStatus          : DEFAULT
-    SystemStatus       : OK
-    Type               : POLARIS
-    Retrieves a cluster by id, with details.
+    Return back all fields, including the fields that are null
+    
+    Get-RscCluster -Name vault-r-london -IncludeNullProperties
+
     .EXAMPLE
-    $query = Get-RscCluster -First 1 -AsQuery
-    $query = New-RscQuery -Copy $query -AddField Nodes.SnapshotCount
-    $query | Invoke-Rsc
-    Amends a query object to add a field, and sends it.
+    Return back just the query that will be run instead of running the query and returning the results
+
+    Get-RscCluster -Name vault-r-london -AsQuery    
     #>
 
     [CmdletBinding(
@@ -85,7 +60,17 @@ function Get-RscCluster {
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -110,12 +95,26 @@ function Get-RscCluster {
                 $query.Var.filter.Name = $Name
             }
         }
-        
-        $result = $query.Invoke()    
-        if ($null -ne $result.Nodes){
-            $result.Nodes #| Remove-NullProperties
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
+        }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
         }    
     } 
 }

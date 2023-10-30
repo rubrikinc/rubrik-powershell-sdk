@@ -2,17 +2,19 @@
 function Stop-RscManagedVolumeSnapshot {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Stops a Snapshot of a Persistent Mount Managed Volume
 
     .DESCRIPTION
-    ___ Add description here ___
+    Stop a Snapshot of a Persistent Mount Managed Volume. This will make the managed volume read only. Rubrik will then
+    process the snapshot for future recovery operations. 
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
+    Stop-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume -SlaDomainId $RscManagedVolume.EffectiveSlaDomain.Id
     #>
 
     [CmdletBinding()]
@@ -27,7 +29,13 @@ function Stop-RscManagedVolumeSnapshot {
             Mandatory = $true, 
             ValueFromPipeline = $true
         )]
-        [string]$SlaDomainId
+        [string]$SlaDomainId,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -44,6 +52,14 @@ function Stop-RscManagedVolumeSnapshot {
         $query.Var.input.params.isAsync = $true
         $query.Var.input.params.retentionConfig = New-Object -TypeName RubrikSecurityCloud.Types.BaseOnDemandSnapshotConfigInput
         $query.Var.input.params.retentionConfig.slaId = $SlaDomainId
-        $query.invoke()
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+
+        $result
     } 
 }

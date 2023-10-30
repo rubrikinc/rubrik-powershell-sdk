@@ -2,17 +2,18 @@
 function Start-RscManagedVolumeSnapshot {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Start a Snapshot of a Persistent Mount Managed Volume
 
     .DESCRIPTION
-    ___ Add description here ___
+    Start a Snapshot of a Persistent Mount Managed Volume. This will make the managed volume writable. 
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
+    Start-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume
     #>
 
     [CmdletBinding()]
@@ -21,20 +22,13 @@ function Start-RscManagedVolumeSnapshot {
             Mandatory = $true, 
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume
+        [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume,
 
-        # [Parameter(
-        #     Mandatory = $true, 
-        #     ValueFromPipeline = $true
-        # )]
-        # [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume,
-        
         #  Common parameter to all parameter sets:
-        # [Parameter(
-        #     Mandatory = $false, 
-        #     ValueFromPipelineByPropertyName = $true
-        # )]
-        # [Switch]$Detail
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -50,6 +44,15 @@ function Start-RscManagedVolumeSnapshot {
         $query.Var.input.config = New-Object -TypeName RubrikSecurityCloud.Types.BeginSnapshotManagedVolumeRequestInput
         $query.Var.input.config.isAsync = $true
         
-        $query.invoke()
+        
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+
+        $result
     } 
 }
