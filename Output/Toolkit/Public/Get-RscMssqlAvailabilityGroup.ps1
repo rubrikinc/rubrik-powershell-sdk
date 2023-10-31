@@ -31,7 +31,17 @@ function Get-RscMssqlAvailabilityGroup {
 
     .EXAMPLE
     Returns information about a specific Availability Group based on the name of the AG and the name of the Rubrik Cluster
-    Get-RscMssqlAvailabilityGroup -Name -clusterID hja87-ajb43-v4avna-hnjag
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -clusterID hja87-ajb43-v4avna-hnjag
+
+    .EXAMPLE
+    Return back all fields, including the fields that are null
+    
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -IncludeNullProperties
+
+    .EXAMPLE
+    Return back just the query that will be run instead of running the query and returning the results
+
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -AsQuery   
     #>
 
     [CmdletBinding(
