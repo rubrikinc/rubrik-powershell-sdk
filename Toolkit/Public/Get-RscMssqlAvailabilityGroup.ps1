@@ -2,17 +2,36 @@
 function Get-RscMssqlAvailabilityGroup {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Retrieve info about MSSQL Availability Groups
 
     .DESCRIPTION
-    ___ Add description here ___
+    Retrieve info about MSSQL Availability Groups. An Availability Group is a Parent Object to a database. 
+    If your database is in an AG, then you will want to use this cmdlet, but if not you will want to get the Instance information
+    using Get-RscMssqlInstance.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Returns a list of Availbility Groups that are connected to Rubrik
+    Get-RscMssqlAvailabilityGroup -List
+
+    .EXAMPLE
+    Returns information about a specific Availability Group based on the Rubrik ID
+    Get-RscMssqlAvailabilityGroup -Id
+
+    .EXAMPLE
+    Returns information about a specific Availability Group based on the name of the AG.
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting
+
+    .EXAMPLE
+    Returns a list of Availbility Groups that are connected to a specific Rubrik Cluster
+    Get-RscMssqlAvailabilityGroup -List -clusterID hja87-ajb43-v4avna-hnjag
+
+    .EXAMPLE
+    Returns information about a specific Availability Group based on the name of the AG and the name of the Rubrik Cluster
+    Get-RscMssqlAvailabilityGroup -Name -clusterID hja87-ajb43-v4avna-hnjag
     #>
 
     [CmdletBinding(
