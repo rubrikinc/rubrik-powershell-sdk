@@ -2,17 +2,29 @@
 function Get-RscMssqlDatabaseFiles {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Return a list of database files that existed at the time of the backup
 
     .DESCRIPTION
-    ___ Add description here ___
+    Return a list of database files that existed at the time of the backup. This is used for Export-RscMssqlDatabase
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -Latest
+
+    .EXAMPLE
+    Returns the list of database files based on the last snapshot taken
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -LastFull
+
+    .EXAMPLE
+    Returns the list of database files based on a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding()]
@@ -40,9 +52,18 @@ function Get-RscMssqlDatabaseFiles {
         #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [Switch]$Detail
+            ValueFromPipeline = $false
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -73,14 +94,24 @@ function Get-RscMssqlDatabaseFiles {
         }
         $query.Var.input.time = $RecoveryPoint
 
-        $result = $query.Invoke()
-
-        if ($null -ne $result.Items){
-            $result.Items #| Remove-NullProperties
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
         }
 
-        # $query.GqlRequest()
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        } 
     } 
 }
