@@ -2,18 +2,26 @@
 function Get-RscMssqlInstance{
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
-    awesome test
+    Returns information about the SQL Server Instances connected to Rubrik Security Cloud
 
     .DESCRIPTION
-    ___ Add description here ___
+    Returns information about the SQL Server Instances connected to Rubrik Security Cloud
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Returns a list of all SQL Server Instances connected to RSC
+    Get-RscMssqlInstance -List
+
+    .EXAMPLE
+    Returns information about the default instance of SQL on a specific host
+    Get-RscMssqlInstance -HostName rp-sql.rubrik-demo.com
+
+    .EXAMPLE
+    Returns information about a specific instance of SQL on a specific host
+    Get-RscMssqlInstance -HostName rp-sql.rubrik-demo.com -InstanceName DEV01
     #>
 
     [CmdletBinding(
@@ -49,10 +57,21 @@ function Get-RscMssqlInstance{
             ValueFromPipeline = $false
         )][String]$clusterId,
 
+        #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -106,10 +125,24 @@ function Get-RscMssqlInstance{
             }
         }
 
-        if ($null -ne $result.Nodes){
-            $result.Nodes #| Remove-NullProperties
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
         }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }   
     } 
 }
