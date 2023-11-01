@@ -2,17 +2,19 @@
 function Get-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Returns information about a Live Mounted MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Returns information about a Live Mounted MSSQL Database
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
     #>
     [CmdletBinding()]
     Param(        
@@ -63,9 +65,12 @@ function Get-RscMssqlLiveMount {
             $query.Var.filters += $sourceDatabaseFilter
         }
         #endregion
-
-        $result = $query.Invoke()
-        $result = $result.Nodes | Where-Object { $_.isReady -eq "true" }
-        $result
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+            $result = $result.Nodes | Where-Object { $_.isReady -eq "true" }
+            $result
+        }
     } 
 }
