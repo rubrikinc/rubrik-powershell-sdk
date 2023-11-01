@@ -2,17 +2,32 @@
 function New-RscMssqlRestore {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Starts an in-place recovery of a MSSQL Database 
 
     .DESCRIPTION
-    ___ Add description here ___
+    Starts an in-place recovery of a MSSQL Database
+
+    Be aware. Do not use this if you are attempting to copy a database. In that case you should use Export. This will take the point in time provided and recover your database
+    back to the original host, original instance, and the original database name to the point in time provided.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Performs an in-place recovery of AdventureWorks2019 to the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -Latest
+
+    .EXAMPLE
+    Performs an in-place recovery of AdventureWorks2019 to the last snapshot
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -LastFull
+
+    .EXAMPLE
+    Performs an in-place recovery of AdventureWorks2019 to a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding(
@@ -60,7 +75,13 @@ function New-RscMssqlRestore {
             Mandatory = $false, 
             ValueFromPipeline = $false
         )]
-        [string]$RecoveryLSN
+        [string]$RecoveryLSN,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -100,6 +121,11 @@ function New-RscMssqlRestore {
         # }
         #endregion
         
-        $query.Invoke()
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }
