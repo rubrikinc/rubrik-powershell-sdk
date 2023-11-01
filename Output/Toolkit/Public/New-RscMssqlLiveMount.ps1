@@ -2,17 +2,32 @@
 function New-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Creates a Live Mount of a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Creates a Live Mount of a MSSQL Database
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -Latest
+
+    .EXAMPLE
+    Returns the list of database files based on the last snapshot taken
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -Lastfull
+
+    .EXAMPLE
+    Returns the list of database files based on a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding(
@@ -53,7 +68,13 @@ function New-RscMssqlLiveMount {
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][datetime]$RestoreTime
+        )][datetime]$RestoreTime,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -89,6 +110,13 @@ function New-RscMssqlLiveMount {
                 $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstance.PhysicalChildConnection.Nodes.Id)"
             }
         }
-        $query.Invoke()  
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }

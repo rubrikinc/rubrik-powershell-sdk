@@ -40,7 +40,7 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         [Parameter(ParameterSetName = 'LastFull')]
         [switch]$LastFull,
         [Parameter(ParameterSetName = 'RestoreTime')]
-        [datetime]$RestoreTime,
+        [datetime]$RestoreTime
 
         #  Common parameter to all parameter sets:
         # [Parameter(
