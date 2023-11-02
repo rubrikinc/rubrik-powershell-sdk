@@ -75,8 +75,8 @@ function Get-RscMssqlDatabaseRecoveryPoint {
             $query = New-RscQueryMssql -Op RecoverableRanges -AddField Data.BeginTime, Data.EndTime
             $query.Var.input.id = $RscMssqlDatabase.id
             $result = $query.Invoke()
-            $LatestRecoveryRange = $result.Data[$result.Count -1]
-            $RecoveryDateTime = $LatestRecoveryRange.EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+            $LatestRecoveryRange = $result.Data | Sort-Object -Descending -Property EndTime 
+            $RecoveryDateTime = $LatestRecoveryRange[0].EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
         }
         if ($PSBoundParameters.ContainsKey('LastFull')) {
             $RubrikSnapshot = Get-RscSnapshot -SnappableId $RscMssqlDatabase.id  | Sort-Object date -Descending | Select-object -First 1

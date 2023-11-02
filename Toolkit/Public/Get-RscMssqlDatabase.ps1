@@ -103,10 +103,10 @@ function Get-RscMssqlDatabase {
             }
             "Name"{
                 $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile `
-                    -AddField Nodes.PhysicalPath, `
-                    Nodes.PostBackupScript, `
-                    Nodes.PreBackupScript, `
-                    Nodes.ConfiguredSlaDomain, `
+                    -AddField Nodes.PhysicalPath , `
+                    Nodes.PostBackupScript , `
+                    Nodes.PreBackupScript , `
+                    # Nodes.ConfiguredSlaDomain #, ` #Having this included causes the query to fail. Not entirely sure why. 
                     Nodes.CopyOnly, `
                     Nodes.HostLogRetention, `
                     Nodes.LogBackupFrequencyInSeconds, `
@@ -120,21 +120,17 @@ function Get-RscMssqlDatabase {
         }
         #endregion
 
-        $result = $query.Invoke()
-
-        If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
-            $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
-            $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
-        }
-        If ( $PSBoundParameters.ContainsKey('RscMssqlInstanceId') ) {
-            $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $RscMssqlInstanceId }
-        }
-
-
         if ( $AsQuery -eq $true ) {
             $result = $query.GqlRequest()
         }else{
             $result = $query.Invoke()
+            If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
+                $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
+                $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
+            }
+            If ( $PSBoundParameters.ContainsKey('RscMssqlInstanceId') ) {
+                $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $RscMssqlInstanceId }
+            }
         }
 
         if ($null -ne $result.Nodes){
