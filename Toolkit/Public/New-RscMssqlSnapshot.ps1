@@ -7,6 +7,21 @@ function New-RscMssqlSnapshot {
     .DESCRIPTION
     Starts an On Demand Snapshot of a MSSQL Database
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER ForceFullSnapshot
+    Instead of taking an Incremental Forever snapshot, which the default, this will force a new Full snapshot. 
+
+    Incremental Forever snapshots are the equivalent of a SQL Server Full database backup. Do not use this parameter
+    if your intent is to reset a broken log chain. That can be achieved by taking a snapshot without this parameter. 
+
+    .PARAMETER SLADomain
+    THis will be the ID of the SLA Domain that will manage the retention of the snapshot
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference

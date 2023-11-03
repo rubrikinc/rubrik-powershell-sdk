@@ -12,6 +12,25 @@ function Get-RscManagedVolume {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Used to create a list of Managed Volumes
+
+    .PARAMETER Name
+    Used to return a specific Managed Volume based on the name
+
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     Return back a list of Managed Volumes.
     Get-RscManagedVolume -List
