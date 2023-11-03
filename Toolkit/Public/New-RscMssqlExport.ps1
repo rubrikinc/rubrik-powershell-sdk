@@ -1,40 +1,197 @@
 #Requires -Version 3
-function ___VERB___-Rsc___NOUN___ {
-    <#
+function New-RscMssqlExport{
+<#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Exports a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Exports a MSSQL Database. Export is a recovery operation. This lines up with our other recovery options like
+    restore and live mount. Export will be the most often used recovery operation as it allows for copying a database
+    from one place to another. To a DBA, Export is a database restore, but it allows for more options than in-place 
+    recovery allows. 
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
+
+    .PARAMETER TargetMssqlInstance
+    SQL Server Instance Object returned from Get-RscMssqlInstance
+
+    .PARAMETER TargetDatabaseName
+    Any name you want to call your database when it is recovered onto the target instance
+
+    .PARAMETER TargetDataPath
+    Single path that all data files will be placed into 
+
+    .PARAMETER TargeLogPath
+    Single path that all log files will be placed into
+
+    .PARAMETER TargetFilePaths
+    Object can be built manually like the below example, or by using Get-RscMssqlDatabaseFiles. 
+
+    $TargetFilePaths = @()
+    $TargetDataPath = @{
+        exportPath = "c:\mnt\sqldata"
+        logicalName = "AdventureWorks2017"
+        newFilename = "Lumnah_Test.mdf"
+    }
+    $TargetFilePaths += $TargetDataPath
+    $TargetLogPath = @{
+        exportPath = "c:\mnt\sqldata"
+        logicalName = "AdventureWorks2017_log"
+        newFilename = "Lumnah_Test_log.ldf"
+    } 
+
+    ExportPath value cannot be changed, but logicalName and newFilename values can. 
+
+    Case matters. Make sure to use the case listed above for exportPath, logicalName, and newFilename. Variations of the spellings in different cases, will not work. 
+    .PARAMETER Overwrite
+    Enables the database being exported to be over written. 
+
+    .PARAMETER FinishRecovery
+    Allows the database to be fully recovered and operational. If you omit this parameter, then when the database finishes being restored, the database will be left in
+    NORECOVERY mode. 
+
+    .PARAMETER MaxDataStreams
+    This controls the number of streams used for the restore. By default, Rubrik will use 2 streams. This cannot exceed a value of 8. 
+
+    In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
+    production setting without running some tests in a non-production environment. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Exports a database using the latest recovery point using the "Simple Method"
+    This means you provide a single data and log path for all data and log files to go into. This does not allow for the 
+    file names to be changed. 
+
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlExport -RscMssqlDatabase $RscMssqlDatabase `
+        -Latest `
+        -TargetMssqlInstance $RscMssqlInstance `
+        -TargetDataPath = "c:\mnt\sqldata" `
+        -TargeLogPath = "c:\mnt\sqllogs" `
+        -Overwrite `
+        -FinishRecovery
+
+    .EXAMPLE
+    Exports a database using the latest recovery point using the "Advanced Method"
+    In this case, you need to build an object like the below that contains the exportPath, logicalName, newFilename of 
+    each file in the database. 
+
+    This gives you full control over each file and path. 
+    The value in exportPath *MUST* be the same value that is in the database at the time of the backup. You can see these
+    values by using Get-RscMssqlDatabaseFiles. 
+    
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+
+    $TargetFilePaths = @()
+    $TargetDataPath = @{
+        exportPath = "c:\mnt\sqldata"
+        logicalName = "AdventureWorks2017"
+        newFilename = "Lumnah_Test.mdf"
+    }
+    $TargetFilePaths += $TargetDataPath
+    $TargetLogPath = @{
+        exportPath = "c:\mnt\sqldata"
+        logicalName = "AdventureWorks2017_log"
+        newFilename = "Lumnah_Test_log.ldf"
+    } 
+    $TargetFilePaths += $TargetLogPath
+    New-RscMssqlExport -RscMssqlDatabase $RscMssqlDatabase `
+        -Latest `
+        -TargetMssqlInstance $RscMssqlInstance `
+        -TargetFilePaths $TargetFilePaths `
+        -Overwrite `
+        -FinishRecovery
     #>
 
-    [CmdletBinding(
-        # ___ Example ___
-        DefaultParameterSetName = "Id"
-    )]
+    [CmdletBinding()]
     Param(
-        # ___ Example ___
-        # Id parameter set:
+        [Parameter(            
+            Mandatory = $true, 
+            ValueFromPipeline = $true
+        )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
+
         [Parameter(
-            ParameterSetName = "Id",
-            Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [String]$Id,
-        
-        #  Common parameter to all parameter sets:
+            ParameterSetName='Recovery_Latest',
+            Mandatory = $false
+        )][Switch]$Latest,
+
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [Switch]$Detail
+            ParameterSetName='Recovery_LastFull',
+            Mandatory = $false
+        )][Switch]$LastFull,
+
+        [Parameter(
+            ParameterSetName='Recovery_Time',
+            Mandatory = $false
+        )][datetime]$RestoreTime,
+
+        #Recovery Point desired in the form of an LSN (Log Sequence Number) TODO:SPARK-224340
+        #[Parameter(ParameterSetName='Recovery_LSN')]
+        #[string]$RecoveryLSN,
+
+        [Parameter(
+            Mandatory = $false
+        )][RubrikSecurityCloud.Types.PhysicalHost]$TargetMssqlInstance, 
+
+        [Parameter(
+            Mandatory = $false
+        )][String]$TargetDatabaseName,
+
+        [Parameter(ParameterSetName='Recovery_Latest')]
+        [Parameter(ParameterSetName='Recovery_LastFull')]
+        [Parameter(ParameterSetName='Recovery_Time')]
+        [Parameter(
+            ParameterSetName = "Simple Method",
+            Mandatory = $false
+        )][String]$TargetDataPath,
+
+        [Parameter(ParameterSetName='Recovery_Latest')]
+        [Parameter(ParameterSetName='Recovery_LastFull')]
+        [Parameter(ParameterSetName='Recovery_Time')]
+        [Parameter(
+            ParameterSetName = "Simple Method",
+            Mandatory = $false
+        )][String]$TargeLogPath,
+
+        [Parameter(ParameterSetName='Recovery_Latest')]
+        [Parameter(ParameterSetName='Recovery_LastFull')]
+        [Parameter(ParameterSetName='Recovery_Time')]
+        [Parameter(
+            ParameterSetName = "Advanced Method",
+            Mandatory = $false
+        )][PSCustomObject]$TargetFilePaths,
+
+        [Parameter(
+            Mandatory = $false
+        )][Switch]$Overwrite,
+
+        [Parameter(
+            Mandatory = $false
+        )][Switch]$FinishRecovery,
+
+        [ValidateRange(1, 8)]
+        [Parameter(
+            Mandatory = $false
+        )][int]$MaxDataStreams = 2
     )
     
     Process {
@@ -46,35 +203,59 @@ function ___VERB___-Rsc___NOUN___ {
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Host "___VERB___-Rsc___NOUN___: $fieldProfile"
+        Write-Host "New-RscMssqlExport: $fieldProfile"
         
-        # ___ Example ___
-
-        # Create query
+        #region Create Query         
+        $query = New-RscMutationMssql -Op ExportDatabase
+        $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.ExportMssqlDatabaseInput
+        $query.Var.input.Id = $RscMssqlDatabase.Id
+    
+        $query.Var.input.Config = New-Object -TypeName RubrikSecurityCloud.Types.ExportMssqlDbJobConfigInput
+        If (![string]::IsNullOrEmpty($Overwrite)){$query.Var.input.config.allowOverwrite = $Overwrite}
+        If (![string]::IsNullOrEmpty($FinishRecovery)){$query.Var.input.config.FinishRecovery = $FinishRecovery}
+        If (![string]::IsNullOrEmpty($maxDataStreams)){$query.Var.input.config.maxDataStreams = $maxDataStreams}
         
-        $vars = @{ someVar = someVal }
+        if($PSBoundParameters.ContainsKey('Latest')) {
+            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
+            $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
+        }
 
-        if ( $PSCmdlet.ParameterSetName -eq "Id" ) {
-            $vars.Id = $Id
+        if($PSBoundParameters.ContainsKey('LastFull')) {
+            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
+            $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
+        }
+
+        if($PSBoundParameters.ContainsKey('RestoreTime')) {
+            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime $RestoreTime
+            $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
         }
         
-        $query = New-RscQuery___DOMAIN___ -___OPERATION___ -Var $vars -FieldProfile $fieldProfile
-        
-        # Send request to the API server
-        
-        $result = Invoke-Rsc $query
-        
-        # Filter results
-        # the response's `Nodes` field contains the list
-        if ( $PSCmdlet.ParameterSetName -eq "List" ) {
-            $result = $result.Nodes
+        $query.Var.input.Config.targetDatabaseName = $TargetDatabaseName
+
+        # $query.Var.input.Config.recoveryPoint.lsnPoint = New-Object -TypeName RubrikSecurityCloud.Types.LsnRecoveryPointInput 
+
+        If (![string]::IsNullOrEmpty($TargetDataPath) -and ![string]::IsNullOrEmpty($TargeLogPath)){
+                $query.Var.input.Config.targetDataFilePath = $TargetDataPath
+                $query.Var.input.Config.targetLogFilePath = $TargeLogPath
         }
-        
-        # Filter out null values:
-        # fields that weren't requested
-        # come back as nulls in the `$result` object,
-        # but that's not interesting to display
-        $result | Remove-NullProperties
-        
+
+        If (![string]::IsNullOrEmpty($TargetFilePaths)){
+            write-host "Advanced Method@!@"
+            $query.Var.input.Config.targetFilePaths = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDbFileExportPathInput 
+            $query.Var.input.Config.targetFilePaths = $TargetFilePaths
+        }
+    
+        $query.Var.input.Config.targetInstanceId = $TargetMssqlInstance.PhysicalChildConnection.Nodes.Id
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }
