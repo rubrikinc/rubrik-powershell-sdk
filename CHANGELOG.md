@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.18
+
+Fixes:
+
+- Fix case sensitivity issue with documentation files.
+- Fix install on Linux.
+  
 ## Version 0.17
 
 New Features:
