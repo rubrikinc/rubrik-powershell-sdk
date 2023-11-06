@@ -2,11 +2,26 @@
 function Remove-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Removes a Live Mount of a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Removes a Live Mount of a MSSQL Database
 
+    .PARAMETER MssqlLiveMount
+    Live Mount object returned from Get-RscMssqlLiveMount
+
+    .PARAMETER Force
+    Forces the unmount of a database in the event Rubrik cannot connect to the SQL Server Instance or database. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
+    .EXAMPLE
+    Removes the live mount from the SQL Server and cleans up the share and files on the Rubrik cluster
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
+    Remove-RscMssqlLiveMount -MssqlLiveMount $RscMssqlLiveMount
+    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
@@ -27,7 +42,12 @@ function Remove-RscMssqlLiveMount {
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $false
         )]
-        [Switch]$Force 
+        [Switch]$Force,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -48,8 +68,14 @@ function Remove-RscMssqlLiveMount {
         $query.Var.input.id = "$($MssqlLiveMount.Fid)"
         $query.Var.input.force = $force
 
-        $query.Invoke()
         #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
         
     } 
 }

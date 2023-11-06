@@ -12,6 +12,15 @@ function Stop-RscManagedVolumeSnapshot {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscManagedVolume
+    Managed Volume Object as retrieved from Get-RscManagedVolume
+
+    .PARAMETER SlaDomainId
+    THis will be the ID of the SLA Domain that will manage the retention of the snapshot
+    
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
     Stop-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume -SlaDomainId $RscManagedVolume.EffectiveSlaDomain.Id
@@ -59,7 +68,6 @@ function Stop-RscManagedVolumeSnapshot {
         }else{
             $result = $query.Invoke()
         }
-
         $result
     } 
 }

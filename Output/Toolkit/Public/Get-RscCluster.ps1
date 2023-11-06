@@ -18,6 +18,22 @@ function Get-RscCluster {
     The Cluster type:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html
     
+    .PARAMETER List
+    Used to create a list of clusters that are connected to Rubrik Securiry Cloud
+
+    .PARAMETER Name
+    Used to return a specific cluster based on the name
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
     .EXAMPLE
     Return a list of all clusters managed by RSC
     

@@ -13,6 +13,27 @@ function Get-RscMssqlAvailabilityGroup {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Used to create a list of Availability Groups
+    .PARAMETER Id
+    Used to return a specific Availability Groups based on the Id assigned inside of Rubrik
+
+    .PARAMETER AvailabilityGroupName
+    Used to return a specific Availability Groups based on the name of the Availability Group
+    
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
+    
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     Returns a list of Availbility Groups that are connected to Rubrik
     Get-RscMssqlAvailabilityGroup -List

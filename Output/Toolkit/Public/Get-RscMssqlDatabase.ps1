@@ -11,6 +11,28 @@ function Get-RscMssqlDatabase {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Used to create a list of Databases
+    
+    .PARAMETER Name
+    Used to return a specific Database based on the name
+
+    .PARAMETER RscMssqlInstance
+    SQL Server Instance Object returned from Get-RscMssqlInstance
+
+    .PARAMETER RscMssqlInstanceId
+    Instead of providing an object, you can provide the id assigned by Rubrik of the database. 
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     Return a list of MSSQL Databases
     Get-RscMssqlDatabase -List

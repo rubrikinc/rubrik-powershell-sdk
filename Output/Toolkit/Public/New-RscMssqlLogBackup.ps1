@@ -11,6 +11,12 @@ function New-RscMssqlLogBackup {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+    
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
     .EXAMPLE
     Returns the list of database files based on the latest recovery point
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019

@@ -12,6 +12,25 @@ function Get-RscMssqlDatabaseRecoverableRanges {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER afterTime
+    Used to filter ranges 
+    
+    .PARAMETER beforeTime
+    Used to filter ranges 
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     Returns all of the ranges the database can be recovered to. 
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019

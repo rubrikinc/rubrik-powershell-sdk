@@ -11,6 +11,32 @@ function Get-RscMssqlDatabaseFiles {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     Returns the list of database files based on the latest recovery point
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019

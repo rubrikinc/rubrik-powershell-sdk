@@ -11,6 +11,31 @@ function Get-RscMssqlInstance{
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER Id
+    Used to return a specific SQL Server Instance based on the Id assigned inside of Rubrik
+
+    .PARAMETER HostName
+    SQL Server Host Name
+
+    .PARAMETER InstanceName
+    SQL Server Instance Name
+    
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     Returns a list of all SQL Server Instances connected to RSC
     Get-RscMssqlInstance -List
