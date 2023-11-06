@@ -2,22 +2,49 @@
 function Get-RscMssqlDatabaseRecoveryPoint {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Returns back the exact point in time covereted to UTC. 
 
     .DESCRIPTION
-    ___ Add description here ___
+    Returns back the exact point in time covereted to UTC based on input provided. 
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+     .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
+
     .EXAMPLE
-    ___ Add example here ___
+    Returns exact point in time in UTC based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
+
+    .EXAMPLE
+    Returns exact point in time in UTC based on the last snapshot taken
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
+
+    .EXAMPLE
+    Returns exact point in time in UTC based on a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding()]
     param(
-        # Rubrik's database id value
         [Parameter(
             Position = 0,
             Mandatory = $true,
@@ -30,6 +57,22 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         [switch]$LastFull,
         [Parameter(ParameterSetName = 'RestoreTime')]
         [datetime]$RestoreTime
+
+        #  Common parameter to all parameter sets:
+        # [Parameter(
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )][Switch]$Detail,
+
+        # [Parameter(
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )][Switch]$IncludeNullProperties,
+
+        # [Parameter(
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )][Switch]$AsQuery
     )
     
     Process {
@@ -48,8 +91,8 @@ function Get-RscMssqlDatabaseRecoveryPoint {
             $query = New-RscQueryMssql -Op RecoverableRanges -AddField Data.BeginTime, Data.EndTime
             $query.Var.input.id = $RscMssqlDatabase.id
             $result = $query.Invoke()
-            $LatestRecoveryRange = $result.Data[$result.Count -1]
-            $RecoveryDateTime = $LatestRecoveryRange.EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+            $LatestRecoveryRange = $result.Data | Sort-Object -Descending -Property EndTime 
+            $RecoveryDateTime = $LatestRecoveryRange[0].EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
         }
         if ($PSBoundParameters.ContainsKey('LastFull')) {
             $RubrikSnapshot = Get-RscSnapshot -SnappableId $RscMssqlDatabase.id  | Sort-Object date -Descending | Select-object -First 1
@@ -65,7 +108,8 @@ function Get-RscMssqlDatabaseRecoveryPoint {
             } 
             else { $RecoveryDateTime = $RawRestoreDate }
             $RecoveryDateTime = $RecoveryDateTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
-        }
+        }  
+        #endregion
         return $RecoveryDateTime
     } 
 }

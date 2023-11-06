@@ -2,17 +2,35 @@
 function Get-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Returns information about a Live Mounted MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Returns information about a Live Mounted MSSQL Database
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER MountedDatabaseName
+    Name of the database that was Live Mounted
+    
+    .PARAMETER MssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    # .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    # .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
     #>
     [CmdletBinding()]
     Param(        
@@ -63,9 +81,12 @@ function Get-RscMssqlLiveMount {
             $query.Var.filters += $sourceDatabaseFilter
         }
         #endregion
-
-        $result = $query.Invoke()
-        $result = $result.Nodes | Where-Object { $_.isReady -eq "true" }
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+            $result = $result.Nodes | Where-Object { $_.isReady -eq "true" }
+        }
         $result
     } 
 }

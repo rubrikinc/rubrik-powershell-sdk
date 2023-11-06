@@ -2,17 +2,49 @@
 function Get-RscMssqlDatabaseRecoverableRanges {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Return a list of ranges of dates that shows when a database can be recovered to. 
 
     .DESCRIPTION
-    ___ Add description here ___
+    Return a list of ranges of dates that shows when a database can be recovered to. The returned information will reflect similar information that is displayed in the Rubrik Security Cloud
+    UI. Points between the begin and end times can be recovered to any point in time inside that range. 
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER afterTime
+    Used to filter ranges 
+    
+    .PARAMETER beforeTime
+    Used to filter ranges 
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Returns all of the ranges the database can be recovered to. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $RscMssqlDatabase
+
+    .EXAMPLE
+    Returns all of the ranges the database can be recovered to filtered to be only after a specific date/time
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $RscMssqlDatabase -afterTime
+
+    .EXAMPLE
+    Returns all of the ranges the database can be recovered to filtered to be only before a specific date/time
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $RscMssqlDatabase -beforeTime
     #>
 
     [CmdletBinding()]
@@ -32,11 +64,21 @@ function Get-RscMssqlDatabaseRecoverableRanges {
             ValueFromPipeline = $false
         )][datetime]$beforeTime,
 
+        #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [Switch]$Detail
+            ValueFromPipeline = $false
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -59,12 +101,25 @@ function Get-RscMssqlDatabaseRecoverableRanges {
         if($PSBoundParameters.ContainsKey('beforeTime')){
             $query.Var.input.beforeTime = $beforeTime
         }
-        $result = $query.Invoke()
 
-        if ($null -ne $result.Data){
-            $result.Data #| Remove-NullProperties
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
         }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }   
     } 
 }

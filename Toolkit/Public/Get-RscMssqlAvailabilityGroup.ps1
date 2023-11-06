@@ -2,17 +2,67 @@
 function Get-RscMssqlAvailabilityGroup {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Retrieve info about MSSQL Availability Groups
 
     .DESCRIPTION
-    ___ Add description here ___
+    Retrieve info about MSSQL Availability Groups. An Availability Group is a Parent Object to a database. 
+    If your database is in an AG, then you will want to use this cmdlet, but if not you will want to get the Instance information
+    using Get-RscMssqlInstance.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Used to create a list of Availability Groups
+    .PARAMETER Id
+    Used to return a specific Availability Groups based on the Id assigned inside of Rubrik
+
+    .PARAMETER AvailabilityGroupName
+    Used to return a specific Availability Groups based on the name of the Availability Group
+    
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
+    
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Returns a list of Availbility Groups that are connected to Rubrik
+    Get-RscMssqlAvailabilityGroup -List
+
+    .EXAMPLE
+    Returns information about a specific Availability Group based on the Rubrik ID
+    Get-RscMssqlAvailabilityGroup -Id
+
+    .EXAMPLE
+    Returns information about a specific Availability Group based on the name of the AG.
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting
+
+    .EXAMPLE
+    Returns a list of Availbility Groups that are connected to a specific Rubrik Cluster
+    Get-RscMssqlAvailabilityGroup -List -clusterID hja87-ajb43-v4avna-hnjag
+
+    .EXAMPLE
+    Returns information about a specific Availability Group based on the name of the AG and the name of the Rubrik Cluster
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -clusterID hja87-ajb43-v4avna-hnjag
+
+    .EXAMPLE
+    Return back all fields, including the fields that are null
+    
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -IncludeNullProperties
+
+    .EXAMPLE
+    Return back just the query that will be run instead of running the query and returning the results
+
+    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -AsQuery   
     #>
 
     [CmdletBinding(
@@ -42,10 +92,21 @@ function Get-RscMssqlAvailabilityGroup {
             ValueFromPipeline = $false
         )][String]$clusterId,
 
+        #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -99,10 +160,24 @@ function Get-RscMssqlAvailabilityGroup {
             }
         }
 
-        if ($null -ne $result.Nodes){
-            $result.Nodes #| Remove-NullProperties
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
         }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }  
     } 
 }

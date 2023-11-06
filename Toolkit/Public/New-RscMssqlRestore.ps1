@@ -2,17 +2,63 @@
 function New-RscMssqlRestore {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Starts an in-place recovery of a MSSQL Database 
 
     .DESCRIPTION
-    ___ Add description here ___
+    Starts an in-place recovery of a MSSQL Database
+
+    Be aware. Do not use this if you are attempting to copy a database. In that case you should use Export. This will take the point in time provided and recover your database
+    back to the original host, original instance, and the original database name to the point in time provided.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+    
+    .PARAMETER FinishRecovery
+    Allows the database to be fully recovered and operational. If you omit this parameter, then when the database finishes being restored, the database will be left in
+    NORECOVERY mode. 
+
+    .PARAMETER maxDataStreams
+    This controls the number of streams used for the restore. By default, Rubrik will use 2 streams. This cannot exceed a value of 8. 
+
+    In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
+    production setting without running some tests in a non-production environment. 
+
+    .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
+
+    # .PARAMETER RecoveryLSN
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Performs an in-place recovery of AdventureWorks2019 to the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -Latest
+
+    .EXAMPLE
+    Performs an in-place recovery of AdventureWorks2019 to the last snapshot
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -LastFull
+
+    .EXAMPLE
+    Performs an in-place recovery of AdventureWorks2019 to a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding(
@@ -30,12 +76,10 @@ function New-RscMssqlRestore {
         )]
         [switch]$FinishRecovery,
 
+        [ValidateRange(1, 8)]
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )]
-        [int]$maxDataStreams = 2,
-
+            Mandatory = $false
+        )][int]$MaxDataStreams = 2,
 
         [Parameter(
             ParameterSetName = 'Recovery_Latest',
@@ -55,12 +99,18 @@ function New-RscMssqlRestore {
             ValueFromPipeline = $false
         )][datetime]$RestoreTime,
 
+        # [Parameter(
+        #     ParameterSetName = 'Recovery_LSN',
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )]
+        # [string]$RecoveryLSN,
+
+        #  Common parameter to all parameter sets:
         [Parameter(
-            ParameterSetName = 'Recovery_LSN',
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )]
-        [string]$RecoveryLSN
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -100,6 +150,11 @@ function New-RscMssqlRestore {
         # }
         #endregion
         
-        $query.Invoke()
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }

@@ -1,18 +1,59 @@
 #Requires -Version 3
 function Get-RscCluster {
-    <#
+<#
     .SYNOPSIS
-    ___ Add synopsis here ___
-
+    Retrieve info about clusters
+    
     .DESCRIPTION
-    ___ Add description here ___
-
+    By default, retrieve info about all clusters.
+    By default, responses contain a minimal set of fields: mostly ids and names.
+    To get more details, use the `-Detail` parameter.
+    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
+    The ClusterConnection type:
+    https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
+    
+    The Cluster type:
+    https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html
+    
+    .PARAMETER List
+    Used to create a list of clusters that are connected to Rubrik Securiry Cloud
+
+    .PARAMETER Name
+    Used to return a specific cluster based on the name
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
+    .EXAMPLE
+    Return a list of all clusters managed by RSC
+    
+    Get-RscCluster -List
+    
+    .EXAMPLE
+    Return a information about a cluster based on the name
+
+    Get-RscCluster -Name vault-r-london
+    
+    
+    .EXAMPLE
+    Return back all fields, including the fields that are null
+    
+    Get-RscCluster -Name vault-r-london -IncludeNullProperties
 
     .EXAMPLE
-    ___ Add example here ___
+    Return back just the query that will be run instead of running the query and returning the results
+
+    Get-RscCluster -Name vault-r-london -AsQuery    
     #>
 
     [CmdletBinding(
@@ -35,7 +76,17 @@ function Get-RscCluster {
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -60,12 +111,26 @@ function Get-RscCluster {
                 $query.Var.filter.Name = $Name
             }
         }
-        
-        $result = $query.Invoke()    
-        if ($null -ne $result.Nodes){
-            $result.Nodes #| Remove-NullProperties
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
+        }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
         }    
     } 
 }

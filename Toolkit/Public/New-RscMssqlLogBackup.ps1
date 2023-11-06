@@ -2,17 +2,25 @@
 function New-RscMssqlLogBackup {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Starts an Log Backup of a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Starts an Log Backup of a MSSQL Database
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+    
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlLogBackup -RscMssqlDatabase $RscMssqlDatabase
     #>
 
     [CmdletBinding(
@@ -22,7 +30,13 @@ function New-RscMssqlLogBackup {
             Mandatory = $false, 
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase
+        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     Process {
         # Re-use existing connection, or create a new one:
@@ -34,7 +48,11 @@ function New-RscMssqlLogBackup {
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         #endregion
         
-        $query.Invoke()
-
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }

@@ -2,21 +2,49 @@
 function Get-RscManagedVolume {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Retrieve info about Persistent Mount Managed Volumes
 
     .DESCRIPTION
-    ___ Add description here ___
+    Retrieve info about Persistent Mount Managed Volumes. Persistent Mount Managed Volumes are controlled externally by the user, 
+    unlike SLA Managed Volumes which are controlled by the SLA Domain. 
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Used to create a list of Managed Volumes
+
+    .PARAMETER Name
+    Used to return a specific Managed Volume based on the name
+
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Return back a list of Managed Volumes.
+    Get-RscManagedVolume -List
+
+    .EXAMPLE
+    Return back a list of Managed Volumes for a specified Rubrik Cluster
+    Get-RscManagedVolume -List -clusterId
+
+    .EXAMPLE
+    Returns back information about a specific Managed Volume
+    Get-RscManagedVolume -Name rp-mysql-01
     #>
 
     [CmdletBinding(
-        # ___ Example ___
         DefaultParameterSetName = "List"
     )]
     Param(
@@ -38,11 +66,21 @@ function Get-RscManagedVolume {
             ValueFromPipeline = $false
         )][String]$clusterId,
         
+        #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [Switch]$Detail
+            ValueFromPipeline = $false
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -78,11 +116,24 @@ function Get-RscManagedVolume {
             $query.Var.filter += $clusterFilter
         }
 
-        $result = $query.Invoke()
-        if ($null -ne $result.Nodes){
-            $result.Nodes #| Remove-NullProperties
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
         }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }  
     } 
 }

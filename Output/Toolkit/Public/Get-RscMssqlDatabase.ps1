@@ -2,17 +2,38 @@
 function Get-RscMssqlDatabase {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Returns information about a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Returns information about a MSSQL Database
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Return a list of MSSQL Databases
+    Get-RscMssqlDatabase -List
+
+    .EXAMPLE
+    Return a list of MSSQL Databases named AdventureWorks2019
+    Get-RscMssqlDatabase -Name AdventureWorks2019
+
+    .EXAMPLE
+    Return a list of MSSQL Databases named AdventureWorks2019 on the SQL 2019 Instance
+    $RscMssqlInstance = Get-RscMssqlInstance -HostName sql19.demo.com -clusterID hja87-ajb43-v4avna-hnjag
+    Get-RscMssqlDatabase -Name AdventureWorks2019 -RscMssqlInstance $RscMssqlInstance
+
+    .EXAMPLE
+    Return back all fields, including the fields that are null
+    
+    Get-RscMssqlDatabase -Name AdventureWorks2019 -IncludeNullProperties
+
+    .EXAMPLE
+    Return back just the query that will be run instead of running the query and returning the results
+
+    Get-RscMssqlDatabase -Name AdventureWorks2019 -AsQuery   
+
     #>
 
     [CmdletBinding(
@@ -51,8 +72,17 @@ function Get-RscMssqlDatabase {
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )]
-        [Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -73,10 +103,10 @@ function Get-RscMssqlDatabase {
             }
             "Name"{
                 $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile `
-                    -AddField Nodes.PhysicalPath, `
-                    Nodes.PostBackupScript, `
-                    Nodes.PreBackupScript, `
-                    Nodes.ConfiguredSlaDomain, `
+                    -AddField Nodes.PhysicalPath , `
+                    Nodes.PostBackupScript , `
+                    Nodes.PreBackupScript , `
+                    # Nodes.ConfiguredSlaDomain #, ` #Having this included causes the query to fail. Not entirely sure why. 
                     Nodes.CopyOnly, `
                     Nodes.HostLogRetention, `
                     Nodes.LogBackupFrequencyInSeconds, `
@@ -90,21 +120,31 @@ function Get-RscMssqlDatabase {
         }
         #endregion
 
-        $result = $query.Invoke()
-
-        If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
-            $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
-            $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+            If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
+                $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
+                $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
+            }
+            If ( $PSBoundParameters.ContainsKey('RscMssqlInstanceId') ) {
+                $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $RscMssqlInstanceId }
+            }
         }
-        If ( $PSBoundParameters.ContainsKey('RscMssqlInstanceId') ) {
-            $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $RscMssqlInstanceId }
-        }
-
 
         if ($null -ne $result.Nodes){
-            $result.Nodes #| Remove-NullProperties
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
         }else{
-            $result #| Remove-NullProperties
-        }
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }  
     } 
 }

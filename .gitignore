@@ -375,3 +375,4 @@ GraphQL Schme Downloader/schema/.env.json
 # PowerShell module
 Output/
 .vscode/launch.json
+docs/powershell/outputs/O365SharePointDrive.md

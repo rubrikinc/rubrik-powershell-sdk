@@ -2,17 +2,60 @@
 function New-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Creates a Live Mount of a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Creates a Live Mount of a MSSQL Database
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER MountedDatabaseName
+    Name of the database that was Live Mounted
+    
+    .PARAMETER TargetMssqlInstanceId
+    Used to return a specific SQL Server Instance based on the Id assigned inside of Rubrik
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
+    .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
+
+    .PARAMETER TargetMssqlInstance
+    SQL Server Instance Object returned from Get-RscMssqlInstance
+    
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -Latest
+
+    .EXAMPLE
+    Returns the list of database files based on the last snapshot taken
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -Lastfull
+
+    .EXAMPLE
+    Returns the list of database files based on a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding(
@@ -53,7 +96,13 @@ function New-RscMssqlLiveMount {
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][datetime]$RestoreTime
+        )][datetime]$RestoreTime,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -89,6 +138,13 @@ function New-RscMssqlLiveMount {
                 $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstance.PhysicalChildConnection.Nodes.Id)"
             }
         }
-        $query.Invoke()  
+        #endregion
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }

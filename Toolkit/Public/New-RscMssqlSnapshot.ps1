@@ -2,17 +2,34 @@
 function New-RscMssqlSnapshot {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Starts an On Demand Snapshot of a MSSQL Database
 
     .DESCRIPTION
-    ___ Add description here ___
+    Starts an On Demand Snapshot of a MSSQL Database
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER ForceFullSnapshot
+    Instead of taking an Incremental Forever snapshot, which the default, this will force a new Full snapshot. 
+
+    Incremental Forever snapshots are the equivalent of a SQL Server Full database backup. Do not use this parameter
+    if your intent is to reset a broken log chain. That can be achieved by taking a snapshot without this parameter. 
+
+    .PARAMETER SLADomain
+    THis will be the ID of the SLA Domain that will manage the retention of the snapshot
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    Starts an On Demand Snapshot of a MSSQL Database with an SLA Domain ID
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlSnapshot -RscMssqlDatabase $RscMssqlDatabase -SLADomain "124d26df-c31f-49a3-a8c3-77b10c9470c2"
     #>
 
     [CmdletBinding()]
@@ -30,7 +47,13 @@ function New-RscMssqlSnapshot {
         [Parameter(
             Mandatory = $true, 
             ValueFromPipeline = $false
-        )][string]$SLADomain
+        )][string]$SLADomain,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -49,6 +72,11 @@ function New-RscMssqlSnapshot {
         $query.Var.input.config.baseOnDemandSnapshotConfig.slaId = $SLADomain
         #endregion
         
-        $query.Invoke()
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+        $result
     } 
 }

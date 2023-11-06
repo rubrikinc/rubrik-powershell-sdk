@@ -2,17 +2,55 @@
 function Get-RscMssqlDatabaseFiles {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Return a list of database files that existed at the time of the backup
 
     .DESCRIPTION
-    ___ Add description here ___
+    Return a list of database files that existed at the time of the backup. This is used for Export-RscMssqlDatabase
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
+
+    .PARAMETER Detail
+    Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
-    ___ Add example here ___
+    Returns the list of database files based on the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -Latest
+
+    .EXAMPLE
+    Returns the list of database files based on the last snapshot taken
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -LastFull
+
+    .EXAMPLE
+    Returns the list of database files based on a specific point in time. 
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding()]
@@ -40,9 +78,18 @@ function Get-RscMssqlDatabaseFiles {
         #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [Switch]$Detail
+            ValueFromPipeline = $false
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -73,14 +120,24 @@ function Get-RscMssqlDatabaseFiles {
         }
         $query.Var.input.time = $RecoveryPoint
 
-        $result = $query.Invoke()
-
-        if ($null -ne $result.Items){
-            $result.Items #| Remove-NullProperties
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
         }else{
-            $result #| Remove-NullProperties
+            $result = $query.Invoke()
         }
 
-        # $query.GqlRequest()
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        } 
     } 
 }
