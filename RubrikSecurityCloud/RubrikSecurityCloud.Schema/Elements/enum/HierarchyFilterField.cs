@@ -633,6 +633,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VCD_VAPP_TYPE")]
         VCD_VAPP_TYPE,
 
+        [EnumMember(Value = "VMWARE_VM_TEMPLATE_TYPE")]
+        VMWARE_VM_TEMPLATE_TYPE,
+
         [EnumMember(Value = "VSPHERE_DATASTORE_IS_LOCAL")]
         VSPHERE_DATASTORE_IS_LOCAL,
 

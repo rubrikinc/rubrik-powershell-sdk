@@ -18,6 +18,14 @@ Schedules a job to tier existing snapshots of the specified objects to cold stor
 
 - There is a single argument of type BulkTierExistingSnapshotsInput.
 - Returns AsyncRequestStatus.
+### createdomaincontroller
+On-demand snapshot of an Active Directory Domain Controller
+
+Supported in v9.0+
+Initiates an on-demand snapshot job of a specified Active Directory Domain Controller.
+
+- There is a single argument of type CreateDomainControllerSnapshotInput.
+- Returns AsyncRequestStatus.
 ### createdownloadforvolumegroup
 Creates a download from archival request
 
@@ -52,6 +60,14 @@ Supported in v5.0+
 Starts a job that exports one or more files or folders from a fileset backup to the destination host. Returns the job status as of the job creation time. This job status includes the job ID.
 
 - There is a single argument of type FilesetExportSnapshotFilesInput.
+- Returns AsyncRequestStatus.
+### restoredomaincontroller
+Initiate Active Directory restore job
+
+Supported in v9.0+
+Initiates a job to restore Active Directory snapshots to their corresponding Domain Controllers or alternate hosts. Returns the job instance ID.
+
+- There is a single argument of type RestoreDomainControllerSnapshotInput.
 - Returns AsyncRequestStatus.
 ### restorevolumegroupfiles
 Restore files from the Volume Group snapshot

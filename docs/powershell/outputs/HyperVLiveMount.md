@@ -6,13 +6,19 @@ HyperV live mount.
 - name: System.String
   - Name of the live mount.
 - sourceVm: System.String
-  - Name of the source HyperV VM.
+  - Name of the source virtual machine.
 - mountSpec: System.String
   - Specification of the live mount in JSON string.
 - serverName: System.String
   - Host name of the server where Hyper-V virtual machine is live mounted.
 - mountTime: DateTime
   - Time when the snapshot was mounted.
+- isDiskLevelMount: System.Boolean
+  - Describes if the mount is a disk mount.
+- targetVm: System.String
+  - Name of the target virtual machine for disk mount.
+- attachedDiskCount: System.Int32
+  - Number of disks attached to the target virtual machine.
 - mountedVmStatus: HypervMountedVmStatusType
   - Power Status of HyperV Live Mount.
 - id: System.String
@@ -27,3 +33,5 @@ HyperV live mount.
   - Source snapshot of the live mount.
 - cluster: Cluster
   - Cluster of the live mount.
+- targetVmFid: System.String
+  - ID of the target virtual machine for disk mount.

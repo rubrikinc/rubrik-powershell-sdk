@@ -13,3 +13,5 @@ Represents the statistics related to the threat hunt.
   - Total scans where the malware scan succeeded.
 - totalUniqueQuarantinedPaths: System.Int64
   - Total unique paths for which malware was found which are also quarantined.
+- totalObjectsScanned: System.Int64
+  - Total objects scanned.

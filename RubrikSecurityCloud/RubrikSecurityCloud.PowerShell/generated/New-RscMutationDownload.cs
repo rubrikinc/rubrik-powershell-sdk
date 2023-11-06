@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Report Download' API domain:
-    /// AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// </summary>
     /// <description>
     /// New-RscMutationDownload creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 17 operations
     /// in the 'Report Download' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// one of: ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationDownload -AuditLogCsvAsync).Info().
+    /// (New-RscMutationDownload -ActiveDirectorySnapshotFromLocation).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationDownload -AuditLogCsvAsync).Info().
+    /// (New-RscMutationDownload -ActiveDirectorySnapshotFromLocation).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the ActiveDirectorySnapshotFromLocation operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: ActiveDirectorySnapshotFromLocation
+    /// 
+    /// $query = New-RscMutationDownload -ActiveDirectorySnapshotFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	downloadConfig = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the AuditLogCsvAsync operation
@@ -1243,6 +1281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "ActiveDirectorySnapshotFromLocation",
                 "AuditLogCsvAsync",
                 "ExchangeSnapshot",
                 "FilesetSnapshot",
@@ -1274,6 +1313,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "ActiveDirectorySnapshotFromLocation":
+                        this.ProcessRecord_ActiveDirectorySnapshotFromLocation();
+                        break;
                     case "AuditLogCsvAsync":
                         this.ProcessRecord_AuditLogCsvAsync();
                         break;
@@ -1330,6 +1372,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadActiveDirectorySnapshotFromLocation.
+        internal void ProcessRecord_ActiveDirectorySnapshotFromLocation()
+        {
+            this._logger.name += " -ActiveDirectorySnapshotFromLocation";
+            // Create new graphql operation downloadActiveDirectorySnapshotFromLocation
+            InitMutationDownloadActiveDirectorySnapshotFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1476,6 +1527,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationDownloadVolumeGroupSnapshotFromLocation();
         }
 
+
+        // Create new GraphQL Mutation:
+        // downloadActiveDirectorySnapshotFromLocation(input: DownloadActiveDirectorySnapshotFromLocationInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadActiveDirectorySnapshotFromLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadActiveDirectorySnapshotFromLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadActiveDirectorySnapshotFromLocation",
+                "($input: DownloadActiveDirectorySnapshotFromLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadActiveDirectorySnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadActiveDirectorySnapshotFromLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	snapshotId = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // downloadAuditLogCsvAsync(input: DownloadAuditLogCsvAsyncInput!): AsyncDownloadReply!

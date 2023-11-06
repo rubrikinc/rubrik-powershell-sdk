@@ -967,6 +967,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				snapshotNum = $someInt
+    /// 				# OPTIONAL
+    /// 				siteOwnerEmail = $someString
     /// 			}
     /// 			# OPTIONAL
     /// 			spItemsToRestore = @{
@@ -3030,6 +3032,8 @@ $query.Var.input = @{
 				snapshotId = $someString
 				# REQUIRED
 				snapshotNum = $someInt
+				# OPTIONAL
+				siteOwnerEmail = $someString
 			}
 			# OPTIONAL
 			spItemsToRestore = @{

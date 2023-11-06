@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isImmutable")]
         public System.Boolean? IsImmutable { get; set; }
 
+        //      C# -> System.Boolean? IsUsingManagedIdentity
+        // GraphQL -> isUsingManagedIdentity: Boolean! (scalar)
+        [JsonProperty("isUsingManagedIdentity")]
+        public System.Boolean? IsUsingManagedIdentity { get; set; }
+
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         [JsonProperty("locationId")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public ElasticStorageConfig Set(
         System.Boolean? IsImmutable = null,
+        System.Boolean? IsUsingManagedIdentity = null,
         System.String? LocationId = null,
         System.String? LocationName = null
     ) 
     {
         if ( IsImmutable != null ) {
             this.IsImmutable = IsImmutable;
+        }
+        if ( IsUsingManagedIdentity != null ) {
+            this.IsUsingManagedIdentity = IsUsingManagedIdentity;
         }
         if ( LocationId != null ) {
             this.LocationId = LocationId;
@@ -77,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isImmutable\n" ;
             } else {
                 s += ind + "isImmutable\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsUsingManagedIdentity
+        // GraphQL -> isUsingManagedIdentity: Boolean! (scalar)
+        if (this.IsUsingManagedIdentity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isUsingManagedIdentity\n" ;
+            } else {
+                s += ind + "isUsingManagedIdentity\n" ;
             }
         }
         //      C# -> System.String? LocationId
@@ -120,6 +138,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsImmutable != null && ec.Excludes("isImmutable",true))
         {
             this.IsImmutable = null;
+        }
+        //      C# -> System.Boolean? IsUsingManagedIdentity
+        // GraphQL -> isUsingManagedIdentity: Boolean! (scalar)
+        if (ec.Includes("isUsingManagedIdentity",true))
+        {
+            if(this.IsUsingManagedIdentity == null) {
+
+                this.IsUsingManagedIdentity = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUsingManagedIdentity != null && ec.Excludes("isUsingManagedIdentity",true))
+        {
+            this.IsUsingManagedIdentity = null;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)

@@ -23,3 +23,6 @@ PermissionsGroup represents the collection of various permission groups that
 - BACKUP_V2 - Represents the set of permissions required for immutable backup V2
  operations. These permissions are applicable to the cloud native SQL DB
  and SQL MI features.
+- CLOUD_CLUSTER_ES - Represents the set of permissions required for Cloud Cluster ES
+ operation. These permissions are applicable to the cloud native
+ protection feature.

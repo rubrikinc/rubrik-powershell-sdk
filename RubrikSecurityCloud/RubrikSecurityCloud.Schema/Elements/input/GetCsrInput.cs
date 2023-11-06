@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int64? CsrId
-        // GraphQL -> csrId: Long (scalar)
-        [JsonProperty("csrId")]
-        public System.Int64? CsrId { get; set; }
-
         //      C# -> System.String? CsrFid
         // GraphQL -> csrFid: UUID! (scalar)
         [Required]

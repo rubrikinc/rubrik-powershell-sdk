@@ -112,6 +112,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
     /// 		# OPTIONAL
+    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+    /// 		# OPTIONAL
     /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
     /// 		# REQUIRED
     /// 		mongoClientHosts = @(
@@ -411,6 +413,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sslCertfilePath = $someString
     /// 		# OPTIONAL
+    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+    /// 		# OPTIONAL
     /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
     /// 	}
     /// }
@@ -524,6 +528,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sslCertfilePath = $someString
     /// 		# REQUIRED
     /// 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 		# OPTIONAL
     /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
     /// 		# REQUIRED
@@ -858,6 +864,8 @@ $query.Var.input = @{
 		# REQUIRED
 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
 		# OPTIONAL
+		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+		# OPTIONAL
 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 		# REQUIRED
 		mongoClientHosts = @(
@@ -1109,6 +1117,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		sslCertfilePath = $someString
 		# OPTIONAL
+		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+		# OPTIONAL
 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 	}
 }"
@@ -1206,6 +1216,8 @@ $query.Var.input = @{
 		sslCertfilePath = $someString
 		# REQUIRED
 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+		# OPTIONAL
+		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 		# OPTIONAL
 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 		# REQUIRED

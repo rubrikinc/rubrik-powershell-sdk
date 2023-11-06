@@ -69,9 +69,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EU_WEST_3")]
         EU_WEST_3,
 
-        [EnumMember(Value = "IL_CENTRAL_1")]
-        IL_CENTRAL_1,
-
         [EnumMember(Value = "ME_SOUTH_1")]
         ME_SOUTH_1,
 

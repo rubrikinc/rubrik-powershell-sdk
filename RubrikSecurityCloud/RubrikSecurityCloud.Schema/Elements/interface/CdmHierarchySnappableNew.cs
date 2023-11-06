@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotGroupBySummary")]
         CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
 
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestIndexedSnapshot")]
+        CdmSnapshot? NewestIndexedSnapshot { get; set; }
+
         //      C# -> CdmSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: CdmSnapshot (type)
         [JsonProperty("newestSnapshot")]

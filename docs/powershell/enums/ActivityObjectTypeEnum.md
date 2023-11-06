@@ -70,6 +70,7 @@ The list of object types for activities.
 - SmbDomain - Specifies that the activity object type is SMB Domain.
 - NUTANIX_PRISM_CENTRAL - Specifies that the activity object type is Nutanix Prism Central.
 - O365Calendar - Specifies that the activity object type is O365 Calendar.
+- K8S_PROTECTION_SET - Specifies that the activity object type is Kubernetes Protection Set.
 - MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
 - AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
@@ -95,7 +96,6 @@ The list of object types for activities.
 - Ec2Instance - Specifies that the activity object type is EC2 Instance.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
-- K8S_RESOURCE_SET - Specifies that the activity object type is Kubernetes Resource Set.
 - SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.
 - GcpNativeGceInstance - Specifies that the activity object type is GCP Native GCE Instance.
 - Envoy - Specifies that the activity object type is Envoy.

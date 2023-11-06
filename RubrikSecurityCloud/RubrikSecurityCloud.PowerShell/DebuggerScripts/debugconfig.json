@@ -1,0 +1,12 @@
+{
+    "environments":
+    [
+        {
+                "name": "sa_rsc_pso",
+                "filepath": "/Users/guirava/tb/rynardt.pso.svcacc.json",
+                "sa_id": "",
+                "sa_secret": "",
+                "sa_url": ""
+        }
+    ]
+}

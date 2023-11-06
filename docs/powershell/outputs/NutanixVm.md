@@ -91,6 +91,8 @@ Nutanix virtual machine details.
   - GroupBy connection for the snapshots of this workload.
 - snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
   - GroupBy connection for the snapshots of this workload.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
 - newestSnapshot: CdmSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: CdmSnapshot

@@ -7,3 +7,5 @@
   - Required. Boolean that determines whether the ACO file is being used for a Live Mount.
 - dbId: System.String
   - ID of the Oracle database.
+- isDifferentTargetDbName: System.Boolean
+  - Optional. Specifies whether the Clone or Live Mount is being performed with a target database name that is different from the source database name.

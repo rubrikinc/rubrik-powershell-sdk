@@ -3273,7 +3273,7 @@ type Query {
   getGroupCountByVersionStatus: [GroupCount!]!
   getKorgTaskchainStatus(
     # Taskchain ID.
-    taskchainId: String!): GetTaskchainStatusReply! @deprecated(reason: "This endpoint is not properly named.")
+    taskchainId: String!): GetTaskchainStatusReply! @deprecated(reason: "Use `taskchain` field instead.")
   getPermissions(
     # ID of the role.
     roleId: String!): [Permission!]!
@@ -6717,6 +6717,11 @@ type Query {
     # Offset based on customer timezone.
     timezoneOffset: Float = 0.0): TaskDetailGroupByConnection!
 
+  # Details of a taskchain.
+  taskchain(
+    # Taskchain ID.
+    taskchainId: String!): Taskchain!
+
   # Checks the availability of the channel name in the Team.
   teamChannelNameAvailable(teamUUID: UUID!, channelName: String!): Boolean!
 
@@ -8409,11 +8414,6 @@ type Mutation {
   deleteAllOracleDatabaseSnapshots(
     # Input for InternalDeleteAllOracleDbSnapshots.
     input: DeleteAllOracleDatabaseSnapshotsInput!): Void
-
-  # Delete a Rubrik Cloud Cluster on AWS.
-  deleteAwsCluster(
-    # DeleteAwsClusterInput params for Aws.
-    input: DeleteAwsClusterInput!): CcProvisionJobReply!
   deleteAwsComputeSetting(
     # Request arguments for deleting a Aws Compute Setting.
     input: DeleteAwsComputeSettingInput!): Void @deprecated(reason: "This mutation is no longer supported.")
@@ -8442,11 +8442,6 @@ type Mutation {
   deleteAzureCloudAccountWithoutOauth(
     # Input for deleting an Azure Cloud Account without OAuth.
     input: DeleteAzureCloudAccountWithoutOauthInput!): DeleteAzureCloudAccountWithoutOauthReply!
-
-  # Delete a Rubrik Cloud Cluster on Azure.
-  deleteAzureCluster(
-    # DeleteAzureClusterInput params for Azure.
-    input: DeleteAzureClusterInput!): CcProvisionJobReply!
 
   # Delete a cassandra source.
   deleteCassandraSource(
@@ -11481,13 +11476,13 @@ type ActiveDirectoryDomain implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -11596,13 +11591,13 @@ type ActiveDirectoryDomainController implements CdmHierarchyObject , HierarchyOb
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -11810,13 +11805,13 @@ interface ActiveDirectoryDomainDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -11908,13 +11903,13 @@ interface ActiveDirectoryDomainPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -13052,6 +13047,9 @@ enum ActivityTypeEnum {
   Recovery
   Replication
   ResourceOperations
+
+  # Activity representing schedule-recovery event type.
+  SCHEDULE_RECOVERY
   Storage
   StorageArray
   StormResource
@@ -13332,8 +13330,8 @@ input AddAzureCloudAccountFeatureInputWithoutOauth {
   # Feature to be enabled.
   featureType: CloudAccountFeature!
 
-  # Specifies a list of permission groups for onboarding the feature. If the list is empty, all permission groups will be onboarded.
-  permissionsGroups: [PermissionsGroup!]
+  # Specifies a list of permission groups with their respective policy versions for onboarding the feature. If the list is empty, all permission groups will be onboarded.
+  permissionsGroups: [PermissionsGroupWithVersionInput!]
 }
 # Input for adding an Azure Cloud Account.
 input AddAzureCloudAccountInput {
@@ -21968,6 +21966,9 @@ type AzureCloudAccountFeatureDetail {
 
   # Role details for the feature.
   role: AzureRole!
+
+  # Role details for the feature.
+  roles: [AzureRole!]!
 }
 # Configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Rubrik features that the customer wants to be enabled on the cloud account.
 type AzureCloudAccountPermissionConfigResponse {
@@ -27228,6 +27229,9 @@ input CalendarSearchFilter {
   timerange: TimeRangeFilter
   searchObjectFilter: CalendarSearchObjectFilter
   recurrenceFilter: CalendarRecurrenceFilter
+
+  # Parameters for using Lambda filters in the query.
+  lambdaFilters: LambdaPathFilters
 }
 # Calendar search keyword and type.
 input CalendarSearchKeywordFilter {
@@ -28575,13 +28579,13 @@ interface CdmHierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -29580,7 +29584,7 @@ type CdmSnapshot implements GenericSnapshot {
   # Non-null when a user has assigned a SLA to this snapshot, and the SLA assignment is in the process of being synced over to CDM.
   pendingSla: SlaDomain
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # Vmware vApp specific snapshot metadata.
@@ -30120,7 +30124,7 @@ type CdmWorkloadSnapshot {
   # The date the snapshot was taken. This value is formatted as YYYY/MM/DD HH:mm:ss.
   date: String!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 }
 # Paginated list of CdmWorkloadSnapshot objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -34318,6 +34322,9 @@ input ContactsSearchFilter {
 
   # Filters on object type (contact, folder, or all).
   searchObjectFilter: ContactsSearchObjectFilter
+
+  # Parameters for using Lambda filters in the query.
+  lambdaFilters: LambdaPathFilters
 }
 # Contacts search keyword.
 input ContactsSearchKeywordFilter {
@@ -35706,6 +35713,9 @@ input CreateOrgInput {
 
   # Specifies if service accounts are enabled for this organization.
   isServiceAccountEnabled: Boolean
+
+  # Specifies cross-account capabilities enabled for this organization.
+  crossAccountCapabilities: [CrossAccountCapability!]
 }
 # UUID of created organization.
 type CreateOrgReply {
@@ -36150,6 +36160,14 @@ input CreateWebhookInput {
 type CreateWebhookReply {
   # The webhook that was created.
   webhook: Webhook!
+}
+# Cross-account capability type.
+enum CrossAccountCapability {
+  # Cross-account capability unknown.
+  CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED
+
+  # Replication as a service capability.
+  REPLICATION_AS_A_SERVICE
 }
 # Certificate Signing Request (CSR) information.
 type Csr {
@@ -37136,13 +37154,13 @@ type Db2Database implements CdmHierarchyObject , CdmHierarchySnappableNew , Hier
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -37490,13 +37508,13 @@ type Db2Instance implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -37572,13 +37590,13 @@ interface Db2InstanceDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -37687,13 +37705,13 @@ interface Db2InstancePhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -38218,32 +38236,6 @@ type DeleteAwsCloudAccountWithoutCftResp {
   # Specifies whether feature deletion was successful.
   success: Boolean!
 }
-# DeleteAwsClusterInput for Aws account.
-input DeleteAwsClusterInput {
-  # Cloud account ID of the AWS account.
-  cloudAccountId: String = ""
-
-  # Name of Aws cluster.
-  clusterName: String = ""
-
-  # Number of nodes in the existing cluster.
-  numNodes: Int = 0
-
-  # True if the cluster is CC-ES, and false for disk based.
-  isEsType: Boolean = false
-
-  # Name of the s3 bucket for CC-ES.
-  bucketName: String = ""
-
-  # True if the container was created as part of the cluster, and needs to be deleted as well.
-  isNewContainer: Boolean = false
-
-  # Uuid of the cluster.
-  clusterUuid: String = ""
-
-  # Region name of the aws account.
-  region: String = ""
-}
 # Input for deleting AWS compute setting.
 input DeleteAwsComputeSettingInput {
   # Field for specifying ID of the AWS compute setting.
@@ -38316,41 +38308,6 @@ input DeleteAzureCloudAccountWithoutOauthInput {
 type DeleteAzureCloudAccountWithoutOauthReply {
   # Status of the operation to delete Azure Cloud Account.
   status: [DeleteAzureCloudAccountStatus!]!
-}
-# DeleteAzureClusterInput for Azure account.
-input DeleteAzureClusterInput {
-  # Cloud account ID.
-  cloudAccountId: String = ""
-
-  # Name of Azure cluster.
-  clusterName: String = ""
-
-  # Number of nodes in the existing cluster.
-  numNodes: Int = 0
-
-  # Azure resource group name.
-  resourceGroupName: String = ""
-
-  # Azure network resource group name.
-  networkResourceGroup: String = ""
-
-  # If cluster is ES or disk based.
-  isEsType: Boolean = false
-
-  # Storage account in Azure.
-  storageAccount: String = ""
-
-  # Storage container in Azure.
-  containerName: String = ""
-
-  # Storage resource group in Azure.
-  storageResourceGroup: String = ""
-
-  # Is it an existing customer container or a new container created by ccprovision?
-  isNewContainer: Boolean = false
-
-  # UUID of CDM cluster.
-  clusterUuid: String = ""
 }
 # Input required to delete a label rule.
 input DeleteCloudNativeLabelRuleInput {
@@ -38585,8 +38542,11 @@ input DeleteSapHanaSystemInput {
 }
 # Input for deleting a scheduled report.
 input DeleteScheduledReportInput {
-  # ID of the scheduled report to be deleted.
+  # ID of the report schedule to be deleted.
   id: Int!
+
+  # ID of the scheduled report to be deleted.
+  reportId: Int
 }
 # Input parameters for deleting service accounts.
 input DeleteServiceAccountsFromAccountInput {
@@ -40262,7 +40222,7 @@ input EventDigestConfig {
   # Activity statuses to include in event digest.
   activityStatus: [ActivityStatusEnum!]
 
-  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, K8S, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
+  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, K8S, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
   # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, and Index.
@@ -40815,6 +40775,9 @@ enum EventType {
   # Resource operations event.
   RESOURCE_OPERATIONS
 
+  # Orchestrated Application Recovery schedule-recovery event type.
+  SCHEDULE_RECOVERY
+
   # Storage event.
   STORAGE
 
@@ -40925,13 +40888,13 @@ type ExchangeDag implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -41007,13 +40970,13 @@ interface ExchangeDagDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -41156,13 +41119,13 @@ type ExchangeDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew ,
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -41522,13 +41485,13 @@ type ExchangeServer implements CdmHierarchyObject , HierarchyObject , PhysicalHo
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -41604,13 +41567,13 @@ interface ExchangeServerDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -42344,13 +42307,13 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -42474,13 +42437,13 @@ interface FailoverClusterAppDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -42572,13 +42535,13 @@ interface FailoverClusterAppPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -42855,13 +42818,13 @@ interface FailoverClusterTopLevelDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -43911,13 +43874,13 @@ type FilesetTemplate implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -44097,13 +44060,13 @@ interface FilesetTemplateDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -44277,13 +44240,13 @@ interface FilesetTemplatePhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -48663,6 +48626,9 @@ enum HierarchyObjectTypeEnum {
   SnapMirrorCloud
   StorageArrayVolumeGroup
 
+  # VSphere Content Library.
+  VSPHERE_CONTENT_LIBRARY
+
   # VSphere datacenter folder.
   VSPHERE_DATACENTER_FOLDER
 
@@ -49232,13 +49198,13 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -49314,13 +49280,13 @@ interface HostFailoverClusterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -49412,13 +49378,13 @@ interface HostFailoverClusterPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -49657,13 +49623,13 @@ type HostShare implements CdmHierarchyObject , HierarchyObject , PhysicalHostDes
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -49739,13 +49705,13 @@ interface HostShareDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -49837,13 +49803,13 @@ interface HostSharePhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -50333,13 +50299,13 @@ type HyperVCluster implements HierarchyObject , CdmHierarchyObject , HyperVSCVMM
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -50359,13 +50325,13 @@ interface HyperVClusterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -50449,13 +50415,13 @@ interface HyperVClusterLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -50720,13 +50686,13 @@ type HyperVSCVMM implements HierarchyObject , CdmHierarchyObject , PhysicalHostD
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -50760,13 +50726,13 @@ interface HyperVSCVMMDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -50858,13 +50824,13 @@ interface HyperVSCVMMLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -51019,13 +50985,13 @@ type HyperVVirtualMachine implements HierarchyObject , CdmHierarchyObject , CdmH
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -51742,13 +51708,13 @@ type HypervServer implements HierarchyObject , CdmHierarchyObject , PhysicalHost
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -51768,13 +51734,13 @@ interface HypervServerDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -51858,13 +51824,13 @@ interface HypervServerLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -51948,13 +51914,13 @@ interface HypervTopLevelDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -54239,13 +54205,13 @@ type LinuxFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -55388,6 +55354,9 @@ enum ManagedObjectType {
   # VMware vSphere compute cluster.
   VSPHERE_COMPUTE_CLUSTER
 
+  # VMware vSphere content library.
+  VSPHERE_CONTENT_LIBRARY
+
   # VMware vSphere datacenter.
   VSPHERE_DATACENTER
 
@@ -55640,13 +55609,13 @@ type ManagedVolume implements HierarchyObject , CdmHierarchyObject , CdmHierarch
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -55902,13 +55871,13 @@ interface ManagedVolumeDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -56175,13 +56144,13 @@ type ManagedVolumeMount implements HierarchyObject , CdmHierarchyObject , Manage
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -56360,13 +56329,13 @@ interface ManagedVolumePhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57228,13 +57197,13 @@ type MongoCollection implements HierarchyObject , CdmHierarchyObject , MongoSour
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57387,13 +57356,13 @@ type MongoCollectionSet implements HierarchyObject , CdmHierarchyObject , MongoS
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57537,13 +57506,13 @@ interface MongoCollectionSetDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57627,13 +57596,13 @@ interface MongoCollectionSetPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57842,13 +57811,13 @@ type MongoDatabase implements HierarchyObject , CdmHierarchyObject , MongoSource
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57882,13 +57851,13 @@ interface MongoDatabaseDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -57980,13 +57949,13 @@ interface MongoDatabasePhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -58357,13 +58326,13 @@ type MongoSource implements HierarchyObject , CdmHierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -58442,13 +58411,13 @@ interface MongoSourceDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -58573,13 +58542,13 @@ interface MongoSourcePhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -60590,13 +60559,13 @@ type MssqlAvailabilityGroup implements HierarchyObject , CdmHierarchyObject , Ms
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -60616,13 +60585,13 @@ interface MssqlAvailabilityGroupDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -60706,13 +60675,13 @@ interface MssqlAvailabilityGroupLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -61115,13 +61084,13 @@ type MssqlDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarch
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -61867,13 +61836,13 @@ type MssqlInstance implements HierarchyObject , CdmHierarchyObject , MssqlTopLev
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -61893,13 +61862,13 @@ interface MssqlInstanceDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -61983,13 +61952,13 @@ interface MssqlInstanceLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -62757,13 +62726,13 @@ interface MssqlTopLevelDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63044,13 +63013,13 @@ type NasFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hiera
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63285,13 +63254,13 @@ type NasNamespace implements CdmHierarchyObject , HierarchyObject , NasSystemDes
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63364,13 +63333,13 @@ interface NasNamespaceDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63462,13 +63431,13 @@ interface NasNamespaceLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63640,13 +63609,13 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63705,13 +63674,13 @@ interface NasShareDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63795,13 +63764,13 @@ interface NasShareLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -63982,13 +63951,13 @@ type NasSystem implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -64096,13 +64065,13 @@ interface NasSystemDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -64194,13 +64163,13 @@ interface NasSystemLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -64406,13 +64375,13 @@ type NasVolume implements CdmHierarchyObject , HierarchyObject , NasSystemDescen
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -64471,13 +64440,13 @@ interface NasVolumeDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -64561,13 +64530,13 @@ interface NasVolumeLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -65238,6 +65207,23 @@ input NodeIpInput {
   # Node this interface is configured on.
   node: String!
 }
+# Details of a node.
+input NodeMetadataInput {
+  # The ID of the node to be removed.
+  nodeId: String = ""
+
+  # The ID of the chassis the node is on.
+  chassisId: String
+
+  # The platform the node is on.
+  platform: ClusterNodePlatformType
+
+  # The status of the node.
+  status: ClusterNodeStatus
+
+  # Use quick drain instead of full data drain.
+  useQuickDrain: Boolean
+}
 # Supported in v6.0+
 type NodePolicyCheckResult {
   # Required. Supported in v6.0+
@@ -65599,13 +65585,13 @@ type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPr
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -65667,13 +65653,13 @@ interface NutanixCategoryDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -65757,13 +65743,13 @@ interface NutanixCategoryLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -65905,13 +65891,13 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -65973,13 +65959,13 @@ interface NutanixCategoryValueDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -66063,13 +66049,13 @@ interface NutanixCategoryValueLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -66223,13 +66209,13 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -66322,13 +66308,13 @@ interface NutanixClusterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -66420,13 +66406,13 @@ interface NutanixClusterLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -66933,13 +66919,13 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -67030,13 +67016,13 @@ interface NutanixPrismCentralDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -67128,13 +67114,13 @@ interface NutanixPrismCentralLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -67271,13 +67257,13 @@ interface NutanixTopLevelDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -67410,13 +67396,13 @@ type NutanixVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -71118,6 +71104,9 @@ enum Operation {
   CREATE_REPORT
   CREATE_SLA
   CREATE_THREAT_HUNT
+
+  # Internal permission to support cross-account replication.
+  CROSS_ACCOUNT_REPLICATION
   DELETE_AWS_CLOUD_ACCOUNT
   DELETE_AZURE_CLOUD_ACCOUNT
   DELETE_GCP_CLOUD_ACCOUNT
@@ -71171,6 +71160,9 @@ enum Operation {
   # Manage CORS settings.
   MANAGE_CORS_SETTINGS
   MANAGE_DATA_SOURCE
+
+  # Manage distribution list email settings.
+  MANAGE_DL_EMAIL_SETTINGS
 
   # Manage GPS to RSC upgrade.
   MANAGE_GPS_TO_RSC_UPGRADE
@@ -71273,6 +71265,9 @@ enum Operation {
 
   # View the database log reporting properties for a cluster.
   VIEW_DB_LOG_REPORT_PROPERTIES
+
+  # View distribution list email settings.
+  VIEW_DL_EMAIL_SETTINGS
 
   # View event cluster settings.
   VIEW_EVENT_CLUSTER_SETTING
@@ -71559,13 +71554,13 @@ type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmH
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -71708,13 +71703,13 @@ interface OracleDataGuardGroupDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -71797,13 +71792,13 @@ interface OracleDataGuardGroupLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -72020,13 +72015,13 @@ type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarc
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -72592,13 +72587,13 @@ type OracleHost implements HierarchyObject , CdmHierarchyObject , OracleTopLevel
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -72617,13 +72612,13 @@ interface OracleHostDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -72716,13 +72711,13 @@ interface OracleHostLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -73292,13 +73287,13 @@ type OracleRac implements HierarchyObject , CdmHierarchyObject , OracleTopLevelD
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -73317,13 +73312,13 @@ interface OracleRacDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -73419,13 +73414,13 @@ interface OracleRacLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -73607,13 +73602,13 @@ interface OracleTopLevelDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -73848,6 +73843,9 @@ type Org {
 
   # All URLs associated with the organization.
   allUrls: [String!]!
+
+  # Specifies cross-account capabilities enabled for this organization.
+  crossAccountCapabilities: [CrossAccountCapability!]!
 }
 # Paginated list of Org objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type OrgConnection {
@@ -74516,6 +74514,14 @@ type PermissionsGroupWithVersion {
   # Version of the permissions group.
   version: Int!
 }
+# Azure permissions group with its associated version number.
+input PermissionsGroupWithVersionInput {
+  # Azure cloud account permissions group.
+  permissionsGroup: PermissionsGroup!
+
+  # Policy version of the permissions group. If a policy version is not specified, the latest version will be used.
+  version: Int
+}
 # Persistent storage configured for storing backups.
 type PersistentStorage {
   # ID of the configured storage setting.
@@ -74632,13 +74638,13 @@ type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLeve
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -74714,13 +74720,13 @@ interface PhysicalHostDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -74811,13 +74817,13 @@ interface PhysicalHostPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -75232,7 +75238,7 @@ type PolarisSnapshot implements GenericSnapshot {
   # Indicates whether the snapshot has a valid archived copy.
   hasUnexpiredArchivedCopy: Boolean!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
@@ -77595,6 +77601,9 @@ input RemoveClusterNodesInput {
 
   # Cluster UUID.
   clusterUuid: UUID!
+
+  # Metadata for the nodes.
+  nodeMetadata: [NodeMetadataInput!]
 }
 input RemoveDiskInput {
   # Required. ID of a missing disk to mark removed.
@@ -77618,6 +77627,9 @@ input RemoveNodeForReplacementInput {
 
   # Rubrik cluster UUID.
   clusterUuid: UUID!
+
+  # Metadata for the nodes.
+  nodeMetadata: [NodeMetadataInput!]
 }
 # Asynchronous reply for a submitted removal job.
 type RemoveNodeForReplacementReply {
@@ -80162,6 +80174,9 @@ type SapHanaConfig {
 
   # Frequency value for differential backup of SAP HANA databases.
   differentialFrequency: Duration
+
+  # SLA Domain configuration for SAP HANA Storage Snapshot.
+  storageSnapshotConfig: SapHanaStorageSnapshotConfig
 }
 # Input to configure the SLA Domain for SAP HANA database.
 input SapHanaConfigInput {
@@ -80173,6 +80188,9 @@ input SapHanaConfigInput {
 
   # Frequency value for differential backup of SAP HANA databases.
   differentialFrequency: SlaDurationInput
+
+  # SLA Domain config for SAP HANA Storage Snapshot.
+  storageSnapshotConfig: SapHanaStorageSnapshotConfigInput
 }
 # Data backup files for SAP HANA full, incremental, or differential backup.
 type SapHanaDataBackupFile {
@@ -80307,13 +80325,13 @@ type SapHanaDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , 
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -80940,6 +80958,22 @@ type SapHanaSslInformation {
   # The encryption provider for the SAPA HANA system.
   encryptionProvider: SapHanaEncryptionProvider!
 }
+# SLA Domain configuration for SAP HANA Storage Snapshot.
+type SapHanaStorageSnapshotConfig {
+  # Frequency value for storage snapshot of SAP HANA systems.
+  frequency: Duration
+
+  # Number of days for which storage snapshot of SAP HANA systems will be retained.
+  retention: Duration
+}
+# Input to configure the SLA Domain for SAP HANA Storage Snapshot.
+input SapHanaStorageSnapshotConfigInput {
+  # Frequency value for storage snapshot of SAP HANA systems.
+  frequency: SlaDurationInput
+
+  # Number of days for which storage snapshot of SAP HANA systems will be retained.
+  retention: SlaDurationInput
+}
 # SAP HANA system details object.
 type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
   # UUID of cluster associated with SAP HANA system.
@@ -81033,13 +81067,13 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -81180,13 +81214,13 @@ interface SapHanaSystemDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -81338,13 +81372,13 @@ interface SapHanaSystemPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -81656,6 +81690,9 @@ input SearchFilter {
   fromTime: DateTime
   untilTime: DateTime
   searchObjectFilter: SearchObjectFilter
+
+  # Parameters for using Lambda filters in the query.
+  lambdaFilters: LambdaPathFilters
 }
 # Search keyword and keyword type.
 input SearchKeywordFilter {
@@ -82165,13 +82202,13 @@ type ShareFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -82481,6 +82518,9 @@ input SharePointSearchFilter {
 
   # Filters by object type (site, library, list or all).
   searchObjectFilter: SharePointSearchObjectFilter
+
+  # Parameters for using Lambda filters in the query.
+  lambdaFilters: LambdaPathFilters
 }
 # SharePoint search keyword and keyword type.
 input SharePointSearchKeywordFilter {
@@ -83682,6 +83722,9 @@ input SnappablePathInput {
 }
 # Represents the snappable contents to be restored.
 input SnappableRestoreConfig {
+  # UUID of the destination Office 365 organization.
+  destinationOrgUuid: UUID
+
   # Restore configuration for SharePoint drive jobs.
   SharePointDriveRestoreConfig: SharePointDriveRestoreConfig
 
@@ -89481,6 +89524,9 @@ input UpdateOrgInput {
 
   # Specifies if service accounts are enabled for this organization.
   isServiceAccountEnabled: Boolean
+
+  # Specifies cross-account capabilities enabled for this organization.
+  crossAccountCapabilities: [CrossAccountCapability!]
 }
 # UUID of updated organization.
 type UpdateOrgReply {
@@ -91553,6 +91599,9 @@ input VappVmRestoreSpecInput {
   vcdMoid: String!
 }
 type Vcd implements HierarchyObject , CdmHierarchyObject , VcdTopLevelDescendantType {
+  # The CDM ID of vCD instance.
+  cdmId: String!
+
   # The CA certificates used to connect to the VCD instance.
   caCerts: String!
 
@@ -91671,13 +91720,13 @@ type Vcd implements HierarchyObject , CdmHierarchyObject , VcdTopLevelDescendant
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -91696,13 +91745,13 @@ interface VcdCatalogDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -91763,13 +91812,13 @@ interface VcdCatalogLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -91830,13 +91879,13 @@ interface VcdDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -91919,13 +91968,13 @@ interface VcdLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -91999,6 +92048,9 @@ type VcdLogicalChildTypeEdge {
   node: VcdLogicalChildType!
 }
 type VcdOrg implements HierarchyObject , CdmHierarchyObject , VcdDescendantType , VcdLogicalChildType , VcdTopLevelDescendantType {
+  # The CDM ID of vCD org.
+  cdmId: String!
+
   # List of descendants.
   descendantConnection(
     # Returns the first n elements from the list.
@@ -92096,13 +92148,13 @@ type VcdOrg implements HierarchyObject , CdmHierarchyObject , VcdDescendantType 
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92121,13 +92173,13 @@ interface VcdOrgDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92210,13 +92262,13 @@ interface VcdOrgLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92290,6 +92342,9 @@ type VcdOrgLogicalChildTypeEdge {
   node: VcdOrgLogicalChildType!
 }
 type VcdOrgVdc implements HierarchyObject , CdmHierarchyObject , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdTopLevelDescendantType {
+  # The CDM ID of vCD org VDC.
+  cdmId: String!
+
   # List of descendants.
   descendantConnection(
     # Returns the first n elements from the list.
@@ -92387,13 +92442,13 @@ type VcdOrgVdc implements HierarchyObject , CdmHierarchyObject , VcdDescendantTy
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92412,13 +92467,13 @@ interface VcdOrgVdcDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92501,13 +92556,13 @@ interface VcdOrgVdcLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92598,13 +92653,13 @@ interface VcdTopLevelDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92656,6 +92711,7 @@ interface VcdTopLevelDescendantType {
   allOrgs: [Org!]!
 }
 type VcdVapp implements HierarchyObject , CdmHierarchyObject , HierarchySnappable , CdmHierarchySnappableNew , VcdDescendantType , VcdOrgDescendantType , VcdOrgVdcLogicalChildType , VcdOrgVdcDescendantType , VcdCatalogLogicalChildType , VcdCatalogDescendantType , VcdTopLevelDescendantType {
+  # The CDM ID of vCD vApp.
   cdmId: String!
   isRelic: Boolean!
 
@@ -92751,13 +92807,13 @@ type VcdVapp implements HierarchyObject , CdmHierarchyObject , HierarchySnappabl
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92901,13 +92957,13 @@ interface VcdVappDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -92968,13 +93024,13 @@ interface VcdVappLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -93120,13 +93176,13 @@ type VcdVimServer implements HierarchyObject , CdmHierarchyObject , VcdDescendan
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -94617,13 +94673,13 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -94698,13 +94754,13 @@ interface VsphereComputeClusterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -94795,13 +94851,13 @@ interface VsphereComputeClusterPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -94873,6 +94929,142 @@ type VsphereComputeClusterPhysicalChildTypeEdge {
 
   # The actual VsphereComputeClusterPhysicalChildType object wrapped by this edge.
   node: VsphereComputeClusterPhysicalChildType!
+}
+# Vsphere content library descendant type information.
+interface VsphereContentLibraryDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Vsphere content library logical child type information.
+interface VsphereContentLibraryLibraryChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
 }
 type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterPhysicalChildType , VsphereVcenterDescendantType , VsphereDatacenterFolderLogicalChildType , VsphereDatacenterFolderDescendantType {
   # Vsphere Datacenter CDM ID.
@@ -94956,13 +95148,13 @@ type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , Vsphere
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95023,13 +95215,13 @@ interface VsphereDatacenterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95113,13 +95305,13 @@ interface VsphereDatacenterFolderDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95181,13 +95373,13 @@ interface VsphereDatacenterFolderLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95248,13 +95440,13 @@ interface VsphereDatacenterLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95337,13 +95529,13 @@ interface VsphereDatacenterPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95441,13 +95633,13 @@ type VsphereDatastore implements CdmHierarchyObject , HierarchyObject , VsphereC
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95570,13 +95762,13 @@ type VsphereDatastoreCluster implements CdmHierarchyObject , HierarchyObject , V
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95648,13 +95840,13 @@ interface VsphereDatastoreClusterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95745,13 +95937,13 @@ interface VsphereDatastoreClusterPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -95935,13 +96127,13 @@ type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcen
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96016,13 +96208,13 @@ interface VsphereFolderDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96113,13 +96305,13 @@ interface VsphereFolderLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96304,13 +96496,13 @@ type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcente
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96385,13 +96577,13 @@ interface VsphereHostDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96482,13 +96674,13 @@ interface VsphereHostPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96815,13 +97007,13 @@ type VsphereNetwork implements CdmHierarchyObject , HierarchyObject , VsphereHos
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -96989,13 +97181,13 @@ type VsphereResourcePool implements CdmHierarchyObject , HierarchyObject , Vsphe
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97056,13 +97248,13 @@ interface VsphereResourcePoolDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97145,13 +97337,13 @@ interface VsphereResourcePoolPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97275,13 +97467,13 @@ type VsphereTag implements CdmHierarchyObject , HierarchyObject , VsphereVcenter
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97371,13 +97563,13 @@ type VsphereTagCategory implements CdmHierarchyObject , HierarchyObject , Vspher
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97435,13 +97627,13 @@ interface VsphereTagCategoryDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97502,13 +97694,13 @@ interface VsphereTagCategoryTagChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97591,13 +97783,13 @@ interface VsphereTagDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97658,13 +97850,13 @@ interface VsphereTagTagChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97851,6 +98043,29 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
     # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereVcenterTagChildTypeConnection!
 
+  # List of library children.
+  libraryChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereVcenterLibraryChildTypeConnection!
+
   # Rubrik cluster where this object originated.
   cluster: Cluster!
 
@@ -97860,13 +98075,13 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -97941,13 +98156,13 @@ interface VsphereVcenterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -98028,6 +98243,96 @@ type VsphereVcenterEdge {
   # The actual VsphereVcenter object wrapped by this edge.
   node: VsphereVcenter!
 }
+# Vsphere vCenter library child type information.
+interface VsphereVcenterLibraryChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of VsphereVcenterLibraryChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type VsphereVcenterLibraryChildTypeConnection {
+  # List of VsphereVcenterLibraryChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [VsphereVcenterLibraryChildTypeEdge!]!
+
+  # List of VsphereVcenterLibraryChildType objects.
+  nodes: [VsphereVcenterLibraryChildType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of VsphereVcenterLibraryChildType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the VsphereVcenterLibraryChildType object. This wrapper is used for pagination.
+type VsphereVcenterLibraryChildTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual VsphereVcenterLibraryChildType object wrapped by this edge.
+  node: VsphereVcenterLibraryChildType!
+}
 interface VsphereVcenterLogicalChildType {
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -98038,13 +98343,13 @@ interface VsphereVcenterLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -98127,13 +98432,13 @@ interface VsphereVcenterPhysicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -98216,13 +98521,13 @@ interface VsphereVcenterTagChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -98348,7 +98653,7 @@ enum VsphereVirtualDiskSortBy {
   # Sort by size.
   SIZE
 }
-type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , HierarchySnappable , VsphereComputeClusterDescendantType , VsphereDatacenterDescendantType , VsphereDatacenterFolderDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType , VsphereHostPhysicalChildType , VsphereHostDescendantType , VsphereVcenterDescendantType , VsphereTagTagChildType , VsphereTagDescendantType , VsphereTagCategoryDescendantType , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdOrgVdcDescendantType , VcdOrgVdcLogicalChildType , VcdVappDescendantType , VcdVappLogicalChildType , VcdTopLevelDescendantType {
+type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , HierarchySnappable , VsphereComputeClusterDescendantType , VsphereContentLibraryDescendantType , VsphereContentLibraryLibraryChildType , VsphereDatacenterDescendantType , VsphereDatacenterFolderDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType , VsphereHostPhysicalChildType , VsphereHostDescendantType , VsphereVcenterDescendantType , VsphereTagTagChildType , VsphereTagDescendantType , VsphereTagCategoryDescendantType , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdOrgVdcDescendantType , VcdOrgVdcLogicalChildType , VcdVappDescendantType , VcdVappLogicalChildType , VcdTopLevelDescendantType {
   cdmId: String!
   isRelic: Boolean!
   guestOsName: String!
@@ -98476,13 +98781,13 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -99156,13 +99461,13 @@ type WindowsCluster implements HierarchyObject , CdmHierarchyObject , MssqlTopLe
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -99182,13 +99487,13 @@ interface WindowsClusterDescendantType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -99272,13 +99577,13 @@ interface WindowsClusterLogicalChildType {
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.
@@ -99395,13 +99700,13 @@ type WindowsFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , H
   # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
   pendingSla: SlaDomain
 
-  # Mapping from objectID to pending object deletion status.
+  # Mapping from object ID to pending object deletion status.
   pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
-  # Latest User note information.
+  # Latest user note information.
   latestUserNote: LatestUserNote
 
   # The number of objects either replicated by this object or related to this object by replication.

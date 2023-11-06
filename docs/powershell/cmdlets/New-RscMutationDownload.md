@@ -1,5 +1,13 @@
 # New-RscMutationDownload
 ## Subcommands
+### activedirectorysnapshotfromlocation
+Download a snapshot from a remote target
+
+Supported in v9.0+
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
+
+- There is a single argument of type DownloadActiveDirectorySnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
 ### auditlogcsvasync
 Download audit log in CSV format asynchronously.
 

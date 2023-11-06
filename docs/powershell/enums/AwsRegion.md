@@ -28,4 +28,3 @@ Regions for AWS.
 - US_GOV_EAST_1 - AWS Cloud for Government US East 1 (North Virginia) region.
 - EU_CENTRAL_2 - AWS EU (Zurich) region.
 - AP_SOUTHEAST_3 - AWS Asia Pacific (Jakarta) region.
-- IL_CENTRAL_1 - Israel (tel aviv) region.

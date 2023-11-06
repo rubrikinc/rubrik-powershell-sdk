@@ -47,6 +47,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbId")]
         public System.String? DbId { get; set; }
 
+        //      C# -> System.Boolean? IsDifferentTargetDbName
+        // GraphQL -> isDifferentTargetDbName: Boolean (scalar)
+        [JsonProperty("isDifferentTargetDbName")]
+        public System.Boolean? IsDifferentTargetDbName { get; set; }
+
 
         #endregion
 

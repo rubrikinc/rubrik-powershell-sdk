@@ -70,7 +70,12 @@ function Set-RscServiceAccountFile {
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $false,
             Position = 2)]
-        [switch]$DisablePrompts
+        [switch]$DisablePrompts,
+
+        [Parameter(
+            Mandatory = $false
+        )]
+        [switch]$KeepOriginalClearTextFile
     )
     
     Process
@@ -123,7 +128,9 @@ function Set-RscServiceAccountFile {
             }
 
             # Check if the user is ok with us removing the original json file
-            if ($DisablePrompts){
+            if ($KeepOriginalClearTextFile) {
+               $answer = "no"
+            }elseif ($DisablePrompts){
                 $answer = "yes"
             }else{
                 Write-Output("`nRubrik strongly discourage keeping clear text service account files.")

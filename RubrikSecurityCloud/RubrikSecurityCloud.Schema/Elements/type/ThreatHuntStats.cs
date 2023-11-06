@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalAffectedSnapshots")]
         public System.Int64? TotalAffectedSnapshots { get; set; }
 
+        //      C# -> System.Int64? TotalObjectsScanned
+        // GraphQL -> totalObjectsScanned: Long! (scalar)
+        [JsonProperty("totalObjectsScanned")]
+        public System.Int64? TotalObjectsScanned { get; set; }
+
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)
         [JsonProperty("totalSnapshotsScanned")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public ThreatHuntStats Set(
         System.Int64? TotalAffectedObjects = null,
         System.Int64? TotalAffectedSnapshots = null,
+        System.Int64? TotalObjectsScanned = null,
         System.Int64? TotalSnapshotsScanned = null,
         System.Int64? TotalSucceededScans = null,
         System.Int64? TotalUniqueMatchedPaths = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalAffectedSnapshots != null ) {
             this.TotalAffectedSnapshots = TotalAffectedSnapshots;
+        }
+        if ( TotalObjectsScanned != null ) {
+            this.TotalObjectsScanned = TotalObjectsScanned;
         }
         if ( TotalSnapshotsScanned != null ) {
             this.TotalSnapshotsScanned = TotalSnapshotsScanned;
@@ -113,6 +122,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalAffectedSnapshots\n" ;
             } else {
                 s += ind + "totalAffectedSnapshots\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalObjectsScanned
+        // GraphQL -> totalObjectsScanned: Long! (scalar)
+        if (this.TotalObjectsScanned != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalObjectsScanned\n" ;
+            } else {
+                s += ind + "totalObjectsScanned\n" ;
             }
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
@@ -191,6 +209,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalAffectedSnapshots != null && ec.Excludes("totalAffectedSnapshots",true))
         {
             this.TotalAffectedSnapshots = null;
+        }
+        //      C# -> System.Int64? TotalObjectsScanned
+        // GraphQL -> totalObjectsScanned: Long! (scalar)
+        if (ec.Includes("totalObjectsScanned",true))
+        {
+            if(this.TotalObjectsScanned == null) {
+
+                this.TotalObjectsScanned = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalObjectsScanned != null && ec.Excludes("totalObjectsScanned",true))
+        {
+            this.TotalObjectsScanned = null;
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)

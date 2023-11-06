@@ -37,6 +37,7 @@
 - MONGODB_DATABASE - MongoDB Database.
 - Fileset
 - O365Calendar
+- K8S_PROTECTION_SET - Kubernetes Protection Set.
 - MONGO_SOURCE - MongoDB Source.
 - O365File
 - AwsNativeEbsVolume
@@ -53,7 +54,6 @@
 - Ec2Instance
 - JIRA_PROJECT - Jira project.
 - StorageArrayVolumeGroup
-- K8S_RESOURCE_SET - Kubernetes Resource Set.
 - SnapMirrorCloud
 - AppBlueprint
 - NutanixVirtualMachine

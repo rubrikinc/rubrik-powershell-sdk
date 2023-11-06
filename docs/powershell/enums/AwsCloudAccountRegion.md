@@ -26,4 +26,3 @@ AWS cloud account regions enum.
 - ME_SOUTH_1 - AWS cloud Middle East (Bahrain) region.
 - US_GOV_EAST_1 - AWS Gov cloud US East 1 (N. Virginia) region.
 - US_GOV_WEST_1 - AWS Gov cloud US West 1 (N. California) region.
-- IL_CENTRAL_1 - AWS cloud Israel (Tel Aviv) region.

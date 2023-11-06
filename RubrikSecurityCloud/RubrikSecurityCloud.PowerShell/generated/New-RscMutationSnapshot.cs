@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 15
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 15 operations
+    /// There are 17 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -188,6 +188,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateDomainController operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreateDomainController
+    /// 
+    /// $query = New-RscMutationSnapshot -CreateDomainController
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -434,6 +472,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
     /// 	# REQUIRED
     /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RestoreDomainController operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: RestoreDomainController
+    /// 
+    /// $query = New-RscMutationSnapshot -RestoreDomainController
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		snapshotForAuthoritativeRestore = $someString
+    /// 		# REQUIRED
+    /// 		domainControllerRestoreConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				hostId = $someString
+    /// 				# REQUIRED
+    /// 				snapshotId = $someString
+    /// 			}
+    /// 		)
+    /// 		# REQUIRED
+    /// 		shouldPerformAuthoritativeAdObjectsRestore = $someBoolean
+    /// 		# REQUIRED
+    /// 		shouldPerformAuthoritativeSysvolRestore = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -745,12 +830,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BatchQuarantine",
                 "BatchReleaseFromQuarantine",
                 "BulkTierExistings",
+                "CreateDomainController",
                 "CreateDownloadForVolumeGroup",
                 "CreateFileset",
                 "DeleteCloudWorkload",
                 "DeleteFilesets",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
+                "RestoreDomainController",
                 "RestoreVolumeGroupFiles",
                 "StartEc2InstanceExportJob",
                 "StartRecoverS3Job",
@@ -781,6 +868,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "BulkTierExistings":
                         this.ProcessRecord_BulkTierExistings();
                         break;
+                    case "CreateDomainController":
+                        this.ProcessRecord_CreateDomainController();
+                        break;
                     case "CreateDownloadForVolumeGroup":
                         this.ProcessRecord_CreateDownloadForVolumeGroup();
                         break;
@@ -798,6 +888,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "FilesetExportFiles":
                         this.ProcessRecord_FilesetExportFiles();
+                        break;
+                    case "RestoreDomainController":
+                        this.ProcessRecord_RestoreDomainController();
                         break;
                     case "RestoreVolumeGroupFiles":
                         this.ProcessRecord_RestoreVolumeGroupFiles();
@@ -855,6 +948,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createDomainControllerSnapshot.
+        internal void ProcessRecord_CreateDomainController()
+        {
+            this._logger.name += " -CreateDomainController";
+            // Create new graphql operation createDomainControllerSnapshot
+            InitMutationCreateDomainControllerSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createDownloadSnapshotForVolumeGroup.
         internal void ProcessRecord_CreateDownloadForVolumeGroup()
         {
@@ -906,6 +1008,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -FilesetExportFiles";
             // Create new graphql operation filesetExportSnapshotFiles
             InitMutationFilesetExportSnapshotFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreDomainControllerSnapshot.
+        internal void ProcessRecord_RestoreDomainController()
+        {
+            this._logger.name += " -RestoreDomainController";
+            // Create new graphql operation restoreDomainControllerSnapshot
+            InitMutationRestoreDomainControllerSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1061,6 +1172,36 @@ $query.Var.input = @{
 			$someString
 		)
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createDomainControllerSnapshot(input: CreateDomainControllerSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationCreateDomainControllerSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateDomainControllerSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateDomainControllerSnapshot",
+                "($input: CreateDomainControllerSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateDomainControllerSnapshot_ObjectFieldSpec,
+                Mutation.CreateDomainControllerSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1259,6 +1400,45 @@ $query.Var.input = @{
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreDomainControllerSnapshot(input: RestoreDomainControllerSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationRestoreDomainControllerSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreDomainControllerSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreDomainControllerSnapshot",
+                "($input: RestoreDomainControllerSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.RestoreDomainControllerSnapshot_ObjectFieldSpec,
+                Mutation.RestoreDomainControllerSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		snapshotForAuthoritativeRestore = $someString
+		# REQUIRED
+		domainControllerRestoreConfigs = @(
+			@{
+				# OPTIONAL
+				hostId = $someString
+				# REQUIRED
+				snapshotId = $someString
+			}
+		)
+		# REQUIRED
+		shouldPerformAuthoritativeAdObjectsRestore = $someBoolean
+		# REQUIRED
+		shouldPerformAuthoritativeSysvolRestore = $someBoolean
+	}
 }"
             );
         }

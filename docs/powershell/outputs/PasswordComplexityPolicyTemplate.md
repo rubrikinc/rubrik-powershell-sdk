@@ -9,3 +9,5 @@ Specifies range of values for each password complexity policy field.
   - Specifies if the password complexity policy field is being used.
 - defaultValue: System.Int32
   - Default value for the password complexity policy field.
+- isInherited: System.Boolean
+  - Specifies if the current value is inherited by a stronger policy.

@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotConsistencyMandate")]
         public ConsistencyLevelEnum? SnapshotConsistencyMandate { get; set; }
 
+        //      C# -> VmwareTemplateType? TemplateType
+        // GraphQL -> templateType: VmwareTemplateType! (enum)
+        [JsonProperty("templateType")]
+        public VmwareTemplateType? TemplateType { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -140,11 +145,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
-
-        //      C# -> System.Boolean? IsTemplate
-        // GraphQL -> isTemplate: Boolean! (scalar)
-        [JsonProperty("isTemplate")]
-        public System.Boolean? IsTemplate { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -240,6 +240,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
         [JsonProperty("newestArchivedSnapshot")]
         public CdmSnapshot? NewestArchivedSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestIndexedSnapshot")]
+        public CdmSnapshot? NewestIndexedSnapshot { get; set; }
 
         //      C# -> CdmSnapshot? NewestReplicatedSnapshot
         // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
@@ -348,6 +353,7 @@ namespace RubrikSecurityCloud.Types
         VmPowerStatus? PowerStatus = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         ConsistencyLevelEnum? SnapshotConsistencyMandate = null,
+        VmwareTemplateType? TemplateType = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -365,7 +371,6 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsArrayIntegrationPossible = null,
         System.Boolean? IsBlueprintChild = null,
         System.Boolean? IsRelic = null,
-        System.Boolean? IsTemplate = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -385,6 +390,7 @@ namespace RubrikSecurityCloud.Types
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
         CdmSnapshot? NewestArchivedSnapshot = null,
+        CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
         CdmSnapshot? OldestSnapshot = null,
@@ -425,6 +431,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotConsistencyMandate != null ) {
             this.SnapshotConsistencyMandate = SnapshotConsistencyMandate;
+        }
+        if ( TemplateType != null ) {
+            this.TemplateType = TemplateType;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -476,9 +485,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
-        }
-        if ( IsTemplate != null ) {
-            this.IsTemplate = IsTemplate;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -536,6 +542,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestArchivedSnapshot != null ) {
             this.NewestArchivedSnapshot = NewestArchivedSnapshot;
+        }
+        if ( NewestIndexedSnapshot != null ) {
+            this.NewestIndexedSnapshot = NewestIndexedSnapshot;
         }
         if ( NewestReplicatedSnapshot != null ) {
             this.NewestReplicatedSnapshot = NewestReplicatedSnapshot;
@@ -663,6 +672,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotConsistencyMandate\n" ;
             } else {
                 s += ind + "snapshotConsistencyMandate\n" ;
+            }
+        }
+        //      C# -> VmwareTemplateType? TemplateType
+        // GraphQL -> templateType: VmwareTemplateType! (enum)
+        if (this.TemplateType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateType\n" ;
+            } else {
+                s += ind + "templateType\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -836,15 +854,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
-            }
-        }
-        //      C# -> System.Boolean? IsTemplate
-        // GraphQL -> isTemplate: Boolean! (scalar)
-        if (this.IsTemplate != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "isTemplate\n" ;
-            } else {
-                s += ind + "isTemplate\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1045,6 +1054,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestArchivedSnapshot {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        if (this.NewestIndexedSnapshot != null) {
+            var fspec = this.NewestIndexedSnapshot.AsFieldSpec(conf.Child("newestIndexedSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestIndexedSnapshot {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1390,6 +1411,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SnapshotConsistencyMandate = null;
         }
+        //      C# -> VmwareTemplateType? TemplateType
+        // GraphQL -> templateType: VmwareTemplateType! (enum)
+        if (ec.Includes("templateType",true))
+        {
+            if(this.TemplateType == null) {
+
+                this.TemplateType = new VmwareTemplateType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateType != null && ec.Excludes("templateType",true))
+        {
+            this.TemplateType = null;
+        }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (ec.Includes("configuredSlaDomain",false))
@@ -1708,23 +1746,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
-        }
-        //      C# -> System.Boolean? IsTemplate
-        // GraphQL -> isTemplate: Boolean! (scalar)
-        if (ec.Includes("isTemplate",true))
-        {
-            if(this.IsTemplate == null) {
-
-                this.IsTemplate = true;
-
-            } else {
-
-
-            }
-        }
-        else if (this.IsTemplate != null && ec.Excludes("isTemplate",true))
-        {
-            this.IsTemplate = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -2068,6 +2089,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestArchivedSnapshot != null && ec.Excludes("newestArchivedSnapshot",false))
         {
             this.NewestArchivedSnapshot = null;
+        }
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        if (ec.Includes("newestIndexedSnapshot",false))
+        {
+            if(this.NewestIndexedSnapshot == null) {
+
+                this.NewestIndexedSnapshot = new CdmSnapshot();
+                this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
+
+            } else {
+
+                this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
+
+            }
+        }
+        else if (this.NewestIndexedSnapshot != null && ec.Excludes("newestIndexedSnapshot",false))
+        {
+            this.NewestIndexedSnapshot = null;
         }
         //      C# -> CdmSnapshot? NewestReplicatedSnapshot
         // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)

@@ -159,8 +159,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER")]
         K8S_CLUSTER,
 
-        [EnumMember(Value = "K8S_RESOURCE_SET")]
-        K8S_RESOURCE_SET,
+        [EnumMember(Value = "K8S_PROTECTION_SET")]
+        K8S_PROTECTION_SET,
 
         [EnumMember(Value = "KUPR_CLUSTER")]
         KUPR_CLUSTER,

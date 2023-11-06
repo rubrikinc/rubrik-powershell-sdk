@@ -29,5 +29,7 @@ Supported in Rubrik CDM version 9.0 and later.
   - Target snapshot ID or a point in time for recovery.
 - folderId: System.String
   - ID of the virtual machine folder to export the new virtual machine to.
+- contentLibraryId: System.String
+  - ID of the content library to which the new content library item is being exported.
 - shouldConvertToTemplate: System.Boolean
   - Specifies whether Export converts the recovered virtual machine to a template.

@@ -65,6 +65,7 @@ User audit object type.
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central type.
 - O365Calendar - Office 365 calendar type.
 - MssqlDatabase - MSSQL database type.
+- K8S_PROTECTION_SET - Kubernetes Protection Set type.
 - SupportTunnel - Support tunnel type.
 - MONGO_SOURCE - MongoDB Source type.
 - MSSQL_OBJECT - MSSQL object type.
@@ -97,7 +98,6 @@ User audit object type.
 - JIRA_PROJECT - Atlassian Jira project.
 - StorageArrayVolumeGroup - Storage array volume group type.
 - StorageSettings - Storage settings type.
-- K8S_RESOURCE_SET - Kubernetes Resource Set type.
 - GcpNativeGceInstance - GCP native GCE instance type.
 - Cluster - Rubrik cluster type.
 - Unknown - Unknown type.

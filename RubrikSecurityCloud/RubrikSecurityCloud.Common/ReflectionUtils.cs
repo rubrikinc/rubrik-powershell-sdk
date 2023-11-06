@@ -87,60 +87,102 @@ namespace RubrikSecurityCloud
             return null;
         }
 
+        public static bool TypeIsSimple(Type type)
+        {
+            return
+                type.IsPrimitive ||
+                type.IsEnum ||
+                type == typeof(string) ||
+                type == typeof(decimal) ||
+                type == typeof(DateTime) ||
+                type == typeof(DateTimeOffset) ||
+                type == typeof(TimeSpan) ||
+                type == typeof(Guid);
+        }
+
+        public static Type StripNullableAndListContainers(Type type)
+        {
+            bool stripped = true;
+            while (stripped)
+            {
+                stripped = false;
+
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    type = type.GetGenericArguments()[0];
+                    stripped = true;
+                }
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
+                {
+                    type = type.GetGenericArguments()[0];
+                    stripped = true;
+                }
+            }
+            return type;
+        }
+
+        public class FlattenFieldContext
+        {
+            // factory method:
+            static public FlattenFieldContext PatchContext()
+            {
+                return new FlattenFieldContext
+                {
+                    SkipFieldNames = new HashSet<string> { "Edges" },
+                    AddClassNames = true,
+                    MaxDepth = 5
+                };
+            }
+            public HashSet<string>? SkipFieldNames { get; set; } = null;
+            public bool AddClassNames { get; set; } = false;
+            public int MaxDepth { get; set; } = 10;
+            public HashSet<Type> Visited { get; set; } = new HashSet<Type>();
+        }
+
         public static List<string> FlattenField(
             string typeName,
-            HashSet<Type>? visited = null,
-            bool addClassNames = false,
-            int depth=0,
-            int maxDepth=10,
-            HashSet<string>? skip =null
+            FlattenFieldContext? ctx = null,
+            int depth=0
         ){
+            if (ctx == null)
+            {
+                ctx = new FlattenFieldContext();
+            }
             Type? type = ReflectionUtils.GetType(StripList(typeName));
-            if (type == null || depth >= maxDepth)
+            if (type == null || depth >= ctx.MaxDepth)
             {
                 return new List<string>();
             }
-            if (visited == null)
-            {
-                visited = new HashSet<Type>();
-            }
-            if (visited.Contains(type))
+            if (ctx.Visited.Contains(type))
             {
                 return new List<string>();
             }
 
-            visited.Add(type);
+            ctx.Visited.Add(type);
 
             List<string> fields = new List<string>();
 
-            FieldInfo[] fieldInfos =
-                type.GetFields(
+            PropertyInfo[] propInfos =
+                type.GetProperties(
                     BindingFlags.Instance |
                     BindingFlags.Public |
                     BindingFlags.NonPublic
                 );
-            foreach (FieldInfo fieldInfo in fieldInfos)
+            foreach (PropertyInfo propInfo in propInfos)
             {
-                if (!fieldInfo.Name.StartsWith("<"))
-                {
-                    continue;
-                }
-                int index = fieldInfo.Name.IndexOf(">");
+                Type pType = StripNullableAndListContainers(propInfo.PropertyType);
+                string fieldName = propInfo.Name;
 
-                string fieldName = fieldInfo.Name.Substring(1, index - 1);
-
-                if ( skip!=null && skip.Contains(fieldName))
+                if ( ctx.SkipFieldNames!=null && ctx.SkipFieldNames.Contains(fieldName))
                 {
                     continue;
                 }
 
-                if (
-                    fieldInfo.FieldType.IsClass &&
-                    fieldInfo.FieldType != typeof(string) &&
-                    !fieldInfo.FieldType.IsEnum
-                ){
+                if ( pType.IsClass && ! TypeIsSimple(pType))
+                {
+                    string pTypeName = pType.FullName;
                     List<string> nestedFields =
-                        FlattenField(fieldInfo.FieldType.ToString(), visited, addClassNames, depth+1,maxDepth, skip);
+                        FlattenField(pTypeName, ctx, depth+1);
                     if(nestedFields.Count>0)
                     {
                         nestedFields =
@@ -150,7 +192,7 @@ namespace RubrikSecurityCloud
                                     fieldName, nestedField)
                                 )
                                 .ToList();
-                        if (addClassNames)
+                        if (ctx.AddClassNames)
                         {
                             fields.Add(fieldName);
                         }
@@ -163,7 +205,7 @@ namespace RubrikSecurityCloud
                 }
             }
 
-            visited.Remove(type);
+            ctx.Visited.Remove(type);
 
             return fields;
         }

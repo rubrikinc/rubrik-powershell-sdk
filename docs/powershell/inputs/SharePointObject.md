@@ -11,3 +11,5 @@ Represents the SharePoint object (document library, list, site, or web part) to 
   - UUID of the snapshot for recovery.
 - snapshotNum: System.Int32
   - Sequence number of the snapshot.
+- siteOwnerEmail: System.String
+  - Site owner for restored site.

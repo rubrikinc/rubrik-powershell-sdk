@@ -209,8 +209,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	csrId = $someInt64
     /// 	# REQUIRED
     /// 	csrFid = $someString
     /// }
@@ -539,8 +537,6 @@ $query.Var.input = @{
                 Query.CertificateSigningRequestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	csrId = $someInt64
 	# REQUIRED
 	csrFid = $someString
 }"

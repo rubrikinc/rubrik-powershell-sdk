@@ -222,6 +222,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.sortBy = $someListValidReplicationTargetsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListValidReplicationTargetsSortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.isCrossAccount = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -448,6 +450,7 @@ $query.Var.filter = @{
         //     before: String
         //     sortBy: ListValidReplicationTargetsSortByField
         //     sortOrder: SortOrder
+        //     isCrossAccount: Boolean
         //   ): ValidReplicationTargetConnection!
         internal void InitQueryAllValidReplicationTargets()
         {
@@ -458,12 +461,13 @@ $query.Var.filter = @{
                 Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "ListValidReplicationTargetsSortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("isCrossAccount", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllValidReplicationTargets",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationTargetsSortByField,$sortOrder: SortOrder)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationTargetsSortByField,$sortOrder: SortOrder,$isCrossAccount: Boolean)",
                 "ValidReplicationTargetConnection",
                 Query.AllValidReplicationTargets_ObjectFieldSpec,
                 Query.AllValidReplicationTargetsFieldSpec,
@@ -478,7 +482,9 @@ $query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someListValidReplicationTargetsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListValidReplicationTargetsSortByField]) for enum values.
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.isCrossAccount = $someBoolean"
             );
         }
 

@@ -11,7 +11,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | --- | --- | --- | --- | --- |
 | [Account (7,1)](#account-domain) | [Cluster (29,9)](#cluster-domain) | [Microsoft 365 (1,4)](#microsoft-365-domain) | [Ransomware (12,1)](#ransomware-domain) | [Sonar (5,0)](#sonar-domain) |
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [RCS (3,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
-| [AWS (28,33)](#aws-domain) | [Report Download (3,16)](#report-download-domain) | [Mongo DB (10,10)](#mongo-db-domain) | [RCV (2,3)](#rcv-domain) | [Tape (0,3)](#tape-domain) |
+| [AWS (28,33)](#aws-domain) | [Report Download (3,17)](#report-download-domain) | [Mongo DB (10,10)](#mongo-db-domain) | [RCV (2,3)](#rcv-domain) | [Tape (0,3)](#tape-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mosaic (4,3)](#mosaic-domain) | [Replication (4,5)](#replication-domain) | [Threat (4,3)](#threat-domain) |
 | [Azure (44,43)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Microsoft SQL Server (16,17)](#microsoft-sql-server-domain) | [Report (2,9)](#report-domain) | [VMware vSphere vCenter (9,6)](#vmware-vsphere-vcenter-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [NAS (8,0)](#nas-domain) | [SAP HANA (8,9)](#sap-hana-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
@@ -19,7 +19,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,6)](#host-domain) | [Nutanix (18,25)](#nutanix-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [Webhook (1,5)](#webhook-domain) |
 | [Certificates (6,6)](#certificates-domain) | [Microsoft Hyper-V (14,23)](#microsoft-hyper-v-domain) | [Office 365 (37,31)](#office-365-domain) | [SLA (14,9)](#sla-domain) |  |
 | [Cloud Account (4,2)](#cloud-account-domain) | [Kubernetes (7,7)](#kubernetes-domain) | [Oracle (16,18)](#oracle-domain) | [SMB (2,4)](#smb-domain) |  |
-| [Cloud Native (19,13)](#cloud-native-domain) | [LDAP (3,4)](#ldap-domain) | [Policy (6,1)](#policy-domain) | [Snapshot (21,15)](#snapshot-domain) |  |
+| [Cloud Native (19,13)](#cloud-native-domain) | [LDAP (3,4)](#ldap-domain) | [Policy (6,1)](#policy-domain) | [Snapshot (21,17)](#snapshot-domain) |  |
 
 ## Account domain
 
@@ -707,6 +707,10 @@ Cmdlets: `New-RscQueryDownload` and `New-RscMutationDownload`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| ActiveDirectorySnapshotFromLocation | Download a snapshot from a remote target  
+  
+Supported in v9.0+  
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever. | `New-RscMutationDownload -Operation ActiveDirectorySnapshotFromLocation`<BR> | [downloadActiveDirectorySnapshotFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AuditLogCsvAsync | Download audit log in CSV format asynchronously. | `New-RscMutationDownload -Operation AuditLogCsvAsync`<BR> | [downloadAuditLogCsvAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExchangeSnapshot | Download exchange database snapshot from archive  
   
@@ -2211,6 +2215,10 @@ Lists all files and directories in a given path. | `New-RscQuerySnapshot -Operat
   
 Supported in v6.0+  
 Schedules a job to tier existing snapshots of the specified objects to cold storage. | `New-RscMutationSnapshot -Operation BulkTierExistings`<BR> | [bulkTierExistingSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateDomainController | On-demand snapshot of an Active Directory Domain Controller  
+  
+Supported in v9.0+  
+Initiates an on-demand snapshot job of a specified Active Directory Domain Controller. | `New-RscMutationSnapshot -Operation CreateDomainController`<BR> | [createDomainControllerSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateDownloadForVolumeGroup | Creates a download from archival request  
   
 Supported in v5.0+  
@@ -2226,6 +2234,10 @@ Start an asynchronous job to download multiple files and folders from a specifie
   
 Supported in v5.0+  
 Starts a job that exports one or more files or folders from a fileset backup to the destination host. Returns the job status as of the job creation time. This job status includes the job ID. | `New-RscMutationSnapshot -Operation FilesetExportFiles`<BR> | [filesetExportSnapshotFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RestoreDomainController | Initiate Active Directory restore job  
+  
+Supported in v9.0+  
+Initiates a job to restore Active Directory snapshots to their corresponding Domain Controllers or alternate hosts. Returns the job instance ID. | `New-RscMutationSnapshot -Operation RestoreDomainController`<BR> | [restoreDomainControllerSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RestoreVolumeGroupFiles | Restore files from the Volume Group snapshot  
   
 Supported in v5.0+  

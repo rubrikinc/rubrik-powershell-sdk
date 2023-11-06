@@ -978,6 +978,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isLiveMount = $someBoolean
     /// 	# REQUIRED
     /// 	dbId = $someString
+    /// 	# OPTIONAL
+    /// 	isDifferentTargetDbName = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2095,6 +2097,8 @@ $query.Var.input = @{
 	isLiveMount = $someBoolean
 	# REQUIRED
 	dbId = $someString
+	# OPTIONAL
+	isDifferentTargetDbName = $someBoolean
 }"
             );
         }

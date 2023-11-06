@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslCertfilePath")]
         public System.String? SslCertfilePath { get; set; }
 
+        //      C# -> MongoAuthenticationType? SourceAuthenticationType
+        // GraphQL -> sourceAuthenticationType: MongoAuthenticationType (enum)
+        [JsonProperty("sourceAuthenticationType")]
+        public MongoAuthenticationType? SourceAuthenticationType { get; set; }
+
         //      C# -> MongoSslCertificateRequirement? SslCertificateRequired
         // GraphQL -> sslCertificateRequired: MongoSslCertificateRequirement (enum)
         [JsonProperty("sslCertificateRequired")]

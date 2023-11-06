@@ -108,7 +108,7 @@ Enum representing all the possible object types which generate events.
 - AWS_NATIVE_S3_BUCKET - AWS native S3 bucket object.
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - K8S_CLUSTER - Kubernetes Cluster object.
-- K8S_RESOURCE_SET - Kubernetes Resource Set object.
+- K8S_PROTECTION_SET - Kubernetes Protection Set object.
 - AZURE_AD_DIRECTORY - Azure AD Directory object.
 - ENCRYPTION_MANAGEMENT - Encryption Management object.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.

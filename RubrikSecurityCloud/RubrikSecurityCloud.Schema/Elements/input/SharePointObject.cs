@@ -52,6 +52,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotNum")]
         public System.Int32? SnapshotNum { get; set; }
 
+        //      C# -> System.String? SiteOwnerEmail
+        // GraphQL -> siteOwnerEmail: String (scalar)
+        [JsonProperty("siteOwnerEmail")]
+        public System.String? SiteOwnerEmail { get; set; }
+
 
         #endregion
 

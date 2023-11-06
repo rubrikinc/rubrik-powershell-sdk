@@ -2188,6 +2188,130 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ActiveDirectoryDomain? ActiveDirectoryDomain
+        // GraphQL -> activeDirectoryDomain: ActiveDirectoryDomain! (type)
+        public static string ActiveDirectoryDomain_TypedFieldSpec(ActiveDirectoryDomain fieldSpec)
+        {
+            string args = "\n(\nfid: $fid\n)";
+            return "activeDirectoryDomain" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ActiveDirectoryDomain_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomain((ActiveDirectoryDomain)fieldSpecObj);
+        }
+        public static string ActiveDirectoryDomain(ActiveDirectoryDomain fieldSpec)
+        {
+            return ActiveDirectoryDomain_TypedFieldSpec(fieldSpec);
+        }
+        public static string ActiveDirectoryDomain(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomain_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ActiveDirectoryDomainFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ActiveDirectoryDomain() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ActiveDirectoryDomainController? ActiveDirectoryDomainController
+        // GraphQL -> activeDirectoryDomainController: ActiveDirectoryDomainController! (type)
+        public static string ActiveDirectoryDomainController_TypedFieldSpec(ActiveDirectoryDomainController fieldSpec)
+        {
+            string args = "\n(\nfid: $fid\n)";
+            return "activeDirectoryDomainController" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ActiveDirectoryDomainController_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomainController((ActiveDirectoryDomainController)fieldSpecObj);
+        }
+        public static string ActiveDirectoryDomainController(ActiveDirectoryDomainController fieldSpec)
+        {
+            return ActiveDirectoryDomainController_TypedFieldSpec(fieldSpec);
+        }
+        public static string ActiveDirectoryDomainController(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomainController_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ActiveDirectoryDomainControllerFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ActiveDirectoryDomainController() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ActiveDirectoryDomainControllerConnection? ActiveDirectoryDomainControllers
+        // GraphQL -> activeDirectoryDomainControllers: ActiveDirectoryDomainControllerConnection! (type)
+        public static string ActiveDirectoryDomainControllers_TypedFieldSpec(ActiveDirectoryDomainControllerConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "activeDirectoryDomainControllers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ActiveDirectoryDomainControllers_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomainControllers((ActiveDirectoryDomainControllerConnection)fieldSpecObj);
+        }
+        public static string ActiveDirectoryDomainControllers(ActiveDirectoryDomainControllerConnection fieldSpec)
+        {
+            return ActiveDirectoryDomainControllers_TypedFieldSpec(fieldSpec);
+        }
+        public static string ActiveDirectoryDomainControllers(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomainControllers_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ActiveDirectoryDomainControllersFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ActiveDirectoryDomainControllerConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ActiveDirectoryDomainConnection? ActiveDirectoryDomains
+        // GraphQL -> activeDirectoryDomains: ActiveDirectoryDomainConnection! (type)
+        public static string ActiveDirectoryDomains_TypedFieldSpec(ActiveDirectoryDomainConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "activeDirectoryDomains" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ActiveDirectoryDomains_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomains((ActiveDirectoryDomainConnection)fieldSpecObj);
+        }
+        public static string ActiveDirectoryDomains(ActiveDirectoryDomainConnection fieldSpec)
+        {
+            return ActiveDirectoryDomains_TypedFieldSpec(fieldSpec);
+        }
+        public static string ActiveDirectoryDomains(object fieldSpecObj)
+        {
+            return ActiveDirectoryDomains_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ActiveDirectoryDomainsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ActiveDirectoryDomainConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
         public static string ActivitySeries_TypedFieldSpec(ActivitySeries fieldSpec)
@@ -2246,6 +2370,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new ActivitySeriesConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AdVolumeExportConnection? AdVolumeExports
+        // GraphQL -> adVolumeExports: AdVolumeExportConnection! (type)
+        public static string AdVolumeExports_TypedFieldSpec(AdVolumeExportConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            return "adVolumeExports" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AdVolumeExports_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AdVolumeExports((AdVolumeExportConnection)fieldSpecObj);
+        }
+        public static string AdVolumeExports(AdVolumeExportConnection fieldSpec)
+        {
+            return AdVolumeExports_TypedFieldSpec(fieldSpec);
+        }
+        public static string AdVolumeExports(object fieldSpecObj)
+        {
+            return AdVolumeExports_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AdVolumeExportsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AdVolumeExportConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -5168,7 +5323,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allValidReplicationTargets: ValidReplicationTargetConnection! (type)
         public static string AllValidReplicationTargets_TypedFieldSpec(ValidReplicationTargetConnection fieldSpec)
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nisCrossAccount: $isCrossAccount\n)";
             return "allValidReplicationTargets" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";

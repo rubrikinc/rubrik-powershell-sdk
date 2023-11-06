@@ -22,7 +22,6 @@ AWS native regions for replication.
 - US_WEST_1 - AWS native for replication US West (N. California) region.
 - AP_EAST_1 - AWS native for replication Asia Pacific (Hong Kong) region.
 - EU_WEST_1 - AWS native for replication EU (Ireland) region.
-- IL_CENTRAL_1 - AWS native for replication Israel (Tel Aviv) region.
 - NOT_DEFINED - AWS native for replication region is not defined.
 - AP_SOUTH_1 - AWS native for replication Asia Pacific (Mumbai) region.
 - CA_CENTRAL_1 - AWS native for replication Canada (Central) region.

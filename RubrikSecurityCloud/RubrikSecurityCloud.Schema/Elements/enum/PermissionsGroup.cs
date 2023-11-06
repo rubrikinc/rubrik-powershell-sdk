@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BASIC")]
         BASIC,
 
+        [EnumMember(Value = "CLOUD_CLUSTER_ES")]
+        CLOUD_CLUSTER_ES,
+
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 

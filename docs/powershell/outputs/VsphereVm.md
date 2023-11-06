@@ -17,8 +17,8 @@
   - If Virtual Machine integration with storage array is possible.
 - guestCredentialId: System.String
   - ID of guest credential assigned to the virtual machine.
-- isTemplate: System.Boolean
-  - Specifies whether the virtual machine is a template or not.
+- templateType: VmwareTemplateType
+  - VMware virtual machine template type.
 - parentWorkloadIdOpt: System.String
   - Parent ID of this workload.
 - parentWorkloadTypeOpt: System.String
@@ -107,6 +107,8 @@
   - GroupBy connection for the snapshots of this workload.
 - snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
   - GroupBy connection for the snapshots of this workload.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
 - newestSnapshot: CdmSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: CdmSnapshot

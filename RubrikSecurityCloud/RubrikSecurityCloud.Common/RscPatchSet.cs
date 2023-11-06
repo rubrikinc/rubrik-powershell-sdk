@@ -20,8 +20,9 @@ namespace RubrikSecurityCloud
             int maxDepth = 10,
             HashSet<string>? skip = null)
         {
-            var patches = ReflectionUtils.FlattenField(gqlReturnTypeName,
-                addClassNames: true, maxDepth: 5, skip: skip);
+            var patches = ReflectionUtils.FlattenField(
+                gqlReturnTypeName,
+                ReflectionUtils.FlattenFieldContext.PatchContext());
             return patches;
         }
 

@@ -252,3 +252,4 @@
 - K8S_CLUSTER_NAME - Filter based on Kubernetes cluster name.
 - HOST_DOMAIN_CONTROLLER_FID - Filter hosts based on the domain controller FID.
 - EXCLUDED_ROOT_RESOURCE_POOL_TYPE - Filter to exclude root resource pool.
+- VMWARE_VM_TEMPLATE_TYPE - Filter template type of VMware virtual machines.

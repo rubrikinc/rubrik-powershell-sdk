@@ -102,7 +102,7 @@ Represents all the object types for which we expect to see audits.
 - MONGO_COLLECTION - MongoDB Collection object.
 - AZURE_STORAGE_ACCOUNT - Azure storage account
 - K8S_CLUSTER - Kubernetes cluster object.
-- K8S_RESOURCE_SET - Kubernetes resource set object.
+- K8S_PROTECTION_SET - Kubernetes protection set object.
 - AZURE_AD_DIRECTORY - Azure AD Directory object.
 - ENCRYPTION_MANAGEMENT - Encryption Management object.
 - NUTANIX_PRISM_CENTRAL - Nutanix prism central audit object.

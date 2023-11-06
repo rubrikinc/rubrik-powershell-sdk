@@ -2,7 +2,7 @@
 Type of hierarchy object.
 
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
-- K8S_CLUSTER - Kubernetes Cluster
+- K8S_CLUSTER - Kubernetes cluster.
 - KuprNamespace
 - HostShare
 - MssqlDatabaseBatchMaintenance
@@ -74,6 +74,7 @@ Type of hierarchy object.
 - NasSystem
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
 - O365Calendar
+- K8S_PROTECTION_SET - Kubernetes Protection Set.
 - MONGO_SOURCE - MongoDB Source.
 - O365File
 - AwsNativeEbsVolume
@@ -106,7 +107,6 @@ Type of hierarchy object.
 - HypervCluster
 - JIRA_PROJECT - Jira project.
 - StorageArrayVolumeGroup
-- K8S_RESOURCE_SET - Kubernetes Resource Set
 - SnapMirrorCloud
 - HypervSCVMM
 - AppBlueprint

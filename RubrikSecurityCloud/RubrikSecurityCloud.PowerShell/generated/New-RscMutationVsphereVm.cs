@@ -162,6 +162,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					folderId = $someString
     /// 					# OPTIONAL
+    /// 					contentLibraryId = $someString
+    /// 					# OPTIONAL
     /// 					shouldConvertToTemplate = $someBoolean
     /// 					# REQUIRED
     /// 					datastoreId = $someString
@@ -281,6 +283,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 					# OPTIONAL
     /// 					folderId = $someString
+    /// 					# OPTIONAL
+    /// 					contentLibraryId = $someString
     /// 					# OPTIONAL
     /// 					shouldConvertToTemplate = $someBoolean
     /// 				}
@@ -577,6 +581,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		folderId = $someString
     /// 		# OPTIONAL
+    /// 		contentLibraryId = $someString
+    /// 		# OPTIONAL
     /// 		shouldConvertToTemplate = $someBoolean
     /// 		# REQUIRED
     /// 		datastoreId = $someString
@@ -679,6 +685,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		folderId = $someString
     /// 		# OPTIONAL
+    /// 		contentLibraryId = $someString
+    /// 		# OPTIONAL
     /// 		shouldConvertToTemplate = $someBoolean
     /// 	}
     /// 	# REQUIRED
@@ -767,6 +775,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# OPTIONAL
     /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		contentLibraryId = $someString
     /// 		# OPTIONAL
     /// 		shouldConvertToTemplate = $someBoolean
     /// 		# REQUIRED
@@ -2263,6 +2273,8 @@ $query.Var.input = @{
 					# OPTIONAL
 					folderId = $someString
 					# OPTIONAL
+					contentLibraryId = $someString
+					# OPTIONAL
 					shouldConvertToTemplate = $someBoolean
 					# REQUIRED
 					datastoreId = $someString
@@ -2374,6 +2386,8 @@ $query.Var.input = @{
 					}
 					# OPTIONAL
 					folderId = $someString
+					# OPTIONAL
+					contentLibraryId = $someString
 					# OPTIONAL
 					shouldConvertToTemplate = $someBoolean
 				}
@@ -2622,6 +2636,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		folderId = $someString
 		# OPTIONAL
+		contentLibraryId = $someString
+		# OPTIONAL
 		shouldConvertToTemplate = $someBoolean
 		# REQUIRED
 		datastoreId = $someString
@@ -2716,6 +2732,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		folderId = $someString
 		# OPTIONAL
+		contentLibraryId = $someString
+		# OPTIONAL
 		shouldConvertToTemplate = $someBoolean
 	}
 	# REQUIRED
@@ -2796,6 +2814,8 @@ $query.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = $someString
+		# OPTIONAL
+		contentLibraryId = $someString
 		# OPTIONAL
 		shouldConvertToTemplate = $someBoolean
 		# REQUIRED

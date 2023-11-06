@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20231018-24" ;
+        public static string GraphqlSchemaVersion = "v20231025-35" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -23,6 +23,8 @@ namespace RubrikSecurityCloud.Types
         public enum GqlInterfaceName
         {
             Unknown,
+            ActiveDirectoryDomainDescendantType,
+            ActiveDirectoryDomainPhysicalChildType,
             AwsNativeAccountDescendantType,
             AwsNativeAccountLogicalChildType,
             AwsNativeHierarchyObject,
@@ -181,7 +183,18 @@ namespace RubrikSecurityCloud.Types
             AccountProduct,
             AccountSetting,
             ActiveDirectoryAppMetadata,
+            ActiveDirectoryDomain,
+            ActiveDirectoryDomainConnection,
+            ActiveDirectoryDomainController,
+            ActiveDirectoryDomainControllerConnection,
+            ActiveDirectoryDomainControllerEdge,
+            ActiveDirectoryDomainDescendantTypeConnection,
+            ActiveDirectoryDomainDescendantTypeEdge,
+            ActiveDirectoryDomainEdge,
+            ActiveDirectoryDomainPhysicalChildTypeConnection,
+            ActiveDirectoryDomainPhysicalChildTypeEdge,
             ActiveDirectoryObjectsCount,
+            ActiveDirectoryServiceStatus,
             Activity,
             ActivityChart,
             ActivityConnection,
@@ -217,6 +230,9 @@ namespace RubrikSecurityCloud.Types
             AddVmAppConsistentSpecsReply,
             AdGroup,
             AdvancedVirtualMachineSummary,
+            AdVolumeExport,
+            AdVolumeExportConnection,
+            AdVolumeExportEdge,
             AgentStatus,
             AggregatedValues,
             AllEnabledFeaturesForAccountReply,
@@ -1469,8 +1485,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2292,6 +2308,15 @@ namespace RubrikSecurityCloud.Types
         public enum GqlInputName
         {
             Unknown,
+            ActiveDirectoryContainerRestoreOptionsInput,
+            ActiveDirectoryLiveMountConfigInput,
+            ActiveDirectoryModifyLiveMountConfigInput,
+            ActiveDirectoryObjectRecoveryConfigInput,
+            ActiveDirectoryRecoveryLdapCredsInput,
+            ActiveDirectoryRecoveryObjectInput,
+            ActiveDirectoryRestoreConfigInput,
+            ActiveDirectorySnapshotDownloadConfigInput,
+            ActiveDirectoryUserRestoreOptionsInput,
             ActivitySeriesFilter,
             ActivitySeriesInput,
             AddAdGroupsToHierarchyInput,
@@ -2328,6 +2353,8 @@ namespace RubrikSecurityCloud.Types
             AddVlanInput,
             AddVmAppConsistentSpecsInput,
             AdvancedRecoveryConfigMap,
+            AdVolumeExportFilter,
+            AdVolumeExportSortByInput,
             AllCloudDirectSharesInput,
             AllEventDigestsInput,
             AllVmRecoveryJobsInfoInput,
@@ -2578,6 +2605,7 @@ namespace RubrikSecurityCloud.Types
             ContactsSearchObjectFilter,
             ContextFilterInputField,
             ConversationsRestoreConfig,
+            CreateActiveDirectoryLiveMountInput,
             CreateAutomaticAwsTargetMappingInput,
             CreateAutomaticAzureTargetMappingInput,
             CreateAutomaticRcsTargetMappingInput,
@@ -2598,6 +2626,7 @@ namespace RubrikSecurityCloud.Types
             CreateCloudNativeTagRuleInput,
             CreateCustomAnalyzerInput,
             CreateCustomReportInput,
+            CreateDomainControllerSnapshotInput,
             CreateDownloadSnapshotForVolumeGroupInput,
             CreateExchangeSnapshotMountInput,
             CreateExportOracleDbInput,
@@ -2737,6 +2766,8 @@ namespace RubrikSecurityCloud.Types
             DlpConfigInput,
             DlpConfigVmwareVmInput,
             DlpStatusInput,
+            DomainControllerRestoreConfigInput,
+            DownloadActiveDirectorySnapshotFromLocationInput,
             DownloadAuditLogCsvAsyncInput,
             DownloadCdmUpgradesPdfFiltersInput,
             DownloadDb2SnapshotInput,
@@ -3062,6 +3093,7 @@ namespace RubrikSecurityCloud.Types
             MapCloudAccountExocomputeAccountInput,
             MigrateNutanixMountV1Input,
             MinuteSnapshotScheduleInput,
+            ModifyActiveDirectoryLiveMountInput,
             ModifyIpmiInput,
             ModifyMosaicSourceInput,
             ModifyMosaicStoreInput,
@@ -3252,6 +3284,7 @@ namespace RubrikSecurityCloud.Types
             RecoverMongoSourceInput,
             RecoverOracleDbConfigInput,
             RefreshDb2DatabaseInput,
+            RefreshDomainInput,
             RefreshHostInput,
             RefreshHypervScvmmInput,
             RefreshHypervServerInput,
@@ -3301,8 +3334,10 @@ namespace RubrikSecurityCloud.Types
             ResizeManagedVolumeInput,
             ResolveVolumeGroupsConflictInput,
             ResourceInput,
+            RestoreActiveDirectoryObjectsInput,
             RestoreAzureAdObjectsWithPasswordsInput,
             RestoreConfig,
+            RestoreDomainControllerSnapshotInput,
             RestoreFileConfig,
             RestoreFilesJobConfigInput,
             RestoreFilesNutanixSnapshotInput,
@@ -3684,8 +3719,13 @@ namespace RubrikSecurityCloud.Types
             accountId,
             accountSettings,
             activeCustomAnalyzers,
+            activeDirectoryDomain,
+            activeDirectoryDomainController,
+            activeDirectoryDomainControllers,
+            activeDirectoryDomains,
             activitySeries,
             activitySeriesConnection,
+            adVolumeExports,
             allAccountOwners,
             allAccountProducts,
             allAccountsWithExocomputeMappings,
@@ -4529,6 +4569,7 @@ namespace RubrikSecurityCloud.Types
             completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
             configureSapHanaRestore,
+            createActiveDirectoryLiveMount,
             createAutomaticAwsTargetMapping,
             createAutomaticAzureTargetMapping,
             createAutomaticRcsTargetMapping,
@@ -4551,6 +4592,7 @@ namespace RubrikSecurityCloud.Types
             createCloudNativeTagRule,
             createCustomAnalyzer,
             createCustomReport,
+            createDomainControllerSnapshot,
             createDownloadSnapshotForVolumeGroup,
             createExchangeMount,
             createFailoverCluster,
@@ -4680,6 +4722,7 @@ namespace RubrikSecurityCloud.Types
             disableTarget,
             discoverDb2Instance,
             discoverMongoSource,
+            downloadActiveDirectorySnapshotFromLocation,
             downloadAuditLogCsvAsync,
             downloadDb2Snapshot,
             downloadDb2SnapshotsForPointInTimeRecovery,
@@ -4781,6 +4824,7 @@ namespace RubrikSecurityCloud.Types
             mapAzureCloudAccountToPersistentStorageLocation,
             mapCloudAccountExocomputeAccount,
             migrateNutanixMountV1,
+            modifyActiveDirectoryLiveMount,
             modifyIpmi,
             mountDisk,
             mountNutanixSnapshotV1,
@@ -4813,6 +4857,7 @@ namespace RubrikSecurityCloud.Types
             recoverMongodbSource,
             recoverMongoSource,
             refreshDb2Database,
+            refreshDomain,
             refreshGlobalManagerConnectivityStatus,
             refreshHost,
             refreshHypervScvmm,
@@ -4850,7 +4895,9 @@ namespace RubrikSecurityCloud.Types
             resizeDisk,
             resizeManagedVolume,
             resolveVolumeGroupsConflict,
+            restoreActiveDirectoryObjects,
             restoreAzureAdObjectsWithPasswords,
+            restoreDomainControllerSnapshot,
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
             restoreK8sNamespace,
@@ -5096,6 +5143,10 @@ namespace RubrikSecurityCloud.Types
             AceFlags,
             AceQualifier,
             ActionType,
+            ActiveDirectoryObjectMovedOption,
+            ActiveDirectoryObjectNameConflictOption,
+            ActiveDirectoryObjectType,
+            ActiveDirectoryUserPasswordRecoveryOption,
             ActivityAccessType,
             ActivityObjectTypeEnum,
             ActivitySeriesGroupByEnum,
@@ -5106,6 +5157,8 @@ namespace RubrikSecurityCloud.Types
             ActivityTableColumnEnum,
             ActivityTypeEnum,
             AdoptionStatus,
+            AdVolumeExportFilterField,
+            AdVolumeExportSortByField,
             AgentConnectionStatus,
             AmiType,
             AnalysisStatus,
@@ -5343,6 +5396,7 @@ namespace RubrikSecurityCloud.Types
             FilesetTemplatePatchShareType,
             FileSystemType,
             FileVersionSourceEnum,
+            FsmoRoles,
             GcpNativeDiskSortFields,
             GcpNativeGceInstanceSortFields,
             GcpNativeLabelFilterType,
@@ -5426,6 +5480,7 @@ namespace RubrikSecurityCloud.Types
             ManagedVolumeState,
             ManagedVolumeType,
             MissedSnapshotDayOfTimeUnit,
+            MongoAuthenticationType,
             MongodbSourceStatus,
             MongoDiscoveryStatus,
             MongoSourceStatus,
@@ -5572,7 +5627,9 @@ namespace RubrikSecurityCloud.Types
             ScriptErrorAction,
             SearchKeywordType,
             SearchObjectType,
+            ServerRoles,
             ServiceAccountSortBy,
+            ServiceStatus,
             ServiceTier,
             SharePointDescendantType,
             SharePointSearchKeywordType,
@@ -5706,6 +5763,7 @@ namespace RubrikSecurityCloud.Types
             VmPowerStatus,
             VmType,
             VmwareFolderType,
+            VmwareTemplateType,
             VolumeGroupLiveMountFilterField,
             VolumeGroupLiveMountSortByField,
             VsphereLiveMountFilterField,
@@ -5770,6 +5828,20 @@ namespace RubrikSecurityCloud.Types
         {
             var InterfaceImplsDict = new Dictionary<string, HashSet<string>> {
                 {
+                    "ActiveDirectoryDomainDescendantType",
+                    new HashSet<string> {
+                    "ActiveDirectoryDomainController",
+                    "ActiveDirectoryDomainDescendantType",
+                    }
+                },
+                {
+                    "ActiveDirectoryDomainPhysicalChildType",
+                    new HashSet<string> {
+                    "ActiveDirectoryDomainController",
+                    "ActiveDirectoryDomainPhysicalChildType",
+                    }
+                },
+                {
                     "AwsNativeAccountDescendantType",
                     new HashSet<string> {
                     "AwsNativeEbsVolume",
@@ -5833,6 +5905,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     "CdmHierarchyObject",
                     new HashSet<string> {
+                    "ActiveDirectoryDomain",
+                    "ActiveDirectoryDomainController",
                     "Db2Database",
                     "Db2Instance",
                     "ExchangeDag",
@@ -5898,7 +5972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "CdmHierarchySnappableNew",
                     new HashSet<string> {
-                    "CdmHierarchySnappableNew",
+                    "ActiveDirectoryDomainController",
                     "Db2Database",
                     "ExchangeDatabase",
                     "HyperVvirtualMachine",
@@ -6046,6 +6120,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     "HierarchyObject",
                     new HashSet<string> {
+                    "ActiveDirectoryDomain",
+                    "ActiveDirectoryDomainController",
                     "AwsNativeAccount",
                     "AwsNativeEbsVolume",
                     "AwsNativeEc2Instance",
@@ -6148,6 +6224,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "HierarchySnappable",
                     new HashSet<string> {
+                    "ActiveDirectoryDomainController",
                     "AzureAdDirectory",
                     "K8sNamespace",
                     "LinuxFileset",
@@ -7673,6 +7750,7 @@ namespace RubrikSecurityCloud.Types
             createCloudNativeRcvAzureStorageSetting,
             createCloudNativeTagRule,
             createCustomReport,
+            createDomainControllerSnapshot,
             createDownloadSnapshotForVolumeGroup,
             createExchangeMount,
             createFailoverCluster,
@@ -7776,6 +7854,7 @@ namespace RubrikSecurityCloud.Types
             discoverDb2Instance,
             discoverMongoSource,
             doesAzureNativeResourceGroupExist,
+            downloadActiveDirectorySnapshotFromLocation,
             downloadAuditLogCsvAsync,
             downloadCdmUpgradesPdf,
             downloadDb2Snapshot,
@@ -8097,6 +8176,7 @@ namespace RubrikSecurityCloud.Types
             reportData,
             resizeManagedVolume,
             restoreAzureAdObjectsWithPasswords,
+            restoreDomainControllerSnapshot,
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
             restoreK8sNamespace,
@@ -10901,6 +10981,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createDomainControllerSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "CreateDomainController",
+                        gqlRootFieldName: "createDomainControllerSnapshot"
+                    )
+                },
+                {
                     GqlRootFieldName.createDownloadSnapshotForVolumeGroup,
                     new RscOp(
                         cmdletName: "New-RscMutationSnapshot",
@@ -11722,6 +11810,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAzureNative",
                         cmdletSwitchName: "DoesResourceGroupExist",
                         gqlRootFieldName: "doesAzureNativeResourceGroupExist"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadActiveDirectorySnapshotFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDownload",
+                        cmdletSwitchName: "ActiveDirectorySnapshotFromLocation",
+                        gqlRootFieldName: "downloadActiveDirectorySnapshotFromLocation"
                     )
                 },
                 {
@@ -14290,6 +14386,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "RestoreAdObjectsWithPasswords",
                         gqlRootFieldName: "restoreAzureAdObjectsWithPasswords"
+                    )
+                },
+                {
+                    GqlRootFieldName.restoreDomainControllerSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "RestoreDomainController",
+                        gqlRootFieldName: "restoreDomainControllerSnapshot"
                     )
                 },
                 {
@@ -17582,6 +17686,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createCustomReport
                 },
                 {
+                    "New-RscMutationSnapshot -CreateDomainController",
+                    GqlRootFieldName.createDomainControllerSnapshot
+                },
+                {
                     "New-RscMutationSnapshot -CreateDownloadForVolumeGroup",
                     GqlRootFieldName.createDownloadSnapshotForVolumeGroup
                 },
@@ -17992,6 +18100,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAzureNative -DoesResourceGroupExist",
                     GqlRootFieldName.doesAzureNativeResourceGroupExist
+                },
+                {
+                    "New-RscMutationDownload -ActiveDirectorySnapshotFromLocation",
+                    GqlRootFieldName.downloadActiveDirectorySnapshotFromLocation
                 },
                 {
                     "New-RscMutationDownload -AuditLogCsvAsync",
@@ -19278,6 +19390,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.restoreAzureAdObjectsWithPasswords
                 },
                 {
+                    "New-RscMutationSnapshot -RestoreDomainController",
+                    GqlRootFieldName.restoreDomainControllerSnapshot
+                },
+                {
                     "New-RscMutationNutanix -RestoreFilesSnapshot",
                     GqlRootFieldName.restoreFilesNutanixSnapshot
                 },
@@ -20329,6 +20445,22 @@ namespace RubrikSecurityCloud.Types
                         "accountSettings",
                     }
                 },
+                {   "ActiveDirectoryDomain", new List<string> {
+                        "activeDirectoryDomain",
+                    }
+                },
+                {   "ActiveDirectoryDomainConnection", new List<string> {
+                        "activeDirectoryDomains",
+                    }
+                },
+                {   "ActiveDirectoryDomainController", new List<string> {
+                        "activeDirectoryDomainController",
+                    }
+                },
+                {   "ActiveDirectoryDomainControllerConnection", new List<string> {
+                        "activeDirectoryDomainControllers",
+                    }
+                },
                 {   "ActivitySeries", new List<string> {
                         "activitySeries",
                     }
@@ -20340,6 +20472,10 @@ namespace RubrikSecurityCloud.Types
                 {   "ActivityTimelineResultConnection", new List<string> {
                         "userActivityTimeline",
                         "userFileActivityTimeline",
+                    }
+                },
+                {   "AdVolumeExportConnection", new List<string> {
+                        "adVolumeExports",
                     }
                 },
                 {   "AddAndJoinSmbDomainReply", new List<string> {
@@ -20503,6 +20639,8 @@ namespace RubrikSecurityCloud.Types
                         "bulkTierExistingSnapshots",
                         "checkCloudComputeConnectivityJobProgress",
                         "configureSapHanaRestore",
+                        "createActiveDirectoryLiveMount",
+                        "createDomainControllerSnapshot",
                         "createDownloadSnapshotForVolumeGroup",
                         "createExchangeMount",
                         "createFilesetSnapshot",
@@ -20536,6 +20674,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteVsphereLiveMount",
                         "discoverDb2Instance",
                         "discoverMongoSource",
+                        "downloadActiveDirectorySnapshotFromLocation",
                         "downloadDb2Snapshot",
                         "downloadDb2SnapshotsForPointInTimeRecovery",
                         "downloadExchangeSnapshot",
@@ -20588,6 +20727,7 @@ namespace RubrikSecurityCloud.Types
                         "recoverCloudDirectPath",
                         "recoverMongoSource",
                         "refreshDb2Database",
+                        "refreshDomain",
                         "refreshHypervScvmm",
                         "refreshHypervServer",
                         "refreshNutanixCluster",
@@ -20596,6 +20736,8 @@ namespace RubrikSecurityCloud.Types
                         "registerHypervScvmm",
                         "reseedLogShippingSecondary",
                         "resizeManagedVolume",
+                        "restoreActiveDirectoryObjects",
+                        "restoreDomainControllerSnapshot",
                         "restoreFilesNutanixSnapshot",
                         "restoreHypervVirtualMachineSnapshotFiles",
                         "restoreMssqlDatabase",
@@ -23612,6 +23754,7 @@ namespace RubrikSecurityCloud.Types
                         "hideRevealNasNamespaces",
                         "joinSmbDomain",
                         "lockUsersByAdmin",
+                        "modifyActiveDirectoryLiveMount",
                         "promoteReaderTarget",
                         "refreshReaderTarget",
                         "removePrivateEndpointConnection",
@@ -24267,10 +24410,15 @@ namespace RubrikSecurityCloud.Types
                 { "sonarUserGroups", "AccessGroupConnection"},
                 { "sonarUsers", "AccessUserConnection"},
                 { "accountSettings", "AccountSetting"},
+                { "activeDirectoryDomain", "ActiveDirectoryDomain"},
+                { "activeDirectoryDomains", "ActiveDirectoryDomainConnection"},
+                { "activeDirectoryDomainController", "ActiveDirectoryDomainController"},
+                { "activeDirectoryDomainControllers", "ActiveDirectoryDomainControllerConnection"},
                 { "activitySeries", "ActivitySeries"},
                 { "activitySeriesConnection", "ActivitySeriesConnection"},
                 { "userActivityTimeline", "ActivityTimelineResultConnection"},
                 { "userFileActivityTimeline", "ActivityTimelineResultConnection"},
+                { "adVolumeExports", "AdVolumeExportConnection"},
                 { "addAndJoinSmbDomain", "AddAndJoinSmbDomainReply"},
                 { "addAwsAuthenticationServerBasedCloudAccount", "AddAwsAuthenticationServerBasedCloudAccountReply"},
                 { "addAwsIamUserBasedCloudAccount", "AddAwsIamUserBasedCloudAccountReply"},
@@ -24332,6 +24480,8 @@ namespace RubrikSecurityCloud.Types
                 { "bulkTierExistingSnapshots", "AsyncRequestStatus"},
                 { "checkCloudComputeConnectivityJobProgress", "AsyncRequestStatus"},
                 { "configureSapHanaRestore", "AsyncRequestStatus"},
+                { "createActiveDirectoryLiveMount", "AsyncRequestStatus"},
+                { "createDomainControllerSnapshot", "AsyncRequestStatus"},
                 { "createDownloadSnapshotForVolumeGroup", "AsyncRequestStatus"},
                 { "createExchangeMount", "AsyncRequestStatus"},
                 { "createFilesetSnapshot", "AsyncRequestStatus"},
@@ -24365,6 +24515,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteVsphereLiveMount", "AsyncRequestStatus"},
                 { "discoverDb2Instance", "AsyncRequestStatus"},
                 { "discoverMongoSource", "AsyncRequestStatus"},
+                { "downloadActiveDirectorySnapshotFromLocation", "AsyncRequestStatus"},
                 { "downloadDb2Snapshot", "AsyncRequestStatus"},
                 { "downloadDb2SnapshotsForPointInTimeRecovery", "AsyncRequestStatus"},
                 { "downloadExchangeSnapshot", "AsyncRequestStatus"},
@@ -24417,6 +24568,7 @@ namespace RubrikSecurityCloud.Types
                 { "recoverCloudDirectPath", "AsyncRequestStatus"},
                 { "recoverMongoSource", "AsyncRequestStatus"},
                 { "refreshDb2Database", "AsyncRequestStatus"},
+                { "refreshDomain", "AsyncRequestStatus"},
                 { "refreshHypervScvmm", "AsyncRequestStatus"},
                 { "refreshHypervServer", "AsyncRequestStatus"},
                 { "refreshNutanixCluster", "AsyncRequestStatus"},
@@ -24425,6 +24577,8 @@ namespace RubrikSecurityCloud.Types
                 { "registerHypervScvmm", "AsyncRequestStatus"},
                 { "reseedLogShippingSecondary", "AsyncRequestStatus"},
                 { "resizeManagedVolume", "AsyncRequestStatus"},
+                { "restoreActiveDirectoryObjects", "AsyncRequestStatus"},
+                { "restoreDomainControllerSnapshot", "AsyncRequestStatus"},
                 { "restoreFilesNutanixSnapshot", "AsyncRequestStatus"},
                 { "restoreHypervVirtualMachineSnapshotFiles", "AsyncRequestStatus"},
                 { "restoreMssqlDatabase", "AsyncRequestStatus"},
@@ -25440,6 +25594,7 @@ namespace RubrikSecurityCloud.Types
                 { "hideRevealNasNamespaces", "Void"},
                 { "joinSmbDomain", "Void"},
                 { "lockUsersByAdmin", "Void"},
+                { "modifyActiveDirectoryLiveMount", "Void"},
                 { "promoteReaderTarget", "Void"},
                 { "refreshReaderTarget", "Void"},
                 { "removePrivateEndpointConnection", "Void"},
@@ -26341,6 +26496,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Download,
                     new List<string> {
+                    "ActiveDirectorySnapshotFromLocation",
                     "AuditLogCsvAsync",
                     "CdmUpgradesPdf",
                     "EdVersionList",
@@ -26996,6 +27152,7 @@ namespace RubrikSecurityCloud.Types
                     "BrowseFileList",
                     "BulkTierExistings",
                     "ClosestToPointInTime",
+                    "CreateDomainController",
                     "CreateDownloadForVolumeGroup",
                     "CreateFileset",
                     "DeleteCloudWorkload",
@@ -27013,6 +27170,7 @@ namespace RubrikSecurityCloud.Types
                     "Polaris",
                     "Pvcs",
                     "QuarantinedDetails",
+                    "RestoreDomainController",
                     "RestoreVolumeGroupFiles",
                     "Results",
                     "SnappableList",

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isActive")]
         public System.Boolean? IsActive { get; set; }
 
+        //      C# -> System.Boolean? IsInherited
+        // GraphQL -> isInherited: Boolean! (scalar)
+        [JsonProperty("isInherited")]
+        public System.Boolean? IsInherited { get; set; }
+
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)
         [JsonProperty("maxValue")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public PasswordComplexityPolicyTemplate Set(
         System.Int32? DefaultValue = null,
         System.Boolean? IsActive = null,
+        System.Boolean? IsInherited = null,
         System.Int32? MaxValue = null,
         System.Int32? MinValue = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsActive != null ) {
             this.IsActive = IsActive;
+        }
+        if ( IsInherited != null ) {
+            this.IsInherited = IsInherited;
         }
         if ( MaxValue != null ) {
             this.MaxValue = MaxValue;
@@ -95,6 +104,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isActive\n" ;
             } else {
                 s += ind + "isActive\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInherited
+        // GraphQL -> isInherited: Boolean! (scalar)
+        if (this.IsInherited != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInherited\n" ;
+            } else {
+                s += ind + "isInherited\n" ;
             }
         }
         //      C# -> System.Int32? MaxValue
@@ -155,6 +173,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsActive != null && ec.Excludes("isActive",true))
         {
             this.IsActive = null;
+        }
+        //      C# -> System.Boolean? IsInherited
+        // GraphQL -> isInherited: Boolean! (scalar)
+        if (ec.Includes("isInherited",true))
+        {
+            if(this.IsInherited == null) {
+
+                this.IsInherited = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInherited != null && ec.Excludes("isInherited",true))
+        {
+            this.IsInherited = null;
         }
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)

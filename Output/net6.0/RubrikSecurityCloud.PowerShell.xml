@@ -8345,9 +8345,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationDownload">
              <summary>
-             Create a new RscQuery object for any of the 16
+             Create a new RscQuery object for any of the 17
              operations in the 'Report Download' API domain:
-             AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+             ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
              </summary>
              <description>
              New-RscMutationDownload creates a new
@@ -8357,15 +8357,15 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 16 operations
+             There are 17 operations
              in the 'Report Download' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+             one of: ActiveDirectorySnapshotFromLocation, AuditLogCsvAsync, ExchangeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
-             (New-RscMutationDownload -AuditLogCsvAsync).Info().
+             (New-RscMutationDownload -ActiveDirectorySnapshotFromLocation).Info().
              Each operation also has its own set of fields that can be
              selected for retrieval. If you do not specify any fields,
              a set of default fields will be selected. The selection is
@@ -8392,11 +8392,49 @@
              To know what [RubrikSecurityCloud.Types] object to use
              for a specific operation,
              call Info() on the object returned by this cmdlet, for example:
-             (New-RscMutationDownload -AuditLogCsvAsync).Info().
+             (New-RscMutationDownload -ActiveDirectorySnapshotFromLocation).Info().
              You can combine a -Field parameter with patching parameters.
              -Field is applied first, then -FilePatch, -AddField and -RemoveField.
             
              </description>
+            
+             <example>
+             Runs the ActiveDirectorySnapshotFromLocation operation
+             of the 'Report Download' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Download
+             # API Operation: ActiveDirectorySnapshotFromLocation
+             
+             $query = New-RscMutationDownload -ActiveDirectorySnapshotFromLocation
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# OPTIONAL
+             	downloadConfig = @{
+             		# OPTIONAL
+             		slaId = $someString
+             	}
+             	# REQUIRED
+             	locationId = $someString
+             	# REQUIRED
+             	snapshotId = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+             
+             
+             
+             </code>
+            
+             </example>
             
              <example>
              Runs the AuditLogCsvAsync operation
@@ -13938,6 +13976,8 @@
              		# REQUIRED
              		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
              		# OPTIONAL
+             		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+             		# OPTIONAL
              		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
              		# REQUIRED
              		mongoClientHosts = @(
@@ -14237,6 +14277,8 @@
              		# OPTIONAL
              		sslCertfilePath = $someString
              		# OPTIONAL
+             		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+             		# OPTIONAL
              		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
              	}
              }
@@ -14350,6 +14392,8 @@
              		sslCertfilePath = $someString
              		# REQUIRED
              		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+             		# OPTIONAL
+             		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
              		# OPTIONAL
              		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
              		# REQUIRED
@@ -17915,6 +17959,8 @@
              				snapshotId = $someString
              				# REQUIRED
              				snapshotNum = $someInt
+             				# OPTIONAL
+             				siteOwnerEmail = $someString
              			}
              			# OPTIONAL
              			spItemsToRestore = @{
@@ -19765,6 +19811,8 @@
              	isLiveMount = $someBoolean
              	# REQUIRED
              	dbId = $someString
+             	# OPTIONAL
+             	isDifferentTargetDbName = $someBoolean
              }
              
              # Execute the query
@@ -23857,9 +23905,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationSnapshot">
              <summary>
-             Create a new RscQuery object for any of the 15
+             Create a new RscQuery object for any of the 17
              operations in the 'Snapshot' API domain:
-             BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
+             BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
              </summary>
              <description>
              New-RscMutationSnapshot creates a new
@@ -23869,11 +23917,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 15 operations
+             There are 17 operations
              in the 'Snapshot' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
+             one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -24022,6 +24070,44 @@
              			$someString
              		)
              	}
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the CreateDomainController operation
+             of the 'Snapshot' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Snapshot
+             # API Operation: CreateDomainController
+             
+             $query = New-RscMutationSnapshot -CreateDomainController
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# OPTIONAL
+             	config = @{
+             		# OPTIONAL
+             		slaId = $someString
+             	}
+             	# REQUIRED
+             	id = $someString
+             	# OPTIONAL
+             	userNote = $someString
              }
              
              # Execute the query
@@ -24268,6 +24354,53 @@
              	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
              	# REQUIRED
              	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the RestoreDomainController operation
+             of the 'Snapshot' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Snapshot
+             # API Operation: RestoreDomainController
+             
+             $query = New-RscMutationSnapshot -RestoreDomainController
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	config = @{
+             		# OPTIONAL
+             		snapshotForAuthoritativeRestore = $someString
+             		# REQUIRED
+             		domainControllerRestoreConfigs = @(
+             			@{
+             				# OPTIONAL
+             				hostId = $someString
+             				# REQUIRED
+             				snapshotId = $someString
+             			}
+             		)
+             		# REQUIRED
+             		shouldPerformAuthoritativeAdObjectsRestore = $someBoolean
+             		# REQUIRED
+             		shouldPerformAuthoritativeSysvolRestore = $someBoolean
+             	}
              }
              
              # Execute the query
@@ -26077,6 +26210,8 @@
              					# OPTIONAL
              					folderId = $someString
              					# OPTIONAL
+             					contentLibraryId = $someString
+             					# OPTIONAL
              					shouldConvertToTemplate = $someBoolean
              					# REQUIRED
              					datastoreId = $someString
@@ -26196,6 +26331,8 @@
              					}
              					# OPTIONAL
              					folderId = $someString
+             					# OPTIONAL
+             					contentLibraryId = $someString
              					# OPTIONAL
              					shouldConvertToTemplate = $someBoolean
              				}
@@ -26492,6 +26629,8 @@
              		# OPTIONAL
              		folderId = $someString
              		# OPTIONAL
+             		contentLibraryId = $someString
+             		# OPTIONAL
              		shouldConvertToTemplate = $someBoolean
              		# REQUIRED
              		datastoreId = $someString
@@ -26594,6 +26733,8 @@
              		# OPTIONAL
              		folderId = $someString
              		# OPTIONAL
+             		contentLibraryId = $someString
+             		# OPTIONAL
              		shouldConvertToTemplate = $someBoolean
              	}
              	# REQUIRED
@@ -26682,6 +26823,8 @@
              		}
              		# OPTIONAL
              		folderId = $someString
+             		# OPTIONAL
+             		contentLibraryId = $someString
              		# OPTIONAL
              		shouldConvertToTemplate = $someBoolean
              		# REQUIRED
@@ -34392,8 +34535,6 @@
              
              # REQUIRED
              $query.Var.input = @{
-             	# OPTIONAL
-             	csrId = $someInt64
              	# REQUIRED
              	csrFid = $someString
              }
@@ -47156,6 +47297,8 @@
              $query.Var.sortBy = $someListValidReplicationTargetsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListValidReplicationTargetsSortByField]) for enum values.
              # OPTIONAL
              $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+             # OPTIONAL
+             $query.Var.isCrossAccount = $someBoolean
              
              # Execute the query
              

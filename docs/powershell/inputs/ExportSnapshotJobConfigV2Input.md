@@ -27,6 +27,8 @@ Supported in v5.1+
   - 
 - folderId: System.String
   - ID of the virtual machine folder to export the new virtual machine to.
+- contentLibraryId: System.String
+  - ID of the content library to which the new content library item is being exported.
 - shouldConvertToTemplate: System.Boolean
   - Specifies whether Export converts the recovered virtual machine to a template.
 - datastoreId: System.String

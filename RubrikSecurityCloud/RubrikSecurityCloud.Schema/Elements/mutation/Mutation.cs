@@ -2559,6 +2559,35 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? ModifyActiveDirectoryLiveMount
+        // GraphQL -> modifyActiveDirectoryLiveMount: Void (scalar)
+        public static string ModifyActiveDirectoryLiveMount_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "modifyActiveDirectoryLiveMount" + args + "\n";
+        }
+        public static string ModifyActiveDirectoryLiveMount_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ModifyActiveDirectoryLiveMount((System.String)fieldSpecObj);
+        }
+        public static string ModifyActiveDirectoryLiveMount(System.String fieldSpec)
+        {
+            return ModifyActiveDirectoryLiveMount_TypedFieldSpec(fieldSpec);
+        }
+        public static string ModifyActiveDirectoryLiveMount(object fieldSpecObj)
+        {
+            return ModifyActiveDirectoryLiveMount_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ModifyActiveDirectoryLiveMountFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? MutateRole
         // GraphQL -> mutateRole: UUID! (scalar)
         public static string MutateRole_TypedFieldSpec(System.String fieldSpec)
@@ -6824,6 +6853,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? CreateActiveDirectoryLiveMount
+        // GraphQL -> createActiveDirectoryLiveMount: AsyncRequestStatus! (type)
+        public static string CreateActiveDirectoryLiveMount_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createActiveDirectoryLiveMount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateActiveDirectoryLiveMount_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateActiveDirectoryLiveMount((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string CreateActiveDirectoryLiveMount(AsyncRequestStatus fieldSpec)
+        {
+            return CreateActiveDirectoryLiveMount_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateActiveDirectoryLiveMount(object fieldSpecObj)
+        {
+            return CreateActiveDirectoryLiveMount_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateActiveDirectoryLiveMountFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> TargetMapping? CreateAutomaticAwsTargetMapping
         // GraphQL -> createAutomaticAwsTargetMapping: TargetMapping! (type)
         public static string CreateAutomaticAwsTargetMapping_TypedFieldSpec(TargetMapping fieldSpec)
@@ -7316,6 +7376,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new CreateCustomReportReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? CreateDomainControllerSnapshot
+        // GraphQL -> createDomainControllerSnapshot: AsyncRequestStatus! (type)
+        public static string CreateDomainControllerSnapshot_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createDomainControllerSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateDomainControllerSnapshot_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateDomainControllerSnapshot((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string CreateDomainControllerSnapshot(AsyncRequestStatus fieldSpec)
+        {
+            return CreateDomainControllerSnapshot_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateDomainControllerSnapshot(object fieldSpecObj)
+        {
+            return CreateDomainControllerSnapshot_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateDomainControllerSnapshotFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9915,6 +10006,37 @@ namespace RubrikSecurityCloud.Types
             return DiscoverMongoSource_ObjectFieldSpec(fieldSpecObj);
         }
         public static object DiscoverMongoSourceFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? DownloadActiveDirectorySnapshotFromLocation
+        // GraphQL -> downloadActiveDirectorySnapshotFromLocation: AsyncRequestStatus! (type)
+        public static string DownloadActiveDirectorySnapshotFromLocation_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "downloadActiveDirectorySnapshotFromLocation" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DownloadActiveDirectorySnapshotFromLocation_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DownloadActiveDirectorySnapshotFromLocation((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string DownloadActiveDirectorySnapshotFromLocation(AsyncRequestStatus fieldSpec)
+        {
+            return DownloadActiveDirectorySnapshotFromLocation_TypedFieldSpec(fieldSpec);
+        }
+        public static string DownloadActiveDirectorySnapshotFromLocation(object fieldSpecObj)
+        {
+            return DownloadActiveDirectorySnapshotFromLocation_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DownloadActiveDirectorySnapshotFromLocationFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -13551,6 +13673,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? RefreshDomain
+        // GraphQL -> refreshDomain: AsyncRequestStatus! (type)
+        public static string RefreshDomain_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "refreshDomain" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string RefreshDomain_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RefreshDomain((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string RefreshDomain(AsyncRequestStatus fieldSpec)
+        {
+            return RefreshDomain_TypedFieldSpec(fieldSpec);
+        }
+        public static string RefreshDomain(object fieldSpecObj)
+        {
+            return RefreshDomain_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RefreshDomainFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GlobalManagerConnectivity? RefreshGlobalManagerConnectivityStatus
         // GraphQL -> refreshGlobalManagerConnectivityStatus: GlobalManagerConnectivity! (type)
         public static string RefreshGlobalManagerConnectivityStatus_TypedFieldSpec(GlobalManagerConnectivity fieldSpec)
@@ -14450,6 +14603,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? RestoreActiveDirectoryObjects
+        // GraphQL -> restoreActiveDirectoryObjects: AsyncRequestStatus! (type)
+        public static string RestoreActiveDirectoryObjects_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "restoreActiveDirectoryObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string RestoreActiveDirectoryObjects_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RestoreActiveDirectoryObjects((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string RestoreActiveDirectoryObjects(AsyncRequestStatus fieldSpec)
+        {
+            return RestoreActiveDirectoryObjects_TypedFieldSpec(fieldSpec);
+        }
+        public static string RestoreActiveDirectoryObjects(object fieldSpecObj)
+        {
+            return RestoreActiveDirectoryObjects_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RestoreActiveDirectoryObjectsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RestoreAzureAdObjectsWithPasswordsReply? RestoreAzureAdObjectsWithPasswords
         // GraphQL -> restoreAzureAdObjectsWithPasswords: RestoreAzureAdObjectsWithPasswordsReply! (type)
         public static string RestoreAzureAdObjectsWithPasswords_TypedFieldSpec(RestoreAzureAdObjectsWithPasswordsReply fieldSpec)
@@ -14477,6 +14661,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RestoreAzureAdObjectsWithPasswordsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? RestoreDomainControllerSnapshot
+        // GraphQL -> restoreDomainControllerSnapshot: AsyncRequestStatus! (type)
+        public static string RestoreDomainControllerSnapshot_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "restoreDomainControllerSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string RestoreDomainControllerSnapshot_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RestoreDomainControllerSnapshot((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string RestoreDomainControllerSnapshot(AsyncRequestStatus fieldSpec)
+        {
+            return RestoreDomainControllerSnapshot_TypedFieldSpec(fieldSpec);
+        }
+        public static string RestoreDomainControllerSnapshot(object fieldSpecObj)
+        {
+            return RestoreDomainControllerSnapshot_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RestoreDomainControllerSnapshotFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
