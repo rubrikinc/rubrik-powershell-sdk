@@ -5,7 +5,7 @@ PROJ_DIR = RubrikSecurityCloud/RubrikSecurityCloud.PowerShell
 PROJ_OUTPUT = $(PROJ_DIR)/bin/Debug
 PROJ_OUTPUT_RELEASE = $(PROJ_DIR)/bin/Release
 
-default: build
+default: clean build test
 build: build-debug
 release: build-release
 
@@ -34,7 +34,9 @@ build-nodocs:
 clean:
 	$(MAKE) -C Tests clean
 	rm -rf $(OUTPUT) $(OUTPUT_RELEASE)
-	find . -iname "obj" -or -iname "bin" | xargs rm -rf
+	find . -iname "obj" -type d | xargs rm -rf
+	find . -iname "bin" -type d | xargs rm -rf
+	find . -iname "testResults.xml" -or -iname "tmp_help" | xargs rm -rf
 
 test: 	
 	@echo "Running SDK tests: (unit and e2e) x (Toolkit and Core)"

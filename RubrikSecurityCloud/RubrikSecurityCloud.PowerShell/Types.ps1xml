@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Types>
-  <Type>
+  <!-- <Type>
     <Name>RubrikSecurityCloud.Types.VsphereVm</Name>
     <Members>
       <MemberSet>
@@ -36,5 +36,5 @@
         </Members>
       </MemberSet>
     </Members>
-  </Type>
+  </Type> -->
 </Types>

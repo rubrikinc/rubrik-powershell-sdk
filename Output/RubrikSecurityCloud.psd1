@@ -8,7 +8,7 @@
 # RootModule = 'RubrikSecurityCloud.PowerShell.dll'
 
 # Version number of this module.
-ModuleVersion = '0.18.0'
+ModuleVersion = '0.18.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20231025-35 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20231025-48 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'
@@ -58,15 +58,13 @@ PowerShellVersion = '5.0.0'
 
 # Type files (.ps1xml) to be loaded when importing this module
 # Filled in by UpdatePsd1.ps1
-TypesToProcess = @(
-  "Toolkit/Format/MssqlDatabase.Format.ps1xml",
-  "Toolkit/Format/VsphereVm.Format.ps1xml")
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('LoadModule.ps1','PublicFunctions.psm1')
+NestedModules = @('LoadModule.psm1','PublicFunctions.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 # FunctionsToExport = @('List-RscCluster')

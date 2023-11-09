@@ -39,12 +39,11 @@ if ($null -eq (Get-Module -ListAvailable | Where-Object {$_.Name -eq "PlatyPS"})
 }
 
 Import-Module -Name PlatyPS
-Import-Module $ModuleFilePath
-
+Write-Host "Importing module from file $ModuleFilePath"
+Import-Module $ModuleFilePath -ErrorAction Stop
 #Generate markdown from Module Binary
 Write-Output("Writing cmdlet help markdown files, this could take a while. Please wait...")
 $null = New-MarkdownHelp -Module $ModuleName -OutputFolder ./tmp_help/
-
 
 if (!$IncludeFunctions){
     # Remove .md files for functions
@@ -71,7 +70,8 @@ foreach ($memberItem in $xml.doc.members.member){
         $cmdletName = $cmdLetName.Replace("_","-")
         #Write-Output("`nFound Cmdlet: " + $cmdletName);
         #Write-Output("Opening markdownd for $cmdletName")
-        $cmdletMarkdown = Get-Content -Path "tmp_help/$($cmdletName).md" -Raw
+        $mdFile = "tmp_help/$($cmdletName).md"
+        $cmdletMarkdown = Get-Content -Path $mdFile -Raw -ErrorAction Stop
 
         # Get the help text and exmaples for the Cmdlet
         $shortName = $nameArr[1].split(".")[$_.count - 1]

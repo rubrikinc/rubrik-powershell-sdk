@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "ListImplementingTypes":
                         WriteObject(
-                            RscTypeInitializer
+                            ReflectionUtils
                                 .GetTypesImplementingInterface(Interface)
                         );
                         break;

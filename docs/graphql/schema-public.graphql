@@ -616,6 +616,9 @@ type Query {
     # Optional timespan to filter on.
     timespan: DhrcScoreTimespan): [DhrcScore!]!
 
+  # Retrieve all custom distribution list event digests.
+  allDistributionListDigests: [EventDigest!]!
+
   # List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
   allEc2KeyPairsByRegionFromAws(
     # Rubrik ID for AWS account.
@@ -2863,6 +2866,11 @@ type Query {
     # List of subscriptions for filtering results.
     subscriptionIdsFilter: [String!]): GetPoliciesTimelineReply!
 
+  # Retrieve a custom distribution list event digest by ID.
+  distributionListDigest(
+    # Input for retrieving a distribution list digest.
+    input: DistributionDigestByIdInput!): EventDigest!
+
   # Checks if a resource group with the specified name exists in the specified account.
   doesAzureNativeResourceGroupExist(
     # The Rubrik ID of the cloud account.
@@ -3681,7 +3689,7 @@ type Query {
 
   # Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
   isAwsNativeEbsVolumeSnapshotRestorable(
-    # UUID of the snapshot
+    # UUID of the snapshot.
     snapshotId: String!): IsVolumeSnapshotRestorableReply!
 
   # Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
@@ -8000,6 +8008,14 @@ type Mutation {
   createActiveDirectoryLiveMount(
     # Input for V1CreateActiveDirectoryLiveMount.
     input: CreateActiveDirectoryLiveMountInput!): AsyncRequestStatus!
+
+  # Remove a Live Mount of an Active Directory Domain Controller snapshot
+  # 
+  # Supported in v9.0+
+  # Initiates a job to remove a Live Mount of an Active Directory Domain Controller snapshot. Returns the job instance ID.
+  createActiveDirectoryUnmount(
+    # Input for V1CreateActiveDirectoryUnmount.
+    input: CreateActiveDirectoryUnmountInput!): AsyncRequestStatus!
   createAutomaticAwsTargetMapping(
     # Request for creating a new AWS target mapping.
     input: CreateAutomaticAwsTargetMappingInput!): TargetMapping! @deprecated(reason: "This mutation is deprecated.")
@@ -8146,6 +8162,8 @@ type Mutation {
 
   # Create SLA Domain.
   createGlobalSla(input: CreateGlobalSlaInput!): GlobalSlaReply!
+
+  # Create guest OS credentials.
   createGuestCredential(
     # Input for InternalCreateGuestCredential.
     input: CreateGuestCredentialInput!): CreateGuestCredentialReply!
@@ -8488,6 +8506,11 @@ type Mutation {
   deleteDb2Instance(
     # Input for V1DeleteDb2Instance.
     input: DeleteDb2InstanceInput!): AsyncRequestStatus!
+
+  # Delete specific distribution list digests.
+  deleteDistributionListDigestBatch(
+    # Input for deleting distribution list digests.
+    input: DeleteDistributionListDigestBatchInput!): Void
 
   # Delete event digests for specific recipients.
   deleteEventDigest(
@@ -10083,6 +10106,11 @@ type Mutation {
     # Specifies the password complexity policy to be used for the organization. 
     input: SetPasswordComplexityPolicyInput!): Void
 
+  # Sets the Private Container Registry (PCR) details for an exocompute cloud account.
+  setPrivateContainerRegistryDetails(
+    # Input to upsert PCR details.
+    input: SetPrivateContainerRegistryDetailsInput!): SetPrivateContainerRegistryDetailsReply!
+
   # Set User defined SSO certs.
   setSsoCertificate(
     # SSO certificate details to be set.
@@ -10585,6 +10613,11 @@ type Mutation {
   updateDatabaseLogReportingPropertiesForCluster(
     # Input for V1UpdateReportProperties.
     input: UpdateDatabaseLogReportingPropertiesForClusterInput!): DbLogReportProperties!
+
+  # Update specific distribution list digests.
+  updateDistributionListDigest(
+    # Information required to save a distribution list digest.
+    input: UpdateDistributionListDigestInput!): UpdateDistributionListDigestReply!
 
   # Update cluster DNS servers and search domains.
   updateDnsServersAndSearchDomains(
@@ -14869,6 +14902,34 @@ input ArchivalLocationToClusterMappingInput {
 
   # Archival location ID.
   locationId: String = ""
+}
+# Response containing a list of archival location IDs with the information about upgrade of the locations.
+type ArchivalLocationUpgradeInfo {
+  # ID of the archival location.
+  locationId: String!
+
+  # Upgrade status of the archival location.
+  upgradeStatus: UpgradeStatus!
+
+  # Reasons for the lack of support for archival location upgrades when the location can't be upgraded.
+  upgradeUnsupportedReason: ArchivalLocationUpgradeUnsupportedReason!
+}
+# Reasons for which archival location upgrades are not supported.
+enum ArchivalLocationUpgradeUnsupportedReason {
+  # The cluster has a government cloud location registered.
+  CLUSTER_CONTAINS_GOV_CLOUD_LOCATION
+
+  # The cluster version is unsupported.
+  CLUSTER_VERSION_NOT_SUPPORTED
+
+  # The upgrade status of the location is other than UPGRADE_UNSUPPORTED.
+  NOT_APPLICABLE
+
+  # The location is managed by RSC.
+  RSC_MANAGED_LOCATION
+
+  # There is some unexpected error.
+  UNKNOWN_REASON
 }
 # Archiving specification.
 type ArchivalSpec {
@@ -21096,6 +21157,20 @@ input AwsNativeS3SlaConfigInput {
   # Specifies the number of days for which the AWS S3 continuous backups will be retained. 
   continuousBackupRetentionInDays: Int = 0
 }
+# AWS S3-specific snapshot information.
+type AwsNativeS3SpecificSnapshot implements PolarisSpecificSnapshot {
+  # List of objects successfully backed up.
+  processedObjectCount: Long!
+
+  # List of objects failed to back up.
+  failedObjectCount: Long!
+
+  # Verifies if the snapshot is a partial backup.
+  isSnapshotPartial: Boolean!
+
+  # ID of the snapshot.
+  snapshotId: UUID!
+}
 # Represents a subnet in AWS.
 type AwsNativeSubnet {
   # ID of the subnet.
@@ -21706,6 +21781,9 @@ type AzureAdGroup {
 type AzureAdObject {
   # ID of the Azure AD object.
   objectId: String!
+
+  # ID of the snapshot containing Azure AD Object.
+  snapshotId: String!
 
   # Populate either AzureAdUser or AzureAdGroup.
   azureAdObjects: AzureAdObjects!
@@ -31752,6 +31830,9 @@ type ClusterArchivalSpec {
 
   # Archives all snapshots taken with the specified frequency.
   frequencies: [RetentionUnit!]!
+
+  # Archival location type.
+  archivalLocationType: TargetType!
 }
 # ClusterConfig for new CDM cloud cluster.
 input ClusterConfigInput {
@@ -32770,6 +32851,9 @@ type ClusterSlaDomain implements SlaDomain {
 
   # Specifies the retention lock mode when enabled for the SLA Domain.
   retentionLockMode: RetentionLockMode!
+
+  # Upgrade information about the configured archival locations and cascading archival locations.
+  archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!]
 }
 # Paginated list of ClusterSlaDomain objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type ClusterSlaDomainConnection {
@@ -34507,6 +34591,11 @@ input CreateActiveDirectoryLiveMountInput {
   config: ActiveDirectoryLiveMountConfigInput!
 
   # Required. ID of the snapshot to be used to create the Live Mount.
+  id: String!
+}
+# Input for deleting an Active Directory Live Mount.
+input CreateActiveDirectoryUnmountInput {
+  # Required. ID of the Live Mount.
   id: String!
 }
 # Input for creating an AWS target mapping.
@@ -38344,6 +38433,11 @@ input DeleteDb2InstanceInput {
   # Required. ID of the Db2 instance.
   id: String!
 }
+# Input for deleting distribution list digests.
+input DeleteDistributionListDigestBatchInput {
+  # IDs of the distribution list digests that must be deleted.
+  digestIds: [Int!]!
+}
 # Input for deleting an event digest.
 input DeleteEventDigestInput {
   # User IDs of recipients whose event digests must be deleted.
@@ -39248,6 +39342,11 @@ type DisplayableValueString implements DisplayableValue {
   displayValue: String!
   serializedValue: String!
   reportHeader: String!
+}
+# Input for retrieving distribution list digest by ID.
+input DistributionDigestByIdInput {
+  # ID of the distribution list digest that must be retrieved.
+  digestId: Int = 0
 }
 # Holds the configuration for the Data Loss Prevention integration.
 type DlpConfig {
@@ -41953,9 +42052,11 @@ input ExportOracleDbConfigInput {
   # Indicates whether to skip dropping the database in undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
 
+  # Supported in v9.0+
   # List of RAC host simple IDs to recover the database during the clone.
   targetRacHostIds: [String!] = []
 
+  # Supported in v9.0+
   # Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.
   targetRacPrimaryHostId: String
 
@@ -43502,7 +43603,7 @@ input FilesetDownloadFilesJobConfigInput {
   # An optional argument containing a Boolean parameter to depict if the download is being triggered for Legal Hold use case.
   legalHoldDownloadConfig: LegalHoldDownloadConfigInput
 
-  # Supported in v9.0
+  # Supported in v9.0+
   # Password to protect generated zip with.
   zipPassword: String
 
@@ -43526,6 +43627,9 @@ input FilesetDownloadSnapshotFilesInput {
 
   # Optional User note.
   userNote: String
+
+  # Rubrik CDM is version 9.0.1 or later. Password for zip archive created.
+  zipPassword: String
 
   # Configuration information for a job to download files and folders from a fileset backup.
   config: FilesetDownloadFilesJobConfigInput!
@@ -47096,6 +47200,9 @@ type GlobalSlaReply implements SlaDomain {
 
   # Specifies the owner organization of the SLA Domain.
   ownerOrg: SlaAssociatedOrganization!
+
+  # Upgrade information about the configured archival locations and cascading archival locations.
+  archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!]
 }
 # Global SLA status for cluster.
 type GlobalSlaStatus {
@@ -57054,6 +57161,7 @@ input ModifyMosaicStoreInput {
   # Required. Modify store request object with modified details of a store.
   modifyStoreData: MosaicModifyStoreRequestInput!
 }
+# Supported in v9.0+
 # Type of user authentication used when adding the MongoDB cluster.
 # 
 enum MongoAuthenticationType {
@@ -58100,7 +58208,9 @@ input MongoRecoveryRequestConfigInput {
   # Boolean flag to restore MongoDB collections with index.
   isRestoreWithIndex: Boolean
 
-  # Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+  # Supported in v9.0+
+  # v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
+  # v9.1: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
   targetAuthenticationType: MongoAuthenticationType
 
   # Required. Supported in v9.0+
@@ -58371,6 +58481,7 @@ input MongoSourceAddRequestConfigInput {
   # Type of MongoDB cluster.
   mongoType: MongoType!
 
+  # Supported in v9.0+
   # Type of user authentication used when adding the MongoDB cluster.
   sourceAuthenticationType: MongoAuthenticationType
 
@@ -58524,6 +58635,7 @@ input MongoSourcePatchRequestConfigInput {
   # Path to the SSL certificate file.
   sslCertfilePath: String
 
+  # Supported in v9.0+
   # Type of user authentication used when adding the MongoDB cluster.
   sourceAuthenticationType: MongoAuthenticationType
 
@@ -66530,6 +66642,16 @@ type NutanixClusterSummary {
   # Describes any pending SLA Domain assignment on this object.
   pendingSlaDomain: ManagedObjectPendingSlaInfo
 }
+# Supported in v9.0+
+input NutanixClustersListElementInput {
+  # Supported in v9.0+
+  # Name of the Nutanix Cluster.
+  name: String
+
+  # Required. Supported in v9.0+
+  # Natural ID of the Nutanix Cluster.
+  clusterUuid: String!
+}
 # Supported in v5.0+
 type NutanixContainer {
   # Required. Supported in v5.0+
@@ -67214,6 +67336,9 @@ input NutanixPrismCentralPatchInput {
   # Supported in v9.0+
   # Username for the Nutanix Prism Central used for all the cluster connections.
   username: String
+
+  # The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.
+  nutanixClusters: [NutanixClustersListElementInput!] = []
 }
 # Supported in v5.0+
 input NutanixRestoreFileConfigInput {
@@ -74276,6 +74401,11 @@ type PausedClustersInfo {
 
   # Rubrik clusters where the SLA Domain is paused.
   pausedClusters: [Cluster!]
+}
+# Details of how a customer pulls images into their PCR from their AWS account.
+input PcrAwsImagePullDetailsInput {
+  # AWS account ID from which the customer will pull images.
+  awsNativeId: String = ""
 }
 # The group type for the pending action.
 enum PendingActionGroupTypeEnum {
@@ -82056,6 +82186,22 @@ input SetPasswordComplexityPolicyInput {
   # Password complexity policy for the organization.
   policy: PasswordComplexityPolicyInput!
 }
+# Input for upserting Private Container Registry details.
+input SetPrivateContainerRegistryDetailsInput {
+  # Cloud account ID of the exocompute account.
+  exocomputeCloudAccountId: UUID!
+
+  # URL of the Private Container Registry.
+  pcrUrl: String!
+
+  # Details of how a customer pulls images into their PCR from their AWS account.
+  pcrAwsImagePullDetails: PcrAwsImagePullDetailsInput!
+}
+# Response of upserting Private Container Registry details.
+type SetPrivateContainerRegistryDetailsReply {
+  # Whether the PCR upsert request succeeded.
+  success: Boolean!
+}
 # Custom certs to be added for org's Service Provider.
 input SetSsoCertificateInput {
   # ID of the certificate to be added.
@@ -88749,6 +88895,37 @@ input UpdateDatabaseLogReportingPropertiesForClusterInput {
 
   # Required. Updated report properties.
   properties: DbLogReportPropertiesUpdateInput!
+}
+# Information required to save a distribution list digest.
+input UpdateDistributionListDigestInput {
+  # Name of the distribution list digest.
+  digestName: String
+
+  # Frequency, in hours, with which the distribution list digests are sent.
+  frequencyHours: Int
+
+  # Specifies whether to send distribution list  digest immediately or not.
+  isImmediate: Boolean
+
+  # Specifies whether to include audits in the distribution list digest or not.
+  includeAudits: Boolean
+
+  # Specifies whether to include events in the distribution list digest or not.
+  includeEvents: Boolean
+
+  # Distribution list digest configuration.
+  eventDigestConfig: EventDigestConfig!
+
+  # User IDs of the recipients of the distribution list digest.
+  recipientUserIds: [String!]!
+
+  # List of Rubrik cluster UUIDs.
+  clusterUuids: [UUID!] = []
+}
+# Container for a list of updated distribution list digests.
+type UpdateDistributionListDigestReply {
+  # A list of saved event digests.
+  eventDigests: [EventDigest!]!
 }
 # Input for updateDnsServersAndSearchDomains.
 input UpdateDnsServersAndSearchDomainsInput {

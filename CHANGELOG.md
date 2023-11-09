@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.18.2
+
+Fixes:
+
+- Fix install on Windows.
+- Removed format files for MssqlDatabase and VsphereVm.
+
 ## Version 0.18
 
 Fixes:

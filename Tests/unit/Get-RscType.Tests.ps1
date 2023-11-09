@@ -1,5 +1,5 @@
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    & "$PSScriptRoot\..\..\Utils\import.ps1"
 }
 Describe 'Get-RscType' {
     Context 'When called with the -ListAvailable parameter' {

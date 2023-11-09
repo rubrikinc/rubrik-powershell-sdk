@@ -86,39 +86,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return types.OrderBy(type => type.Name).ToList();
         }
 
-        public static List<RscTypeSummary> GetTypesImplementingInterface(string interfaceName)
-        {
-            var typesList = new List<RscTypeSummary>();
-            var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
-
-            if (assembly == null)
-            {
-                throw new Exception("Unable to load RubrikSecurityCloud.Schema");
-            }
-
-            // Get the type of the specified interface
-            Type interfaceType = assembly.GetTypes().FirstOrDefault(t => t.Name == interfaceName && t.IsInterface);
-
-            if (interfaceType == null)
-            {
-                throw new Exception($"Interface {interfaceName} not found.");
-            }
-
-            foreach (var type in assembly.GetTypes())
-            {
-                if (interfaceType.IsAssignableFrom(type) && !type.IsInterface)
-                {
-                    typesList.Add(new RscTypeSummary
-                    {
-                        Name = type.Name
-                    });
-                }
-            }
-
-            return typesList.OrderBy(type => type.Name).ToList();
-        }
-
-
         /// <summary>
         /// Get an RSC schema type by name.
         /// </summary>

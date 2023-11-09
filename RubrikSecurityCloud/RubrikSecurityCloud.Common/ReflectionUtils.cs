@@ -23,11 +23,12 @@ namespace RubrikSecurityCloud
             // remove "System.Collections.Generic.List`1[" at start and
             // "]" at end
             if (typeName.StartsWith(ListPrefix1) &&
-                typeName.EndsWith(ListSuffix1)) {
-                    return typeName.Substring(
-                        ListPrefix1.Length,
-                        typeName.Length - ListPrefix1.Length - ListSuffix1.Length
-                    );
+                typeName.EndsWith(ListSuffix1))
+            {
+                return typeName.Substring(
+                    ListPrefix1.Length,
+                    typeName.Length - ListPrefix1.Length - ListSuffix1.Length
+                );
             }
 
             if (typeName.StartsWith(ListPrefix2) &&
@@ -50,7 +51,8 @@ namespace RubrikSecurityCloud
             }
 
             var innerTypeName = StripList(typeName);
-            if (innerTypeName != typeName) {
+            if (innerTypeName != typeName)
+            {
                 var innerType = ReflectionUtils.GetType(innerTypeName);
                 if (innerType == null)
                 {
@@ -85,6 +87,38 @@ namespace RubrikSecurityCloud
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Get a list of all types that implement the specified interface.
+        /// </summary>
+        public static List<string> GetTypesImplementingInterface(string interfaceName)
+        {
+            var typeNameList = new List<string>();
+            var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
+
+            if (assembly == null)
+            {
+                throw new Exception("Unable to load RubrikSecurityCloud.Schema");
+            }
+
+            // Get the type of the specified interface
+            Type interfaceType = assembly.GetTypes().FirstOrDefault(t => t.Name == interfaceName && t.IsInterface);
+
+            if (interfaceType == null)
+            {
+                throw new Exception($"Interface {interfaceName} not found.");
+            }
+
+            foreach (var type in assembly.GetTypes())
+            {
+                if (interfaceType.IsAssignableFrom(type) && !type.IsInterface)
+                {
+                    typeNameList.Add(type.Name);
+                }
+            }
+
+            return typeNameList.OrderBy(type => type).ToList();
         }
 
         public static bool TypeIsSimple(Type type)
@@ -142,8 +176,9 @@ namespace RubrikSecurityCloud
         public static List<string> FlattenField(
             string typeName,
             FlattenFieldContext? ctx = null,
-            int depth=0
-        ){
+            int depth = 0
+        )
+        {
             if (ctx == null)
             {
                 ctx = new FlattenFieldContext();
@@ -173,17 +208,17 @@ namespace RubrikSecurityCloud
                 Type pType = StripNullableAndListContainers(propInfo.PropertyType);
                 string fieldName = propInfo.Name;
 
-                if ( ctx.SkipFieldNames!=null && ctx.SkipFieldNames.Contains(fieldName))
+                if (ctx.SkipFieldNames != null && ctx.SkipFieldNames.Contains(fieldName))
                 {
                     continue;
                 }
 
-                if ( pType.IsClass && ! TypeIsSimple(pType))
+                if (pType.IsClass && !TypeIsSimple(pType))
                 {
                     string pTypeName = pType.FullName;
                     List<string> nestedFields =
-                        FlattenField(pTypeName, ctx, depth+1);
-                    if(nestedFields.Count>0)
+                        FlattenField(pTypeName, ctx, depth + 1);
+                    if (nestedFields.Count > 0)
                     {
                         nestedFields =
                             nestedFields
