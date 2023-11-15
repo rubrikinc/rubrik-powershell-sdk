@@ -2,17 +2,28 @@
 function Get-RscSlaDomain {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Retrieves Global SLA Domains defined in Rubrik Security Cloud 
 
     .DESCRIPTION
-    ___ Add description here ___
+    SLA Domains are policies that define how frequently an object is backed up, how long to retain it,
+    and rules regarding replication and archival of protected data.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .EXAMPLE
-    ___ Add example here ___
+    # Return all SLA Domains
+    Get-RscSlaDomain
+
+    .EXAMPLE
+    # Return an SLA Domain with 'Gold' in the name
+    Get-RscSlaDomain "Gold"
+
+    .EXAMPLE
+    # You can pipe the output of the cmdlet to another cmdlet. 
+    # In this case, we get a list of VMware VMs that are a member of SLAs with 'gold' in the name.
+    Get-RscSlaDomain "Gold" | Get-RscVmwareVm
     #>
 
     [CmdletBinding(
