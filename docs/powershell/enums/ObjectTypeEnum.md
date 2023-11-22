@@ -29,7 +29,7 @@
 - AzureNativeVm
 - AZURE_SQL_DATABASE_DB
 - WindowsFileset
-- JIRA_FIXED_OBJECT - Jira fixed object.
+- JIRA_FIXED_OBJECT - Jira settings.
 - Db2Database
 - Mssql
 - NAS_FILESET

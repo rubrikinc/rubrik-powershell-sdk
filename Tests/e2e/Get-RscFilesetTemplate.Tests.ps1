@@ -3,7 +3,7 @@
 Run tests around fileset templates
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 

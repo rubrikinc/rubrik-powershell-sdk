@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("role")]
         public AzureRole? Role { get; set; }
 
+        //      C# -> List<AzureRole>? Roles
+        // GraphQL -> roles: [AzureRole!]! (type)
+        [JsonProperty("roles")]
+        public List<AzureRole>? Roles { get; set; }
+
         //      C# -> AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)
         [JsonProperty("userAssignedManagedIdentity")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         PersistentStorage? PersistentStorage = null,
         AzureResourceGroup? ResourceGroup = null,
         AzureRole? Role = null,
+        List<AzureRole>? Roles = null,
         AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Role != null ) {
             this.Role = Role;
+        }
+        if ( Roles != null ) {
+            this.Roles = Roles;
         }
         if ( UserAssignedManagedIdentity != null ) {
             this.UserAssignedManagedIdentity = UserAssignedManagedIdentity;
@@ -166,6 +175,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "role {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzureRole>? Roles
+        // GraphQL -> roles: [AzureRole!]! (type)
+        if (this.Roles != null) {
+            var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "roles {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -295,6 +316,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Role != null && ec.Excludes("role",false))
         {
             this.Role = null;
+        }
+        //      C# -> List<AzureRole>? Roles
+        // GraphQL -> roles: [AzureRole!]! (type)
+        if (ec.Includes("roles",false))
+        {
+            if(this.Roles == null) {
+
+                this.Roles = new List<AzureRole>();
+                this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+
+            } else {
+
+                this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+
+            }
+        }
+        else if (this.Roles != null && ec.Excludes("roles",false))
+        {
+            this.Roles = null;
         }
         //      C# -> AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)

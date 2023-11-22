@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> TargetType? ArchivalLocationType
+        // GraphQL -> archivalLocationType: TargetType! (enum)
+        [JsonProperty("archivalLocationType")]
+        public TargetType? ArchivalLocationType { get; set; }
+
         //      C# -> List<RetentionUnit>? Frequencies
         // GraphQL -> frequencies: [RetentionUnit!]! (enum)
         [JsonProperty("frequencies")]
@@ -60,6 +65,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterArchivalSpec Set(
+        TargetType? ArchivalLocationType = null,
         List<RetentionUnit>? Frequencies = null,
         RetentionUnit? ThresholdUnit = null,
         System.String? ArchivalLocationId = null,
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         ArchivalTieringSpec? ArchivalTieringSpec = null
     ) 
     {
+        if ( ArchivalLocationType != null ) {
+            this.ArchivalLocationType = ArchivalLocationType;
+        }
         if ( Frequencies != null ) {
             this.Frequencies = Frequencies;
         }
@@ -97,6 +106,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> TargetType? ArchivalLocationType
+        // GraphQL -> archivalLocationType: TargetType! (enum)
+        if (this.ArchivalLocationType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationType\n" ;
+            } else {
+                s += ind + "archivalLocationType\n" ;
+            }
+        }
         //      C# -> List<RetentionUnit>? Frequencies
         // GraphQL -> frequencies: [RetentionUnit!]! (enum)
         if (this.Frequencies != null) {
@@ -161,6 +179,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> TargetType? ArchivalLocationType
+        // GraphQL -> archivalLocationType: TargetType! (enum)
+        if (ec.Includes("archivalLocationType",true))
+        {
+            if(this.ArchivalLocationType == null) {
+
+                this.ArchivalLocationType = new TargetType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationType != null && ec.Excludes("archivalLocationType",true))
+        {
+            this.ArchivalLocationType = null;
+        }
         //      C# -> List<RetentionUnit>? Frequencies
         // GraphQL -> frequencies: [RetentionUnit!]! (enum)
         if (ec.Includes("frequencies",true))

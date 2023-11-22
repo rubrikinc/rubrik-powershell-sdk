@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 33
+    /// Create a new RscQuery object for any of the 32
     /// operations in the 'AWS' API domain:
-    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 33 operations
+    /// There are 32 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -450,6 +450,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldCreateContainer = $someBoolean
     /// 			# OPTIONAL
     /// 			enableImmutability = $someBoolean
+    /// 			# OPTIONAL
+    /// 			managedIdentity = @{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				clientId = $someString
+    /// 				# OPTIONAL
+    /// 				resourceGroup = $someString
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		awsEsConfig = @{
@@ -836,51 +845,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DeleteCluster operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Aws
-    /// # API Operation: DeleteCluster
-    /// 
-    /// $query = New-RscMutationAws -DeleteCluster
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	clusterName = $someString
-    /// 	# OPTIONAL
-    /// 	numNodes = $someInt
-    /// 	# OPTIONAL
-    /// 	isEsType = $someBoolean
-    /// 	# OPTIONAL
-    /// 	bucketName = $someString
-    /// 	# OPTIONAL
-    /// 	isNewContainer = $someBoolean
-    /// 	# OPTIONAL
-    /// 	clusterUuid = $someString
-    /// 	# OPTIONAL
-    /// 	region = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
     /// 
     /// 
     /// 
@@ -1924,7 +1888,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateExocomputeConfigs",
                 "CreateReaderTarget",
                 "CreateTarget",
-                "DeleteCluster",
                 "DeleteComputeSetting",
                 "DeleteExocomputeConfigs",
                 "FinalizeCloudAccountDeletion",
@@ -1993,9 +1956,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateTarget":
                         this.ProcessRecord_CreateTarget();
-                        break;
-                    case "DeleteCluster":
-                        this.ProcessRecord_DeleteCluster();
                         break;
                     case "DeleteComputeSetting":
                         this.ProcessRecord_DeleteComputeSetting();
@@ -2167,15 +2127,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateTarget";
             // Create new graphql operation createAwsTarget
             InitMutationCreateAwsTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAwsCluster.
-        internal void ProcessRecord_DeleteCluster()
-        {
-            this._logger.name += " -DeleteCluster";
-            // Create new graphql operation deleteAwsCluster
-            InitMutationDeleteAwsCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2696,6 +2647,15 @@ $query.Var.input = @{
 			shouldCreateContainer = $someBoolean
 			# OPTIONAL
 			enableImmutability = $someBoolean
+			# OPTIONAL
+			managedIdentity = @{
+				# OPTIONAL
+				name = $someString
+				# OPTIONAL
+				clientId = $someString
+				# OPTIONAL
+				resourceGroup = $someString
+			}
 		}
 		# OPTIONAL
 		awsEsConfig = @{
@@ -3043,43 +3003,6 @@ $query.Var.input = @{
 	kmsEndpoint = $someString
 	# REQUIRED
 	bypassProxy = $someBoolean
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteAwsCluster(input: DeleteAwsClusterInput!): CcProvisionJobReply!
-        internal void InitMutationDeleteAwsCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAwsClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAwsCluster",
-                "($input: DeleteAwsClusterInput!)",
-                "CcProvisionJobReply",
-                Mutation.DeleteAwsCluster_ObjectFieldSpec,
-                Mutation.DeleteAwsClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	clusterName = $someString
-	# OPTIONAL
-	numNodes = $someInt
-	# OPTIONAL
-	isEsType = $someBoolean
-	# OPTIONAL
-	bucketName = $someString
-	# OPTIONAL
-	isNewContainer = $someBoolean
-	# OPTIONAL
-	clusterUuid = $someString
-	# OPTIONAL
-	region = $someString
 }"
             );
         }

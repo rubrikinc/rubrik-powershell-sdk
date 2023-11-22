@@ -3955,6 +3955,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<EventDigest>? AllDistributionListDigests
+        // GraphQL -> allDistributionListDigests: [EventDigest!]! (type)
+        public static string AllDistributionListDigests_TypedFieldSpec(List<EventDigest> fieldSpec)
+        {
+            string args = "";
+            return "allDistributionListDigests" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllDistributionListDigests_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllDistributionListDigests((List<EventDigest>)fieldSpecObj);
+        }
+        public static string AllDistributionListDigests(List<EventDigest> fieldSpec)
+        {
+            return AllDistributionListDigests_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllDistributionListDigests(object fieldSpecObj)
+        {
+            return AllDistributionListDigests_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllDistributionListDigestsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<EventDigest>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<RbacPermission>? AllEffectiveRbacPermissions
         // GraphQL -> allEffectiveRbacPermissions: [RbacPermission!]! (type)
         public static string AllEffectiveRbacPermissions_TypedFieldSpec(List<RbacPermission> fieldSpec)
@@ -10616,6 +10647,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new GetPoliciesTimelineReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> EventDigest? DistributionListDigest
+        // GraphQL -> distributionListDigest: EventDigest! (type)
+        public static string DistributionListDigest_TypedFieldSpec(EventDigest fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "distributionListDigest" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DistributionListDigest_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DistributionListDigest((EventDigest)fieldSpecObj);
+        }
+        public static string DistributionListDigest(EventDigest fieldSpec)
+        {
+            return DistributionListDigest_TypedFieldSpec(fieldSpec);
+        }
+        public static string DistributionListDigest(object fieldSpecObj)
+        {
+            return DistributionListDigest_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DistributionListDigestFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new EventDigest() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -20908,6 +20970,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new TaskDetailGroupByConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> Taskchain? Taskchain
+        // GraphQL -> taskchain: Taskchain! (type)
+        public static string Taskchain_TypedFieldSpec(Taskchain fieldSpec)
+        {
+            string args = "\n(\ntaskchainId: $taskchainId\n)";
+            return "taskchain" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string Taskchain_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return Taskchain((Taskchain)fieldSpecObj);
+        }
+        public static string Taskchain(Taskchain fieldSpec)
+        {
+            return Taskchain_TypedFieldSpec(fieldSpec);
+        }
+        public static string Taskchain(object fieldSpecObj)
+        {
+            return Taskchain_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object TaskchainFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new Taskchain() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

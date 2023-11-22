@@ -90,6 +90,19 @@ namespace RubrikSecurityCloud
         public static bool IgnoreMissingRequiredVariables = false;
 
         /// <summary>
+        /// When retrieving a list of objects, the maximum number of objects to return in a single request.
+        /// More specifically, this sets the max value for a GraphQL
+        /// connection query's "first" parameter.
+        /// Setting this value to 0 or less will disable this limit.
+        /// </summary>
+        public static int ConnectionMaxPageSize = 50 ;
+
+        /// <summary>
+        /// Log a warning if ConnectionMaxPageSize is exceeded.
+        /// </summary>
+        public static bool WarnIfConnectionPageSizeExceeded = true;
+
+        /// <summary>
         /// Return config as JSON
         /// </summary>
         public static string ToJson()

@@ -9,6 +9,7 @@ Enum representing different type of activities.
 - HypervScvmm
 - THREAT_FEED - Activity representing threat feed event type.
 - Hdfs
+- SCHEDULE_RECOVERY - Activity representing schedule-recovery event type.
 - RadarAnalysis
 - VolumeGroup
 - LockSnapshot

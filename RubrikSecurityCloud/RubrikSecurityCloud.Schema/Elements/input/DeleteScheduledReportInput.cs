@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.Int32? Id { get; set; }
 
+        //      C# -> System.Int32? ReportId
+        // GraphQL -> reportId: Int (scalar)
+        [JsonProperty("reportId")]
+        public System.Int32? ReportId { get; set; }
+
 
         #endregion
 

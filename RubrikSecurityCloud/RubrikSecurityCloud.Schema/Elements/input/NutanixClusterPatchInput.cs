@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate (enum)
+        [JsonProperty("snapshotConsistencyMandate")]
+        public CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
+
 
         #endregion
 

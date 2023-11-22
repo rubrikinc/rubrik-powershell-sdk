@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("differentialFrequency")]
         public SlaDurationInput? DifferentialFrequency { get; set; }
 
+        //      C# -> SapHanaStorageSnapshotConfigInput? StorageSnapshotConfig
+        // GraphQL -> storageSnapshotConfig: SapHanaStorageSnapshotConfigInput (input)
+        [JsonProperty("storageSnapshotConfig")]
+        public SapHanaStorageSnapshotConfigInput? StorageSnapshotConfig { get; set; }
+
 
         #endregion
 

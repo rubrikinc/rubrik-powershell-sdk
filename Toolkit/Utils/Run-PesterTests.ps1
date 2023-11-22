@@ -17,6 +17,8 @@ Param(
 if (-not [System.IO.Path]::IsPathRooted($TestPath)) {
     $TestPath = Join-Path -Path $PWD -ChildPath $TestPath
 }
+# Resolve "." and ".." in the path
+$TestPath = (Get-Item -Path $TestPath).FullName
 
 function InstallPesterIfNeeded {
     # Check if Pester is installed
@@ -43,4 +45,5 @@ InstallPesterIfNeeded
 $p = Get-Item -Path $TestPath
 $displayPath = Join-Path $p.Parent.Parent.Name $p.Parent.Name $p.Name
 Write-Host "`n[$($p.Name)] Running Pester tests in $displayPath" -ForegroundColor Cyan
+
 Invoke-Pester -CI $TestPath

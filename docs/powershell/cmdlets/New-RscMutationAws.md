@@ -45,11 +45,6 @@ Create a reader type for AWS archival location on a Rubrik cluster.
 ### createtarget
 - There is a single argument of type CreateAwsTargetInput.
 - Returns Target.
-### deletecluster
-Delete a Rubrik Cloud Cluster on AWS.
-
-- There is a single argument of type DeleteAwsClusterInput.
-- Returns CcProvisionJobReply.
 ### deletecomputesetting
 - There is a single argument of type DeleteAwsComputeSettingInput.
 - Returns System.String.

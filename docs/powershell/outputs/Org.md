@@ -35,3 +35,5 @@ Details of an org.
   - Physical storage used by the organization.
 - allUrls: list of System.Strings
   - All URLs associated with the organization.
+- crossAccountCapabilities: list of CrossAccountCapabilitys
+  - Specifies cross-account capabilities enabled for this organization.

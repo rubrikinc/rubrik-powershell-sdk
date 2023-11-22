@@ -3,7 +3,7 @@
 Run tests around fields.
 #>
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 
     function FieldSelectionCheck {
         param(

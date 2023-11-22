@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("searchObjectFilter")]
         public ContactsSearchObjectFilter? SearchObjectFilter { get; set; }
 
+        //      C# -> LambdaPathFilters? LambdaFilters
+        // GraphQL -> lambdaFilters: LambdaPathFilters (input)
+        [JsonProperty("lambdaFilters")]
+        public LambdaPathFilters? LambdaFilters { get; set; }
+
 
         #endregion
 

@@ -78,6 +78,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CREATE_THREAT_HUNT")]
         CREATE_THREAT_HUNT,
 
+        [EnumMember(Value = "CROSS_ACCOUNT_REPLICATION")]
+        CROSS_ACCOUNT_REPLICATION,
+
         [EnumMember(Value = "DELETE_AWS_CLOUD_ACCOUNT")]
         DELETE_AWS_CLOUD_ACCOUNT,
 
@@ -194,6 +197,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_DATA_SOURCE")]
         MANAGE_DATA_SOURCE,
+
+        [EnumMember(Value = "MANAGE_DL_EMAIL_SETTINGS")]
+        MANAGE_DL_EMAIL_SETTINGS,
 
         [EnumMember(Value = "MANAGE_GPS_TO_RSC_UPGRADE")]
         MANAGE_GPS_TO_RSC_UPGRADE,
@@ -356,6 +362,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_DB_LOG_REPORT_PROPERTIES")]
         VIEW_DB_LOG_REPORT_PROPERTIES,
+
+        [EnumMember(Value = "VIEW_DL_EMAIL_SETTINGS")]
+        VIEW_DL_EMAIL_SETTINGS,
 
         [EnumMember(Value = "VIEW_EVENT_CLUSTER_SETTING")]
         VIEW_EVENT_CLUSTER_SETTING,

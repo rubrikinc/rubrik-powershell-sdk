@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotConsistencyMandate")]
         public VirtualMachineSummarySnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
 
+        //      C# -> VirtualMachineTemplateType? TemplateType
+        // GraphQL -> templateType: VirtualMachineTemplateType (enum)
+        [JsonProperty("templateType")]
+        public VirtualMachineTemplateType? TemplateType { get; set; }
+
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
         [JsonProperty("clusterName")]
@@ -146,6 +151,7 @@ namespace RubrikSecurityCloud.Types
 
     public VirtualMachineSummary Set(
         VirtualMachineSummarySnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
+        VirtualMachineTemplateType? TemplateType = null,
         System.String? ClusterName = null,
         System.String? GuestCredentialAuthorizationStatus = null,
         System.String? GuestOsName = null,
@@ -172,6 +178,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( SnapshotConsistencyMandate != null ) {
             this.SnapshotConsistencyMandate = SnapshotConsistencyMandate;
+        }
+        if ( TemplateType != null ) {
+            this.TemplateType = TemplateType;
         }
         if ( ClusterName != null ) {
             this.ClusterName = ClusterName;
@@ -257,6 +266,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotConsistencyMandate\n" ;
             } else {
                 s += ind + "snapshotConsistencyMandate\n" ;
+            }
+        }
+        //      C# -> VirtualMachineTemplateType? TemplateType
+        // GraphQL -> templateType: VirtualMachineTemplateType (enum)
+        if (this.TemplateType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateType\n" ;
+            } else {
+                s += ind + "templateType\n" ;
             }
         }
         //      C# -> System.String? ClusterName
@@ -501,6 +519,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotConsistencyMandate != null && ec.Excludes("snapshotConsistencyMandate",true))
         {
             this.SnapshotConsistencyMandate = null;
+        }
+        //      C# -> VirtualMachineTemplateType? TemplateType
+        // GraphQL -> templateType: VirtualMachineTemplateType (enum)
+        if (ec.Includes("templateType",true))
+        {
+            if(this.TemplateType == null) {
+
+                this.TemplateType = new VirtualMachineTemplateType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateType != null && ec.Excludes("templateType",true))
+        {
+            this.TemplateType = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)

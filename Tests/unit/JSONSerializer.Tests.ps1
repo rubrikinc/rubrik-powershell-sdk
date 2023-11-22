@@ -1,5 +1,5 @@
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 }
 Describe -Name "TEST Json serialization" -Fixture {
     It -Name "List of enum values" -Test {

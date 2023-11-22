@@ -474,6 +474,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		restoreThrottleInBytesPerSecond = $someInt64
     /// 		# OPTIONAL
     /// 		isRestoreWithIndex = $someBoolean
+    /// 		# OPTIONAL
+    /// 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 		# REQUIRED
     /// 		sourceMongoClusterId = $someString
     /// 		# REQUIRED
@@ -1170,6 +1172,8 @@ $query.Var.input = @{
 		restoreThrottleInBytesPerSecond = $someInt64
 		# OPTIONAL
 		isRestoreWithIndex = $someBoolean
+		# OPTIONAL
+		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 		# REQUIRED
 		sourceMongoClusterId = $someString
 		# REQUIRED

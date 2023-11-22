@@ -1,5 +1,22 @@
 # Changelog
 
+## Version 0.19
+
+New Features:
+
+- The SDK now imposes limits on page sizes when retrieving lists
+  from the API. The new default is 50 items per page.
+  Note that it should not result in any behavior change for users
+  as long as they collect pages with `Get-RscPages` (or
+  iterate manually through them). It will cause problems to scripts
+  that assumed that the API would return all items in a single
+  response and their deployment lists more than 50 items.
+
+Breaking Changes:
+
+- `Get-RscPages` now takes for parameter a `RscQuery` object
+  instead of a script block. See `Get-Help Get-RscPages` for details.
+
 ## Version 0.18.2
 
 Fixes:

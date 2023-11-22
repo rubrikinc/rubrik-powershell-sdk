@@ -509,6 +509,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 			# OPTIONAL
+    /// 			storageSnapshotConfig = @{
+    /// 				# OPTIONAL
+    /// 				frequency = @{
+    /// 					# OPTIONAL
+    /// 					duration = $someInt
+    /// 					# OPTIONAL
+    /// 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				retention = @{
+    /// 					# OPTIONAL
+    /// 					duration = $someInt
+    /// 					# OPTIONAL
+    /// 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		awsRdsConfigInput = @{
@@ -1170,6 +1187,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				duration = $someInt
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			storageSnapshotConfig = @{
+    /// 				# OPTIONAL
+    /// 				frequency = @{
+    /// 					# OPTIONAL
+    /// 					duration = $someInt
+    /// 					# OPTIONAL
+    /// 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				retention = @{
+    /// 					# OPTIONAL
+    /// 					duration = $someInt
+    /// 					# OPTIONAL
+    /// 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 				}
     /// 			}
     /// 		}
     /// 		# OPTIONAL
@@ -2029,6 +2063,23 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+			# OPTIONAL
+			storageSnapshotConfig = @{
+				# OPTIONAL
+				frequency = @{
+					# OPTIONAL
+					duration = $someInt
+					# OPTIONAL
+					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				retention = @{
+					# OPTIONAL
+					duration = $someInt
+					# OPTIONAL
+					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
 		}
 		# OPTIONAL
 		awsRdsConfigInput = @{
@@ -2658,6 +2709,23 @@ $query.Var.input = @{
 				duration = $someInt
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			storageSnapshotConfig = @{
+				# OPTIONAL
+				frequency = @{
+					# OPTIONAL
+					duration = $someInt
+					# OPTIONAL
+					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				retention = @{
+					# OPTIONAL
+					duration = $someInt
+					# OPTIONAL
+					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
 			}
 		}
 		# OPTIONAL

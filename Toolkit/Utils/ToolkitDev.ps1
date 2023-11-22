@@ -8,7 +8,7 @@ param (
 )
 
 . "$PSScriptRoot\..\Private\FileUtils.ps1"
-. "$PSScriptRoot\Import-ModuleFromOutputDir.ps1"
+. "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1"
 
 if ( ! $Quiet ) {
     Write-Host "`nRubrikSecurityCloud module imported from Output directory."
@@ -97,7 +97,7 @@ function Update-RscToolkit {
     Write-Output "Copied $copyCount files to Output directory."
 
     # Re-Import the module from the Output directory
-    Import-ModuleFromOutputDir | Out-Null
+    . "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1"
     Write-Output "Imported module from Output directory."
 
     Get-RscToolkitStatus -Brief

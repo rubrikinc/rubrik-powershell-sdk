@@ -1,4 +1,6 @@
 ### Vcd
+- cdmId: System.String
+  - The CDM ID of vCD instance.
 - caCerts: System.String
   - The CA certificates used to connect to the VCD instance.
 - hostname: System.String
@@ -52,11 +54,11 @@
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from objectID to pending object deletion status.
+  - Mapping from object ID to pending object deletion status.
 - replicatedObjects: list of CdmHierarchyObjects
   - Objects either replicated by this object or related to this object by replication.
 - latestUserNote: LatestUserNote
-  - Latest User note information.
+  - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
 - authorizedOperations: list of Operations

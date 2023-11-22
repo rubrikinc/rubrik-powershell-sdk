@@ -13,3 +13,5 @@ CDM archiving specification.
   - Archival tiering specification.
 - frequencies: list of RetentionUnits
   - Archives all snapshots taken with the specified frequency.
+- archivalLocationType: TargetType
+  - Archival location type.

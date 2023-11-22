@@ -3,7 +3,7 @@
 Run tests around field specs for interface fields
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 Describe -Name "Test field specs for interface fields" -Fixture {

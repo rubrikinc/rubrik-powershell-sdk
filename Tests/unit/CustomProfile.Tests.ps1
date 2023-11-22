@@ -8,7 +8,7 @@ write override operation files for QueryAccountSettings since it is
 a trivial operation that returns 2 booleans.
 #>
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 
     $script:QueryAccountSettings_CustomFileName = (Get-RscHelp -Locations).CustomDir + "/QueryAccountSettings.gql"
     # Temporarily save the custom file if it exists

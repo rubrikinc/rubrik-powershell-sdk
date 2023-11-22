@@ -1,5 +1,5 @@
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 }
 Describe 'Get-RscType' {
     Context 'When called with the -ListAvailable parameter' {
@@ -40,7 +40,7 @@ Describe 'Get-RscType' {
         It -Name 'Should return a list of types for an interface list' -Test {
             $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties @("nodes.id")
             $result.nodes.Count -gt 0
-            $typeList = (Get-RscType -Interface "MssqlTopLevelDescendantType").Name
+            $typeList = (Get-RscType -Interface "MssqlTopLevelDescendantType")
             foreach ($resultNode in $result.nodes)
             {
                 $typeList -Contains $resultNode.GetType().Name | Should -Be $true

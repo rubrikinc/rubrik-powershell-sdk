@@ -8,7 +8,7 @@ Represents regions for Azure AD.
 - CENTRALINDIA - Azure region is Central India.
 - CENTRALUS - Azure region is Central US.
 - EASTASIA - Azure region is East Asia.
-- EASTUS - Azure region is East US.
+- EASTUS - Azure region is East US (deprecated).
 - EASTUS2 - Azure region is East US 2.
 - FRANCECENTRAL - Azure region is France Central.
 - GERMANYWESTCENTRAL - Azure region is Germany West Central.
@@ -17,7 +17,7 @@ Represents regions for Azure AD.
 - NORTHEUROPE - Azure region is North Europe.
 - NORWAYEAST - Azure region is Norway East.
 - SOUTHAFRICANORTH - Azure region is South Africa North.
-- SOUTHCENTRALUS - Azure region is South Central US.
+- SOUTHCENTRALUS - Azure region is South Central US (deprecated).
 - SOUTHEASTASIA - Azure region is South East Asia.
 - SWEDENCENTRAL - Azure region is Sweden Central.
 - SWITZERLANDNORTH - Azure region is Switzerland North.
@@ -25,3 +25,6 @@ Represents regions for Azure AD.
 - USGOVVIRGINIA - Azure region is US Gov Virginia.
 - WESTEUROPE - Azure region is West Europe.
 - WESTUS2 - Azure region is West US 2.
+- POLANDCENTRAL - Azure region is Poland Central.
+- QATARCENTRAL - Azure region is Qatar Central.
+- UAENORTH - Azure region is UAE North.

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authDomainConfig")]
         public TenantAuthDomainConfig? AuthDomainConfig { get; set; }
 
+        //      C# -> List<CrossAccountCapability>? CrossAccountCapabilities
+        // GraphQL -> crossAccountCapabilities: [CrossAccountCapability!]! (enum)
+        [JsonProperty("crossAccountCapabilities")]
+        public List<CrossAccountCapability>? CrossAccountCapabilities { get; set; }
+
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
         // GraphQL -> tenantNetworkHealth: TenantNetworkHealth! (enum)
         [JsonProperty("tenantNetworkHealth")]
@@ -116,6 +121,7 @@ namespace RubrikSecurityCloud.Types
 
     public Org Set(
         TenantAuthDomainConfig? AuthDomainConfig = null,
+        List<CrossAccountCapability>? CrossAccountCapabilities = null,
         TenantNetworkHealth? TenantNetworkHealth = null,
         List<System.String>? AllUrls = null,
         List<System.String>? AllowedClusters = null,
@@ -136,6 +142,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthDomainConfig != null ) {
             this.AuthDomainConfig = AuthDomainConfig;
+        }
+        if ( CrossAccountCapabilities != null ) {
+            this.CrossAccountCapabilities = CrossAccountCapabilities;
         }
         if ( TenantNetworkHealth != null ) {
             this.TenantNetworkHealth = TenantNetworkHealth;
@@ -203,6 +212,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authDomainConfig\n" ;
             } else {
                 s += ind + "authDomainConfig\n" ;
+            }
+        }
+        //      C# -> List<CrossAccountCapability>? CrossAccountCapabilities
+        // GraphQL -> crossAccountCapabilities: [CrossAccountCapability!]! (enum)
+        if (this.CrossAccountCapabilities != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "crossAccountCapabilities\n" ;
+            } else {
+                s += ind + "crossAccountCapabilities\n" ;
             }
         }
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
@@ -387,6 +405,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthDomainConfig != null && ec.Excludes("authDomainConfig",true))
         {
             this.AuthDomainConfig = null;
+        }
+        //      C# -> List<CrossAccountCapability>? CrossAccountCapabilities
+        // GraphQL -> crossAccountCapabilities: [CrossAccountCapability!]! (enum)
+        if (ec.Includes("crossAccountCapabilities",true))
+        {
+            if(this.CrossAccountCapabilities == null) {
+
+                this.CrossAccountCapabilities = new List<CrossAccountCapability>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CrossAccountCapabilities != null && ec.Excludes("crossAccountCapabilities",true))
+        {
+            this.CrossAccountCapabilities = null;
         }
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
         // GraphQL -> tenantNetworkHealth: TenantNetworkHealth! (enum)

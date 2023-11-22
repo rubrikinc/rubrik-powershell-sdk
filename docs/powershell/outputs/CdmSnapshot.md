@@ -54,7 +54,7 @@
 - pendingSla: SlaDomain
   - Non-null when a user has assigned a SLA to this snapshot, and the SLA assignment is in the process of being synced over to CDM.
 - latestUserNote: LatestUserNote
-  - Latest User note information.
+  - Latest user note information.
 - vappAppMetadata: list of VappAppMetadatas
   - Vmware vApp specific snapshot metadata.
 - cloudState: SnapshotCloudState

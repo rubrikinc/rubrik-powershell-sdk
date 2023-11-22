@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 43
+    /// Create a new RscQuery object for any of the 42
     /// operations in the 'Azure' API domain:
-    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// </summary>
     /// <description>
     /// New-RscMutationAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 43 operations
+    /// There are 42 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -265,7 +265,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 					# OPTIONAL
     /// 					permissionsGroups = @(
-    /// 						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 							# OPTIONAL
+    /// 							version = $someInt
+    /// 						}
     /// 					)
     /// 				}
     /// 			)
@@ -768,6 +773,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldCreateContainer = $someBoolean
     /// 			# OPTIONAL
     /// 			enableImmutability = $someBoolean
+    /// 			# OPTIONAL
+    /// 			managedIdentity = @{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				clientId = $someString
+    /// 				# OPTIONAL
+    /// 				resourceGroup = $someString
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		awsEsConfig = @{
@@ -1200,57 +1214,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: DeleteAzureCloudAccountWithoutOauthReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DeleteCluster operation
-    /// of the 'Azure' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Azure
-    /// # API Operation: DeleteCluster
-    /// 
-    /// $query = New-RscMutationAzure -DeleteCluster
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	clusterName = $someString
-    /// 	# OPTIONAL
-    /// 	numNodes = $someInt
-    /// 	# OPTIONAL
-    /// 	resourceGroupName = $someString
-    /// 	# OPTIONAL
-    /// 	networkResourceGroup = $someString
-    /// 	# OPTIONAL
-    /// 	isEsType = $someBoolean
-    /// 	# OPTIONAL
-    /// 	storageAccount = $someString
-    /// 	# OPTIONAL
-    /// 	containerName = $someString
-    /// 	# OPTIONAL
-    /// 	storageResourceGroup = $someString
-    /// 	# OPTIONAL
-    /// 	isNewContainer = $someBoolean
-    /// 	# OPTIONAL
-    /// 	clusterUuid = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
     /// 
     /// 
     /// 
@@ -2391,7 +2354,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteCloudAccount",
                 "DeleteCloudAccountExocomputeConfigurations",
                 "DeleteCloudAccountWithoutOauth",
-                "DeleteCluster",
                 "MapCloudAccountExocomputeSubscription",
                 "MapCloudAccountToPersistentStorageLocation",
                 "OauthConsentComplete",
@@ -2486,9 +2448,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteCloudAccountWithoutOauth":
                         this.ProcessRecord_DeleteCloudAccountWithoutOauth();
-                        break;
-                    case "DeleteCluster":
-                        this.ProcessRecord_DeleteCluster();
                         break;
                     case "MapCloudAccountExocomputeSubscription":
                         this.ProcessRecord_MapCloudAccountExocomputeSubscription();
@@ -2738,15 +2697,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteCloudAccountWithoutOauth";
             // Create new graphql operation deleteAzureCloudAccountWithoutOauth
             InitMutationDeleteAzureCloudAccountWithoutOauth();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAzureCluster.
-        internal void ProcessRecord_DeleteCluster()
-        {
-            this._logger.name += " -DeleteCluster";
-            // Create new graphql operation deleteAzureCluster
-            InitMutationDeleteAzureCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3132,7 +3082,12 @@ $query.Var.input = @{
 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 					# OPTIONAL
 					permissionsGroups = @(
-						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+						@{
+							# REQUIRED
+							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+							# OPTIONAL
+							version = $someInt
+						}
 					)
 				}
 			)
@@ -3563,6 +3518,15 @@ $query.Var.input = @{
 			shouldCreateContainer = $someBoolean
 			# OPTIONAL
 			enableImmutability = $someBoolean
+			# OPTIONAL
+			managedIdentity = @{
+				# OPTIONAL
+				name = $someString
+				# OPTIONAL
+				clientId = $someString
+				# OPTIONAL
+				resourceGroup = $someString
+			}
 		}
 		# OPTIONAL
 		awsEsConfig = @{
@@ -3931,49 +3895,6 @@ $query.Var.input = @{
 	azureSubscriptionRubrikIds = @(
 		$someString
 	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteAzureCluster(input: DeleteAzureClusterInput!): CcProvisionJobReply!
-        internal void InitMutationDeleteAzureCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAzureClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAzureCluster",
-                "($input: DeleteAzureClusterInput!)",
-                "CcProvisionJobReply",
-                Mutation.DeleteAzureCluster_ObjectFieldSpec,
-                Mutation.DeleteAzureClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	clusterName = $someString
-	# OPTIONAL
-	numNodes = $someInt
-	# OPTIONAL
-	resourceGroupName = $someString
-	# OPTIONAL
-	networkResourceGroup = $someString
-	# OPTIONAL
-	isEsType = $someBoolean
-	# OPTIONAL
-	storageAccount = $someString
-	# OPTIONAL
-	containerName = $someString
-	# OPTIONAL
-	storageResourceGroup = $someString
-	# OPTIONAL
-	isNewContainer = $someBoolean
-	# OPTIONAL
-	clusterUuid = $someString
 }"
             );
         }

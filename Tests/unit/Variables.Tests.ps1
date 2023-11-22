@@ -3,7 +3,7 @@
 Run tests around variables.
 #>
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 }
 
 Describe -Name "Test variables" -Fixture {

@@ -53,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userNote")]
         public System.String? UserNote { get; set; }
 
+        //      C# -> System.String? ZipPassword
+        // GraphQL -> zipPassword: String (scalar)
+        [JsonProperty("zipPassword")]
+        public System.String? ZipPassword { get; set; }
+
 
         #endregion
 

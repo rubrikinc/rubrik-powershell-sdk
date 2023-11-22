@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enableImmutability")]
         public System.Boolean? EnableImmutability { get; set; }
 
+        //      C# -> AzureManagedIdentityName? ManagedIdentity
+        // GraphQL -> managedIdentity: AzureManagedIdentityName (input)
+        [JsonProperty("managedIdentity")]
+        public AzureManagedIdentityName? ManagedIdentity { get; set; }
+
 
         #endregion
 

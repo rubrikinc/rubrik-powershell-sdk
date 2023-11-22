@@ -4,8 +4,8 @@ param(
     [switch]$FieldCounts
 )
 
-. "${PSScriptRoot}/../Utils/import.ps1"
-. "${PSScriptRoot}/SampleUtils.ps1"
+. "${PSScriptRoot}\..\Utils\Import-RscModuleFromLocalOutputDir.ps1"
+. "${PSScriptRoot}\SampleUtils.ps1"
 
 if ($GetGqlRequest) {
     $gqlDir = "gql"
@@ -585,44 +585,6 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscMutationAws -Operation CreateTarget
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAws -Op DeleteCluster
-# -------------------------------------------------------------------
-
-$query = New-RscMutationAws -Op DeleteCluster
-if ($GetGqlRequest) {
-    $query.GqlRequest().SaveQueryToFile()
-} elseif ($FieldCounts) {
-    if ( $query.Field -eq $null ) {
-        $entries += @{
-            Operation="New-RscMutationAws.DeleteCluster" ;
-            AllFieldsCount = -2 ; 
-            SelectedFieldsCount = -2
-        }
-    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
-        $entries += @{
-            Operation="New-RscMutationAws.DeleteCluster" ;
-            AllFieldsCount = $query.Field.AllFields().Count ; 
-            SelectedFieldsCount = $query.Field.SelectedFields().Count
-        }
-    } else {
-        $entries += @{
-            Operation="New-RscMutationAws.DeleteCluster" ;
-            AllFieldsCount = -1 ; 
-            SelectedFieldsCount = -1
-        }
-    }
-} else {
-    $query = New-RscMutationAws -Operation DeleteCluster
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)
@@ -2449,44 +2411,6 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscMutationAzure -Operation DeleteCloudAccountWithoutOauth
-    $query.Info()
-    $query.VarTemplate()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-}
-
-# -------------------------------------------------------------------
-# New-RscMutationAzure -Op DeleteCluster
-# -------------------------------------------------------------------
-
-$query = New-RscMutationAzure -Op DeleteCluster
-if ($GetGqlRequest) {
-    $query.GqlRequest().SaveQueryToFile()
-} elseif ($FieldCounts) {
-    if ( $query.Field -eq $null ) {
-        $entries += @{
-            Operation="New-RscMutationAzure.DeleteCluster" ;
-            AllFieldsCount = -2 ; 
-            SelectedFieldsCount = -2
-        }
-    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
-        $entries += @{
-            Operation="New-RscMutationAzure.DeleteCluster" ;
-            AllFieldsCount = $query.Field.AllFields().Count ; 
-            SelectedFieldsCount = $query.Field.SelectedFields().Count
-        }
-    } else {
-        $entries += @{
-            Operation="New-RscMutationAzure.DeleteCluster" ;
-            AllFieldsCount = -1 ; 
-            SelectedFieldsCount = -1
-        }
-    }
-} else {
-    $query = New-RscMutationAzure -Operation DeleteCluster
     $query.Info()
     $query.VarTemplate()
     $query.GqlRequest($false)

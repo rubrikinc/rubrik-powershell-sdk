@@ -204,6 +204,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		searchObjectType = $someSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SearchObjectType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -275,6 +288,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	recurrenceFilter = @{
     /// 		# OPTIONAL
     /// 		recurrenceType = $someCalendarRecurrenceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CalendarRecurrenceType]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
     /// 	}
     /// }
     /// 
@@ -1622,6 +1648,19 @@ $query.Var.searchFilter = @{
 		# OPTIONAL
 		searchObjectType = $someSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SearchObjectType]) for enum values.
 	}
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
+	}
 }"
             );
         }
@@ -1697,6 +1736,19 @@ $query.Var.calendarSearchFilter = @{
 	recurrenceFilter = @{
 		# OPTIONAL
 		recurrenceType = $someCalendarRecurrenceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CalendarRecurrenceType]) for enum values.
+	}
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
 	}
 }"
             );

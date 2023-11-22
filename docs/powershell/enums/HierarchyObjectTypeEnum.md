@@ -99,6 +99,7 @@ Type of hierarchy object.
 - VSphereTag
 - ExchangeDatabase - Exchange Database.
 - MssqlAvailabilityGroup
+- VSPHERE_CONTENT_LIBRARY - VSphere Content Library.
 - Blueprint
 - VcdVimServer
 - MONGO_DATABASE - MongoDB Database.

@@ -6,3 +6,5 @@ Parameters for mail or folder search.
 - fromTime: DateTime
 - untilTime: DateTime
 - searchObjectFilter: SearchObjectFilter
+- lambdaFilters: LambdaPathFilters
+  - Parameters for using Lambda filters in the query.

@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> List<NodeMetadataInput>? NodeMetadata
+        // GraphQL -> nodeMetadata: [NodeMetadataInput!] (input)
+        [JsonProperty("nodeMetadata")]
+        public List<NodeMetadataInput>? NodeMetadata { get; set; }
+
 
         #endregion
 

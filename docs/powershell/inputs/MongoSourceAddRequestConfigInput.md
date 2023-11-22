@@ -23,7 +23,8 @@ Supported in v8.1+
   - Required. Supported in v8.1+
       Type of MongoDB cluster.
 - sourceAuthenticationType: MongoAuthenticationType
-  - Type of user authentication used when adding the MongoDB cluster.
+  - Supported in v9.0+
+      Type of user authentication used when adding the MongoDB cluster.
 - sslCertificateRequired: MongoSslCertificateRequirement
   - Supported in v8.1+
       Specifies whether SSL certificates are required for the connection.

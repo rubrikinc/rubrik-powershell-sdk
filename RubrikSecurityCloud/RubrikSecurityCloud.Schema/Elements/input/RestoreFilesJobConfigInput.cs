@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("guestCredentialId")]
         public System.String? GuestCredentialId { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseMountDisks
+        // GraphQL -> shouldUseMountDisks: Boolean (scalar)
+        [JsonProperty("shouldUseMountDisks")]
+        public System.Boolean? ShouldUseMountDisks { get; set; }
+
         //      C# -> List<VmRestorePathPairInput>? RestoreConfig
         // GraphQL -> restoreConfig: [VmRestorePathPairInput!]! (input)
         [Required]

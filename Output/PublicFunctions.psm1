@@ -10,7 +10,7 @@ Foreach ($import in @($Public))
     Try
     {
         Write-Output("Importing module from file $($import.fullname)")
-        Import-Module $import.fullname -ErrorAction Stop
+        Import-Module $import.fullname -ErrorAction Stop -Force
     }
     Catch
     {

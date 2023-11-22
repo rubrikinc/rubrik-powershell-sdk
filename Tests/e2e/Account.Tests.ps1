@@ -3,7 +3,7 @@
 Run tests around account settings
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 Describe -Name 'Connect to API' -Fixture {
@@ -30,6 +30,6 @@ Describe -Name 'Connect to API' -Fixture {
         $accountSetting.isEmailNotificationEnabled | Should -Not -BeNullOrEmpty
         $accountSetting.IsEulaAccepted | Should -BeNullOrEmpty
 
-
+        { Get-Command Get-RscAccount } | Should -Not -Throw
     }
 }

@@ -15,3 +15,5 @@ Azure Cloud Account Feature details.
   - Resource group for the feature.
 - role: AzureRole
   - Role details for the feature.
+- roles: list of AzureRoles
+  - Role details for the feature.

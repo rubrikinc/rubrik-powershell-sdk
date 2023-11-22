@@ -6,8 +6,8 @@ function Get-RscEventSeries {
 
   .DESCRIPTION
   By default, retrieve info about events.
-  `Get-RscEventSeriesSeries` defaults to `Get-RscEventSeries -List -First 1000`
-  which returns the first 1000 events.
+  `Get-RscEventSeriesSeries` defaults to `Get-RscEventSeries -List -First 50`
+  which returns the first 50 events.
 
   To get info about a specific event, use the `-Id` parameter.
 
@@ -101,7 +101,7 @@ function Get-RscEventSeries {
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $true
         )]
-        [Int]$First = 1000,
+        [Int]$First = 50,
 
         #  Common parameter to all parameter sets:
         [Parameter(

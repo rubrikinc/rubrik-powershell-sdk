@@ -40,4 +40,4 @@ Snapshot of a Rubrik CDM workload.
 - date: System.String
   - The date the snapshot was taken. This value is formatted as YYYY/MM/DD HH:mm:ss.
 - latestUserNote: LatestUserNote
-  - Latest User note information.
+  - Latest user note information.

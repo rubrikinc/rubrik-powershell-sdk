@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestUserNote")]
         public LatestUserNote? LatestUserNote { get; set; }
 
+        //      C# -> VsphereVcenterLibraryChildTypeConnection? LibraryChildConnection
+        // GraphQL -> libraryChildConnection: VsphereVcenterLibraryChildTypeConnection! (type)
+        [JsonProperty("libraryChildConnection")]
+        public VsphereVcenterLibraryChildTypeConnection? LibraryChildConnection { get; set; }
+
         //      C# -> VsphereVcenterLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)
         [JsonProperty("logicalChildConnection")]
@@ -250,6 +255,7 @@ namespace RubrikSecurityCloud.Types
         VsphereVcenterDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
+        VsphereVcenterLibraryChildTypeConnection? LibraryChildConnection = null,
         VsphereVcenterLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
@@ -347,6 +353,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
+        }
+        if ( LibraryChildConnection != null ) {
+            this.LibraryChildConnection = LibraryChildConnection;
         }
         if ( LogicalChildConnection != null ) {
             this.LogicalChildConnection = LogicalChildConnection;
@@ -688,6 +697,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereVcenterLibraryChildTypeConnection? LibraryChildConnection
+        // GraphQL -> libraryChildConnection: VsphereVcenterLibraryChildTypeConnection! (type)
+        if (this.LibraryChildConnection != null) {
+            var fspec = this.LibraryChildConnection.AsFieldSpec(conf.Child("libraryChildConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "libraryChildConnection {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1344,6 +1365,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
         {
             this.LatestUserNote = null;
+        }
+        //      C# -> VsphereVcenterLibraryChildTypeConnection? LibraryChildConnection
+        // GraphQL -> libraryChildConnection: VsphereVcenterLibraryChildTypeConnection! (type)
+        if (ec.Includes("libraryChildConnection",false))
+        {
+            if(this.LibraryChildConnection == null) {
+
+                this.LibraryChildConnection = new VsphereVcenterLibraryChildTypeConnection();
+                this.LibraryChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("libraryChildConnection"));
+
+            } else {
+
+                this.LibraryChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("libraryChildConnection"));
+
+            }
+        }
+        else if (this.LibraryChildConnection != null && ec.Excludes("libraryChildConnection",false))
+        {
+            this.LibraryChildConnection = null;
         }
         //      C# -> VsphereVcenterLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)

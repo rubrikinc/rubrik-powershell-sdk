@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recurrenceFilter")]
         public CalendarRecurrenceFilter? RecurrenceFilter { get; set; }
 
+        //      C# -> LambdaPathFilters? LambdaFilters
+        // GraphQL -> lambdaFilters: LambdaPathFilters (input)
+        [JsonProperty("lambdaFilters")]
+        public LambdaPathFilters? LambdaFilters { get; set; }
+
 
         #endregion
 

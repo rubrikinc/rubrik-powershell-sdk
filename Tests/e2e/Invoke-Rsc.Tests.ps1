@@ -1,5 +1,5 @@
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 Describe -Name "Send a generic GraphQL call" -Fixture {

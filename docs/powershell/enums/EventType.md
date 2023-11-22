@@ -58,3 +58,4 @@ Enum representing all the possible event types.
 - ENCRYPTION_MANAGEMENT_OPERATION - Encryption Management event type.
 - THREAT_FEED - Threat feed event type.
 - THREAT_MONITORING - Threat monitoring event type.
+- SCHEDULE_RECOVERY - Orchestrated Application Recovery schedule-recovery event type.
