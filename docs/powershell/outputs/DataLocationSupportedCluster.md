@@ -7,3 +7,5 @@ The supported Rubrik cluster-specific information.
   - UUID of the supported Rubrik cluster.
 - version: System.String
   - Version of the supported Rubrik cluster.
+- apiVersion: System.String
+  - API version of the supported Rubrik cluster.

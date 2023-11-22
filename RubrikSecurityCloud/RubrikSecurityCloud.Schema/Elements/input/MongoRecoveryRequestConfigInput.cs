@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRestoreWithIndex")]
         public System.Boolean? IsRestoreWithIndex { get; set; }
 
+        //      C# -> MongoAuthenticationType? TargetAuthenticationType
+        // GraphQL -> targetAuthenticationType: MongoAuthenticationType (enum)
+        [JsonProperty("targetAuthenticationType")]
+        public MongoAuthenticationType? TargetAuthenticationType { get; set; }
+
         //      C# -> System.String? SourceMongoClusterId
         // GraphQL -> sourceMongoClusterId: String! (scalar)
         [Required]

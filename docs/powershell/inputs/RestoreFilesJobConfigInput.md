@@ -35,6 +35,9 @@ Supported in v5.0+
   - Supported in v7.0+
       v7.0: ID of the guest OS credential that should be used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields will be ignored.
       v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
+- shouldUseMountDisks: System.Boolean
+  - Supported in v9.1
+      Boolean field specifying whether to mount disks during restore jobs. When the value is 'true', the VMDK disks of the snapshot are mounted on the target VM for recovering the files and the parameter 'shouldUseAgent' is ignored. When the value is 'false', RSC may or may not use agent.
 - restoreConfig: list of VmRestorePathPairInputs
   - Required. Supported in v5.0+
       v5.0-v5.3: Absolute file path and restore path if not restored back to itself

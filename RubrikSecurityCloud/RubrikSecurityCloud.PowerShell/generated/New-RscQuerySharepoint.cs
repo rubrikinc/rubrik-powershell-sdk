@@ -317,6 +317,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		searchObjectType = $someSharePointSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointSearchObjectType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
+    /// 	}
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -413,6 +426,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	searchObjectFilter = @{
     /// 		# OPTIONAL
     /// 		searchObjectType = $someSharePointSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointSearchObjectType]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
     /// 	}
     /// }
     /// 
@@ -1121,6 +1147,19 @@ $query.Var.sharepointSiteSearchFilter = @{
 		# OPTIONAL
 		searchObjectType = $someSharePointSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointSearchObjectType]) for enum values.
 	}
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
+	}
 }
 # REQUIRED
 $query.Var.orgId = $someString"
@@ -1212,6 +1251,19 @@ $query.Var.sharepointSiteSearchFilter = @{
 	searchObjectFilter = @{
 		# OPTIONAL
 		searchObjectType = $someSharePointSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointSearchObjectType]) for enum values.
+	}
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
 	}
 }"
             );

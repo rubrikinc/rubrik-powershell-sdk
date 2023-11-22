@@ -21,9 +21,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILE")]
         FILE,
 
-        [EnumMember(Value = "SHARE")]
-        SHARE,
-
         [EnumMember(Value = "SYMLINK")]
         SYMLINK
 

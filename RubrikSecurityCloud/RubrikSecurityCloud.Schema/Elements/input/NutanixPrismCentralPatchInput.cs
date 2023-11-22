@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
+        //      C# -> List<NutanixClustersListElementInput>? NutanixClusters
+        // GraphQL -> nutanixClusters: [NutanixClustersListElementInput!] (input)
+        [JsonProperty("nutanixClusters")]
+        public List<NutanixClustersListElementInput>? NutanixClusters { get; set; }
+
 
         #endregion
 

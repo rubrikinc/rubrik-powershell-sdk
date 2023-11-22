@@ -9,3 +9,5 @@ Parameters for SharePoint site descendant search.
   - Filters by on create time.
 - searchObjectFilter: SharePointSearchObjectFilter
   - Filters by object type (site, library, list or all).
+- lambdaFilters: LambdaPathFilters
+  - Parameters for using Lambda filters in the query.

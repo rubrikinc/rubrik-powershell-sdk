@@ -1,5 +1,5 @@
 BeforeAll {
-    . "$PSScriptRoot\..\..\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\..\Utils\ToolkitDev.ps1" -Quiet -Connect
 }
 
 Describe -Name 'Get-RscAccount' -Tag 'Public' -Fixture {

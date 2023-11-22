@@ -867,9 +867,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAws">
              <summary>
-             Create a new RscQuery object for any of the 33
+             Create a new RscQuery object for any of the 32
              operations in the 'AWS' API domain:
-             AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+             AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
              </summary>
              <description>
              New-RscMutationAws creates a new
@@ -879,11 +879,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 33 operations
+             There are 32 operations
              in the 'AWS' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+             one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -1294,6 +1294,15 @@
              			shouldCreateContainer = $someBoolean
              			# OPTIONAL
              			enableImmutability = $someBoolean
+             			# OPTIONAL
+             			managedIdentity = @{
+             				# OPTIONAL
+             				name = $someString
+             				# OPTIONAL
+             				clientId = $someString
+             				# OPTIONAL
+             				resourceGroup = $someString
+             			}
              		}
              		# OPTIONAL
              		awsEsConfig = @{
@@ -1680,51 +1689,6 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: Target
-             
-             
-             
-             </code>
-            
-             </example>
-            
-             <example>
-             Runs the DeleteCluster operation
-             of the 'AWS' API domain.
-             <code>
-             PS &gt;
-            
-             
-             # Create an RscQuery object for:
-             # API Domain:    Aws
-             # API Operation: DeleteCluster
-             
-             $query = New-RscMutationAws -DeleteCluster
-             
-             # REQUIRED
-             $query.Var.input = @{
-             	# OPTIONAL
-             	cloudAccountId = $someString
-             	# OPTIONAL
-             	clusterName = $someString
-             	# OPTIONAL
-             	numNodes = $someInt
-             	# OPTIONAL
-             	isEsType = $someBoolean
-             	# OPTIONAL
-             	bucketName = $someString
-             	# OPTIONAL
-             	isNewContainer = $someBoolean
-             	# OPTIONAL
-             	clusterUuid = $someString
-             	# OPTIONAL
-             	region = $someString
-             }
-             
-             # Execute the query
-             
-             $result = $query | Invoke-Rsc
-             
-             Write-Host $result.GetType().Name # prints: CcProvisionJobReply
              
              
              
@@ -3107,9 +3071,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure">
              <summary>
-             Create a new RscQuery object for any of the 43
+             Create a new RscQuery object for any of the 42
              operations in the 'Azure' API domain:
-             AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+             AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
              </summary>
              <description>
              New-RscMutationAzure creates a new
@@ -3119,11 +3083,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 43 operations
+             There are 42 operations
              in the 'Azure' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteCluster, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+             one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -3349,7 +3313,12 @@
              					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
              					# OPTIONAL
              					permissionsGroups = @(
-             						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+             						@{
+             							# REQUIRED
+             							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+             							# OPTIONAL
+             							version = $someInt
+             						}
              					)
              				}
              			)
@@ -3852,6 +3821,15 @@
              			shouldCreateContainer = $someBoolean
              			# OPTIONAL
              			enableImmutability = $someBoolean
+             			# OPTIONAL
+             			managedIdentity = @{
+             				# OPTIONAL
+             				name = $someString
+             				# OPTIONAL
+             				clientId = $someString
+             				# OPTIONAL
+             				resourceGroup = $someString
+             			}
              		}
              		# OPTIONAL
              		awsEsConfig = @{
@@ -4284,57 +4262,6 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: DeleteAzureCloudAccountWithoutOauthReply
-             
-             
-             
-             </code>
-            
-             </example>
-            
-             <example>
-             Runs the DeleteCluster operation
-             of the 'Azure' API domain.
-             <code>
-             PS &gt;
-            
-             
-             # Create an RscQuery object for:
-             # API Domain:    Azure
-             # API Operation: DeleteCluster
-             
-             $query = New-RscMutationAzure -DeleteCluster
-             
-             # REQUIRED
-             $query.Var.input = @{
-             	# OPTIONAL
-             	cloudAccountId = $someString
-             	# OPTIONAL
-             	clusterName = $someString
-             	# OPTIONAL
-             	numNodes = $someInt
-             	# OPTIONAL
-             	resourceGroupName = $someString
-             	# OPTIONAL
-             	networkResourceGroup = $someString
-             	# OPTIONAL
-             	isEsType = $someBoolean
-             	# OPTIONAL
-             	storageAccount = $someString
-             	# OPTIONAL
-             	containerName = $someString
-             	# OPTIONAL
-             	storageResourceGroup = $someString
-             	# OPTIONAL
-             	isNewContainer = $someBoolean
-             	# OPTIONAL
-             	clusterUuid = $someString
-             }
-             
-             # Execute the query
-             
-             $result = $query | Invoke-Rsc
-             
-             Write-Host $result.GetType().Name # prints: CcProvisionJobReply
              
              
              
@@ -14338,6 +14265,8 @@
              		restoreThrottleInBytesPerSecond = $someInt64
              		# OPTIONAL
              		isRestoreWithIndex = $someBoolean
+             		# OPTIONAL
+             		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
              		# REQUIRED
              		sourceMongoClusterId = $someString
              		# REQUIRED
@@ -16882,6 +16811,8 @@
              		password = $someString
              		# OPTIONAL
              		username = $someString
+             		# OPTIONAL
+             		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
              	}
              }
              
@@ -16926,6 +16857,15 @@
              		password = $someString
              		# OPTIONAL
              		username = $someString
+             		# OPTIONAL
+             		nutanixClusters = @(
+             			@{
+             				# OPTIONAL
+             				name = $someString
+             				# REQUIRED
+             				clusterUuid = $someString
+             			}
+             		)
              	}
              }
              
@@ -17811,6 +17751,8 @@
              	destinationSnappableUuid = $someString
              	# REQUIRED
              	restoreConfig = @{
+             		# OPTIONAL
+             		destinationOrgUuid = $someString
              		# OPTIONAL
              		SharePointDriveRestoreConfig = @{
              			# REQUIRED
@@ -21137,6 +21079,8 @@
              $query.Var.input = @{
              	# REQUIRED
              	id = $someInt
+             	# OPTIONAL
+             	reportId = $someInt
              }
              
              # Execute the query
@@ -22756,6 +22700,23 @@
              				# OPTIONAL
              				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
              			}
+             			# OPTIONAL
+             			storageSnapshotConfig = @{
+             				# OPTIONAL
+             				frequency = @{
+             					# OPTIONAL
+             					duration = $someInt
+             					# OPTIONAL
+             					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+             				}
+             				# OPTIONAL
+             				retention = @{
+             					# OPTIONAL
+             					duration = $someInt
+             					# OPTIONAL
+             					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+             				}
+             			}
              		}
              		# OPTIONAL
              		awsRdsConfigInput = @{
@@ -23417,6 +23378,23 @@
              				duration = $someInt
              				# OPTIONAL
              				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+             			}
+             			# OPTIONAL
+             			storageSnapshotConfig = @{
+             				# OPTIONAL
+             				frequency = @{
+             					# OPTIONAL
+             					duration = $someInt
+             					# OPTIONAL
+             					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+             				}
+             				# OPTIONAL
+             				retention = @{
+             					# OPTIONAL
+             					duration = $someInt
+             					# OPTIONAL
+             					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+             				}
              			}
              		}
              		# OPTIONAL
@@ -24276,6 +24254,8 @@
              	nextSnapshotFid = $someString
              	# OPTIONAL
              	userNote = $someString
+             	# OPTIONAL
+             	zipPassword = $someString
              	# REQUIRED
              	config = @{
              		# OPTIONAL
@@ -24283,6 +24263,8 @@
              			# REQUIRED
              			isLegalHoldDownload = $someBoolean
              		}
+             		# OPTIONAL
+             		zipPassword = $someString
              		# REQUIRED
              		sourceDirs = @(
              			$someString
@@ -26509,6 +26491,8 @@
              	isLegalHoldDownload = $someBoolean
              	# OPTIONAL
              	userNote = $someString
+             	# OPTIONAL
+             	zipPassword = $someString
              }
              
              # Execute the query
@@ -27713,6 +27697,8 @@
              		shouldUseAgent = $someBoolean
              		# OPTIONAL
              		guestCredentialId = $someString
+             		# OPTIONAL
+             		shouldUseMountDisks = $someBoolean
              		# REQUIRED
              		restoreConfig = @(
              			@{
@@ -48290,6 +48276,19 @@
              		# OPTIONAL
              		searchObjectType = $someSharePointSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointSearchObjectType]) for enum values.
              	}
+             	# OPTIONAL
+             	lambdaFilters = @{
+             		# OPTIONAL
+             		enableAbsolutePaths = $someBoolean
+             		# OPTIONAL
+             		enableAbsolutePathCachePreload = $someBoolean
+             		# OPTIONAL
+             		parentFolderIdBatch = @(
+             			$someString
+             		)
+             		# OPTIONAL
+             		searchRecurseFolderId = $someString
+             	}
              }
              # REQUIRED
              $query.Var.orgId = $someString
@@ -48386,6 +48385,19 @@
              	searchObjectFilter = @{
              		# OPTIONAL
              		searchObjectType = $someSharePointSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointSearchObjectType]) for enum values.
+             	}
+             	# OPTIONAL
+             	lambdaFilters = @{
+             		# OPTIONAL
+             		enableAbsolutePaths = $someBoolean
+             		# OPTIONAL
+             		enableAbsolutePathCachePreload = $someBoolean
+             		# OPTIONAL
+             		parentFolderIdBatch = @(
+             			$someString
+             		)
+             		# OPTIONAL
+             		searchRecurseFolderId = $someString
              	}
              }
              
@@ -49690,6 +49702,19 @@
              		# OPTIONAL
              		searchObjectType = $someSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SearchObjectType]) for enum values.
              	}
+             	# OPTIONAL
+             	lambdaFilters = @{
+             		# OPTIONAL
+             		enableAbsolutePaths = $someBoolean
+             		# OPTIONAL
+             		enableAbsolutePathCachePreload = $someBoolean
+             		# OPTIONAL
+             		parentFolderIdBatch = @(
+             			$someString
+             		)
+             		# OPTIONAL
+             		searchRecurseFolderId = $someString
+             	}
              }
              
              # Execute the query
@@ -49761,6 +49786,19 @@
              	recurrenceFilter = @{
              		# OPTIONAL
              		recurrenceType = $someCalendarRecurrenceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CalendarRecurrenceType]) for enum values.
+             	}
+             	# OPTIONAL
+             	lambdaFilters = @{
+             		# OPTIONAL
+             		enableAbsolutePaths = $someBoolean
+             		# OPTIONAL
+             		enableAbsolutePathCachePreload = $someBoolean
+             		# OPTIONAL
+             		parentFolderIdBatch = @(
+             			$someString
+             		)
+             		# OPTIONAL
+             		searchRecurseFolderId = $someString
              	}
              }
              

@@ -3,7 +3,7 @@
 Run tests specifically for Get-RscFileset
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 # TODO: SPARK-225906 fix this test

@@ -6,3 +6,5 @@ Parameters for calendar event search.
 - timerange: TimeRangeFilter
 - searchObjectFilter: CalendarSearchObjectFilter
 - recurrenceFilter: CalendarRecurrenceFilter
+- lambdaFilters: LambdaPathFilters
+  - Parameters for using Lambda filters in the query.

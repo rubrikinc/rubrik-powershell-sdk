@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate (enum)
+        [JsonProperty("snapshotConsistencyMandate")]
+        public CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [JsonProperty("hostname")]
@@ -60,6 +65,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public NutanixClusterSummary Set(
+        CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
         System.String? Hostname = null,
         System.String? NaturalId = null,
         System.String? Username = null,
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         SlaAssignable? SlaAssignable = null
     ) 
     {
+        if ( SnapshotConsistencyMandate != null ) {
+            this.SnapshotConsistencyMandate = SnapshotConsistencyMandate;
+        }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
         }
@@ -97,6 +106,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate (enum)
+        if (this.SnapshotConsistencyMandate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotConsistencyMandate\n" ;
+            } else {
+                s += ind + "snapshotConsistencyMandate\n" ;
+            }
+        }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
@@ -167,6 +185,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate (enum)
+        if (ec.Includes("snapshotConsistencyMandate",true))
+        {
+            if(this.SnapshotConsistencyMandate == null) {
+
+                this.SnapshotConsistencyMandate = new CdmNutanixSnapshotConsistencyMandate();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotConsistencyMandate != null && ec.Excludes("snapshotConsistencyMandate",true))
+        {
+            this.SnapshotConsistencyMandate = null;
+        }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (ec.Includes("hostname",true))

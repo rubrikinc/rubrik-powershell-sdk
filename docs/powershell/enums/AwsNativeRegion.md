@@ -8,6 +8,7 @@ AWS native regions.
 - CN_NORTHWEST_1 - AWS native China (Ningxia) region.
 - AP_SOUTHEAST_1 - AWS native Asia Pacific (Singapore) region.
 - US_GOV_EAST_1 - AWS Gov native US East 1 (N. Virginia) region.
+- IL_CENTRAL_1 - AWS Israel (Tel Aviv) region.
 - AP_EAST_1 - AWS native Asia Pacific (Hong Kong) region.
 - US_WEST_1 - AWS native US West (N. California) region.
 - EU_SOUTH_1 - AWS native EU (Milan) region.

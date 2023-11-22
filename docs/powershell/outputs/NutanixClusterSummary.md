@@ -12,6 +12,8 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - slaAssignable: SlaAssignable
   - 
+- snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
+  - 
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v5.3+
   Describes any pending SLA Domain assignment on this object.

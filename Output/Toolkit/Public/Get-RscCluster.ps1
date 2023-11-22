@@ -1,6 +1,6 @@
 #Requires -Version 3
 function Get-RscCluster {
-<#
+    <#
     .SYNOPSIS
     Retrieve info about clusters
     
@@ -19,20 +19,22 @@ function Get-RscCluster {
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html
     
     .PARAMETER List
-    Used to create a list of clusters that are connected to Rubrik Securiry Cloud
+    Retrieve the list of clusters that are connected to Rubrik Securiry Cloud.
+    This is the default parameter set.
 
     .PARAMETER Name
     Used to return a specific cluster based on the name
 
     .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
+    Use the DETAIL field profile instead of the DEFAULT field profile.
+    The DETAIL field profile returns more fields than the DEFAULT field profile.
 
     .PARAMETER IncludeNullProperties
     By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
     with a NULL in them. 
 
     .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
+    Instead of running the command, the query object is returned.
     
     .EXAMPLE
     Return a list of all clusters managed by RSC
@@ -46,12 +48,12 @@ function Get-RscCluster {
     
     
     .EXAMPLE
-    Return back all fields, including the fields that are null
+    Include the fields that are null in the response
     
     Get-RscCluster -Name vault-r-london -IncludeNullProperties
 
     .EXAMPLE
-    Return back just the query that will be run instead of running the query and returning the results
+    Return back just the query that would run instead of running the query and returning the results
 
     Get-RscCluster -Name vault-r-london -AsQuery    
     #>
@@ -67,25 +69,52 @@ function Get-RscCluster {
         )][Switch]$List,
 
         [Parameter(
+            ParameterSetName = "List",
+            Mandatory = $false, 
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Return only the first N clusters. Default is 0, which means use the default page size."
+        )]
+        [Int]$First = 0,
+
+        [Parameter(
+            ParameterSetName = "Count",
+            Mandatory = $false,
+            HelpMessage = "Return only the number of clusters"
+        )]
+        [Switch]$Count,
+
+        [Parameter(
+            ParameterSetName = "Id",
+            Mandatory = $false, 
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Return only the cluster with the specified id"
+        )]
+        [String]$Id,
+
+        [Parameter(
             ParameterSetName = "Name",
             Mandatory = $false, 
             ValueFromPipeline = $false
         )][String]$Name,
         
         #  Common parameter to all parameter sets:
+
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipeline = $false
+            ValueFromPipeline = $false,
+            HelpMessage = "Return more fields than the default field profile"
         )][Switch]$Detail,
 
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipeline = $false
+            ValueFromPipeline = $false,
+            HelpMessage = "Include fields that are null in the response"
         )][Switch]$IncludeNullProperties,
 
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipeline = $false
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
         )][Switch]$AsQuery
     )
     
@@ -93,44 +122,69 @@ function Get-RscCluster {
         # Re-use existing connection, or create a new one:
         Connect-Rsc -ErrorAction Stop | Out-Null
 
+        # Count clusters:
+        if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
+            $r = (New-RscQueryCluster -Op List -RemoveField Nodes).Invoke()
+            # Object's 'Count' property is hidden by the 'Count' method
+            # so we can't do `$r.Count`
+            $clusterCount = $r | Select-Object -ExpandProperty Count
+            return $clusterCount
+        }
+
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Host "Get-RscCluster field profile: $fieldProfile"
+        Write-Verbose "Get-RscCluster field profile: $fieldProfile"
 
-        #region Create Query
-        switch ( $PSCmdlet.ParameterSetName ){
+        # Create Query
+        switch ( $PSCmdlet.ParameterSetName ) {
             "List" {
                 $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
             }
-            "Name"{
+            "Id" {
+                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query.Var.clusterUuid = $Id
+            }
+            "Name" {
                 $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
                 $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
                 $query.Var.filter.Name = $Name
             }
         }
-        #endregion
 
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
+        # Skip sending, return query object:
+        if ( $AsQuery ) {
+            return $query
         }
 
-        if ($null -ne $result.Nodes){
-            if ( $IncludeNullProperties -eq $true ) {
-                $result.Nodes
-            }else{
-                $result.Nodes | Remove-NullProperties
-            }
-        }else{
-            if ( $IncludeNullProperties -eq $true ) {
-                $result
-            }else{
-                $result | Remove-NullProperties
-            }
-        }    
+        # Invoke the query:
+        if ( $PSCmdlet.ParameterSetName -eq "List" ) {
+            $response = Get-RscPages -Query $query -First $First
+        }
+        else {
+            $response = Invoke-Rsc $query
+        }
+
+        # Filter results
+        # the response's `Nodes` field contains the list
+        if ($null -ne $response.Nodes) {
+            $result = $response.Nodes
+        }
+        else {
+            $result = $response
+        }
+
+        if ( $IncludeNullProperties -eq $true ) {
+            $result
+        }
+        else {
+            # Filter out null values:
+            # fields that were not selected for retrieval
+            # come back as nulls in the `$result` object,
+            # so we filter them out here:
+            $result | Remove-NullProperties
+        }
     } 
 }

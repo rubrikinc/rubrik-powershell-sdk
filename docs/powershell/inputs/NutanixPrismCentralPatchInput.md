@@ -16,3 +16,5 @@ Input for patching the Nutanix Prism Central.
 - username: System.String
   - Supported in v9.0+
       Username for the Nutanix Prism Central used for all the cluster connections.
+- nutanixClusters: list of NutanixClustersListElementInputs
+  - The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.

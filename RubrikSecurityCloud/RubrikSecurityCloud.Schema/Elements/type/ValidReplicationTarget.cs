@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountName")]
         public System.String? AccountName { get; set; }
 
+        //      C# -> System.String? ApiVersion
+        // GraphQL -> apiVersion: String! (scalar)
+        [JsonProperty("apiVersion")]
+        public System.String? ApiVersion { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public ValidReplicationTarget Set(
         System.String? AccountName = null,
+        System.String? ApiVersion = null,
         System.String? Name = null,
         System.String? Uuid = null,
         System.String? Version = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AccountName != null ) {
             this.AccountName = AccountName;
+        }
+        if ( ApiVersion != null ) {
+            this.ApiVersion = ApiVersion;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -86,6 +95,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountName\n" ;
             } else {
                 s += ind + "accountName\n" ;
+            }
+        }
+        //      C# -> System.String? ApiVersion
+        // GraphQL -> apiVersion: String! (scalar)
+        if (this.ApiVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "apiVersion\n" ;
+            } else {
+                s += ind + "apiVersion\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -138,6 +156,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccountName != null && ec.Excludes("accountName",true))
         {
             this.AccountName = null;
+        }
+        //      C# -> System.String? ApiVersion
+        // GraphQL -> apiVersion: String! (scalar)
+        if (ec.Includes("apiVersion",true))
+        {
+            if(this.ApiVersion == null) {
+
+                this.ApiVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiVersion != null && ec.Excludes("apiVersion",true))
+        {
+            this.ApiVersion = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

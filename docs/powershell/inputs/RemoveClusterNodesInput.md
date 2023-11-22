@@ -7,3 +7,5 @@ Request parameters for removing nodes from a cluster.
   - Use quick drain instead of full data drain (not recommended).
 - clusterUuid: System.String
   - Cluster UUID.
+- nodeMetadata: list of NodeMetadataInputs
+  - Metadata for the nodes.

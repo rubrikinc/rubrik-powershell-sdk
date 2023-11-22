@@ -1,5 +1,4 @@
-& "$PSScriptRoot\..\..\Utils\import.ps1"
-# . Join-Path $PSScriptRoot '../import.ps1' -Verbose
+. "$PSScriptRoot\..\UnitTestInit.ps1"
 
 Describe -Name 'Verify correct import' -Fixture {
     It "should be version 6.0.0" {

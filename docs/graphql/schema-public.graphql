@@ -54,6 +54,8 @@ type Query {
   activitySeries(
     # Input for retrieving an activity series.
     input: ActivitySeriesInput!): ActivitySeries!
+
+  # Paginated list of event series objects. Each page of the results will include at most 50 entries unless otherwise specified using the first parameter. Query the pageInfo.hasNextPage field to know whether all objects were returned.
   activitySeriesConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -1250,6 +1252,29 @@ type Query {
     # Org UUID.
     orgId: UUID!): Boolean!
 
+  # Global certificates that can be assigned to an organization.
+  assignableGlobalCertificates(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Field on which to sort the certificates.
+    sortBy: GlobalCertificateSortBy,
+
+    # Input to list global certificates.
+    input: GlobalCertificatesQueryInput!): GlobalCertificateConnection!
+
   # Retrieves the AWS artifacts that need to be deleted when an account is being deleted.
   awsArtifactsToDelete(
     # Input to retrieve the AWS artifacts to be deleted.
@@ -2202,6 +2227,11 @@ type Query {
   cdmVersionCheck(
     # Request for checking feature support for cluster version.
     featureToCdmVersion: FeatureCdmVersionInput!): FeatureCdmVersionReply!
+
+  # Metadata of a certificate.
+  certificateInfo(
+    # Get certificate metadata input.
+    input: GetCertificateInfoInput!): GetCertificateInfoReply!
 
   # Get Certificate Signing Request (CSR).
   certificateSigningRequest(
@@ -3298,6 +3328,34 @@ type Query {
 
     # Returns the elements in the list that come before the specified cursor.
     before: String): [UserDownload!]!
+
+  # Global certificate.
+  globalCertificate(
+    # ID of the global certificate to retrieve.
+    certificateId: String!): GlobalCertificate!
+
+  # Global certificates.
+  globalCertificates(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Field on which to sort the certificates.
+    sortBy: GlobalCertificateSortBy,
+
+    # Input to list global certificates.
+    input: GlobalCertificatesQueryInput!): GlobalCertificateConnection!
 
   # All files matching input filters.
   globalFileSearch(
@@ -5069,6 +5127,38 @@ type Query {
 
     # Returns the elements in the list that come before the specified cursor.
     before: String): FileResultConnection!
+
+  # Returns total sensitive hits grouped by object type and also gives policy level breakdown for each object type.
+  objectTypeAccessSummary(
+    # Date for which the results will be retrieved.
+    timelineDate: String!,
+
+    # Historical days to go backward in time to calculate the delta.
+    historicalDeltaDays: Int! = 0,
+
+    # Specifies whether whitelisted results should be included.
+    includeWhitelistedResults: Boolean,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Filter for object type summary.
+    filter: ObjectTypeSummariesFilter,
+
+    # Field on which to perform the sorting operation.
+    sort: ObjectTypeAccessSummarySortBy,
+
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String): ObjectTypeAccessSummaryConnection!
 
   # Link to download the Advanced Recovery Options example file
   # 
@@ -7455,6 +7545,11 @@ type Mutation {
     # Input for V1AddDb2Instance.
     input: AddDb2InstanceInput!): AddDb2InstanceReply!
 
+  # Add a global certificate.
+  addGlobalCertificate(
+    # Input to add a global certificate.
+    input: AddGlobalCertificateInput!): AddGlobalCertificateReply!
+
   # Add account level inventory workloads.
   addInventoryWorkloads(
     # Inventory workloads to add for an account.
@@ -7873,6 +7968,14 @@ type Mutation {
   bulkRegisterHost(
     # Input for InternalBulkRegisterHost.
     input: BulkRegisterHostInput!): BulkRegisterHostReply!
+
+  # Register hosts
+  # 
+  # Supported in v5.3+
+  # Register multiple hosts and perform discovery for databases and Microsoft SQL Server instances. When called, this API returns a success message, but completes the host registration in the background. Monitor the status of the background host discovery with the "status" field in GET API on /hosts. The POST API on /hosts can take longer for discovery, depending on the number of hosts on the system. POST on this API can be used instead to perform the discovery in the background and quickly register the host. Doing this requires that you install RBS for Linux and Windows hosts, similar to regular register using POST on /hosts.
+  bulkRegisterHostAsync(
+    # Input for V1BulkRegisterHostAsync.
+    input: BulkRegisterHostAsyncInput!): BulkRegisterHostAsyncReply!
 
   # Bulk tier existing snapshots to cold storage
   # 
@@ -8469,7 +8572,7 @@ type Mutation {
   # Delete Certificate.
   deleteCertificate(
     # Certificate ID.
-    certificateId: Long!): Boolean!
+    certificateId: Long!): Boolean! @deprecated(reason: "Deprecated. Use deleteGlobalCertificate instead.")
 
   # Delete cloud native label rule.
   deleteCloudNativeLabelRule(
@@ -8543,6 +8646,13 @@ type Mutation {
   deleteFilesetSnapshots(
     # Input for V1DeleteFilesetSnapshots.
     input: DeleteFilesetSnapshotsInput!): ResponseSuccess!
+
+  # Delete an existing global certificate.
+  deleteGlobalCertificate(
+    # Input to delete a global certificate.
+    input: DeleteGlobalCertificateInput!): DeleteGlobalCertificateReply!
+
+  # Delete guest OS credentials.
   deleteGuestCredentialById(
     # Input for InternalDeleteGuestCredentialById.
     input: DeleteGuestCredentialByIdInput!): Boolean!
@@ -9472,6 +9582,14 @@ type Mutation {
   # Logout from Rubrik support portal using username.
   logoutFromRubrikSupportPortal: SupportPortalLogoutReply!
 
+  # Make this cluster the primary for agents on a set of hosts
+  # 
+  # Supported in v5.3+
+  # Migrate the primary cluster with which the agent is able to perform regular operations (backup, restore etc). This can be done on a specified set of hosts or for all hosts that currently have a specified primary cluster for disaster recovery. Specify exactly one of `ids` or `oldPrimaryClusterUuid`.
+  makePrimary(
+    # Input for V1HostMakePrimary.
+    input: MakePrimaryInput!): AsyncRequestStatus!
+
   # Map Azure cloud accounts to an Exocompute subscription.
   mapAzureCloudAccountExocomputeSubscription(
     # Input for mapping Azure cloud accounts to an Exocompute subscription.
@@ -9486,6 +9604,11 @@ type Mutation {
   mapCloudAccountExocomputeAccount(
     # Input for mapping cloud accounts to an Exocompute account.
     input: MapCloudAccountExocomputeAccountInput!): MapCloudAccountExocomputeAccountReply!
+
+  # Mark a secondary cluster certificate to be asynchronously synced to all Rubrik Backup Service instances for which this cluster is the primary.
+  markAgentSecondaryCertificate(
+    # Input for V1MarkAgentSecondaryCertificate.
+    input: MarkAgentSecondaryCertificateInput!): MarkAgentSecondaryCertificateReply!
 
   # Relocate a Nutanix virtual machine to another storage container
   # 
@@ -9815,11 +9938,6 @@ type Mutation {
     # Number of days after which data from Rubrik is removed.
     expireInDays: Long): Boolean!
 
-  # Remove healthy nodes from a cloud cluster.
-  removeCloudClusterNodes(
-    # Input for removing nodes from a cloud cluster.
-    input: RemoveCloudClusterNodesInput!): CcProvisionJobReply!
-
   # Remove healthy nodes from a cluster.
   removeClusterNodes(
     # Input for removing nodes from a Rubrik cluster.
@@ -9839,11 +9957,6 @@ type Mutation {
   removeLdapIntegration(
     # ID for your LDAP integration.
     id: UUID!): Boolean!
-
-  # Remove a node for replacement.
-  removeNodeForReplacement(
-    # Input for removing a node for replacement on a Rubrik cluster.
-    input: RemoveNodeForReplacementInput!): RemoveNodeForReplacementReply!
 
   # Remove policies from objects.
   removePolicyObjects(policyIds: [String!]!, objectIds: [String!]! = [],
@@ -9871,11 +9984,6 @@ type Mutation {
   removeVlans(
     # Input for RemoveVlans.
     input: RemoveVlansInput!): RemoveVlansReply!
-
-  # Replace a removed node with a new node.
-  replaceClusterNode(
-    # Input for replacing a node on a Rubrik cluster.
-    input: ReplaceClusterNodeInput!): ReplaceClusterNodeReply!
 
   # Reseed a secondary database.
   reseedLogShippingSecondary(
@@ -10544,7 +10652,7 @@ type Mutation {
     description: String,
 
     # Certificate.
-    certificate: String): Boolean!
+    certificate: String): Boolean! @deprecated(reason: "Deprecated. Use updateGlobalCertificate instead.")
   updateCertificateHost(
     # Input for V1UpdateCertificateHost.
     input: UpdateCertificateHostInput!): UpdateCertificateHostReply!
@@ -10661,8 +10769,15 @@ type Mutation {
     # Input for updating an existing Glacier target.
     input: UpdateGlacierTargetInput!): Target!
 
+  # Edit an existing global certificate.
+  updateGlobalCertificate(
+    # Input to edit a global certificate.
+    input: UpdateGlobalCertificateInput!): UpdateGlobalCertificateReply!
+
   # Update SLA Domain.
   updateGlobalSla(input: UpdateGlobalSlaInput!): GlobalSlaReply!
+
+  # Update guest OS credentials.
   updateGuestCredential(
     # Input for InternalUpdateGuestCredential.
     input: UpdateGuestCredentialInput!): UpdateGuestCredentialReply!
@@ -11385,6 +11500,15 @@ enum AccountState {
 
   # Mark for deletion.
   MARKED_FOR_DELETION_STATE
+
+  # The creation of the database is pending.
+  PENDING_CREATION
+
+  # The migration of the database is pending.
+  PENDING_MIGRATION
+
+  # Post-processing steps for the account are pending.
+  PENDING_POST_PROCESSING
 }
 # Account type.
 enum AccountType {
@@ -12074,6 +12198,10 @@ enum ActiveDirectoryObjectNameConflictOption {
 }
 # Supported in v9.0+
 input ActiveDirectoryObjectRecoveryConfigInput {
+  # Supported in v9.0+
+  # Specifies whether to merge current linked attributes with the ones in backup or to wipe all current and restore to the exact state in backup.
+  shouldMergeLinkedAttrs: Boolean
+
   # Supported in v9.0+
   # Options for restoring user accounts.
   userRestoreOptions: ActiveDirectoryUserRestoreOptionsInput
@@ -13584,6 +13712,34 @@ type AddDb2InstanceReply {
   # Required. Supported in v7.0+
   # ID of the new Db2 instance.
   id: String!
+}
+# Input to add a global certificate.
+input AddGlobalCertificateInput {
+  # The display name of the certificate.
+  name: String!
+
+  # The description of the certificate.
+  description: String
+
+  # The private key of the certificate.
+  privateKey: String
+
+  # The certificate, in x509 PEM format.
+  certificate: String!
+
+  # The Rubrik clusters on which to add the certificate.
+  clusters: [CertificateClusterInput!]
+
+  # The CSR corresponding to the certificate, if applicable.
+  csrFid: UUID
+}
+# The certificate that was imported.
+type AddGlobalCertificateReply {
+  # The certificate that was imported.
+  certificate: GlobalCertificate!
+
+  # The errors from uploading the certificate to the specified Rubrik clusters.
+  clusterErrors: [CertificateClusterOperationError!]!
 }
 # Inventory workloads to add for an account.
 input AddInventoryWorkloadsInput {
@@ -15675,6 +15831,9 @@ enum AuditType {
   # Failover audit.
   FAILOVER
 
+  # File download audit.
+  FILE_DOWNLOAD
+
   # Index audit.
   INDEX
 
@@ -15698,6 +15857,9 @@ enum AuditType {
 
   # Orchestrated Application Recovery schedule audit.
   RECOVERY_SCHEDULE
+
+  # AI confirmation audit.
+  RUBY_AI
 
   # Search audit.
   SEARCH
@@ -16453,6 +16615,12 @@ type AwsExocomputeGetConfigResponse {
 
   # Status of the latest Exocompute health check.
   healthCheckStatus: ExocomputeHealthCheckStatus!
+
+  # Whether this Exocompute uses a Private Container Registry (PCR).
+  hasPcr: Boolean!
+
+  # URL of the user's PCR.
+  pcrUrl: String!
 
   # Specifies if the security groups are managed by Rubrik SaaS.
   areSecurityGroupsRscManaged: Boolean!
@@ -21877,7 +22045,7 @@ enum AzureAdRegion {
   # Azure region is East Asia.
   EASTASIA
 
-  # Azure region is East US.
+  # Azure region is East US (deprecated).
   EASTUS
 
   # Azure region is East US 2.
@@ -21901,10 +22069,16 @@ enum AzureAdRegion {
   # Azure region is Norway East.
   NORWAYEAST
 
+  # Azure region is Poland Central.
+  POLANDCENTRAL
+
+  # Azure region is Qatar Central.
+  QATARCENTRAL
+
   # Azure region is South Africa North.
   SOUTHAFRICANORTH
 
-  # Azure region is South Central US.
+  # Azure region is South Central US (deprecated).
   SOUTHCENTRALUS
 
   # Azure region is South East Asia.
@@ -21915,6 +22089,9 @@ enum AzureAdRegion {
 
   # Azure region is Switzerland North.
   SWITZERLANDNORTH
+
+  # Azure region is UAE North.
+  UAENORTH
 
   # Azure region is UK South.
   UKSOUTH
@@ -25799,6 +25976,15 @@ type AzureStorageAccount implements PolarisHierarchyObject , PolarisHierarchySna
   # Region where the storage account is located.
   region: AzureNativeRegion!
 
+  # The used capacity bytes of the storage account.
+  usedCapacityBytes: Long!
+
+  # The access tier of the storage account.
+  accessTier: String!
+
+  # The number of containers in the storage account.
+  numContainers: Long!
+
   # The authorized operations on the object.
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
@@ -27115,6 +27301,18 @@ type BulkRefreshHostsReply {
   # Details of the refreshed hosts.
   data: [RefreshHostReply!]!
 }
+# Input for registering multiple hosts in the background.
+input BulkRegisterHostAsyncInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. Registration definition for each host.
+  hosts: [HostRegisterInput!]!
+}
+# Reply Object for BulkRegisterHostAsync.
+type BulkRegisterHostAsyncReply {
+  output: V1BulkRegisterHostAsyncResponse
+}
 # Input for registering multiple hosts.
 input BulkRegisterHostInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -28281,6 +28479,55 @@ type CdmAgentStatus {
   # Supported in v5.0+
   # The reason the agent disconnected.
   disconnectReason: String
+}
+# Different types of usages of a certificate on a Rubrik cluster.
+enum CdmCertificateUsage {
+  # Secondary Agent.
+  AGENT
+
+  # KMIP Client.
+  KMIP_CLIENT
+
+  # KMIP Server.
+  KMIP_SERVER
+
+  # LDAP.
+  LDAP
+
+  # RSA.
+  RSA
+
+  # SMTP.
+  SMTP
+
+  # SSO Encryption.
+  SSO_ENC
+
+  # SSO Signing.
+  SSO_SIGN
+
+  # Syslog.
+  SYSLOG
+
+  # The usage is unknown.
+  USAGE_UNKNOWN
+
+  # Web Server.
+  WEB_SERVER
+}
+# Different types of usages of a certificate on a Rubrik cluster.
+type CdmCertificateUsageInfo {
+  # The Rubrik cluster where the certificate is used.
+  clusterUuid: String!
+
+  # The ID of the object for which the certificate is used, if applicable.
+  id: String!
+
+  # The name of the Rubrik cluster where the certificate is used.
+  clusterName: String!
+
+  # The type of usage of the certificate on Rubrik CDM.
+  type: CdmCertificateUsage!
 }
 type CdmClusterStatus {
   # Rubrik cluster upgrade status. The value reflects the status of the Rubrik cluster at the various stages involved in an upgrade, for example, pre-check, download, upgrade scheduling, and rollback of the upgrade.
@@ -29674,6 +29921,9 @@ type CdmSnapshot implements GenericSnapshot {
   # Snapshot of a Rubrik CDM workload.
   cdmWorkloadSnapshot: CdmWorkloadSnapshot
 
+  # Mssql specific metadata for the snapshot.
+  mssqlAppMetadata: MssqlAppMetadata
+
   # Specifies whether or not the snapshot is expired.
   isExpired: Boolean!
 
@@ -30407,6 +30657,39 @@ type Certificate {
   usedBy: [String!]!
   certificate: String!
 }
+# Information about the Rubrik cluster to which the certificate has been uploaded.
+type CertificateClusterInfo {
+  # Specifies whether the Rubrik cluster trusts any certificate signed by the certificate's issuer.
+  isTrusted: Boolean!
+
+  # The name of the Rubrik cluster.
+  name: String!
+
+  # The UUID of the Rubrik cluster.
+  clusterUuid: UUID!
+
+  # The Rubrik CDM ID of the certificate.
+  cdmCertUuid: UUID!
+}
+# The Rubrik cluster on which to add the certificate.
+input CertificateClusterInput {
+  # The Rubrik cluster on which to add the certificate.
+  clusterUuid: UUID!
+
+  # Specifies whether to add the certificate to the Rubrik cluster trust store. Any certificate signed by the issuer of the certificate will be trusted by the Rubrik cluster.
+  isTrusted: Boolean!
+}
+# An error associated with a certificate operation on a Rubrik cluster.
+type CertificateClusterOperationError {
+  # The UUID of the Rubrik cluster.
+  clusterUuid: String!
+
+  # The error of the certificate operation.
+  error: String!
+
+  # Specifies whether the cause of the error is a network or synchronization timeout.
+  isTimedOut: Boolean!
+}
 # Paginated list of Certificate objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type CertificateConnection {
   # List of Certificate objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
@@ -30473,6 +30756,39 @@ type CertificateSummaryListResponse {
   # v9.0: Cursor to fetch the next set of results.
   # v9.1: Cursor to retrieve the next set of results.
   nextCursor: String
+}
+# Different types of usages of a certificate on RSC.
+enum CertificateUsage {
+  # The usage is unknown.
+  CERTIFICATE_USAGE_UNKNOWN
+
+  # Rubrik Security Cloud Private - SMTP TLS certificate.
+  ON_PREM_SMTP
+
+  # Rubrik Security Cloud - Private TLS Web certificate.
+  ON_PREM_TLS_CERT
+
+  # SP encryption certificate.
+  SSO_SP_ENCRYPTION
+
+  # SP signing certificate.
+  SSO_SP_SIGNING
+}
+# Different types of usages of a certificate on Rubrik Security Cloud.
+type CertificateUsageInfo {
+  # The type of usage of the certificate on Rubrik Security Cloud.
+  type: CertificateUsage!
+
+  # The metadata about a certificate's usage on Rubrik Security Cloud.
+  params: [CertificateUsageParameter!]!
+}
+# The metadata about a certificate's usage.
+type CertificateUsageParameter {
+  # The key of the metadata.
+  key: String!
+
+  # The value of the metadata.
+  value: String!
 }
 input ChangePasswordInput {
   # Email of user performing reset.
@@ -32651,6 +32967,9 @@ enum ClusterNodeStatus {
 
   # Node is being upgraded. The node will not accept any new jobs and the upgrade operation will begin after existing jobs are completed.
   UPGRADE
+
+  # Node needs attention. Either the node is down, or some of the disks on the node are unavailable.
+  WARNING
 }
 # Status and progress of a Rubrik cluster operation job. 
 type ClusterOperationJobProgress {
@@ -38474,6 +38793,19 @@ input DeleteFilesetSnapshotsInput {
   # Required. ID of the fileset.
   id: String!
 }
+# Input to delete a global certificate.
+input DeleteGlobalCertificateInput {
+  # The ID of the global certificate (either the Rubrik Security Cloud ID or the Rubrik CDM certificate ID).
+  certificateId: String!
+}
+# The Rubrik clusters from which the certificate was successfully deleted.
+type DeleteGlobalCertificateReply {
+  # The Rubrik clusters from which the certificate was successfully deleted.
+  clusterUuids: [UUID!]!
+
+  # The errors originating from deleting certificates from the Rubrik clusters.
+  clusterErrors: [CertificateClusterOperationError!]!
+}
 input DeleteGuestCredentialByIdInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
@@ -39676,6 +40008,9 @@ enum DownloadIdentifierEnum {
   # Download report CSV/PDF.
   REPORT
 
+  # File generated by Ruby AI.
+  RUBY_AI
+
   # Send report email.
   SEND_NOW_EMAIL
 
@@ -40324,7 +40659,7 @@ input EventDigestConfig {
   # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, K8S, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
-  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, and Index.
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, FILE_DOWNLOAD, and Index.
   auditType: [UserAuditTypeEnum!]
 
   # Activity severities to include in event digest.
@@ -41190,7 +41525,7 @@ input ExchangeDagUpdateInput {
   backupPreference: ExchangeBackupPreference!
 }
 # Exchange Database details object.
-type ExchangeDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , ExchangeDagDescendantType , ExchangeServerDescendantType {
+type ExchangeDatabase implements CdmHierarchyObject , HierarchySnappable , CdmHierarchySnappableNew , HierarchyObject , ExchangeDagDescendantType , ExchangeServerDescendantType {
   # UUID of the primary cluster.
   primaryClusterUuid: UUID!
 
@@ -41989,6 +42324,12 @@ input ExportO365MailboxInput {
 
   # Configuration for restore job.
   exportConfigs: [RestoreObjectConfig!]!
+
+  # Specifies the recovery type for the job.
+  actionType: O365RestoreActionType
+
+  # In-place restore configuration for the restore job.
+  inplaceRestoreConfig: InplaceRestoreConfig
 }
 # Input for ExportOracleDatabase.
 input ExportOracleDatabaseInput {
@@ -43252,6 +43593,12 @@ enum FieldEnum {
   # Returns snapshots with a sequence number greater than the
   # specified sequence number.
   SEQUENCE_NUMBER_GREATER_THAN
+
+  # SPECIFIC_SNAPSHOT_NOT_REQUIRED when added as a filter returns Snapshots
+  # without the specific snapshots details. When not provided, Specific
+  # Snapshot details are returned. Add the filter for efficiency if specific
+  # snapshot details are not required.
+  SPECIFIC_SNAPSHOT_NOT_REQUIRED
   TIME_RANGE_WITH_OFFSET
 }
 type FileAccessResult {
@@ -43309,18 +43656,9 @@ input FileInfo {
   fileSnapshotsToRestore: [FileSnapshotInfo!]!
   channelInfo: TeamsChannelInfo
 }
-# Enum for file modes of files in snapshot.
 enum FileModeEnum {
-  # File mode is directory.
   DIRECTORY
-
-  # File mode is file.
   FILE
-
-  # File mode is share.
-  SHARE
-
-  # File mode is symlink.
   SYMLINK
 }
 # Cloud-native file recovery feasibility.
@@ -43651,6 +43989,10 @@ input FilesetExportFilesJobConfigInput {
   # Network share ID.
   shareId: String
 
+  # Supported in v9.1
+  # Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
+  shouldRecreateDirectoryStructure: Boolean
+
   # Required. Supported in v5.0+
   # Pairs of source path and destination path.
   exportPathPairs: [FilesetExportPathPairInput!]!
@@ -43750,6 +44092,10 @@ input FilesetRestoreFilesJobConfigInput {
   # Supported in v5.0+
   # Optional field to determine if we should ignore single error during restore. Default value is false.
   ignoreErrors: Boolean
+
+  # Supported in v9.1
+  # Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
+  shouldRecreateDirectoryStructure: Boolean
 
   # Required. Supported in v5.0+
   # v5.0-v5.3: Absolute file path and restore path if not restored back to itself
@@ -46366,6 +46712,37 @@ type GetAzureHostTypeResp {
 type GetAzureO365ExocomputeResp {
   cluster: AzureO365ExocomputeCluster
 }
+# Input to retrieve the metadata of a certificate.
+input GetCertificateInfoInput {
+  # The certificate, in x509 PEM format.
+  certificatePem: String!
+}
+# Certificate metadata details.
+type GetCertificateInfoReply {
+  # The expiration date of the certificate.
+  expiringAt: DateTime
+
+  # The date when the certificate was issued.
+  issuedOn: DateTime
+
+  # The certificate in x509 PEM format.
+  certificate: String!
+
+  # To whom the certificate was issued.
+  issuedTo: String!
+
+  # The issuer of the certificate.
+  issuedBy: String!
+
+  # The sha-1 fingerprint, in hexadecimal format, of the certificate.
+  sha1Fingerprint: String!
+
+  # The sha-256 fingerprint, in hexadecimal format, of the certificate.
+  sha256Fingerprint: String!
+
+  # The serial number in hexadecimal format of the certificate.
+  serialNumber: String!
+}
 # Input to retrieve cloud compute connectivity status.
 input GetCloudComputeConnectivityCheckRequestStatusInput {
   # Required. ID of the request.
@@ -46924,6 +47301,135 @@ type GetWorkloadAlertSettingReply {
   # Specifies whether anomaly alerts are enabled or not.
   enabled: Boolean!
 }
+# Information about a certificate on Rubrik Security Cloud.
+type GlobalCertificate {
+  # The ID of the certificate.
+  certificateId: String!
+
+  # The display name of the certificate.
+  name: String!
+
+  # The description of the certificate.
+  description: String!
+
+  # Specifies whether the certificate has a private key.
+  hasKey: Boolean!
+
+  # The expiration date of the certificate.
+  expiringAt: DateTime
+
+  # The certificate in raw PEM format.
+  certificate: String!
+
+  # To whom the certificate was issued.
+  issuedTo: String!
+
+  # The issuer of the certificate.
+  issuedBy: String!
+
+  # The date on which the certificate was issued.
+  issuedOn: DateTime
+
+  # Specifies if the certificate is signed by a Certificate Authority.
+  isCaSigned: Boolean!
+
+  # The expiration status of the certificate.
+  status: GlobalCertificateStatus!
+
+  # The SHA-1 fingerprint of the certificate, in hexadecimal format.
+  sha1Fingerprint: String!
+
+  # The SHA-256 fingerprint of the certificate, in hexadecimal format.
+  sha256Fingerprint: String!
+
+  # The serial number of the certificate, in hexadecimal format.
+  serialNumber: String!
+
+  # Specifies whether the certificate was imported directly from Rubrik CDM.
+  isCdmBorn: Boolean!
+
+  # The FID of the certificate.
+  certificateFid: UUID!
+
+  # The Rubrik clusters to which the certificate has been uploaded.
+  clusters: [CertificateClusterInfo!]
+
+  # The usages for the certificate on Rubrik clusters.
+  cdmUsages: [CdmCertificateUsageInfo!]!
+
+  # The usages for the certificate on Rubrik Security Cloud.
+  usages: [CertificateUsageInfo!]!
+
+  # The organization to which the certificate has been assigned.
+  org: Org
+}
+# Paginated list of GlobalCertificate objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type GlobalCertificateConnection {
+  # List of GlobalCertificate objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [GlobalCertificateEdge!]!
+
+  # List of GlobalCertificate objects.
+  nodes: [GlobalCertificate!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of GlobalCertificate objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the GlobalCertificate object. This wrapper is used for pagination.
+type GlobalCertificateEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual GlobalCertificate object wrapped by this edge.
+  node: GlobalCertificate!
+}
+# How to sort the certificates.
+enum GlobalCertificateSortBy {
+  # Sort by the expiration date of the certificate.
+  SORT_BY_EXPIRATION_DATE
+
+  # Sort by the name of the certificate.
+  SORT_BY_NAME
+
+  # The sorting filter is unknown.
+  SORT_BY_UNSPECIFIED
+}
+# The expiration status of the certificate.
+enum GlobalCertificateStatus {
+  # The certificate has expired.
+  EXPIRED
+
+  # The certificate is expiring within 30 days.
+  EXPIRING_SOON
+
+  # The expiration status of the certificate is unknown.
+  STATUS_UNSPECIFIED
+
+  # The certificate does not expire within 30 days.
+  VALID
+}
+# Input to list global certificates.
+input GlobalCertificatesQueryInput {
+  # The query to filter the certificates.
+  searchText: String
+
+  # Specifies whether to return only the certificates with private keys.
+  hasKey: Boolean
+
+  # The status of the certificates.
+  statuses: [GlobalCertificateStatus!]
+
+  # The UUIDs of the Rubrik clusters on which to filter.
+  clusterIds: [UUID!]
+
+  # Specifies whether the certificate is in the trust store of the Rubrik cluster.
+  isTrustedAny: Boolean
+
+  # Specifies whether to include only certificates imported via RSC.
+  isRscBorn: Boolean
+}
 # Available options for retention of existing snapshots.
 enum GlobalExistingSnapshotRetention {
   # Expire immediately.
@@ -47405,6 +47911,9 @@ input GroupFilterInput {
   # Filter user groups that have the specified roles assigned in the current
   # organization.
   roleIdsFilter: [String!] = []
+
+  # Filter user groups by name.
+  nameFilter: String = ""
 }
 # Fields by which we can sort user groups.
 enum GroupSortByField {
@@ -48262,6 +48771,9 @@ enum HierarchyFilterField {
 
   # Filter based on Kubernetes cluster name.
   K8S_CLUSTER_NAME
+
+  # Filter by the status of the K8s cluster.
+  K8S_CLUSTER_STATUS
 
   # Filter Kubernetes clusters based on associated Rubrik cluster.
   # Since the Kubernetes cluster is natively managed by Rubrik SaaS, a separate filter is used.
@@ -49609,6 +50121,16 @@ type HostInfo {
   # Required. Supported in v5.3+
   # Oracle sysdba user to use on the host.
   oracleSysDbaUser: String!
+}
+# Supported in v5.3+
+input HostMakePrimaryRequestInput {
+  # Supported in v5.3+
+  # IDs of hosts to migrate.
+  ids: [String!] = []
+
+  # Supported in v5.3+
+  # For all hosts and virtual machines registered with this cluster, make itself the primary if the current primary is oldPrimaryClusterUuid.
+  oldPrimaryClusterUuid: String
 }
 # Supported in v5.0+
 input HostRegisterInput {
@@ -52711,6 +53233,9 @@ enum InventoryCard {
   # Inventory card is Azure Active Directory.
   AZURE_AD
 
+  # Inventory Card is Azure Blob Storage.
+  AZURE_BLOB_STORAGE
+
   # Inventory Card is Azure SQL Databases.
   AZURE_SQL_DB
 
@@ -54297,6 +54822,9 @@ type LinuxFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
   # Host of the linux fileset.
   host: PhysicalHost
 
+  # Includes statistics for the protected objects, for example, archive storage.
+  reportWorkload: Snappable
+
   # Fileset template of the Linux fileset.
   filesetTemplate: FilesetTemplate
 
@@ -54827,6 +55355,11 @@ type M365Snapshot implements PolarisSpecificSnapshot {
 input MailboxRestoreConfig {
   SnapshotUUID: UUID
   RestoreConfigs: [RestoreObjectConfig!]!
+}
+# Input for operation to make a host primary.
+input MakePrimaryInput {
+  # Required. Description of hosts to migrate.
+  hosts: HostMakePrimaryRequestInput!
 }
 # Supported in v6.0+
 type MalwareMatch {
@@ -56941,6 +57474,32 @@ type MapCloudAccountExocomputeAccountReply {
   # Specifies whether the mapping was completed successfully.
   isSuccess: Boolean!
 }
+# Input for operation to mark a secondary cluster certificate to be asynchronously synced to all Rubrik Backup Service instances.
+input MarkAgentSecondaryCertificateInput {
+  # Required. ID of certificate to add.
+  certId: String!
+
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+}
+# Supported in v5.3+
+type MarkAgentSecondaryCertificateReply {
+  # Required. Supported in v5.3+
+  # ID of the certificate.
+  certId: String!
+
+  # Required. Supported in v5.3+
+  # Parsed cluster ID from the certificate.
+  clusterUuid: String!
+
+  # Required. Supported in v5.3+
+  # Whether this certificate has been marked for use by agents.
+  isAgentEnabled: Boolean!
+
+  # Required. Supported in v5.3+
+  # Display name for the certificate.
+  name: String!
+}
 type Metadata {
   key: String!
   value: Value
@@ -58387,6 +58946,17 @@ type MongoSource implements HierarchyObject , CdmHierarchyObject {
 
   # Count of protected collections for this MongoDB source.
   protectedCollectionCount: Int!
+
+  # The list of data hosts associated with this MongoDB source.
+  dataHosts(
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): PhysicalHostConnection!
 
   # The FID of the hierarchy object.
   id: UUID!
@@ -60554,6 +61124,11 @@ type MountedVolume {
   # Mount path in host.
   hostMountPath: String
 }
+# Backup metadata for a Mssql snapshot.
+type MssqlAppMetadata {
+  # End timestamp for the backup.
+  endBackupTimestampMs: Long
+}
 # SQL Server always on availability group.
 type MssqlAvailabilityGroup implements HierarchyObject , CdmHierarchyObject , MssqlTopLevelDescendantType {
   # CopyOnly flag of the availability group.
@@ -61027,7 +61602,7 @@ input MssqlConfigInput {
   logRetention: SlaDurationInput
 }
 # SQL Server database.
-type MssqlDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , MssqlTopLevelDescendantType , PhysicalHostDescendantType , WindowsClusterDescendantType , MssqlAvailabilityGroupDescendantType , MssqlAvailabilityGroupLogicalChildType , MssqlInstanceDescendantType , MssqlInstanceLogicalChildType {
+type MssqlDatabase implements HierarchyObject , CdmHierarchyObject , HierarchySnappable , CdmHierarchySnappableNew , MssqlTopLevelDescendantType , PhysicalHostDescendantType , WindowsClusterDescendantType , MssqlAvailabilityGroupDescendantType , MssqlAvailabilityGroupLogicalChildType , MssqlInstanceDescendantType , MssqlInstanceLogicalChildType {
   # CDM ID of the SQL Server database.
   cdmId: String!
 
@@ -64370,6 +64945,7 @@ input NasSystemRegisterInput {
 
   # Supported in v9.0+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+  nutanixFileServerParameters: NutanixFileServerParametersInput
 
   # Required. Supported in v7.0+
   nasVendorType: NasVendorType!
@@ -64399,6 +64975,7 @@ input NasSystemUpdateInput {
 
   # Supported in v9.0+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+  nutanixFileServerParameters: NutanixFileServerParametersInput
 }
 # Supported in v5.2+
 # NAS Vendor Type.
@@ -64408,6 +64985,7 @@ enum NasVendorType {
   NAS_VENDOR_TYPE_ISILON
   NAS_VENDOR_TYPE_NETAPP
   NAS_VENDOR_TYPE_NUTANIX
+  NAS_VENDOR_TYPE_NUTANIX_FILE_SERVER
 }
 # NAS volume instance in a registered NAS system.
 type NasVolume implements CdmHierarchyObject , HierarchyObject , NasSystemDescendantType , NasSystemLogicalChildType , NasNamespaceDescendantType , NasNamespaceLogicalChildType {
@@ -66260,11 +66838,17 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
   # Nutanix cluster version.
   nosVersion: String
 
+  # Nutanix cluster metadata.
+  clusterMetadata: NutanixClusterMetadata
+
   # Object ID.
   id: UUID!
 
   # Connection status of the Nutanix Cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
   connectionStatus: RefreshableObjectConnectionStatus!
+
+  # Nutanix cluster snapshot consistency level.
+  nutanixSnapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate!
 
   # List of descendants.
   descendantConnection(
@@ -66597,6 +67181,11 @@ type NutanixClusterLogicalChildTypeEdge {
   # The actual NutanixClusterLogicalChildType object wrapped by this edge.
   node: NutanixClusterLogicalChildType!
 }
+# Nutanix cluster metadata.
+type NutanixClusterMetadata {
+  # Consistency level mandated for this Nutanix cluster..
+  snapshotConsistencyMandate: NutanixSnapshotConsistencyMandate!
+}
 # Supported in v5.0+
 input NutanixClusterPatchInput {
   # Supported in v5.0+
@@ -66718,6 +67307,29 @@ input NutanixExportSnapshotJobConfigForBatchInput {
   # Required. Supported in v7.0+
   # ID of the virtual machine with the snapshot that requires exporting.
   vmId: String!
+}
+# API credentials to add or update the Nutanix File Server with API integration. Also contains credentials for SMB share access.
+input NutanixFileServerParametersInput {
+  # TLS certification to validate the NAS system.
+  apiCertificate: String
+
+  # ID corresponding to the imported certificate.
+  certificateId: String
+
+  # Credentials to access SMB shares.
+  smbCredentials: GenericNasSystemCredentialsInput
+
+  # Password associated with the NAS API user account.
+  apiPassword: String
+
+  # Username to access the vendor-specific NAS API.
+  apiUsername: String
+
+  # Required. Specifies whether to enable NFS for the NAS system.
+  hasNfsSupport: Boolean!
+
+  # Required. Specifies whether to enable SMB for the NAS system.
+  hasSmbSupport: Boolean!
 }
 # Nutanix virtual machine live mount.
 type NutanixLiveMount {
@@ -67360,16 +67972,19 @@ input NutanixRestoreFilesConfigInput {
   # Directory of folder to copy files into.
   restoreConfig: [NutanixRestoreFileConfigInput!]!
 }
-# Nutanix Virtual Machine snapshot consistency mandate.
+# Nutanix cluster snapshot consistency mandate.
 enum NutanixSnapshotConsistencyMandate {
   # Application consistent.
-  APP_CONSISTENT
+  NUTANIX_APP_CONSISTENT
 
   # Automatic.
-  AUTOMATIC
+  NUTANIX_AUTOMATIC
 
   # Crash consistent.
-  CRASH_CONSISTENT
+  NUTANIX_CRASH_CONSISTENT
+
+  # Unspecified.
+  NUTANIX_UNSPECIFIED
 }
 # Nutanix top-level descendant type.
 interface NutanixTopLevelDescendantType {
@@ -67477,7 +68092,7 @@ type NutanixVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
   vmDisks: [NutanixVmDisk!]!
 
   # Deprecated, use nutanixSnapshotConsistencyMandate instead.
-  snapshotConsistencyMandate: NutanixSnapshotConsistencyMandate!
+  snapshotConsistencyMandate: NutanixVmSnapshotConsistencyMandate!
 
   # Nutanix virtual machine agent status.
   agentStatus: NutanixVmAgentStatus!
@@ -67949,6 +68564,17 @@ input NutanixVmPatchInput {
   # v5.0-v8.0: Consistency level mandated for this VM.
   # v8.1+: Consistency level mandated for this virtual machine.
   snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
+}
+# Nutanix Virtual Machine snapshot consistency mandate.
+enum NutanixVmSnapshotConsistencyMandate {
+  # Application consistent.
+  APP_CONSISTENT
+
+  # Automatic.
+  AUTOMATIC
+
+  # Crash consistent.
+  CRASH_CONSISTENT
 }
 # Supported in v5.0+
 type NutanixVmSnapshotDetail {
@@ -71033,6 +71659,51 @@ type ObjectSummary {
 type ObjectType {
   enumValue: ObjectTypeEnum!
 }
+# Object type access summary.
+type ObjectTypeAccessSummary {
+  # Object type.
+  objectType: String!
+
+  # Total number of sensitive hits.
+  totalHits: Long!
+
+  # Change in sensitive hits for the time period.
+  deltaHits: Long!
+
+  # Policy summaries.
+  policySummaryDetails: [PolicySummaryDetails!]!
+}
+# Paginated list of ObjectTypeAccessSummary objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ObjectTypeAccessSummaryConnection {
+  # List of ObjectTypeAccessSummary objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ObjectTypeAccessSummaryEdge!]!
+
+  # List of ObjectTypeAccessSummary objects.
+  nodes: [ObjectTypeAccessSummary!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ObjectTypeAccessSummary objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ObjectTypeAccessSummary object. This wrapper is used for pagination.
+type ObjectTypeAccessSummaryEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ObjectTypeAccessSummary object wrapped by this edge.
+  node: ObjectTypeAccessSummary!
+}
+# GetObjectTypeAccessSummariesSortBy specifies the sort criteria for
+# object type access summaries.
+enum ObjectTypeAccessSummarySortBy {
+  # Unspecified sort criteria.
+  SORT_BY_UNSPECIFIED
+
+  # Sort based on total hits.
+  TOTAL_HITS
+}
 enum ObjectTypeEnum {
   # Active Directory domain controller.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
@@ -71135,6 +71806,11 @@ enum ObjectTypeEnum {
   VolumeGroup
   WindowsFileset
   WindowsVolumeGroup
+}
+# Filters for GetObjectTypeAccessSummariesRequest.
+input ObjectTypeSummariesFilter {
+  # Policy ID to filter.
+  policyId: String = ""
 }
 # Input for restore path pair.
 input OldRestorePathPairInput {
@@ -74631,10 +75307,19 @@ enum PermissionsGroup {
   # Unspecified permission group.
   GROUP_UNSPECIFIED
 
+  # Represents the set of permissions required for usage of private
+  # endpoints. These permissions are applicable to exocompute feature.
+  PRIVATE_ENDPOINTS
+
   # Represents the set of permissions required for all recovery
   # operations. These permissions are applicable to the cloud native
   # SQL DB and SQL MI features.
   RECOVERY
+
+  # Represents the set of permissions required for private access to disk
+  # snapshots. These permissions are applicable to the cloud native
+  # protection feature.
+  SNAPSHOT_PRIVATE_ACCESS
 }
 # Azure permissions group with accompanying version number.
 type PermissionsGroupWithVersion {
@@ -75749,6 +76434,20 @@ type PolicySummary {
 
   # Policy summaries.
   summary: ClassificationPolicySummary
+}
+# Policy summary details.
+type PolicySummaryDetails {
+  # Policy ID.
+  policyId: String!
+
+  # Policy name.
+  policyName: String!
+
+  # Total number of sensitive hits for the policy.
+  totalHits: Long!
+
+  # Change in sensitive hits for the time period for the policy.
+  deltaHits: Long!
 }
 # Range of ports that are allowed to be accessed.
 input PortRange {
@@ -77707,20 +78406,6 @@ input RelocateMountConfigV2Input {
   # ID of the resource pool where the new virtual machine will be mounted.
   resourcePoolId: String
 }
-# Request parameters for removing nodes from a cloud cluster.
-input RemoveCloudClusterNodesInput {
-  # List of node IDs to be removed.
-  nodeIds: [String!] = []
-
-  # Use quick drain instead of full data drain (not recommended).
-  useQuickDrain: Boolean = false
-
-  # Cluster UUID.
-  clusterUuid: UUID!
-
-  # Customer cloud account UUID.
-  cloudAccountId: UUID!
-}
 # Request parameters for removing nodes from a cluster.
 input RemoveClusterNodesInput {
   # List of node IDs to be removed.
@@ -77746,31 +78431,6 @@ input RemoveDiskInput {
 input RemoveInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
-}
-# Request parameters for removing a node on a Rubrik cluster for replacement.
-input RemoveNodeForReplacementInput {
-  # Node ID to be removed in list form.
-  nodeIds: [String!] = []
-
-  # Use quick drain instead of full data drain (not recommended).
-  useQuickDrain: Boolean = false
-
-  # Rubrik cluster UUID.
-  clusterUuid: UUID!
-
-  # Metadata for the nodes.
-  nodeMetadata: [NodeMetadataInput!]
-}
-# Asynchronous reply for a submitted removal job.
-type RemoveNodeForReplacementReply {
-  # Details of submitted job including job name and function parameters.
-  message: String!
-
-  # Job ID of the submitted job.
-  jobId: Long!
-
-  # Specifies if the operation was a success.
-  isSuccessful: Boolean!
 }
 # Input for removing private endpoint connection to RCV location.
 input RemovePrivateEndpointConnectionInput {
@@ -77799,28 +78459,6 @@ type RemoveVlansReply {
 
   # VLAN ID(s) that failed to be deleted.
   failureVlanIds: [Int!]!
-}
-# Request parameters for replacing a node on a Rubrik cluster.
-input ReplaceClusterNodeInput {
-  # New node ID.
-  newNodeId: String = ""
-
-  # IPMI password.
-  ipmiPassword: String = ""
-
-  # Cluster UUID.
-  clusterUuid: UUID!
-}
-# Asynchronous reply for a submitted job.
-type ReplaceClusterNodeReply {
-  # Details of submitted job including job name and function parameters.
-  message: String!
-
-  # Job ID of the submitted job.
-  jobId: Long!
-
-  # Specifies if the operation was a success.
-  isSuccessful: Boolean!
 }
 # Information about Kubernetes Replicated Snapshots.
 type ReplicatedSnapshotInfo {
@@ -78954,6 +79592,9 @@ input RestoreO365MailboxInput {
 
   # Specifies the recovery type for the job.
   actionType: O365RestoreActionType!
+
+  # In-place restore configuration for restore job.
+  inplaceRestoreConfig: InplaceRestoreConfig
 }
 # Config for O365 Snappable Restore.
 input RestoreO365SnappableInput {
@@ -82336,6 +82977,9 @@ type ShareFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
   # Host of this share fileset.
   host: PhysicalHost
 
+  # Includes statistics for the protected objects, for example, archive storage.
+  reportWorkload: Snappable
+
   # HostShare of this ShareFileset.
   share: HostShare
 
@@ -83087,6 +83731,9 @@ enum SlaMigrationIneligibilityReason {
   # To upgrade to a retention-locked RSC SLA Domain in Governance mode, make sure quorum authorization is enabled in RSC and your cluster is running CDM 9.0.1 or later.
   GOVERNANCE_RETENTION_LOCK_CONFIGURED
 
+  # The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.
+  GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER
+
   # This SLA Domain has cascading archival configured. However, the Rubrik CDM version on the replication target cluster does not support migration of SLA Domains with cascading archival configured.
   INVALID_CASCADING_ARCHIVAL_VERSION
 
@@ -83216,6 +83863,9 @@ enum SlaObjectType {
 
   # Oracle object.
   ORACLE_OBJECT_TYPE
+
+  # PostgreSQL DB Cluster object.
+  POSTGRES_DB_CLUSTER_OBJECT_TYPE
 
   # SAP HANA object.
   SAP_HANA_OBJECT_TYPE
@@ -89051,6 +89701,28 @@ input UpdateGlacierTargetInput {
   # Field for specifying cloud account ID.
   cloudAccountId: UUID
 }
+# Input to add a global certificate.
+input UpdateGlobalCertificateInput {
+  # The ID of the global certificate (either the Rubrik Security Cloud ID or the Rubrik CDM certificate ID).
+  certificateId: String!
+
+  # The updated display name of the certificate.
+  name: String
+
+  # The updated description of the certificate.
+  description: String
+
+  # The Rubrik clusters on which to add the certificate.
+  clusters: [CertificateClusterInput!]! = []
+}
+# The Rubrik clusters on which the certificate was successfully updated.
+type UpdateGlobalCertificateReply {
+  # The Rubrik clusters on which the certificate was successfully updated.
+  clusterUuids: [UUID!]!
+
+  # The errors originating from updating certificates on the Rubrik clusters.
+  clusterErrors: [CertificateClusterOperationError!]!
+}
 # Input to update SLA Domain.
 input UpdateGlobalSlaInput {
   # ID of the SLA Domain.
@@ -91012,6 +91684,9 @@ enum UserAuditTypeEnum {
 
   # Audit type for encryption management use cases.
   ENCRYPTION_MANAGEMENT_OPERATION
+
+  # Audit type for user file downloads.
+  FILE_DOWNLOAD
   Failover
   ISOLATED_RECOVERY
   Index
@@ -91024,6 +91699,9 @@ enum UserAuditTypeEnum {
 
   # Audit type for recovery schedule use cases.
   RECOVERY_SCHEDULE
+
+  # Audit type for Ruby AI use cases.
+  RUBY_AI
   Recovery
   Search
   SlaAssignment
@@ -91235,6 +91913,11 @@ input UserTimeRangeInput {
   startTime: String = ""
   endTime: String = ""
   timezone: String = ""
+}
+# Response for the operation that registers hosts in bulk.
+type V1BulkRegisterHostAsyncResponse {
+  # Summary information of the registered hosts.
+  items: [HostDetail!]!
 }
 type V1BulkUpdateExchangeDagResponse {
   items: [ExchangeDagSummary!]!
@@ -94348,6 +95031,17 @@ type VmwareVmMountSummaryV1 {
   # Required. Supported in v5.0+
   vmId: String!
 }
+# Network interface for a virtual machine.
+type VmwareVmNetworkInterface {
+  # MAC address for the network interface.
+  macAddress: String
+
+  # List of IPv4 addresses for the network interface.
+  v4Addresses: [String!]!
+
+  # List of IPv6 addresses for the network interface.
+  v6Addresses: [String!]!
+}
 # Supported in v5.3+
 type VmwareVmRecoverableRanges {
   # Required. Supported in v5.3+
@@ -94357,6 +95051,11 @@ type VmwareVmRecoverableRanges {
   # Required. Supported in v5.3+
   # The ID of the virtual machine for which to retrieve recoverable ranges.
   vmId: String!
+}
+# Vsphere virtual machine resource specification.
+type VmwareVmResourceSpec {
+  # List of network interfaces for the virtual machine.
+  networkInterfaces: [VmwareVmNetworkInterface!]!
 }
 # A virtual disk captured in a VMware virtual machine snapshot.
 type VmwareVmSubObject {
@@ -95292,6 +95991,29 @@ type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , Vsphere
 
     # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereDatacenterLogicalChildTypeConnection!
+
+  # List of recoveryTarget children.
+  recoveryTargetChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereDatacenterPhysicalChildTypeConnection!
 
   # List of physical children.
   physicalChildConnection(
@@ -98859,6 +99581,9 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
   # VMware virtual machine template type.
   templateType: VmwareTemplateType!
 
+  # Resource specification for a virtual machine.
+  resourceSpec: VmwareVmResourceSpec
+
   # Parent ID of this workload.
   parentWorkloadIdOpt: UUID
 
@@ -99861,6 +100586,9 @@ type WindowsFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , H
 
   # Host of Windows fileset.
   host: PhysicalHost
+
+  # Includes statistics for the protected objects, for example, archive storage.
+  reportWorkload: Snappable
 
   # Fileset template of the Windows fileset.
   filesetTemplate: FilesetTemplate

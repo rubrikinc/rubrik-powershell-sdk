@@ -348,6 +348,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VSPHERE_COMPUTE_CLUSTER")]
         VSPHERE_COMPUTE_CLUSTER,
 
+        [EnumMember(Value = "VSPHERE_CONTENT_LIBRARY")]
+        VSPHERE_CONTENT_LIBRARY,
+
         [EnumMember(Value = "VSPHERE_DATACENTER")]
         VSPHERE_DATACENTER,
 

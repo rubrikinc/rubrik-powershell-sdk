@@ -1,5 +1,5 @@
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
+    . "$PSScriptRoot\..\UnitTestInit.ps1"
 }
 Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
     It -Name 'PhysicalHost' -Test {
@@ -17,7 +17,7 @@ Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
 
         # Auto exploration fills this list with all the possible implementations of MssqlTopLevelDescendantType
         $nodeTypeNames=$query.Field.Nodes| ForEach-Object { $_.GetType().Name} | Sort-Object
-        $impls=@(Get-RscType -Interface MssqlTopLevelDescendantType).Name| Sort-Object
+        $impls=@(Get-RscType -Interface MssqlTopLevelDescendantType)| Sort-Object
         $nodeTypeNames | Should -Be $impls
         
         # Let's select the node in the list that is a PhysicalHost
@@ -36,7 +36,7 @@ Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
 
         # Auto exploration fills this list with all the possible implementations of PhysicalHostPhysicalChildType
         $nodeTypeNames=$nodes| ForEach-Object { $_.GetType().Name} | Sort-Object
-        $impls=@(Get-RscType -Interface PhysicalHostPhysicalChildType).Name| Sort-Object
+        $impls=@(Get-RscType -Interface PhysicalHostPhysicalChildType)| Sort-Object
         $nodeTypeNames | Should -Be $impls
     }
 }

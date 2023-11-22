@@ -394,6 +394,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	nextSnapshotFid = $someString
     /// 	# OPTIONAL
     /// 	userNote = $someString
+    /// 	# OPTIONAL
+    /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
@@ -401,6 +403,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 		# REQUIRED
     /// 		sourceDirs = @(
     /// 			$someString
@@ -1330,6 +1334,8 @@ $query.Var.input = @{
 	nextSnapshotFid = $someString
 	# OPTIONAL
 	userNote = $someString
+	# OPTIONAL
+	zipPassword = $someString
 	# REQUIRED
 	config = @{
 		# OPTIONAL
@@ -1337,6 +1343,8 @@ $query.Var.input = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
+		# OPTIONAL
+		zipPassword = $someString
 		# REQUIRED
 		sourceDirs = @(
 			$someString

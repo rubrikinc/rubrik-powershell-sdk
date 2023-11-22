@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("caCerts")]
         public System.String? CaCerts { get; set; }
 
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        [JsonProperty("cdmId")]
+        public System.String? CdmId { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [JsonProperty("hostname")]
@@ -195,6 +200,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CaCerts = null,
+        System.String? CdmId = null,
         System.String? Hostname = null,
         System.String? Id = null,
         System.String? Name = null,
@@ -245,6 +251,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CaCerts != null ) {
             this.CaCerts = CaCerts;
+        }
+        if ( CdmId != null ) {
+            this.CdmId = CdmId;
         }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
@@ -422,6 +431,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "caCerts\n" ;
             } else {
                 s += ind + "caCerts\n" ;
+            }
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
             }
         }
         //      C# -> System.String? Hostname
@@ -853,6 +871,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CaCerts != null && ec.Excludes("caCerts",true))
         {
             this.CaCerts = null;
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (ec.Includes("cdmId",true))
+        {
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)

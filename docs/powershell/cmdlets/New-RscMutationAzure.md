@@ -91,11 +91,6 @@ Delete the Azure Subscriptions cloud account for the given feature without OAuth
 
 - There is a single argument of type DeleteAzureCloudAccountWithoutOauthInput.
 - Returns DeleteAzureCloudAccountWithoutOauthReply.
-### deletecluster
-Delete a Rubrik Cloud Cluster on Azure.
-
-- There is a single argument of type DeleteAzureClusterInput.
-- Returns CcProvisionJobReply.
 ### mapcloudaccountexocomputesubscription
 Map Azure cloud accounts to an Exocompute subscription.
 

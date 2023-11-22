@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? ResourceGroup
+        // GraphQL -> resourceGroup: String! (scalar)
+        [JsonProperty("resourceGroup")]
+        public System.String? ResourceGroup { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public AzureManagedIdentity Set(
         System.String? ClientId = null,
-        System.String? Name = null
+        System.String? Name = null,
+        System.String? ResourceGroup = null
     ) 
     {
         if ( ClientId != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ResourceGroup != null ) {
+            this.ResourceGroup = ResourceGroup;
         }
         return this;
     }
@@ -77,6 +86,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? ResourceGroup
+        // GraphQL -> resourceGroup: String! (scalar)
+        if (this.ResourceGroup != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceGroup\n" ;
+            } else {
+                s += ind + "resourceGroup\n" ;
             }
         }
         return s;
@@ -119,6 +137,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? ResourceGroup
+        // GraphQL -> resourceGroup: String! (scalar)
+        if (ec.Includes("resourceGroup",true))
+        {
+            if(this.ResourceGroup == null) {
+
+                this.ResourceGroup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceGroup != null && ec.Excludes("resourceGroup",true))
+        {
+            this.ResourceGroup = null;
         }
     }
 

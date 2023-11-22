@@ -7,5 +7,7 @@ The valid replication target Rubrik cluster-specific information.
   - Version of the Rubrik cluster.
 - accountName: System.String
   - The account name that the cluster is associated with.
+- apiVersion: System.String
+  - API version of the Rubrik cluster.
 - uuid: System.String
   - UUID of the Rubrik cluster.

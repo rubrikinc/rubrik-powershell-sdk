@@ -135,6 +135,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ResourceOperations")]
         RESOURCE_OPERATIONS,
 
+        [EnumMember(Value = "SCHEDULE_RECOVERY")]
+        SCHEDULE_RECOVERY,
+
         [EnumMember(Value = "Storage")]
         STORAGE,
 

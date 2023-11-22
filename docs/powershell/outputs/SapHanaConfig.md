@@ -7,3 +7,5 @@ The SLA Domain configuration for SAP HANA database.
   - Number of days for which the SAP HANA database logs will be retained.
 - differentialFrequency: Duration
   - Frequency value for differential backup of SAP HANA databases.
+- storageSnapshotConfig: SapHanaStorageSnapshotConfig
+  - SLA Domain configuration for SAP HANA Storage Snapshot.

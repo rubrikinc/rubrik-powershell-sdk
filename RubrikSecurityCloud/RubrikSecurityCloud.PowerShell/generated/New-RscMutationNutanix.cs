@@ -1002,6 +1002,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		password = $someString
     /// 		# OPTIONAL
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
     /// 	}
     /// }
     /// 
@@ -1046,6 +1048,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		password = $someString
     /// 		# OPTIONAL
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		nutanixClusters = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# REQUIRED
+    /// 				clusterUuid = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -2251,6 +2262,8 @@ $query.Var.input = @{
 		password = $someString
 		# OPTIONAL
 		username = $someString
+		# OPTIONAL
+		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
 	}
 }"
             );
@@ -2287,6 +2300,15 @@ $query.Var.input = @{
 		password = $someString
 		# OPTIONAL
 		username = $someString
+		# OPTIONAL
+		nutanixClusters = @(
+			@{
+				# OPTIONAL
+				name = $someString
+				# REQUIRED
+				clusterUuid = $someString
+			}
+		)
 	}
 }"
             );

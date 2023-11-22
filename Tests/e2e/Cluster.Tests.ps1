@@ -3,7 +3,7 @@
 Run tests around cluster
 #>
 BeforeAll {
-    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+    . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
 Describe -Name 'Cluster' -Fixture {
@@ -19,7 +19,7 @@ Describe -Name 'Cluster' -Fixture {
             }
             $count | Should -BeGreaterThan 0
 
-            Get-RscCluster | Should -Not -BeNullOrEmpty
+            Get-RscCluster -Count | Should -Be $count
 
             # Retrieve the first cluster
             # (and testing variable passing while we're at it)

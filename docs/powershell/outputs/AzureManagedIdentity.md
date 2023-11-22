@@ -5,3 +5,5 @@ Managed identity information.
   - Managed identity name.
 - clientId: System.String
   - Managed identity client ID.
+- resourceGroup: System.String
+  - Managed identity resource group.

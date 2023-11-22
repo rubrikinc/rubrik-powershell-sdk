@@ -29,3 +29,5 @@ Details for creating a new organization.
   - New SSO groups to be authorized for this tenant organization.
 - isServiceAccountEnabled: System.Boolean
   - Specifies if service accounts are enabled for this organization.
+- crossAccountCapabilities: list of CrossAccountCapabilitys
+  - Specifies cross-account capabilities enabled for this organization.

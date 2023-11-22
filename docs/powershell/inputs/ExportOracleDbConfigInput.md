@@ -41,9 +41,11 @@ Supported in v5.0+
   - Supported in v8.1+
       Indicates whether to skip dropping the database in undo task if the database was partially recovered.
 - targetRacHostIds: list of System.Strings
-  - List of RAC host simple IDs to recover the database during the clone.
+  - Supported in v9.0+
+      List of RAC host simple IDs to recover the database during the clone.
 - targetRacPrimaryHostId: System.String
-  - Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.
+  - Supported in v9.0+
+      Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.
 - shouldAllowRenameToSource: System.Boolean
   - Supported in v9.0+
       A boolean value determines if the database can be renamed back to the source Oracle host or RAC during the clone.

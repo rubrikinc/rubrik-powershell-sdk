@@ -15,3 +15,5 @@ Supported in v5.0+
   - Supported in v5.0+
 - username: System.String
   - Supported in v5.0+
+- snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
+  - Consistency level mandated for this Nutanix cluster.

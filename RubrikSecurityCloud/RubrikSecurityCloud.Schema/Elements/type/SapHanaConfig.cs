@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logRetention")]
         public Duration? LogRetention { get; set; }
 
+        //      C# -> SapHanaStorageSnapshotConfig? StorageSnapshotConfig
+        // GraphQL -> storageSnapshotConfig: SapHanaStorageSnapshotConfig (type)
+        [JsonProperty("storageSnapshotConfig")]
+        public SapHanaStorageSnapshotConfig? StorageSnapshotConfig { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public SapHanaConfig Set(
         Duration? DifferentialFrequency = null,
         Duration? IncrementalFrequency = null,
-        Duration? LogRetention = null
+        Duration? LogRetention = null,
+        SapHanaStorageSnapshotConfig? StorageSnapshotConfig = null
     ) 
     {
         if ( DifferentialFrequency != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogRetention != null ) {
             this.LogRetention = LogRetention;
+        }
+        if ( StorageSnapshotConfig != null ) {
+            this.StorageSnapshotConfig = StorageSnapshotConfig;
         }
         return this;
     }
@@ -103,6 +112,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SapHanaStorageSnapshotConfig? StorageSnapshotConfig
+        // GraphQL -> storageSnapshotConfig: SapHanaStorageSnapshotConfig (type)
+        if (this.StorageSnapshotConfig != null) {
+            var fspec = this.StorageSnapshotConfig.AsFieldSpec(conf.Child("storageSnapshotConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageSnapshotConfig {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -169,6 +190,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogRetention != null && ec.Excludes("logRetention",false))
         {
             this.LogRetention = null;
+        }
+        //      C# -> SapHanaStorageSnapshotConfig? StorageSnapshotConfig
+        // GraphQL -> storageSnapshotConfig: SapHanaStorageSnapshotConfig (type)
+        if (ec.Includes("storageSnapshotConfig",false))
+        {
+            if(this.StorageSnapshotConfig == null) {
+
+                this.StorageSnapshotConfig = new SapHanaStorageSnapshotConfig();
+                this.StorageSnapshotConfig.ApplyExploratoryFieldSpec(ec.NewChild("storageSnapshotConfig"));
+
+            } else {
+
+                this.StorageSnapshotConfig.ApplyExploratoryFieldSpec(ec.NewChild("storageSnapshotConfig"));
+
+            }
+        }
+        else if (this.StorageSnapshotConfig != null && ec.Excludes("storageSnapshotConfig",false))
+        {
+            this.StorageSnapshotConfig = null;
         }
     }
 

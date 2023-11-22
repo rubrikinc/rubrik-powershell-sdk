@@ -57,6 +57,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NORWAYEAST")]
         NORWAYEAST,
 
+        [EnumMember(Value = "POLANDCENTRAL")]
+        POLANDCENTRAL,
+
+        [EnumMember(Value = "QATARCENTRAL")]
+        QATARCENTRAL,
+
         [EnumMember(Value = "SOUTHAFRICANORTH")]
         SOUTHAFRICANORTH,
 
@@ -71,6 +77,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SWITZERLANDNORTH")]
         SWITZERLANDNORTH,
+
+        [EnumMember(Value = "UAENORTH")]
+        UAENORTH,
 
         [EnumMember(Value = "UKSOUTH")]
         UKSOUTH,

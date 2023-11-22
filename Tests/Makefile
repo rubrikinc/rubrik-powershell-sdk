@@ -17,8 +17,10 @@ sh-unit-test:
 unit-test: pwsh-unit-test sh-unit-test
 	$(MAKE) -C ../Toolkit/Tests unit-test
 
-e2e-test:
+pwsh-e2e-test:
 	@pwsh -c '../Toolkit/Utils/Run-PesterTests.ps1 ./e2e'
+
+e2e-test: pwsh-e2e-test
 	$(MAKE) -C ../Toolkit/Tests e2e-test
 
 clean:

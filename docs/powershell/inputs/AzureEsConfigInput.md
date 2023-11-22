@@ -13,3 +13,5 @@ ES storage for Azure account.
   - Should create a new container or not?
 - enableImmutability: System.Boolean
   - Specifies whether to enable support for immutable filesystem in SDFS.
+- managedIdentity: AzureManagedIdentityName
+  - Azure managed identity information.

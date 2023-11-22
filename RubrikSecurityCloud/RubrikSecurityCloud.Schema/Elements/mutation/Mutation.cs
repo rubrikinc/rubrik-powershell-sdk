@@ -1660,6 +1660,35 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? DeleteDistributionListDigestBatch
+        // GraphQL -> deleteDistributionListDigestBatch: Void (scalar)
+        public static string DeleteDistributionListDigestBatch_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteDistributionListDigestBatch" + args + "\n";
+        }
+        public static string DeleteDistributionListDigestBatch_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteDistributionListDigestBatch((System.String)fieldSpecObj);
+        }
+        public static string DeleteDistributionListDigestBatch(System.String fieldSpec)
+        {
+            return DeleteDistributionListDigestBatch_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteDistributionListDigestBatch(object fieldSpecObj)
+        {
+            return DeleteDistributionListDigestBatch_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteDistributionListDigestBatchFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeleteEventDigest
         // GraphQL -> deleteEventDigest: Void (scalar)
         public static string DeleteEventDigest_TypedFieldSpec(System.String fieldSpec)
@@ -8651,37 +8680,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> CcProvisionJobReply? DeleteAwsCluster
-        // GraphQL -> deleteAwsCluster: CcProvisionJobReply! (type)
-        public static string DeleteAwsCluster_TypedFieldSpec(CcProvisionJobReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "deleteAwsCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string DeleteAwsCluster_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return DeleteAwsCluster((CcProvisionJobReply)fieldSpecObj);
-        }
-        public static string DeleteAwsCluster(CcProvisionJobReply fieldSpec)
-        {
-            return DeleteAwsCluster_TypedFieldSpec(fieldSpec);
-        }
-        public static string DeleteAwsCluster(object fieldSpecObj)
-        {
-            return DeleteAwsCluster_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object DeleteAwsClusterFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new CcProvisionJobReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> DeleteAwsExocomputeConfigsReply? DeleteAwsExocomputeConfigs
         // GraphQL -> deleteAwsExocomputeConfigs: DeleteAwsExocomputeConfigsReply! (type)
         public static string DeleteAwsExocomputeConfigs_TypedFieldSpec(DeleteAwsExocomputeConfigsReply fieldSpec)
@@ -8833,37 +8831,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new DeleteAzureCloudAccountWithoutOauthReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> CcProvisionJobReply? DeleteAzureCluster
-        // GraphQL -> deleteAzureCluster: CcProvisionJobReply! (type)
-        public static string DeleteAzureCluster_TypedFieldSpec(CcProvisionJobReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "deleteAzureCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string DeleteAzureCluster_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return DeleteAzureCluster((CcProvisionJobReply)fieldSpecObj);
-        }
-        public static string DeleteAzureCluster(CcProvisionJobReply fieldSpec)
-        {
-            return DeleteAzureCluster_TypedFieldSpec(fieldSpec);
-        }
-        public static string DeleteAzureCluster(object fieldSpecObj)
-        {
-            return DeleteAzureCluster_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object DeleteAzureClusterFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new CcProvisionJobReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17792,6 +17759,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new DbLogReportProperties() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateDistributionListDigestReply? UpdateDistributionListDigest
+        // GraphQL -> updateDistributionListDigest: UpdateDistributionListDigestReply! (type)
+        public static string UpdateDistributionListDigest_TypedFieldSpec(UpdateDistributionListDigestReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateDistributionListDigest" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateDistributionListDigest_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateDistributionListDigest((UpdateDistributionListDigestReply)fieldSpecObj);
+        }
+        public static string UpdateDistributionListDigest(UpdateDistributionListDigestReply fieldSpec)
+        {
+            return UpdateDistributionListDigest_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateDistributionListDigest(object fieldSpecObj)
+        {
+            return UpdateDistributionListDigest_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateDistributionListDigestFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateDistributionListDigestReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

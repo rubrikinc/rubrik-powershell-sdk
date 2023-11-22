@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ApiVersion
+        // GraphQL -> apiVersion: String! (scalar)
+        [JsonProperty("apiVersion")]
+        public System.String? ApiVersion { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DataLocationSupportedCluster Set(
+        System.String? ApiVersion = null,
         System.String? Name = null,
         System.String? Uuid = null,
         System.String? Version = null
     ) 
     {
+        if ( ApiVersion != null ) {
+            this.ApiVersion = ApiVersion;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -70,6 +79,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ApiVersion
+        // GraphQL -> apiVersion: String! (scalar)
+        if (this.ApiVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "apiVersion\n" ;
+            } else {
+                s += ind + "apiVersion\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -104,6 +122,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? ApiVersion
+        // GraphQL -> apiVersion: String! (scalar)
+        if (ec.Includes("apiVersion",true))
+        {
+            if(this.ApiVersion == null) {
+
+                this.ApiVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiVersion != null && ec.Excludes("apiVersion",true))
+        {
+            this.ApiVersion = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))

@@ -461,6 +461,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isLegalHoldDownload = $someBoolean
     /// 	# OPTIONAL
     /// 	userNote = $someString
+    /// 	# OPTIONAL
+    /// 	zipPassword = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1665,6 +1667,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldUseAgent = $someBoolean
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldUseMountDisks = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
     /// 			@{
@@ -2532,6 +2536,8 @@ $query.Var.input = @{
 	isLegalHoldDownload = $someBoolean
 	# OPTIONAL
 	userNote = $someString
+	# OPTIONAL
+	zipPassword = $someString
 }"
             );
         }
@@ -3608,6 +3614,8 @@ $query.Var.input = @{
 		shouldUseAgent = $someBoolean
 		# OPTIONAL
 		guestCredentialId = $someString
+		# OPTIONAL
+		shouldUseMountDisks = $someBoolean
 		# REQUIRED
 		restoreConfig = @(
 			@{
