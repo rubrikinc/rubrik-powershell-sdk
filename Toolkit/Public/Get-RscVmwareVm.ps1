@@ -89,7 +89,7 @@ function Get-RscVmwareVm {
         # Apparently we already get this through the "default" input profile? What else is in there?
         #$in.field.nodes[0].EffectiveSlaDomain.Name = "FETCH"
 
-    $result = Get-RscPages { invoke-rsc $query }
+    $result = Get-RscPages -Query $query
 
     $result.nodes
 
