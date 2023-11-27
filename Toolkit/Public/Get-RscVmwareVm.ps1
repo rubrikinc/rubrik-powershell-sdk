@@ -25,21 +25,27 @@ function Get-RscVmwareVm {
     #>
 
     [CmdletBinding(
-
+        DefaultParameterSetName = "Name"
     )]
     Param(
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
+            Mandatory = $false,
+            ParameterSetName = "Id"
+        )]
+        [String]$Id,
+        [Parameter(
+            Mandatory = $false
         )]
         [Switch]$Detail,
         [Parameter(
-            Mandatory = $false
+            Mandatory = $false,
+            ParameterSetName = "Name"
         )]
         [String]$Name,
         [Parameter(
             Mandatory = $false,
-            ValueFromPipeline = $true
+            ValueFromPipeline = $true,
+            ParameterSetName = "Name"
         )]
         [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla
     )
@@ -52,13 +58,30 @@ function Get-RscVmwareVm {
             $inputProfile = "DETAIL"
         }
 
-        # Build the 'inputs' using -GetInput.
-        # Rather than a cmdlet, This should be an object on which we can set field and object values.
-        $query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
-        #$in = (Invoke-RscQueryVsphereVm -NewList -InputProfile $inputProfile -GetInput)
-        $query.var.filter = @()
+       # The query is different for getting a single object by ID.
+        if ($Id) {
+            $query = New-RscQueryVsphereVm -Operation New -FieldProfile $inputProfile
+            $query.var.filter = @()
+            $query.Var.fid = $Id     
+            $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
+            $query.field.GuestOsName = "TACOS"
+            $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
+            $query.Field.AgentStatus.AgentStatusField = New-object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+        }
+        
+        if ($Name -or $Sla) {
+            $query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
+            $query.var.filter = @()        
+            $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
+            $query.field.Nodes[0].GuestOsName = "TACOS"
+            $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
+            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+        
+        }
 
-        if ($Name -ne "") {
+        if ($Name) {
             $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             # Regex filter doesn't work in the API right now, but we're going to play pretend. 
             # With real Regex, users could search for VMs that start with the letter A if they wanted.
@@ -80,18 +103,9 @@ function Get-RscVmwareVm {
             $query.var.filter += $slaFilter
         }
 
-        # Not sure why .Nodes is a list here, but it is.
-        $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-        $query.Field.Nodes.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
-        $query.field.Nodes[0].GuestOsName = "TACOS"
-        $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
-        $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
-        # Apparently we already get this through the "default" input profile? What else is in there?
-        #$in.field.nodes[0].EffectiveSlaDomain.Name = "FETCH"
-
     $result = Get-RscPages -Query $query
 
-    $result.nodes
+    $result
 
     } 
 }
