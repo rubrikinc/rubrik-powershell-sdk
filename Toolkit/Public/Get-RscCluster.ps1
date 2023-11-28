@@ -47,11 +47,6 @@ function Get-RscCluster {
     .EXAMPLE
     Return a RscCluster Object based on the name
     Get-RscCluster -Name vault-r-london
-    
-
-    .EXAMPLE
-    Return back just the query that would run instead of running the query and returning the results
-    Get-RscCluster -Name vault-r-london -AsQuery    
     #>
 
     [CmdletBinding(
@@ -80,25 +75,16 @@ function Get-RscCluster {
             Mandatory = $false, 
             ValueFromPipeline = $false,
             HelpMessage = "Return more fields than the default field profile"
-        )][Switch]$Detail,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false,
-            HelpMessage = "Return the query object instead of running the query"
-        )][Switch]$AsQuery
+        )][Switch]$Detail
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Output "- Running Get-RscCluster"
+        Write-Debug "- Running Get-RscCluster"
 
         #regionCreate Query
         if ($List){
