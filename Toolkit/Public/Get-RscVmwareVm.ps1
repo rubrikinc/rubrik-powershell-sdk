@@ -62,23 +62,20 @@ function Get-RscVmwareVm {
         if ($Id) {
             $query = New-RscQueryVsphereVm -Operation New -FieldProfile $inputProfile
             $query.var.filter = @()
-            $query.Var.fid = $Id     
+            $query.Var.fid = $Id
             $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
-            $query.field.GuestOsName = "TACOS"
+            $query.Field.GuestOsName = "TACOS"
             $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
-            $query.Field.AgentStatus.AgentStatusField = New-object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
-        }
-        
-        if ($Name -or $Sla) {
+            $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+        } else {
             $query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
-            $query.var.filter = @()        
+            $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
-            $query.field.Nodes[0].GuestOsName = "TACOS"
+            $query.Field.Nodes[0].GuestOsName = "TACOS"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
-            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
-        
+            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
         }
 
         if ($Name) {

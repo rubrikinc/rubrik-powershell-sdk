@@ -27,17 +27,21 @@ function Get-RscSlaDomain {
     #>
 
     [CmdletBinding(
-
+        DefaultParameterSetName = "Name"
     )]
     Param(
-
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
+             Mandatory = $false,
+             ParameterSetName = "Id"
+         )]
+         [String]$Id,
+        [Parameter(
+            Mandatory = $false
         )]
         [Switch]$Detail,
         [Parameter(
-             Mandatory = $false 
+             Mandatory = $false,
+             ParameterSetName = "Name"
          )]
          [String]$Name
     )
@@ -50,24 +54,40 @@ function Get-RscSlaDomain {
             $fieldProfile = "DETAIL"
         }
 
-        $query = (New-RscQuerySla -Operation Domains -FieldProfile $fieldProfile)
-        $query.field.nodes[1].BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
-        $query.field.nodes[1].BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
-        $query.field.nodes[1].BaseFrequency.DurationField = 1
-        $query.field.nodes[1].ProtectedObjectCount = 1
-        $query.field.nodes[1].ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
-        $query.field.nodes[1].ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
-        $query.field.nodes[1].ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
-        $query.field.nodes[1].ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
-        $query.field.nodes[1].ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
-        $query.field.nodes[1].ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
-        $query.field.nodes[1].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+        if ($Id) {
+            $query = New-RscQuerySla -Operation Domain -FieldProfile $fieldProfile
+            $query.Var.id = $Id
+            $query.field.BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+            $query.field.BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
+            $query.field.BaseFrequency.DurationField = 1
+            $query.field.ProtectedObjectCount = 1
+            $query.field.ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
+            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
+            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
+            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
+            $query.field.ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
+            $query.field.ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
+            $query.field.ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+        } 
+        else {
+            $query = (New-RscQuerySla -Operation Domains -FieldProfile $fieldProfile)
+            $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput
+            $query.var.filter.Field = [RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]::NAME
+            $query.var.filter.Text = $Name
+            $query.field.nodes[1].BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+            $query.field.nodes[1].BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
+            $query.field.nodes[1].BaseFrequency.DurationField = 1
+            $query.field.nodes[1].ProtectedObjectCount = 1
+            $query.field.nodes[1].ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
+            $query.field.nodes[1].ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
+            $query.field.nodes[1].ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
+            $query.field.nodes[1].ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
+            $query.field.nodes[1].ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
+            $query.field.nodes[1].ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
+            $query.field.nodes[1].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+        }
 
-        $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput
-        $query.var.filter.Field = [RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]::NAME
-        $query.var.filter.Text = $Name
-
-        $result = Invoke-Rsc -Query $query
-        $result.nodes
+        $result = Get-RscPages -Query $query
+        $result
     } 
 }
