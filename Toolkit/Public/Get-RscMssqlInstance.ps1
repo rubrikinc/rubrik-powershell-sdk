@@ -131,7 +131,7 @@ function Get-RscMssqlInstance{
         switch ( $PSCmdlet.ParameterSetName ){
             "RscHost" {
                 Write-Debug "-  Filtering results based on Instance Name"
-                $result = $result | Where-Object {$_.Nodes.PhysicalChildConnection.Nodes.Name -eq $InstanceName}
+                $result = $result | Where-Object {$_.PhysicalChildConnection.Nodes.Name -eq $InstanceName}
             }
         }
         

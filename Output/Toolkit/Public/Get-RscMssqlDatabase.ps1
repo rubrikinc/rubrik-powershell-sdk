@@ -20,18 +20,9 @@ function Get-RscMssqlDatabase {
     .PARAMETER RscMssqlInstance
     SQL Server Instance Object returned from Get-RscMssqlInstance
 
-    .PARAMETER RscMssqlInstanceId
-    Instead of providing an object, you can provide the id assigned by Rubrik of the database. 
 
     .PARAMETER Detail
     Changes the data profile. This can affect the fields returned
-
-    .PARAMETER IncludeNullProperties
-    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
-    with a NULL in them. 
-
-    .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
 
     .EXAMPLE
     Return a list of MSSQL Databases
@@ -45,17 +36,6 @@ function Get-RscMssqlDatabase {
     Return a list of MSSQL Databases named AdventureWorks2019 on the SQL 2019 Instance
     $RscMssqlInstance = Get-RscMssqlInstance -HostName sql19.demo.com -clusterID hja87-ajb43-v4avna-hnjag
     Get-RscMssqlDatabase -Name AdventureWorks2019 -RscMssqlInstance $RscMssqlInstance
-
-    .EXAMPLE
-    Return back all fields, including the fields that are null
-    
-    Get-RscMssqlDatabase -Name AdventureWorks2019 -IncludeNullProperties
-
-    .EXAMPLE
-    Return back just the query that will be run instead of running the query and returning the results
-
-    Get-RscMssqlDatabase -Name AdventureWorks2019 -AsQuery   
-
     #>
 
     [CmdletBinding(
@@ -65,58 +45,32 @@ function Get-RscMssqlDatabase {
     Param(
         [Parameter(
             ParameterSetName = "List",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
+            Mandatory = $false
         )]
         [Switch]$List,
 
         [Parameter(
             ParameterSetName = "Name",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
+            Mandatory = $false
         )][String]$Name,
 
-        [Parameter(ParameterSetName = "Name", Mandatory = $false)]
         [Parameter(
-            ParameterSetName = "RscMssqlInstance",
-            Mandatory = $false, 
-            ValueFromPipeline = $true
+            Mandatory = $false
         )][RubrikSecurityCloud.Types.PhysicalHost]$RscMssqlInstance, 
 
-        [Parameter(ParameterSetName = "Name", Mandatory = $false)]
-        [Parameter(
-            ParameterSetName = "RscMssqlInstanceId",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][String]$RscMssqlInstanceId,
-        
         #  Common parameter to all parameter sets:
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$Detail,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$IncludeNullProperties,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$AsQuery
+            Mandatory = $false
+        )][Switch]$Detail
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Host "Get-RscMssqlDatabase field profile: $fieldProfile"
+        Write-Debug "- Runnign Get-RscMssqlDatabase"
 
         #region Create Query
         switch ( $PSCmdlet.ParameterSetName){
@@ -125,14 +79,13 @@ function Get-RscMssqlDatabase {
             }
             "Name"{
                 $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile `
-                    -AddField Nodes.PhysicalPath , `
-                    Nodes.PostBackupScript , `
-                    Nodes.PreBackupScript , `
-                    # Nodes.ConfiguredSlaDomain #, ` #Having this included causes the query to fail. Not entirely sure why. 
-                    Nodes.CopyOnly, `
-                    Nodes.HostLogRetention, `
-                    Nodes.LogBackupFrequencyInSeconds, `
-                    Nodes.LogBackupRetentionInHours       
+                    -AddField Nodes.PhysicalPath, `
+                        Nodes.PostBackupScript, `
+                        Nodes.PreBackupScript, `
+                        Nodes.CopyOnly, `
+                        Nodes.HostLogRetention, `
+                        Nodes.LogBackupFrequencyInSeconds, `
+                        Nodes.LogBackupRetentionInHours       
                 $query.Var.filter = @()
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
@@ -141,32 +94,11 @@ function Get-RscMssqlDatabase {
             }
         }
         #endregion
-
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-            If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
-                $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
-                $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
-            }
-            If ( $PSBoundParameters.ContainsKey('RscMssqlInstanceId') ) {
-                $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $RscMssqlInstanceId }
-            }
+        $result = Get-RscPages -Query $query
+        If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
+            $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
+            $result = $result | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
         }
-
-        if ($null -ne $result.Nodes){
-            if ( $IncludeNullProperties -eq $true ) {
-                $result.Nodes
-            }else{
-                $result.Nodes | Remove-NullProperties
-            }
-        }else{
-            if ( $IncludeNullProperties -eq $true ) {
-                $result
-            }else{
-                $result | Remove-NullProperties
-            }
-        }  
+        $result        
     } 
 }
