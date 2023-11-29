@@ -72,7 +72,7 @@ function Get-RscVmwareVm {
             $query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
             $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
+            $query.Field.Nodes.Cluster.id = "PIZZA"
             $query.Field.Nodes[0].GuestOsName = "TACOS"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
