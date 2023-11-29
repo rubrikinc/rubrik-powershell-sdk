@@ -130,19 +130,8 @@ function New-RscMssqlExport{
         )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
         [Parameter(
-            ParameterSetName='Recovery_Latest',
-            Mandatory = $false
-        )][Switch]$Latest,
-
-        [Parameter(
-            ParameterSetName='Recovery_LastFull',
-            Mandatory = $false
-        )][Switch]$LastFull,
-
-        [Parameter(
-            ParameterSetName='Recovery_Time',
-            Mandatory = $false
-        )][datetime]$RestoreTime,
+            Mandatory = $true
+        )][datetime]$RecoveryDateTime,
 
         #Recovery Point desired in the form of an LSN (Log Sequence Number) TODO:SPARK-224340
         #[Parameter(ParameterSetName='Recovery_LSN')]
@@ -156,25 +145,16 @@ function New-RscMssqlExport{
             Mandatory = $false
         )][String]$TargetDatabaseName,
 
-        [Parameter(ParameterSetName='Recovery_Latest')]
-        [Parameter(ParameterSetName='Recovery_LastFull')]
-        [Parameter(ParameterSetName='Recovery_Time')]
         [Parameter(
             ParameterSetName = "Simple Method",
             Mandatory = $false
         )][String]$TargetDataPath,
 
-        [Parameter(ParameterSetName='Recovery_Latest')]
-        [Parameter(ParameterSetName='Recovery_LastFull')]
-        [Parameter(ParameterSetName='Recovery_Time')]
         [Parameter(
             ParameterSetName = "Simple Method",
             Mandatory = $false
         )][String]$TargeLogPath,
 
-        [Parameter(ParameterSetName='Recovery_Latest')]
-        [Parameter(ParameterSetName='Recovery_LastFull')]
-        [Parameter(ParameterSetName='Recovery_Time')]
         [Parameter(
             ParameterSetName = "Advanced Method",
             Mandatory = $false
@@ -195,15 +175,13 @@ function New-RscMssqlExport{
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
+        Write-Debug "- Running New-RscMssqlExport"
 
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Host "New-RscMssqlExport: $fieldProfile"
         
         #region Create Query         
         $query = New-RscMutationMssql -Op ExportDatabase
@@ -215,35 +193,21 @@ function New-RscMssqlExport{
         If (![string]::IsNullOrEmpty($FinishRecovery)){$query.Var.input.config.FinishRecovery = $FinishRecovery}
         If (![string]::IsNullOrEmpty($maxDataStreams)){$query.Var.input.config.maxDataStreams = $maxDataStreams}
         
-        if($PSBoundParameters.ContainsKey('Latest')) {
-            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
-            $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
-            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
-        }
+        $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+        $query.Var.input.config.recoveryPoint.date = $RecoveryDateTime
 
-        if($PSBoundParameters.ContainsKey('LastFull')) {
-            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
-            $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
-            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
-        }
-
-        if($PSBoundParameters.ContainsKey('RestoreTime')) {
-            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime $RestoreTime
-            $query.Var.input.Config.recoveryPoint = New-Object -TypeName RubrikSecurityCloud.Types.MssqlRecoveryPointInput
-            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
-        }
-        
         $query.Var.input.Config.targetDatabaseName = $TargetDatabaseName
 
         # $query.Var.input.Config.recoveryPoint.lsnPoint = New-Object -TypeName RubrikSecurityCloud.Types.LsnRecoveryPointInput 
 
+        # Simple Method
         If (![string]::IsNullOrEmpty($TargetDataPath) -and ![string]::IsNullOrEmpty($TargeLogPath)){
                 $query.Var.input.Config.targetDataFilePath = $TargetDataPath
                 $query.Var.input.Config.targetLogFilePath = $TargeLogPath
         }
 
+        # Advanced Method
         If (![string]::IsNullOrEmpty($TargetFilePaths)){
-            write-host "Advanced Method@!@"
             $query.Var.input.Config.targetFilePaths = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDbFileExportPathInput 
             $query.Var.input.Config.targetFilePaths = $TargetFilePaths
         }
@@ -251,11 +215,7 @@ function New-RscMssqlExport{
         $query.Var.input.Config.targetInstanceId = $TargetMssqlInstance.PhysicalChildConnection.Nodes.Id
         #endregion
 
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-        }
+        $result = Get-RscPages -Query $query
         $result
     } 
 }

@@ -30,6 +30,7 @@ function New-RscMssqlLogBackup {
         [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase
     )
     Process {
+        Write-Debug "- Running New-RscMssqlLogBackup"
         #region Create Query
         $query = New-RscMutationMssql -Operation TakeLogBackup
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.TakeMssqlLogBackupInput

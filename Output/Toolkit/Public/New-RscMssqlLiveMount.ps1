@@ -34,28 +34,24 @@ function New-RscMssqlLiveMount {
     )]
     Param(
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $true
+            Mandatory = $true
         )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
         [Parameter(
-            Mandatory = $false
+            Mandatory = $true
         )][String]$MountedDatabaseName,
 
         [Parameter(
-            Mandatory = $false
+            Mandatory = $true
         )][RubrikSecurityCloud.Types.PhysicalHost]$TargetMssqlInstance, 
        
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
+            Mandatory = $true
         )][datetime]$RecoveryDateTime
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
+        Write-Debug "- Running New-RscMssqlLiveMount"
         #region Create Query         
         $query = New-RscMutationMssql -Op CreateLiveMount 
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateMssqlLiveMountInput
