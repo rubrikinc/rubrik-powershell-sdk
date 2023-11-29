@@ -67,42 +67,17 @@ function New-RscMssqlLiveMount {
         )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
+            Mandatory = $false
         )][String]$MountedDatabaseName,
 
         [Parameter(
-            ParameterSetName = "TargetMssqlInstanceId",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][String]$TargetMssqlInstanceId,
-
-        [Parameter(
-            ParameterSetName = "TargetMssqlInstance",
-            Mandatory = $false, 
-            ValueFromPipeline = $true
+            Mandatory = $false
         )][RubrikSecurityCloud.Types.PhysicalHost]$TargetMssqlInstance, 
-        
+       
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Latest,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$LastFull,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][datetime]$RestoreTime,
-
-        #  Common parameter to all parameter sets:
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$AsQuery
+        )][datetime]$RecoveryDateTime
     )
     
     Process {
@@ -116,35 +91,32 @@ function New-RscMssqlLiveMount {
         $query.Var.input.config = New-Object RubrikSecurityCloud.Types.MountMssqlDbConfigInput
         $query.Var.input.config.mountedDatabaseName = "$($MountedDatabaseName)"
 
-        if($PSBoundParameters.ContainsKey('Latest')) {
-            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
-        }
+        # if($PSBoundParameters.ContainsKey('Latest')) {
+        #     $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
+        # }
 
-        if($PSBoundParameters.ContainsKey('LastFull')) {
-            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
-        }
+        # if($PSBoundParameters.ContainsKey('LastFull')) {
+        #     $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
+        # }
 
-        if($PSBoundParameters.ContainsKey('RestoreTime')) {
-            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime $RestoreTime
-        }
+        # if($PSBoundParameters.ContainsKey('RestoreTime')) {
+        #     $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime $RestoreTime
+        # }
         $query.Var.input.config.recoveryPoint = New-Object RubrikSecurityCloud.Types.MssqlRecoveryPointInput
-        $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
+        $query.Var.input.config.recoveryPoint.date = $RecoveryDateTime
+        $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstance.PhysicalChildConnection.Nodes.Id)"
 
-        switch ( $PSCmdlet.ParameterSetName){
-            "TargetMssqlInstanceId" {
-                $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstanceId)"
-            }
-            "TargetMssqlInstance" {
-                $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstance.PhysicalChildConnection.Nodes.Id)"
-            }
-        }
+        # switch ( $PSCmdlet.ParameterSetName){
+        #     "TargetMssqlInstanceId" {
+        #         $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstanceId)"
+        #     }
+        #     "TargetMssqlInstance" {
+                
+        #     }
+        # }
         #endregion
 
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-        }
+        $result = $query.Invoke()
         $result
     } 
 }

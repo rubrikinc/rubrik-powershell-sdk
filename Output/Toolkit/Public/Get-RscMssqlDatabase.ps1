@@ -70,7 +70,7 @@ function Get-RscMssqlDatabase {
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Debug "- Runnign Get-RscMssqlDatabase"
+        Write-Debug "- Running Get-RscMssqlDatabase"
 
         #region Create Query
         switch ( $PSCmdlet.ParameterSetName){
@@ -94,11 +94,12 @@ function Get-RscMssqlDatabase {
             }
         }
         #endregion
-        $result = Get-RscPages -Query $query
+
+        $result = Get-RscPages -Query $query        
         If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
-            $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
-            $result = $result | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
+            $result = $result | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id}    
         }
+
         $result        
     } 
 }
