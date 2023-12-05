@@ -28,37 +28,20 @@ function Start-RscManagedVolumeSnapshot {
             Mandatory = $true, 
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume,
-
-        #  Common parameter to all parameter sets:
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$AsQuery
+        [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
-        Write-Host "Start-RscManagedVolumeSnapshot field profile: $fieldProfile"
-        
+        Write-Debug "-Running Start-RscManagedVolumeSnapshot"      
         #region Create Query
         $query = New-RscMutationManagedVolume -Operation BeginSnapshot
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BeginManagedVolumeSnapshotInput
         $query.Var.input.id = $RscManagedVolume.Id
         $query.Var.input.config = New-Object -TypeName RubrikSecurityCloud.Types.BeginSnapshotManagedVolumeRequestInput
         $query.Var.input.config.isAsync = $true
-        
-        
+
         #endregion
-
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-        }
-
+        $result = $query.Invoke()
         $result
     } 
 }

@@ -138,11 +138,11 @@ function New-RscMssqlExport{
         #[string]$RecoveryLSN,
 
         [Parameter(
-            Mandatory = $false
+            Mandatory = $true
         )][RubrikSecurityCloud.Types.PhysicalHost]$TargetMssqlInstance, 
 
         [Parameter(
-            Mandatory = $false
+            Mandatory = $true
         )][String]$TargetDatabaseName,
 
         [Parameter(

@@ -18,30 +18,21 @@ function Get-RscManagedVolume {
     .PARAMETER Name
     Used to return a specific Managed Volume based on the name
 
-    .PARAMETER clusterId
-    Id of the cluster retrieved from Get-RscCluster
+    .PARAMETER RscCluster
+    RscCluster object retrieved via Get-RscCluster
 
-    .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
-
-    .PARAMETER IncludeNullProperties
-    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
-    with a NULL in them. 
-
-    .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
-
+   
     .EXAMPLE
     Return back a list of Managed Volumes.
     Get-RscManagedVolume -List
 
     .EXAMPLE
     Return back a list of Managed Volumes for a specified Rubrik Cluster
-    Get-RscManagedVolume -List -clusterId
+    Get-RscManagedVolume -List -RscCluster $RscCluster
 
     .EXAMPLE
     Returns back information about a specific Managed Volume
-    Get-RscManagedVolume -Name rp-mysql-01
+    Get-RscManagedVolume -Name rp-mysql-01 
     #>
 
     [CmdletBinding(
@@ -62,38 +53,18 @@ function Get-RscManagedVolume {
         )][String]$Name,
         
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][String]$clusterId,
-        
-        #  Common parameter to all parameter sets:
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$Detail,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$IncludeNullProperties,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$AsQuery
+            Mandatory = $false
+        )][RubrikSecurityCloud.Types.Cluster]$RscCluster
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
+        Write-Debug "-Running Get-RscManagedVolume"
 
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Host "Get-RscManagedVolume field profile: $fieldProfile"
-
         #region Create Query
         switch ( $PSCmdlet.ParameterSetName){
             "List" {
@@ -112,28 +83,10 @@ function Get-RscManagedVolume {
         if($PSBoundParameters.ContainsKey('clusterId')) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
-            $clusterFilter.texts = $clusterId
+            $clusterFilter.texts = $RscCluster.Id
             $query.Var.filter += $clusterFilter
         }
-
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-        }
-
-        if ($null -ne $result.Nodes){
-            if ( $IncludeNullProperties -eq $true ) {
-                $result.Nodes
-            }else{
-                $result.Nodes | Remove-NullProperties
-            }
-        }else{
-            if ( $IncludeNullProperties -eq $true ) {
-                $result
-            }else{
-                $result | Remove-NullProperties
-            }
-        }  
+        $result = Get-RscPages -Query $query
+        $result
     } 
 }
