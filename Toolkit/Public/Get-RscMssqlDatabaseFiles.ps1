@@ -46,7 +46,7 @@ function Get-RscMssqlDatabaseFiles {
         $query.Var.input.id = $RscMssqlDatabase.Id
         $query.Var.input.time = $RecoveryDateTime
 
-        $result = Get-RscPages -Query $query   
+        $result = $query.Invoke()
         $result
     } 
 }

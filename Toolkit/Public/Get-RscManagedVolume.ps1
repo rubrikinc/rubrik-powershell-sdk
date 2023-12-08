@@ -86,7 +86,7 @@ function Get-RscManagedVolume {
             $clusterFilter.texts = $RscCluster.Id
             $query.Var.filter += $clusterFilter
         }
-        $result = Get-RscPages -Query $query
+        $result = $query.Invoke()
         $result
     } 
 }

@@ -63,11 +63,7 @@ function New-RscMssqlSnapshot {
         $query.Var.input.config.baseOnDemandSnapshotConfig.slaId = $RscSlaDomain.Id
         #endregion
         
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-        }
+        $result = $query.Invoke()
         $result
     } 
 }

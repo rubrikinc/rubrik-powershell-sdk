@@ -75,7 +75,7 @@ function Get-RscMssqlDatabaseRecoverableRanges {
             $query.Var.input.beforeTime = $beforeTime
         }
 
-        $result = Get-RscPages -Query $query   
+        $result = $query.Invoke()
         $result
     } 
 }

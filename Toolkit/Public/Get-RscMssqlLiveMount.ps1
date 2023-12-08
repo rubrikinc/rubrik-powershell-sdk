@@ -65,7 +65,7 @@ function Get-RscMssqlLiveMount {
             $query.Var.filters += $sourceDatabaseFilter
         }
         #endregion
-        $result = Get-RscPages -Query $query
+        $result = $query.Invoke()
         $result
     } 
 }

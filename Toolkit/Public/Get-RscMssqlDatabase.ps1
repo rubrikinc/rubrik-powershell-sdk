@@ -95,7 +95,7 @@ function Get-RscMssqlDatabase {
         }
         #endregion
 
-        $result = Get-RscPages -Query $query        
+        $result = $query.Invoke()       
         If ( $PSBoundParameters.ContainsKey('RscMssqlInstance') ) {
             $result = $result | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id}    
         }
