@@ -13,10 +13,14 @@ Nutanix cluster details.
   - Natural ID of Nutanix cluster.
 - nosVersion: System.String
   - Nutanix cluster version.
+- clusterMetadata: NutanixClusterMetadata
+  - Nutanix cluster metadata.
 - id: System.String
   - Object ID.
 - connectionStatus: RefreshableObjectConnectionStatus
   - Connection status of the Nutanix Cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
+- nutanixSnapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
+  - Nutanix cluster snapshot consistency level.
 - descendantConnection: NutanixClusterDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: NutanixClusterLogicalChildTypeConnection

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Host' API domain:
-    /// BulkDelete, BulkRefresh, BulkRegister, BulkUpdate, ChangeVfd, or Refresh.
+    /// BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, or Refresh.
     /// </summary>
     /// <description>
     /// New-RscMutationHost creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Host' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkUpdate, ChangeVfd, or Refresh.
+    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, or Refresh.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -241,6 +241,110 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BulkRegisterHostReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkRegisterAsync operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: BulkRegisterAsync
+    /// 
+    /// $query = New-RscMutationHost -BulkRegisterAsync
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	hosts = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			hasAgent = $someBoolean
+    /// 			# OPTIONAL
+    /// 			nasConfig = @{
+    /// 				# OPTIONAL
+    /// 				apiCertificate = $someString
+    /// 				# OPTIONAL
+    /// 				apiEndpoint = $someString
+    /// 				# OPTIONAL
+    /// 				apiHostname = $someString
+    /// 				# OPTIONAL
+    /// 				apiPassword = $someString
+    /// 				# OPTIONAL
+    /// 				apiToken = $someString
+    /// 				# OPTIONAL
+    /// 				apiUsername = $someString
+    /// 				# OPTIONAL
+    /// 				zoneName = $someString
+    /// 				# OPTIONAL
+    /// 				isSnapdiffEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isIsilonChangelistEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isNetAppSnapDiffEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isShareAutoDiscoveryEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isNutanixCftEnabled = $someBoolean
+    /// 				# REQUIRED
+    /// 				vendorType = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleQueryUser = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSysDbaUser = $someString
+    /// 			# OPTIONAL
+    /// 			organizationId = $someString
+    /// 			# OPTIONAL
+    /// 			alias = $someString
+    /// 			# OPTIONAL
+    /// 			hdfsConfig = @{
+    /// 				# OPTIONAL
+    /// 				hdfsBaseConfig = @{
+    /// 					# OPTIONAL
+    /// 					apiToken = $someString
+    /// 					# OPTIONAL
+    /// 					kerberosTicket = $someString
+    /// 					# OPTIONAL
+    /// 					nameservices = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 					# REQUIRED
+    /// 					hosts = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							hostname = $someString
+    /// 							# REQUIRED
+    /// 							port = $someInt
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkRegisterHostAsyncReply
     /// 
     /// 
     /// 
@@ -451,6 +555,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkDelete",
                 "BulkRefresh",
                 "BulkRegister",
+                "BulkRegisterAsync",
                 "BulkUpdate",
                 "ChangeVfd",
                 "Refresh",
@@ -477,6 +582,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "BulkRegister":
                         this.ProcessRecord_BulkRegister();
+                        break;
+                    case "BulkRegisterAsync":
+                        this.ProcessRecord_BulkRegisterAsync();
                         break;
                     case "BulkUpdate":
                         this.ProcessRecord_BulkUpdate();
@@ -522,6 +630,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -BulkRegister";
             // Create new graphql operation bulkRegisterHost
             InitMutationBulkRegisterHost();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkRegisterHostAsync.
+        internal void ProcessRecord_BulkRegisterAsync()
+        {
+            this._logger.name += " -BulkRegisterAsync";
+            // Create new graphql operation bulkRegisterHostAsync
+            InitMutationBulkRegisterHostAsync();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -619,6 +736,102 @@ $query.Var.input = @{
                 "BulkRegisterHostReply",
                 Mutation.BulkRegisterHost_ObjectFieldSpec,
                 Mutation.BulkRegisterHostFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	hosts = @(
+		@{
+			# OPTIONAL
+			hasAgent = $someBoolean
+			# OPTIONAL
+			nasConfig = @{
+				# OPTIONAL
+				apiCertificate = $someString
+				# OPTIONAL
+				apiEndpoint = $someString
+				# OPTIONAL
+				apiHostname = $someString
+				# OPTIONAL
+				apiPassword = $someString
+				# OPTIONAL
+				apiToken = $someString
+				# OPTIONAL
+				apiUsername = $someString
+				# OPTIONAL
+				zoneName = $someString
+				# OPTIONAL
+				isSnapdiffEnabled = $someBoolean
+				# OPTIONAL
+				isIsilonChangelistEnabled = $someBoolean
+				# OPTIONAL
+				isNetAppSnapDiffEnabled = $someBoolean
+				# OPTIONAL
+				isShareAutoDiscoveryEnabled = $someBoolean
+				# OPTIONAL
+				isNutanixCftEnabled = $someBoolean
+				# REQUIRED
+				vendorType = $someString
+			}
+			# OPTIONAL
+			oracleQueryUser = $someString
+			# OPTIONAL
+			oracleSysDbaUser = $someString
+			# OPTIONAL
+			organizationId = $someString
+			# OPTIONAL
+			alias = $someString
+			# OPTIONAL
+			hdfsConfig = @{
+				# OPTIONAL
+				hdfsBaseConfig = @{
+					# OPTIONAL
+					apiToken = $someString
+					# OPTIONAL
+					kerberosTicket = $someString
+					# OPTIONAL
+					nameservices = $someString
+					# OPTIONAL
+					username = $someString
+					# REQUIRED
+					hosts = @(
+						@{
+							# REQUIRED
+							hostname = $someString
+							# REQUIRED
+							port = $someInt
+						}
+					)
+				}
+			}
+			# OPTIONAL
+			isOracleHost = $someBoolean
+			# OPTIONAL
+			orgNetworkId = $someString
+			# REQUIRED
+			hostname = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkRegisterHostAsync(input: BulkRegisterHostAsyncInput!): BulkRegisterHostAsyncReply!
+        internal void InitMutationBulkRegisterHostAsync()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkRegisterHostAsyncInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkRegisterHostAsync",
+                "($input: BulkRegisterHostAsyncInput!)",
+                "BulkRegisterHostAsyncReply",
+                Mutation.BulkRegisterHostAsync_ObjectFieldSpec,
+                Mutation.BulkRegisterHostAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED

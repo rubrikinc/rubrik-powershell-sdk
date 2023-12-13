@@ -26,3 +26,8 @@ PermissionsGroup represents the collection of various permission groups that
 - CLOUD_CLUSTER_ES - Represents the set of permissions required for Cloud Cluster ES
  operation. These permissions are applicable to the cloud native
  protection feature.
+- SNAPSHOT_PRIVATE_ACCESS - Represents the set of permissions required for private access to disk
+ snapshots. These permissions are applicable to the cloud native
+ protection feature.
+- PRIVATE_ENDPOINTS - Represents the set of permissions required for usage of private
+ endpoints. These permissions are applicable to exocompute feature.

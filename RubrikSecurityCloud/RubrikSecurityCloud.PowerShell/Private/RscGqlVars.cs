@@ -315,38 +315,6 @@ namespace RubrikSecurityCloud
                     // we'll send it to the server as null
                     this.Add(varName, null);
                 }
-
-                // Apply (if any) override coming from configuration
-                applyConfigOverride(varName);
-            }
-        }
-
-        internal void applyConfigOverride(string varName)
-        {
-            if ( varName.ToLower() != "first" )
-            {
-                return;
-            }
-            if ( this[varName] == null )
-            {
-                if (RubrikSecurityCloud.Config.ConnectionMaxPageSize>0)
-                {
-                    this[varName] = RubrikSecurityCloud.Config. ConnectionMaxPageSize;
-                }
-                return;
-            }
-            if ( this[varName] is int i )
-            {
-                if (RubrikSecurityCloud.Config.ConnectionMaxPageSize>0 &&
-                    i > RubrikSecurityCloud.Config.ConnectionMaxPageSize )
-                {
-                    this[varName] = RubrikSecurityCloud.Config.ConnectionMaxPageSize;
-                    if ( RubrikSecurityCloud.Config.WarnIfConnectionPageSizeExceeded )
-                    {
-                        Console.WriteLine($"Warning: {varName} was set to {i} but the maximum allowed value is {RubrikSecurityCloud.Config.ConnectionMaxPageSize}");
-                    }
-                }
-                return;
             }
         }
 

@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shareId")]
         public System.String? ShareId { get; set; }
 
+        //      C# -> System.Boolean? ShouldRecreateDirectoryStructure
+        // GraphQL -> shouldRecreateDirectoryStructure: Boolean (scalar)
+        [JsonProperty("shouldRecreateDirectoryStructure")]
+        public System.Boolean? ShouldRecreateDirectoryStructure { get; set; }
+
         //      C# -> List<FilesetExportPathPairInput>? ExportPathPairs
         // GraphQL -> exportPathPairs: [FilesetExportPathPairInput!]! (input)
         [Required]

@@ -11,6 +11,12 @@ An Azure storage account that contains Azure storage data objects including blob
   - Native name of the storage account.
 - region: AzureNativeRegion
   - Region where the storage account is located.
+- usedCapacityBytes: System.Int64
+  - The used capacity bytes of the storage account.
+- accessTier: System.String
+  - The access tier of the storage account.
+- numContainers: System.Int64
+  - The number of containers in the storage account.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup

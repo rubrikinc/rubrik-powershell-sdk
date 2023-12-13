@@ -6,6 +6,8 @@ AWS feature configurations in an AWS account.
 - featureDetail: FeatureDetail
   - Feature detail.
 - exocomputeConfigs: list of AwsExocomputeGetConfigResponses
-  - Aws exocompute configurations.
+  - AWS Exocompute Configurations.
+- exocomputeConfigurations: list of AwsExocomputeGetConfigurationResponses
+  - AWS Exocompute Configurations.
 - mappedExocomputeAccount: CloudAccountDetails
   - Account details of the mapped Exocompute account.

@@ -2010,6 +2010,35 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.Int32? ProtectedVolumesCount
+        // GraphQL -> protectedVolumesCount: Int! (scalar)
+        public static string ProtectedVolumesCount_TypedFieldSpec(System.Int32 fieldSpec)
+        {
+            string args = "\n(\nfilter: $filter\n)";
+            return "protectedVolumesCount" + args + "\n";
+        }
+        public static string ProtectedVolumesCount_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ProtectedVolumesCount((System.Int32)fieldSpecObj);
+        }
+        public static string ProtectedVolumesCount(System.Int32 fieldSpec)
+        {
+            return ProtectedVolumesCount_TypedFieldSpec(fieldSpec);
+        }
+        public static string ProtectedVolumesCount(object fieldSpecObj)
+        {
+            return ProtectedVolumesCount_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ProtectedVolumesCountFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return Int32.MinValue ;
+        }
+
         //      C# -> System.Boolean? TeamChannelNameAvailable
         // GraphQL -> teamChannelNameAvailable: Boolean! (scalar)
         public static string TeamChannelNameAvailable_TypedFieldSpec(System.Boolean fieldSpec)
@@ -5815,6 +5844,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GlobalCertificateConnection? AssignableGlobalCertificates
+        // GraphQL -> assignableGlobalCertificates: GlobalCertificateConnection! (type)
+        public static string AssignableGlobalCertificates_TypedFieldSpec(GlobalCertificateConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\ninput: $input\n)";
+            return "assignableGlobalCertificates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AssignableGlobalCertificates_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AssignableGlobalCertificates((GlobalCertificateConnection)fieldSpecObj);
+        }
+        public static string AssignableGlobalCertificates(GlobalCertificateConnection fieldSpec)
+        {
+            return AssignableGlobalCertificates_TypedFieldSpec(fieldSpec);
+        }
+        public static string AssignableGlobalCertificates(object fieldSpecObj)
+        {
+            return AssignableGlobalCertificates_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AssignableGlobalCertificatesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new GlobalCertificateConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AwsArtifactsToDelete? AwsArtifactsToDelete
         // GraphQL -> awsArtifactsToDelete: AwsArtifactsToDelete! (type)
         public static string AwsArtifactsToDelete_TypedFieldSpec(AwsArtifactsToDelete fieldSpec)
@@ -8477,6 +8537,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new FeatureCdmVersionReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetCertificateInfoReply? CertificateInfo
+        // GraphQL -> certificateInfo: GetCertificateInfoReply! (type)
+        public static string CertificateInfo_TypedFieldSpec(GetCertificateInfoReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "certificateInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CertificateInfo_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CertificateInfo((GetCertificateInfoReply)fieldSpecObj);
+        }
+        public static string CertificateInfo(GetCertificateInfoReply fieldSpec)
+        {
+            return CertificateInfo_TypedFieldSpec(fieldSpec);
+        }
+        public static string CertificateInfo(object fieldSpecObj)
+        {
+            return CertificateInfo_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CertificateInfoFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new GetCertificateInfoReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11953,6 +12044,68 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GlobalCertificate? GlobalCertificate
+        // GraphQL -> globalCertificate: GlobalCertificate! (type)
+        public static string GlobalCertificate_TypedFieldSpec(GlobalCertificate fieldSpec)
+        {
+            string args = "\n(\ncertificateId: $certificateId\n)";
+            return "globalCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string GlobalCertificate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return GlobalCertificate((GlobalCertificate)fieldSpecObj);
+        }
+        public static string GlobalCertificate(GlobalCertificate fieldSpec)
+        {
+            return GlobalCertificate_TypedFieldSpec(fieldSpec);
+        }
+        public static string GlobalCertificate(object fieldSpecObj)
+        {
+            return GlobalCertificate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object GlobalCertificateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new GlobalCertificate() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GlobalCertificateConnection? GlobalCertificates
+        // GraphQL -> globalCertificates: GlobalCertificateConnection! (type)
+        public static string GlobalCertificates_TypedFieldSpec(GlobalCertificateConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\ninput: $input\n)";
+            return "globalCertificates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string GlobalCertificates_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return GlobalCertificates((GlobalCertificateConnection)fieldSpecObj);
+        }
+        public static string GlobalCertificates(GlobalCertificateConnection fieldSpec)
+        {
+            return GlobalCertificates_TypedFieldSpec(fieldSpec);
+        }
+        public static string GlobalCertificates(object fieldSpecObj)
+        {
+            return GlobalCertificates_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object GlobalCertificatesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new GlobalCertificateConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GlobalFileSearchReply? GlobalFileSearch
         // GraphQL -> globalFileSearch: GlobalFileSearchReply! (type)
         public static string GlobalFileSearch_TypedFieldSpec(GlobalFileSearchReply fieldSpec)
@@ -14960,6 +15113,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> MssqlDefaultPropertiesOnClusterReply? MssqlDefaultPropertiesOnCluster
+        // GraphQL -> mssqlDefaultPropertiesOnCluster: MssqlDefaultPropertiesOnClusterReply! (type)
+        public static string MssqlDefaultPropertiesOnCluster_TypedFieldSpec(MssqlDefaultPropertiesOnClusterReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "mssqlDefaultPropertiesOnCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string MssqlDefaultPropertiesOnCluster_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return MssqlDefaultPropertiesOnCluster((MssqlDefaultPropertiesOnClusterReply)fieldSpecObj);
+        }
+        public static string MssqlDefaultPropertiesOnCluster(MssqlDefaultPropertiesOnClusterReply fieldSpec)
+        {
+            return MssqlDefaultPropertiesOnCluster_TypedFieldSpec(fieldSpec);
+        }
+        public static string MssqlDefaultPropertiesOnCluster(object fieldSpecObj)
+        {
+            return MssqlDefaultPropertiesOnCluster_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object MssqlDefaultPropertiesOnClusterFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new MssqlDefaultPropertiesOnClusterReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> MssqlInstance? MssqlInstance
         // GraphQL -> mssqlInstance: MssqlInstance! (type)
         public static string MssqlInstance_TypedFieldSpec(MssqlInstance fieldSpec)
@@ -17161,6 +17345,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ObjectTypeAccessSummaryConnection? ObjectTypeAccessSummary
+        // GraphQL -> objectTypeAccessSummary: ObjectTypeAccessSummaryConnection! (type)
+        public static string ObjectTypeAccessSummary_TypedFieldSpec(ObjectTypeAccessSummaryConnection fieldSpec)
+        {
+            string args = "\n(\ntimelineDate: $timelineDate\nhistoricalDeltaDays: $historicalDeltaDays\nincludeWhitelistedResults: $includeWhitelistedResults\nsortOrder: $sortOrder\nfilter: $filter\nsort: $sort\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            return "objectTypeAccessSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ObjectTypeAccessSummary_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ObjectTypeAccessSummary((ObjectTypeAccessSummaryConnection)fieldSpecObj);
+        }
+        public static string ObjectTypeAccessSummary(ObjectTypeAccessSummaryConnection fieldSpec)
+        {
+            return ObjectTypeAccessSummary_TypedFieldSpec(fieldSpec);
+        }
+        public static string ObjectTypeAccessSummary(object fieldSpecObj)
+        {
+            return ObjectTypeAccessSummary_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ObjectTypeAccessSummaryFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ObjectTypeAccessSummaryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> OracleFileDownloadLink? OracleAcoExampleDownloadLink
         // GraphQL -> oracleAcoExampleDownloadLink: OracleFileDownloadLink! (type)
         public static string OracleAcoExampleDownloadLink_TypedFieldSpec(OracleFileDownloadLink fieldSpec)
@@ -17281,6 +17496,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new OracleDatabase() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? OracleDatabaseAsyncRequestDetails
+        // GraphQL -> oracleDatabaseAsyncRequestDetails: AsyncRequestStatus! (type)
+        public static string OracleDatabaseAsyncRequestDetails_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "oracleDatabaseAsyncRequestDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string OracleDatabaseAsyncRequestDetails_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return OracleDatabaseAsyncRequestDetails((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string OracleDatabaseAsyncRequestDetails(AsyncRequestStatus fieldSpec)
+        {
+            return OracleDatabaseAsyncRequestDetails_TypedFieldSpec(fieldSpec);
+        }
+        public static string OracleDatabaseAsyncRequestDetails(object fieldSpecObj)
+        {
+            return OracleDatabaseAsyncRequestDetails_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object OracleDatabaseAsyncRequestDetailsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

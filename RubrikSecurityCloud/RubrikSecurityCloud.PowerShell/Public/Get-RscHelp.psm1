@@ -22,111 +22,66 @@ function Get-RscHelp {
     
     #>
     [CmdletBinding(
-        DefaultParameterSetName = 'CommandName'
+        DefaultParameterSetName = 'Schema'
     )]
     Param (
         [Parameter(
-            ParameterSetName = 'CommandName',
-            HelpMessage = 'The name of the cmdlet to retrieve help for. ' +
-                'The output will be the help message for the cmdlet, ' +
-                'but this cmdlet extracts just the subcommand help messages.',
-            Mandatory = $true)]
-        [ValidateSet(
-            'New-RscMutationActivitySeries',
-            'New-RscMutationAws',
-            'New-RscMutationAzure',
-            'New-RscMutationAzureO365',
-            'New-RscMutationCassandra',
-            'New-RscMutationCluster',
-            'New-RscMutationDb2',
-            'New-RscMutationHyperv',
-            'New-RscMutationLdap',
-            'New-RscMutationMongo',
-            'New-RscMutationMssql',
-            'New-RscMutationNutanix',
-            'New-RscMutationO365',
-            'New-RscMutationOracle',
-            'New-RscMutationSla',
-            'New-RscMutationVcenter',
-            'New-RscMutationVsphere',
-            'New-RscMutationVsphereVm',
-            'New-RscQueryAccount',
-            'New-RscQueryActivitySeries',
-            'New-RscQueryAws',
-            'New-RscQueryAzure',
-            'New-RscQueryAzureO365',
-            'New-RscQueryCassandra',
-            'New-RscQueryCluster',
-            'New-RscQueryDb2',
-            'New-RscQueryHyperv',
-            'New-RscQueryLdap',
-            'New-RscQueryMongo',
-            'New-RscQueryMssql',
-            'New-RscQueryNutanix',
-            'New-RscQueryO365',
-            'New-RscQueryOracle',
-            'New-RscQuerySla',
-            'New-RscQueryVcenter',
-            'New-RscQueryVsphere',
-            'New-RscQueryVsphereVm'
-        )]
-        [string]$CommandName,
-
-        [Parameter(
             ParameterSetName = 'Locations',
-            HelpMessage = 'Show File System locations the SDK uses.'
+            HelpMessage = 'Show File System locations the SDK uses.',
+            Position = 0
         )]
         [Switch]$Locations,
 
         [Parameter(
-            ParameterSetName = 'LookupSchema',
-            HelpMessage = 'The name of the element to look up in the schema. ' +
-                'If the name is not unique, all matching elements will be ' +
-                'returned. Regular expressions are supported.'
+            ParameterSetName = 'Schema',
+            HelpMessage = 'Look up any symbol in the schema.',
+            Position = 0
         )]
-        [string]$LookupSchema
+        [string]$Schema,
+
+        [Parameter(
+            ParameterSetName = 'Query',
+            HelpMessage = 'Look up a query by name.',
+            Position = 0
+        )]
+        [Switch]$Query,
+    
+        [Parameter(
+            ParameterSetName = 'Interface',
+            HelpMessage = 'Look up an interface by name.',
+            Position = 0
+        )]
+        [Switch]$Interface,
+
+        [Parameter(
+            ParameterSetName = 'Input',
+            HelpMessage = 'Look up an input by name.',
+            Position = 0
+        )]
+        [Switch]$Inputs,
+
+        [Parameter(
+            ParameterSetName = 'Enum',
+            HelpMessage = 'Look up an enum by name.',
+            Position = 0
+        )]
+        [Switch]$Enum,
+
+        [Parameter(
+            HelpMessage = 'Regular expression to match',
+            Position = 1
+        )]
+        [string]$Match = ""
+
     )
     Begin {
-        function GetCommandHelp {
-            Param($CommandName)
-
-            # Get the command
-            $command = Get-Command $CommandName
-
-            # Get parameters
-            $params = $command.Parameters.Values
-
-            # Filter only switch parameters
-            $switchParams = $params | Where-Object { $_.ParameterType.Name -eq 'SwitchParameter' -and $_.Name -ne "Verbose" -and $_.Name -ne "Debug" -and $_.Name -ne "GetInput" }
-
-            $switchParams | ForEach-Object {
-                try {
-                    $paramHelp = ((Get-Help $CommandName -Parameter $_.Name).description)[0].Text
-                }
-                catch {
-                    $paramHelp = "Description not available."
-                }
-                [PSCustomObject]@{
-                    Name        = $_.Name
-                    Description = $paramHelp
-                }
-            }
-        }
-
         function GetLocationHelp {
             Get-RscCmdlet -Locations
         }
 
         function LookupSchema {
-            Param($name)
-            # Ensure the name is not 'Unknown'
-            if ($name -ieq "Unknown") {
-                Write-Output "Unknown"
-                return
-            }
-
             # Get all the enums within the SchemaMeta class
-            $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName'}
+            $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName' }
 
             # Iterate through each enum and check if it contains the lookup name
             $found = 0
@@ -135,7 +90,7 @@ function Get-RscHelp {
                 $enumNames = [Enum]::GetNames($enum) | Where-Object { $_ -ine 'Unknown' }
                 # Check if any of the names match the provided pattern
                 foreach ($n in $enumNames) {
-                    if ($n -like $name) {
+                    if ($n -like $Match) {
                         # Extract the middle part of the enum name
                         $enumName = $enum.Name -replace '^Gql', '' -replace 'Name$', ''
                         Write-Output "${enumName}: $n"
@@ -144,19 +99,103 @@ function Get-RscHelp {
                 }
             }
             if ($found -eq 0) {
-                Write-Output "No match found for '$name'."
-            } elseif ($found -gt 1) {
-                Write-Output "${found} matches found for '$name'."
+                Write-Output "No match found for '$Match'."
+            }
+            elseif ($found -gt 1) {
+                Write-Output "${found} matches found for '$Match'."
             }
         }
+
+        function LookupQuery {
+            $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlQueryName])
+            foreach ($value in $enumValues) {
+                if ($value -eq 'Unknown') {
+                    continue
+                }
+                # if it's an exact match, print query info
+                if ( $value -eq $Match ) {
+                    try {
+                        $query = New-RscQuery -GqlQuery $value
+                        $info = $query.Info()
+                    }
+                    catch {
+                        $info = "Query $value is not supported."
+                    }
+                    Write-Output $info
+                    continue
+                }
+                # print it if $Query is empty, or if it matches the pattern
+                if ($Match -eq "" -or $value -like $Match) {
+                    Write-Output $value
+                }
+            }
+        }
+
+        function LookupInterface {
+            $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlInterfaceName])
+            foreach ($value in $enumValues) {
+                if ($value -eq 'Unknown') {
+                    continue
+                }
+                # if it's an exact match, print interface info
+                if ( $value -eq $Match ) {
+                    try {
+                        Write-Output "Types that implement interface ${value}:"
+                        $info = Get-RscType -Interface $value
+                    }
+                    catch {
+                        $info = "Interface $value is not supported."
+                    }
+                    Write-Output $info
+                    continue
+                }
+                # print it if $Interface is empty, or if it matches the pattern
+                if ($Match -eq "" -or $value -like $Match) {
+                    Write-Output $value
+                }
+            }
+        }
+
+        function LookupInput {
+            $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlInputName])
+            foreach ($value in $enumValues) {
+                if ($value -eq 'Unknown') {
+                    continue
+                }
+                # print it if $Input is empty, or if it matches the pattern
+                if ($Match -eq "" -or $value -like $Match) {
+                    Write-Output $value
+                }
+            }
+        }
+
+        function LookupEnum {
+            $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlEnumName])
+            foreach ($value in $enumValues) {
+                if ($value -eq 'Unknown') {
+                    continue
+                }
+                # print it if $Enum is empty, or if it matches the pattern
+                if ($Match -eq "" -or $value -like $Match) {
+                    Write-Output $value
+                }
+            }
+        }   
 
     }
     
     Process {
+        if ($Match -ieq "Unknown") {
+            Write-Output "Unknown"
+            return
+        }
         switch ($PSCmdlet.ParameterSetName) {
-            'CommandName' { GetCommandHelp $CommandName }
             'Locations' { GetLocationHelp }
-            'LookupSchema' { LookupSchema $LookupSchema }
+            'Schema' { LookupSchema }
+            'Query' { LookupQuery }
+            'Interface' { LookupInterface }
+            'Input' { LookupInput }
+            'Enum' { LookupEnum }
         }
     }
 }

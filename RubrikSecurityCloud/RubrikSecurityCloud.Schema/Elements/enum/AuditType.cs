@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER")]
         FAILOVER,
 
+        [EnumMember(Value = "FILE_DOWNLOAD")]
+        FILE_DOWNLOAD,
+
         [EnumMember(Value = "INDEX")]
         INDEX,
 
@@ -71,6 +74,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY_SCHEDULE")]
         RECOVERY_SCHEDULE,
+
+        [EnumMember(Value = "RUBY_AI")]
+        RUBY_AI,
 
         [EnumMember(Value = "SEARCH")]
         SEARCH,

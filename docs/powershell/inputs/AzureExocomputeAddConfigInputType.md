@@ -1,10 +1,10 @@
 ### AzureExocomputeAddConfigInputType
-Azure exocompute configuration to add.
+Azure Exocompute configuration to add.
 
 - region: AzureCloudAccountRegion
   - The region for which the configuration is specified.
 - subnetNativeId: System.String
-  - Subnet native ID where exocompute cluster should be launched.
+  - Subnet native ID where Exocompute cluster should be launched.
 - isRscManaged: System.Boolean
   - Specifies if this configuration is managed by Rubrik.
 - podSubnetNativeId: System.String

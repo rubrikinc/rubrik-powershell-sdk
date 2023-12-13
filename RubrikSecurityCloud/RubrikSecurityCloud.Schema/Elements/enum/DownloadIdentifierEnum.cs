@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPORT")]
         REPORT,
 
+        [EnumMember(Value = "RUBY_AI")]
+        RUBY_AI,
+
         [EnumMember(Value = "SEND_NOW_EMAIL")]
         SEND_NOW_EMAIL,
 

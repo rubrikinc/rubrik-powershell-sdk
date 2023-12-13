@@ -1,5 +1,5 @@
 ### AwsExocomputeSubnetInputType
-AWS exocompute subnet input.
+AWS Exocompute subnet input.
 
 - subnetId: System.String
   - AWS ID of subnet.

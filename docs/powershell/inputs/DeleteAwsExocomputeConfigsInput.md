@@ -1,5 +1,5 @@
 ### DeleteAwsExocomputeConfigsInput
-Input to delete AWS exocompute configurations.
+Input to delete AWS Exocompute configurations.
 
 - configIdsToBeDeleted: list of System.Strings
-  - IDs of exocompute configurations to be deleted.
+  - IDs of Exocompute configurations to be deleted.

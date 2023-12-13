@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        [JsonProperty("azureFeatureId")]
+        public System.String? AzureFeatureId { get; set; }
+
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
         [JsonProperty("hanaVersion")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SapHanaSystemInfo Set(
+        System.String? AzureFeatureId = null,
         System.String? HanaVersion = null,
         System.Boolean? IsSystemReplicationEnabled = null,
         SapHanaSystemAuthTypeSpec? AuthTypeSpec = null
     ) 
     {
+        if ( AzureFeatureId != null ) {
+            this.AzureFeatureId = AzureFeatureId;
+        }
         if ( HanaVersion != null ) {
             this.HanaVersion = HanaVersion;
         }
@@ -70,6 +79,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        if (this.AzureFeatureId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureFeatureId\n" ;
+            } else {
+                s += ind + "azureFeatureId\n" ;
+            }
+        }
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
         if (this.HanaVersion != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        if (ec.Includes("azureFeatureId",true))
+        {
+            if(this.AzureFeatureId == null) {
+
+                this.AzureFeatureId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureFeatureId != null && ec.Excludes("azureFeatureId",true))
+        {
+            this.AzureFeatureId = null;
+        }
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
         if (ec.Includes("hanaVersion",true))

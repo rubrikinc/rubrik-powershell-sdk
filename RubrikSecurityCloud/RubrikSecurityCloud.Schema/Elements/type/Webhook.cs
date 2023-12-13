@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serverCertificate")]
         public System.String? ServerCertificate { get; set; }
 
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        [JsonProperty("serviceAccountId")]
+        public System.String? ServiceAccountId { get; set; }
+
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         [JsonProperty("updatedAt")]
@@ -109,6 +114,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? Id = null,
         System.String? Name = null,
         System.String? ServerCertificate = null,
+        System.String? ServiceAccountId = null,
         DateTime? UpdatedAt = null,
         System.String? Url = null,
         ErrorInfo? LastFailedErrorInfo = null,
@@ -142,6 +148,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ServerCertificate != null ) {
             this.ServerCertificate = ServerCertificate;
+        }
+        if ( ServiceAccountId != null ) {
+            this.ServiceAccountId = ServiceAccountId;
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
@@ -248,6 +257,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "serverCertificate\n" ;
             } else {
                 s += ind + "serverCertificate\n" ;
+            }
+        }
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        if (this.ServiceAccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceAccountId\n" ;
+            } else {
+                s += ind + "serviceAccountId\n" ;
             }
         }
         //      C# -> DateTime? UpdatedAt
@@ -463,6 +481,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ServerCertificate != null && ec.Excludes("serverCertificate",true))
         {
             this.ServerCertificate = null;
+        }
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        if (ec.Includes("serviceAccountId",true))
+        {
+            if(this.ServiceAccountId == null) {
+
+                this.ServiceAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceAccountId != null && ec.Excludes("serviceAccountId",true))
+        {
+            this.ServiceAccountId = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)

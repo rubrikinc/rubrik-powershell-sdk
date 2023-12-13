@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serverCertificate")]
         public System.String? ServerCertificate { get; set; }
 
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        [JsonProperty("serviceAccountId")]
+        public System.String? ServiceAccountId { get; set; }
+
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         [Required]

@@ -4,7 +4,7 @@ Azure Exocompute configuration.
 - configUuid: System.String
   - Unique ID of the Exocompute configuration.
 - region: AzureCloudAccountRegion
-  - Azure region for the cloud account in which exocompute is configured.
+  - Azure region for the cloud account in which Exocompute is configured.
 - subnetNativeId: System.String
   - Native ID of cluster subnet corresponding to the Exocompute configuration. This subnet will be used to allocate IP addresses to the nodes of the cluster. For more details, visit https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni.
 - podSubnetNativeId: System.String

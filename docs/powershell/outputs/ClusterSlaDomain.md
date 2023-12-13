@@ -47,3 +47,5 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - Specifies the owner organization of the SLA Domain.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode when enabled for the SLA Domain.
+- archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
+  - Upgrade information about the configured archival locations and cascading archival locations.

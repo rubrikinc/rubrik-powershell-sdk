@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> Snappable? ReportWorkload
+        // GraphQL -> reportWorkload: Snappable (type)
+        [JsonProperty("reportWorkload")]
+        public Snappable? ReportWorkload { get; set; }
+
         //      C# -> HostShare? Share
         // GraphQL -> share: HostShare (type)
         [JsonProperty("share")]
@@ -302,6 +307,7 @@ namespace RubrikSecurityCloud.Types
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        Snappable? ReportWorkload = null,
         HostShare? Share = null,
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
@@ -431,6 +437,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( ReportWorkload != null ) {
+            this.ReportWorkload = ReportWorkload;
         }
         if ( Share != null ) {
             this.Share = Share;
@@ -892,6 +901,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Snappable? ReportWorkload
+        // GraphQL -> reportWorkload: Snappable (type)
+        if (this.ReportWorkload != null) {
+            var fspec = this.ReportWorkload.AsFieldSpec(conf.Child("reportWorkload"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "reportWorkload {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1720,6 +1741,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> Snappable? ReportWorkload
+        // GraphQL -> reportWorkload: Snappable (type)
+        if (ec.Includes("reportWorkload",false))
+        {
+            if(this.ReportWorkload == null) {
+
+                this.ReportWorkload = new Snappable();
+                this.ReportWorkload.ApplyExploratoryFieldSpec(ec.NewChild("reportWorkload"));
+
+            } else {
+
+                this.ReportWorkload.ApplyExploratoryFieldSpec(ec.NewChild("reportWorkload"));
+
+            }
+        }
+        else if (this.ReportWorkload != null && ec.Excludes("reportWorkload",false))
+        {
+            this.ReportWorkload = null;
         }
         //      C# -> HostShare? Share
         // GraphQL -> share: HostShare (type)

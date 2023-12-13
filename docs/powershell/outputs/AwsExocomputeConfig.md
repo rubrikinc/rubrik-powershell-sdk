@@ -6,9 +6,11 @@ AWS Exocompute configurations in an AWS account.
 - featureDetail: FeatureDetail
   - Feature details.
 - exocomputeEligibleRegions: list of AwsCloudAccountRegions
-  - List of regions for which exocompute can be configured.
+  - List of regions for which Exocompute can be configured.
 - configs: list of AwsExocomputeGetConfigResponses
-  - AWS exocompute get configurations response.
+  - AWS Exocompute get configurations response.
+- exocomputeConfigs: list of AwsExocomputeGetConfigurationResponses
+  - AWS Exocompute get configurations response.
 - mappedCloudAccountIds: list of System.Strings
   - Cloud Accounts which are mapped to this Exocompute account.
 - mappedCloudAccounts: list of CloudAccountDetailss

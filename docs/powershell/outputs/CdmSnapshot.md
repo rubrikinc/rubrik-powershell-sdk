@@ -61,6 +61,8 @@
   - Cloud state of the snapshot.
 - cdmWorkloadSnapshot: CdmWorkloadSnapshot
   - Snapshot of a Rubrik CDM workload.
+- mssqlAppMetadata: MssqlAppMetadata
+  - Mssql specific metadata for the snapshot.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String

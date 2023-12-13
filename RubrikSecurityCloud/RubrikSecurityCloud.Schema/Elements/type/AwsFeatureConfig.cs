@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations
+        // GraphQL -> exocomputeConfigurations: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        [JsonProperty("exocomputeConfigurations")]
+        public List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations { get; set; }
+
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         [JsonProperty("awsCloudAccount")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsFeatureConfig Set(
+        List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations = null,
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs = null,
         FeatureDetail? FeatureDetail = null,
         CloudAccountDetails? MappedExocomputeAccount = null
     ) 
     {
+        if ( ExocomputeConfigurations != null ) {
+            this.ExocomputeConfigurations = ExocomputeConfigurations;
+        }
         if ( AwsCloudAccount != null ) {
             this.AwsCloudAccount = AwsCloudAccount;
         }
@@ -79,6 +88,19 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations
+        // GraphQL -> exocomputeConfigurations: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        if (this.ExocomputeConfigurations != null) {
+                var fspec = this.ExocomputeConfigurations.AsFieldSpec(conf.Child("exocomputeConfigurations"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exocomputeConfigurations {\n" + fspec + ind + "}\n";
+                }
+            }
+        }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         if (this.AwsCloudAccount != null) {
@@ -134,6 +156,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations
+        // GraphQL -> exocomputeConfigurations: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        if (ec.Includes("exocomputeConfigurations",false))
+        {
+            if(this.ExocomputeConfigurations == null) {
+
+                this.ExocomputeConfigurations = new List<AwsExocomputeGetConfigurationResponse>();
+                this.ExocomputeConfigurations.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigurations"));
+
+            } else {
+
+                this.ExocomputeConfigurations.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigurations"));
+
+            }
+        }
+        else if (this.ExocomputeConfigurations != null && ec.Excludes("exocomputeConfigurations",false))
+        {
+            this.ExocomputeConfigurations = null;
+        }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         if (ec.Includes("awsCloudAccount",false))

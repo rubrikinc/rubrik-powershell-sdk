@@ -459,6 +459,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		shareId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# REQUIRED
     /// 		exportPathPairs = @(
     /// 			@{
@@ -1391,6 +1393,8 @@ $query.Var.input = @{
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		shareId = $someString
+		# OPTIONAL
+		shouldRecreateDirectoryStructure = $someBoolean
 		# REQUIRED
 		exportPathPairs = @(
 			@{

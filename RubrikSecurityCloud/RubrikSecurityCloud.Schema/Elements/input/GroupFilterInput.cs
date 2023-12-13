@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleIdsFilter")]
         public List<System.String>? RoleIdsFilter { get; set; }
 
+        //      C# -> System.String? NameFilter
+        // GraphQL -> nameFilter: String (scalar)
+        [JsonProperty("nameFilter")]
+        public System.String? NameFilter { get; set; }
+
 
         #endregion
 

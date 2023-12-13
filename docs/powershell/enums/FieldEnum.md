@@ -27,3 +27,7 @@
  Note that this filter is only for source snapshots, so it is
  incompatible with IS_REPLICA = true. No snapshots would be returned in
  that case.
+- SPECIFIC_SNAPSHOT_NOT_REQUIRED - SPECIFIC_SNAPSHOT_NOT_REQUIRED when added as a filter returns Snapshots
+ without the specific snapshots details. When not provided, Specific
+ Snapshot details are returned. Add the filter for efficiency if specific
+ snapshot details are not required.

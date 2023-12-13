@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Certificates' API domain:
-    /// AddClusterCertificate, Delete, SetSso, SetWebSigned, Update, or UpdateHost.
+    /// AddClusterCertificate, AddGlobal, Delete, DeleteGlobal, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobal, or UpdateHost.
     /// </summary>
     /// <description>
     /// New-RscMutationCertificate creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 10 operations
     /// in the 'Certificates' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddClusterCertificate, Delete, SetSso, SetWebSigned, Update, or UpdateHost.
+    /// one of: AddClusterCertificate, AddGlobal, Delete, DeleteGlobal, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobal, or UpdateHost.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -123,6 +123,54 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the AddGlobal operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: AddGlobal
+    /// 
+    /// $query = New-RscMutationCertificate -AddGlobal
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# OPTIONAL
+    /// 	privateKey = $someString
+    /// 	# REQUIRED
+    /// 	certificate = $someString
+    /// 	# OPTIONAL
+    /// 	clusters = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			clusterUuid = $someString
+    /// 			# REQUIRED
+    /// 			isTrusted = $someBoolean
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	csrFid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddGlobalCertificateReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Delete operation
     /// of the 'Certificates' API domain.
     /// <code>
@@ -143,6 +191,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteGlobal operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: DeleteGlobal
+    /// 
+    /// $query = New-RscMutationCertificate -DeleteGlobal
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	certificateId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeleteGlobalCertificateReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MarkAgentSecondary operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: MarkAgentSecondary
+    /// 
+    /// $query = New-RscMutationCertificate -MarkAgentSecondary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	certId = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MarkAgentSecondaryCertificateReply
     /// 
     /// 
     /// 
@@ -254,6 +366,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateGlobal operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: UpdateGlobal
+    /// 
+    /// $query = New-RscMutationCertificate -UpdateGlobal
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	certificateId = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	clusters = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			clusterUuid = $someString
+    /// 			# REQUIRED
+    /// 			isTrusted = $someBoolean
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateGlobalCertificateReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateHost operation
     /// of the 'Certificates' API domain.
     /// <code>
@@ -301,10 +457,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddClusterCertificate",
+                "AddGlobal",
                 "Delete",
+                "DeleteGlobal",
+                "MarkAgentSecondary",
                 "SetSso",
                 "SetWebSigned",
                 "Update",
+                "UpdateGlobal",
                 "UpdateHost",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -324,8 +484,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AddClusterCertificate":
                         this.ProcessRecord_AddClusterCertificate();
                         break;
+                    case "AddGlobal":
+                        this.ProcessRecord_AddGlobal();
+                        break;
                     case "Delete":
                         this.ProcessRecord_Delete();
+                        break;
+                    case "DeleteGlobal":
+                        this.ProcessRecord_DeleteGlobal();
+                        break;
+                    case "MarkAgentSecondary":
+                        this.ProcessRecord_MarkAgentSecondary();
                         break;
                     case "SetSso":
                         this.ProcessRecord_SetSso();
@@ -335,6 +504,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Update":
                         this.ProcessRecord_Update();
+                        break;
+                    case "UpdateGlobal":
+                        this.ProcessRecord_UpdateGlobal();
                         break;
                     case "UpdateHost":
                         this.ProcessRecord_UpdateHost();
@@ -359,12 +531,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addGlobalCertificate.
+        internal void ProcessRecord_AddGlobal()
+        {
+            this._logger.name += " -AddGlobal";
+            // Create new graphql operation addGlobalCertificate
+            InitMutationAddGlobalCertificate();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteCertificate.
         internal void ProcessRecord_Delete()
         {
             this._logger.name += " -Delete";
             // Create new graphql operation deleteCertificate
             InitMutationDeleteCertificate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteGlobalCertificate.
+        internal void ProcessRecord_DeleteGlobal()
+        {
+            this._logger.name += " -DeleteGlobal";
+            // Create new graphql operation deleteGlobalCertificate
+            InitMutationDeleteGlobalCertificate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // markAgentSecondaryCertificate.
+        internal void ProcessRecord_MarkAgentSecondary()
+        {
+            this._logger.name += " -MarkAgentSecondary";
+            // Create new graphql operation markAgentSecondaryCertificate
+            InitMutationMarkAgentSecondaryCertificate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -392,6 +591,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Update";
             // Create new graphql operation updateCertificate
             InitMutationUpdateCertificate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateGlobalCertificate.
+        internal void ProcessRecord_UpdateGlobal()
+        {
+            this._logger.name += " -UpdateGlobal";
+            // Create new graphql operation updateGlobalCertificate
+            InitMutationUpdateGlobalCertificate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -443,6 +651,46 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // addGlobalCertificate(input: AddGlobalCertificateInput!): AddGlobalCertificateReply!
+        internal void InitMutationAddGlobalCertificate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddGlobalCertificateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddGlobalCertificate",
+                "($input: AddGlobalCertificateInput!)",
+                "AddGlobalCertificateReply",
+                Mutation.AddGlobalCertificate_ObjectFieldSpec,
+                Mutation.AddGlobalCertificateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	name = $someString
+	# OPTIONAL
+	description = $someString
+	# OPTIONAL
+	privateKey = $someString
+	# REQUIRED
+	certificate = $someString
+	# OPTIONAL
+	clusters = @(
+		@{
+			# REQUIRED
+			clusterUuid = $someString
+			# REQUIRED
+			isTrusted = $someBoolean
+		}
+	)
+	# OPTIONAL
+	csrFid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteCertificate(certificateId: Long!): Boolean!
         internal void InitMutationDeleteCertificate()
         {
@@ -459,6 +707,54 @@ $query.Var.input = @{
                 Mutation.DeleteCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.certificateId = $someInt64"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteGlobalCertificate(input: DeleteGlobalCertificateInput!): DeleteGlobalCertificateReply!
+        internal void InitMutationDeleteGlobalCertificate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteGlobalCertificateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteGlobalCertificate",
+                "($input: DeleteGlobalCertificateInput!)",
+                "DeleteGlobalCertificateReply",
+                Mutation.DeleteGlobalCertificate_ObjectFieldSpec,
+                Mutation.DeleteGlobalCertificateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	certificateId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // markAgentSecondaryCertificate(input: MarkAgentSecondaryCertificateInput!): MarkAgentSecondaryCertificateReply!
+        internal void InitMutationMarkAgentSecondaryCertificate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "MarkAgentSecondaryCertificateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationMarkAgentSecondaryCertificate",
+                "($input: MarkAgentSecondaryCertificateInput!)",
+                "MarkAgentSecondaryCertificateReply",
+                Mutation.MarkAgentSecondaryCertificate_ObjectFieldSpec,
+                Mutation.MarkAgentSecondaryCertificateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	certId = $someString
+	# REQUIRED
+	clusterUuid = $someString
+}"
             );
         }
 
@@ -546,6 +842,42 @@ $query.Var.name = $someString
 $query.Var.description = $someString
 # OPTIONAL
 $query.Var.certificate = $someString"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateGlobalCertificate(input: UpdateGlobalCertificateInput!): UpdateGlobalCertificateReply!
+        internal void InitMutationUpdateGlobalCertificate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateGlobalCertificateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateGlobalCertificate",
+                "($input: UpdateGlobalCertificateInput!)",
+                "UpdateGlobalCertificateReply",
+                Mutation.UpdateGlobalCertificate_ObjectFieldSpec,
+                Mutation.UpdateGlobalCertificateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	certificateId = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	description = $someString
+	# REQUIRED
+	clusters = @(
+		@{
+			# REQUIRED
+			clusterUuid = $someString
+			# REQUIRED
+			isTrusted = $someBoolean
+		}
+	)
+}"
             );
         }
 

@@ -5,6 +5,8 @@
   - List of descendants.
 - logicalChildConnection: VsphereDatacenterLogicalChildTypeConnection
   - List of logical children.
+- recoveryTargetChildConnection: VsphereDatacenterPhysicalChildTypeConnection
+  - List of recoveryTarget children.
 - physicalChildConnection: VsphereDatacenterPhysicalChildTypeConnection
   - List of physical children.
 - cluster: Cluster

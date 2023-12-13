@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+    /// AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
     /// </summary>
     /// <description>
     /// New-RscQueryMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 17 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+    /// one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -565,6 +565,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DefaultPropertiesOnCluster operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: DefaultPropertiesOnCluster
+    /// 
+    /// $query = New-RscQueryMssql -DefaultPropertiesOnCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	mssqlObjectId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MssqlDefaultPropertiesOnClusterReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Instance operation
     /// of the 'Microsoft SQL Server' API domain.
     /// <code>
@@ -784,6 +817,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DatabaseRestoreFiles",
                 "Databases",
                 "DefaultProperties",
+                "DefaultPropertiesOnCluster",
                 "Instance",
                 "LogShippingTargets",
                 "RecoverableRanges",
@@ -838,6 +872,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DefaultProperties":
                         this.ProcessRecord_DefaultProperties();
+                        break;
+                    case "DefaultPropertiesOnCluster":
+                        this.ProcessRecord_DefaultPropertiesOnCluster();
                         break;
                     case "Instance":
                         this.ProcessRecord_Instance();
@@ -967,6 +1004,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DefaultProperties";
             // Create new graphql operation mssqlDefaultProperties
             InitQueryMssqlDefaultProperties();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mssqlDefaultPropertiesOnCluster.
+        internal void ProcessRecord_DefaultPropertiesOnCluster()
+        {
+            this._logger.name += " -DefaultPropertiesOnCluster";
+            // Create new graphql operation mssqlDefaultPropertiesOnCluster
+            InitQueryMssqlDefaultPropertiesOnCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1430,6 +1476,31 @@ $query.Var.filter = @(
 $query.Var.input = @{
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // mssqlDefaultPropertiesOnCluster(input: ClusterUuidWithMssqlObjectIdInput!): MssqlDefaultPropertiesOnClusterReply!
+        internal void InitQueryMssqlDefaultPropertiesOnCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ClusterUuidWithMssqlObjectIdInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMssqlDefaultPropertiesOnCluster",
+                "($input: ClusterUuidWithMssqlObjectIdInput!)",
+                "MssqlDefaultPropertiesOnClusterReply",
+                Query.MssqlDefaultPropertiesOnCluster_ObjectFieldSpec,
+                Query.MssqlDefaultPropertiesOnClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# OPTIONAL
+	mssqlObjectId = $someString
 }"
             );
         }

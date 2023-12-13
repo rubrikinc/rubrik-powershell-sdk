@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectId")]
         public System.String? ObjectId { get; set; }
 
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        [JsonProperty("snapshotId")]
+        public System.String? SnapshotId { get; set; }
+
         //      C# -> AzureAdObjects? AzureAdObjects
         // GraphQL -> azureAdObjects: AzureAdObjects! (type)
         [JsonProperty("azureAdObjects")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public AzureAdObject Set(
         AzureAdObjectType? Type = null,
         System.String? ObjectId = null,
+        System.String? SnapshotId = null,
         AzureAdObjects? AzureAdObjects = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectId != null ) {
             this.ObjectId = ObjectId;
+        }
+        if ( SnapshotId != null ) {
+            this.SnapshotId = SnapshotId;
         }
         if ( AzureAdObjects != null ) {
             this.AzureAdObjects = AzureAdObjects;
@@ -86,6 +95,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectId\n" ;
             } else {
                 s += ind + "objectId\n" ;
+            }
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
             }
         }
         //      C# -> AzureAdObjects? AzureAdObjects
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectId != null && ec.Excludes("objectId",true))
         {
             this.ObjectId = null;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (ec.Includes("snapshotId",true))
+        {
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> AzureAdObjects? AzureAdObjects
         // GraphQL -> azureAdObjects: AzureAdObjects! (type)

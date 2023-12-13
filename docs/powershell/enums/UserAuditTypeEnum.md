@@ -16,6 +16,7 @@ User audit type.
 - LOCAL_RECOVERY
 - Failover
 - Diagnostic
+- RUBY_AI - Audit type for Ruby AI use cases.
 - UnknownUserAuditType
 - SlaAssignment
 - AccessManagement
@@ -24,4 +25,5 @@ User audit type.
 - Sync
 - Recovery
 - Download
+- FILE_DOWNLOAD - Audit type for user file downloads.
 - Index

@@ -46,10 +46,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
-        //      C# -> NutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
-        // GraphQL -> snapshotConsistencyMandate: NutanixSnapshotConsistencyMandate! (enum)
+        //      C# -> NutanixVmSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: NutanixVmSnapshotConsistencyMandate! (enum)
         [JsonProperty("snapshotConsistencyMandate")]
-        public NutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
+        public NutanixVmSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
 
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.Types
         HierarchyObjectTypeEnum? ObjectType = null,
         GuestOsType? OsType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
-        NutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
+        NutanixVmSnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -548,8 +548,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "slaAssignment\n" ;
             }
         }
-        //      C# -> NutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
-        // GraphQL -> snapshotConsistencyMandate: NutanixSnapshotConsistencyMandate! (enum)
+        //      C# -> NutanixVmSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: NutanixVmSnapshotConsistencyMandate! (enum)
         if (this.SnapshotConsistencyMandate != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "snapshotConsistencyMandate\n" ;
@@ -1149,13 +1149,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.SlaAssignment = null;
         }
-        //      C# -> NutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
-        // GraphQL -> snapshotConsistencyMandate: NutanixSnapshotConsistencyMandate! (enum)
+        //      C# -> NutanixVmSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: NutanixVmSnapshotConsistencyMandate! (enum)
         if (ec.Includes("snapshotConsistencyMandate",true))
         {
             if(this.SnapshotConsistencyMandate == null) {
 
-                this.SnapshotConsistencyMandate = new NutanixSnapshotConsistencyMandate();
+                this.SnapshotConsistencyMandate = new NutanixVmSnapshotConsistencyMandate();
 
             } else {
 

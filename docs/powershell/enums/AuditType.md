@@ -26,3 +26,5 @@ Represents audit types.
 - BULK_RECOVERY - Bulk recovery audit.
 - ENCRYPTION_MANAGEMENT_OPERATION - Encryption management audit.
 - RECOVERY_SCHEDULE - Orchestrated Application Recovery schedule audit.
+- FILE_DOWNLOAD - File download audit.
+- RUBY_AI - AI confirmation audit.

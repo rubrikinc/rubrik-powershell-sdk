@@ -95,6 +95,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	description = $someString
     /// 	# OPTIONAL
     /// 	serverCertificate = $someString
+    /// 	# OPTIONAL
+    /// 	serviceAccountId = $someString
     /// 	# REQUIRED
     /// 	name = $someString
     /// 	# REQUIRED
@@ -301,6 +303,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	description = $someString
     /// 	# OPTIONAL
     /// 	serverCertificate = $someString
+    /// 	# OPTIONAL
+    /// 	serviceAccountId = $someString
     /// 	# REQUIRED
     /// 	id = $someInt
     /// 	# OPTIONAL
@@ -500,6 +504,8 @@ $query.Var.input = @{
 	description = $someString
 	# OPTIONAL
 	serverCertificate = $someString
+	# OPTIONAL
+	serviceAccountId = $someString
 	# REQUIRED
 	name = $someString
 	# REQUIRED
@@ -674,6 +680,8 @@ $query.Var.input = @{
 	description = $someString
 	# OPTIONAL
 	serverCertificate = $someString
+	# OPTIONAL
+	serviceAccountId = $someString
 	# REQUIRED
 	id = $someInt
 	# OPTIONAL

@@ -42,3 +42,4 @@ Inventory Card options that the user can select as a workload.
 - AZURE_AD - Inventory card is Azure Active Directory.
 - ATLASSIAN - Inventory card is Atlassian.
 - KUBERNETES_V2 - Inventory Card is Kubernetes V2.
+- AZURE_BLOB_STORAGE - Inventory Card is Azure Blob Storage.

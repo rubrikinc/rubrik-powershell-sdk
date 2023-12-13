@@ -19,6 +19,8 @@
   - ID of guest credential assigned to the virtual machine.
 - templateType: VmwareTemplateType
   - VMware virtual machine template type.
+- resourceSpec: VmwareVmResourceSpec
+  - Resource specification for a virtual machine.
 - parentWorkloadIdOpt: System.String
   - Parent ID of this workload.
 - parentWorkloadTypeOpt: System.String

@@ -21,6 +21,14 @@ An Oracle Database.
 
 - There is a single argument of type System.String.
 - Returns OracleDatabase.
+### databaseasyncrequestdetails
+Get Oracle database async request details
+
+Supported in v5.0+
+Retrieve the task object for a specified Oracle database asynchronous request.
+
+- There is a single argument of type GetOracleAsyncRequestStatusInput.
+- Returns AsyncRequestStatus.
 ### databaselogbackupconfig
 Oracle log backup configuration for an Oracle Database.
 

@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("version")]
         public System.String? Version { get; set; }
 
+        //      C# -> List<ArchivalLocationUpgradeInfo>? ArchivalLocationsUpgradeInfo
+        // GraphQL -> archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!] (type)
+        [JsonProperty("archivalLocationsUpgradeInfo")]
+        public List<ArchivalLocationUpgradeInfo>? ArchivalLocationsUpgradeInfo { get; set; }
+
         //      C# -> ClusterArchivalSpec? ArchivalSpec
         // GraphQL -> archivalSpec: ClusterArchivalSpec (type)
         [JsonProperty("archivalSpec")]
@@ -156,6 +161,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PolarisManagedId = null,
         System.Int32? ProtectedObjectCount = null,
         System.String? Version = null,
+        List<ArchivalLocationUpgradeInfo>? ArchivalLocationsUpgradeInfo = null,
         ClusterArchivalSpec? ArchivalSpec = null,
         List<ClusterArchivalSpec>? ArchivalSpecs = null,
         List<BackupWindow>? BackupWindows = null,
@@ -200,6 +206,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Version != null ) {
             this.Version = Version;
+        }
+        if ( ArchivalLocationsUpgradeInfo != null ) {
+            this.ArchivalLocationsUpgradeInfo = ArchivalLocationsUpgradeInfo;
         }
         if ( ArchivalSpec != null ) {
             this.ArchivalSpec = ArchivalSpec;
@@ -339,6 +348,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "version\n" ;
             } else {
                 s += ind + "version\n" ;
+            }
+        }
+        //      C# -> List<ArchivalLocationUpgradeInfo>? ArchivalLocationsUpgradeInfo
+        // GraphQL -> archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!] (type)
+        if (this.ArchivalLocationsUpgradeInfo != null) {
+            var fspec = this.ArchivalLocationsUpgradeInfo.AsFieldSpec(conf.Child("archivalLocationsUpgradeInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalLocationsUpgradeInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ClusterArchivalSpec? ArchivalSpec
@@ -673,6 +694,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Version != null && ec.Excludes("version",true))
         {
             this.Version = null;
+        }
+        //      C# -> List<ArchivalLocationUpgradeInfo>? ArchivalLocationsUpgradeInfo
+        // GraphQL -> archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!] (type)
+        if (ec.Includes("archivalLocationsUpgradeInfo",false))
+        {
+            if(this.ArchivalLocationsUpgradeInfo == null) {
+
+                this.ArchivalLocationsUpgradeInfo = new List<ArchivalLocationUpgradeInfo>();
+                this.ArchivalLocationsUpgradeInfo.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationsUpgradeInfo"));
+
+            } else {
+
+                this.ArchivalLocationsUpgradeInfo.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationsUpgradeInfo"));
+
+            }
+        }
+        else if (this.ArchivalLocationsUpgradeInfo != null && ec.Excludes("archivalLocationsUpgradeInfo",false))
+        {
+            this.ArchivalLocationsUpgradeInfo = null;
         }
         //      C# -> ClusterArchivalSpec? ArchivalSpec
         // GraphQL -> archivalSpec: ClusterArchivalSpec (type)

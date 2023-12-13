@@ -50,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exportConfigs")]
         public List<RestoreObjectConfig>? ExportConfigs { get; set; }
 
+        //      C# -> O365RestoreActionType? ActionType
+        // GraphQL -> actionType: O365RestoreActionType (enum)
+        [JsonProperty("actionType")]
+        public O365RestoreActionType? ActionType { get; set; }
+
+        //      C# -> InplaceRestoreConfig? InplaceRestoreConfig
+        // GraphQL -> inplaceRestoreConfig: InplaceRestoreConfig (input)
+        [JsonProperty("inplaceRestoreConfig")]
+        public InplaceRestoreConfig? InplaceRestoreConfig { get; set; }
+
 
         #endregion
 

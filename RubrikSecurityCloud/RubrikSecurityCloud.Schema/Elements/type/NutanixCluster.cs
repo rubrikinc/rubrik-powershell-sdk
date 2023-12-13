@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? NutanixSnapshotConsistencyMandate
+        // GraphQL -> nutanixSnapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate! (enum)
+        [JsonProperty("nutanixSnapshotConsistencyMandate")]
+        public CdmNutanixSnapshotConsistencyMandate? NutanixSnapshotConsistencyMandate { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -126,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> NutanixClusterMetadata? ClusterMetadata
+        // GraphQL -> clusterMetadata: NutanixClusterMetadata (type)
+        [JsonProperty("clusterMetadata")]
+        public NutanixClusterMetadata? ClusterMetadata { get; set; }
+
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
         [JsonProperty("connectionStatus")]
@@ -187,6 +197,7 @@ namespace RubrikSecurityCloud.Types
 
     public NutanixCluster Set(
         List<Operation>? AuthorizedOperations = null,
+        CdmNutanixSnapshotConsistencyMandate? NutanixSnapshotConsistencyMandate = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -207,6 +218,7 @@ namespace RubrikSecurityCloud.Types
         System.String? UserName = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
+        NutanixClusterMetadata? ClusterMetadata = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         NutanixClusterDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
@@ -221,6 +233,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( NutanixSnapshotConsistencyMandate != null ) {
+            this.NutanixSnapshotConsistencyMandate = NutanixSnapshotConsistencyMandate;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -282,6 +297,9 @@ namespace RubrikSecurityCloud.Types
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
+        if ( ClusterMetadata != null ) {
+            this.ClusterMetadata = ClusterMetadata;
+        }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
         }
@@ -330,6 +348,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? NutanixSnapshotConsistencyMandate
+        // GraphQL -> nutanixSnapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate! (enum)
+        if (this.NutanixSnapshotConsistencyMandate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nutanixSnapshotConsistencyMandate\n" ;
+            } else {
+                s += ind + "nutanixSnapshotConsistencyMandate\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -538,6 +565,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> NutanixClusterMetadata? ClusterMetadata
+        // GraphQL -> clusterMetadata: NutanixClusterMetadata (type)
+        if (this.ClusterMetadata != null) {
+            var fspec = this.ClusterMetadata.AsFieldSpec(conf.Child("clusterMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterMetadata {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
         if (this.ConnectionStatus != null) {
@@ -681,6 +720,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? NutanixSnapshotConsistencyMandate
+        // GraphQL -> nutanixSnapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate! (enum)
+        if (ec.Includes("nutanixSnapshotConsistencyMandate",true))
+        {
+            if(this.NutanixSnapshotConsistencyMandate == null) {
+
+                this.NutanixSnapshotConsistencyMandate = new CdmNutanixSnapshotConsistencyMandate();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NutanixSnapshotConsistencyMandate != null && ec.Excludes("nutanixSnapshotConsistencyMandate",true))
+        {
+            this.NutanixSnapshotConsistencyMandate = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -1055,6 +1111,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> NutanixClusterMetadata? ClusterMetadata
+        // GraphQL -> clusterMetadata: NutanixClusterMetadata (type)
+        if (ec.Includes("clusterMetadata",false))
+        {
+            if(this.ClusterMetadata == null) {
+
+                this.ClusterMetadata = new NutanixClusterMetadata();
+                this.ClusterMetadata.ApplyExploratoryFieldSpec(ec.NewChild("clusterMetadata"));
+
+            } else {
+
+                this.ClusterMetadata.ApplyExploratoryFieldSpec(ec.NewChild("clusterMetadata"));
+
+            }
+        }
+        else if (this.ClusterMetadata != null && ec.Excludes("clusterMetadata",false))
+        {
+            this.ClusterMetadata = null;
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)

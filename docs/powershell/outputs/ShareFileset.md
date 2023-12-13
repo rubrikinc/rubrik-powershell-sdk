@@ -23,6 +23,8 @@ Share fileset.
   - Share type of the fileset.
 - host: PhysicalHost
   - Host of this share fileset.
+- reportWorkload: Snappable
+  - Includes statistics for the protected objects, for example, archive storage.
 - share: HostShare
   - HostShare of this ShareFileset.
 - cluster: Cluster

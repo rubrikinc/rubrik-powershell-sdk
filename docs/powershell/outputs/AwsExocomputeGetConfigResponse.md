@@ -19,5 +19,9 @@ AWS Exocompute configuration in a region.
   - Exocompute configuration message.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
+- hasPcr: System.Boolean
+  - Whether this Exocompute uses a Private Container Registry (PCR).
+- pcrUrl: System.String
+  - URL of the user's PCR.
 - areSecurityGroupsRscManaged: System.Boolean
   - Specifies if the security groups are managed by Rubrik SaaS.

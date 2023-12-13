@@ -122,6 +122,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		azureFeatureId = $someString
     /// 		# REQUIRED
     /// 		hostIds = @(
     /// 			$someString
@@ -406,6 +408,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		azureFeatureId = $someString
     /// 	}
     /// }
     /// 
@@ -659,6 +663,8 @@ $query.Var.input = @{
 			# REQUIRED
 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
 		}
+		# OPTIONAL
+		azureFeatureId = $someString
 		# REQUIRED
 		hostIds = @(
 			$someString
@@ -887,6 +893,8 @@ $query.Var.input = @{
 			# REQUIRED
 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
 		}
+		# OPTIONAL
+		azureFeatureId = $someString
 	}
 }"
             );

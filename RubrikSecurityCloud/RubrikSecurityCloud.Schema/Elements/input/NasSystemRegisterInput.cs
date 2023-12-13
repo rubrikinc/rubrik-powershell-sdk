@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nasFlashBladeApiCredentials")]
         public FlashBladeSystemParametersInput? NasFlashBladeApiCredentials { get; set; }
 
+        //      C# -> NutanixFileServerParametersInput? NutanixFileServerParameters
+        // GraphQL -> nutanixFileServerParameters: NutanixFileServerParametersInput (input)
+        [JsonProperty("nutanixFileServerParameters")]
+        public NutanixFileServerParametersInput? NutanixFileServerParameters { get; set; }
+
         //      C# -> NasVendorType? NasVendorType
         // GraphQL -> nasVendorType: NasVendorType! (enum)
         [Required]

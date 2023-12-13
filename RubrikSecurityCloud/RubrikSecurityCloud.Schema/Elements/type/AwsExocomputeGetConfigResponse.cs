@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("configUuid")]
         public System.String? ConfigUuid { get; set; }
 
+        //      C# -> System.Boolean? HasPcr
+        // GraphQL -> hasPcr: Boolean! (scalar)
+        [JsonProperty("hasPcr")]
+        public System.Boolean? HasPcr { get; set; }
+
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         [JsonProperty("message")]
@@ -49,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nodeSecurityGroupId: String! (scalar)
         [JsonProperty("nodeSecurityGroupId")]
         public System.String? NodeSecurityGroupId { get; set; }
+
+        //      C# -> System.String? PcrUrl
+        // GraphQL -> pcrUrl: String! (scalar)
+        [JsonProperty("pcrUrl")]
+        public System.String? PcrUrl { get; set; }
 
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
@@ -84,8 +94,10 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? AreSecurityGroupsRscManaged = null,
         System.String? ClusterSecurityGroupId = null,
         System.String? ConfigUuid = null,
+        System.Boolean? HasPcr = null,
         System.String? Message = null,
         System.String? NodeSecurityGroupId = null,
+        System.String? PcrUrl = null,
         System.String? VpcId = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null,
         AwsExocomputeSubnetType? Subnet1 = null,
@@ -104,11 +116,17 @@ namespace RubrikSecurityCloud.Types
         if ( ConfigUuid != null ) {
             this.ConfigUuid = ConfigUuid;
         }
+        if ( HasPcr != null ) {
+            this.HasPcr = HasPcr;
+        }
         if ( Message != null ) {
             this.Message = Message;
         }
         if ( NodeSecurityGroupId != null ) {
             this.NodeSecurityGroupId = NodeSecurityGroupId;
+        }
+        if ( PcrUrl != null ) {
+            this.PcrUrl = PcrUrl;
         }
         if ( VpcId != null ) {
             this.VpcId = VpcId;
@@ -169,6 +187,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "configUuid\n" ;
             }
         }
+        //      C# -> System.Boolean? HasPcr
+        // GraphQL -> hasPcr: Boolean! (scalar)
+        if (this.HasPcr != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasPcr\n" ;
+            } else {
+                s += ind + "hasPcr\n" ;
+            }
+        }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
@@ -185,6 +212,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nodeSecurityGroupId\n" ;
             } else {
                 s += ind + "nodeSecurityGroupId\n" ;
+            }
+        }
+        //      C# -> System.String? PcrUrl
+        // GraphQL -> pcrUrl: String! (scalar)
+        if (this.PcrUrl != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pcrUrl\n" ;
+            } else {
+                s += ind + "pcrUrl\n" ;
             }
         }
         //      C# -> System.String? VpcId
@@ -307,6 +343,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ConfigUuid = null;
         }
+        //      C# -> System.Boolean? HasPcr
+        // GraphQL -> hasPcr: Boolean! (scalar)
+        if (ec.Includes("hasPcr",true))
+        {
+            if(this.HasPcr == null) {
+
+                this.HasPcr = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasPcr != null && ec.Excludes("hasPcr",true))
+        {
+            this.HasPcr = null;
+        }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (ec.Includes("message",true))
@@ -340,6 +393,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NodeSecurityGroupId != null && ec.Excludes("nodeSecurityGroupId",true))
         {
             this.NodeSecurityGroupId = null;
+        }
+        //      C# -> System.String? PcrUrl
+        // GraphQL -> pcrUrl: String! (scalar)
+        if (ec.Includes("pcrUrl",true))
+        {
+            if(this.PcrUrl == null) {
+
+                this.PcrUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PcrUrl != null && ec.Excludes("pcrUrl",true))
+        {
+            this.PcrUrl = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)

@@ -36,8 +36,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP_UNSPECIFIED")]
         GROUP_UNSPECIFIED,
 
+        [EnumMember(Value = "PRIVATE_ENDPOINTS")]
+        PRIVATE_ENDPOINTS,
+
         [EnumMember(Value = "RECOVERY")]
-        RECOVERY
+        RECOVERY,
+
+        [EnumMember(Value = "SNAPSHOT_PRIVATE_ACCESS")]
+        SNAPSHOT_PRIVATE_ACCESS
 
 
     } // enum PermissionsGroup

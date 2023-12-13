@@ -13,12 +13,12 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [RCS (3,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (28,32)](#aws-domain) | [Report Download (3,17)](#report-download-domain) | [Mongo DB (10,10)](#mongo-db-domain) | [RCV (2,3)](#rcv-domain) | [Tape (0,3)](#tape-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mosaic (4,3)](#mosaic-domain) | [Replication (4,5)](#replication-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure (44,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Microsoft SQL Server (16,17)](#microsoft-sql-server-domain) | [Report (2,9)](#report-domain) | [VMware vSphere vCenter (9,6)](#vmware-vsphere-vcenter-domain) |
+| [Azure (44,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Microsoft SQL Server (17,17)](#microsoft-sql-server-domain) | [Report (2,9)](#report-domain) | [VMware vSphere vCenter (9,6)](#vmware-vsphere-vcenter-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [NAS (8,0)](#nas-domain) | [SAP HANA (8,9)](#sap-hana-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NFS (0,3)](#nfs-domain) | [Service Account (1,4)](#service-account-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (6,6)](#host-domain) | [Nutanix (18,25)](#nutanix-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [Webhook (1,5)](#webhook-domain) |
-| [Certificates (6,6)](#certificates-domain) | [Microsoft Hyper-V (14,23)](#microsoft-hyper-v-domain) | [Office 365 (37,31)](#office-365-domain) | [SLA (14,9)](#sla-domain) |  |
-| [Cloud Account (4,2)](#cloud-account-domain) | [Kubernetes (7,7)](#kubernetes-domain) | [Oracle (16,18)](#oracle-domain) | [SMB (2,4)](#smb-domain) |  |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [Nutanix (18,25)](#nutanix-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [Webhook (1,5)](#webhook-domain) |
+| [Certificates (9,10)](#certificates-domain) | [Microsoft Hyper-V (14,23)](#microsoft-hyper-v-domain) | [Office 365 (37,31)](#office-365-domain) | [SLA (14,9)](#sla-domain) |  |
+| [Cloud Account (4,2)](#cloud-account-domain) | [Kubernetes (7,7)](#kubernetes-domain) | [Oracle (17,18)](#oracle-domain) | [SMB (2,4)](#smb-domain) |  |
 | [Cloud Native (19,13)](#cloud-native-domain) | [LDAP (3,4)](#ldap-domain) | [Policy (6,1)](#policy-domain) | [Snapshot (21,17)](#snapshot-domain) |  |
 
 ## Account domain
@@ -419,6 +419,7 @@ Cmdlets: `New-RscQueryCertificate` and `New-RscMutationCertificate`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| AssignableGlobal | Global certificates that can be assigned to an organization. | `New-RscQueryCertificate -Operation AssignableGlobal`<BR> | [assignableGlobalCertificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Certificate | Browse certificates. | `New-RscQueryCertificate -Operation Certificate`<BR> | [certificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Cluster | Get all certificates  
   
@@ -428,6 +429,8 @@ Get all certificates. | `New-RscQueryCertificate -Operation Cluster`<BR> | [clus
   
 Supported in v5.2+  
 If the web server uses a signed certificate, fetch it. | `New-RscQueryCertificate -Operation ClusterWebSigned`<BR> | [clusterWebSignedCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Global | Global certificate. | `New-RscQueryCertificate -Operation Global`<BR> | [globalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Info | Metadata of a certificate. | `New-RscQueryCertificate -Operation Info`<BR> | [certificateInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SigningRequest | Get Certificate Signing Request (CSR). | `New-RscQueryCertificate -Operation SigningRequest`<BR> | [certificateSigningRequest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SigningRequests | Browse Certificate Signing Requests (CSRs). | `New-RscQueryCertificate -Operation SigningRequests`<BR> | [certificateSigningRequests](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | WithKey | Certificates having private key. | `New-RscQueryCertificate -Operation WithKey`<BR> | [certificatesWithKey](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -441,13 +444,17 @@ If the web server uses a signed certificate, fetch it. | `New-RscQueryCertificat
   
 Supported in v5.1+  
 Import a certificate. | `New-RscMutationCertificate -Operation AddClusterCertificate`<BR> | [addClusterCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddGlobal | Add a global certificate. | `New-RscMutationCertificate -Operation AddGlobal`<BR> | [addGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Delete | Delete Certificate. | `New-RscMutationCertificate -Operation Delete`<BR> | [deleteCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteGlobal | Delete an existing global certificate. | `New-RscMutationCertificate -Operation DeleteGlobal`<BR> | [deleteGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MarkAgentSecondary | Mark a secondary cluster certificate to be asynchronously synced to all Rubrik Backup Service instances for which this cluster is the primary. | `New-RscMutationCertificate -Operation MarkAgentSecondary`<BR> | [markAgentSecondaryCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetSso | Set User defined SSO certs. | `New-RscMutationCertificate -Operation SetSso`<BR> | [setSsoCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetWebSigned | Set a signed certificate for Web server  
   
 Supported in v5.3+  
 Setting the given certificate for each node's web server to use. | `New-RscMutationCertificate -Operation SetWebSigned`<BR> | [setWebSignedCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Update | Edit Certificate. | `New-RscMutationCertificate -Operation Update`<BR> | [updateCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateGlobal | Edit an existing global certificate. | `New-RscMutationCertificate -Operation UpdateGlobal`<BR> | [updateGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateHost | N/A | `New-RscMutationCertificate -Operation UpdateHost`<BR> | [updateCertificateHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -941,6 +948,10 @@ Retrieve the availability status for each host registered with a specified Rubri
   
 Supported in v5.0+  
 Register hosts with Rubrik clusters. | `New-RscMutationHost -Operation BulkRegister`<BR> | [bulkRegisterHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkRegisterAsync | Register hosts  
+  
+Supported in v5.3+  
+Register multiple hosts and perform discovery for databases and Microsoft SQL Server instances. When called, this API returns a success message, but completes the host registration in the background. Monitor the status of the background host discovery with the "status" field in GET API on /hosts. The POST API on /hosts can take longer for discovery, depending on the number of hosts on the system. POST on this API can be used instead to perform the discovery in the background and quickly register the host. Doing this requires that you install RBS for Linux and Windows hosts, similar to regular register using POST on /hosts. | `New-RscMutationHost -Operation BulkRegisterAsync`<BR> | [bulkRegisterHostAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | BulkUpdate | N/A | `New-RscMutationHost -Operation BulkUpdate`<BR> | [bulkUpdateHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ChangeVfd | Install or uninstall volume filter driver on hosts. | `New-RscMutationHost -Operation ChangeVfd`<BR> | [changeVfdOnHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Refresh | N/A | `New-RscMutationHost -Operation Refresh`<BR> | [refreshHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1331,6 +1342,7 @@ Cmdlets: `New-RscQueryMssql` and `New-RscMutationMssql`
 | DatabaseRestoreFiles | Provides a list of database files to be restored for the specified restore or export operation. | `New-RscQueryMssql -Operation DatabaseRestoreFiles`<BR> | [allMssqlDatabaseRestoreFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Databases | Paginated list of Microsoft SQL Databases. | `New-RscQueryMssql -Operation Databases`<BR> | [mssqlDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DefaultProperties | The current default properties for Microsoft SQL databases. | `New-RscQueryMssql -Operation DefaultProperties`<BR> | [mssqlDefaultProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DefaultPropertiesOnCluster | The current default properties for Microsoft SQL databases. | `New-RscQueryMssql -Operation DefaultPropertiesOnCluster`<BR> | [mssqlDefaultPropertiesOnCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Instance | A Microsoft SQL Instance. | `New-RscQueryMssql -Operation Instance`<BR> | [mssqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LogShippingTargets | List of filtered Microsoft SQL log shipping targets. | `New-RscQueryMssql -Operation LogShippingTargets`<BR> | [mssqlLogShippingTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverableRanges | List of recoverable ranges for a Microsoft SQL Database. | `New-RscQueryMssql -Operation RecoverableRanges`<BR> | [mssqlRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1699,6 +1711,10 @@ Supported in v6.0+
 Get the list of supported Advanced Cloning Options (ACO) parameters. | `New-RscQueryOracle -Operation AcoParameters`<BR> | [oracleAcoParameters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DataGuardGroup | An Oracle Data Guard Group. | `New-RscQueryOracle -Operation DataGuardGroup`<BR> | [oracleDataGuardGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Database | An Oracle Database. | `New-RscQueryOracle -Operation Database`<BR> | [oracleDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseAsyncRequestDetails | Get Oracle database async request details  
+  
+Supported in v5.0+  
+Retrieve the task object for a specified Oracle database asynchronous request. | `New-RscQueryOracle -Operation DatabaseAsyncRequestDetails`<BR> | [oracleDatabaseAsyncRequestDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DatabaseLogBackupConfig | Oracle log backup configuration for an Oracle Database. | `New-RscQueryOracle -Operation DatabaseLogBackupConfig`<BR> | [oracleDatabaseLogBackupConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Databases | Paginated list of Oracle Databases. | `New-RscQueryOracle -Operation Databases`<BR> | [oracleDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Host | An Oracle Host. | `New-RscQueryOracle -Operation Host`<BR> | [oracleHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

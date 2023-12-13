@@ -65,3 +65,5 @@ Metadata for rendering an SLA Domain.
   - This field is deprecated.
 - ownerOrg: SlaAssociatedOrganization
   - Specifies the owner organization of the SLA Domain.
+- archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
+  - Upgrade information about the configured archival locations and cascading archival locations.

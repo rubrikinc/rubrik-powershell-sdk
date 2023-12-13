@@ -32,9 +32,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? ClusterSecurityGroupId { get; set; }
 
         //      C# -> System.String? VpcId
-        // GraphQL -> vpcId: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> vpcId: String (scalar)
         [JsonProperty("vpcId")]
         public System.String? VpcId { get; set; }
 
@@ -44,18 +42,19 @@ namespace RubrikSecurityCloud.Types
         public System.String? NodeSecurityGroupId { get; set; }
 
         //      C# -> List<AwsExocomputeSubnetInputType>? Subnets
-        // GraphQL -> subnets: [AwsExocomputeSubnetInputType!]! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> subnets: [AwsExocomputeSubnetInputType!] (input)
         [JsonProperty("subnets")]
         public List<AwsExocomputeSubnetInputType>? Subnets { get; set; }
 
         //      C# -> System.Boolean? IsRscManaged
-        // GraphQL -> isRscManaged: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> isRscManaged: Boolean (scalar)
         [JsonProperty("isRscManaged")]
         public System.Boolean? IsRscManaged { get; set; }
+
+        //      C# -> System.String? ClusterName
+        // GraphQL -> clusterName: String (scalar)
+        [JsonProperty("clusterName")]
+        public System.String? ClusterName { get; set; }
 
 
         #endregion
