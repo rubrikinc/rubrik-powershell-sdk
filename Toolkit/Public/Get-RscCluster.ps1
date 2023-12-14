@@ -103,12 +103,12 @@ function Get-RscCluster {
         }
         #endregion
         
-        # if ($AsQuery){
-        #     $result = $query.GqlRequest()
-        # }else{
-        #     $result = Get-RscPages -Query $query
-        # }
-        $result = $query.Invoke()
+        if ($AsQuery){
+            $result = $query.GqlRequest()
+        }else{
+            $result = Get-RscPages -Query $query
+        }
+        # $result = $query.Invoke()
         $result
     } 
 }

@@ -108,6 +108,7 @@ function Get-RscCluster {
         }else{
             $result = Get-RscPages -Query $query
         }
+        # $result = $query.Invoke()
         $result
     } 
 }

@@ -215,7 +215,7 @@ function New-RscMssqlExport{
         $query.Var.input.Config.targetInstanceId = $TargetMssqlInstance.PhysicalChildConnection.Nodes.Id
         #endregion
 
-        $result = Get-RscPages -Query $query
+        $result = $query.Invoke()
         $result
     } 
 }

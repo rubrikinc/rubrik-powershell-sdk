@@ -129,7 +129,7 @@ function Get-RscMssqlAvailabilityGroup {
             $query.Var.filter += $clusterFilter
         }
         #endregion
-        $result = Get-RscPages -Query $query
+        $result = $query.Invoke()
         
         $result
     } 

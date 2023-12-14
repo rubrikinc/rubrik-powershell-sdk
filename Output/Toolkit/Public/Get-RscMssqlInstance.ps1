@@ -126,7 +126,12 @@ function Get-RscMssqlInstance{
             $query.Var.filter += $clusterFilter
         }
         #endregion
-        $result = Get-RscPages -Query $query
+        if ($AsQuery){
+            $result = $query.GqlRequest()
+        }else{
+            $result = Get-RscPages -Query $query
+        }
+        # $result = $query.Invoke()
         
         switch ( $PSCmdlet.ParameterSetName ){
             "RscHost" {
