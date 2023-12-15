@@ -121,7 +121,7 @@ namespace RubrikSecurityCloud
         /// <summary>
         /// The name of the underlying GQL operation.
         /// </summary>
-        internal RscGqlOperation GqlOperation()
+        public RscGqlOperation GqlOperation()
         {
             return _gqlOperation;
         }
@@ -134,27 +134,81 @@ namespace RubrikSecurityCloud
             return ReflectionUtils.FlattenField(this._gqlOperation.ReturnType);
         }
 
+        public List<string> SelectedFields()
+        {
+            if (this.Field != null && this.Field is IFieldSpec fieldSpec)
+            {
+                return fieldSpec.SelectedFields();
+            }
+            return new List<string>();
+        }
+
         /// <summary>
         /// Return documentation links for variables and Field object.
         /// </summary>
         public List<VarInfo> Info()
         {
-            List<VarInfo> info = this.Var.Info().Select(v => new VarInfo(
+            string syntax = this.rscOp?.Syntax() ?? "";
+            List<VarInfo> info = new List<VarInfo>();
+            info.Add(new VarInfo(
+                "API Domain",
+                "",
+                this.rscOp?.DomainName() ?? ""
+            ));
+            info.Add(new VarInfo(
+                "API Operation",
+                "",
+                this.Op
+            ));
+            info.Add(new VarInfo(
+                "Invocation",
+                "",
+                "$query = " + syntax
+            ));
+            info.Add(new VarInfo(
+                "GQL Root Field",
+                "",
+                this.rscOp?.GqlRootFieldName ?? ""
+            ));
+            var varInfo = this.Var.Info().Select(v => new VarInfo(
                 "Var." + v.Name, v.Type, v.Description)).ToList();
+            info.AddRange(varInfo);
             info.Add(new VarInfo(
                 "Field",
                 StringUtils.GqlTypeToType(_gqlOperation.ReturnType),
                 StringUtils.DocLinkForGqlType(_gqlOperation.ReturnType)
             ));
+
+            if (syntax != "")
+            {
+                info.Add(new VarInfo(
+                    "All Fields",
+                     "",
+                     "$query.AllFields()"
+                ));
+                info.Add(new VarInfo(
+                    "Selected Fields",
+                    "",
+                    "$query.SelectedFields()"
+                ));
+                info.Add(new VarInfo(
+                       "Example",
+                       "",
+                       "$query.Example()"
+                   ));
+            }
             return info;
         }
 
         /// <summary>
         /// Return an example of how the variables can be initialized.
         /// </summary>
-        public string VarTemplate()
+        public string Example()
         {
-            return this.Var.Example();
+            string syntax = this.rscOp?.Syntax() ?? "";
+            return "$query = " + syntax + "\n" +
+                    this.Var.Example() + "\n" +
+                    "$result = Invoke-Rsc $query" + "\n";
         }
 
         /// <summary>
@@ -204,6 +258,14 @@ namespace RubrikSecurityCloud
                 this.Logger?.Debug("No override " + overrideFile);
             }
             return query;
+        }
+
+        /// <summary>
+        /// Return the RscOp object for this query.
+        /// </summary>
+        public RscOp? OpInfo()
+        {
+            return this.rscOp;
         }
 
         /// <summary>

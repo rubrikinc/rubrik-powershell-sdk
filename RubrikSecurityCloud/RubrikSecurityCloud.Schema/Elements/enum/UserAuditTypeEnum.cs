@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENCRYPTION_MANAGEMENT_OPERATION")]
         ENCRYPTION_MANAGEMENT_OPERATION,
 
+        [EnumMember(Value = "FILE_DOWNLOAD")]
+        FILE_DOWNLOAD,
+
         [EnumMember(Value = "Failover")]
         FAILOVER,
 
@@ -65,6 +68,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY_SCHEDULE")]
         RECOVERY_SCHEDULE,
+
+        [EnumMember(Value = "RUBY_AI")]
+        RUBY_AI,
 
         [EnumMember(Value = "Recovery")]
         RECOVERY,

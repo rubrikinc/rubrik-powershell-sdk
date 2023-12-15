@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Oracle' API domain:
-    /// AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
+    /// AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
     /// </summary>
     /// <description>
     /// New-RscQueryOracle creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 17 operations
     /// in the 'Oracle' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
+    /// one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -191,6 +191,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: OracleDatabase
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DatabaseAsyncRequestDetails operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: DatabaseAsyncRequestDetails
+    /// 
+    /// $query = New-RscQueryOracle -DatabaseAsyncRequestDetails
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -719,6 +752,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AcoParameters",
                 "DataGuardGroup",
                 "Database",
+                "DatabaseAsyncRequestDetails",
                 "DatabaseLogBackupConfig",
                 "Databases",
                 "Host",
@@ -757,6 +791,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Database":
                         this.ProcessRecord_Database();
+                        break;
+                    case "DatabaseAsyncRequestDetails":
+                        this.ProcessRecord_DatabaseAsyncRequestDetails();
                         break;
                     case "DatabaseLogBackupConfig":
                         this.ProcessRecord_DatabaseLogBackupConfig();
@@ -838,6 +875,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Database";
             // Create new graphql operation oracleDatabase
             InitQueryOracleDatabase();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oracleDatabaseAsyncRequestDetails.
+        internal void ProcessRecord_DatabaseAsyncRequestDetails()
+        {
+            this._logger.name += " -DatabaseAsyncRequestDetails";
+            // Create new graphql operation oracleDatabaseAsyncRequestDetails
+            InitQueryOracleDatabaseAsyncRequestDetails();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1036,6 +1082,31 @@ $query.Var.fid = $someString"
                 Query.OracleDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleDatabaseAsyncRequestDetails(input: GetOracleAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryOracleDatabaseAsyncRequestDetails()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetOracleAsyncRequestStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleDatabaseAsyncRequestDetails",
+                "($input: GetOracleAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.OracleDatabaseAsyncRequestDetails_ObjectFieldSpec,
+                Query.OracleDatabaseAsyncRequestDetailsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 

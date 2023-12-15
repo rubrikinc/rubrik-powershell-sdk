@@ -4526,6 +4526,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AddGlobalCertificateReply? AddGlobalCertificate
+        // GraphQL -> addGlobalCertificate: AddGlobalCertificateReply! (type)
+        public static string AddGlobalCertificate_TypedFieldSpec(AddGlobalCertificateReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "addGlobalCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AddGlobalCertificate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AddGlobalCertificate((AddGlobalCertificateReply)fieldSpecObj);
+        }
+        public static string AddGlobalCertificate(AddGlobalCertificateReply fieldSpec)
+        {
+            return AddGlobalCertificate_TypedFieldSpec(fieldSpec);
+        }
+        public static string AddGlobalCertificate(object fieldSpecObj)
+        {
+            return AddGlobalCertificate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AddGlobalCertificateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AddGlobalCertificateReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AddManagedVolumeReply? AddManagedVolume
         // GraphQL -> addManagedVolume: AddManagedVolumeReply! (type)
         public static string AddManagedVolume_TypedFieldSpec(AddManagedVolumeReply fieldSpec)
@@ -6324,6 +6355,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> BulkRegisterHostAsyncReply? BulkRegisterHostAsync
+        // GraphQL -> bulkRegisterHostAsync: BulkRegisterHostAsyncReply! (type)
+        public static string BulkRegisterHostAsync_TypedFieldSpec(BulkRegisterHostAsyncReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "bulkRegisterHostAsync" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string BulkRegisterHostAsync_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BulkRegisterHostAsync((BulkRegisterHostAsyncReply)fieldSpecObj);
+        }
+        public static string BulkRegisterHostAsync(BulkRegisterHostAsyncReply fieldSpec)
+        {
+            return BulkRegisterHostAsync_TypedFieldSpec(fieldSpec);
+        }
+        public static string BulkRegisterHostAsync(object fieldSpecObj)
+        {
+            return BulkRegisterHostAsync_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BulkRegisterHostAsyncFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkRegisterHostAsyncReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? BulkTierExistingSnapshots
         // GraphQL -> bulkTierExistingSnapshots: AsyncRequestStatus! (type)
         public static string BulkTierExistingSnapshots_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -6904,6 +6966,37 @@ namespace RubrikSecurityCloud.Types
             return CreateActiveDirectoryLiveMount_ObjectFieldSpec(fieldSpecObj);
         }
         public static object CreateActiveDirectoryLiveMountFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? CreateActiveDirectoryUnmount
+        // GraphQL -> createActiveDirectoryUnmount: AsyncRequestStatus! (type)
+        public static string CreateActiveDirectoryUnmount_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createActiveDirectoryUnmount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateActiveDirectoryUnmount_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateActiveDirectoryUnmount((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string CreateActiveDirectoryUnmount(AsyncRequestStatus fieldSpec)
+        {
+            return CreateActiveDirectoryUnmount_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateActiveDirectoryUnmount(object fieldSpecObj)
+        {
+            return CreateActiveDirectoryUnmount_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateActiveDirectoryUnmountFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -9048,6 +9141,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new ResponseSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DeleteGlobalCertificateReply? DeleteGlobalCertificate
+        // GraphQL -> deleteGlobalCertificate: DeleteGlobalCertificateReply! (type)
+        public static string DeleteGlobalCertificate_TypedFieldSpec(DeleteGlobalCertificateReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteGlobalCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DeleteGlobalCertificate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteGlobalCertificate((DeleteGlobalCertificateReply)fieldSpecObj);
+        }
+        public static string DeleteGlobalCertificate(DeleteGlobalCertificateReply fieldSpec)
+        {
+            return DeleteGlobalCertificate_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteGlobalCertificate(object fieldSpecObj)
+        {
+            return DeleteGlobalCertificate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteGlobalCertificateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new DeleteGlobalCertificateReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12648,6 +12772,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? MakePrimary
+        // GraphQL -> makePrimary: AsyncRequestStatus! (type)
+        public static string MakePrimary_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "makePrimary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string MakePrimary_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return MakePrimary((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string MakePrimary(AsyncRequestStatus fieldSpec)
+        {
+            return MakePrimary_TypedFieldSpec(fieldSpec);
+        }
+        public static string MakePrimary(object fieldSpecObj)
+        {
+            return MakePrimary_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object MakePrimaryFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> MapAzureCloudAccountExocomputeSubscriptionReply? MapAzureCloudAccountExocomputeSubscription
         // GraphQL -> mapAzureCloudAccountExocomputeSubscription: MapAzureCloudAccountExocomputeSubscriptionReply! (type)
         public static string MapAzureCloudAccountExocomputeSubscription_TypedFieldSpec(MapAzureCloudAccountExocomputeSubscriptionReply fieldSpec)
@@ -12737,6 +12892,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new MapCloudAccountExocomputeAccountReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MarkAgentSecondaryCertificateReply? MarkAgentSecondaryCertificate
+        // GraphQL -> markAgentSecondaryCertificate: MarkAgentSecondaryCertificateReply! (type)
+        public static string MarkAgentSecondaryCertificate_TypedFieldSpec(MarkAgentSecondaryCertificateReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "markAgentSecondaryCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string MarkAgentSecondaryCertificate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return MarkAgentSecondaryCertificate((MarkAgentSecondaryCertificateReply)fieldSpecObj);
+        }
+        public static string MarkAgentSecondaryCertificate(MarkAgentSecondaryCertificateReply fieldSpec)
+        {
+            return MarkAgentSecondaryCertificate_TypedFieldSpec(fieldSpec);
+        }
+        public static string MarkAgentSecondaryCertificate(object fieldSpecObj)
+        {
+            return MarkAgentSecondaryCertificate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object MarkAgentSecondaryCertificateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new MarkAgentSecondaryCertificateReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14229,37 +14415,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> CcProvisionJobReply? RemoveCloudClusterNodes
-        // GraphQL -> removeCloudClusterNodes: CcProvisionJobReply! (type)
-        public static string RemoveCloudClusterNodes_TypedFieldSpec(CcProvisionJobReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "removeCloudClusterNodes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string RemoveCloudClusterNodes_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return RemoveCloudClusterNodes((CcProvisionJobReply)fieldSpecObj);
-        }
-        public static string RemoveCloudClusterNodes(CcProvisionJobReply fieldSpec)
-        {
-            return RemoveCloudClusterNodes_TypedFieldSpec(fieldSpec);
-        }
-        public static string RemoveCloudClusterNodes(object fieldSpecObj)
-        {
-            return RemoveCloudClusterNodes_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object RemoveCloudClusterNodesFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new CcProvisionJobReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> CcProvisionJobReply? RemoveClusterNodes
         // GraphQL -> removeClusterNodes: CcProvisionJobReply! (type)
         public static string RemoveClusterNodes_TypedFieldSpec(CcProvisionJobReply fieldSpec)
@@ -14322,37 +14477,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> RemoveNodeForReplacementReply? RemoveNodeForReplacement
-        // GraphQL -> removeNodeForReplacement: RemoveNodeForReplacementReply! (type)
-        public static string RemoveNodeForReplacement_TypedFieldSpec(RemoveNodeForReplacementReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "removeNodeForReplacement" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string RemoveNodeForReplacement_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return RemoveNodeForReplacement((RemoveNodeForReplacementReply)fieldSpecObj);
-        }
-        public static string RemoveNodeForReplacement(RemoveNodeForReplacementReply fieldSpec)
-        {
-            return RemoveNodeForReplacement_TypedFieldSpec(fieldSpec);
-        }
-        public static string RemoveNodeForReplacement(object fieldSpecObj)
-        {
-            return RemoveNodeForReplacement_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object RemoveNodeForReplacementFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new RemoveNodeForReplacementReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> ResponseSuccess? RemoveProxyConfig
         // GraphQL -> removeProxyConfig: ResponseSuccess! (type)
         public static string RemoveProxyConfig_TypedFieldSpec(ResponseSuccess fieldSpec)
@@ -14411,37 +14535,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RemoveVlansReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> ReplaceClusterNodeReply? ReplaceClusterNode
-        // GraphQL -> replaceClusterNode: ReplaceClusterNodeReply! (type)
-        public static string ReplaceClusterNode_TypedFieldSpec(ReplaceClusterNodeReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "replaceClusterNode" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string ReplaceClusterNode_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return ReplaceClusterNode((ReplaceClusterNodeReply)fieldSpecObj);
-        }
-        public static string ReplaceClusterNode(ReplaceClusterNodeReply fieldSpec)
-        {
-            return ReplaceClusterNode_TypedFieldSpec(fieldSpec);
-        }
-        public static string ReplaceClusterNode(object fieldSpecObj)
-        {
-            return ReplaceClusterNode_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object ReplaceClusterNodeFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new ReplaceClusterNodeReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15403,6 +15496,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetPrivateContainerRegistryDetailsReply? SetPrivateContainerRegistryDetails
+        // GraphQL -> setPrivateContainerRegistryDetails: SetPrivateContainerRegistryDetailsReply! (type)
+        public static string SetPrivateContainerRegistryDetails_TypedFieldSpec(SetPrivateContainerRegistryDetailsReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "setPrivateContainerRegistryDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string SetPrivateContainerRegistryDetails_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return SetPrivateContainerRegistryDetails((SetPrivateContainerRegistryDetailsReply)fieldSpecObj);
+        }
+        public static string SetPrivateContainerRegistryDetails(SetPrivateContainerRegistryDetailsReply fieldSpec)
+        {
+            return SetPrivateContainerRegistryDetails_TypedFieldSpec(fieldSpec);
+        }
+        public static string SetPrivateContainerRegistryDetails(object fieldSpecObj)
+        {
+            return SetPrivateContainerRegistryDetails_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object SetPrivateContainerRegistryDetailsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new SetPrivateContainerRegistryDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17945,6 +18069,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new UpdateFloatingIpsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateGlobalCertificateReply? UpdateGlobalCertificate
+        // GraphQL -> updateGlobalCertificate: UpdateGlobalCertificateReply! (type)
+        public static string UpdateGlobalCertificate_TypedFieldSpec(UpdateGlobalCertificateReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateGlobalCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateGlobalCertificate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateGlobalCertificate((UpdateGlobalCertificateReply)fieldSpecObj);
+        }
+        public static string UpdateGlobalCertificate(UpdateGlobalCertificateReply fieldSpec)
+        {
+            return UpdateGlobalCertificate_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateGlobalCertificate(object fieldSpecObj)
+        {
+            return UpdateGlobalCertificate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateGlobalCertificateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateGlobalCertificateReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

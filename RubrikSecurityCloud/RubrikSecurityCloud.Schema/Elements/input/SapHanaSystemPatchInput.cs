@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authTypeSpec")]
         public SapHanaSystemAuthTypeSpecInput? AuthTypeSpec { get; set; }
 
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        [JsonProperty("azureFeatureId")]
+        public System.String? AzureFeatureId { get; set; }
+
 
         #endregion
 

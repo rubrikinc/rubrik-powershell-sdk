@@ -1,6 +1,9 @@
 ### ActiveDirectoryObjectRecoveryConfigInput
 Supported in v9.0+
 
+- shouldMergeLinkedAttrs: System.Boolean
+  - Supported in v9.0+
+      Specifies whether to merge current linked attributes with the ones in backup or to wipe all current and restore to the exact state in backup.
 - userRestoreOptions: ActiveDirectoryUserRestoreOptionsInput
   - Supported in v9.0+
       Options for restoring user accounts.

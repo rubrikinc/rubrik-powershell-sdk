@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ExchangeDatabase
  
-    public class ExchangeDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, ExchangeDagDescendantType, ExchangeServerDescendantType, HierarchyObject
+    public class ExchangeDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, ExchangeDagDescendantType, ExchangeServerDescendantType, HierarchyObject, HierarchySnappable
     {
         #region members
 

@@ -296,6 +296,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportWorkload")]
         public Snappable? ReportWorkload { get; set; }
 
+        //      C# -> VmwareVmResourceSpec? ResourceSpec
+        // GraphQL -> resourceSpec: VmwareVmResourceSpec (type)
+        [JsonProperty("resourceSpec")]
+        public VmwareVmResourceSpec? ResourceSpec { get; set; }
+
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
         [JsonProperty("snapshotConnection")]
@@ -401,6 +406,7 @@ namespace RubrikSecurityCloud.Types
         PrePostScript? PreBackupScript = null,
         DataLocation? PrimaryClusterLocation = null,
         Snappable? ReportWorkload = null,
+        VmwareVmResourceSpec? ResourceSpec = null,
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
@@ -575,6 +581,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReportWorkload != null ) {
             this.ReportWorkload = ReportWorkload;
+        }
+        if ( ResourceSpec != null ) {
+            this.ResourceSpec = ResourceSpec;
         }
         if ( SnapshotConnection != null ) {
             this.SnapshotConnection = SnapshotConnection;
@@ -1186,6 +1195,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "reportWorkload {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VmwareVmResourceSpec? ResourceSpec
+        // GraphQL -> resourceSpec: VmwareVmResourceSpec (type)
+        if (this.ResourceSpec != null) {
+            var fspec = this.ResourceSpec.AsFieldSpec(conf.Child("resourceSpec"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "resourceSpec {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2298,6 +2319,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReportWorkload != null && ec.Excludes("reportWorkload",false))
         {
             this.ReportWorkload = null;
+        }
+        //      C# -> VmwareVmResourceSpec? ResourceSpec
+        // GraphQL -> resourceSpec: VmwareVmResourceSpec (type)
+        if (ec.Includes("resourceSpec",false))
+        {
+            if(this.ResourceSpec == null) {
+
+                this.ResourceSpec = new VmwareVmResourceSpec();
+                this.ResourceSpec.ApplyExploratoryFieldSpec(ec.NewChild("resourceSpec"));
+
+            } else {
+
+                this.ResourceSpec.ApplyExploratoryFieldSpec(ec.NewChild("resourceSpec"));
+
+            }
+        }
+        else if (this.ResourceSpec != null && ec.Excludes("resourceSpec",false))
+        {
+            this.ResourceSpec = null;
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)

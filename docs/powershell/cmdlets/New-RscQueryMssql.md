@@ -78,6 +78,11 @@ The current default properties for Microsoft SQL databases.
 
 - There is a single argument of type GetDefaultDbPropertiesV1Input.
 - Returns UpdateMssqlDefaultPropertiesReply.
+### defaultpropertiesoncluster
+The current default properties for Microsoft SQL databases.
+
+- There is a single argument of type ClusterUuidWithMssqlObjectIdInput.
+- Returns MssqlDefaultPropertiesOnClusterReply.
 ### instance
 A Microsoft SQL Instance.
 

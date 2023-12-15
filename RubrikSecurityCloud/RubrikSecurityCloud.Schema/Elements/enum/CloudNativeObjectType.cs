@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_SQL_MANAGED_INSTANCE_SERVER")]
         AZURE_SQL_MANAGED_INSTANCE_SERVER,
 
+        [EnumMember(Value = "AZURE_STORAGE_ACCOUNT")]
+        AZURE_STORAGE_ACCOUNT,
+
         [EnumMember(Value = "AZURE_VIRTUAL_MACHINE")]
         AZURE_VIRTUAL_MACHINE,
 

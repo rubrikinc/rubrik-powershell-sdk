@@ -17,6 +17,8 @@ A webhook configuration in the account.
   - The Webhook server certificate that Rubrik uses to establish a TLS connection with the endpoint.
 - authType: AuthenticationType
   - The authentication type that the endpoint uses.
+- serviceAccountId: System.String
+  - The ID of the service account attached to the webhook.
 - url: System.String
   - The URL endpoint that will receive the webhook.
 - providerType: ProviderType

@@ -19,6 +19,8 @@ Windows fileset.
   - Boolean variable denoting if hard link support is enabled.
 - host: PhysicalHost
   - Host of Windows fileset.
+- reportWorkload: Snappable
+  - Includes statistics for the protected objects, for example, archive storage.
 - filesetTemplate: FilesetTemplate
   - Fileset template of the Windows fileset.
 - failoverClusterApp: FailoverClusterApp

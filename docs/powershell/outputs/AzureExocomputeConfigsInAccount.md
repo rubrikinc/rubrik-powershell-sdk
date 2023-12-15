@@ -6,6 +6,6 @@ Azure Exocompute configurations in an Azure subscription.
 - featureDetails: AzureCloudAccountFeatureDetail
   - Feature details.
 - exocomputeEligibleRegions: list of AzureCloudAccountRegions
-  - List of regions for which exocompute can be configured.
+  - List of regions for which Exocompute can be configured.
 - configs: list of AzureExocomputeGetConfigResponses
-  - Azure exocompute configurations.
+  - Azure Exocompute configurations.

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignoreErrors")]
         public System.Boolean? IgnoreErrors { get; set; }
 
+        //      C# -> System.Boolean? ShouldRecreateDirectoryStructure
+        // GraphQL -> shouldRecreateDirectoryStructure: Boolean (scalar)
+        [JsonProperty("shouldRecreateDirectoryStructure")]
+        public System.Boolean? ShouldRecreateDirectoryStructure { get; set; }
+
         //      C# -> List<FilesetRestorePathPairInput>? RestoreConfig
         // GraphQL -> restoreConfig: [FilesetRestorePathPairInput!]! (input)
         [Required]

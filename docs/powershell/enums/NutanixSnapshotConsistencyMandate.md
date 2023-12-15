@@ -1,6 +1,7 @@
 ### NutanixSnapshotConsistencyMandate
-Nutanix Virtual Machine snapshot consistency mandate.
+Nutanix cluster snapshot consistency mandate.
 
-- AUTOMATIC - Automatic.
-- CRASH_CONSISTENT - Crash consistent.
-- APP_CONSISTENT - Application consistent.
+- NUTANIX_UNSPECIFIED - Unspecified.
+- NUTANIX_AUTOMATIC - Automatic.
+- NUTANIX_CRASH_CONSISTENT - Crash consistent.
+- NUTANIX_APP_CONSISTENT - Application consistent.

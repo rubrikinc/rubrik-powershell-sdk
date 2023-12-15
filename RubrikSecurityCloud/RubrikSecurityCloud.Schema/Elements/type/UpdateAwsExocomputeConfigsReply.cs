@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
+        // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        [JsonProperty("exocomputeConfigs")]
+        public List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs { get; set; }
+
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         [JsonProperty("configs")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UpdateAwsExocomputeConfigsReply Set(
+        List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null,
         List<AwsExocomputeConfigsDeletionStatusType>? DeleteStatus = null
     ) 
     {
+        if ( ExocomputeConfigs != null ) {
+            this.ExocomputeConfigs = ExocomputeConfigs;
+        }
         if ( Configs != null ) {
             this.Configs = Configs;
         }
@@ -61,6 +70,19 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
+        // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        if (this.ExocomputeConfigs != null) {
+                var fspec = this.ExocomputeConfigs.AsFieldSpec(conf.Child("exocomputeConfigs"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n";
+                }
+            }
+        }
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
@@ -92,6 +114,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
+        // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
+        if (ec.Includes("exocomputeConfigs",false))
+        {
+            if(this.ExocomputeConfigs == null) {
+
+                this.ExocomputeConfigs = new List<AwsExocomputeGetConfigurationResponse>();
+                this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
+
+            } else {
+
+                this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
+
+            }
+        }
+        else if (this.ExocomputeConfigs != null && ec.Excludes("exocomputeConfigs",false))
+        {
+            this.ExocomputeConfigs = null;
+        }
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         if (ec.Includes("configs",false))

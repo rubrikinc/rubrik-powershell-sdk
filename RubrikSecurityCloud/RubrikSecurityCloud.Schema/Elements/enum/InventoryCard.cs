@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD")]
         AZURE_AD,
 
+        [EnumMember(Value = "AZURE_BLOB_STORAGE")]
+        AZURE_BLOB_STORAGE,
+
         [EnumMember(Value = "AZURE_SQL_DB")]
         AZURE_SQL_DB,
 

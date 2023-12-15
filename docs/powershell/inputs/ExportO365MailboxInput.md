@@ -11,3 +11,7 @@ Configuration for O365 mailbox export.
   - Polaris ID of restoring snapshot.
 - exportConfigs: list of RestoreObjectConfigs
   - Configuration for restore job.
+- actionType: O365RestoreActionType
+  - Specifies the recovery type for the job.
+- inplaceRestoreConfig: InplaceRestoreConfig
+  - In-place restore configuration for the restore job.

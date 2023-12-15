@@ -1,5 +1,30 @@
 # Changelog
 
+## Version 0.20
+
+New Features:
+
+- `Invoke-Rsc` now handles paging internally.
+  This means that you can now use `Invoke-Rsc` to retrieve
+  all items in a list, without having to use `Get-RscPages`.
+  For example, to retrieve all clusters:
+  `Invoke-Rsc (New-RscQueryCluster -Op List)`
+  or
+  `(New-RscQueryCluster -Op List).Invoke()`.
+  Note that `Invoke()` internally calls `Invoke-Rsc`.
+  To retrieve 1 cluster:
+  `Invoke-Rsc (New-RscQueryCluster -Op List -Var @{first=1})`
+  To retrieve 1,000,000 clusters:
+  `Invoke-Rsc (New-RscQueryCluster -Op List -Var @{first=1000000})`
+- `Info()` on query object is now more verbose.
+
+Breaking Changes:
+
+- `Get-RscPages` is sunset.
+  It is replaced by `Invoke-Rsc` which now handles paging internally.
+- `VarTemplate()` on query object is sunset.
+  It is replaced by `Example()` which is more complete.
+
 ## Version 0.19
 
 New Features:

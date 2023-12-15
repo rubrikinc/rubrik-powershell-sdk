@@ -141,7 +141,7 @@ function Get-RscCluster {
         # Create Query
         switch ( $PSCmdlet.ParameterSetName ) {
             "List" {
-                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile -Var @{First = $First}
             }
             "Id" {
                 $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
@@ -160,12 +160,7 @@ function Get-RscCluster {
         }
 
         # Invoke the query:
-        if ( $PSCmdlet.ParameterSetName -eq "List" ) {
-            $response = Get-RscPages -Query $query -First $First
-        }
-        else {
-            $response = Invoke-Rsc $query
-        }
+        $response = Invoke-Rsc $query
 
         # Filter results
         # the response's `Nodes` field contains the list

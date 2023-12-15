@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFIGURE_DB_LOG_REPORT_PROPERTIES")]
         CONFIGURE_DB_LOG_REPORT_PROPERTIES,
 
+        [EnumMember(Value = "CREATE_CROSS_ACCOUNT_PAIR")]
+        CREATE_CROSS_ACCOUNT_PAIR,
+
         [EnumMember(Value = "CREATE_REPORT")]
         CREATE_REPORT,
 
@@ -194,6 +197,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_CORS_SETTINGS")]
         MANAGE_CORS_SETTINGS,
+
+        [EnumMember(Value = "MANAGE_CROSS_ACCOUNT_PAIR")]
+        MANAGE_CROSS_ACCOUNT_PAIR,
 
         [EnumMember(Value = "MANAGE_DATA_SOURCE")]
         MANAGE_DATA_SOURCE,

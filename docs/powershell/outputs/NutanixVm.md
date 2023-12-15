@@ -13,7 +13,7 @@ Nutanix virtual machine details.
   - Post snapshot script configuration.
 - vmDisks: list of NutanixVmDisks
   - List of virtual disks.
-- snapshotConsistencyMandate: NutanixSnapshotConsistencyMandate
+- snapshotConsistencyMandate: NutanixVmSnapshotConsistencyMandate
   - Deprecated, use nutanixSnapshotConsistencyMandate instead.
 - agentStatus: NutanixVmAgentStatus
   - Nutanix virtual machine agent status.

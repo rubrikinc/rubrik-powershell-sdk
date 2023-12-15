@@ -527,8 +527,12 @@
             </description>
             <example>
             Send a query obtained from a `New-RscQuery*` cmdlet.
+            It is equivalent to calling `Invoke()` on the query object.
             <code>
             New-RscQueryGetVsphereVmList -Name "my-vm" | Invoke-Rsc
+            # or
+            $query = New-RscQueryGetVsphereVmList -Name "my-vm"
+            $query.Invoke()
             </code>
             </example>
             <example>
@@ -552,6 +556,21 @@
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.Var">
             <summary>
             The variables to supply to the GraphQL query.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.ProcessRecord_Query">
+            <summary>
+            Send a query object (obtained from a `New-RscQuery*` cmdlet).
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.ProcessRecord_NativeGQL">
+            <summary>
+            Send a raw GraphQL query to the RSC API.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.FetchAndCollatePages(RubrikSecurityCloud.RscQuery)">
+            <summary>
+            Collate pages of results.
             </summary>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQuery.RootFieldKind">
@@ -1442,11 +1461,11 @@
              			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
              			# OPTIONAL
              			clusterSecurityGroupId = $someString
-             			# REQUIRED
+             			# OPTIONAL
              			vpcId = $someString
              			# OPTIONAL
              			nodeSecurityGroupId = $someString
-             			# REQUIRED
+             			# OPTIONAL
              			subnets = @(
              				@{
              					# REQUIRED
@@ -1455,8 +1474,10 @@
              					availabilityZone = $someString
              				}
              			)
-             			# REQUIRED
+             			# OPTIONAL
              			isRscManaged = $someBoolean
+             			# OPTIONAL
+             			clusterName = $someString
              		}
              	)
              	# OPTIONAL
@@ -2416,11 +2437,11 @@
              			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
              			# OPTIONAL
              			clusterSecurityGroupId = $someString
-             			# REQUIRED
+             			# OPTIONAL
              			vpcId = $someString
              			# OPTIONAL
              			nodeSecurityGroupId = $someString
-             			# REQUIRED
+             			# OPTIONAL
              			subnets = @(
              				@{
              					# REQUIRED
@@ -2429,8 +2450,10 @@
              					availabilityZone = $someString
              				}
              			)
-             			# REQUIRED
+             			# OPTIONAL
              			isRscManaged = $someBoolean
+             			# OPTIONAL
+             			clusterName = $someString
              		}
              	)
              	# OPTIONAL
@@ -5345,14 +5368,16 @@
              	# REQUIRED
              	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
              	# OPTIONAL
-             	featureToUpgrade = @{
-             		# REQUIRED
-             		featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-             		# REQUIRED
-             		permissionsGroups = @(
-             			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-             		)
-             	}
+             	featureToUpgrade = @(
+             		@{
+             			# REQUIRED
+             			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+             			# REQUIRED
+             			permissionsGroups = @(
+             				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+             			)
+             		}
+             	)
              }
              
              # Execute the query
@@ -6324,9 +6349,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationCertificate">
              <summary>
-             Create a new RscQuery object for any of the 6
+             Create a new RscQuery object for any of the 10
              operations in the 'Certificates' API domain:
-             AddClusterCertificate, Delete, SetSso, SetWebSigned, Update, or UpdateHost.
+             AddClusterCertificate, AddGlobal, Delete, DeleteGlobal, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobal, or UpdateHost.
              </summary>
              <description>
              New-RscMutationCertificate creates a new
@@ -6336,11 +6361,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 6 operations
+             There are 10 operations
              in the 'Certificates' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AddClusterCertificate, Delete, SetSso, SetWebSigned, Update, or UpdateHost.
+             one of: AddClusterCertificate, AddGlobal, Delete, DeleteGlobal, MarkAgentSecondary, SetSso, SetWebSigned, Update, UpdateGlobal, or UpdateHost.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -6424,6 +6449,54 @@
              </example>
             
              <example>
+             Runs the AddGlobal operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: AddGlobal
+             
+             $query = New-RscMutationCertificate -AddGlobal
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	name = $someString
+             	# OPTIONAL
+             	description = $someString
+             	# OPTIONAL
+             	privateKey = $someString
+             	# REQUIRED
+             	certificate = $someString
+             	# OPTIONAL
+             	clusters = @(
+             		@{
+             			# REQUIRED
+             			clusterUuid = $someString
+             			# REQUIRED
+             			isTrusted = $someBoolean
+             		}
+             	)
+             	# OPTIONAL
+             	csrFid = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AddGlobalCertificateReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
              Runs the Delete operation
              of the 'Certificates' API domain.
              <code>
@@ -6444,6 +6517,70 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: System.Boolean
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the DeleteGlobal operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: DeleteGlobal
+             
+             $query = New-RscMutationCertificate -DeleteGlobal
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	certificateId = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: DeleteGlobalCertificateReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the MarkAgentSecondary operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: MarkAgentSecondary
+             
+             $query = New-RscMutationCertificate -MarkAgentSecondary
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	certId = $someString
+             	# REQUIRED
+             	clusterUuid = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: MarkAgentSecondaryCertificateReply
              
              
              
@@ -6547,6 +6684,50 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: System.Boolean
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the UpdateGlobal operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: UpdateGlobal
+             
+             $query = New-RscMutationCertificate -UpdateGlobal
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	certificateId = $someString
+             	# OPTIONAL
+             	name = $someString
+             	# OPTIONAL
+             	description = $someString
+             	# REQUIRED
+             	clusters = @(
+             		@{
+             			# REQUIRED
+             			clusterUuid = $someString
+             			# REQUIRED
+             			isTrusted = $someBoolean
+             		}
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: UpdateGlobalCertificateReply
              
              
              
@@ -10110,6 +10291,8 @@
              	config = @{
              		# OPTIONAL
              		ignoreErrors = $someBoolean
+             		# OPTIONAL
+             		shouldRecreateDirectoryStructure = $someBoolean
              		# REQUIRED
              		restoreConfig = @(
              			@{
@@ -11007,9 +11190,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationHost">
              <summary>
-             Create a new RscQuery object for any of the 6
+             Create a new RscQuery object for any of the 7
              operations in the 'Host' API domain:
-             BulkDelete, BulkRefresh, BulkRegister, BulkUpdate, ChangeVfd, or Refresh.
+             BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, or Refresh.
              </summary>
              <description>
              New-RscMutationHost creates a new
@@ -11019,11 +11202,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 6 operations
+             There are 7 operations
              in the 'Host' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: BulkDelete, BulkRefresh, BulkRegister, BulkUpdate, ChangeVfd, or Refresh.
+             one of: BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, or Refresh.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -11225,6 +11408,110 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: BulkRegisterHostReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the BulkRegisterAsync operation
+             of the 'Host' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Host
+             # API Operation: BulkRegisterAsync
+             
+             $query = New-RscMutationHost -BulkRegisterAsync
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	clusterUuid = $someString
+             	# REQUIRED
+             	hosts = @(
+             		@{
+             			# OPTIONAL
+             			hasAgent = $someBoolean
+             			# OPTIONAL
+             			nasConfig = @{
+             				# OPTIONAL
+             				apiCertificate = $someString
+             				# OPTIONAL
+             				apiEndpoint = $someString
+             				# OPTIONAL
+             				apiHostname = $someString
+             				# OPTIONAL
+             				apiPassword = $someString
+             				# OPTIONAL
+             				apiToken = $someString
+             				# OPTIONAL
+             				apiUsername = $someString
+             				# OPTIONAL
+             				zoneName = $someString
+             				# OPTIONAL
+             				isSnapdiffEnabled = $someBoolean
+             				# OPTIONAL
+             				isIsilonChangelistEnabled = $someBoolean
+             				# OPTIONAL
+             				isNetAppSnapDiffEnabled = $someBoolean
+             				# OPTIONAL
+             				isShareAutoDiscoveryEnabled = $someBoolean
+             				# OPTIONAL
+             				isNutanixCftEnabled = $someBoolean
+             				# REQUIRED
+             				vendorType = $someString
+             			}
+             			# OPTIONAL
+             			oracleQueryUser = $someString
+             			# OPTIONAL
+             			oracleSysDbaUser = $someString
+             			# OPTIONAL
+             			organizationId = $someString
+             			# OPTIONAL
+             			alias = $someString
+             			# OPTIONAL
+             			hdfsConfig = @{
+             				# OPTIONAL
+             				hdfsBaseConfig = @{
+             					# OPTIONAL
+             					apiToken = $someString
+             					# OPTIONAL
+             					kerberosTicket = $someString
+             					# OPTIONAL
+             					nameservices = $someString
+             					# OPTIONAL
+             					username = $someString
+             					# REQUIRED
+             					hosts = @(
+             						@{
+             							# REQUIRED
+             							hostname = $someString
+             							# REQUIRED
+             							port = $someInt
+             						}
+             					)
+             				}
+             			}
+             			# OPTIONAL
+             			isOracleHost = $someBoolean
+             			# OPTIONAL
+             			orgNetworkId = $someString
+             			# REQUIRED
+             			hostname = $someString
+             		}
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: BulkRegisterHostAsyncReply
              
              
              
@@ -17485,6 +17772,13 @@
              			FolderID = $someString
              		}
              	)
+             	# OPTIONAL
+             	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+             	# OPTIONAL
+             	inplaceRestoreConfig = @{
+             		# REQUIRED
+             		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+             	}
              }
              
              # Execute the query
@@ -17714,6 +18008,11 @@
              	)
              	# REQUIRED
              	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+             	# OPTIONAL
+             	inplaceRestoreConfig = @{
+             		# REQUIRED
+             		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+             	}
              }
              
              # Execute the query
@@ -20518,6 +20817,8 @@
              		# OPTIONAL
              		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
              	}
+             	# OPTIONAL
+             	isCrossAccount = $someBoolean
              	# REQUIRED
              	sourceClusterUuid = $someString
              	# REQUIRED
@@ -21584,6 +21885,8 @@
              			# REQUIRED
              			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
              		}
+             		# OPTIONAL
+             		azureFeatureId = $someString
              		# REQUIRED
              		hostIds = @(
              			$someString
@@ -21868,6 +22171,8 @@
              			# REQUIRED
              			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
              		}
+             		# OPTIONAL
+             		azureFeatureId = $someString
              	}
              }
              
@@ -24319,6 +24624,8 @@
              		ignoreErrors = $someBoolean
              		# OPTIONAL
              		shareId = $someString
+             		# OPTIONAL
+             		shouldRecreateDirectoryStructure = $someBoolean
              		# REQUIRED
              		exportPathPairs = @(
              			@{
@@ -27940,6 +28247,8 @@
              	description = $someString
              	# OPTIONAL
              	serverCertificate = $someString
+             	# OPTIONAL
+             	serviceAccountId = $someString
              	# REQUIRED
              	name = $someString
              	# REQUIRED
@@ -28146,6 +28455,8 @@
              	description = $someString
              	# OPTIONAL
              	serverCertificate = $someString
+             	# OPTIONAL
+             	serviceAccountId = $someString
              	# REQUIRED
              	id = $someInt
              	# OPTIONAL
@@ -34335,9 +34646,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryCertificate">
              <summary>
-             Create a new RscQuery object for any of the 6
+             Create a new RscQuery object for any of the 9
              operations in the 'Certificates' API domain:
-             Certificate, Cluster, ClusterWebSigned, SigningRequest, SigningRequests, or WithKey.
+             AssignableGlobal, Certificate, Cluster, ClusterWebSigned, Global, Info, SigningRequest, SigningRequests, or WithKey.
              </summary>
              <description>
              New-RscQueryCertificate creates a new
@@ -34347,15 +34658,15 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 6 operations
+             There are 9 operations
              in the 'Certificates' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: Certificate, Cluster, ClusterWebSigned, SigningRequest, SigningRequests, or WithKey.
+             one of: AssignableGlobal, Certificate, Cluster, ClusterWebSigned, Global, Info, SigningRequest, SigningRequests, or WithKey.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
-             (New-RscQueryCertificate -Certificate).Info().
+             (New-RscQueryCertificate -AssignableGlobal).Info().
              Each operation also has its own set of fields that can be
              selected for retrieval. If you do not specify any fields,
              a set of default fields will be selected. The selection is
@@ -34382,11 +34693,68 @@
              To know what [RubrikSecurityCloud.Types] object to use
              for a specific operation,
              call Info() on the object returned by this cmdlet, for example:
-             (New-RscQueryCertificate -Certificate).Info().
+             (New-RscQueryCertificate -AssignableGlobal).Info().
              You can combine a -Field parameter with patching parameters.
              -Field is applied first, then -FilePatch, -AddField and -RemoveField.
             
              </description>
+            
+             <example>
+             Runs the AssignableGlobal operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: AssignableGlobal
+             
+             $query = New-RscQueryCertificate -AssignableGlobal
+             
+             # OPTIONAL
+             $query.Var.first = $someInt
+             # OPTIONAL
+             $query.Var.after = $someString
+             # OPTIONAL
+             $query.Var.last = $someInt
+             # OPTIONAL
+             $query.Var.before = $someString
+             # OPTIONAL
+             $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+             # OPTIONAL
+             $query.Var.sortBy = $someGlobalCertificateSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalCertificateSortBy]) for enum values.
+             # REQUIRED
+             $query.Var.input = @{
+             	# OPTIONAL
+             	searchText = $someString
+             	# OPTIONAL
+             	hasKey = $someBoolean
+             	# OPTIONAL
+             	statuses = @(
+             		$someGlobalCertificateStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalCertificateStatus]) for enum values.
+             	)
+             	# OPTIONAL
+             	clusterIds = @(
+             		$someString
+             	)
+             	# OPTIONAL
+             	isTrustedAny = $someBoolean
+             	# OPTIONAL
+             	isRscBorn = $someBoolean
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: GlobalCertificateConnection
+             
+             
+             
+             </code>
+            
+             </example>
             
              <example>
              Runs the Certificate operation
@@ -34499,6 +34867,65 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: ClusterWebSignedCertificateReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the Global operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: Global
+             
+             $query = New-RscQueryCertificate -Global
+             
+             # REQUIRED
+             $query.Var.certificateId = $someString
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: GlobalCertificate
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the Info operation
+             of the 'Certificates' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Certificate
+             # API Operation: Info
+             
+             $query = New-RscQueryCertificate -Info
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	certificatePem = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: GetCertificateInfoReply
              
              
              
@@ -41614,9 +42041,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryMssql">
              <summary>
-             Create a new RscQuery object for any of the 16
+             Create a new RscQuery object for any of the 17
              operations in the 'Microsoft SQL Server' API domain:
-             AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+             AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
              </summary>
              <description>
              New-RscQueryMssql creates a new
@@ -41626,11 +42053,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 16 operations
+             There are 17 operations
              in the 'Microsoft SQL Server' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
+             one of: AvailabilityGroup, CdmLogShippingTarget, CdmLogShippingTargets, CompatibleInstances, Database, DatabaseLiveMounts, DatabaseMissedRecoverableRanges, DatabaseMissedSnapshots, DatabaseRestoreEstimate, DatabaseRestoreFiles, Databases, DefaultProperties, DefaultPropertiesOnCluster, Instance, LogShippingTargets, RecoverableRanges, or TopLevelDescendants.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -42148,6 +42575,39 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: UpdateMssqlDefaultPropertiesReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the DefaultPropertiesOnCluster operation
+             of the 'Microsoft SQL Server' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Mssql
+             # API Operation: DefaultPropertiesOnCluster
+             
+             $query = New-RscQueryMssql -DefaultPropertiesOnCluster
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	clusterUuid = $someString
+             	# OPTIONAL
+             	mssqlObjectId = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: MssqlDefaultPropertiesOnClusterReply
              
              
              
@@ -45352,9 +45812,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryOracle">
              <summary>
-             Create a new RscQuery object for any of the 16
+             Create a new RscQuery object for any of the 17
              operations in the 'Oracle' API domain:
-             AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
+             AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
              </summary>
              <description>
              New-RscQueryOracle creates a new
@@ -45364,11 +45824,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 16 operations
+             There are 17 operations
              in the 'Oracle' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
+             one of: AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseAsyncRequestDetails, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -45520,6 +45980,39 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: OracleDatabase
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the DatabaseAsyncRequestDetails operation
+             of the 'Oracle' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Oracle
+             # API Operation: DatabaseAsyncRequestDetails
+             
+             $query = New-RscQueryOracle -DatabaseAsyncRequestDetails
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	clusterUuid = $someString
+             	# REQUIRED
+             	id = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AsyncRequestStatus
              
              
              
@@ -53505,7 +53998,7 @@
             Return documentation links for variables and Field object.
             </summary>
         </member>
-        <member name="M:RubrikSecurityCloud.RscQuery.VarTemplate">
+        <member name="M:RubrikSecurityCloud.RscQuery.Example">
             <summary>
             Return an example of how the variables can be initialized.
             </summary>
@@ -53513,6 +54006,11 @@
         <member name="M:RubrikSecurityCloud.RscQuery.GqlRequest(System.Boolean)">
             <summary>
             Build the GraphQL request
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscQuery.OpInfo">
+            <summary>
+            Return the RscOp object for this query.
             </summary>
         </member>
         <member name="M:RubrikSecurityCloud.RscQuery.ToString">

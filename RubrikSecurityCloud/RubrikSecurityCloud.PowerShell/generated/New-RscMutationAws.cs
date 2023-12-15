@@ -598,11 +598,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
     /// 			# OPTIONAL
     /// 			clusterSecurityGroupId = $someString
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			vpcId = $someString
     /// 			# OPTIONAL
     /// 			nodeSecurityGroupId = $someString
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			subnets = @(
     /// 				@{
     /// 					# REQUIRED
@@ -611,8 +611,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					availabilityZone = $someString
     /// 				}
     /// 			)
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			isRscManaged = $someBoolean
+    /// 			# OPTIONAL
+    /// 			clusterName = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1572,11 +1574,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
     /// 			# OPTIONAL
     /// 			clusterSecurityGroupId = $someString
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			vpcId = $someString
     /// 			# OPTIONAL
     /// 			nodeSecurityGroupId = $someString
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			subnets = @(
     /// 				@{
     /// 					# REQUIRED
@@ -1585,8 +1587,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					availabilityZone = $someString
     /// 				}
     /// 			)
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			isRscManaged = $someBoolean
+    /// 			# OPTIONAL
+    /// 			clusterName = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2779,11 +2783,11 @@ $query.Var.input = @{
 			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
 			# OPTIONAL
 			clusterSecurityGroupId = $someString
-			# REQUIRED
+			# OPTIONAL
 			vpcId = $someString
 			# OPTIONAL
 			nodeSecurityGroupId = $someString
-			# REQUIRED
+			# OPTIONAL
 			subnets = @(
 				@{
 					# REQUIRED
@@ -2792,8 +2796,10 @@ $query.Var.input = @{
 					availabilityZone = $someString
 				}
 			)
-			# REQUIRED
+			# OPTIONAL
 			isRscManaged = $someBoolean
+			# OPTIONAL
+			clusterName = $someString
 		}
 	)
 	# OPTIONAL
@@ -3601,11 +3607,11 @@ $query.Var.input = @{
 			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
 			# OPTIONAL
 			clusterSecurityGroupId = $someString
-			# REQUIRED
+			# OPTIONAL
 			vpcId = $someString
 			# OPTIONAL
 			nodeSecurityGroupId = $someString
-			# REQUIRED
+			# OPTIONAL
 			subnets = @(
 				@{
 					# REQUIRED
@@ -3614,8 +3620,10 @@ $query.Var.input = @{
 					availabilityZone = $someString
 				}
 			)
-			# REQUIRED
+			# OPTIONAL
 			isRscManaged = $someBoolean
+			# OPTIONAL
+			clusterName = $someString
 		}
 	)
 	# OPTIONAL

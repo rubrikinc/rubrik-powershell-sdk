@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud
             {
                 return this.CmdletName;
             }
-            return $"{this.CmdletName} -{this.CmdletSwitchName}";
+            return $"{this.CmdletName} -Op {this.CmdletSwitchName}";
         }
 
         public List<Tuple<string, string>> Info()

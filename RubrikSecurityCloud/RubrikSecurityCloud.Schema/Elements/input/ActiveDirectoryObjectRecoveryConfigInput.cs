@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? ShouldMergeLinkedAttrs
+        // GraphQL -> shouldMergeLinkedAttrs: Boolean (scalar)
+        [JsonProperty("shouldMergeLinkedAttrs")]
+        public System.Boolean? ShouldMergeLinkedAttrs { get; set; }
+
         //      C# -> ActiveDirectoryUserRestoreOptionsInput? UserRestoreOptions
         // GraphQL -> userRestoreOptions: ActiveDirectoryUserRestoreOptionsInput (input)
         [JsonProperty("userRestoreOptions")]

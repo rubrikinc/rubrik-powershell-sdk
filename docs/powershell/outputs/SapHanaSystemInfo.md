@@ -10,3 +10,5 @@ Supported in v5.3+
 - authTypeSpec: SapHanaSystemAuthTypeSpec
   - Supported in v9.0+
   Specifies the authentication type for the SAP HANA system.
+- azureFeatureId: System.String
+  - The Rubrik ID of the SAP HANA Azure Feature.

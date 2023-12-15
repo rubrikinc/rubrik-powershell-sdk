@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? AccessTier
+        // GraphQL -> accessTier: String! (scalar)
+        [JsonProperty("accessTier")]
+        public System.String? AccessTier { get; set; }
+
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         [JsonProperty("cloudNativeId")]
@@ -81,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nativeName")]
         public System.String? NativeName { get; set; }
 
+        //      C# -> System.Int64? NumContainers
+        // GraphQL -> numContainers: Long! (scalar)
+        [JsonProperty("numContainers")]
+        public System.Int64? NumContainers { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
@@ -95,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.Int64? UsedCapacityBytes
+        // GraphQL -> usedCapacityBytes: Long! (scalar)
+        [JsonProperty("usedCapacityBytes")]
+        public System.Int64? UsedCapacityBytes { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -183,14 +198,17 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? AccessTier = null,
         System.String? CloudNativeId = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.String? NativeName = null,
+        System.Int64? NumContainers = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.Int64? UsedCapacityBytes = null,
         List<Org>? AllOrgs = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
@@ -228,6 +246,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
         }
+        if ( AccessTier != null ) {
+            this.AccessTier = AccessTier;
+        }
         if ( CloudNativeId != null ) {
             this.CloudNativeId = CloudNativeId;
         }
@@ -243,6 +264,9 @@ namespace RubrikSecurityCloud.Types
         if ( NativeName != null ) {
             this.NativeName = NativeName;
         }
+        if ( NumContainers != null ) {
+            this.NumContainers = NumContainers;
+        }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
@@ -251,6 +275,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( UsedCapacityBytes != null ) {
+            this.UsedCapacityBytes = UsedCapacityBytes;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -380,6 +407,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? AccessTier
+        // GraphQL -> accessTier: String! (scalar)
+        if (this.AccessTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accessTier\n" ;
+            } else {
+                s += ind + "accessTier\n" ;
+            }
+        }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (this.CloudNativeId != null) {
@@ -425,6 +461,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "nativeName\n" ;
             }
         }
+        //      C# -> System.Int64? NumContainers
+        // GraphQL -> numContainers: Long! (scalar)
+        if (this.NumContainers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "numContainers\n" ;
+            } else {
+                s += ind + "numContainers\n" ;
+            }
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
@@ -450,6 +495,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.Int64? UsedCapacityBytes
+        // GraphQL -> usedCapacityBytes: Long! (scalar)
+        if (this.UsedCapacityBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "usedCapacityBytes\n" ;
+            } else {
+                s += ind + "usedCapacityBytes\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -767,6 +821,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaDomain = null;
         }
+        //      C# -> System.String? AccessTier
+        // GraphQL -> accessTier: String! (scalar)
+        if (ec.Includes("accessTier",true))
+        {
+            if(this.AccessTier == null) {
+
+                this.AccessTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessTier != null && ec.Excludes("accessTier",true))
+        {
+            this.AccessTier = null;
+        }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (ec.Includes("cloudNativeId",true))
@@ -852,6 +923,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.NativeName = null;
         }
+        //      C# -> System.Int64? NumContainers
+        // GraphQL -> numContainers: Long! (scalar)
+        if (ec.Includes("numContainers",true))
+        {
+            if(this.NumContainers == null) {
+
+                this.NumContainers = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumContainers != null && ec.Excludes("numContainers",true))
+        {
+            this.NumContainers = null;
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (ec.Includes("numWorkloadDescendants",true))
@@ -902,6 +990,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.Int64? UsedCapacityBytes
+        // GraphQL -> usedCapacityBytes: Long! (scalar)
+        if (ec.Includes("usedCapacityBytes",true))
+        {
+            if(this.UsedCapacityBytes == null) {
+
+                this.UsedCapacityBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedCapacityBytes != null && ec.Excludes("usedCapacityBytes",true))
+        {
+            this.UsedCapacityBytes = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

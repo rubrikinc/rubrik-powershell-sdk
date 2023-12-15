@@ -2,4 +2,4 @@
 AWS Exocompute Configs Delete Response.
 
 - deletionStatus: list of AwsExocomputeConfigsDeletionStatusTypes
-  - Deletion status for exocompute configurations.
+  - Deletion status for Exocompute configurations.

@@ -17,3 +17,5 @@ Supported in v7.0+
       The updated API credentials of the NAS system.
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
   - Supported in v9.0+
+- nutanixFileServerParameters: NutanixFileServerParametersInput
+  - 

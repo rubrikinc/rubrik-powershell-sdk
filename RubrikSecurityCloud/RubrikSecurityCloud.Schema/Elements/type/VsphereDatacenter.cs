@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> VsphereDatacenterPhysicalChildTypeConnection? RecoveryTargetChildConnection
+        // GraphQL -> recoveryTargetChildConnection: VsphereDatacenterPhysicalChildTypeConnection! (type)
+        [JsonProperty("recoveryTargetChildConnection")]
+        public VsphereDatacenterPhysicalChildTypeConnection? RecoveryTargetChildConnection { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -186,6 +191,7 @@ namespace RubrikSecurityCloud.Types
         VsphereDatacenterPhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        VsphereDatacenterPhysicalChildTypeConnection? RecoveryTargetChildConnection = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
@@ -263,6 +269,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( RecoveryTargetChildConnection != null ) {
+            this.RecoveryTargetChildConnection = RecoveryTargetChildConnection;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -553,6 +562,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VsphereDatacenterPhysicalChildTypeConnection? RecoveryTargetChildConnection
+        // GraphQL -> recoveryTargetChildConnection: VsphereDatacenterPhysicalChildTypeConnection! (type)
+        if (this.RecoveryTargetChildConnection != null) {
+            var fspec = this.RecoveryTargetChildConnection.AsFieldSpec(conf.Child("recoveryTargetChildConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryTargetChildConnection {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1051,6 +1072,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> VsphereDatacenterPhysicalChildTypeConnection? RecoveryTargetChildConnection
+        // GraphQL -> recoveryTargetChildConnection: VsphereDatacenterPhysicalChildTypeConnection! (type)
+        if (ec.Includes("recoveryTargetChildConnection",false))
+        {
+            if(this.RecoveryTargetChildConnection == null) {
+
+                this.RecoveryTargetChildConnection = new VsphereDatacenterPhysicalChildTypeConnection();
+                this.RecoveryTargetChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryTargetChildConnection"));
+
+            } else {
+
+                this.RecoveryTargetChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryTargetChildConnection"));
+
+            }
+        }
+        else if (this.RecoveryTargetChildConnection != null && ec.Excludes("recoveryTargetChildConnection",false))
+        {
+            this.RecoveryTargetChildConnection = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

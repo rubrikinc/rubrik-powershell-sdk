@@ -216,6 +216,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedVolumeAppMetadata")]
         public ManagedVolumeAppMetadata? ManagedVolumeAppMetadata { get; set; }
 
+        //      C# -> MssqlAppMetadata? MssqlAppMetadata
+        // GraphQL -> mssqlAppMetadata: MssqlAppMetadata (type)
+        [JsonProperty("mssqlAppMetadata")]
+        public MssqlAppMetadata? MssqlAppMetadata { get; set; }
+
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)
         [JsonProperty("pendingSnapshotDeletion")]
@@ -295,6 +300,7 @@ namespace RubrikSecurityCloud.Types
         List<DataLocation>? LocalLocations = null,
         List<DataLocation>? Locations = null,
         ManagedVolumeAppMetadata? ManagedVolumeAppMetadata = null,
+        MssqlAppMetadata? MssqlAppMetadata = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
         List<DataLocation>? ReplicationLocations = null,
         SapHanaAppMetadata? SapHanaAppMetadata = null,
@@ -419,6 +425,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ManagedVolumeAppMetadata != null ) {
             this.ManagedVolumeAppMetadata = ManagedVolumeAppMetadata;
+        }
+        if ( MssqlAppMetadata != null ) {
+            this.MssqlAppMetadata = MssqlAppMetadata;
         }
         if ( PendingSnapshotDeletion != null ) {
             this.PendingSnapshotDeletion = PendingSnapshotDeletion;
@@ -845,6 +854,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "managedVolumeAppMetadata {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MssqlAppMetadata? MssqlAppMetadata
+        // GraphQL -> mssqlAppMetadata: MssqlAppMetadata (type)
+        if (this.MssqlAppMetadata != null) {
+            var fspec = this.MssqlAppMetadata.AsFieldSpec(conf.Child("mssqlAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlAppMetadata {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1634,6 +1655,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManagedVolumeAppMetadata != null && ec.Excludes("managedVolumeAppMetadata",false))
         {
             this.ManagedVolumeAppMetadata = null;
+        }
+        //      C# -> MssqlAppMetadata? MssqlAppMetadata
+        // GraphQL -> mssqlAppMetadata: MssqlAppMetadata (type)
+        if (ec.Includes("mssqlAppMetadata",false))
+        {
+            if(this.MssqlAppMetadata == null) {
+
+                this.MssqlAppMetadata = new MssqlAppMetadata();
+                this.MssqlAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mssqlAppMetadata"));
+
+            } else {
+
+                this.MssqlAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mssqlAppMetadata"));
+
+            }
+        }
+        else if (this.MssqlAppMetadata != null && ec.Excludes("mssqlAppMetadata",false))
+        {
+            this.MssqlAppMetadata = null;
         }
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)

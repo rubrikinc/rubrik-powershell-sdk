@@ -17,3 +17,4 @@ Reasons for the SLA being ineligible for migration.
 - UNSUPPORTED_PROTECTED_OBJECTS_MINUTE_FREQUENCY_CONFIGURED - The SLA Domain has frequency configured in minutes, which is currently not supported for objects other than Managed Volumes.
 - COMPLIANCE_RETENTION_LOCK_CONFIGURED - To upgrade to a retention-locked RSC SLA Domain in Compliance mode, make sure quorum authorization is enabled in RSC and your cluster is running CDM 7.0.2 or later. You also need access to Compliance mode for retention lock, which you can get by contacting Rubrik Support.
 - GOVERNANCE_RETENTION_LOCK_CONFIGURED - To upgrade to a retention-locked RSC SLA Domain in Governance mode, make sure quorum authorization is enabled in RSC and your cluster is running CDM 9.0.1 or later.
+- GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER - The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.

@@ -33,3 +33,4 @@ Type of objects managed by SLA Domains.
 - ACTIVE_DIRECTORY_OBJECT_TYPE - Active Directory object.
 - K8S_OBJECT_TYPE - CDM Native K8s object.
 - ATLASSIAN_JIRA_OBJECT_TYPE - Atlassian Jira object.
+- POSTGRES_DB_CLUSTER_OBJECT_TYPE - PostgreSQL DB Cluster object.

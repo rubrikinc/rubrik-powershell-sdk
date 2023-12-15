@@ -1,5 +1,17 @@
 # New-RscQueryCertificate
 ## Subcommands
+### assignableglobal
+Global certificates that can be assigned to an organization.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - GlobalCertificateSortBy: Field on which to sort the certificates.
+    - input - GlobalCertificatesQueryInput: Input to list global certificates.
+- Returns GlobalCertificateConnection.
 ### certificate
 Browse certificates.
 
@@ -28,6 +40,16 @@ If the web server uses a signed certificate, fetch it.
 
 - There is a single argument of type ClusterWebSignedCertificateInput.
 - Returns ClusterWebSignedCertificateReply.
+### global
+Global certificate.
+
+- There is a single argument of type System.String.
+- Returns GlobalCertificate.
+### info
+Metadata of a certificate.
+
+- There is a single argument of type GetCertificateInfoInput.
+- Returns GetCertificateInfoReply.
 ### signingrequest
 Get Certificate Signing Request (CSR).
 

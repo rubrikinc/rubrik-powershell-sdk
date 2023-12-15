@@ -35,6 +35,8 @@ Information about MongoDB Source.
   - Count of active collections for this MongoDB source.
 - protectedCollectionCount: System.Int32
   - Count of protected collections for this MongoDB source.
+- dataHosts: PhysicalHostConnection
+  - The list of data hosts associated with this MongoDB source.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String

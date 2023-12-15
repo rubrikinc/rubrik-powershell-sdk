@@ -28,7 +28,16 @@ namespace RubrikSecurityCloud.Types
         HOLD_STATE,
 
         [EnumMember(Value = "MARKED_FOR_DELETION_STATE")]
-        MARKED_FOR_DELETION_STATE
+        MARKED_FOR_DELETION_STATE,
+
+        [EnumMember(Value = "PENDING_CREATION")]
+        PENDING_CREATION,
+
+        [EnumMember(Value = "PENDING_MIGRATION")]
+        PENDING_MIGRATION,
+
+        [EnumMember(Value = "PENDING_POST_PROCESSING")]
+        PENDING_POST_PROCESSING
 
 
     } // enum AccountState

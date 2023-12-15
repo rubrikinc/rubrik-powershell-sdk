@@ -52,7 +52,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAccount -Operation DeleteUsers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -91,7 +91,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationActivitySeries -Operation Cancel
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -129,7 +129,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationActivitySeries -Operation DownloadUserCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -167,7 +167,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationActivitySeries -Operation DownloadUserFileCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -206,7 +206,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation AddAuthenticationServerBasedCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -244,7 +244,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation AddIamUserBasedCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -282,7 +282,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation BulkDeleteCloudAccountWithoutCft
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -320,7 +320,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -358,7 +358,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateAutomaticTargetMapping
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -396,7 +396,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateCloudNativeStorageSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -434,7 +434,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -472,7 +472,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateComputeSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -510,7 +510,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateExocomputeConfigs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -548,7 +548,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateReaderTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -586,7 +586,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation CreateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -624,7 +624,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation DeleteComputeSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -662,7 +662,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation DeleteExocomputeConfigs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -700,7 +700,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation FinalizeCloudAccountDeletion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -738,7 +738,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation FinalizeCloudAccountProtection
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -776,7 +776,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation PatchAuthenticationServerBasedCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -814,7 +814,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation PatchIamUserBasedCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -852,7 +852,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation PrepareCloudAccountDeletion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -890,7 +890,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation PrepareFeatureUpdateForCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -928,7 +928,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation RegisterFeatureArtifacts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -966,7 +966,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation StartExocomputeDisableJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1004,7 +1004,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1042,7 +1042,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateAutomaticTargetMapping
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1080,7 +1080,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1118,7 +1118,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateCloudAccountFeature
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1156,7 +1156,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateCloudNativeStorageSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1194,7 +1194,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateComputeSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1232,7 +1232,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateExocomputeConfigs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1270,7 +1270,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1308,7 +1308,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpgradeCloudAccountFeaturesWithoutCft
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1346,7 +1346,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation UpgradeIamUserBasedCloudAccountPermissions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1384,7 +1384,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAws -Operation ValidateAndCreateCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1423,7 +1423,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation ExcludeEbsVolumesFromSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1461,7 +1461,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartAccountDisableJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1499,7 +1499,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartCreateEbsVolumeSnapshotsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1537,7 +1537,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartEc2InstanceSnapshotsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1575,7 +1575,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartExportEbsVolumeSnapshotJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1613,7 +1613,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartRdsInstanceSnapshotsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1651,7 +1651,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartRefreshAccountsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1689,7 +1689,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAwsNative -Operation StartRestoreEc2InstanceSnapshotJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1728,7 +1728,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation AddCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1766,7 +1766,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation AddCloudAccountExocomputeConfigurations
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1804,7 +1804,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation AddCloudAccountWithoutOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1842,7 +1842,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation BackupAdDirectory
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1880,7 +1880,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CompleteAdAppSetup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1918,7 +1918,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CompleteAdAppUpdate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1956,7 +1956,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CompleteCloudAccountOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -1994,7 +1994,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2032,7 +2032,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateAutomaticTargetMapping
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2070,7 +2070,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateCloudNativeRcvStorageSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2108,7 +2108,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateCloudNativeStorageSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2146,7 +2146,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2184,7 +2184,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateReaderTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2222,7 +2222,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateSaasAppAad
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2260,7 +2260,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation CreateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2298,7 +2298,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation DeleteAdDirectory
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2336,7 +2336,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation DeleteCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2374,7 +2374,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation DeleteCloudAccountExocomputeConfigurations
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2412,7 +2412,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation DeleteCloudAccountWithoutOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2450,7 +2450,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation MapCloudAccountExocomputeSubscription
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2488,7 +2488,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation MapCloudAccountToPersistentStorageLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2526,7 +2526,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation OauthConsentComplete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2564,7 +2564,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation OauthConsentKickoff
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2602,7 +2602,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation RestoreAdObjectsWithPasswords
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2640,7 +2640,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation SetCloudAccountCustomerAppCredentials
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2678,7 +2678,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation StartAdAppSetup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2716,7 +2716,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation StartAdAppUpdate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2754,7 +2754,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation StartCloudAccountOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2792,7 +2792,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation StartDisableCloudAccountJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2830,7 +2830,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation StartExportSqlDatabaseDbJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2868,7 +2868,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation StartExportSqlManagedInstanceDbJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2906,7 +2906,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UnmapCloudAccountExocomputeSubscription
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2944,7 +2944,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UnmapPersistentStorageSubscription
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -2982,7 +2982,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3020,7 +3020,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateAutomaticTargetMapping
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3058,7 +3058,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3096,7 +3096,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateCloudNativeRcvStorageSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3134,7 +3134,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateCloudNativeStorageSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3172,7 +3172,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateCustomerAppPermissionForSql
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3210,7 +3210,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3248,7 +3248,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpgradeCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3286,7 +3286,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzure -Operation UpgradeCloudAccountPermissionsWithoutOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3325,7 +3325,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation ExcludeManagedDisksFromSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3363,7 +3363,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartCreateManagedDiskSnapshotsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3401,7 +3401,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartCreateVirtualMachineSnapshotsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3439,7 +3439,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartDisableSubscriptionProtectionJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3477,7 +3477,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartExportManagedDiskJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3515,7 +3515,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartExportVirtualMachineJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3553,7 +3553,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartRefreshSubscriptionsJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3591,7 +3591,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureNative -Operation StartRestoreVirtualMachineJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3630,7 +3630,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationAzureO365 -Operation SetupExocompute
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3669,7 +3669,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCassandra -Operation BulkDeleteSources
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3707,7 +3707,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCassandra -Operation CreateSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3745,7 +3745,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCassandra -Operation DeleteSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3783,7 +3783,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCassandra -Operation RecoverSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3821,7 +3821,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCassandra -Operation UpdateSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3860,7 +3860,45 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCertificate -Operation AddClusterCertificate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -Op AddGlobal
+# -------------------------------------------------------------------
+
+$query = New-RscMutationCertificate -Op AddGlobal
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationCertificate.AddGlobal" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationCertificate.AddGlobal" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationCertificate.AddGlobal" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationCertificate -Operation AddGlobal
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3898,7 +3936,83 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCertificate -Operation Delete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -Op DeleteGlobal
+# -------------------------------------------------------------------
+
+$query = New-RscMutationCertificate -Op DeleteGlobal
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationCertificate.DeleteGlobal" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationCertificate.DeleteGlobal" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationCertificate.DeleteGlobal" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationCertificate -Operation DeleteGlobal
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -Op MarkAgentSecondary
+# -------------------------------------------------------------------
+
+$query = New-RscMutationCertificate -Op MarkAgentSecondary
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationCertificate.MarkAgentSecondary" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationCertificate.MarkAgentSecondary" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationCertificate.MarkAgentSecondary" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationCertificate -Operation MarkAgentSecondary
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3936,7 +4050,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCertificate -Operation SetSso
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -3974,7 +4088,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCertificate -Operation SetWebSigned
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4012,7 +4126,45 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCertificate -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationCertificate -Op UpdateGlobal
+# -------------------------------------------------------------------
+
+$query = New-RscMutationCertificate -Op UpdateGlobal
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationCertificate.UpdateGlobal" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationCertificate.UpdateGlobal" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationCertificate.UpdateGlobal" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationCertificate -Operation UpdateGlobal
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4050,7 +4202,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCertificate -Operation UpdateHost
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4089,7 +4241,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudAccount -Operation MapExocomputeAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4127,7 +4279,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudAccount -Operation UnmapExocomputeAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4166,7 +4318,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation AddSqlServerBackupCredentials
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4204,7 +4356,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation CheckRbaConnectivity
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4242,7 +4394,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation ClearSqlServerBackupCredentials
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4280,7 +4432,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation CreateLabelRule
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4318,7 +4470,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation CreateTagRule
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4356,7 +4508,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation DeleteLabelRule
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4394,7 +4546,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation DeleteTagRule
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4432,7 +4584,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation DownloadFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4470,7 +4622,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation SetupSqlServerBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4508,7 +4660,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation StartSnapshotsIndexJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4546,7 +4698,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation UpdateIndexingStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4584,7 +4736,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation UpdateLabelRule
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4622,7 +4774,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCloudNative -Operation UpdateTagRule
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4661,7 +4813,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation AddNodesToCloud
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4699,7 +4851,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation BulkDeleteFailover
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4737,7 +4889,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation CreateFailover
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4775,7 +4927,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation DeleteFailover
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4813,7 +4965,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation RecoverCloud
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4851,7 +5003,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation RegisterCloud
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4889,7 +5041,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation RemoveCdm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4927,7 +5079,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation UpdateDatabaseLogReportingProperties
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -4965,7 +5117,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationCluster -Operation UpdateFailover
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5004,7 +5156,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation AddInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5042,7 +5194,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation CreateOnDemandBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5080,7 +5232,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation DeleteDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5118,7 +5270,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation DeleteInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5156,7 +5308,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation DiscoverInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5194,7 +5346,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation DownloadSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5232,7 +5384,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation DownloadSnapshotsForPointInTimeRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5270,7 +5422,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation ExpireDownloadedSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5308,7 +5460,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation PatchDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5346,7 +5498,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation PatchInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5384,7 +5536,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDb2 -Operation RefreshDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5423,7 +5575,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ActiveDirectorySnapshotFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5461,7 +5613,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation AuditLogCsvAsync
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5499,7 +5651,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ExchangeSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5537,7 +5689,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation FilesetSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5575,7 +5727,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation FilesetSnapshotFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5613,7 +5765,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ObjectFilesCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5651,7 +5803,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ObjectsListCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5689,7 +5841,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ReportCsvAsync
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5727,7 +5879,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ReportPdfAsync
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5765,7 +5917,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ResultsCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5803,7 +5955,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation SapHanaSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5841,7 +5993,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation SapHanaSnapshotFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5879,7 +6031,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation SapHanaSnapshotsForPointInTimeRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5917,7 +6069,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation SnapshotResultsCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5955,7 +6107,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation ThreatHuntCsv
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -5993,7 +6145,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation VolumeGroupSnapshotFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6031,7 +6183,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationDownload -Operation VolumeGroupSnapshotFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6070,7 +6222,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationExchange -Operation BulkUpdateDag
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6108,7 +6260,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationExchange -Operation CreateMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6146,7 +6298,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationExchange -Operation CreateOnDemandBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6184,7 +6336,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationExchange -Operation DeleteSnapshotMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6223,7 +6375,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationFileset -Operation BulkCreate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6261,7 +6413,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationFileset -Operation BulkCreateTemplates
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6299,7 +6451,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationFileset -Operation BulkDelete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6337,7 +6489,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationFileset -Operation BulkDeleteTemplate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6375,7 +6527,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationFileset -Operation BulkUpdateTemplate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6413,7 +6565,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationFileset -Operation RecoverFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6452,7 +6604,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CloudAccountAddManualAuthProject
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6490,7 +6642,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CloudAccountAddProjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6528,7 +6680,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CloudAccountDeleteProjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6566,7 +6718,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CloudAccountOauthComplete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6604,7 +6756,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CloudAccountOauthInitiate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6642,7 +6794,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CloudAccountUpgradeProjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6680,7 +6832,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CreateReaderTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6718,7 +6870,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation CreateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6756,7 +6908,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation SetDefaultServiceAccountJwtConfig
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6794,7 +6946,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6832,7 +6984,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcp -Operation UpgradeCloudAccountPermissionsWithoutOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6871,7 +7023,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcpNative -Operation DisableProject
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6909,7 +7061,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcpNative -Operation ExcludeDisksFromInstanceSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6947,7 +7099,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcpNative -Operation ExportDisk
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -6985,7 +7137,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcpNative -Operation ExportGceInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7023,7 +7175,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcpNative -Operation RefreshProjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7061,7 +7213,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationGcpNative -Operation RestoreGceInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7100,7 +7252,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHost -Operation BulkDelete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7138,7 +7290,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHost -Operation BulkRefresh
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7176,7 +7328,45 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHost -Operation BulkRegister
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationHost -Op BulkRegisterAsync
+# -------------------------------------------------------------------
+
+$query = New-RscMutationHost -Op BulkRegisterAsync
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationHost.BulkRegisterAsync" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationHost.BulkRegisterAsync" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationHost.BulkRegisterAsync" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationHost -Operation BulkRegisterAsync
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7214,7 +7404,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHost -Operation BulkUpdate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7252,7 +7442,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHost -Operation ChangeVfd
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7290,7 +7480,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHost -Operation Refresh
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7329,7 +7519,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation BatchExportVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7367,7 +7557,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation BatchInstantRecoverVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7405,7 +7595,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation BatchMountVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7443,7 +7633,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation BatchOnDemandBackupVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7481,7 +7671,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation CreateVirtualMachineSnapshotMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7519,7 +7709,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation DeleteAllSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7557,7 +7747,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation DeleteVirtualMachineSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7595,7 +7785,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation DeleteVirtualMachineSnapshotMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7633,7 +7823,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation DownloadSnapshotFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7671,7 +7861,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation DownloadVirtualMachineSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7709,7 +7899,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation DownloadVirtualMachineSnapshotFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7747,7 +7937,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation ExportVirtualMachine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7785,7 +7975,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation InstantRecoverVirtualMachineSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7823,7 +8013,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation OnDemandSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7861,7 +8051,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation RefreshScvmm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7899,7 +8089,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation RefreshServer
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7937,7 +8127,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation RegisterAgentVirtualMachine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -7975,7 +8165,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation RegisterScvmm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8013,7 +8203,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation RestoreVirtualMachineSnapshotFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8051,7 +8241,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation ScvmmDelete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8089,7 +8279,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation ScvmmUpdate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8127,7 +8317,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation UpdateVirtualMachine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8165,7 +8355,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationHyperv -Operation UpdateVirtualMachineSnapshotMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8204,7 +8394,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation ArchiveCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8242,7 +8432,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation CreateAgentManifest
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8280,7 +8470,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation CreateCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8318,7 +8508,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation CreateNamespaceSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8356,7 +8546,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation ExportNamespace
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8394,7 +8584,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation RefreshCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8432,7 +8622,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationK8s -Operation RestoreNamespace
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8471,7 +8661,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationLdap -Operation DeletePrincipals
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8509,7 +8699,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationLdap -Operation RemoveIntegration
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8547,7 +8737,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationLdap -Operation SetMfaSetting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8585,7 +8775,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationLdap -Operation UpdateIntegration
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8624,7 +8814,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationM365 -Operation BackupMailbox
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8662,7 +8852,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationM365 -Operation BackupOnedrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8700,7 +8890,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationM365 -Operation BackupSharepointDrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8738,7 +8928,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationM365 -Operation BackupTeam
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8777,7 +8967,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation Add
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8815,7 +9005,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation BeginSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8853,7 +9043,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation Delete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8891,7 +9081,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation DeleteSnapshotExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8929,7 +9119,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation DownloadFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -8967,7 +9157,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation DownloadFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9005,7 +9195,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation EndSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9043,7 +9233,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation ExportSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9081,7 +9271,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation Resize
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9119,7 +9309,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation TakeOnDemandSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9157,7 +9347,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationManagedVolume -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9196,7 +9386,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation AddSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9234,7 +9424,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation AssignSlaToCollection
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9272,7 +9462,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation BulkDeleteSources
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9310,7 +9500,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation CreateSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9348,7 +9538,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation DeleteSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9386,7 +9576,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation DiscoverSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9424,7 +9614,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation PatchSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9462,7 +9652,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation RecoverSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9500,7 +9690,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation RetryAddSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9538,7 +9728,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMongo -Operation UpdateSource
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9577,7 +9767,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMosaic -Operation AddStore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9615,7 +9805,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMosaic -Operation DeleteStore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9653,7 +9843,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMosaic -Operation UpdateStore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9692,7 +9882,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation AssignSlaDomainProperties
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9730,7 +9920,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation AssignSlaDomainPropertiesAsync
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9768,7 +9958,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation BrowseDatabaseSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9806,7 +9996,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation BulkCreateOnDemandBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9844,7 +10034,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation BulkUpdateDbs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9882,7 +10072,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation CreateLiveMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9920,7 +10110,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation CreateLogShippingConfiguration
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9958,7 +10148,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation CreateOnDemandBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -9996,7 +10186,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation DeleteDbSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10034,7 +10224,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation DeleteLiveMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10072,7 +10262,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation DownloadDatabaseBackupFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10110,7 +10300,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation DownloadDatabaseFilesFromArchivalLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10148,7 +10338,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation ExportDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10186,7 +10376,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation RestoreDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10224,7 +10414,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation TakeLogBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10262,7 +10452,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation UpdateDefaultProperties
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10300,7 +10490,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationMssql -Operation UpdateLogShippingConfiguration
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10339,7 +10529,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNfs -Operation CreateReaderTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10377,7 +10567,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNfs -Operation CreateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10415,7 +10605,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNfs -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10454,7 +10644,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation BatchExportVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10492,7 +10682,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation BatchMountVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10530,7 +10720,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation BulkOnDemandSnapshotVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10568,7 +10758,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation CreateCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10606,7 +10796,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation CreateOnDemandBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10644,7 +10834,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation CreatePrismCentral
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10682,7 +10872,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DeleteCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10720,7 +10910,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DeleteMountV1
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10758,7 +10948,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DeletePrismCentral
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10796,7 +10986,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DeleteSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10834,7 +11024,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DeleteSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10872,7 +11062,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DownloadFilesSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10910,7 +11100,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DownloadSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10948,7 +11138,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation DownloadVmFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -10986,7 +11176,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation ExportSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11024,7 +11214,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation MigrateMountV1
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11062,7 +11252,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation MountSnapshotV1
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11100,7 +11290,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation PatchMountV1
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11138,7 +11328,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation RefreshCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11176,7 +11366,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation RefreshPrismCentral
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11214,7 +11404,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation RegisterAgentVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11252,7 +11442,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation RestoreFilesSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11290,7 +11480,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation UpdateCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11328,7 +11518,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation UpdatePrismCentral
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11366,7 +11556,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationNutanix -Operation UpdateVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11405,7 +11595,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation AddOrg
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11443,7 +11633,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation BackupMailbox
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11481,7 +11671,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation BackupOnedrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11519,7 +11709,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation BackupSharePointSite
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11557,7 +11747,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation BackupSharepointDrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11595,7 +11785,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation BackupSharepointList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11633,7 +11823,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation BackupTeam
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11671,7 +11861,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation CreateAppComplete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11709,7 +11899,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation CreateAppKickoff
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11747,7 +11937,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation DeleteAzureApp
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11785,7 +11975,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation DeleteOrg
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11823,7 +12013,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation DeleteServiceAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11861,7 +12051,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation EnableSharePoint
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11899,7 +12089,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation EnableTeams
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11937,7 +12127,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation ExportMailbox
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -11975,7 +12165,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation InsertCustomerApp
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12013,7 +12203,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation OauthConsentComplete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12051,7 +12241,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation OauthConsentKickoff
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12089,7 +12279,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation PdlGroups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12127,7 +12317,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation RefreshOrg
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12165,7 +12355,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation RestoreMailbox
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12203,7 +12393,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation RestoreSnappable
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12241,7 +12431,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation RestoreTeamsConversations
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12279,7 +12469,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation RestoreTeamsFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12317,7 +12507,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation SaaSSetupKickoff
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12355,7 +12545,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation SaasSetupComplete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12393,7 +12583,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation SetServiceAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12431,7 +12621,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation SetupKickoff
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12469,7 +12659,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation UpdateAppAuthStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12507,7 +12697,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation UpdateAppPermissions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12545,7 +12735,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationO365 -Operation UpdateOrgCustomName
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12584,7 +12774,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation BulkUpdateDatabases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12622,7 +12812,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation BulkUpdateHosts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12660,7 +12850,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation BulkUpdateRacs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12698,7 +12888,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation CreatePdbRestore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12736,7 +12926,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation DeleteAllDatabaseSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12774,7 +12964,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation DeleteMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12812,7 +13002,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation DownloadDatabaseSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12850,7 +13040,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation ExportDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12888,7 +13078,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation ExportTablespace
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12926,7 +13116,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation InstantRecoverSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -12964,7 +13154,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation MountDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13002,7 +13192,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation RefreshDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13040,7 +13230,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation RestoreLogs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13078,7 +13268,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation TakeOnDemandDatabaseSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13116,7 +13306,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation TakeOnDemandLogSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13154,7 +13344,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation UpdateDataGuardGroup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13192,7 +13382,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation ValidateAcoFile
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13230,7 +13420,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationOracle -Operation ValidateDatabaseBackups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13269,7 +13459,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationPolicy -Operation Policies
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13308,7 +13498,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRansomware -Operation TriggerDetection
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13347,7 +13537,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcs -Operation CreateAutomaticTargetMapping
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13385,7 +13575,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcs -Operation CreateReaderTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13423,7 +13613,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcs -Operation CreateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13461,7 +13651,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcs -Operation UpdateAutomaticTargetMapping
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13500,7 +13690,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcv -Operation CreateLocationsFromTemplate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13538,7 +13728,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcv -Operation CreatePrivateEndpointApprovalRequest
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13576,7 +13766,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationRcv -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13615,7 +13805,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReplication -Operation CreatePair
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13653,7 +13843,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReplication -Operation DeletePair
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13691,7 +13881,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReplication -Operation DisablePause
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13729,7 +13919,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReplication -Operation EnablePause
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13767,7 +13957,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReplication -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13806,7 +13996,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation CreateCustom
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13844,7 +14034,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation CreateScheduled
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13882,7 +14072,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation DeleteCustom
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13920,7 +14110,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation DeleteScheduled
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13958,7 +14148,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation SendPdf
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -13996,7 +14186,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation SendScheduledAsync
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14034,7 +14224,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation StartClusterMigrationJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14072,7 +14262,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation UpdateCustom
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14110,7 +14300,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationReport -Operation UpdateScheduled
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14149,7 +14339,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation AddSystem
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14187,7 +14377,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation ConfigureRestore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14225,7 +14415,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation CreateOnDemandBackup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14263,7 +14453,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation CreateSystemRefresh
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14301,7 +14491,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation DeleteDbSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14339,7 +14529,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation DeleteSystem
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14377,7 +14567,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation ExpireDownloadedSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14415,7 +14605,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation PatchSystem
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14453,7 +14643,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSapHana -Operation UnconfigureRestore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14492,7 +14682,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationServiceAccount -Operation Create
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14530,7 +14720,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationServiceAccount -Operation Delete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14568,7 +14758,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationServiceAccount -Operation Rotate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14606,7 +14796,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationServiceAccount -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14645,7 +14835,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSharepoint -Operation ExcludeObjectsFromProtection
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14684,7 +14874,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation Assign
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14722,7 +14912,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation AssignRetentionToSnappables
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14760,7 +14950,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation AssignRetentionToSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14798,7 +14988,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation AssignsForSnappableHierarchies
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14836,7 +15026,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation CreateGlobal
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14874,7 +15064,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation ExportManagedVolumeSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14912,7 +15102,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation GetPendingAssignments
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14950,7 +15140,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation Pause
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -14988,7 +15178,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSla -Operation UpdateGlobal
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15027,7 +15217,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSmb -Operation AddAndJoinDomain
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15065,7 +15255,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSmb -Operation DeleteDomain
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15103,7 +15293,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSmb -Operation JoinDomain
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15141,7 +15331,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSmb -Operation PutConfiguration
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15180,7 +15370,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation BatchQuarantine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15218,7 +15408,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation BatchReleaseFromQuarantine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15256,7 +15446,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation BulkTierExistings
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15294,7 +15484,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation CreateDomainController
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15332,7 +15522,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation CreateDownloadForVolumeGroup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15370,7 +15560,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation CreateFileset
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15408,7 +15598,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation DeleteCloudWorkload
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15446,7 +15636,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation DeleteFilesets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15484,7 +15674,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation FilesetDownloadFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15522,7 +15712,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation FilesetExportFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15560,7 +15750,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation RestoreDomainController
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15598,7 +15788,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation RestoreVolumeGroupFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15636,7 +15826,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation StartEc2InstanceExportJob
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15674,7 +15864,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation StartRecoverS3Job
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15712,7 +15902,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation TakeOnDemand
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15750,7 +15940,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation UploadDatabaseToBlobstore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15788,7 +15978,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationSnapshot -Operation VmwareDownloadFromLocation
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15827,7 +16017,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationStorageArray -Operation Add
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15865,7 +16055,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationStorageArray -Operation Delete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15903,7 +16093,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationStorageArray -Operation Refresh
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15941,7 +16131,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationStorageArray -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -15980,7 +16170,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationTape -Operation CreateReaderTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16018,7 +16208,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationTape -Operation CreateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16056,7 +16246,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationTape -Operation UpdateTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16095,7 +16285,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationThreat -Operation CancelHunt
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16133,7 +16323,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationThreat -Operation EnableMonitoring
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16171,7 +16361,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationThreat -Operation StartHunt
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16210,7 +16400,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVcenter -Operation Create
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16248,7 +16438,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVcenter -Operation Delete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16286,7 +16476,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVcenter -Operation Refresh
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16324,7 +16514,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVcenter -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16362,7 +16552,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVcenter -Operation UpdateHotAddBandwidth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16400,7 +16590,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVcenter -Operation UpdateHotAddNetwork
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16439,7 +16629,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation BulkOnDemandSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16477,7 +16667,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation CreateAdvancedTag
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16515,7 +16705,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation DeleteAdvancedTag
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16553,7 +16743,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation DeleteLiveMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16591,7 +16781,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation DownloadVirtualMachineFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16629,7 +16819,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation ExportSnapshotToStandaloneHostV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16667,7 +16857,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation OnDemandSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16705,7 +16895,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphere -Operation UpdateAdvancedTag
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16744,7 +16934,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation BatchExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16782,7 +16972,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation BatchExportV3
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16820,7 +17010,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation BatchInPlaceRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16858,7 +17048,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation DeleteSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16896,7 +17086,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation DownloadSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16934,7 +17124,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation DownloadSnapshotFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -16972,7 +17162,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation ExcludeVmDisks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17010,7 +17200,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation ExportSnapshotV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17048,7 +17238,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation ExportSnapshotV3
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17086,7 +17276,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation ExportSnapshotWithDownloadFromCloud
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17124,7 +17314,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation InitiateBatchInstantRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17162,7 +17352,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation InitiateBatchLiveMountV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17200,7 +17390,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation InitiateDiskMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17238,7 +17428,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation InitiateInPlaceRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17276,7 +17466,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation InitiateInstantRecoveryV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17314,7 +17504,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation InitiateLiveMountV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17352,7 +17542,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation ListEsxiDatastores
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17390,7 +17580,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation MountRelocate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17428,7 +17618,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation MountRelocateV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17466,7 +17656,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation PowerOnOffLiveMount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17504,7 +17694,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation RecoverFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17542,7 +17732,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation RecoverFilesNew
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17580,7 +17770,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation RegisterAgent
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17618,7 +17808,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationVsphereVm -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17657,7 +17847,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationWebhook -Operation Create
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17695,7 +17885,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationWebhook -Operation Delete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17733,7 +17923,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationWebhook -Operation Test
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17771,7 +17961,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationWebhook -Operation TestExisting
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17809,7 +17999,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscMutationWebhook -Operation Update
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17848,7 +18038,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation EnabledFeatures
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17886,7 +18076,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation Id
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17924,7 +18114,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation Lookup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -17962,7 +18152,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation Owners
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18000,7 +18190,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation Products
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18038,7 +18228,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation Settings
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18076,7 +18266,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAccount -Operation Users
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18115,7 +18305,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryActivitySeries -Operation ActivitySeries
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18153,7 +18343,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryActivitySeries -Operation List
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18191,7 +18381,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryActivitySeries -Operation UserFileTimeline
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18229,7 +18419,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryActivitySeries -Operation UserTimeline
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18268,7 +18458,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation ArtifactsToDelete
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18306,7 +18496,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation AvailabilityZonesByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18344,7 +18534,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CdmVersions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18382,7 +18572,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CloudAccountConfigs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18420,7 +18610,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CloudAccountListSecurityGroups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18458,7 +18648,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CloudAccountListSubnets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18496,7 +18686,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CloudAccountListVpcs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18534,7 +18724,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CloudAccountWithFeatures
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18572,7 +18762,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation CloudAccountsWithFeatures
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18610,7 +18800,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation ComputeSettings
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18648,7 +18838,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation DbParameterGroupsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18686,7 +18876,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation DbSubnetGroupsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18724,7 +18914,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation Ec2KeyPairsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18762,7 +18952,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation ExocomputeConfigs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18800,7 +18990,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation InstanceProfileNames
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18838,7 +19028,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation IsS3BucketNameAvailable
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18876,7 +19066,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation KmsEncryptionKeysByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18914,7 +19104,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation OptionGroupsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18952,7 +19142,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation PermissionPolicies
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -18990,7 +19180,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation RdsInstanceDetails
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19028,7 +19218,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation Regions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19066,7 +19256,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation S3BucketStateForRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19104,7 +19294,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation S3Buckets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19142,7 +19332,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation S3BucketsDetails
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19180,7 +19370,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation SupportedRdsDatabaseInstanceClasses
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19218,7 +19408,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation TrustPolicy
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19256,7 +19446,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation Vpcs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19294,7 +19484,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAws -Operation VpcsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19333,7 +19523,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation Account
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19371,7 +19561,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation Accounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19409,7 +19599,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation AmiTypeForArchivedSnapshotExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19447,7 +19637,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation EbsVolume
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19485,7 +19675,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation EbsVolumes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19523,7 +19713,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation EbsVolumesByName
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19561,7 +19751,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation Ec2Instance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19599,7 +19789,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation Ec2Instances
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19637,7 +19827,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation Ec2InstancesByName
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19675,7 +19865,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation IsEbsVolumeSnapshotRestorable
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19713,7 +19903,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation IsRdsInstanceLaunchConfigurationValid
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19751,7 +19941,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation RdsExportDefaults
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19789,7 +19979,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation RdsInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19827,7 +20017,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation RdsInstances
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19865,7 +20055,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation RdsPointInTimeRestoreWindow
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19903,7 +20093,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation Root
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19941,7 +20131,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation S3Bucket
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -19979,7 +20169,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation ValidateRdsClusterNameForExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20017,7 +20207,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAwsNative -Operation ValidateRdsInstanceNameForExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20056,7 +20246,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation AdDirectories
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20094,7 +20284,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation AdDirectory
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20132,7 +20322,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation AdObjectsByType
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20170,7 +20360,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation ArmTemplatesByFeature
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20208,7 +20398,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CdmVersions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20246,7 +20436,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CheckPersistentStorageSubscriptionCanUnmap
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20284,7 +20474,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountMissingPermissions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20322,7 +20512,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountPermissionConfig
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20360,7 +20550,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountSubnetsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20398,7 +20588,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountSubscriptionWithFeatures
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20436,7 +20626,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountSubscriptionsByFeature
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20474,7 +20664,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountTenant
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20512,7 +20702,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountTenantWithExoConfigs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20550,7 +20740,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation CloudAccountTenants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20588,7 +20778,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation DiskEncryptionSetsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20626,7 +20816,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation EncryptionKeys
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20664,7 +20854,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation ExocomputeConfigsInAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20702,7 +20892,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation HasRelicAdSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20740,7 +20930,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation HostedAzureRegions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20778,7 +20968,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation IsStorageAccountNameAvailable
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20816,7 +21006,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation KeyVaultsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20854,7 +21044,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation ManagedIdentities
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20892,7 +21082,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation Nsgs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20930,7 +21120,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation Regions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -20968,7 +21158,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation ResourceGroups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21006,7 +21196,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SearchAdSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21044,7 +21234,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21082,7 +21272,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlDatabaseDbPointInTimeRestoreWindowFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21120,7 +21310,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlDatabaseServer
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21158,7 +21348,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlDatabaseServerElasticPools
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21196,7 +21386,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlDatabaseServers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21234,7 +21424,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlDatabases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21272,7 +21462,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlManagedInstanceDatabase
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21310,7 +21500,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlManagedInstanceDatabases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21348,7 +21538,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21386,7 +21576,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlManagedInstanceServer
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21424,7 +21614,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SqlManagedInstanceServers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21462,7 +21652,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation StorageAccounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21500,7 +21690,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation StorageAccountsByRegion
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21538,7 +21728,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation Subnets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21576,7 +21766,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation SubscriptionWithExocomputeMappings
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21614,7 +21804,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation Subscriptions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21652,7 +21842,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation VNets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21690,7 +21880,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzure -Operation ValidateCloudAccountExocomputeConfigurations
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21729,7 +21919,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation AvailabilitySetsByRegionFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21767,7 +21957,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation DoesResourceGroupExist
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21805,7 +21995,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ExportCompatibleDiskTypesByRegionFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21843,7 +22033,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ExportCompatibleVmSizesByRegionFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21881,7 +22071,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation IsManagedDiskSnapshotRestorable
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21919,7 +22109,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation IsSqlDatabaseSnapshotPersistent
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21957,7 +22147,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ManagedDisk
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -21995,7 +22185,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ManagedDisks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22033,7 +22223,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ResourceGroup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22071,7 +22261,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ResourceGroups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22109,7 +22299,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ResourceGroupsInfoIfExist
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22147,7 +22337,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation Root
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22185,7 +22375,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation SecurityGroupsByRegionFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22223,7 +22413,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation StorageAccountsFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22261,7 +22451,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation SubnetsByRegionFromAzure
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22299,7 +22489,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation Subscription
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22337,7 +22527,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation Subscriptions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22375,7 +22565,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ValidateSqlDatabaseDbNameForExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22413,7 +22603,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation ValidateSqlManagedInstanceDbNameForExport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22451,7 +22641,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation VirtualMachine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22489,7 +22679,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation VirtualMachineSizes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22527,7 +22717,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation VirtualMachines
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22565,7 +22755,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureNative -Operation VirtualNetworks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22604,7 +22794,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckNSGOutboundRules
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22642,7 +22832,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckNetworkSubnet
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22680,7 +22870,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckResourceGroupName
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22718,7 +22908,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckStorageAccountAccessibility
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22756,7 +22946,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckStorageAccountName
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22794,7 +22984,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckSubscriptionQuota
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22832,7 +23022,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation CheckVirtualNetworkName
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22870,7 +23060,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation Exocompute
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22908,7 +23098,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation GetAzureHostType
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22946,7 +23136,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation GetNetworkSubnetUnusedAddr
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -22984,7 +23174,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryAzureO365 -Operation ValidateUserRoles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23023,7 +23213,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation ColumnFamilies
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23061,7 +23251,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation ColumnFamily
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23099,7 +23289,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation ColumnFamilyRecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23137,7 +23327,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation ColumnFamilySchema
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23175,7 +23365,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation Keyspace
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23213,7 +23403,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation Keyspaces
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23251,7 +23441,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation Source
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23289,7 +23479,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCassandra -Operation Sources
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23297,6 +23487,44 @@ if ($GetGqlRequest) {
     $query.Var.ToString()
 }
 
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -Op AssignableGlobal
+# -------------------------------------------------------------------
+
+$query = New-RscQueryCertificate -Op AssignableGlobal
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryCertificate.AssignableGlobal" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryCertificate.AssignableGlobal" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryCertificate.AssignableGlobal" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryCertificate -Operation AssignableGlobal
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
 
 # -------------------------------------------------------------------
 # New-RscQueryCertificate -Op Certificate
@@ -23328,7 +23556,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCertificate -Operation Certificate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23366,7 +23594,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCertificate -Operation Cluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23404,7 +23632,83 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCertificate -Operation ClusterWebSigned
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -Op Global
+# -------------------------------------------------------------------
+
+$query = New-RscQueryCertificate -Op Global
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryCertificate.Global" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryCertificate.Global" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryCertificate.Global" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryCertificate -Operation Global
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryCertificate -Op Info
+# -------------------------------------------------------------------
+
+$query = New-RscQueryCertificate -Op Info
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryCertificate.Info" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryCertificate.Info" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryCertificate.Info" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryCertificate -Operation Info
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23442,7 +23746,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCertificate -Operation SigningRequest
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23480,7 +23784,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCertificate -Operation SigningRequests
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23518,7 +23822,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCertificate -Operation WithKey
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23557,7 +23861,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudAccount -Operation CloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23595,7 +23899,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudAccount -Operation CurrentFeaturePermissions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23633,7 +23937,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudAccount -Operation ExocomputeMappings
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23671,7 +23975,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudAccount -Operation LatestFeaturePermissions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23710,7 +24014,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation CheckArchivedSnapshotsLocked
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23748,7 +24052,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation CheckLabelRuleNameUniqueness
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23786,7 +24090,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation CheckRequiredPermissionsForFeature
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23824,7 +24128,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation CheckTagRuleNameUniqueness
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23862,7 +24166,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation CustomerTags
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23900,7 +24204,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation FileRecoveryEligibleSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23938,7 +24242,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation IsFileRecoveryFeasible
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -23976,7 +24280,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation LabelKeys
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24014,7 +24318,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation LabelRules
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24052,7 +24356,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation LabelValues
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24090,7 +24394,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation RbaInstallers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24128,7 +24432,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation SnapshotDetailsForRecovery
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24166,7 +24470,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation SnapshotTypeDetails
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24204,7 +24508,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation Snapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24242,7 +24546,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation SqlServerSetupScript
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24280,7 +24584,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation TagKeys
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24318,7 +24622,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation TagRules
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24356,7 +24660,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation TagValues
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24394,7 +24698,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCloudNative -Operation WorkloadVersionedFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24433,7 +24737,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Cluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24471,7 +24775,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Connected
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24509,7 +24813,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation DatabaseLogReport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24547,7 +24851,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation DatabaseLogReportingProperties
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24585,7 +24889,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation DefaultGateway
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24623,7 +24927,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Dns
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24661,7 +24965,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation FloatingIps
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24699,7 +25003,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation GroupByList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24737,7 +25041,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation HostFailover
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24775,7 +25079,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Ipmi
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24813,7 +25117,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Ipv6Mode
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24851,7 +25155,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation IsTotpAckNecessary
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24889,7 +25193,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation List
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24927,7 +25231,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation NetworkInterfaces
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -24965,7 +25269,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Nodes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25003,7 +25307,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation NtpServers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25041,7 +25345,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation OperationJobProgress
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25079,7 +25383,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Proxy
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25117,7 +25421,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation RegistrationProductInfo
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25155,7 +25459,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation ReplicationTargets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25193,7 +25497,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation ReportMigrationCount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25231,7 +25535,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation ReportMigrationJobStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25269,7 +25573,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation ReportMigrationStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25307,7 +25611,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation TotpAckStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25345,7 +25649,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation TypeList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25383,7 +25687,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Vlans
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25421,7 +25725,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation WebCertsAndIpmis
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25459,7 +25763,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation Windows
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25497,7 +25801,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryCluster -Operation WithUpgradesInfo
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25536,7 +25840,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation Database
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25574,7 +25878,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation DatabaseJobStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25612,7 +25916,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation Databases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25650,7 +25954,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation Instance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25688,7 +25992,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation Instances
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25726,7 +26030,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation LogSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25764,7 +26068,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation LogSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25802,7 +26106,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation RecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25840,7 +26144,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDb2 -Operation RecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25879,7 +26183,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDownload -Operation CdmUpgradesPdf
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25917,7 +26221,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDownload -Operation EdVersionList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25955,7 +26259,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryDownload -Operation PackageStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -25994,7 +26298,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation Dag
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26032,7 +26336,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation Dags
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26070,7 +26374,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation Database
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26108,7 +26412,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation Databases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26146,7 +26450,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation LiveMounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26184,7 +26488,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation Server
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26222,7 +26526,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryExchange -Operation Servers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26261,7 +26565,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryFileset -Operation Linux
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26299,7 +26603,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryFileset -Operation RequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26337,7 +26641,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryFileset -Operation Share
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26375,7 +26679,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryFileset -Operation Template
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26413,7 +26717,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryFileset -Operation Templates
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26451,7 +26755,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryFileset -Operation Windows
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26490,7 +26794,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation CloudAccountMissingPermissionsForAddition
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26528,7 +26832,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation CloudAccountProjectsByFeature
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26566,7 +26870,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation CloudAccountProjectsForOauth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26604,7 +26908,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation FeaturePermissionsForCloudAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26642,7 +26946,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation GetDefaultCredentialsServiceAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26680,7 +26984,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeAvailableKmsCryptoKeys
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26718,7 +27022,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeCompatibleMachineTypes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26756,7 +27060,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeNetworks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26794,7 +27098,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeProjectsWithAccessibleNetworks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26832,7 +27136,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeRegions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26870,7 +27174,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeStoredMachineTypes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26908,7 +27212,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeStoredMachineTypesInProject
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26946,7 +27250,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeStoredNetworkNames
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -26984,7 +27288,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeStoredNetworkNamesInProject
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27022,7 +27326,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeStoredRegions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27060,7 +27364,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcp -Operation NativeStoredRegionsInProject
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27099,7 +27403,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation Disk
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27137,7 +27441,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation Disks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27175,7 +27479,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation GceInstance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27213,7 +27517,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation GceInstances
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27251,7 +27555,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation Project
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27289,7 +27593,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation Projects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27327,7 +27631,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryGcpNative -Operation StoredDiskLocations
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27366,7 +27670,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHost -Operation Diagnosis
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27404,7 +27708,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHost -Operation PhysicalHost
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27442,7 +27746,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHost -Operation PhysicalHosts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27480,7 +27784,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHost -Operation Search
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27518,7 +27822,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHost -Operation Share
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27556,7 +27860,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHost -Operation Shares
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27595,7 +27899,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation Cluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27633,7 +27937,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation HostAsyncRequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27671,7 +27975,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation Mounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27709,7 +28013,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation Scvmm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27747,7 +28051,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation ScvmmAsyncRequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27785,7 +28089,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation Scvmms
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27823,7 +28127,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation Server
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27861,7 +28165,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation Servers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27899,7 +28203,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation TopLevelDescendants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27937,7 +28241,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation UniqueServersCount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -27975,7 +28279,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation VirtualMachine
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28013,7 +28317,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation VirtualMachineAsyncRequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28051,7 +28355,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation VirtualMachines
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28089,7 +28393,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryHyperv -Operation VmDetail
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28128,7 +28432,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation AppManifest
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28166,7 +28470,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation Cluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28204,7 +28508,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation Clusters
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28242,7 +28546,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation Namespace
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28280,7 +28584,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation Namespaces
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28318,7 +28622,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation ReplicaSnapshotInfos
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28356,7 +28660,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryK8s -Operation SnapshotInfo
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28395,7 +28699,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryLdap -Operation AuthorizedPrincipalList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28433,7 +28737,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryLdap -Operation IntegrationList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28471,7 +28775,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryLdap -Operation PrincipalList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28510,7 +28814,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryM365 -Operation Regions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28549,7 +28853,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryManagedVolume -Operation InventoryStats
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28587,7 +28891,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryManagedVolume -Operation LiveMounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28625,7 +28929,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryManagedVolume -Operation ManagedVolume
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28663,7 +28967,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryManagedVolume -Operation ManagedVolumes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28702,7 +29006,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation BulkRecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28740,7 +29044,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation BulkRecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28778,7 +29082,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation Collection
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28816,7 +29120,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation CollectionRecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28854,7 +29158,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation Collections
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28892,7 +29196,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation Database
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28930,7 +29234,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation Databases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -28968,7 +29272,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation RecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29006,7 +29310,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation Source
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29044,7 +29348,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMongo -Operation Sources
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29083,7 +29387,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMosaic -Operation BulkRecoveryRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29121,7 +29425,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMosaic -Operation Snapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29159,7 +29463,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMosaic -Operation Stores
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29197,7 +29501,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMosaic -Operation Versions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29236,7 +29540,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation AvailabilityGroup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29274,7 +29578,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation CdmLogShippingTarget
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29312,7 +29616,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation CdmLogShippingTargets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29350,7 +29654,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation CompatibleInstances
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29388,7 +29692,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation Database
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29426,7 +29730,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation DatabaseLiveMounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29464,7 +29768,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation DatabaseMissedRecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29502,7 +29806,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation DatabaseMissedSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29540,7 +29844,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation DatabaseRestoreEstimate
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29578,7 +29882,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation DatabaseRestoreFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29616,7 +29920,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation Databases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29654,7 +29958,45 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation DefaultProperties
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMssql -Op DefaultPropertiesOnCluster
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMssql -Op DefaultPropertiesOnCluster
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMssql.DefaultPropertiesOnCluster" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMssql.DefaultPropertiesOnCluster" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMssql.DefaultPropertiesOnCluster" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMssql -Operation DefaultPropertiesOnCluster
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29692,7 +30034,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation Instance
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29730,7 +30072,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation LogShippingTargets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29768,7 +30110,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation RecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29806,7 +30148,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryMssql -Operation TopLevelDescendants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29845,7 +30187,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation Fileset
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29883,7 +30225,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation Namespace
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29921,7 +30263,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation Namespaces
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29959,7 +30301,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation Share
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -29997,7 +30339,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation System
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30035,7 +30377,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation Systems
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30073,7 +30415,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation TopLevelDescendants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30111,7 +30453,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNas -Operation Volume
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30150,7 +30492,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation BrowseSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30188,7 +30530,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation Category
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30226,7 +30568,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation CategoryValue
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30264,7 +30606,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation Cluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30302,7 +30644,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation ClusterAsyncRequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30340,7 +30682,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation ClusterContainers
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30378,7 +30720,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation ClusterNetworks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30416,7 +30758,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation Clusters
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30454,7 +30796,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation Mounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30492,7 +30834,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation PrismCentral
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30530,7 +30872,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation PrismCentrals
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30568,7 +30910,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation SearchVm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30606,7 +30948,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation SnapshotDetail
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30644,7 +30986,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation TopLevelDescendants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30682,7 +31024,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation Vm
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30720,7 +31062,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation VmAsyncRequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30758,7 +31100,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation VmMissedSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30796,7 +31138,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryNutanix -Operation Vms
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30835,7 +31177,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation AdGroups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30873,7 +31215,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation BrowseTeamConvChannels
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30911,7 +31253,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Calendar
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30949,7 +31291,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Groups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -30987,7 +31329,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation License
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31025,7 +31367,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation ListApps
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31063,7 +31405,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Mailbox
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31101,7 +31443,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Mailboxes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31139,7 +31481,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation ObjectAncestors
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31177,7 +31519,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Onedrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31215,7 +31557,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Onedrives
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31253,7 +31595,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Org
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31291,7 +31633,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation OrgAtSnappableLevel
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31329,7 +31671,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation OrgStatuses
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31367,7 +31709,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation OrgSummaries
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31405,7 +31747,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Orgs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31443,7 +31785,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation ServiceAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31481,7 +31823,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation ServiceStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31519,7 +31861,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointDrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31557,7 +31899,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointDrives
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31595,7 +31937,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31633,7 +31975,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointLists
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31671,7 +32013,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointObjectList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31709,7 +32051,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointObjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31747,7 +32089,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointSite
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31785,7 +32127,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SharepointSites
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31823,7 +32165,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Site
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31861,7 +32203,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Sites
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31899,7 +32241,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation StorageStats
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31937,7 +32279,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation SubscriptionsAppTypeCounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -31975,7 +32317,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Team
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32013,7 +32355,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation TeamChannels
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32051,7 +32393,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation TeamConversationsFolderID
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32089,7 +32431,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation TeamPostedBy
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32127,7 +32469,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation Teams
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32165,7 +32507,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation User
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32203,7 +32545,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryO365 -Operation UserObjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32242,7 +32584,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation AcoExampleDownloadLink
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32280,7 +32622,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation AcoParameters
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32318,7 +32660,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation DataGuardGroup
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32356,7 +32698,45 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation Database
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryOracle -Op DatabaseAsyncRequestDetails
+# -------------------------------------------------------------------
+
+$query = New-RscQueryOracle -Op DatabaseAsyncRequestDetails
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryOracle.DatabaseAsyncRequestDetails" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryOracle.DatabaseAsyncRequestDetails" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryOracle.DatabaseAsyncRequestDetails" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryOracle -Operation DatabaseAsyncRequestDetails
+    $query.Info()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32394,7 +32774,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation DatabaseLogBackupConfig
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32432,7 +32812,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation Databases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32470,7 +32850,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation Host
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32508,7 +32888,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation HostLogBackupConfig
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32546,7 +32926,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation LiveMounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32584,7 +32964,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation MissedRecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32622,7 +33002,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation MissedSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32660,7 +33040,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation PdbDetails
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32698,7 +33078,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation Rac
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32736,7 +33116,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation RacLogBackupConfig
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32774,7 +33154,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation RecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32812,7 +33192,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryOracle -Operation TopLevelDescendants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32851,7 +33231,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryPolicy -Operation Details
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32889,7 +33269,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryPolicy -Operation Obj
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32927,7 +33307,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryPolicy -Operation ObjectUsages
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -32965,7 +33345,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryPolicy -Operation Objs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33003,7 +33383,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryPolicy -Operation Policies
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33041,7 +33421,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryPolicy -Operation Policy
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33080,7 +33460,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation DetectionWorkloadLocations
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33118,7 +33498,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation InvestigationAnalysisSummary
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33156,7 +33536,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation InvestigationEnablement
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33194,7 +33574,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation InvestigationWorkloadScannedCount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33232,7 +33612,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation OverallInvestigationSummary
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33270,7 +33650,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation PendingInvestigationResultsCount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33308,7 +33688,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation ProcessedInvestigationWorkloadCount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33346,7 +33726,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation ProtectedInvestigationWorkloadCount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33384,7 +33764,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation Result
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33422,7 +33802,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation ResultOpt
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33460,7 +33840,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation Results
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33498,7 +33878,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRansomware -Operation ResultsGrouped
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33537,7 +33917,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRcs -Operation ArchivalLocationsConsumptionStats
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33575,7 +33955,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRcs -Operation Cluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33613,7 +33993,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRcs -Operation Dhcores
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33652,7 +34032,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRcv -Operation AccountEntitlement
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33690,7 +34070,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryRcv -Operation AccountEntitlements
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33729,7 +34109,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryReplication -Operation IncomingStats
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33767,7 +34147,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryReplication -Operation OutgoingStats
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33805,7 +34185,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryReplication -Operation Pairs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33843,7 +34223,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryReplication -Operation ValidTargets
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33882,7 +34262,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryReport -Operation Data
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33920,7 +34300,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryReport -Operation Scheduled
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33959,7 +34339,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation Database
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -33997,7 +34377,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation Databases
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34035,7 +34415,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation LogSnapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34073,7 +34453,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation LogSnapshots
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34111,7 +34491,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation RecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34149,7 +34529,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation RecoverableRanges
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34187,7 +34567,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation System
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34225,7 +34605,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySapHana -Operation Systems
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34264,7 +34644,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryServiceAccount -Operation ServiceAccount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34303,7 +34683,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation BrowseDrive
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34341,7 +34721,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation BrowseList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34379,7 +34759,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation SiteDescendants
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34417,7 +34797,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation SiteExclusions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34455,7 +34835,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation SiteSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34493,7 +34873,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation SnappableDriveSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34531,7 +34911,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation SnappableListSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34569,7 +34949,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySharepoint -Operation SnapshotDriveSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34608,7 +34988,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation AuditDetail
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34646,7 +35026,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation ClusterDomains
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34684,7 +35064,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation ClusterGlobals
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34722,7 +35102,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation ConflictObjects
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34760,7 +35140,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation CountOfObjectsProtected
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34798,7 +35178,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation Domain
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34836,7 +35216,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation Domains
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34874,7 +35254,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation GlobalFilterList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34912,7 +35292,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation GlobalStatuses
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34950,7 +35330,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation ManagedVolume
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -34988,7 +35368,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation ManagedVolumes
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35026,7 +35406,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation NcdComplianceData
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35064,7 +35444,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation SummariesByIds
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35102,7 +35482,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySla -Operation VerifyWithReplicationToCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35141,7 +35521,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySmb -Operation Configuration
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35179,7 +35559,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySmb -Operation Domains
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35218,7 +35598,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation BrowseFileList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35256,7 +35636,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation ClosestToPointInTime
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35294,7 +35674,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation EmailSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35332,7 +35712,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation EventSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35370,7 +35750,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation FilesDelta
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35408,7 +35788,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation FilesDeltaV2
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35446,7 +35826,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation Fileset
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35484,7 +35864,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation FilesetFiles
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35522,7 +35902,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation LegalHoldSnappable
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35560,7 +35940,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation OnedriveSearch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35598,7 +35978,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation Polaris
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35636,7 +36016,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation Pvcs
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35674,7 +36054,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation QuarantinedDetails
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35712,7 +36092,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation Results
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35750,7 +36130,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation SnappableList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35788,7 +36168,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation SnappablesList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35826,7 +36206,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation SnappablesWithLegalHoldsSummary
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35864,7 +36244,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation Snapshot
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35902,7 +36282,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation UnmanagedObject
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35940,7 +36320,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation VappInstantRecoveryOptions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -35978,7 +36358,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySnapshot -Operation VappTemplateExportOptions
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36017,7 +36397,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySonar -Operation ContentReport
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36055,7 +36435,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySonar -Operation Report
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36093,7 +36473,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySonar -Operation ReportRow
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36131,7 +36511,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySonar -Operation UserGroups
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36169,7 +36549,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQuerySonar -Operation Users
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36208,7 +36588,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryStorageArray -Operation StorageArray
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36247,7 +36627,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryThreat -Operation HuntDetail
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36285,7 +36665,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryThreat -Operation HuntResult
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36323,7 +36703,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryThreat -Operation HuntSummary
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36361,7 +36741,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryThreat -Operation Hunts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36400,7 +36780,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation AdvancedTagPreview
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36438,7 +36818,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation HotAddBandwidth
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36476,7 +36856,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation HotAddNetwork
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36514,7 +36894,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation HotAddProxy
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36552,7 +36932,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation List
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36590,7 +36970,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation Networks
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36628,7 +37008,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation NumProxiesNeeded
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36666,7 +37046,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation PreAddInfo
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36704,7 +37084,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVcenter -Operation Vcenter
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36743,7 +37123,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation ComputeCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36781,7 +37161,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation ComputeClusters
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36819,7 +37199,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Datacenter
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36857,7 +37237,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Datastore
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36895,7 +37275,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation DatastoreCluster
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36933,7 +37313,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation DatastoreClusters
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -36971,7 +37351,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation DatastoreList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37009,7 +37389,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Folder
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37047,7 +37427,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Folders
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37085,7 +37465,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Host
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37123,7 +37503,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation HostDetails
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37161,7 +37541,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation HostList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37199,7 +37579,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation HostsByFids
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37237,7 +37617,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation LiveMounts
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37275,7 +37655,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Mount
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37313,7 +37693,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation MountList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37351,7 +37731,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Network
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37389,7 +37769,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation ResourcePool
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37427,7 +37807,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation RootRecoveryHierarchy
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37465,7 +37845,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation Tag
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37503,7 +37883,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation TagCategory
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37541,7 +37921,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation TopLevelDescendantsList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37579,7 +37959,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphere -Operation VmwareCdpLiveInfo
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37618,7 +37998,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphereVm -Operation AsyncRequestStatus
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37656,7 +38036,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphereVm -Operation MissedRecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37694,7 +38074,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphereVm -Operation New
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37732,7 +38112,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphereVm -Operation NewList
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37770,7 +38150,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphereVm -Operation RecoverableRange
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37808,7 +38188,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryVsphereVm -Operation RecoverableRangeInBatch
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()
@@ -37847,7 +38227,7 @@ if ($GetGqlRequest) {
 } else {
     $query = New-RscQueryWebhook -Operation Webhook
     $query.Info()
-    $query.VarTemplate()
+    $query.Example()
     $query.GqlRequest($false)
     $query.ToString()
     $query.Var.Info()

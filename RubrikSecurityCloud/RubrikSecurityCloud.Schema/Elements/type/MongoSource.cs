@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> PhysicalHostConnection? DataHosts
+        // GraphQL -> dataHosts: PhysicalHostConnection! (type)
+        [JsonProperty("dataHosts")]
+        public PhysicalHostConnection? DataHosts { get; set; }
+
         //      C# -> MongoSourceDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: MongoSourceDescendantTypeConnection! (type)
         [JsonProperty("descendantConnection")]
@@ -247,6 +252,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Username = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
+        PhysicalHostConnection? DataHosts = null,
         MongoSourceDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<CdmMongoNode>? IgnoreSecondaryNodes = null,
@@ -338,6 +344,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( DataHosts != null ) {
+            this.DataHosts = DataHosts;
         }
         if ( DescendantConnection != null ) {
             this.DescendantConnection = DescendantConnection;
@@ -643,6 +652,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PhysicalHostConnection? DataHosts
+        // GraphQL -> dataHosts: PhysicalHostConnection! (type)
+        if (this.DataHosts != null) {
+            var fspec = this.DataHosts.AsFieldSpec(conf.Child("dataHosts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataHosts {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1272,6 +1293,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> PhysicalHostConnection? DataHosts
+        // GraphQL -> dataHosts: PhysicalHostConnection! (type)
+        if (ec.Includes("dataHosts",false))
+        {
+            if(this.DataHosts == null) {
+
+                this.DataHosts = new PhysicalHostConnection();
+                this.DataHosts.ApplyExploratoryFieldSpec(ec.NewChild("dataHosts"));
+
+            } else {
+
+                this.DataHosts.ApplyExploratoryFieldSpec(ec.NewChild("dataHosts"));
+
+            }
+        }
+        else if (this.DataHosts != null && ec.Excludes("dataHosts",false))
+        {
+            this.DataHosts = null;
         }
         //      C# -> MongoSourceDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: MongoSourceDescendantTypeConnection! (type)

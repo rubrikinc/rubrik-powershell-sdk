@@ -40,7 +40,10 @@ namespace RubrikSecurityCloud.Types
         UNKNOWN,
 
         [EnumMember(Value = "UPGRADE")]
-        UPGRADE
+        UPGRADE,
+
+        [EnumMember(Value = "WARNING")]
+        WARNING
 
 
     } // enum ClusterNodeStatus

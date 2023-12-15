@@ -444,6 +444,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_CLUSTER_NAME")]
         K8S_CLUSTER_NAME,
 
+        [EnumMember(Value = "K8S_CLUSTER_STATUS")]
+        K8S_CLUSTER_STATUS,
+
         [EnumMember(Value = "KUPR_CDM_CLUSTER_ID")]
         KUPR_CDM_CLUSTER_ID,
 

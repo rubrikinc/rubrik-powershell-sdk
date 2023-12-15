@@ -29,3 +29,4 @@ Regions for AWS.
 - EU_CENTRAL_2 - AWS EU (Zurich) region.
 - AP_SOUTHEAST_3 - AWS Asia Pacific (Jakarta) region.
 - IL_CENTRAL_1 - Israel (tel aviv) region.
+- EU_NORTH_1 - AWS EU (Stockholm) region.
