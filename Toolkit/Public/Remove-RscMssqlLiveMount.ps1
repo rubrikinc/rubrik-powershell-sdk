@@ -42,24 +42,11 @@ function Remove-RscMssqlLiveMount {
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $false
         )]
-        [Switch]$Force,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$AsQuery
+        [Switch]$Force
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
-        # Determine field profile:
-        $fieldProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $fieldProfile = "DETAIL"
-        }
-        Write-Host "Remove-RscMssqlLiveMount field profile: $fieldProfile"
+        Write-Debug "- Running Remove-RscMssqlLiveMount"
         
         #region Create Query
         $query = New-RscMutationMssql -Operation DeleteLiveMount  
@@ -69,13 +56,7 @@ function Remove-RscMssqlLiveMount {
         $query.Var.input.force = $force
 
         #endregion
-
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-        }
+        $result = $query.Invoke()
         $result
-        
     } 
 }
