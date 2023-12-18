@@ -87,6 +87,6 @@ function Get-RscManagedVolume {
             $query.Var.filter += $clusterFilter
         }
         $result = $query.Invoke()
-        $result
+        $result.Nodes
     } 
 }
