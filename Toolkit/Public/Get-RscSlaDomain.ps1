@@ -87,7 +87,7 @@ function Get-RscSlaDomain {
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
         }
 
-        $result = Get-RscPages -Query $query
+        $result = Invoke-Rsc -Query $query
         $result
     } 
 }

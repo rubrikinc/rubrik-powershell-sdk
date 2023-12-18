@@ -60,7 +60,8 @@ function Get-RscVmwareVm {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQueryVsphereVm -Operation New -FieldProfile $inputProfile
+            #$query = New-RscQueryVsphereVm -Operation New -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery vSphereVmNew -FieldProfile $inputProfile
             $query.var.filter = @()
             $query.Var.fid = $Id
             $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
@@ -69,7 +70,8 @@ function Get-RscVmwareVm {
             $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
         } else {
-            $query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
+            #$query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
+            $query = New-RscQuery -GqlQuery vsphereVmNewConnection -FieldProfile $inputProfile
             $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes.Cluster.id = "PIZZA"
@@ -100,7 +102,7 @@ function Get-RscVmwareVm {
             $query.var.filter += $slaFilter
         }
 
-    $result = Get-RscPages -Query $query
+    $result = Invoke-Rsc -Query $query
 
     $result
 
