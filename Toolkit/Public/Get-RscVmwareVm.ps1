@@ -69,6 +69,8 @@ function Get-RscVmwareVm {
             $query.Field.GuestOsName = "TACOS"
             $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+            $result = Invoke-Rsc -Query $query
+            $result
         } else {
             #$query = New-RscQueryVsphereVm -Operation NewList -FieldProfile $inputProfile
             $query = New-RscQuery -GqlQuery vsphereVmNewConnection -FieldProfile $inputProfile
@@ -78,33 +80,34 @@ function Get-RscVmwareVm {
             $query.Field.Nodes[0].GuestOsName = "TACOS"
             $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
             $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
-        }
-
-        if ($Name) {
-            $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            # Regex filter doesn't work in the API right now, but we're going to play pretend. 
-            # With real Regex, users could search for VMs that start with the letter A if they wanted.
-            if ($name.Contains("*")) {
-                $name.Replace("*",'')
-                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::REGEX
-                $nameFilter.texts = $Name.Replace("*",'')
-            } else {
-                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $Name
+            if ($Name) {
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                # Regex filter doesn't work in the API right now, but we're going to play pretend. 
+                # With real Regex, users could search for VMs that start with the letter A if they wanted.
+                if ($name.Contains("*")) {
+                    $name.Replace("*",'')
+                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::REGEX
+                    $nameFilter.texts = $Name.Replace("*",'')
+                } else {
+                    $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+                    $nameFilter.texts = $Name
+                }
+                $query.var.filter += $nameFilter
             }
-            $query.var.filter += $nameFilter
+    
+            if ($Sla) {
+                $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
+                $slaFilter.Texts = $Sla.id
+                $query.var.filter += $slaFilter
+            }
+            $result = Invoke-Rsc -Query $query
+            $result.nodes
         }
 
-        if ($Sla) {
-            $slaFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $slaFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::EFFECTIVE_SLA
-            $slaFilter.Texts = $Sla.id
-            $query.var.filter += $slaFilter
-        }
 
-    $result = Invoke-Rsc -Query $query
 
-    $result
+
 
     } 
 }
