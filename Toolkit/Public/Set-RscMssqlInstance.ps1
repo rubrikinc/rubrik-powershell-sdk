@@ -55,105 +55,162 @@ function Set-RscMssqlInstance{
     Param(
         [Parameter(
             Mandatory = $false
-        )][RubrikSecurityCloud.Types.PhysicalHost]$RscMssqlInstance,
+        )][RubrikSecurityCloud.Types.MssqlInstance]$RscMssqlInstance, 
 
         [Parameter(
-            Mandatory = $true, 
-            ValueFromPipeline = $false,
-            ParameterSetName = "Protect"
+            Position = 2,
+            ParameterSetName = "Do Not Protect",
+            Mandatory = $false
+        )][switch]$DoNotProtect,
+
+        [Parameter(
+            Position = 3,
+            ParameterSetName = "Do Not Protect",
+            Mandatory = $true
+        )]
+        [ValidateSet("EXPIRE_IMMEDIATELY", "KEEP_FOREVER", "RETAIN_SNAPSHOTS")]
+        [string]$ExistingSnapshotRetention,
+
+        [Parameter(
+            Position = 2,
+            ParameterSetName = "Apply SLA Domain",
+            Mandatory = $false
         )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain,
 
         [Parameter(
-            Mandatory = $false
-        )][switch]$ShouldApplyToExistingSnapshots,
-
-        [Parameter(
-            Mandatory = $false
+            ParameterSetName = "Apply SLA Domain",
+            Position = 3
         )][switch]$CopyOnly,
 
         [Parameter(
-            Mandatory = $false
-        )][int]$LogBackupFrequencyInSeconds,
+            ParameterSetName = "Apply SLA Domain",
+            Position = 4
+        )]
+        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
+        [switch]$EnableLogBackups,
+        
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 5)]
+        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Use SLA Log Config")]
+        [switch]$UseSLALogConfig,
 
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 6)]
+        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Configure Log Backup and Retention")]
+        [int]$logBackupFrequencyInSeconds,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 7)]
+        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Configure Log Backup and Retention")]
+        [int]$logRetentionHours,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 8)]
+        [Parameter(ParameterSetName = "Log Backups")]
+        [Parameter(ParameterSetName = "Enable Host Log Retention")]
+        [Parameter(Mandatory = $false)]
+        [switch]$EnableHostLogRetention,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 9)]
+        [Parameter(ParameterSetName = "Log Backups")]
+        [Parameter(ParameterSetName = "Enable Host Log Retention")]
+        [Parameter(ParameterSetName = "Follow System Retention Configuration")]
+        [Parameter(Mandatory = $false)]
+        [switch]$FollowSystemRetentionConfig,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 11)]
+        [Parameter(ParameterSetName = "Log Backups")]
+        [Parameter(ParameterSetName = "Enable Host Log Retention")]
+        [Parameter(ParameterSetName = "Configure Host Log Retention")]
+        [Parameter(Mandatory = $false)]
+        [int]$HostLogRetentionInSeconds,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 12)]
         [Parameter(
+            ParameterSetName = "Clear Existing Protection",
             Mandatory = $false
-        )][int]$LogRetentionHours,
-
+        )][switch]$ShouldApplyToExistingSnapshots,
+        
+        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 13)]
         [Parameter(
+            ParameterSetName = "Clear Existing Protection",
             Mandatory = $false
-        )][switch]$HasLogConfigFromSla,
-
-        [Parameter(
-            Mandatory = $false
-        )][int]$HostLogRetention,
-
-        [Parameter(
-            Mandatory = $false
-        )][switch]$DoNotProtect
-
-
+        )][switch]$ShouldApplyToNonPolicySnapshots
     )
     Process {
         Write-Debug "-Running Get-RscMssqlInstance"
 
         #region Create Query
-        $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
-        $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
-        $query.Var.input.userNote = ""
-
-        
         switch ($PSCmdlet.ParameterSetName){
-            "UnProtect"{
-                $query.Var.input.updateinfo.ExistingSnapshotRetention = 'EXISTING_SNAPSHOT_RETENTION_RETAIN_SNAPSHOTS'
+            "Do Not Protect" {
+                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
+                $query.Var.input.userNote = ""
+                $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
+                $query.Var.input.updateinfo.ids = @()
+                $query.Var.input.updateinfo.ids += $RscMssqlInstance.id
+                switch ($ExistingSnapshotRetention) {
+                    "EXPIRE_IMMEDIATELY" {
+                        $query.Var.input.updateinfo.ExistingSnapshotRetention = "EXISTING_SNAPSHOT_RETENTION_EXPIRE_IMMEDIATELY"
+                    }
+                    "KEEP_FOREVER"{
+                        $query.Var.input.updateinfo.ExistingSnapshotRetention = "EXISTING_SNAPSHOT_RETENTION_KEEP_FOREVER"
+                    }
+                    "RETAIN_SNAPSHOTS"{
+                        $query.Var.input.updateinfo.ExistingSnapshotRetention = "EXISTING_SNAPSHOT_RETENTION_RETAIN_SNAPSHOTS"
+                    }
+                }
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaPatchPropertiesInput
-                
+                $query.Var.input.updateinfo.mssqlSlaPatchProperties.configuredSLADomainId = "UNPROTECTED"
+                $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaRelatedPropertiesInput
+                $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
-        }
-        $query.Var.input.updateinfo.ids = @()
-        $query.Var.input.updateinfo.ids += $RscMssqlInstance.PhysicalChildConnection.Nodes.id
+            "Apply SLA Domain"{
+                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
+                $query.Var.input.userNote = ""
+                $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
+                $query.Var.input.updateinfo.ids = @()
+                $query.Var.input.updateinfo.ids += $RscMssqlInstance.id
+                $query.Var.input.updateinfo.shouldApplyToExistingSnapshots = $ShouldApplyToExistingSnapshots
+                $query.Var.input.updateinfo.shouldApplyToNonPolicySnapshots = $ShouldApplyToNonPolicySnapshots
+                $query.Var.input.updateinfo.mssqlSlaPatchProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaPatchPropertiesInput
+                $query.Var.input.updateinfo.mssqlSlaPatchProperties.configuredSLADomainId = $RscSlaDomain.id
+                $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaRelatedPropertiesInput
 
-        $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
-        if ($ShouldApplyToExistingSnapshots){
-            $query.Var.input.updateinfo.shouldApplyToExistingSnapshots = $true
-        }
-        else {
-            $query.Var.input.updateinfo.shouldApplyToExistingSnapshots = $false
-        }
-        if ($ShouldApplyToNonPolicySnapshots){
-            $query.Var.input.updateinfo.shouldApplyToNonPolicySnapshots = $true
-        }
-        else {
-            $query.Var.input.updateinfo.shouldApplyToNonPolicySnapshots = $false
-        }
-        
-        $query.Var.input.updateinfo.mssqlSlaPatchProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaPatchPropertiesInput
-        $query.Var.input.updateinfo.mssqlSlaPatchProperties.configuredSlaDomainId = $RscSlaDomain.Id
-        if ($UseConfiguredDefaultLogRetention){
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.useConfiguredDefaultLogRetention = $true
-        }
-        else {
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.useConfiguredDefaultLogRetention = $false
-        }
+                if ($CopyOnly){
+                    $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.copyOnly = $true
+                }else {
+                    $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.copyOnly = $false
+                }
                 
-        $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaRelatedPropertiesInput
-        if ($CopyOnly){
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.copyOnly = $true
-        }
-        else{
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.copyOnly = $false
-        }
-        
-        $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.logBackupFrequencyInSeconds = $LogBackupFrequencyInSeconds
-        $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.logRetentionHours = $logRetentionHours
-        if ($HasLogConfigFromSla){
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hasLogConfigFromSla = $true
-        }else {
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hasLogConfigFromSla = $false
-        }
-        if ($hostLogRetention){
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = $hostLogRetention
-        }else {
-            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
+                If ($EnableLogBackups){
+                    if ($UseSLALogConfig){
+                            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hasLogConfigFromSla = $true
+                    }
+                    else{
+                        $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hasLogConfigFromSla = $false
+                        if ($logBackupFrequencyInSeconds){
+                            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.logBackupFrequencyInSeconds = $logBackupFrequencyInSeconds
+                        }
+                        if ($logRetentionHours){
+                            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.logRetentionHours = $logRetentionHours
+                        }
+                    }
+
+                    if ($EnableHostLogRetention){
+                        if($FollowSystemRetentionConfig){
+                            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -2
+                        }
+                        else {
+                            $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = $HostLogRetentionInSeconds
+                        }
+                    }
+                    else {
+                        $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
+                    }
+                }
+            }
+            Default {}
         }
         
         $query.invoke()
