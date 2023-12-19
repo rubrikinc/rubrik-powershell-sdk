@@ -8339,6 +8339,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? CreateOnDemandSapHanaStorageSnapshot
+        // GraphQL -> createOnDemandSapHanaStorageSnapshot: AsyncRequestStatus! (type)
+        public static string CreateOnDemandSapHanaStorageSnapshot_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createOnDemandSapHanaStorageSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateOnDemandSapHanaStorageSnapshot_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateOnDemandSapHanaStorageSnapshot((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string CreateOnDemandSapHanaStorageSnapshot(AsyncRequestStatus fieldSpec)
+        {
+            return CreateOnDemandSapHanaStorageSnapshot_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateOnDemandSapHanaStorageSnapshot(object fieldSpecObj)
+        {
+            return CreateOnDemandSapHanaStorageSnapshot_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateOnDemandSapHanaStorageSnapshotFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? CreateOnDemandVolumeGroupBackup
         // GraphQL -> createOnDemandVolumeGroupBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandVolumeGroupBackup_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -15496,37 +15527,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RequestStatus() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> SetPrivateContainerRegistryDetailsReply? SetPrivateContainerRegistryDetails
-        // GraphQL -> setPrivateContainerRegistryDetails: SetPrivateContainerRegistryDetailsReply! (type)
-        public static string SetPrivateContainerRegistryDetails_TypedFieldSpec(SetPrivateContainerRegistryDetailsReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "setPrivateContainerRegistryDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string SetPrivateContainerRegistryDetails_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return SetPrivateContainerRegistryDetails((SetPrivateContainerRegistryDetailsReply)fieldSpecObj);
-        }
-        public static string SetPrivateContainerRegistryDetails(SetPrivateContainerRegistryDetailsReply fieldSpec)
-        {
-            return SetPrivateContainerRegistryDetails_TypedFieldSpec(fieldSpec);
-        }
-        public static string SetPrivateContainerRegistryDetails(object fieldSpecObj)
-        {
-            return SetPrivateContainerRegistryDetails_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object SetPrivateContainerRegistryDetailsFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new SetPrivateContainerRegistryDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

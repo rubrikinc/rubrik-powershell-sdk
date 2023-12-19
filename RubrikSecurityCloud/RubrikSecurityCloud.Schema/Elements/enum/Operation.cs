@@ -174,6 +174,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXPORT_SNAPSHOTS")]
         EXPORT_SNAPSHOTS,
 
+        [EnumMember(Value = "GRANULAR_RECOVERY")]
+        GRANULAR_RECOVERY,
+
         [EnumMember(Value = "INSTANT_RECOVER")]
         INSTANT_RECOVER,
 

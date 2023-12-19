@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.21
+
+Fixes:
+
+- Fixed bug in `New-RscQuery` and `New-RscMutation` that caused
+  GraphQL operations that were not associated with an API domain
+  to fail. All GraphQL operations that were not associated with
+  an API domain are now associated with the `Misc` domain.
+
 ## Version 0.20
 
 New Features:

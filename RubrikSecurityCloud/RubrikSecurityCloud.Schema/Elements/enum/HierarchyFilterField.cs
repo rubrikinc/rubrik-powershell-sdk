@@ -471,6 +471,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT_MOUNT_TYPE")]
         MANAGED_VOLUME_EXPORT_MOUNT_TYPE,
 
+        [EnumMember(Value = "MANAGED_VOLUME_HOST_CONNECTION_STATUS")]
+        MANAGED_VOLUME_HOST_CONNECTION_STATUS,
+
+        [EnumMember(Value = "MANAGED_VOLUME_HOST_ID")]
+        MANAGED_VOLUME_HOST_ID,
+
         [EnumMember(Value = "MANAGED_VOLUME_ID")]
         MANAGED_VOLUME_ID,
 

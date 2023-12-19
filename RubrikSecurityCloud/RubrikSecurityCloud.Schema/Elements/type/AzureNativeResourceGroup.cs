@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureSqlManagedInstanceDbCount")]
         public System.Int32? AzureSqlManagedInstanceDbCount { get; set; }
 
+        //      C# -> System.Int32? AzureStorageAccountCount
+        // GraphQL -> azureStorageAccountCount: Int! (scalar)
+        [JsonProperty("azureStorageAccountCount")]
+        public System.Int32? AzureStorageAccountCount { get; set; }
+
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: UUID! (scalar)
         [JsonProperty("azureSubscriptionRubrikId")]
@@ -180,6 +185,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.Int32? AzureSqlDatabaseCount = null,
         System.Int32? AzureSqlManagedInstanceDbCount = null,
+        System.Int32? AzureStorageAccountCount = null,
         System.String? AzureSubscriptionRubrikId = null,
         System.Int32? DisksCount = null,
         System.String? Id = null,
@@ -227,6 +233,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureSqlManagedInstanceDbCount != null ) {
             this.AzureSqlManagedInstanceDbCount = AzureSqlManagedInstanceDbCount;
+        }
+        if ( AzureStorageAccountCount != null ) {
+            this.AzureStorageAccountCount = AzureStorageAccountCount;
         }
         if ( AzureSubscriptionRubrikId != null ) {
             this.AzureSubscriptionRubrikId = AzureSubscriptionRubrikId;
@@ -387,6 +396,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "azureSqlManagedInstanceDbCount\n" ;
             } else {
                 s += ind + "azureSqlManagedInstanceDbCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? AzureStorageAccountCount
+        // GraphQL -> azureStorageAccountCount: Int! (scalar)
+        if (this.AzureStorageAccountCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureStorageAccountCount\n" ;
+            } else {
+                s += ind + "azureStorageAccountCount\n" ;
             }
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
@@ -776,6 +794,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureSqlManagedInstanceDbCount != null && ec.Excludes("azureSqlManagedInstanceDbCount",true))
         {
             this.AzureSqlManagedInstanceDbCount = null;
+        }
+        //      C# -> System.Int32? AzureStorageAccountCount
+        // GraphQL -> azureStorageAccountCount: Int! (scalar)
+        if (ec.Includes("azureStorageAccountCount",true))
+        {
+            if(this.AzureStorageAccountCount == null) {
+
+                this.AzureStorageAccountCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureStorageAccountCount != null && ec.Excludes("azureStorageAccountCount",true))
+        {
+            this.AzureStorageAccountCount = null;
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: UUID! (scalar)

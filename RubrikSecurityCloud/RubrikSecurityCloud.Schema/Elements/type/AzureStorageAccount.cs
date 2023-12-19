@@ -21,6 +21,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureStorageAccessTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageAccessTier! (enum)
+        [JsonProperty("accessTier")]
+        public AzureStorageAccessTier? AccessTier { get; set; }
+
+        //      C# -> AzureStorageAccountKind? AccountKind
+        // GraphQL -> accountKind: AzureStorageAccountKind! (enum)
+        [JsonProperty("accountKind")]
+        public AzureStorageAccountKind? AccountKind { get; set; }
+
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
         [JsonProperty("authorizedOperations")]
@@ -55,11 +65,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
-
-        //      C# -> System.String? AccessTier
-        // GraphQL -> accessTier: String! (scalar)
-        [JsonProperty("accessTier")]
-        public System.String? AccessTier { get; set; }
 
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
@@ -191,6 +196,8 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureStorageAccount Set(
+        AzureStorageAccessTier? AccessTier = null,
+        AzureStorageAccountKind? AccountKind = null,
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AzureNativeRegion? Region = null,
@@ -198,7 +205,6 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
-        System.String? AccessTier = null,
         System.String? CloudNativeId = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
@@ -225,6 +231,12 @@ namespace RubrikSecurityCloud.Types
         GenericSnapshotConnection? WorkloadSnapshotConnection = null
     ) 
     {
+        if ( AccessTier != null ) {
+            this.AccessTier = AccessTier;
+        }
+        if ( AccountKind != null ) {
+            this.AccountKind = AccountKind;
+        }
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
@@ -245,9 +257,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
-        }
-        if ( AccessTier != null ) {
-            this.AccessTier = AccessTier;
         }
         if ( CloudNativeId != null ) {
             this.CloudNativeId = CloudNativeId;
@@ -332,6 +341,24 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureStorageAccessTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageAccessTier! (enum)
+        if (this.AccessTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accessTier\n" ;
+            } else {
+                s += ind + "accessTier\n" ;
+            }
+        }
+        //      C# -> AzureStorageAccountKind? AccountKind
+        // GraphQL -> accountKind: AzureStorageAccountKind! (enum)
+        if (this.AccountKind != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accountKind\n" ;
+            } else {
+                s += ind + "accountKind\n" ;
+            }
+        }
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
         if (this.AuthorizedOperations != null) {
@@ -405,15 +432,6 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
                 }
-            }
-        }
-        //      C# -> System.String? AccessTier
-        // GraphQL -> accessTier: String! (scalar)
-        if (this.AccessTier != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "accessTier\n" ;
-            } else {
-                s += ind + "accessTier\n" ;
             }
         }
         //      C# -> System.String? CloudNativeId
@@ -681,6 +699,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> AzureStorageAccessTier? AccessTier
+        // GraphQL -> accessTier: AzureStorageAccessTier! (enum)
+        if (ec.Includes("accessTier",true))
+        {
+            if(this.AccessTier == null) {
+
+                this.AccessTier = new AzureStorageAccessTier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessTier != null && ec.Excludes("accessTier",true))
+        {
+            this.AccessTier = null;
+        }
+        //      C# -> AzureStorageAccountKind? AccountKind
+        // GraphQL -> accountKind: AzureStorageAccountKind! (enum)
+        if (ec.Includes("accountKind",true))
+        {
+            if(this.AccountKind == null) {
+
+                this.AccountKind = new AzureStorageAccountKind();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountKind != null && ec.Excludes("accountKind",true))
+        {
+            this.AccountKind = null;
+        }
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
         if (ec.Includes("authorizedOperations",true))
@@ -820,23 +872,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
-        }
-        //      C# -> System.String? AccessTier
-        // GraphQL -> accessTier: String! (scalar)
-        if (ec.Includes("accessTier",true))
-        {
-            if(this.AccessTier == null) {
-
-                this.AccessTier = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.AccessTier != null && ec.Excludes("accessTier",true))
-        {
-            this.AccessTier = null;
         }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)

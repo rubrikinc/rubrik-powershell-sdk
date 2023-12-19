@@ -2341,6 +2341,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ActiveDirectoryObjectSearchResponseConnection? ActiveDirectorySearchSnapshots
+        // GraphQL -> activeDirectorySearchSnapshots: ActiveDirectoryObjectSearchResponseConnection! (type)
+        public static string ActiveDirectorySearchSnapshots_TypedFieldSpec(ActiveDirectoryObjectSearchResponseConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nid: $id\nsnapshotAfterDate: $snapshotAfterDate\nsnapshotBeforeDate: $snapshotBeforeDate\nname: $name\nobjectType: $objectType\n)";
+            return "activeDirectorySearchSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ActiveDirectorySearchSnapshots_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ActiveDirectorySearchSnapshots((ActiveDirectoryObjectSearchResponseConnection)fieldSpecObj);
+        }
+        public static string ActiveDirectorySearchSnapshots(ActiveDirectoryObjectSearchResponseConnection fieldSpec)
+        {
+            return ActiveDirectorySearchSnapshots_TypedFieldSpec(fieldSpec);
+        }
+        public static string ActiveDirectorySearchSnapshots(object fieldSpecObj)
+        {
+            return ActiveDirectorySearchSnapshots_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ActiveDirectorySearchSnapshotsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ActiveDirectoryObjectSearchResponseConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
         public static string ActivitySeries_TypedFieldSpec(ActivitySeries fieldSpec)
@@ -18496,7 +18527,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyObjs: PolicyObjConnection! (type)
         public static string PolicyObjs_TypedFieldSpec(PolicyObjConnection fieldSpec)
         {
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\ninsightsMetadataId: $insightsMetadataId\nincludeInsightsMarker: $includeInsightsMarker\nuserAccessObjectsFilter: $userAccessObjectsFilter\nobjectIdsFilter: $objectIdsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";

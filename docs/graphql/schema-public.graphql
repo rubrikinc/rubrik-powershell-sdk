@@ -52,7 +52,7 @@ type Query {
 
   # Search across a range of snapshots of a domain controller for Active Directory objects
   # 
-  # Supported in v9.1
+  # Supported in v9.1+
   # Return the Active Directory objects matching the search criteria.
   activeDirectorySearchSnapshots(
     # Returns the first n elements from the list.
@@ -5381,9 +5381,6 @@ type Query {
   passwordComplexityPolicy: PasswordComplexityPolicy!
   pendingAction(pendingActionId: String!): pendingAction!
 
-  # Get information about workloads passing through the Radar pipeline.
-  pendingRansomwareInvestigationResultsCount: PendingEvaluationResultsReply!
-
   # Retrieve Phoenix rollout progress.
   phoenixRolloutProgress(
     # Org UUID.
@@ -5598,9 +5595,6 @@ type Query {
     # Returns the elements in the list that come before the specified cursor.
     before: String): ProtectedObjectsConnection!
 
-  # Get the total number of workloads protected by Radar.
-  protectedRansomwareInvestigationWorkloadCount: ProtectedRansomwareInvestigationWorkloadCountReply!
-
   # Total number of protected volumes across all hosts.
   protectedVolumesCount(
     # The hierarchy object filter.
@@ -5668,11 +5662,6 @@ type Query {
 
   # Get the enablement status of entities on which Ransomware Monitoring can be enabled.
   ransomwareInvestigationEnablement: RansomwareInvestigationEnablementReply!
-
-  # Get the total number of times that Radar has scanned a workload.
-  ransomwareInvestigationWorkloadScannedCount(
-    # ID of the object and not the FID.
-    workloadId: String!): RansomwareInvestigationWorkloadScannedCountReply!
 
   # Result of the Ransomware Investigation.
   ransomwareResult(
@@ -8457,7 +8446,7 @@ type Mutation {
 
   # Create on demand storage snapshot
   # 
-  # Supported in v9.1
+  # Supported in v9.1+
   # Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.
   createOnDemandSapHanaStorageSnapshot(
     # Input for V1CreateOnDemandSapHanaStorageSnapshot.
@@ -12308,10 +12297,12 @@ input ActiveDirectoryObjectRecoveryConfigInput {
 }
 # List of matching objects.
 type ActiveDirectoryObjectSearchResponse {
-  # Required. Display name of the Active Directory object.
+  # Required. Supported in v9.1+
+  # Display name of the Active Directory object.
   name: String!
 
-  # Required. Resultant versions of the objects with that name.
+  # Required. Supported in v9.1+
+  # Resultant versions of the objects with that name.
   versions: [ActiveDirectorySearchVersions!]!
 }
 # Paginated list of ActiveDirectoryObjectSearchResponse objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -12433,13 +12424,16 @@ input ActiveDirectoryRestoreConfigInput {
 }
 # Resultant versions of the objects with requested name.
 type ActiveDirectorySearchVersions {
-  # Required. Distinguished name of the Active Directory object.
+  # Required. Supported in v9.1+
+  # Distinguished name of the Active Directory object.
   dn: String!
 
-  # Required. The Distinguished Name Tag (DNT) of the Active Directory object.
+  # Required. Supported in v9.1+
+  # The Distinguished Name Tag (DNT) of the Active Directory object.
   dnt: Int!
 
-  # Required. ID of the snapshot containing the Active Directory object.
+  # Required. Supported in v9.1+
+  # ID of the snapshot containing the Active Directory object.
   snapshotId: String!
 
   # Type of the object.
@@ -14031,6 +14025,9 @@ input AddSyslogExportRuleInput {
 
   # Syslog export rule.
   syslogExportRuleV91: SyslogExportRuleFullInput
+
+  # Syslog export rule.
+  syslogExportRuleV92: SyslogExportRuleFullInput
 
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
@@ -22138,6 +22135,9 @@ type AzureAdGroup {
 
   # Group type of the Azure AD group.
   groupType: String!
+
+  # Email address of the M365 group.
+  email: String!
 }
 # Response to the azureAdObjectsByType API.
 type AzureAdObject {
@@ -22148,7 +22148,10 @@ type AzureAdObject {
   snapshotId: String!
 
   # Relationships of the Azure AD object.
-  relationships: Map!
+  relationships: Map! @deprecated(reason: "Use ReverseRelationships instead.")
+
+  # Reverse relationships of the Azure Active Directory object.
+  reverseRelationships: [AzureAdReverseRelationship!]!
 
   # Populate either AzureAdUser or AzureAdGroup.
   azureAdObjects: AzureAdObjects!
@@ -22305,6 +22308,25 @@ enum AzureAdRegion {
   # Azure region is West US 2.
   WESTUS2
 }
+# Reverse Relationships of an Azure Active Directory object.
+type AzureAdReverseRelationship {
+  # Type of the reverse relationship.
+  type: AzureAdReverseRelationshipType!
+
+  # IDs of the objects related to the Azure Active Directory object.
+  relatedObjectIds: [UUID!]!
+}
+# Reverse relationships of an Azure Active Directory object.
+enum AzureAdReverseRelationshipType {
+  # Member of the relationship. For example, a user of a group.
+  MEMBER_OF
+
+  # Owner of the relationship. For example, an owner of a group.
+  OWNER_OF
+
+  # Unknown reverse relationship type.
+  REVERSE_RELATIONSHIP_TYPE_UNKNOWN
+}
 # Azure AD user.
 type AzureAdUser {
   # Display name of the Azure AD user.
@@ -22342,7 +22364,7 @@ input AzureArmTemplatesByFeatureInput {
   customerTenantDomainName: String!
 
   # Deprecated, use featuresToInclude instead. Features to be enabled for the Azure cloud account.
-  features: [CloudAccountFeature!]!
+  features: [CloudAccountFeature!]
 
   # Azure cloud account operation type.
   operationType: CloudAccountOperation!
@@ -26232,6 +26254,9 @@ type AzureStorageAccount implements PolarisHierarchyObject , PolarisHierarchySna
   # The Storage Account type.
   accountKind: AzureStorageAccountKind!
 
+  # Specifies whether hierarchical namespace is enabled for the storage account or not. When the value is true, hierarchical namespace is enabled.
+  isHierarchicalNamespaceEnabled: Boolean!
+
   # The authorized operations on the object.
   authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]!
 
@@ -27269,7 +27294,7 @@ type BootstrappableNodeInfoListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 input BrowseDirectoryFiltersInput {
@@ -27351,7 +27376,7 @@ type BrowseResponseListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for getting web certificate and IPMI information for multiple clusters.
@@ -27383,7 +27408,7 @@ type BulkCreateFilesetTemplatesReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for creating multiple filesets.
@@ -27410,7 +27435,7 @@ type BulkCreateFilesetsReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v7.0+
@@ -27604,7 +27629,7 @@ type BulkRegisterHostReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input to initiate bulk tiering of existing archived snapshots.
@@ -31021,7 +31046,7 @@ type CertificateSummaryListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Different types of usages of a certificate on RSC.
@@ -31354,6 +31379,9 @@ enum CloudAccountFeature {
 
   # Cloud account feature is Exocompute.
   EXOCOMPUTE
+
+  # Feature is not specified.
+  FEATURE_UNSPECIFIED
 
   # Cloud account feature is GCP Shared VPC Host.
   GCP_SHARED_VPC_HOST
@@ -38946,7 +38974,7 @@ type DbLogReportSummaryListReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 
   # Supported in v5.3+
@@ -42891,12 +42919,15 @@ input ExportSnapshotJobConfigV2Input {
   mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input
   requiredRecoveryParameters: RequiredRecoveryParametersInput
 
+  # Supported in v9.1+
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
 
+  # Supported in v9.1+
   # ID of the content library to which the new content library item is being exported.
   contentLibraryId: String
 
+  # Supported in v9.1+
   # Specifies whether Export converts the recovered virtual machine to a template.
   shouldConvertToTemplate: Boolean
 
@@ -42943,12 +42974,15 @@ input ExportSnapshotJobConfigV3Input {
   # Target snapshot ID or a point in time for recovery.
   requiredRecoveryParameters: RequiredRecoveryParametersInput
 
+  # Supported in v9.1+
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
 
+  # Supported in v9.1+
   # ID of the content library to which the new content library item is being exported.
   contentLibraryId: String
 
+  # Supported in v9.1+
   # Specifies whether Export converts the recovered virtual machine to a template.
   shouldConvertToTemplate: Boolean
 }
@@ -44004,9 +44038,18 @@ input FileInfo {
   fileSnapshotsToRestore: [FileSnapshotInfo!]!
   channelInfo: TeamsChannelInfo
 }
+# Enum for file modes of files in snapshot.
 enum FileModeEnum {
+  # File mode is directory.
   DIRECTORY
+
+  # File mode is file.
   FILE
+
+  # File mode is share.
+  SHARE
+
+  # File mode is symlink.
   SYMLINK
 }
 # Cloud-native file recovery feasibility.
@@ -44337,7 +44380,7 @@ input FilesetExportFilesJobConfigInput {
   # Network share ID.
   shareId: String
 
-  # Supported in v9.1
+  # Supported in v9.1+
   # Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
@@ -44441,7 +44484,7 @@ input FilesetRestoreFilesJobConfigInput {
   # Optional field to determine if we should ignore single error during restore. Default value is false.
   ignoreErrors: Boolean
 
-  # Supported in v9.1
+  # Supported in v9.1+
   # Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
@@ -45215,7 +45258,7 @@ type FilterPreviewResultListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input to process and finalize deletion of AWS cloud account.
@@ -47834,7 +47877,7 @@ type GlobalFileSearchReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Global manager connectivity status.
@@ -48317,7 +48360,7 @@ type GuestCredentialDetailListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Guest OS Credential.
@@ -50939,7 +50982,7 @@ type HostSummary {
   # Specifies whether the refresh of host metadata for this host is paused.
   isRefreshPaused: Boolean
 
-  # Supported in v9.1
+  # Supported in v9.1+
   # ID of the Rubrik Backup Service (RBS) installed on the host.
   agentId: String
 
@@ -51179,7 +51222,7 @@ type HotAddProxyVmInfoListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.3+
@@ -53090,12 +53133,15 @@ type HypervVirtualMachineMountSummary {
   # Required. Supported in v5.0+
   vmName: String!
 
+  # Supported in v9.1+
   # The name of the target virtual machine.
   targetVmName: String
 
+  # Supported in v9.1+
   # The number of disks attached to the target virtual machine, if the mount is a disk-level mount.
   attachedDiskCount: Int
 
+  # Supported in v9.1+
   # A boolean field that indicates whether the mount is a disk-level mount.
   isDiskLevelMount: Boolean
   powerStatus: HypervVirtualMachineMountSummaryPowerStatus!
@@ -53257,6 +53303,9 @@ type IdentityProvider {
 
   # ID of the organization that owns the identity provider.
   ownerOrgId: String!
+
+  # Metadata of the identity provider in JSON format.
+  metadataJson: String!
 
   # Expiration date of the identity providers metadata.
   expirationDate: DateTime
@@ -58062,7 +58111,7 @@ type MissedSnapshotListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 enum MissedSnapshotSortByEnum {
@@ -59166,7 +59215,7 @@ input MongoRecoveryRequestConfigInput {
 
   # Supported in v9.0+
   # v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
-  # v9.1: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+  # v9.1+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
   targetAuthenticationType: MongoAuthenticationType
 
   # Required. Supported in v9.0+
@@ -61481,6 +61530,7 @@ input MountSnapshotJobConfigV2Input {
   mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input
   requiredRecoveryParameters: RequiredRecoveryParametersInput
 
+  # Supported in v9.1+
   # ID of the virtual machine folder where the new virtual machine will be mounted.
   folderId: String
 }
@@ -62526,8 +62576,11 @@ type MssqlDbDetail {
   protectionDateV81: DateTime
   protectionDateV90: DateTime
   oldestRecoveryPointV91: DateTime
+  oldestRecoveryPointV92: DateTime
   latestRecoveryPointV91: DateTime
+  latestRecoveryPointV92: DateTime
   protectionDateV91: DateTime
+  protectionDateV92: DateTime
 }
 # Supported in v5.0+
 input MssqlDbFileExportPathInput {
@@ -62736,6 +62789,9 @@ type MssqlDbSummary {
 
   # A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
   unprotectableReasonsV91: [String!]!
+
+  # A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
+  unprotectableReasonsV92: [String!]!
   recoveryModel: MssqlDbSummaryRecoveryModel
   snappable: CdmWorkload
 }
@@ -63210,9 +63266,13 @@ type MssqlInstanceSummary {
   # A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
   unprotectableReasonsV90: [String!]!
   protectionDateV91: DateTime
+  protectionDateV92: DateTime
 
   # A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
   unprotectableReasonsV91: [String!]!
+
+  # A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
+  unprotectableReasonsV92: [String!]!
 }
 # Supported in v5.0+
 type MssqlInstanceSummaryListResponse {
@@ -63230,7 +63290,7 @@ type MssqlInstanceSummaryListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -63394,7 +63454,7 @@ type MssqlLogShippingSummaryV2ListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # SQL Server log shipping target.
@@ -63576,7 +63636,7 @@ type MssqlMissedRecoverableRangeListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0
@@ -63637,7 +63697,7 @@ type MssqlRecoverableRangeListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -64641,7 +64701,7 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
   id: UUID!
 
   # The NAS System to which this NAS Share belongs.
-  nasSystem: NasSystem!
+  nasSystem: NasSystem
 
   # NAS Share Protection Fileset.
   primaryFileset: NasFileset
@@ -65359,6 +65419,8 @@ input NasSystemRegisterInput {
 
   # Supported in v9.0+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+
+  # Supported in v9.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 
   # Required. Supported in v7.0+
@@ -65389,6 +65451,8 @@ input NasSystemUpdateInput {
 
   # Supported in v9.0+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+
+  # Supported in v9.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 }
 # Supported in v5.2+
@@ -65904,7 +65968,7 @@ type NetworkInfoListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -65955,7 +66019,7 @@ type NetworkInterfaceListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -66065,7 +66129,7 @@ type NetworkThrottleSummaryListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -66418,7 +66482,7 @@ type NodeStatusListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Request parameters for getting the ID of the node to replace on a Rubrik cluster.
@@ -66513,7 +66577,7 @@ type NtpServerConfigurationListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -67627,6 +67691,7 @@ input NutanixClusterPatchInput {
   # Supported in v5.0+
   username: String
 
+  # Supported in v9.1+
   # Consistency level mandated for this Nutanix cluster.
   snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
 }
@@ -67687,7 +67752,7 @@ type NutanixContainerListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -67728,24 +67793,31 @@ input NutanixExportSnapshotJobConfigForBatchInput {
   # ID of the virtual machine with the snapshot that requires exporting.
   vmId: String!
 }
+# Supported in v9.1+
 # API credentials to add or update the Nutanix File Server with API integration. Also contains credentials for SMB share access.
 input NutanixFileServerParametersInput {
+  # Supported in v9.1+
   # TLS certification to validate the NAS system.
   apiCertificate: String
 
+  # Supported in v9.1+
   # ID corresponding to the imported certificate.
   certificateId: String
 
+  # Supported in v9.1+
   # Credentials to access SMB shares.
   smbCredentials: GenericNasSystemCredentialsInput
 
+  # Supported in v9.1+
   # Password associated with the NAS API user account.
   apiPassword: String
 
+  # Supported in v9.1+
   # Username to access the vendor-specific NAS API.
   apiUsername: String
 
-  # Required. Specifies whether to enable SMB for the NAS system.
+  # Required. Supported in v9.1+
+  # Specifies whether to enable SMB for the NAS system.
   hasSmbSupport: Boolean!
 }
 # Nutanix virtual machine live mount.
@@ -67966,7 +68038,7 @@ type NutanixNetworkListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v9.0+
@@ -68369,6 +68441,7 @@ input NutanixPrismCentralPatchInput {
   # Username for the Nutanix Prism Central used for all the cluster connections.
   username: String
 
+  # Supported in v9.1+
   # The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.
   nutanixClusters: [NutanixClustersListElementInput!] = []
 }
@@ -68384,7 +68457,7 @@ input NutanixRestoreFileConfigInput {
 }
 # Supported in v5.0+
 input NutanixRestoreFilesConfigInput {
-  # Supported in v9.1
+  # Supported in v9.1+
   # Workload ID of the target AHV virtual machine, which is the destination for the recovered data.
   targetVirtualMachineId: String
 
@@ -68881,6 +68954,7 @@ input NutanixVmMountSnapshotJobConfigInput {
   # Specifies whether the migration option should not be enabled for the live mount. When set to true, the Rubrik cluster will serve as the external repository for the mounted virtual machine, and storage migration to the Nutanix cluster will be not be enabled. When set to false, a storage container on the Nutanix cluster must be specified, and a storage migration otion will be available for the live mount when it succeeds.
   shouldDisableMigration: Boolean!
 }
+# Supported in v9.1+
 # Specifies the Live Mount status.
 enum NutanixVmMountStatus {
   NUTANIX_VM_MOUNT_STATUS_DELETING
@@ -69013,6 +69087,7 @@ type NutanixVmSnapshotSummary {
   # Number of NICs present in the snapshot app metadata.
   nicsInSnapshot: Int
 
+  # Supported in v9.1+
   # List of all UUIDs for the networks connected to the virtual machine when snapshot was taken.
   snapshotNetworkUuids: [String!]!
 
@@ -73566,8 +73641,14 @@ type OracleDbDetail {
   # The time stamp of the earliest recovery point for this database.
   oldestRecoveryPointV91: DateTime
 
+  # The time stamp of the earliest recovery point for this database.
+  oldestRecoveryPointV92: DateTime
+
   # The time stamp of the most recent recovery point for this database.
   latestRecoveryPointV91: DateTime
+
+  # The time stamp of the most recent recovery point for this database.
+  latestRecoveryPointV92: DateTime
 
   # Supported in v5.3+
   # An array that contains the host info for each instance.
@@ -73576,6 +73657,7 @@ type OracleDbDetail {
   # Supported in v5.3+
   # Describes any pending SLA Domain assignment on this object.
   pendingSlaDomain: ManagedObjectPendingSlaInfo
+  blackoutWindowResponseInfo: BlackoutWindowResponseInfo
 }
 # Input for retrieving Oracle database.
 input OracleDbInput {
@@ -74297,7 +74379,7 @@ type OracleMissedRecoverableRangeListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -74834,7 +74916,7 @@ type OracleRecoverableRangeListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -74985,6 +75067,10 @@ input OracleUpdateCommonInput {
 
   # Supported in Rubrik CDM version 9.0 and later. Specifies the section size, in gigabytes, to be used during database backup.
   sectionSizeInGb: Int
+
+  # Supported in v9.1+
+  # Whether to pause or resume backups and archival for this database. This setting is supported for Oracle databases and Data Guard groups but is not supported for Oracle hosts and RACs.
+  isPaused: Boolean
 }
 # Supported in v5.0+
 input OracleUpdateInput {
@@ -75645,49 +75731,6 @@ type PendingActionType {
   pendingActionGroupType: PendingActionGroupTypeEnum!
   pendingActionSubGroupType: PendingActionSubGroupTypeEnum!
   pendingActionSyncType: PendingActionSyncType!
-}
-# Detailed information about workloads passing through the Ransomware Investigation pipeline.
-type PendingEvaluationResults {
-  # Unique UUID of the cluster.
-  clusterUuid: String!
-
-  # Internally used ID to specify workload.
-  workloadId: String!
-
-  # Workload name.
-  workloadName: String!
-
-  # Type of the workload.
-  workloadType: String!
-
-  # Internally used ID to specify snapshot.
-  snapshotId: String!
-
-  # Date that this snapshot was performed.
-  snapshotDate: DateTime
-
-  # Specifies the date this workload was added in Ransomware Investigation.
-  createdAt: DateTime
-
-  # Specifies the date this workload was last updated in Ransomware Investigation.
-  updatedAt: DateTime
-
-  # Internally used ID to manage permissions of this workload.
-  managedId: String!
-
-  # Determines whether a result is still pending in the Ransomware Investigation pipeline.
-  isCompleted: Boolean!
-
-  # Information about this workload within the Ransomware Investigation pipeline.
-  info: String!
-}
-# The number of items and detailed information about items pending in the Ransomware Investigation pipeline.
-type PendingEvaluationResultsReply {
-  # A list of pending evaluation results about snapshots.
-  pendingEvaluationResults: [PendingEvaluationResults!]!
-
-  # The number of entries in the list.
-  count: Long!
 }
 # Supported in v5.2+
 input PendingSlaOperationsRequestInput {
@@ -77440,20 +77483,6 @@ type ProtectedObjectsEdge {
   # The actual ProtectedObjects object wrapped by this edge.
   node: ProtectedObjects!
 }
-# The object types and number of protected Ransomware Investigation workloads.
-type ProtectedRansomwareInvestigationWorkload {
-  # The number of workloads.
-  count: Long!
-
-  # The workload type.
-  workloadType: String!
-}
-# The number of protected Ransomware Investigation workloads.
-type ProtectedRansomwareInvestigationWorkloadCountReply {
-  # A list of workload types and the number of workloads of that type
-  # protected by Ransomware Investigation.
-  workloadCounts: [ProtectedRansomwareInvestigationWorkload!]!
-}
 type ProtectionStatus {
   enumValue: ProtectionStatusEnum!
 }
@@ -77865,12 +77894,6 @@ type RansomwareInvestigationEnablementReply {
 
   # Cloud Direct clusters on which Ransomware Monitoring can be enabled.
   cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!]
-}
-# Specifies the workload ID and type and the number of times Ransomware Investigation has scanned a workload.
-type RansomwareInvestigationWorkloadScannedCountReply {
-  # A list of workloads and the number of times each workload has been
-  # scanned by Ransomware Investigation.
-  workloadScannedCounts: [WorkloadScanned!]!
 }
 # Ransomware Investigation report from lambda service.
 type RansomwareResult {
@@ -79739,7 +79762,7 @@ input RestoreFilesJobConfigInput {
   # v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
   guestCredentialId: String
 
-  # Supported in v9.1
+  # Supported in v9.1+
   # Boolean field specifying whether to mount disks during restore jobs. When the value is 'true', the VMDK disks of the snapshot are mounted on the target VM for recovering the files and the parameter 'shouldUseAgent' is ignored. When the value is 'false', RSC may or may not use agent.
   shouldUseMountDisks: Boolean
 
@@ -82407,6 +82430,7 @@ input SapHanaSystemConfigInput {
   # The authentication type for the SAP HANA system.
   authTypeSpec: SapHanaSystemAuthTypeSpecInput
 
+  # Supported in v9.1+
   # The Rubrik ID of the SAP HANA Azure Feature.
   azureFeatureId: String
 
@@ -82562,6 +82586,7 @@ type SapHanaSystemInfo {
   # Specifies the authentication type for the SAP HANA system.
   authTypeSpec: SapHanaSystemAuthTypeSpec
 
+  # Supported in v9.1+
   # The Rubrik ID of the SAP HANA Azure Feature.
   azureFeatureId: String
 }
@@ -82611,6 +82636,7 @@ input SapHanaSystemPatchInput {
   # Specifies the authentication type for the SAP HANA system.
   authTypeSpec: SapHanaSystemAuthTypeSpecInput
 
+  # Supported in v9.1+
   # The Rubrik ID of the SAP HANA Azure Feature.
   azureFeatureId: String
 }
@@ -83019,7 +83045,7 @@ type SearchResponseListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 type SecurityGroup {
@@ -84687,6 +84713,15 @@ type Snappable {
 
   # The organization ID of this workload.
   orgId: UUID
+
+  # The source NAS protocol.
+  sourceProtocol: String
+
+  # The NASCD policy name.
+  ncdPolicyName: String
+
+  # The timestamp of the last taken NASCD archive snapshot.
+  ncdLatestArchiveSnapshot: DateTime
 
   # The SLA Domain of the protected objects.
   slaDomain: SlaDomain
@@ -87669,7 +87704,7 @@ type SyslogExportRuleSummaryListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for updating a syslog export rule.
@@ -88693,6 +88728,9 @@ input TestSyslogExportRuleInput {
 
   # Syslog export rule.
   syslogExportRuleV91: SyslogExportRuleFullInput
+
+  # Syslog export rule.
+  syslogExportRuleV92: SyslogExportRuleFullInput
 
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
@@ -90758,6 +90796,7 @@ type UpdateNutanixPrismCentralReply {
   # Describes any pending SLA Domain assignment on this object.
   pendingSlaDomain: ManagedObjectPendingSlaInfo
 
+  # Supported in v9.1+
   # Displays the status of the initiated refresh job.
   refreshJobAsyncReqStatus: AsyncRequestStatus
 }
@@ -91056,6 +91095,9 @@ input UpdateSnmpConfigInput {
   # SNMP configuration updates for the specified Rubrik cluster.
   snmpConfigV91: SnmpConfigurationPatchInput
 
+  # SNMP configuration updates for the specified Rubrik cluster.
+  snmpConfigV92: SnmpConfigurationPatchInput
+
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
 
@@ -91153,6 +91195,9 @@ input UpdateSyslogExportRuleInput {
 
   # Syslog export rule.
   syslogSettingsV91: SyslogExportRulePartialInput
+
+  # Syslog export rule.
+  syslogSettingsV92: SyslogExportRulePartialInput
 
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
@@ -91356,7 +91401,7 @@ input UpgradeAzureCloudAccountInput {
   sessionId: String!
 
   # Deprecated, use featuresToUpgrade instead. Features enabled on the Azure Cloud Account.
-  features: [CloudAccountFeature!]!
+  features: [CloudAccountFeature!]
 
   # Features enabled on the Azure Cloud Account.
   featuresToUpgrade: [UpgradeAzureCloudAccountFeatureInput!]
@@ -91370,7 +91415,7 @@ input UpgradeAzureCloudAccountPermissionsWithoutOauthInput {
   cloudAccountId: UUID!
 
   # Deprecated, use featureToUpgrade instead. Feature enabled on the Azure Cloud Account, which is currently in Update Permissions state.
-  feature: CloudAccountFeature!
+  feature: CloudAccountFeature
 
   # Features enabled on the Azure Cloud Account, which are currently in the Update Permissions state.
   featureToUpgrade: [UpgradeAzureCloudAccountFeatureInput!]
@@ -94900,7 +94945,7 @@ type VirtualMachineFilesReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Supported in v5.0+
@@ -95015,7 +95060,7 @@ enum VirtualMachineSummarySnapshotConsistencyMandate {
   VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_UNKNOWN
   VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_VSS_CONSISTENT
 }
-# Supported in v9.1
+# Supported in v9.1+
 # Virtual machine template type.
 enum VirtualMachineTemplateType {
   VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM
@@ -95125,7 +95170,7 @@ type VlanConfigListResponse {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Details of VLAN IP.
@@ -100573,7 +100618,7 @@ type VsphereVmListEsxiDatastoresReply {
 
   # Supported in v9.0+
   # v9.0: Cursor to fetch the next set of results.
-  # v9.1: Cursor to retrieve the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
 # Input for relocating vSphere mount.
@@ -101537,17 +101582,6 @@ type WorkloadRecoveryInfo {
 
   # Original data source ID.
   oldWorkloadId: String!
-}
-# Specifies the ID and type of the workload and the number of times Ransomware Investigation has scanned the workload.
-type WorkloadScanned {
-  # The number of times a workload has been scanned.
-  count: Long!
-
-  # The workload ID.
-  workloadId: String!
-
-  # The workload type.
-  workloadType: String!
 }
 # Details of the setup for performing backups for various object types.
 type WorkloadTypeToBackupSetupSpecs {
