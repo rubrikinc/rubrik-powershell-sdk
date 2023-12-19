@@ -161,14 +161,14 @@ namespace RubrikSecurityCloud
                 this.Op
             ));
             info.Add(new VarInfo(
+                "GQL Field",
+                "",
+                this.rscOp?.GqlRootFieldName ?? ""
+            ));
+            info.Add(new VarInfo(
                 "Invocation",
                 "",
                 "$query = " + syntax
-            ));
-            info.Add(new VarInfo(
-                "GQL Root Field",
-                "",
-                this.rscOp?.GqlRootFieldName ?? ""
             ));
             var varInfo = this.Var.Info().Select(v => new VarInfo(
                 "Var." + v.Name, v.Type, v.Description)).ToList();

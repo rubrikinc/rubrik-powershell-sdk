@@ -166,14 +166,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 }
                 gqlRootField = gqlRootField.Trim();
                 RscOp op = SchemaMeta.RscOpLookupByGqlRootField(gqlRootField);
-                _logger?.Debug($"Gql root field {gqlRootField} maps to {op}");
+                _logger?.Debug($"Gql root field {gqlRootField} maps to {op}. cmdletName={op.CmdletName}, cmdletSwitchName={op.CmdletSwitchName}, gqlRootFieldName={op.GqlRootFieldName}, gqlReturnTypeName={op.GqlReturnTypeName}, gqlReturnTypeName={op.GqlReturnTypeName},DomainName={op.DomainName()},OpName={op.OpName()}");
                 ProcessDomainOp(op.DomainName(), op.OpName());
                 return;
             }
 
             if (this.ApiDomainName() == SchemaMeta.ApiDomainName.Unknown)
             {
-                throw new Exception("Domain is unknown");
+                throw new Exception("Operation not supported");
             }
 
             string operation = "";

@@ -19,6 +19,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Count of Azure SQL databases in the subscription.
 - azureSqlManagedInstanceDbCount: System.Int32
   - Count of Azure SQL Managed Instance databases in the subscription.
+- azureStorageAccountCount: System.Int32
+  - The number of Azure storage accounts in the subscription.
 - azureCloudType: AzureCloudType
   - Type of Azure cloud, for example, Azure Public Cloud and Azure China Cloud.
 - enabledFeatures: list of AzureNativeSubscriptionEnabledFeatures

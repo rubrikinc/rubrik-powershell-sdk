@@ -254,3 +254,5 @@
 - EXCLUDED_ROOT_RESOURCE_POOL_TYPE - Filter to exclude root resource pool.
 - VMWARE_VM_TEMPLATE_TYPE - Filter template type of VMware virtual machines.
 - K8S_CLUSTER_STATUS - Filter by the status of the K8s cluster.
+- MANAGED_VOLUME_HOST_ID - Filter the Managed Volume based on its host ID.
+- MANAGED_VOLUME_HOST_CONNECTION_STATUS - Filter the Managed Volume based on the RBS status of its host.

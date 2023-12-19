@@ -22,7 +22,7 @@ Represents regions for Azure AD.
 - SWEDENCENTRAL - Azure region is Sweden Central.
 - SWITZERLANDNORTH - Azure region is Switzerland North.
 - UKSOUTH - Azure region is UK South.
-- USGOVVIRGINIA - Azure region is US Gov Virginia.
+- USGOVVIRGINIA - Azure region is US Gov Virginia (deprecated).
 - WESTEUROPE - Azure region is West Europe.
 - WESTUS2 - Azure region is West US 2.
 - POLANDCENTRAL - Azure region is Poland Central.

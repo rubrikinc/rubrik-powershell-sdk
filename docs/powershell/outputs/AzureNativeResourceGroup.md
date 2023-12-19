@@ -21,6 +21,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Count of Azure SQL databases in the Resource Group.
 - azureSqlManagedInstanceDbCount: System.Int32
   - Count of Azure SQL Managed Instance databases in the Resource Group.
+- azureStorageAccountCount: System.Int32
+  - The number of Azure storage accounts in the resource group.
 - snappableTypeToBackupSetupSpecs: list of WorkloadTypeToBackupSetupSpecss
   - A list of mappings between object types and details about the backup setup.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums

@@ -1,4 +1,4 @@
-// SetPrivateContainerRegistryDetailsInput.cs
+// CreateOnDemandSapHanaStorageSnapshotInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,32 +13,23 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region SetPrivateContainerRegistryDetailsInput
+    #region CreateOnDemandSapHanaStorageSnapshotInput
 
-    public class SetPrivateContainerRegistryDetailsInput: IInput
+    public class CreateOnDemandSapHanaStorageSnapshotInput: IInput
     {
         #region members
 
-        //      C# -> System.String? ExocomputeCloudAccountId
-        // GraphQL -> exocomputeCloudAccountId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("exocomputeCloudAccountId")]
-        public System.String? ExocomputeCloudAccountId { get; set; }
+        //      C# -> BaseOnDemandSnapshotConfigInput? Config
+        // GraphQL -> config: BaseOnDemandSnapshotConfigInput (input)
+        [JsonProperty("config")]
+        public BaseOnDemandSnapshotConfigInput? Config { get; set; }
 
-        //      C# -> System.String? PcrUrl
-        // GraphQL -> pcrUrl: String! (scalar)
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("pcrUrl")]
-        public System.String? PcrUrl { get; set; }
-
-        //      C# -> PcrAwsImagePullDetailsInput? PcrAwsImagePullDetails
-        // GraphQL -> pcrAwsImagePullDetails: PcrAwsImagePullDetailsInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("pcrAwsImagePullDetails")]
-        public PcrAwsImagePullDetailsInput? PcrAwsImagePullDetails { get; set; }
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion
@@ -66,7 +57,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class SetPrivateContainerRegistryDetailsInput
+    } // class CreateOnDemandSapHanaStorageSnapshotInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

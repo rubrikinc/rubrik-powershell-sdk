@@ -21,7 +21,7 @@ Returns the policies assigned to each object.
 ### objs
 Returns status for all objects at a specified timestamp.
 
-- There are 20 arguments.
+- There are 21 arguments.
     - day - System.String: Day in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -38,6 +38,7 @@ Returns status for all objects at a specified timestamp.
     - insightsMetadataId - System.String: Filter objects with insights metadata ID.
     - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
     - userAccessObjectsFilter - System.Boolean: Filter objects with user access enabled.
+    - objectIdsFilter - list of System.Strings: Object IDs to filter.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.

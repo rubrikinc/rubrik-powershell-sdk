@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         AUTOMATIC,
 
         [EnumMember(Value = "CRASH_CONSISTENT")]
-        CRASH_CONSISTENT
+        CRASH_CONSISTENT,
+
+        [EnumMember(Value = "DEFAULT")]
+        DEFAULT
 
 
     } // enum NutanixVmSnapshotConsistencyMandate

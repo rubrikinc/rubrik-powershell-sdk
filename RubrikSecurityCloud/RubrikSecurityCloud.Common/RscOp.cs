@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using RubrikSecurityCloud.Types;
 
 namespace RubrikSecurityCloud
 {
@@ -15,6 +16,10 @@ namespace RubrikSecurityCloud
         public static RscOp NullRscOp = new RscOp();
         public delegate bool SchemaMeta_FillInRscOp(RscOp rscOp);
         public static SchemaMeta_FillInRscOp? FillInRscOp = null;
+
+        public delegate string SchemaMeta_GetRootFieldKind(string rootFieldName);
+
+        public static SchemaMeta_GetRootFieldKind? GetRootFieldKind = null;
 
         public string CmdletName { get; set; }
         public string CmdletSwitchName { get; set; }
@@ -53,6 +58,15 @@ namespace RubrikSecurityCloud
 
         public string OpKind()
         {
+            if (RscOp.GetRootFieldKind != null)
+            {
+                string kind = RscOp.GetRootFieldKind(this.GqlRootFieldName);
+                if (kind != "")
+                {
+                    return kind;
+                }
+            }
+
             if (string.IsNullOrEmpty(this.CmdletName))
             {
                 return "";
@@ -94,6 +108,15 @@ namespace RubrikSecurityCloud
 
         public string Syntax()
         {
+            if (!string.IsNullOrEmpty(this.GqlRootFieldName))
+            {
+                var kind = this.OpKind();
+                if (kind == "mutation")
+                {
+                    return $"New-RscMutation -GqlMutation {this.GqlRootFieldName}";
+                }
+                return $"New-RscQuery -GqlQuery {this.GqlRootFieldName}";
+            }
             if (string.IsNullOrEmpty(this.CmdletName))
             {
                 return "";

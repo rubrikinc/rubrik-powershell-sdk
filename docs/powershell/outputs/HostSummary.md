@@ -42,6 +42,9 @@ Supported in v5.0+
 - isRefreshPaused: System.Boolean
   - Supported in v9.0+
   Specifies whether the refresh of host metadata for this host is paused.
+- agentId: System.String
+  - Supported in v9.1
+  ID of the Rubrik Backup Service (RBS) installed on the host.
 - lastRefreshTimeStamp: System.Int64
   - Supported in v9.0+
   Specifies the last refresh epoch time in msec.
