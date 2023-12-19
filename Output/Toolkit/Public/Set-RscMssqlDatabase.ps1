@@ -94,10 +94,8 @@ function Set-RscMssqlDatabase {
     .PARAMETER RemovePostBackupScript
     Removes the Post Script values
 
-
-
     .EXAMPLE
-    ___ Add example here ___
+    Set-RscMssqlDatabase -RscMssqlDatabase $RscMssqlDatabase -RscCluster $RscCluster -RscSlaDomain $RscSlaDomain
     #>
 
     [CmdletBinding()]

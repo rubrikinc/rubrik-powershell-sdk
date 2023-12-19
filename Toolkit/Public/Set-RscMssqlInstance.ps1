@@ -2,56 +2,59 @@
 function Set-RscMssqlInstance{
     <#
     .SYNOPSIS
-    Returns information about the SQL Server Instances connected to Rubrik Security Cloud
+    Sets properties of a MSSQL Instance in RSC
 
     .DESCRIPTION
-    Returns information about the SQL Server Instances connected to Rubrik Security Cloud
+    Sets properties of a MSSQL Instance in RSC
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
 
+    .PARAMETER DoNotProtect
+    Sets the protection property on the database to DO NOT PROTECT
 
-    .PARAMETER RscHost
-    RscHost object retrieved via Get-RscHost
+    .PARAMETER ExistingSnapshotRetention
+    Defines what should happen to existing snapshots when you set the database to DO NOT PROTECT
 
-    .PARAMETER InstanceName
-    SQL Server Instance Name
-    
-    .PARAMETER Id
-    Used to return a specific SQL Server Instance based on the Id assigned inside of Rubrik
-    
-    .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    .PARAMETER RscSlaDomain
+    This will be the ID of the SLA Domain that will manage the retention of the snapshot
 
-    .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
+    .PARAMETER CopyOnly
+    When assigning an SLA, this will instruct RSC to take copy only snapshots of the database
+
+    .PARAMETER EnableLogBackups
+    Including this parameter will enable log backups. If this parameter is omitted, then log backups wull be disabled
+
+    .PARAMETER UseSLALogConfig
+    If you enable log backups, this switch states to use the log configuration defined in the SLA
+
+    .PARAMETER logBackupFrequencyInSeconds
+    If you do not include the UseSLALogConfig parameter and you Enable Log Backups, you must include this parameter to define the log backup freqency
+    .PARAMETER logRetentionHours
+    If you do not include the UseSLALogConfig parameter and you Enable Log Backups, you must include this parameter to define the log backup retention
+
+    .PARAMETER EnableHostLogRetention
+    Including this parameter will enable Host Log Retention. This feature will not be widely used as it is only for special use cases. 
+
+    .PARAMETER FollowSystemRetentionConfig
+    Uses the system retention value for when to remove the log backup from the host when Host Log Retention is enabled
+
+    .PARAMETER HostLogRetentionInSeconds
+    User defined retention value for when to remove the log backup from the host when Host Log Retention is enabled
+
+    .PARAMETER ShouldApplyToExistingSnapshots
+    When setting the above SLA related properties, this defines what should happen to existing snapshots that are SLA Domain based
+
+    .PARAMETER ShouldApplyToNonPolicySnapshots
+    When setting the above SLA related properties, this defines what should happen to existing snapshots that are NOT SLA Domain based
 
     .EXAMPLE
-    Returns a list of all SQL Server Instances connected to RSC
-    Get-RscMssqlInstance -List
-
-    .EXAMPLE
-    Returns information about the default instance of SQL on a specific host
-    $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscHost = Get-RscHost -Name $HostName -OsType Windows
-    $RscMssqlInstance = Get-RscMssqlInstance -RscHost $RscHost
-    
-    .EXAMPLE
-    Returns information about a specific instance of SQL on a specific host
-    $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscHost = Get-RscHost -Name $HostName -OsType Windows
-    $RscMssqlInstance = Get-RscMssqlInstance -RscHost $RscHost -InstanceName DEV01
-    
-        .EXAMPLE
-    Return a RscMssqlInstance Object based on a specific MssqlInstance Id
-    Get-RscMssqlInstance -Id "86da734b-2fee-4fdc-bdc8-a73ab5648f" 
+    Set-RscMssqlInstance -RscMssqlInstance $RscMssqlInstance -RscSlaDomain $RscSlaDomain
     #>
-
-    # [CmdletBinding(
-    #     DefaultParameterSetName = ""
-    # )]
     Param(
         [Parameter(
             Mandatory = $false
