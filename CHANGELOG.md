@@ -2,6 +2,12 @@
 
 ## Version 0.21
 
+New Features:
+
+- Get cmdlets for SLAs and vSphere VMs
+  [From PR 27](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/27)
+- MsSql cmdlets [From PR 30](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/30)
+
 Fixes:
 
 - Fixed bug in `New-RscQuery` and `New-RscMutation` that caused
