@@ -68,6 +68,8 @@ function Get-RscSlaDomain {
             $query.field.ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
             $query.field.ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
             $query.field.ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $result = Invoke-Rsc -Query $query
+            $result
         } 
         else {
             $query = (New-RscQuerySla -Operation Domains -FieldProfile $fieldProfile)
@@ -85,9 +87,10 @@ function Get-RscSlaDomain {
             $query.field.nodes[1].ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $result = Invoke-Rsc -Query $query
+            $result.nodes
         }
 
-        $result = Invoke-Rsc -Query $query
-        $result.nodes
+
     } 
 }
