@@ -56628,7 +56628,7 @@ type ManagedVolume implements HierarchyObject , CdmHierarchyObject , CdmHierarch
   host: PhysicalHost
 
   # The Managed Volume's physical size in bytes.
-  physicalUsedSize: Long!
+  physicalUsedSize: Long! @deprecated(reason: "Use reportWorkload with the metric physicalBytes instead.")
 
   # Mount protocol used for Managed Volume.
   protocol: ManagedVolumeShareType!
@@ -90989,6 +90989,9 @@ input UpdateReplicationTargetInput {
 
   # Network interface for communication between the source and target clusters.
   targetNetworkInterface: NetworkInterfaceDetails
+
+  # Specifies whether the replication pair is cross-account.
+  isCrossAccount: Boolean = false
 
   # Source Rubrik cluster UUID.
   sourceClusterUuid: UUID!
