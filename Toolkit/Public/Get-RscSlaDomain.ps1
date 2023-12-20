@@ -88,6 +88,6 @@ function Get-RscSlaDomain {
         }
 
         $result = Invoke-Rsc -Query $query
-        $result
+        $result.nodes
     } 
 }
