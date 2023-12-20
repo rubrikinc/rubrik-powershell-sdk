@@ -104,8 +104,14 @@ function Get-RscMssqlInstance{
             "RscHost"{
                 Write-Debug "-  Creating Host Query"
                 $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
-                $query.Var.filter = @()
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                # $query.Var.filter = @()
+                # $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                # $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+                # $nameFilter.texts = $RscHost.Name
+                # $query.Var.filter += $nameFilter
+
+                $query.Var.typeFilter = @()
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.HierarchyObjectTypeEnum
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
                 $nameFilter.texts = $RscHost.Name
                 $query.Var.filter += $nameFilter
