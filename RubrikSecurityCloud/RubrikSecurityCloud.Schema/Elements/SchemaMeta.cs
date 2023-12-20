@@ -1514,8 +1514,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -5888,7 +5888,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// All GraphQL union names.
         /// </summary>
-    public enum GqlUnionName
+        public enum GqlUnionName
         {
             Unknown,
             AnomalyResultGroupByInfo,
