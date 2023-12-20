@@ -5888,7 +5888,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// All GraphQL union names.
         /// </summary>
-    public enum GqlUnionName
+        public enum GqlUnionName
         {
             Unknown,
             AnomalyResultGroupByInfo,

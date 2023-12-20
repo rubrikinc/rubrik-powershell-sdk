@@ -17,16 +17,6 @@ function Get-RscMssqlLiveMount {
     .PARAMETER MssqlDatabase
     Database object returned from Get-RscMssqlDatabase
 
-    .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
-
-    # .PARAMETER IncludeNullProperties
-    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
-    with a NULL in them. 
-
-    # .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
-
     .EXAMPLE
     Returns the list of database files based on the latest recovery point
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -44,17 +34,11 @@ function Get-RscMssqlLiveMount {
             Mandatory = $false, 
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.MssqlDatabase]$MssqlDatabase,
-
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][Switch]$Detail
+        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
+        Write-Debug "-Running Get-RscMssqlLiveMount"
 
         # Determine field profile:
         $fieldProfile = "DEFAULT"
@@ -64,7 +48,15 @@ function Get-RscMssqlLiveMount {
         Write-Host "Get-RscMssqlLiveMount field profile: $fieldProfile"
         
         #region Create Query
-        $query = New-RscQueryMssql -Operation DatabaseLiveMounts -FieldProfile $fieldProfile
+        $query = New-RscQueryMssql -Operation DatabaseLiveMounts `
+            -AddField Nodes.MountedDatabaseName, `
+                Nodes.CreationDate, `
+                Nodes.RecoveryPoint #, `
+                # Nodes.TargetInstance
+                # Nodes.SourceDatabase
+                # Nodes.Cluster #, `
+                # Nodes.SourceDatabase #, `
+                
         #endregion
 
         #region Filters
@@ -77,16 +69,11 @@ function Get-RscMssqlLiveMount {
         If ( $PSBoundParameters.ContainsKey('MssqlDatabase') ) {
             $sourceDatabaseFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDatabaseLiveMountFilterInput
             $sourceDatabaseFilter.Field = "SOURCE_DATABASE_ID"
-            $sourceDatabaseFilter.Texts = $MssqlDatabase.Id
+            $sourceDatabaseFilter.Texts = $RscMssqlDatabase.Id
             $query.Var.filters += $sourceDatabaseFilter
         }
         #endregion
-        if ( $AsQuery -eq $true ) {
-            $result = $query.GqlRequest()
-        }else{
-            $result = $query.Invoke()
-            $result = $result.Nodes | Where-Object { $_.isReady -eq "true" }
-        }
-        $result
+        $result = $query.Invoke()
+        $result.Nodes
     } 
 }
