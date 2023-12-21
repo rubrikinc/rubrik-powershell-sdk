@@ -1514,8 +1514,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -25802,7 +25802,7 @@ namespace RubrikSecurityCloud.Types
         }
 
         /// <summary>
-        /// Given a GraphQL return type, return the list of root field names that return that type.
+        /// Given a GraphQL type, return the list of root field names that return that type.
         /// </summary>
         public static List<string> GqlRootFieldLookupByReturnType(
             string returnTypeName
@@ -29825,6 +29825,5362 @@ namespace RubrikSecurityCloud.Types
                 },
             };
             if (lookupDict.TryGetValue(returnTypeName, out var rootFieldNames))
+            {
+                return rootFieldNames;
+            }
+            return new List<string>();
+        }
+
+        /// <summary>
+        /// Given a GraphQL type, return the list of root field names that have that type as an argument.
+        /// </summary>
+        public static List<string> GqlRootFieldLookupByArgType(
+            string argTypeName
+        )
+        {
+            var lookupDict = new Dictionary<string, List<string>> {
+                {   "ActionType", new List<string> {
+                        "scheduleUpgradeBatchJob",
+                        "startUpgradeBatchJob",
+                    }
+                },
+                {   "ActivitySeriesFilter", new List<string> {
+                        "activitySeriesConnection",
+                    }
+                },
+                {   "ActivitySeriesInput", new List<string> {
+                        "activitySeries",
+                    }
+                },
+                {   "ActivitySeriesSortField", new List<string> {
+                        "activitySeriesConnection",
+                    }
+                },
+                {   "AdVolumeExportSortByInput", new List<string> {
+                        "adVolumeExports",
+                    }
+                },
+                {   "AddAdGroupsToHierarchyInput", new List<string> {
+                        "addAdGroupsToHierarchy",
+                    }
+                },
+                {   "AddAndJoinSmbDomainInput", new List<string> {
+                        "addAndJoinSmbDomain",
+                    }
+                },
+                {   "AddAwsAuthenticationServerBasedCloudAccountInput", new List<string> {
+                        "addAwsAuthenticationServerBasedCloudAccount",
+                    }
+                },
+                {   "AddAwsIamUserBasedCloudAccountInput", new List<string> {
+                        "addAwsIamUserBasedCloudAccount",
+                    }
+                },
+                {   "AddAzureCloudAccountExocomputeConfigurationsInput", new List<string> {
+                        "addAzureCloudAccountExocomputeConfigurations",
+                    }
+                },
+                {   "AddAzureCloudAccountInput", new List<string> {
+                        "addAzureCloudAccount",
+                    }
+                },
+                {   "AddAzureCloudAccountWithoutOauthInput", new List<string> {
+                        "addAzureCloudAccountWithoutOauth",
+                    }
+                },
+                {   "AddCloudNativeSqlServerBackupCredentialsInput", new List<string> {
+                        "addCloudNativeSqlServerBackupCredentials",
+                    }
+                },
+                {   "AddClusterCertificateInput", new List<string> {
+                        "addClusterCertificate",
+                    }
+                },
+                {   "AddClusterNodesInput", new List<string> {
+                        "addClusterNodes",
+                    }
+                },
+                {   "AddConfiguredGroupToHierarchyInput", new List<string> {
+                        "addConfiguredGroupToHierarchy",
+                    }
+                },
+                {   "AddDb2InstanceInput", new List<string> {
+                        "addDb2Instance",
+                    }
+                },
+                {   "AddGlobalCertificateInput", new List<string> {
+                        "addGlobalCertificate",
+                    }
+                },
+                {   "AddInventoryWorkloadsInput", new List<string> {
+                        "addInventoryWorkloads",
+                    }
+                },
+                {   "AddManagedVolumeInput", new List<string> {
+                        "addManagedVolume",
+                    }
+                },
+                {   "AddMongoSourceInput", new List<string> {
+                        "addMongoSource",
+                    }
+                },
+                {   "AddMosaicSourceInput", new List<string> {
+                        "createCassandraSource",
+                        "createMongodbSource",
+                    }
+                },
+                {   "AddMosaicStoreInput", new List<string> {
+                        "addMosaicStore",
+                    }
+                },
+                {   "AddNodesToCloudClusterInput", new List<string> {
+                        "addNodesToCloudCluster",
+                    }
+                },
+                {   "AddO365OrgInput", new List<string> {
+                        "addO365Org",
+                    }
+                },
+                {   "AddSapHanaSystemInput", new List<string> {
+                        "addSapHanaSystem",
+                    }
+                },
+                {   "AddStorageArraysInput", new List<string> {
+                        "addStorageArrays",
+                    }
+                },
+                {   "AddSyslogExportRuleInput", new List<string> {
+                        "addSyslogExportRule",
+                    }
+                },
+                {   "AddVlanInput", new List<string> {
+                        "addVlan",
+                    }
+                },
+                {   "AddVmAppConsistentSpecsInput", new List<string> {
+                        "addVmAppConsistentSpecs",
+                    }
+                },
+                {   "AllCloudDirectSharesInput", new List<string> {
+                        "allCloudDirectShares",
+                    }
+                },
+                {   "AllEventDigestsInput", new List<string> {
+                        "allEventDigests",
+                    }
+                },
+                {   "AllVmRecoveryJobsInfoInput", new List<string> {
+                        "allVmRecoveryJobsInfo",
+                    }
+                },
+                {   "AmiTypeForAwsNativeArchivedSnapshotExportInput", new List<string> {
+                        "amiTypeForAwsNativeArchivedSnapshotExport",
+                    }
+                },
+                {   "AnomalyResultFilterInput", new List<string> {
+                        "anomalyResults",
+                        "anomalyResultsGrouped",
+                    }
+                },
+                {   "AnomalyResultGroupBy", new List<string> {
+                        "anomalyResultsGrouped",
+                    }
+                },
+                {   "AnomalyResultSortBy", new List<string> {
+                        "anomalyResults",
+                    }
+                },
+                {   "AppSortByParam", new List<string> {
+                        "listO365Apps",
+                    }
+                },
+                {   "ArchivalGroupQuerySortByField", new List<string> {
+                        "allTargetMappings",
+                    }
+                },
+                {   "ArchivalLocationQuerySortByField", new List<string> {
+                        "allTargets",
+                        "targets",
+                    }
+                },
+                {   "ArchiveK8sClusterInput", new List<string> {
+                        "archiveK8sCluster",
+                    }
+                },
+                {   "AssignMssqlSlaDomainPropertiesAsyncInput", new List<string> {
+                        "assignMssqlSlaDomainPropertiesAsync",
+                    }
+                },
+                {   "AssignMssqlSlaDomainPropertiesInput", new List<string> {
+                        "assignMssqlSlaDomainProperties",
+                    }
+                },
+                {   "AssignProtectionInput", new List<string> {
+                        "assignProtection",
+                    }
+                },
+                {   "AssignSlaInput", new List<string> {
+                        "assignSla",
+                    }
+                },
+                {   "AssignSlaToMongoDbCollectionInput", new List<string> {
+                        "assignSlaToMongoDbCollection",
+                    }
+                },
+                {   "AwsArtifactsToDeleteInput", new List<string> {
+                        "awsArtifactsToDelete",
+                    }
+                },
+                {   "AwsCdmVersionRequest", new List<string> {
+                        "allAwsCdmVersions",
+                    }
+                },
+                {   "AwsCloudAccountConfigsInput", new List<string> {
+                        "allAwsCloudAccountConfigs",
+                    }
+                },
+                {   "AwsCloudAccountWithFeaturesInput", new List<string> {
+                        "awsCloudAccountWithFeatures",
+                    }
+                },
+                {   "AwsCloudAccountsWithFeaturesInput", new List<string> {
+                        "allAwsCloudAccountsWithFeatures",
+                    }
+                },
+                {   "AwsCloudComputeSettingQuerySortByField", new List<string> {
+                        "allAwsComputeSettings",
+                    }
+                },
+                {   "AwsGetPermissionPoliciesInput", new List<string> {
+                        "allAwsPermissionPolicies",
+                    }
+                },
+                {   "AwsNativeAccountFilters", new List<string> {
+                        "awsNativeAccounts",
+                    }
+                },
+                {   "AwsNativeAccountSortFields", new List<string> {
+                        "awsNativeAccounts",
+                    }
+                },
+                {   "AwsNativeEbsVolumeFilters", new List<string> {
+                        "awsNativeEbsVolumes",
+                    }
+                },
+                {   "AwsNativeEbsVolumeSortFields", new List<string> {
+                        "awsNativeEbsVolumes",
+                        "awsNativeEbsVolumesByName",
+                    }
+                },
+                {   "AwsNativeEc2InstanceFilters", new List<string> {
+                        "awsNativeEc2Instances",
+                    }
+                },
+                {   "AwsNativeEc2InstanceSortFields", new List<string> {
+                        "awsNativeEc2Instances",
+                        "awsNativeEc2InstancesByName",
+                    }
+                },
+                {   "AwsNativeProtectionFeature", new List<string> {
+                        "awsNativeAccount",
+                        "awsNativeAccounts",
+                    }
+                },
+                {   "AwsNativeRdsDbEngine", new List<string> {
+                        "allDbParameterGroupsByRegionFromAws",
+                        "allOptionGroupsByRegionFromAws",
+                        "allSupportedAwsRdsDatabaseInstanceClasses",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                    }
+                },
+                {   "AwsNativeRdsDbInstanceClass", new List<string> {
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                    }
+                },
+                {   "AwsNativeRdsInstanceFilters", new List<string> {
+                        "awsNativeRdsInstances",
+                    }
+                },
+                {   "AwsNativeRdsInstanceSortFields", new List<string> {
+                        "awsNativeRdsInstances",
+                    }
+                },
+                {   "AwsNativeRdsStorageType", new List<string> {
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                    }
+                },
+                {   "AwsNativeRdsType", new List<string> {
+                        "allDbParameterGroupsByRegionFromAws",
+                    }
+                },
+                {   "AwsNativeRegion", new List<string> {
+                        "allAvailabilityZonesByRegionFromAws",
+                        "allDbParameterGroupsByRegionFromAws",
+                        "allDbSubnetGroupsByRegionFromAws",
+                        "allEc2KeyPairsByRegionFromAws",
+                        "allKmsEncryptionKeysByRegionFromAws",
+                        "allOptionGroupsByRegionFromAws",
+                        "allS3BucketsDetailsFromAws",
+                        "allSupportedAwsRdsDatabaseInstanceClasses",
+                        "allVpcsByRegionFromAws",
+                        "awsNativeRdsPointInTimeRestoreWindow",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                        "rdsInstanceDetailsFromAws",
+                        "s3BucketStateForRecovery",
+                        "validateAwsNativeRdsClusterNameForExport",
+                        "validateAwsNativeRdsInstanceNameForExport",
+                    }
+                },
+                {   "AwsRegion", new List<string> {
+                        "awsCloudAccountListSecurityGroups",
+                        "awsCloudAccountListSubnets",
+                        "awsCloudAccountListVpcs",
+                    }
+                },
+                {   "AwsTrustPolicyInput", new List<string> {
+                        "awsTrustPolicy",
+                    }
+                },
+                {   "AzureAdObjectTypeInput", new List<string> {
+                        "azureAdObjectsByType",
+                    }
+                },
+                {   "AzureArmTemplatesByFeatureInput", new List<string> {
+                        "allAzureArmTemplatesByFeature",
+                    }
+                },
+                {   "AzureCdmVersionReq", new List<string> {
+                        "allAzureCdmVersions",
+                    }
+                },
+                {   "AzureCloudAccountRegion", new List<string> {
+                        "allAzureCloudAccountSubnetsByRegion",
+                    }
+                },
+                {   "AzureEncryptionKeysInput", new List<string> {
+                        "allAzureEncryptionKeys",
+                    }
+                },
+                {   "AzureGetResourceGroupsInfoIfExistInput", new List<string> {
+                        "allAzureNativeResourceGroupsInfoIfExist",
+                    }
+                },
+                {   "AzureKeyVaultsInput", new List<string> {
+                        "allAzureKeyVaultsByRegion",
+                    }
+                },
+                {   "AzureManagedIdentitiesRequest", new List<string> {
+                        "allAzureManagedIdentities",
+                    }
+                },
+                {   "AzureNativeCommonResourceGroupFilters", new List<string> {
+                        "azureNativeResourceGroups",
+                    }
+                },
+                {   "AzureNativeCommonResourceGroupSortFields", new List<string> {
+                        "azureNativeResourceGroups",
+                    }
+                },
+                {   "AzureNativeDiskFilters", new List<string> {
+                        "azureNativeManagedDisks",
+                    }
+                },
+                {   "AzureNativeDiskSortFields", new List<string> {
+                        "azureNativeManagedDisks",
+                    }
+                },
+                {   "AzureNativeProtectionFeature", new List<string> {
+                        "azureNativeSubscriptions",
+                    }
+                },
+                {   "AzureNativeRegion", new List<string> {
+                        "allAzureDiskEncryptionSetsByRegion",
+                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
+                        "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
+                        "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
+                        "allAzureNativeSecurityGroupsByRegionFromAzure",
+                        "allAzureNativeSubnetsByRegionFromAzure",
+                        "isZrsAvailableForLocation",
+                    }
+                },
+                {   "AzureNativeSubscriptionFilters", new List<string> {
+                        "azureNativeSubscriptions",
+                    }
+                },
+                {   "AzureNativeSubscriptionSortFields", new List<string> {
+                        "azureNativeSubscriptions",
+                    }
+                },
+                {   "AzureNativeVirtualMachineFilters", new List<string> {
+                        "azureNativeVirtualMachines",
+                    }
+                },
+                {   "AzureNativeVirtualMachineSortFields", new List<string> {
+                        "azureNativeVirtualMachines",
+                    }
+                },
+                {   "AzureNsgRequest", new List<string> {
+                        "allAzureNsgs",
+                    }
+                },
+                {   "AzureO365ExocomputeConfig", new List<string> {
+                        "setupAzureO365Exocompute",
+                    }
+                },
+                {   "AzureOauthConsentCompleteInput", new List<string> {
+                        "azureOauthConsentComplete",
+                    }
+                },
+                {   "AzureSqlDatabaseFilters", new List<string> {
+                        "azureSqlDatabases",
+                    }
+                },
+                {   "AzureSqlDatabaseServerFilters", new List<string> {
+                        "azureSqlDatabaseServers",
+                    }
+                },
+                {   "AzureSqlDatabaseServerSortFields", new List<string> {
+                        "azureSqlDatabaseServers",
+                    }
+                },
+                {   "AzureSqlDatabaseSortFields", new List<string> {
+                        "azureSqlDatabases",
+                    }
+                },
+                {   "AzureSqlManagedInstanceDatabaseFilters", new List<string> {
+                        "azureSqlManagedInstanceDatabases",
+                    }
+                },
+                {   "AzureSqlManagedInstanceDatabaseSortFields", new List<string> {
+                        "azureSqlManagedInstanceDatabases",
+                    }
+                },
+                {   "AzureSqlManagedInstanceServerFilters", new List<string> {
+                        "azureSqlManagedInstanceServers",
+                    }
+                },
+                {   "AzureSqlManagedInstanceServerSortFields", new List<string> {
+                        "azureSqlManagedInstanceServers",
+                    }
+                },
+                {   "AzureStorageAccountsByRegionInput", new List<string> {
+                        "allAzureStorageAccountsByRegion",
+                    }
+                },
+                {   "AzureStorageAccountsReq", new List<string> {
+                        "allAzureStorageAccounts",
+                    }
+                },
+                {   "AzureSubnetReq", new List<string> {
+                        "allAzureSubnets",
+                    }
+                },
+                {   "AzureVnetReq", new List<string> {
+                        "allAzureVnets",
+                    }
+                },
+                {   "BackupAzureAdDirectoryInput", new List<string> {
+                        "backupAzureAdDirectory",
+                    }
+                },
+                {   "BackupM365MailboxInput", new List<string> {
+                        "backupM365Mailbox",
+                    }
+                },
+                {   "BackupM365OnedriveInput", new List<string> {
+                        "backupM365Onedrive",
+                    }
+                },
+                {   "BackupM365SharepointDriveInput", new List<string> {
+                        "backupM365SharepointDrive",
+                    }
+                },
+                {   "BackupM365TeamInput", new List<string> {
+                        "backupM365Team",
+                    }
+                },
+                {   "BackupO365OnedriveInput", new List<string> {
+                        "backupO365Onedrive",
+                    }
+                },
+                {   "BackupO365SharePointListInput", new List<string> {
+                        "backupO365SharepointList",
+                    }
+                },
+                {   "BackupO365SharePointSiteInput", new List<string> {
+                        "backupO365SharePointSite",
+                    }
+                },
+                {   "BackupO365SharepointDriveInput", new List<string> {
+                        "backupO365SharepointDrive",
+                    }
+                },
+                {   "BackupO365TeamInput", new List<string> {
+                        "backupO365Team",
+                    }
+                },
+                {   "BackupRunConfig", new List<string> {
+                        "retryBackup",
+                    }
+                },
+                {   "BatchExportHypervVmInput", new List<string> {
+                        "batchExportHypervVm",
+                    }
+                },
+                {   "BatchExportNutanixVmInput", new List<string> {
+                        "batchExportNutanixVm",
+                    }
+                },
+                {   "BatchInstantRecoverHypervVmInput", new List<string> {
+                        "batchInstantRecoverHypervVm",
+                    }
+                },
+                {   "BatchMountHypervVmInput", new List<string> {
+                        "batchMountHypervVm",
+                    }
+                },
+                {   "BatchMountNutanixVmInput", new List<string> {
+                        "batchMountNutanixVm",
+                    }
+                },
+                {   "BatchOnDemandBackupHypervVmInput", new List<string> {
+                        "batchOnDemandBackupHypervVm",
+                    }
+                },
+                {   "BatchQuarantineSnapshotInput", new List<string> {
+                        "batchQuarantineSnapshot",
+                    }
+                },
+                {   "BatchReleaseFromQuarantineSnapshotInput", new List<string> {
+                        "batchReleaseFromQuarantineSnapshot",
+                    }
+                },
+                {   "BatchVmwareVmRecoverableRangesRequestInput", new List<string> {
+                        "vsphereVMRecoverableRangeInBatch",
+                    }
+                },
+                {   "BeginManagedVolumeSnapshotInput", new List<string> {
+                        "beginManagedVolumeSnapshot",
+                    }
+                },
+                {   "Boolean", new List<string> {
+                        "allAzureCloudAccountTenants",
+                        "allGcpCloudAccountProjectsForOauth",
+                        "allPendingActions",
+                        "allSnapshotPvcs",
+                        "allSnapshotsClosestToPointInTime",
+                        "allTargetMappings",
+                        "allTopRiskPolicySummaries",
+                        "allUsersOnAccountConnection",
+                        "allValidReplicationTargets",
+                        "assignRetentionSLAToSnappables",
+                        "assignSlasForSnappableHierarchies",
+                        "awsNativeRdsExportDefaults",
+                        "azureO365CheckNetworkSubnet",
+                        "azureO365GetNetworkSubnetUnusedAddr",
+                        "browseO365TeamConvChannels",
+                        "dashboardSummary",
+                        "datagovSecDesc",
+                        "deactivatePolicy",
+                        "discoveryTimeline",
+                        "filesetSnapshot",
+                        "getCdmReleaseDetailsForClusterFromSupportPortal",
+                        "getCdmReleaseDetailsForVersionFromSupportPortal",
+                        "getCdmReleaseDetailsFromSupportPortal",
+                        "globalSlaFilterConnection",
+                        "groupsInCurrentAndDescendantOrganization",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                        "k8sAppManifest",
+                        "k8sSnapshotInfo",
+                        "o365SharepointObjectList",
+                        "o365Sites",
+                        "o365TeamChannels",
+                        "objectTypeAccessSummary",
+                        "orgs",
+                        "physicalHosts",
+                        "policies",
+                        "policyObj",
+                        "policyObjs",
+                        "ransomwareDetectionWorkloadLocations",
+                        "ransomwareInvestigationAnalysisSummary",
+                        "removeCdmCluster",
+                        "removePolicyObjects",
+                        "setIpWhitelistEnabled",
+                        "slaDomain",
+                        "slaDomains",
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                        "updateLambdaSettings",
+                        "updateWhitelistedAnalyzers",
+                        "userActivityTimeline",
+                        "usersInCurrentAndDescendantOrganization",
+                        "verifySlaWithReplicationToCluster",
+                        "workloadAnomalies",
+                    }
+                },
+                {   "BrowseMssqlDatabaseSnapshotInput", new List<string> {
+                        "browseMssqlDatabaseSnapshot",
+                    }
+                },
+                {   "BrowseNutanixSnapshotInput", new List<string> {
+                        "nutanixBrowseSnapshot",
+                    }
+                },
+                {   "BulkClusterWebCertAndIpmiInput", new List<string> {
+                        "allClusterWebCertsAndIpmis",
+                    }
+                },
+                {   "BulkCreateFilesetTemplatesInput", new List<string> {
+                        "bulkCreateFilesetTemplates",
+                    }
+                },
+                {   "BulkCreateFilesetsInput", new List<string> {
+                        "bulkCreateFilesets",
+                    }
+                },
+                {   "BulkCreateNasFilesetsInput", new List<string> {
+                        "bulkCreateNasFilesets",
+                    }
+                },
+                {   "BulkCreateOnDemandMssqlBackupInput", new List<string> {
+                        "bulkCreateOnDemandMssqlBackup",
+                    }
+                },
+                {   "BulkDeleteAwsCloudAccountWithoutCftInput", new List<string> {
+                        "bulkDeleteAwsCloudAccountWithoutCft",
+                    }
+                },
+                {   "BulkDeleteFailoverClusterAppInput", new List<string> {
+                        "bulkDeleteFailoverClusterApp",
+                    }
+                },
+                {   "BulkDeleteFailoverClusterInput", new List<string> {
+                        "bulkDeleteFailoverCluster",
+                    }
+                },
+                {   "BulkDeleteFilesetInput", new List<string> {
+                        "bulkDeleteFileset",
+                    }
+                },
+                {   "BulkDeleteFilesetTemplateInput", new List<string> {
+                        "bulkDeleteFilesetTemplate",
+                    }
+                },
+                {   "BulkDeleteHostInput", new List<string> {
+                        "bulkDeleteHost",
+                    }
+                },
+                {   "BulkDeleteMosaicSourcesInput", new List<string> {
+                        "bulkDeleteCassandraSources",
+                        "bulkDeleteMongodbSources",
+                    }
+                },
+                {   "BulkDeleteNasSystemsInput", new List<string> {
+                        "bulkDeleteNasSystems",
+                    }
+                },
+                {   "BulkOnDemandSnapshotNutanixVmInput", new List<string> {
+                        "bulkOnDemandSnapshotNutanixVm",
+                    }
+                },
+                {   "BulkRefreshHostsInput", new List<string> {
+                        "bulkRefreshHosts",
+                    }
+                },
+                {   "BulkRegisterHostAsyncInput", new List<string> {
+                        "bulkRegisterHostAsync",
+                    }
+                },
+                {   "BulkRegisterHostInput", new List<string> {
+                        "bulkRegisterHost",
+                    }
+                },
+                {   "BulkTierExistingSnapshotsInput", new List<string> {
+                        "bulkTierExistingSnapshots",
+                    }
+                },
+                {   "BulkUpdateExchangeDagInput", new List<string> {
+                        "bulkUpdateExchangeDag",
+                    }
+                },
+                {   "BulkUpdateFilesetTemplateInput", new List<string> {
+                        "bulkUpdateFilesetTemplate",
+                    }
+                },
+                {   "BulkUpdateHostInput", new List<string> {
+                        "bulkUpdateHost",
+                    }
+                },
+                {   "BulkUpdateMssqlDbsInput", new List<string> {
+                        "bulkUpdateMssqlDbs",
+                    }
+                },
+                {   "BulkUpdateOracleDatabasesInput", new List<string> {
+                        "bulkUpdateOracleDatabases",
+                    }
+                },
+                {   "BulkUpdateOracleHostsInput", new List<string> {
+                        "bulkUpdateOracleHosts",
+                    }
+                },
+                {   "BulkUpdateOracleRacsInput", new List<string> {
+                        "bulkUpdateOracleRacs",
+                    }
+                },
+                {   "CalendarSearchFilter", new List<string> {
+                        "browseCalendar",
+                        "snappableEventSearch",
+                        "snapshotEventSearch",
+                    }
+                },
+                {   "CancelActivitySeriesInput", new List<string> {
+                        "cancelActivitySeries",
+                    }
+                },
+                {   "CancelThreatHuntInput", new List<string> {
+                        "cancelThreatHunt",
+                    }
+                },
+                {   "CdmUpgradeInfoFilterInput", new List<string> {
+                        "clusterWithUpgradesInfo",
+                    }
+                },
+                {   "CdpPerfDashboardSortParam", new List<string> {
+                        "allCdpVmsInfos",
+                    }
+                },
+                {   "CertMgmtSortBy", new List<string> {
+                        "certificates",
+                        "certificateSigningRequests",
+                    }
+                },
+                {   "ChangePasswordInput", new List<string> {
+                        "changePassword",
+                    }
+                },
+                {   "ChangeVfdOnHostInput", new List<string> {
+                        "changeVfdOnHost",
+                    }
+                },
+                {   "ChannelMembershipType", new List<string> {
+                        "browseO365TeamConvChannels",
+                        "browseTeamsChannels",
+                        "o365TeamChannels",
+                    }
+                },
+                {   "ClearCloudNativeSqlServerBackupCredentialsInput", new List<string> {
+                        "clearCloudNativeSqlServerBackupCredentials",
+                    }
+                },
+                {   "CloudAccountAction", new List<string> {
+                        "allAzureCloudAccountMissingPermissions",
+                    }
+                },
+                {   "CloudAccountFeature", new List<string> {
+                        "allAzureCloudAccountSubscriptionsByFeature",
+                        "allAzureCloudAccountTenants",
+                        "allFeaturePermissionsForGcpCloudAccount",
+                        "allGcpCloudAccountProjectsByFeature",
+                        "allResourceGroupsFromAzure",
+                        "awsCloudAccountListSecurityGroups",
+                        "awsCloudAccountListSubnets",
+                        "awsCloudAccountListVpcs",
+                        "azureCloudAccountPermissionConfig",
+                        "azureCloudAccountTenant",
+                        "azureCloudAccountTenantWithExoConfigs",
+                        "checkAzurePersistentStorageSubscriptionCanUnmap",
+                        "doesAzureNativeResourceGroupExist",
+                    }
+                },
+                {   "CloudAccountSortByFieldEnum", new List<string> {
+                        "allCloudAccounts",
+                    }
+                },
+                {   "CloudDirectSystemsInput", new List<string> {
+                        "cloudDirectSystems",
+                    }
+                },
+                {   "CloudNativeCheckRbaConnectivityInput", new List<string> {
+                        "cloudNativeCheckRbaConnectivity",
+                    }
+                },
+                {   "CloudNativeDownloadFilesInput", new List<string> {
+                        "cloudNativeDownloadFiles",
+                    }
+                },
+                {   "CloudNativeFeatureForPermissionsCheck", new List<string> {
+                        "cloudNativeCheckRequiredPermissionsForFeature",
+                    }
+                },
+                {   "CloudNativeLabelObjectType", new List<string> {
+                        "allCloudNativeLabelKeys",
+                        "allCloudNativeLabelValues",
+                        "checkCloudNativeLabelRuleNameUniqueness",
+                        "cloudNativeLabelRules",
+                    }
+                },
+                {   "CloudNativeTagObjectType", new List<string> {
+                        "allCloudNativeTagKeys",
+                        "allCloudNativeTagValues",
+                        "checkCloudNativeTagRuleNameUniqueness",
+                        "cloudNativeTagRules",
+                    }
+                },
+                {   "CloudNativeTagRuleSortByFields", new List<string> {
+                        "cloudNativeLabelRules",
+                        "cloudNativeTagRules",
+                    }
+                },
+                {   "CloudVendor", new List<string> {
+                        "allAccountsWithExocomputeMappings",
+                        "allCloudAccountExocomputeMappings",
+                        "allCurrentFeaturePermissionsForCloudAccounts",
+                        "allLatestFeaturePermissionsForCloudAccounts",
+                        "cloudNativeCustomerTags",
+                    }
+                },
+                {   "ClusterFilterInput", new List<string> {
+                        "allClusterConnection",
+                        "clusterConnection",
+                        "clusterGroupByConnection",
+                        "radarClusterConnection",
+                    }
+                },
+                {   "ClusterGroupByEnum", new List<string> {
+                        "clusterGroupByConnection",
+                    }
+                },
+                {   "ClusterIpv6ModeInput", new List<string> {
+                        "clusterIpv6Mode",
+                    }
+                },
+                {   "ClusterLocationEdit", new List<string> {
+                        "updateClusterLocation",
+                    }
+                },
+                {   "ClusterOperationJobProgressInput", new List<string> {
+                        "clusterOperationJobProgress",
+                    }
+                },
+                {   "ClusterSortByEnum", new List<string> {
+                        "allClusterConnection",
+                        "clusterConnection",
+                        "radarClusterConnection",
+                    }
+                },
+                {   "ClusterTypeEnum", new List<string> {
+                        "allConnectedClusters",
+                    }
+                },
+                {   "ClusterUuidWithDbIdInput", new List<string> {
+                        "oracleAcoExampleDownloadLink",
+                        "oracleAcoParameters",
+                    }
+                },
+                {   "ClusterUuidWithMssqlObjectIdInput", new List<string> {
+                        "mssqlDefaultPropertiesOnCluster",
+                    }
+                },
+                {   "ClusterWebSignedCertificateInput", new List<string> {
+                        "clusterWebSignedCertificate",
+                    }
+                },
+                {   "CompleteAzureAdAppSetupInput", new List<string> {
+                        "completeAzureAdAppSetup",
+                    }
+                },
+                {   "CompleteAzureAdAppUpdateInput", new List<string> {
+                        "completeAzureAdAppUpdate",
+                    }
+                },
+                {   "CompleteAzureCloudAccountOauthInput", new List<string> {
+                        "completeAzureCloudAccountOauth",
+                    }
+                },
+                {   "ConfigureSapHanaRestoreInput", new List<string> {
+                        "configureSapHanaRestore",
+                    }
+                },
+                {   "ContactsSearchFilter", new List<string> {
+                        "browseContacts",
+                        "snappableContactSearch",
+                    }
+                },
+                {   "ContextFilterTypeEnum", new List<string> {
+                        "allAwsComputeSettings",
+                        "allTargetMappings",
+                        "allTargets",
+                        "globalSlaFilterConnection",
+                        "slaDomains",
+                        "targets",
+                    }
+                },
+                {   "CreateActiveDirectoryLiveMountInput", new List<string> {
+                        "createActiveDirectoryLiveMount",
+                    }
+                },
+                {   "CreateActiveDirectoryUnmountInput", new List<string> {
+                        "createActiveDirectoryUnmount",
+                    }
+                },
+                {   "CreateAutomaticAwsTargetMappingInput", new List<string> {
+                        "createAutomaticAwsTargetMapping",
+                    }
+                },
+                {   "CreateAutomaticAzureTargetMappingInput", new List<string> {
+                        "createAutomaticAzureTargetMapping",
+                    }
+                },
+                {   "CreateAutomaticRcsTargetMappingInput", new List<string> {
+                        "createAutomaticRcsTargetMapping",
+                    }
+                },
+                {   "CreateAwsAccountInput", new List<string> {
+                        "createAwsAccount",
+                    }
+                },
+                {   "CreateAwsClusterInput", new List<string> {
+                        "createAwsCluster",
+                    }
+                },
+                {   "CreateAwsComputeSettingInput", new List<string> {
+                        "createAwsComputeSetting",
+                    }
+                },
+                {   "CreateAwsExocomputeConfigsInput", new List<string> {
+                        "createAwsExocomputeConfigs",
+                    }
+                },
+                {   "CreateAwsReaderTargetInput", new List<string> {
+                        "createAwsReaderTarget",
+                    }
+                },
+                {   "CreateAwsTargetInput", new List<string> {
+                        "createAwsTarget",
+                    }
+                },
+                {   "CreateAzureAccountInput", new List<string> {
+                        "createAzureAccount",
+                    }
+                },
+                {   "CreateAzureClusterInput", new List<string> {
+                        "createAzureCluster",
+                    }
+                },
+                {   "CreateAzureReaderTargetInput", new List<string> {
+                        "createAzureReaderTarget",
+                    }
+                },
+                {   "CreateAzureTargetInput", new List<string> {
+                        "createAzureTarget",
+                    }
+                },
+                {   "CreateCloudNativeAwsStorageSettingInput", new List<string> {
+                        "createCloudNativeAwsStorageSetting",
+                    }
+                },
+                {   "CreateCloudNativeAzureStorageSettingInput", new List<string> {
+                        "createCloudNativeAzureStorageSetting",
+                    }
+                },
+                {   "CreateCloudNativeLabelRuleInput", new List<string> {
+                        "createCloudNativeLabelRule",
+                    }
+                },
+                {   "CreateCloudNativeRcvAzureStorageSettingInput", new List<string> {
+                        "createCloudNativeRcvAzureStorageSetting",
+                    }
+                },
+                {   "CreateCloudNativeTagRuleInput", new List<string> {
+                        "createCloudNativeTagRule",
+                    }
+                },
+                {   "CreateCustomAnalyzerInput", new List<string> {
+                        "createCustomAnalyzer",
+                        "updateCustomAnalyzer",
+                    }
+                },
+                {   "CreateCustomReportInput", new List<string> {
+                        "createCustomReport",
+                    }
+                },
+                {   "CreateDomainControllerSnapshotInput", new List<string> {
+                        "createDomainControllerSnapshot",
+                    }
+                },
+                {   "CreateDownloadSnapshotForVolumeGroupInput", new List<string> {
+                        "createDownloadSnapshotForVolumeGroup",
+                    }
+                },
+                {   "CreateExchangeSnapshotMountInput", new List<string> {
+                        "createExchangeMount",
+                    }
+                },
+                {   "CreateFailoverClusterAppInput", new List<string> {
+                        "createFailoverClusterApp",
+                    }
+                },
+                {   "CreateFailoverClusterInput", new List<string> {
+                        "createFailoverCluster",
+                    }
+                },
+                {   "CreateFilesetSnapshotInput", new List<string> {
+                        "createFilesetSnapshot",
+                    }
+                },
+                {   "CreateGcpReaderTargetInput", new List<string> {
+                        "createGcpReaderTarget",
+                    }
+                },
+                {   "CreateGcpTargetInput", new List<string> {
+                        "createGcpTarget",
+                    }
+                },
+                {   "CreateGlacierReaderTargetInput", new List<string> {
+                        "createGlacierReaderTarget",
+                    }
+                },
+                {   "CreateGlobalSlaInput", new List<string> {
+                        "createGlobalSla",
+                    }
+                },
+                {   "CreateGuestCredentialInput", new List<string> {
+                        "createGuestCredential",
+                    }
+                },
+                {   "CreateHypervVirtualMachineSnapshotMountInput", new List<string> {
+                        "createHypervVirtualMachineSnapshotMount",
+                    }
+                },
+                {   "CreateIntegrationInput", new List<string> {
+                        "createIntegration",
+                    }
+                },
+                {   "CreateIntegrationsInput", new List<string> {
+                        "createIntegrations",
+                    }
+                },
+                {   "CreateK8sAgentManifestInput", new List<string> {
+                        "createK8sAgentManifest",
+                    }
+                },
+                {   "CreateK8sClusterInput", new List<string> {
+                        "createK8sCluster",
+                    }
+                },
+                {   "CreateK8sNamespaceSnapshotsInput", new List<string> {
+                        "createK8sNamespaceSnapshots",
+                    }
+                },
+                {   "CreateManualTargetMappingInput", new List<string> {
+                        "createManualTargetMapping",
+                    }
+                },
+                {   "CreateMssqlLiveMountInput", new List<string> {
+                        "createMssqlLiveMount",
+                    }
+                },
+                {   "CreateMssqlLogShippingConfigurationInput", new List<string> {
+                        "createMssqlLogShippingConfiguration",
+                    }
+                },
+                {   "CreateNfsReaderTargetInput", new List<string> {
+                        "createNfsReaderTarget",
+                    }
+                },
+                {   "CreateNfsTargetInput", new List<string> {
+                        "createNfsTarget",
+                    }
+                },
+                {   "CreateNutanixClusterInput", new List<string> {
+                        "createNutanixCluster",
+                    }
+                },
+                {   "CreateNutanixPrismCentralInput", new List<string> {
+                        "createNutanixPrismCentral",
+                    }
+                },
+                {   "CreateO365AppCompleteInput", new List<string> {
+                        "createO365AppComplete",
+                    }
+                },
+                {   "CreateO365AppKickoffInput", new List<string> {
+                        "createO365AppKickoff",
+                    }
+                },
+                {   "CreateOnDemandDb2BackupInput", new List<string> {
+                        "createOnDemandDb2Backup",
+                    }
+                },
+                {   "CreateOnDemandExchangeDatabaseBackupInput", new List<string> {
+                        "createOnDemandExchangeBackup",
+                    }
+                },
+                {   "CreateOnDemandMssqlBackupInput", new List<string> {
+                        "createOnDemandMssqlBackup",
+                    }
+                },
+                {   "CreateOnDemandNutanixBackupInput", new List<string> {
+                        "createOnDemandNutanixBackup",
+                    }
+                },
+                {   "CreateOnDemandSapHanaBackupInput", new List<string> {
+                        "createOnDemandSapHanaBackup",
+                    }
+                },
+                {   "CreateOnDemandSapHanaStorageSnapshotInput", new List<string> {
+                        "createOnDemandSapHanaStorageSnapshot",
+                    }
+                },
+                {   "CreateOnDemandVolumeGroupBackupInput", new List<string> {
+                        "createOnDemandVolumeGroupBackup",
+                    }
+                },
+                {   "CreateOraclePdbRestoreInput", new List<string> {
+                        "createOraclePdbRestore",
+                    }
+                },
+                {   "CreateOrgInput", new List<string> {
+                        "createOrg",
+                    }
+                },
+                {   "CreateOrgSwitchSessionInput", new List<string> {
+                        "createOrgSwitchSession",
+                    }
+                },
+                {   "CreatePolicyInput", new List<string> {
+                        "createPolicy",
+                    }
+                },
+                {   "CreateRcsReaderTargetInput", new List<string> {
+                        "createRcsReaderTarget",
+                    }
+                },
+                {   "CreateRcsTargetInput", new List<string> {
+                        "createRcsTarget",
+                    }
+                },
+                {   "CreateRcvLocationsFromTemplateInput", new List<string> {
+                        "createRcvLocationsFromTemplate",
+                    }
+                },
+                {   "CreateRcvPrivateEndpointApprovalRequestInput", new List<string> {
+                        "createRcvPrivateEndpointApprovalRequest",
+                    }
+                },
+                {   "CreateReplicationPairInput", new List<string> {
+                        "createReplicationPair",
+                    }
+                },
+                {   "CreateS3CompatibleReaderTargetInput", new List<string> {
+                        "createS3CompatibleReaderTarget",
+                    }
+                },
+                {   "CreateS3CompatibleTargetInput", new List<string> {
+                        "createS3CompatibleTarget",
+                    }
+                },
+                {   "CreateSapHanaSystemRefreshInput", new List<string> {
+                        "createSapHanaSystemRefresh",
+                    }
+                },
+                {   "CreateScheduledReportInput", new List<string> {
+                        "createScheduledReport",
+                    }
+                },
+                {   "CreateServiceAccountInput", new List<string> {
+                        "createServiceAccount",
+                    }
+                },
+                {   "CreateTapeReaderTargetInput", new List<string> {
+                        "createTapeReaderTarget",
+                    }
+                },
+                {   "CreateTapeTargetInput", new List<string> {
+                        "createTapeTarget",
+                    }
+                },
+                {   "CreateUserWithPasswordInput", new List<string> {
+                        "createUserWithPassword",
+                    }
+                },
+                {   "CreateVappsInstantRecoveryInput", new List<string> {
+                        "createVappsInstantRecovery",
+                    }
+                },
+                {   "CreateVsphereAdvancedTagInput", new List<string> {
+                        "createVsphereAdvancedTag",
+                    }
+                },
+                {   "CreateVsphereVcenterInput", new List<string> {
+                        "createVsphereVcenter",
+                    }
+                },
+                {   "CreateWebhookInput", new List<string> {
+                        "createWebhook",
+                    }
+                },
+                {   "DataViewTypeEnum", new List<string> {
+                        "reportData",
+                    }
+                },
+                {   "DateTime", new List<string> {
+                        "activeDirectorySearchSnapshots",
+                        "allAccountProducts",
+                        "allDhrcScores",
+                        "allSnapshotsClosestToPointInTime",
+                        "pipelineHealthForTimeRange",
+                        "ransomwareDetectionWorkloadLocations",
+                        "scheduleUpgradeBatchJob",
+                        "threatHunts",
+                        "vsphereVMMissedRecoverableRange",
+                        "vsphereVMRecoverableRange",
+                        "workloadAnomalies",
+                    }
+                },
+                {   "Db2LogSnapshotFilterInput", new List<string> {
+                        "db2LogSnapshots",
+                    }
+                },
+                {   "Db2LogSnapshotSortBy", new List<string> {
+                        "db2LogSnapshots",
+                    }
+                },
+                {   "Db2RecoverableRangeFilterInput", new List<string> {
+                        "db2RecoverableRanges",
+                    }
+                },
+                {   "Db2RecoverableRangeSortBy", new List<string> {
+                        "db2RecoverableRanges",
+                    }
+                },
+                {   "DeleteAdGroupsFromHierarchyInput", new List<string> {
+                        "deleteAdGroupsFromHierarchy",
+                    }
+                },
+                {   "DeleteAllOracleDatabaseSnapshotsInput", new List<string> {
+                        "deleteAllOracleDatabaseSnapshots",
+                    }
+                },
+                {   "DeleteAwsComputeSettingInput", new List<string> {
+                        "deleteAwsComputeSetting",
+                    }
+                },
+                {   "DeleteAwsExocomputeConfigsInput", new List<string> {
+                        "deleteAwsExocomputeConfigs",
+                    }
+                },
+                {   "DeleteAzureAdDirectoryInput", new List<string> {
+                        "deleteAzureAdDirectory",
+                    }
+                },
+                {   "DeleteAzureCloudAccountExocomputeConfigurationsInput", new List<string> {
+                        "deleteAzureCloudAccountExocomputeConfigurations",
+                    }
+                },
+                {   "DeleteAzureCloudAccountInput", new List<string> {
+                        "deleteAzureCloudAccount",
+                    }
+                },
+                {   "DeleteAzureCloudAccountWithoutOauthInput", new List<string> {
+                        "deleteAzureCloudAccountWithoutOauth",
+                    }
+                },
+                {   "DeleteCloudNativeLabelRuleInput", new List<string> {
+                        "deleteCloudNativeLabelRule",
+                    }
+                },
+                {   "DeleteCloudNativeTagRuleInput", new List<string> {
+                        "deleteCloudNativeTagRule",
+                    }
+                },
+                {   "DeleteCloudWorkloadSnapshotInput", new List<string> {
+                        "deleteCloudWorkloadSnapshot",
+                    }
+                },
+                {   "DeleteCsrInput", new List<string> {
+                        "deleteCsr",
+                    }
+                },
+                {   "DeleteCustomReportInput", new List<string> {
+                        "deleteCustomReport",
+                    }
+                },
+                {   "DeleteDb2DatabaseInput", new List<string> {
+                        "deleteDb2Database",
+                    }
+                },
+                {   "DeleteDb2InstanceInput", new List<string> {
+                        "deleteDb2Instance",
+                    }
+                },
+                {   "DeleteDistributionListDigestBatchInput", new List<string> {
+                        "deleteDistributionListDigestBatch",
+                    }
+                },
+                {   "DeleteEventDigestInput", new List<string> {
+                        "deleteEventDigest",
+                    }
+                },
+                {   "DeleteExchangeSnapshotMountInput", new List<string> {
+                        "deleteExchangeSnapshotMount",
+                    }
+                },
+                {   "DeleteFailoverClusterAppInput", new List<string> {
+                        "deleteFailoverClusterApp",
+                    }
+                },
+                {   "DeleteFailoverClusterInput", new List<string> {
+                        "deleteFailoverCluster",
+                    }
+                },
+                {   "DeleteFilesetSnapshotsInput", new List<string> {
+                        "deleteFilesetSnapshots",
+                    }
+                },
+                {   "DeleteGlobalCertificateInput", new List<string> {
+                        "deleteGlobalCertificate",
+                    }
+                },
+                {   "DeleteGuestCredentialByIdInput", new List<string> {
+                        "deleteGuestCredentialById",
+                    }
+                },
+                {   "DeleteHypervVirtualMachineSnapshotInput", new List<string> {
+                        "deleteHypervVirtualMachineSnapshot",
+                    }
+                },
+                {   "DeleteHypervVirtualMachineSnapshotMountInput", new List<string> {
+                        "deleteHypervVirtualMachineSnapshotMount",
+                    }
+                },
+                {   "DeleteIntegrationInput", new List<string> {
+                        "deleteIntegration",
+                    }
+                },
+                {   "DeleteIntegrationsInput", new List<string> {
+                        "deleteIntegrations",
+                    }
+                },
+                {   "DeleteLogShippingInput", new List<string> {
+                        "deleteLogShipping",
+                    }
+                },
+                {   "DeleteManagedVolumeInput", new List<string> {
+                        "deleteManagedVolume",
+                    }
+                },
+                {   "DeleteManagedVolumeSnapshotExportInput", new List<string> {
+                        "deleteManagedVolumeSnapshotExport",
+                    }
+                },
+                {   "DeleteMongoSourceInput", new List<string> {
+                        "deleteMongoSource",
+                    }
+                },
+                {   "DeleteMosaicSourceInput", new List<string> {
+                        "deleteCassandraSource",
+                        "deleteMongodbSource",
+                    }
+                },
+                {   "DeleteMosaicStoreInput", new List<string> {
+                        "deleteMosaicStore",
+                    }
+                },
+                {   "DeleteMssqlDbSnapshotsInput", new List<string> {
+                        "deleteMssqlDbSnapshots",
+                    }
+                },
+                {   "DeleteMssqlLiveMountInput", new List<string> {
+                        "deleteMssqlLiveMount",
+                    }
+                },
+                {   "DeleteNasSystemInput", new List<string> {
+                        "deleteNasSystem",
+                    }
+                },
+                {   "DeleteNutanixClusterInput", new List<string> {
+                        "deleteNutanixCluster",
+                    }
+                },
+                {   "DeleteNutanixMountV1Input", new List<string> {
+                        "deleteNutanixMountV1",
+                    }
+                },
+                {   "DeleteNutanixPrismCentralInput", new List<string> {
+                        "deleteNutanixPrismCentral",
+                    }
+                },
+                {   "DeleteNutanixSnapshotInput", new List<string> {
+                        "deleteNutanixSnapshot",
+                    }
+                },
+                {   "DeleteNutanixSnapshotsInput", new List<string> {
+                        "deleteNutanixSnapshots",
+                    }
+                },
+                {   "DeleteOracleMountInput", new List<string> {
+                        "deleteOracleMount",
+                    }
+                },
+                {   "DeleteOrgInput", new List<string> {
+                        "deleteOrg",
+                    }
+                },
+                {   "DeleteReplicationPairInput", new List<string> {
+                        "deleteReplicationPair",
+                    }
+                },
+                {   "DeleteSapHanaDbSnapshotInput", new List<string> {
+                        "deleteSapHanaDbSnapshot",
+                    }
+                },
+                {   "DeleteSapHanaSystemInput", new List<string> {
+                        "deleteSapHanaSystem",
+                    }
+                },
+                {   "DeleteScheduledReportInput", new List<string> {
+                        "deleteScheduledReport",
+                    }
+                },
+                {   "DeleteServiceAccountsFromAccountInput", new List<string> {
+                        "deleteServiceAccountsFromAccount",
+                    }
+                },
+                {   "DeleteSmbDomainInput", new List<string> {
+                        "deleteSmbDomain",
+                    }
+                },
+                {   "DeleteStorageArraysInput", new List<string> {
+                        "deleteStorageArrays",
+                    }
+                },
+                {   "DeleteSyslogExportRuleInput", new List<string> {
+                        "deleteSyslogExportRule",
+                    }
+                },
+                {   "DeleteTargetInput", new List<string> {
+                        "deleteTarget",
+                    }
+                },
+                {   "DeleteTargetMappingInput", new List<string> {
+                        "deleteTargetMapping",
+                    }
+                },
+                {   "DeleteTotpConfigsInput", new List<string> {
+                        "deleteTotpConfigs",
+                    }
+                },
+                {   "DeleteVolumeGroupMountInput", new List<string> {
+                        "deleteVolumeGroupMount",
+                    }
+                },
+                {   "DeleteVsphereAdvancedTagInput", new List<string> {
+                        "deleteVsphereAdvancedTag",
+                    }
+                },
+                {   "DeleteVsphereLiveMountInput", new List<string> {
+                        "deleteVsphereLiveMount",
+                    }
+                },
+                {   "DeleteWebhookInput", new List<string> {
+                        "deleteWebhook",
+                    }
+                },
+                {   "DhrcScoreTimespan", new List<string> {
+                        "allDhrcScores",
+                    }
+                },
+                {   "DisableReplicationPauseInput", new List<string> {
+                        "disableReplicationPause",
+                    }
+                },
+                {   "DisableSupportUserAccessInput", new List<string> {
+                        "disableSupportUserAccess",
+                    }
+                },
+                {   "DisableTargetInput", new List<string> {
+                        "disableTarget",
+                    }
+                },
+                {   "DiscoverDb2InstanceInput", new List<string> {
+                        "discoverDb2Instance",
+                    }
+                },
+                {   "DiscoverMongoSourceInput", new List<string> {
+                        "discoverMongoSource",
+                    }
+                },
+                {   "DiscoveryContentReportGroupBy", new List<string> {
+                        "sonarContentReport",
+                    }
+                },
+                {   "DiscoveryContentReportSortBy", new List<string> {
+                        "sonarContentReport",
+                    }
+                },
+                {   "DiscoveryReportGroupBy", new List<string> {
+                        "sonarReport",
+                    }
+                },
+                {   "DiscoveryReportSortBy", new List<string> {
+                        "sonarReportRow",
+                    }
+                },
+                {   "DistributionDigestByIdInput", new List<string> {
+                        "distributionListDigest",
+                    }
+                },
+                {   "DownloadActiveDirectorySnapshotFromLocationInput", new List<string> {
+                        "downloadActiveDirectorySnapshotFromLocation",
+                    }
+                },
+                {   "DownloadAuditLogCsvAsyncInput", new List<string> {
+                        "downloadAuditLogCsvAsync",
+                    }
+                },
+                {   "DownloadCdmUpgradesPdfFiltersInput", new List<string> {
+                        "downloadCdmUpgradesPdf",
+                    }
+                },
+                {   "DownloadDb2SnapshotInput", new List<string> {
+                        "downloadDb2Snapshot",
+                    }
+                },
+                {   "DownloadDb2SnapshotsForPointInTimeRecoveryInput", new List<string> {
+                        "downloadDb2SnapshotsForPointInTimeRecovery",
+                    }
+                },
+                {   "DownloadExchangeSnapshotInput", new List<string> {
+                        "downloadExchangeSnapshot",
+                    }
+                },
+                {   "DownloadFilesNutanixSnapshotInput", new List<string> {
+                        "downloadFilesNutanixSnapshot",
+                    }
+                },
+                {   "DownloadFilesetSnapshotFromLocationInput", new List<string> {
+                        "downloadFilesetSnapshotFromLocation",
+                    }
+                },
+                {   "DownloadFilesetSnapshotInput", new List<string> {
+                        "downloadFilesetSnapshot",
+                    }
+                },
+                {   "DownloadHypervSnapshotFromLocationInput", new List<string> {
+                        "downloadHypervSnapshotFromLocation",
+                    }
+                },
+                {   "DownloadHypervVirtualMachineSnapshotFilesInput", new List<string> {
+                        "downloadHypervVirtualMachineSnapshotFiles",
+                    }
+                },
+                {   "DownloadHypervVirtualMachineSnapshotInput", new List<string> {
+                        "downloadHypervVirtualMachineSnapshot",
+                    }
+                },
+                {   "DownloadManagedVolumeFilesInput", new List<string> {
+                        "downloadManagedVolumeFiles",
+                    }
+                },
+                {   "DownloadManagedVolumeFromLocationInput", new List<string> {
+                        "downloadManagedVolumeFromLocation",
+                    }
+                },
+                {   "DownloadMssqlDatabaseBackupFilesInput", new List<string> {
+                        "downloadMssqlDatabaseBackupFiles",
+                    }
+                },
+                {   "DownloadMssqlDatabaseFilesFromArchivalLocationInput", new List<string> {
+                        "downloadMssqlDatabaseFilesFromArchivalLocation",
+                    }
+                },
+                {   "DownloadNutanixSnapshotInput", new List<string> {
+                        "downloadNutanixSnapshot",
+                    }
+                },
+                {   "DownloadNutanixVmFromLocationInput", new List<string> {
+                        "downloadNutanixVmFromLocation",
+                    }
+                },
+                {   "DownloadObjectFilesCsvInput", new List<string> {
+                        "downloadObjectFilesCsv",
+                    }
+                },
+                {   "DownloadObjectsListCsvInput", new List<string> {
+                        "downloadObjectsListCsv",
+                    }
+                },
+                {   "DownloadOracleDatabaseSnapshotInput", new List<string> {
+                        "downloadOracleDatabaseSnapshot",
+                    }
+                },
+                {   "DownloadReportCsvAsyncInput", new List<string> {
+                        "downloadReportCsvAsync",
+                    }
+                },
+                {   "DownloadReportPdfAsyncInput", new List<string> {
+                        "downloadReportPdfAsync",
+                    }
+                },
+                {   "DownloadResultsCsvFiltersInput", new List<string> {
+                        "downloadResultsCsv",
+                        "downloadSnapshotResultsCsv",
+                    }
+                },
+                {   "DownloadSapHanaSnapshotFromLocationInput", new List<string> {
+                        "downloadSapHanaSnapshotFromLocation",
+                    }
+                },
+                {   "DownloadSapHanaSnapshotInput", new List<string> {
+                        "downloadSapHanaSnapshot",
+                    }
+                },
+                {   "DownloadSapHanaSnapshotsForPointInTimeRecoveryInput", new List<string> {
+                        "downloadSapHanaSnapshotsForPointInTimeRecovery",
+                    }
+                },
+                {   "DownloadThreatHuntCsvInput", new List<string> {
+                        "downloadThreatHuntCsv",
+                    }
+                },
+                {   "DownloadUserActivityCsvInput", new List<string> {
+                        "downloadUserActivityCsv",
+                    }
+                },
+                {   "DownloadUserFileActivityCsvInput", new List<string> {
+                        "downloadUserFileActivityCsv",
+                    }
+                },
+                {   "DownloadVolumeGroupSnapshotFilesInput", new List<string> {
+                        "downloadVolumeGroupSnapshotFiles",
+                    }
+                },
+                {   "DownloadVolumeGroupSnapshotFromLocationInput", new List<string> {
+                        "downloadVolumeGroupSnapshotFromLocation",
+                    }
+                },
+                {   "DownloadVsphereVirtualMachineFilesInput", new List<string> {
+                        "downloadVsphereVirtualMachineFiles",
+                    }
+                },
+                {   "EnableAutomaticFmdUploadInput", new List<string> {
+                        "enableAutomaticFmdUpload",
+                    }
+                },
+                {   "EnableDisableAppConsistencyInput", new List<string> {
+                        "enableDisableAppConsistency",
+                    }
+                },
+                {   "EnableO365SharePointInput", new List<string> {
+                        "enableO365SharePoint",
+                    }
+                },
+                {   "EnablePerLocationPauseInputVariable", new List<string> {
+                        "enableReplicationPause",
+                    }
+                },
+                {   "EnableSupportUserAccessInput", new List<string> {
+                        "enableSupportUserAccess",
+                    }
+                },
+                {   "EnableTargetInput", new List<string> {
+                        "enableTarget",
+                    }
+                },
+                {   "EnableThreatMonitoringInput", new List<string> {
+                        "enableThreatMonitoring",
+                    }
+                },
+                {   "EndManagedVolumeSnapshotInput", new List<string> {
+                        "endManagedVolumeSnapshot",
+                    }
+                },
+                {   "ExchangeLiveMountSortByInput", new List<string> {
+                        "exchangeLiveMounts",
+                    }
+                },
+                {   "ExcludeAwsNativeEbsVolumesFromSnapshotInput", new List<string> {
+                        "excludeAwsNativeEbsVolumesFromSnapshot",
+                    }
+                },
+                {   "ExcludeAzureNativeManagedDisksFromSnapshotInput", new List<string> {
+                        "excludeAzureNativeManagedDisksFromSnapshot",
+                    }
+                },
+                {   "ExcludeSharepointObjectsFromProtectionInput", new List<string> {
+                        "excludeSharepointObjectsFromProtection",
+                    }
+                },
+                {   "ExpireDownloadedDb2SnapshotsInput", new List<string> {
+                        "expireDownloadedDb2Snapshots",
+                    }
+                },
+                {   "ExpireDownloadedSapHanaSnapshotsInput", new List<string> {
+                        "expireDownloadedSapHanaSnapshots",
+                    }
+                },
+                {   "ExportHypervVirtualMachineInput", new List<string> {
+                        "exportHypervVirtualMachine",
+                    }
+                },
+                {   "ExportK8sNamespaceInput", new List<string> {
+                        "exportK8sNamespace",
+                    }
+                },
+                {   "ExportManagedVolumeSnapshotInput", new List<string> {
+                        "exportManagedVolumeSnapshot",
+                    }
+                },
+                {   "ExportMssqlDatabaseInput", new List<string> {
+                        "exportMssqlDatabase",
+                    }
+                },
+                {   "ExportNutanixSnapshotInput", new List<string> {
+                        "exportNutanixSnapshot",
+                    }
+                },
+                {   "ExportO365MailboxInput", new List<string> {
+                        "exportO365Mailbox",
+                    }
+                },
+                {   "ExportOracleDatabaseInput", new List<string> {
+                        "exportOracleDatabase",
+                    }
+                },
+                {   "ExportOracleTablespaceInput", new List<string> {
+                        "exportOracleTablespace",
+                    }
+                },
+                {   "ExportSlaManagedVolumeSnapshotInput", new List<string> {
+                        "exportSlaManagedVolumeSnapshot",
+                    }
+                },
+                {   "FeatureCdmVersionInput", new List<string> {
+                        "cdmVersionCheck",
+                    }
+                },
+                {   "FeatureListMinimumCdmVersionInputType", new List<string> {
+                        "minimumCdmVersionForFeatureSet",
+                    }
+                },
+                {   "FileActivitiesSort", new List<string> {
+                        "allFileActivities",
+                    }
+                },
+                {   "FileResultSortInput", new List<string> {
+                        "objectFiles",
+                        "userActivities",
+                    }
+                },
+                {   "FilesetDownloadSnapshotFilesInput", new List<string> {
+                        "filesetDownloadSnapshotFiles",
+                    }
+                },
+                {   "FilesetExportSnapshotFilesInput", new List<string> {
+                        "filesetExportSnapshotFiles",
+                    }
+                },
+                {   "FilesetRecoverFilesInput", new List<string> {
+                        "filesetRecoverFiles",
+                    }
+                },
+                {   "FinalizeAwsCloudAccountDeletionInput", new List<string> {
+                        "finalizeAwsCloudAccountDeletion",
+                    }
+                },
+                {   "FinalizeAwsCloudAccountProtectionInput", new List<string> {
+                        "finalizeAwsCloudAccountProtection",
+                    }
+                },
+                {   "Float", new List<string> {
+                        "anomalyResults",
+                        "anomalyResultsGrouped",
+                        "clusterGroupByConnection",
+                        "nfAnomalyResults",
+                        "nfAnomalyResultsGrouped",
+                        "ransomwareResults",
+                        "ransomwareResultsGrouped",
+                        "snappableGroupByConnection",
+                        "taskDetailConnection",
+                        "taskDetailGroupByConnection",
+                        "updateLambdaSettings",
+                    }
+                },
+                {   "GcpCloudAccountAddManualAuthProjectInput", new List<string> {
+                        "gcpCloudAccountAddManualAuthProject",
+                    }
+                },
+                {   "GcpCloudAccountAddProjectsInput", new List<string> {
+                        "gcpCloudAccountAddProjects",
+                    }
+                },
+                {   "GcpCloudAccountDeleteProjectsInput", new List<string> {
+                        "gcpCloudAccountDeleteProjects",
+                    }
+                },
+                {   "GcpCloudAccountOauthCompleteInput", new List<string> {
+                        "gcpCloudAccountOauthComplete",
+                    }
+                },
+                {   "GcpCloudAccountOauthInitiateInput", new List<string> {
+                        "gcpCloudAccountOauthInitiate",
+                    }
+                },
+                {   "GcpCloudAccountUpgradeProjectsInput", new List<string> {
+                        "gcpCloudAccountUpgradeProjects",
+                    }
+                },
+                {   "GcpNativeDisableProjectInput", new List<string> {
+                        "gcpNativeDisableProject",
+                    }
+                },
+                {   "GcpNativeDiskFilters", new List<string> {
+                        "gcpNativeDisks",
+                    }
+                },
+                {   "GcpNativeDiskSortFields", new List<string> {
+                        "gcpNativeDisks",
+                    }
+                },
+                {   "GcpNativeExcludeDisksFromInstanceSnapshotInput", new List<string> {
+                        "gcpNativeExcludeDisksFromInstanceSnapshot",
+                    }
+                },
+                {   "GcpNativeExportDiskInput", new List<string> {
+                        "gcpNativeExportDisk",
+                    }
+                },
+                {   "GcpNativeExportGceInstanceInput", new List<string> {
+                        "gcpNativeExportGceInstance",
+                    }
+                },
+                {   "GcpNativeGceInstanceFilters", new List<string> {
+                        "gcpNativeGceInstances",
+                    }
+                },
+                {   "GcpNativeGceInstanceSortFields", new List<string> {
+                        "gcpNativeGceInstances",
+                    }
+                },
+                {   "GcpNativeProjectFilters", new List<string> {
+                        "gcpNativeProjects",
+                    }
+                },
+                {   "GcpNativeProjectSortFields", new List<string> {
+                        "gcpNativeProjects",
+                    }
+                },
+                {   "GcpNativeRefreshProjectsInput", new List<string> {
+                        "gcpNativeRefreshProjects",
+                    }
+                },
+                {   "GcpNativeRestoreGceInstanceInput", new List<string> {
+                        "gcpNativeRestoreGceInstance",
+                    }
+                },
+                {   "GcpSetDefaultServiceAccountJwtConfigInput", new List<string> {
+                        "gcpSetDefaultServiceAccountJwtConfig",
+                    }
+                },
+                {   "GenerateClusterRegistrationTokenInput", new List<string> {
+                        "generateClusterRegistrationToken",
+                    }
+                },
+                {   "GenerateConfigProtectionRestoreFormInput", new List<string> {
+                        "generateConfigProtectionRestoreForm",
+                    }
+                },
+                {   "GenerateSupportBundleInput", new List<string> {
+                        "generateSupportBundle",
+                    }
+                },
+                {   "GetCertificateInfoInput", new List<string> {
+                        "certificateInfo",
+                    }
+                },
+                {   "GetCloudComputeConnectivityCheckRequestStatusInput", new List<string> {
+                        "checkCloudComputeConnectivityJobProgress",
+                    }
+                },
+                {   "GetClusterCsrInput", new List<string> {
+                        "clusterCsr",
+                    }
+                },
+                {   "GetClusterIpsInput", new List<string> {
+                        "clusterFloatingIps",
+                    }
+                },
+                {   "GetClusterNtpServersInput", new List<string> {
+                        "clusterNtpServers",
+                    }
+                },
+                {   "GetCompatibleMssqlInstancesV1Input", new List<string> {
+                        "mssqlCompatibleInstances",
+                    }
+                },
+                {   "GetComputeClusterInput", new List<string> {
+                        "computeClusterStatus",
+                    }
+                },
+                {   "GetContainersInput", new List<string> {
+                        "nutanixClusterContainers",
+                    }
+                },
+                {   "GetCsrInput", new List<string> {
+                        "certificateSigningRequest",
+                    }
+                },
+                {   "GetDb2DatabaseAsyncRequestStatusInput", new List<string> {
+                        "db2DatabaseJobStatus",
+                    }
+                },
+                {   "GetDefaultDbPropertiesV1Input", new List<string> {
+                        "mssqlDefaultProperties",
+                    }
+                },
+                {   "GetDefaultGatewayInput", new List<string> {
+                        "clusterDefaultGateway",
+                    }
+                },
+                {   "GetFilesetAsyncRequestStatusInput", new List<string> {
+                        "filesetRequestStatus",
+                    }
+                },
+                {   "GetHealthMonitorPolicyStatusInput", new List<string> {
+                        "getHealthMonitorPolicyStatus",
+                    }
+                },
+                {   "GetHotAddBandwidthInput", new List<string> {
+                        "vCenterHotAddBandwidth",
+                    }
+                },
+                {   "GetHotAddNetworkInput", new List<string> {
+                        "vCenterHotAddNetwork",
+                    }
+                },
+                {   "GetHypervHostAsyncRequestStatusInput", new List<string> {
+                        "hypervHostAsyncRequestStatus",
+                    }
+                },
+                {   "GetHypervScvmmAsyncRequestStatusInput", new List<string> {
+                        "hypervScvmmAsyncRequestStatus",
+                    }
+                },
+                {   "GetHypervVirtualMachineAsyncRequestStatusInput", new List<string> {
+                        "hypervVirtualMachineAsyncRequestStatus",
+                    }
+                },
+                {   "GetHypervVirtualMachineInput", new List<string> {
+                        "hypervVmDetail",
+                    }
+                },
+                {   "GetIpmiInput", new List<string> {
+                        "clusterIpmi",
+                    }
+                },
+                {   "GetMissedMssqlDbSnapshotsInput", new List<string> {
+                        "mssqlDatabaseMissedSnapshots",
+                    }
+                },
+                {   "GetMissedOracleDbSnapshotsInput", new List<string> {
+                        "oracleMissedSnapshots",
+                    }
+                },
+                {   "GetMosaicRecoverableRangeInput", new List<string> {
+                        "cassandraColumnFamilyRecoverableRange",
+                        "mongodbCollectionRecoverableRange",
+                    }
+                },
+                {   "GetMosaicStoreInput", new List<string> {
+                        "mosaicStores",
+                    }
+                },
+                {   "GetMosaicTableSchemaInput", new List<string> {
+                        "cassandraColumnFamilySchema",
+                    }
+                },
+                {   "GetMosaicVersionInput", new List<string> {
+                        "mosaicSnapshots",
+                        "mosaicVersions",
+                    }
+                },
+                {   "GetMssqlDbMissedRecoverableRangesInput", new List<string> {
+                        "mssqlDatabaseMissedRecoverableRanges",
+                    }
+                },
+                {   "GetMssqlDbRecoverableRangesInput", new List<string> {
+                        "mssqlRecoverableRanges",
+                    }
+                },
+                {   "GetNetworkInterfaceInput", new List<string> {
+                        "clusterNetworkInterfaces",
+                    }
+                },
+                {   "GetNetworksInput", new List<string> {
+                        "vCenterNetworks",
+                    }
+                },
+                {   "GetNodesInput", new List<string> {
+                        "clusterNodes",
+                    }
+                },
+                {   "GetNumProxiesNeededInput", new List<string> {
+                        "vCenterNumProxiesNeeded",
+                    }
+                },
+                {   "GetNutanixClusterAsyncRequestStatusInput", new List<string> {
+                        "nutanixClusterAsyncRequestStatus",
+                    }
+                },
+                {   "GetNutanixNetworksInput", new List<string> {
+                        "nutanixClusterNetworks",
+                    }
+                },
+                {   "GetNutanixSnapshotDetailInput", new List<string> {
+                        "nutanixSnapshotDetail",
+                    }
+                },
+                {   "GetNutanixVmAsyncRequestStatusInput", new List<string> {
+                        "nutanixVmAsyncRequestStatus",
+                    }
+                },
+                {   "GetOracleAsyncRequestStatusInput", new List<string> {
+                        "oracleDatabaseAsyncRequestDetails",
+                    }
+                },
+                {   "GetOracleDbMissedRecoverableRangesInput", new List<string> {
+                        "oracleMissedRecoverableRanges",
+                    }
+                },
+                {   "GetOracleDbRecoverableRangesInput", new List<string> {
+                        "oracleRecoverableRanges",
+                    }
+                },
+                {   "GetPendingSlaAssignmentsInput", new List<string> {
+                        "getPendingSlaAssignments",
+                    }
+                },
+                {   "GetSmbConfigurationInput", new List<string> {
+                        "smbConfiguration",
+                    }
+                },
+                {   "GetSnmpConfigurationInput", new List<string> {
+                        "snmpConfigurations",
+                    }
+                },
+                {   "GetSyslogExportRulesInput", new List<string> {
+                        "syslogExportRules",
+                    }
+                },
+                {   "GetTunnelStatusInput", new List<string> {
+                        "tunnelStatus",
+                    }
+                },
+                {   "GetVlanInput", new List<string> {
+                        "clusterVlans",
+                    }
+                },
+                {   "GetVmwareHostInput", new List<string> {
+                        "vSphereHostDetails",
+                    }
+                },
+                {   "GlobalCertificateSortBy", new List<string> {
+                        "assignableGlobalCertificates",
+                        "globalCertificates",
+                    }
+                },
+                {   "GlobalCertificatesQueryInput", new List<string> {
+                        "assignableGlobalCertificates",
+                        "globalCertificates",
+                    }
+                },
+                {   "GlobalExistingSnapshotRetention", new List<string> {
+                        "assignSlasForSnappableHierarchies",
+                    }
+                },
+                {   "GlobalFileSearchInput", new List<string> {
+                        "globalFileSearch",
+                    }
+                },
+                {   "GroupFilterInput", new List<string> {
+                        "groupsInCurrentAndDescendantOrganization",
+                    }
+                },
+                {   "GroupSortByParam", new List<string> {
+                        "groupsInCurrentAndDescendantOrganization",
+                    }
+                },
+                {   "GuestOsCredentialSortBy", new List<string> {
+                        "guestCredentialsV2",
+                    }
+                },
+                {   "HasRelicAzureAdSnapshotInput", new List<string> {
+                        "hasRelicAzureAdSnapshot",
+                    }
+                },
+                {   "HelpContentSnippetsFilterInput", new List<string> {
+                        "helpContentSnippets",
+                    }
+                },
+                {   "HiddenStateFilter", new List<string> {
+                        "allUsersOnAccountConnection",
+                    }
+                },
+                {   "HideRevealNasNamespacesInput", new List<string> {
+                        "hideRevealNasNamespaces",
+                    }
+                },
+                {   "HideRevealNasSharesInput", new List<string> {
+                        "hideRevealNasShares",
+                    }
+                },
+                {   "HierarchySortByField", new List<string> {
+                        "activeDirectoryDomainControllers",
+                        "activeDirectoryDomains",
+                        "azureAdDirectories",
+                        "cassandraColumnFamilies",
+                        "cassandraKeyspaces",
+                        "cassandraSources",
+                        "db2Databases",
+                        "db2Instances",
+                        "exchangeDags",
+                        "exchangeDatabases",
+                        "exchangeServers",
+                        "failoverClusterApps",
+                        "failoverClusterTopLevelDescendants",
+                        "filesetTemplates",
+                        "globalSearchResults",
+                        "hierarchySnappables",
+                        "hostFailoverClusters",
+                        "hostShares",
+                        "hypervScvmms",
+                        "hypervTopLevelDescendants",
+                        "hypervVirtualMachines",
+                        "k8sClusters",
+                        "k8sNamespaces",
+                        "managedVolumeLiveMounts",
+                        "managedVolumes",
+                        "mongoCollections",
+                        "mongoDatabases",
+                        "mongodbCollections",
+                        "mongodbDatabases",
+                        "mongodbSources",
+                        "mongoSources",
+                        "mssqlDatabases",
+                        "mssqlTopLevelDescendants",
+                        "nasNamespaces",
+                        "nasSystems",
+                        "nasTopLevelDescendants",
+                        "nutanixClusters",
+                        "nutanixPrismCentrals",
+                        "nutanixTopLevelDescendants",
+                        "nutanixVms",
+                        "o365Groups",
+                        "o365Mailboxes",
+                        "o365Onedrives",
+                        "o365Orgs",
+                        "o365SharepointDrives",
+                        "o365SharepointLists",
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                        "o365SharepointSites",
+                        "o365Sites",
+                        "o365Teams",
+                        "o365UserObjects",
+                        "oracleDatabases",
+                        "oracleTopLevelDescendants",
+                        "physicalHosts",
+                        "protectedObjectsConnection",
+                        "sapHanaDatabases",
+                        "sapHanaSystems",
+                        "slaManagedVolumes",
+                        "vcdVappVms",
+                        "vSphereComputeClusters",
+                        "vSphereDatastoreClusters",
+                        "vSphereDatastoreConnection",
+                        "vSphereFolders",
+                        "vSphereHostConnection",
+                        "vSphereRootRecoveryHierarchy",
+                        "vSphereTopLevelDescendantsConnection",
+                        "vSphereVCenterConnection",
+                        "vSphereVmNewConnection",
+                    }
+                },
+                {   "HostFailoverClusterRoot", new List<string> {
+                        "failoverClusterApps",
+                        "failoverClusterTopLevelDescendants",
+                        "hostFailoverClusters",
+                    }
+                },
+                {   "HostRoot", new List<string> {
+                        "filesetTemplates",
+                        "physicalHosts",
+                    }
+                },
+                {   "HypervDeleteAllSnapshotsInput", new List<string> {
+                        "hypervDeleteAllSnapshots",
+                    }
+                },
+                {   "HypervLiveMountSortByInput", new List<string> {
+                        "hypervMounts",
+                    }
+                },
+                {   "HypervOnDemandSnapshotInput", new List<string> {
+                        "hypervOnDemandSnapshot",
+                    }
+                },
+                {   "HypervScvmmDeleteInput", new List<string> {
+                        "hypervScvmmDelete",
+                    }
+                },
+                {   "HypervScvmmUpdateInput", new List<string> {
+                        "hypervScvmmUpdate",
+                    }
+                },
+                {   "InsertCustomerO365AppInput", new List<string> {
+                        "insertCustomerO365App",
+                    }
+                },
+                {   "InstallIoFilterInput", new List<string> {
+                        "installIoFilter",
+                    }
+                },
+                {   "InstantRecoverHypervVirtualMachineSnapshotInput", new List<string> {
+                        "instantRecoverHypervVirtualMachineSnapshot",
+                    }
+                },
+                {   "InstantRecoverOracleSnapshotInput", new List<string> {
+                        "instantRecoverOracleSnapshot",
+                    }
+                },
+                {   "Int", new List<string> {
+                        "activeDirectoryDomainControllers",
+                        "activeDirectoryDomains",
+                        "activeDirectorySearchSnapshots",
+                        "activitySeriesConnection",
+                        "adVolumeExports",
+                        "allCdpVmsInfos",
+                        "allCloudNativeLabelKeys",
+                        "allCloudNativeLabelValues",
+                        "allCloudNativeTagKeys",
+                        "allCloudNativeTagValues",
+                        "allClusterConnection",
+                        "allFileActivities",
+                        "allTopRiskPolicySummaries",
+                        "allUsersOnAccount",
+                        "allUsersOnAccountConnection",
+                        "allValidReplicationTargets",
+                        "anomalyResults",
+                        "anomalyResultsGrouped",
+                        "assignableGlobalCertificates",
+                        "awsNativeAccounts",
+                        "awsNativeEbsVolumes",
+                        "awsNativeEbsVolumesByName",
+                        "awsNativeEc2Instances",
+                        "awsNativeEc2InstancesByName",
+                        "awsNativeRdsInstances",
+                        "azureAdDirectories",
+                        "azureAdObjectsByType",
+                        "azureNativeManagedDisks",
+                        "azureNativeResourceGroups",
+                        "azureNativeSubscriptions",
+                        "azureNativeVirtualMachines",
+                        "azureSqlDatabases",
+                        "azureSqlDatabaseServers",
+                        "azureSqlManagedInstanceDatabases",
+                        "azureSqlManagedInstanceServers",
+                        "browseCalendar",
+                        "browseContacts",
+                        "browseFolder",
+                        "browseO365TeamConvChannels",
+                        "browseOnedrive",
+                        "browseSharepointDrive",
+                        "browseSharepointList",
+                        "browseSnapshotFileConnection",
+                        "browseTeamsChannels",
+                        "browseTeamsDrive",
+                        "cassandraColumnFamilies",
+                        "cassandraKeyspaces",
+                        "cassandraSources",
+                        "cdmMssqlLogShippingTargets",
+                        "certificates",
+                        "certificateSigningRequests",
+                        "cloudNativeSnapshots",
+                        "cloudNativeWorkloadVersionedFiles",
+                        "clusterConnection",
+                        "clusterGroupByConnection",
+                        "clusterReportMigrationStatus",
+                        "clusterSlaDomains",
+                        "clusterWithUpgradesInfo",
+                        "configuredGroupMembers",
+                        "db2Databases",
+                        "db2Instances",
+                        "db2LogSnapshots",
+                        "db2RecoverableRanges",
+                        "exchangeDags",
+                        "exchangeDatabases",
+                        "exchangeLiveMounts",
+                        "exchangeServers",
+                        "failoverClusterApps",
+                        "failoverClusterTopLevelDescendants",
+                        "filesetSnapshotFiles",
+                        "filesetTemplates",
+                        "gcpNativeDisks",
+                        "gcpNativeGceInstances",
+                        "gcpNativeProjects",
+                        "getAllRolesInOrgConnection",
+                        "getUserDownloads",
+                        "globalCertificates",
+                        "globalSearchResults",
+                        "globalSlaFilterConnection",
+                        "globalSlaStatuses",
+                        "groupsInCurrentAndDescendantOrganization",
+                        "guestCredentialsV2",
+                        "helpContentSnippets",
+                        "hierarchySnappables",
+                        "hostFailoverClusters",
+                        "hostShares",
+                        "hypervMounts",
+                        "hypervScvmms",
+                        "hypervTopLevelDescendants",
+                        "hypervVirtualMachines",
+                        "integration",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                        "issues",
+                        "k8sClusters",
+                        "k8sNamespaces",
+                        "ldapAuthorizedPrincipalConnection",
+                        "ldapIntegrationConnection",
+                        "ldapPrincipalConnection",
+                        "legalHoldSnapshotsForSnappable",
+                        "listO365Apps",
+                        "managedVolumeLiveMounts",
+                        "managedVolumes",
+                        "mongoCollections",
+                        "mongoDatabases",
+                        "mongodbCollections",
+                        "mongodbDatabases",
+                        "mongodbSources",
+                        "mongoSources",
+                        "mssqlCompatibleInstances",
+                        "mssqlDatabaseLiveMounts",
+                        "mssqlDatabases",
+                        "mssqlTopLevelDescendants",
+                        "nasNamespaces",
+                        "nasSystems",
+                        "nasTopLevelDescendants",
+                        "nfAnomalyResults",
+                        "nfAnomalyResultsGrouped",
+                        "nutanixClusters",
+                        "nutanixMounts",
+                        "nutanixPrismCentrals",
+                        "nutanixTopLevelDescendants",
+                        "nutanixVms",
+                        "o365Groups",
+                        "o365Mailboxes",
+                        "o365Onedrives",
+                        "o365Orgs",
+                        "o365SharepointDrives",
+                        "o365SharepointLists",
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                        "o365SharepointSites",
+                        "o365Sites",
+                        "o365TeamChannels",
+                        "o365TeamPostedBy",
+                        "o365Teams",
+                        "o365UserObjects",
+                        "oauthCodesForEdgeReg",
+                        "objectFiles",
+                        "objectTypeAccessSummary",
+                        "oracleDatabases",
+                        "oracleLiveMounts",
+                        "oracleTopLevelDescendants",
+                        "orgs",
+                        "overallRansomwareInvestigationSummary",
+                        "physicalHosts",
+                        "policy",
+                        "policyObjs",
+                        "protectedObjectsConnection",
+                        "radarClusterConnection",
+                        "ransomwareResults",
+                        "ransomwareResultsGrouped",
+                        "replicationPairs",
+                        "reportData",
+                        "roleTemplates",
+                        "sapHanaDatabases",
+                        "sapHanaLogSnapshots",
+                        "sapHanaRecoverableRanges",
+                        "sapHanaSystems",
+                        "scheduledReport",
+                        "scheduledReports",
+                        "searchAzureAdSnapshot",
+                        "searchSnappableConnection",
+                        "searchSnappableVersionedFiles",
+                        "serviceAccounts",
+                        "sharepointSiteDescendants",
+                        "sharepointSiteSearch",
+                        "slaAuditDetail",
+                        "slaDomains",
+                        "slaManagedVolumes",
+                        "smbDomains",
+                        "snappableConnection",
+                        "snappableContactSearch",
+                        "snappableEmailSearch",
+                        "snappableEventSearch",
+                        "snappableGroupByConnection",
+                        "snappableOnedriveSearch",
+                        "snappableSharepointDriveSearch",
+                        "snappableSharepointListSearch",
+                        "snappablesWithLegalHoldSnapshotsSummary",
+                        "snappableTeamsConversationsSearch",
+                        "snappableTeamsDriveSearch",
+                        "snapshotEmailSearch",
+                        "snapshotEventSearch",
+                        "snapshotFilesDelta",
+                        "snapshotFilesDeltaV2",
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                        "snapshotOnedriveSearch",
+                        "snapshotsForUnmanagedObject",
+                        "snapshotSharepointDriveSearch",
+                        "sonarContentReport",
+                        "sonarReportRow",
+                        "sonarUserGroups",
+                        "sonarUsers",
+                        "supportUserAccesses",
+                        "targets",
+                        "taskDetailConnection",
+                        "taskDetailGroupByConnection",
+                        "threatHunts",
+                        "unmanagedObjects",
+                        "userActivities",
+                        "userAnalyzerAccess",
+                        "userAuditConnection",
+                        "userGroups",
+                        "usersInCurrentAndDescendantOrganization",
+                        "vcdVappVms",
+                        "volumeGroupMounts",
+                        "vSphereComputeClusters",
+                        "vSphereDatastoreClusters",
+                        "vSphereDatastoreConnection",
+                        "vSphereFolders",
+                        "vSphereHostConnection",
+                        "vSphereLiveMounts",
+                        "vSphereMountConnection",
+                        "vSphereRootRecoveryHierarchy",
+                        "vSphereTopLevelDescendantsConnection",
+                        "vSphereVCenterConnection",
+                        "vSphereVmNewConnection",
+                        "workloadAnomalies",
+                    }
+                },
+                {   "InventorySubHierarchyRootEnum", new List<string> {
+                        "cdmInventorySubHierarchyRoot",
+                        "inventorySubHierarchyRoot",
+                        "polarisInventorySubHierarchyRoot",
+                    }
+                },
+                {   "InviteSsoGroupInput", new List<string> {
+                        "inviteSsoGroup",
+                    }
+                },
+                {   "IssueStatus", new List<string> {
+                        "issues",
+                    }
+                },
+                {   "JoinSmbDomainInput", new List<string> {
+                        "joinSmbDomain",
+                    }
+                },
+                {   "LdapAuthorizedPrincipalFieldEnum", new List<string> {
+                        "ldapAuthorizedPrincipalConnection",
+                    }
+                },
+                {   "LdapIntegrationFieldEnum", new List<string> {
+                        "ldapIntegrationConnection",
+                    }
+                },
+                {   "LdapPrincipalFieldEnum", new List<string> {
+                        "ldapPrincipalConnection",
+                    }
+                },
+                {   "LegalHoldSnapshotsForSnappableInput", new List<string> {
+                        "legalHoldSnapshotsForSnappable",
+                    }
+                },
+                {   "LicensesForClusterProductSummaryInput", new List<string> {
+                        "licensesForClusterProductSummary",
+                    }
+                },
+                {   "ListAccessGroupsFilterInput", new List<string> {
+                        "sonarUserGroups",
+                    }
+                },
+                {   "ListAccessUsersFilterInput", new List<string> {
+                        "sonarUsers",
+                    }
+                },
+                {   "ListAccessUsersSortInput", new List<string> {
+                        "sonarUsers",
+                    }
+                },
+                {   "ListCidrsForComputeSettingInput", new List<string> {
+                        "listCidrsForComputeSetting",
+                    }
+                },
+                {   "ListFileActivitiesInput", new List<string> {
+                        "allFileActivities",
+                    }
+                },
+                {   "ListObjectFilesFiltersInput", new List<string> {
+                        "objectFiles",
+                        "userActivities",
+                    }
+                },
+                {   "ListValidReplicationTargetsSortByField", new List<string> {
+                        "allValidReplicationTargets",
+                    }
+                },
+                {   "LockUsersByAdminInput", new List<string> {
+                        "lockUsersByAdmin",
+                    }
+                },
+                {   "LockoutStateFilter", new List<string> {
+                        "allUsersOnAccountConnection",
+                    }
+                },
+                {   "Long", new List<string> {
+                        "allPendingActions",
+                        "deleteCertificate",
+                        "getCdmReleaseDetailsFromSupportPortal",
+                        "getDownloadUrl",
+                        "removeCdmCluster",
+                        "snapshotResults",
+                        "startDownloadPackageBatchJob",
+                        "updateCertificate",
+                    }
+                },
+                {   "LookupAccountInput", new List<string> {
+                        "lookupAccount",
+                    }
+                },
+                {   "MakePrimaryInput", new List<string> {
+                        "makePrimary",
+                    }
+                },
+                {   "MapAzureCloudAccountExocomputeSubscriptionInput", new List<string> {
+                        "mapAzureCloudAccountExocomputeSubscription",
+                    }
+                },
+                {   "MapAzureCloudAccountToPersistentStorageLocationInput", new List<string> {
+                        "mapAzureCloudAccountToPersistentStorageLocation",
+                    }
+                },
+                {   "MapCloudAccountExocomputeAccountInput", new List<string> {
+                        "mapCloudAccountExocomputeAccount",
+                    }
+                },
+                {   "MarkAgentSecondaryCertificateInput", new List<string> {
+                        "markAgentSecondaryCertificate",
+                    }
+                },
+                {   "MigrateNutanixMountV1Input", new List<string> {
+                        "migrateNutanixMountV1",
+                    }
+                },
+                {   "ModifyActiveDirectoryLiveMountInput", new List<string> {
+                        "modifyActiveDirectoryLiveMount",
+                    }
+                },
+                {   "ModifyIpmiInput", new List<string> {
+                        "modifyIpmi",
+                    }
+                },
+                {   "ModifyMosaicSourceInput", new List<string> {
+                        "updateCassandraSource",
+                        "updateMongodbSource",
+                    }
+                },
+                {   "ModifyMosaicStoreInput", new List<string> {
+                        "updateMosaicStore",
+                    }
+                },
+                {   "MosaicBulkRecoveryRangeInput", new List<string> {
+                        "mongodbBulkRecoverableRange",
+                        "mosaicBulkRecoveryRange",
+                    }
+                },
+                {   "MosaicRestoreDataInput", new List<string> {
+                        "recoverCassandraSource",
+                        "recoverMongodbSource",
+                    }
+                },
+                {   "MosaicStorageLocationQuerySortByField", new List<string> {
+                        "allNosqlStorageLocations",
+                    }
+                },
+                {   "MountDiskInput", new List<string> {
+                        "mountDisk",
+                    }
+                },
+                {   "MountNutanixSnapshotV1Input", new List<string> {
+                        "mountNutanixSnapshotV1",
+                    }
+                },
+                {   "MountOracleDatabaseInput", new List<string> {
+                        "mountOracleDatabase",
+                    }
+                },
+                {   "MssqlCompatibleInstancesSortByInput", new List<string> {
+                        "mssqlCompatibleInstances",
+                    }
+                },
+                {   "MssqlDatabaseLiveMountSortByInput", new List<string> {
+                        "mssqlDatabaseLiveMounts",
+                    }
+                },
+                {   "MssqlGetRestoreFilesV1Input", new List<string> {
+                        "allMssqlDatabaseRestoreFiles",
+                    }
+                },
+                {   "MssqlLogShippingTargetSortByInput", new List<string> {
+                        "cdmMssqlLogShippingTargets",
+                    }
+                },
+                {   "MssqlRestoreEstimateV1Input", new List<string> {
+                        "mssqlDatabaseRestoreEstimate",
+                    }
+                },
+                {   "NfAnomalyResultFilterInput", new List<string> {
+                        "nfAnomalyResults",
+                        "nfAnomalyResultsGrouped",
+                    }
+                },
+                {   "NfAnomalyResultGroupBy", new List<string> {
+                        "nfAnomalyResultsGrouped",
+                    }
+                },
+                {   "NfAnomalyResultSortBy", new List<string> {
+                        "nfAnomalyResults",
+                    }
+                },
+                {   "NodeRemovalCancelPermissionInput", new List<string> {
+                        "nodeRemovalCancelPermission",
+                    }
+                },
+                {   "NodeToReplaceInput", new List<string> {
+                        "nodeToReplace",
+                    }
+                },
+                {   "NutanixLiveMountSortByInput", new List<string> {
+                        "nutanixMounts",
+                    }
+                },
+                {   "NutanixMissedSnapshotsInput", new List<string> {
+                        "nutanixVmMissedSnapshots",
+                    }
+                },
+                {   "O365OauthConsentCompleteInput", new List<string> {
+                        "o365OauthConsentComplete",
+                    }
+                },
+                {   "O365OauthConsentKickoffInput", new List<string> {
+                        "o365OauthConsentKickoff",
+                    }
+                },
+                {   "O365PdlGroupsInput", new List<string> {
+                        "o365PdlGroups",
+                    }
+                },
+                {   "O365SaasSetupCompleteInput", new List<string> {
+                        "o365SaasSetupComplete",
+                    }
+                },
+                {   "ObjectTypeAccessSummarySortBy", new List<string> {
+                        "objectTypeAccessSummary",
+                    }
+                },
+                {   "ObjectTypeSummariesFilter", new List<string> {
+                        "objectTypeAccessSummary",
+                    }
+                },
+                {   "OnedriveSearchFilter", new List<string> {
+                        "browseOnedrive",
+                        "browseSharepointDrive",
+                        "browseSharepointList",
+                        "browseTeamsDrive",
+                        "snappableOnedriveSearch",
+                        "snappableSharepointDriveSearch",
+                        "snappableSharepointListSearch",
+                        "snappableTeamsDriveSearch",
+                        "snapshotOnedriveSearch",
+                        "snapshotSharepointDriveSearch",
+                    }
+                },
+                {   "Operation", new List<string> {
+                        "awsNativeAccounts",
+                        "azureNativeSubscriptions",
+                        "gcpNativeProjects",
+                    }
+                },
+                {   "OracleDbInput", new List<string> {
+                        "oracleDatabaseLogBackupConfig",
+                    }
+                },
+                {   "OracleHostInput", new List<string> {
+                        "oracleHostLogBackupConfig",
+                    }
+                },
+                {   "OracleLiveMountSortBy", new List<string> {
+                        "oracleLiveMounts",
+                    }
+                },
+                {   "OraclePdbDetailsInput", new List<string> {
+                        "oraclePdbDetails",
+                    }
+                },
+                {   "OracleRacInput", new List<string> {
+                        "oracleRacLogBackupConfig",
+                    }
+                },
+                {   "OrgField", new List<string> {
+                        "orgs",
+                    }
+                },
+                {   "PatchAwsAuthenticationServerBasedCloudAccountInput", new List<string> {
+                        "patchAwsAuthenticationServerBasedCloudAccount",
+                    }
+                },
+                {   "PatchAwsIamUserBasedCloudAccountInput", new List<string> {
+                        "patchAwsIamUserBasedCloudAccount",
+                    }
+                },
+                {   "PatchDb2DatabaseInput", new List<string> {
+                        "patchDb2Database",
+                    }
+                },
+                {   "PatchDb2InstanceInput", new List<string> {
+                        "patchDb2Instance",
+                    }
+                },
+                {   "PatchMongoSourceInput", new List<string> {
+                        "patchMongoSource",
+                    }
+                },
+                {   "PatchNutanixMountV1Input", new List<string> {
+                        "patchNutanixMountV1",
+                    }
+                },
+                {   "PatchSapHanaSystemInput", new List<string> {
+                        "patchSapHanaSystem",
+                    }
+                },
+                {   "PauseSlaInput", new List<string> {
+                        "pauseSla",
+                    }
+                },
+                {   "PauseTargetInput", new List<string> {
+                        "pauseTarget",
+                    }
+                },
+                {   "PolicyAssignmentType", new List<string> {
+                        "policy",
+                    }
+                },
+                {   "PolicyDetailsSortBy", new List<string> {
+                        "policy",
+                    }
+                },
+                {   "PolicyObjectFilter", new List<string> {
+                        "policies",
+                    }
+                },
+                {   "PreAddVcenterInput", new List<string> {
+                        "vCenterPreAddInfo",
+                    }
+                },
+                {   "PrepareAwsCloudAccountDeletionInput", new List<string> {
+                        "prepareAwsCloudAccountDeletion",
+                    }
+                },
+                {   "PrepareFeatureUpdateForAwsCloudAccountInput", new List<string> {
+                        "prepareFeatureUpdateForAwsCloudAccount",
+                    }
+                },
+                {   "PreviewFilterInput", new List<string> {
+                        "vCenterAdvancedTagPreview",
+                    }
+                },
+                {   "PreviewerClusterConfigInput", new List<string> {
+                        "updatePreviewerClusterConfig",
+                    }
+                },
+                {   "PromoteReaderTargetInput", new List<string> {
+                        "promoteReaderTarget",
+                    }
+                },
+                {   "PutSmbConfigurationInput", new List<string> {
+                        "putSmbConfiguration",
+                    }
+                },
+                {   "QueryCertificatesInput", new List<string> {
+                        "clusterCertificates",
+                    }
+                },
+                {   "QueryGuestCredentialInput", new List<string> {
+                        "guestCredentials",
+                    }
+                },
+                {   "QueryHypervHostInput", new List<string> {
+                        "hypervServers",
+                    }
+                },
+                {   "QueryLogReportInput", new List<string> {
+                        "databaseLogReportForCluster",
+                    }
+                },
+                {   "QueryLogShippingConfigurationsV2Input", new List<string> {
+                        "mssqlLogShippingTargets",
+                    }
+                },
+                {   "QueryNetworkThrottleInput", new List<string> {
+                        "networkThrottle",
+                    }
+                },
+                {   "QueryReportPropertiesInput", new List<string> {
+                        "databaseLogReportingPropertiesForCluster",
+                    }
+                },
+                {   "QuerySupportBundleInput", new List<string> {
+                        "supportBundle",
+                    }
+                },
+                {   "QueryUnmanagedObjectSnapshotsV1Input", new List<string> {
+                        "snapshotsForUnmanagedObject",
+                    }
+                },
+                {   "RansomwareResultFilterInput", new List<string> {
+                        "ransomwareResults",
+                        "ransomwareResultsGrouped",
+                    }
+                },
+                {   "RansomwareResultGroupBy", new List<string> {
+                        "ransomwareResultsGrouped",
+                    }
+                },
+                {   "RansomwareResultSortBy", new List<string> {
+                        "ransomwareResults",
+                    }
+                },
+                {   "RcsConsumptionStatsInput", new List<string> {
+                        "rcsArchivalLocationsConsumptionStats",
+                    }
+                },
+                {   "RecoverCloudClusterInput", new List<string> {
+                        "recoverCloudCluster",
+                    }
+                },
+                {   "RecoverCloudDirectMultiPathsInput", new List<string> {
+                        "recoverCloudDirectMultiPaths",
+                    }
+                },
+                {   "RecoverCloudDirectPathInput", new List<string> {
+                        "recoverCloudDirectPath",
+                    }
+                },
+                {   "RecoverMongoSourceInput", new List<string> {
+                        "recoverMongoSource",
+                    }
+                },
+                {   "RecoverableRangeInput", new List<string> {
+                        "mongoBulkRecoverableRanges",
+                        "mongoRecoverableRanges",
+                    }
+                },
+                {   "RefreshDb2DatabaseInput", new List<string> {
+                        "refreshDb2Database",
+                    }
+                },
+                {   "RefreshDomainInput", new List<string> {
+                        "refreshDomain",
+                    }
+                },
+                {   "RefreshHostInput", new List<string> {
+                        "refreshHost",
+                    }
+                },
+                {   "RefreshHypervScvmmInput", new List<string> {
+                        "refreshHypervScvmm",
+                    }
+                },
+                {   "RefreshHypervServerInput", new List<string> {
+                        "refreshHypervServer",
+                    }
+                },
+                {   "RefreshK8sClusterInput", new List<string> {
+                        "refreshK8sCluster",
+                    }
+                },
+                {   "RefreshNasSystemsInput", new List<string> {
+                        "refreshNasSystems",
+                    }
+                },
+                {   "RefreshNutanixClusterInput", new List<string> {
+                        "refreshNutanixCluster",
+                    }
+                },
+                {   "RefreshNutanixPrismCentralInput", new List<string> {
+                        "refreshNutanixPrismCentral",
+                    }
+                },
+                {   "RefreshOracleDatabaseInput", new List<string> {
+                        "refreshOracleDatabase",
+                    }
+                },
+                {   "RefreshReaderTargetInput", new List<string> {
+                        "refreshReaderTarget",
+                    }
+                },
+                {   "RefreshStorageArraysInput", new List<string> {
+                        "refreshStorageArrays",
+                    }
+                },
+                {   "RefreshVsphereVcenterInput", new List<string> {
+                        "refreshVsphereVcenter",
+                    }
+                },
+                {   "RegisterAgentHypervVirtualMachineInput", new List<string> {
+                        "registerAgentHypervVirtualMachine",
+                    }
+                },
+                {   "RegisterAgentNutanixVmInput", new List<string> {
+                        "registerAgentNutanixVm",
+                    }
+                },
+                {   "RegisterAwsFeatureArtifactsInput", new List<string> {
+                        "registerAwsFeatureArtifacts",
+                    }
+                },
+                {   "RegisterCloudClusterInput", new List<string> {
+                        "registerCloudCluster",
+                    }
+                },
+                {   "RegisterHypervScvmmInput", new List<string> {
+                        "registerHypervScvmm",
+                    }
+                },
+                {   "RegisterNasSystemInput", new List<string> {
+                        "registerNasSystem",
+                    }
+                },
+                {   "RemoveClusterNodesInput", new List<string> {
+                        "removeClusterNodes",
+                    }
+                },
+                {   "RemoveDiskInput", new List<string> {
+                        "removeDisk",
+                    }
+                },
+                {   "RemoveInventoryWorkloadsInput", new List<string> {
+                        "removeInventoryWorkloads",
+                    }
+                },
+                {   "RemovePrivateEndpointConnectionInput", new List<string> {
+                        "removePrivateEndpointConnection",
+                    }
+                },
+                {   "RemoveProxyConfigInput", new List<string> {
+                        "removeProxyConfig",
+                    }
+                },
+                {   "RemoveVlansInput", new List<string> {
+                        "removeVlans",
+                    }
+                },
+                {   "ReplicationBandwidthIncomingInput", new List<string> {
+                        "replicationIncomingStats",
+                    }
+                },
+                {   "ReplicationBandwidthOutgoingInput", new List<string> {
+                        "replicationOutgoingStats",
+                    }
+                },
+                {   "ReplicationPairsQueryFilter", new List<string> {
+                        "replicationPairs",
+                    }
+                },
+                {   "ReplicationPairsQuerySortByField", new List<string> {
+                        "replicationPairs",
+                    }
+                },
+                {   "ReseedLogShippingSecondaryInput", new List<string> {
+                        "reseedLogShippingSecondary",
+                    }
+                },
+                {   "ResetUsersPasswordsWithUserIdsInput", new List<string> {
+                        "resetUsersPasswordsWithUserIds",
+                    }
+                },
+                {   "ResizeDiskInput", new List<string> {
+                        "resizeDisk",
+                    }
+                },
+                {   "ResizeManagedVolumeInput", new List<string> {
+                        "resizeManagedVolume",
+                    }
+                },
+                {   "ResolveVolumeGroupsConflictInput", new List<string> {
+                        "resolveVolumeGroupsConflict",
+                    }
+                },
+                {   "ResourceInput", new List<string> {
+                        "userFileActivityTimeline",
+                    }
+                },
+                {   "RestoreActiveDirectoryObjectsInput", new List<string> {
+                        "restoreActiveDirectoryObjects",
+                    }
+                },
+                {   "RestoreAzureAdObjectsWithPasswordsInput", new List<string> {
+                        "restoreAzureAdObjectsWithPasswords",
+                    }
+                },
+                {   "RestoreDomainControllerSnapshotInput", new List<string> {
+                        "restoreDomainControllerSnapshot",
+                    }
+                },
+                {   "RestoreFilesNutanixSnapshotInput", new List<string> {
+                        "restoreFilesNutanixSnapshot",
+                    }
+                },
+                {   "RestoreHypervVirtualMachineSnapshotFilesInput", new List<string> {
+                        "restoreHypervVirtualMachineSnapshotFiles",
+                    }
+                },
+                {   "RestoreK8sNamespaceInput", new List<string> {
+                        "restoreK8sNamespace",
+                    }
+                },
+                {   "RestoreMssqlDatabaseInput", new List<string> {
+                        "restoreMssqlDatabase",
+                    }
+                },
+                {   "RestoreO365MailboxInput", new List<string> {
+                        "restoreO365Mailbox",
+                    }
+                },
+                {   "RestoreO365SnappableInput", new List<string> {
+                        "restoreO365Snappable",
+                    }
+                },
+                {   "RestoreO365TeamsConversationsInput", new List<string> {
+                        "restoreO365TeamsConversations",
+                    }
+                },
+                {   "RestoreO365TeamsFilesInput", new List<string> {
+                        "restoreO365TeamsFiles",
+                    }
+                },
+                {   "RestoreOracleLogsInput", new List<string> {
+                        "restoreOracleLogs",
+                    }
+                },
+                {   "RestoreVolumeGroupSnapshotFilesInput", new List<string> {
+                        "restoreVolumeGroupSnapshotFiles",
+                    }
+                },
+                {   "ResumeTargetInput", new List<string> {
+                        "resumeTarget",
+                    }
+                },
+                {   "RetryAddMongoSourceInput", new List<string> {
+                        "retryAddMongoSource",
+                    }
+                },
+                {   "RevokeAllOrgRolesInput", new List<string> {
+                        "revokeAllOrgRoles",
+                    }
+                },
+                {   "RoleFieldEnum", new List<string> {
+                        "getAllRolesInOrgConnection",
+                    }
+                },
+                {   "RotateServiceAccountSecretInput", new List<string> {
+                        "rotateServiceAccountSecret",
+                    }
+                },
+                {   "RunCustomAnalyzerInput", new List<string> {
+                        "runCustomAnalyzer",
+                    }
+                },
+                {   "SapHanaLogSnapshotFilterInput", new List<string> {
+                        "sapHanaLogSnapshots",
+                    }
+                },
+                {   "SapHanaLogSnapshotSortBy", new List<string> {
+                        "sapHanaLogSnapshots",
+                    }
+                },
+                {   "SapHanaRecoverableRangeFilterInput", new List<string> {
+                        "sapHanaRecoverableRanges",
+                    }
+                },
+                {   "SapHanaRecoverableRangeSortBy", new List<string> {
+                        "sapHanaRecoverableRanges",
+                    }
+                },
+                {   "ScheduledReportFilterInput", new List<string> {
+                        "scheduledReports",
+                    }
+                },
+                {   "SddlRequestFiltersInput", new List<string> {
+                        "datagovSecDesc",
+                    }
+                },
+                {   "SearchAzureAdSnapshotInput", new List<string> {
+                        "searchAzureAdSnapshot",
+                    }
+                },
+                {   "SearchFilter", new List<string> {
+                        "snappableEmailSearch",
+                        "snapshotEmailSearch",
+                    }
+                },
+                {   "SearchNutanixVmInput", new List<string> {
+                        "searchNutanixVm",
+                    }
+                },
+                {   "SendPdfReportInput", new List<string> {
+                        "sendPdfReport",
+                    }
+                },
+                {   "SendScheduledReportAsyncInput", new List<string> {
+                        "sendScheduledReportAsync",
+                    }
+                },
+                {   "ServiceAccountSortBy", new List<string> {
+                        "serviceAccounts",
+                    }
+                },
+                {   "ServiceTier", new List<string> {
+                        "isZrsAvailableForLocation",
+                    }
+                },
+                {   "SetAnalyzerRisksInput", new List<string> {
+                        "setAnalyzerRisks",
+                    }
+                },
+                {   "SetAzureCloudAccountCustomerAppCredentialsInput", new List<string> {
+                        "setAzureCloudAccountCustomerAppCredentials",
+                    }
+                },
+                {   "SetCustomerTagsInput", new List<string> {
+                        "setCustomerTags",
+                    }
+                },
+                {   "SetDatastoreFreespaceThresholdsInput", new List<string> {
+                        "setDatastoreFreespaceThresholds",
+                    }
+                },
+                {   "SetLdapMfaSettingInput", new List<string> {
+                        "setLdapMfaSetting",
+                    }
+                },
+                {   "SetMfaSettingInput", new List<string> {
+                        "setMfaSetting",
+                    }
+                },
+                {   "SetPasswordComplexityPolicyInput", new List<string> {
+                        "setPasswordComplexityPolicy",
+                    }
+                },
+                {   "SetSsoCertificateInput", new List<string> {
+                        "setSsoCertificate",
+                    }
+                },
+                {   "SetTotpConfigInput", new List<string> {
+                        "setTotpConfig",
+                    }
+                },
+                {   "SetUpgradeTypeInput", new List<string> {
+                        "setUpgradeType",
+                    }
+                },
+                {   "SetUserLevelTotpEnforcementInput", new List<string> {
+                        "setUserLevelTotpEnforcement",
+                    }
+                },
+                {   "SetWebSignedCertificateInput", new List<string> {
+                        "setWebSignedCertificate",
+                    }
+                },
+                {   "SetWorkloadAlertSettingInput", new List<string> {
+                        "setWorkloadAlertSetting",
+                    }
+                },
+                {   "SetupCloudNativeSqlServerBackupInput", new List<string> {
+                        "setupCloudNativeSqlServerBackup",
+                    }
+                },
+                {   "SetupDiskInput", new List<string> {
+                        "setupDisk",
+                    }
+                },
+                {   "SharePointDescendantType", new List<string> {
+                        "browseSharepointDrive",
+                        "snappableSharepointDriveSearch",
+                    }
+                },
+                {   "SharePointSearchFilter", new List<string> {
+                        "sharepointSiteDescendants",
+                        "sharepointSiteSearch",
+                    }
+                },
+                {   "SlaAssignTypeEnum", new List<string> {
+                        "assignRetentionSLAToSnappables",
+                        "assignRetentionSLAToSnapshots",
+                        "assignSlasForSnappableHierarchies",
+                    }
+                },
+                {   "SlaQuerySortByField", new List<string> {
+                        "globalSlaFilterConnection",
+                        "slaDomains",
+                    }
+                },
+                {   "SmbDomainSortByInput", new List<string> {
+                        "smbDomains",
+                    }
+                },
+                {   "SnappableFilterInput", new List<string> {
+                        "snappableConnection",
+                    }
+                },
+                {   "SnappableFilterInputWithSearch", new List<string> {
+                        "searchSnappableConnection",
+                    }
+                },
+                {   "SnappableGroupByEnum", new List<string> {
+                        "snappableGroupByConnection",
+                    }
+                },
+                {   "SnappableGroupByFilterInput", new List<string> {
+                        "snappableGroupByConnection",
+                    }
+                },
+                {   "SnappableSortByEnum", new List<string> {
+                        "searchSnappableConnection",
+                        "snappableConnection",
+                    }
+                },
+                {   "SnappableType", new List<string> {
+                        "o365Groups",
+                        "o365OrgAtSnappableLevel",
+                    }
+                },
+                {   "SnappablesWithLegalHoldSnapshotsInput", new List<string> {
+                        "snappablesWithLegalHoldSnapshotsSummary",
+                    }
+                },
+                {   "SnapshotDeltaFilterInput", new List<string> {
+                        "snapshotFilesDelta",
+                        "snapshotFilesDeltaV2",
+                    }
+                },
+                {   "SnapshotQuerySortByField", new List<string> {
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                    }
+                },
+                {   "SonarContentReportFilter", new List<string> {
+                        "sonarContentReport",
+                    }
+                },
+                {   "SortOrder", new List<string> {
+                        "activeDirectoryDomainControllers",
+                        "activeDirectoryDomains",
+                        "activitySeriesConnection",
+                        "allAwsComputeSettings",
+                        "allCloudAccounts",
+                        "allClusterConnection",
+                        "allNosqlStorageLocations",
+                        "allPendingActions",
+                        "allTargetMappings",
+                        "allTargets",
+                        "allUsersOnAccountConnection",
+                        "allValidReplicationTargets",
+                        "anomalyResults",
+                        "assignableGlobalCertificates",
+                        "awsNativeAccounts",
+                        "awsNativeEbsVolumes",
+                        "awsNativeEbsVolumesByName",
+                        "awsNativeEc2Instances",
+                        "awsNativeEc2InstancesByName",
+                        "awsNativeRdsInstances",
+                        "azureAdDirectories",
+                        "azureAdObjectsByType",
+                        "azureNativeManagedDisks",
+                        "azureNativeResourceGroups",
+                        "azureNativeSubscriptions",
+                        "azureNativeVirtualMachines",
+                        "azureSqlDatabases",
+                        "azureSqlDatabaseServers",
+                        "azureSqlManagedInstanceDatabases",
+                        "azureSqlManagedInstanceServers",
+                        "cassandraColumnFamilies",
+                        "cassandraKeyspaces",
+                        "cassandraSources",
+                        "certificates",
+                        "certificateSigningRequests",
+                        "cloudNativeLabelRules",
+                        "cloudNativeTagRules",
+                        "clusterConnection",
+                        "clusterWithUpgradesInfo",
+                        "db2Databases",
+                        "db2Instances",
+                        "db2LogSnapshots",
+                        "db2RecoverableRanges",
+                        "exchangeDags",
+                        "exchangeDatabases",
+                        "exchangeServers",
+                        "failoverClusterApps",
+                        "failoverClusterTopLevelDescendants",
+                        "filesetTemplates",
+                        "gcpNativeDisks",
+                        "gcpNativeGceInstances",
+                        "gcpNativeProjects",
+                        "getAllRolesInOrgConnection",
+                        "getCdmReleaseDetailsForClusterFromSupportPortal",
+                        "getCdmReleaseDetailsForVersionFromSupportPortal",
+                        "getCdmReleaseDetailsFromSupportPortal",
+                        "globalCertificates",
+                        "globalSearchResults",
+                        "globalSlaFilterConnection",
+                        "hierarchySnappables",
+                        "hostFailoverClusters",
+                        "hostShares",
+                        "hypervScvmms",
+                        "hypervTopLevelDescendants",
+                        "hypervVirtualMachines",
+                        "k8sClusters",
+                        "k8sNamespaces",
+                        "ldapAuthorizedPrincipalConnection",
+                        "ldapIntegrationConnection",
+                        "ldapPrincipalConnection",
+                        "managedVolumeLiveMounts",
+                        "managedVolumes",
+                        "mongoCollections",
+                        "mongoDatabases",
+                        "mongodbCollections",
+                        "mongodbDatabases",
+                        "mongodbSources",
+                        "mongoSources",
+                        "mssqlDatabases",
+                        "mssqlTopLevelDescendants",
+                        "nasNamespaces",
+                        "nasSystems",
+                        "nasTopLevelDescendants",
+                        "nfAnomalyResults",
+                        "nutanixClusters",
+                        "nutanixPrismCentrals",
+                        "nutanixTopLevelDescendants",
+                        "nutanixVms",
+                        "o365Groups",
+                        "o365Mailboxes",
+                        "o365Onedrives",
+                        "o365Orgs",
+                        "o365SharepointDrives",
+                        "o365SharepointLists",
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                        "o365SharepointSites",
+                        "o365Sites",
+                        "o365Teams",
+                        "o365UserObjects",
+                        "objectTypeAccessSummary",
+                        "oracleDatabases",
+                        "oracleTopLevelDescendants",
+                        "orgs",
+                        "physicalHosts",
+                        "policy",
+                        "policyObjs",
+                        "protectedObjectsConnection",
+                        "radarClusterConnection",
+                        "replicationPairs",
+                        "reportData",
+                        "sapHanaDatabases",
+                        "sapHanaLogSnapshots",
+                        "sapHanaRecoverableRanges",
+                        "sapHanaSystems",
+                        "searchSnappableConnection",
+                        "serviceAccounts",
+                        "slaDomains",
+                        "slaManagedVolumes",
+                        "snappableConnection",
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                        "sonarContentReport",
+                        "sonarReportRow",
+                        "supportUserAccesses",
+                        "targets",
+                        "taskDetailConnection",
+                        "userAuditConnection",
+                        "vcdVappVms",
+                        "vSphereComputeClusters",
+                        "vSphereDatastoreClusters",
+                        "vSphereDatastoreConnection",
+                        "vSphereFolders",
+                        "vSphereHostConnection",
+                        "vSphereMountConnection",
+                        "vSphereRootRecoveryHierarchy",
+                        "vSphereTopLevelDescendantsConnection",
+                        "vSphereVCenterConnection",
+                        "vSphereVmNewConnection",
+                        "workloadAnomalies",
+                    }
+                },
+                {   "StartAwsExocomputeDisableJobInput", new List<string> {
+                        "startAwsExocomputeDisableJob",
+                    }
+                },
+                {   "StartAwsNativeAccountDisableJobInput", new List<string> {
+                        "startAwsNativeAccountDisableJob",
+                    }
+                },
+                {   "StartAwsNativeEc2InstanceSnapshotsJobInput", new List<string> {
+                        "startAwsNativeEc2InstanceSnapshotsJob",
+                    }
+                },
+                {   "StartAwsNativeRdsInstanceSnapshotsJobInput", new List<string> {
+                        "startAwsNativeRdsInstanceSnapshotsJob",
+                    }
+                },
+                {   "StartAzureAdAppSetupInput", new List<string> {
+                        "startAzureAdAppSetup",
+                    }
+                },
+                {   "StartAzureAdAppUpdateInput", new List<string> {
+                        "startAzureAdAppUpdate",
+                    }
+                },
+                {   "StartAzureCloudAccountOauthInput", new List<string> {
+                        "startAzureCloudAccountOauth",
+                    }
+                },
+                {   "StartCloudNativeSnapshotsIndexJobInput", new List<string> {
+                        "startCloudNativeSnapshotsIndexJob",
+                    }
+                },
+                {   "StartClusterReportMigrationJobInput", new List<string> {
+                        "startClusterReportMigrationJob",
+                    }
+                },
+                {   "StartCreateAwsNativeEbsVolumeSnapshotsJobInput", new List<string> {
+                        "startCreateAwsNativeEbsVolumeSnapshotsJob",
+                    }
+                },
+                {   "StartCreateAzureNativeManagedDiskSnapshotsJobInput", new List<string> {
+                        "startCreateAzureNativeManagedDiskSnapshotsJob",
+                    }
+                },
+                {   "StartCreateAzureNativeVirtualMachineSnapshotsJobInput", new List<string> {
+                        "startCreateAzureNativeVirtualMachineSnapshotsJob",
+                    }
+                },
+                {   "StartDisableAzureCloudAccountJobInput", new List<string> {
+                        "startDisableAzureCloudAccountJob",
+                    }
+                },
+                {   "StartDisableAzureNativeSubscriptionProtectionJobInput", new List<string> {
+                        "startDisableAzureNativeSubscriptionProtectionJob",
+                    }
+                },
+                {   "StartEc2InstanceSnapshotExportJobInput", new List<string> {
+                        "startEc2InstanceSnapshotExportJob",
+                    }
+                },
+                {   "StartExportAwsNativeEbsVolumeSnapshotJobInput", new List<string> {
+                        "startExportAwsNativeEbsVolumeSnapshotJob",
+                    }
+                },
+                {   "StartExportAzureNativeManagedDiskJobInput", new List<string> {
+                        "startExportAzureNativeManagedDiskJob",
+                    }
+                },
+                {   "StartExportAzureNativeVirtualMachineJobInput", new List<string> {
+                        "startExportAzureNativeVirtualMachineJob",
+                    }
+                },
+                {   "StartExportAzureSqlDatabaseDbJobInput", new List<string> {
+                        "startExportAzureSqlDatabaseDbJob",
+                    }
+                },
+                {   "StartExportAzureSqlManagedInstanceDbJobInput", new List<string> {
+                        "startExportAzureSqlManagedInstanceDbJob",
+                    }
+                },
+                {   "StartExportRdsInstanceJobInput", new List<string> {
+                        "startExportRdsInstanceJob",
+                    }
+                },
+                {   "StartRecoverS3SnapshotJobInput", new List<string> {
+                        "startRecoverS3SnapshotJob",
+                    }
+                },
+                {   "StartRefreshAwsNativeAccountsJobInput", new List<string> {
+                        "startRefreshAwsNativeAccountsJob",
+                    }
+                },
+                {   "StartRefreshAzureNativeSubscriptionsJobInput", new List<string> {
+                        "startRefreshAzureNativeSubscriptionsJob",
+                    }
+                },
+                {   "StartRestoreAwsNativeEc2InstanceSnapshotJobInput", new List<string> {
+                        "startRestoreAwsNativeEc2InstanceSnapshotJob",
+                    }
+                },
+                {   "StartRestoreAzureNativeVirtualMachineJobInput", new List<string> {
+                        "startRestoreAzureNativeVirtualMachineJob",
+                    }
+                },
+                {   "StartThreatHuntInput", new List<string> {
+                        "startThreatHunt",
+                    }
+                },
+                {   "StartVolumeGroupMountInput", new List<string> {
+                        "startVolumeGroupMount",
+                    }
+                },
+                {   "StopJobInstanceFromEventSeriesInput", new List<string> {
+                        "stopJobInstanceFromEventSeries",
+                    }
+                },
+                {   "StopJobInstanceInput", new List<string> {
+                        "stopJobInstance",
+                    }
+                },
+                {   "String", new List<string> {
+                        "activeDirectoryDomainControllers",
+                        "activeDirectoryDomains",
+                        "activeDirectorySearchSnapshots",
+                        "activitySeriesConnection",
+                        "adVolumeExports",
+                        "allAwsExocomputeConfigs",
+                        "allAwsInstanceProfileNames",
+                        "allAwsRegions",
+                        "allAzureCloudAccountMissingPermissions",
+                        "allAzureExocomputeConfigsInAccount",
+                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
+                        "allAzureRegions",
+                        "allAzureResourceGroups",
+                        "allAzureSqlDatabaseServerElasticPools",
+                        "allCdpVmsInfos",
+                        "allCloudNativeLabelKeys",
+                        "allCloudNativeLabelValues",
+                        "allCloudNativeTagKeys",
+                        "allCloudNativeTagValues",
+                        "allClusterConnection",
+                        "allDbParameterGroupsByRegionFromAws",
+                        "allEffectiveRbacPermissions",
+                        "allFileActivities",
+                        "allGcpCloudAccountMissingPermissionsForAddition",
+                        "allGcpCloudAccountProjectsByFeature",
+                        "allGcpCloudAccountProjectsForOauth",
+                        "allGcpNativeAvailableKmsCryptoKeys",
+                        "allGcpNativeCompatibleMachineTypes",
+                        "allIntegrations",
+                        "allK8sReplicaSnapshotInfos",
+                        "allO365AdGroups",
+                        "allObjectsAlreadyAssignedToOrgs",
+                        "allOptionGroupsByRegionFromAws",
+                        "allQuarantinedDetailsForWorkload",
+                        "allSnapshotPvcs",
+                        "allSupportedAwsRdsDatabaseInstanceClasses",
+                        "allUsersOnAccount",
+                        "allUsersOnAccountConnection",
+                        "allValidReplicationTargets",
+                        "allWebhooks",
+                        "anomalyResultOpt",
+                        "anomalyResults",
+                        "anomalyResultsGrouped",
+                        "archiveCrawl",
+                        "assignableGlobalCertificates",
+                        "assignRetentionSLAToSnappables",
+                        "assignRetentionSLAToSnapshots",
+                        "assignSlasForSnappableHierarchies",
+                        "awsCloudAccountListSecurityGroups",
+                        "awsCloudAccountListSubnets",
+                        "awsNativeAccounts",
+                        "awsNativeEbsVolumes",
+                        "awsNativeEbsVolumesByName",
+                        "awsNativeEc2Instances",
+                        "awsNativeEc2InstancesByName",
+                        "awsNativeRdsExportDefaults",
+                        "awsNativeRdsInstances",
+                        "awsNativeRdsPointInTimeRestoreWindow",
+                        "azureAdDirectories",
+                        "azureAdObjectsByType",
+                        "azureCloudAccountTenant",
+                        "azureCloudAccountTenantWithExoConfigs",
+                        "azureNativeManagedDisks",
+                        "azureNativeResourceGroups",
+                        "azureNativeSubscriptions",
+                        "azureNativeVirtualMachines",
+                        "azureO365CheckNetworkSubnet",
+                        "azureO365CheckNSGOutboundRules",
+                        "azureO365CheckResourceGroupName",
+                        "azureO365CheckStorageAccountAccessibility",
+                        "azureO365CheckStorageAccountName",
+                        "azureO365CheckSubscriptionQuota",
+                        "azureO365CheckVirtualNetworkName",
+                        "azureO365Exocompute",
+                        "azureO365GetNetworkSubnetUnusedAddr",
+                        "azureO365ValidateUserRoles",
+                        "azureRegions",
+                        "azureResourceGroups",
+                        "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                        "azureSqlDatabases",
+                        "azureSqlDatabaseServers",
+                        "azureSqlManagedInstanceDatabases",
+                        "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                        "azureSqlManagedInstanceServers",
+                        "azureStorageAccounts",
+                        "azureSubnets",
+                        "azureSubscriptions",
+                        "azureVNets",
+                        "browseCalendar",
+                        "browseContacts",
+                        "browseFolder",
+                        "browseO365TeamConvChannels",
+                        "browseOnedrive",
+                        "browseSharepointDrive",
+                        "browseSharepointList",
+                        "browseSnapshotFileConnection",
+                        "browseTeamsChannels",
+                        "browseTeamsDrive",
+                        "cancelTaskchain",
+                        "cassandraColumnFamilies",
+                        "cassandraKeyspaces",
+                        "cassandraSources",
+                        "cdmMssqlLogShippingTargets",
+                        "certificates",
+                        "certificateSigningRequests",
+                        "checkCloudNativeLabelRuleNameUniqueness",
+                        "checkCloudNativeTagRuleNameUniqueness",
+                        "cloudNativeCheckRequiredPermissionsForFeature",
+                        "cloudNativeSnapshots",
+                        "cloudNativeWorkloadVersionedFiles",
+                        "clusterConnection",
+                        "clusterGroupByConnection",
+                        "clusterReportMigrationStatus",
+                        "clusterSlaDomains",
+                        "clusterWithUpgradesInfo",
+                        "configuredGroupMembers",
+                        "crawl",
+                        "createCustomReport",
+                        "createRole",
+                        "createUser",
+                        "customAnalyzer",
+                        "datagovSecDesc",
+                        "db2Databases",
+                        "db2Instances",
+                        "db2LogSnapshots",
+                        "db2RecoverableRanges",
+                        "deactivateCustomAnalyzer",
+                        "deactivatePolicy",
+                        "decryptExportUrl",
+                        "deleteO365AzureApp",
+                        "deleteRole",
+                        "deleteTotpConfig",
+                        "diffFmd",
+                        "discoverNodes",
+                        "discoveryTimeline",
+                        "doesAzureNativeResourceGroupExist",
+                        "downloadResultsCsv",
+                        "downloadSnapshotResultsCsv",
+                        "enableO365Teams",
+                        "exchangeDags",
+                        "exchangeDatabases",
+                        "exchangeLiveMounts",
+                        "exchangeServers",
+                        "failedRestoreItemsInfo",
+                        "failoverClusterApps",
+                        "failoverClusterTopLevelDescendants",
+                        "filesetSnapshot",
+                        "filesetSnapshotFiles",
+                        "filesetTemplates",
+                        "gcpNativeDisks",
+                        "gcpNativeGceInstances",
+                        "gcpNativeProjects",
+                        "generateCsr",
+                        "generateTotpSecret",
+                        "getAllRolesInOrgConnection",
+                        "getCdmReleaseDetailsForClusterFromSupportPortal",
+                        "getCdmReleaseDetailsForVersionFromSupportPortal",
+                        "getCdmReleaseDetailsFromSupportPortal",
+                        "getKorgTaskchainStatus",
+                        "getPermissions",
+                        "getUserDownloads",
+                        "globalCertificate",
+                        "globalCertificates",
+                        "globalSearchResults",
+                        "globalSlaFilterConnection",
+                        "globalSlaStatuses",
+                        "groupsInCurrentAndDescendantOrganization",
+                        "guestCredentialsV2",
+                        "helpContentSnippets",
+                        "hierarchySnappables",
+                        "hostDiagnosis",
+                        "hostFailoverClusters",
+                        "hostShares",
+                        "hypervMounts",
+                        "hypervScvmms",
+                        "hypervTopLevelDescendants",
+                        "hypervVirtualMachines",
+                        "investigationCsvDownloadLink",
+                        "isAwsNativeEbsVolumeSnapshotRestorable",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                        "isAwsS3BucketNameAvailable",
+                        "isAzureStorageAccountNameAvailable",
+                        "isSfdcReachable",
+                        "issue",
+                        "issues",
+                        "isTotpMandatoryInTargetVersion",
+                        "k8sAppManifest",
+                        "k8sClusters",
+                        "k8sNamespaces",
+                        "knowledgeBaseArticle",
+                        "ldapAuthorizedPrincipalConnection",
+                        "ldapIntegrationConnection",
+                        "ldapPrincipalConnection",
+                        "legalHoldSnapshotsForSnappable",
+                        "listO365Apps",
+                        "managedVolumeLiveMounts",
+                        "managedVolumes",
+                        "mongoCollections",
+                        "mongoDatabases",
+                        "mongodbCollections",
+                        "mongodbDatabases",
+                        "mongodbSources",
+                        "mongoSources",
+                        "mssqlCompatibleInstances",
+                        "mssqlDatabaseLiveMounts",
+                        "mssqlDatabases",
+                        "mssqlTopLevelDescendants",
+                        "mutateRole",
+                        "nasNamespaces",
+                        "nasSystems",
+                        "nasTopLevelDescendants",
+                        "nfAnomalyResults",
+                        "nfAnomalyResultsGrouped",
+                        "nutanixClusters",
+                        "nutanixMounts",
+                        "nutanixPrismCentrals",
+                        "nutanixTopLevelDescendants",
+                        "nutanixVms",
+                        "o365Groups",
+                        "o365Mailboxes",
+                        "o365Onedrives",
+                        "o365Orgs",
+                        "o365SharepointDrives",
+                        "o365SharepointLists",
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                        "o365SharepointSites",
+                        "o365Sites",
+                        "o365TeamChannels",
+                        "o365TeamPostedBy",
+                        "o365Teams",
+                        "o365UserObjects",
+                        "oauthCodesForEdgeReg",
+                        "objectFiles",
+                        "objectTypeAccessSummary",
+                        "oracleDatabases",
+                        "oracleLiveMounts",
+                        "oracleTopLevelDescendants",
+                        "org",
+                        "orgs",
+                        "orgsForPrincipal",
+                        "pendingAction",
+                        "physicalHosts",
+                        "policy",
+                        "policyObj",
+                        "policyObjs",
+                        "productDocumentation",
+                        "protectedObjectsConnection",
+                        "radarClusterConnection",
+                        "ransomwareInvestigationAnalysisSummary",
+                        "ransomwareInvestigationWorkloadScannedCount",
+                        "ransomwareResult",
+                        "ransomwareResultOpt",
+                        "ransomwareResults",
+                        "ransomwareResultsGrouped",
+                        "rdsInstanceDetailsFromAws",
+                        "replicationPairs",
+                        "reportData",
+                        "roleTemplates",
+                        "s3BucketStateForRecovery",
+                        "sapHanaDatabases",
+                        "sapHanaLogSnapshots",
+                        "sapHanaRecoverableRanges",
+                        "sapHanaSystems",
+                        "scheduledReports",
+                        "scheduleUpgradeBatchJob",
+                        "searchAzureAdSnapshot",
+                        "searchFileByPrefix",
+                        "searchHost",
+                        "searchSnappableConnection",
+                        "searchSnappableVersionedFiles",
+                        "serviceAccounts",
+                        "setO365ServiceAccount",
+                        "setupAzureO365Exocompute",
+                        "sharepointSiteDescendants",
+                        "sharepointSiteSearch",
+                        "slaAuditDetail",
+                        "slaDomains",
+                        "slaManagedVolumes",
+                        "smbDomains",
+                        "snappableConnection",
+                        "snappableContactSearch",
+                        "snappableEmailSearch",
+                        "snappableEventSearch",
+                        "snappableGroupByConnection",
+                        "snappableOnedriveSearch",
+                        "snappableSharepointDriveSearch",
+                        "snappableSharepointListSearch",
+                        "snappablesWithLegalHoldSnapshotsSummary",
+                        "snappableTeamsConversationsSearch",
+                        "snappableTeamsDriveSearch",
+                        "snapshotEmailSearch",
+                        "snapshotEventSearch",
+                        "snapshotFilesDelta",
+                        "snapshotFilesDeltaV2",
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                        "snapshotOnedriveSearch",
+                        "snapshotResults",
+                        "snapshotsForUnmanagedObject",
+                        "snapshotSharepointDriveSearch",
+                        "sonarContentReport",
+                        "sonarReportRow",
+                        "sonarUserGroups",
+                        "sonarUsers",
+                        "startCrawl",
+                        "startDownloadPackageBatchJob",
+                        "startUpgradeBatchJob",
+                        "supportUserAccesses",
+                        "targets",
+                        "taskchain",
+                        "taskDetailConnection",
+                        "taskDetailGroupByConnection",
+                        "teamChannelNameAvailable",
+                        "threatHuntDetail",
+                        "threatHuntResult",
+                        "threatHunts",
+                        "threatHuntSummary",
+                        "totpConfigStatus",
+                        "unmanagedObjects",
+                        "updateAccountOwner",
+                        "updateCertificate",
+                        "updateLdapIntegration",
+                        "updateRole",
+                        "updateWhitelistedAnalyzers",
+                        "userActivities",
+                        "userActivityTimeline",
+                        "userAnalyzerAccess",
+                        "userAuditConnection",
+                        "userDetail",
+                        "userFileActivityTimeline",
+                        "userGroups",
+                        "usersInCurrentAndDescendantOrganization",
+                        "validateAwsNativeRdsClusterNameForExport",
+                        "validateAwsNativeRdsInstanceNameForExport",
+                        "validateAzureNativeSqlDatabaseDbNameForExport",
+                        "validateAzureNativeSqlManagedInstanceDbNameForExport",
+                        "vcdVappVms",
+                        "volumeGroupMounts",
+                        "vSphereComputeClusters",
+                        "vSphereDatastoreClusters",
+                        "vSphereDatastoreConnection",
+                        "vSphereFolders",
+                        "vSphereHostConnection",
+                        "vSphereLiveMounts",
+                        "vSphereMountConnection",
+                        "vSphereRootRecoveryHierarchy",
+                        "vSphereTopLevelDescendantsConnection",
+                        "vSphereVCenterConnection",
+                        "vSphereVMAsyncRequestStatus",
+                        "vSphereVmNewConnection",
+                        "workloadAnomalies",
+                    }
+                },
+                {   "SupportPortalLoginInput", new List<string> {
+                        "supportPortalLogin",
+                    }
+                },
+                {   "SupportUserAccessSortByField", new List<string> {
+                        "supportUserAccesses",
+                    }
+                },
+                {   "TakeManagedVolumeOnDemandSnapshotInput", new List<string> {
+                        "takeManagedVolumeOnDemandSnapshot",
+                    }
+                },
+                {   "TakeMssqlLogBackupInput", new List<string> {
+                        "takeMssqlLogBackup",
+                    }
+                },
+                {   "TakeOnDemandOracleDatabaseSnapshotInput", new List<string> {
+                        "takeOnDemandOracleDatabaseSnapshot",
+                    }
+                },
+                {   "TakeOnDemandOracleLogSnapshotInput", new List<string> {
+                        "takeOnDemandOracleLogSnapshot",
+                    }
+                },
+                {   "TakeOnDemandSnapshotInput", new List<string> {
+                        "takeOnDemandSnapshot",
+                    }
+                },
+                {   "TaskDetailFilterInput", new List<string> {
+                        "taskDetailConnection",
+                        "taskDetailGroupByConnection",
+                    }
+                },
+                {   "TaskDetailGroupByEnum", new List<string> {
+                        "taskDetailGroupByConnection",
+                    }
+                },
+                {   "TaskDetailSortByEnum", new List<string> {
+                        "taskDetailConnection",
+                    }
+                },
+                {   "TeamsConversationsSearchFilter", new List<string> {
+                        "snappableTeamsConversationsSearch",
+                    }
+                },
+                {   "TestExistingWebhookInput", new List<string> {
+                        "testExistingWebhook",
+                    }
+                },
+                {   "TestSyslogExportRuleInput", new List<string> {
+                        "testSyslogExportRule",
+                    }
+                },
+                {   "TestWebhookInput", new List<string> {
+                        "testWebhook",
+                    }
+                },
+                {   "TimeFilterInput", new List<string> {
+                        "sonarReport",
+                    }
+                },
+                {   "TimeGranularity", new List<string> {
+                        "userFileActivityTimeline",
+                    }
+                },
+                {   "TimeRangeInput", new List<string> {
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                    }
+                },
+                {   "TriggerCloudComputeConnectivityCheckInput", new List<string> {
+                        "triggerCloudComputeConnectivityCheck",
+                    }
+                },
+                {   "TriggerExocomputeHealthCheckInput", new List<string> {
+                        "triggerExocomputeHealthCheck",
+                    }
+                },
+                {   "TriggerRansomwareDetectionInput", new List<string> {
+                        "triggerRansomwareDetection",
+                    }
+                },
+                {   "UUID", new List<string> {
+                        "activeDirectoryDomain",
+                        "activeDirectoryDomainController",
+                        "allAuthorizationsForObject",
+                        "allAvailabilityZonesByRegionFromAws",
+                        "allAzureCloudAccountSubnetsByRegion",
+                        "allAzureDiskEncryptionSetsByRegion",
+                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
+                        "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
+                        "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
+                        "allAzureNativeSecurityGroupsByRegionFromAzure",
+                        "allAzureNativeStorageAccountsFromAzure",
+                        "allAzureNativeSubnetsByRegionFromAzure",
+                        "allAzureNativeVirtualMachineSizes",
+                        "allAzureNativeVirtualNetworks",
+                        "allAzureSqlDatabaseServerElasticPools",
+                        "allCloudNativeFileRecoveryEligibleSnapshots",
+                        "allClusterGlobalSlas",
+                        "allClusterReplicationTargets",
+                        "allDbParameterGroupsByRegionFromAws",
+                        "allDbSubnetGroupsByRegionFromAws",
+                        "allEc2KeyPairsByRegionFromAws",
+                        "allGcpNativeAvailableKmsCryptoKeys",
+                        "allGcpNativeCompatibleMachineTypes",
+                        "allGcpNativeNetworks",
+                        "allGcpNativeProjectsWithAccessibleNetworks",
+                        "allGcpNativeRegions",
+                        "allGcpNativeStoredMachineTypesInProject",
+                        "allGcpNativeStoredNetworkNamesInProject",
+                        "allGcpNativeStoredRegionsInProject",
+                        "allK8sReplicaSnapshotInfos",
+                        "allKmsEncryptionKeysByRegionFromAws",
+                        "allO365AdGroups",
+                        "allOptionGroupsByRegionFromAws",
+                        "allPendingActions",
+                        "allResourceGroupsFromAzure",
+                        "allS3BucketsDetailsFromAws",
+                        "allS3BucketsFromAws",
+                        "allSharepointSiteExclusions",
+                        "allSnapshotPvcs",
+                        "allSupportedAwsRdsDatabaseInstanceClasses",
+                        "allVmRecoveryJobsInfo",
+                        "allVpcsByRegionFromAws",
+                        "allVpcsFromAws",
+                        "anomalyResultOpt",
+                        "archivalStorageUsage",
+                        "areMultiGeoBackupsEnabled",
+                        "assignRetentionSLAToSnappables",
+                        "assignRetentionSLAToSnapshots",
+                        "assignSlasForSnappableHierarchies",
+                        "awsCloudAccountListSecurityGroups",
+                        "awsCloudAccountListSubnets",
+                        "awsCloudAccountListVpcs",
+                        "awsCloudAccountWithFeatures",
+                        "awsComputeSettings",
+                        "awsNativeAccount",
+                        "awsNativeEbsVolume",
+                        "awsNativeEc2Instance",
+                        "awsNativeRdsExportDefaults",
+                        "awsNativeRdsInstance",
+                        "awsNativeRdsPointInTimeRestoreWindow",
+                        "awsNativeS3Bucket",
+                        "azureAdDirectory",
+                        "azureCloudAccountSubscriptionWithFeatures",
+                        "azureCloudAccountTenant",
+                        "azureCloudAccountTenantWithExoConfigs",
+                        "azureNativeManagedDisk",
+                        "azureNativeResourceGroup",
+                        "azureNativeSubscription",
+                        "azureNativeVirtualMachine",
+                        "azureO365CheckNetworkSubnet",
+                        "azureO365CheckNSGOutboundRules",
+                        "azureO365CheckResourceGroupName",
+                        "azureO365CheckStorageAccountAccessibility",
+                        "azureO365CheckStorageAccountName",
+                        "azureO365CheckSubscriptionQuota",
+                        "azureO365CheckVirtualNetworkName",
+                        "azureO365Exocompute",
+                        "azureO365GetNetworkSubnetUnusedAddr",
+                        "azureO365ValidateUserRoles",
+                        "azureRegions",
+                        "azureResourceGroups",
+                        "azureSqlDatabase",
+                        "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                        "azureSqlDatabaseServer",
+                        "azureSqlManagedInstanceDatabase",
+                        "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                        "azureSqlManagedInstanceServer",
+                        "azureStorageAccounts",
+                        "azureSubnets",
+                        "azureVNets",
+                        "browseCalendar",
+                        "browseContacts",
+                        "browseFolder",
+                        "browseO365TeamConvChannels",
+                        "browseOnedrive",
+                        "browseSharepointDrive",
+                        "browseSharepointList",
+                        "browseSnapshotFileConnection",
+                        "browseTeamsChannels",
+                        "browseTeamsDrive",
+                        "cancelDownloadPackage",
+                        "cancelScheduledUpgrade",
+                        "cassandraColumnFamily",
+                        "cassandraKeyspace",
+                        "cassandraSource",
+                        "cdmHierarchySnappableNew",
+                        "cdmMssqlLogShippingTarget",
+                        "checkAzurePersistentStorageSubscriptionCanUnmap",
+                        "cloudAccount",
+                        "cloudDirectNasExport",
+                        "cloudNativeCheckArchivedSnapshotsLocked",
+                        "cloudNativeCustomerTags",
+                        "cloudNativeSnapshotDetailsForRecovery",
+                        "cloudNativeSnapshots",
+                        "cloudNativeSnapshotTypeDetails",
+                        "cloudNativeWorkloadVersionedFiles",
+                        "cluster",
+                        "clusterDns",
+                        "clusterProxy",
+                        "clusterReportMigrationCount",
+                        "clusterReportMigrationJobStatus",
+                        "clusterReportMigrationStatus",
+                        "configuredGroupMembers",
+                        "countOfObjectsProtectedBySlas",
+                        "db2Database",
+                        "db2Instance",
+                        "db2LogSnapshot",
+                        "db2RecoverableRange",
+                        "decryptExportUrl",
+                        "deleteO365Org",
+                        "deleteO365ServiceAccount",
+                        "diffFmd",
+                        "doesAzureNativeResourceGroupExist",
+                        "downloadPackageStatus",
+                        "exchangeDag",
+                        "exchangeDatabase",
+                        "exchangeServer",
+                        "failedRestoreItemsInfo",
+                        "failoverClusterApp",
+                        "filesetTemplate",
+                        "gcpNativeDisk",
+                        "gcpNativeGceInstance",
+                        "gcpNativeProject",
+                        "gcpNativeStoredDiskLocations",
+                        "globalSlaStatuses",
+                        "hierarchyObject",
+                        "hierarchyObjectRecoveryTarget",
+                        "hostFailoverCluster",
+                        "hostShare",
+                        "hypervCluster",
+                        "hypervScvmm",
+                        "hypervServer",
+                        "hypervVirtualMachine",
+                        "investigationCsvDownloadLink",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                        "isAwsS3BucketNameAvailable",
+                        "isAzureNativeManagedDiskSnapshotRestorable",
+                        "isAzureNativeSqlDatabaseSnapshotPersistent",
+                        "isAzureStorageAccountNameAvailable",
+                        "isTotpAckNecessaryForCluster",
+                        "isUpgradeAvailable",
+                        "isUpgradeRecommended",
+                        "isZrsAvailableForLocation",
+                        "k8sAppManifest",
+                        "k8sCluster",
+                        "k8sNamespace",
+                        "k8sNamespaces",
+                        "k8sSnapshotInfo",
+                        "ldapPrincipalConnection",
+                        "linuxFileset",
+                        "m365Regions",
+                        "managedVolume",
+                        "mongoCollection",
+                        "mongoDatabase",
+                        "mongodbCollection",
+                        "mongodbDatabase",
+                        "mongodbSource",
+                        "mongoSource",
+                        "mssqlAvailabilityGroup",
+                        "mssqlDatabase",
+                        "mssqlInstance",
+                        "nasFileset",
+                        "nasNamespace",
+                        "nasShare",
+                        "nasSystem",
+                        "nasVolume",
+                        "nutanixCategory",
+                        "nutanixCategoryValue",
+                        "nutanixCluster",
+                        "nutanixPrismCentral",
+                        "nutanixVm",
+                        "o365Calendar",
+                        "o365Groups",
+                        "o365Mailbox",
+                        "o365Mailboxes",
+                        "o365ObjectAncestors",
+                        "o365Onedrive",
+                        "o365Onedrives",
+                        "o365Org",
+                        "o365OrgAtSnappableLevel",
+                        "o365ServiceAccount",
+                        "o365ServiceStatus",
+                        "o365SharepointDrive",
+                        "o365SharepointDrives",
+                        "o365SharepointList",
+                        "o365SharepointLists",
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                        "o365SharepointSite",
+                        "o365SharepointSites",
+                        "o365Site",
+                        "o365Sites",
+                        "o365StorageStats",
+                        "o365Team",
+                        "o365TeamChannels",
+                        "o365TeamConversationsFolderID",
+                        "o365TeamPostedBy",
+                        "o365Teams",
+                        "o365User",
+                        "o365UserObjects",
+                        "oracleDatabase",
+                        "oracleDataGuardGroup",
+                        "oracleHost",
+                        "oracleRac",
+                        "phoenixRolloutProgress",
+                        "physicalHost",
+                        "polarisSnapshot",
+                        "prechecksStatus",
+                        "prechecksStatusWithNextJobInfo",
+                        "protectedObjectsConnection",
+                        "ransomwareResult",
+                        "ransomwareResultOpt",
+                        "rdsInstanceDetailsFromAws",
+                        "refreshGlobalManagerConnectivityStatus",
+                        "refreshO365Org",
+                        "removeCdmCluster",
+                        "removeLdapIntegration",
+                        "retryDownloadPackageJob",
+                        "s3BucketStateForRecovery",
+                        "sapHanaDatabase",
+                        "sapHanaLogSnapshot",
+                        "sapHanaRecoverableRange",
+                        "sapHanaSystem",
+                        "searchFileByPrefix",
+                        "searchSnappableVersionedFiles",
+                        "setO365ServiceAccount",
+                        "setupAzureO365Exocompute",
+                        "shareFileset",
+                        "sharepointSiteDescendants",
+                        "sharepointSiteSearch",
+                        "slaAuditDetail",
+                        "slaDomain",
+                        "slaManagedVolume",
+                        "snappableContactSearch",
+                        "snappableEmailSearch",
+                        "snappableEventSearch",
+                        "snappableOnedriveSearch",
+                        "snappableSharepointDriveSearch",
+                        "snappableSharepointListSearch",
+                        "snappableTeamsConversationsSearch",
+                        "snappableTeamsDriveSearch",
+                        "snapshot",
+                        "snapshotEmailSearch",
+                        "snapshotEventSearch",
+                        "snapshotFilesDelta",
+                        "snapshotFilesDeltaV2",
+                        "snapshotOnedriveSearch",
+                        "snapshotSharepointDriveSearch",
+                        "startPeriodicUpgradePrechecksOnDemandJob",
+                        "target",
+                        "targetMapping",
+                        "teamChannelNameAvailable",
+                        "updateClusterLocation",
+                        "updateLdapIntegration",
+                        "upgradeStatus",
+                        "validateAwsNativeRdsClusterNameForExport",
+                        "validateAwsNativeRdsInstanceNameForExport",
+                        "validateAzureNativeSqlDatabaseDbNameForExport",
+                        "validateAzureNativeSqlManagedInstanceDbNameForExport",
+                        "verifySlaWithReplicationToCluster",
+                        "vSphereComputeCluster",
+                        "vSphereDatacenter",
+                        "vSphereDatastore",
+                        "vSphereDatastoreCluster",
+                        "vSphereFolder",
+                        "vSphereHost",
+                        "vSphereMount",
+                        "vSphereNetwork",
+                        "vSphereResourcePool",
+                        "vSphereTag",
+                        "vSphereTagCategory",
+                        "vSphereVCenter",
+                        "vSphereVMAsyncRequestStatus",
+                        "vsphereVMMissedRecoverableRange",
+                        "vSphereVmNew",
+                        "vsphereVMRecoverableRange",
+                        "windowsCluster",
+                        "windowsFileset",
+                        "workloadAlertSetting",
+                    }
+                },
+                {   "UnconfigureSapHanaRestoreInput", new List<string> {
+                        "unconfigureSapHanaRestore",
+                    }
+                },
+                {   "UninstallIoFilterInput", new List<string> {
+                        "uninstallIoFilter",
+                    }
+                },
+                {   "UnlockUsersByAdminInput", new List<string> {
+                        "unlockUsersByAdmin",
+                    }
+                },
+                {   "UnmanagedObjectsInput", new List<string> {
+                        "unmanagedObjects",
+                    }
+                },
+                {   "UnmapAzureCloudAccountExocomputeSubscriptionInput", new List<string> {
+                        "unmapAzureCloudAccountExocomputeSubscription",
+                    }
+                },
+                {   "UnmapAzurePersistentStorageSubscriptionInput", new List<string> {
+                        "unmapAzurePersistentStorageSubscription",
+                    }
+                },
+                {   "UnmapCloudAccountExocomputeAccountInput", new List<string> {
+                        "unmapCloudAccountExocomputeAccount",
+                    }
+                },
+                {   "UnmappingValidationType", new List<string> {
+                        "checkAzurePersistentStorageSubscriptionCanUnmap",
+                    }
+                },
+                {   "UnmountDiskInput", new List<string> {
+                        "unmountDisk",
+                    }
+                },
+                {   "UpdateAuthDomainUsersHiddenStatusInput", new List<string> {
+                        "updateAuthDomainUsersHiddenStatus",
+                    }
+                },
+                {   "UpdateAutoEnablePolicyClusterConfigInput", new List<string> {
+                        "updateAutoEnablePolicyClusterConfig",
+                    }
+                },
+                {   "UpdateAutomaticAwsTargetMappingInput", new List<string> {
+                        "updateAutomaticAwsTargetMapping",
+                    }
+                },
+                {   "UpdateAutomaticAzureTargetMappingInput", new List<string> {
+                        "updateAutomaticAzureTargetMapping",
+                    }
+                },
+                {   "UpdateAwsAccountInput", new List<string> {
+                        "updateAwsAccount",
+                    }
+                },
+                {   "UpdateAwsCloudAccountFeatureInput", new List<string> {
+                        "updateAwsCloudAccountFeature",
+                    }
+                },
+                {   "UpdateAwsCloudAccountInput", new List<string> {
+                        "updateAwsCloudAccount",
+                    }
+                },
+                {   "UpdateAwsComputeSettingInput", new List<string> {
+                        "updateAwsComputeSetting",
+                    }
+                },
+                {   "UpdateAwsExocomputeConfigsInput", new List<string> {
+                        "updateAwsExocomputeConfigs",
+                    }
+                },
+                {   "UpdateAwsTargetInput", new List<string> {
+                        "updateAwsTarget",
+                    }
+                },
+                {   "UpdateAzureAccountInput", new List<string> {
+                        "updateAzureAccount",
+                    }
+                },
+                {   "UpdateAzureCloudAccountInput", new List<string> {
+                        "updateAzureCloudAccount",
+                    }
+                },
+                {   "UpdateAzureTargetInput", new List<string> {
+                        "updateAzureTarget",
+                    }
+                },
+                {   "UpdateBadDiskLedStatusInput", new List<string> {
+                        "updateBadDiskLedStatus",
+                    }
+                },
+                {   "UpdateCertificateHostInput", new List<string> {
+                        "updateCertificateHost",
+                    }
+                },
+                {   "UpdateCloudNativeAwsStorageSettingInput", new List<string> {
+                        "updateCloudNativeAwsStorageSetting",
+                    }
+                },
+                {   "UpdateCloudNativeAzureStorageSettingInput", new List<string> {
+                        "updateCloudNativeAzureStorageSetting",
+                    }
+                },
+                {   "UpdateCloudNativeIndexingStatusInput", new List<string> {
+                        "updateCloudNativeIndexingStatus",
+                    }
+                },
+                {   "UpdateCloudNativeLabelRuleInput", new List<string> {
+                        "updateCloudNativeLabelRule",
+                    }
+                },
+                {   "UpdateCloudNativeRcvAzureStorageSettingInput", new List<string> {
+                        "updateCloudNativeRcvAzureStorageSetting",
+                    }
+                },
+                {   "UpdateCloudNativeTagRuleInput", new List<string> {
+                        "updateCloudNativeTagRule",
+                    }
+                },
+                {   "UpdateClusterDefaultAddressInput", new List<string> {
+                        "updateClusterDefaultAddress",
+                    }
+                },
+                {   "UpdateClusterNtpServersInput", new List<string> {
+                        "updateClusterNtpServers",
+                    }
+                },
+                {   "UpdateClusterSettingsInput", new List<string> {
+                        "updateClusterSettings",
+                    }
+                },
+                {   "UpdateConfiguredGroupInput", new List<string> {
+                        "updateConfiguredGroup",
+                    }
+                },
+                {   "UpdateCustomReportInput", new List<string> {
+                        "updateCustomReport",
+                    }
+                },
+                {   "UpdateDatabaseLogReportingPropertiesForClusterInput", new List<string> {
+                        "updateDatabaseLogReportingPropertiesForCluster",
+                    }
+                },
+                {   "UpdateDistributionListDigestInput", new List<string> {
+                        "updateDistributionListDigest",
+                    }
+                },
+                {   "UpdateDnsServersAndSearchDomainsInput", new List<string> {
+                        "updateDnsServersAndSearchDomains",
+                    }
+                },
+                {   "UpdateEventDigestInput", new List<string> {
+                        "updateEventDigest",
+                    }
+                },
+                {   "UpdateFailoverClusterAppInput", new List<string> {
+                        "updateFailoverClusterApp",
+                    }
+                },
+                {   "UpdateFailoverClusterInput", new List<string> {
+                        "updateFailoverCluster",
+                    }
+                },
+                {   "UpdateFloatingIpsInput", new List<string> {
+                        "updateFloatingIps",
+                    }
+                },
+                {   "UpdateGcpTargetInput", new List<string> {
+                        "updateGcpTarget",
+                    }
+                },
+                {   "UpdateGlacierTargetInput", new List<string> {
+                        "updateGlacierTarget",
+                    }
+                },
+                {   "UpdateGlobalCertificateInput", new List<string> {
+                        "updateGlobalCertificate",
+                    }
+                },
+                {   "UpdateGlobalSlaInput", new List<string> {
+                        "updateGlobalSla",
+                    }
+                },
+                {   "UpdateGuestCredentialInput", new List<string> {
+                        "updateGuestCredential",
+                    }
+                },
+                {   "UpdateHealthMonitorPolicyStatusInput", new List<string> {
+                        "updateHealthMonitorPolicyStatus",
+                    }
+                },
+                {   "UpdateHypervVirtualMachineInput", new List<string> {
+                        "updateHypervVirtualMachine",
+                    }
+                },
+                {   "UpdateHypervVirtualMachineSnapshotMountInput", new List<string> {
+                        "updateHypervVirtualMachineSnapshotMount",
+                    }
+                },
+                {   "UpdateInsightStateInput", new List<string> {
+                        "updateInsightState",
+                    }
+                },
+                {   "UpdateIntegrationInput", new List<string> {
+                        "updateIntegration",
+                    }
+                },
+                {   "UpdateIntegrationsInput", new List<string> {
+                        "updateIntegrations",
+                    }
+                },
+                {   "UpdateLockoutConfigInput", new List<string> {
+                        "updateLockoutConfig",
+                    }
+                },
+                {   "UpdateManagedVolumeInput", new List<string> {
+                        "updateManagedVolume",
+                    }
+                },
+                {   "UpdateManualTargetMappingInput", new List<string> {
+                        "updateManualTargetMapping",
+                    }
+                },
+                {   "UpdateMssqlDefaultPropertiesInput", new List<string> {
+                        "updateMssqlDefaultProperties",
+                    }
+                },
+                {   "UpdateMssqlLogShippingConfigurationInput", new List<string> {
+                        "updateMssqlLogShippingConfiguration",
+                    }
+                },
+                {   "UpdateNasSharesInput", new List<string> {
+                        "updateNasShares",
+                    }
+                },
+                {   "UpdateNasSystemInput", new List<string> {
+                        "updateNasSystem",
+                    }
+                },
+                {   "UpdateNetworkThrottleInput", new List<string> {
+                        "updateNetworkThrottle",
+                    }
+                },
+                {   "UpdateNfsTargetInput", new List<string> {
+                        "updateNfsTarget",
+                    }
+                },
+                {   "UpdateNutanixClusterInput", new List<string> {
+                        "updateNutanixCluster",
+                    }
+                },
+                {   "UpdateNutanixPrismCentralInput", new List<string> {
+                        "updateNutanixPrismCentral",
+                    }
+                },
+                {   "UpdateNutanixVmInput", new List<string> {
+                        "updateNutanixVm",
+                    }
+                },
+                {   "UpdateO365AppAuthStatusInput", new List<string> {
+                        "updateO365AppAuthStatus",
+                    }
+                },
+                {   "UpdateO365AppPermissionsInput", new List<string> {
+                        "updateO365AppPermissions",
+                    }
+                },
+                {   "UpdateO365OrgCustomNameInput", new List<string> {
+                        "updateO365OrgCustomName",
+                    }
+                },
+                {   "UpdateOracleDataGuardGroupInput", new List<string> {
+                        "updateOracleDataGuardGroup",
+                    }
+                },
+                {   "UpdateOrgInput", new List<string> {
+                        "updateOrg",
+                    }
+                },
+                {   "UpdateOrgSecurityPolicyInput", new List<string> {
+                        "updateOrgSecurityPolicy",
+                    }
+                },
+                {   "UpdatePolicyInput", new List<string> {
+                        "updatePolicy",
+                    }
+                },
+                {   "UpdateProxyConfigInput", new List<string> {
+                        "updateProxyConfig",
+                    }
+                },
+                {   "UpdateRcsAutomaticTargetMappingInput", new List<string> {
+                        "updateRcsAutomaticTargetMapping",
+                    }
+                },
+                {   "UpdateRcvTargetInput", new List<string> {
+                        "updateRcvTarget",
+                    }
+                },
+                {   "UpdateReplicationTargetInput", new List<string> {
+                        "updateReplicationTarget",
+                    }
+                },
+                {   "UpdateS3CompatibleTargetInput", new List<string> {
+                        "updateS3CompatibleTarget",
+                    }
+                },
+                {   "UpdateScheduledReportInput", new List<string> {
+                        "updateScheduledReport",
+                    }
+                },
+                {   "UpdateServiceAccountInput", new List<string> {
+                        "updateServiceAccount",
+                    }
+                },
+                {   "UpdateSnmpConfigInput", new List<string> {
+                        "updateSnmpConfig",
+                    }
+                },
+                {   "UpdateStorageArraysInput", new List<string> {
+                        "updateStorageArrays",
+                    }
+                },
+                {   "UpdateSupportUserAccessInput", new List<string> {
+                        "updateSupportUserAccess",
+                    }
+                },
+                {   "UpdateSyslogExportRuleInput", new List<string> {
+                        "updateSyslogExportRule",
+                    }
+                },
+                {   "UpdateTapeTargetInput", new List<string> {
+                        "updateTapeTarget",
+                    }
+                },
+                {   "UpdateTunnelStatusInput", new List<string> {
+                        "updateTunnelStatus",
+                    }
+                },
+                {   "UpdateVcenterHotAddBandwidthInput", new List<string> {
+                        "updateVcenterHotAddBandwidth",
+                    }
+                },
+                {   "UpdateVcenterHotAddNetworkInput", new List<string> {
+                        "updateVcenterHotAddNetwork",
+                    }
+                },
+                {   "UpdateVcenterInput", new List<string> {
+                        "updateVcenter",
+                    }
+                },
+                {   "UpdateVolumeGroupInput", new List<string> {
+                        "updateVolumeGroup",
+                    }
+                },
+                {   "UpdateVsphereAdvancedTagInput", new List<string> {
+                        "updateVsphereAdvancedTag",
+                    }
+                },
+                {   "UpdateVsphereVmInput", new List<string> {
+                        "updateVsphereVm",
+                    }
+                },
+                {   "UpdateWebhookInput", new List<string> {
+                        "updateWebhook",
+                    }
+                },
+                {   "UpgradeAwsCloudAccountFeaturesWithoutCftInput", new List<string> {
+                        "upgradeAwsCloudAccountFeaturesWithoutCft",
+                    }
+                },
+                {   "UpgradeAwsIamUserBasedCloudAccountPermissionsInput", new List<string> {
+                        "upgradeAwsIamUserBasedCloudAccountPermissions",
+                    }
+                },
+                {   "UpgradeAzureCloudAccountInput", new List<string> {
+                        "upgradeAzureCloudAccount",
+                    }
+                },
+                {   "UpgradeAzureCloudAccountPermissionsWithoutOauthInput", new List<string> {
+                        "upgradeAzureCloudAccountPermissionsWithoutOauth",
+                    }
+                },
+                {   "UpgradeCdmManagedTargetInput", new List<string> {
+                        "upgradeCdmManagedTarget",
+                    }
+                },
+                {   "UpgradeGcpCloudAccountPermissionsWithoutOauthInput", new List<string> {
+                        "upgradeGcpCloudAccountPermissionsWithoutOauth",
+                    }
+                },
+                {   "UpgradeInfoSortByEnum", new List<string> {
+                        "clusterWithUpgradesInfo",
+                    }
+                },
+                {   "UpgradeIoFilterInput", new List<string> {
+                        "upgradeIoFilter",
+                    }
+                },
+                {   "UploadDatabaseSnapshotToBlobstoreInput", new List<string> {
+                        "uploadDatabaseSnapshotToBlobstore",
+                    }
+                },
+                {   "UserAuditFilter", new List<string> {
+                        "userAuditConnection",
+                    }
+                },
+                {   "UserAuditSortField", new List<string> {
+                        "userAuditConnection",
+                    }
+                },
+                {   "UserFieldEnum", new List<string> {
+                        "allUsersOnAccountConnection",
+                    }
+                },
+                {   "UserFilterInput", new List<string> {
+                        "usersInCurrentAndDescendantOrganization",
+                    }
+                },
+                {   "UserSortByParam", new List<string> {
+                        "usersInCurrentAndDescendantOrganization",
+                    }
+                },
+                {   "UserTimeRangeInput", new List<string> {
+                        "userActivities",
+                    }
+                },
+                {   "V1SearchDomainControllerRequestObjectType", new List<string> {
+                        "activeDirectorySearchSnapshots",
+                    }
+                },
+                {   "VSphereMountFilter", new List<string> {
+                        "vSphereMountConnection",
+                    }
+                },
+                {   "ValidateAndCreateAwsCloudAccountInput", new List<string> {
+                        "validateAndCreateAwsCloudAccount",
+                    }
+                },
+                {   "ValidateAndSaveCustomerKmsInfoInput", new List<string> {
+                        "validateAndSaveCustomerKmsInfo",
+                    }
+                },
+                {   "ValidateAzureCloudAccountExocomputeConfigurationsInput", new List<string> {
+                        "validateAzureCloudAccountExocomputeConfigurations",
+                    }
+                },
+                {   "ValidateClusterLicenseCapacityInput", new List<string> {
+                        "validateClusterLicenseCapacity",
+                    }
+                },
+                {   "ValidateOracleAcoFileInput", new List<string> {
+                        "validateOracleAcoFile",
+                    }
+                },
+                {   "ValidateOracleDatabaseBackupsInput", new List<string> {
+                        "validateOracleDatabaseBackups",
+                    }
+                },
+                {   "ValidateOrgNameInput", new List<string> {
+                        "validateOrgName",
+                    }
+                },
+                {   "VappSnapshotInstantRecoveryOptionsInput", new List<string> {
+                        "vappSnapshotInstantRecoveryOptions",
+                    }
+                },
+                {   "VappTemplateSnapshotExportOptionsInput", new List<string> {
+                        "vappTemplateSnapshotExportOptions",
+                    }
+                },
+                {   "VirtualMachineFilesInput", new List<string> {
+                        "allVirtualMachineFiles",
+                    }
+                },
+                {   "VmImageUrlInput", new List<string> {
+                        "ncdVmImageUrl",
+                    }
+                },
+                {   "VmwareDownloadSnapshotFromLocationInput", new List<string> {
+                        "vmwareDownloadSnapshotFromLocation",
+                    }
+                },
+                {   "VolumeGroupLiveMountSortByInput", new List<string> {
+                        "volumeGroupMounts",
+                    }
+                },
+                {   "VsphereBulkOnDemandSnapshotInput", new List<string> {
+                        "vsphereBulkOnDemandSnapshot",
+                    }
+                },
+                {   "VsphereDeleteVcenterInput", new List<string> {
+                        "vsphereDeleteVcenter",
+                    }
+                },
+                {   "VsphereExportSnapshotToStandaloneHostV2Input", new List<string> {
+                        "vsphereExportSnapshotToStandaloneHostV2",
+                    }
+                },
+                {   "VsphereLiveMountSortBy", new List<string> {
+                        "vSphereLiveMounts",
+                    }
+                },
+                {   "VsphereMountSortBy", new List<string> {
+                        "vSphereMountConnection",
+                    }
+                },
+                {   "VsphereOnDemandSnapshotInput", new List<string> {
+                        "vsphereOnDemandSnapshot",
+                    }
+                },
+                {   "VsphereVmBatchExportInput", new List<string> {
+                        "vsphereVmBatchExport",
+                    }
+                },
+                {   "VsphereVmBatchExportV3Input", new List<string> {
+                        "vsphereVmBatchExportV3",
+                    }
+                },
+                {   "VsphereVmBatchInPlaceRecoveryInput", new List<string> {
+                        "vsphereVmBatchInPlaceRecovery",
+                    }
+                },
+                {   "VsphereVmDeleteSnapshotInput", new List<string> {
+                        "vsphereVmDeleteSnapshot",
+                    }
+                },
+                {   "VsphereVmDownloadSnapshotFilesInput", new List<string> {
+                        "vsphereVmDownloadSnapshotFiles",
+                    }
+                },
+                {   "VsphereVmDownloadSnapshotInput", new List<string> {
+                        "vsphereVmDownloadSnapshot",
+                    }
+                },
+                {   "VsphereVmExportSnapshotV2Input", new List<string> {
+                        "vsphereVmExportSnapshotV2",
+                    }
+                },
+                {   "VsphereVmExportSnapshotV3Input", new List<string> {
+                        "vsphereVmExportSnapshotV3",
+                    }
+                },
+                {   "VsphereVmExportSnapshotWithDownloadFromCloudInput", new List<string> {
+                        "vsphereVmExportSnapshotWithDownloadFromCloud",
+                    }
+                },
+                {   "VsphereVmInitiateBatchInstantRecoveryInput", new List<string> {
+                        "vsphereVmInitiateBatchInstantRecovery",
+                    }
+                },
+                {   "VsphereVmInitiateBatchLiveMountV2Input", new List<string> {
+                        "vsphereVmInitiateBatchLiveMountV2",
+                    }
+                },
+                {   "VsphereVmInitiateDiskMountInput", new List<string> {
+                        "vsphereVmInitiateDiskMount",
+                    }
+                },
+                {   "VsphereVmInitiateInPlaceRecoveryInput", new List<string> {
+                        "vsphereVmInitiateInPlaceRecovery",
+                    }
+                },
+                {   "VsphereVmInitiateInstantRecoveryV2Input", new List<string> {
+                        "vsphereVmInitiateInstantRecoveryV2",
+                    }
+                },
+                {   "VsphereVmInitiateLiveMountV2Input", new List<string> {
+                        "vsphereVmInitiateLiveMountV2",
+                    }
+                },
+                {   "VsphereVmListEsxiDatastoresInput", new List<string> {
+                        "vsphereVmListEsxiDatastores",
+                    }
+                },
+                {   "VsphereVmMountRelocateInput", new List<string> {
+                        "vsphereVmMountRelocate",
+                    }
+                },
+                {   "VsphereVmMountRelocateV2Input", new List<string> {
+                        "vsphereVmMountRelocateV2",
+                    }
+                },
+                {   "VsphereVmPowerOnOffLiveMountInput", new List<string> {
+                        "vsphereVmPowerOnOffLiveMount",
+                    }
+                },
+                {   "VsphereVmRecoverFilesInput", new List<string> {
+                        "vsphereVmRecoverFiles",
+                    }
+                },
+                {   "VsphereVmRecoverFilesNewInput", new List<string> {
+                        "vsphereVmRecoverFilesNew",
+                    }
+                },
+                {   "VsphereVmRegisterAgentInput", new List<string> {
+                        "vsphereVmRegisterAgent",
+                    }
+                },
+                {   "WarmSearchCacheInput", new List<string> {
+                        "warmSearchCache",
+                    }
+                },
+                {   "WhitelistModeEnum", new List<string> {
+                        "updateIpWhitelist",
+                    }
+                },
+                {   "WorkloadAnomaliesSortBy", new List<string> {
+                        "workloadAnomalies",
+                    }
+                },
+                {   "WorkloadFieldsInput", new List<string> {
+                        "snapshotFilesDelta",
+                        "snapshotFilesDeltaV2",
+                    }
+                },
+                {   "WorkloadLevelHierarchy", new List<string> {
+                        "assignRetentionSLAToSnappables",
+                        "azureNativeSubscriptions",
+                        "gcpNativeProjects",
+                        "o365Orgs",
+                    }
+                },
+                {   "[ActivitySeverityEnum]", new List<string> {
+                        "workloadAnomalies",
+                    }
+                },
+                {   "[AdVolumeExportFilter]", new List<string> {
+                        "adVolumeExports",
+                    }
+                },
+                {   "[AnalysisStatus]", new List<string> {
+                        "policyObjs",
+                    }
+                },
+                {   "[AnalyzerGroupInput]", new List<string> {
+                        "startCrawl",
+                    }
+                },
+                {   "[AppFilter]", new List<string> {
+                        "listO365Apps",
+                    }
+                },
+                {   "[AwsCloudComputeSettingFilterInput]", new List<string> {
+                        "allAwsComputeSettings",
+                    }
+                },
+                {   "[AzureAdObjectSearchType]", new List<string> {
+                        "azureAdObjectsByType",
+                    }
+                },
+                {   "[AzureNativeProtectionFeature]", new List<string> {
+                        "azureNativeResourceGroups",
+                    }
+                },
+                {   "[BackupObject]", new List<string> {
+                        "retryBackup",
+                    }
+                },
+                {   "[BlueprintRecoveryType]", new List<string> {
+                        "workloadAnomalies",
+                    }
+                },
+                {   "[CdmReportMigrationStatus]", new List<string> {
+                        "clusterReportMigrationCount",
+                        "clusterReportMigrationStatus",
+                    }
+                },
+                {   "[CdpPerfDashboardFilterParam]", new List<string> {
+                        "allCdpVmsInfos",
+                    }
+                },
+                {   "[CloudAccountFeature]", new List<string> {
+                        "allAccountsWithExocomputeMappings",
+                        "allAzureCloudAccountTenants",
+                        "allAzureSubscriptionWithExocomputeMappings",
+                        "allCloudAccounts",
+                        "allGcpCloudAccountProjectsForOauth",
+                        "allLatestFeaturePermissionsForCloudAccounts",
+                    }
+                },
+                {   "[CloudAccountFilterInput]", new List<string> {
+                        "allCloudAccounts",
+                    }
+                },
+                {   "[CloudAccountStatus]", new List<string> {
+                        "allAzureCloudAccountSubscriptionsByFeature",
+                        "allGcpCloudAccountProjectsByFeature",
+                        "azureCloudAccountTenant",
+                        "azureCloudAccountTenantWithExoConfigs",
+                    }
+                },
+                {   "[CloudNativeFilter]", new List<string> {
+                        "cloudNativeLabelRules",
+                        "cloudNativeTagRules",
+                    }
+                },
+                {   "[ContextFilterInputField]", new List<string> {
+                        "globalSlaFilterConnection",
+                        "slaDomains",
+                    }
+                },
+                {   "[DataGovObjectType]", new List<string> {
+                        "allTopRiskPolicySummaries",
+                        "discoveryTimeline",
+                        "policy",
+                        "policyObjs",
+                        "sonarContentReport",
+                    }
+                },
+                {   "[DhrcCategory]", new List<string> {
+                        "allDhrcActiveRecommendations",
+                        "allDhrcLatestMetrics",
+                        "allDhrcScores",
+                    }
+                },
+                {   "[EncryptionLevel]", new List<string> {
+                        "workloadAnomalies",
+                    }
+                },
+                {   "[ExchangeLiveMountFilterInput]", new List<string> {
+                        "exchangeLiveMounts",
+                    }
+                },
+                {   "[ExcludeVmDisksInput]", new List<string> {
+                        "excludeVmDisks",
+                    }
+                },
+                {   "[FeatureWithPermissionsGroups]", new List<string> {
+                        "allLatestFeaturePermissionsForCloudAccounts",
+                    }
+                },
+                {   "[Filter]", new List<string> {
+                        "activeDirectoryDomainControllers",
+                        "activeDirectoryDomains",
+                        "azureAdDirectories",
+                        "cassandraColumnFamilies",
+                        "cassandraKeyspaces",
+                        "cassandraSources",
+                        "countOfObjectsProtectedBySlas",
+                        "db2Databases",
+                        "db2Instances",
+                        "exchangeDags",
+                        "exchangeDatabases",
+                        "exchangeServers",
+                        "failoverClusterApps",
+                        "failoverClusterTopLevelDescendants",
+                        "filesetTemplates",
+                        "globalSearchResults",
+                        "hierarchyObjects",
+                        "hierarchySnappables",
+                        "hostFailoverClusters",
+                        "hostShares",
+                        "hypervScvmms",
+                        "hypervTopLevelDescendants",
+                        "hypervVirtualMachines",
+                        "k8sClusters",
+                        "k8sNamespaces",
+                        "managedVolumeLiveMounts",
+                        "managedVolumes",
+                        "mongoCollections",
+                        "mongoDatabases",
+                        "mongodbCollections",
+                        "mongodbDatabases",
+                        "mongodbSources",
+                        "mongoSources",
+                        "mssqlDatabases",
+                        "mssqlTopLevelDescendants",
+                        "nasNamespaces",
+                        "nasSystems",
+                        "nasTopLevelDescendants",
+                        "nutanixClusters",
+                        "nutanixPrismCentrals",
+                        "nutanixTopLevelDescendants",
+                        "nutanixVms",
+                        "o365Groups",
+                        "o365Mailboxes",
+                        "o365Onedrives",
+                        "o365Orgs",
+                        "o365SharepointDrives",
+                        "o365SharepointLists",
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                        "o365SharepointSites",
+                        "o365Sites",
+                        "o365Teams",
+                        "o365UserObjects",
+                        "oracleDatabases",
+                        "oracleTopLevelDescendants",
+                        "physicalHosts",
+                        "protectedObjectsConnection",
+                        "protectedVolumesCount",
+                        "sapHanaDatabases",
+                        "sapHanaSystems",
+                        "slaManagedVolumes",
+                        "uniqueHypervServersCount",
+                        "uniqueVcdCount",
+                        "vcdVappVms",
+                        "vSphereComputeClusters",
+                        "vSphereDatastoreClusters",
+                        "vSphereDatastoreConnection",
+                        "vSphereFolders",
+                        "vSphereHostConnection",
+                        "vSphereRootRecoveryHierarchy",
+                        "vSphereTopLevelDescendantsConnection",
+                        "vSphereVCenterConnection",
+                        "vSphereVmNewConnection",
+                    }
+                },
+                {   "[GlobalSlaFilterInput]", new List<string> {
+                        "globalSlaFilterConnection",
+                        "slaDomains",
+                    }
+                },
+                {   "[GuestOsCredentialFilterInput]", new List<string> {
+                        "guestCredentialsV2",
+                    }
+                },
+                {   "[HierarchyObjectTypeEnum]", new List<string> {
+                        "awsNativeEc2Instances",
+                        "azureNativeVirtualMachines",
+                        "countOfObjectsProtectedBySlas",
+                        "failoverClusterTopLevelDescendants",
+                        "hypervTopLevelDescendants",
+                        "mssqlTopLevelDescendants",
+                        "nasTopLevelDescendants",
+                        "nutanixTopLevelDescendants",
+                        "oracleTopLevelDescendants",
+                        "vSphereTopLevelDescendantsConnection",
+                    }
+                },
+                {   "[HypervLiveMountFilterInput]", new List<string> {
+                        "hypervMounts",
+                    }
+                },
+                {   "[IntegrationType]", new List<string> {
+                        "allIntegrations",
+                    }
+                },
+                {   "[LdapServerInput]", new List<string> {
+                        "updateLdapIntegration",
+                    }
+                },
+                {   "[MosaicStorageLocationFilterInput]", new List<string> {
+                        "allNosqlStorageLocations",
+                    }
+                },
+                {   "[MssqlCompatibleInstancesFilterInput]", new List<string> {
+                        "mssqlCompatibleInstances",
+                    }
+                },
+                {   "[MssqlDatabaseLiveMountFilterInput]", new List<string> {
+                        "mssqlDatabaseLiveMounts",
+                    }
+                },
+                {   "[MssqlLogShippingTargetFilterInput]", new List<string> {
+                        "cdmMssqlLogShippingTargets",
+                    }
+                },
+                {   "[NutanixLiveMountFilterInput]", new List<string> {
+                        "nutanixMounts",
+                    }
+                },
+                {   "[O365TeamConvChannelInput]", new List<string> {
+                        "snappableTeamsConversationsSearch",
+                    }
+                },
+                {   "[ObjectIdsForHierarchyTypeInput]", new List<string> {
+                        "allObjectsAlreadyAssignedToOrgs",
+                    }
+                },
+                {   "[OracleLiveMountFilterInput]", new List<string> {
+                        "oracleLiveMounts",
+                    }
+                },
+                {   "[PendingActionGroupTypeEnum]", new List<string> {
+                        "allPendingActions",
+                    }
+                },
+                {   "[PendingActionStatus]", new List<string> {
+                        "allPendingActions",
+                    }
+                },
+                {   "[PendingActionSubGroupTypeEnum]", new List<string> {
+                        "allPendingActions",
+                    }
+                },
+                {   "[PermissionInput]", new List<string> {
+                        "createRole",
+                        "mutateRole",
+                        "updateRole",
+                    }
+                },
+                {   "[ProductName]", new List<string> {
+                        "allAccountProducts",
+                    }
+                },
+                {   "[ProductState]", new List<string> {
+                        "allAccountProducts",
+                    }
+                },
+                {   "[ProductType]", new List<string> {
+                        "allAccountProducts",
+                    }
+                },
+                {   "[QuarantineFilter]", new List<string> {
+                        "snapshotFilesDelta",
+                        "snapshotFilesDeltaV2",
+                    }
+                },
+                {   "[QueryDatastoreFreespaceThresholdInput]", new List<string> {
+                        "queryDatastoreFreespaceThresholds",
+                    }
+                },
+                {   "[ReportFilterInput]", new List<string> {
+                        "reportData",
+                    }
+                },
+                {   "[ResourceInput]", new List<string> {
+                        "startCrawl",
+                    }
+                },
+                {   "[RiskLevelType]", new List<string> {
+                        "policyObjs",
+                    }
+                },
+                {   "[SLAAuditDetailFilterInput]", new List<string> {
+                        "slaAuditDetail",
+                    }
+                },
+                {   "[SlaStatusFilterInput]", new List<string> {
+                        "globalSlaStatuses",
+                    }
+                },
+                {   "[SmbDomainFilterInput]", new List<string> {
+                        "smbDomains",
+                    }
+                },
+                {   "[SnappableAggregationsEnum]", new List<string> {
+                        "snappableGroupByConnection",
+                    }
+                },
+                {   "[SnapshotQueryFilterInput]", new List<string> {
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                    }
+                },
+                {   "[String]", new List<string> {
+                        "addPolicyObjects",
+                        "addRoleAssignments",
+                        "allGcpCloudAccountMissingPermissionsForAddition",
+                        "allIssuesJobIds",
+                        "allObjectsAlreadyAssignedToOrgs",
+                        "allOrgsByIds",
+                        "allPendingActions",
+                        "allQuarantinedDetailsForSnapshots",
+                        "allSharepointSiteExclusions",
+                        "allSnapshotsClosestToPointInTime",
+                        "allVmwareCdpStateInfos",
+                        "configuredGroupMembers",
+                        "createUser",
+                        "deleteLdapPrincipals",
+                        "deleteUsersFromAccount",
+                        "discoveryTimeline",
+                        "generateCsr",
+                        "getRolesByIds",
+                        "mutateRole",
+                        "o365SharepointObjectList",
+                        "policy",
+                        "policyObjectUsages",
+                        "policyObjs",
+                        "protectedObjectsConnection",
+                        "ransomwareInvestigationAnalysisSummary",
+                        "removePolicyObjects",
+                        "reportData",
+                        "snapshotOfSnappablesConnection",
+                        "sonarReport",
+                        "sonarReportRow",
+                        "startCrawl",
+                        "threatHunts",
+                        "updateIpWhitelist",
+                        "updateRoleAssignments",
+                        "updateWhitelistedAnalyzers",
+                        "vsphereVmwareCdpLiveInfo",
+                        "workloadAnomalies",
+                    }
+                },
+                {   "[SupportUserAccessFilterInput]", new List<string> {
+                        "supportUserAccesses",
+                    }
+                },
+                {   "[TargetFilterInput]", new List<string> {
+                        "allTargets",
+                        "targets",
+                    }
+                },
+                {   "[TargetMappingFilterInput]", new List<string> {
+                        "allTargetMappings",
+                    }
+                },
+                {   "[ThreatHuntMatchesFound]", new List<string> {
+                        "threatHunts",
+                    }
+                },
+                {   "[ThreatHuntQuarantinedMatchType]", new List<string> {
+                        "threatHunts",
+                    }
+                },
+                {   "[ThreatHuntStatus]", new List<string> {
+                        "threatHunts",
+                    }
+                },
+                {   "[UUID]", new List<string> {
+                        "allAccountsWithExocomputeMappings",
+                        "allAuthorizationsForObjects",
+                        "allAzureCloudAccountMissingPermissions",
+                        "allAzureExocomputeConfigsInAccount",
+                        "allAzureSubscriptionWithExocomputeMappings",
+                        "allCdmGuestCredentials",
+                        "allCloudAccountExocomputeMappings",
+                        "allClustersTotpAckStatus",
+                        "allCurrentFeaturePermissionsForCloudAccounts",
+                        "allLatestFeaturePermissionsForCloudAccounts",
+                        "allNcdObjectsOverTimeData",
+                        "allNcdSlaComplianceData",
+                        "allNcdTaskData",
+                        "allNcdUsageOverTimeData",
+                        "allSlaSummariesByIds",
+                        "allStorageArrays",
+                        "allUsersOnAccountConnection",
+                        "allVcenterHotAddProxyVms",
+                        "assignRetentionSLAToSnappables",
+                        "assignRetentionSLAToSnapshots",
+                        "assignSlasForSnappableHierarchies",
+                        "azureCloudAccountTenant",
+                        "azureCloudAccountTenantWithExoConfigs",
+                        "backupO365Mailbox",
+                        "cdmHierarchySnappablesNew",
+                        "cloudNativeCheckArchivedSnapshotsLocked",
+                        "countOfObjectsProtectedBySlas",
+                        "getCdmReleaseDetailsForClusterFromSupportPortal",
+                        "getCdmReleaseDetailsForVersionFromSupportPortal",
+                        "hierarchyObjects",
+                        "isCloudNativeFileRecoveryFeasible",
+                        "ldapAuthorizedPrincipalConnection",
+                        "ncdBackEndCapacity",
+                        "ncdFrontEndCapacity",
+                        "ncdObjectProtectionStatus",
+                        "protectedObjectsConnection",
+                        "scheduleUpgradeBatchJob",
+                        "serviceAccounts",
+                        "slaConflictObjects",
+                        "startDownloadPackageBatchJob",
+                        "startUpgradeBatchJob",
+                        "userGroups",
+                        "vSphereHostsByFids",
+                    }
+                },
+                {   "[UserGroupToRolesInput]", new List<string> {
+                        "batchDeassignRoleFromUserGroups",
+                    }
+                },
+                {   "[VolumeGroupLiveMountFilterInput]", new List<string> {
+                        "volumeGroupMounts",
+                    }
+                },
+                {   "[VsphereExcludeVmDisksInput]", new List<string> {
+                        "vsphereExcludeVmDisks",
+                    }
+                },
+                {   "[VsphereLiveMountFilterInput]", new List<string> {
+                        "vSphereLiveMounts",
+                    }
+                },
+                {   "[WorkloadLevelHierarchy]", new List<string> {
+                        "assignSlasForSnappableHierarchies",
+                        "azureNativeResourceGroups",
+                    }
+                },
+            };
+            if (lookupDict.TryGetValue(argTypeName, out var rootFieldNames))
             {
                 return rootFieldNames;
             }

@@ -58,10 +58,12 @@ PowerShellVersion = '5.0.0'
 
 # Type files (.ps1xml) to be loaded when importing this module
 # Filled in by UpdatePsd1.ps1
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = @(
+  "Toolkit/Format/GlobalSlaReply.Format.ps1xml",
+  "Toolkit/Format/VsphereVm.Format.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('LoadModule.psm1','PublicFunctions.psm1')
