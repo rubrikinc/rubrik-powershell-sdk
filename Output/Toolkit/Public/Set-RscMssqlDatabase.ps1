@@ -350,10 +350,10 @@ function Set-RscMssqlDatabase {
                     $dbsUpdateProperties.updateProperties.shouldForceFull = $false
                 }
                 if ($IsPaused){
-                    $dbsUpdateProperties.updateProperties.shouldForceFull = $true
+                    $dbsUpdateProperties.updateProperties.IsPaused = $true
                 }
                 else {
-                    $dbsUpdateProperties.updateProperties.shouldForceFull = $false
+                    $dbsUpdateProperties.updateProperties.IsPaused = $false
                 }
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
