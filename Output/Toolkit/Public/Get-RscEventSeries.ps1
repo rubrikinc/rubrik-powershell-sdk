@@ -6,7 +6,7 @@ function Get-RscEventSeries {
 
   .DESCRIPTION
   By default, retrieve info about events.
-  `Get-RscEventSeriesSeries` defaults to `Get-RscEventSeries -List -First 50`
+  `Get-RscEventSeries` defaults to `Get-RscEventSeries -List -First 50`
   which returns the first 50 events.
 
   To get info about a specific event, use the `-Id` parameter.
@@ -24,6 +24,23 @@ function Get-RscEventSeries {
   The ActivitySeries type:
   https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/activityseries.doc.html
 
+  .PARAMETER List
+  Retrieve paginated list of event series associated with RubrikSecurityCloud.
+  This is the default parameter set.
+
+  .PARAMETER Id
+  Retrieve information about a specific event series based on Id.
+
+  .PARAMETER First
+  Specify the number of event series to retrieve.
+
+  .PARAMETER Detail
+  Use the DETAIL field profile instead of the DEFAULT field profile.
+  The DETAIL field profile returns more fields than the DEFAULT field profile.
+
+  .PARAMETER AsQuery
+  Instead of running the command, the query object is returned.
+
   .EXAMPLE
   Get-RscEventSeries -First 3
   Id IsCancelable IsPolarisEventSeries LastActivityStatus
@@ -40,7 +57,7 @@ function Get-RscEventSeries {
   36081adp-148e-4c19-9896-3f9b2f3b3026
   5ce92d82-9ce7-4fdf-9d4f-97ed7eb93a71
   
-  This example lists the first 3 events, and only get their ids.
+  This example lists the first 3 events, and only gets their ids.
 
   .EXAMPLE
   $firstId = (Get-RscEventSeries -First 1).ActivitySeriesId
@@ -75,6 +92,10 @@ function Get-RscEventSeries {
 
   Retrieves an event series by ID, with details.
 
+  .EXAMPLE
+  Return back just the query that would run instead of running the query and returning the results.
+  Get-RscEventSeries -AsQuery
+
   #>
 
     [CmdletBinding(
@@ -108,7 +129,12 @@ function Get-RscEventSeries {
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $true
         )]
-        [Switch]$Detail
+        [Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
   
     Process {
@@ -122,11 +148,9 @@ function Get-RscEventSeries {
         }
 
         # Create query:
+        $operation = "List"
         if ( $Id ) {
             $operation = "ActivitySeries"
-        }
-        else {
-            $operation = "List"
         }
         $query = (New-RscQueryActivitySeries -Op $operation -FieldProfile $fieldProfile)
 
@@ -139,7 +163,12 @@ function Get-RscEventSeries {
             if ( $First -gt 0 ) {
                 $query.Var.first = $First
             }
-            $query.Field.Nodes[0].ActivitySeriesId = ""
+            $query.Field.Count = $null
+        }
+
+        # Skip sending, return query object:
+        if ( $AsQuery ) {
+            return $query
         }
 
         # Send request to the API server

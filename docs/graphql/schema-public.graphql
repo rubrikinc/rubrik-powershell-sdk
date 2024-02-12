@@ -78276,6 +78276,9 @@ input PrepareAwsCloudAccountDeletionInput {
 
   # Protection feature to be deleted for the cloud account.
   feature: CloudAccountFeature!
+
+  # Role customization options.
+  awsRoleCustomization: AwsRoleCustomization
 }
 # Prepares AWS cloud account for deletion and initiates deletion of the account.
 type PrepareAwsCloudAccountDeletionReply {
@@ -78298,6 +78301,9 @@ input PrepareFeatureUpdateForAwsCloudAccountInput {
 
   # List of features to be updated for the AWS account with specific permissions groups. This list is a valid input only for customer-managed cluster users.
   featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] = []
+
+  # Role customization options.
+  awsRoleCustomization: AwsRoleCustomization
 }
 # Response to prepare updation of AWS cloud account.
 type PrepareFeatureUpdateForAwsCloudAccountReply {

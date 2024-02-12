@@ -74,7 +74,7 @@ Jump to the section that applies to you:
 
 ### 1-3 You already have a GraphQL file or string
 
-`Invoke-Rsc -GqlRequest <GQL query string>`
+`Invoke-Rsc -GqlQuery <GQL query string>`
 
 ---
 

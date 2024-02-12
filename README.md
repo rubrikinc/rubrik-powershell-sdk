@@ -57,7 +57,7 @@ cd rubrik-powershell-sdk
 Then install the module from local sources:
 
 ```powershell
-./Utils/import.ps1 -Local
+./Utils/Import-RscModuleFromLocalOutputDir.ps1
 ```
 
 ### Import the SDK module
