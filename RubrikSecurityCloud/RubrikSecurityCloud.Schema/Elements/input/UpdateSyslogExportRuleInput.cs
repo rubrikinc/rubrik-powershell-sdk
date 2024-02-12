@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syslogSettingsV91")]
         public SyslogExportRulePartialInput? SyslogSettingsV91 { get; set; }
 
+        //      C# -> SyslogExportRulePartialInput? SyslogSettingsV92
+        // GraphQL -> syslogSettingsV92: SyslogExportRulePartialInput (input)
+        [JsonProperty("syslogSettingsV92")]
+        public SyslogExportRulePartialInput? SyslogSettingsV92 { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]

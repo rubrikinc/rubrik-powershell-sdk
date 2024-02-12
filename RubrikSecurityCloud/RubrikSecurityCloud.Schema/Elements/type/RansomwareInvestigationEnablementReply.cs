@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions
+        // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
+        [JsonProperty("azureSubscriptions")]
+        public List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions { get; set; }
+
         //      C# -> List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters
         // GraphQL -> cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!] (type)
         [JsonProperty("cloudDirectClusters")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RansomwareInvestigationEnablementReply Set(
+        List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions = null,
         List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters = null,
         List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions = null,
         List<RubrikCloudVaultRansomwareInvestigationEnablement>? RubrikCloudVaultLocations = null
     ) 
     {
+        if ( AzureSubscriptions != null ) {
+            this.AzureSubscriptions = AzureSubscriptions;
+        }
         if ( CloudDirectClusters != null ) {
             this.CloudDirectClusters = CloudDirectClusters;
         }
@@ -70,6 +79,18 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions
+        // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
+        if (this.AzureSubscriptions != null) {
+            var fspec = this.AzureSubscriptions.AsFieldSpec(conf.Child("azureSubscriptions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureSubscriptions {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters
         // GraphQL -> cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!] (type)
         if (this.CloudDirectClusters != null) {
@@ -113,6 +134,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions
+        // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
+        if (ec.Includes("azureSubscriptions",false))
+        {
+            if(this.AzureSubscriptions == null) {
+
+                this.AzureSubscriptions = new List<AzureSubscriptionRansomwareInvestigationEnablement>();
+                this.AzureSubscriptions.ApplyExploratoryFieldSpec(ec.NewChild("azureSubscriptions"));
+
+            } else {
+
+                this.AzureSubscriptions.ApplyExploratoryFieldSpec(ec.NewChild("azureSubscriptions"));
+
+            }
+        }
+        else if (this.AzureSubscriptions != null && ec.Excludes("azureSubscriptions",false))
+        {
+            this.AzureSubscriptions = null;
+        }
         //      C# -> List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters
         // GraphQL -> cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!] (type)
         if (ec.Includes("cloudDirectClusters",false))

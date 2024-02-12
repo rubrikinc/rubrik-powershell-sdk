@@ -99,9 +99,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ISOLATED_RECOVERY")]
         ISOLATED_RECOVERY,
 
-        [EnumMember(Value = "K8S")]
-        K8_S,
-
         [EnumMember(Value = "LEGAL_HOLD")]
         LEGAL_HOLD,
 

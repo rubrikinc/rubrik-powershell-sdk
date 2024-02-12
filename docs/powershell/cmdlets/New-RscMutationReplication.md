@@ -20,6 +20,11 @@ A single Rubrik cluster can be the replication target for multiple source Rubrik
 
 - There is a single argument of type EnablePerLocationPauseInputVariable.
 - Returns ResponseSuccess.
+### updatenetworkthrottlebypass
+Update the throttle bypass configuration of a replication target location on a particular source.
+
+- There is a single argument of type UpdateReplicationNetworkThrottleBypassInput.
+- Returns ResponseSuccess.
 ### updatetarget
 Update the setup information, address, username, and password for the replication target.
 

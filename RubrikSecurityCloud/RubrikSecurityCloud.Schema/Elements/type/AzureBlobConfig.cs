@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? BackupLocationId
+        // GraphQL -> backupLocationId: String! (scalar)
+        [JsonProperty("backupLocationId")]
+        public System.String? BackupLocationId { get; set; }
+
+        //      C# -> System.String? BackupLocationName
+        // GraphQL -> backupLocationName: String (scalar)
+        [JsonProperty("backupLocationName")]
+        public System.String? BackupLocationName { get; set; }
+
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         [JsonProperty("continuousBackupRetentionInDays")]
@@ -35,9 +45,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureBlobConfig Set(
+        System.String? BackupLocationId = null,
+        System.String? BackupLocationName = null,
         System.Int32? ContinuousBackupRetentionInDays = null
     ) 
     {
+        if ( BackupLocationId != null ) {
+            this.BackupLocationId = BackupLocationId;
+        }
+        if ( BackupLocationName != null ) {
+            this.BackupLocationName = BackupLocationName;
+        }
         if ( ContinuousBackupRetentionInDays != null ) {
             this.ContinuousBackupRetentionInDays = ContinuousBackupRetentionInDays;
         }
@@ -52,6 +70,24 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? BackupLocationId
+        // GraphQL -> backupLocationId: String! (scalar)
+        if (this.BackupLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupLocationId\n" ;
+            } else {
+                s += ind + "backupLocationId\n" ;
+            }
+        }
+        //      C# -> System.String? BackupLocationName
+        // GraphQL -> backupLocationName: String (scalar)
+        if (this.BackupLocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupLocationName\n" ;
+            } else {
+                s += ind + "backupLocationName\n" ;
+            }
+        }
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         if (this.ContinuousBackupRetentionInDays != null) {
@@ -68,6 +104,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? BackupLocationId
+        // GraphQL -> backupLocationId: String! (scalar)
+        if (ec.Includes("backupLocationId",true))
+        {
+            if(this.BackupLocationId == null) {
+
+                this.BackupLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupLocationId != null && ec.Excludes("backupLocationId",true))
+        {
+            this.BackupLocationId = null;
+        }
+        //      C# -> System.String? BackupLocationName
+        // GraphQL -> backupLocationName: String (scalar)
+        if (ec.Includes("backupLocationName",true))
+        {
+            if(this.BackupLocationName == null) {
+
+                this.BackupLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupLocationName != null && ec.Excludes("backupLocationName",true))
+        {
+            this.BackupLocationName = null;
+        }
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         if (ec.Includes("continuousBackupRetentionInDays",true))

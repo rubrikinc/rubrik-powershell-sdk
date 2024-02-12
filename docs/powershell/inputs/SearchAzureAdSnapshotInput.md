@@ -5,6 +5,8 @@ Configuration for the searchAzureAdSnapshot API.
   - Snapshot ID to retrieve Azure AD objects.
 - azureAdSearchKeyword: System.String
   - Keyword used to search.
+- workloadFid: System.String
+  - Workload FID of the Azure AD directory.
 - azureAdObjectType: AzureAdObjectType
   - Azure AD object type.
 - azureAdSearchKeywordType: AzureAdObjectSearchType

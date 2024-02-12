@@ -19,5 +19,7 @@ An Event Digest.
   - Specifies whether to include audits in the event digest.
 - includeEvents: System.Boolean
   - Specifies whether to include events in the event digest.
+- creatorEmailAddress: System.String
+  - Email address of the creator of this digest.
 - clusterUuids: list of System.Strings
   - Specifies the cluster UUIDs that this event digest applies to.

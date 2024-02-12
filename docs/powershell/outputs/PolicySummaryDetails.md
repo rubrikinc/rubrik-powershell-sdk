@@ -7,3 +7,5 @@ Policy summary details.
   - Policy name.
 - hitsSummary: HitsSummary
   - Risk summary for the policy.
+- isAnomalousPolicy: System.Boolean
+  - Specifies whether the policy is anomalous.

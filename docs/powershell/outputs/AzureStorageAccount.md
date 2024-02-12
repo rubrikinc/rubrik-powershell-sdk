@@ -19,6 +19,8 @@ An Azure storage account that contains Azure storage data objects including blob
   - The number of containers in the storage account.
 - accountKind: AzureStorageAccountKind
   - The Storage Account type.
+- isHierarchicalNamespaceEnabled: System.Boolean
+  - Specifies whether hierarchical namespace is enabled for the storage account or not. When the value is true, hierarchical namespace is enabled.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup

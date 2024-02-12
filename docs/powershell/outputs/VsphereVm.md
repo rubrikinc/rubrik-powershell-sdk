@@ -6,7 +6,7 @@
 - vmwareToolsInstalled: System.Boolean
 - vsphereTagPath: list of PathNodes
 - isBlueprintChild: System.Boolean
-  - Specifies whether the virtual machine is a child of a Disaster Recovery Plan.
+  - Specifies whether the virtual machine is a child of a disaster recovery or local recovery Plan.
 - isActive: System.Boolean
   - Specifies whether the virtual machine is active or not.
 - blueprintName: System.String

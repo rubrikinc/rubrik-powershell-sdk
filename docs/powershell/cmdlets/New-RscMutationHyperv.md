@@ -96,6 +96,14 @@ Export snapshot of a vm.
 
 - There is a single argument of type ExportHypervVirtualMachineInput.
 - Returns AsyncRequestStatus.
+### inplaceexportvirtualmachine
+In-place exports a virtual machine snapshot on the host
+
+Supported in v9.1+
+Overwrites the Hyperv virtual machine's configuration and virtual disks in-place based on the snapshot. The recovery process only transfers the changed blocks to the target host.
+
+- There is a single argument of type InplaceExportHypervVirtualMachineInput.
+- Returns AsyncRequestStatus.
 ### instantrecovervirtualmachinesnapshot
 Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
 

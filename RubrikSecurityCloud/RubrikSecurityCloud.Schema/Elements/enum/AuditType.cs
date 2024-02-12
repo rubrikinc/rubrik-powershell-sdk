@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACCESS_MANAGEMENT")]
         ACCESS_MANAGEMENT,
 
+        [EnumMember(Value = "ANOMALY")]
+        ANOMALY,
+
         [EnumMember(Value = "AUDIT")]
         AUDIT,
 

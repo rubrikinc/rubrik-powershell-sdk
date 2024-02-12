@@ -2,4 +2,4 @@
 
 
 - domainName: System.String
-  - Required. SMB domain name.
+  - Required. ID of the SMB Domain to delete.

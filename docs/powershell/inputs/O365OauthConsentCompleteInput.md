@@ -11,3 +11,5 @@ Configuration for the completion of an O365 OAuth consent flow.
   - Redirect URL for the consent flow.
 - resourceNaturalId: System.String
   - Natural ID of the resource.
+- resourceId: System.String
+  - Rubrik Security Cloud ID of the Microsoft 365 resource.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 7
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Account' API domain:
-    /// EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
+    /// CurrentUser, CurrentUserLoginContext, EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
     /// </summary>
     /// <description>
     /// New-RscQueryAccount creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 7 operations
+    /// There are 9 operations
     /// in the 'Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
+    /// one of: CurrentUser, CurrentUserLoginContext, EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryAccount -EnabledFeatures).Info().
+    /// (New-RscQueryAccount -CurrentUser).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryAccount -EnabledFeatures).Info().
+    /// (New-RscQueryAccount -CurrentUser).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the CurrentUser operation
+    /// of the 'Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Account
+    /// # API Operation: CurrentUser
+    /// 
+    /// $query = New-RscQueryAccount -CurrentUser
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: User
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CurrentUserLoginContext operation
+    /// of the 'Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Account
+    /// # API Operation: CurrentUserLoginContext
+    /// 
+    /// $query = New-RscQueryAccount -CurrentUserLoginContext
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UserLoginContext
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the EnabledFeatures operation
@@ -307,6 +361,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "CurrentUser",
+                "CurrentUserLoginContext",
                 "EnabledFeatures",
                 "Id",
                 "Lookup",
@@ -329,6 +385,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "CurrentUser":
+                        this.ProcessRecord_CurrentUser();
+                        break;
+                    case "CurrentUserLoginContext":
+                        this.ProcessRecord_CurrentUserLoginContext();
+                        break;
                     case "EnabledFeatures":
                         this.ProcessRecord_EnabledFeatures();
                         break;
@@ -358,6 +420,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // currentUser.
+        internal void ProcessRecord_CurrentUser()
+        {
+            this._logger.name += " -CurrentUser";
+            // Create new graphql operation currentUser
+            InitQueryCurrentUser();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // currentUserLoginContext.
+        internal void ProcessRecord_CurrentUserLoginContext()
+        {
+            this._logger.name += " -CurrentUserLoginContext";
+            // Create new graphql operation currentUserLoginContext
+            InitQueryCurrentUserLoginContext();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -423,6 +503,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAllUsersOnAccount();
         }
 
+
+        // Create new GraphQL Query:
+        // currentUser: User!
+        internal void InitQueryCurrentUser()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCurrentUser",
+                "",
+                "User",
+                Query.CurrentUser_ObjectFieldSpec,
+                Query.CurrentUserFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // currentUserLoginContext: UserLoginContext!
+        internal void InitQueryCurrentUserLoginContext()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCurrentUserLoginContext",
+                "",
+                "UserLoginContext",
+                Query.CurrentUserLoginContext_ObjectFieldSpec,
+                Query.CurrentUserLoginContextFieldSpec,
+                @""
+            );
+        }
 
         // Create new GraphQL Query:
         // allEnabledFeaturesForAccount: AllEnabledFeaturesForAccountReply!

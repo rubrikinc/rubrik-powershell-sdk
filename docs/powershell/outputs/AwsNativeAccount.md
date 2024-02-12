@@ -21,6 +21,8 @@ AWS native account.
   - Specifies the status of the cloud account associated with the feature requested.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
+- applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig
+  - List of Exocompute configurations for the AWS account.
 - awsNativeEc2Instances: AwsNativeEc2InstanceConnection
   - List of all EC2 instances under this AWS Native account.
 - awsNativeEbsVolumes: AwsNativeEbsVolumeConnection

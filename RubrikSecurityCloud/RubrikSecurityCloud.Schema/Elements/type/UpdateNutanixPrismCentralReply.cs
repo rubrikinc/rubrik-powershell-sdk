@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pendingSlaDomain")]
         public ManagedObjectPendingSlaInfo? PendingSlaDomain { get; set; }
 
+        //      C# -> AsyncRequestStatus? RefreshJobAsyncReqStatus
+        // GraphQL -> refreshJobAsyncReqStatus: AsyncRequestStatus (type)
+        [JsonProperty("refreshJobAsyncReqStatus")]
+        public AsyncRequestStatus? RefreshJobAsyncReqStatus { get; set; }
+
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         [JsonProperty("slaAssignable")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Username = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
+        AsyncRequestStatus? RefreshJobAsyncReqStatus = null,
         SlaAssignable? SlaAssignable = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PendingSlaDomain != null ) {
             this.PendingSlaDomain = PendingSlaDomain;
+        }
+        if ( RefreshJobAsyncReqStatus != null ) {
+            this.RefreshJobAsyncReqStatus = RefreshJobAsyncReqStatus;
         }
         if ( SlaAssignable != null ) {
             this.SlaAssignable = SlaAssignable;
@@ -127,6 +136,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AsyncRequestStatus? RefreshJobAsyncReqStatus
+        // GraphQL -> refreshJobAsyncReqStatus: AsyncRequestStatus (type)
+        if (this.RefreshJobAsyncReqStatus != null) {
+            var fspec = this.RefreshJobAsyncReqStatus.AsFieldSpec(conf.Child("refreshJobAsyncReqStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "refreshJobAsyncReqStatus {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -220,6 +241,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PendingSlaDomain != null && ec.Excludes("pendingSlaDomain",false))
         {
             this.PendingSlaDomain = null;
+        }
+        //      C# -> AsyncRequestStatus? RefreshJobAsyncReqStatus
+        // GraphQL -> refreshJobAsyncReqStatus: AsyncRequestStatus (type)
+        if (ec.Includes("refreshJobAsyncReqStatus",false))
+        {
+            if(this.RefreshJobAsyncReqStatus == null) {
+
+                this.RefreshJobAsyncReqStatus = new AsyncRequestStatus();
+                this.RefreshJobAsyncReqStatus.ApplyExploratoryFieldSpec(ec.NewChild("refreshJobAsyncReqStatus"));
+
+            } else {
+
+                this.RefreshJobAsyncReqStatus.ApplyExploratoryFieldSpec(ec.NewChild("refreshJobAsyncReqStatus"));
+
+            }
+        }
+        else if (this.RefreshJobAsyncReqStatus != null && ec.Excludes("refreshJobAsyncReqStatus",false))
+        {
+            this.RefreshJobAsyncReqStatus = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)

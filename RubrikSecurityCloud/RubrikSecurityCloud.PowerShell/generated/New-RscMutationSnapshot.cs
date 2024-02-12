@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 16 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkload, DeleteFilesets, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, UploadDatabaseToBlobstore, or VmwareDownloadFromLocation.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -310,7 +310,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DeleteCloudWorkload operation
+    /// Runs the DeleteCloudWorkloadSnapshot operation
     /// of the 'Snapshot' API domain.
     /// <code>
     /// PS &gt;
@@ -318,9 +318,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Snapshot
-    /// # API Operation: DeleteCloudWorkload
+    /// # API Operation: DeleteCloudWorkloadSnapshot
     /// 
-    /// $query = New-RscMutationSnapshot -DeleteCloudWorkload
+    /// $query = New-RscMutationSnapshot -DeleteCloudWorkloadSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -341,7 +341,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DeleteFilesets operation
+    /// Runs the DeleteFilesetSnapshots operation
     /// of the 'Snapshot' API domain.
     /// <code>
     /// PS &gt;
@@ -349,9 +349,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Snapshot
-    /// # API Operation: DeleteFilesets
+    /// # API Operation: DeleteFilesetSnapshots
     /// 
-    /// $query = New-RscMutationSnapshot -DeleteFilesets
+    /// $query = New-RscMutationSnapshot -DeleteFilesetSnapshots
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -678,6 +678,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectKeys = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	targetAwsAccountRubrikId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -779,44 +781,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
-    /// <example>
-    /// Runs the VmwareDownloadFromLocation operation
-    /// of the 'Snapshot' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Snapshot
-    /// # API Operation: VmwareDownloadFromLocation
-    /// 
-    /// $query = New-RscMutationSnapshot -VmwareDownloadFromLocation
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	downloadConfig = @{
-    /// 		# OPTIONAL
-    /// 		slaId = $someString
-    /// 	}
-    /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -839,8 +803,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateDomainController",
                 "CreateDownloadForVolumeGroup",
                 "CreateFileset",
-                "DeleteCloudWorkload",
-                "DeleteFilesets",
+                "DeleteCloudWorkloadSnapshot",
+                "DeleteFilesetSnapshots",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
                 "RestoreDomainController",
@@ -849,7 +813,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartRecoverS3Job",
                 "TakeOnDemand",
                 "UploadDatabaseToBlobstore",
-                "VmwareDownloadFromLocation",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -883,11 +846,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateFileset":
                         this.ProcessRecord_CreateFileset();
                         break;
-                    case "DeleteCloudWorkload":
-                        this.ProcessRecord_DeleteCloudWorkload();
+                    case "DeleteCloudWorkloadSnapshot":
+                        this.ProcessRecord_DeleteCloudWorkloadSnapshot();
                         break;
-                    case "DeleteFilesets":
-                        this.ProcessRecord_DeleteFilesets();
+                    case "DeleteFilesetSnapshots":
+                        this.ProcessRecord_DeleteFilesetSnapshots();
                         break;
                     case "FilesetDownloadFiles":
                         this.ProcessRecord_FilesetDownloadFiles();
@@ -912,9 +875,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UploadDatabaseToBlobstore":
                         this.ProcessRecord_UploadDatabaseToBlobstore();
-                        break;
-                    case "VmwareDownloadFromLocation":
-                        this.ProcessRecord_VmwareDownloadFromLocation();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -982,18 +942,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteCloudWorkloadSnapshot.
-        internal void ProcessRecord_DeleteCloudWorkload()
+        internal void ProcessRecord_DeleteCloudWorkloadSnapshot()
         {
-            this._logger.name += " -DeleteCloudWorkload";
+            this._logger.name += " -DeleteCloudWorkloadSnapshot";
             // Create new graphql operation deleteCloudWorkloadSnapshot
             InitMutationDeleteCloudWorkloadSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteFilesetSnapshots.
-        internal void ProcessRecord_DeleteFilesets()
+        internal void ProcessRecord_DeleteFilesetSnapshots()
         {
-            this._logger.name += " -DeleteFilesets";
+            this._logger.name += " -DeleteFilesetSnapshots";
             // Create new graphql operation deleteFilesetSnapshots
             InitMutationDeleteFilesetSnapshots();
         }
@@ -1068,15 +1028,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UploadDatabaseToBlobstore";
             // Create new graphql operation uploadDatabaseSnapshotToBlobstore
             InitMutationUploadDatabaseSnapshotToBlobstore();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vmwareDownloadSnapshotFromLocation.
-        internal void ProcessRecord_VmwareDownloadFromLocation()
-        {
-            this._logger.name += " -VmwareDownloadFromLocation";
-            // Create new graphql operation vmwareDownloadSnapshotFromLocation
-            InitMutationVmwareDownloadSnapshotFromLocation();
         }
 
 
@@ -1580,6 +1531,8 @@ $query.Var.input = @{
 	objectKeys = @(
 		$someString
 	)
+	# OPTIONAL
+	targetAwsAccountRubrikId = $someString
 }"
             );
         }
@@ -1651,36 +1604,6 @@ $query.Var.input = @{
 			)
 		}
 	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // vmwareDownloadSnapshotFromLocation(input: VmwareDownloadSnapshotFromLocationInput!): AsyncRequestStatus!
-        internal void InitMutationVmwareDownloadSnapshotFromLocation()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VmwareDownloadSnapshotFromLocationInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVmwareDownloadSnapshotFromLocation",
-                "($input: VmwareDownloadSnapshotFromLocationInput!)",
-                "AsyncRequestStatus",
-                Mutation.VmwareDownloadSnapshotFromLocation_ObjectFieldSpec,
-                Mutation.VmwareDownloadSnapshotFromLocationFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	downloadConfig = @{
-		# OPTIONAL
-		slaId = $someString
-	}
-	# REQUIRED
-	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }

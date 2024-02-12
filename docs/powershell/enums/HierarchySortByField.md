@@ -99,3 +99,5 @@
 - VMWARE_VCENTER_NAME_AND_VM_NAME - Sort based on the combination of vCenter name and virtual machine name.
 - VMWARE_VM_AGENT_STATUS - Sort based on the VMware virtual machine agent status.
 - K8S_CLUSTER_NAME - Sort based on Kubernetes cluster name.
+- AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT - Sort Azure storage accounts by number of containers.
+- AZURE_BLOB_STORAGE_ACCOUNT_CAPACITY_USED - Sort Azure storage accounts by capacity used.

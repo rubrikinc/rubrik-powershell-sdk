@@ -5,3 +5,5 @@ Configuration for the kickoff of an OAuth consent flow.
   - UUID of the org.
 - appType: System.String
   - Type of the Azure app.
+- resourceId: System.String
+  - Rubrik Security Cloud ID of the Microsoft 365 resource.

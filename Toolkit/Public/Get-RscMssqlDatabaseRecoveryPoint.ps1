@@ -57,11 +57,35 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         [switch]$LastFull,
         [Parameter(ParameterSetName = 'RestoreTime')]
         [datetime]$RestoreTime
+
+        #  Common parameter to all parameter sets:
+        # [Parameter(
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )][Switch]$Detail,
+
+        # [Parameter(
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )][Switch]$IncludeNullProperties,
+
+        # [Parameter(
+        #     Mandatory = $false, 
+        #     ValueFromPipeline = $false
+        # )][Switch]$AsQuery
     )
     
     Process {
-        Write-Debug "- Running Get-RscMssqlDatabase"
+        # Re-use existing connection, or create a new one:
+        Connect-Rsc -ErrorAction Stop | Out-Null
 
+        # Determine field profile:
+        $fieldProfile = "DEFAULT"
+        if ( $Detail -eq $true ) {
+            $fieldProfile = "DETAIL"
+        }
+        Write-Host "Get-RscMssqlDatabaseRecoveryPoint field profile: $fieldProfile"
+        
         #region Create Query
         if ($PSBoundParameters.ContainsKey('Latest')) {
             $query = New-RscQueryMssql -Op RecoverableRanges -AddField Data.BeginTime, Data.EndTime

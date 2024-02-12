@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLocationId")]
         public System.String? ArchivalLocationId { get; set; }
 
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String! (scalar)
+        [JsonProperty("archivalLocationName")]
+        public System.String? ArchivalLocationName { get; set; }
+
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         [JsonProperty("continuousBackupRetentionInDays")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public AwsNativeS3SlaConfig Set(
         System.String? ArchivalLocationId = null,
+        System.String? ArchivalLocationName = null,
         System.Int32? ContinuousBackupRetentionInDays = null
     ) 
     {
         if ( ArchivalLocationId != null ) {
             this.ArchivalLocationId = ArchivalLocationId;
+        }
+        if ( ArchivalLocationName != null ) {
+            this.ArchivalLocationName = ArchivalLocationName;
         }
         if ( ContinuousBackupRetentionInDays != null ) {
             this.ContinuousBackupRetentionInDays = ContinuousBackupRetentionInDays;
@@ -68,6 +77,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "archivalLocationId\n" ;
             } else {
                 s += ind + "archivalLocationId\n" ;
+            }
+        }
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String! (scalar)
+        if (this.ArchivalLocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationName\n" ;
+            } else {
+                s += ind + "archivalLocationName\n" ;
             }
         }
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
@@ -102,6 +120,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalLocationId != null && ec.Excludes("archivalLocationId",true))
         {
             this.ArchivalLocationId = null;
+        }
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String! (scalar)
+        if (ec.Includes("archivalLocationName",true))
+        {
+            if(this.ArchivalLocationName == null) {
+
+                this.ArchivalLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationName != null && ec.Excludes("archivalLocationName",true))
+        {
+            this.ArchivalLocationName = null;
         }
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)

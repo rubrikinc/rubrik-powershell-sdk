@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
         public List<PathNode>? LogicalPath { get; set; }
 
         //      C# -> NasSystem? NasSystem
-        // GraphQL -> nasSystem: NasSystem! (type)
+        // GraphQL -> nasSystem: NasSystem (type)
         [JsonProperty("nasSystem")]
         public NasSystem? NasSystem { get; set; }
 
@@ -698,7 +698,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> NasSystem? NasSystem
-        // GraphQL -> nasSystem: NasSystem! (type)
+        // GraphQL -> nasSystem: NasSystem (type)
         if (this.NasSystem != null) {
             var fspec = this.NasSystem.AsFieldSpec(conf.Child("nasSystem"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -1348,7 +1348,7 @@ namespace RubrikSecurityCloud.Types
             this.LogicalPath = null;
         }
         //      C# -> NasSystem? NasSystem
-        // GraphQL -> nasSystem: NasSystem! (type)
+        // GraphQL -> nasSystem: NasSystem (type)
         if (ec.Includes("nasSystem",false))
         {
             if(this.NasSystem == null) {

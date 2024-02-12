@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEnvoyRequired")]
         public System.Boolean? IsEnvoyRequired { get; set; }
 
+        //      C# -> System.Boolean? IsServiceAccountDisabled
+        // GraphQL -> isServiceAccountDisabled: Boolean! (scalar)
+        [JsonProperty("isServiceAccountDisabled")]
+        public System.Boolean? IsServiceAccountDisabled { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -84,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldEnforceMfaForAll: Boolean! (scalar)
         [JsonProperty("shouldEnforceMfaForAll")]
         public System.Boolean? ShouldEnforceMfaForAll { get; set; }
+
+        //      C# -> List<ClusterCapacityQuota>? AllClusterCapacityQuotas
+        // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
+        [JsonProperty("allClusterCapacityQuotas")]
+        public List<ClusterCapacityQuota>? AllClusterCapacityQuotas { get; set; }
 
         //      C# -> Role? OrgAdminRole
         // GraphQL -> orgAdminRole: Role! (type)
@@ -130,9 +140,11 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasOwnIdpConfigured = null,
         System.String? Id = null,
         System.Boolean? IsEnvoyRequired = null,
+        System.Boolean? IsServiceAccountDisabled = null,
         System.String? Name = null,
         System.Int64? PhysicalStorageUsed = null,
         System.Boolean? ShouldEnforceMfaForAll = null,
+        List<ClusterCapacityQuota>? AllClusterCapacityQuotas = null,
         Role? OrgAdminRole = null,
         List<Permission>? Permissions = null,
         List<SelfServicePermission>? SelfServicePermissions = null,
@@ -170,6 +182,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsEnvoyRequired != null ) {
             this.IsEnvoyRequired = IsEnvoyRequired;
         }
+        if ( IsServiceAccountDisabled != null ) {
+            this.IsServiceAccountDisabled = IsServiceAccountDisabled;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -178,6 +193,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ShouldEnforceMfaForAll != null ) {
             this.ShouldEnforceMfaForAll = ShouldEnforceMfaForAll;
+        }
+        if ( AllClusterCapacityQuotas != null ) {
+            this.AllClusterCapacityQuotas = AllClusterCapacityQuotas;
         }
         if ( OrgAdminRole != null ) {
             this.OrgAdminRole = OrgAdminRole;
@@ -295,6 +313,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isEnvoyRequired\n" ;
             }
         }
+        //      C# -> System.Boolean? IsServiceAccountDisabled
+        // GraphQL -> isServiceAccountDisabled: Boolean! (scalar)
+        if (this.IsServiceAccountDisabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isServiceAccountDisabled\n" ;
+            } else {
+                s += ind + "isServiceAccountDisabled\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -320,6 +347,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shouldEnforceMfaForAll\n" ;
             } else {
                 s += ind + "shouldEnforceMfaForAll\n" ;
+            }
+        }
+        //      C# -> List<ClusterCapacityQuota>? AllClusterCapacityQuotas
+        // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
+        if (this.AllClusterCapacityQuotas != null) {
+            var fspec = this.AllClusterCapacityQuotas.AsFieldSpec(conf.Child("allClusterCapacityQuotas"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allClusterCapacityQuotas {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Role? OrgAdminRole
@@ -559,6 +598,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsEnvoyRequired = null;
         }
+        //      C# -> System.Boolean? IsServiceAccountDisabled
+        // GraphQL -> isServiceAccountDisabled: Boolean! (scalar)
+        if (ec.Includes("isServiceAccountDisabled",true))
+        {
+            if(this.IsServiceAccountDisabled == null) {
+
+                this.IsServiceAccountDisabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsServiceAccountDisabled != null && ec.Excludes("isServiceAccountDisabled",true))
+        {
+            this.IsServiceAccountDisabled = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -609,6 +665,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShouldEnforceMfaForAll != null && ec.Excludes("shouldEnforceMfaForAll",true))
         {
             this.ShouldEnforceMfaForAll = null;
+        }
+        //      C# -> List<ClusterCapacityQuota>? AllClusterCapacityQuotas
+        // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
+        if (ec.Includes("allClusterCapacityQuotas",false))
+        {
+            if(this.AllClusterCapacityQuotas == null) {
+
+                this.AllClusterCapacityQuotas = new List<ClusterCapacityQuota>();
+                this.AllClusterCapacityQuotas.ApplyExploratoryFieldSpec(ec.NewChild("allClusterCapacityQuotas"));
+
+            } else {
+
+                this.AllClusterCapacityQuotas.ApplyExploratoryFieldSpec(ec.NewChild("allClusterCapacityQuotas"));
+
+            }
+        }
+        else if (this.AllClusterCapacityQuotas != null && ec.Excludes("allClusterCapacityQuotas",false))
+        {
+            this.AllClusterCapacityQuotas = null;
         }
         //      C# -> Role? OrgAdminRole
         // GraphQL -> orgAdminRole: Role! (type)

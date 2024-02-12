@@ -27,27 +27,52 @@ function New-RscMssqlRestore {
     In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
     production setting without running some tests in a non-production environment. 
 
-    .PARAMETER RecoveryDateTime
-    Use Get-RscMssqlDatabaseRecoveryPoint to get a fully formatted date and time for the recovery point
+    .PARAMETER Latest
+    Uses the latest recovery point date and time that Rubrik has for a database
+
+    .PARAMETER LastFull
+    Uses the last snapshot date and time that Rubrik has for a database
+
+    .PARAMETER RestoreTime
+    Restore time can in 1 of 3 formats
+        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
+        - Local time: 2023-11-02 08:00:000
+        - UTC: 2023-11-02 08:00:000Z
+    All values will be converted into UTC and used as the recovery point.
 
     # .PARAMETER RecoveryLSN
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
+    .EXAMPLE
+    Performs an in-place recovery of AdventureWorks2019 to the latest recovery point
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -Latest
+
+    .EXAMPLE
+    Performs an in-place recovery of AdventureWorks2019 to the last snapshot
+    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -LastFull
 
     .EXAMPLE
     Performs an in-place recovery of AdventureWorks2019 to a specific point in time. 
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -RecoveryDateTime "2023-10-27 08:37:00.000Z"
+    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding(
     )]
     Param(
         [Parameter(
-            Mandatory = $true
+            Mandatory = $true, 
+            ValueFromPipeline = $true
         )]
         [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
         [Parameter(
-            Mandatory = $false
+            Mandatory = $false, 
+            ValueFromPipeline = $false
         )]
         [switch]$FinishRecovery,
 
@@ -57,8 +82,22 @@ function New-RscMssqlRestore {
         )][int]$MaxDataStreams = 2,
 
         [Parameter(
-            Mandatory = $true
-        )][datetime]$RecoveryDateTime
+            ParameterSetName = 'Recovery_Latest',
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$Latest,
+
+        [Parameter(
+            ParameterSetName = 'Recovery_LastFull',
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$LastFull,
+
+        [Parameter(
+            ParameterSetName = 'Recovery_DateTime',
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][datetime]$RestoreTime,
 
         # [Parameter(
         #     ParameterSetName = 'Recovery_LSN',
@@ -66,10 +105,18 @@ function New-RscMssqlRestore {
         #     ValueFromPipeline = $false
         # )]
         # [string]$RecoveryLSN,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
-        Write-Debug "- Running New-RscMssqlRestore"
+        # Re-use existing connection, or create a new one:
+        Connect-Rsc -ErrorAction Stop | Out-Null
+
         #region Create Query
         $query = New-RscMutationMssql -Operation RestoreDatabase
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.RestoreMssqlDatabaseInput
@@ -78,12 +125,36 @@ function New-RscMssqlRestore {
         $query.Var.input.config = New-Object RubrikSecurityCloud.Types.RestoreMssqlDbJobConfigInput
         $query.Var.input.config.finishRecovery = $FinishRecovery
         If (![string]::IsNullOrEmpty($maxDataStreams)){$query.Var.input.config.maxDataStreams = $maxDataStreams}
+        
+        if($PSBoundParameters.ContainsKey('Latest')) {
+            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
+            $query.Var.input.config.recoveryPoint = New-Object RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
+        }
 
-        $query.Var.input.config.recoveryPoint = New-Object RubrikSecurityCloud.Types.MssqlRecoveryPointInput
-        $query.Var.input.config.recoveryPoint.date = $RecoveryDateTime
+        if($PSBoundParameters.ContainsKey('LastFull')) {
+            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
+            $query.Var.input.config.recoveryPoint = New-Object RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
+        }
+
+        if($PSBoundParameters.ContainsKey('RestoreTime')) {
+            $RecoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime $RestoreTime
+            $query.Var.input.config.recoveryPoint = New-Object RubrikSecurityCloud.Types.MssqlRecoveryPointInput
+            $query.Var.input.config.recoveryPoint.date = $RecoveryPoint
+        }
+        # if($PSBoundParameters.ContainsKey('RecoveryLSN')) {
+        #     $query.Var.input.config.recoveryPoint.lsnPoint = New-Object RubrikSecurityCloud.Types.LsnRecoveryPointInput
+        #     $query.Var.input.config.recoveryPoint.lsnPoint.lsn = $RecoveryLSN
+        #     # $query.Var.input.config.recoveryPoint.lsnPoint.recoveryForkGuid
+        # }
         #endregion
         
-        $result = $query.Invoke()
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
         $result
     } 
 }

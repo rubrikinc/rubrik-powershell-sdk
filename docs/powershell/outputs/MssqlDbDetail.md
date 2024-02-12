@@ -81,7 +81,13 @@ Supported in v5.0+
   - 
 - oldestRecoveryPointV91: DateTime
   - 
+- oldestRecoveryPointV92: DateTime
+  - 
 - latestRecoveryPointV91: DateTime
   - 
+- latestRecoveryPointV92: DateTime
+  - 
 - protectionDateV91: DateTime
+  - 
+- protectionDateV92: DateTime
   - 

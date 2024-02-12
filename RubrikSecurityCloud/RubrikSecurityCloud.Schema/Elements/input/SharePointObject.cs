@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectSharepointId")]
         public System.String? ObjectSharepointId { get; set; }
 
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String (scalar)
+        [JsonProperty("objectId")]
+        public System.String? ObjectId { get; set; }
+
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
         [Required]

@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserAuditTypeEnum
     {
+        [EnumMember(Value = "ANOMALY")]
+        ANOMALY,
+
         [EnumMember(Value = "AccessManagement")]
         ACCESS_MANAGEMENT,
 

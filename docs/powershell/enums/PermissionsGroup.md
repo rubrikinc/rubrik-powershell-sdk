@@ -31,3 +31,12 @@ PermissionsGroup represents the collection of various permission groups that
  protection feature.
 - PRIVATE_ENDPOINTS - Represents the set of permissions required for usage of private
  endpoints. These permissions are applicable to exocompute feature.
+- RSC_MANAGED_CLUSTER - Represents the set of permissions required for the Rubrik-managed
+ Exocompute cluster. Currently, these permissions apply only to the
+ AWS Exocompute feature.
+- SAP_HANA_SS_BASIC - Represents the required permissions for the basic operation of
+ SAP HANA SS. These permissions are applicable to the cloud cluster ES
+ feature.
+- SAP_HANA_SS_RECOVERY - Represents the required permissions for the recovery operation of
+ SAP HANA SS. These permissions are applicable to the cloud cluster ES
+ feature.

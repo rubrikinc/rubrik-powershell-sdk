@@ -23,8 +23,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Task delSessionTask = this._rbkClient.Disconnect();
                 delSessionTask.Wait();
 
-                SessionState.PSVariable.Remove("RscConnectionClient");
-                if (SessionState.PSVariable.GetValue("RscConnectionClient") == null)
+                SessionState.PSVariable.Remove(Config.SessionVariableName);
+                if (SessionState.PSVariable.GetValue(Config.SessionVariableName) == null)
                 {
                     WriteObject("The Rubrik Security Cloud session has been terminated.");
                 }

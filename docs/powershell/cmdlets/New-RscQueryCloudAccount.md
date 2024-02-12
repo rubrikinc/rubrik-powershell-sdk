@@ -3,6 +3,15 @@
 ### cloudaccount
 - There is a single argument of type System.String.
 - Returns CloudAccount.
+### cloudaccounts
+List all cloud accounts.
+
+- There are 4 arguments.
+    - sortBy - CloudAccountSortByFieldEnum: Specification on how to sort a list of cloud accounts.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of CloudAccountFilterInputs: Specification on how to filter a list of cloud accounts.
+    - features - list of CloudAccountFeatures: Filters and shows cloud accounts for a specific use-cases or features. Default value: [ARCHIVAL].
+- Returns list of CloudAccounts.
 ### currentfeaturepermissions
 Current permissions are the set of permissions the client has given to Rubrik. This will retrieve permissions for all the features currently active in the account. If these permissions are older than the latest set of permissions we require, the account will go in Update Permissions state
 
@@ -26,3 +35,11 @@ Latest Permissions are the most recent set of permissions we require for a featu
     - features - list of CloudAccountFeatures: Cloud account features.
     - featuresWithPermissionsGroups - list of FeatureWithPermissionsGroupss: Cloud account features with specific permissions groups.
 - Returns list of CloudAccountFeaturePermissions.
+### withexocomputemappings
+Retrieves the list of all accounts with their Exocompute account mapping, if exists.
+
+- There are 3 arguments.
+    - cloudVendor - CloudVendor: Vendor of the cloud account.
+    - features - list of CloudAccountFeatures: Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
+    - exocomputeAccountIdsFilter - list of System.Strings: List of mapped Exocompute account IDs.
+- Returns list of CloudAccountWithExocomputeMappings.

@@ -19,6 +19,8 @@ Input for updating a syslog export rule.
   - Syslog export rule for Rubrik CDM version 9.0.
 - syslogSettingsV91: SyslogExportRulePartialInput
   - Syslog export rule.
+- syslogSettingsV92: SyslogExportRulePartialInput
+  - Syslog export rule.
 - clusterUuid: System.String
   - Required. UUID used to identify the cluster the request goes to.
 - id: System.String

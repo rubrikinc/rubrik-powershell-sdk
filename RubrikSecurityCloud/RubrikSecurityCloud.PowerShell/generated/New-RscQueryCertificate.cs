@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Certificates' API domain:
-    /// AssignableGlobal, Certificate, Cluster, ClusterWebSigned, Global, Info, SigningRequest, SigningRequests, or WithKey.
+    /// AssignableGlobalCertificates, Certificates, CertificatesWithKey, ClusterCertificates, ClusterCsr, ClusterWebSigned, GlobalCertificate, GlobalCertificates, Info, SigningRequest, or SigningRequests.
     /// </summary>
     /// <description>
     /// New-RscQueryCertificate creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 11 operations
     /// in the 'Certificates' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AssignableGlobal, Certificate, Cluster, ClusterWebSigned, Global, Info, SigningRequest, SigningRequests, or WithKey.
+    /// one of: AssignableGlobalCertificates, Certificates, CertificatesWithKey, ClusterCertificates, ClusterCsr, ClusterWebSigned, GlobalCertificate, GlobalCertificates, Info, SigningRequest, or SigningRequests.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCertificate -AssignableGlobal).Info().
+    /// (New-RscQueryCertificate -AssignableGlobalCertificates).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,14 +70,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCertificate -AssignableGlobal).Info().
+    /// (New-RscQueryCertificate -AssignableGlobalCertificates).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the AssignableGlobal operation
+    /// Runs the AssignableGlobalCertificates operation
     /// of the 'Certificates' API domain.
     /// <code>
     /// PS &gt;
@@ -85,9 +85,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Certificate
-    /// # API Operation: AssignableGlobal
+    /// # API Operation: AssignableGlobalCertificates
     /// 
-    /// $query = New-RscQueryCertificate -AssignableGlobal
+    /// $query = New-RscQueryCertificate -AssignableGlobalCertificates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the Certificate operation
+    /// Runs the Certificates operation
     /// of the 'Certificates' API domain.
     /// <code>
     /// PS &gt;
@@ -142,9 +142,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Certificate
-    /// # API Operation: Certificate
+    /// # API Operation: Certificates
     /// 
-    /// $query = New-RscQueryCertificate -Certificate
+    /// $query = New-RscQueryCertificate -Certificates
     /// 
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the Cluster operation
+    /// Runs the CertificatesWithKey operation
     /// of the 'Certificates' API domain.
     /// <code>
     /// PS &gt;
@@ -182,9 +182,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Certificate
-    /// # API Operation: Cluster
+    /// # API Operation: CertificatesWithKey
     /// 
-    /// $query = New-RscQueryCertificate -Cluster
+    /// $query = New-RscQueryCertificate -CertificatesWithKey
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CertificateConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ClusterCertificates operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: ClusterCertificates
+    /// 
+    /// $query = New-RscQueryCertificate -ClusterCertificates
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -213,6 +240,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CertificateSummaryListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ClusterCsr operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: ClusterCsr
+    /// 
+    /// $query = New-RscQueryCertificate -ClusterCsr
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClusterCsr
     /// 
     /// 
     /// 
@@ -252,7 +310,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the Global operation
+    /// Runs the GlobalCertificate operation
     /// of the 'Certificates' API domain.
     /// <code>
     /// PS &gt;
@@ -260,9 +318,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Certificate
-    /// # API Operation: Global
+    /// # API Operation: GlobalCertificate
     /// 
-    /// $query = New-RscQueryCertificate -Global
+    /// $query = New-RscQueryCertificate -GlobalCertificate
     /// 
     /// # REQUIRED
     /// $query.Var.certificateId = $someString
@@ -272,6 +330,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: GlobalCertificate
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GlobalCertificates operation
+    /// of the 'Certificates' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Certificate
+    /// # API Operation: GlobalCertificates
+    /// 
+    /// $query = New-RscQueryCertificate -GlobalCertificates
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someGlobalCertificateSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalCertificateSortBy]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	searchText = $someString
+    /// 	# OPTIONAL
+    /// 	hasKey = $someBoolean
+    /// 	# OPTIONAL
+    /// 	statuses = @(
+    /// 		$someGlobalCertificateStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalCertificateStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	clusterIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	isTrustedAny = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isRscBorn = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GlobalCertificateConnection
     /// 
     /// 
     /// 
@@ -381,33 +496,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
-    /// <example>
-    /// Runs the WithKey operation
-    /// of the 'Certificates' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Certificate
-    /// # API Operation: WithKey
-    /// 
-    /// $query = New-RscQueryCertificate -WithKey
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CertificateConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -424,15 +512,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "AssignableGlobal",
-                "Certificate",
-                "Cluster",
+                "AssignableGlobalCertificates",
+                "Certificates",
+                "CertificatesWithKey",
+                "ClusterCertificates",
+                "ClusterCsr",
                 "ClusterWebSigned",
-                "Global",
+                "GlobalCertificate",
+                "GlobalCertificates",
                 "Info",
                 "SigningRequest",
                 "SigningRequests",
-                "WithKey",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -448,20 +538,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "AssignableGlobal":
-                        this.ProcessRecord_AssignableGlobal();
+                    case "AssignableGlobalCertificates":
+                        this.ProcessRecord_AssignableGlobalCertificates();
                         break;
-                    case "Certificate":
-                        this.ProcessRecord_Certificate();
+                    case "Certificates":
+                        this.ProcessRecord_Certificates();
                         break;
-                    case "Cluster":
-                        this.ProcessRecord_Cluster();
+                    case "CertificatesWithKey":
+                        this.ProcessRecord_CertificatesWithKey();
+                        break;
+                    case "ClusterCertificates":
+                        this.ProcessRecord_ClusterCertificates();
+                        break;
+                    case "ClusterCsr":
+                        this.ProcessRecord_ClusterCsr();
                         break;
                     case "ClusterWebSigned":
                         this.ProcessRecord_ClusterWebSigned();
                         break;
-                    case "Global":
-                        this.ProcessRecord_Global();
+                    case "GlobalCertificate":
+                        this.ProcessRecord_GlobalCertificate();
+                        break;
+                    case "GlobalCertificates":
+                        this.ProcessRecord_GlobalCertificates();
                         break;
                     case "Info":
                         this.ProcessRecord_Info();
@@ -471,9 +570,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SigningRequests":
                         this.ProcessRecord_SigningRequests();
-                        break;
-                    case "WithKey":
-                        this.ProcessRecord_WithKey();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -487,29 +583,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // assignableGlobalCertificates.
-        internal void ProcessRecord_AssignableGlobal()
+        internal void ProcessRecord_AssignableGlobalCertificates()
         {
-            this._logger.name += " -AssignableGlobal";
+            this._logger.name += " -AssignableGlobalCertificates";
             // Create new graphql operation assignableGlobalCertificates
             InitQueryAssignableGlobalCertificates();
         }
 
         // This parameter set invokes a single graphql operation:
         // certificates.
-        internal void ProcessRecord_Certificate()
+        internal void ProcessRecord_Certificates()
         {
-            this._logger.name += " -Certificate";
+            this._logger.name += " -Certificates";
             // Create new graphql operation certificates
             InitQueryCertificates();
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterCertificates.
-        internal void ProcessRecord_Cluster()
+        // certificatesWithKey.
+        internal void ProcessRecord_CertificatesWithKey()
         {
-            this._logger.name += " -Cluster";
+            this._logger.name += " -CertificatesWithKey";
+            // Create new graphql operation certificatesWithKey
+            InitQueryCertificatesWithKey();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterCertificates.
+        internal void ProcessRecord_ClusterCertificates()
+        {
+            this._logger.name += " -ClusterCertificates";
             // Create new graphql operation clusterCertificates
             InitQueryClusterCertificates();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterCsr.
+        internal void ProcessRecord_ClusterCsr()
+        {
+            this._logger.name += " -ClusterCsr";
+            // Create new graphql operation clusterCsr
+            InitQueryClusterCsr();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -523,11 +637,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // globalCertificate.
-        internal void ProcessRecord_Global()
+        internal void ProcessRecord_GlobalCertificate()
         {
-            this._logger.name += " -Global";
+            this._logger.name += " -GlobalCertificate";
             // Create new graphql operation globalCertificate
             InitQueryGlobalCertificate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // globalCertificates.
+        internal void ProcessRecord_GlobalCertificates()
+        {
+            this._logger.name += " -GlobalCertificates";
+            // Create new graphql operation globalCertificates
+            InitQueryGlobalCertificates();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -555,15 +678,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SigningRequests";
             // Create new graphql operation certificateSigningRequests
             InitQueryCertificateSigningRequests();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // certificatesWithKey.
-        internal void ProcessRecord_WithKey()
-        {
-            this._logger.name += " -WithKey";
-            // Create new graphql operation certificatesWithKey
-            InitQueryCertificatesWithKey();
         }
 
 
@@ -677,6 +791,24 @@ $query.Var.searchTerm = $someString"
         }
 
         // Create new GraphQL Query:
+        // certificatesWithKey: CertificateConnection!
+        internal void InitQueryCertificatesWithKey()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCertificatesWithKey",
+                "",
+                "CertificateConnection",
+                Query.CertificatesWithKey_ObjectFieldSpec,
+                Query.CertificatesWithKeyFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
         // clusterCertificates(input: QueryCertificatesInput!): CertificateSummaryListResponse!
         internal void InitQueryClusterCertificates()
         {
@@ -711,6 +843,29 @@ $query.Var.input = @{
 	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // clusterCsr(input: GetClusterCsrInput!): ClusterCsr!
+        internal void InitQueryClusterCsr()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetClusterCsrInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryClusterCsr",
+                "($input: GetClusterCsrInput!)",
+                "ClusterCsr",
+                Query.ClusterCsr_ObjectFieldSpec,
+                Query.ClusterCsrFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -755,6 +910,69 @@ $query.Var.input = @{
                 Query.GlobalCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.certificateId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // globalCertificates(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     sortBy: GlobalCertificateSortBy
+        //     input: GlobalCertificatesQueryInput!
+        //   ): GlobalCertificateConnection!
+        internal void InitQueryGlobalCertificates()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "GlobalCertificateSortBy"),
+                Tuple.Create("input", "GlobalCertificatesQueryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGlobalCertificates",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: GlobalCertificateSortBy,$input: GlobalCertificatesQueryInput!)",
+                "GlobalCertificateConnection",
+                Query.GlobalCertificates_ObjectFieldSpec,
+                Query.GlobalCertificatesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someGlobalCertificateSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalCertificateSortBy]) for enum values.
+# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	searchText = $someString
+	# OPTIONAL
+	hasKey = $someBoolean
+	# OPTIONAL
+	statuses = @(
+		$someGlobalCertificateStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalCertificateStatus]) for enum values.
+	)
+	# OPTIONAL
+	clusterIds = @(
+		$someString
+	)
+	# OPTIONAL
+	isTrustedAny = $someBoolean
+	# OPTIONAL
+	isRscBorn = $someBoolean
+}"
             );
         }
 
@@ -847,24 +1065,6 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 $query.Var.sortBy = $someCertMgmtSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertMgmtSortBy]) for enum values.
 # OPTIONAL
 $query.Var.searchTerm = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // certificatesWithKey: CertificateConnection!
-        internal void InitQueryCertificatesWithKey()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryCertificatesWithKey",
-                "",
-                "CertificateConnection",
-                Query.CertificatesWithKey_ObjectFieldSpec,
-                Query.CertificatesWithKeyFieldSpec,
-                @""
             );
         }
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 2
     /// operations in the 'Sonar' API domain:
-    /// ContentReport, Report, ReportRow, UserGroups, or Users.
+    /// UserGroups, or Users.
     /// </summary>
     /// <description>
     /// New-RscQuerySonar creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 2 operations
     /// in the 'Sonar' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ContentReport, Report, ReportRow, UserGroups, or Users.
+    /// one of: UserGroups, or Users.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQuerySonar -ContentReport).Info().
+    /// (New-RscQuerySonar -UserGroups).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,169 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQuerySonar -ContentReport).Info().
+    /// (New-RscQuerySonar -UserGroups).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the ContentReport operation
-    /// of the 'Sonar' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Sonar
-    /// # API Operation: ContentReport
-    /// 
-    /// $query = New-RscQuerySonar -ContentReport
-    /// 
-    /// # REQUIRED
-    /// $query.Var.groupBy = $someDiscoveryContentReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportGroupBy]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someDiscoveryContentReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportSortBy]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filters = @{
-    /// 	# OPTIONAL
-    /// 	search = $someString
-    /// 	# OPTIONAL
-    /// 	policyIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	clusterIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	applyWhitelists = $someBoolean
-    /// 	# OPTIONAL
-    /// 	subscriptionIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	objectTypes = @(
-    /// 		$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// 	)
-    /// }
-    /// # REQUIRED
-    /// $query.Var.day = $someString
-    /// # REQUIRED
-    /// $query.Var.timezone = $someString
-    /// # REQUIRED
-    /// $query.Var.workloadTypes = @(
-    /// 	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: SonarContentReportConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Report operation
-    /// of the 'Sonar' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Sonar
-    /// # API Operation: Report
-    /// 
-    /// $query = New-RscQuerySonar -Report
-    /// 
-    /// # REQUIRED
-    /// $query.Var.sonarReportGroupBy = $someDiscoveryReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportGroupBy]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	$someString
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.timeFilter = @{
-    /// 	# OPTIONAL
-    /// 	endTime = $someString
-    /// 	# OPTIONAL
-    /// 	startTime = $someString
-    /// 	# OPTIONAL
-    /// 	timeDuration = $someTimeDuration # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeDuration]) for enum values.
-    /// 	# OPTIONAL
-    /// 	timezone = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: SonarReportConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ReportRow operation
-    /// of the 'Sonar' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Sonar
-    /// # API Operation: ReportRow
-    /// 
-    /// $query = New-RscQuerySonar -ReportRow
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someDiscoveryReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportSortBy]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.filter = @(
-    /// 	$someString
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.endTime = $someString
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: SonarReportRowConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the UserGroups operation
@@ -350,9 +192,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "ContentReport",
-                "Report",
-                "ReportRow",
                 "UserGroups",
                 "Users",
                 IgnoreCase = true)]
@@ -370,15 +209,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "ContentReport":
-                        this.ProcessRecord_ContentReport();
-                        break;
-                    case "Report":
-                        this.ProcessRecord_Report();
-                        break;
-                    case "ReportRow":
-                        this.ProcessRecord_ReportRow();
-                        break;
                     case "UserGroups":
                         this.ProcessRecord_UserGroups();
                         break;
@@ -393,33 +223,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // sonarContentReport.
-        internal void ProcessRecord_ContentReport()
-        {
-            this._logger.name += " -ContentReport";
-            // Create new graphql operation sonarContentReport
-            InitQuerySonarContentReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // sonarReport.
-        internal void ProcessRecord_Report()
-        {
-            this._logger.name += " -Report";
-            // Create new graphql operation sonarReport
-            InitQuerySonarReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // sonarReportRow.
-        internal void ProcessRecord_ReportRow()
-        {
-            this._logger.name += " -ReportRow";
-            // Create new graphql operation sonarReportRow
-            InitQuerySonarReportRow();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -440,180 +243,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQuerySonarUsers();
         }
 
-
-        // Create new GraphQL Query:
-        // sonarContentReport(
-        //     groupBy: DiscoveryContentReportGroupBy!
-        //     sortBy: DiscoveryContentReportSortBy
-        //     sortOrder: SortOrder
-        //     filters: SonarContentReportFilter
-        //     day: String!
-        //     timezone: String!
-        //     workloadTypes: [DataGovObjectType!]! = []
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): SonarContentReportConnection!
-        internal void InitQuerySonarContentReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("groupBy", "DiscoveryContentReportGroupBy!"),
-                Tuple.Create("sortBy", "DiscoveryContentReportSortBy"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filters", "SonarContentReportFilter"),
-                Tuple.Create("day", "String!"),
-                Tuple.Create("timezone", "String!"),
-                Tuple.Create("workloadTypes", "[DataGovObjectType!]!"),
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySonarContentReport",
-                "($groupBy: DiscoveryContentReportGroupBy!,$sortBy: DiscoveryContentReportSortBy,$sortOrder: SortOrder,$filters: SonarContentReportFilter,$day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$first: Int,$after: String,$last: Int,$before: String)",
-                "SonarContentReportConnection",
-                Query.SonarContentReport_ObjectFieldSpec,
-                Query.SonarContentReportFieldSpec,
-                @"# REQUIRED
-$query.Var.groupBy = $someDiscoveryContentReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportGroupBy]) for enum values.
-# OPTIONAL
-$query.Var.sortBy = $someDiscoveryContentReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportSortBy]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filters = @{
-	# OPTIONAL
-	search = $someString
-	# OPTIONAL
-	policyIds = @(
-		$someString
-	)
-	# OPTIONAL
-	clusterIds = @(
-		$someString
-	)
-	# OPTIONAL
-	applyWhitelists = $someBoolean
-	# OPTIONAL
-	subscriptionIds = @(
-		$someString
-	)
-	# REQUIRED
-	objectTypes = @(
-		$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-	)
-}
-# REQUIRED
-$query.Var.day = $someString
-# REQUIRED
-$query.Var.timezone = $someString
-# REQUIRED
-$query.Var.workloadTypes = @(
-	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
-)
-# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // sonarReport(sonarReportGroupBy: DiscoveryReportGroupBy!, filter: [String!], timeFilter: TimeFilterInput): SonarReportConnection!
-        internal void InitQuerySonarReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("sonarReportGroupBy", "DiscoveryReportGroupBy!"),
-                Tuple.Create("filter", "[String!]"),
-                Tuple.Create("timeFilter", "TimeFilterInput"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySonarReport",
-                "($sonarReportGroupBy: DiscoveryReportGroupBy!,$filter: [String!],$timeFilter: TimeFilterInput)",
-                "SonarReportConnection",
-                Query.SonarReport_ObjectFieldSpec,
-                Query.SonarReportFieldSpec,
-                @"# REQUIRED
-$query.Var.sonarReportGroupBy = $someDiscoveryReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportGroupBy]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	$someString
-)
-# OPTIONAL
-$query.Var.timeFilter = @{
-	# OPTIONAL
-	endTime = $someString
-	# OPTIONAL
-	startTime = $someString
-	# OPTIONAL
-	timeDuration = $someTimeDuration # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeDuration]) for enum values.
-	# OPTIONAL
-	timezone = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // sonarReportRow(
-        //     sortBy: DiscoveryReportSortBy
-        //     sortOrder: SortOrder
-        //     filter: [String!]
-        //     endTime: String
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): SonarReportRowConnection!
-        internal void InitQuerySonarReportRow()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("sortBy", "DiscoveryReportSortBy"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[String!]"),
-                Tuple.Create("endTime", "String"),
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySonarReportRow",
-                "($sortBy: DiscoveryReportSortBy,$sortOrder: SortOrder,$filter: [String!],$endTime: String,$first: Int,$after: String,$last: Int,$before: String)",
-                "SonarReportRowConnection",
-                Query.SonarReportRow_ObjectFieldSpec,
-                Query.SonarReportRowFieldSpec,
-                @"# OPTIONAL
-$query.Var.sortBy = $someDiscoveryReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportSortBy]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	$someString
-)
-# OPTIONAL
-$query.Var.endTime = $someString
-# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
-            );
-        }
 
         // Create new GraphQL Query:
         // sonarUserGroups(

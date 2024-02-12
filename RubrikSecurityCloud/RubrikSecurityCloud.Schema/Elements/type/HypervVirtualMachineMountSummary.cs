@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("powerStatus")]
         public HypervVirtualMachineMountSummaryPowerStatus? PowerStatus { get; set; }
 
+        //      C# -> System.Int32? AttachedDiskCount
+        // GraphQL -> attachedDiskCount: Int (scalar)
+        [JsonProperty("attachedDiskCount")]
+        public System.Int32? AttachedDiskCount { get; set; }
+
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         [JsonProperty("hostId")]
@@ -39,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsDiskLevelMount
+        // GraphQL -> isDiskLevelMount: Boolean (scalar)
+        [JsonProperty("isDiskLevelMount")]
+        public System.Boolean? IsDiskLevelMount { get; set; }
 
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -64,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotDate: DateTime (scalar)
         [JsonProperty("snapshotDate")]
         public DateTime? SnapshotDate { get; set; }
+
+        //      C# -> System.String? TargetVmName
+        // GraphQL -> targetVmName: String (scalar)
+        [JsonProperty("targetVmName")]
+        public System.String? TargetVmName { get; set; }
 
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
@@ -91,14 +106,17 @@ namespace RubrikSecurityCloud.Types
 
     public HypervVirtualMachineMountSummary Set(
         HypervVirtualMachineMountSummaryPowerStatus? PowerStatus = null,
+        System.Int32? AttachedDiskCount = null,
         System.String? HostId = null,
         System.String? HostName = null,
         System.String? Id = null,
+        System.Boolean? IsDiskLevelMount = null,
         System.Boolean? IsReady = null,
         System.String? MountRequestId = null,
         System.String? MountedVmId = null,
         System.String? MountedVmName = null,
         DateTime? SnapshotDate = null,
+        System.String? TargetVmName = null,
         System.String? UnmountRequestId = null,
         System.String? VmId = null,
         System.String? VmName = null
@@ -106,6 +124,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( PowerStatus != null ) {
             this.PowerStatus = PowerStatus;
+        }
+        if ( AttachedDiskCount != null ) {
+            this.AttachedDiskCount = AttachedDiskCount;
         }
         if ( HostId != null ) {
             this.HostId = HostId;
@@ -115,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsDiskLevelMount != null ) {
+            this.IsDiskLevelMount = IsDiskLevelMount;
         }
         if ( IsReady != null ) {
             this.IsReady = IsReady;
@@ -130,6 +154,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotDate != null ) {
             this.SnapshotDate = SnapshotDate;
+        }
+        if ( TargetVmName != null ) {
+            this.TargetVmName = TargetVmName;
         }
         if ( UnmountRequestId != null ) {
             this.UnmountRequestId = UnmountRequestId;
@@ -160,6 +187,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "powerStatus\n" ;
             }
         }
+        //      C# -> System.Int32? AttachedDiskCount
+        // GraphQL -> attachedDiskCount: Int (scalar)
+        if (this.AttachedDiskCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "attachedDiskCount\n" ;
+            } else {
+                s += ind + "attachedDiskCount\n" ;
+            }
+        }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         if (this.HostId != null) {
@@ -185,6 +221,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDiskLevelMount
+        // GraphQL -> isDiskLevelMount: Boolean (scalar)
+        if (this.IsDiskLevelMount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDiskLevelMount\n" ;
+            } else {
+                s += ind + "isDiskLevelMount\n" ;
             }
         }
         //      C# -> System.Boolean? IsReady
@@ -230,6 +275,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotDate\n" ;
             } else {
                 s += ind + "snapshotDate\n" ;
+            }
+        }
+        //      C# -> System.String? TargetVmName
+        // GraphQL -> targetVmName: String (scalar)
+        if (this.TargetVmName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetVmName\n" ;
+            } else {
+                s += ind + "targetVmName\n" ;
             }
         }
         //      C# -> System.String? UnmountRequestId
@@ -283,6 +337,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.PowerStatus = null;
         }
+        //      C# -> System.Int32? AttachedDiskCount
+        // GraphQL -> attachedDiskCount: Int (scalar)
+        if (ec.Includes("attachedDiskCount",true))
+        {
+            if(this.AttachedDiskCount == null) {
+
+                this.AttachedDiskCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AttachedDiskCount != null && ec.Excludes("attachedDiskCount",true))
+        {
+            this.AttachedDiskCount = null;
+        }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         if (ec.Includes("hostId",true))
@@ -333,6 +404,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsDiskLevelMount
+        // GraphQL -> isDiskLevelMount: Boolean (scalar)
+        if (ec.Includes("isDiskLevelMount",true))
+        {
+            if(this.IsDiskLevelMount == null) {
+
+                this.IsDiskLevelMount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDiskLevelMount != null && ec.Excludes("isDiskLevelMount",true))
+        {
+            this.IsDiskLevelMount = null;
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -418,6 +506,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDate != null && ec.Excludes("snapshotDate",true))
         {
             this.SnapshotDate = null;
+        }
+        //      C# -> System.String? TargetVmName
+        // GraphQL -> targetVmName: String (scalar)
+        if (ec.Includes("targetVmName",true))
+        {
+            if(this.TargetVmName == null) {
+
+                this.TargetVmName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetVmName != null && ec.Excludes("targetVmName",true))
+        {
+            this.TargetVmName = null;
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)

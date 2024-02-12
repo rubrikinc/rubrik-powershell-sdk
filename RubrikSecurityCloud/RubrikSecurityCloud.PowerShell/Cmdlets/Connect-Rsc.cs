@@ -155,7 +155,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 case "IfNeeded":
                     {
-                        var psVar = SessionState.PSVariable.GetValue("RscConnectionClient");
+                        var psVar = SessionState.PSVariable.GetValue(Config.SessionVariableName);
                         var sessionClient = (RscGraphQLClient)psVar;
                         if (sessionClient == null ||
                             sessionClient.AuthenticationState != AuthenticationState.AUTHORIZED)
@@ -299,7 +299,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             try
             {
                 var authStateBefore = this._rbkClient.AuthenticationState;
-                var psVarBefore = SessionState.PSVariable.Get("RscConnectionClient");
+                var psVarBefore = SessionState.PSVariable.Get(Config.SessionVariableName);
                 this._logger?.Debug($"Before Auth: AuthState={authStateBefore}, PSVar={psVarBefore}");
                 Task authTask = this._rbkClient.AuthAsync();
                 authTask.Wait();
@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     SessionState.PSVariable.Set(
                         new PSVariable(
-                            "RscConnectionClient",
+                            Config.SessionVariableName,
                             this._rbkClient,
                             ScopedItemOptions.AllScope));
 

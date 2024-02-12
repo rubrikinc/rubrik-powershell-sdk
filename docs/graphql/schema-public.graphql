@@ -73,8 +73,8 @@ type Query {
     # Search string.
     name: String!,
 
-    # Type of the objects to be searched.
-    objectType: V1SearchDomainControllerRequestObjectType): ActiveDirectoryObjectSearchResponseConnection!
+    # The supported Active Directory object types.
+    activeDirectoryObjectType: ActiveDirectoryObjectType): ActiveDirectorySnappableSearchResponseConnection!
 
   # Retrieve an activity series.
   activitySeries(
@@ -255,7 +255,10 @@ type Query {
     feature: CloudAccountFeature!,
 
     # List of subscription status filters to apply.
-    subscriptionStatusFilters: [CloudAccountStatus!]!): [AzureSubscriptionWithFeaturesType!]!
+    subscriptionStatusFilters: [CloudAccountStatus!]!,
+
+    # List of feature to permission group filters to apply.
+    permissionsGroupFilters: [FeatureWithPermissionsGroups!]): [AzureSubscriptionWithFeaturesType!]!
 
   # Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
   allAzureCloudAccountTenants(
@@ -1086,7 +1089,12 @@ type Query {
     workloadTypes: [DataGovObjectType!]! = []): [PolicySummary!]!
 
   # List of supported object types.
-  allUnmanagedObjectsSupportedTypes: [ManagedObjectType!]!
+  allUnmanagedObjectsSupportedTypes(
+    # Type of the product.
+    productType: ProductTargetType,
+
+    # The cloud vendor type.
+    cloudVendor: CloudVendor): [ManagedObjectType!]!
 
   # All the users on the current account.
   allUsersOnAccount(
@@ -1126,7 +1134,30 @@ type Query {
     # Get local users only.
     shouldGetLocalUsersOnly: Boolean! = false): UserConnection!
 
-  # List all valid replication target clusters.
+  # Lists all valid replication source clusters.
+  allValidReplicationSources(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Field to sort by for valid replication sources.
+    sortBy: ListValidReplicationSourcesSortByField,
+
+    # Sort order.
+    sortOrder: SortOrder,
+
+    # Specification for Rubrik clusters to be retrieved - local or cross-account.
+    isCrossAccount: Boolean): ValidReplicationSourceConnection!
+
+  # Lists all valid replication target clusters.
   allValidReplicationTargets(
     # Returns the first n elements from the list.
     first: Int,
@@ -1146,7 +1177,7 @@ type Query {
     # Sort order.
     sortOrder: SortOrder,
 
-    # Specification for replication targets to be retrieved - local or cross-account.
+    # Specification for Rubrik clusters to be retrieved - local or cross-account.
     isCrossAccount: Boolean): ValidReplicationTargetConnection!
 
   # Get a list of HotAdd proxy virtual machines
@@ -2713,6 +2744,29 @@ type Query {
 
   # Returns crawls for an account.
   crawls: CrawlConnection!
+
+  # Lists all cross-account pairs.
+  crossAccountPairs(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Specifies the field by which the list of cross-account pairs will be sorted.
+    sortBy: GetCrossAccountPairsSortByField,
+
+    # Specification on how to filter a list of cross-account pairs.
+    filter: [GetCrossAccountPairsFilter!],
+
+    # Sorting order for the results.
+    sortOrder: SortOrder): CrossAccountPairInfoConnection!
   currentIpAddress: String!
 
   # Details of the user's current organization.
@@ -3694,7 +3748,24 @@ type Query {
   # Get summary of all the Hyper-V hosts.
   hypervServers(
     # Input for InternalQueryHypervHost.
-    input: QueryHypervHostInput!): HypervHostSummaryListResponse!
+    input: QueryHypervHostInput!): HypervHostSummaryListResponse! @deprecated(reason: "Use hypervServersPaginated instead.")
+
+  # Paginated list of Hyper-V Servers.
+  hypervServersPaginated(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): HypervServerConnection!
 
   # Paginated list of the highest-level HyperV Objects accessible by the current user.
   hypervTopLevelDescendants(
@@ -4084,6 +4155,54 @@ type Query {
   lookupAccount(
     # Input required for retrieving account information.
     input: LookupAccountInput!): LookupAccountReply!
+
+  # Returns the backup statistics of an M365 organization product in day-to-day mode.
+  m365DayToDayModeBackupStats(
+    # Org UUID.
+    orgId: UUID!,
+
+    # Workload type for M365 dashboard.
+    dashboardWorkloadType: M365DashboardWorkloadType!,
+
+    # Time range for backup statistics.
+    backupStatsTimeRange: BackupStatsTimeRange!): DayToDayModeBackupStats!
+
+  # Returns the statistics of an M365 organization product in day-to-day mode.
+  m365DayToDayModeStats(
+    # Org UUID.
+    orgId: UUID!,
+
+    # Workload type for M365 dashboard.
+    dashboardWorkloadType: M365DashboardWorkloadType!): DayToDayModeStats!
+
+  # Returns the backup statistics of an M365 organization product in onboarding mode.
+  m365OnboardingModeBackupStats(
+    # Org UUID.
+    orgId: UUID!,
+
+    # Workload type for M365 dashboard.
+    dashboardWorkloadType: M365DashboardWorkloadType!,
+
+    # Time range for backup statistics.
+    backupStatsTimeRange: BackupStatsTimeRange!): OnboardingModeBackupStats!
+
+  # Returns the statistics of an M365 organization product in onboarding mode.
+  m365OnboardingModeStats(
+    # Org UUID.
+    orgId: UUID!,
+
+    # Workload type for M365 dashboard.
+    dashboardWorkloadType: M365DashboardWorkloadType!): OnboardingModeStats!
+
+  # Returns the backup locations of an M365 organization.
+  m365OrgBackupLocations(
+    # Org UUID.
+    orgId: UUID!): M365OrgBackupLocations!
+
+  # Returns the operation modes of an M365 organization.
+  m365OrgOperationModes(
+    # Org UUID.
+    orgId: UUID!): M365OrgOperationModes!
 
   # Retrieves the M365 regions for the organization.
   m365Regions(
@@ -5365,7 +5484,10 @@ type Query {
     nameFilter: String,
 
     # Filter orgs by the status of MFA enforcement. When the field is not used, all orgs are returned. When the field is set to true, only orgs that have MFA enforced are returned. When the field is set to false, only orgs that do not have MFA enforced are returned.
-    mfaEnforcedFilter: Boolean): OrgConnection!
+    mfaEnforcedFilter: Boolean,
+
+    # Filter organizations based on their cross-account enablement status. When the field is not used, all organizations are returned. When set to true, only organizations with cross-account enabled are returned. When set to false, only organizations without cross-account enabled are returned.
+    crossAccountEnabledFilter: Boolean): OrgConnection!
 
   # Returns the list of organizations to which the principal has access.
   orgsForPrincipal(
@@ -5555,6 +5677,11 @@ type Query {
     # Specifies the cluster UUID.
     clusterUuid: UUID!): PrechecksStatusReply!
 
+  # Retrieves the Private Container Registry (PCR) details for an Exocompute cloud account.
+  privateContainerRegistry(
+    # Input to retrieve PCR details.
+    input: PrivateContainerRegistryInput!): PrivateContainerRegistryReplyType!
+
   # Get the number of workloads that have passed through the Radar pipeline in the past 24 hours.
   processedRansomwareInvestigationWorkloadCount: ProcessedRansomwareInvestigationWorkloadCountReply!
 
@@ -5598,7 +5725,7 @@ type Query {
   # Total number of protected volumes across all hosts.
   protectedVolumesCount(
     # The hierarchy object filter.
-    filter: [Filter!]): Int!
+    filter: [Filter!]): Int! @deprecated(reason: "This functionality is incorrect and deprecated.")
 
   # Query datastore threshold configurations.
   queryDatastoreFreespaceThresholds(
@@ -5757,6 +5884,16 @@ type Query {
   replicationIncomingStats(
     # Input for InternalReplicationBandwidthIncoming.
     input: ReplicationBandwidthIncomingInput!): InternalReplicationBandwidthIncomingResponse!
+
+  # Retrieves replication throttle bypass status for all the targets of a replication source.
+  replicationNetworkThrottleBypass(
+    # Input for V1QueryReplicationTargetInfo.
+    input: QueryReplicationTargetInfoInput!): ReplicationTargetThrottleBypassSummaryListResponse!
+
+  # Retrieves replication throttle bypass status for a specified replication target and source.
+  replicationNetworkThrottleBypassById(
+    # Input for V1QueryByIdReplicationTargetInfo.
+    input: QueryByIdReplicationTargetInfoInput!): ReplicationNetworkThrottleBypassReply!
 
   # Get the time series of total outgoing bandwidth from the replication clusters.
   replicationOutgoingStats(
@@ -6663,6 +6800,29 @@ type Query {
     # Input for InternalGetSnmpConfiguration.
     input: GetSnmpConfigurationInput!): SnmpConfiguration!
 
+  # Lists the snoozed directories for the account.
+  snoozedDirectories(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter by snooze status.
+    snoozeStatusFilter: [SnoozeStatus!],
+
+    # Optional directory search.
+    directorySearchFilter: String,
+
+    # Filter by false positive type.
+    falsePositiveTypeFilter: [AnomalyFalsePositiveType!]): SnoozedDirectoryConnection!
+
   # Returns groupBy results for SonarContentReport.
   sonarContentReport(groupBy: DiscoveryContentReportGroupBy!, sortBy: DiscoveryContentReportSortBy,
 
@@ -6913,6 +7073,11 @@ type Query {
   totpConfigStatus(
     # Specifies the user ID.
     userId: String!): GetTotpStatusReply!
+
+  # Check and update TPR request for node removal.
+  tprStatusForNodeRemoval(
+    # Input for checking and updating the TPR request for node removal.
+    input: TprStatusForNodeRemovalInput!): TprStatusForNodeRemoval!
 
   # Check support tunnel status for a particular node
   # 
@@ -7517,7 +7682,10 @@ type Query {
     blueprintRecoveryTypes: [BlueprintRecoveryType!],
 
     # Filter results by their location.
-    locationsFilter: [String!]): WorkloadAnomalyConnection!
+    locationsFilter: [String!],
+
+    # Filter by anomaly resolution.
+    resolutionStatusFilter: [ResolutionStatus!]): WorkloadAnomalyConnection!
 }
 type Mutation {
   # Add AD Groups to O365 hierarchy.
@@ -7580,6 +7748,11 @@ type Mutation {
   addConfiguredGroupToHierarchy(
     # The input for the AddConfiguredGroupToHierarchy mutation.
     input: AddConfiguredGroupToHierarchyInput!): AddConfiguredGroupToHierarchyReply!
+
+  # Add service consumer to provider RSC account.
+  addCrossAccountServiceConsumer(
+    # Cross-account information from service consumer to create cross-account pair.
+    input: AddCrossAccountServiceConsumerInput!): AddCrossAccountServiceConsumerReply!
 
   # Mutation to add a new Db2 instance.
   addDb2Instance(
@@ -7774,6 +7947,11 @@ type Mutation {
 
     # Optional user note.
     userNote: String): [SlaAssignResult!]!
+
+  # Connects a customer-managed cluster to RSC and obtains the connection command.
+  awsExocomputeClusterConnect(
+    # Input to connect customer-managed cluster to RSC.
+    input: AwsExocomputeClusterConnectInput!): AwsExocomputeClusterConnectReply!
 
   # Completes an OAuth consent flow for Azure resource access.
   azureOauthConsentComplete(
@@ -8074,6 +8252,11 @@ type Mutation {
     # Input for V1BulkUpdateOracleRac.
     input: BulkUpdateOracleRacsInput!): BulkUpdateOracleRacsReply!
 
+  # Set whether Ransomware Investigation is enabled or not in bulk.
+  bulkUpdateRansomwareInvestigationStatus(
+    # Request to bulk enable or disable Ransomware Investigation.
+    input: BulkUpdateRansomwareInvestigationEnabledInput!): Void
+
   # Cancel an activity series.
   cancelActivitySeries(
     # Input for canceling an activity series.
@@ -8238,6 +8421,11 @@ type Mutation {
   createCloudNativeTagRule(
     # Input required to create a cloud-native tag rule.
     input: CreateCloudNativeTagRuleInput!): CreateCloudNativeTagRuleReply!
+
+  # Create cross-account pair between service-consumer and service-provider accounts.
+  createCrossAccountPair(
+    # OAuth authorization code for cross-account pairing.
+    input: CreateCrossAccountPairInput!): Void
 
   # Create a payload for cross-account OAuth registration.
   createCrossAccountRegOauthPayload(
@@ -8447,7 +8635,8 @@ type Mutation {
   # Create on demand storage snapshot
   # 
   # Supported in v9.1+
-  # Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.
+  # v9.1: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.
+  # v9.2: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
   createOnDemandSapHanaStorageSnapshot(
     # Input for V1CreateOnDemandSapHanaStorageSnapshot.
     input: CreateOnDemandSapHanaStorageSnapshotInput!): AsyncRequestStatus!
@@ -8705,6 +8894,12 @@ type Mutation {
   deleteGlobalCertificate(
     # Input to delete a global certificate.
     input: DeleteGlobalCertificateInput!): DeleteGlobalCertificateReply!
+  deleteGlobalSla(
+    # SLA Domain ID.
+    id: UUID!,
+
+    # Optional user note.
+    userNote: String): SlaResult!
 
   # Delete guest OS credentials.
   deleteGuestCredentialById(
@@ -9310,6 +9505,11 @@ type Mutation {
     # Input for V1ExpireDownloadedSapHanaSnapshots.
     input: ExpireDownloadedSapHanaSnapshotsInput!): AsyncRequestStatus!
 
+  # Expire snoozed directories.
+  expireSnoozedDirectories(
+    # Expire snoozed directories.
+    input: ExpireSnoozedDirectoriesInput!): ExpireSnoozedDirectoriesReply!
+
   # Export VM snapshot
   # 
   # Supported in v5.0+
@@ -9581,6 +9781,14 @@ type Mutation {
     # Input for InternalUpdateHypervScvmm
     input: HypervScvmmUpdateInput!): HypervScvmmUpdateReply!
 
+  # In-place exports a virtual machine snapshot on the host
+  # 
+  # Supported in v9.1+
+  # Overwrites the Hyperv virtual machine's configuration and virtual disks in-place based on the snapshot. The recovery process only transfers the changed blocks to the target host.
+  inplaceExportHypervVirtualMachine(
+    # Input for V1InplaceExportHypervVirtualMachine.
+    input: InplaceExportHypervVirtualMachineInput!): AsyncRequestStatus!
+
   # Inserts a Customer-hosted O365 Azure AD App.
   insertCustomerO365App(
     # The input for the InsertCustomerO365App mutation.
@@ -9840,7 +10048,7 @@ type Mutation {
   # Cloud Direct Path Recovery.
   recoverCloudDirectPath(
     # Input for Cloud Direct path recovery.
-    input: RecoverCloudDirectPathInput!): AsyncRequestStatus!
+    input: RecoverCloudDirectPathInput!): AsyncRequestStatus! @deprecated(reason: "Not in use. Use recoverCloudDirectMultiPaths instead.")
 
   # Recover a MongoDB source from Rubrik CDM cluster.
   recoverMongoSource(
@@ -10065,6 +10273,11 @@ type Mutation {
     # Input for InternalResizeApiForManagedVolume.
     input: ResizeManagedVolumeInput!): AsyncRequestStatus!
 
+  # Resolve an anomaly.
+  resolveAnomaly(
+    # Resolve an anomaly.
+    input: ResolveAnomalyInput!): Void
+
   # Marks that the user has resolved that there are no conflicting volume groups on the host where this Exchange server exists
   # 
   # Supported in v8.0+
@@ -10236,6 +10449,11 @@ type Mutation {
     # Input for setting the app credentials in the Azure Cloud Accounts.
     input: SetAzureCloudAccountCustomerAppCredentialsInput!): Boolean!
 
+  # Sets the approval status of an Exocompute container image bundle.
+  setBundleApprovalStatus(
+    # Input for the operation to upsert the approval status of an Exocompute container image bundle.
+    input: SetBundleApprovalStatusInput!): Void
+
   # Sets customer-specified tags and the value whether the resource tags should be overridden by customer-specified tags for a given cloud type.
   setCustomerTags(
     # Input to set customer-specified tags for a particular cloud type.
@@ -10267,6 +10485,11 @@ type Mutation {
   setPasswordComplexityPolicy(
     # Specifies the password complexity policy to be used for the organization. 
     input: SetPasswordComplexityPolicyInput!): Void
+
+  # Sets the Private Container Registry (PCR) details for an Exocompute cloud account. Updates the details if the registry already exists and creates a new entry if it does not exist.
+  setPrivateContainerRegistry(
+    # Input to set PCR details.
+    input: SetPrivateContainerRegistryInput!): Void
 
   # Set User defined SSO certs.
   setSsoCertificate(
@@ -10513,6 +10736,11 @@ type Mutation {
   supportPortalLogin(
     # Input for supportPortalLogin.
     input: SupportPortalLoginInput!): SupportPortalLoginReply!
+
+  # Moves an M365 organization product from day-to-day mode to onboarding mode.
+  switchProductToOnboardingMode(
+    # OrgID and workload type used to switch the dashboard mode.
+    input: SwitchProductToOnboardingModeInput!): SwitchProductToOnboardingModeReply!
 
   # Take an on-demand snapshot of an SLA Managed Volume
   # 
@@ -10763,6 +10991,11 @@ type Mutation {
   # Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
   updateCustomerAppPermissionForAzureSql: Void
 
+  # Updates the Azure app for the specified account with specified permissions in an idempotent manner.
+  updateCustomerAppPermissions(
+    # Input to update the Azure app with specified permissions in an idempotent manner.
+    input: UpdateCustomerAppPermissionsInput!): UpdateCustomerAppPermissionsReply!
+
   # Update the database log backup report properties
   # 
   # Supported in v5.3+
@@ -10923,6 +11156,11 @@ type Mutation {
     # Specifies all fields related to lockout configurations in one object.
     input: UpdateLockoutConfigInput!): UpdateLockoutConfigReply!
 
+  # Transition to Managed Identities.
+  updateManagedIdentities(
+    # Update managed identities request parameters for Azure.
+    input: UpdateManagedIdentitiesInput!): UpdateManagedIdentitiesReply!
+
   # Mutation to update an existing Managed Volume.
   updateManagedVolume(
     # Input for InternalUpdateManagedVolume.
@@ -11058,6 +11296,11 @@ type Mutation {
   updateRcvTarget(
     # Request for updating a new Rubrik Cloud Vault location.
     input: UpdateRcvTargetInput!): Target!
+
+  # Update the throttle bypass configuration of a replication target location on a particular source.
+  updateReplicationNetworkThrottleBypass(
+    # Input for V1UpdateReplicationTargetInfo.
+    input: UpdateReplicationNetworkThrottleBypassInput!): ResponseSuccess!
 
   # Update the setup information, address, username, and password for the replication target.
   updateReplicationTarget(
@@ -11758,6 +12001,9 @@ type ActiveDirectoryDomainController implements CdmHierarchyObject , HierarchyOb
   # ID of the Rubrik CDM cluster.
   cdmId: String!
 
+  # GUID of the domain controller.
+  domainControllerGuid: String
+
   # Specifies whether the domain controller is a relic.
   isRelic: Boolean!
 
@@ -12295,40 +12541,7 @@ input ActiveDirectoryObjectRecoveryConfigInput {
   # Distinguished Name Tag of the objects to be restored.
   domainControllerRecoveryObjects: [ActiveDirectoryRecoveryObjectInput!]!
 }
-# List of matching objects.
-type ActiveDirectoryObjectSearchResponse {
-  # Required. Supported in v9.1+
-  # Display name of the Active Directory object.
-  name: String!
-
-  # Required. Supported in v9.1+
-  # Resultant versions of the objects with that name.
-  versions: [ActiveDirectorySearchVersions!]!
-}
-# Paginated list of ActiveDirectoryObjectSearchResponse objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
-type ActiveDirectoryObjectSearchResponseConnection {
-  # List of ActiveDirectoryObjectSearchResponse objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
-  edges: [ActiveDirectoryObjectSearchResponseEdge!]!
-
-  # List of ActiveDirectoryObjectSearchResponse objects.
-  nodes: [ActiveDirectoryObjectSearchResponse!]!
-
-  # General information about this page of results.
-  pageInfo: PageInfo!
-
-  # Total number of ActiveDirectoryObjectSearchResponse objects matching the request arguments.
-  count: Int!
-}
-# Wrapper around the ActiveDirectoryObjectSearchResponse object. This wrapper is used for pagination.
-type ActiveDirectoryObjectSearchResponseEdge {
-  # String used to identify this edge.
-  cursor: String!
-
-  # The actual ActiveDirectoryObjectSearchResponse object wrapped by this edge.
-  node: ActiveDirectoryObjectSearchResponse!
-}
-# Supported in v9.0+
-# The supported Active Directory object types.
+# Type of the Active Directory object.
 enum ActiveDirectoryObjectType {
   # Active Directory built-in domain.
   ACTIVE_DIRECTORY_OBJECT_TYPE_BUILTIN_DOMAIN
@@ -12437,7 +12650,7 @@ type ActiveDirectorySearchVersions {
   snapshotId: String!
 
   # Type of the object.
-  objectType: ActiveDirectoryObjectType!
+  activeDirectoryObjectType: ActiveDirectoryObjectType!
 }
 # Host connectivity status.
 type ActiveDirectoryServiceStatus {
@@ -12446,6 +12659,38 @@ type ActiveDirectoryServiceStatus {
 
   # Timestamp when status was updated.
   timestampMillis: DateTime
+}
+# List of matching objects.
+type ActiveDirectorySnappableSearchResponse {
+  # Required. Supported in v9.1+
+  # Display name of the Active Directory object.
+  name: String!
+
+  # Required. Supported in v9.1+
+  # Resultant versions of the objects with that name.
+  versions: ActiveDirectorySearchVersions!
+}
+# Paginated list of ActiveDirectorySnappableSearchResponse objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ActiveDirectorySnappableSearchResponseConnection {
+  # List of ActiveDirectorySnappableSearchResponse objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ActiveDirectorySnappableSearchResponseEdge!]!
+
+  # List of ActiveDirectorySnappableSearchResponse objects.
+  nodes: [ActiveDirectorySnappableSearchResponse!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ActiveDirectorySnappableSearchResponse objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ActiveDirectorySnappableSearchResponse object. This wrapper is used for pagination.
+type ActiveDirectorySnappableSearchResponseEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ActiveDirectorySnappableSearchResponse object wrapped by this edge.
+  node: ActiveDirectorySnappableSearchResponse!
 }
 # Supported in v9.0+
 input ActiveDirectorySnapshotDownloadConfigInput {
@@ -13790,6 +14035,25 @@ type AddConfiguredGroupToHierarchyReply {
   # The ID of the created group.
   groupId: UUID!
 }
+# Input to add service consumer to cross-account.
+input AddCrossAccountServiceConsumerInput {
+  # Cross-account ID of the cross-account pair.
+  crossAccountId: String!
+
+  # Fully qualified domain name of service consumer RSC account.
+  fqdn: String!
+
+  # Service account details of the service consumer.
+  serviceConsumerSa: CrossAccountSaInput!
+
+  # Refresh cross-account pair.
+  isRefresh: Boolean!
+}
+# Add cross-account service consumer reply.
+type AddCrossAccountServiceConsumerReply {
+  # Service account details of the service provider.
+  serviceProviderSa: CrossAccountSaType
+}
 # Input for adding a DB2 instance.
 input AddDb2InstanceInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -13913,9 +14177,6 @@ input AddNodesToCloudClusterInput {
   # Number of nodes to add.
   numberOfNodes: Int = 0
 
-  # Specifies whether node resources are preserved if the add node operation fails.
-  shouldKeepResourcesOnFailure: Boolean = false
-
   # AWS AMI ID to deploy to add nodes to an AWS Cloud Cluster without the marketplace.
   awsImageId: String = ""
 
@@ -13930,6 +14191,9 @@ input AddNodesToCloudClusterInput {
 
   # Cluster UUID.
   clusterUuid: UUID!
+
+  # Specifies whether node resources are preserved if the add node operation fails.
+  shouldKeepResourcesOnFailure: Boolean!
 }
 # Configuration for the addition of an O365 org.
 input AddO365OrgInput {
@@ -14242,6 +14506,9 @@ type Analyzer {
 
   # Represents risk associated with the given analyzer.
   risk: RiskLevelType!
+
+  # Represents the tag ID for the given analyzer.
+  tagId: Int!
 }
 type AnalyzerAccessUsage {
   analyzer: Analyzer
@@ -14631,6 +14898,37 @@ type AnomalyChart {
   name: String!
   focus: ReportFocusEnum!
   groupBy: [AnomalyResultGroupBy!]
+}
+# Report an anomaly as a false positive.
+input AnomalyFalsePositiveReport {
+  # The type of false positive anomaly.
+  falsePositiveType: AnomalyFalsePositiveType!
+
+  # The reason for the false positive anomaly.
+  otherReason: String
+}
+# The type of false positive anomaly.
+enum AnomalyFalsePositiveType {
+  # Application update.
+  APPLICATION_UPDATE
+
+  # Unspecified false positive type.
+  FP_TYPE_UNSPECIFIED
+
+  # Log deletion/rotation.
+  LOG_ROTATION
+
+  # Scheduled maintenance.
+  NFA_SCHEDULED_MAINTENANCE
+
+  # Unscheduled maintenance.
+  NFA_UNSCHEDULED_MAINTENANCE
+
+  # OS update.
+  OS_UPDATE
+
+  # Another false positive type.
+  OTHER
 }
 # Information about the anomaly detected.
 type AnomalyInfo {
@@ -15052,6 +15350,14 @@ enum AppSortByParamField {
 
   # Sort by subscription name.
   SUBSCRIPTION
+}
+# Details about an Exocompute configuration.
+type ApplicationCloudAccountToExocomputeConfig {
+  # Application cloud account id for which configs are applicable.
+  applicationCloudAccountId: String!
+
+  # Details about the Exocompute configuration.
+  exocomputeConfigs: AwsExocomputeGetConfigurationResponse
 }
 # Connection status for archival group.
 type ArchivalGroupConnectionStatus {
@@ -15599,6 +15905,9 @@ enum AuditObjectType {
   # Certificate management object
   CERTIFICATE_MANAGEMENT
 
+  # Cloud Direct NAS export.
+  CLOUD_DIRECT_NAS_EXPORT
+
   # Cloud-native tag rule object.
   CLOUD_NATIVE_TAG_RULE
 
@@ -15628,6 +15937,9 @@ enum AuditObjectType {
 
   # Exchange server.
   EXCHANGE_SERVER
+
+  # Exocompute.
+  EXOCOMPUTE
 
   # Failover cluster app audit object.
   FAILOVER_CLUSTER_APP
@@ -15899,6 +16211,9 @@ enum AuditType {
   # Access management audit.
   ACCESS_MANAGEMENT
 
+  # Anomaly audit.
+  ANOMALY
+
   # Audit.
   AUDIT
 
@@ -16060,6 +16375,9 @@ type AuthorizedPrincipal {
 
   # TOTP status for a LDAP principal.
   totpStatus: LdapTotpStatus
+
+  # Lockout status for an LDAP principal.
+  lockoutStatus: LdapLockoutStatus
   roles: [Role!]!
 }
 # Paginated list of AuthorizedPrincipal objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -16331,6 +16649,9 @@ type AwsCloudAccountFeatureVersion {
 
   # Version.
   version: Int!
+
+  # List of permissions groups with corresponding versions valid only for customer-managed cluster users.
+  permissionsGroupVersions: [PermissionsGroupWithVersion!]!
 }
 # Input to protect a feature for the AWS cloud account.
 input AwsCloudAccountFeatureVersionInput {
@@ -16338,7 +16659,10 @@ input AwsCloudAccountFeatureVersionInput {
   feature: CloudAccountFeature!
 
   # Version of feature. This should be same as the response given in the first step (validateAndCreateAwsCloudAccount).
-  version: Int!
+  version: Int
+
+  # List of permissions groups with corresponding versions valid only for customer-managed cluster users.
+  permissionsGroupVersions: [PermissionsGroupWithVersionInput!]
 }
 # Details of an AWS cloud account.
 input AwsCloudAccountInput {
@@ -16386,14 +16710,23 @@ enum AwsCloudAccountRegion {
   # AWS cloud Asia Pacific (Seoul) region.
   AP_NORTHEAST_2
 
+  # AWS cloud Asia Pacific (Osaka) region.
+  AP_NORTHEAST_3
+
   # AWS cloud Asia Pacific (Singapore) region.
   AP_SOUTHEAST_1
 
   # AWS cloud Asia Pacific (Sydney) region.
   AP_SOUTHEAST_2
 
+  # AWS cloud Asia Pacific (Jakarta) region.
+  AP_SOUTHEAST_3
+
   # AWS cloud Asia Pacific (Mumbai) region.
   AP_SOUTH_1
+
+  # AWS cloud Asia Pacific (Hyderabad) region.
+  AP_SOUTH_2
 
   # AWS cloud Canada (Central) region.
   CA_CENTRAL_1
@@ -16625,8 +16958,7 @@ type AwsComputeSettings {
 }
 # AWS Customer Managed Exocompute Configuration in a region.
 type AwsCustomerManagedExocomputeConfig implements AwsExocomputeGetConfigurationResponse {
-  # Exocompute cluster name.
-  clusterName: String!
+  clusterName: String! @deprecated(reason: "Use  clusterName from AwsExocomputeClusterConnect API instead.")
 
   # Exocompute configuration UUID.
   configUuid: UUID!
@@ -16659,6 +16991,22 @@ input AwsEsConfigInput {
 
   # Enable immutability on rubrik filesystem.
   enableImmutability: Boolean = false
+}
+# Input to connect a customer-managed cluster to RSC and obtain a connection command to be run by the customer.
+input AwsExocomputeClusterConnectInput {
+  # Name of the customer managed cluster.
+  clusterName: String = ""
+
+  # Exocompute Configuration Id obtained after configuring the Exocompute for regions.
+  exocomputeConfigId: UUID!
+}
+# Response to Exocompute Cluster Connect request.
+type AwsExocomputeClusterConnectReply {
+  # The command is to be run at the remote k8s cluster to establish a secure connection with RSC.
+  connectionCommand: String!
+
+  # The unique id generated for the k8s cluster that was connected to RSC.
+  clusterUuid: UUID!
 }
 # AWS Exocompute configurations in an AWS account.
 type AwsExocomputeConfig {
@@ -16822,10 +17170,13 @@ input AwsGetPermissionPoliciesInput {
   cloudType: AwsCloudType = STANDARD
 
   # List of cloud account features.
-  features: [CloudAccountFeature!]!
+  features: [CloudAccountFeature!]
 
   # Feature specific details needed to retrieve the permission policies.
   featureSpecificDetails: FeatureSpecificDetailsInput
+
+  # List of cloud account features with specific permissions group. This is a valid input only for customer-managed cluster users.
+  featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!]
 }
 # Immutability settings for creating AWS locations.
 input AwsImmutabilitySettings {
@@ -16890,6 +17241,9 @@ type AwsNativeAccount implements PolarisHierarchyObject , HierarchyObject {
 
   # The authorized operations on the object.
   authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]!
+
+  # List of Exocompute configurations for the AWS account.
+  applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig!
 
   # List of all EC2 instances under this AWS Native account.
   awsNativeEc2Instances(
@@ -21064,14 +21418,23 @@ enum AwsNativeRegion {
   # AWS native Asia Pacific (Seoul) region.
   AP_NORTHEAST_2
 
+  # AWS native Asia Pacific (Osaka) region.
+  AP_NORTHEAST_3
+
   # AWS native Asia Pacific (Singapore) region.
   AP_SOUTHEAST_1
 
   # AWS native Asia Pacific (Sydney) region.
   AP_SOUTHEAST_2
 
+  # AWS native Asia Pacific (Jakarta) region.
+  AP_SOUTHEAST_3
+
   # AWS native Asia Pacific (Mumbai) region.
   AP_SOUTH_1
+
+  # AWS native Asia Pacific (Hyderabad) region.
+  AP_SOUTH_2
 
   # AWS native Canada (Central) region.
   CA_CENTRAL_1
@@ -21158,14 +21521,23 @@ enum AwsNativeRegionForReplication {
   # AWS native for replication Asia Pacific (Seoul) region.
   AP_NORTHEAST_2
 
+  # AWS native for replication Asia Pacific (Osaka) region.
+  AP_NORTHEAST_3
+
   # AWS native for replication Asia Pacific (Singapore) region.
   AP_SOUTHEAST_1
 
   # AWS native for replication Asia Pacific (Sydney) region.
   AP_SOUTHEAST_2
 
+  # AWS native for replication Asia Pacific (Jakarta) region.
+  AP_SOUTHEAST_3
+
   # AWS native for replication Asia Pacific (Mumbai) region.
   AP_SOUTH_1
+
+  # AWS native for replication Asia Pacific (Hyderabad) region.
+  AP_SOUTH_2
 
   # AWS native for replication Canada (Central) region.
   CA_CENTRAL_1
@@ -21466,6 +21838,9 @@ type AwsNativeS3SlaConfig {
 
   # Specifies the location ID where the primary backups will be stored.
   archivalLocationId: String!
+
+  # Specifies the location name where the primary backups will be stored.
+  archivalLocationName: String!
 }
 # AWS Native S3 SLA configuration.
 input AwsNativeS3SlaConfigInput {
@@ -21548,6 +21923,9 @@ enum AwsRegion {
 
   # AWS Asia Pacific (Mumbai) region.
   AP_SOUTH_1
+
+  # AWS Asia Pacific (Hyderabad) region.
+  AP_SOUTH_2
 
   # AWS Canada (Central) region.
   CA_CENTRAL_1
@@ -21746,6 +22124,12 @@ type AwsSecurityGroup {
 }
 # Storage class for AWS type location.
 enum AwsStorageClass {
+  # Amazon S3 Glacier Deep Archive storage class.
+  GLACIER_DEEP_ARCHIVE
+
+  # Amazon S3 Glacier Flexible Retrieval storage class.
+  GLACIER_FLEXIBLE_RETRIEVAL
+
   # Amazon S3 Glacier Instant Retrieval storage class.
   GLACIER_INSTANT_RETRIEVAL
 
@@ -21948,6 +22332,12 @@ type AzureAdDirectory implements HierarchyObject , PolarisHierarchyObject , Hier
   # Time of the latest snapshot.
   latestSnapshotTime: DateTime
 
+  # ID of the onboarded Azure AD app.
+  appId: String!
+
+  # Owner of the onboarded Azure AD app.
+  appOwner: String!
+
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
@@ -22138,6 +22528,9 @@ type AzureAdGroup {
 
   # Email address of the M365 group.
   email: String!
+
+  # On-prem sync status of the Azure AD group.
+  onPremSyncStatus: AzureAdOnPremSyncStatus!
 }
 # Response to the azureAdObjectsByType API.
 type AzureAdObject {
@@ -22214,6 +22607,9 @@ input AzureAdObjectTypeInput {
   # Snapshot ID to retrieve Azure AD objects.
   snapshotId: UUID!
 
+  # Workload FID of the Azure AD directory.
+  workloadFid: UUID!
+
   # Azure AD object type.
   azureAdObjectType: AzureAdObjectType!
 }
@@ -22224,6 +22620,20 @@ type AzureAdObjects {
 
   # Azure AD group type.
   azureAdGroup: AzureAdGroup
+}
+# Azure AD on-prem sync status.
+enum AzureAdOnPremSyncStatus {
+  # Azure AD on-prem sync is not enabled.
+  DISABLED
+
+  # Azure AD on-prem sync is enabled.
+  ENABLED
+
+  # Azure AD on-prem sync is never enabled.
+  NEVER_ENABLED
+
+  # Azure AD on-prem sync status is unknown.
+  STATUS_UNKNOWN
 }
 # Represents regions for Azure AD.
 enum AzureAdRegion {
@@ -22340,6 +22750,24 @@ type AzureAdUser {
 
   # Creation type of the Azure AD user.
   creationType: String!
+
+  # On-prem sync status of the Azure AD group.
+  onPremSyncStatus: AzureAdOnPremSyncStatus!
+}
+# AzureAppPermission represents the enumeration of various Azure app permissions
+# for authenticating and connecting to the required Azure resource APIs in
+# the customer subscriptions.
+enum AzureAppPermission {
+  # Unspecified permission.
+  AZURE_APP_PERMISSION_UNSPECIFIED
+
+  # Represents the impersonation permission needed for authenticating and
+  # connecting to an Azure SQL Database or an Azure SQL Managed Instance.
+  AZURE_SQL_IMPERSONATION
+
+  # Represents the impersonation permission needed for authenticating and
+  # connecting to an Azure Storage.
+  AZURE_STORAGE_IMPERSONATION
 }
 # Custom role ARM template corresponding to the feature.
 type AzureArmTemplateByFeature {
@@ -22379,11 +22807,20 @@ input AzureArmTemplatesByFeatureInput {
 type AzureBlobConfig {
   # Specifies the duration to which a Point-in-Time recovery can be performed on the associated Azure Blob.
   continuousBackupRetentionInDays: Int!
+
+  # Specifies the location ID where the primary backups will be stored.
+  backupLocationId: String!
+
+  # Backup location Name.
+  backupLocationName: String
 }
 # Azure Blob configuration.
 input AzureBlobConfigInput {
-  # Retention of Azure Blobs.
+  # Retention of Azure Blobs. Deprecated API Field.
   continuousBackupRetentionInDays: Int = 0
+
+  # Specifies the location ID where the primary backups will be stored.
+  backupLocationId: String = ""
 }
 # Rubrik CDM image version information from the Azure marketplace.
 type AzureCdmVersion {
@@ -25231,7 +25668,7 @@ type AzureRole {
 }
 # Azure cloud account feature and permissions groups to use when determining the required role permissions.
 input AzureRoleArmTemplateFeature {
-  # The permissions groups to include for the feature. If the list is empty, all permission groups will be included.
+  # List of permissions groups to include for the feature. If the list is empty, all permission groups will be included.
   permissionsGroups: [PermissionsGroup!] = []
 
   # The cloud account feature.
@@ -26530,6 +26967,20 @@ type AzureSubscriptionMissingPermissions {
   # List of missing permissions on the Azure Subscription.
   missingPermissions: [String!]!
 }
+# Azure subscriptions on which Ransomware Investigation can be enabled.
+type AzureSubscriptionRansomwareInvestigationEnablement {
+  # Azure subscription ID.
+  id: String!
+
+  # Azure subscription name.
+  subscriptionName: String!
+
+  # Indicates whether Ransomware Monitoring is enabled.
+  enabled: Boolean!
+
+  # Indicates whether the Azure Subscription is healthy.
+  isHealthy: Boolean!
+}
 # Status of an Azure subscription.
 enum AzureSubscriptionStatus {
   # The Azure subscription has been added.
@@ -26804,6 +27255,31 @@ input BackupObject {
 input BackupRunConfig {
   # Specifies whether the backup job should be run immediately.
   runNow: Boolean = false
+}
+# Stores the backup stats within a time range bucket.
+type BackupStatsBucket {
+  # Start time of the bucket.
+  startTime: DateTime
+
+  # End time of the bucket.
+  endTime: DateTime
+
+  # Number of jobs succeeded.
+  numSucceeded: Int!
+
+  # Number of jobs failed.
+  numFailed: Int!
+}
+# Time range for backup stats.
+enum BackupStatsTimeRange {
+  # Last 24 hours.
+  BSTR_LAST_24_HOURS
+
+  # Last 30 days.
+  BSTR_LAST_30_DAYS
+
+  # Last 7 days.
+  BSTR_LAST_7_DAYS
 }
 # Supported in v5.1+
 type BackupTaskDiagnosticInfo {
@@ -27717,6 +28193,14 @@ type BulkUpdateOracleRacsReply {
   # Required. Supported in v5.2+
   # An array that contains all Oracle RAC update details.
   responses: [OracleRacDetail!]!
+}
+# Request to set Ransomware Investigation enabled or not in bulk.
+input BulkUpdateRansomwareInvestigationEnabledInput {
+  # List of entities for which the Ransomware Investigation status is being updated.
+  entities: [DataThreatAnalyticsEnablementEntityInfo!]!
+
+  # The new Ransomware Investigation status.
+  isRansomwareMonitoringEnabled: Boolean!
 }
 # Email address input for organizer and/or attendee.
 input CalendarEmailAddressFilter {
@@ -30930,6 +31414,9 @@ type CdpVmInfoEdge {
 type CellData {
   displayableValue: DisplayableValue
   metadata: [Metadata!]!
+
+  # The new version of metadata object.
+  metadataV2: [MetadataV2!]!
 }
 # Fields by which certificates can be sorted.
 enum CertMgmtSortBy {
@@ -32213,6 +32700,9 @@ enum CloudProviderType {
 }
 # Cloud provider type.
 enum CloudVendor {
+  # All cloud providers.
+  ALL_VENDORS
+
   # Cloud provider is AWS.
   AWS
 
@@ -32439,6 +32929,9 @@ type Cluster {
 
   # The Rubrik cluster's registered mode.
   registeredMode: ClusterRegistrationMode
+
+  # CDM to RSC RBAC migration status for the current cluster.
+  cdmRbacMigrationStatus: String
 }
 # CDM archiving specification.
 type ClusterArchivalSpec {
@@ -33496,6 +33989,9 @@ type ClusterSlaDomain implements SlaDomain {
 
   # The object-specific configurations of the SLA Domain.
   objectSpecificConfigs: ObjectSpecificConfigs
+
+  # Specifies whether the SLA Domain is read-only.
+  isReadOnly: Boolean
 
   # Rubrik cluster ID of SLA Domain.
   cluster: Cluster
@@ -34796,6 +35292,17 @@ enum ComplianceDuration {
   # Filters data from the start of object protection.
   START_OF_PROTECTION
 }
+# Stores the compliance status of a workload type.
+type ComplianceState {
+  # Percentage of compliance.
+  compliancePercentage: Int!
+
+  # Reasons for low compliance. If there is no valid reason, this field will be empty.
+  lowComplianceReason: String!
+
+  # Describes if a switch to onboarding mode can be allowed.
+  shouldAllowSwitchToOnboardingMode: Boolean!
+}
 type ComplianceStatus {
   enumValue: ComplianceStatusEnum!
 }
@@ -35020,8 +35527,11 @@ type ConnectionStatusDetails {
   # Connection between target cluster and Rubrik (connected, disconnected, or not added).
   targetAndRubrik: ClusterConnectionStatus!
 
-  # Connection between source and target Rubrik clusters (connected or disconnected).
+  # Connection between source and target Rubrik clusters (connected, disconnected, or unavailable).
   sourceAndTarget: ConnectionStatusType!
+
+  # Connection between target and source Rubrik clusters (connected, disconnected, or unavailable).
+  targetAndSource: ConnectionStatusType!
 }
 # The connection status type enum.
 enum ConnectionStatusType {
@@ -35030,6 +35540,9 @@ enum ConnectionStatusType {
 
   # The connection has been disconnected.
   DISCONNECTED
+
+  # Cluster is not connected to Rubrik, cannot determine the state of the cluster.
+  UNAVAILABLE
 }
 # Tells whether snapshot has app or crash consistency.
 enum ConsistencyLevelEnum {
@@ -35818,6 +36331,20 @@ type CreateCloudNativeTagRuleReply {
   # ID of the tag rule.
   tagRuleId: String!
 }
+# OAuth authorization code input for cross-account pair creation.
+input CreateCrossAccountPairInput {
+  # Auth code generated by service provider RSC account.
+  code: String!
+
+  # State of OAuth request.
+  state: String!
+
+  # Fully qualified domain name of service provider RSC account.
+  fqdn: String!
+
+  # Refresh cross-account pair.
+  isRefresh: Boolean!
+}
 # Input for cross-account OAuth registration.
 input CreateCrossAccountRegOauthPayloadInput {
   # Fully qualified domain name of service provider RSC account.
@@ -35838,6 +36365,9 @@ input CreateCustomAnalyzerInput {
 
   # Represents the latest analyzer risk.
   analyzerRiskInstance: AnalyzerRiskInstanceInput
+
+  # Represents the tag ID for the given analyzer.
+  tagId: Int = 0
 
   # Represents risk associated with the given analyzer.
   risk: RiskLevelType = MEDIUM_RISK
@@ -36135,6 +36665,7 @@ type CreateGuestCredentialReply {
 
   # Base guest credential details.
   baseGuestCredentialDetail: BaseGuestCredentialDetail
+  description: String
 }
 # Input for initiating Live Mount for a Hyper-V virtual machine.
 input CreateHypervVirtualMachineSnapshotMountInput {
@@ -36492,8 +37023,11 @@ input CreateOrgInput {
   # New SSO groups to be authorized for this tenant organization.
   newSsoGroups: [NewSsoGroupInput!]
 
-  # Specifies if service accounts are enabled for this organization.
+  # Deprecated. Use isServiceAccountDisabled instead.
   isServiceAccountEnabled: Boolean
+
+  # Specifies whether service accounts are not enabled for this organization.
+  isServiceAccountDisabled: Boolean
 
   # Specifies cross-account capabilities enabled for this organization.
   crossAccountCapabilities: [CrossAccountCapability!]
@@ -36621,7 +37155,7 @@ input CreateReplicationPairInput {
   # Network interface for communication between the source and target clusters.
   targetNetworkInterface: NetworkInterfaceDetails
 
-  # Specifies whether the replication pair is cross-account.
+  # Deprecated: The field is set automatically according to the Rubrik CDM cluster involved in replication pairing.
   isCrossAccount: Boolean = false
 
   # Source Rubrik cluster UUID.
@@ -36955,6 +37489,95 @@ enum CrossAccountCapability {
 
   # Replication as a service capability.
   REPLICATION_AS_A_SERVICE
+}
+# The cross-account pair information.
+type CrossAccountPairInfo {
+  # Name of the cross-account involved in pair.
+  name: String!
+
+  # URL of the cross-account involved in pair.
+  url: String!
+
+  # UUID of the cross-account pair.
+  uuid: UUID!
+
+  # Role of the cross-account involved in pair.
+  role: CrossAccountRole!
+
+  # Status of the cross-account pair.
+  status: CrossAccountStatus!
+
+  # Time the metadata was last synced for the cross-account pair.
+  lastSyncedAt: DateTime
+}
+# Paginated list of CrossAccountPairInfo objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type CrossAccountPairInfoConnection {
+  # List of CrossAccountPairInfo objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [CrossAccountPairInfoEdge!]!
+
+  # List of CrossAccountPairInfo objects.
+  nodes: [CrossAccountPairInfo!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of CrossAccountPairInfo objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the CrossAccountPairInfo object. This wrapper is used for pagination.
+type CrossAccountPairInfoEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual CrossAccountPairInfo object wrapped by this edge.
+  node: CrossAccountPairInfo!
+}
+# Role of the cross-account pair.
+enum CrossAccountRole {
+  # Unspecified sort by field.
+  ROLE_UNSPECIFIED
+
+  # Service consumer role.
+  SERVICE_CONSUMER
+
+  # Service provider role.
+  SERVICE_PROVIDER
+}
+# Service account details of the cross-account.
+input CrossAccountSaInput {
+  # Client ID of the service account.
+  clientId: String = ""
+
+  # Client secret of the service account.
+  clientSecret: String = ""
+
+  # URL path to retrieve access token for service account.
+  accessTokenUrl: String = ""
+}
+# Service account details of the cross-account.
+type CrossAccountSaType {
+  # Client ID of the service account.
+  clientId: String!
+
+  # Client secret of the service account.
+  clientSecret: String!
+
+  # URL path to to retrieve access token for service account.
+  accessTokenUrl: String!
+}
+# Status of the cross-account pair.
+enum CrossAccountStatus {
+  # Connected status.
+  CONNECTED
+
+  # Disconnected status.
+  DISCONNECTED
+
+  # Unspecified status.
+  STATUS_UNSPECIFIED
+
+  # Temporarily disconnected status.
+  TEMPORARILY_DISCONNECTED
 }
 # Certificate Signing Request (CSR) information.
 type Csr {
@@ -37605,6 +38228,34 @@ type DataStoreSummary {
   # Supported in v5.0+
   name: String
 }
+# Entities on which Ransomware Investigation can be enabled.
+enum DataThreatAnalyticsEnablementEntity {
+  # Rubrik Cluster.
+  CDM_CLUSTER
+
+  # NAS Cloud Direct.
+  CLOUD_DIRECT_CLUSTER
+
+  # The root of a cloud-native hierarchy, which can be an AWS account,
+  # an Azure subscription, or a GCP project.
+  CLOUD_NATIVE_ROOT
+
+  # Microsoft 365 subscription.
+  MICROSOFT_365
+
+  # Rubrik Cloud Vault.
+  RCV
+
+  # Unknown entity type.
+  UNKNOWN
+}
+input DataThreatAnalyticsEnablementEntityInfo {
+  # The type of entity for which Ransomware Investigation status is being updated.
+  entityType: DataThreatAnalyticsEnablementEntity!
+
+  # The ID of entity being affected.
+  entityId: String!
+}
 # All data types in the reporting table.
 enum DataTypeEnum {
   BOOLEAN
@@ -37767,6 +38418,38 @@ enum DayOfYear {
 
   # Last day of the year.
   LAST_DAY
+}
+# Stores the backup stats of a workload type in day-to-day mode.
+type DayToDayModeBackupStats {
+  # Contains backup stats in different time range buckets.
+  backupStatsBuckets: [BackupStatsBucket!]!
+
+  # Total number of fulls succeeded in the chosen time range.
+  numFullsSucceeded: Int!
+
+  # Total number of fulls failed in the chosen time range.
+  numFullsFailed: Int!
+
+  # Total number of incrementals succeeded in the chosen time range.
+  numIncrementalsSucceeded: Int!
+
+  # Total number of incrementals failed in the chosen time range.
+  numIncrementalsFailed: Int!
+
+  # Total number of new objects added in the chosen time range.
+  totalNewObjectsAdded: Int!
+}
+# Stores the stats of a workload type in day-to-day mode.
+type DayToDayModeStats {
+  # Count of the number of objects protected with an SLA.
+  totalProtectedCount: Int!
+
+  # Compliance status of the product that contains percentage compliance
+  # and reasons for low compliance if any.
+  complianceStatus: ComplianceState
+
+  # Number of full backups that are pending.
+  numFullsRemaining: Int!
 }
 # Db2 workload related app metadata for a snapshot.
 type Db2AppMetadata {
@@ -39359,7 +40042,7 @@ input DeleteServiceAccountsFromAccountInput {
   ids: [String!]!
 }
 input DeleteSmbDomainInput {
-  # Required. SMB domain name.
+  # Required. ID of the SMB Domain to delete.
   domainName: String!
 }
 # Delete Storage arrays.
@@ -39808,6 +40491,9 @@ type DiffResult {
 
   # The date of the previous snapshot.
   previousSnapshotDate: Long!
+
+  # Marker for next page of browse diff FMD results.
+  paginationMarker: PaginationMarker
 }
 # Sort by direct resource assignment type.
 enum DirectResourceAssignmentSortBy {
@@ -40378,6 +41064,9 @@ input DownloadHypervVirtualMachineSnapshotInput {
 }
 # Identifier for download files.
 enum DownloadIdentifierEnum {
+  # Rubrik cluster RBAC migration summary.
+  CDM_RBAC_MIGRATION_SUMMARY
+
   # Threat hunt result CSV.
   ORION_THREAT_HUNT_DOWNLOAD
 
@@ -41024,6 +41713,9 @@ type EventDigest {
   # Specifies whether to include events in the event digest.
   includeEvents: Boolean!
 
+  # Email address of the creator of this digest.
+  creatorEmailAddress: String!
+
   # Specifies the cluster UUIDs that this event digest applies to.
   clusterUuids: [UUID!]!
 }
@@ -41038,7 +41730,7 @@ input EventDigestConfig {
   # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
-  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, Recovery, Download, FILE_DOWNLOAD, and Index.
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
   auditType: [UserAuditTypeEnum!]
 
   # Activity severities to include in event digest.
@@ -42539,6 +43231,14 @@ input ExistingUserInput {
   # Specifies whether the user should be an org admin or not.
   isOrgAdmin: Boolean!
 }
+# Approval status of an Exocompute container image bundle.
+enum ExoBundleApprovalStatus {
+  # Exocompute image bundle is ACCEPTED.
+  ACCEPTED
+
+  # Exocompute image bundle is REJECTED.
+  REJECTED
+}
 # Describes the Exocompute health check status.
 type ExocomputeHealthCheckStatus {
   # Status of the health check.
@@ -42600,6 +43300,19 @@ input ExpireDownloadedSapHanaSnapshotsInput {
 
   # Required. ID of the SAP HANA database.
   id: String!
+}
+# Request to expire snoozed directories.
+input ExpireSnoozedDirectoriesInput {
+  # The list of snoozed directories to expire.
+  directories: [String!] = []
+}
+# Reply for expired snoozed directories.
+type ExpireSnoozedDirectoriesReply {
+  # The list of expired snoozed directories.
+  directoriesExpired: [String!]!
+
+  # The count of expired snoozed directories.
+  total: Long!
 }
 # Required. Input for exporting a Hyper-V virtual machine.
 input ExportHypervVirtualMachineInput {
@@ -43040,6 +43753,11 @@ input ExternalArtifacts {
 
   # AWS unique identifier of the external artifact.
   externalArtifactValue: String
+}
+# Represents the failed items recovery configurations.
+input FailedItemsRecoveryConfig {
+  # Represents the failed items instance id.
+  failedItemsInstanceId: UUID!
 }
 # Represents information on Microsoft 365 restore
 # failed items performed by Rubrik.
@@ -43893,6 +44611,9 @@ type FeatureDetail {
 
   # Details for authentication server-based cloud accounts. This field is only applicable to the accounts in AWS DCA and LCK regions.
   authServerDetail: AwsAuthServerDetail
+
+  # Permissions groups onboarded for the cloud accounts feature. Permissions groups will be present only for customer-managed cluster users.
+  permissionsGroups: [PermissionsGroup!]
 }
 # Input to minimum CDM version supporting all given features.
 input FeatureListMinimumCdmVersionInputType {
@@ -43928,7 +44649,7 @@ input FeatureWithPermissionsGroups {
   # The cloud account feature.
   featureType: CloudAccountFeature = ARCHIVAL
 
-  # The permissions groups to include for the feature. If the list is empty, all permissions groups will be included.
+  # List of permissions groups to include for the feature. If the list is empty, all permissions groups will be included.
   permissionsGroups: [PermissionsGroup!] = []
 }
 # Status of the Federated Access feature for the specified account.
@@ -44380,8 +45101,9 @@ input FilesetExportFilesJobConfigInput {
   # Network share ID.
   shareId: String
 
-  # Supported in v9.1+
-  # Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
+  # Supported in v8.1, v9.1+
+  # v8.1: Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
+  # v9.1+: Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
   # Required. Supported in v5.0+
@@ -44484,8 +45206,9 @@ input FilesetRestoreFilesJobConfigInput {
   # Optional field to determine if we should ignore single error during restore. Default value is false.
   ignoreErrors: Boolean
 
-  # Supported in v9.1+
-  # Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
+  # Supported in v8.1, v9.1+
+  # v8.1: Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
+  # v9.1+: Optional field that specifies whether to recreate directory structure when using the 'Restore to separate folder' option in the UI.
   shouldRecreateDirectoryStructure: Boolean
 
   # Required. Supported in v5.0+
@@ -44627,6 +45350,9 @@ type FilesetSummary {
 }
 # Fileset template.
 type FilesetTemplate implements CdmHierarchyObject , HierarchyObject {
+  # ID associated with fileset template in CDM.
+  cdmId: String!
+
   # Exceptions for backup of fileset.
   exceptions: [String!]!
 
@@ -45280,7 +46006,7 @@ input FinalizeAwsCloudAccountProtectionInput {
   action: CloudAccountAction!
 
   # List of features for native protection of cloud account.
-  features: [CloudAccountFeature!]!
+  features: [CloudAccountFeature!]
 
   # Admin account, required for bulk upload.
   awsAdminAccount: AwsCloudAccountInput
@@ -45302,6 +46028,9 @@ input FinalizeAwsCloudAccountProtectionInput {
 
   # List of feature types to be protected for the cloud account.
   featureVersion: [AwsCloudAccountFeatureVersionInput!]
+
+  # List of features to onboard for the cloud account along with specific permissions groups. This list is a valid input only for customer-managed cluster users.
+  featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!]
 }
 # Response for the operation to finalize protection for AWS cloud accounts.
 type FinalizeAwsCloudAccountProtectionReply {
@@ -45311,25 +46040,25 @@ type FinalizeAwsCloudAccountProtectionReply {
   # Contains success response message.
   awsChildAccounts: [AwsCloudAccount!]!
 }
-# Supported in v9.0+
+# Supported in v8.1+
 # API credentials to add or update the Pure NAS system with API integration. Also contains credentials for SMB share access.
 input FlashBladeSystemParametersInput {
-  # Supported in v9.0+
+  # Supported in v8.1+
   # TLS certification to validate the NAS server.
   apiCertificate: String
 
-  # Supported in v9.0+
+  # Supported in v8.1+
   # ID corresponding to the imported certificate.
   certificateId: String
 
-  # Supported in v9.0+
+  # Supported in v8.1+
   # Credentials to access SMB shares.
   smbCredentials: GenericNasSystemCredentialsInput
 
-  # Required. Supported in v9.0+
+  # Required. Supported in v8.1+
   apiToken: String!
 
-  # Required. Supported in v9.0+
+  # Required. Supported in v8.1+
   # Specifies whether to enable SMB for this NAS system.
   hasSmbSupport: Boolean!
 }
@@ -47075,6 +47804,9 @@ type GetAnomalyDetailsReply {
   # The FID of the previous snapshot.
   previousSnapshotFid: String!
 
+  # Specifies the resolution status of the anomaly.
+  resolutionStatus: ResolutionStatus!
+
   # Severity of the anomaly.
   severity: ActivitySeverityEnum!
 
@@ -47181,6 +47913,33 @@ input GetComputeClusterInput {
 input GetContainersInput {
   # Required. ID of the Nutanix cluster.
   id: String!
+}
+# Filter for cross-account pairs request.
+input GetCrossAccountPairsFilter {
+  # Field from which query should be filtered.
+  field: GetCrossAccountPairsFilterField = NAME
+
+  # Value of the field.
+  text: String = ""
+}
+# Filter for querying cross-account pairs.
+enum GetCrossAccountPairsFilterField {
+  # Filter by role of the cross-account pair.
+  ACCOUNT_ROLE
+
+  # Filter by cross-account pair name.
+  NAME
+
+  # Filter by status of the cross-account pair.
+  STATUS
+}
+# Field to sort by for cross-account pairs.
+enum GetCrossAccountPairsSortByField {
+  # Cross-account pair name.
+  NAME
+
+  # Unspecified sort by field.
+  SORT_BY_FIELD_UNSPECIFIED
 }
 # Input required for retrieving a specific Certificate Signing Request (CSR).
 input GetCsrInput {
@@ -47987,6 +48746,9 @@ enum GlobalSlaQueryFilterInputField {
   # Filter SLA Domains eligible for upgrade.
   IS_ELIGIBLE_FOR_UPGRADE
 
+  # Filter SLA Domains based on read-only status.
+  IS_READ_ONLY
+
   # Filter by SLA Domain name.
   NAME
 
@@ -48090,6 +48852,9 @@ type GlobalSlaReply implements SlaDomain {
 
   # Specifies if this SLA Domain is retention-locked or not.
   isRetentionLockedSla: Boolean!
+
+  # Specifies whether the SLA Domain is read-only.
+  isReadOnly: Boolean
 
   # Specifies the retention lock mode when enabled for the SLA Domain.
   retentionLockMode: RetentionLockMode!
@@ -48343,6 +49108,7 @@ input GuestCredentialDefinitionInput {
   # Supported in v5.0+
   domain: String
   baseGuestCredential: BaseGuestCredentialInput
+  description: String
 }
 # Supported in v5.0+
 type GuestCredentialDetailListResponse {
@@ -48754,6 +49520,18 @@ enum HierarchyFilterField {
   # Filter by VPC ID.
   AWS_VPC_ID
 
+  # Filter Azure storage accounts by access tier.
+  AZURE_BLOB_STORAGE_ACCOUNT_ACCESS_TIER
+
+  # Filter Azure storage accounts by hierarchical namespace status.
+  AZURE_BLOB_STORAGE_ACCOUNT_HNS_STATUS
+
+  # Filter Azure storage accounts by resource group name.
+  AZURE_BLOB_STORAGE_ACCOUNT_RG_NAME
+
+  # Filter Azure storage accounts by subscription ID.
+  AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID
+
   # Filter Azure disks by ID of the attached virtual machine.
   AZURE_DISK_ATTACHED_VM
 
@@ -49103,6 +49881,9 @@ enum HierarchyFilterField {
   # Filter by the vendor type of the NAS Host.
   HOST_VENDOR_TYPE
 
+  # Filter Hyperv servers by Windows Host name or Hyperv Server name.
+  HYPERV_HOST_OR_SERVER_NAME
+
   # Filter Hyper-V virtual machines by the agent's connection status.
   HYPERV_VM_BY_AGENT_STATUS
 
@@ -49287,7 +50068,7 @@ enum HierarchyFilterField {
   # the NAS volume.
   NAS_VOLUME_EFFECTIVE_SLA
 
-  # Filter Nutanix clusters by the Nutanix Prism Central ID.
+  # Filter Nutanix clusters by Nutanix Prism Central ID(s).
   NUTANIX_PRISM_CENTRAL_ID
 
   # Filter out the standalone Nutanix cluster objects that are not
@@ -49296,6 +50077,9 @@ enum HierarchyFilterField {
 
   # Filter Nutanix virtual machines by the agent's connection status.
   NUTANIX_VM_BY_AGENT_STATUS
+
+  # Filter Nutanix virtual machines by Nutanix Category Value ID(s).
+  NUTANIX_VM_BY_CAT_VAL_ID
 
   # Filter Nutanix virtual machines by the Nutanix cluster CDMID.
   NUTANIX_VM_BY_NUTANIX_CLUSTER_CDMID
@@ -49647,7 +50431,23 @@ enum HierarchyObjectTypeEnum {
   PhysicalHost
   RubrikEbsVolume
   RubrikEc2Instance
+
+  # Salesforce metadata.
+  SALESFORCE_FIXED_OBJECT
+
+  # Salesforce object.
+  SALESFORCE_OBJECT
+
+  # Salesforce organization.
+  SALESFORCE_ORGANIZATION
+
+  # SAP HANA System.
+  SAP_HANA_SYSTEM
+
+  # SAP HANA Database.
   SapHanaDatabase
+
+  # SAP HANA System.
   SapHanaSystem
   ShareFileset
   SnapMirrorCloud
@@ -49782,6 +50582,12 @@ enum HierarchySortByField {
 
   # Sort by AWS VPC ID.
   AWS_VPC_ID
+
+  # Sort Azure storage accounts by capacity used.
+  AZURE_BLOB_STORAGE_ACCOUNT_CAPACITY_USED
+
+  # Sort Azure storage accounts by number of containers.
+  AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT
   AZURE_DISK_ATTACHED_VM
 
   # Sort Azure disks by common resource group name.
@@ -50548,6 +51354,20 @@ input HostMakePrimaryRequestInput {
   # For all hosts and virtual machines registered with this cluster, make itself the primary if the current primary is oldPrimaryClusterUuid.
   oldPrimaryClusterUuid: String
 }
+# Supported in v9.1+
+# The connection status of the Rubrik Backup Service (RBS) on the host.
+enum HostRbsConnectionStatus {
+  HOST_RBS_CONNECTION_STATUS_CONNECTED
+  HOST_RBS_CONNECTION_STATUS_CONNECTING
+  HOST_RBS_CONNECTION_STATUS_CONNECTOR_NOT_DEPLOYED
+  HOST_RBS_CONNECTION_STATUS_DELETED
+  HOST_RBS_CONNECTION_STATUS_DELETING
+  HOST_RBS_CONNECTION_STATUS_DISCONNECTED
+  HOST_RBS_CONNECTION_STATUS_PARTIALLY_CONNECTED
+  HOST_RBS_CONNECTION_STATUS_REFRESHING
+  HOST_RBS_CONNECTION_STATUS_REPLICATION_TARGET
+  HOST_RBS_CONNECTION_STATUS_SECONDARY_CLUSTER
+}
 # Supported in v5.0+
 input HostRegisterInput {
   # Supported in v5.0+
@@ -50968,7 +51788,8 @@ type HostSummary {
 
   # Supported in v5.0+
   # v5.0-v5.2:
-  # v5.3+: Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
+  # v5.3-v9.1: Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
+  # v9.2: This field is deprecated, use statusEnum field instead.
   status: String
 
   # Supported in v5.1+
@@ -50986,11 +51807,12 @@ type HostSummary {
   # ID of the Rubrik Backup Service (RBS) installed on the host.
   agentId: String
 
-  # Supported in v9.0+
+  # Supported in v8.1+
   # Specifies the last refresh epoch time in msec.
   lastRefreshTimeStamp: Long
   mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType
   mssqlCbtEnabled: MssqlCbtStatusType
+  statusEnum: HostRbsConnectionStatus
 
   # Supported in v5.0+
   nasBaseConfig: NasBaseConfig
@@ -52374,6 +53196,24 @@ type HypervHostSummaryListResponse {
   total: Long
   nextCursor: String
 }
+# Supported in v9.1+
+input HypervInplaceExportJobConfigInput {
+  # Supported in v9.2
+  # Location to save the Hyper-V Virtual Machine copy on the target host.
+  exportVmPath: String
+
+  # Supported in v9.1+
+  # ID of the in-place recovery target host.
+  hostId: String
+
+  # Supported in v9.1
+  # Indicates whether to retain the Hyper-V offline snapshot on the target server after completing the in-place recovery. Use `true` to keep the snapshot after in-place recovery. Use `false` to delete the snapshot after in-place recovery.
+  shouldKeepHypervSnapshotAfterRecovery: Boolean
+
+  # Supported in v9.2
+  # Indicates whether to retain the Hyper-V exported copy on the target server after completing the in-place recovery. Use `true` to keep the snapshot after in-place recovery. Use `false` to delete the snapshot after in-place recovery.
+  shouldKeepHypervVmCopyAfterRecovery: Boolean
+}
 # Supported in v7.0+
 input HypervInstantRecoverConfigForBatchInput {
   # Supported in v7.0+
@@ -52513,6 +53353,14 @@ input HypervMountSnapshotJobConfigInput {
 # The connection status of Hyper-V Host server.
 enum HypervMountedVmStatusType {
   # Hyper-V Live Mount
+  # is Mounted.
+  MOUNTED
+
+  # Hyper-V Live Mount
+  # is Mounting.
+  MOUNTING
+
+  # Hyper-V Live Mount
   # is Powered Off.
   POWEREDOFF
 
@@ -52531,6 +53379,10 @@ enum HypervMountedVmStatusType {
   # Hyper-V Live Mount virtual machine status could
   # not be parsed.
   UNKNOWN
+
+  # Hyper-V Live Mount
+  # is Unmounting.
+  UNMOUNTING
 }
 # Input configuration for taking batch on-demand snapshot of a Hyper-V virtual machine.
 input HypervOnDemandBackupJobConfigForBatchInput {
@@ -52657,8 +53509,11 @@ type HypervServer implements HierarchyObject , CdmHierarchyObject , PhysicalHost
   # Status of the Hyper-V server.
   status: HyperVStatus!
 
-  # Connectivity Status of HyperV Host.
+  # Connectivity Status of Hyper-V Host.
   connectionStatus: HypervHostStatusType!
+
+  # Name or IP Address of Hyper-V Host.
+  hostname: String
 
   # List of descendants.
   descendantConnection(
@@ -52772,6 +53627,20 @@ type HypervServer implements HierarchyObject , CdmHierarchyObject , PhysicalHost
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 }
+# Paginated list of HypervServer objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type HypervServerConnection {
+  # List of HypervServer objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [HypervServerEdge!]!
+
+  # List of HypervServer objects.
+  nodes: [HypervServer!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of HypervServer objects matching the request arguments.
+  count: Int!
+}
 # Hyper-V server descendant type.
 interface HypervServerDescendantType {
   # Rubrik cluster where this object originated.
@@ -52861,6 +53730,14 @@ type HypervServerDescendantTypeEdge {
 
   # The actual HypervServerDescendantType object wrapped by this edge.
   node: HypervServerDescendantType!
+}
+# Wrapper around the HypervServer object. This wrapper is used for pagination.
+type HypervServerEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual HypervServer object wrapped by this edge.
+  node: HypervServer!
 }
 # Hyper-V server logical child type.
 interface HypervServerLogicalChildType {
@@ -53307,6 +54184,9 @@ type IdentityProvider {
   # Metadata of the identity provider in JSON format.
   metadataJson: String!
 
+  # Signing certificate of the identity provider.
+  signingCertificate: String!
+
   # Expiration date of the identity providers metadata.
   expirationDate: DateTime
 }
@@ -53396,6 +54276,13 @@ enum InodeType {
   DIRECTORY
   FILE
   UNKNOWN_INODE
+}
+input InplaceExportHypervVirtualMachineInput {
+  # Required. Configuration for the in-place export request.
+  config: HypervInplaceExportJobConfigInput!
+
+  # Required. ID of snapshot.
+  id: String!
 }
 # Represents the in-place restore configurations.
 input InplaceRestoreConfig {
@@ -53915,6 +54802,9 @@ enum InventorySubHierarchyRootEnum {
   O365_ROOT
   ORACLE_ROOT
   PHYSICAL_HOST_ROOT
+
+  # Salesforce root.
+  SALESFORCE_ROOT
   SAP_HANA_ROOT
   VCD_ROOT
   VSPHERE_ROOT
@@ -54103,7 +54993,7 @@ input JoinSmbDomainInput {
   # Required. Configuration for joining Active Directory.
   config: SmbDomainJoinRequestInput!
 
-  # Required. SMB domain name.
+  # Required. ID of the SMB Domain to join.
   domainName: String!
 }
 # Basic information about Rubrik Kubernetes Agent manifest.
@@ -54952,6 +55842,31 @@ type LdapIntegrationEdge {
 enum LdapIntegrationFieldEnum {
   Name
 }
+# Reason for LDAP principal lockout.
+enum LdapLockReason {
+  # Administrative lock.
+  ADMINISTRATIVE_LOCK
+
+  # Lock reason unspecified.
+  LOCK_REASON_UNSPECIFIED
+}
+# LDAP lockout status.
+type LdapLockoutStatus {
+  # Whether the principal is locked out.
+  isLocked: Boolean!
+
+  # Lockout reason.
+  lockReason: LdapLockReason!
+
+  # Unlock reason.
+  unlockReason: LdapUnlockReason!
+
+  # Lockout timestamp.
+  lockedAt: DateTime
+
+  # Unlock timestamp.
+  unlockedAt: DateTime
+}
 enum LdapPrincipalFieldEnum {
   Name
 }
@@ -54987,6 +55902,14 @@ type LdapTotpStatus {
 
   # Whether TOTP is supported for the LDAP principal.
   isSupported: Boolean!
+}
+# Unlock reason for LDAP principal.
+enum LdapUnlockReason {
+  # Administrative unlock.
+  ADMINISTRATIVE_UNLOCK
+
+  # Unlock reason unspecified.
+  UNLOCK_REASON_UNSPECIFIED
 }
 # Supported in v5.2+
 input LegalHoldDownloadConfigInput {
@@ -55566,6 +56489,14 @@ type ListStoredDiskLocationsReply {
   # List of zones where your GCP disks are present.
   zones: [String!]!
 }
+# Field to sort by for valid replication sources.
+enum ListValidReplicationSourcesSortByField {
+  # Rubrik cluster name.
+  NAME
+
+  # Unspecified sort by field.
+  SORT_BY_FIELD_UNSPECIFIED
+}
 # Field to sort by for valid replication targets.
 enum ListValidReplicationTargetsSortByField {
   # Rubrik cluster name.
@@ -55631,6 +56562,9 @@ enum LockMethod {
 
   # Account locked due to too many failed login attempts (Brute-force attack).
   BRUTE_FORCE
+
+  # Account locked due to a leaked password.
+  LEAKED_PASSWORD
 
   # Unspecified.
   LOCK_METHOD_UNSPECIFIED
@@ -55768,6 +56702,49 @@ enum M365Cloud {
   # Cloud type not defined.
   NULL_CLOUD_TYPE
 }
+# Dashboard operation mode for a workload type of an org.
+enum M365DashboardOperationMode {
+  # Day to day mode.
+  DAY_TO_DAY_MODE
+
+  # Onboarding mode.
+  ONBOARDING_MODE
+}
+# Workload type for M365 dashboard.
+enum M365DashboardWorkloadType {
+  # Exchange workload type.
+  DST_EXCHANGE
+
+  # Onedrive workload type.
+  DST_ONEDRIVE
+
+  # Sharepoint workload type.
+  DST_SHAREPOINT
+
+  # Teams workload type.
+  DST_TEAMS
+}
+# Stores the backup locations of an M365 organization.
+type M365OrgBackupLocations {
+  # Primary backup data location of an M365 organization.
+  primaryLocation: M365Region
+
+  # Secondary backup data location(s) of an M365 organization.
+  secondaryLocations: [M365Region!]!
+}
+# Stores the operation modes of an M365 organization.
+type M365OrgOperationModes {
+  # Contains operation modes of different workload types of an M365 organization.
+  operationModes: [M365ProductOperationMode!]!
+}
+# Stores the dashboard operation mode of a workload type.
+type M365ProductOperationMode {
+  # Operation mode of the workload type of an M365 organization.
+  operationMode: M365DashboardOperationMode!
+
+  # Workload type of an M365 organization.
+  workloadType: M365DashboardWorkloadType!
+}
 # Represents Microsoft 365 region as described in the Microsoft Multi-Geo documentation.
 type M365Region {
   # The three-letter code identifying the region.
@@ -55811,7 +56788,8 @@ type MalwareMatch {
 # Supported in v6.0+
 type MalwareScanFileCriteria {
   # Supported in v6.0+
-  # Specify the smallest and largest files to scan.
+  # v6.0-v9.1: Specify the smallest and largest files to scan.
+  # v9.2: Specify the smallest and largest files to scan. This option is only compatible with Yara or Hash IOCs. Limits for Path IOC will not be respected.
   fileSizeLimits: MalwareScanFileSizeLimits
 
   # Supported in v6.0+
@@ -55824,7 +56802,8 @@ type MalwareScanFileCriteria {
 # Supported in v6.0+
 input MalwareScanFileCriteriaInput {
   # Supported in v6.0+
-  # Specify the smallest and largest files to scan.
+  # v6.0-v9.1: Specify the smallest and largest files to scan.
+  # v9.2: Specify the smallest and largest files to scan. This option is only compatible with Yara or Hash IOCs. Limits for Path IOC will not be respected.
   fileSizeLimits: MalwareScanFileSizeLimitsInput
 
   # Supported in v6.0+
@@ -55832,7 +56811,8 @@ input MalwareScanFileCriteriaInput {
   fileTimeLimits: MalwareScanFileTimeLimitsInput
 
   # Supported in v6.0+
-  # Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted.
+  # v6.0-v9.1: Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted.
+  # v9.2: Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted. This option is only compatible with Yara or Hash IOCs. Filters for Path IOC will not be respected.
   pathFilter: MalwareScanPathFilterInput
 }
 # Supported in v6.0+
@@ -56387,6 +57367,15 @@ enum ManagedObjectType {
 
   # Recovery plan - deprecated.
   RECOVERY_PLAN
+
+  # Salesforce metadata.
+  SALESFORCE_FIXED_OBJECT
+
+  # Salesforce object.
+  SALESFORCE_OBJECT
+
+  # Salesforce organization.
+  SALESFORCE_ORGANIZATION
 
   # SAP HANA database.
   SAP_HANA_DATABASE
@@ -57949,6 +58938,37 @@ type MarkAgentSecondaryCertificateReply {
 type Metadata {
   key: String!
   value: Value
+}
+# The types of metadata key.
+enum MetadataKey {
+  # Cluster ID used to generate cluster hyperlink.
+  CLUSTER_LINK_ID
+
+  # Metadata key is unspecified.
+  METADATA_KEY_UNSPECIFIED
+
+  # Object icon ID used to generate object icon.
+  OBJECT_ICON_ID
+
+  # Object ID used to generate object hyperlink.
+  OBJECT_LINK_ID
+
+  # Object type used to generate object hyperlink.
+  OBJECT_LINK_TYPE
+
+  # SLA Domain ID used to generate SLA Domain hyperlink.
+  SLA_DOMAIN_LINK_ID
+
+  # Table cell dot color.
+  TABLE_CELL_DOT_COLOR
+}
+# The generic Metadata with a list of key-values pairs.
+type MetadataV2 {
+  # The key of the metadata.
+  key: MetadataKey!
+
+  # The list of the metadata values.
+  values: [Value!]!
 }
 # Microsoft 365 subscription on which Ransomware Monitoring can be enabled.
 type Microsoft365RansomwareInvestigationEnablement {
@@ -65417,10 +66437,10 @@ input NasSystemRegisterInput {
   # Supported in v7.0+
   nasTmpApiCredentials: NasApiCredentialsInput
 
-  # Supported in v9.0+
+  # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
-  # Supported in v9.1+
+  # Supported in v8.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 
   # Required. Supported in v7.0+
@@ -65449,10 +66469,10 @@ input NasSystemUpdateInput {
   # The updated API credentials of the NAS system.
   nasApiCredentials: NasApiCredentialsInput
 
-  # Supported in v9.0+
+  # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
-  # Supported in v9.1+
+  # Supported in v8.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 }
 # Supported in v5.2+
@@ -66688,15 +67708,12 @@ input NutanixBulkOnDemandSnapshotJobConfigInput {
   vms: [NutanixOnDemandSnapshotJobConfigForBulkInput!]!
 }
 # Nutanix Category details.
-type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPrismCentralDescendantType , NutanixPrismCentralLogicalChildType {
+type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPrismCentralDescendantType , NutanixPrismCentralLogicalChildType , NutanixMultiClusterObjectType {
   # CDM ID of the Nutanix Category.
   cdmId: String!
 
   # Prism Central ID of the Category.
   prismCentralId: String!
-
-  # A list of duplicated object IDs representing identical instances of the Nutanix Category you considered. Each instance resides on a different Rubrik CDM cluster.
-  duplicateObjects: [NutanixCategory!]!
 
   # Connection status of the CDM cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
   connectionStatus: RefreshableObjectConnectionStatus!
@@ -66812,6 +67829,12 @@ type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPr
 
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
+
+  # Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+  duplicateObjectsAbsoluteCount: Int!
+
+  # Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.
+  duplicateObjects: [CdmHierarchyObject!]!
 }
 # Nutanix Category descendant type.
 interface NutanixCategoryDescendantType {
@@ -66994,7 +68017,7 @@ type NutanixCategoryLogicalChildTypeEdge {
   node: NutanixCategoryLogicalChildType!
 }
 # Nutanix Category Value details.
-type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , NutanixPrismCentralDescendantType , NutanixCategoryDescendantType , NutanixCategoryLogicalChildType {
+type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , NutanixPrismCentralDescendantType , NutanixCategoryDescendantType , NutanixCategoryLogicalChildType , NutanixMultiClusterObjectType {
   # CDM ID of the Nutanix Category Value.
   cdmId: String!
 
@@ -67003,9 +68026,6 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
 
   # Category ID of the Category Value.
   categoryId: String!
-
-  # A list of duplicated object IDs representing identical instances of the Nutanix CategoryValue you considered. Each instance resides on a different Rubrik CDM cluster.
-  duplicateObjects: [NutanixCategoryValue!]!
 
   # Connection status of the CDM Cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
   connectionStatus: RefreshableObjectConnectionStatus!
@@ -67055,6 +68075,23 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
 
     # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
     workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryValueLogicalChildTypeConnection!
+
+  # Provide a list of child Nutanix virtual machine objects for the current Nutanix category value.
+  nutanixVms(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): CdmHierarchyObjectConnection!
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -67121,6 +68158,12 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
 
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
+
+  # Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+  duplicateObjectsAbsoluteCount: Int!
+
+  # Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.
+  duplicateObjects: [CdmHierarchyObject!]!
 }
 # Nutanix Category Value descendant type.
 interface NutanixCategoryValueDescendantType {
@@ -67710,6 +68753,18 @@ type NutanixClusterSummary {
   # Required. Supported in v5.0+
   username: String!
   slaAssignable: SlaAssignable
+
+  # The name of the Nutanix Prism Central to which this Nutanix cluster belongs.
+  prismCentralName: String
+
+  # Nutanix Operating System version of the Nutanix cluster.
+  version: String
+
+  # The ID of the Nutanix Prism Central to which this Nutanix cluster belongs.
+  prismCentralId: String
+
+  # Last refresh time of the Nutanix cluster.
+  lastRefreshTime: DateTime
   snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
 
   # Supported in v5.3+
@@ -67793,30 +68848,30 @@ input NutanixExportSnapshotJobConfigForBatchInput {
   # ID of the virtual machine with the snapshot that requires exporting.
   vmId: String!
 }
-# Supported in v9.1+
+# Supported in v8.1+
 # API credentials to add or update the Nutanix File Server with API integration. Also contains credentials for SMB share access.
 input NutanixFileServerParametersInput {
-  # Supported in v9.1+
+  # Supported in v8.1+
   # TLS certification to validate the NAS system.
   apiCertificate: String
 
-  # Supported in v9.1+
+  # Supported in v8.1+
   # ID corresponding to the imported certificate.
   certificateId: String
 
-  # Supported in v9.1+
+  # Supported in v8.1+
   # Credentials to access SMB shares.
   smbCredentials: GenericNasSystemCredentialsInput
 
-  # Supported in v9.1+
+  # Supported in v8.1+
   # Password associated with the NAS API user account.
   apiPassword: String
 
-  # Supported in v9.1+
+  # Supported in v8.1+
   # Username to access the vendor-specific NAS API.
   apiUsername: String
 
-  # Required. Supported in v9.1+
+  # Required. Supported in v8.1+
   # Specifies whether to enable SMB for the NAS system.
   hasSmbSupport: Boolean!
 }
@@ -68012,6 +69067,14 @@ input NutanixMountSnapshotJobConfigForBatchInput {
   # ID of the virtual machine whose snapshot requires mounting.
   vmId: String!
 }
+# Nutanix Multi Cluster Object type.
+interface NutanixMultiClusterObjectType {
+  # Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+  duplicateObjectsAbsoluteCount: Int!
+
+  # Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.
+  duplicateObjects: [CdmHierarchyObject!]!
+}
 # Supported in v8.1+
 type NutanixNetwork {
   # Required. Supported in v8.1+
@@ -68059,7 +69122,7 @@ input NutanixPatchVmMountConfigInput {
   shouldPowerOn: Boolean!
 }
 # Nutanix Prism Central details.
-type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , NutanixTopLevelDescendantType {
+type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , NutanixTopLevelDescendantType , NutanixMultiClusterObjectType {
   # CDM ID of the Nutanix Virtual Machine.
   cdmId: String!
 
@@ -68084,11 +69147,25 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
   # Object ID.
   id: UUID!
 
-  # A list of duplicated object IDs representing identical instances of the Nutanix Prism Central you considered. Each instance resides on a different Rubrik CDM cluster.
-  duplicateObjects: [NutanixPrismCentral!]!
-
   # Connection status of the Nutanix Prism Central. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
   connectionStatus: RefreshableObjectConnectionStatus!
+
+  # Provide a list of child nutanix cluster objects for the current Nutanix Prism Central.
+  nutanixClusters(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): CdmHierarchyObjectConnection!
 
   # List of descendants.
   descendantConnection(
@@ -68198,6 +69275,12 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
 
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
+
+  # Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+  duplicateObjectsAbsoluteCount: Int!
+
+  # Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.
+  duplicateObjects: [CdmHierarchyObject!]!
 }
 # Input for the Nutanix Prism Central configuration parameters.
 input NutanixPrismCentralConfigInput {
@@ -70056,6 +71139,9 @@ input O365OauthConsentCompleteInput {
 
   # Natural ID of the resource.
   resourceNaturalId: String!
+
+  # Rubrik Security Cloud ID of the Microsoft 365 resource.
+  resourceId: UUID
 }
 type O365OauthConsentCompleteReply {
   encryptedRefreshToken: String!
@@ -70068,6 +71154,9 @@ input O365OauthConsentKickoffInput {
 
   # Type of the Azure app.
   appType: String!
+
+  # Rubrik Security Cloud ID of the Microsoft 365 resource.
+  resourceId: UUID
 }
 type O365OauthConsentKickoffReply {
   appClientId: String!
@@ -70710,6 +71799,9 @@ type O365ReplyFields {
 }
 # Recover operation type, Restore/Export/Inplace.
 enum O365RestoreActionType {
+  # Used for failed items export operation.
+  EXPORT_FAILED_ITEMS_FOR_SNAPPABLE
+
   # Used for export operation.
   EXPORT_SNAPPABLE
 
@@ -72048,6 +73140,14 @@ type OauthRequestPayload {
   # Scope of OAuth request.
   scope: String!
 }
+# Basic information about the Rubrik cluster corresponding to the object.
+type ObjectClusterSummary {
+  # ID of the Rubrik cluster.
+  id: UUID!
+
+  # Name of the cluster.
+  name: String!
+}
 # Supported in v6.0+
 type ObjectIdToSnapshotIds {
   # Required. Supported in v6.0+
@@ -72126,6 +73226,9 @@ type ObjectSpecificConfigs {
 
   # SLA Domain configuration for Managed Volume object.
   managedVolumeSlaConfig: ManagedVolumeSlaConfig
+
+  # SLA Domain configuration for Postgres DB Cluster object.
+  postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig
 }
 # Object-specific configurations.
 input ObjectSpecificConfigsInput {
@@ -72164,6 +73267,9 @@ input ObjectSpecificConfigsInput {
 
   # Input to configure the SLA Domain for Managed Volume.
   managedVolumeSlaConfigInput: ManagedVolumeSlaConfigInput
+
+  # Input to configure the SLA Domain for Postgres DB Cluster.
+  postgresDbClusterSlaConfigInput: PostgresDbClusterSlaConfigInput
 }
 type ObjectStatus {
   id: String!
@@ -72327,6 +73433,17 @@ enum ObjectTypeEnum {
   OracleDatabase
   RubrikEbsVolume
   RubrikEc2Instance
+
+  # Salesforce metadata.
+  SALESFORCE_FIXED_OBJECT
+
+  # Salesforce object.
+  SALESFORCE_OBJECT
+
+  # SAP HANA System.
+  SAP_HANA_SYSTEM
+
+  # SAP HANA Database.
   SapHanaDatabase
   ShareFileset
   SnapMirrorCloud
@@ -72342,8 +73459,8 @@ input ObjectTypeSummariesFilter {
   # Policy ID to filter.
   policyId: String = ""
 
-  # Object type to filter.
-  objectType: DataGovObjectType = OBJECT_TYPE_UNSPECIFIED
+  # Object types to filter.
+  objectTypes: [DataGovObjectType!] = []
 }
 # Input for restore path pair.
 input OldRestorePathPairInput {
@@ -72352,6 +73469,34 @@ input OldRestorePathPairInput {
 
   # The restore path.
   restorePath: String = ""
+}
+# Stores the backup stats of a workload type in on-boarding mode.
+type OnboardingModeBackupStats {
+  # Contains backup stats in different time range buckets.
+  backupStatsBuckets: [BackupStatsBucket!]!
+
+  # Total number of fulls succeeded in the chosen time range.
+  numFullsSucceeded: Int!
+
+  # Total number of fulls failed in the chosen time range.
+  numFullsFailed: Int!
+
+  # Total number of items backed up in the chosen time range.
+  numItemsBackedUp: Long!
+}
+# Stores the stats of a workload type in on-boarding mode.
+type OnboardingModeStats {
+  # Total number of fulls succeeded.
+  numFullsSucceeded: Int!
+
+  # Total number of fulls in-progress.
+  numFullsInProgress: Int!
+
+  # Percentage of completion for full backups.
+  completionPercentage: Int!
+
+  # Count of the number of objects protected with an SLA.
+  totalProtectedCount: Int!
 }
 # Parameters for OneDrive file or folder search.
 input OnedriveSearchFilter {
@@ -72523,6 +73668,9 @@ enum Operation {
 
   # Manage Recovery Plans within Orchestrated Recovery.
   MANAGE_RECOVERY_PLAN
+
+  # Manage ServiceNow Integration.
+  MANAGE_SERVICENOW_INTEGRATION
   MANAGE_SLA
 
   # The operation to manage the SMB domain.
@@ -72600,6 +73748,9 @@ enum Operation {
 
   # View CORS settings.
   VIEW_CORS_SETTINGS
+
+  # View cross-account pair.
+  VIEW_CROSS_ACCOUNT_PAIR
   VIEW_DASHBOARD
   VIEW_DATA_CLASS_GLOBAL
 
@@ -72630,6 +73781,9 @@ enum Operation {
   VIEW_REPLICATION_SETTINGS
   VIEW_REPORT
   VIEW_SECURITY_SETTINGS
+
+  # View ServiceNow Integration.
+  VIEW_SERVICENOW_INTEGRATION
   VIEW_SLA
 
   # The operation to view the SMB domain.
@@ -75177,6 +76331,9 @@ type Org {
   # Specifies whether this tenant organization has configured its own identity providers.
   hasOwnIdpConfigured: Boolean!
 
+  # Specifies whether service accounts are not enabled for this organization.
+  isServiceAccountDisabled: Boolean!
+
   # Organization admin role.
   orgAdminRole: Role!
 
@@ -75308,6 +76465,14 @@ type PageInfo {
   # Specifies whether edges exist following the current page.
   hasNextPage: Boolean!
 }
+# Marker for the next page of browse diff FMD results. All fields within are opaque and should not be manually used.
+type PaginationMarker {
+  # This field is opaque and should not be manually used. Path of last result.
+  key: String!
+
+  # This field is opaque and should not be manually used. Column values of sort_list of the last result.
+  sortKey: [Long!]!
+}
 # Supported in v5.0+
 type ParentAppInfo {
   # Supported in v5.0+
@@ -75361,6 +76526,9 @@ type PasswordComplexityPolicy {
 
   # Policy for controlling password expiration.
   passwordExpirationPolicy: PasswordComplexityPolicyTemplate
+
+  # Policy for controlling leaked password detection.
+  leakedDetectionPolicy: PasswordComplexityPolicyTemplate
 }
 # Specifies the password policy to be used by the organization.
 input PasswordComplexityPolicyInput {
@@ -75384,6 +76552,9 @@ input PasswordComplexityPolicyInput {
 
   # Policy for controlling password expiration.
   passwordExpirationPolicy: PasswordComplexityPolicyTemplateInput!
+
+  # Policy for controlling leaked password detection.
+  leakedDetectionPolicy: PasswordComplexityPolicyTemplateInput
 }
 # Specifies range of values for each password complexity policy field.
 type PasswordComplexityPolicyTemplate {
@@ -75634,6 +76805,18 @@ type PausedClustersInfo {
   # Rubrik clusters where the SLA Domain is paused.
   pausedClusters: [Cluster!]
 }
+# Details related to how user will be pulling image from our container registry.
+type PcrAwsImagePullDetails {
+  # AWS account ID of the account from which user will be pulling.
+  awsNativeId: String!
+}
+# AWS specific details of how user will be pulling images from our registry.
+input PcrAwsImagePullDetailsInput {
+  # Native ID of the AWS account from which user will be retrieving images.
+  awsNativeId: String = ""
+}
+# Details related to how user will retrieve images from our registry.
+union PcrImagePullDetails = PcrAwsImagePullDetails
 # The group type for the pending action.
 enum PendingActionGroupTypeEnum {
   APP_FLOW
@@ -75665,6 +76848,7 @@ enum PendingActionSubGroupTypeEnum {
   AWS_COMPUTE_SETTING_UPSERT
   AWS_IAM_CUSTOMER_ACCOUNT_UPSERT
   AWS_ROLE_BASED_ARCHIVAL_LOCATION
+  AZURE_CUSTOMER_FEATURE_UPSERT
   BLUEPRINT_CREATE
   BLUEPRINT_DELETE
   BLUEPRINT_DEPRECATE
@@ -75824,14 +77008,29 @@ enum PermissionsGroup {
   # SQL DB and SQL MI features.
   RECOVERY
 
+  # Represents the set of permissions required for the Rubrik-managed
+  # Exocompute cluster. Currently, these permissions apply only to the
+  # AWS Exocompute feature.
+  RSC_MANAGED_CLUSTER
+
+  # Represents the required permissions for the basic operation of
+  # SAP HANA SS. These permissions are applicable to the cloud cluster ES
+  # feature.
+  SAP_HANA_SS_BASIC
+
+  # Represents the required permissions for the recovery operation of
+  # SAP HANA SS. These permissions are applicable to the cloud cluster ES
+  # feature.
+  SAP_HANA_SS_RECOVERY
+
   # Represents the set of permissions required for private access to disk
   # snapshots. These permissions are applicable to the cloud native
   # protection feature.
   SNAPSHOT_PRIVATE_ACCESS
 }
-# Azure permissions group with accompanying version number.
+# Permissions group with accompanying version number.
 type PermissionsGroupWithVersion {
-  # Azure cloud account permissions group.
+  # Cloud account permissions group.
   permissionsGroup: PermissionsGroup!
 
   # Version of the permissions group.
@@ -76953,6 +78152,9 @@ type PolicySummaryDetails {
 
   # Risk summary for the policy.
   hitsSummary: HitsSummary
+
+  # Specifies whether the policy is anomalous.
+  isAnomalousPolicy: Boolean!
 }
 # Range of ports that are allowed to be accessed.
 input PortRange {
@@ -76961,6 +78163,16 @@ input PortRange {
 
   # The maximum port in the port range.
   portMax: Int = 0
+}
+# SLA Domain configuration for Postgres DB Cluster.
+type PostgresDbClusterSlaConfig {
+  # Specifies the duration for which the Write-Ahead Logging (WAL) logs for the Postgres DB cluster is retained.
+  logRetention: Duration
+}
+# Input to configure the SLA Domain for Postgres DB Cluster.
+input PostgresDbClusterSlaConfigInput {
+  # Specifies the duration for which the Write-Ahead Logging (WAL) logs for the Postgres DB cluster is retained.
+  logRetention: SlaDurationInput
 }
 input PreAddVcenterInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -77081,8 +78293,11 @@ input PrepareFeatureUpdateForAwsCloudAccountInput {
   # AWS account ID.
   cloudAccountId: UUID!
 
-  # List of features to be updated for the AWS account.
-  features: [CloudAccountFeature!]!
+  # List of cloud account features.
+  features: [CloudAccountFeature!] = []
+
+  # List of features to be updated for the AWS account with specific permissions groups. This list is a valid input only for customer-managed cluster users.
+  featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] = []
 }
 # Response to prepare updation of AWS cloud account.
 type PrepareFeatureUpdateForAwsCloudAccountReply {
@@ -77179,6 +78394,24 @@ input PrismElementCdmTuple {
 
   # The ID of the CDM cluster.
   cdmClusterId: UUID!
+}
+# Details of Private Container Registry, consisting of registry URL and details related to how user will be pulling image from our container registry.
+type PrivateContainerRegistryDetailsType {
+  # URL of user's Private Container Registry.
+  registryUrl: String!
+
+  # Details of how a user retrieves images to their AWS account from our container registry.
+  imagePullDetails: PcrImagePullDetails
+}
+# Input to retrieve Private Container Registry details.
+input PrivateContainerRegistryInput {
+  # Rubrik ID of the Exocompute account.
+  exocomputeAccountId: UUID!
+}
+# Response to the request to retrieve details of a PCR.
+type PrivateContainerRegistryReplyType {
+  # Details of PCR consisting of registry URL and how user pulls images into their registry from their AWS account.
+  pcrDetails: PrivateContainerRegistryDetailsType
 }
 # RCV private endpoint connection details.
 type PrivateEndpointConnection {
@@ -77381,6 +78614,14 @@ enum ProductState {
   # Unknown state.
   UNSPECIFIED_STATE
 }
+# The product type.
+enum ProductTargetType {
+  # CDM platform.
+  CDM
+
+  # RSC platform.
+  POLARIS
+}
 # Type of product.
 enum ProductType {
   PAG_TRIAL
@@ -77457,6 +78698,9 @@ type ProtectedObjects implements ProtectedObjectSummary {
 
   # Object type.
   objectType: ManagedObjectType
+
+  # The cluster corresponding to the object.
+  cluster: ObjectClusterSummary
 
   # The pause status of the protected object.
   slaPauseStatus: Boolean
@@ -77685,6 +78929,14 @@ input QuarterlySnapshotScheduleInput {
   # Starting month of quarter.
   quarterStartMonth: Month = JANUARY
 }
+# Input for query by id for replication network throttle bypass.
+input QueryByIdReplicationTargetInfoInput {
+  # Cluster UUID of the source Rubrik cluster.
+  clusterUuid: String!
+
+  # Cluster UUID of the target target cluster.
+  id: String!
+}
 input QueryCertificatesInput {
   # Search certificates by description.
   description: String
@@ -77831,6 +79083,11 @@ input QueryNetworkThrottleInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
 }
+# Input for replication network throttle bypass info get request.
+input QueryReplicationTargetInfoInput {
+  # Cluster UUID of the source Rubrik cluster.
+  clusterUuid: String!
+}
 # Input for getting the database log reporting properties for a cluster.
 input QueryReportPropertiesInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -77894,6 +79151,9 @@ type RansomwareInvestigationEnablementReply {
 
   # Cloud Direct clusters on which Ransomware Monitoring can be enabled.
   cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!]
+
+  # The Azure subscriptions on which Ransomware Investigation can be enabled.
+  azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!]
 }
 # Ransomware Investigation report from lambda service.
 type RansomwareResult {
@@ -78201,6 +79461,9 @@ enum RcsRegionEnumType {
   # Australia Southeast or Victoria.
   AUSTRALIA_SOUTHEAST
 
+  # Canada Central or Toronto.
+  CANADA_CENTRAL
+
   # Canada East or Quebec City.
   CANADA_EAST
 
@@ -78228,8 +79491,14 @@ enum RcsRegionEnumType {
   # Japan East or Tokyo.
   JAPAN_EAST
 
+  # Japan West or Osaka.
+  JAPAN_WEST
+
   # Norway East or Oslo.
   NORWAY_EAST
+
+  # Poland Central or Warsaw.
+  POLAND_CENTRAL
 
   # South Africa North or Johannesburg.
   SOUTH_AFRICA_NORTH
@@ -78245,6 +79514,9 @@ enum RcsRegionEnumType {
 
   # UK South or London.
   UK_SOUTH
+
+  # UK West or Cardiff.
+  UK_WEST
 
   # Rubrik Cloud Vault Azure region is unknown.
   UNKNOWN_AZURE_REGION
@@ -78269,6 +79541,9 @@ enum RcsRegionEnumType {
 
   # US west 2 or Washington.
   US_WEST_2
+
+  # West US 3 or Arizona.
+  WEST_US3
 }
 # Tiers for Rubrik Cloud Vault Archival Location.
 enum RcsTierEnumType {
@@ -79019,6 +80294,18 @@ enum ReplicationInterfaceType {
   # Management interface type.
   MANAGEMENT
 }
+# Supported in v6.0+
+type ReplicationNetworkThrottleBypassReply {
+  # Required. Cluster UUID of the replication target.
+  id: String!
+
+  # Required. Supported in v6.0+
+  # If true, the replication throttle is bypassed. An active replication network throttle does not limit outgoing traffic to the replication target. If false, outgoing traffic is limited by an active replication network throttle.
+  shouldBypassReplicationThrottle: Boolean!
+
+  # Required. Name of the replication target cluster.
+  clusterName: String!
+}
 # Replication pair specific information.
 type ReplicationPair {
   # Storage (in bytes) consumed on target cluster by replicated snapshots.
@@ -79250,6 +80537,33 @@ type ReplicationTarget {
 
   # Total replicated storage on the target cluster from the source cluster.
   totalStorage: Long
+}
+# Replication Network Throttle Bypass Summary List Response.
+type ReplicationTargetThrottleBypassSummary {
+  # Cluster Uuid of the target Rubrik cluster.
+  id: String!
+
+  # If true, the replication throttle is bypassed. An active replication network throttle
+  # does not limit outgoing traffic to the replication target. If false, outgoing traffic is
+  # limited by an active replication network throttle.
+  shouldBypassReplicationThrottle: Boolean!
+
+  # Cluster name of the target Rubrik cluster.
+  clusterName: String!
+}
+# Replication Network Throttle Bypass Summary List Response.
+type ReplicationTargetThrottleBypassSummaryListResponse {
+  # List of all the network throttle bypass summary.
+  data: [ReplicationTargetThrottleBypassSummary!]!
+
+  # Total list responses.
+  total: Int
+}
+# Supported in v6.0+
+input ReplicationTargetThrottleUpdateInput {
+  # Required. Supported in v6.0+
+  # If true, the replication throttle is bypassed. An active replication network throttle does not limit outgoing traffic to the replication target. If false, outgoing traffic is limited by an active replication network throttle.
+  shouldBypassReplicationThrottle: Boolean!
 }
 # Replication to cloud location specification.
 type ReplicationToCloudLocationSpec {
@@ -79615,11 +80929,33 @@ input ResizeManagedVolumeInput {
   # Required. New size of the managed volume in bytes.
   size: ManagedVolumeResizeInput!
 }
+# The resolution status of an anomaly.
+enum ResolutionStatus {
+  # Resolved anomaly.
+  RESOLVED
+
+  # Unresolved anomaly.
+  UNRESOLVED
+}
 enum ResolutionType {
   RESOLVED_AD
   RESOLVED_ON_HOST
   UNRESOLVED
   WELL_KNOWN
+}
+# Resolve an anomaly.
+input ResolveAnomalyInput {
+  # The type of anomaly.
+  anomalyType: AnomalyType!
+
+  # The workload ID of the anomaly.
+  workloadId: UUID!
+
+  # The ID of the anomaly.
+  anomalyId: String!
+
+  # An optional false positive report for the anomaly resolution.
+  falsePositiveReport: AnomalyFalsePositiveReport
 }
 input ResolveVolumeGroupsConflictInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -79761,6 +81097,10 @@ input RestoreFilesJobConfigInput {
   # v7.0: ID of the guest OS credential that should be used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields will be ignored.
   # v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
   guestCredentialId: String
+
+  # Supported in v9.2
+  # Description.
+  description: String
 
   # Supported in v9.1+
   # Boolean field specifying whether to mount disks during restore jobs. When the value is 'true', the VMDK disks of the snapshot are mounted on the target VM for recovering the files and the parameter 'shouldUseAgent' is ignored. When the value is 'false', RSC may or may not use agent.
@@ -82598,8 +83938,14 @@ type SapHanaSystemInformation {
   # Specifies whether Dynamic Tiering service is enabled for the SAP HANA system.
   isDtEnabled: Boolean!
 
+  # Azure customer subscription name for the SAP HANA system.
+  azureCustomerSubscriptionName: String!
+
   # The authentication type for the SAP HANA system.
   authType: SapHanaSystemAuthType!
+
+  # UUID of Azure feature linked to the SAP HANA system.
+  azureFeatureUuid: UUID
 }
 # Supported in v5.3+
 input SapHanaSystemPatchInput {
@@ -82956,6 +84302,9 @@ input SearchAzureAdSnapshotInput {
   # Keyword used to search.
   azureAdSearchKeyword: String!
 
+  # Workload FID of the Azure AD directory.
+  workloadFid: UUID!
+
   # Azure AD object type.
   azureAdObjectType: AzureAdObjectType!
 
@@ -83281,6 +84630,14 @@ input SetAzureCloudAccountCustomerAppCredentialsInput {
   # Type of Azure Tenant. Possible values: Azure Public Cloud, Azure China Cloud.
   azureCloudType: AzureCloudType! = AZUREPUBLICCLOUD
 }
+# Input for the operation to upsert the approval status of an Exocompute container image bundle.
+input SetBundleApprovalStatusInput {
+  # The version of the bundle whose status is to be changed. The bundleVersion is of the form '<major_version>.<minor_version>' e.g. 1.2, 20.11 etc.
+  bundleVersion: String!
+
+  # The desired status of the bundle.
+  approvalStatus: ExoBundleApprovalStatus!
+}
 # Input to set customer-specified tags for a particular cloud type.
 input SetCustomerTagsInput {
   # Cloud provider type for which customer-specified tags are to be set.
@@ -83335,6 +84692,17 @@ input SetPasswordComplexityPolicyInput {
   # Password complexity policy for the organization.
   policy: PasswordComplexityPolicyInput!
 }
+# Input for setting Private Container Registry details.
+input SetPrivateContainerRegistryInput {
+  # Rubrik ID of the Exocompute account.
+  exocomputeAccountId: UUID!
+
+  # URL of user's Private Container Registry.
+  registryUrl: String!
+
+  # Details of how a user retrieves images from their AWS account from our container registry.
+  pcrAwsImagePullDetails: PcrAwsImagePullDetailsInput
+}
 # Custom certs to be added for org's Service Provider.
 input SetSsoCertificateInput {
   # ID of the certificate to be added.
@@ -83346,7 +84714,7 @@ input SetSsoCertificateInput {
 input SetTotpConfigInput {
   userId: String = ""
 
-  # TOTP secret for setting up TOTP as 2FA.
+  # Deprecated. Not supported.
   secret: String = ""
 
   # TOTP one-time password.
@@ -83716,6 +85084,9 @@ input SharePointItems {
   # ID of the object in SharePoint Online.
   sharepointId: String!
 
+  # Rubrik cluster ID for the parent object of the SharePoint item.
+  objectId: String
+
   # Type of the parent object.
   snappableType: SnappableType
 
@@ -83771,6 +85142,9 @@ input SharePointListRestoreConfig {
 input SharePointObject {
   # ID of the object in SharePoint Online.
   objectSharepointId: String!
+
+  # Rubrik cluster ID of the SharePoint object.
+  objectId: String
 
   # Name or title of the object.
   objectName: String!
@@ -84359,6 +85733,9 @@ enum SlaObjectType {
   # PostgreSQL DB Cluster object.
   POSTGRES_DB_CLUSTER_OBJECT_TYPE
 
+  # Salesforce object.
+  SALESFORCE_OBJECT_TYPE
+
   # SAP HANA object.
   SAP_HANA_OBJECT_TYPE
 
@@ -84401,6 +85778,9 @@ type SlaReplicationCluster {
 
   # Version of the replication cluster.
   version: String
+}
+type SlaResult {
+  success: Boolean!
 }
 # Fields to return the status of SLA Domains based on the specified value.
 enum SlaStatusFilterField {
@@ -85048,6 +86428,9 @@ input SnappableRestoreConfig {
 
   # In-place restore configuration for restore jobs.
   inplaceRestoreConfig: InplaceRestoreConfig
+
+  # Configuration for failed items recovery jobs.
+  failedItemsRecoveryConfig: FailedItemsRecoveryConfig
 }
 enum SnappableSlaAssignment {
   SNAPPABLE_SLA_ASSIGNMENT_DERIVED
@@ -85896,6 +87279,59 @@ input SnmpUserConfigInput {
   # Required. Supported in v5.2+
   # Username for SNMP v3 MIB access.
   username: String!
+}
+# Status of a snooze on a directory.
+enum SnoozeStatus {
+  # Snooze is active.
+  ACTIVE
+
+  # Snooze is expired.
+  EXPIRED
+}
+# A directory that has been snoozed.
+type SnoozedDirectory {
+  # The directory path.
+  directory: String!
+
+  # The type of false positive.
+  falsePositiveType: AnomalyFalsePositiveType!
+
+  # The account user that snoozed the directory.
+  userAccount: String!
+
+  # The status of the snooze.
+  status: SnoozeStatus!
+
+  # The expiration date of the snooze.
+  expirationDate: DateTime
+
+  # The date the snooze was created.
+  createdDate: DateTime
+
+  # The reason for snoozing the directory (if falsePositiveType equals to OTHER).
+  otherReason: String!
+}
+# Paginated list of SnoozedDirectory objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type SnoozedDirectoryConnection {
+  # List of SnoozedDirectory objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [SnoozedDirectoryEdge!]!
+
+  # List of SnoozedDirectory objects.
+  nodes: [SnoozedDirectory!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of SnoozedDirectory objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the SnoozedDirectory object. This wrapper is used for pagination.
+type SnoozedDirectoryEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual SnoozedDirectory object wrapped by this edge.
+  node: SnoozedDirectory!
 }
 type SonarContentReport {
   id: String!
@@ -86933,6 +88369,9 @@ input StartRecoverS3SnapshotJobInput {
 
   # List of object keys for granular recovery.
   objectKeys: [String!]!
+
+  # Rubrik ID of the AWS account where the S3 bucket will be recovered.
+  targetAwsAccountRubrikId: UUID
 }
 # Input to initiate a job to refresh an AWS native account.
 input StartRefreshAwsNativeAccountsJobInput {
@@ -87581,6 +89020,20 @@ type SuspiciousFileInfo {
 
   # File size in bytes.
   fileSizeBytes: Long!
+}
+# Inputs to switch an m365 product to onboarding mode.
+input SwitchProductToOnboardingModeInput {
+  # OrgID of the m365 org.
+  orgId: String = ""
+
+  # Dashboard workload type for which mode needs to be switched for.
+  workloadType: M365DashboardWorkloadType!
+}
+# Stores the response of the switch product to onboarding mode
+# operation.
+type SwitchProductToOnboardingModeReply {
+  # Boolean which specifies whether the switch is successful or not.
+  success: Boolean!
 }
 type SyslogCertificateInfo {
   # Syslog server's X.509 certificate in Base64 encoded DER format. The certificate should start with -----BEGIN CERTIFICATE-----
@@ -89141,6 +90594,51 @@ type TotpStatus {
   # The timestamp of the last TOTP configuration update.
   totpConfigUpdateAt: DateTime
 }
+# Status of a TPR request.
+enum TprReqStatus {
+  # The request was approved and is pending execution.
+  APPROVED
+
+  # The request was approved and scheduled to be executed.
+  APPROVED_AND_SCHEDULED
+
+  # The request was canceled.
+  CANCELED
+
+  # The request was completed.
+  COMPLETED
+
+  # The request was denied.
+  DENIED
+
+  # The request expired.
+  EXPIRED
+
+  # The request failed to complete.
+  FAILED
+
+  # The request is pending approval.
+  PENDING
+
+  # The request is staged for submission.
+  STAGED
+}
+# The status of a TPR request for node removal.
+type TprStatusForNodeRemoval {
+  # TPR request ID.
+  tprRequestId: String!
+
+  # The status of a TPR request.
+  status: TprReqStatus!
+}
+# Request parameters for checking and updating the TPR request for node removal.
+input TprStatusForNodeRemovalInput {
+  # Rubrik Cluster UUID.
+  clusterUuid: UUID!
+
+  # TPR request ID.
+  tprRequestId: String!
+}
 # Supported in v5.1+
 # The network protocol to use, either UDP or TCP.
 enum TransportLayerProtocol {
@@ -89245,6 +90743,9 @@ enum UnlockMethod {
   # Account unlocked automatically.
   AUTO_UNLOCK
 
+  # Account unlocked because the user reset their password.
+  PASSWORD_RESET
+
   # Account unlocked using a self-service link.
   SELF_SERVICE
 
@@ -89326,6 +90827,15 @@ type UnmanagedObjectDetail {
   # Unmanaged Status of this object.
   unmanagedStatus: UnmanagedObjectAvailabilityFilter!
 
+  # Region where the object is present.
+  region: WorkloadRegion!
+
+  # Cloud account ID of the AWS account associated with the object.
+  cloudAccountId: String!
+
+  # Cloud account name of the AWS account associated with the object.
+  cloudAccountName: String!
+
   # The effective SLA Domain of the unmanaged object.
   effectiveSlaDomain: SlaDomain!
 
@@ -89382,6 +90892,15 @@ input UnmanagedObjectsInput {
 
   # Object Id.
   objectId: String
+
+  # Regions to filter.
+  regions: [WorkloadRegionInput!]
+
+  # Cloud account IDs to filter.
+  cloudAccountIds: [String!]
+
+  # Managed by to filter.
+  managedBy: CloudVendor
 }
 # Unmanaged objects sorting parameters.
 input UnmanagedObjectsSortParam {
@@ -90059,6 +91578,16 @@ type UpdateCustomReportReply {
     # Returns the elements in the list that come before the specified cursor.
     before: String): ScheduledReportConnection!
 }
+# Input to update the Azure app  with specified permissions in an idempotent manner.
+input UpdateCustomerAppPermissionsInput {
+  # Specifies a list of app permissions which will be updated on the app.
+  appPermissions: [AzureAppPermission!]!
+}
+# Response of the operation to update the Azure app with specified permissions in an idempotent manner.
+type UpdateCustomerAppPermissionsReply {
+  # Specifies whether the customer app permissions was updated successfully. 
+  success: Boolean!
+}
 # Input for updating the database log reporting notifications settings for a cluster.
 input UpdateDatabaseLogReportingPropertiesForClusterInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -90466,6 +91995,25 @@ type UpdateLockoutConfigReply {
 
   # Specifies whether the auto unlock feature is enabled on the UI.
   isAutoUnlockFeatureEnabled: Boolean!
+}
+# UpdateManagedIdentitiesRequest input for the Azure account.
+input UpdateManagedIdentitiesInput {
+  # Cloud Account ID.
+  cloudAccountId: UUID!
+
+  # Cluster UUID.
+  clusterUuid: UUID!
+
+  # Managed Identity Info.
+  managedIdentity: AzureManagedIdentityName
+}
+# Transition to managed identities reply.
+type UpdateManagedIdentitiesReply {
+  # Boolean stating if successful.
+  isSuccessful: Boolean!
+
+  # Detailed error message.
+  error: String!
 }
 # Input for api call to update a Managed Volume.
 input UpdateManagedVolumeInput {
@@ -90896,8 +92444,11 @@ input UpdateOrgInput {
   # New SSO groups to be authorized for this tenant organization.
   newSsoGroups: [NewSsoGroupInput!]
 
-  # Specifies if service accounts are enabled for this organization.
+  # Deprecated. Use isServiceAccountDisabled instead.
   isServiceAccountEnabled: Boolean
+
+  # Specifies whether service accounts are not enabled for this organization.
+  isServiceAccountDisabled: Boolean
 
   # Specifies cross-account capabilities enabled for this organization.
   crossAccountCapabilities: [CrossAccountCapability!]
@@ -90978,6 +92529,17 @@ input UpdateRcvTargetInput {
 
   # Specifies whether the proxy settings must be bypassed for the RCV archival target.
   shouldBypassProxy: Boolean
+}
+# Input for network throttle bypass update request.
+input UpdateReplicationNetworkThrottleBypassInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. Updated throttle configuration.
+  config: ReplicationTargetThrottleUpdateInput!
+
+  # Required. Cluster UUID assigned to the replication target. The replication target should be configured using Private Net.
+  id: String!
 }
 # Request to update replication target information.
 input UpdateReplicationTargetInput {
@@ -91899,6 +93461,9 @@ enum UserAuditObjectTypeEnum {
   # Certificate management type.
   CERTIFICATE_MANAGEMENT
 
+  # Cloud Direct NAS Export.
+  CLOUD_DIRECT_NAS_EXPORT
+
   # Cloud native tag rule type.
   CloudNativeTagRule
 
@@ -91925,6 +93490,9 @@ enum UserAuditObjectTypeEnum {
 
   # Exchange Server type.
   EXCHANGE_SERVER
+
+  # Exocompute.
+  EXOCOMPUTE
 
   # EC2 instance type.
   Ec2Instance
@@ -92208,6 +93776,8 @@ enum UserAuditTableColumnEnum {
 }
 # User audit type.
 enum UserAuditTypeEnum {
+  # Audit type for anomalies.
+  ANOMALY
   AccessManagement
   Audit
 
@@ -92525,41 +94095,6 @@ enum V1QueryUnmanagedObjectSnapshotsV1RequestSortOrder {
   V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_ORDER_ASC
   V1_QUERY_UNMANAGED_OBJECT_SNAPSHOTS_V1_REQUEST_SORT_ORDER_DESC
 }
-# Type of the objects to be searched.
-enum V1SearchDomainControllerRequestObjectType {
-  # Active Directory built-in domain.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_BUILTIN_DOMAIN
-
-  # Active Directory child domain.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_CHILD_DOMAIN
-
-  # Active Directory computer object type.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_COMPUTER
-
-  # Active Directory contact object type.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_CONTACT
-
-  # Active Directory container object type.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_CONTAINER
-
-  # Active Directory domain root.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_DOMAIN_ROOT
-
-  # Active Directory group.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_GROUP
-
-  # Active Directory group policy.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_GROUP_POLICY_OBJECT
-
-  # Active Directory organization unit.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_ORGANIZATION_UNIT
-
-  # Unknown object type.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_UNKNOWN
-
-  # Active Directory user object type.
-  V1_SEARCH_DOMAIN_CONTROLLER_REQUEST_OBJECT_TYPE_USER
-}
 # Request source types for the request to delete NoSQL protection sources in bulk.
 enum V2BulkDeleteMosaicSourcesRequestSourceType {
   # Specifies that the request source type for the request to delete NoSQL protection sources in bulk is Cassandra.
@@ -92598,6 +94133,45 @@ input VSphereMountFilter {
   powerStatus: [Boolean!]
   sourceVmId: UUID
 }
+# The valid replication source Rubrik cluster-specific information.
+type ValidReplicationSource {
+  # Name of the Rubrik cluster.
+  name: String!
+
+  # Version of the Rubrik cluster.
+  version: String!
+
+  # The account name that the Rubrik cluster is associated with.
+  accountName: String!
+
+  # API version of the Rubrik cluster.
+  apiVersion: String!
+
+  # UUID of the Rubrik cluster.
+  uuid: UUID!
+}
+# Paginated list of ValidReplicationSource objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ValidReplicationSourceConnection {
+  # List of ValidReplicationSource objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ValidReplicationSourceEdge!]!
+
+  # List of ValidReplicationSource objects.
+  nodes: [ValidReplicationSource!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ValidReplicationSource objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the ValidReplicationSource object. This wrapper is used for pagination.
+type ValidReplicationSourceEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ValidReplicationSource object wrapped by this edge.
+  node: ValidReplicationSource!
+}
 # The valid replication target Rubrik cluster-specific information.
 type ValidReplicationTarget {
   # Name of the Rubrik cluster.
@@ -92606,7 +94180,7 @@ type ValidReplicationTarget {
   # Version of the Rubrik cluster.
   version: String!
 
-  # The account name that the cluster is associated with.
+  # The account name that the Rubrik cluster is associated with.
   accountName: String!
 
   # API version of the Rubrik cluster.
@@ -92643,7 +94217,7 @@ input ValidateAndCreateAwsCloudAccountInput {
   action: CloudAccountAction!
 
   # List of features to be enabled for cloud native protection.
-  features: [CloudAccountFeature!]!
+  features: [CloudAccountFeature!]
 
   # Admin account, required for bulk upload.
   awsAdminAccount: AwsCloudAccountInput
@@ -92653,6 +94227,9 @@ input ValidateAndCreateAwsCloudAccountInput {
 
   # Role customization options.
   awsRoleCustomization: AwsRoleCustomization
+
+  # List of cloud account features with specific permissions groups to onboard. This list is a valid input only for customer-managed cluster users.
+  featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!]
 }
 # Aws cloud accounts validate response.
 type ValidateAndCreateAwsCloudAccountReply {
@@ -100140,7 +101717,7 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
   vmwareToolsInstalled: Boolean!
   vsphereTagPath: [PathNode!]!
 
-  # Specifies whether the virtual machine is a child of a Disaster Recovery Plan.
+  # Specifies whether the virtual machine is a child of a disaster recovery or local recovery Plan.
   isBlueprintChild: Boolean!
 
   # Specifies whether the virtual machine is active or not.
@@ -101460,6 +103037,9 @@ type WorkloadAnomaly {
   # Identifies the anomaly for a given workload.
   anomalyId: String!
 
+  # The resolution status of the anomaly.
+  resolutionStatus: ResolutionStatus!
+
   # The object type of the workload.
   objectType: HierarchyObjectTypeEnum!
 
@@ -101585,6 +103165,28 @@ type WorkloadRecoveryInfo {
 
   # Original data source ID.
   oldWorkloadId: String!
+}
+# Region of the workload.
+type WorkloadRegion {
+  # Region of the GCP location.
+  gcpNativeRegion: String!
+
+  # Region of the AWS location.
+  awsNativeRegion: AwsNativeRegion!
+
+  # Region of the Azure location.
+  azureNativeRegion: AzureNativeRegion!
+}
+# Regions for which the workloads are to be shown.
+input WorkloadRegionInput {
+  # Region of the GCP location.
+  gcpNativeRegion: String!
+
+  # Region of the AWS location.
+  awsNativeRegion: AwsNativeRegion!
+
+  # Region of the Azure location.
+  azureNativeRegion: AzureNativeRegion!
 }
 # Details of the setup for performing backups for various object types.
 type WorkloadTypeToBackupSetupSpecs {

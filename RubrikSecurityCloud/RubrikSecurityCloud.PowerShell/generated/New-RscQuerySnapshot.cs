@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Snapshot' API domain:
-    /// ActiveDirectorySearchs, BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 21 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveDirectorySearchs, BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ClosestToPointInTime, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, Pvcs, QuarantinedDetails, Results, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQuerySnapshot -ActiveDirectorySearchs).Info().
+    /// (New-RscQuerySnapshot -BrowseFileList).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,51 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQuerySnapshot -ActiveDirectorySearchs).Info().
+    /// (New-RscQuerySnapshot -BrowseFileList).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the ActiveDirectorySearchs operation
-    /// of the 'Snapshot' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Snapshot
-    /// # API Operation: ActiveDirectorySearchs
-    /// 
-    /// $query = New-RscQuerySnapshot -ActiveDirectorySearchs
-    /// 
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # REQUIRED
-    /// $query.Var.id = $someString
-    /// # OPTIONAL
-    /// $query.Var.snapshotAfterDate = $someDateTime
-    /// # OPTIONAL
-    /// $query.Var.snapshotBeforeDate = $someDateTime
-    /// # REQUIRED
-    /// $query.Var.name = $someString
-    /// # OPTIONAL
-    /// $query.Var.objectType = $someV1SearchDomainControllerRequestObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1SearchDomainControllerRequestObjectType]) for enum values.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ActiveDirectoryObjectSearchResponseConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the BrowseFileList operation
@@ -1239,7 +1199,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "ActiveDirectorySearchs",
                 "BrowseFileList",
                 "ClosestToPointInTime",
                 "EmailSearch",
@@ -1276,9 +1235,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "ActiveDirectorySearchs":
-                        this.ProcessRecord_ActiveDirectorySearchs();
-                        break;
                     case "BrowseFileList":
                         this.ProcessRecord_BrowseFileList();
                         break;
@@ -1350,15 +1306,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // activeDirectorySearchSnapshots.
-        internal void ProcessRecord_ActiveDirectorySearchs()
-        {
-            this._logger.name += " -ActiveDirectorySearchs";
-            // Create new graphql operation activeDirectorySearchSnapshots
-            InitQueryActiveDirectorySearchSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1550,52 +1497,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryVappTemplateSnapshotExportOptions();
         }
 
-
-        // Create new GraphQL Query:
-        // activeDirectorySearchSnapshots(
-        //     first: Int
-        //     after: String
-        //     id: String!
-        //     snapshotAfterDate: DateTime
-        //     snapshotBeforeDate: DateTime
-        //     name: String!
-        //     objectType: V1SearchDomainControllerRequestObjectType
-        //   ): ActiveDirectoryObjectSearchResponseConnection!
-        internal void InitQueryActiveDirectorySearchSnapshots()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("id", "String!"),
-                Tuple.Create("snapshotAfterDate", "DateTime"),
-                Tuple.Create("snapshotBeforeDate", "DateTime"),
-                Tuple.Create("name", "String!"),
-                Tuple.Create("objectType", "V1SearchDomainControllerRequestObjectType"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryActiveDirectorySearchSnapshots",
-                "($first: Int,$after: String,$id: String!,$snapshotAfterDate: DateTime,$snapshotBeforeDate: DateTime,$name: String!,$objectType: V1SearchDomainControllerRequestObjectType)",
-                "ActiveDirectoryObjectSearchResponseConnection",
-                Query.ActiveDirectorySearchSnapshots_ObjectFieldSpec,
-                Query.ActiveDirectorySearchSnapshotsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# REQUIRED
-$query.Var.id = $someString
-# OPTIONAL
-$query.Var.snapshotAfterDate = $someDateTime
-# OPTIONAL
-$query.Var.snapshotBeforeDate = $someDateTime
-# REQUIRED
-$query.Var.name = $someString
-# OPTIONAL
-$query.Var.objectType = $someV1SearchDomainControllerRequestObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1SearchDomainControllerRequestObjectType]) for enum values."
-            );
-        }
 
         // Create new GraphQL Query:
         // browseSnapshotFileConnection(

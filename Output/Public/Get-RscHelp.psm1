@@ -187,45 +187,7 @@ function Get-RscHelp {
             }
         }
 
-        function LookupUsageInRootFields {
-            param (
-                [Parameter(
-                    Mandatory = $true,
-                    HelpMessage = 'Name of the type to look up.'
-                )]
-                [string]$typeName,
-
-                [Parameter(
-                    Mandatory = $false,
-                    HelpMessage = 'Kind of type to look up.'
-                )]
-                [string]$typeKindName,
-
-                [Parameter(
-                    Mandatory = $false,
-                    HelpMessage = 'Quietly return counts'
-                )]
-                [switch]$CountOnly
-            )
-            $info1 = [RubrikSecurityCloud.Types.SchemaMeta]::GqlRootFieldLookupByReturnType($typeName)
-            $info2 = [RubrikSecurityCloud.Types.SchemaMeta]::GqlRootFieldLookupByArgType($typeName)
-            if ($CountOnly) {
-                $count1 = $info1.Count
-                $count2 = $info2.Count
-                return New-Object PSObject -Property @{
-                    TypeName     = $typeName
-                    AsReturnType = $count1
-                    AsArgument   = $count2
-                }
-            }
-            Write-Output "# GraphQL fields that return this ${typeKindName}:"
-            Write-Output $info1
-            Write-Output "# GraphQL fields that accept this ${typeKindName} as an argument:"
-            Write-Output $info2
-        }
-
         function LookupType {
-            $tableData = @()
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlTypeName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
                 # if it's an exact match, print type info
@@ -234,61 +196,47 @@ function Get-RscHelp {
                     Write-Output "# `$t = Get-RscType -Name $value"
                     Write-Output "# `$t.AllFields()"
                     Write-Output "# "
-                    LookupUsageInRootFields -typeName $value -typeKindName "type"
+                    Write-Output "# GraphQL fields that return this type:"
+                    $info = [RubrikSecurityCloud.Types.SchemaMeta]::GqlRootFieldLookupByReturnType($value)
+                    Write-Output $info
                     continue
                 }
                 # print it if $Input is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    # retrieve usage counts
-                    $tableData += LookupUsageInRootFields -typeName $value -CountOnly
+                    Write-Output $value
                 }
             }
-            # Display the table, sorted by the number of times the type is used as a return type
-            $tableData | Sort-Object AsReturnType | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }
 
         function LookupScalar {
-            $tableData = @()
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlScalarName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
                 # if it's an exact match, print scalar info
                 if ( $value -eq $Match ) {
                     Write-Output "# Scalar: $value"
-                    LookupUsageInRootFields -typeName $value -typeKindName "scalar"
+                    Write-Output "# GraphQL fields that return this scalar:"
+                    $info = [RubrikSecurityCloud.Types.SchemaMeta]::GqlRootFieldLookupByReturnType($value)
+                    Write-Output $info
                     continue
                 }
                 # print it if $Input is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    # retrieve usage counts
-                    $tableData += LookupUsageInRootFields -typeName $value -CountOnly
+                    Write-Output $value
                 }
             }
-            # Display the table, sorted by the number of times the type is used as a return type
-            $tableData | Sort-Object AsReturnType | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }
 
         function LookupUnion {
-            $tableData = @()
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlUnionName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
-                # if it's an exact match, print union info
-                if ( $value -eq $Match ) {
-                    Write-Output "# Union: $value"
-                    LookupUsageInRootFields -typeName $value -typeKindName "union"
-                    continue
-                }
                 # print it if $Input is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    # retrieve usage counts
-                    $tableData += LookupUsageInRootFields -typeName $value -CountOnly
+                    Write-Output $value
                 }
             }
-            # Display the table, sorted by the number of times the type is used as a return type
-            $tableData | Sort-Object AsReturnType | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }
 
         function LookupInterface {
-            $tableData = @()
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlInterfaceName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
                 # if it's an exact match, print interface info
@@ -301,64 +249,41 @@ function Get-RscHelp {
                         $info = "# Interface $value is not supported."
                     }
                     Write-Output $info
-                    LookupUsageInRootFields -typeName $value -typeKindName "interface"
                     continue
                 }
                 # print it if $Interface is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    # retrieve usage counts
-                    $tableData += LookupUsageInRootFields -typeName $value -CountOnly
+                    Write-Output $value
                 }
             }
-            # Display the table, sorted by the number of times the type is used as a return type
-            $tableData | Sort-Object AsReturnType | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }
 
         function LookupInput {
-            $tableData = @()
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlInputName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
-                # if it's an exact match, print input info
-                if ( $value -eq $Match ) {
-                    Write-Output "# Input: $value"
-                    LookupUsageInRootFields -typeName $value -typeKindName "input"
-                    continue
-                }
                 # print it if $Input is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    # retrieve usage counts
-                    $tableData += LookupUsageInRootFields -typeName $value -CountOnly
+                    Write-Output $value
                 }
             }
-            # Display the table, sorted by the number of times the type is used as an argument
-            $tableData | Sort-Object AsArgument | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }
 
         function LookupEnum {
-            $tableData = @()
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlEnumName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
-                # if it's an exact match, print enum info
-                if ( $value -eq $Match ) {
-                    Write-Output "# Enum: $value"
-                    LookupUsageInRootFields -typeName $value -typeKindName "enum"
-                    continue
-                }
                 # print it if $Enum is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    # retrieve usage counts
-                    $tableData += LookupUsageInRootFields -typeName $value -CountOnly
+                    Write-Output $value
                 }
             }
-            # Display the table, sorted by the number of times the type is used as an argument
-            $tableData | Sort-Object AsArgument | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }  
         
         function LookupDomain {
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+ApiDomainName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
                 # If it's an exact match, print operations in domain
-                if ($value -eq $Match) {
+                if ($value -eq $Match)
+                {
                     $info = [RubrikSecurityCloud.Types.SchemaMeta]::ApiOperationsByApiDomainName($value)
                     Write-Output "# Operations in domain ${value}:"
                     Write-Output $info

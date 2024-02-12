@@ -42,6 +42,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
 
+        [EnumMember(Value = "RSC_MANAGED_CLUSTER")]
+        RSC_MANAGED_CLUSTER,
+
+        [EnumMember(Value = "SAP_HANA_SS_BASIC")]
+        SAP_HANA_SS_BASIC,
+
+        [EnumMember(Value = "SAP_HANA_SS_RECOVERY")]
+        SAP_HANA_SS_RECOVERY,
+
         [EnumMember(Value = "SNAPSHOT_PRIVATE_ACCESS")]
         SNAPSHOT_PRIVATE_ACCESS
 

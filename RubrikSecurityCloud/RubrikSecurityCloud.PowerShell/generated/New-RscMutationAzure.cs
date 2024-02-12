@@ -2244,7 +2244,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	sessionId = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
@@ -2294,7 +2294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	cloudAccountId = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	# OPTIONAL
     /// 	featureToUpgrade = @(
@@ -4756,7 +4756,7 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	sessionId = $someString
-	# REQUIRED
+	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
@@ -4798,7 +4798,7 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	cloudAccountId = $someString
-	# REQUIRED
+	# OPTIONAL
 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	# OPTIONAL
 	featureToUpgrade = @(

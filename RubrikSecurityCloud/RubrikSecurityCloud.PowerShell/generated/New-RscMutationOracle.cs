@@ -140,6 +140,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				shouldUseSecureThriftForDataTransfer = $someBoolean
     /// 				# OPTIONAL
     /// 				sectionSizeInGb = $someInt
+    /// 				# OPTIONAL
+    /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
     /// 		# REQUIRED
@@ -225,6 +227,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				shouldUseSecureThriftForDataTransfer = $someBoolean
     /// 				# OPTIONAL
     /// 				sectionSizeInGb = $someInt
+    /// 				# OPTIONAL
+    /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
     /// 		# REQUIRED
@@ -310,6 +314,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				shouldUseSecureThriftForDataTransfer = $someBoolean
     /// 				# OPTIONAL
     /// 				sectionSizeInGb = $someInt
+    /// 				# OPTIONAL
+    /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
     /// 		# REQUIRED
@@ -937,6 +943,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldUseSecureThriftForDataTransfer = $someBoolean
     /// 			# OPTIONAL
     /// 			sectionSizeInGb = $someInt
+    /// 			# OPTIONAL
+    /// 			isPaused = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUseSepsWallet = $someBoolean
@@ -1387,6 +1395,8 @@ $query.Var.input = @{
 				shouldUseSecureThriftForDataTransfer = $someBoolean
 				# OPTIONAL
 				sectionSizeInGb = $someInt
+				# OPTIONAL
+				isPaused = $someBoolean
 			}
 		}
 		# REQUIRED
@@ -1464,6 +1474,8 @@ $query.Var.input = @{
 				shouldUseSecureThriftForDataTransfer = $someBoolean
 				# OPTIONAL
 				sectionSizeInGb = $someInt
+				# OPTIONAL
+				isPaused = $someBoolean
 			}
 		}
 		# REQUIRED
@@ -1541,6 +1553,8 @@ $query.Var.input = @{
 				shouldUseSecureThriftForDataTransfer = $someBoolean
 				# OPTIONAL
 				sectionSizeInGb = $someInt
+				# OPTIONAL
+				isPaused = $someBoolean
 			}
 		}
 		# REQUIRED
@@ -2064,6 +2078,8 @@ $query.Var.input = @{
 			shouldUseSecureThriftForDataTransfer = $someBoolean
 			# OPTIONAL
 			sectionSizeInGb = $someInt
+			# OPTIONAL
+			isPaused = $someBoolean
 		}
 		# OPTIONAL
 		shouldUseSepsWallet = $someBoolean

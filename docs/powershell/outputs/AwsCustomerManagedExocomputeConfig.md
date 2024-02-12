@@ -2,7 +2,6 @@
 AWS Customer Managed Exocompute Configuration in a region.
 
 - clusterName: System.String
-  - Exocompute cluster name.
 - configUuid: System.String
   - Exocompute configuration UUID.
 - message: System.String

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("data")]
         public List<DiffData>? Data { get; set; }
 
+        //      C# -> PaginationMarker? PaginationMarker
+        // GraphQL -> paginationMarker: PaginationMarker (type)
+        [JsonProperty("paginationMarker")]
+        public PaginationMarker? PaginationMarker { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public DiffResult Set(
         System.Int64? PreviousSnapshotDate = null,
         System.String? PreviousSnapshotId = null,
-        List<DiffData>? Data = null
+        List<DiffData>? Data = null,
+        PaginationMarker? PaginationMarker = null
     ) 
     {
         if ( PreviousSnapshotDate != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Data != null ) {
             this.Data = Data;
+        }
+        if ( PaginationMarker != null ) {
+            this.PaginationMarker = PaginationMarker;
         }
         return this;
     }
@@ -97,6 +106,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "data {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PaginationMarker? PaginationMarker
+        // GraphQL -> paginationMarker: PaginationMarker (type)
+        if (this.PaginationMarker != null) {
+            var fspec = this.PaginationMarker.AsFieldSpec(conf.Child("paginationMarker"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "paginationMarker {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -159,6 +180,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Data != null && ec.Excludes("data",false))
         {
             this.Data = null;
+        }
+        //      C# -> PaginationMarker? PaginationMarker
+        // GraphQL -> paginationMarker: PaginationMarker (type)
+        if (ec.Includes("paginationMarker",false))
+        {
+            if(this.PaginationMarker == null) {
+
+                this.PaginationMarker = new PaginationMarker();
+                this.PaginationMarker.ApplyExploratoryFieldSpec(ec.NewChild("paginationMarker"));
+
+            } else {
+
+                this.PaginationMarker.ApplyExploratoryFieldSpec(ec.NewChild("paginationMarker"));
+
+            }
+        }
+        else if (this.PaginationMarker != null && ec.Excludes("paginationMarker",false))
+        {
+            this.PaginationMarker = null;
         }
     }
 

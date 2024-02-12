@@ -8,6 +8,11 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
 - There is a single argument of type PreviewFilterInput.
 - Returns VcenterAdvancedTagPreviewReply.
+### asyncrequeststatus
+Get async status of vcenter request.
+
+- There is a single argument of type VcenterAsyncRequestStatusInput.
+- Returns AsyncRequestStatus.
 ### hotaddbandwidth
 Get the ingest and export bandwidth limits for HotAdd with the vCenter
 

@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXOCOMPUTE")]
         EXOCOMPUTE,
 
+        [EnumMember(Value = "FEATURE_UNSPECIFIED")]
+        FEATURE_UNSPECIFIED,
+
         [EnumMember(Value = "GCP_SHARED_VPC_HOST")]
         GCP_SHARED_VPC_HOST,
 

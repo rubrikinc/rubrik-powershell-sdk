@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Ransomware' API domain:
-    /// DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, InvestigationWorkloadScannedCount, OverallInvestigationSummary, PendingInvestigationResultsCount, ProcessedInvestigationWorkloadCount, ProtectedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
+    /// DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, OverallInvestigationSummary, ProcessedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
     /// </summary>
     /// <description>
     /// New-RscQueryRansomware creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
+    /// There are 9 operations
     /// in the 'Ransomware' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, InvestigationWorkloadScannedCount, OverallInvestigationSummary, PendingInvestigationResultsCount, ProcessedInvestigationWorkloadCount, ProtectedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
+    /// one of: DetectionWorkloadLocations, InvestigationAnalysisSummary, InvestigationEnablement, OverallInvestigationSummary, ProcessedInvestigationWorkloadCount, Result, ResultOpt, Results, or ResultsGrouped.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -182,34 +182,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the InvestigationWorkloadScannedCount operation
-    /// of the 'Ransomware' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Ransomware
-    /// # API Operation: InvestigationWorkloadScannedCount
-    /// 
-    /// $query = New-RscQueryRansomware -InvestigationWorkloadScannedCount
-    /// 
-    /// # REQUIRED
-    /// $query.Var.workloadId = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RansomwareInvestigationWorkloadScannedCountReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the OverallInvestigationSummary operation
     /// of the 'Ransomware' API domain.
     /// <code>
@@ -238,33 +210,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the PendingInvestigationResultsCount operation
-    /// of the 'Ransomware' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Ransomware
-    /// # API Operation: PendingInvestigationResultsCount
-    /// 
-    /// $query = New-RscQueryRansomware -PendingInvestigationResultsCount
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: PendingEvaluationResultsReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the ProcessedInvestigationWorkloadCount operation
     /// of the 'Ransomware' API domain.
     /// <code>
@@ -284,33 +229,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ProcessedRansomwareInvestigationWorkloadCountReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ProtectedInvestigationWorkloadCount operation
-    /// of the 'Ransomware' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Ransomware
-    /// # API Operation: ProtectedInvestigationWorkloadCount
-    /// 
-    /// $query = New-RscQueryRansomware -ProtectedInvestigationWorkloadCount
-    /// 
-    /// # No variables for this query.
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ProtectedRansomwareInvestigationWorkloadCountReply
     /// 
     /// 
     /// 
@@ -511,11 +429,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DetectionWorkloadLocations",
                 "InvestigationAnalysisSummary",
                 "InvestigationEnablement",
-                "InvestigationWorkloadScannedCount",
                 "OverallInvestigationSummary",
-                "PendingInvestigationResultsCount",
                 "ProcessedInvestigationWorkloadCount",
-                "ProtectedInvestigationWorkloadCount",
                 "Result",
                 "ResultOpt",
                 "Results",
@@ -544,20 +459,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "InvestigationEnablement":
                         this.ProcessRecord_InvestigationEnablement();
                         break;
-                    case "InvestigationWorkloadScannedCount":
-                        this.ProcessRecord_InvestigationWorkloadScannedCount();
-                        break;
                     case "OverallInvestigationSummary":
                         this.ProcessRecord_OverallInvestigationSummary();
                         break;
-                    case "PendingInvestigationResultsCount":
-                        this.ProcessRecord_PendingInvestigationResultsCount();
-                        break;
                     case "ProcessedInvestigationWorkloadCount":
                         this.ProcessRecord_ProcessedInvestigationWorkloadCount();
-                        break;
-                    case "ProtectedInvestigationWorkloadCount":
-                        this.ProcessRecord_ProtectedInvestigationWorkloadCount();
                         break;
                     case "Result":
                         this.ProcessRecord_Result();
@@ -609,15 +515,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // ransomwareInvestigationWorkloadScannedCount.
-        internal void ProcessRecord_InvestigationWorkloadScannedCount()
-        {
-            this._logger.name += " -InvestigationWorkloadScannedCount";
-            // Create new graphql operation ransomwareInvestigationWorkloadScannedCount
-            InitQueryRansomwareInvestigationWorkloadScannedCount();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // overallRansomwareInvestigationSummary.
         internal void ProcessRecord_OverallInvestigationSummary()
         {
@@ -627,30 +524,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // pendingRansomwareInvestigationResultsCount.
-        internal void ProcessRecord_PendingInvestigationResultsCount()
-        {
-            this._logger.name += " -PendingInvestigationResultsCount";
-            // Create new graphql operation pendingRansomwareInvestigationResultsCount
-            InitQueryPendingRansomwareInvestigationResultsCount();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // processedRansomwareInvestigationWorkloadCount.
         internal void ProcessRecord_ProcessedInvestigationWorkloadCount()
         {
             this._logger.name += " -ProcessedInvestigationWorkloadCount";
             // Create new graphql operation processedRansomwareInvestigationWorkloadCount
             InitQueryProcessedRansomwareInvestigationWorkloadCount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // protectedRansomwareInvestigationWorkloadCount.
-        internal void ProcessRecord_ProtectedInvestigationWorkloadCount()
-        {
-            this._logger.name += " -ProtectedInvestigationWorkloadCount";
-            // Create new graphql operation protectedRansomwareInvestigationWorkloadCount
-            InitQueryProtectedRansomwareInvestigationWorkloadCount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -787,26 +666,6 @@ $query.Var.hideSuspiciousDataIfNonAnomalous = $someBoolean"
         }
 
         // Create new GraphQL Query:
-        // ransomwareInvestigationWorkloadScannedCount(workloadId: String!): RansomwareInvestigationWorkloadScannedCountReply!
-        internal void InitQueryRansomwareInvestigationWorkloadScannedCount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("workloadId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryRansomwareInvestigationWorkloadScannedCount",
-                "($workloadId: String!)",
-                "RansomwareInvestigationWorkloadScannedCountReply",
-                Query.RansomwareInvestigationWorkloadScannedCount_ObjectFieldSpec,
-                Query.RansomwareInvestigationWorkloadScannedCountFieldSpec,
-                @"# REQUIRED
-$query.Var.workloadId = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
         // overallRansomwareInvestigationSummary(historyNumHours: Int!): OverallRansomwareInvestigationSummary!
         internal void InitQueryOverallRansomwareInvestigationSummary()
         {
@@ -827,24 +686,6 @@ $query.Var.historyNumHours = $someInt"
         }
 
         // Create new GraphQL Query:
-        // pendingRansomwareInvestigationResultsCount: PendingEvaluationResultsReply!
-        internal void InitQueryPendingRansomwareInvestigationResultsCount()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryPendingRansomwareInvestigationResultsCount",
-                "",
-                "PendingEvaluationResultsReply",
-                Query.PendingRansomwareInvestigationResultsCount_ObjectFieldSpec,
-                Query.PendingRansomwareInvestigationResultsCountFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Query:
         // processedRansomwareInvestigationWorkloadCount: ProcessedRansomwareInvestigationWorkloadCountReply!
         internal void InitQueryProcessedRansomwareInvestigationWorkloadCount()
         {
@@ -858,24 +699,6 @@ $query.Var.historyNumHours = $someInt"
                 "ProcessedRansomwareInvestigationWorkloadCountReply",
                 Query.ProcessedRansomwareInvestigationWorkloadCount_ObjectFieldSpec,
                 Query.ProcessedRansomwareInvestigationWorkloadCountFieldSpec,
-                @""
-            );
-        }
-
-        // Create new GraphQL Query:
-        // protectedRansomwareInvestigationWorkloadCount: ProtectedRansomwareInvestigationWorkloadCountReply!
-        internal void InitQueryProtectedRansomwareInvestigationWorkloadCount()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryProtectedRansomwareInvestigationWorkloadCount",
-                "",
-                "ProtectedRansomwareInvestigationWorkloadCountReply",
-                Query.ProtectedRansomwareInvestigationWorkloadCount_ObjectFieldSpec,
-                Query.ProtectedRansomwareInvestigationWorkloadCountFieldSpec,
                 @""
             );
         }

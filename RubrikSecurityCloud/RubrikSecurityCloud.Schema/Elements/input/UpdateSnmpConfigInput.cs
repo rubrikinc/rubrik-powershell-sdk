@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snmpConfigV91")]
         public SnmpConfigurationPatchInput? SnmpConfigV91 { get; set; }
 
+        //      C# -> SnmpConfigurationPatchInput? SnmpConfigV92
+        // GraphQL -> snmpConfigV92: SnmpConfigurationPatchInput (input)
+        [JsonProperty("snmpConfigV92")]
+        public SnmpConfigurationPatchInput? SnmpConfigV92 { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]

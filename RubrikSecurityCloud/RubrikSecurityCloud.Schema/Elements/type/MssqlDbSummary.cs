@@ -175,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unprotectableReasonsV91")]
         public List<System.String>? UnprotectableReasonsV91 { get; set; }
 
+        //      C# -> List<System.String>? UnprotectableReasonsV92
+        // GraphQL -> unprotectableReasonsV92: [String!]! (scalar)
+        [JsonProperty("unprotectableReasonsV92")]
+        public List<System.String>? UnprotectableReasonsV92 { get; set; }
+
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
         [JsonProperty("currentBackupTaskInfo")]
@@ -246,6 +251,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? UnprotectableReasonsV81 = null,
         List<System.String>? UnprotectableReasonsV90 = null,
         List<System.String>? UnprotectableReasonsV91 = null,
+        List<System.String>? UnprotectableReasonsV92 = null,
         BackupTaskDiagnosticInfo? CurrentBackupTaskInfo = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
         List<MssqlDbReplica>? Replicas = null,
@@ -346,6 +352,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UnprotectableReasonsV91 != null ) {
             this.UnprotectableReasonsV91 = UnprotectableReasonsV91;
+        }
+        if ( UnprotectableReasonsV92 != null ) {
+            this.UnprotectableReasonsV92 = UnprotectableReasonsV92;
         }
         if ( CurrentBackupTaskInfo != null ) {
             this.CurrentBackupTaskInfo = CurrentBackupTaskInfo;
@@ -653,6 +662,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "unprotectableReasonsV91\n" ;
             } else {
                 s += ind + "unprotectableReasonsV91\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UnprotectableReasonsV92
+        // GraphQL -> unprotectableReasonsV92: [String!]! (scalar)
+        if (this.UnprotectableReasonsV92 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV92\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV92\n" ;
             }
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
@@ -1260,6 +1278,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.UnprotectableReasonsV91 != null && ec.Excludes("unprotectableReasonsV91",true))
         {
             this.UnprotectableReasonsV91 = null;
+        }
+        //      C# -> List<System.String>? UnprotectableReasonsV92
+        // GraphQL -> unprotectableReasonsV92: [String!]! (scalar)
+        if (ec.Includes("unprotectableReasonsV92",true))
+        {
+            if(this.UnprotectableReasonsV92 == null) {
+
+                this.UnprotectableReasonsV92 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV92 != null && ec.Excludes("unprotectableReasonsV92",true))
+        {
+            this.UnprotectableReasonsV92 = null;
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)

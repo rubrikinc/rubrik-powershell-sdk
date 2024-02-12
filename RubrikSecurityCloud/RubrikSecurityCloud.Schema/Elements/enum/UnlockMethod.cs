@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUTO_UNLOCK")]
         AUTO_UNLOCK,
 
+        [EnumMember(Value = "PASSWORD_RESET")]
+        PASSWORD_RESET,
+
         [EnumMember(Value = "SELF_SERVICE")]
         SELF_SERVICE,
 

@@ -21,6 +21,8 @@ Details of an org.
   - Health of the tenant networks associated with the organization.
 - hasOwnIdpConfigured: System.Boolean
   - Specifies whether this tenant organization has configured its own identity providers.
+- isServiceAccountDisabled: System.Boolean
+  - Specifies whether service accounts are not enabled for this organization.
 - orgAdminRole: Role
   - Organization admin role.
 - users: list of ExistingUsers
@@ -35,5 +37,7 @@ Details of an org.
   - Physical storage used by the organization.
 - allUrls: list of System.Strings
   - All URLs associated with the organization.
+- allClusterCapacityQuotas: list of ClusterCapacityQuotas
+  - All cluster capacity quotas enforced on the organization.
 - crossAccountCapabilities: list of CrossAccountCapabilitys
   - Specifies cross-account capabilities enabled for this organization.

@@ -36,7 +36,7 @@ Configuration for recovering MongoDB databases or collections from source to tar
 - targetAuthenticationType: MongoAuthenticationType
   - Supported in v9.0+
       v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
-      v9.1: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+      v9.1+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
 - sourceMongoClusterId: System.String
   - Required. Supported in v9.0+
       ID of the MongoDB source cluster.

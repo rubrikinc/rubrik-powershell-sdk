@@ -23,27 +23,27 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
-    /// operations in the 'Mongo DB' API domain:
-    /// BulkRecoverableRange, BulkRecoverableRanges, Collection, CollectionRecoverableRange, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
+    /// Create a new RscQuery object for any of the 8
+    /// operations in the 'Mongo' API domain:
+    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
     /// </summary>
     /// <description>
     /// New-RscQueryMongo creates a new
     /// query object for operations
-    /// in the 'Mongo DB' API domain. It only creates a data structure,
+    /// in the 'Mongo' API domain. It only creates a data structure,
     /// it does not execute the operation. This cmdlet does not need a
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
-    /// in the 'Mongo DB' API domain. Select the operation this
+    /// There are 8 operations
+    /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkRecoverableRange, BulkRecoverableRanges, Collection, CollectionRecoverableRange, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
+    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, Source, or Sources.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryMongo -BulkRecoverableRange).Info().
+    /// (New-RscQueryMongo -BulkRecoverableRanges).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,67 +70,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryMongo -BulkRecoverableRange).Info().
+    /// (New-RscQueryMongo -BulkRecoverableRanges).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the BulkRecoverableRange operation
-    /// of the 'Mongo DB' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: BulkRecoverableRange
-    /// 
-    /// $query = New-RscQueryMongo -BulkRecoverableRange
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	recoveryRangeData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
-    /// 		# REQUIRED
-    /// 		managementObjects = @{
-    /// 			# OPTIONAL
-    /// 			databases = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					dbName = $someString
-    /// 					# OPTIONAL
-    /// 					tables = @(
-    /// 						$someString
-    /// 					)
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: MosaicRecoveryRangeResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the BulkRecoverableRanges operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -169,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Collection operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -196,50 +144,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CollectionRecoverableRange operation
-    /// of the 'Mongo DB' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Mongo
-    /// # API Operation: CollectionRecoverableRange
-    /// 
-    /// $query = New-RscQueryMongo -CollectionRecoverableRange
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	recoveryRangeRequestData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
-    /// 		# REQUIRED
-    /// 		databaseName = $someString
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
-    /// 		# REQUIRED
-    /// 		tableName = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: GetMosaicRecoverableRangeResponse
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the Collections operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -315,7 +221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Database operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -343,7 +249,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Databases operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -419,7 +325,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the RecoverableRanges operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -458,7 +364,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Source operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -486,7 +392,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// <example>
     /// Runs the Sources operation
-    /// of the 'Mongo DB' API domain.
+    /// of the 'Mongo' API domain.
     /// <code>
     /// PS &gt;
     ///
@@ -576,10 +482,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "BulkRecoverableRange",
                 "BulkRecoverableRanges",
                 "Collection",
-                "CollectionRecoverableRange",
                 "Collections",
                 "Database",
                 "Databases",
@@ -601,17 +505,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "BulkRecoverableRange":
-                        this.ProcessRecord_BulkRecoverableRange();
-                        break;
                     case "BulkRecoverableRanges":
                         this.ProcessRecord_BulkRecoverableRanges();
                         break;
                     case "Collection":
                         this.ProcessRecord_Collection();
-                        break;
-                    case "CollectionRecoverableRange":
-                        this.ProcessRecord_CollectionRecoverableRange();
                         break;
                     case "Collections":
                         this.ProcessRecord_Collections();
@@ -642,15 +540,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // mongodbBulkRecoverableRange.
-        internal void ProcessRecord_BulkRecoverableRange()
-        {
-            this._logger.name += " -BulkRecoverableRange";
-            // Create new graphql operation mongodbBulkRecoverableRange
-            InitQueryMongodbBulkRecoverableRange();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // mongoBulkRecoverableRanges.
         internal void ProcessRecord_BulkRecoverableRanges()
         {
@@ -666,15 +555,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Collection";
             // Create new graphql operation mongoCollection
             InitQueryMongoCollection();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // mongodbCollectionRecoverableRange.
-        internal void ProcessRecord_CollectionRecoverableRange()
-        {
-            this._logger.name += " -CollectionRecoverableRange";
-            // Create new graphql operation mongodbCollectionRecoverableRange
-            InitQueryMongodbCollectionRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -733,50 +613,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
-        // mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!): MosaicRecoveryRangeResponse!
-        internal void InitQueryMongodbBulkRecoverableRange()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "MosaicBulkRecoveryRangeInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbBulkRecoverableRange",
-                "($input: MosaicBulkRecoveryRangeInput!)",
-                "MosaicRecoveryRangeResponse",
-                Query.MongodbBulkRecoverableRange_ObjectFieldSpec,
-                Query.MongodbBulkRecoverableRangeFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	recoveryRangeData = @{
-		# OPTIONAL
-		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
-		# REQUIRED
-		managementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = $someString
-					# OPTIONAL
-					tables = @(
-						$someString
-					)
-				}
-			)
-		}
-		# REQUIRED
-		sourceName = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
         // mongoBulkRecoverableRanges(input: RecoverableRangeInput!): MongoRecoverableRanges!
         internal void InitQueryMongoBulkRecoverableRanges()
         {
@@ -824,40 +660,6 @@ $query.Var.input = @{
                 Query.MongoCollectionFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!): GetMosaicRecoverableRangeResponse!
-        internal void InitQueryMongodbCollectionRecoverableRange()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryMongodbCollectionRecoverableRange",
-                "($input: GetMosaicRecoverableRangeInput!)",
-                "GetMosaicRecoverableRangeResponse",
-                Query.MongodbCollectionRecoverableRange_ObjectFieldSpec,
-                Query.MongodbCollectionRecoverableRangeFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	recoveryRangeRequestData = @{
-		# OPTIONAL
-		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
-		# REQUIRED
-		databaseName = $someString
-		# REQUIRED
-		sourceName = $someString
-		# REQUIRED
-		tableName = $someString
-	}
-}"
             );
         }
 

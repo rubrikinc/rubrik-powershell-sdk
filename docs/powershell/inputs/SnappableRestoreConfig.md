@@ -21,3 +21,5 @@ Represents the snappable contents to be restored.
   - Restore configuration for Contacts jobs.
 - inplaceRestoreConfig: InplaceRestoreConfig
   - In-place restore configuration for restore jobs.
+- failedItemsRecoveryConfig: FailedItemsRecoveryConfig
+  - Configuration for failed items recovery jobs.

@@ -55,3 +55,7 @@ Nutanix Category details.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- duplicateObjectsAbsoluteCount: System.Int32
+  - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+- duplicateObjects: list of CdmHierarchyObjects
+  - Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.

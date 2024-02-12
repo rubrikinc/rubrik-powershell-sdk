@@ -20,10 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ActiveDirectoryObjectType? ObjectType
-        // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
-        [JsonProperty("objectType")]
-        public ActiveDirectoryObjectType? ObjectType { get; set; }
+        //      C# -> ActiveDirectoryObjectType? ActiveDirectoryObjectType
+        // GraphQL -> activeDirectoryObjectType: ActiveDirectoryObjectType! (enum)
+        [JsonProperty("activeDirectoryObjectType")]
+        public ActiveDirectoryObjectType? ActiveDirectoryObjectType { get; set; }
 
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
@@ -50,14 +50,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ActiveDirectorySearchVersions Set(
-        ActiveDirectoryObjectType? ObjectType = null,
+        ActiveDirectoryObjectType? ActiveDirectoryObjectType = null,
         System.String? Dn = null,
         System.Int32? Dnt = null,
         System.String? SnapshotId = null
     ) 
     {
-        if ( ObjectType != null ) {
-            this.ObjectType = ObjectType;
+        if ( ActiveDirectoryObjectType != null ) {
+            this.ActiveDirectoryObjectType = ActiveDirectoryObjectType;
         }
         if ( Dn != null ) {
             this.Dn = Dn;
@@ -79,13 +79,13 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> ActiveDirectoryObjectType? ObjectType
-        // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
-        if (this.ObjectType != null) {
+        //      C# -> ActiveDirectoryObjectType? ActiveDirectoryObjectType
+        // GraphQL -> activeDirectoryObjectType: ActiveDirectoryObjectType! (enum)
+        if (this.ActiveDirectoryObjectType != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "objectType\n" ;
+                s += conf.Prefix + "activeDirectoryObjectType\n" ;
             } else {
-                s += ind + "objectType\n" ;
+                s += ind + "activeDirectoryObjectType\n" ;
             }
         }
         //      C# -> System.String? Dn
@@ -122,22 +122,22 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> ActiveDirectoryObjectType? ObjectType
-        // GraphQL -> objectType: ActiveDirectoryObjectType! (enum)
-        if (ec.Includes("objectType",true))
+        //      C# -> ActiveDirectoryObjectType? ActiveDirectoryObjectType
+        // GraphQL -> activeDirectoryObjectType: ActiveDirectoryObjectType! (enum)
+        if (ec.Includes("activeDirectoryObjectType",true))
         {
-            if(this.ObjectType == null) {
+            if(this.ActiveDirectoryObjectType == null) {
 
-                this.ObjectType = new ActiveDirectoryObjectType();
+                this.ActiveDirectoryObjectType = new ActiveDirectoryObjectType();
 
             } else {
 
 
             }
         }
-        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        else if (this.ActiveDirectoryObjectType != null && ec.Excludes("activeDirectoryObjectType",true))
         {
-            this.ObjectType = null;
+            this.ActiveDirectoryObjectType = null;
         }
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)

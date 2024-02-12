@@ -23,5 +23,14 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - vmName: System.String
   - Required. Supported in v5.0+
+- targetVmName: System.String
+  - Supported in v9.1+
+  The name of the target virtual machine.
+- attachedDiskCount: System.Int32
+  - Supported in v9.1+
+  The number of disks attached to the target virtual machine, if the mount is a disk-level mount.
+- isDiskLevelMount: System.Boolean
+  - Supported in v9.1+
+  A boolean field that indicates whether the mount is a disk-level mount.
 - powerStatus: HypervVirtualMachineMountSummaryPowerStatus
   - 

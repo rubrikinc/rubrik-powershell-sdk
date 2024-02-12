@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Replication' API domain:
-    /// IncomingStats, OutgoingStats, Pairs, or ValidTargets.
+    /// IncomingStats, NetworkThrottleBypass, NetworkThrottleBypassById, OutgoingStats, Pairs, ValidSources, or ValidTargets.
     /// </summary>
     /// <description>
     /// New-RscQueryReplication creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 7 operations
     /// in the 'Replication' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: IncomingStats, OutgoingStats, Pairs, or ValidTargets.
+    /// one of: IncomingStats, NetworkThrottleBypass, NetworkThrottleBypassById, OutgoingStats, Pairs, ValidSources, or ValidTargets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -102,6 +102,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: InternalReplicationBandwidthIncomingResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the NetworkThrottleBypass operation
+    /// of the 'Replication' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Replication
+    /// # API Operation: NetworkThrottleBypass
+    /// 
+    /// $query = New-RscQueryReplication -NetworkThrottleBypass
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ReplicationTargetThrottleBypassSummaryListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the NetworkThrottleBypassById operation
+    /// of the 'Replication' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Replication
+    /// # API Operation: NetworkThrottleBypassById
+    /// 
+    /// $query = New-RscQueryReplication -NetworkThrottleBypassById
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ReplicationNetworkThrottleBypassReply
     /// 
     /// 
     /// 
@@ -198,6 +262,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ValidSources operation
+    /// of the 'Replication' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Replication
+    /// # API Operation: ValidSources
+    /// 
+    /// $query = New-RscQueryReplication -ValidSources
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someListValidReplicationSourcesSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListValidReplicationSourcesSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.isCrossAccount = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ValidReplicationSourceConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ValidTargets operation
     /// of the 'Replication' API domain.
     /// <code>
@@ -254,8 +358,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "IncomingStats",
+                "NetworkThrottleBypass",
+                "NetworkThrottleBypassById",
                 "OutgoingStats",
                 "Pairs",
+                "ValidSources",
                 "ValidTargets",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -275,11 +382,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "IncomingStats":
                         this.ProcessRecord_IncomingStats();
                         break;
+                    case "NetworkThrottleBypass":
+                        this.ProcessRecord_NetworkThrottleBypass();
+                        break;
+                    case "NetworkThrottleBypassById":
+                        this.ProcessRecord_NetworkThrottleBypassById();
+                        break;
                     case "OutgoingStats":
                         this.ProcessRecord_OutgoingStats();
                         break;
                     case "Pairs":
                         this.ProcessRecord_Pairs();
+                        break;
+                    case "ValidSources":
+                        this.ProcessRecord_ValidSources();
                         break;
                     case "ValidTargets":
                         this.ProcessRecord_ValidTargets();
@@ -304,6 +420,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // replicationNetworkThrottleBypass.
+        internal void ProcessRecord_NetworkThrottleBypass()
+        {
+            this._logger.name += " -NetworkThrottleBypass";
+            // Create new graphql operation replicationNetworkThrottleBypass
+            InitQueryReplicationNetworkThrottleBypass();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // replicationNetworkThrottleBypassById.
+        internal void ProcessRecord_NetworkThrottleBypassById()
+        {
+            this._logger.name += " -NetworkThrottleBypassById";
+            // Create new graphql operation replicationNetworkThrottleBypassById
+            InitQueryReplicationNetworkThrottleBypassById();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // replicationOutgoingStats.
         internal void ProcessRecord_OutgoingStats()
         {
@@ -319,6 +453,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Pairs";
             // Create new graphql operation replicationPairs
             InitQueryReplicationPairs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allValidReplicationSources.
+        internal void ProcessRecord_ValidSources()
+        {
+            this._logger.name += " -ValidSources";
+            // Create new graphql operation allValidReplicationSources
+            InitQueryAllValidReplicationSources();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -352,6 +495,54 @@ $query.Var.input = @{
 	range = $someString
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // replicationNetworkThrottleBypass(input: QueryReplicationTargetInfoInput!): ReplicationTargetThrottleBypassSummaryListResponse!
+        internal void InitQueryReplicationNetworkThrottleBypass()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryReplicationTargetInfoInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryReplicationNetworkThrottleBypass",
+                "($input: QueryReplicationTargetInfoInput!)",
+                "ReplicationTargetThrottleBypassSummaryListResponse",
+                Query.ReplicationNetworkThrottleBypass_ObjectFieldSpec,
+                Query.ReplicationNetworkThrottleBypassFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // replicationNetworkThrottleBypassById(input: QueryByIdReplicationTargetInfoInput!): ReplicationNetworkThrottleBypassReply!
+        internal void InitQueryReplicationNetworkThrottleBypassById()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryByIdReplicationTargetInfoInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryReplicationNetworkThrottleBypassById",
+                "($input: QueryByIdReplicationTargetInfoInput!)",
+                "ReplicationNetworkThrottleBypassReply",
+                Query.ReplicationNetworkThrottleBypassById_ObjectFieldSpec,
+                Query.ReplicationNetworkThrottleBypassByIdFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -439,6 +630,52 @@ $query.Var.filter = @{
 		$someReplicationPairConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationPairConnectionStatus]) for enum values.
 	)
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allValidReplicationSources(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: ListValidReplicationSourcesSortByField
+        //     sortOrder: SortOrder
+        //     isCrossAccount: Boolean
+        //   ): ValidReplicationSourceConnection!
+        internal void InitQueryAllValidReplicationSources()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "ListValidReplicationSourcesSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("isCrossAccount", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllValidReplicationSources",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationSourcesSortByField,$sortOrder: SortOrder,$isCrossAccount: Boolean)",
+                "ValidReplicationSourceConnection",
+                Query.AllValidReplicationSources_ObjectFieldSpec,
+                Query.AllValidReplicationSourcesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortBy = $someListValidReplicationSourcesSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListValidReplicationSourcesSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.isCrossAccount = $someBoolean"
             );
         }
 

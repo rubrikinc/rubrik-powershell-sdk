@@ -208,6 +208,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	snapshotId = $someString
     /// 	# REQUIRED
+    /// 	workloadFid = $someString
+    /// 	# REQUIRED
     /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// }
     /// 
@@ -240,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	customerTenantDomainName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
@@ -973,6 +975,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotId = $someString
     /// 	# REQUIRED
     /// 	azureAdSearchKeyword = $someString
+    /// 	# REQUIRED
+    /// 	workloadFid = $someString
     /// 	# REQUIRED
     /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 	# REQUIRED
@@ -2542,6 +2546,8 @@ $query.Var.input = @{
 	# REQUIRED
 	snapshotId = $someString
 	# REQUIRED
+	workloadFid = $someString
+	# REQUIRED
 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 }"
             );
@@ -2566,7 +2572,7 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	customerTenantDomainName = $someString
-	# REQUIRED
+	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
@@ -3158,6 +3164,8 @@ $query.Var.input = @{
 	snapshotId = $someString
 	# REQUIRED
 	azureAdSearchKeyword = $someString
+	# REQUIRED
+	workloadFid = $someString
 	# REQUIRED
 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 	# REQUIRED

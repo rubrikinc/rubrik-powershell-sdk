@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourceNaturalId")]
         public System.String? ResourceNaturalId { get; set; }
 
+        //      C# -> System.String? ResourceId
+        // GraphQL -> resourceId: UUID (scalar)
+        [JsonProperty("resourceId")]
+        public System.String? ResourceId { get; set; }
+
 
         #endregion
 

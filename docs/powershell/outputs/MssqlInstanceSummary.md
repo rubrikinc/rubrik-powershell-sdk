@@ -70,5 +70,9 @@ Supported in v5.0+
   - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
 - protectionDateV91: DateTime
   - 
+- protectionDateV92: DateTime
+  - 
 - unprotectableReasonsV91: list of System.Strings
+  - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
+- unprotectableReasonsV92: list of System.Strings
   - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.

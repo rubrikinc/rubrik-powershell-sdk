@@ -20,10 +20,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
+        // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
+        [JsonProperty("onPremSyncStatus")]
+        public AzureAdOnPremSyncStatus? OnPremSyncStatus { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
         public System.String? DisplayName { get; set; }
+
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        [JsonProperty("email")]
+        public System.String? Email { get; set; }
 
         //      C# -> System.String? GroupType
         // GraphQL -> groupType: String! (scalar)
@@ -40,12 +50,20 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdGroup Set(
+        AzureAdOnPremSyncStatus? OnPremSyncStatus = null,
         System.String? DisplayName = null,
+        System.String? Email = null,
         System.String? GroupType = null
     ) 
     {
+        if ( OnPremSyncStatus != null ) {
+            this.OnPremSyncStatus = OnPremSyncStatus;
+        }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
+        }
+        if ( Email != null ) {
+            this.Email = Email;
         }
         if ( GroupType != null ) {
             this.GroupType = GroupType;
@@ -61,6 +79,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
+        // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
+        if (this.OnPremSyncStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onPremSyncStatus\n" ;
+            } else {
+                s += ind + "onPremSyncStatus\n" ;
+            }
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
@@ -68,6 +95,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "displayName\n" ;
             } else {
                 s += ind + "displayName\n" ;
+            }
+        }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        if (this.Email != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "email\n" ;
+            } else {
+                s += ind + "email\n" ;
             }
         }
         //      C# -> System.String? GroupType
@@ -86,6 +122,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
+        // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
+        if (ec.Includes("onPremSyncStatus",true))
+        {
+            if(this.OnPremSyncStatus == null) {
+
+                this.OnPremSyncStatus = new AzureAdOnPremSyncStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnPremSyncStatus != null && ec.Excludes("onPremSyncStatus",true))
+        {
+            this.OnPremSyncStatus = null;
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (ec.Includes("displayName",true))
@@ -102,6 +155,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DisplayName != null && ec.Excludes("displayName",true))
         {
             this.DisplayName = null;
+        }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        if (ec.Includes("email",true))
+        {
+            if(this.Email == null) {
+
+                this.Email = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Email != null && ec.Excludes("email",true))
+        {
+            this.Email = null;
         }
         //      C# -> System.String? GroupType
         // GraphQL -> groupType: String! (scalar)

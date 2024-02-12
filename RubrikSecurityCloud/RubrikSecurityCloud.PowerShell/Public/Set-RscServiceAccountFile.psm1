@@ -134,7 +134,14 @@ function Set-RscServiceAccountFile {
                 $answer = "yes"
             }else{
                 Write-Output("`nRubrik strongly discourage keeping clear text service account files.")
-                $answer = Read-Host "Delete the original JSON file? [YES/No]"
+                $answer = ""
+                while ((-not ($answer -match "^(yes|no|y|n)$")) -or ([string]::IsNullOrEmpty($answer))) {
+                    $answer = Read-Host "Delete the original JSON file? [YES/No]"
+                    $answer = $answer.Trim().ToLower()
+                    if ([string]::IsNullOrEmpty($answer)){
+                        $answer = "yes"
+                    }
+                }
             }
             if ("yes","y" -contains $answer.ToLower()){
                 try {

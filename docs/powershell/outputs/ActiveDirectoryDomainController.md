@@ -3,6 +3,8 @@ Active Directory Domain Controller.
 
 - cdmId: System.String
   - ID of the Rubrik CDM cluster.
+- domainControllerGuid: System.String
+  - GUID of the domain controller.
 - isRelic: System.Boolean
   - Specifies whether the domain controller is a relic.
 - agentUuid: System.String

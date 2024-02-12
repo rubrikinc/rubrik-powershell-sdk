@@ -25,31 +25,16 @@ Get the enablement status of entities on which Ransomware Monitoring can be enab
 
 - The investigationenablement subcommand takes no arguments.
 - Returns RansomwareInvestigationEnablementReply.
-### investigationworkloadscannedcount
-Get the total number of times that Radar has scanned a workload.
-
-- There is a single argument of type System.String.
-- Returns RansomwareInvestigationWorkloadScannedCountReply.
 ### overallinvestigationsummary
 Overall ransomware investigation summary.
 
 - There is a single argument of type System.Int32.
 - Returns OverallRansomwareInvestigationSummary.
-### pendinginvestigationresultscount
-Get information about workloads passing through the Radar pipeline.
-
-- The pendinginvestigationresultscount subcommand takes no arguments.
-- Returns PendingEvaluationResultsReply.
 ### processedinvestigationworkloadcount
 Get the number of workloads that have passed through the Radar pipeline in the past 24 hours.
 
 - The processedinvestigationworkloadcount subcommand takes no arguments.
 - Returns ProcessedRansomwareInvestigationWorkloadCountReply.
-### protectedinvestigationworkloadcount
-Get the total number of workloads protected by Radar.
-
-- The protectedinvestigationworkloadcount subcommand takes no arguments.
-- Returns ProtectedRansomwareInvestigationWorkloadCountReply.
 ### result
 Result of the Ransomware Investigation.
 

@@ -11,7 +11,7 @@ specific type in the console.
 
 When you import the `RubrikSecurityCloud` module, the custom formatting
 defined in this directory will be automatically applied, ensuring that objects
-are displayed in a more informative and user-friendly way.
+are displayed in the most informative and user-friendly way possible.
 
 If you wish to view the default formatting or override the custom formatting,
 you can do so using the `Format-Table`, `Format-List`, `Format-Wide`,
@@ -19,7 +19,10 @@ and `Format-Custom` cmdlets.
 
 ## Files in this Directory
 
-Each file in this directory defines custom formatting for a specific RSC SDK type.
+- `VsphereVm.Format.ps1xml`:
+  Defines custom formatting for the `RubrikSecurityCloud.Types.VsphereVm` object.
+- `MssqlDatabase.Format.ps1xml`:
+  Defines custom formatting for the `RubrikSecurityCloud.Types.MssqlDatabase` object.
 
 ## Contributing
 
@@ -27,7 +30,8 @@ If you believe there are improvements to be made in our custom formatting
 or if you've defined a new type that requires custom formatting, please:
 
 1. Create a new `.ps1xml` file or update an existing one.
-2. Submit a pull request with your changes for review.
+2. Update this README to reflect the changes.
+3. Submit a pull request with your changes for review.
 
 ## Additional Resources
 

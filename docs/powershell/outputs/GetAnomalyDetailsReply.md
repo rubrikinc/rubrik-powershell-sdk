@@ -55,6 +55,8 @@ Anomaly analysis report from lambda service.
   - Type of the anomaly detected.
 - previousSnapshotFid: System.String
   - The FID of the previous snapshot.
+- resolutionStatus: ResolutionStatus
+  - Specifies the resolution status of the anomaly.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly.
 - objectType: ObjectTypeEnum

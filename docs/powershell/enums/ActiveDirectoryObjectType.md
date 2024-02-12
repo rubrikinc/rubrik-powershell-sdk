@@ -1,6 +1,5 @@
 ### ActiveDirectoryObjectType
-Supported in v9.0+
-  The supported Active Directory object types.
+Type of the Active Directory object.
 
 - ACTIVE_DIRECTORY_OBJECT_TYPE_BUILTIN_DOMAIN - Active Directory built-in domain.
 - ACTIVE_DIRECTORY_OBJECT_TYPE_CHILD_DOMAIN - Active Directory child domain.

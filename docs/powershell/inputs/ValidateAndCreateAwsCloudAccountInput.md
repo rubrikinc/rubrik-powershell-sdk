@@ -11,3 +11,5 @@ Input to validate and set up an AWS account.
   - Details for cloud accounts to be initiated.
 - awsRoleCustomization: AwsRoleCustomization
   - Role customization options.
+- featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss
+  - List of cloud account features with specific permissions groups to onboard. This list is a valid input only for customer-managed cluster users.

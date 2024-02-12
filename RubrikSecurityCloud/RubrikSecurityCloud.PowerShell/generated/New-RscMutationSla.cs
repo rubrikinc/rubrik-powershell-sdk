@@ -638,6 +638,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		azureBlobConfigInput = @{
     /// 			# OPTIONAL
     /// 			continuousBackupRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			backupLocationId = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		awsNativeS3SlaConfigInput = @{
@@ -648,6 +650,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# OPTIONAL
     /// 		managedVolumeSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		postgresDbClusterSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetention = @{
     /// 				# OPTIONAL
@@ -1317,6 +1329,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		azureBlobConfigInput = @{
     /// 			# OPTIONAL
     /// 			continuousBackupRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			backupLocationId = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		awsNativeS3SlaConfigInput = @{
@@ -1327,6 +1341,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# OPTIONAL
     /// 		managedVolumeSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		postgresDbClusterSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetention = @{
     /// 				# OPTIONAL
@@ -2192,6 +2216,8 @@ $query.Var.input = @{
 		azureBlobConfigInput = @{
 			# OPTIONAL
 			continuousBackupRetentionInDays = $someInt
+			# OPTIONAL
+			backupLocationId = $someString
 		}
 		# OPTIONAL
 		awsNativeS3SlaConfigInput = @{
@@ -2202,6 +2228,16 @@ $query.Var.input = @{
 		}
 		# OPTIONAL
 		managedVolumeSlaConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		postgresDbClusterSlaConfigInput = @{
 			# OPTIONAL
 			logRetention = @{
 				# OPTIONAL
@@ -2839,6 +2875,8 @@ $query.Var.input = @{
 		azureBlobConfigInput = @{
 			# OPTIONAL
 			continuousBackupRetentionInDays = $someInt
+			# OPTIONAL
+			backupLocationId = $someString
 		}
 		# OPTIONAL
 		awsNativeS3SlaConfigInput = @{
@@ -2849,6 +2887,16 @@ $query.Var.input = @{
 		}
 		# OPTIONAL
 		managedVolumeSlaConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		postgresDbClusterSlaConfigInput = @{
 			# OPTIONAL
 			logRetention = @{
 				# OPTIONAL

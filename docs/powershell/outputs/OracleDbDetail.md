@@ -72,7 +72,11 @@ Supported in v5.0+
   - 
 - oldestRecoveryPointV91: DateTime
   - The time stamp of the earliest recovery point for this database.
+- oldestRecoveryPointV92: DateTime
+  - The time stamp of the earliest recovery point for this database.
 - latestRecoveryPointV91: DateTime
+  - The time stamp of the most recent recovery point for this database.
+- latestRecoveryPointV92: DateTime
   - The time stamp of the most recent recovery point for this database.
 - hostsInfo: list of HostInfos
   - Supported in v5.3+
@@ -80,3 +84,5 @@ Supported in v5.0+
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v5.3+
   Describes any pending SLA Domain assignment on this object.
+- blackoutWindowResponseInfo: BlackoutWindowResponseInfo
+  - 

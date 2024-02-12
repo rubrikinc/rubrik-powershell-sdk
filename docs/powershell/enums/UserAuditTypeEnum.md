@@ -23,6 +23,7 @@ User audit type.
 - Search
 - Backup
 - Sync
+- ANOMALY - Audit type for anomalies.
 - Recovery
 - Download
 - FILE_DOWNLOAD - Audit type for user file downloads.

@@ -4,17 +4,17 @@ Share fileset.
 - cdmId: System.String
   - ID of the CDM cluster.
 - pathIncluded: list of System.Strings
-  - Boolean variable denoting if hard link support is enabled.
+  - List of paths included in the fileset.
 - pathExcluded: list of System.Strings
-  - Paths excluded from fileset.
+  - List of paths excluded in the fileset.
 - pathExceptions: list of System.Strings
-  - Boolean variable denoting if hard link support is enabled.
+  - Variable denoting path exceptions.
 - isRelic: System.Boolean
-  - Boolean variable denoting if hard link support is enabled.
+  - Boolean variable denoting if the host share is relic.
 - isPassThrough: System.Boolean
-  - Boolean variable denoting if hard link support is enabled.
+  - Boolean variable denoting if this is a NAS Direct Archive fileset.
 - symlinkResolutionEnabled: System.Boolean
-  - Boolean variable denoting if hard link support is enabled.
+  - Boolean variable denoting if symlink resolution is enabled.
 - hardlinkSupportEnabled: System.Boolean
   - Boolean variable denoting if hard link support is enabled.
 - nasMigrationInfo: System.String

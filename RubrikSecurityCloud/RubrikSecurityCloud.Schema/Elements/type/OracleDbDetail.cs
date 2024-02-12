@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestRecoveryPointV91")]
         public DateTime? LatestRecoveryPointV91 { get; set; }
 
+        //      C# -> DateTime? LatestRecoveryPointV92
+        // GraphQL -> latestRecoveryPointV92: DateTime (scalar)
+        [JsonProperty("latestRecoveryPointV92")]
+        public DateTime? LatestRecoveryPointV92 { get; set; }
+
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         [JsonProperty("oldestRecoveryPointV50")]
@@ -130,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oldestRecoveryPointV91")]
         public DateTime? OldestRecoveryPointV91 { get; set; }
 
+        //      C# -> DateTime? OldestRecoveryPointV92
+        // GraphQL -> oldestRecoveryPointV92: DateTime (scalar)
+        [JsonProperty("oldestRecoveryPointV92")]
+        public DateTime? OldestRecoveryPointV92 { get; set; }
+
         //      C# -> System.String? OracleHome
         // GraphQL -> oracleHome: String (scalar)
         [JsonProperty("oracleHome")]
@@ -159,6 +169,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> tablespaces: [String!]! (scalar)
         [JsonProperty("tablespaces")]
         public List<System.String>? Tablespaces { get; set; }
+
+        //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
+        // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
+        [JsonProperty("blackoutWindowResponseInfo")]
+        public BlackoutWindowResponseInfo? BlackoutWindowResponseInfo { get; set; }
 
         //      C# -> List<HostInfo>? HostsInfo
         // GraphQL -> hostsInfo: [HostInfo!]! (type)
@@ -212,6 +227,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LatestRecoveryPointV81 = null,
         DateTime? LatestRecoveryPointV90 = null,
         DateTime? LatestRecoveryPointV91 = null,
+        DateTime? LatestRecoveryPointV92 = null,
         System.String? OldestRecoveryPointV50 = null,
         System.String? OldestRecoveryPointV51 = null,
         System.String? OldestRecoveryPointV52 = null,
@@ -222,12 +238,14 @@ namespace RubrikSecurityCloud.Types
         DateTime? OldestRecoveryPointV81 = null,
         DateTime? OldestRecoveryPointV90 = null,
         DateTime? OldestRecoveryPointV91 = null,
+        DateTime? OldestRecoveryPointV92 = null,
         System.String? OracleHome = null,
         List<System.String>? PreferredDgMemberUniqueNames = null,
         System.Int32? SectionSizeInGb = null,
         System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly = null,
         System.Int32? SnapshotCount = null,
         List<System.String>? Tablespaces = null,
+        BlackoutWindowResponseInfo? BlackoutWindowResponseInfo = null,
         List<HostInfo>? HostsInfo = null,
         OracleLastValidationResult? LastValidationResult = null,
         OracleDbSummary? OracleDbSummary = null,
@@ -272,6 +290,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestRecoveryPointV91 != null ) {
             this.LatestRecoveryPointV91 = LatestRecoveryPointV91;
         }
+        if ( LatestRecoveryPointV92 != null ) {
+            this.LatestRecoveryPointV92 = LatestRecoveryPointV92;
+        }
         if ( OldestRecoveryPointV50 != null ) {
             this.OldestRecoveryPointV50 = OldestRecoveryPointV50;
         }
@@ -302,6 +323,9 @@ namespace RubrikSecurityCloud.Types
         if ( OldestRecoveryPointV91 != null ) {
             this.OldestRecoveryPointV91 = OldestRecoveryPointV91;
         }
+        if ( OldestRecoveryPointV92 != null ) {
+            this.OldestRecoveryPointV92 = OldestRecoveryPointV92;
+        }
         if ( OracleHome != null ) {
             this.OracleHome = OracleHome;
         }
@@ -319,6 +343,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Tablespaces != null ) {
             this.Tablespaces = Tablespaces;
+        }
+        if ( BlackoutWindowResponseInfo != null ) {
+            this.BlackoutWindowResponseInfo = BlackoutWindowResponseInfo;
         }
         if ( HostsInfo != null ) {
             this.HostsInfo = HostsInfo;
@@ -457,6 +484,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestRecoveryPointV91\n" ;
             }
         }
+        //      C# -> DateTime? LatestRecoveryPointV92
+        // GraphQL -> latestRecoveryPointV92: DateTime (scalar)
+        if (this.LatestRecoveryPointV92 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV92\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV92\n" ;
+            }
+        }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         if (this.OldestRecoveryPointV50 != null) {
@@ -547,6 +583,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "oldestRecoveryPointV91\n" ;
             }
         }
+        //      C# -> DateTime? OldestRecoveryPointV92
+        // GraphQL -> oldestRecoveryPointV92: DateTime (scalar)
+        if (this.OldestRecoveryPointV92 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV92\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV92\n" ;
+            }
+        }
         //      C# -> System.String? OracleHome
         // GraphQL -> oracleHome: String (scalar)
         if (this.OracleHome != null) {
@@ -599,6 +644,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "tablespaces\n" ;
             } else {
                 s += ind + "tablespaces\n" ;
+            }
+        }
+        //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
+        // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
+        if (this.BlackoutWindowResponseInfo != null) {
+            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<HostInfo>? HostsInfo
@@ -884,6 +941,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestRecoveryPointV91 = null;
         }
+        //      C# -> DateTime? LatestRecoveryPointV92
+        // GraphQL -> latestRecoveryPointV92: DateTime (scalar)
+        if (ec.Includes("latestRecoveryPointV92",true))
+        {
+            if(this.LatestRecoveryPointV92 == null) {
+
+                this.LatestRecoveryPointV92 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV92 != null && ec.Excludes("latestRecoveryPointV92",true))
+        {
+            this.LatestRecoveryPointV92 = null;
+        }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         if (ec.Includes("oldestRecoveryPointV50",true))
@@ -1054,6 +1128,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.OldestRecoveryPointV91 = null;
         }
+        //      C# -> DateTime? OldestRecoveryPointV92
+        // GraphQL -> oldestRecoveryPointV92: DateTime (scalar)
+        if (ec.Includes("oldestRecoveryPointV92",true))
+        {
+            if(this.OldestRecoveryPointV92 == null) {
+
+                this.OldestRecoveryPointV92 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV92 != null && ec.Excludes("oldestRecoveryPointV92",true))
+        {
+            this.OldestRecoveryPointV92 = null;
+        }
         //      C# -> System.String? OracleHome
         // GraphQL -> oracleHome: String (scalar)
         if (ec.Includes("oracleHome",true))
@@ -1155,6 +1246,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Tablespaces != null && ec.Excludes("tablespaces",true))
         {
             this.Tablespaces = null;
+        }
+        //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
+        // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
+        if (ec.Includes("blackoutWindowResponseInfo",false))
+        {
+            if(this.BlackoutWindowResponseInfo == null) {
+
+                this.BlackoutWindowResponseInfo = new BlackoutWindowResponseInfo();
+                this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+
+            } else {
+
+                this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+
+            }
+        }
+        else if (this.BlackoutWindowResponseInfo != null && ec.Excludes("blackoutWindowResponseInfo",false))
+        {
+            this.BlackoutWindowResponseInfo = null;
         }
         //      C# -> List<HostInfo>? HostsInfo
         // GraphQL -> hostsInfo: [HostInfo!]! (type)

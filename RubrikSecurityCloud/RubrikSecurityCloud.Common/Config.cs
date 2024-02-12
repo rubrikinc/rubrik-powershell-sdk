@@ -10,6 +10,7 @@ namespace RubrikSecurityCloud
 {
     public static class Config
     {
+        public static string SessionVariableName = "Global:RscConnectionClient";
         /// <summary>
         /// If true, the SDK will throw an exception if the response
         /// from the server does not match the schema used by the SDK.

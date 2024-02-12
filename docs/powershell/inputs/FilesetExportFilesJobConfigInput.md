@@ -11,8 +11,9 @@ Supported in v5.0+
   - Supported in v5.0+
       Network share ID.
 - shouldRecreateDirectoryStructure: System.Boolean
-  - Supported in v9.1
-      Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
+  - Supported in v8.1, v9.1+
+      v8.1: Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
+      v9.1+: Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.
 - exportPathPairs: list of FilesetExportPathPairInputs
   - Required. Supported in v5.0+
       Pairs of source path and destination path.

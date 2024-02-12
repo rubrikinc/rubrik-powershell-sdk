@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Replication' API domain:
-    /// CreatePair, DeletePair, DisablePause, EnablePause, or UpdateTarget.
+    /// CreatePair, DeletePair, DisablePause, EnablePause, UpdateNetworkThrottleBypass, or UpdateTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationReplication creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 6 operations
     /// in the 'Replication' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreatePair, DeletePair, DisablePause, EnablePause, or UpdateTarget.
+    /// one of: CreatePair, DeletePair, DisablePause, EnablePause, UpdateNetworkThrottleBypass, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -252,6 +252,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateNetworkThrottleBypass operation
+    /// of the 'Replication' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Replication
+    /// # API Operation: UpdateNetworkThrottleBypass
+    /// 
+    /// $query = New-RscMutationReplication -UpdateNetworkThrottleBypass
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		shouldBypassReplicationThrottle = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateTarget operation
     /// of the 'Replication' API domain.
     /// <code>
@@ -289,6 +327,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isCrossAccount = $someBoolean
     /// 	# REQUIRED
     /// 	sourceClusterUuid = $someString
     /// 	# REQUIRED
@@ -329,6 +369,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeletePair",
                 "DisablePause",
                 "EnablePause",
+                "UpdateNetworkThrottleBypass",
                 "UpdateTarget",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -356,6 +397,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "EnablePause":
                         this.ProcessRecord_EnablePause();
+                        break;
+                    case "UpdateNetworkThrottleBypass":
+                        this.ProcessRecord_UpdateNetworkThrottleBypass();
                         break;
                     case "UpdateTarget":
                         this.ProcessRecord_UpdateTarget();
@@ -404,6 +448,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -EnablePause";
             // Create new graphql operation enableReplicationPause
             InitMutationEnableReplicationPause();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateReplicationNetworkThrottleBypass.
+        internal void ProcessRecord_UpdateNetworkThrottleBypass()
+        {
+            this._logger.name += " -UpdateNetworkThrottleBypass";
+            // Create new graphql operation updateReplicationNetworkThrottleBypass
+            InitMutationUpdateReplicationNetworkThrottleBypass();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -560,6 +613,36 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // updateReplicationNetworkThrottleBypass(input: UpdateReplicationNetworkThrottleBypassInput!): ResponseSuccess!
+        internal void InitMutationUpdateReplicationNetworkThrottleBypass()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateReplicationNetworkThrottleBypassInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateReplicationNetworkThrottleBypass",
+                "($input: UpdateReplicationNetworkThrottleBypassInput!)",
+                "ResponseSuccess",
+                Mutation.UpdateReplicationNetworkThrottleBypass_ObjectFieldSpec,
+                Mutation.UpdateReplicationNetworkThrottleBypassFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		shouldBypassReplicationThrottle = $someBoolean
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // updateReplicationTarget(input: UpdateReplicationTargetInput!): Void
         internal void InitMutationUpdateReplicationTarget()
         {
@@ -599,6 +682,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
 	}
+	# OPTIONAL
+	isCrossAccount = $someBoolean
 	# REQUIRED
 	sourceClusterUuid = $someString
 	# REQUIRED

@@ -360,6 +360,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_CORS_SETTINGS")]
         VIEW_CORS_SETTINGS,
 
+        [EnumMember(Value = "VIEW_CROSS_ACCOUNT_PAIR")]
+        VIEW_CROSS_ACCOUNT_PAIR,
+
         [EnumMember(Value = "VIEW_DASHBOARD")]
         VIEW_DASHBOARD,
 

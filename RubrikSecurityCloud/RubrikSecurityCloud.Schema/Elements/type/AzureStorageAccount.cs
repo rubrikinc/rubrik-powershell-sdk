@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsHierarchicalNamespaceEnabled
+        // GraphQL -> isHierarchicalNamespaceEnabled: Boolean! (scalar)
+        [JsonProperty("isHierarchicalNamespaceEnabled")]
+        public System.Boolean? IsHierarchicalNamespaceEnabled { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -207,6 +212,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? CloudNativeId = null,
         System.String? Id = null,
+        System.Boolean? IsHierarchicalNamespaceEnabled = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.String? NativeName = null,
@@ -263,6 +269,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsHierarchicalNamespaceEnabled != null ) {
+            this.IsHierarchicalNamespaceEnabled = IsHierarchicalNamespaceEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -450,6 +459,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsHierarchicalNamespaceEnabled
+        // GraphQL -> isHierarchicalNamespaceEnabled: Boolean! (scalar)
+        if (this.IsHierarchicalNamespaceEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isHierarchicalNamespaceEnabled\n" ;
+            } else {
+                s += ind + "isHierarchicalNamespaceEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -906,6 +924,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsHierarchicalNamespaceEnabled
+        // GraphQL -> isHierarchicalNamespaceEnabled: Boolean! (scalar)
+        if (ec.Includes("isHierarchicalNamespaceEnabled",true))
+        {
+            if(this.IsHierarchicalNamespaceEnabled == null) {
+
+                this.IsHierarchicalNamespaceEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsHierarchicalNamespaceEnabled != null && ec.Excludes("isHierarchicalNamespaceEnabled",true))
+        {
+            this.IsHierarchicalNamespaceEnabled = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

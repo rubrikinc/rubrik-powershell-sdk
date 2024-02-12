@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("guestCredentialId")]
         public System.String? GuestCredentialId { get; set; }
 
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
         //      C# -> System.Boolean? ShouldUseMountDisks
         // GraphQL -> shouldUseMountDisks: Boolean (scalar)
         [JsonProperty("shouldUseMountDisks")]

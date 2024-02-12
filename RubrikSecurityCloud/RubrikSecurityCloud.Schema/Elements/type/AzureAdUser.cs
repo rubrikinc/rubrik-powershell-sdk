@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
+        // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
+        [JsonProperty("onPremSyncStatus")]
+        public AzureAdOnPremSyncStatus? OnPremSyncStatus { get; set; }
+
         //      C# -> System.String? CreationType
         // GraphQL -> creationType: String! (scalar)
         [JsonProperty("creationType")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdUser Set(
+        AzureAdOnPremSyncStatus? OnPremSyncStatus = null,
         System.String? CreationType = null,
         System.String? DisplayName = null,
         System.String? PrincipalUserName = null,
         System.String? UserType = null
     ) 
     {
+        if ( OnPremSyncStatus != null ) {
+            this.OnPremSyncStatus = OnPremSyncStatus;
+        }
         if ( CreationType != null ) {
             this.CreationType = CreationType;
         }
@@ -79,6 +88,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
+        // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
+        if (this.OnPremSyncStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onPremSyncStatus\n" ;
+            } else {
+                s += ind + "onPremSyncStatus\n" ;
+            }
+        }
         //      C# -> System.String? CreationType
         // GraphQL -> creationType: String! (scalar)
         if (this.CreationType != null) {
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> AzureAdOnPremSyncStatus? OnPremSyncStatus
+        // GraphQL -> onPremSyncStatus: AzureAdOnPremSyncStatus! (enum)
+        if (ec.Includes("onPremSyncStatus",true))
+        {
+            if(this.OnPremSyncStatus == null) {
+
+                this.OnPremSyncStatus = new AzureAdOnPremSyncStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnPremSyncStatus != null && ec.Excludes("onPremSyncStatus",true))
+        {
+            this.OnPremSyncStatus = null;
+        }
         //      C# -> System.String? CreationType
         // GraphQL -> creationType: String! (scalar)
         if (ec.Includes("creationType",true))

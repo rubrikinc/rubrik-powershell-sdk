@@ -53,6 +53,11 @@ Deletes AWS Exocompute configs.
 
 - There is a single argument of type DeleteAwsExocomputeConfigsInput.
 - Returns DeleteAwsExocomputeConfigsReply.
+### exocomputeclusterconnect
+Connects a customer-managed cluster to RSC and obtains the connection command.
+
+- There is a single argument of type AwsExocomputeClusterConnectInput.
+- Returns AwsExocomputeClusterConnectReply.
 ### finalizecloudaccountdeletion
 Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
 

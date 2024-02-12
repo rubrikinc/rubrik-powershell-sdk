@@ -21,11 +21,18 @@ function Get-RscMssqlAvailabilityGroup {
     .PARAMETER AvailabilityGroupName
     Used to return a specific Availability Groups based on the name of the Availability Group
     
-     .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
     
     .PARAMETER Detail
     Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
 
     .EXAMPLE
     Returns a list of Availbility Groups that are connected to Rubrik
@@ -33,7 +40,7 @@ function Get-RscMssqlAvailabilityGroup {
 
     .EXAMPLE
     Returns information about a specific Availability Group based on the Rubrik ID
-    Get-RscMssqlAvailabilityGroup -Id "86da734b-2fee-4fdc-bdc8-a73ab5648f" 
+    Get-RscMssqlAvailabilityGroup -Id
 
     .EXAMPLE
     Returns information about a specific Availability Group based on the name of the AG.
@@ -64,7 +71,8 @@ function Get-RscMssqlAvailabilityGroup {
     Param(
         [Parameter(
             ParameterSetName = "List",
-            Mandatory = $false
+            Mandatory = $false, 
+            ValueFromPipeline = $false
         )][Switch]$List,
         
         [Parameter(
@@ -80,27 +88,42 @@ function Get-RscMssqlAvailabilityGroup {
         )][String]$AvailabilityGroupName,
         
         [Parameter(
-            Mandatory = $false
-        )][RubrikSecurityCloud.Types.Cluster]$RscCluster,
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][String]$clusterId,
 
         #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
+        # Re-use existing connection, or create a new one:
+        Connect-Rsc -ErrorAction Stop | Out-Null
+
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Debug "- Running Get-RscMssqlAvailabilityGroup"
+        Write-Host "Get-RscMssqlAvailabilityGroup field profile: $fieldProfile"
         
          #region Create Query
          switch ( $PSCmdlet.ParameterSetName ){
             "List" {
+                # // TODO: SPARK-278997 Include Windows Clusters
                 $query = New-RscQueryMssql -Operation TopLevelDescendants -FieldProfile $fieldProfile
                 $query.Var.filter = @()
                 $query.Var.typeFilter = "MssqlAvailabilityGroup"
@@ -125,12 +148,36 @@ function Get-RscMssqlAvailabilityGroup {
         if($PSBoundParameters.ContainsKey('clusterId')) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
-            $clusterFilter.texts = $RscCluster.Id
+            $clusterFilter.texts = $clusterId
             $query.Var.filter += $clusterFilter
         }
         #endregion
+
         $result = $query.Invoke()
-        
-        $result.Nodes
+        switch ( $PSCmdlet.ParameterSetName ){
+            "HostName" {
+                $result = $result | Where-Object {$_.Nodes.PhysicalChildConnection.Nodes.Name -eq $InstanceName}
+            }
+        }
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }  
     } 
 }

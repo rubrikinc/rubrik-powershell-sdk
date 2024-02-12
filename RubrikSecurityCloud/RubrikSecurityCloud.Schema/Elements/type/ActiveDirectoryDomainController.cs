@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dcLocation")]
         public System.String? DcLocation { get; set; }
 
+        //      C# -> System.String? DomainControllerGuid
+        // GraphQL -> domainControllerGuid: String (scalar)
+        [JsonProperty("domainControllerGuid")]
+        public System.String? DomainControllerGuid { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [JsonProperty("hostname")]
@@ -270,6 +275,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? DcLocation = null,
+        System.String? DomainControllerGuid = null,
         System.String? Hostname = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
@@ -344,6 +350,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DcLocation != null ) {
             this.DcLocation = DcLocation;
+        }
+        if ( DomainControllerGuid != null ) {
+            this.DomainControllerGuid = DomainControllerGuid;
         }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
@@ -593,6 +602,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dcLocation\n" ;
             } else {
                 s += ind + "dcLocation\n" ;
+            }
+        }
+        //      C# -> System.String? DomainControllerGuid
+        // GraphQL -> domainControllerGuid: String (scalar)
+        if (this.DomainControllerGuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "domainControllerGuid\n" ;
+            } else {
+                s += ind + "domainControllerGuid\n" ;
             }
         }
         //      C# -> System.String? Hostname
@@ -1217,6 +1235,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DcLocation != null && ec.Excludes("dcLocation",true))
         {
             this.DcLocation = null;
+        }
+        //      C# -> System.String? DomainControllerGuid
+        // GraphQL -> domainControllerGuid: String (scalar)
+        if (ec.Includes("domainControllerGuid",true))
+        {
+            if(this.DomainControllerGuid == null) {
+
+                this.DomainControllerGuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainControllerGuid != null && ec.Excludes("domainControllerGuid",true))
+        {
+            this.DomainControllerGuid = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)

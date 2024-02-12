@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Policy' API domain:
-    /// ['Policies'].
+    /// AddPolicyObjects, CreatePolicy, DeactivatePolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, or UpdatePolicy.
     /// </summary>
     /// <description>
     /// New-RscMutationPolicy creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 12 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ['Policies'].
+    /// one of: AddPolicyObjects, CreatePolicy, DeactivatePolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, or UpdatePolicy.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationPolicy -Policies).Info().
+    /// (New-RscMutationPolicy -AddPolicyObjects).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,14 +70,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationPolicy -Policies).Info().
+    /// (New-RscMutationPolicy -AddPolicyObjects).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the Policies operation
+    /// Runs the AddPolicyObjects operation
     /// of the 'Policy' API domain.
     /// <code>
     /// PS &gt;
@@ -85,9 +85,244 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Policy
-    /// # API Operation: Policies
+    /// # API Operation: AddPolicyObjects
     /// 
-    /// $query = New-RscMutationPolicy -Policies
+    /// $query = New-RscMutationPolicy -AddPolicyObjects
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.objectIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.objectRootIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.clusterIds = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreatePolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: CreatePolicy
+    /// 
+    /// $query = New-RscMutationPolicy -CreatePolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# OPTIONAL
+    /// 	colorEnum = $someClassificationPolicyColor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyColor]) for enum values.
+    /// 	# OPTIONAL
+    /// 	mode = $someClassificationPolicyMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyMode]) for enum values.
+    /// 	# OPTIONAL
+    /// 	analyzerIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	updateName = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateDescription = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateMode = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateAnalyzerIds = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClassificationPolicyDetail
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeactivatePolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: DeactivatePolicy
+    /// 
+    /// $query = New-RscMutationPolicy -DeactivatePolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyId = $someString
+    /// # REQUIRED
+    /// $query.Var.runAsync = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GetHealthMonitorPolicyStatus operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: GetHealthMonitorPolicyStatus
+    /// 
+    /// $query = New-RscMutationPolicy -GetHealthMonitorPolicyStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	hasDetailedStatus = $someBoolean
+    /// 	# OPTIONAL
+    /// 	nodeIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	policyIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetHealthMonitorPolicyStatusReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RemovePolicyObjects operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: RemovePolicyObjects
+    /// 
+    /// $query = New-RscMutationPolicy -RemovePolicyObjects
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.objectIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.objectRootIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.clusterIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.runAsync = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SeedEnabledPolicies operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SeedEnabledPolicies
+    /// 
+    /// $query = New-RscMutationPolicy -SeedEnabledPolicies
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SeedEnabledPoliciesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SeedInitialPolicies operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SeedInitialPolicies
+    /// 
+    /// $query = New-RscMutationPolicy -SeedInitialPolicies
     /// 
     /// # No variables for this query.
     /// 
@@ -96,6 +331,283 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: SeedInitialPoliciesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SetPasswordComplexityPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SetPasswordComplexityPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -SetPasswordComplexityPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policy = @{
+    /// 		# REQUIRED
+    /// 		lengthPolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		lowercasePolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		uppercasePolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		specialCharsPolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		numericPolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		passwordReusePolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		passwordExpirationPolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		leakedDetectionPolicy = @{
+    /// 			# OPTIONAL
+    /// 			minValue = $someInt
+    /// 			# OPTIONAL
+    /// 			maxValue = $someInt
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
+    /// 			# REQUIRED
+    /// 			isActive = $someBoolean
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateAutoEnablePolicyClusterConfig operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: UpdateAutoEnablePolicyClusterConfig
+    /// 
+    /// $query = New-RscMutationPolicy -UpdateAutoEnablePolicyClusterConfig
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterId = $someString
+    /// 	# OPTIONAL
+    /// 	enabled = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateAutoEnablePolicyClusterConfigReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateHealthMonitorPolicyStatus operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: UpdateHealthMonitorPolicyStatus
+    /// 
+    /// $query = New-RscMutationPolicy -UpdateHealthMonitorPolicyStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	runRequest = @{
+    /// 		# OPTIONAL
+    /// 		nodeIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		policyIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateHealthMonitorPolicyStatusReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateOrgSecurityPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: UpdateOrgSecurityPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -UpdateOrgSecurityPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	disallowWeakerPolicy = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdatePolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: UpdatePolicy
+    /// 
+    /// $query = New-RscMutationPolicy -UpdatePolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# OPTIONAL
+    /// 	colorEnum = $someClassificationPolicyColor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyColor]) for enum values.
+    /// 	# OPTIONAL
+    /// 	mode = $someClassificationPolicyMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyMode]) for enum values.
+    /// 	# OPTIONAL
+    /// 	analyzerIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	updateName = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateDescription = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateMode = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateAnalyzerIds = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClassificationPolicyDetail
     /// 
     /// 
     /// 
@@ -119,7 +631,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "Policies",
+                "AddPolicyObjects",
+                "CreatePolicy",
+                "DeactivatePolicy",
+                "GetHealthMonitorPolicyStatus",
+                "RemovePolicyObjects",
+                "SeedEnabledPolicies",
+                "SeedInitialPolicies",
+                "SetPasswordComplexityPolicy",
+                "UpdateAutoEnablePolicyClusterConfig",
+                "UpdateHealthMonitorPolicyStatus",
+                "UpdateOrgSecurityPolicy",
+                "UpdatePolicy",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -135,8 +658,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "Policies":
-                        this.ProcessRecord_Policies();
+                    case "AddPolicyObjects":
+                        this.ProcessRecord_AddPolicyObjects();
+                        break;
+                    case "CreatePolicy":
+                        this.ProcessRecord_CreatePolicy();
+                        break;
+                    case "DeactivatePolicy":
+                        this.ProcessRecord_DeactivatePolicy();
+                        break;
+                    case "GetHealthMonitorPolicyStatus":
+                        this.ProcessRecord_GetHealthMonitorPolicyStatus();
+                        break;
+                    case "RemovePolicyObjects":
+                        this.ProcessRecord_RemovePolicyObjects();
+                        break;
+                    case "SeedEnabledPolicies":
+                        this.ProcessRecord_SeedEnabledPolicies();
+                        break;
+                    case "SeedInitialPolicies":
+                        this.ProcessRecord_SeedInitialPolicies();
+                        break;
+                    case "SetPasswordComplexityPolicy":
+                        this.ProcessRecord_SetPasswordComplexityPolicy();
+                        break;
+                    case "UpdateAutoEnablePolicyClusterConfig":
+                        this.ProcessRecord_UpdateAutoEnablePolicyClusterConfig();
+                        break;
+                    case "UpdateHealthMonitorPolicyStatus":
+                        this.ProcessRecord_UpdateHealthMonitorPolicyStatus();
+                        break;
+                    case "UpdateOrgSecurityPolicy":
+                        this.ProcessRecord_UpdateOrgSecurityPolicy();
+                        break;
+                    case "UpdatePolicy":
+                        this.ProcessRecord_UpdatePolicy();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -149,14 +705,318 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // seedInitialPolicies.
-        internal void ProcessRecord_Policies()
+        // addPolicyObjects.
+        internal void ProcessRecord_AddPolicyObjects()
         {
-            this._logger.name += " -Policies";
+            this._logger.name += " -AddPolicyObjects";
+            // Create new graphql operation addPolicyObjects
+            InitMutationAddPolicyObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createPolicy.
+        internal void ProcessRecord_CreatePolicy()
+        {
+            this._logger.name += " -CreatePolicy";
+            // Create new graphql operation createPolicy
+            InitMutationCreatePolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deactivatePolicy.
+        internal void ProcessRecord_DeactivatePolicy()
+        {
+            this._logger.name += " -DeactivatePolicy";
+            // Create new graphql operation deactivatePolicy
+            InitMutationDeactivatePolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // getHealthMonitorPolicyStatus.
+        internal void ProcessRecord_GetHealthMonitorPolicyStatus()
+        {
+            this._logger.name += " -GetHealthMonitorPolicyStatus";
+            // Create new graphql operation getHealthMonitorPolicyStatus
+            InitMutationGetHealthMonitorPolicyStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // removePolicyObjects.
+        internal void ProcessRecord_RemovePolicyObjects()
+        {
+            this._logger.name += " -RemovePolicyObjects";
+            // Create new graphql operation removePolicyObjects
+            InitMutationRemovePolicyObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // seedEnabledPolicies.
+        internal void ProcessRecord_SeedEnabledPolicies()
+        {
+            this._logger.name += " -SeedEnabledPolicies";
+            // Create new graphql operation seedEnabledPolicies
+            InitMutationSeedEnabledPolicies();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // seedInitialPolicies.
+        internal void ProcessRecord_SeedInitialPolicies()
+        {
+            this._logger.name += " -SeedInitialPolicies";
             // Create new graphql operation seedInitialPolicies
             InitMutationSeedInitialPolicies();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // setPasswordComplexityPolicy.
+        internal void ProcessRecord_SetPasswordComplexityPolicy()
+        {
+            this._logger.name += " -SetPasswordComplexityPolicy";
+            // Create new graphql operation setPasswordComplexityPolicy
+            InitMutationSetPasswordComplexityPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAutoEnablePolicyClusterConfig.
+        internal void ProcessRecord_UpdateAutoEnablePolicyClusterConfig()
+        {
+            this._logger.name += " -UpdateAutoEnablePolicyClusterConfig";
+            // Create new graphql operation updateAutoEnablePolicyClusterConfig
+            InitMutationUpdateAutoEnablePolicyClusterConfig();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateHealthMonitorPolicyStatus.
+        internal void ProcessRecord_UpdateHealthMonitorPolicyStatus()
+        {
+            this._logger.name += " -UpdateHealthMonitorPolicyStatus";
+            // Create new graphql operation updateHealthMonitorPolicyStatus
+            InitMutationUpdateHealthMonitorPolicyStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateOrgSecurityPolicy.
+        internal void ProcessRecord_UpdateOrgSecurityPolicy()
+        {
+            this._logger.name += " -UpdateOrgSecurityPolicy";
+            // Create new graphql operation updateOrgSecurityPolicy
+            InitMutationUpdateOrgSecurityPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updatePolicy.
+        internal void ProcessRecord_UpdatePolicy()
+        {
+            this._logger.name += " -UpdatePolicy";
+            // Create new graphql operation updatePolicy
+            InitMutationUpdatePolicy();
+        }
+
+
+        // Create new GraphQL Mutation:
+        // addPolicyObjects(
+        //     policyIds: [String!]!
+        //     objectIds: [String!]! = []
+        //     objectRootIds: [String!]! = []
+        //     clusterIds: [String!]! = []
+        //   ): String!
+        internal void InitMutationAddPolicyObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyIds", "[String!]!"),
+                Tuple.Create("objectIds", "[String!]!"),
+                Tuple.Create("objectRootIds", "[String!]!"),
+                Tuple.Create("clusterIds", "[String!]!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddPolicyObjects",
+                "($policyIds: [String!]!,$objectIds: [String!]!,$objectRootIds: [String!]!,$clusterIds: [String!]!)",
+                "System.String",
+                Mutation.AddPolicyObjects_ObjectFieldSpec,
+                Mutation.AddPolicyObjectsFieldSpec,
+                @"# REQUIRED
+$query.Var.policyIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.objectIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.objectRootIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.clusterIds = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createPolicy(input: CreatePolicyInput!): ClassificationPolicyDetail!
+        internal void InitMutationCreatePolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreatePolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreatePolicy",
+                "($input: CreatePolicyInput!)",
+                "ClassificationPolicyDetail",
+                Mutation.CreatePolicy_ObjectFieldSpec,
+                Mutation.CreatePolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	id = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	description = $someString
+	# OPTIONAL
+	colorEnum = $someClassificationPolicyColor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyColor]) for enum values.
+	# OPTIONAL
+	mode = $someClassificationPolicyMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyMode]) for enum values.
+	# OPTIONAL
+	analyzerIds = @(
+		$someString
+	)
+	# OPTIONAL
+	updateName = $someBoolean
+	# OPTIONAL
+	updateDescription = $someBoolean
+	# OPTIONAL
+	updateMode = $someBoolean
+	# OPTIONAL
+	updateAnalyzerIds = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deactivatePolicy(policyId: String!, runAsync: Boolean!): [String!]!
+        internal void InitMutationDeactivatePolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyId", "String!"),
+                Tuple.Create("runAsync", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeactivatePolicy",
+                "($policyId: String!,$runAsync: Boolean!)",
+                "List<System.String>",
+                Mutation.DeactivatePolicy_ObjectFieldSpec,
+                Mutation.DeactivatePolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.policyId = $someString
+# REQUIRED
+$query.Var.runAsync = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // getHealthMonitorPolicyStatus(input: GetHealthMonitorPolicyStatusInput!): GetHealthMonitorPolicyStatusReply!
+        internal void InitMutationGetHealthMonitorPolicyStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetHealthMonitorPolicyStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationGetHealthMonitorPolicyStatus",
+                "($input: GetHealthMonitorPolicyStatusInput!)",
+                "GetHealthMonitorPolicyStatusReply",
+                Mutation.GetHealthMonitorPolicyStatus_ObjectFieldSpec,
+                Mutation.GetHealthMonitorPolicyStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	hasDetailedStatus = $someBoolean
+	# OPTIONAL
+	nodeIds = @(
+		$someString
+	)
+	# OPTIONAL
+	policyIds = @(
+		$someString
+	)
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // removePolicyObjects(
+        //     policyIds: [String!]!
+        //     objectIds: [String!]! = []
+        //     objectRootIds: [String!]! = []
+        //     clusterIds: [String!]! = []
+        //     runAsync: Boolean!
+        //   ): [String!]!
+        internal void InitMutationRemovePolicyObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyIds", "[String!]!"),
+                Tuple.Create("objectIds", "[String!]!"),
+                Tuple.Create("objectRootIds", "[String!]!"),
+                Tuple.Create("clusterIds", "[String!]!"),
+                Tuple.Create("runAsync", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRemovePolicyObjects",
+                "($policyIds: [String!]!,$objectIds: [String!]!,$objectRootIds: [String!]!,$clusterIds: [String!]!,$runAsync: Boolean!)",
+                "List<System.String>",
+                Mutation.RemovePolicyObjects_ObjectFieldSpec,
+                Mutation.RemovePolicyObjectsFieldSpec,
+                @"# REQUIRED
+$query.Var.policyIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.objectIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.objectRootIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.clusterIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.runAsync = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // seedEnabledPolicies: SeedEnabledPoliciesReply!
+        internal void InitMutationSeedEnabledPolicies()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSeedEnabledPolicies",
+                "",
+                "SeedEnabledPoliciesReply",
+                Mutation.SeedEnabledPolicies_ObjectFieldSpec,
+                Mutation.SeedEnabledPoliciesFieldSpec,
+                @""
+            );
+        }
 
         // Create new GraphQL Mutation:
         // seedInitialPolicies: SeedInitialPoliciesReply!
@@ -173,6 +1033,243 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.SeedInitialPolicies_ObjectFieldSpec,
                 Mutation.SeedInitialPoliciesFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setPasswordComplexityPolicy(input: SetPasswordComplexityPolicyInput!): Void
+        internal void InitMutationSetPasswordComplexityPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetPasswordComplexityPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetPasswordComplexityPolicy",
+                "($input: SetPasswordComplexityPolicyInput!)",
+                "System.String",
+                Mutation.SetPasswordComplexityPolicy_ObjectFieldSpec,
+                Mutation.SetPasswordComplexityPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policy = @{
+		# REQUIRED
+		lengthPolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# REQUIRED
+		lowercasePolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# REQUIRED
+		uppercasePolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# REQUIRED
+		specialCharsPolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# REQUIRED
+		numericPolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# REQUIRED
+		passwordReusePolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# REQUIRED
+		passwordExpirationPolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+		# OPTIONAL
+		leakedDetectionPolicy = @{
+			# OPTIONAL
+			minValue = $someInt
+			# OPTIONAL
+			maxValue = $someInt
+			# OPTIONAL
+			defaultValue = $someInt
+			# REQUIRED
+			isActive = $someBoolean
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAutoEnablePolicyClusterConfig(input: UpdateAutoEnablePolicyClusterConfigInput!): UpdateAutoEnablePolicyClusterConfigReply!
+        internal void InitMutationUpdateAutoEnablePolicyClusterConfig()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAutoEnablePolicyClusterConfigInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAutoEnablePolicyClusterConfig",
+                "($input: UpdateAutoEnablePolicyClusterConfigInput!)",
+                "UpdateAutoEnablePolicyClusterConfigReply",
+                Mutation.UpdateAutoEnablePolicyClusterConfig_ObjectFieldSpec,
+                Mutation.UpdateAutoEnablePolicyClusterConfigFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterId = $someString
+	# OPTIONAL
+	enabled = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateHealthMonitorPolicyStatus(input: UpdateHealthMonitorPolicyStatusInput!): UpdateHealthMonitorPolicyStatusReply!
+        internal void InitMutationUpdateHealthMonitorPolicyStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateHealthMonitorPolicyStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateHealthMonitorPolicyStatus",
+                "($input: UpdateHealthMonitorPolicyStatusInput!)",
+                "UpdateHealthMonitorPolicyStatusReply",
+                Mutation.UpdateHealthMonitorPolicyStatus_ObjectFieldSpec,
+                Mutation.UpdateHealthMonitorPolicyStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	runRequest = @{
+		# OPTIONAL
+		nodeIds = @(
+			$someString
+		)
+		# REQUIRED
+		policyIds = @(
+			$someString
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateOrgSecurityPolicy(input: UpdateOrgSecurityPolicyInput!): Void
+        internal void InitMutationUpdateOrgSecurityPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateOrgSecurityPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateOrgSecurityPolicy",
+                "($input: UpdateOrgSecurityPolicyInput!)",
+                "System.String",
+                Mutation.UpdateOrgSecurityPolicy_ObjectFieldSpec,
+                Mutation.UpdateOrgSecurityPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	disallowWeakerPolicy = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updatePolicy(input: UpdatePolicyInput!): ClassificationPolicyDetail!
+        internal void InitMutationUpdatePolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdatePolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdatePolicy",
+                "($input: UpdatePolicyInput!)",
+                "ClassificationPolicyDetail",
+                Mutation.UpdatePolicy_ObjectFieldSpec,
+                Mutation.UpdatePolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	id = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	description = $someString
+	# OPTIONAL
+	colorEnum = $someClassificationPolicyColor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyColor]) for enum values.
+	# OPTIONAL
+	mode = $someClassificationPolicyMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClassificationPolicyMode]) for enum values.
+	# OPTIONAL
+	analyzerIds = @(
+		$someString
+	)
+	# OPTIONAL
+	updateName = $someBoolean
+	# OPTIONAL
+	updateDescription = $someBoolean
+	# OPTIONAL
+	updateMode = $someBoolean
+	# OPTIONAL
+	updateAnalyzerIds = $someBoolean
+}"
             );
         }
 

@@ -25,3 +25,5 @@ Object-specific configurations.
   - Input to configure the SLA Domain configuration for AWS S3 bucket.
 - managedVolumeSlaConfigInput: ManagedVolumeSlaConfigInput
   - Input to configure the SLA Domain for Managed Volume.
+- postgresDbClusterSlaConfigInput: PostgresDbClusterSlaConfigInput
+  - Input to configure the SLA Domain for Postgres DB Cluster.

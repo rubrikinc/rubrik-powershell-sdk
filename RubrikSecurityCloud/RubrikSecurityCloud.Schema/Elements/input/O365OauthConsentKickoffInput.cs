@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("appType")]
         public System.String? AppType { get; set; }
 
+        //      C# -> System.String? ResourceId
+        // GraphQL -> resourceId: UUID (scalar)
+        [JsonProperty("resourceId")]
+        public System.String? ResourceId { get; set; }
+
 
         #endregion
 

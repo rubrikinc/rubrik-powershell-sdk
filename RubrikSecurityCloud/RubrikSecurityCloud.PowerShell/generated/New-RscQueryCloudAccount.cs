@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Cloud Account' API domain:
-    /// CloudAccount, CurrentFeaturePermissions, ExocomputeMappings, or LatestFeaturePermissions.
+    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, LatestFeaturePermissions, or WithExocomputeMappings.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudAccount creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 6 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccount, CurrentFeaturePermissions, ExocomputeMappings, or LatestFeaturePermissions.
+    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, LatestFeaturePermissions, or WithExocomputeMappings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CloudAccount
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudAccounts operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: CloudAccounts
+    /// 
+    /// $query = New-RscQueryCloudAccount -CloudAccounts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someCloudAccountSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountSortByFieldEnum]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someCloudAccountFilterFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFilterFieldEnum]) for enum values.
+    /// 		# OPTIONAL
+    /// 		text = $someString
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CloudAccount&gt;
     /// 
     /// 
     /// 
@@ -215,6 +258,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the WithExocomputeMappings operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: WithExocomputeMappings
+    /// 
+    /// $query = New-RscQueryCloudAccount -WithExocomputeMappings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// # REQUIRED
+    /// $query.Var.exocomputeAccountIdsFilter = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CloudAccountWithExocomputeMapping&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -232,9 +311,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "CloudAccount",
+                "CloudAccounts",
                 "CurrentFeaturePermissions",
                 "ExocomputeMappings",
                 "LatestFeaturePermissions",
+                "WithExocomputeMappings",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -253,6 +334,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CloudAccount":
                         this.ProcessRecord_CloudAccount();
                         break;
+                    case "CloudAccounts":
+                        this.ProcessRecord_CloudAccounts();
+                        break;
                     case "CurrentFeaturePermissions":
                         this.ProcessRecord_CurrentFeaturePermissions();
                         break;
@@ -261,6 +345,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LatestFeaturePermissions":
                         this.ProcessRecord_LatestFeaturePermissions();
+                        break;
+                    case "WithExocomputeMappings":
+                        this.ProcessRecord_WithExocomputeMappings();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -279,6 +366,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudAccount";
             // Create new graphql operation cloudAccount
             InitQueryCloudAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allCloudAccounts.
+        internal void ProcessRecord_CloudAccounts()
+        {
+            this._logger.name += " -CloudAccounts";
+            // Create new graphql operation allCloudAccounts
+            InitQueryAllCloudAccounts();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -308,6 +404,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAllLatestFeaturePermissionsForCloudAccounts();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // allAccountsWithExocomputeMappings.
+        internal void ProcessRecord_WithExocomputeMappings()
+        {
+            this._logger.name += " -WithExocomputeMappings";
+            // Create new graphql operation allAccountsWithExocomputeMappings
+            InitQueryAllAccountsWithExocomputeMappings();
+        }
+
 
         // Create new GraphQL Query:
         // cloudAccount(cloudAccountId: UUID!): CloudAccount!
@@ -326,6 +431,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.CloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allCloudAccounts(
+        //     sortBy: CloudAccountSortByFieldEnum
+        //     sortOrder: SortOrder
+        //     filter: [CloudAccountFilterInput!]
+        //     features: [CloudAccountFeature!]
+        //   ): [CloudAccount!]!
+        internal void InitQueryAllCloudAccounts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("sortBy", "CloudAccountSortByFieldEnum"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[CloudAccountFilterInput!]"),
+                Tuple.Create("features", "[CloudAccountFeature!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllCloudAccounts",
+                "($sortBy: CloudAccountSortByFieldEnum,$sortOrder: SortOrder,$filter: [CloudAccountFilterInput!],$features: [CloudAccountFeature!])",
+                "List<CloudAccount>",
+                Query.AllCloudAccounts_ObjectFieldSpec,
+                Query.AllCloudAccountsFieldSpec,
+                @"# OPTIONAL
+$query.Var.sortBy = $someCloudAccountSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountSortByFieldEnum]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someCloudAccountFilterFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFilterFieldEnum]) for enum values.
+		# OPTIONAL
+		text = $someString
+}
+)
+# OPTIONAL
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)"
             );
         }
 
@@ -422,6 +570,36 @@ $query.Var.featuresWithPermissionsGroups = @(
 			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 		)
 }
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAccountsWithExocomputeMappings(cloudVendor: CloudVendor!, features: [CloudAccountFeature!]! = [], exocomputeAccountIdsFilter: [UUID!]! = []): [CloudAccountWithExocomputeMapping!]!
+        internal void InitQueryAllAccountsWithExocomputeMappings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudVendor", "CloudVendor!"),
+                Tuple.Create("features", "[CloudAccountFeature!]!"),
+                Tuple.Create("exocomputeAccountIdsFilter", "[UUID!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAccountsWithExocomputeMappings",
+                "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)",
+                "List<CloudAccountWithExocomputeMapping>",
+                Query.AllAccountsWithExocomputeMappings_ObjectFieldSpec,
+                Query.AllAccountsWithExocomputeMappingsFieldSpec,
+                @"# REQUIRED
+$query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+# REQUIRED
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
+# REQUIRED
+$query.Var.exocomputeAccountIdsFilter = @(
+	$someString
 )"
             );
         }

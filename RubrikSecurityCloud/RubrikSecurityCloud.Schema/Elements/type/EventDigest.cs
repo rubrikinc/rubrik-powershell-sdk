@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuids")]
         public List<System.String>? ClusterUuids { get; set; }
 
+        //      C# -> System.String? CreatorEmailAddress
+        // GraphQL -> creatorEmailAddress: String! (scalar)
+        [JsonProperty("creatorEmailAddress")]
+        public System.String? CreatorEmailAddress { get; set; }
+
         //      C# -> System.Int32? DigestId
         // GraphQL -> digestId: Int! (scalar)
         [JsonProperty("digestId")]
@@ -82,6 +87,7 @@ namespace RubrikSecurityCloud.Types
     public EventDigest Set(
         System.String? Account = null,
         List<System.String>? ClusterUuids = null,
+        System.String? CreatorEmailAddress = null,
         System.Int32? DigestId = null,
         System.String? DigestName = null,
         System.String? EventDigestConfigJson = null,
@@ -97,6 +103,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterUuids != null ) {
             this.ClusterUuids = ClusterUuids;
+        }
+        if ( CreatorEmailAddress != null ) {
+            this.CreatorEmailAddress = CreatorEmailAddress;
         }
         if ( DigestId != null ) {
             this.DigestId = DigestId;
@@ -149,6 +158,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterUuids\n" ;
             } else {
                 s += ind + "clusterUuids\n" ;
+            }
+        }
+        //      C# -> System.String? CreatorEmailAddress
+        // GraphQL -> creatorEmailAddress: String! (scalar)
+        if (this.CreatorEmailAddress != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "creatorEmailAddress\n" ;
+            } else {
+                s += ind + "creatorEmailAddress\n" ;
             }
         }
         //      C# -> System.Int32? DigestId
@@ -263,6 +281,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterUuids != null && ec.Excludes("clusterUuids",true))
         {
             this.ClusterUuids = null;
+        }
+        //      C# -> System.String? CreatorEmailAddress
+        // GraphQL -> creatorEmailAddress: String! (scalar)
+        if (ec.Includes("creatorEmailAddress",true))
+        {
+            if(this.CreatorEmailAddress == null) {
+
+                this.CreatorEmailAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatorEmailAddress != null && ec.Excludes("creatorEmailAddress",true))
+        {
+            this.CreatorEmailAddress = null;
         }
         //      C# -> System.Int32? DigestId
         // GraphQL -> digestId: Int! (scalar)

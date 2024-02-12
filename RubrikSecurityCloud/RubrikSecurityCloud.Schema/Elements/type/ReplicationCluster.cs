@@ -20,10 +20,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        [JsonProperty("accountName")]
+        public System.String? AccountName { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsCrossAccount
+        // GraphQL -> isCrossAccount: Boolean! (scalar)
+        [JsonProperty("isCrossAccount")]
+        public System.Boolean? IsCrossAccount { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -45,13 +55,21 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ReplicationCluster Set(
+        System.String? AccountName = null,
         System.String? Id = null,
+        System.Boolean? IsCrossAccount = null,
         System.String? Name = null,
         System.String? Version = null
     ) 
     {
+        if ( AccountName != null ) {
+            this.AccountName = AccountName;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsCrossAccount != null ) {
+            this.IsCrossAccount = IsCrossAccount;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -70,6 +88,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -77,6 +104,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsCrossAccount
+        // GraphQL -> isCrossAccount: Boolean! (scalar)
+        if (this.IsCrossAccount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCrossAccount\n" ;
+            } else {
+                s += ind + "isCrossAccount\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -104,6 +140,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (ec.Includes("accountName",true))
+        {
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))
@@ -120,6 +173,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsCrossAccount
+        // GraphQL -> isCrossAccount: Boolean! (scalar)
+        if (ec.Includes("isCrossAccount",true))
+        {
+            if(this.IsCrossAccount == null) {
+
+                this.IsCrossAccount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCrossAccount != null && ec.Excludes("isCrossAccount",true))
+        {
+            this.IsCrossAccount = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

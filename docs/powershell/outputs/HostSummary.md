@@ -33,7 +33,8 @@ Supported in v5.0+
 - status: System.String
   - Supported in v5.0+
   v5.0-v5.2: 
-  v5.3+: Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
+  v5.3-v9.1: Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
+  v9.2: This field is deprecated, use statusEnum field instead.
 - alias: System.String
   - Supported in v5.1+
   A user-specified string that returns this host in searches.
@@ -43,14 +44,16 @@ Supported in v5.0+
   - Supported in v9.0+
   Specifies whether the refresh of host metadata for this host is paused.
 - agentId: System.String
-  - Supported in v9.1
+  - Supported in v9.1+
   ID of the Rubrik Backup Service (RBS) installed on the host.
 - lastRefreshTimeStamp: System.Int64
-  - Supported in v9.0+
+  - Supported in v8.1+
   Specifies the last refresh epoch time in msec.
 - mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType
   - 
 - mssqlCbtEnabled: MssqlCbtStatusType
+  - 
+- statusEnum: HostRbsConnectionStatus
   - 
 - nasBaseConfig: NasBaseConfig
   - Supported in v5.0+

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Report' API domain:
-    /// CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduled, SendPdf, SendScheduledAsync, StartClusterMigrationJob, UpdateCustom, or UpdateScheduled.
+    /// CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// </summary>
     /// <description>
     /// New-RscMutationReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduled, SendPdf, SendScheduledAsync, StartClusterMigrationJob, UpdateCustom, or UpdateScheduled.
+    /// one of: CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -372,7 +372,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DeleteScheduled operation
+    /// Runs the DeleteScheduledReport operation
     /// of the 'Report' API domain.
     /// <code>
     /// PS &gt;
@@ -380,9 +380,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Report
-    /// # API Operation: DeleteScheduled
+    /// # API Operation: DeleteScheduledReport
     /// 
-    /// $query = New-RscMutationReport -DeleteScheduled
+    /// $query = New-RscMutationReport -DeleteScheduledReport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -444,7 +444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the SendScheduledAsync operation
+    /// Runs the SendScheduledReportAsync operation
     /// of the 'Report' API domain.
     /// <code>
     /// PS &gt;
@@ -452,9 +452,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Report
-    /// # API Operation: SendScheduledAsync
+    /// # API Operation: SendScheduledReportAsync
     /// 
-    /// $query = New-RscMutationReport -SendScheduledAsync
+    /// $query = New-RscMutationReport -SendScheduledReportAsync
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -728,7 +728,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateScheduled operation
+    /// Runs the UpdateDatabaseLogingPropertiesForCluster operation
     /// of the 'Report' API domain.
     /// <code>
     /// PS &gt;
@@ -736,9 +736,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Report
-    /// # API Operation: UpdateScheduled
+    /// # API Operation: UpdateDatabaseLogingPropertiesForCluster
     /// 
-    /// $query = New-RscMutationReport -UpdateScheduled
+    /// $query = New-RscMutationReport -UpdateDatabaseLogingPropertiesForCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	properties = @{
+    /// 		# OPTIONAL
+    /// 		enableDelayNotification = $someBoolean
+    /// 		# OPTIONAL
+    /// 		logDelayThresholdInMin = $someInt64
+    /// 		# OPTIONAL
+    /// 		logDelayNotificationFrequencyInMin = $someInt64
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DbLogReportProperties
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateScheduledReport operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: UpdateScheduledReport
+    /// 
+    /// $query = New-RscMutationReport -UpdateScheduledReport
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -810,12 +850,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateCustom",
                 "CreateScheduled",
                 "DeleteCustom",
-                "DeleteScheduled",
+                "DeleteScheduledReport",
                 "SendPdf",
-                "SendScheduledAsync",
+                "SendScheduledReportAsync",
                 "StartClusterMigrationJob",
                 "UpdateCustom",
-                "UpdateScheduled",
+                "UpdateDatabaseLogingPropertiesForCluster",
+                "UpdateScheduledReport",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -840,14 +881,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteCustom":
                         this.ProcessRecord_DeleteCustom();
                         break;
-                    case "DeleteScheduled":
-                        this.ProcessRecord_DeleteScheduled();
+                    case "DeleteScheduledReport":
+                        this.ProcessRecord_DeleteScheduledReport();
                         break;
                     case "SendPdf":
                         this.ProcessRecord_SendPdf();
                         break;
-                    case "SendScheduledAsync":
-                        this.ProcessRecord_SendScheduledAsync();
+                    case "SendScheduledReportAsync":
+                        this.ProcessRecord_SendScheduledReportAsync();
                         break;
                     case "StartClusterMigrationJob":
                         this.ProcessRecord_StartClusterMigrationJob();
@@ -855,8 +896,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UpdateCustom":
                         this.ProcessRecord_UpdateCustom();
                         break;
-                    case "UpdateScheduled":
-                        this.ProcessRecord_UpdateScheduled();
+                    case "UpdateDatabaseLogingPropertiesForCluster":
+                        this.ProcessRecord_UpdateDatabaseLogingPropertiesForCluster();
+                        break;
+                    case "UpdateScheduledReport":
+                        this.ProcessRecord_UpdateScheduledReport();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -897,9 +941,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteScheduledReport.
-        internal void ProcessRecord_DeleteScheduled()
+        internal void ProcessRecord_DeleteScheduledReport()
         {
-            this._logger.name += " -DeleteScheduled";
+            this._logger.name += " -DeleteScheduledReport";
             // Create new graphql operation deleteScheduledReport
             InitMutationDeleteScheduledReport();
         }
@@ -915,9 +959,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // sendScheduledReportAsync.
-        internal void ProcessRecord_SendScheduledAsync()
+        internal void ProcessRecord_SendScheduledReportAsync()
         {
-            this._logger.name += " -SendScheduledAsync";
+            this._logger.name += " -SendScheduledReportAsync";
             // Create new graphql operation sendScheduledReportAsync
             InitMutationSendScheduledReportAsync();
         }
@@ -941,10 +985,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateScheduledReport.
-        internal void ProcessRecord_UpdateScheduled()
+        // updateDatabaseLogReportingPropertiesForCluster.
+        internal void ProcessRecord_UpdateDatabaseLogingPropertiesForCluster()
         {
-            this._logger.name += " -UpdateScheduled";
+            this._logger.name += " -UpdateDatabaseLogingPropertiesForCluster";
+            // Create new graphql operation updateDatabaseLogReportingPropertiesForCluster
+            InitMutationUpdateDatabaseLogReportingPropertiesForCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateScheduledReport.
+        internal void ProcessRecord_UpdateScheduledReport()
+        {
+            this._logger.name += " -UpdateScheduledReport";
             // Create new graphql operation updateScheduledReport
             InitMutationUpdateScheduledReport();
         }
@@ -1533,6 +1586,38 @@ $query.Var.input = @{
 		isHidden = $someBoolean
 		# OPTIONAL
 		isReadOnly = $someBoolean
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateDatabaseLogReportingPropertiesForCluster(input: UpdateDatabaseLogReportingPropertiesForClusterInput!): DbLogReportProperties!
+        internal void InitMutationUpdateDatabaseLogReportingPropertiesForCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateDatabaseLogReportingPropertiesForClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateDatabaseLogReportingPropertiesForCluster",
+                "($input: UpdateDatabaseLogReportingPropertiesForClusterInput!)",
+                "DbLogReportProperties",
+                Mutation.UpdateDatabaseLogReportingPropertiesForCluster_ObjectFieldSpec,
+                Mutation.UpdateDatabaseLogReportingPropertiesForClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	properties = @{
+		# OPTIONAL
+		enableDelayNotification = $someBoolean
+		# OPTIONAL
+		logDelayThresholdInMin = $someInt64
+		# OPTIONAL
+		logDelayNotificationFrequencyInMin = $someInt64
 	}
 }"
             );

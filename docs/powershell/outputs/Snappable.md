@@ -47,6 +47,12 @@ An object that can be backed-up by taking snapshots.
   - The logical size of the workload's last snapshot.
 - orgId: System.String
   - The organization ID of this workload.
+- sourceProtocol: System.String
+  - The source NAS protocol.
+- ncdPolicyName: System.String
+  - The NASCD policy name.
+- ncdLatestArchiveSnapshot: DateTime
+  - The timestamp of the last taken NASCD archive snapshot.
 - slaDomain: SlaDomain
   - The SLA Domain of the protected objects.
 - cluster: Cluster

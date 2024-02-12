@@ -17,7 +17,7 @@ Type of hierarchy object.
 - Hdfs
 - CASSANDRA_SOURCE - Cassandra Source.
 - AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
-- SapHanaSystem
+- SapHanaSystem - SAP HANA System.
 - KuprCluster
 - GcpNativeProject
 - AwsNativeRdsInstance
@@ -25,6 +25,7 @@ Type of hierarchy object.
 - VolumeGroup
 - AZURE_SQL_MANAGED_INSTANCE_DB
 - MONGO_COLLECTION - MongoDB Collection.
+- SAP_HANA_SYSTEM - SAP HANA System.
 - RubrikEc2Instance
 - O365Group
 - FilesetTemplate
@@ -120,7 +121,7 @@ Type of hierarchy object.
 - EXCHANGE_DAG - Exchange DAG.
 - FAILOVER_CLUSTER_APP - Failover Cluster App.
 - VSphereHost
-- SapHanaDatabase
+- SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk
 - NutanixCluster
 - CASSANDRA_KEYSPACE - Cassandra Keyspace.

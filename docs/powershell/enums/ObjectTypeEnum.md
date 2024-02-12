@@ -11,6 +11,7 @@
 - VolumeGroup
 - AZURE_SQL_MANAGED_INSTANCE_DB
 - MONGO_COLLECTION - MongoDB Collection.
+- SAP_HANA_SYSTEM - SAP HANA System.
 - RubrikEc2Instance
 - MONGO_COLLECTION_SET - MongoDB Database.
 - OracleDatabase
@@ -57,7 +58,7 @@
 - SnapMirrorCloud
 - AppBlueprint
 - NutanixVirtualMachine
-- SapHanaDatabase
+- SapHanaDatabase - SAP HANA Database.
 - GcpNativeDisk
 - CASSANDRA_KEYSPACE - Cassandra Keyspace.
 - ORACLE_DATA_GUARD_GROUP

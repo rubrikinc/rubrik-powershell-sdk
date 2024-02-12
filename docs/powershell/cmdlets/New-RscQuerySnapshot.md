@@ -1,20 +1,5 @@
 # New-RscQuerySnapshot
 ## Subcommands
-### activedirectorysearchs
-Search across a range of snapshots of a domain controller for Active Directory objects
-
-Supported in v9.1
-Return the Active Directory objects matching the search criteria.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - id - System.String: ID of the Active Directory domain controller that needs to be explored.
-    - snapshotAfterDate - DateTime: Searches across the snapshots taken on or after the specified date.
-    - snapshotBeforeDate - DateTime: Searches across the snapshots taken on or before the specified date.
-    - name - System.String: Search string.
-    - objectType - V1SearchDomainControllerRequestObjectType: Type of the objects to be searched.
-- Returns ActiveDirectoryObjectSearchResponseConnection.
 ### browsefilelist
 Returns a list files whose name is prefixed by the query in the given snapshot.
 

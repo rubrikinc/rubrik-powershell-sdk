@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'VMware vSphere vCenter' API domain:
-    /// AdvancedTagPreview, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
+    /// AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// </summary>
     /// <description>
     /// New-RscQueryVcenter creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'VMware vSphere vCenter' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdvancedTagPreview, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
+    /// one of: AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -106,6 +106,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: VcenterAdvancedTagPreviewReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AsyncRequestStatus operation
+    /// of the 'VMware vSphere vCenter' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vcenter
+    /// # API Operation: AsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryVcenter -AsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -435,6 +468,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AdvancedTagPreview",
+                "AsyncRequestStatus",
                 "HotAddBandwidth",
                 "HotAddNetwork",
                 "HotAddProxy",
@@ -460,6 +494,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AdvancedTagPreview":
                         this.ProcessRecord_AdvancedTagPreview();
+                        break;
+                    case "AsyncRequestStatus":
+                        this.ProcessRecord_AsyncRequestStatus();
                         break;
                     case "HotAddBandwidth":
                         this.ProcessRecord_HotAddBandwidth();
@@ -502,6 +539,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AdvancedTagPreview";
             // Create new graphql operation vCenterAdvancedTagPreview
             InitQueryVcenterAdvancedTagPreview();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vcenterAsyncRequestStatus.
+        internal void ProcessRecord_AsyncRequestStatus()
+        {
+            this._logger.name += " -AsyncRequestStatus";
+            // Create new graphql operation vcenterAsyncRequestStatus
+            InitQueryVcenterAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -600,6 +646,31 @@ $query.Var.input = @{
 	offset = $someInt
 	# REQUIRED
 	filterCondition = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vcenterAsyncRequestStatus(input: VcenterAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryVcenterAsyncRequestStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VcenterAsyncRequestStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVcenterAsyncRequestStatus",
+                "($input: VcenterAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.VcenterAsyncRequestStatus_ObjectFieldSpec,
+                Query.VcenterAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
 }"

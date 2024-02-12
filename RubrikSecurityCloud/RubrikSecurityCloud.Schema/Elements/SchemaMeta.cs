@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20231211-26" ;
+        public static string GraphqlSchemaVersion = "v20240205-15" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -97,6 +97,7 @@ namespace RubrikSecurityCloud.Types
             NutanixCategoryValueLogicalChildType,
             NutanixClusterDescendantType,
             NutanixClusterLogicalChildType,
+            NutanixMultiClusterObjectType,
             NutanixPrismCentralDescendantType,
             NutanixPrismCentralLogicalChildType,
             NutanixTopLevelDescendantType,
@@ -198,11 +199,11 @@ namespace RubrikSecurityCloud.Types
             ActiveDirectoryDomainPhysicalChildTypeConnection,
             ActiveDirectoryDomainPhysicalChildTypeEdge,
             ActiveDirectoryObjectsCount,
-            ActiveDirectoryObjectSearchResponse,
-            ActiveDirectoryObjectSearchResponseConnection,
-            ActiveDirectoryObjectSearchResponseEdge,
             ActiveDirectorySearchVersions,
             ActiveDirectoryServiceStatus,
+            ActiveDirectorySnappableSearchResponse,
+            ActiveDirectorySnappableSearchResponseConnection,
+            ActiveDirectorySnappableSearchResponseEdge,
             Activity,
             ActivityChart,
             ActivityConnection,
@@ -227,6 +228,7 @@ namespace RubrikSecurityCloud.Types
             AddClusterCertificateReply,
             AddClusterNodesReply,
             AddConfiguredGroupToHierarchyReply,
+            AddCrossAccountServiceConsumerReply,
             AddDb2InstanceReply,
             AddGlobalCertificateReply,
             AddManagedVolumeReply,
@@ -277,6 +279,7 @@ namespace RubrikSecurityCloud.Types
             AnomalyStatus,
             AnomalyTable,
             AppIdForType,
+            ApplicationCloudAccountToExocomputeConfig,
             AppManifestInfo,
             ArchivalGroupConnectionStatus,
             ArchivalLocationToClusterMapping,
@@ -322,6 +325,7 @@ namespace RubrikSecurityCloud.Types
             AwsCloudAccountWithFeatures,
             AwsComputeSettings,
             AwsCustomerManagedExocomputeConfig,
+            AwsExocomputeClusterConnectReply,
             AwsExocomputeConfig,
             AwsExocomputeConfigsDeletionStatusType,
             AwsExocomputeGetConfigResponse,
@@ -370,6 +374,7 @@ namespace RubrikSecurityCloud.Types
             AzureAdObjectConnection,
             AzureAdObjectEdge,
             AzureAdObjects,
+            AzureAdReverseRelationship,
             AzureAdUser,
             AzureArmTemplateByFeature,
             AzureBlobConfig,
@@ -459,6 +464,7 @@ namespace RubrikSecurityCloud.Types
             AzureSubscriptionConnection,
             AzureSubscriptionEdge,
             AzureSubscriptionMissingPermissions,
+            AzureSubscriptionRansomwareInvestigationEnablement,
             AzureSubscriptionWithExocomputeMapping,
             AzureSubscriptionWithExoConfigs,
             AzureSubscriptionWithFeaturesType,
@@ -467,6 +473,7 @@ namespace RubrikSecurityCloud.Types
             AzureUserAssignedManagedIdentity,
             AzureUserRoleResp,
             BackupEventStatus,
+            BackupStatsBucket,
             BackupTaskDiagnosticInfo,
             BackupWindow,
             BaseGuestCredentialDetail,
@@ -643,6 +650,7 @@ namespace RubrikSecurityCloud.Types
             CloudNativeVersionedFileEdge,
             Cluster,
             ClusterArchivalSpec,
+            ClusterCapacityQuota,
             ClusterConnection,
             ClusterCsr,
             ClusterDisk,
@@ -688,6 +696,7 @@ namespace RubrikSecurityCloud.Types
             Column,
             CompleteAzureAdAppSetupReply,
             CompleteAzureCloudAccountOauthReply,
+            ComplianceState,
             ComplianceStatus,
             ComputeClusterDetail,
             ComputeClusterSummary,
@@ -709,6 +718,7 @@ namespace RubrikSecurityCloud.Types
             CreateCloudNativeLabelRuleReply,
             CreateCloudNativeRcvAzureStorageSettingReply,
             CreateCloudNativeTagRuleReply,
+            CreateCrossAccountRegOauthPayloadReply,
             CreateCustomReportReply,
             CreateFailoverClusterAppReply,
             CreateFailoverClusterReply,
@@ -728,6 +738,7 @@ namespace RubrikSecurityCloud.Types
             CreateVsphereAdvancedTagReply,
             CreateVsphereVcenterReply,
             CreateWebhookReply,
+            CrossAccountSaType,
             Csr,
             CsrConnection,
             CsrEdge,
@@ -746,6 +757,8 @@ namespace RubrikSecurityCloud.Types
             DatastoreFreespaceThresholdType,
             DataStoreSummary,
             DayOfWeekOpt,
+            DayToDayModeBackupStats,
+            DayToDayModeStats,
             Db2AppMetadata,
             Db2Config,
             Db2DataBackupFile,
@@ -1073,8 +1086,10 @@ namespace RubrikSecurityCloud.Types
             HypervScvmmUpdate,
             HypervScvmmUpdateReply,
             HypervServer,
+            HypervServerConnection,
             HypervServerDescendantTypeConnection,
             HypervServerDescendantTypeEdge,
+            HypervServerEdge,
             HypervServerLogicalChildTypeConnection,
             HypervServerLogicalChildTypeEdge,
             HyperVstatus,
@@ -1169,6 +1184,9 @@ namespace RubrikSecurityCloud.Types
             LockoutState,
             LogConfigResult,
             LookupAccountReply,
+            M365OrgBackupLocations,
+            M365OrgOperationModes,
+            M365ProductOperationMode,
             M365Region,
             M365RegionsResp,
             M365Snapshot,
@@ -1218,6 +1236,7 @@ namespace RubrikSecurityCloud.Types
             ManagedVolumeSnapshotStats,
             ManagedVolumeSnapshotSummary,
             ManagedVolumeStats,
+            Map,
             MapAzureCloudAccountExocomputeSubscriptionReply,
             MapAzureCloudAccountToPersistentStorageLocationReply,
             MapCloudAccountExocomputeAccountReply,
@@ -1514,8 +1533,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1553,6 +1572,7 @@ namespace RubrikSecurityCloud.Types
             O365UserEdge,
             OauthAccessToken,
             OauthCodesForEdgeRegReply,
+            OauthRequestPayload,
             ObjectIdsForHierarchyType,
             ObjectIdToSnapshotIds,
             ObjectSpecificConfigs,
@@ -1562,6 +1582,8 @@ namespace RubrikSecurityCloud.Types
             ObjectTypeAccessSummary,
             ObjectTypeAccessSummaryConnection,
             ObjectTypeAccessSummaryEdge,
+            OnboardingModeBackupStats,
+            OnboardingModeStats,
             OptionGroup,
             OracleAcoParameterDetail,
             OracleAcoParameterList,
@@ -1622,6 +1644,7 @@ namespace RubrikSecurityCloud.Types
             OrgsForPrincipalReply,
             OverallRansomwareInvestigationSummary,
             PageInfo,
+            PaginationMarker,
             ParentAppInfo,
             PasskeyCredentialMetadata,
             PasskeyMetadata,
@@ -1637,10 +1660,9 @@ namespace RubrikSecurityCloud.Types
             PausedClustersInfo,
             PauseSlaReply,
             PauseTargetReply,
+            PcrAwsImagePullDetails,
             PendingAction,
             PendingActionType,
-            PendingEvaluationResults,
-            PendingEvaluationResultsReply,
             PendingSnapshotDeletion,
             PendingSnapshotsOfObjectDeletion,
             PerLocationCloudStorageTier,
@@ -1681,6 +1703,7 @@ namespace RubrikSecurityCloud.Types
             PolicyStatus,
             PolicySummary,
             PolicySummaryDetails,
+            PostgresDbClusterSlaConfig,
             PrecheckFailure,
             PrechecksJobReply,
             PrechecksStatusReply,
@@ -1694,6 +1717,8 @@ namespace RubrikSecurityCloud.Types
             PrincipalConnection,
             PrincipalCounts,
             PrincipalEdge,
+            PrivateContainerRegistryDetailsType,
+            PrivateContainerRegistryReplyType,
             PrivateEndpointConnection,
             ProcessedRansomwareInvestigationWorkloadCountReply,
             ProductDocumentation,
@@ -1702,8 +1727,6 @@ namespace RubrikSecurityCloud.Types
             ProtectedObjectsConnection,
             ProtectedObjectsEdge,
             ProtectedObjectTypeToSla,
-            ProtectedRansomwareInvestigationWorkload,
-            ProtectedRansomwareInvestigationWorkloadCountReply,
             ProtectionStatus,
             ProtectionTaskDetailsTableFilter,
             ProxySettings,
@@ -1716,7 +1739,6 @@ namespace RubrikSecurityCloud.Types
             QuerySddlReply,
             RansomwareInvestigationAnalysisSummaryReply,
             RansomwareInvestigationEnablementReply,
-            RansomwareInvestigationWorkloadScannedCountReply,
             RansomwareResult,
             RansomwareResultConnection,
             RansomwareResultEdge,
@@ -1753,12 +1775,14 @@ namespace RubrikSecurityCloud.Types
             RegisterCloudClusterReply,
             RegisterNasSystemReply,
             RelatedContent,
+            RelatedObjectIdsType,
             RelativeMonthlyRecurrencePattern,
             RelativeTimeRange,
             RelativeYearlyRecurrencePattern,
             RemoveVlansReply,
             ReplicatedSnapshotInfo,
             ReplicationCluster,
+            ReplicationNetworkThrottleBypassReply,
             ReplicationPair,
             ReplicationPairConfigDetails,
             ReplicationPairConnection,
@@ -1767,6 +1791,8 @@ namespace RubrikSecurityCloud.Types
             ReplicationSpec,
             ReplicationSpecV2,
             ReplicationTarget,
+            ReplicationTargetThrottleBypassSummary,
+            ReplicationTargetThrottleBypassSummaryListResponse,
             ReplicationToCloudLocationSpec,
             ReplicationToCloudRegionSpec,
             ReportMigrationStatus,
@@ -1950,6 +1976,9 @@ namespace RubrikSecurityCloud.Types
             SnapshotSummaryEdge,
             SnmpConfiguration,
             SnmpTrapReceiverConfig,
+            SnoozedDirectory,
+            SnoozedDirectoryConnection,
+            SnoozedDirectoryEdge,
             SonarContentReport,
             SonarContentReportChart,
             SonarContentReportConnection,
@@ -2001,6 +2030,7 @@ namespace RubrikSecurityCloud.Types
             SupportUserAccessConnection,
             SupportUserAccessEdge,
             SuspiciousFileInfo,
+            SwitchProductToOnboardingModeReply,
             SyslogCertificateInfo,
             SyslogExportRuleFull,
             SyslogExportRuleSummary,
@@ -2052,6 +2082,7 @@ namespace RubrikSecurityCloud.Types
             TimeStat,
             TotalRiskSummary,
             TotpStatus,
+            TprStatusForNodeRemoval,
             TriggerExocomputeHealthCheckReply,
             TriggerRansomwareDetectionReply,
             UnidirectionalReplicationSpec,
@@ -2073,6 +2104,7 @@ namespace RubrikSecurityCloud.Types
             UpdateCloudNativeRcvAzureStorageSettingReply,
             UpdateClusterDefaultAddressReply,
             UpdateClusterSettingsReply,
+            UpdateCustomerAppPermissionsReply,
             UpdateCustomReportReply,
             UpdateDistributionListDigestReply,
             UpdateEventDigestReply,
@@ -2087,6 +2119,7 @@ namespace RubrikSecurityCloud.Types
             UpdateIndexingStatusError,
             UpdateInsightStateReply,
             UpdateLockoutConfigReply,
+            UpdateManagedIdentitiesReply,
             UpdateManagedVolumeReply,
             UpdateMssqlDefaultPropertiesReply,
             UpdateMssqlLogShippingConfigurationReply,
@@ -2149,6 +2182,9 @@ namespace RubrikSecurityCloud.Types
             ValidateCloudNativeFileRecoveryFeasibilityReply,
             ValidateOracleAcoFileReply,
             ValidateOrgNameReply,
+            ValidReplicationSource,
+            ValidReplicationSourceConnection,
+            ValidReplicationSourceEdge,
             ValidReplicationTarget,
             ValidReplicationTargetConnection,
             ValidReplicationTargetEdge,
@@ -2334,7 +2370,7 @@ namespace RubrikSecurityCloud.Types
             WorkloadLocation,
             WorkloadOrganization,
             WorkloadRecoveryInfo,
-            WorkloadScanned,
+            WorkloadRegion,
             WorkloadTypeToBackupSetupSpecs,
             YaraMatchDetail,
             YearlySnapshotSchedule,
@@ -2377,6 +2413,7 @@ namespace RubrikSecurityCloud.Types
             AddClusterCertificateInput,
             AddClusterNodesInput,
             AddConfiguredGroupToHierarchyInput,
+            AddCrossAccountServiceConsumerInput,
             AddDb2InstanceInput,
             AddGlobalCertificateInput,
             AddInventoryWorkloadsInput,
@@ -2402,6 +2439,7 @@ namespace RubrikSecurityCloud.Types
             AmiTypeForAwsNativeArchivedSnapshotExportInput,
             AnalyzerGroupInput,
             AnalyzerRiskInstanceInput,
+            AnomalyFalsePositiveReport,
             AnomalyResultFilterInput,
             AppFilter,
             AppSortByParam,
@@ -2430,6 +2468,7 @@ namespace RubrikSecurityCloud.Types
             AwsCloudComputeSettingsInput,
             AwsCloudTypeFilter,
             AwsEsConfigInput,
+            AwsExocomputeClusterConnectInput,
             AwsExocomputeConfigInput,
             AwsExocomputeSubnetInputType,
             AwsGetPermissionPoliciesInput,
@@ -2593,6 +2632,7 @@ namespace RubrikSecurityCloud.Types
             BulkUpdateOracleDatabasesInput,
             BulkUpdateOracleHostsInput,
             BulkUpdateOracleRacsInput,
+            BulkUpdateRansomwareInvestigationEnabledInput,
             CalendarEmailAddressFilter,
             CalendarGroupInfo,
             CalendarInfo,
@@ -2670,6 +2710,8 @@ namespace RubrikSecurityCloud.Types
             CreateCloudNativeLabelRuleInput,
             CreateCloudNativeRcvAzureStorageSettingInput,
             CreateCloudNativeTagRuleInput,
+            CreateCrossAccountPairInput,
+            CreateCrossAccountRegOauthPayloadInput,
             CreateCustomAnalyzerInput,
             CreateCustomReportInput,
             CreateDomainControllerSnapshotInput,
@@ -2729,10 +2771,12 @@ namespace RubrikSecurityCloud.Types
             CreateVsphereAdvancedTagInput,
             CreateVsphereVcenterInput,
             CreateWebhookInput,
+            CrossAccountSaInput,
             CustomHeader,
             CustomReportCreate,
             CustomReportFiltersConfig,
             DailySnapshotScheduleInput,
+            DataThreatAnalyticsEnablementEntityInfo,
             DayOfWeekOptInput,
             Db2ConfigInput,
             Db2DatabaseConfigInput,
@@ -2902,6 +2946,7 @@ namespace RubrikSecurityCloud.Types
             ExportSnapshotToStandaloneHostRequestInput,
             ExternalArtifactMap,
             ExternalArtifacts,
+            FailedItemsRecoveryConfig,
             FailoverClusterAppConfigInput,
             FailoverClusterAppSourceInput,
             FailoverClusterConfigInput,
@@ -3056,6 +3101,7 @@ namespace RubrikSecurityCloud.Types
             HypervDownloadFilesJobConfigInput,
             HypervExportSnapshotJobConfigForBatchInput,
             HypervExportSnapshotJobConfigInput,
+            HypervInplaceExportJobConfigInput,
             HypervInstantRecoverConfigForBatchInput,
             HypervInstantRecoveryJobConfigInput,
             HypervLiveMountFilterInput,
@@ -3074,6 +3120,7 @@ namespace RubrikSecurityCloud.Types
             HypervVirtualMachineUpdateInput,
             IbmCosDetails,
             IndicatorOfCompromiseInput,
+            InplaceExportHypervVirtualMachineInput,
             InPlaceRecoveryJobConfigForBatchInput,
             InPlaceRecoveryJobConfigV2Input,
             InplaceRestoreConfig,
@@ -3308,22 +3355,26 @@ namespace RubrikSecurityCloud.Types
             PatchSapHanaSystemInput,
             PauseSlaInput,
             PauseTargetInput,
+            PcrAwsImagePullDetailsInput,
             PendingSlaOperationsRequestInput,
             PermissionInput,
             PermissionsGroupWithVersionInput,
             PortRange,
+            PostgresDbClusterSlaConfigInput,
             PreAddVcenterInput,
             PrepareAwsCloudAccountDeletionInput,
             PrepareFeatureUpdateForAwsCloudAccountInput,
             PreviewerClusterConfigInput,
             PreviewFilterInput,
             PrismElementCdmTuple,
+            PrivateContainerRegistryInput,
             PromoteReaderTargetInput,
             ProxyConfigInput,
             ProxySettingsInput,
             PutSmbConfigurationInput,
             QuarantineSpecInput,
             QuarterlySnapshotScheduleInput,
+            QueryByIdReplicationTargetInfoInput,
             QueryCertificatesInput,
             QueryDatastoreFreespaceThresholdInput,
             QueryGuestCredentialInput,
@@ -3331,6 +3382,7 @@ namespace RubrikSecurityCloud.Types
             QueryLogReportInput,
             QueryLogShippingConfigurationsV2Input,
             QueryNetworkThrottleInput,
+            QueryReplicationTargetInfoInput,
             QueryReportPropertiesInput,
             QuerySupportBundleInput,
             QueryUnmanagedObjectSnapshotsV1Input,
@@ -3377,6 +3429,7 @@ namespace RubrikSecurityCloud.Types
             ReplicationPairsQueryFilter,
             ReplicationSpecInput,
             ReplicationSpecV2Input,
+            ReplicationTargetThrottleUpdateInput,
             ReplicationToCloudLocationSpecInput,
             ReplicationToCloudRegionSpecInput,
             ReportChartCreate,
@@ -3388,6 +3441,7 @@ namespace RubrikSecurityCloud.Types
             ResetUsersPasswordsWithUserIdsInput,
             ResizeDiskInput,
             ResizeManagedVolumeInput,
+            ResolveAnomalyInput,
             ResolveVolumeGroupsConflictInput,
             ResourceInput,
             RestoreActiveDirectoryObjectsInput,
@@ -3443,12 +3497,14 @@ namespace RubrikSecurityCloud.Types
             SendScheduledReportAsyncInput,
             SetAnalyzerRisksInput,
             SetAzureCloudAccountCustomerAppCredentialsInput,
+            SetBundleApprovalStatusInput,
             SetCustomerTagsInput,
             SetDatastoreFreespaceThresholdInput,
             SetDatastoreFreespaceThresholdsInput,
             SetLdapMfaSettingInput,
             SetMfaSettingInput,
             SetPasswordComplexityPolicyInput,
+            SetPrivateContainerRegistryInput,
             SetSsoCertificateInput,
             SetTotpConfigInput,
             SetupCloudNativeSqlServerBackupInput,
@@ -3535,6 +3591,7 @@ namespace RubrikSecurityCloud.Types
             SubscriptionTypeInput,
             SupportPortalLoginInput,
             SupportUserAccessFilterInput,
+            SwitchProductToOnboardingModeInput,
             SyslogCertificateInfoInput,
             SyslogExportRuleFullInput,
             SyslogExportRuleInput,
@@ -3567,6 +3624,7 @@ namespace RubrikSecurityCloud.Types
             TimeRangeFilter,
             TimeRangeFilterJson,
             TimeRangeInput,
+            TprStatusForNodeRemovalInput,
             TriggerCloudComputeConnectivityCheckInput,
             TriggerExocomputeHealthCheckInput,
             TriggerRansomwareDetectionInput,
@@ -3605,6 +3663,7 @@ namespace RubrikSecurityCloud.Types
             UpdateClusterNtpServersInput,
             UpdateClusterSettingsInput,
             UpdateConfiguredGroupInput,
+            UpdateCustomerAppPermissionsInput,
             UpdateCustomReportInput,
             UpdateDatabaseLogReportingPropertiesForClusterInput,
             UpdateDistributionListDigestInput,
@@ -3626,6 +3685,7 @@ namespace RubrikSecurityCloud.Types
             UpdateIntegrationInput,
             UpdateIntegrationsInput,
             UpdateLockoutConfigInput,
+            UpdateManagedIdentitiesInput,
             UpdateManagedVolumeInput,
             UpdateManualTargetMappingInput,
             UpdateMountConfigInput,
@@ -3649,6 +3709,7 @@ namespace RubrikSecurityCloud.Types
             UpdateProxyConfigInput,
             UpdateRcsAutomaticTargetMappingInput,
             UpdateRcvTargetInput,
+            UpdateReplicationNetworkThrottleBypassInput,
             UpdateReplicationTargetInput,
             UpdateS3CompatibleTargetInput,
             UpdateScheduledReportInput,
@@ -3696,6 +3757,7 @@ namespace RubrikSecurityCloud.Types
             VappTemplateSnapshotExportOptionsInput,
             VappVmNetworkConnectionInput,
             VappVmRestoreSpecInput,
+            VcenterAsyncRequestStatusInput,
             VcenterConfigInput,
             VcenterConfigV2Input,
             VcenterConnectionConfigInput,
@@ -3766,6 +3828,7 @@ namespace RubrikSecurityCloud.Types
             WebServerCertificatePayloadInput,
             WeeklySnapshotScheduleInput,
             WorkloadFieldsInput,
+            WorkloadRegionInput,
             YearlySnapshotScheduleInput,
         }
 
@@ -3917,6 +3980,7 @@ namespace RubrikSecurityCloud.Types
             allUnmanagedObjectsSupportedTypes,
             allUsersOnAccount,
             allUsersOnAccountConnection,
+            allValidReplicationSources,
             allValidReplicationTargets,
             allVcenterHotAddProxyVms,
             allVirtualMachineFiles,
@@ -4175,6 +4239,7 @@ namespace RubrikSecurityCloud.Types
             hypervScvmms,
             hypervServer,
             hypervServers,
+            hypervServersPaginated,
             hypervTopLevelDescendants,
             hypervVirtualMachine,
             hypervVirtualMachineAsyncRequestStatus,
@@ -4220,6 +4285,12 @@ namespace RubrikSecurityCloud.Types
             listO365Apps,
             lockoutConfig,
             lookupAccount,
+            m365DayToDayModeBackupStats,
+            m365DayToDayModeStats,
+            m365OnboardingModeBackupStats,
+            m365OnboardingModeStats,
+            m365OrgBackupLocations,
+            m365OrgOperationModes,
             m365Regions,
             managedVolume,
             managedVolumeInventoryStats,
@@ -4355,7 +4426,6 @@ namespace RubrikSecurityCloud.Types
             overallRansomwareInvestigationSummary,
             passwordComplexityPolicy,
             pendingAction,
-            pendingRansomwareInvestigationResultsCount,
             phoenixRolloutProgress,
             physicalHost,
             physicalHosts,
@@ -4370,17 +4440,16 @@ namespace RubrikSecurityCloud.Types
             policyObjs,
             prechecksStatus,
             prechecksStatusWithNextJobInfo,
+            privateContainerRegistry,
             processedRansomwareInvestigationWorkloadCount,
             productDocumentation,
             protectedObjectsConnection,
-            protectedRansomwareInvestigationWorkloadCount,
             protectedVolumesCount,
             queryDatastoreFreespaceThresholds,
             radarClusterConnection,
             ransomwareDetectionWorkloadLocations,
             ransomwareInvestigationAnalysisSummary,
             ransomwareInvestigationEnablement,
-            ransomwareInvestigationWorkloadScannedCount,
             ransomwareResult,
             ransomwareResultOpt,
             ransomwareResults,
@@ -4389,6 +4458,8 @@ namespace RubrikSecurityCloud.Types
             rcvAccountEntitlement,
             rdsInstanceDetailsFromAws,
             replicationIncomingStats,
+            replicationNetworkThrottleBypass,
+            replicationNetworkThrottleBypassById,
             replicationOutgoingStats,
             replicationPairs,
             reportData,
@@ -4445,6 +4516,7 @@ namespace RubrikSecurityCloud.Types
             snapshotsForUnmanagedObject,
             snapshotSharepointDriveSearch,
             snmpConfigurations,
+            snoozedDirectories,
             sonarContentReport,
             sonarReport,
             sonarReportRow,
@@ -4466,6 +4538,7 @@ namespace RubrikSecurityCloud.Types
             threatHunts,
             threatHuntSummary,
             totpConfigStatus,
+            tprStatusForNodeRemoval,
             tunnelStatus,
             uniqueHypervServersCount,
             uniqueVcdCount,
@@ -4493,6 +4566,7 @@ namespace RubrikSecurityCloud.Types
             vappTemplateSnapshotExportOptions,
             vcdVappVms,
             vCenterAdvancedTagPreview,
+            vcenterAsyncRequestStatus,
             vCenterHotAddBandwidth,
             vCenterHotAddNetwork,
             vCenterNetworks,
@@ -4554,6 +4628,7 @@ namespace RubrikSecurityCloud.Types
             addClusterCertificate,
             addClusterNodes,
             addConfiguredGroupToHierarchy,
+            addCrossAccountServiceConsumer,
             addDb2Instance,
             addGlobalCertificate,
             addInventoryWorkloads,
@@ -4579,6 +4654,7 @@ namespace RubrikSecurityCloud.Types
             assignSla,
             assignSlasForSnappableHierarchies,
             assignSlaToMongoDbCollection,
+            awsExocomputeClusterConnect,
             azureOauthConsentComplete,
             azureOauthConsentKickoff,
             backupAzureAdDirectory,
@@ -4628,6 +4704,7 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateOracleDatabases,
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
+            bulkUpdateRansomwareInvestigationStatus,
             cancelActivitySeries,
             cancelDownloadPackage,
             cancelScheduledUpgrade,
@@ -4664,6 +4741,8 @@ namespace RubrikSecurityCloud.Types
             createCloudNativeLabelRule,
             createCloudNativeRcvAzureStorageSetting,
             createCloudNativeTagRule,
+            createCrossAccountPair,
+            createCrossAccountRegOauthPayload,
             createCustomAnalyzer,
             createCustomReport,
             createDomainControllerSnapshot,
@@ -4886,6 +4965,7 @@ namespace RubrikSecurityCloud.Types
             hypervOnDemandSnapshot,
             hypervScvmmDelete,
             hypervScvmmUpdate,
+            inplaceExportHypervVirtualMachine,
             insertCustomerO365App,
             installIoFilter,
             instantRecoverHypervVirtualMachineSnapshot,
@@ -4968,6 +5048,7 @@ namespace RubrikSecurityCloud.Types
             resetUsersPasswordsWithUserIds,
             resizeDisk,
             resizeManagedVolume,
+            resolveAnomaly,
             resolveVolumeGroupsConflict,
             restoreActiveDirectoryObjects,
             restoreAzureAdObjectsWithPasswords,
@@ -4996,6 +5077,7 @@ namespace RubrikSecurityCloud.Types
             sendScheduledReportAsync,
             setAnalyzerRisks,
             setAzureCloudAccountCustomerAppCredentials,
+            setBundleApprovalStatus,
             setCustomerTags,
             setDatastoreFreespaceThresholds,
             setIpWhitelistEnabled,
@@ -5003,6 +5085,7 @@ namespace RubrikSecurityCloud.Types
             setMfaSetting,
             setO365ServiceAccount,
             setPasswordComplexityPolicy,
+            setPrivateContainerRegistry,
             setSsoCertificate,
             setTotpConfig,
             setupAzureO365Exocompute,
@@ -5047,6 +5130,7 @@ namespace RubrikSecurityCloud.Types
             stopJobInstance,
             stopJobInstanceFromEventSeries,
             supportPortalLogin,
+            switchProductToOnboardingMode,
             takeManagedVolumeOnDemandSnapshot,
             takeMssqlLogBackup,
             takeOnDemandOracleDatabaseSnapshot,
@@ -5096,6 +5180,7 @@ namespace RubrikSecurityCloud.Types
             updateConfiguredGroup,
             updateCustomAnalyzer,
             updateCustomerAppPermissionForAzureSql,
+            updateCustomerAppPermissions,
             updateCustomReport,
             updateDatabaseLogReportingPropertiesForCluster,
             updateDistributionListDigest,
@@ -5119,6 +5204,7 @@ namespace RubrikSecurityCloud.Types
             updateLambdaSettings,
             updateLdapIntegration,
             updateLockoutConfig,
+            updateManagedIdentities,
             updateManagedVolume,
             updateManualTargetMapping,
             updateMongodbSource,
@@ -5143,6 +5229,7 @@ namespace RubrikSecurityCloud.Types
             updateProxyConfig,
             updateRcsAutomaticTargetMapping,
             updateRcvTarget,
+            updateReplicationNetworkThrottleBypass,
             updateReplicationTarget,
             updateRole,
             updateRoleAssignments,
@@ -5241,6 +5328,7 @@ namespace RubrikSecurityCloud.Types
             AnalyzerErrorCode,
             AnalyzerGroupTypeEnum,
             AnalyzerTypeEnum,
+            AnomalyFalsePositiveType,
             AnomalyResultGroupBy,
             AnomalyResultSortBy,
             AnomalyTableColumnEnum,
@@ -5289,7 +5377,10 @@ namespace RubrikSecurityCloud.Types
             AwsStorageClass,
             AzureAdObjectSearchType,
             AzureAdObjectType,
+            AzureAdOnPremSyncStatus,
             AzureAdRegion,
+            AzureAdReverseRelationshipType,
+            AzureAppPermission,
             AzureCloudAccountRegion,
             AzureCloudType,
             AzureFeatureForPermissionCheck,
@@ -5321,6 +5412,7 @@ namespace RubrikSecurityCloud.Types
             AzureStorageAccountKind,
             AzureStorageTier,
             AzureSubscriptionStatus,
+            BackupStatsTimeRange,
             BlueprintRecoveryType,
             CalendarEmailAddressFilterType,
             CalendarEventType,
@@ -5368,6 +5460,7 @@ namespace RubrikSecurityCloud.Types
             CloudProvider,
             CloudProviderType,
             CloudVendor,
+            ClusterCapacityQuotaType,
             ClusterConnectionStatus,
             ClusterDiskStatus,
             ClusterDiskType,
@@ -5408,6 +5501,7 @@ namespace RubrikSecurityCloud.Types
             DataGovShareType,
             DataGuardType,
             DataLocationName,
+            DataThreatAnalyticsEnablementEntity,
             DataTypeEnum,
             DataViewTypeEnum,
             DayOfMonth,
@@ -5453,6 +5547,7 @@ namespace RubrikSecurityCloud.Types
             ExchangeLiveMountFilterField,
             ExchangeLiveMountSortByField,
             ExistingSnapshotRetention,
+            ExoBundleApprovalStatus,
             ExocomputeHealthCheckStatusValue,
             FailoverClusterAppConnectionStatus,
             FailoverClusterConnectionStatus,
@@ -5508,6 +5603,7 @@ namespace RubrikSecurityCloud.Types
             HostConnectivityStatusEnum,
             HostFailoverClusterRoot,
             HostFilterStatus,
+            HostRbsConnectionStatus,
             HostRoot,
             HostUiFilterStatus,
             HostVfdInstallConfig,
@@ -5550,12 +5646,15 @@ namespace RubrikSecurityCloud.Types
             LegalHoldQueryFilterField,
             LegalHoldSortType,
             ListAccessUsersSort,
+            ListValidReplicationSourcesSortByField,
             ListValidReplicationTargetsSortByField,
             LocationScope,
             LockMethod,
             LockoutStateFilter,
             LogLevel,
             M365Cloud,
+            M365DashboardOperationMode,
+            M365DashboardWorkloadType,
             MalwareScanInSnapshotStatus,
             ManagedByRubrik,
             ManagedObjectType,
@@ -5664,6 +5763,7 @@ namespace RubrikSecurityCloud.Types
             ProductDocumentationType,
             ProductName,
             ProductState,
+            ProductTargetType,
             ProductType,
             ProtectionStatusEnum,
             ProviderType,
@@ -5690,6 +5790,7 @@ namespace RubrikSecurityCloud.Types
             ReportFocusEnum,
             ReportTableColumnEnum,
             ReportTemplate,
+            ResolutionStatus,
             ResolutionType,
             RetentionLockMode,
             RetentionUnit,
@@ -5759,6 +5860,7 @@ namespace RubrikSecurityCloud.Types
             SnapshotTypeForRestoreIfSourceExpired,
             SnapshotTypeToUseIfSourceExpired,
             SnmpSecurityLevel,
+            SnoozeStatus,
             SonarContentReportTableColumnEnum,
             SonarReportTableColumnEnum,
             SortByFieldEnum,
@@ -5799,6 +5901,7 @@ namespace RubrikSecurityCloud.Types
             TimeDuration,
             TimeGranularity,
             TimeUnitEnum,
+            TprReqStatus,
             TransportLayerProtocol,
             UnlockMethod,
             UnmanagedObjectAvailabilityFilter,
@@ -5830,7 +5933,6 @@ namespace RubrikSecurityCloud.Types
             V1QueryUnmanagedObjectSnapshotsV1RequestSnapshotType,
             V1QueryUnmanagedObjectSnapshotsV1RequestSortBy,
             V1QueryUnmanagedObjectSnapshotsV1RequestSortOrder,
-            V1SearchDomainControllerRequestObjectType,
             V2BulkDeleteMosaicSourcesRequestSourceType,
             V2DeleteMosaicSourceRequestSourceType,
             V2QueryLogShippingConfigurationsV2RequestSortBy,
@@ -5900,6 +6002,7 @@ namespace RubrikSecurityCloud.Types
             MongoSnapshotGroupByInfo,
             MosaicSnapshotGroupByInfo,
             NfAnomalyResultGroupByInfo,
+            PcrImagePullDetails,
             PolarisSnapshotGroupByInfo,
             RansomwareResultGroupByInfo,
             ReportChartType,
@@ -5933,7 +6036,6 @@ namespace RubrikSecurityCloud.Types
                     "AwsExocomputeGetConfigurationResponse",
                     new HashSet<string> {
                     "AwsCustomerManagedExocomputeConfig",
-                    "AwsExocomputeGetConfigurationResponse",
                     "AwsRscManagedExocomputeConfig",
                     }
                 },
@@ -6654,6 +6756,14 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "NutanixClusterLogicalChildType",
                     "NutanixVm",
+                    }
+                },
+                {
+                    "NutanixMultiClusterObjectType",
+                    new HashSet<string> {
+                    "NutanixCategory",
+                    "NutanixCategoryValue",
+                    "NutanixPrismCentral",
                     }
                 },
                 {
@@ -7407,6 +7517,12 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "PcrAwsImagePullDetails",
+                    new HashSet<string> {
+                    "PcrImagePullDetails",
+                    }
+                },
+                {
                     "ProtectionStatus",
                     new HashSet<string> {
                     "SnappableGroupByInfo",
@@ -7571,6 +7687,7 @@ namespace RubrikSecurityCloud.Types
             addClusterCertificate,
             addClusterNodes,
             addConfiguredGroupToHierarchy,
+            addCrossAccountServiceConsumer,
             addDb2Instance,
             addGlobalCertificate,
             addInventoryWorkloads,
@@ -7588,6 +7705,7 @@ namespace RubrikSecurityCloud.Types
             addVmAppConsistentSpecs,
             allAccountOwners,
             allAccountProducts,
+            allAccountsWithExocomputeMappings,
             allAllowedOrgAdminOperations,
             allAuthorizationsForGlobalResource,
             allAuthorizationsForObject,
@@ -7596,6 +7714,7 @@ namespace RubrikSecurityCloud.Types
             allAwsCdmVersions,
             allAwsCloudAccountConfigs,
             allAwsCloudAccountsWithFeatures,
+            allAwsComputeSettings,
             allAwsExocomputeConfigs,
             allAwsInstanceProfileNames,
             allAwsPermissionPolicies,
@@ -7621,13 +7740,16 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeVirtualMachineSizes,
             allAzureNativeVirtualNetworks,
             allAzureNsgs,
+            allAzureResourceGroups,
             allAzureSqlDatabaseServerElasticPools,
             allAzureStorageAccountsByRegion,
+            allAzureSubnets,
             allAzureSubscriptionWithExocomputeMappings,
             allCdmGuestCredentials,
             allCdmOvaDetails,
             allCdpVmsInfos,
             allCloudAccountExocomputeMappings,
+            allCloudAccounts,
             allCloudDirectShares,
             allCloudDirectSites,
             allCloudNativeFileRecoveryEligibleSnapshots,
@@ -7708,6 +7830,7 @@ namespace RubrikSecurityCloud.Types
             allUnmanagedObjectsSupportedTypes,
             allUsersOnAccount,
             allUsersOnAccountConnection,
+            allValidReplicationSources,
             allValidReplicationTargets,
             allVcenterHotAddProxyVms,
             allVirtualMachineFiles,
@@ -7741,6 +7864,7 @@ namespace RubrikSecurityCloud.Types
             awsCloudAccountListVpcs,
             awsCloudAccountWithFeatures,
             awsComputeSettings,
+            awsExocomputeClusterConnect,
             awsNativeAccount,
             awsNativeAccounts,
             awsNativeEbsVolume,
@@ -7857,6 +7981,7 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateOracleDatabases,
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
+            bulkUpdateRansomwareInvestigationStatus,
             cancelActivitySeries,
             cancelDownloadPackage,
             cancelScheduledUpgrade,
@@ -7959,6 +8084,8 @@ namespace RubrikSecurityCloud.Types
             createCloudNativeLabelRule,
             createCloudNativeRcvAzureStorageSetting,
             createCloudNativeTagRule,
+            createCrossAccountPair,
+            createCrossAccountRegOauthPayload,
             createCustomAnalyzer,
             createCustomReport,
             createDomainControllerSnapshot,
@@ -8074,6 +8201,7 @@ namespace RubrikSecurityCloud.Types
             deleteManagedVolume,
             deleteManagedVolumeSnapshotExport,
             deleteMongoSource,
+            deleteMongodbSource,
             deleteMosaicStore,
             deleteMssqlDbSnapshots,
             deleteMssqlLiveMount,
@@ -8245,6 +8373,7 @@ namespace RubrikSecurityCloud.Types
             getRolesByIds,
             getUserDownloads,
             globalCertificate,
+            globalCertificates,
             globalFileSearch,
             globalLockoutConfig,
             globalMfaSetting,
@@ -8265,6 +8394,7 @@ namespace RubrikSecurityCloud.Types
             hierarchySnappables,
             hostDiagnosis,
             hostFailoverCluster,
+            hostFailoverClusters,
             hostShare,
             hostShares,
             hypervCluster,
@@ -8279,11 +8409,13 @@ namespace RubrikSecurityCloud.Types
             hypervScvmms,
             hypervServer,
             hypervServers,
+            hypervServersPaginated,
             hypervTopLevelDescendants,
             hypervVirtualMachine,
             hypervVirtualMachineAsyncRequestStatus,
             hypervVirtualMachines,
             hypervVmDetail,
+            inplaceExportHypervVirtualMachine,
             insertCustomerO365App,
             installIoFilter,
             installedVersionList,
@@ -8333,6 +8465,12 @@ namespace RubrikSecurityCloud.Types
             lockoutConfig,
             logoutFromRubrikSupportPortal,
             lookupAccount,
+            m365DayToDayModeBackupStats,
+            m365DayToDayModeStats,
+            m365OnboardingModeBackupStats,
+            m365OnboardingModeStats,
+            m365OrgBackupLocations,
+            m365OrgOperationModes,
             m365Regions,
             makePrimary,
             managedVolume,
@@ -8358,7 +8496,13 @@ namespace RubrikSecurityCloud.Types
             mongoSource,
             mongoSources,
             mongodbBulkRecoverableRange,
+            mongodbCollection,
             mongodbCollectionRecoverableRange,
+            mongodbCollections,
+            mongodbDatabase,
+            mongodbDatabases,
+            mongodbSource,
+            mongodbSources,
             mosaicBulkRecoveryRange,
             mosaicSnapshots,
             mosaicStores,
@@ -8490,7 +8634,6 @@ namespace RubrikSecurityCloud.Types
             pauseSla,
             pauseTarget,
             pendingAction,
-            pendingRansomwareInvestigationResultsCount,
             phoenixRolloutProgress,
             physicalHost,
             physicalHosts,
@@ -8507,11 +8650,11 @@ namespace RubrikSecurityCloud.Types
             prechecksStatusWithNextJobInfo,
             prepareAwsCloudAccountDeletion,
             prepareFeatureUpdateForAwsCloudAccount,
+            privateContainerRegistry,
             processedRansomwareInvestigationWorkloadCount,
             productDocumentation,
             promoteReaderTarget,
             protectedObjectsConnection,
-            protectedRansomwareInvestigationWorkloadCount,
             protectedVolumesCount,
             putSmbConfiguration,
             queryDatastoreFreespaceThresholds,
@@ -8519,7 +8662,6 @@ namespace RubrikSecurityCloud.Types
             ransomwareDetectionWorkloadLocations,
             ransomwareInvestigationAnalysisSummary,
             ransomwareInvestigationEnablement,
-            ransomwareInvestigationWorkloadScannedCount,
             ransomwareResult,
             ransomwareResultOpt,
             ransomwareResults,
@@ -8532,6 +8674,7 @@ namespace RubrikSecurityCloud.Types
             recoverCloudDirectMultiPaths,
             recoverCloudDirectPath,
             recoverMongoSource,
+            recoverMongodbSource,
             refreshDb2Database,
             refreshDomain,
             refreshGlobalManagerConnectivityStatus,
@@ -8563,6 +8706,8 @@ namespace RubrikSecurityCloud.Types
             removeProxyConfig,
             removeVlans,
             replicationIncomingStats,
+            replicationNetworkThrottleBypass,
+            replicationNetworkThrottleBypassById,
             replicationOutgoingStats,
             replicationPairs,
             reportData,
@@ -8571,6 +8716,7 @@ namespace RubrikSecurityCloud.Types
             resetUsersPasswordsWithUserIds,
             resizeDisk,
             resizeManagedVolume,
+            resolveAnomaly,
             resolveVolumeGroupsConflict,
             restoreActiveDirectoryObjects,
             restoreAzureAdObjectsWithPasswords,
@@ -8604,18 +8750,21 @@ namespace RubrikSecurityCloud.Types
             sapHanaSystems,
             scheduleUpgradeBatchJob,
             scheduledReport,
+            scheduledReports,
             searchAzureAdSnapshot,
             searchFileByPrefix,
             searchHost,
             searchNutanixVm,
             searchSnappableConnection,
             searchSnappableVersionedFiles,
+            seedEnabledPolicies,
             seedInitialPolicies,
             sendPdfReport,
             sendScheduledReportAsync,
             serviceAccounts,
             setAnalyzerRisks,
             setAzureCloudAccountCustomerAppCredentials,
+            setBundleApprovalStatus,
             setCustomerTags,
             setDatastoreFreespaceThresholds,
             setIpWhitelistEnabled,
@@ -8623,6 +8772,7 @@ namespace RubrikSecurityCloud.Types
             setMfaSetting,
             setO365ServiceAccount,
             setPasswordComplexityPolicy,
+            setPrivateContainerRegistry,
             setSsoCertificate,
             setTotpConfig,
             setUpgradeType,
@@ -8666,6 +8816,7 @@ namespace RubrikSecurityCloud.Types
             snapshotSharepointDriveSearch,
             snapshotsForUnmanagedObject,
             snmpConfigurations,
+            snoozedDirectories,
             sonarContentReport,
             sonarReport,
             sonarReportRow,
@@ -8708,6 +8859,7 @@ namespace RubrikSecurityCloud.Types
             supportBundle,
             supportPortalLogin,
             supportUserAccesses,
+            switchProductToOnboardingMode,
             syslogExportRules,
             tableFilters,
             takeManagedVolumeOnDemandSnapshot,
@@ -8717,6 +8869,7 @@ namespace RubrikSecurityCloud.Types
             takeOnDemandSnapshot,
             target,
             targetMapping,
+            targets,
             taskDetailConnection,
             taskDetailGroupByConnection,
             taskchain,
@@ -8729,6 +8882,7 @@ namespace RubrikSecurityCloud.Types
             threatHuntSummary,
             threatHunts,
             totpConfigStatus,
+            tprStatusForNodeRemoval,
             triggerCloudComputeConnectivityCheck,
             triggerExocomputeHealthCheck,
             triggerRansomwareDetection,
@@ -8775,6 +8929,7 @@ namespace RubrikSecurityCloud.Types
             updateCustomAnalyzer,
             updateCustomReport,
             updateCustomerAppPermissionForAzureSql,
+            updateCustomerAppPermissions,
             updateDatabaseLogReportingPropertiesForCluster,
             updateDistributionListDigest,
             updateDnsServersAndSearchDomains,
@@ -8797,6 +8952,7 @@ namespace RubrikSecurityCloud.Types
             updateLambdaSettings,
             updateLdapIntegration,
             updateLockoutConfig,
+            updateManagedIdentities,
             updateManagedVolume,
             updateManualTargetMapping,
             updateMongodbSource,
@@ -8821,6 +8977,7 @@ namespace RubrikSecurityCloud.Types
             updateProxyConfig,
             updateRcsAutomaticTargetMapping,
             updateRcvTarget,
+            updateReplicationNetworkThrottleBypass,
             updateReplicationTarget,
             updateRole,
             updateRoleAssignments,
@@ -8909,6 +9066,7 @@ namespace RubrikSecurityCloud.Types
             vappSnapshotInstantRecoveryOptions,
             vappTemplateSnapshotExportOptions,
             vcdVappVms,
+            vcenterAsyncRequestStatus,
             verifySlaWithReplicationToCluster,
             vmwareDownloadSnapshotFromLocation,
             volumeGroupMounts,
@@ -8984,40 +9142,40 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.activeDirectoryDomain,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "ActiveDirectoryDomain",
+                        cmdletName: "New-RscQueryActiveDirectory",
+                        cmdletSwitchName: "Domain",
                         gqlRootFieldName: "activeDirectoryDomain"
                     )
                 },
                 {
                     GqlRootFieldName.activeDirectoryDomainController,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "ActiveDirectoryDomainController",
+                        cmdletName: "New-RscQueryActiveDirectory",
+                        cmdletSwitchName: "DomainController",
                         gqlRootFieldName: "activeDirectoryDomainController"
                     )
                 },
                 {
                     GqlRootFieldName.activeDirectoryDomainControllers,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "ActiveDirectoryDomainControllers",
+                        cmdletName: "New-RscQueryActiveDirectory",
+                        cmdletSwitchName: "DomainControllers",
                         gqlRootFieldName: "activeDirectoryDomainControllers"
                     )
                 },
                 {
                     GqlRootFieldName.activeDirectoryDomains,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "ActiveDirectoryDomains",
+                        cmdletName: "New-RscQueryActiveDirectory",
+                        cmdletSwitchName: "Domains",
                         gqlRootFieldName: "activeDirectoryDomains"
                     )
                 },
                 {
                     GqlRootFieldName.activeDirectorySearchSnapshots,
                     new RscOp(
-                        cmdletName: "New-RscQuerySnapshot",
-                        cmdletSwitchName: "ActiveDirectorySearchs",
+                        cmdletName: "New-RscQueryActiveDirectory",
+                        cmdletSwitchName: "SearchSnapshots",
                         gqlRootFieldName: "activeDirectorySearchSnapshots"
                     )
                 },
@@ -9120,7 +9278,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addClusterNodes,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "AddClusterNodes",
                         gqlRootFieldName: "addClusterNodes"
                     )
@@ -9131,6 +9289,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "AddConfiguredGroupToHierarchy",
                         gqlRootFieldName: "addConfiguredGroupToHierarchy"
+                    )
+                },
+                {
+                    GqlRootFieldName.addCrossAccountServiceConsumer,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCrossAccount",
+                        cmdletSwitchName: "AddCrossAccountServiceConsumer",
+                        gqlRootFieldName: "addCrossAccountServiceConsumer"
                     )
                 },
                 {
@@ -9145,7 +9311,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addGlobalCertificate,
                     new RscOp(
                         cmdletName: "New-RscMutationCertificate",
-                        cmdletSwitchName: "AddGlobal",
+                        cmdletSwitchName: "AddGlobalCertificate",
                         gqlRootFieldName: "addGlobalCertificate"
                     )
                 },
@@ -9200,7 +9366,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addPolicyObjects,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "AddPolicyObjects",
                         gqlRootFieldName: "addPolicyObjects"
                     )
@@ -9232,8 +9398,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addSyslogExportRule,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "AddSyslogExportRule",
+                        cmdletName: "New-RscMutationSyslog",
+                        cmdletSwitchName: "AddExportRule",
                         gqlRootFieldName: "addSyslogExportRule"
                     )
                 },
@@ -9267,6 +9433,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAccount",
                         cmdletSwitchName: "Products",
                         gqlRootFieldName: "allAccountProducts"
+                    )
+                },
+                {
+                    GqlRootFieldName.allAccountsWithExocomputeMappings,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "WithExocomputeMappings",
+                        gqlRootFieldName: "allAccountsWithExocomputeMappings"
                     )
                 },
                 {
@@ -9331,6 +9505,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAws",
                         cmdletSwitchName: "CloudAccountsWithFeatures",
                         gqlRootFieldName: "allAwsCloudAccountsWithFeatures"
+                    )
+                },
+                {
+                    GqlRootFieldName.allAwsComputeSettings,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "AwsComputeSettings",
+                        gqlRootFieldName: "allAwsComputeSettings"
                     )
                 },
                 {
@@ -9534,6 +9716,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.allAzureResourceGroups,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "AzureResourceGroups",
+                        gqlRootFieldName: "allAzureResourceGroups"
+                    )
+                },
+                {
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
@@ -9547,6 +9737,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAzure",
                         cmdletSwitchName: "StorageAccountsByRegion",
                         gqlRootFieldName: "allAzureStorageAccountsByRegion"
+                    )
+                },
+                {
+                    GqlRootFieldName.allAzureSubnets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "AzureSubnets",
+                        gqlRootFieldName: "allAzureSubnets"
                     )
                 },
                 {
@@ -9587,6 +9785,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCloudAccount",
                         cmdletSwitchName: "ExocomputeMappings",
                         gqlRootFieldName: "allCloudAccountExocomputeMappings"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCloudAccounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "CloudAccounts",
+                        gqlRootFieldName: "allCloudAccounts"
                     )
                 },
                 {
@@ -9744,8 +9950,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allDhrcScores,
                     new RscOp(
-                        cmdletName: "New-RscQueryRcs",
-                        cmdletSwitchName: "Dhcores",
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "DhrcScores",
                         gqlRootFieldName: "allDhrcScores"
                     )
                 },
@@ -9928,7 +10134,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allIntegrations,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryIntegration",
                         cmdletSwitchName: "Integrations",
                         gqlRootFieldName: "allIntegrations"
                     )
@@ -9992,8 +10198,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allNcdObjectsOverTimeData,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdObjectsOverTimeData",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "ObjectsOverTimeData",
                         gqlRootFieldName: "allNcdObjectsOverTimeData"
                     )
                 },
@@ -10008,16 +10214,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allNcdTaskData,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdTaskData",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "TaskData",
                         gqlRootFieldName: "allNcdTaskData"
                     )
                 },
                 {
                     GqlRootFieldName.allNcdUsageOverTimeData,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdUsageOverTimeData",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "UsageOverTimeData",
                         gqlRootFieldName: "allNcdUsageOverTimeData"
                     )
                 },
@@ -10184,7 +10390,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allTargetMappings,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryArchival",
                         cmdletSwitchName: "TargetMappings",
                         gqlRootFieldName: "allTargetMappings"
                     )
@@ -10200,7 +10406,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allTopRiskPolicySummaries,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryPolicy",
                         cmdletSwitchName: "TopRiskPolicySummaries",
                         gqlRootFieldName: "allTopRiskPolicySummaries"
                     )
@@ -10227,6 +10433,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "UsersOnAccountList",
                         gqlRootFieldName: "allUsersOnAccountConnection"
+                    )
+                },
+                {
+                    GqlRootFieldName.allValidReplicationSources,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "ValidSources",
+                        gqlRootFieldName: "allValidReplicationSources"
                     )
                 },
                 {
@@ -10264,8 +10478,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allVmwareCdpStateInfos,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "VmwareCdpStateInfos",
+                        cmdletName: "New-RscQueryVmware",
+                        cmdletSwitchName: "CdpStateInfos",
                         gqlRootFieldName: "allVmwareCdpStateInfos"
                     )
                 },
@@ -10344,8 +10558,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.archivalStorageUsage,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "ArchivalStorageUsage",
+                        cmdletName: "New-RscQueryArchival",
+                        cmdletSwitchName: "StorageUsage",
                         gqlRootFieldName: "archivalStorageUsage"
                     )
                 },
@@ -10424,7 +10638,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignSlaToMongoDbCollection,
                     new RscOp(
-                        cmdletName: "New-RscMutationMongo",
+                        cmdletName: "New-RscMutationMongoDb",
                         cmdletSwitchName: "AssignSlaToCollection",
                         gqlRootFieldName: "assignSlaToMongoDbCollection"
                     )
@@ -10441,7 +10655,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.assignableGlobalCertificates,
                     new RscOp(
                         cmdletName: "New-RscQueryCertificate",
-                        cmdletSwitchName: "AssignableGlobal",
+                        cmdletSwitchName: "AssignableGlobalCertificates",
                         gqlRootFieldName: "assignableGlobalCertificates"
                     )
                 },
@@ -10491,6 +10705,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAws",
                         cmdletSwitchName: "ComputeSettings",
                         gqlRootFieldName: "awsComputeSettings"
+                    )
+                },
+                {
+                    GqlRootFieldName.awsExocomputeClusterConnect,
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "ExocomputeClusterConnect",
+                        gqlRootFieldName: "awsExocomputeClusterConnect"
                     )
                 },
                 {
@@ -11272,16 +11494,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteFailoverCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "BulkDeleteFailover",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "BulkDelete",
                         gqlRootFieldName: "bulkDeleteFailoverCluster"
                     )
                 },
                 {
                     GqlRootFieldName.bulkDeleteFailoverClusterApp,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "BulkDeleteFailoverClusterApp",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "BulkDeleteApp",
                         gqlRootFieldName: "bulkDeleteFailoverClusterApp"
                     )
                 },
@@ -11312,7 +11534,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteMongodbSources,
                     new RscOp(
-                        cmdletName: "New-RscMutationMongo",
+                        cmdletName: "New-RscMutationMongoDb",
                         cmdletSwitchName: "BulkDeleteSources",
                         gqlRootFieldName: "bulkDeleteMongodbSources"
                     )
@@ -11320,7 +11542,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteNasSystems,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationNas",
                         cmdletSwitchName: "BulkDeleteNasSystems",
                         gqlRootFieldName: "bulkDeleteNasSystems"
                     )
@@ -11419,6 +11641,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationOracle",
                         cmdletSwitchName: "BulkUpdateRacs",
                         gqlRootFieldName: "bulkUpdateOracleRacs"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateRansomwareInvestigationStatus,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRansomware",
+                        cmdletSwitchName: "BulkUpdateInvestigationStatus",
+                        gqlRootFieldName: "bulkUpdateRansomwareInvestigationStatus"
                     )
                 },
                 {
@@ -11528,7 +11758,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cdmHierarchySnappableNew,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQuerySnappable",
                         cmdletSwitchName: "CdmHierarchySnappableNew",
                         gqlRootFieldName: "cdmHierarchySnappableNew"
                     )
@@ -11536,7 +11766,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cdmHierarchySnappablesNew,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQuerySnappable",
                         cmdletSwitchName: "CdmHierarchySnappablesNew",
                         gqlRootFieldName: "cdmHierarchySnappablesNew"
                     )
@@ -11601,7 +11831,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.certificates,
                     new RscOp(
                         cmdletName: "New-RscQueryCertificate",
-                        cmdletSwitchName: "Certificate",
+                        cmdletSwitchName: "Certificates",
                         gqlRootFieldName: "certificates"
                     )
                 },
@@ -11609,7 +11839,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.certificatesWithKey,
                     new RscOp(
                         cmdletName: "New-RscQueryCertificate",
-                        cmdletSwitchName: "WithKey",
+                        cmdletSwitchName: "CertificatesWithKey",
                         gqlRootFieldName: "certificatesWithKey"
                     )
                 },
@@ -11809,7 +12039,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterCertificates,
                     new RscOp(
                         cmdletName: "New-RscQueryCertificate",
-                        cmdletSwitchName: "Cluster",
+                        cmdletSwitchName: "ClusterCertificates",
                         gqlRootFieldName: "clusterCertificates"
                     )
                 },
@@ -11824,8 +12054,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterCsr,
                     new RscOp(
-                        cmdletName: "New-RscQueryRcs",
-                        cmdletSwitchName: "Cluster",
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "ClusterCsr",
                         gqlRootFieldName: "clusterCsr"
                     )
                 },
@@ -11928,24 +12158,24 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterReportMigrationCount,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "ReportMigrationCount",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "ClusterMigrationCount",
                         gqlRootFieldName: "clusterReportMigrationCount"
                     )
                 },
                 {
                     GqlRootFieldName.clusterReportMigrationJobStatus,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "ReportMigrationJobStatus",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "ClusterMigrationJobStatus",
                         gqlRootFieldName: "clusterReportMigrationJobStatus"
                     )
                 },
                 {
                     GqlRootFieldName.clusterReportMigrationStatus,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "ReportMigrationStatus",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "ClusterMigrationStatus",
                         gqlRootFieldName: "clusterReportMigrationStatus"
                     )
                 },
@@ -12016,7 +12246,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.computeClusterStatus,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "ComputeClusterStatus",
                         gqlRootFieldName: "computeClusterStatus"
                     )
@@ -12064,16 +12294,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createActiveDirectoryLiveMount,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "CreateActiveDirectoryLiveMount",
+                        cmdletName: "New-RscMutationActiveDirectory",
+                        cmdletSwitchName: "CreateLiveMount",
                         gqlRootFieldName: "createActiveDirectoryLiveMount"
                     )
                 },
                 {
                     GqlRootFieldName.createActiveDirectoryUnmount,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "CreateActiveDirectoryUnmount",
+                        cmdletName: "New-RscMutationActiveDirectory",
+                        cmdletSwitchName: "CreateUnmount",
                         gqlRootFieldName: "createActiveDirectoryUnmount"
                     )
                 },
@@ -12097,7 +12327,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createAutomaticRcsTargetMapping,
                     new RscOp(
                         cmdletName: "New-RscMutationRcs",
-                        cmdletSwitchName: "CreateAutomaticTargetMapping",
+                        cmdletSwitchName: "CreateAutomaticRcsTargetMapping",
                         gqlRootFieldName: "createAutomaticRcsTargetMapping"
                     )
                 },
@@ -12238,6 +12468,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createCrossAccountPair,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCrossAccount",
+                        cmdletSwitchName: "CreateCrossAccountPair",
+                        gqlRootFieldName: "createCrossAccountPair"
+                    )
+                },
+                {
+                    GqlRootFieldName.createCrossAccountRegOauthPayload,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCrossAccount",
+                        cmdletSwitchName: "CreateCrossAccountRegOauthPayload",
+                        gqlRootFieldName: "createCrossAccountRegOauthPayload"
+                    )
+                },
+                {
                     GqlRootFieldName.createCustomAnalyzer,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -12280,16 +12526,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createFailoverCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "CreateFailover",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "Create",
                         gqlRootFieldName: "createFailoverCluster"
                     )
                 },
                 {
                     GqlRootFieldName.createFailoverClusterApp,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "CreateFailoverClusterApp",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "CreateApp",
                         gqlRootFieldName: "createFailoverClusterApp"
                     )
                 },
@@ -12320,7 +12566,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createGlacierReaderTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "CreateGlacierReaderTarget",
                         gqlRootFieldName: "createGlacierReaderTarget"
                     )
@@ -12352,7 +12598,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createIntegration,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationIntegration",
                         cmdletSwitchName: "CreateIntegration",
                         gqlRootFieldName: "createIntegration"
                     )
@@ -12360,7 +12606,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createIntegrations,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationIntegration",
                         cmdletSwitchName: "CreateIntegrations",
                         gqlRootFieldName: "createIntegrations"
                     )
@@ -12392,7 +12638,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createManualTargetMapping,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "CreateManualTargetMapping",
                         gqlRootFieldName: "createManualTargetMapping"
                     )
@@ -12400,7 +12646,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createMongodbSource,
                     new RscOp(
-                        cmdletName: "New-RscMutationMongo",
+                        cmdletName: "New-RscMutationMongoDb",
                         cmdletSwitchName: "CreateSource",
                         gqlRootFieldName: "createMongodbSource"
                     )
@@ -12536,7 +12782,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createOrg,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "CreateOrg",
                         gqlRootFieldName: "createOrg"
                     )
@@ -12544,7 +12790,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createOrgSwitchSession,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "CreateOrgSwitchSession",
                         gqlRootFieldName: "createOrgSwitchSession"
                     )
@@ -12552,7 +12798,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createPolicy,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "CreatePolicy",
                         gqlRootFieldName: "createPolicy"
                     )
@@ -12561,7 +12807,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createRcsReaderTarget,
                     new RscOp(
                         cmdletName: "New-RscMutationRcs",
-                        cmdletSwitchName: "CreateReaderTarget",
+                        cmdletSwitchName: "CreateRcsReaderTarget",
                         gqlRootFieldName: "createRcsReaderTarget"
                     )
                 },
@@ -12569,7 +12815,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createRcsTarget,
                     new RscOp(
                         cmdletName: "New-RscMutationRcs",
-                        cmdletSwitchName: "CreateTarget",
+                        cmdletSwitchName: "CreateRcsTarget",
                         gqlRootFieldName: "createRcsTarget"
                     )
                 },
@@ -12600,7 +12846,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createRole,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "CreateRole",
                         gqlRootFieldName: "createRole"
                     )
@@ -12608,7 +12854,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createS3CompatibleReaderTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "CreateS3CompatibleReaderTarget",
                         gqlRootFieldName: "createS3CompatibleReaderTarget"
                     )
@@ -12616,7 +12862,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createS3CompatibleTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "CreateS3CompatibleTarget",
                         gqlRootFieldName: "createS3CompatibleTarget"
                     )
@@ -12664,7 +12910,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createUser,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "CreateUser",
                         gqlRootFieldName: "createUser"
                     )
@@ -12672,7 +12918,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createUserWithPassword,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "CreateUserWithPassword",
                         gqlRootFieldName: "createUserWithPassword"
                     )
@@ -12736,7 +12982,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.currentUser,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryAccount",
                         cmdletSwitchName: "CurrentUser",
                         gqlRootFieldName: "currentUser"
                     )
@@ -12744,7 +12990,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.currentUserLoginContext,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryAccount",
                         cmdletSwitchName: "CurrentUserLoginContext",
                         gqlRootFieldName: "currentUserLoginContext"
                     )
@@ -12768,16 +13014,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.databaseLogReportForCluster,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "DatabaseLogReport",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "DatabaseLogForCluster",
                         gqlRootFieldName: "databaseLogReportForCluster"
                     )
                 },
                 {
                     GqlRootFieldName.databaseLogReportingPropertiesForCluster,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "DatabaseLogReportingProperties",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "DatabaseLogingPropertiesForCluster",
                         gqlRootFieldName: "databaseLogReportingPropertiesForCluster"
                     )
                 },
@@ -12872,7 +13118,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deactivatePolicy,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "DeactivatePolicy",
                         gqlRootFieldName: "deactivatePolicy"
                     )
@@ -12985,14 +13231,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteCloudWorkloadSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationSnapshot",
-                        cmdletSwitchName: "DeleteCloudWorkload",
+                        cmdletSwitchName: "DeleteCloudWorkloadSnapshot",
                         gqlRootFieldName: "deleteCloudWorkloadSnapshot"
                     )
                 },
                 {
                     GqlRootFieldName.deleteCsr,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCertificate",
                         cmdletSwitchName: "DeleteCsr",
                         gqlRootFieldName: "deleteCsr"
                     )
@@ -13048,16 +13294,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteFailoverCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "DeleteFailover",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "Delete",
                         gqlRootFieldName: "deleteFailoverCluster"
                     )
                 },
                 {
                     GqlRootFieldName.deleteFailoverClusterApp,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "DeleteFailoverClusterApp",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "DeleteApp",
                         gqlRootFieldName: "deleteFailoverClusterApp"
                     )
                 },
@@ -13065,7 +13311,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteFilesetSnapshots,
                     new RscOp(
                         cmdletName: "New-RscMutationSnapshot",
-                        cmdletSwitchName: "DeleteFilesets",
+                        cmdletSwitchName: "DeleteFilesetSnapshots",
                         gqlRootFieldName: "deleteFilesetSnapshots"
                     )
                 },
@@ -13073,7 +13319,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteGlobalCertificate,
                     new RscOp(
                         cmdletName: "New-RscMutationCertificate",
-                        cmdletSwitchName: "DeleteGlobal",
+                        cmdletSwitchName: "DeleteGlobalCertificate",
                         gqlRootFieldName: "deleteGlobalCertificate"
                     )
                 },
@@ -13104,7 +13350,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteIntegration,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationIntegration",
                         cmdletSwitchName: "DeleteIntegration",
                         gqlRootFieldName: "deleteIntegration"
                     )
@@ -13112,7 +13358,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteIntegrations,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationIntegration",
                         cmdletSwitchName: "DeleteIntegrations",
                         gqlRootFieldName: "deleteIntegrations"
                     )
@@ -13158,6 +13404,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteMongodbSource,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongoDb",
+                        cmdletSwitchName: "DeleteSource",
+                        gqlRootFieldName: "deleteMongodbSource"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteMosaicStore,
                     new RscOp(
                         cmdletName: "New-RscMutationMosaic",
@@ -13184,7 +13438,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteNasSystem,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationNas",
                         cmdletSwitchName: "DeleteNasSystem",
                         gqlRootFieldName: "deleteNasSystem"
                     )
@@ -13264,7 +13518,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteOrg,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "DeleteOrg",
                         gqlRootFieldName: "deleteOrg"
                     )
@@ -13280,7 +13534,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteRole,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "DeleteRole",
                         gqlRootFieldName: "deleteRole"
                     )
@@ -13305,7 +13559,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteScheduledReport,
                     new RscOp(
                         cmdletName: "New-RscMutationReport",
-                        cmdletSwitchName: "DeleteScheduled",
+                        cmdletSwitchName: "DeleteScheduledReport",
                         gqlRootFieldName: "deleteScheduledReport"
                     )
                 },
@@ -13336,15 +13590,15 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteSyslogExportRule,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "DeleteSyslogExportRule",
+                        cmdletName: "New-RscMutationSyslog",
+                        cmdletSwitchName: "DeleteExportRule",
                         gqlRootFieldName: "deleteSyslogExportRule"
                     )
                 },
                 {
                     GqlRootFieldName.deleteTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "DeleteTarget",
                         gqlRootFieldName: "deleteTarget"
                     )
@@ -13352,7 +13606,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteTargetMapping,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "DeleteTargetMapping",
                         gqlRootFieldName: "deleteTargetMapping"
                     )
@@ -13360,7 +13614,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteTotpConfig,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "DeleteTotpConfig",
                         gqlRootFieldName: "deleteTotpConfig"
                     )
@@ -13368,7 +13622,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteTotpConfigs,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "DeleteTotpConfigs",
                         gqlRootFieldName: "deleteTotpConfigs"
                     )
@@ -13448,7 +13702,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.disableTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "DisableTarget",
                         gqlRootFieldName: "disableTarget"
                     )
@@ -13785,7 +14039,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadedVersionList,
                     new RscOp(
                         cmdletName: "New-RscQueryDownload",
-                        cmdletSwitchName: "EdVersionList",
+                        cmdletSwitchName: "DownloadedVersionList",
                         gqlRootFieldName: "downloadedVersionList"
                     )
                 },
@@ -13856,7 +14110,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.enableTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "EnableTarget",
                         gqlRootFieldName: "enableTarget"
                     )
@@ -14072,24 +14326,24 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.failoverClusterApp,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "FailoverClusterApp",
+                        cmdletName: "New-RscQueryFailoverCluster",
+                        cmdletSwitchName: "App",
                         gqlRootFieldName: "failoverClusterApp"
                     )
                 },
                 {
                     GqlRootFieldName.failoverClusterApps,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "FailoverClusterApps",
+                        cmdletName: "New-RscQueryFailoverCluster",
+                        cmdletSwitchName: "Apps",
                         gqlRootFieldName: "failoverClusterApps"
                     )
                 },
                 {
                     GqlRootFieldName.failoverClusterTopLevelDescendants,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "FailoverClusterTopLevelDescendants",
+                        cmdletName: "New-RscQueryFailoverCluster",
+                        cmdletSwitchName: "TopLevelDescendants",
                         gqlRootFieldName: "failoverClusterTopLevelDescendants"
                     )
                 },
@@ -14352,7 +14606,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.generateClusterRegistrationToken,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "GenerateClusterRegistrationToken",
                         gqlRootFieldName: "generateClusterRegistrationToken"
                     )
@@ -14368,7 +14622,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.generateCsr,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCertificate",
                         cmdletSwitchName: "GenerateCsr",
                         gqlRootFieldName: "generateCsr"
                     )
@@ -14384,7 +14638,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.generateTotpSecret,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "GenerateTotpSecret",
                         gqlRootFieldName: "generateTotpSecret"
                     )
@@ -14408,7 +14662,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.getCdmReleaseDetailsForClusterFromSupportPortal,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "GetCdmReleaseDetailsForClusterFromSupportPortal",
                         gqlRootFieldName: "getCdmReleaseDetailsForClusterFromSupportPortal"
                     )
@@ -14440,7 +14694,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.getGroupCountByCdmClusterStatus,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "GetGroupCountByCdmClusterStatus",
                         gqlRootFieldName: "getGroupCountByCdmClusterStatus"
                     )
@@ -14472,7 +14726,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.getHealthMonitorPolicyStatus,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "GetHealthMonitorPolicyStatus",
                         gqlRootFieldName: "getHealthMonitorPolicyStatus"
                     )
@@ -14521,8 +14775,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.globalCertificate,
                     new RscOp(
                         cmdletName: "New-RscQueryCertificate",
-                        cmdletSwitchName: "Global",
+                        cmdletSwitchName: "GlobalCertificate",
                         gqlRootFieldName: "globalCertificate"
+                    )
+                },
+                {
+                    GqlRootFieldName.globalCertificates,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCertificate",
+                        cmdletSwitchName: "GlobalCertificates",
+                        gqlRootFieldName: "globalCertificates"
                     )
                 },
                 {
@@ -14648,7 +14910,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hierarchyObjectRecoveryTarget,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryArchival",
                         cmdletSwitchName: "HierarchyObjectRecoveryTarget",
                         gqlRootFieldName: "hierarchyObjectRecoveryTarget"
                     )
@@ -14664,8 +14926,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hierarchySnappables,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "HierarchySnappables",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "Hierarchy",
                         gqlRootFieldName: "hierarchySnappables"
                     )
                 },
@@ -14680,9 +14942,17 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hostFailoverCluster,
                     new RscOp(
-                        cmdletName: "New-RscQueryCluster",
-                        cmdletSwitchName: "HostFailover",
+                        cmdletName: "New-RscQueryFailoverCluster",
+                        cmdletSwitchName: "Host",
                         gqlRootFieldName: "hostFailoverCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.hostFailoverClusters,
+                    new RscOp(
+                        cmdletName: "New-RscQueryFailoverCluster",
+                        cmdletSwitchName: "Hosts",
+                        gqlRootFieldName: "hostFailoverClusters"
                     )
                 },
                 {
@@ -14798,6 +15068,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.hypervServersPaginated,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "ServersPaginated",
+                        gqlRootFieldName: "hypervServersPaginated"
+                    )
+                },
+                {
                     GqlRootFieldName.hypervTopLevelDescendants,
                     new RscOp(
                         cmdletName: "New-RscQueryHyperv",
@@ -14835,6 +15113,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryHyperv",
                         cmdletSwitchName: "VmDetail",
                         gqlRootFieldName: "hypervVmDetail"
+                    )
+                },
+                {
+                    GqlRootFieldName.inplaceExportHypervVirtualMachine,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "InplaceExportVirtualMachine",
+                        gqlRootFieldName: "inplaceExportHypervVirtualMachine"
                     )
                 },
                 {
@@ -14880,7 +15166,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.integration,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryIntegration",
                         cmdletSwitchName: "Integration",
                         gqlRootFieldName: "integration"
                     )
@@ -15008,7 +15294,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isTotpMandatoryInTargetVersion,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryArchival",
                         cmdletSwitchName: "IsTotpMandatoryInTargetVersion",
                         gqlRootFieldName: "isTotpMandatoryInTargetVersion"
                     )
@@ -15032,8 +15318,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isVMwareManagementEnabled,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "IsVMwareManagementEnabled",
+                        cmdletName: "New-RscQueryVmware",
+                        cmdletSwitchName: "IsManagementEnabled",
                         gqlRootFieldName: "isVMwareManagementEnabled"
                     )
                 },
@@ -15168,7 +15454,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.licensesForClusterProductSummary,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "LicensesForClusterProductSummary",
                         gqlRootFieldName: "licensesForClusterProductSummary"
                     )
@@ -15227,6 +15513,54 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryAccount",
                         cmdletSwitchName: "Lookup",
                         gqlRootFieldName: "lookupAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365DayToDayModeBackupStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "DayToDayModeBackupStats",
+                        gqlRootFieldName: "m365DayToDayModeBackupStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365DayToDayModeStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "DayToDayModeStats",
+                        gqlRootFieldName: "m365DayToDayModeStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365OnboardingModeBackupStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "OnboardingModeBackupStats",
+                        gqlRootFieldName: "m365OnboardingModeBackupStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365OnboardingModeStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "OnboardingModeStats",
+                        gqlRootFieldName: "m365OnboardingModeStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365OrgBackupLocations,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "OrgBackupLocations",
+                        gqlRootFieldName: "m365OrgBackupLocations"
+                    )
+                },
+                {
+                    GqlRootFieldName.m365OrgOperationModes,
+                    new RscOp(
+                        cmdletName: "New-RscQueryM365",
+                        cmdletSwitchName: "OrgOperationModes",
+                        gqlRootFieldName: "m365OrgOperationModes"
                     )
                 },
                 {
@@ -15344,8 +15678,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.modifyActiveDirectoryLiveMount,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "ModifyActiveDirectoryLiveMount",
+                        cmdletName: "New-RscMutationActiveDirectory",
+                        cmdletSwitchName: "ModifyLiveMount",
                         gqlRootFieldName: "modifyActiveDirectoryLiveMount"
                     )
                 },
@@ -15424,17 +15758,65 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbBulkRecoverableRange,
                     new RscOp(
-                        cmdletName: "New-RscQueryMongo",
+                        cmdletName: "New-RscQueryMongoDb",
                         cmdletSwitchName: "BulkRecoverableRange",
                         gqlRootFieldName: "mongodbBulkRecoverableRange"
                     )
                 },
                 {
+                    GqlRootFieldName.mongodbCollection,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongoDb",
+                        cmdletSwitchName: "Collection",
+                        gqlRootFieldName: "mongodbCollection"
+                    )
+                },
+                {
                     GqlRootFieldName.mongodbCollectionRecoverableRange,
                     new RscOp(
-                        cmdletName: "New-RscQueryMongo",
+                        cmdletName: "New-RscQueryMongoDb",
                         cmdletSwitchName: "CollectionRecoverableRange",
                         gqlRootFieldName: "mongodbCollectionRecoverableRange"
+                    )
+                },
+                {
+                    GqlRootFieldName.mongodbCollections,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongoDb",
+                        cmdletSwitchName: "Collections",
+                        gqlRootFieldName: "mongodbCollections"
+                    )
+                },
+                {
+                    GqlRootFieldName.mongodbDatabase,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongoDb",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "mongodbDatabase"
+                    )
+                },
+                {
+                    GqlRootFieldName.mongodbDatabases,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongoDb",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "mongodbDatabases"
+                    )
+                },
+                {
+                    GqlRootFieldName.mongodbSource,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongoDb",
+                        cmdletSwitchName: "Source",
+                        gqlRootFieldName: "mongodbSource"
+                    )
+                },
+                {
+                    GqlRootFieldName.mongodbSources,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongoDb",
+                        cmdletSwitchName: "Sources",
+                        gqlRootFieldName: "mongodbSources"
                     )
                 },
                 {
@@ -15608,7 +15990,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mutateRole,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "MutateRole",
                         gqlRootFieldName: "mutateRole"
                     )
@@ -15680,32 +16062,32 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.ncdBackEndCapacity,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdBackEndCapacity",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "BackEndCapacity",
                         gqlRootFieldName: "ncdBackEndCapacity"
                     )
                 },
                 {
                     GqlRootFieldName.ncdFrontEndCapacity,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdFrontEndCapacity",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "FrontEndCapacity",
                         gqlRootFieldName: "ncdFrontEndCapacity"
                     )
                 },
                 {
                     GqlRootFieldName.ncdObjectProtectionStatus,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdObjectProtectionStatus",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "ObjectProtectionStatus",
                         gqlRootFieldName: "ncdObjectProtectionStatus"
                     )
                 },
                 {
                     GqlRootFieldName.ncdVmImageUrl,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "NcdVmImageUrl",
+                        cmdletName: "New-RscQueryNcd",
+                        cmdletSwitchName: "VmImageUrl",
                         gqlRootFieldName: "ncdVmImageUrl"
                     )
                 },
@@ -16368,7 +16750,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.orgSecurityPolicy,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryPolicy",
                         cmdletSwitchName: "OrgSecurityPolicy",
                         gqlRootFieldName: "orgSecurityPolicy"
                     )
@@ -16400,7 +16782,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.passwordComplexityPolicy,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryPolicy",
                         cmdletSwitchName: "PasswordComplexityPolicy",
                         gqlRootFieldName: "passwordComplexityPolicy"
                     )
@@ -16472,7 +16854,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.pauseTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "PauseTarget",
                         gqlRootFieldName: "pauseTarget"
                     )
@@ -16483,14 +16865,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "PendingAction",
                         gqlRootFieldName: "pendingAction"
-                    )
-                },
-                {
-                    GqlRootFieldName.pendingRansomwareInvestigationResultsCount,
-                    new RscOp(
-                        cmdletName: "New-RscQueryRansomware",
-                        cmdletSwitchName: "PendingInvestigationResultsCount",
-                        gqlRootFieldName: "pendingRansomwareInvestigationResultsCount"
                     )
                 },
                 {
@@ -16560,16 +16934,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.policyDetails,
                     new RscOp(
-                        cmdletName: "New-RscQueryPolicy",
-                        cmdletSwitchName: "Details",
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "PolicyDetails",
                         gqlRootFieldName: "policyDetails"
                     )
                 },
                 {
                     GqlRootFieldName.policyObj,
                     new RscOp(
-                        cmdletName: "New-RscQueryPolicy",
-                        cmdletSwitchName: "Obj",
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "PolicyObj",
                         gqlRootFieldName: "policyObj"
                     )
                 },
@@ -16577,15 +16951,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.policyObjectUsages,
                     new RscOp(
                         cmdletName: "New-RscQueryPolicy",
-                        cmdletSwitchName: "ObjectUsages",
+                        cmdletSwitchName: "PolicyObjectUsages",
                         gqlRootFieldName: "policyObjectUsages"
                     )
                 },
                 {
                     GqlRootFieldName.policyObjs,
                     new RscOp(
-                        cmdletName: "New-RscQueryPolicy",
-                        cmdletSwitchName: "Objs",
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "PolicyObjs",
                         gqlRootFieldName: "policyObjs"
                     )
                 },
@@ -16622,6 +16996,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.privateContainerRegistry,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "PrivateContainerRegistry",
+                        gqlRootFieldName: "privateContainerRegistry"
+                    )
+                },
+                {
                     GqlRootFieldName.processedRansomwareInvestigationWorkloadCount,
                     new RscOp(
                         cmdletName: "New-RscQueryRansomware",
@@ -16640,7 +17022,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.promoteReaderTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "PromoteReaderTarget",
                         gqlRootFieldName: "promoteReaderTarget"
                     )
@@ -16651,14 +17033,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "ProtectedObjectsList",
                         gqlRootFieldName: "protectedObjectsConnection"
-                    )
-                },
-                {
-                    GqlRootFieldName.protectedRansomwareInvestigationWorkloadCount,
-                    new RscOp(
-                        cmdletName: "New-RscQueryRansomware",
-                        cmdletSwitchName: "ProtectedInvestigationWorkloadCount",
-                        gqlRootFieldName: "protectedRansomwareInvestigationWorkloadCount"
                     )
                 },
                 {
@@ -16688,7 +17062,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.radarClusterConnection,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "RadarClusterList",
                         gqlRootFieldName: "radarClusterConnection"
                     )
@@ -16715,14 +17089,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryRansomware",
                         cmdletSwitchName: "InvestigationEnablement",
                         gqlRootFieldName: "ransomwareInvestigationEnablement"
-                    )
-                },
-                {
-                    GqlRootFieldName.ransomwareInvestigationWorkloadScannedCount,
-                    new RscOp(
-                        cmdletName: "New-RscQueryRansomware",
-                        cmdletSwitchName: "InvestigationWorkloadScannedCount",
-                        gqlRootFieldName: "ransomwareInvestigationWorkloadScannedCount"
                     )
                 },
                 {
@@ -16760,8 +17126,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.rcsArchivalLocationsConsumptionStats,
                     new RscOp(
-                        cmdletName: "New-RscQueryRcs",
-                        cmdletSwitchName: "ArchivalLocationsConsumptionStats",
+                        cmdletName: "New-RscQueryArchival",
+                        cmdletSwitchName: "RcsLocationsConsumptionStats",
                         gqlRootFieldName: "rcsArchivalLocationsConsumptionStats"
                     )
                 },
@@ -16819,6 +17185,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMongo",
                         cmdletSwitchName: "RecoverSource",
                         gqlRootFieldName: "recoverMongoSource"
+                    )
+                },
+                {
+                    GqlRootFieldName.recoverMongodbSource,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongoDb",
+                        cmdletSwitchName: "RecoverSource",
+                        gqlRootFieldName: "recoverMongodbSource"
                     )
                 },
                 {
@@ -16880,7 +17254,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshNasSystems,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationNas",
                         cmdletSwitchName: "RefreshNasSystems",
                         gqlRootFieldName: "refreshNasSystems"
                     )
@@ -16920,7 +17294,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshReaderTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "RefreshReaderTarget",
                         gqlRootFieldName: "refreshReaderTarget"
                     )
@@ -16984,7 +17358,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.registerNasSystem,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationNas",
                         cmdletSwitchName: "RegisterNasSystem",
                         gqlRootFieldName: "registerNasSystem"
                     )
@@ -17000,7 +17374,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.removeClusterNodes,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "RemoveClusterNodes",
                         gqlRootFieldName: "removeClusterNodes"
                     )
@@ -17032,7 +17406,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.removePolicyObjects,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "RemovePolicyObjects",
                         gqlRootFieldName: "removePolicyObjects"
                     )
@@ -17067,6 +17441,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryReplication",
                         cmdletSwitchName: "IncomingStats",
                         gqlRootFieldName: "replicationIncomingStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.replicationNetworkThrottleBypass,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "NetworkThrottleBypass",
+                        gqlRootFieldName: "replicationNetworkThrottleBypass"
+                    )
+                },
+                {
+                    GqlRootFieldName.replicationNetworkThrottleBypassById,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReplication",
+                        cmdletSwitchName: "NetworkThrottleBypassById",
+                        gqlRootFieldName: "replicationNetworkThrottleBypassById"
                     )
                 },
                 {
@@ -17134,6 +17524,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.resolveAnomaly,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "ResolveAnomaly",
+                        gqlRootFieldName: "resolveAnomaly"
+                    )
+                },
+                {
                     GqlRootFieldName.resolveVolumeGroupsConflict,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -17144,8 +17542,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreActiveDirectoryObjects,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "RestoreActiveDirectoryObjects",
+                        cmdletName: "New-RscMutationActiveDirectory",
+                        cmdletSwitchName: "RestoreObjects",
                         gqlRootFieldName: "restoreActiveDirectoryObjects"
                     )
                 },
@@ -17248,7 +17646,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.resumeTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "ResumeTarget",
                         gqlRootFieldName: "resumeTarget"
                     )
@@ -17393,8 +17791,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.scheduledReport,
                     new RscOp(
                         cmdletName: "New-RscQueryReport",
-                        cmdletSwitchName: "Scheduled",
+                        cmdletSwitchName: "ScheduledReport",
                         gqlRootFieldName: "scheduledReport"
+                    )
+                },
+                {
+                    GqlRootFieldName.scheduledReports,
+                    new RscOp(
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "ScheduledReports",
+                        gqlRootFieldName: "scheduledReports"
                     )
                 },
                 {
@@ -17432,24 +17838,32 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.searchSnappableConnection,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SearchSnappableList",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "Search",
                         gqlRootFieldName: "searchSnappableConnection"
                     )
                 },
                 {
                     GqlRootFieldName.searchSnappableVersionedFiles,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SearchSnappableVersionedFiles",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "SearchVersionedFiles",
                         gqlRootFieldName: "searchSnappableVersionedFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.seedEnabledPolicies,
+                    new RscOp(
+                        cmdletName: "New-RscMutationPolicy",
+                        cmdletSwitchName: "SeedEnabledPolicies",
+                        gqlRootFieldName: "seedEnabledPolicies"
                     )
                 },
                 {
                     GqlRootFieldName.seedInitialPolicies,
                     new RscOp(
                         cmdletName: "New-RscMutationPolicy",
-                        cmdletSwitchName: "Policies",
+                        cmdletSwitchName: "SeedInitialPolicies",
                         gqlRootFieldName: "seedInitialPolicies"
                     )
                 },
@@ -17465,7 +17879,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.sendScheduledReportAsync,
                     new RscOp(
                         cmdletName: "New-RscMutationReport",
-                        cmdletSwitchName: "SendScheduledAsync",
+                        cmdletSwitchName: "SendScheduledReportAsync",
                         gqlRootFieldName: "sendScheduledReportAsync"
                     )
                 },
@@ -17491,6 +17905,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationAzure",
                         cmdletSwitchName: "SetCloudAccountCustomerAppCredentials",
                         gqlRootFieldName: "setAzureCloudAccountCustomerAppCredentials"
+                    )
+                },
+                {
+                    GqlRootFieldName.setBundleApprovalStatus,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "SetBundleApprovalStatus",
+                        gqlRootFieldName: "setBundleApprovalStatus"
                     )
                 },
                 {
@@ -17544,9 +17966,17 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.setPasswordComplexityPolicy,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "SetPasswordComplexityPolicy",
                         gqlRootFieldName: "setPasswordComplexityPolicy"
+                    )
+                },
+                {
+                    GqlRootFieldName.setPrivateContainerRegistry,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "SetPrivateContainerRegistry",
+                        gqlRootFieldName: "setPrivateContainerRegistry"
                     )
                 },
                 {
@@ -17712,48 +18142,48 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.snappableConnection,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableList",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "List",
                         gqlRootFieldName: "snappableConnection"
                     )
                 },
                 {
                     GqlRootFieldName.snappableContactSearch,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableContactSearch",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "ContactSearch",
                         gqlRootFieldName: "snappableContactSearch"
                     )
                 },
                 {
                     GqlRootFieldName.snappableEmailSearch,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableEmailSearch",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "EmailSearch",
                         gqlRootFieldName: "snappableEmailSearch"
                     )
                 },
                 {
                     GqlRootFieldName.snappableEventSearch,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableEventSearch",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "EventSearch",
                         gqlRootFieldName: "snappableEventSearch"
                     )
                 },
                 {
                     GqlRootFieldName.snappableGroupByConnection,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableGroupByList",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "GroupByList",
                         gqlRootFieldName: "snappableGroupByConnection"
                     )
                 },
                 {
                     GqlRootFieldName.snappableOnedriveSearch,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableOnedriveSearch",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "OnedriveSearch",
                         gqlRootFieldName: "snappableOnedriveSearch"
                     )
                 },
@@ -17776,16 +18206,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.snappableTeamsConversationsSearch,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableTeamsConversationsSearch",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "TeamsConversationsSearch",
                         gqlRootFieldName: "snappableTeamsConversationsSearch"
                     )
                 },
                 {
                     GqlRootFieldName.snappableTeamsDriveSearch,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnappableTeamsDriveSearch",
+                        cmdletName: "New-RscQuerySnappable",
+                        cmdletSwitchName: "TeamsDriveSearch",
                         gqlRootFieldName: "snappableTeamsDriveSearch"
                     )
                 },
@@ -17888,32 +18318,40 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.snmpConfigurations,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SnmpConfigurations",
+                        cmdletName: "New-RscQuerySnmp",
+                        cmdletSwitchName: "Configurations",
                         gqlRootFieldName: "snmpConfigurations"
+                    )
+                },
+                {
+                    GqlRootFieldName.snoozedDirectories,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "SnoozedDirectories",
+                        gqlRootFieldName: "snoozedDirectories"
                     )
                 },
                 {
                     GqlRootFieldName.sonarContentReport,
                     new RscOp(
-                        cmdletName: "New-RscQuerySonar",
-                        cmdletSwitchName: "ContentReport",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "SonarContent",
                         gqlRootFieldName: "sonarContentReport"
                     )
                 },
                 {
                     GqlRootFieldName.sonarReport,
                     new RscOp(
-                        cmdletName: "New-RscQuerySonar",
-                        cmdletSwitchName: "Report",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "Sonar",
                         gqlRootFieldName: "sonarReport"
                     )
                 },
                 {
                     GqlRootFieldName.sonarReportRow,
                     new RscOp(
-                        cmdletName: "New-RscQuerySonar",
-                        cmdletSwitchName: "ReportRow",
+                        cmdletName: "New-RscQueryReport",
+                        cmdletSwitchName: "SonarRow",
                         gqlRootFieldName: "sonarReportRow"
                     )
                 },
@@ -18230,10 +18668,18 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.switchProductToOnboardingMode,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "SwitchProductToOnboardingMode",
+                        gqlRootFieldName: "switchProductToOnboardingMode"
+                    )
+                },
+                {
                     GqlRootFieldName.syslogExportRules,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "SyslogExportRules",
+                        cmdletName: "New-RscQuerySyslog",
+                        cmdletSwitchName: "ExportRules",
                         gqlRootFieldName: "syslogExportRules"
                     )
                 },
@@ -18288,7 +18734,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.target,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryArchival",
                         cmdletSwitchName: "Target",
                         gqlRootFieldName: "target"
                     )
@@ -18296,9 +18742,17 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.targetMapping,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryArchival",
                         cmdletSwitchName: "TargetMapping",
                         gqlRootFieldName: "targetMapping"
+                    )
+                },
+                {
+                    GqlRootFieldName.targets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryArchival",
+                        cmdletSwitchName: "Targets",
+                        gqlRootFieldName: "targets"
                     )
                 },
                 {
@@ -18344,8 +18798,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.testSyslogExportRule,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "TestSyslogExportRule",
+                        cmdletName: "New-RscMutationSyslog",
+                        cmdletSwitchName: "TestExportRule",
                         gqlRootFieldName: "testSyslogExportRule"
                     )
                 },
@@ -18395,6 +18849,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "TotpConfigStatus",
                         gqlRootFieldName: "totpConfigStatus"
+                    )
+                },
+                {
+                    GqlRootFieldName.tprStatusForNodeRemoval,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "TprStatusForNodeRemoval",
+                        gqlRootFieldName: "tprStatusForNodeRemoval"
                     )
                 },
                 {
@@ -18528,7 +18990,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAutoEnablePolicyClusterConfig,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "UpdateAutoEnablePolicyClusterConfig",
                         gqlRootFieldName: "updateAutoEnablePolicyClusterConfig"
                     )
@@ -18704,7 +19166,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateClusterDefaultAddress,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "UpdateClusterDefaultAddress",
                         gqlRootFieldName: "updateClusterDefaultAddress"
                     )
@@ -18712,7 +19174,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateClusterLocation,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "UpdateClusterLocation",
                         gqlRootFieldName: "updateClusterLocation"
                     )
@@ -18720,7 +19182,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateClusterNtpServers,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "UpdateClusterNtpServers",
                         gqlRootFieldName: "updateClusterNtpServers"
                     )
@@ -18728,7 +19190,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateClusterSettings,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "UpdateClusterSettings",
                         gqlRootFieldName: "updateClusterSettings"
                     )
@@ -18766,10 +19228,18 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateCustomerAppPermissions,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "UpdateCustomerAppPermissions",
+                        gqlRootFieldName: "updateCustomerAppPermissions"
+                    )
+                },
+                {
                     GqlRootFieldName.updateDatabaseLogReportingPropertiesForCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "UpdateDatabaseLogReportingProperties",
+                        cmdletName: "New-RscMutationReport",
+                        cmdletSwitchName: "UpdateDatabaseLogingPropertiesForCluster",
                         gqlRootFieldName: "updateDatabaseLogReportingPropertiesForCluster"
                     )
                 },
@@ -18800,16 +19270,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateFailoverCluster,
                     new RscOp(
-                        cmdletName: "New-RscMutationCluster",
-                        cmdletSwitchName: "UpdateFailover",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "Update",
                         gqlRootFieldName: "updateFailoverCluster"
                     )
                 },
                 {
                     GqlRootFieldName.updateFailoverClusterApp,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "UpdateFailoverClusterApp",
+                        cmdletName: "New-RscMutationFailoverCluster",
+                        cmdletSwitchName: "UpdateApp",
                         gqlRootFieldName: "updateFailoverClusterApp"
                     )
                 },
@@ -18832,7 +19302,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateGlacierTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "UpdateGlacierTarget",
                         gqlRootFieldName: "updateGlacierTarget"
                     )
@@ -18841,7 +19311,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateGlobalCertificate,
                     new RscOp(
                         cmdletName: "New-RscMutationCertificate",
-                        cmdletSwitchName: "UpdateGlobal",
+                        cmdletSwitchName: "UpdateGlobalCertificate",
                         gqlRootFieldName: "updateGlobalCertificate"
                     )
                 },
@@ -18864,7 +19334,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateHealthMonitorPolicyStatus,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "UpdateHealthMonitorPolicyStatus",
                         gqlRootFieldName: "updateHealthMonitorPolicyStatus"
                     )
@@ -18896,7 +19366,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateIntegration,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationIntegration",
                         cmdletSwitchName: "UpdateIntegration",
                         gqlRootFieldName: "updateIntegration"
                     )
@@ -18904,7 +19374,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateIntegrations,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationIntegration",
                         cmdletSwitchName: "UpdateIntegrations",
                         gqlRootFieldName: "updateIntegrations"
                     )
@@ -18942,6 +19412,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateManagedIdentities,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "UpdateManagedIdentities",
+                        gqlRootFieldName: "updateManagedIdentities"
+                    )
+                },
+                {
                     GqlRootFieldName.updateManagedVolume,
                     new RscOp(
                         cmdletName: "New-RscMutationManagedVolume",
@@ -18952,7 +19430,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateManualTargetMapping,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "UpdateManualTargetMapping",
                         gqlRootFieldName: "updateManualTargetMapping"
                     )
@@ -18960,7 +19438,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateMongodbSource,
                     new RscOp(
-                        cmdletName: "New-RscMutationMongo",
+                        cmdletName: "New-RscMutationMongoDb",
                         cmdletSwitchName: "UpdateSource",
                         gqlRootFieldName: "updateMongodbSource"
                     )
@@ -19000,7 +19478,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateNasSystem,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationNas",
                         cmdletSwitchName: "UpdateNasSystem",
                         gqlRootFieldName: "updateNasSystem"
                     )
@@ -19080,7 +19558,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateOrg,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "UpdateOrg",
                         gqlRootFieldName: "updateOrg"
                     )
@@ -19088,7 +19566,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateOrgSecurityPolicy,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "UpdateOrgSecurityPolicy",
                         gqlRootFieldName: "updateOrgSecurityPolicy"
                     )
@@ -19096,7 +19574,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updatePolicy,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationPolicy",
                         cmdletSwitchName: "UpdatePolicy",
                         gqlRootFieldName: "updatePolicy"
                     )
@@ -19104,7 +19582,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updatePreviewerClusterConfig,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationCluster",
                         cmdletSwitchName: "UpdatePreviewerClusterConfig",
                         gqlRootFieldName: "updatePreviewerClusterConfig"
                     )
@@ -19121,7 +19599,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateRcsAutomaticTargetMapping,
                     new RscOp(
                         cmdletName: "New-RscMutationRcs",
-                        cmdletSwitchName: "UpdateAutomaticTargetMapping",
+                        cmdletSwitchName: "UpdateRcsAutomaticTargetMapping",
                         gqlRootFieldName: "updateRcsAutomaticTargetMapping"
                     )
                 },
@@ -19131,6 +19609,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationRcv",
                         cmdletSwitchName: "UpdateTarget",
                         gqlRootFieldName: "updateRcvTarget"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateReplicationNetworkThrottleBypass,
+                    new RscOp(
+                        cmdletName: "New-RscMutationReplication",
+                        cmdletSwitchName: "UpdateNetworkThrottleBypass",
+                        gqlRootFieldName: "updateReplicationNetworkThrottleBypass"
                     )
                 },
                 {
@@ -19144,7 +19630,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateRole,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationAccount",
                         cmdletSwitchName: "UpdateRole",
                         gqlRootFieldName: "updateRole"
                     )
@@ -19160,7 +19646,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateS3CompatibleTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "UpdateS3CompatibleTarget",
                         gqlRootFieldName: "updateS3CompatibleTarget"
                     )
@@ -19169,7 +19655,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateScheduledReport,
                     new RscOp(
                         cmdletName: "New-RscMutationReport",
-                        cmdletSwitchName: "UpdateScheduled",
+                        cmdletSwitchName: "UpdateScheduledReport",
                         gqlRootFieldName: "updateScheduledReport"
                     )
                 },
@@ -19184,8 +19670,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateSnmpConfig,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "UpdateSnmpConfig",
+                        cmdletName: "New-RscMutationSnmp",
+                        cmdletSwitchName: "UpdateConfig",
                         gqlRootFieldName: "updateSnmpConfig"
                     )
                 },
@@ -19208,8 +19694,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateSyslogExportRule,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
-                        cmdletSwitchName: "UpdateSyslogExportRule",
+                        cmdletName: "New-RscMutationSyslog",
+                        cmdletSwitchName: "UpdateExportRule",
                         gqlRootFieldName: "updateSyslogExportRule"
                     )
                 },
@@ -19328,7 +19814,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.upgradeCdmManagedTarget,
                     new RscOp(
-                        cmdletName: "New-RscMutationMisc",
+                        cmdletName: "New-RscMutationArchival",
                         cmdletSwitchName: "UpgradeCdmManagedTarget",
                         gqlRootFieldName: "upgradeCdmManagedTarget"
                     )
@@ -19784,7 +20270,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateClusterLicenseCapacity,
                     new RscOp(
-                        cmdletName: "New-RscQueryMisc",
+                        cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "ValidateClusterLicenseCapacity",
                         gqlRootFieldName: "validateClusterLicenseCapacity"
                     )
@@ -19838,6 +20324,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.vcenterAsyncRequestStatus,
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "AsyncRequestStatus",
+                        gqlRootFieldName: "vcenterAsyncRequestStatus"
+                    )
+                },
+                {
                     GqlRootFieldName.verifySlaWithReplicationToCluster,
                     new RscOp(
                         cmdletName: "New-RscQuerySla",
@@ -19848,8 +20342,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vmwareDownloadSnapshotFromLocation,
                     new RscOp(
-                        cmdletName: "New-RscMutationSnapshot",
-                        cmdletSwitchName: "VmwareDownloadFromLocation",
+                        cmdletName: "New-RscMutationVmware",
+                        cmdletSwitchName: "DownloadSnapshotFromLocation",
                         gqlRootFieldName: "vmwareDownloadSnapshotFromLocation"
                     )
                 },
@@ -20201,23 +20695,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.activeCustomAnalyzers
                 },
                 {
-                    "New-RscQueryMisc -Op ActiveDirectoryDomain",
+                    "New-RscQueryActiveDirectory -Op Domain",
                     GqlRootFieldName.activeDirectoryDomain
                 },
                 {
-                    "New-RscQueryMisc -Op ActiveDirectoryDomainController",
+                    "New-RscQueryActiveDirectory -Op DomainController",
                     GqlRootFieldName.activeDirectoryDomainController
                 },
                 {
-                    "New-RscQueryMisc -Op ActiveDirectoryDomainControllers",
+                    "New-RscQueryActiveDirectory -Op DomainControllers",
                     GqlRootFieldName.activeDirectoryDomainControllers
                 },
                 {
-                    "New-RscQueryMisc -Op ActiveDirectoryDomains",
+                    "New-RscQueryActiveDirectory -Op Domains",
                     GqlRootFieldName.activeDirectoryDomains
                 },
                 {
-                    "New-RscQuerySnapshot -Op ActiveDirectorySearchs",
+                    "New-RscQueryActiveDirectory -Op SearchSnapshots",
                     GqlRootFieldName.activeDirectorySearchSnapshots
                 },
                 {
@@ -20269,7 +20763,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addClusterCertificate
                 },
                 {
-                    "New-RscMutationMisc -Op AddClusterNodes",
+                    "New-RscMutationCluster -Op AddClusterNodes",
                     GqlRootFieldName.addClusterNodes
                 },
                 {
@@ -20277,11 +20771,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addConfiguredGroupToHierarchy
                 },
                 {
+                    "New-RscMutationCrossAccount -Op AddCrossAccountServiceConsumer",
+                    GqlRootFieldName.addCrossAccountServiceConsumer
+                },
+                {
                     "New-RscMutationDb2 -Op AddInstance",
                     GqlRootFieldName.addDb2Instance
                 },
                 {
-                    "New-RscMutationCertificate -Op AddGlobal",
+                    "New-RscMutationCertificate -Op AddGlobalCertificate",
                     GqlRootFieldName.addGlobalCertificate
                 },
                 {
@@ -20309,7 +20807,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addO365Org
                 },
                 {
-                    "New-RscMutationMisc -Op AddPolicyObjects",
+                    "New-RscMutationPolicy -Op AddPolicyObjects",
                     GqlRootFieldName.addPolicyObjects
                 },
                 {
@@ -20325,7 +20823,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addStorageArrays
                 },
                 {
-                    "New-RscMutationMisc -Op AddSyslogExportRule",
+                    "New-RscMutationSyslog -Op AddExportRule",
                     GqlRootFieldName.addSyslogExportRule
                 },
                 {
@@ -20343,6 +20841,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAccount -Op Products",
                     GqlRootFieldName.allAccountProducts
+                },
+                {
+                    "New-RscQueryCloudAccount -Op WithExocomputeMappings",
+                    GqlRootFieldName.allAccountsWithExocomputeMappings
                 },
                 {
                     "New-RscQueryMisc -Op AllowedOrgAdminOperations",
@@ -20375,6 +20877,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAws -Op CloudAccountsWithFeatures",
                     GqlRootFieldName.allAwsCloudAccountsWithFeatures
+                },
+                {
+                    "New-RscQueryMisc -Op AwsComputeSettings",
+                    GqlRootFieldName.allAwsComputeSettings
                 },
                 {
                     "New-RscQueryAws -Op ExocomputeConfigs",
@@ -20477,12 +20983,20 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureNsgs
                 },
                 {
+                    "New-RscQueryMisc -Op AzureResourceGroups",
+                    GqlRootFieldName.allAzureResourceGroups
+                },
+                {
                     "New-RscQueryAzure -Op SqlDatabaseServerElasticPools",
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools
                 },
                 {
                     "New-RscQueryAzure -Op StorageAccountsByRegion",
                     GqlRootFieldName.allAzureStorageAccountsByRegion
+                },
+                {
+                    "New-RscQueryMisc -Op AzureSubnets",
+                    GqlRootFieldName.allAzureSubnets
                 },
                 {
                     "New-RscQueryAzure -Op SubscriptionWithExocomputeMappings",
@@ -20503,6 +21017,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryCloudAccount -Op ExocomputeMappings",
                     GqlRootFieldName.allCloudAccountExocomputeMappings
+                },
+                {
+                    "New-RscQueryCloudAccount -Op CloudAccounts",
+                    GqlRootFieldName.allCloudAccounts
                 },
                 {
                     "New-RscQueryMisc -Op CloudDirectShares",
@@ -20581,7 +21099,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allDhrcLatestMetrics
                 },
                 {
-                    "New-RscQueryRcs -Op Dhcores",
+                    "New-RscQueryMisc -Op DhrcScores",
                     GqlRootFieldName.allDhrcScores
                 },
                 {
@@ -20673,7 +21191,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allHostedAzureRegions
                 },
                 {
-                    "New-RscQueryMisc -Op Integrations",
+                    "New-RscQueryIntegration -Op Integrations",
                     GqlRootFieldName.allIntegrations
                 },
                 {
@@ -20705,7 +21223,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allMssqlDatabaseRestoreFiles
                 },
                 {
-                    "New-RscQueryMisc -Op NcdObjectsOverTimeData",
+                    "New-RscQueryNcd -Op ObjectsOverTimeData",
                     GqlRootFieldName.allNcdObjectsOverTimeData
                 },
                 {
@@ -20713,11 +21231,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allNcdSlaComplianceData
                 },
                 {
-                    "New-RscQueryMisc -Op NcdTaskData",
+                    "New-RscQueryNcd -Op TaskData",
                     GqlRootFieldName.allNcdTaskData
                 },
                 {
-                    "New-RscQueryMisc -Op NcdUsageOverTimeData",
+                    "New-RscQueryNcd -Op UsageOverTimeData",
                     GqlRootFieldName.allNcdUsageOverTimeData
                 },
                 {
@@ -20801,7 +21319,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses
                 },
                 {
-                    "New-RscQueryMisc -Op TargetMappings",
+                    "New-RscQueryArchival -Op TargetMappings",
                     GqlRootFieldName.allTargetMappings
                 },
                 {
@@ -20809,7 +21327,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allTargets
                 },
                 {
-                    "New-RscQueryMisc -Op TopRiskPolicySummaries",
+                    "New-RscQueryPolicy -Op TopRiskPolicySummaries",
                     GqlRootFieldName.allTopRiskPolicySummaries
                 },
                 {
@@ -20823,6 +21341,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMisc -Op UsersOnAccountList",
                     GqlRootFieldName.allUsersOnAccountConnection
+                },
+                {
+                    "New-RscQueryReplication -Op ValidSources",
+                    GqlRootFieldName.allValidReplicationSources
                 },
                 {
                     "New-RscQueryReplication -Op ValidTargets",
@@ -20841,7 +21363,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allVmRecoveryJobsInfo
                 },
                 {
-                    "New-RscQueryMisc -Op VmwareCdpStateInfos",
+                    "New-RscQueryVmware -Op CdpStateInfos",
                     GqlRootFieldName.allVmwareCdpStateInfos
                 },
                 {
@@ -20881,7 +21403,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.anomalyResultsGrouped
                 },
                 {
-                    "New-RscQueryMisc -Op ArchivalStorageUsage",
+                    "New-RscQueryArchival -Op StorageUsage",
                     GqlRootFieldName.archivalStorageUsage
                 },
                 {
@@ -20921,7 +21443,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.assignSla
                 },
                 {
-                    "New-RscMutationMongo -Op AssignSlaToCollection",
+                    "New-RscMutationMongoDb -Op AssignSlaToCollection",
                     GqlRootFieldName.assignSlaToMongoDbCollection
                 },
                 {
@@ -20929,7 +21451,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.assignSlasForSnappableHierarchies
                 },
                 {
-                    "New-RscQueryCertificate -Op AssignableGlobal",
+                    "New-RscQueryCertificate -Op AssignableGlobalCertificates",
                     GqlRootFieldName.assignableGlobalCertificates
                 },
                 {
@@ -20955,6 +21477,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAws -Op ComputeSettings",
                     GqlRootFieldName.awsComputeSettings
+                },
+                {
+                    "New-RscMutationAws -Op ExocomputeClusterConnect",
+                    GqlRootFieldName.awsExocomputeClusterConnect
                 },
                 {
                     "New-RscQueryAwsNative -Op Account",
@@ -21345,11 +21871,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.bulkDeleteCassandraSources
                 },
                 {
-                    "New-RscMutationCluster -Op BulkDeleteFailover",
+                    "New-RscMutationFailoverCluster -Op BulkDelete",
                     GqlRootFieldName.bulkDeleteFailoverCluster
                 },
                 {
-                    "New-RscMutationMisc -Op BulkDeleteFailoverClusterApp",
+                    "New-RscMutationFailoverCluster -Op BulkDeleteApp",
                     GqlRootFieldName.bulkDeleteFailoverClusterApp
                 },
                 {
@@ -21365,11 +21891,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.bulkDeleteHost
                 },
                 {
-                    "New-RscMutationMongo -Op BulkDeleteSources",
+                    "New-RscMutationMongoDb -Op BulkDeleteSources",
                     GqlRootFieldName.bulkDeleteMongodbSources
                 },
                 {
-                    "New-RscMutationMisc -Op BulkDeleteNasSystems",
+                    "New-RscMutationNas -Op BulkDeleteNasSystems",
                     GqlRootFieldName.bulkDeleteNasSystems
                 },
                 {
@@ -21419,6 +21945,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationOracle -Op BulkUpdateRacs",
                     GqlRootFieldName.bulkUpdateOracleRacs
+                },
+                {
+                    "New-RscMutationRansomware -Op BulkUpdateInvestigationStatus",
+                    GqlRootFieldName.bulkUpdateRansomwareInvestigationStatus
                 },
                 {
                     "New-RscMutationActivitySeries -Op Cancel",
@@ -21473,11 +22003,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cassandraSources
                 },
                 {
-                    "New-RscQueryMisc -Op CdmHierarchySnappableNew",
+                    "New-RscQuerySnappable -Op CdmHierarchySnappableNew",
                     GqlRootFieldName.cdmHierarchySnappableNew
                 },
                 {
-                    "New-RscQueryMisc -Op CdmHierarchySnappablesNew",
+                    "New-RscQuerySnappable -Op CdmHierarchySnappablesNew",
                     GqlRootFieldName.cdmHierarchySnappablesNew
                 },
                 {
@@ -21509,11 +22039,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.certificateSigningRequests
                 },
                 {
-                    "New-RscQueryCertificate -Op Certificate",
+                    "New-RscQueryCertificate -Op Certificates",
                     GqlRootFieldName.certificates
                 },
                 {
-                    "New-RscQueryCertificate -Op WithKey",
+                    "New-RscQueryCertificate -Op CertificatesWithKey",
                     GqlRootFieldName.certificatesWithKey
                 },
                 {
@@ -21613,7 +22143,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.cluster
                 },
                 {
-                    "New-RscQueryCertificate -Op Cluster",
+                    "New-RscQueryCertificate -Op ClusterCertificates",
                     GqlRootFieldName.clusterCertificates
                 },
                 {
@@ -21621,7 +22151,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterConnection
                 },
                 {
-                    "New-RscQueryRcs -Op Cluster",
+                    "New-RscQueryCertificate -Op ClusterCsr",
                     GqlRootFieldName.clusterCsr
                 },
                 {
@@ -21673,15 +22203,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterRegistrationProductInfo
                 },
                 {
-                    "New-RscQueryCluster -Op ReportMigrationCount",
+                    "New-RscQueryReport -Op ClusterMigrationCount",
                     GqlRootFieldName.clusterReportMigrationCount
                 },
                 {
-                    "New-RscQueryCluster -Op ReportMigrationJobStatus",
+                    "New-RscQueryReport -Op ClusterMigrationJobStatus",
                     GqlRootFieldName.clusterReportMigrationJobStatus
                 },
                 {
-                    "New-RscQueryCluster -Op ReportMigrationStatus",
+                    "New-RscQueryReport -Op ClusterMigrationStatus",
                     GqlRootFieldName.clusterReportMigrationStatus
                 },
                 {
@@ -21717,7 +22247,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.completeAzureCloudAccountOauth
                 },
                 {
-                    "New-RscQueryMisc -Op ComputeClusterStatus",
+                    "New-RscQueryCluster -Op ComputeClusterStatus",
                     GqlRootFieldName.computeClusterStatus
                 },
                 {
@@ -21741,11 +22271,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.crawls
                 },
                 {
-                    "New-RscMutationMisc -Op CreateActiveDirectoryLiveMount",
+                    "New-RscMutationActiveDirectory -Op CreateLiveMount",
                     GqlRootFieldName.createActiveDirectoryLiveMount
                 },
                 {
-                    "New-RscMutationMisc -Op CreateActiveDirectoryUnmount",
+                    "New-RscMutationActiveDirectory -Op CreateUnmount",
                     GqlRootFieldName.createActiveDirectoryUnmount
                 },
                 {
@@ -21757,7 +22287,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createAutomaticAzureTargetMapping
                 },
                 {
-                    "New-RscMutationRcs -Op CreateAutomaticTargetMapping",
+                    "New-RscMutationRcs -Op CreateAutomaticRcsTargetMapping",
                     GqlRootFieldName.createAutomaticRcsTargetMapping
                 },
                 {
@@ -21829,6 +22359,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createCloudNativeTagRule
                 },
                 {
+                    "New-RscMutationCrossAccount -Op CreateCrossAccountPair",
+                    GqlRootFieldName.createCrossAccountPair
+                },
+                {
+                    "New-RscMutationCrossAccount -Op CreateCrossAccountRegOauthPayload",
+                    GqlRootFieldName.createCrossAccountRegOauthPayload
+                },
+                {
                     "New-RscMutationMisc -Op CreateCustomAnalyzer",
                     GqlRootFieldName.createCustomAnalyzer
                 },
@@ -21849,11 +22387,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createExchangeMount
                 },
                 {
-                    "New-RscMutationCluster -Op CreateFailover",
+                    "New-RscMutationFailoverCluster -Op Create",
                     GqlRootFieldName.createFailoverCluster
                 },
                 {
-                    "New-RscMutationMisc -Op CreateFailoverClusterApp",
+                    "New-RscMutationFailoverCluster -Op CreateApp",
                     GqlRootFieldName.createFailoverClusterApp
                 },
                 {
@@ -21869,7 +22407,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createGcpTarget
                 },
                 {
-                    "New-RscMutationMisc -Op CreateGlacierReaderTarget",
+                    "New-RscMutationArchival -Op CreateGlacierReaderTarget",
                     GqlRootFieldName.createGlacierReaderTarget
                 },
                 {
@@ -21885,11 +22423,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount
                 },
                 {
-                    "New-RscMutationMisc -Op CreateIntegration",
+                    "New-RscMutationIntegration -Op CreateIntegration",
                     GqlRootFieldName.createIntegration
                 },
                 {
-                    "New-RscMutationMisc -Op CreateIntegrations",
+                    "New-RscMutationIntegration -Op CreateIntegrations",
                     GqlRootFieldName.createIntegrations
                 },
                 {
@@ -21905,11 +22443,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createK8sNamespaceSnapshots
                 },
                 {
-                    "New-RscMutationMisc -Op CreateManualTargetMapping",
+                    "New-RscMutationArchival -Op CreateManualTargetMapping",
                     GqlRootFieldName.createManualTargetMapping
                 },
                 {
-                    "New-RscMutationMongo -Op CreateSource",
+                    "New-RscMutationMongoDb -Op CreateSource",
                     GqlRootFieldName.createMongodbSource
                 },
                 {
@@ -21977,23 +22515,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createOraclePdbRestore
                 },
                 {
-                    "New-RscMutationMisc -Op CreateOrg",
+                    "New-RscMutationAccount -Op CreateOrg",
                     GqlRootFieldName.createOrg
                 },
                 {
-                    "New-RscMutationMisc -Op CreateOrgSwitchSession",
+                    "New-RscMutationAccount -Op CreateOrgSwitchSession",
                     GqlRootFieldName.createOrgSwitchSession
                 },
                 {
-                    "New-RscMutationMisc -Op CreatePolicy",
+                    "New-RscMutationPolicy -Op CreatePolicy",
                     GqlRootFieldName.createPolicy
                 },
                 {
-                    "New-RscMutationRcs -Op CreateReaderTarget",
+                    "New-RscMutationRcs -Op CreateRcsReaderTarget",
                     GqlRootFieldName.createRcsReaderTarget
                 },
                 {
-                    "New-RscMutationRcs -Op CreateTarget",
+                    "New-RscMutationRcs -Op CreateRcsTarget",
                     GqlRootFieldName.createRcsTarget
                 },
                 {
@@ -22009,15 +22547,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createReplicationPair
                 },
                 {
-                    "New-RscMutationMisc -Op CreateRole",
+                    "New-RscMutationAccount -Op CreateRole",
                     GqlRootFieldName.createRole
                 },
                 {
-                    "New-RscMutationMisc -Op CreateS3CompatibleReaderTarget",
+                    "New-RscMutationArchival -Op CreateS3CompatibleReaderTarget",
                     GqlRootFieldName.createS3CompatibleReaderTarget
                 },
                 {
-                    "New-RscMutationMisc -Op CreateS3CompatibleTarget",
+                    "New-RscMutationArchival -Op CreateS3CompatibleTarget",
                     GqlRootFieldName.createS3CompatibleTarget
                 },
                 {
@@ -22041,11 +22579,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createTapeTarget
                 },
                 {
-                    "New-RscMutationMisc -Op CreateUser",
+                    "New-RscMutationAccount -Op CreateUser",
                     GqlRootFieldName.createUser
                 },
                 {
-                    "New-RscMutationMisc -Op CreateUserWithPassword",
+                    "New-RscMutationAccount -Op CreateUserWithPassword",
                     GqlRootFieldName.createUserWithPassword
                 },
                 {
@@ -22077,11 +22615,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.currentOrgAuthDomainConfig
                 },
                 {
-                    "New-RscQueryMisc -Op CurrentUser",
+                    "New-RscQueryAccount -Op CurrentUser",
                     GqlRootFieldName.currentUser
                 },
                 {
-                    "New-RscQueryMisc -Op CurrentUserLoginContext",
+                    "New-RscQueryAccount -Op CurrentUserLoginContext",
                     GqlRootFieldName.currentUserLoginContext
                 },
                 {
@@ -22093,11 +22631,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.dashboardSummary
                 },
                 {
-                    "New-RscQueryCluster -Op DatabaseLogReport",
+                    "New-RscQueryReport -Op DatabaseLogForCluster",
                     GqlRootFieldName.databaseLogReportForCluster
                 },
                 {
-                    "New-RscQueryCluster -Op DatabaseLogReportingProperties",
+                    "New-RscQueryReport -Op DatabaseLogingPropertiesForCluster",
                     GqlRootFieldName.databaseLogReportingPropertiesForCluster
                 },
                 {
@@ -22145,7 +22683,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deactivateCustomAnalyzer
                 },
                 {
-                    "New-RscMutationMisc -Op DeactivatePolicy",
+                    "New-RscMutationPolicy -Op DeactivatePolicy",
                     GqlRootFieldName.deactivatePolicy
                 },
                 {
@@ -22201,11 +22739,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteCloudNativeTagRule
                 },
                 {
-                    "New-RscMutationSnapshot -Op DeleteCloudWorkload",
+                    "New-RscMutationSnapshot -Op DeleteCloudWorkloadSnapshot",
                     GqlRootFieldName.deleteCloudWorkloadSnapshot
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteCsr",
+                    "New-RscMutationCertificate -Op DeleteCsr",
                     GqlRootFieldName.deleteCsr
                 },
                 {
@@ -22233,19 +22771,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteExchangeSnapshotMount
                 },
                 {
-                    "New-RscMutationCluster -Op DeleteFailover",
+                    "New-RscMutationFailoverCluster -Op Delete",
                     GqlRootFieldName.deleteFailoverCluster
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteFailoverClusterApp",
+                    "New-RscMutationFailoverCluster -Op DeleteApp",
                     GqlRootFieldName.deleteFailoverClusterApp
                 },
                 {
-                    "New-RscMutationSnapshot -Op DeleteFilesets",
+                    "New-RscMutationSnapshot -Op DeleteFilesetSnapshots",
                     GqlRootFieldName.deleteFilesetSnapshots
                 },
                 {
-                    "New-RscMutationCertificate -Op DeleteGlobal",
+                    "New-RscMutationCertificate -Op DeleteGlobalCertificate",
                     GqlRootFieldName.deleteGlobalCertificate
                 },
                 {
@@ -22261,11 +22799,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshotMount
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteIntegration",
+                    "New-RscMutationIntegration -Op DeleteIntegration",
                     GqlRootFieldName.deleteIntegration
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteIntegrations",
+                    "New-RscMutationIntegration -Op DeleteIntegrations",
                     GqlRootFieldName.deleteIntegrations
                 },
                 {
@@ -22289,6 +22827,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteMongoSource
                 },
                 {
+                    "New-RscMutationMongoDb -Op DeleteSource",
+                    GqlRootFieldName.deleteMongodbSource
+                },
+                {
                     "New-RscMutationMosaic -Op DeleteStore",
                     GqlRootFieldName.deleteMosaicStore
                 },
@@ -22301,7 +22843,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteMssqlLiveMount
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteNasSystem",
+                    "New-RscMutationNas -Op DeleteNasSystem",
                     GqlRootFieldName.deleteNasSystem
                 },
                 {
@@ -22341,7 +22883,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteOracleMount
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteOrg",
+                    "New-RscMutationAccount -Op DeleteOrg",
                     GqlRootFieldName.deleteOrg
                 },
                 {
@@ -22349,7 +22891,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteReplicationPair
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteRole",
+                    "New-RscMutationAccount -Op DeleteRole",
                     GqlRootFieldName.deleteRole
                 },
                 {
@@ -22361,7 +22903,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteSapHanaSystem
                 },
                 {
-                    "New-RscMutationReport -Op DeleteScheduled",
+                    "New-RscMutationReport -Op DeleteScheduledReport",
                     GqlRootFieldName.deleteScheduledReport
                 },
                 {
@@ -22377,23 +22919,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteStorageArrays
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteSyslogExportRule",
+                    "New-RscMutationSyslog -Op DeleteExportRule",
                     GqlRootFieldName.deleteSyslogExportRule
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteTarget",
+                    "New-RscMutationArchival -Op DeleteTarget",
                     GqlRootFieldName.deleteTarget
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteTargetMapping",
+                    "New-RscMutationArchival -Op DeleteTargetMapping",
                     GqlRootFieldName.deleteTargetMapping
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteTotpConfig",
+                    "New-RscMutationAccount -Op DeleteTotpConfig",
                     GqlRootFieldName.deleteTotpConfig
                 },
                 {
-                    "New-RscMutationMisc -Op DeleteTotpConfigs",
+                    "New-RscMutationAccount -Op DeleteTotpConfigs",
                     GqlRootFieldName.deleteTotpConfigs
                 },
                 {
@@ -22433,7 +22975,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.disableSupportUserAccess
                 },
                 {
-                    "New-RscMutationMisc -Op DisableTarget",
+                    "New-RscMutationArchival -Op DisableTarget",
                     GqlRootFieldName.disableTarget
                 },
                 {
@@ -22601,7 +23143,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadVsphereVirtualMachineFiles
                 },
                 {
-                    "New-RscQueryDownload -Op EdVersionList",
+                    "New-RscQueryDownload -Op DownloadedVersionList",
                     GqlRootFieldName.downloadedVersionList
                 },
                 {
@@ -22637,7 +23179,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.enableSupportUserAccess
                 },
                 {
-                    "New-RscMutationMisc -Op EnableTarget",
+                    "New-RscMutationArchival -Op EnableTarget",
                     GqlRootFieldName.enableTarget
                 },
                 {
@@ -22745,15 +23287,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.failedRestoreItemsInfo
                 },
                 {
-                    "New-RscQueryMisc -Op FailoverClusterApp",
+                    "New-RscQueryFailoverCluster -Op App",
                     GqlRootFieldName.failoverClusterApp
                 },
                 {
-                    "New-RscQueryMisc -Op FailoverClusterApps",
+                    "New-RscQueryFailoverCluster -Op Apps",
                     GqlRootFieldName.failoverClusterApps
                 },
                 {
-                    "New-RscQueryMisc -Op FailoverClusterTopLevelDescendants",
+                    "New-RscQueryFailoverCluster -Op TopLevelDescendants",
                     GqlRootFieldName.failoverClusterTopLevelDescendants
                 },
                 {
@@ -22885,7 +23427,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.gcpSetDefaultServiceAccountJwtConfig
                 },
                 {
-                    "New-RscMutationMisc -Op GenerateClusterRegistrationToken",
+                    "New-RscMutationCluster -Op GenerateClusterRegistrationToken",
                     GqlRootFieldName.generateClusterRegistrationToken
                 },
                 {
@@ -22893,7 +23435,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.generateConfigProtectionRestoreForm
                 },
                 {
-                    "New-RscMutationMisc -Op GenerateCsr",
+                    "New-RscMutationCertificate -Op GenerateCsr",
                     GqlRootFieldName.generateCsr
                 },
                 {
@@ -22901,7 +23443,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.generateSupportBundle
                 },
                 {
-                    "New-RscMutationMisc -Op GenerateTotpSecret",
+                    "New-RscMutationAccount -Op GenerateTotpSecret",
                     GqlRootFieldName.generateTotpSecret
                 },
                 {
@@ -22913,7 +23455,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.getAllRolesInOrgConnection
                 },
                 {
-                    "New-RscQueryMisc -Op GetCdmReleaseDetailsForClusterFromSupportPortal",
+                    "New-RscQueryCluster -Op GetCdmReleaseDetailsForClusterFromSupportPortal",
                     GqlRootFieldName.getCdmReleaseDetailsForClusterFromSupportPortal
                 },
                 {
@@ -22929,7 +23471,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.getDownloadUrl
                 },
                 {
-                    "New-RscQueryMisc -Op GetGroupCountByCdmClusterStatus",
+                    "New-RscQueryCluster -Op GetGroupCountByCdmClusterStatus",
                     GqlRootFieldName.getGroupCountByCdmClusterStatus
                 },
                 {
@@ -22945,7 +23487,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.getGroupCountByVersionStatus
                 },
                 {
-                    "New-RscMutationMisc -Op GetHealthMonitorPolicyStatus",
+                    "New-RscMutationPolicy -Op GetHealthMonitorPolicyStatus",
                     GqlRootFieldName.getHealthMonitorPolicyStatus
                 },
                 {
@@ -22969,8 +23511,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.getUserDownloads
                 },
                 {
-                    "New-RscQueryCertificate -Op Global",
+                    "New-RscQueryCertificate -Op GlobalCertificate",
                     GqlRootFieldName.globalCertificate
+                },
+                {
+                    "New-RscQueryCertificate -Op GlobalCertificates",
+                    GqlRootFieldName.globalCertificates
                 },
                 {
                     "New-RscQueryMisc -Op GlobalFileSearch",
@@ -23033,7 +23579,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.hierarchyObject
                 },
                 {
-                    "New-RscQueryMisc -Op HierarchyObjectRecoveryTarget",
+                    "New-RscQueryArchival -Op HierarchyObjectRecoveryTarget",
                     GqlRootFieldName.hierarchyObjectRecoveryTarget
                 },
                 {
@@ -23041,7 +23587,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.hierarchyObjects
                 },
                 {
-                    "New-RscQueryMisc -Op HierarchySnappables",
+                    "New-RscQuerySnappable -Op Hierarchy",
                     GqlRootFieldName.hierarchySnappables
                 },
                 {
@@ -23049,8 +23595,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.hostDiagnosis
                 },
                 {
-                    "New-RscQueryCluster -Op HostFailover",
+                    "New-RscQueryFailoverCluster -Op Host",
                     GqlRootFieldName.hostFailoverCluster
+                },
+                {
+                    "New-RscQueryFailoverCluster -Op Hosts",
+                    GqlRootFieldName.hostFailoverClusters
                 },
                 {
                     "New-RscQueryHost -Op Share",
@@ -23109,6 +23659,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.hypervServers
                 },
                 {
+                    "New-RscQueryHyperv -Op ServersPaginated",
+                    GqlRootFieldName.hypervServersPaginated
+                },
+                {
                     "New-RscQueryHyperv -Op TopLevelDescendants",
                     GqlRootFieldName.hypervTopLevelDescendants
                 },
@@ -23127,6 +23681,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryHyperv -Op VmDetail",
                     GqlRootFieldName.hypervVmDetail
+                },
+                {
+                    "New-RscMutationHyperv -Op InplaceExportVirtualMachine",
+                    GqlRootFieldName.inplaceExportHypervVirtualMachine
                 },
                 {
                     "New-RscMutationO365 -Op InsertCustomerApp",
@@ -23149,7 +23707,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.instantRecoverOracleSnapshot
                 },
                 {
-                    "New-RscQueryMisc -Op Integration",
+                    "New-RscQueryIntegration -Op Integration",
                     GqlRootFieldName.integration
                 },
                 {
@@ -23213,7 +23771,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isTotpAckNecessaryForCluster
                 },
                 {
-                    "New-RscQueryMisc -Op IsTotpMandatoryInTargetVersion",
+                    "New-RscQueryArchival -Op IsTotpMandatoryInTargetVersion",
                     GqlRootFieldName.isTotpMandatoryInTargetVersion
                 },
                 {
@@ -23225,7 +23783,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isUpgradeRecommended
                 },
                 {
-                    "New-RscQueryMisc -Op IsVMwareManagementEnabled",
+                    "New-RscQueryVmware -Op IsManagementEnabled",
                     GqlRootFieldName.isVMwareManagementEnabled
                 },
                 {
@@ -23293,7 +23851,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.legalHoldSnapshotsForSnappable
                 },
                 {
-                    "New-RscQueryMisc -Op LicensesForClusterProductSummary",
+                    "New-RscQueryCluster -Op LicensesForClusterProductSummary",
                     GqlRootFieldName.licensesForClusterProductSummary
                 },
                 {
@@ -23323,6 +23881,30 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryAccount -Op Lookup",
                     GqlRootFieldName.lookupAccount
+                },
+                {
+                    "New-RscQueryM365 -Op DayToDayModeBackupStats",
+                    GqlRootFieldName.m365DayToDayModeBackupStats
+                },
+                {
+                    "New-RscQueryM365 -Op DayToDayModeStats",
+                    GqlRootFieldName.m365DayToDayModeStats
+                },
+                {
+                    "New-RscQueryM365 -Op OnboardingModeBackupStats",
+                    GqlRootFieldName.m365OnboardingModeBackupStats
+                },
+                {
+                    "New-RscQueryM365 -Op OnboardingModeStats",
+                    GqlRootFieldName.m365OnboardingModeStats
+                },
+                {
+                    "New-RscQueryM365 -Op OrgBackupLocations",
+                    GqlRootFieldName.m365OrgBackupLocations
+                },
+                {
+                    "New-RscQueryM365 -Op OrgOperationModes",
+                    GqlRootFieldName.m365OrgOperationModes
                 },
                 {
                     "New-RscQueryM365 -Op Regions",
@@ -23381,7 +23963,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.minimumCdmVersionForFeatureSet
                 },
                 {
-                    "New-RscMutationMisc -Op ModifyActiveDirectoryLiveMount",
+                    "New-RscMutationActiveDirectory -Op ModifyLiveMount",
                     GqlRootFieldName.modifyActiveDirectoryLiveMount
                 },
                 {
@@ -23421,12 +24003,36 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.mongoSources
                 },
                 {
-                    "New-RscQueryMongo -Op BulkRecoverableRange",
+                    "New-RscQueryMongoDb -Op BulkRecoverableRange",
                     GqlRootFieldName.mongodbBulkRecoverableRange
                 },
                 {
-                    "New-RscQueryMongo -Op CollectionRecoverableRange",
+                    "New-RscQueryMongoDb -Op Collection",
+                    GqlRootFieldName.mongodbCollection
+                },
+                {
+                    "New-RscQueryMongoDb -Op CollectionRecoverableRange",
                     GqlRootFieldName.mongodbCollectionRecoverableRange
+                },
+                {
+                    "New-RscQueryMongoDb -Op Collections",
+                    GqlRootFieldName.mongodbCollections
+                },
+                {
+                    "New-RscQueryMongoDb -Op Database",
+                    GqlRootFieldName.mongodbDatabase
+                },
+                {
+                    "New-RscQueryMongoDb -Op Databases",
+                    GqlRootFieldName.mongodbDatabases
+                },
+                {
+                    "New-RscQueryMongoDb -Op Source",
+                    GqlRootFieldName.mongodbSource
+                },
+                {
+                    "New-RscQueryMongoDb -Op Sources",
+                    GqlRootFieldName.mongodbSources
                 },
                 {
                     "New-RscQueryMosaic -Op BulkRecoveryRange",
@@ -23513,7 +24119,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.mssqlTopLevelDescendants
                 },
                 {
-                    "New-RscMutationMisc -Op MutateRole",
+                    "New-RscMutationAccount -Op MutateRole",
                     GqlRootFieldName.mutateRole
                 },
                 {
@@ -23549,19 +24155,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.nasVolume
                 },
                 {
-                    "New-RscQueryMisc -Op NcdBackEndCapacity",
+                    "New-RscQueryNcd -Op BackEndCapacity",
                     GqlRootFieldName.ncdBackEndCapacity
                 },
                 {
-                    "New-RscQueryMisc -Op NcdFrontEndCapacity",
+                    "New-RscQueryNcd -Op FrontEndCapacity",
                     GqlRootFieldName.ncdFrontEndCapacity
                 },
                 {
-                    "New-RscQueryMisc -Op NcdObjectProtectionStatus",
+                    "New-RscQueryNcd -Op ObjectProtectionStatus",
                     GqlRootFieldName.ncdObjectProtectionStatus
                 },
                 {
-                    "New-RscQueryMisc -Op NcdVmImageUrl",
+                    "New-RscQueryNcd -Op VmImageUrl",
                     GqlRootFieldName.ncdVmImageUrl
                 },
                 {
@@ -23893,7 +24499,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.org
                 },
                 {
-                    "New-RscQueryMisc -Op OrgSecurityPolicy",
+                    "New-RscQueryPolicy -Op OrgSecurityPolicy",
                     GqlRootFieldName.orgSecurityPolicy
                 },
                 {
@@ -23909,7 +24515,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.overallRansomwareInvestigationSummary
                 },
                 {
-                    "New-RscQueryMisc -Op PasswordComplexityPolicy",
+                    "New-RscQueryPolicy -Op PasswordComplexityPolicy",
                     GqlRootFieldName.passwordComplexityPolicy
                 },
                 {
@@ -23945,16 +24551,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.pauseSla
                 },
                 {
-                    "New-RscMutationMisc -Op PauseTarget",
+                    "New-RscMutationArchival -Op PauseTarget",
                     GqlRootFieldName.pauseTarget
                 },
                 {
                     "New-RscQueryMisc -Op PendingAction",
                     GqlRootFieldName.pendingAction
-                },
-                {
-                    "New-RscQueryRansomware -Op PendingInvestigationResultsCount",
-                    GqlRootFieldName.pendingRansomwareInvestigationResultsCount
                 },
                 {
                     "New-RscQueryMisc -Op PhoenixRolloutProgress",
@@ -23989,19 +24591,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.policy
                 },
                 {
-                    "New-RscQueryPolicy -Op Details",
+                    "New-RscQueryMisc -Op PolicyDetails",
                     GqlRootFieldName.policyDetails
                 },
                 {
-                    "New-RscQueryPolicy -Op Obj",
+                    "New-RscQueryMisc -Op PolicyObj",
                     GqlRootFieldName.policyObj
                 },
                 {
-                    "New-RscQueryPolicy -Op ObjectUsages",
+                    "New-RscQueryPolicy -Op PolicyObjectUsages",
                     GqlRootFieldName.policyObjectUsages
                 },
                 {
-                    "New-RscQueryPolicy -Op Objs",
+                    "New-RscQueryMisc -Op PolicyObjs",
                     GqlRootFieldName.policyObjs
                 },
                 {
@@ -24021,6 +24623,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.prepareFeatureUpdateForAwsCloudAccount
                 },
                 {
+                    "New-RscQueryMisc -Op PrivateContainerRegistry",
+                    GqlRootFieldName.privateContainerRegistry
+                },
+                {
                     "New-RscQueryRansomware -Op ProcessedInvestigationWorkloadCount",
                     GqlRootFieldName.processedRansomwareInvestigationWorkloadCount
                 },
@@ -24029,16 +24635,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.productDocumentation
                 },
                 {
-                    "New-RscMutationMisc -Op PromoteReaderTarget",
+                    "New-RscMutationArchival -Op PromoteReaderTarget",
                     GqlRootFieldName.promoteReaderTarget
                 },
                 {
                     "New-RscQueryMisc -Op ProtectedObjectsList",
                     GqlRootFieldName.protectedObjectsConnection
-                },
-                {
-                    "New-RscQueryRansomware -Op ProtectedInvestigationWorkloadCount",
-                    GqlRootFieldName.protectedRansomwareInvestigationWorkloadCount
                 },
                 {
                     "New-RscQueryMisc -Op ProtectedVolumesCount",
@@ -24053,7 +24655,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.queryDatastoreFreespaceThresholds
                 },
                 {
-                    "New-RscQueryMisc -Op RadarClusterList",
+                    "New-RscQueryCluster -Op RadarClusterList",
                     GqlRootFieldName.radarClusterConnection
                 },
                 {
@@ -24067,10 +24669,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryRansomware -Op InvestigationEnablement",
                     GqlRootFieldName.ransomwareInvestigationEnablement
-                },
-                {
-                    "New-RscQueryRansomware -Op InvestigationWorkloadScannedCount",
-                    GqlRootFieldName.ransomwareInvestigationWorkloadScannedCount
                 },
                 {
                     "New-RscQueryRansomware -Op Result",
@@ -24089,7 +24687,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.ransomwareResultsGrouped
                 },
                 {
-                    "New-RscQueryRcs -Op ArchivalLocationsConsumptionStats",
+                    "New-RscQueryArchival -Op RcsLocationsConsumptionStats",
                     GqlRootFieldName.rcsArchivalLocationsConsumptionStats
                 },
                 {
@@ -24121,6 +24719,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.recoverMongoSource
                 },
                 {
+                    "New-RscMutationMongoDb -Op RecoverSource",
+                    GqlRootFieldName.recoverMongodbSource
+                },
+                {
                     "New-RscMutationDb2 -Op RefreshDatabase",
                     GqlRootFieldName.refreshDb2Database
                 },
@@ -24149,7 +24751,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.refreshK8sCluster
                 },
                 {
-                    "New-RscMutationMisc -Op RefreshNasSystems",
+                    "New-RscMutationNas -Op RefreshNasSystems",
                     GqlRootFieldName.refreshNasSystems
                 },
                 {
@@ -24169,7 +24771,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.refreshOracleDatabase
                 },
                 {
-                    "New-RscMutationMisc -Op RefreshReaderTarget",
+                    "New-RscMutationArchival -Op RefreshReaderTarget",
                     GqlRootFieldName.refreshReaderTarget
                 },
                 {
@@ -24201,7 +24803,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.registerHypervScvmm
                 },
                 {
-                    "New-RscMutationMisc -Op RegisterNasSystem",
+                    "New-RscMutationNas -Op RegisterNasSystem",
                     GqlRootFieldName.registerNasSystem
                 },
                 {
@@ -24209,7 +24811,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.removeCdmCluster
                 },
                 {
-                    "New-RscMutationMisc -Op RemoveClusterNodes",
+                    "New-RscMutationCluster -Op RemoveClusterNodes",
                     GqlRootFieldName.removeClusterNodes
                 },
                 {
@@ -24225,7 +24827,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.removeLdapIntegration
                 },
                 {
-                    "New-RscMutationMisc -Op RemovePolicyObjects",
+                    "New-RscMutationPolicy -Op RemovePolicyObjects",
                     GqlRootFieldName.removePolicyObjects
                 },
                 {
@@ -24243,6 +24845,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryReplication -Op IncomingStats",
                     GqlRootFieldName.replicationIncomingStats
+                },
+                {
+                    "New-RscQueryReplication -Op NetworkThrottleBypass",
+                    GqlRootFieldName.replicationNetworkThrottleBypass
+                },
+                {
+                    "New-RscQueryReplication -Op NetworkThrottleBypassById",
+                    GqlRootFieldName.replicationNetworkThrottleBypassById
                 },
                 {
                     "New-RscQueryReplication -Op OutgoingStats",
@@ -24277,11 +24887,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.resizeManagedVolume
                 },
                 {
+                    "New-RscMutationMisc -Op ResolveAnomaly",
+                    GqlRootFieldName.resolveAnomaly
+                },
+                {
                     "New-RscMutationMisc -Op ResolveVolumeGroupsConflict",
                     GqlRootFieldName.resolveVolumeGroupsConflict
                 },
                 {
-                    "New-RscMutationMisc -Op RestoreActiveDirectoryObjects",
+                    "New-RscMutationActiveDirectory -Op RestoreObjects",
                     GqlRootFieldName.restoreActiveDirectoryObjects
                 },
                 {
@@ -24333,7 +24947,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.restoreVolumeGroupSnapshotFiles
                 },
                 {
-                    "New-RscMutationMisc -Op ResumeTarget",
+                    "New-RscMutationArchival -Op ResumeTarget",
                     GqlRootFieldName.resumeTarget
                 },
                 {
@@ -24405,8 +25019,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.scheduleUpgradeBatchJob
                 },
                 {
-                    "New-RscQueryReport -Op Scheduled",
+                    "New-RscQueryReport -Op ScheduledReport",
                     GqlRootFieldName.scheduledReport
+                },
+                {
+                    "New-RscQueryReport -Op ScheduledReports",
+                    GqlRootFieldName.scheduledReports
                 },
                 {
                     "New-RscQueryAzure -Op SearchAdSnapshot",
@@ -24425,15 +25043,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.searchNutanixVm
                 },
                 {
-                    "New-RscQueryMisc -Op SearchSnappableList",
+                    "New-RscQuerySnappable -Op Search",
                     GqlRootFieldName.searchSnappableConnection
                 },
                 {
-                    "New-RscQueryMisc -Op SearchSnappableVersionedFiles",
+                    "New-RscQuerySnappable -Op SearchVersionedFiles",
                     GqlRootFieldName.searchSnappableVersionedFiles
                 },
                 {
-                    "New-RscMutationPolicy -Op Policies",
+                    "New-RscMutationPolicy -Op SeedEnabledPolicies",
+                    GqlRootFieldName.seedEnabledPolicies
+                },
+                {
+                    "New-RscMutationPolicy -Op SeedInitialPolicies",
                     GqlRootFieldName.seedInitialPolicies
                 },
                 {
@@ -24441,7 +25063,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.sendPdfReport
                 },
                 {
-                    "New-RscMutationReport -Op SendScheduledAsync",
+                    "New-RscMutationReport -Op SendScheduledReportAsync",
                     GqlRootFieldName.sendScheduledReportAsync
                 },
                 {
@@ -24455,6 +25077,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationAzure -Op SetCloudAccountCustomerAppCredentials",
                     GqlRootFieldName.setAzureCloudAccountCustomerAppCredentials
+                },
+                {
+                    "New-RscMutationMisc -Op SetBundleApprovalStatus",
+                    GqlRootFieldName.setBundleApprovalStatus
                 },
                 {
                     "New-RscMutationMisc -Op SetCustomerTags",
@@ -24481,8 +25107,12 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.setO365ServiceAccount
                 },
                 {
-                    "New-RscMutationMisc -Op SetPasswordComplexityPolicy",
+                    "New-RscMutationPolicy -Op SetPasswordComplexityPolicy",
                     GqlRootFieldName.setPasswordComplexityPolicy
+                },
+                {
+                    "New-RscMutationMisc -Op SetPrivateContainerRegistry",
+                    GqlRootFieldName.setPrivateContainerRegistry
                 },
                 {
                     "New-RscMutationCertificate -Op SetSso",
@@ -24565,27 +25195,27 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.smbDomains
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableList",
+                    "New-RscQuerySnappable -Op List",
                     GqlRootFieldName.snappableConnection
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableContactSearch",
+                    "New-RscQuerySnappable -Op ContactSearch",
                     GqlRootFieldName.snappableContactSearch
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableEmailSearch",
+                    "New-RscQuerySnappable -Op EmailSearch",
                     GqlRootFieldName.snappableEmailSearch
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableEventSearch",
+                    "New-RscQuerySnappable -Op EventSearch",
                     GqlRootFieldName.snappableEventSearch
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableGroupByList",
+                    "New-RscQuerySnappable -Op GroupByList",
                     GqlRootFieldName.snappableGroupByConnection
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableOnedriveSearch",
+                    "New-RscQuerySnappable -Op OnedriveSearch",
                     GqlRootFieldName.snappableOnedriveSearch
                 },
                 {
@@ -24597,11 +25227,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.snappableSharepointListSearch
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableTeamsConversationsSearch",
+                    "New-RscQuerySnappable -Op TeamsConversationsSearch",
                     GqlRootFieldName.snappableTeamsConversationsSearch
                 },
                 {
-                    "New-RscQueryMisc -Op SnappableTeamsDriveSearch",
+                    "New-RscQuerySnappable -Op TeamsDriveSearch",
                     GqlRootFieldName.snappableTeamsDriveSearch
                 },
                 {
@@ -24653,19 +25283,23 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.snapshotsForUnmanagedObject
                 },
                 {
-                    "New-RscQueryMisc -Op SnmpConfigurations",
+                    "New-RscQuerySnmp -Op Configurations",
                     GqlRootFieldName.snmpConfigurations
                 },
                 {
-                    "New-RscQuerySonar -Op ContentReport",
+                    "New-RscQueryMisc -Op SnoozedDirectories",
+                    GqlRootFieldName.snoozedDirectories
+                },
+                {
+                    "New-RscQueryReport -Op SonarContent",
                     GqlRootFieldName.sonarContentReport
                 },
                 {
-                    "New-RscQuerySonar -Op Report",
+                    "New-RscQueryReport -Op Sonar",
                     GqlRootFieldName.sonarReport
                 },
                 {
-                    "New-RscQuerySonar -Op ReportRow",
+                    "New-RscQueryReport -Op SonarRow",
                     GqlRootFieldName.sonarReportRow
                 },
                 {
@@ -24825,7 +25459,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.supportUserAccesses
                 },
                 {
-                    "New-RscQueryMisc -Op SyslogExportRules",
+                    "New-RscMutationMisc -Op SwitchProductToOnboardingMode",
+                    GqlRootFieldName.switchProductToOnboardingMode
+                },
+                {
+                    "New-RscQuerySyslog -Op ExportRules",
                     GqlRootFieldName.syslogExportRules
                 },
                 {
@@ -24853,12 +25491,16 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.takeOnDemandSnapshot
                 },
                 {
-                    "New-RscQueryMisc -Op Target",
+                    "New-RscQueryArchival -Op Target",
                     GqlRootFieldName.target
                 },
                 {
-                    "New-RscQueryMisc -Op TargetMapping",
+                    "New-RscQueryArchival -Op TargetMapping",
                     GqlRootFieldName.targetMapping
+                },
+                {
+                    "New-RscQueryArchival -Op Targets",
+                    GqlRootFieldName.targets
                 },
                 {
                     "New-RscQueryMisc -Op TaskDetailList",
@@ -24881,7 +25523,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.testExistingWebhook
                 },
                 {
-                    "New-RscMutationMisc -Op TestSyslogExportRule",
+                    "New-RscMutationSyslog -Op TestExportRule",
                     GqlRootFieldName.testSyslogExportRule
                 },
                 {
@@ -24907,6 +25549,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMisc -Op TotpConfigStatus",
                     GqlRootFieldName.totpConfigStatus
+                },
+                {
+                    "New-RscQueryMisc -Op TprStatusForNodeRemoval",
+                    GqlRootFieldName.tprStatusForNodeRemoval
                 },
                 {
                     "New-RscMutationMisc -Op TriggerCloudComputeConnectivityCheck",
@@ -24973,7 +25619,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateAuthDomainUsersHiddenStatus
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateAutoEnablePolicyClusterConfig",
+                    "New-RscMutationPolicy -Op UpdateAutoEnablePolicyClusterConfig",
                     GqlRootFieldName.updateAutoEnablePolicyClusterConfig
                 },
                 {
@@ -25061,19 +25707,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateCloudNativeTagRule
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateClusterDefaultAddress",
+                    "New-RscMutationCluster -Op UpdateClusterDefaultAddress",
                     GqlRootFieldName.updateClusterDefaultAddress
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateClusterLocation",
+                    "New-RscMutationCluster -Op UpdateClusterLocation",
                     GqlRootFieldName.updateClusterLocation
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateClusterNtpServers",
+                    "New-RscMutationCluster -Op UpdateClusterNtpServers",
                     GqlRootFieldName.updateClusterNtpServers
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateClusterSettings",
+                    "New-RscMutationCluster -Op UpdateClusterSettings",
                     GqlRootFieldName.updateClusterSettings
                 },
                 {
@@ -25093,7 +25739,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateCustomerAppPermissionForAzureSql
                 },
                 {
-                    "New-RscMutationCluster -Op UpdateDatabaseLogReportingProperties",
+                    "New-RscMutationMisc -Op UpdateCustomerAppPermissions",
+                    GqlRootFieldName.updateCustomerAppPermissions
+                },
+                {
+                    "New-RscMutationReport -Op UpdateDatabaseLogingPropertiesForCluster",
                     GqlRootFieldName.updateDatabaseLogReportingPropertiesForCluster
                 },
                 {
@@ -25109,11 +25759,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateEventDigest
                 },
                 {
-                    "New-RscMutationCluster -Op UpdateFailover",
+                    "New-RscMutationFailoverCluster -Op Update",
                     GqlRootFieldName.updateFailoverCluster
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateFailoverClusterApp",
+                    "New-RscMutationFailoverCluster -Op UpdateApp",
                     GqlRootFieldName.updateFailoverClusterApp
                 },
                 {
@@ -25125,11 +25775,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateGcpTarget
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateGlacierTarget",
+                    "New-RscMutationArchival -Op UpdateGlacierTarget",
                     GqlRootFieldName.updateGlacierTarget
                 },
                 {
-                    "New-RscMutationCertificate -Op UpdateGlobal",
+                    "New-RscMutationCertificate -Op UpdateGlobalCertificate",
                     GqlRootFieldName.updateGlobalCertificate
                 },
                 {
@@ -25141,7 +25791,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateGuestCredential
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateHealthMonitorPolicyStatus",
+                    "New-RscMutationPolicy -Op UpdateHealthMonitorPolicyStatus",
                     GqlRootFieldName.updateHealthMonitorPolicyStatus
                 },
                 {
@@ -25157,11 +25807,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateInsightState
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateIntegration",
+                    "New-RscMutationIntegration -Op UpdateIntegration",
                     GqlRootFieldName.updateIntegration
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateIntegrations",
+                    "New-RscMutationIntegration -Op UpdateIntegrations",
                     GqlRootFieldName.updateIntegrations
                 },
                 {
@@ -25181,15 +25831,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateLockoutConfig
                 },
                 {
+                    "New-RscMutationMisc -Op UpdateManagedIdentities",
+                    GqlRootFieldName.updateManagedIdentities
+                },
+                {
                     "New-RscMutationManagedVolume -Op Update",
                     GqlRootFieldName.updateManagedVolume
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateManualTargetMapping",
+                    "New-RscMutationArchival -Op UpdateManualTargetMapping",
                     GqlRootFieldName.updateManualTargetMapping
                 },
                 {
-                    "New-RscMutationMongo -Op UpdateSource",
+                    "New-RscMutationMongoDb -Op UpdateSource",
                     GqlRootFieldName.updateMongodbSource
                 },
                 {
@@ -25209,7 +25863,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateNasShares
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateNasSystem",
+                    "New-RscMutationNas -Op UpdateNasSystem",
                     GqlRootFieldName.updateNasSystem
                 },
                 {
@@ -25249,19 +25903,19 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateOracleDataGuardGroup
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateOrg",
+                    "New-RscMutationAccount -Op UpdateOrg",
                     GqlRootFieldName.updateOrg
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateOrgSecurityPolicy",
+                    "New-RscMutationPolicy -Op UpdateOrgSecurityPolicy",
                     GqlRootFieldName.updateOrgSecurityPolicy
                 },
                 {
-                    "New-RscMutationMisc -Op UpdatePolicy",
+                    "New-RscMutationPolicy -Op UpdatePolicy",
                     GqlRootFieldName.updatePolicy
                 },
                 {
-                    "New-RscMutationMisc -Op UpdatePreviewerClusterConfig",
+                    "New-RscMutationCluster -Op UpdatePreviewerClusterConfig",
                     GqlRootFieldName.updatePreviewerClusterConfig
                 },
                 {
@@ -25269,7 +25923,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateProxyConfig
                 },
                 {
-                    "New-RscMutationRcs -Op UpdateAutomaticTargetMapping",
+                    "New-RscMutationRcs -Op UpdateRcsAutomaticTargetMapping",
                     GqlRootFieldName.updateRcsAutomaticTargetMapping
                 },
                 {
@@ -25277,11 +25931,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateRcvTarget
                 },
                 {
+                    "New-RscMutationReplication -Op UpdateNetworkThrottleBypass",
+                    GqlRootFieldName.updateReplicationNetworkThrottleBypass
+                },
+                {
                     "New-RscMutationReplication -Op UpdateTarget",
                     GqlRootFieldName.updateReplicationTarget
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateRole",
+                    "New-RscMutationAccount -Op UpdateRole",
                     GqlRootFieldName.updateRole
                 },
                 {
@@ -25289,11 +25947,11 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateRoleAssignments
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateS3CompatibleTarget",
+                    "New-RscMutationArchival -Op UpdateS3CompatibleTarget",
                     GqlRootFieldName.updateS3CompatibleTarget
                 },
                 {
-                    "New-RscMutationReport -Op UpdateScheduled",
+                    "New-RscMutationReport -Op UpdateScheduledReport",
                     GqlRootFieldName.updateScheduledReport
                 },
                 {
@@ -25301,7 +25959,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateServiceAccount
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateSnmpConfig",
+                    "New-RscMutationSnmp -Op UpdateConfig",
                     GqlRootFieldName.updateSnmpConfig
                 },
                 {
@@ -25313,7 +25971,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateSupportUserAccess
                 },
                 {
-                    "New-RscMutationMisc -Op UpdateSyslogExportRule",
+                    "New-RscMutationSyslog -Op UpdateExportRule",
                     GqlRootFieldName.updateSyslogExportRule
                 },
                 {
@@ -25373,7 +26031,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.upgradeAzureCloudAccountPermissionsWithoutOauth
                 },
                 {
-                    "New-RscMutationMisc -Op UpgradeCdmManagedTarget",
+                    "New-RscMutationArchival -Op UpgradeCdmManagedTarget",
                     GqlRootFieldName.upgradeCdmManagedTarget
                 },
                 {
@@ -25601,7 +26259,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport
                 },
                 {
-                    "New-RscQueryMisc -Op ValidateClusterLicenseCapacity",
+                    "New-RscQueryCluster -Op ValidateClusterLicenseCapacity",
                     GqlRootFieldName.validateClusterLicenseCapacity
                 },
                 {
@@ -25629,11 +26287,15 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.vcdVappVms
                 },
                 {
+                    "New-RscQueryVcenter -Op AsyncRequestStatus",
+                    GqlRootFieldName.vcenterAsyncRequestStatus
+                },
+                {
                     "New-RscQuerySla -Op VerifyWithReplicationToCluster",
                     GqlRootFieldName.verifySlaWithReplicationToCluster
                 },
                 {
-                    "New-RscMutationSnapshot -Op VmwareDownloadFromLocation",
+                    "New-RscMutationVmware -Op DownloadSnapshotFromLocation",
                     GqlRootFieldName.vmwareDownloadSnapshotFromLocation
                 },
                 {
@@ -25802,7 +26464,7 @@ namespace RubrikSecurityCloud.Types
         }
 
         /// <summary>
-        /// Given a GraphQL type, return the list of root field names that return that type.
+        /// Given a GraphQL return type, return the list of root field names that return that type.
         /// </summary>
         public static List<string> GqlRootFieldLookupByReturnType(
             string returnTypeName
@@ -25837,7 +26499,7 @@ namespace RubrikSecurityCloud.Types
                         "activeDirectoryDomainControllers",
                     }
                 },
-                {   "ActiveDirectoryObjectSearchResponseConnection", new List<string> {
+                {   "ActiveDirectorySnappableSearchResponseConnection", new List<string> {
                         "activeDirectorySearchSnapshots",
                     }
                 },
@@ -25896,6 +26558,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "AddConfiguredGroupToHierarchyReply", new List<string> {
                         "addConfiguredGroupToHierarchy",
+                    }
+                },
+                {   "AddCrossAccountServiceConsumerReply", new List<string> {
+                        "addCrossAccountServiceConsumer",
                     }
                 },
                 {   "AddDb2InstanceReply", new List<string> {
@@ -26101,6 +26767,7 @@ namespace RubrikSecurityCloud.Types
                         "hypervOnDemandSnapshot",
                         "hypervScvmmAsyncRequestStatus",
                         "hypervVirtualMachineAsyncRequestStatus",
+                        "inplaceExportHypervVirtualMachine",
                         "instantRecoverHypervVirtualMachineSnapshot",
                         "instantRecoverOracleSnapshot",
                         "makePrimary",
@@ -26142,6 +26809,7 @@ namespace RubrikSecurityCloud.Types
                         "triggerCloudComputeConnectivityCheck",
                         "unconfigureSapHanaRestore",
                         "validateOracleDatabaseBackups",
+                        "vcenterAsyncRequestStatus",
                         "vmwareDownloadSnapshotFromLocation",
                         "vsphereDeleteVcenter",
                         "vsphereExportSnapshotToStandaloneHostV2",
@@ -26189,6 +26857,10 @@ namespace RubrikSecurityCloud.Types
                         "awsComputeSettings",
                         "createAwsComputeSetting",
                         "updateAwsComputeSetting",
+                    }
+                },
+                {   "AwsExocomputeClusterConnectReply", new List<string> {
+                        "awsExocomputeClusterConnect",
                     }
                 },
                 {   "AwsNativeAccount", new List<string> {
@@ -26840,6 +27512,10 @@ namespace RubrikSecurityCloud.Types
                         "createCloudNativeTagRule",
                     }
                 },
+                {   "CreateCrossAccountRegOauthPayloadReply", new List<string> {
+                        "createCrossAccountRegOauthPayload",
+                    }
+                },
                 {   "CreateCustomReportReply", new List<string> {
                         "createCustomReport",
                     }
@@ -26935,6 +27611,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CsrConnection", new List<string> {
                         "certificateSigningRequests",
+                    }
+                },
+                {   "DayToDayModeBackupStats", new List<string> {
+                        "m365DayToDayModeBackupStats",
+                    }
+                },
+                {   "DayToDayModeStats", new List<string> {
+                        "m365DayToDayModeStats",
                     }
                 },
                 {   "Db2Database", new List<string> {
@@ -27458,6 +28142,10 @@ namespace RubrikSecurityCloud.Types
                         "hypervServer",
                     }
                 },
+                {   "HypervServerConnection", new List<string> {
+                        "hypervServersPaginated",
+                    }
+                },
                 {   "HypervTopLevelDescendantTypeConnection", new List<string> {
                         "hypervTopLevelDescendants",
                     }
@@ -27604,6 +28292,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "LookupAccountReply", new List<string> {
                         "lookupAccount",
+                    }
+                },
+                {   "M365OrgBackupLocations", new List<string> {
+                        "m365OrgBackupLocations",
+                    }
+                },
+                {   "M365OrgOperationModes", new List<string> {
+                        "m365OrgOperationModes",
                     }
                 },
                 {   "M365RegionsResp", new List<string> {
@@ -28091,6 +28787,14 @@ namespace RubrikSecurityCloud.Types
                         "objectTypeAccessSummary",
                     }
                 },
+                {   "OnboardingModeBackupStats", new List<string> {
+                        "m365OnboardingModeBackupStats",
+                    }
+                },
+                {   "OnboardingModeStats", new List<string> {
+                        "m365OnboardingModeStats",
+                    }
+                },
                 {   "OracleAcoParameterList", new List<string> {
                         "oracleAcoParameters",
                     }
@@ -28198,10 +28902,6 @@ namespace RubrikSecurityCloud.Types
                         "pauseTarget",
                     }
                 },
-                {   "PendingEvaluationResultsReply", new List<string> {
-                        "pendingRansomwareInvestigationResultsCount",
-                    }
-                },
                 {   "PhoenixRolloutProgress", new List<string> {
                         "phoenixRolloutProgress",
                     }
@@ -28259,6 +28959,10 @@ namespace RubrikSecurityCloud.Types
                         "ldapPrincipalConnection",
                     }
                 },
+                {   "PrivateContainerRegistryReplyType", new List<string> {
+                        "privateContainerRegistry",
+                    }
+                },
                 {   "ProcessedRansomwareInvestigationWorkloadCountReply", new List<string> {
                         "processedRansomwareInvestigationWorkloadCount",
                     }
@@ -28269,10 +28973,6 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "ProtectedObjectsConnection", new List<string> {
                         "protectedObjectsConnection",
-                    }
-                },
-                {   "ProtectedRansomwareInvestigationWorkloadCountReply", new List<string> {
-                        "protectedRansomwareInvestigationWorkloadCount",
                     }
                 },
                 {   "PutSmbConfigurationReply", new List<string> {
@@ -28293,10 +28993,6 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "RansomwareInvestigationEnablementReply", new List<string> {
                         "ransomwareInvestigationEnablement",
-                    }
-                },
-                {   "RansomwareInvestigationWorkloadScannedCountReply", new List<string> {
-                        "ransomwareInvestigationWorkloadScannedCount",
                     }
                 },
                 {   "RansomwareResult", new List<string> {
@@ -28373,8 +29069,16 @@ namespace RubrikSecurityCloud.Types
                         "removeVlans",
                     }
                 },
+                {   "ReplicationNetworkThrottleBypassReply", new List<string> {
+                        "replicationNetworkThrottleBypassById",
+                    }
+                },
                 {   "ReplicationPairConnection", new List<string> {
                         "replicationPairs",
+                    }
+                },
+                {   "ReplicationTargetThrottleBypassSummaryListResponse", new List<string> {
+                        "replicationNetworkThrottleBypass",
                     }
                 },
                 {   "ReportMigrationStatusConnection", new List<string> {
@@ -28445,6 +29149,7 @@ namespace RubrikSecurityCloud.Types
                         "resizeDisk",
                         "updateClusterNtpServers",
                         "updateDnsServersAndSearchDomains",
+                        "updateReplicationNetworkThrottleBypass",
                     }
                 },
                 {   "RestoreAzureAdObjectsWithPasswordsReply", new List<string> {
@@ -28617,6 +29322,10 @@ namespace RubrikSecurityCloud.Types
                         "snmpConfigurations",
                     }
                 },
+                {   "SnoozedDirectoryConnection", new List<string> {
+                        "snoozedDirectories",
+                    }
+                },
                 {   "SonarContentReportConnection", new List<string> {
                         "sonarContentReport",
                     }
@@ -28699,6 +29408,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "SupportUserAccessConnection", new List<string> {
                         "supportUserAccesses",
+                    }
+                },
+                {   "SwitchProductToOnboardingModeReply", new List<string> {
+                        "switchProductToOnboardingMode",
                     }
                 },
                 {   "SyslogExportRuleSummaryListResponse", new List<string> {
@@ -28800,6 +29513,10 @@ namespace RubrikSecurityCloud.Types
                         "threatHuntSummary",
                     }
                 },
+                {   "TprStatusForNodeRemoval", new List<string> {
+                        "tprStatusForNodeRemoval",
+                    }
+                },
                 {   "TriggerExocomputeHealthCheckReply", new List<string> {
                         "triggerExocomputeHealthCheck",
                     }
@@ -28877,6 +29594,10 @@ namespace RubrikSecurityCloud.Types
                         "updateCustomReport",
                     }
                 },
+                {   "UpdateCustomerAppPermissionsReply", new List<string> {
+                        "updateCustomerAppPermissions",
+                    }
+                },
                 {   "UpdateDistributionListDigestReply", new List<string> {
                         "updateDistributionListDigest",
                     }
@@ -28923,6 +29644,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "UpdateLockoutConfigReply", new List<string> {
                         "updateLockoutConfig",
+                    }
+                },
+                {   "UpdateManagedIdentitiesReply", new List<string> {
+                        "updateManagedIdentities",
                     }
                 },
                 {   "UpdateManagedVolumeReply", new List<string> {
@@ -29067,6 +29792,10 @@ namespace RubrikSecurityCloud.Types
                         "allMssqlDatabaseRestoreFiles",
                     }
                 },
+                {   "ValidReplicationSourceConnection", new List<string> {
+                        "allValidReplicationSources",
+                    }
+                },
                 {   "ValidReplicationTargetConnection", new List<string> {
                         "allValidReplicationTargets",
                     }
@@ -29152,8 +29881,10 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "Void", new List<string> {
+                        "bulkUpdateRansomwareInvestigationStatus",
                         "cancelThreatHunt",
                         "completeAzureAdAppUpdate",
+                        "createCrossAccountPair",
                         "createReplicationPair",
                         "deleteAllOracleDatabaseSnapshots",
                         "deleteAwsComputeSetting",
@@ -29188,9 +29919,12 @@ namespace RubrikSecurityCloud.Types
                         "removePrivateEndpointConnection",
                         "resetAllOrgUsersPasswords",
                         "resetUsersPasswordsWithUserIds",
+                        "resolveAnomaly",
                         "revokeAllOrgRoles",
+                        "setBundleApprovalStatus",
                         "setCustomerTags",
                         "setPasswordComplexityPolicy",
+                        "setPrivateContainerRegistry",
                         "setSsoCertificate",
                         "stopJobInstanceFromEventSeries",
                         "unlockUsersByAdmin",
@@ -29831,5362 +30565,6 @@ namespace RubrikSecurityCloud.Types
             return new List<string>();
         }
 
-        /// <summary>
-        /// Given a GraphQL type, return the list of root field names that have that type as an argument.
-        /// </summary>
-        public static List<string> GqlRootFieldLookupByArgType(
-            string argTypeName
-        )
-        {
-            var lookupDict = new Dictionary<string, List<string>> {
-                {   "ActionType", new List<string> {
-                        "scheduleUpgradeBatchJob",
-                        "startUpgradeBatchJob",
-                    }
-                },
-                {   "ActivitySeriesFilter", new List<string> {
-                        "activitySeriesConnection",
-                    }
-                },
-                {   "ActivitySeriesInput", new List<string> {
-                        "activitySeries",
-                    }
-                },
-                {   "ActivitySeriesSortField", new List<string> {
-                        "activitySeriesConnection",
-                    }
-                },
-                {   "AdVolumeExportSortByInput", new List<string> {
-                        "adVolumeExports",
-                    }
-                },
-                {   "AddAdGroupsToHierarchyInput", new List<string> {
-                        "addAdGroupsToHierarchy",
-                    }
-                },
-                {   "AddAndJoinSmbDomainInput", new List<string> {
-                        "addAndJoinSmbDomain",
-                    }
-                },
-                {   "AddAwsAuthenticationServerBasedCloudAccountInput", new List<string> {
-                        "addAwsAuthenticationServerBasedCloudAccount",
-                    }
-                },
-                {   "AddAwsIamUserBasedCloudAccountInput", new List<string> {
-                        "addAwsIamUserBasedCloudAccount",
-                    }
-                },
-                {   "AddAzureCloudAccountExocomputeConfigurationsInput", new List<string> {
-                        "addAzureCloudAccountExocomputeConfigurations",
-                    }
-                },
-                {   "AddAzureCloudAccountInput", new List<string> {
-                        "addAzureCloudAccount",
-                    }
-                },
-                {   "AddAzureCloudAccountWithoutOauthInput", new List<string> {
-                        "addAzureCloudAccountWithoutOauth",
-                    }
-                },
-                {   "AddCloudNativeSqlServerBackupCredentialsInput", new List<string> {
-                        "addCloudNativeSqlServerBackupCredentials",
-                    }
-                },
-                {   "AddClusterCertificateInput", new List<string> {
-                        "addClusterCertificate",
-                    }
-                },
-                {   "AddClusterNodesInput", new List<string> {
-                        "addClusterNodes",
-                    }
-                },
-                {   "AddConfiguredGroupToHierarchyInput", new List<string> {
-                        "addConfiguredGroupToHierarchy",
-                    }
-                },
-                {   "AddDb2InstanceInput", new List<string> {
-                        "addDb2Instance",
-                    }
-                },
-                {   "AddGlobalCertificateInput", new List<string> {
-                        "addGlobalCertificate",
-                    }
-                },
-                {   "AddInventoryWorkloadsInput", new List<string> {
-                        "addInventoryWorkloads",
-                    }
-                },
-                {   "AddManagedVolumeInput", new List<string> {
-                        "addManagedVolume",
-                    }
-                },
-                {   "AddMongoSourceInput", new List<string> {
-                        "addMongoSource",
-                    }
-                },
-                {   "AddMosaicSourceInput", new List<string> {
-                        "createCassandraSource",
-                        "createMongodbSource",
-                    }
-                },
-                {   "AddMosaicStoreInput", new List<string> {
-                        "addMosaicStore",
-                    }
-                },
-                {   "AddNodesToCloudClusterInput", new List<string> {
-                        "addNodesToCloudCluster",
-                    }
-                },
-                {   "AddO365OrgInput", new List<string> {
-                        "addO365Org",
-                    }
-                },
-                {   "AddSapHanaSystemInput", new List<string> {
-                        "addSapHanaSystem",
-                    }
-                },
-                {   "AddStorageArraysInput", new List<string> {
-                        "addStorageArrays",
-                    }
-                },
-                {   "AddSyslogExportRuleInput", new List<string> {
-                        "addSyslogExportRule",
-                    }
-                },
-                {   "AddVlanInput", new List<string> {
-                        "addVlan",
-                    }
-                },
-                {   "AddVmAppConsistentSpecsInput", new List<string> {
-                        "addVmAppConsistentSpecs",
-                    }
-                },
-                {   "AllCloudDirectSharesInput", new List<string> {
-                        "allCloudDirectShares",
-                    }
-                },
-                {   "AllEventDigestsInput", new List<string> {
-                        "allEventDigests",
-                    }
-                },
-                {   "AllVmRecoveryJobsInfoInput", new List<string> {
-                        "allVmRecoveryJobsInfo",
-                    }
-                },
-                {   "AmiTypeForAwsNativeArchivedSnapshotExportInput", new List<string> {
-                        "amiTypeForAwsNativeArchivedSnapshotExport",
-                    }
-                },
-                {   "AnomalyResultFilterInput", new List<string> {
-                        "anomalyResults",
-                        "anomalyResultsGrouped",
-                    }
-                },
-                {   "AnomalyResultGroupBy", new List<string> {
-                        "anomalyResultsGrouped",
-                    }
-                },
-                {   "AnomalyResultSortBy", new List<string> {
-                        "anomalyResults",
-                    }
-                },
-                {   "AppSortByParam", new List<string> {
-                        "listO365Apps",
-                    }
-                },
-                {   "ArchivalGroupQuerySortByField", new List<string> {
-                        "allTargetMappings",
-                    }
-                },
-                {   "ArchivalLocationQuerySortByField", new List<string> {
-                        "allTargets",
-                        "targets",
-                    }
-                },
-                {   "ArchiveK8sClusterInput", new List<string> {
-                        "archiveK8sCluster",
-                    }
-                },
-                {   "AssignMssqlSlaDomainPropertiesAsyncInput", new List<string> {
-                        "assignMssqlSlaDomainPropertiesAsync",
-                    }
-                },
-                {   "AssignMssqlSlaDomainPropertiesInput", new List<string> {
-                        "assignMssqlSlaDomainProperties",
-                    }
-                },
-                {   "AssignProtectionInput", new List<string> {
-                        "assignProtection",
-                    }
-                },
-                {   "AssignSlaInput", new List<string> {
-                        "assignSla",
-                    }
-                },
-                {   "AssignSlaToMongoDbCollectionInput", new List<string> {
-                        "assignSlaToMongoDbCollection",
-                    }
-                },
-                {   "AwsArtifactsToDeleteInput", new List<string> {
-                        "awsArtifactsToDelete",
-                    }
-                },
-                {   "AwsCdmVersionRequest", new List<string> {
-                        "allAwsCdmVersions",
-                    }
-                },
-                {   "AwsCloudAccountConfigsInput", new List<string> {
-                        "allAwsCloudAccountConfigs",
-                    }
-                },
-                {   "AwsCloudAccountWithFeaturesInput", new List<string> {
-                        "awsCloudAccountWithFeatures",
-                    }
-                },
-                {   "AwsCloudAccountsWithFeaturesInput", new List<string> {
-                        "allAwsCloudAccountsWithFeatures",
-                    }
-                },
-                {   "AwsCloudComputeSettingQuerySortByField", new List<string> {
-                        "allAwsComputeSettings",
-                    }
-                },
-                {   "AwsGetPermissionPoliciesInput", new List<string> {
-                        "allAwsPermissionPolicies",
-                    }
-                },
-                {   "AwsNativeAccountFilters", new List<string> {
-                        "awsNativeAccounts",
-                    }
-                },
-                {   "AwsNativeAccountSortFields", new List<string> {
-                        "awsNativeAccounts",
-                    }
-                },
-                {   "AwsNativeEbsVolumeFilters", new List<string> {
-                        "awsNativeEbsVolumes",
-                    }
-                },
-                {   "AwsNativeEbsVolumeSortFields", new List<string> {
-                        "awsNativeEbsVolumes",
-                        "awsNativeEbsVolumesByName",
-                    }
-                },
-                {   "AwsNativeEc2InstanceFilters", new List<string> {
-                        "awsNativeEc2Instances",
-                    }
-                },
-                {   "AwsNativeEc2InstanceSortFields", new List<string> {
-                        "awsNativeEc2Instances",
-                        "awsNativeEc2InstancesByName",
-                    }
-                },
-                {   "AwsNativeProtectionFeature", new List<string> {
-                        "awsNativeAccount",
-                        "awsNativeAccounts",
-                    }
-                },
-                {   "AwsNativeRdsDbEngine", new List<string> {
-                        "allDbParameterGroupsByRegionFromAws",
-                        "allOptionGroupsByRegionFromAws",
-                        "allSupportedAwsRdsDatabaseInstanceClasses",
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                    }
-                },
-                {   "AwsNativeRdsDbInstanceClass", new List<string> {
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                    }
-                },
-                {   "AwsNativeRdsInstanceFilters", new List<string> {
-                        "awsNativeRdsInstances",
-                    }
-                },
-                {   "AwsNativeRdsInstanceSortFields", new List<string> {
-                        "awsNativeRdsInstances",
-                    }
-                },
-                {   "AwsNativeRdsStorageType", new List<string> {
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                    }
-                },
-                {   "AwsNativeRdsType", new List<string> {
-                        "allDbParameterGroupsByRegionFromAws",
-                    }
-                },
-                {   "AwsNativeRegion", new List<string> {
-                        "allAvailabilityZonesByRegionFromAws",
-                        "allDbParameterGroupsByRegionFromAws",
-                        "allDbSubnetGroupsByRegionFromAws",
-                        "allEc2KeyPairsByRegionFromAws",
-                        "allKmsEncryptionKeysByRegionFromAws",
-                        "allOptionGroupsByRegionFromAws",
-                        "allS3BucketsDetailsFromAws",
-                        "allSupportedAwsRdsDatabaseInstanceClasses",
-                        "allVpcsByRegionFromAws",
-                        "awsNativeRdsPointInTimeRestoreWindow",
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                        "rdsInstanceDetailsFromAws",
-                        "s3BucketStateForRecovery",
-                        "validateAwsNativeRdsClusterNameForExport",
-                        "validateAwsNativeRdsInstanceNameForExport",
-                    }
-                },
-                {   "AwsRegion", new List<string> {
-                        "awsCloudAccountListSecurityGroups",
-                        "awsCloudAccountListSubnets",
-                        "awsCloudAccountListVpcs",
-                    }
-                },
-                {   "AwsTrustPolicyInput", new List<string> {
-                        "awsTrustPolicy",
-                    }
-                },
-                {   "AzureAdObjectTypeInput", new List<string> {
-                        "azureAdObjectsByType",
-                    }
-                },
-                {   "AzureArmTemplatesByFeatureInput", new List<string> {
-                        "allAzureArmTemplatesByFeature",
-                    }
-                },
-                {   "AzureCdmVersionReq", new List<string> {
-                        "allAzureCdmVersions",
-                    }
-                },
-                {   "AzureCloudAccountRegion", new List<string> {
-                        "allAzureCloudAccountSubnetsByRegion",
-                    }
-                },
-                {   "AzureEncryptionKeysInput", new List<string> {
-                        "allAzureEncryptionKeys",
-                    }
-                },
-                {   "AzureGetResourceGroupsInfoIfExistInput", new List<string> {
-                        "allAzureNativeResourceGroupsInfoIfExist",
-                    }
-                },
-                {   "AzureKeyVaultsInput", new List<string> {
-                        "allAzureKeyVaultsByRegion",
-                    }
-                },
-                {   "AzureManagedIdentitiesRequest", new List<string> {
-                        "allAzureManagedIdentities",
-                    }
-                },
-                {   "AzureNativeCommonResourceGroupFilters", new List<string> {
-                        "azureNativeResourceGroups",
-                    }
-                },
-                {   "AzureNativeCommonResourceGroupSortFields", new List<string> {
-                        "azureNativeResourceGroups",
-                    }
-                },
-                {   "AzureNativeDiskFilters", new List<string> {
-                        "azureNativeManagedDisks",
-                    }
-                },
-                {   "AzureNativeDiskSortFields", new List<string> {
-                        "azureNativeManagedDisks",
-                    }
-                },
-                {   "AzureNativeProtectionFeature", new List<string> {
-                        "azureNativeSubscriptions",
-                    }
-                },
-                {   "AzureNativeRegion", new List<string> {
-                        "allAzureDiskEncryptionSetsByRegion",
-                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
-                        "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
-                        "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
-                        "allAzureNativeSecurityGroupsByRegionFromAzure",
-                        "allAzureNativeSubnetsByRegionFromAzure",
-                        "isZrsAvailableForLocation",
-                    }
-                },
-                {   "AzureNativeSubscriptionFilters", new List<string> {
-                        "azureNativeSubscriptions",
-                    }
-                },
-                {   "AzureNativeSubscriptionSortFields", new List<string> {
-                        "azureNativeSubscriptions",
-                    }
-                },
-                {   "AzureNativeVirtualMachineFilters", new List<string> {
-                        "azureNativeVirtualMachines",
-                    }
-                },
-                {   "AzureNativeVirtualMachineSortFields", new List<string> {
-                        "azureNativeVirtualMachines",
-                    }
-                },
-                {   "AzureNsgRequest", new List<string> {
-                        "allAzureNsgs",
-                    }
-                },
-                {   "AzureO365ExocomputeConfig", new List<string> {
-                        "setupAzureO365Exocompute",
-                    }
-                },
-                {   "AzureOauthConsentCompleteInput", new List<string> {
-                        "azureOauthConsentComplete",
-                    }
-                },
-                {   "AzureSqlDatabaseFilters", new List<string> {
-                        "azureSqlDatabases",
-                    }
-                },
-                {   "AzureSqlDatabaseServerFilters", new List<string> {
-                        "azureSqlDatabaseServers",
-                    }
-                },
-                {   "AzureSqlDatabaseServerSortFields", new List<string> {
-                        "azureSqlDatabaseServers",
-                    }
-                },
-                {   "AzureSqlDatabaseSortFields", new List<string> {
-                        "azureSqlDatabases",
-                    }
-                },
-                {   "AzureSqlManagedInstanceDatabaseFilters", new List<string> {
-                        "azureSqlManagedInstanceDatabases",
-                    }
-                },
-                {   "AzureSqlManagedInstanceDatabaseSortFields", new List<string> {
-                        "azureSqlManagedInstanceDatabases",
-                    }
-                },
-                {   "AzureSqlManagedInstanceServerFilters", new List<string> {
-                        "azureSqlManagedInstanceServers",
-                    }
-                },
-                {   "AzureSqlManagedInstanceServerSortFields", new List<string> {
-                        "azureSqlManagedInstanceServers",
-                    }
-                },
-                {   "AzureStorageAccountsByRegionInput", new List<string> {
-                        "allAzureStorageAccountsByRegion",
-                    }
-                },
-                {   "AzureStorageAccountsReq", new List<string> {
-                        "allAzureStorageAccounts",
-                    }
-                },
-                {   "AzureSubnetReq", new List<string> {
-                        "allAzureSubnets",
-                    }
-                },
-                {   "AzureVnetReq", new List<string> {
-                        "allAzureVnets",
-                    }
-                },
-                {   "BackupAzureAdDirectoryInput", new List<string> {
-                        "backupAzureAdDirectory",
-                    }
-                },
-                {   "BackupM365MailboxInput", new List<string> {
-                        "backupM365Mailbox",
-                    }
-                },
-                {   "BackupM365OnedriveInput", new List<string> {
-                        "backupM365Onedrive",
-                    }
-                },
-                {   "BackupM365SharepointDriveInput", new List<string> {
-                        "backupM365SharepointDrive",
-                    }
-                },
-                {   "BackupM365TeamInput", new List<string> {
-                        "backupM365Team",
-                    }
-                },
-                {   "BackupO365OnedriveInput", new List<string> {
-                        "backupO365Onedrive",
-                    }
-                },
-                {   "BackupO365SharePointListInput", new List<string> {
-                        "backupO365SharepointList",
-                    }
-                },
-                {   "BackupO365SharePointSiteInput", new List<string> {
-                        "backupO365SharePointSite",
-                    }
-                },
-                {   "BackupO365SharepointDriveInput", new List<string> {
-                        "backupO365SharepointDrive",
-                    }
-                },
-                {   "BackupO365TeamInput", new List<string> {
-                        "backupO365Team",
-                    }
-                },
-                {   "BackupRunConfig", new List<string> {
-                        "retryBackup",
-                    }
-                },
-                {   "BatchExportHypervVmInput", new List<string> {
-                        "batchExportHypervVm",
-                    }
-                },
-                {   "BatchExportNutanixVmInput", new List<string> {
-                        "batchExportNutanixVm",
-                    }
-                },
-                {   "BatchInstantRecoverHypervVmInput", new List<string> {
-                        "batchInstantRecoverHypervVm",
-                    }
-                },
-                {   "BatchMountHypervVmInput", new List<string> {
-                        "batchMountHypervVm",
-                    }
-                },
-                {   "BatchMountNutanixVmInput", new List<string> {
-                        "batchMountNutanixVm",
-                    }
-                },
-                {   "BatchOnDemandBackupHypervVmInput", new List<string> {
-                        "batchOnDemandBackupHypervVm",
-                    }
-                },
-                {   "BatchQuarantineSnapshotInput", new List<string> {
-                        "batchQuarantineSnapshot",
-                    }
-                },
-                {   "BatchReleaseFromQuarantineSnapshotInput", new List<string> {
-                        "batchReleaseFromQuarantineSnapshot",
-                    }
-                },
-                {   "BatchVmwareVmRecoverableRangesRequestInput", new List<string> {
-                        "vsphereVMRecoverableRangeInBatch",
-                    }
-                },
-                {   "BeginManagedVolumeSnapshotInput", new List<string> {
-                        "beginManagedVolumeSnapshot",
-                    }
-                },
-                {   "Boolean", new List<string> {
-                        "allAzureCloudAccountTenants",
-                        "allGcpCloudAccountProjectsForOauth",
-                        "allPendingActions",
-                        "allSnapshotPvcs",
-                        "allSnapshotsClosestToPointInTime",
-                        "allTargetMappings",
-                        "allTopRiskPolicySummaries",
-                        "allUsersOnAccountConnection",
-                        "allValidReplicationTargets",
-                        "assignRetentionSLAToSnappables",
-                        "assignSlasForSnappableHierarchies",
-                        "awsNativeRdsExportDefaults",
-                        "azureO365CheckNetworkSubnet",
-                        "azureO365GetNetworkSubnetUnusedAddr",
-                        "browseO365TeamConvChannels",
-                        "dashboardSummary",
-                        "datagovSecDesc",
-                        "deactivatePolicy",
-                        "discoveryTimeline",
-                        "filesetSnapshot",
-                        "getCdmReleaseDetailsForClusterFromSupportPortal",
-                        "getCdmReleaseDetailsForVersionFromSupportPortal",
-                        "getCdmReleaseDetailsFromSupportPortal",
-                        "globalSlaFilterConnection",
-                        "groupsInCurrentAndDescendantOrganization",
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                        "k8sAppManifest",
-                        "k8sSnapshotInfo",
-                        "o365SharepointObjectList",
-                        "o365Sites",
-                        "o365TeamChannels",
-                        "objectTypeAccessSummary",
-                        "orgs",
-                        "physicalHosts",
-                        "policies",
-                        "policyObj",
-                        "policyObjs",
-                        "ransomwareDetectionWorkloadLocations",
-                        "ransomwareInvestigationAnalysisSummary",
-                        "removeCdmCluster",
-                        "removePolicyObjects",
-                        "setIpWhitelistEnabled",
-                        "slaDomain",
-                        "slaDomains",
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                        "updateLambdaSettings",
-                        "updateWhitelistedAnalyzers",
-                        "userActivityTimeline",
-                        "usersInCurrentAndDescendantOrganization",
-                        "verifySlaWithReplicationToCluster",
-                        "workloadAnomalies",
-                    }
-                },
-                {   "BrowseMssqlDatabaseSnapshotInput", new List<string> {
-                        "browseMssqlDatabaseSnapshot",
-                    }
-                },
-                {   "BrowseNutanixSnapshotInput", new List<string> {
-                        "nutanixBrowseSnapshot",
-                    }
-                },
-                {   "BulkClusterWebCertAndIpmiInput", new List<string> {
-                        "allClusterWebCertsAndIpmis",
-                    }
-                },
-                {   "BulkCreateFilesetTemplatesInput", new List<string> {
-                        "bulkCreateFilesetTemplates",
-                    }
-                },
-                {   "BulkCreateFilesetsInput", new List<string> {
-                        "bulkCreateFilesets",
-                    }
-                },
-                {   "BulkCreateNasFilesetsInput", new List<string> {
-                        "bulkCreateNasFilesets",
-                    }
-                },
-                {   "BulkCreateOnDemandMssqlBackupInput", new List<string> {
-                        "bulkCreateOnDemandMssqlBackup",
-                    }
-                },
-                {   "BulkDeleteAwsCloudAccountWithoutCftInput", new List<string> {
-                        "bulkDeleteAwsCloudAccountWithoutCft",
-                    }
-                },
-                {   "BulkDeleteFailoverClusterAppInput", new List<string> {
-                        "bulkDeleteFailoverClusterApp",
-                    }
-                },
-                {   "BulkDeleteFailoverClusterInput", new List<string> {
-                        "bulkDeleteFailoverCluster",
-                    }
-                },
-                {   "BulkDeleteFilesetInput", new List<string> {
-                        "bulkDeleteFileset",
-                    }
-                },
-                {   "BulkDeleteFilesetTemplateInput", new List<string> {
-                        "bulkDeleteFilesetTemplate",
-                    }
-                },
-                {   "BulkDeleteHostInput", new List<string> {
-                        "bulkDeleteHost",
-                    }
-                },
-                {   "BulkDeleteMosaicSourcesInput", new List<string> {
-                        "bulkDeleteCassandraSources",
-                        "bulkDeleteMongodbSources",
-                    }
-                },
-                {   "BulkDeleteNasSystemsInput", new List<string> {
-                        "bulkDeleteNasSystems",
-                    }
-                },
-                {   "BulkOnDemandSnapshotNutanixVmInput", new List<string> {
-                        "bulkOnDemandSnapshotNutanixVm",
-                    }
-                },
-                {   "BulkRefreshHostsInput", new List<string> {
-                        "bulkRefreshHosts",
-                    }
-                },
-                {   "BulkRegisterHostAsyncInput", new List<string> {
-                        "bulkRegisterHostAsync",
-                    }
-                },
-                {   "BulkRegisterHostInput", new List<string> {
-                        "bulkRegisterHost",
-                    }
-                },
-                {   "BulkTierExistingSnapshotsInput", new List<string> {
-                        "bulkTierExistingSnapshots",
-                    }
-                },
-                {   "BulkUpdateExchangeDagInput", new List<string> {
-                        "bulkUpdateExchangeDag",
-                    }
-                },
-                {   "BulkUpdateFilesetTemplateInput", new List<string> {
-                        "bulkUpdateFilesetTemplate",
-                    }
-                },
-                {   "BulkUpdateHostInput", new List<string> {
-                        "bulkUpdateHost",
-                    }
-                },
-                {   "BulkUpdateMssqlDbsInput", new List<string> {
-                        "bulkUpdateMssqlDbs",
-                    }
-                },
-                {   "BulkUpdateOracleDatabasesInput", new List<string> {
-                        "bulkUpdateOracleDatabases",
-                    }
-                },
-                {   "BulkUpdateOracleHostsInput", new List<string> {
-                        "bulkUpdateOracleHosts",
-                    }
-                },
-                {   "BulkUpdateOracleRacsInput", new List<string> {
-                        "bulkUpdateOracleRacs",
-                    }
-                },
-                {   "CalendarSearchFilter", new List<string> {
-                        "browseCalendar",
-                        "snappableEventSearch",
-                        "snapshotEventSearch",
-                    }
-                },
-                {   "CancelActivitySeriesInput", new List<string> {
-                        "cancelActivitySeries",
-                    }
-                },
-                {   "CancelThreatHuntInput", new List<string> {
-                        "cancelThreatHunt",
-                    }
-                },
-                {   "CdmUpgradeInfoFilterInput", new List<string> {
-                        "clusterWithUpgradesInfo",
-                    }
-                },
-                {   "CdpPerfDashboardSortParam", new List<string> {
-                        "allCdpVmsInfos",
-                    }
-                },
-                {   "CertMgmtSortBy", new List<string> {
-                        "certificates",
-                        "certificateSigningRequests",
-                    }
-                },
-                {   "ChangePasswordInput", new List<string> {
-                        "changePassword",
-                    }
-                },
-                {   "ChangeVfdOnHostInput", new List<string> {
-                        "changeVfdOnHost",
-                    }
-                },
-                {   "ChannelMembershipType", new List<string> {
-                        "browseO365TeamConvChannels",
-                        "browseTeamsChannels",
-                        "o365TeamChannels",
-                    }
-                },
-                {   "ClearCloudNativeSqlServerBackupCredentialsInput", new List<string> {
-                        "clearCloudNativeSqlServerBackupCredentials",
-                    }
-                },
-                {   "CloudAccountAction", new List<string> {
-                        "allAzureCloudAccountMissingPermissions",
-                    }
-                },
-                {   "CloudAccountFeature", new List<string> {
-                        "allAzureCloudAccountSubscriptionsByFeature",
-                        "allAzureCloudAccountTenants",
-                        "allFeaturePermissionsForGcpCloudAccount",
-                        "allGcpCloudAccountProjectsByFeature",
-                        "allResourceGroupsFromAzure",
-                        "awsCloudAccountListSecurityGroups",
-                        "awsCloudAccountListSubnets",
-                        "awsCloudAccountListVpcs",
-                        "azureCloudAccountPermissionConfig",
-                        "azureCloudAccountTenant",
-                        "azureCloudAccountTenantWithExoConfigs",
-                        "checkAzurePersistentStorageSubscriptionCanUnmap",
-                        "doesAzureNativeResourceGroupExist",
-                    }
-                },
-                {   "CloudAccountSortByFieldEnum", new List<string> {
-                        "allCloudAccounts",
-                    }
-                },
-                {   "CloudDirectSystemsInput", new List<string> {
-                        "cloudDirectSystems",
-                    }
-                },
-                {   "CloudNativeCheckRbaConnectivityInput", new List<string> {
-                        "cloudNativeCheckRbaConnectivity",
-                    }
-                },
-                {   "CloudNativeDownloadFilesInput", new List<string> {
-                        "cloudNativeDownloadFiles",
-                    }
-                },
-                {   "CloudNativeFeatureForPermissionsCheck", new List<string> {
-                        "cloudNativeCheckRequiredPermissionsForFeature",
-                    }
-                },
-                {   "CloudNativeLabelObjectType", new List<string> {
-                        "allCloudNativeLabelKeys",
-                        "allCloudNativeLabelValues",
-                        "checkCloudNativeLabelRuleNameUniqueness",
-                        "cloudNativeLabelRules",
-                    }
-                },
-                {   "CloudNativeTagObjectType", new List<string> {
-                        "allCloudNativeTagKeys",
-                        "allCloudNativeTagValues",
-                        "checkCloudNativeTagRuleNameUniqueness",
-                        "cloudNativeTagRules",
-                    }
-                },
-                {   "CloudNativeTagRuleSortByFields", new List<string> {
-                        "cloudNativeLabelRules",
-                        "cloudNativeTagRules",
-                    }
-                },
-                {   "CloudVendor", new List<string> {
-                        "allAccountsWithExocomputeMappings",
-                        "allCloudAccountExocomputeMappings",
-                        "allCurrentFeaturePermissionsForCloudAccounts",
-                        "allLatestFeaturePermissionsForCloudAccounts",
-                        "cloudNativeCustomerTags",
-                    }
-                },
-                {   "ClusterFilterInput", new List<string> {
-                        "allClusterConnection",
-                        "clusterConnection",
-                        "clusterGroupByConnection",
-                        "radarClusterConnection",
-                    }
-                },
-                {   "ClusterGroupByEnum", new List<string> {
-                        "clusterGroupByConnection",
-                    }
-                },
-                {   "ClusterIpv6ModeInput", new List<string> {
-                        "clusterIpv6Mode",
-                    }
-                },
-                {   "ClusterLocationEdit", new List<string> {
-                        "updateClusterLocation",
-                    }
-                },
-                {   "ClusterOperationJobProgressInput", new List<string> {
-                        "clusterOperationJobProgress",
-                    }
-                },
-                {   "ClusterSortByEnum", new List<string> {
-                        "allClusterConnection",
-                        "clusterConnection",
-                        "radarClusterConnection",
-                    }
-                },
-                {   "ClusterTypeEnum", new List<string> {
-                        "allConnectedClusters",
-                    }
-                },
-                {   "ClusterUuidWithDbIdInput", new List<string> {
-                        "oracleAcoExampleDownloadLink",
-                        "oracleAcoParameters",
-                    }
-                },
-                {   "ClusterUuidWithMssqlObjectIdInput", new List<string> {
-                        "mssqlDefaultPropertiesOnCluster",
-                    }
-                },
-                {   "ClusterWebSignedCertificateInput", new List<string> {
-                        "clusterWebSignedCertificate",
-                    }
-                },
-                {   "CompleteAzureAdAppSetupInput", new List<string> {
-                        "completeAzureAdAppSetup",
-                    }
-                },
-                {   "CompleteAzureAdAppUpdateInput", new List<string> {
-                        "completeAzureAdAppUpdate",
-                    }
-                },
-                {   "CompleteAzureCloudAccountOauthInput", new List<string> {
-                        "completeAzureCloudAccountOauth",
-                    }
-                },
-                {   "ConfigureSapHanaRestoreInput", new List<string> {
-                        "configureSapHanaRestore",
-                    }
-                },
-                {   "ContactsSearchFilter", new List<string> {
-                        "browseContacts",
-                        "snappableContactSearch",
-                    }
-                },
-                {   "ContextFilterTypeEnum", new List<string> {
-                        "allAwsComputeSettings",
-                        "allTargetMappings",
-                        "allTargets",
-                        "globalSlaFilterConnection",
-                        "slaDomains",
-                        "targets",
-                    }
-                },
-                {   "CreateActiveDirectoryLiveMountInput", new List<string> {
-                        "createActiveDirectoryLiveMount",
-                    }
-                },
-                {   "CreateActiveDirectoryUnmountInput", new List<string> {
-                        "createActiveDirectoryUnmount",
-                    }
-                },
-                {   "CreateAutomaticAwsTargetMappingInput", new List<string> {
-                        "createAutomaticAwsTargetMapping",
-                    }
-                },
-                {   "CreateAutomaticAzureTargetMappingInput", new List<string> {
-                        "createAutomaticAzureTargetMapping",
-                    }
-                },
-                {   "CreateAutomaticRcsTargetMappingInput", new List<string> {
-                        "createAutomaticRcsTargetMapping",
-                    }
-                },
-                {   "CreateAwsAccountInput", new List<string> {
-                        "createAwsAccount",
-                    }
-                },
-                {   "CreateAwsClusterInput", new List<string> {
-                        "createAwsCluster",
-                    }
-                },
-                {   "CreateAwsComputeSettingInput", new List<string> {
-                        "createAwsComputeSetting",
-                    }
-                },
-                {   "CreateAwsExocomputeConfigsInput", new List<string> {
-                        "createAwsExocomputeConfigs",
-                    }
-                },
-                {   "CreateAwsReaderTargetInput", new List<string> {
-                        "createAwsReaderTarget",
-                    }
-                },
-                {   "CreateAwsTargetInput", new List<string> {
-                        "createAwsTarget",
-                    }
-                },
-                {   "CreateAzureAccountInput", new List<string> {
-                        "createAzureAccount",
-                    }
-                },
-                {   "CreateAzureClusterInput", new List<string> {
-                        "createAzureCluster",
-                    }
-                },
-                {   "CreateAzureReaderTargetInput", new List<string> {
-                        "createAzureReaderTarget",
-                    }
-                },
-                {   "CreateAzureTargetInput", new List<string> {
-                        "createAzureTarget",
-                    }
-                },
-                {   "CreateCloudNativeAwsStorageSettingInput", new List<string> {
-                        "createCloudNativeAwsStorageSetting",
-                    }
-                },
-                {   "CreateCloudNativeAzureStorageSettingInput", new List<string> {
-                        "createCloudNativeAzureStorageSetting",
-                    }
-                },
-                {   "CreateCloudNativeLabelRuleInput", new List<string> {
-                        "createCloudNativeLabelRule",
-                    }
-                },
-                {   "CreateCloudNativeRcvAzureStorageSettingInput", new List<string> {
-                        "createCloudNativeRcvAzureStorageSetting",
-                    }
-                },
-                {   "CreateCloudNativeTagRuleInput", new List<string> {
-                        "createCloudNativeTagRule",
-                    }
-                },
-                {   "CreateCustomAnalyzerInput", new List<string> {
-                        "createCustomAnalyzer",
-                        "updateCustomAnalyzer",
-                    }
-                },
-                {   "CreateCustomReportInput", new List<string> {
-                        "createCustomReport",
-                    }
-                },
-                {   "CreateDomainControllerSnapshotInput", new List<string> {
-                        "createDomainControllerSnapshot",
-                    }
-                },
-                {   "CreateDownloadSnapshotForVolumeGroupInput", new List<string> {
-                        "createDownloadSnapshotForVolumeGroup",
-                    }
-                },
-                {   "CreateExchangeSnapshotMountInput", new List<string> {
-                        "createExchangeMount",
-                    }
-                },
-                {   "CreateFailoverClusterAppInput", new List<string> {
-                        "createFailoverClusterApp",
-                    }
-                },
-                {   "CreateFailoverClusterInput", new List<string> {
-                        "createFailoverCluster",
-                    }
-                },
-                {   "CreateFilesetSnapshotInput", new List<string> {
-                        "createFilesetSnapshot",
-                    }
-                },
-                {   "CreateGcpReaderTargetInput", new List<string> {
-                        "createGcpReaderTarget",
-                    }
-                },
-                {   "CreateGcpTargetInput", new List<string> {
-                        "createGcpTarget",
-                    }
-                },
-                {   "CreateGlacierReaderTargetInput", new List<string> {
-                        "createGlacierReaderTarget",
-                    }
-                },
-                {   "CreateGlobalSlaInput", new List<string> {
-                        "createGlobalSla",
-                    }
-                },
-                {   "CreateGuestCredentialInput", new List<string> {
-                        "createGuestCredential",
-                    }
-                },
-                {   "CreateHypervVirtualMachineSnapshotMountInput", new List<string> {
-                        "createHypervVirtualMachineSnapshotMount",
-                    }
-                },
-                {   "CreateIntegrationInput", new List<string> {
-                        "createIntegration",
-                    }
-                },
-                {   "CreateIntegrationsInput", new List<string> {
-                        "createIntegrations",
-                    }
-                },
-                {   "CreateK8sAgentManifestInput", new List<string> {
-                        "createK8sAgentManifest",
-                    }
-                },
-                {   "CreateK8sClusterInput", new List<string> {
-                        "createK8sCluster",
-                    }
-                },
-                {   "CreateK8sNamespaceSnapshotsInput", new List<string> {
-                        "createK8sNamespaceSnapshots",
-                    }
-                },
-                {   "CreateManualTargetMappingInput", new List<string> {
-                        "createManualTargetMapping",
-                    }
-                },
-                {   "CreateMssqlLiveMountInput", new List<string> {
-                        "createMssqlLiveMount",
-                    }
-                },
-                {   "CreateMssqlLogShippingConfigurationInput", new List<string> {
-                        "createMssqlLogShippingConfiguration",
-                    }
-                },
-                {   "CreateNfsReaderTargetInput", new List<string> {
-                        "createNfsReaderTarget",
-                    }
-                },
-                {   "CreateNfsTargetInput", new List<string> {
-                        "createNfsTarget",
-                    }
-                },
-                {   "CreateNutanixClusterInput", new List<string> {
-                        "createNutanixCluster",
-                    }
-                },
-                {   "CreateNutanixPrismCentralInput", new List<string> {
-                        "createNutanixPrismCentral",
-                    }
-                },
-                {   "CreateO365AppCompleteInput", new List<string> {
-                        "createO365AppComplete",
-                    }
-                },
-                {   "CreateO365AppKickoffInput", new List<string> {
-                        "createO365AppKickoff",
-                    }
-                },
-                {   "CreateOnDemandDb2BackupInput", new List<string> {
-                        "createOnDemandDb2Backup",
-                    }
-                },
-                {   "CreateOnDemandExchangeDatabaseBackupInput", new List<string> {
-                        "createOnDemandExchangeBackup",
-                    }
-                },
-                {   "CreateOnDemandMssqlBackupInput", new List<string> {
-                        "createOnDemandMssqlBackup",
-                    }
-                },
-                {   "CreateOnDemandNutanixBackupInput", new List<string> {
-                        "createOnDemandNutanixBackup",
-                    }
-                },
-                {   "CreateOnDemandSapHanaBackupInput", new List<string> {
-                        "createOnDemandSapHanaBackup",
-                    }
-                },
-                {   "CreateOnDemandSapHanaStorageSnapshotInput", new List<string> {
-                        "createOnDemandSapHanaStorageSnapshot",
-                    }
-                },
-                {   "CreateOnDemandVolumeGroupBackupInput", new List<string> {
-                        "createOnDemandVolumeGroupBackup",
-                    }
-                },
-                {   "CreateOraclePdbRestoreInput", new List<string> {
-                        "createOraclePdbRestore",
-                    }
-                },
-                {   "CreateOrgInput", new List<string> {
-                        "createOrg",
-                    }
-                },
-                {   "CreateOrgSwitchSessionInput", new List<string> {
-                        "createOrgSwitchSession",
-                    }
-                },
-                {   "CreatePolicyInput", new List<string> {
-                        "createPolicy",
-                    }
-                },
-                {   "CreateRcsReaderTargetInput", new List<string> {
-                        "createRcsReaderTarget",
-                    }
-                },
-                {   "CreateRcsTargetInput", new List<string> {
-                        "createRcsTarget",
-                    }
-                },
-                {   "CreateRcvLocationsFromTemplateInput", new List<string> {
-                        "createRcvLocationsFromTemplate",
-                    }
-                },
-                {   "CreateRcvPrivateEndpointApprovalRequestInput", new List<string> {
-                        "createRcvPrivateEndpointApprovalRequest",
-                    }
-                },
-                {   "CreateReplicationPairInput", new List<string> {
-                        "createReplicationPair",
-                    }
-                },
-                {   "CreateS3CompatibleReaderTargetInput", new List<string> {
-                        "createS3CompatibleReaderTarget",
-                    }
-                },
-                {   "CreateS3CompatibleTargetInput", new List<string> {
-                        "createS3CompatibleTarget",
-                    }
-                },
-                {   "CreateSapHanaSystemRefreshInput", new List<string> {
-                        "createSapHanaSystemRefresh",
-                    }
-                },
-                {   "CreateScheduledReportInput", new List<string> {
-                        "createScheduledReport",
-                    }
-                },
-                {   "CreateServiceAccountInput", new List<string> {
-                        "createServiceAccount",
-                    }
-                },
-                {   "CreateTapeReaderTargetInput", new List<string> {
-                        "createTapeReaderTarget",
-                    }
-                },
-                {   "CreateTapeTargetInput", new List<string> {
-                        "createTapeTarget",
-                    }
-                },
-                {   "CreateUserWithPasswordInput", new List<string> {
-                        "createUserWithPassword",
-                    }
-                },
-                {   "CreateVappsInstantRecoveryInput", new List<string> {
-                        "createVappsInstantRecovery",
-                    }
-                },
-                {   "CreateVsphereAdvancedTagInput", new List<string> {
-                        "createVsphereAdvancedTag",
-                    }
-                },
-                {   "CreateVsphereVcenterInput", new List<string> {
-                        "createVsphereVcenter",
-                    }
-                },
-                {   "CreateWebhookInput", new List<string> {
-                        "createWebhook",
-                    }
-                },
-                {   "DataViewTypeEnum", new List<string> {
-                        "reportData",
-                    }
-                },
-                {   "DateTime", new List<string> {
-                        "activeDirectorySearchSnapshots",
-                        "allAccountProducts",
-                        "allDhrcScores",
-                        "allSnapshotsClosestToPointInTime",
-                        "pipelineHealthForTimeRange",
-                        "ransomwareDetectionWorkloadLocations",
-                        "scheduleUpgradeBatchJob",
-                        "threatHunts",
-                        "vsphereVMMissedRecoverableRange",
-                        "vsphereVMRecoverableRange",
-                        "workloadAnomalies",
-                    }
-                },
-                {   "Db2LogSnapshotFilterInput", new List<string> {
-                        "db2LogSnapshots",
-                    }
-                },
-                {   "Db2LogSnapshotSortBy", new List<string> {
-                        "db2LogSnapshots",
-                    }
-                },
-                {   "Db2RecoverableRangeFilterInput", new List<string> {
-                        "db2RecoverableRanges",
-                    }
-                },
-                {   "Db2RecoverableRangeSortBy", new List<string> {
-                        "db2RecoverableRanges",
-                    }
-                },
-                {   "DeleteAdGroupsFromHierarchyInput", new List<string> {
-                        "deleteAdGroupsFromHierarchy",
-                    }
-                },
-                {   "DeleteAllOracleDatabaseSnapshotsInput", new List<string> {
-                        "deleteAllOracleDatabaseSnapshots",
-                    }
-                },
-                {   "DeleteAwsComputeSettingInput", new List<string> {
-                        "deleteAwsComputeSetting",
-                    }
-                },
-                {   "DeleteAwsExocomputeConfigsInput", new List<string> {
-                        "deleteAwsExocomputeConfigs",
-                    }
-                },
-                {   "DeleteAzureAdDirectoryInput", new List<string> {
-                        "deleteAzureAdDirectory",
-                    }
-                },
-                {   "DeleteAzureCloudAccountExocomputeConfigurationsInput", new List<string> {
-                        "deleteAzureCloudAccountExocomputeConfigurations",
-                    }
-                },
-                {   "DeleteAzureCloudAccountInput", new List<string> {
-                        "deleteAzureCloudAccount",
-                    }
-                },
-                {   "DeleteAzureCloudAccountWithoutOauthInput", new List<string> {
-                        "deleteAzureCloudAccountWithoutOauth",
-                    }
-                },
-                {   "DeleteCloudNativeLabelRuleInput", new List<string> {
-                        "deleteCloudNativeLabelRule",
-                    }
-                },
-                {   "DeleteCloudNativeTagRuleInput", new List<string> {
-                        "deleteCloudNativeTagRule",
-                    }
-                },
-                {   "DeleteCloudWorkloadSnapshotInput", new List<string> {
-                        "deleteCloudWorkloadSnapshot",
-                    }
-                },
-                {   "DeleteCsrInput", new List<string> {
-                        "deleteCsr",
-                    }
-                },
-                {   "DeleteCustomReportInput", new List<string> {
-                        "deleteCustomReport",
-                    }
-                },
-                {   "DeleteDb2DatabaseInput", new List<string> {
-                        "deleteDb2Database",
-                    }
-                },
-                {   "DeleteDb2InstanceInput", new List<string> {
-                        "deleteDb2Instance",
-                    }
-                },
-                {   "DeleteDistributionListDigestBatchInput", new List<string> {
-                        "deleteDistributionListDigestBatch",
-                    }
-                },
-                {   "DeleteEventDigestInput", new List<string> {
-                        "deleteEventDigest",
-                    }
-                },
-                {   "DeleteExchangeSnapshotMountInput", new List<string> {
-                        "deleteExchangeSnapshotMount",
-                    }
-                },
-                {   "DeleteFailoverClusterAppInput", new List<string> {
-                        "deleteFailoverClusterApp",
-                    }
-                },
-                {   "DeleteFailoverClusterInput", new List<string> {
-                        "deleteFailoverCluster",
-                    }
-                },
-                {   "DeleteFilesetSnapshotsInput", new List<string> {
-                        "deleteFilesetSnapshots",
-                    }
-                },
-                {   "DeleteGlobalCertificateInput", new List<string> {
-                        "deleteGlobalCertificate",
-                    }
-                },
-                {   "DeleteGuestCredentialByIdInput", new List<string> {
-                        "deleteGuestCredentialById",
-                    }
-                },
-                {   "DeleteHypervVirtualMachineSnapshotInput", new List<string> {
-                        "deleteHypervVirtualMachineSnapshot",
-                    }
-                },
-                {   "DeleteHypervVirtualMachineSnapshotMountInput", new List<string> {
-                        "deleteHypervVirtualMachineSnapshotMount",
-                    }
-                },
-                {   "DeleteIntegrationInput", new List<string> {
-                        "deleteIntegration",
-                    }
-                },
-                {   "DeleteIntegrationsInput", new List<string> {
-                        "deleteIntegrations",
-                    }
-                },
-                {   "DeleteLogShippingInput", new List<string> {
-                        "deleteLogShipping",
-                    }
-                },
-                {   "DeleteManagedVolumeInput", new List<string> {
-                        "deleteManagedVolume",
-                    }
-                },
-                {   "DeleteManagedVolumeSnapshotExportInput", new List<string> {
-                        "deleteManagedVolumeSnapshotExport",
-                    }
-                },
-                {   "DeleteMongoSourceInput", new List<string> {
-                        "deleteMongoSource",
-                    }
-                },
-                {   "DeleteMosaicSourceInput", new List<string> {
-                        "deleteCassandraSource",
-                        "deleteMongodbSource",
-                    }
-                },
-                {   "DeleteMosaicStoreInput", new List<string> {
-                        "deleteMosaicStore",
-                    }
-                },
-                {   "DeleteMssqlDbSnapshotsInput", new List<string> {
-                        "deleteMssqlDbSnapshots",
-                    }
-                },
-                {   "DeleteMssqlLiveMountInput", new List<string> {
-                        "deleteMssqlLiveMount",
-                    }
-                },
-                {   "DeleteNasSystemInput", new List<string> {
-                        "deleteNasSystem",
-                    }
-                },
-                {   "DeleteNutanixClusterInput", new List<string> {
-                        "deleteNutanixCluster",
-                    }
-                },
-                {   "DeleteNutanixMountV1Input", new List<string> {
-                        "deleteNutanixMountV1",
-                    }
-                },
-                {   "DeleteNutanixPrismCentralInput", new List<string> {
-                        "deleteNutanixPrismCentral",
-                    }
-                },
-                {   "DeleteNutanixSnapshotInput", new List<string> {
-                        "deleteNutanixSnapshot",
-                    }
-                },
-                {   "DeleteNutanixSnapshotsInput", new List<string> {
-                        "deleteNutanixSnapshots",
-                    }
-                },
-                {   "DeleteOracleMountInput", new List<string> {
-                        "deleteOracleMount",
-                    }
-                },
-                {   "DeleteOrgInput", new List<string> {
-                        "deleteOrg",
-                    }
-                },
-                {   "DeleteReplicationPairInput", new List<string> {
-                        "deleteReplicationPair",
-                    }
-                },
-                {   "DeleteSapHanaDbSnapshotInput", new List<string> {
-                        "deleteSapHanaDbSnapshot",
-                    }
-                },
-                {   "DeleteSapHanaSystemInput", new List<string> {
-                        "deleteSapHanaSystem",
-                    }
-                },
-                {   "DeleteScheduledReportInput", new List<string> {
-                        "deleteScheduledReport",
-                    }
-                },
-                {   "DeleteServiceAccountsFromAccountInput", new List<string> {
-                        "deleteServiceAccountsFromAccount",
-                    }
-                },
-                {   "DeleteSmbDomainInput", new List<string> {
-                        "deleteSmbDomain",
-                    }
-                },
-                {   "DeleteStorageArraysInput", new List<string> {
-                        "deleteStorageArrays",
-                    }
-                },
-                {   "DeleteSyslogExportRuleInput", new List<string> {
-                        "deleteSyslogExportRule",
-                    }
-                },
-                {   "DeleteTargetInput", new List<string> {
-                        "deleteTarget",
-                    }
-                },
-                {   "DeleteTargetMappingInput", new List<string> {
-                        "deleteTargetMapping",
-                    }
-                },
-                {   "DeleteTotpConfigsInput", new List<string> {
-                        "deleteTotpConfigs",
-                    }
-                },
-                {   "DeleteVolumeGroupMountInput", new List<string> {
-                        "deleteVolumeGroupMount",
-                    }
-                },
-                {   "DeleteVsphereAdvancedTagInput", new List<string> {
-                        "deleteVsphereAdvancedTag",
-                    }
-                },
-                {   "DeleteVsphereLiveMountInput", new List<string> {
-                        "deleteVsphereLiveMount",
-                    }
-                },
-                {   "DeleteWebhookInput", new List<string> {
-                        "deleteWebhook",
-                    }
-                },
-                {   "DhrcScoreTimespan", new List<string> {
-                        "allDhrcScores",
-                    }
-                },
-                {   "DisableReplicationPauseInput", new List<string> {
-                        "disableReplicationPause",
-                    }
-                },
-                {   "DisableSupportUserAccessInput", new List<string> {
-                        "disableSupportUserAccess",
-                    }
-                },
-                {   "DisableTargetInput", new List<string> {
-                        "disableTarget",
-                    }
-                },
-                {   "DiscoverDb2InstanceInput", new List<string> {
-                        "discoverDb2Instance",
-                    }
-                },
-                {   "DiscoverMongoSourceInput", new List<string> {
-                        "discoverMongoSource",
-                    }
-                },
-                {   "DiscoveryContentReportGroupBy", new List<string> {
-                        "sonarContentReport",
-                    }
-                },
-                {   "DiscoveryContentReportSortBy", new List<string> {
-                        "sonarContentReport",
-                    }
-                },
-                {   "DiscoveryReportGroupBy", new List<string> {
-                        "sonarReport",
-                    }
-                },
-                {   "DiscoveryReportSortBy", new List<string> {
-                        "sonarReportRow",
-                    }
-                },
-                {   "DistributionDigestByIdInput", new List<string> {
-                        "distributionListDigest",
-                    }
-                },
-                {   "DownloadActiveDirectorySnapshotFromLocationInput", new List<string> {
-                        "downloadActiveDirectorySnapshotFromLocation",
-                    }
-                },
-                {   "DownloadAuditLogCsvAsyncInput", new List<string> {
-                        "downloadAuditLogCsvAsync",
-                    }
-                },
-                {   "DownloadCdmUpgradesPdfFiltersInput", new List<string> {
-                        "downloadCdmUpgradesPdf",
-                    }
-                },
-                {   "DownloadDb2SnapshotInput", new List<string> {
-                        "downloadDb2Snapshot",
-                    }
-                },
-                {   "DownloadDb2SnapshotsForPointInTimeRecoveryInput", new List<string> {
-                        "downloadDb2SnapshotsForPointInTimeRecovery",
-                    }
-                },
-                {   "DownloadExchangeSnapshotInput", new List<string> {
-                        "downloadExchangeSnapshot",
-                    }
-                },
-                {   "DownloadFilesNutanixSnapshotInput", new List<string> {
-                        "downloadFilesNutanixSnapshot",
-                    }
-                },
-                {   "DownloadFilesetSnapshotFromLocationInput", new List<string> {
-                        "downloadFilesetSnapshotFromLocation",
-                    }
-                },
-                {   "DownloadFilesetSnapshotInput", new List<string> {
-                        "downloadFilesetSnapshot",
-                    }
-                },
-                {   "DownloadHypervSnapshotFromLocationInput", new List<string> {
-                        "downloadHypervSnapshotFromLocation",
-                    }
-                },
-                {   "DownloadHypervVirtualMachineSnapshotFilesInput", new List<string> {
-                        "downloadHypervVirtualMachineSnapshotFiles",
-                    }
-                },
-                {   "DownloadHypervVirtualMachineSnapshotInput", new List<string> {
-                        "downloadHypervVirtualMachineSnapshot",
-                    }
-                },
-                {   "DownloadManagedVolumeFilesInput", new List<string> {
-                        "downloadManagedVolumeFiles",
-                    }
-                },
-                {   "DownloadManagedVolumeFromLocationInput", new List<string> {
-                        "downloadManagedVolumeFromLocation",
-                    }
-                },
-                {   "DownloadMssqlDatabaseBackupFilesInput", new List<string> {
-                        "downloadMssqlDatabaseBackupFiles",
-                    }
-                },
-                {   "DownloadMssqlDatabaseFilesFromArchivalLocationInput", new List<string> {
-                        "downloadMssqlDatabaseFilesFromArchivalLocation",
-                    }
-                },
-                {   "DownloadNutanixSnapshotInput", new List<string> {
-                        "downloadNutanixSnapshot",
-                    }
-                },
-                {   "DownloadNutanixVmFromLocationInput", new List<string> {
-                        "downloadNutanixVmFromLocation",
-                    }
-                },
-                {   "DownloadObjectFilesCsvInput", new List<string> {
-                        "downloadObjectFilesCsv",
-                    }
-                },
-                {   "DownloadObjectsListCsvInput", new List<string> {
-                        "downloadObjectsListCsv",
-                    }
-                },
-                {   "DownloadOracleDatabaseSnapshotInput", new List<string> {
-                        "downloadOracleDatabaseSnapshot",
-                    }
-                },
-                {   "DownloadReportCsvAsyncInput", new List<string> {
-                        "downloadReportCsvAsync",
-                    }
-                },
-                {   "DownloadReportPdfAsyncInput", new List<string> {
-                        "downloadReportPdfAsync",
-                    }
-                },
-                {   "DownloadResultsCsvFiltersInput", new List<string> {
-                        "downloadResultsCsv",
-                        "downloadSnapshotResultsCsv",
-                    }
-                },
-                {   "DownloadSapHanaSnapshotFromLocationInput", new List<string> {
-                        "downloadSapHanaSnapshotFromLocation",
-                    }
-                },
-                {   "DownloadSapHanaSnapshotInput", new List<string> {
-                        "downloadSapHanaSnapshot",
-                    }
-                },
-                {   "DownloadSapHanaSnapshotsForPointInTimeRecoveryInput", new List<string> {
-                        "downloadSapHanaSnapshotsForPointInTimeRecovery",
-                    }
-                },
-                {   "DownloadThreatHuntCsvInput", new List<string> {
-                        "downloadThreatHuntCsv",
-                    }
-                },
-                {   "DownloadUserActivityCsvInput", new List<string> {
-                        "downloadUserActivityCsv",
-                    }
-                },
-                {   "DownloadUserFileActivityCsvInput", new List<string> {
-                        "downloadUserFileActivityCsv",
-                    }
-                },
-                {   "DownloadVolumeGroupSnapshotFilesInput", new List<string> {
-                        "downloadVolumeGroupSnapshotFiles",
-                    }
-                },
-                {   "DownloadVolumeGroupSnapshotFromLocationInput", new List<string> {
-                        "downloadVolumeGroupSnapshotFromLocation",
-                    }
-                },
-                {   "DownloadVsphereVirtualMachineFilesInput", new List<string> {
-                        "downloadVsphereVirtualMachineFiles",
-                    }
-                },
-                {   "EnableAutomaticFmdUploadInput", new List<string> {
-                        "enableAutomaticFmdUpload",
-                    }
-                },
-                {   "EnableDisableAppConsistencyInput", new List<string> {
-                        "enableDisableAppConsistency",
-                    }
-                },
-                {   "EnableO365SharePointInput", new List<string> {
-                        "enableO365SharePoint",
-                    }
-                },
-                {   "EnablePerLocationPauseInputVariable", new List<string> {
-                        "enableReplicationPause",
-                    }
-                },
-                {   "EnableSupportUserAccessInput", new List<string> {
-                        "enableSupportUserAccess",
-                    }
-                },
-                {   "EnableTargetInput", new List<string> {
-                        "enableTarget",
-                    }
-                },
-                {   "EnableThreatMonitoringInput", new List<string> {
-                        "enableThreatMonitoring",
-                    }
-                },
-                {   "EndManagedVolumeSnapshotInput", new List<string> {
-                        "endManagedVolumeSnapshot",
-                    }
-                },
-                {   "ExchangeLiveMountSortByInput", new List<string> {
-                        "exchangeLiveMounts",
-                    }
-                },
-                {   "ExcludeAwsNativeEbsVolumesFromSnapshotInput", new List<string> {
-                        "excludeAwsNativeEbsVolumesFromSnapshot",
-                    }
-                },
-                {   "ExcludeAzureNativeManagedDisksFromSnapshotInput", new List<string> {
-                        "excludeAzureNativeManagedDisksFromSnapshot",
-                    }
-                },
-                {   "ExcludeSharepointObjectsFromProtectionInput", new List<string> {
-                        "excludeSharepointObjectsFromProtection",
-                    }
-                },
-                {   "ExpireDownloadedDb2SnapshotsInput", new List<string> {
-                        "expireDownloadedDb2Snapshots",
-                    }
-                },
-                {   "ExpireDownloadedSapHanaSnapshotsInput", new List<string> {
-                        "expireDownloadedSapHanaSnapshots",
-                    }
-                },
-                {   "ExportHypervVirtualMachineInput", new List<string> {
-                        "exportHypervVirtualMachine",
-                    }
-                },
-                {   "ExportK8sNamespaceInput", new List<string> {
-                        "exportK8sNamespace",
-                    }
-                },
-                {   "ExportManagedVolumeSnapshotInput", new List<string> {
-                        "exportManagedVolumeSnapshot",
-                    }
-                },
-                {   "ExportMssqlDatabaseInput", new List<string> {
-                        "exportMssqlDatabase",
-                    }
-                },
-                {   "ExportNutanixSnapshotInput", new List<string> {
-                        "exportNutanixSnapshot",
-                    }
-                },
-                {   "ExportO365MailboxInput", new List<string> {
-                        "exportO365Mailbox",
-                    }
-                },
-                {   "ExportOracleDatabaseInput", new List<string> {
-                        "exportOracleDatabase",
-                    }
-                },
-                {   "ExportOracleTablespaceInput", new List<string> {
-                        "exportOracleTablespace",
-                    }
-                },
-                {   "ExportSlaManagedVolumeSnapshotInput", new List<string> {
-                        "exportSlaManagedVolumeSnapshot",
-                    }
-                },
-                {   "FeatureCdmVersionInput", new List<string> {
-                        "cdmVersionCheck",
-                    }
-                },
-                {   "FeatureListMinimumCdmVersionInputType", new List<string> {
-                        "minimumCdmVersionForFeatureSet",
-                    }
-                },
-                {   "FileActivitiesSort", new List<string> {
-                        "allFileActivities",
-                    }
-                },
-                {   "FileResultSortInput", new List<string> {
-                        "objectFiles",
-                        "userActivities",
-                    }
-                },
-                {   "FilesetDownloadSnapshotFilesInput", new List<string> {
-                        "filesetDownloadSnapshotFiles",
-                    }
-                },
-                {   "FilesetExportSnapshotFilesInput", new List<string> {
-                        "filesetExportSnapshotFiles",
-                    }
-                },
-                {   "FilesetRecoverFilesInput", new List<string> {
-                        "filesetRecoverFiles",
-                    }
-                },
-                {   "FinalizeAwsCloudAccountDeletionInput", new List<string> {
-                        "finalizeAwsCloudAccountDeletion",
-                    }
-                },
-                {   "FinalizeAwsCloudAccountProtectionInput", new List<string> {
-                        "finalizeAwsCloudAccountProtection",
-                    }
-                },
-                {   "Float", new List<string> {
-                        "anomalyResults",
-                        "anomalyResultsGrouped",
-                        "clusterGroupByConnection",
-                        "nfAnomalyResults",
-                        "nfAnomalyResultsGrouped",
-                        "ransomwareResults",
-                        "ransomwareResultsGrouped",
-                        "snappableGroupByConnection",
-                        "taskDetailConnection",
-                        "taskDetailGroupByConnection",
-                        "updateLambdaSettings",
-                    }
-                },
-                {   "GcpCloudAccountAddManualAuthProjectInput", new List<string> {
-                        "gcpCloudAccountAddManualAuthProject",
-                    }
-                },
-                {   "GcpCloudAccountAddProjectsInput", new List<string> {
-                        "gcpCloudAccountAddProjects",
-                    }
-                },
-                {   "GcpCloudAccountDeleteProjectsInput", new List<string> {
-                        "gcpCloudAccountDeleteProjects",
-                    }
-                },
-                {   "GcpCloudAccountOauthCompleteInput", new List<string> {
-                        "gcpCloudAccountOauthComplete",
-                    }
-                },
-                {   "GcpCloudAccountOauthInitiateInput", new List<string> {
-                        "gcpCloudAccountOauthInitiate",
-                    }
-                },
-                {   "GcpCloudAccountUpgradeProjectsInput", new List<string> {
-                        "gcpCloudAccountUpgradeProjects",
-                    }
-                },
-                {   "GcpNativeDisableProjectInput", new List<string> {
-                        "gcpNativeDisableProject",
-                    }
-                },
-                {   "GcpNativeDiskFilters", new List<string> {
-                        "gcpNativeDisks",
-                    }
-                },
-                {   "GcpNativeDiskSortFields", new List<string> {
-                        "gcpNativeDisks",
-                    }
-                },
-                {   "GcpNativeExcludeDisksFromInstanceSnapshotInput", new List<string> {
-                        "gcpNativeExcludeDisksFromInstanceSnapshot",
-                    }
-                },
-                {   "GcpNativeExportDiskInput", new List<string> {
-                        "gcpNativeExportDisk",
-                    }
-                },
-                {   "GcpNativeExportGceInstanceInput", new List<string> {
-                        "gcpNativeExportGceInstance",
-                    }
-                },
-                {   "GcpNativeGceInstanceFilters", new List<string> {
-                        "gcpNativeGceInstances",
-                    }
-                },
-                {   "GcpNativeGceInstanceSortFields", new List<string> {
-                        "gcpNativeGceInstances",
-                    }
-                },
-                {   "GcpNativeProjectFilters", new List<string> {
-                        "gcpNativeProjects",
-                    }
-                },
-                {   "GcpNativeProjectSortFields", new List<string> {
-                        "gcpNativeProjects",
-                    }
-                },
-                {   "GcpNativeRefreshProjectsInput", new List<string> {
-                        "gcpNativeRefreshProjects",
-                    }
-                },
-                {   "GcpNativeRestoreGceInstanceInput", new List<string> {
-                        "gcpNativeRestoreGceInstance",
-                    }
-                },
-                {   "GcpSetDefaultServiceAccountJwtConfigInput", new List<string> {
-                        "gcpSetDefaultServiceAccountJwtConfig",
-                    }
-                },
-                {   "GenerateClusterRegistrationTokenInput", new List<string> {
-                        "generateClusterRegistrationToken",
-                    }
-                },
-                {   "GenerateConfigProtectionRestoreFormInput", new List<string> {
-                        "generateConfigProtectionRestoreForm",
-                    }
-                },
-                {   "GenerateSupportBundleInput", new List<string> {
-                        "generateSupportBundle",
-                    }
-                },
-                {   "GetCertificateInfoInput", new List<string> {
-                        "certificateInfo",
-                    }
-                },
-                {   "GetCloudComputeConnectivityCheckRequestStatusInput", new List<string> {
-                        "checkCloudComputeConnectivityJobProgress",
-                    }
-                },
-                {   "GetClusterCsrInput", new List<string> {
-                        "clusterCsr",
-                    }
-                },
-                {   "GetClusterIpsInput", new List<string> {
-                        "clusterFloatingIps",
-                    }
-                },
-                {   "GetClusterNtpServersInput", new List<string> {
-                        "clusterNtpServers",
-                    }
-                },
-                {   "GetCompatibleMssqlInstancesV1Input", new List<string> {
-                        "mssqlCompatibleInstances",
-                    }
-                },
-                {   "GetComputeClusterInput", new List<string> {
-                        "computeClusterStatus",
-                    }
-                },
-                {   "GetContainersInput", new List<string> {
-                        "nutanixClusterContainers",
-                    }
-                },
-                {   "GetCsrInput", new List<string> {
-                        "certificateSigningRequest",
-                    }
-                },
-                {   "GetDb2DatabaseAsyncRequestStatusInput", new List<string> {
-                        "db2DatabaseJobStatus",
-                    }
-                },
-                {   "GetDefaultDbPropertiesV1Input", new List<string> {
-                        "mssqlDefaultProperties",
-                    }
-                },
-                {   "GetDefaultGatewayInput", new List<string> {
-                        "clusterDefaultGateway",
-                    }
-                },
-                {   "GetFilesetAsyncRequestStatusInput", new List<string> {
-                        "filesetRequestStatus",
-                    }
-                },
-                {   "GetHealthMonitorPolicyStatusInput", new List<string> {
-                        "getHealthMonitorPolicyStatus",
-                    }
-                },
-                {   "GetHotAddBandwidthInput", new List<string> {
-                        "vCenterHotAddBandwidth",
-                    }
-                },
-                {   "GetHotAddNetworkInput", new List<string> {
-                        "vCenterHotAddNetwork",
-                    }
-                },
-                {   "GetHypervHostAsyncRequestStatusInput", new List<string> {
-                        "hypervHostAsyncRequestStatus",
-                    }
-                },
-                {   "GetHypervScvmmAsyncRequestStatusInput", new List<string> {
-                        "hypervScvmmAsyncRequestStatus",
-                    }
-                },
-                {   "GetHypervVirtualMachineAsyncRequestStatusInput", new List<string> {
-                        "hypervVirtualMachineAsyncRequestStatus",
-                    }
-                },
-                {   "GetHypervVirtualMachineInput", new List<string> {
-                        "hypervVmDetail",
-                    }
-                },
-                {   "GetIpmiInput", new List<string> {
-                        "clusterIpmi",
-                    }
-                },
-                {   "GetMissedMssqlDbSnapshotsInput", new List<string> {
-                        "mssqlDatabaseMissedSnapshots",
-                    }
-                },
-                {   "GetMissedOracleDbSnapshotsInput", new List<string> {
-                        "oracleMissedSnapshots",
-                    }
-                },
-                {   "GetMosaicRecoverableRangeInput", new List<string> {
-                        "cassandraColumnFamilyRecoverableRange",
-                        "mongodbCollectionRecoverableRange",
-                    }
-                },
-                {   "GetMosaicStoreInput", new List<string> {
-                        "mosaicStores",
-                    }
-                },
-                {   "GetMosaicTableSchemaInput", new List<string> {
-                        "cassandraColumnFamilySchema",
-                    }
-                },
-                {   "GetMosaicVersionInput", new List<string> {
-                        "mosaicSnapshots",
-                        "mosaicVersions",
-                    }
-                },
-                {   "GetMssqlDbMissedRecoverableRangesInput", new List<string> {
-                        "mssqlDatabaseMissedRecoverableRanges",
-                    }
-                },
-                {   "GetMssqlDbRecoverableRangesInput", new List<string> {
-                        "mssqlRecoverableRanges",
-                    }
-                },
-                {   "GetNetworkInterfaceInput", new List<string> {
-                        "clusterNetworkInterfaces",
-                    }
-                },
-                {   "GetNetworksInput", new List<string> {
-                        "vCenterNetworks",
-                    }
-                },
-                {   "GetNodesInput", new List<string> {
-                        "clusterNodes",
-                    }
-                },
-                {   "GetNumProxiesNeededInput", new List<string> {
-                        "vCenterNumProxiesNeeded",
-                    }
-                },
-                {   "GetNutanixClusterAsyncRequestStatusInput", new List<string> {
-                        "nutanixClusterAsyncRequestStatus",
-                    }
-                },
-                {   "GetNutanixNetworksInput", new List<string> {
-                        "nutanixClusterNetworks",
-                    }
-                },
-                {   "GetNutanixSnapshotDetailInput", new List<string> {
-                        "nutanixSnapshotDetail",
-                    }
-                },
-                {   "GetNutanixVmAsyncRequestStatusInput", new List<string> {
-                        "nutanixVmAsyncRequestStatus",
-                    }
-                },
-                {   "GetOracleAsyncRequestStatusInput", new List<string> {
-                        "oracleDatabaseAsyncRequestDetails",
-                    }
-                },
-                {   "GetOracleDbMissedRecoverableRangesInput", new List<string> {
-                        "oracleMissedRecoverableRanges",
-                    }
-                },
-                {   "GetOracleDbRecoverableRangesInput", new List<string> {
-                        "oracleRecoverableRanges",
-                    }
-                },
-                {   "GetPendingSlaAssignmentsInput", new List<string> {
-                        "getPendingSlaAssignments",
-                    }
-                },
-                {   "GetSmbConfigurationInput", new List<string> {
-                        "smbConfiguration",
-                    }
-                },
-                {   "GetSnmpConfigurationInput", new List<string> {
-                        "snmpConfigurations",
-                    }
-                },
-                {   "GetSyslogExportRulesInput", new List<string> {
-                        "syslogExportRules",
-                    }
-                },
-                {   "GetTunnelStatusInput", new List<string> {
-                        "tunnelStatus",
-                    }
-                },
-                {   "GetVlanInput", new List<string> {
-                        "clusterVlans",
-                    }
-                },
-                {   "GetVmwareHostInput", new List<string> {
-                        "vSphereHostDetails",
-                    }
-                },
-                {   "GlobalCertificateSortBy", new List<string> {
-                        "assignableGlobalCertificates",
-                        "globalCertificates",
-                    }
-                },
-                {   "GlobalCertificatesQueryInput", new List<string> {
-                        "assignableGlobalCertificates",
-                        "globalCertificates",
-                    }
-                },
-                {   "GlobalExistingSnapshotRetention", new List<string> {
-                        "assignSlasForSnappableHierarchies",
-                    }
-                },
-                {   "GlobalFileSearchInput", new List<string> {
-                        "globalFileSearch",
-                    }
-                },
-                {   "GroupFilterInput", new List<string> {
-                        "groupsInCurrentAndDescendantOrganization",
-                    }
-                },
-                {   "GroupSortByParam", new List<string> {
-                        "groupsInCurrentAndDescendantOrganization",
-                    }
-                },
-                {   "GuestOsCredentialSortBy", new List<string> {
-                        "guestCredentialsV2",
-                    }
-                },
-                {   "HasRelicAzureAdSnapshotInput", new List<string> {
-                        "hasRelicAzureAdSnapshot",
-                    }
-                },
-                {   "HelpContentSnippetsFilterInput", new List<string> {
-                        "helpContentSnippets",
-                    }
-                },
-                {   "HiddenStateFilter", new List<string> {
-                        "allUsersOnAccountConnection",
-                    }
-                },
-                {   "HideRevealNasNamespacesInput", new List<string> {
-                        "hideRevealNasNamespaces",
-                    }
-                },
-                {   "HideRevealNasSharesInput", new List<string> {
-                        "hideRevealNasShares",
-                    }
-                },
-                {   "HierarchySortByField", new List<string> {
-                        "activeDirectoryDomainControllers",
-                        "activeDirectoryDomains",
-                        "azureAdDirectories",
-                        "cassandraColumnFamilies",
-                        "cassandraKeyspaces",
-                        "cassandraSources",
-                        "db2Databases",
-                        "db2Instances",
-                        "exchangeDags",
-                        "exchangeDatabases",
-                        "exchangeServers",
-                        "failoverClusterApps",
-                        "failoverClusterTopLevelDescendants",
-                        "filesetTemplates",
-                        "globalSearchResults",
-                        "hierarchySnappables",
-                        "hostFailoverClusters",
-                        "hostShares",
-                        "hypervScvmms",
-                        "hypervTopLevelDescendants",
-                        "hypervVirtualMachines",
-                        "k8sClusters",
-                        "k8sNamespaces",
-                        "managedVolumeLiveMounts",
-                        "managedVolumes",
-                        "mongoCollections",
-                        "mongoDatabases",
-                        "mongodbCollections",
-                        "mongodbDatabases",
-                        "mongodbSources",
-                        "mongoSources",
-                        "mssqlDatabases",
-                        "mssqlTopLevelDescendants",
-                        "nasNamespaces",
-                        "nasSystems",
-                        "nasTopLevelDescendants",
-                        "nutanixClusters",
-                        "nutanixPrismCentrals",
-                        "nutanixTopLevelDescendants",
-                        "nutanixVms",
-                        "o365Groups",
-                        "o365Mailboxes",
-                        "o365Onedrives",
-                        "o365Orgs",
-                        "o365SharepointDrives",
-                        "o365SharepointLists",
-                        "o365SharepointObjectList",
-                        "o365SharepointObjects",
-                        "o365SharepointSites",
-                        "o365Sites",
-                        "o365Teams",
-                        "o365UserObjects",
-                        "oracleDatabases",
-                        "oracleTopLevelDescendants",
-                        "physicalHosts",
-                        "protectedObjectsConnection",
-                        "sapHanaDatabases",
-                        "sapHanaSystems",
-                        "slaManagedVolumes",
-                        "vcdVappVms",
-                        "vSphereComputeClusters",
-                        "vSphereDatastoreClusters",
-                        "vSphereDatastoreConnection",
-                        "vSphereFolders",
-                        "vSphereHostConnection",
-                        "vSphereRootRecoveryHierarchy",
-                        "vSphereTopLevelDescendantsConnection",
-                        "vSphereVCenterConnection",
-                        "vSphereVmNewConnection",
-                    }
-                },
-                {   "HostFailoverClusterRoot", new List<string> {
-                        "failoverClusterApps",
-                        "failoverClusterTopLevelDescendants",
-                        "hostFailoverClusters",
-                    }
-                },
-                {   "HostRoot", new List<string> {
-                        "filesetTemplates",
-                        "physicalHosts",
-                    }
-                },
-                {   "HypervDeleteAllSnapshotsInput", new List<string> {
-                        "hypervDeleteAllSnapshots",
-                    }
-                },
-                {   "HypervLiveMountSortByInput", new List<string> {
-                        "hypervMounts",
-                    }
-                },
-                {   "HypervOnDemandSnapshotInput", new List<string> {
-                        "hypervOnDemandSnapshot",
-                    }
-                },
-                {   "HypervScvmmDeleteInput", new List<string> {
-                        "hypervScvmmDelete",
-                    }
-                },
-                {   "HypervScvmmUpdateInput", new List<string> {
-                        "hypervScvmmUpdate",
-                    }
-                },
-                {   "InsertCustomerO365AppInput", new List<string> {
-                        "insertCustomerO365App",
-                    }
-                },
-                {   "InstallIoFilterInput", new List<string> {
-                        "installIoFilter",
-                    }
-                },
-                {   "InstantRecoverHypervVirtualMachineSnapshotInput", new List<string> {
-                        "instantRecoverHypervVirtualMachineSnapshot",
-                    }
-                },
-                {   "InstantRecoverOracleSnapshotInput", new List<string> {
-                        "instantRecoverOracleSnapshot",
-                    }
-                },
-                {   "Int", new List<string> {
-                        "activeDirectoryDomainControllers",
-                        "activeDirectoryDomains",
-                        "activeDirectorySearchSnapshots",
-                        "activitySeriesConnection",
-                        "adVolumeExports",
-                        "allCdpVmsInfos",
-                        "allCloudNativeLabelKeys",
-                        "allCloudNativeLabelValues",
-                        "allCloudNativeTagKeys",
-                        "allCloudNativeTagValues",
-                        "allClusterConnection",
-                        "allFileActivities",
-                        "allTopRiskPolicySummaries",
-                        "allUsersOnAccount",
-                        "allUsersOnAccountConnection",
-                        "allValidReplicationTargets",
-                        "anomalyResults",
-                        "anomalyResultsGrouped",
-                        "assignableGlobalCertificates",
-                        "awsNativeAccounts",
-                        "awsNativeEbsVolumes",
-                        "awsNativeEbsVolumesByName",
-                        "awsNativeEc2Instances",
-                        "awsNativeEc2InstancesByName",
-                        "awsNativeRdsInstances",
-                        "azureAdDirectories",
-                        "azureAdObjectsByType",
-                        "azureNativeManagedDisks",
-                        "azureNativeResourceGroups",
-                        "azureNativeSubscriptions",
-                        "azureNativeVirtualMachines",
-                        "azureSqlDatabases",
-                        "azureSqlDatabaseServers",
-                        "azureSqlManagedInstanceDatabases",
-                        "azureSqlManagedInstanceServers",
-                        "browseCalendar",
-                        "browseContacts",
-                        "browseFolder",
-                        "browseO365TeamConvChannels",
-                        "browseOnedrive",
-                        "browseSharepointDrive",
-                        "browseSharepointList",
-                        "browseSnapshotFileConnection",
-                        "browseTeamsChannels",
-                        "browseTeamsDrive",
-                        "cassandraColumnFamilies",
-                        "cassandraKeyspaces",
-                        "cassandraSources",
-                        "cdmMssqlLogShippingTargets",
-                        "certificates",
-                        "certificateSigningRequests",
-                        "cloudNativeSnapshots",
-                        "cloudNativeWorkloadVersionedFiles",
-                        "clusterConnection",
-                        "clusterGroupByConnection",
-                        "clusterReportMigrationStatus",
-                        "clusterSlaDomains",
-                        "clusterWithUpgradesInfo",
-                        "configuredGroupMembers",
-                        "db2Databases",
-                        "db2Instances",
-                        "db2LogSnapshots",
-                        "db2RecoverableRanges",
-                        "exchangeDags",
-                        "exchangeDatabases",
-                        "exchangeLiveMounts",
-                        "exchangeServers",
-                        "failoverClusterApps",
-                        "failoverClusterTopLevelDescendants",
-                        "filesetSnapshotFiles",
-                        "filesetTemplates",
-                        "gcpNativeDisks",
-                        "gcpNativeGceInstances",
-                        "gcpNativeProjects",
-                        "getAllRolesInOrgConnection",
-                        "getUserDownloads",
-                        "globalCertificates",
-                        "globalSearchResults",
-                        "globalSlaFilterConnection",
-                        "globalSlaStatuses",
-                        "groupsInCurrentAndDescendantOrganization",
-                        "guestCredentialsV2",
-                        "helpContentSnippets",
-                        "hierarchySnappables",
-                        "hostFailoverClusters",
-                        "hostShares",
-                        "hypervMounts",
-                        "hypervScvmms",
-                        "hypervTopLevelDescendants",
-                        "hypervVirtualMachines",
-                        "integration",
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                        "issues",
-                        "k8sClusters",
-                        "k8sNamespaces",
-                        "ldapAuthorizedPrincipalConnection",
-                        "ldapIntegrationConnection",
-                        "ldapPrincipalConnection",
-                        "legalHoldSnapshotsForSnappable",
-                        "listO365Apps",
-                        "managedVolumeLiveMounts",
-                        "managedVolumes",
-                        "mongoCollections",
-                        "mongoDatabases",
-                        "mongodbCollections",
-                        "mongodbDatabases",
-                        "mongodbSources",
-                        "mongoSources",
-                        "mssqlCompatibleInstances",
-                        "mssqlDatabaseLiveMounts",
-                        "mssqlDatabases",
-                        "mssqlTopLevelDescendants",
-                        "nasNamespaces",
-                        "nasSystems",
-                        "nasTopLevelDescendants",
-                        "nfAnomalyResults",
-                        "nfAnomalyResultsGrouped",
-                        "nutanixClusters",
-                        "nutanixMounts",
-                        "nutanixPrismCentrals",
-                        "nutanixTopLevelDescendants",
-                        "nutanixVms",
-                        "o365Groups",
-                        "o365Mailboxes",
-                        "o365Onedrives",
-                        "o365Orgs",
-                        "o365SharepointDrives",
-                        "o365SharepointLists",
-                        "o365SharepointObjectList",
-                        "o365SharepointObjects",
-                        "o365SharepointSites",
-                        "o365Sites",
-                        "o365TeamChannels",
-                        "o365TeamPostedBy",
-                        "o365Teams",
-                        "o365UserObjects",
-                        "oauthCodesForEdgeReg",
-                        "objectFiles",
-                        "objectTypeAccessSummary",
-                        "oracleDatabases",
-                        "oracleLiveMounts",
-                        "oracleTopLevelDescendants",
-                        "orgs",
-                        "overallRansomwareInvestigationSummary",
-                        "physicalHosts",
-                        "policy",
-                        "policyObjs",
-                        "protectedObjectsConnection",
-                        "radarClusterConnection",
-                        "ransomwareResults",
-                        "ransomwareResultsGrouped",
-                        "replicationPairs",
-                        "reportData",
-                        "roleTemplates",
-                        "sapHanaDatabases",
-                        "sapHanaLogSnapshots",
-                        "sapHanaRecoverableRanges",
-                        "sapHanaSystems",
-                        "scheduledReport",
-                        "scheduledReports",
-                        "searchAzureAdSnapshot",
-                        "searchSnappableConnection",
-                        "searchSnappableVersionedFiles",
-                        "serviceAccounts",
-                        "sharepointSiteDescendants",
-                        "sharepointSiteSearch",
-                        "slaAuditDetail",
-                        "slaDomains",
-                        "slaManagedVolumes",
-                        "smbDomains",
-                        "snappableConnection",
-                        "snappableContactSearch",
-                        "snappableEmailSearch",
-                        "snappableEventSearch",
-                        "snappableGroupByConnection",
-                        "snappableOnedriveSearch",
-                        "snappableSharepointDriveSearch",
-                        "snappableSharepointListSearch",
-                        "snappablesWithLegalHoldSnapshotsSummary",
-                        "snappableTeamsConversationsSearch",
-                        "snappableTeamsDriveSearch",
-                        "snapshotEmailSearch",
-                        "snapshotEventSearch",
-                        "snapshotFilesDelta",
-                        "snapshotFilesDeltaV2",
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                        "snapshotOnedriveSearch",
-                        "snapshotsForUnmanagedObject",
-                        "snapshotSharepointDriveSearch",
-                        "sonarContentReport",
-                        "sonarReportRow",
-                        "sonarUserGroups",
-                        "sonarUsers",
-                        "supportUserAccesses",
-                        "targets",
-                        "taskDetailConnection",
-                        "taskDetailGroupByConnection",
-                        "threatHunts",
-                        "unmanagedObjects",
-                        "userActivities",
-                        "userAnalyzerAccess",
-                        "userAuditConnection",
-                        "userGroups",
-                        "usersInCurrentAndDescendantOrganization",
-                        "vcdVappVms",
-                        "volumeGroupMounts",
-                        "vSphereComputeClusters",
-                        "vSphereDatastoreClusters",
-                        "vSphereDatastoreConnection",
-                        "vSphereFolders",
-                        "vSphereHostConnection",
-                        "vSphereLiveMounts",
-                        "vSphereMountConnection",
-                        "vSphereRootRecoveryHierarchy",
-                        "vSphereTopLevelDescendantsConnection",
-                        "vSphereVCenterConnection",
-                        "vSphereVmNewConnection",
-                        "workloadAnomalies",
-                    }
-                },
-                {   "InventorySubHierarchyRootEnum", new List<string> {
-                        "cdmInventorySubHierarchyRoot",
-                        "inventorySubHierarchyRoot",
-                        "polarisInventorySubHierarchyRoot",
-                    }
-                },
-                {   "InviteSsoGroupInput", new List<string> {
-                        "inviteSsoGroup",
-                    }
-                },
-                {   "IssueStatus", new List<string> {
-                        "issues",
-                    }
-                },
-                {   "JoinSmbDomainInput", new List<string> {
-                        "joinSmbDomain",
-                    }
-                },
-                {   "LdapAuthorizedPrincipalFieldEnum", new List<string> {
-                        "ldapAuthorizedPrincipalConnection",
-                    }
-                },
-                {   "LdapIntegrationFieldEnum", new List<string> {
-                        "ldapIntegrationConnection",
-                    }
-                },
-                {   "LdapPrincipalFieldEnum", new List<string> {
-                        "ldapPrincipalConnection",
-                    }
-                },
-                {   "LegalHoldSnapshotsForSnappableInput", new List<string> {
-                        "legalHoldSnapshotsForSnappable",
-                    }
-                },
-                {   "LicensesForClusterProductSummaryInput", new List<string> {
-                        "licensesForClusterProductSummary",
-                    }
-                },
-                {   "ListAccessGroupsFilterInput", new List<string> {
-                        "sonarUserGroups",
-                    }
-                },
-                {   "ListAccessUsersFilterInput", new List<string> {
-                        "sonarUsers",
-                    }
-                },
-                {   "ListAccessUsersSortInput", new List<string> {
-                        "sonarUsers",
-                    }
-                },
-                {   "ListCidrsForComputeSettingInput", new List<string> {
-                        "listCidrsForComputeSetting",
-                    }
-                },
-                {   "ListFileActivitiesInput", new List<string> {
-                        "allFileActivities",
-                    }
-                },
-                {   "ListObjectFilesFiltersInput", new List<string> {
-                        "objectFiles",
-                        "userActivities",
-                    }
-                },
-                {   "ListValidReplicationTargetsSortByField", new List<string> {
-                        "allValidReplicationTargets",
-                    }
-                },
-                {   "LockUsersByAdminInput", new List<string> {
-                        "lockUsersByAdmin",
-                    }
-                },
-                {   "LockoutStateFilter", new List<string> {
-                        "allUsersOnAccountConnection",
-                    }
-                },
-                {   "Long", new List<string> {
-                        "allPendingActions",
-                        "deleteCertificate",
-                        "getCdmReleaseDetailsFromSupportPortal",
-                        "getDownloadUrl",
-                        "removeCdmCluster",
-                        "snapshotResults",
-                        "startDownloadPackageBatchJob",
-                        "updateCertificate",
-                    }
-                },
-                {   "LookupAccountInput", new List<string> {
-                        "lookupAccount",
-                    }
-                },
-                {   "MakePrimaryInput", new List<string> {
-                        "makePrimary",
-                    }
-                },
-                {   "MapAzureCloudAccountExocomputeSubscriptionInput", new List<string> {
-                        "mapAzureCloudAccountExocomputeSubscription",
-                    }
-                },
-                {   "MapAzureCloudAccountToPersistentStorageLocationInput", new List<string> {
-                        "mapAzureCloudAccountToPersistentStorageLocation",
-                    }
-                },
-                {   "MapCloudAccountExocomputeAccountInput", new List<string> {
-                        "mapCloudAccountExocomputeAccount",
-                    }
-                },
-                {   "MarkAgentSecondaryCertificateInput", new List<string> {
-                        "markAgentSecondaryCertificate",
-                    }
-                },
-                {   "MigrateNutanixMountV1Input", new List<string> {
-                        "migrateNutanixMountV1",
-                    }
-                },
-                {   "ModifyActiveDirectoryLiveMountInput", new List<string> {
-                        "modifyActiveDirectoryLiveMount",
-                    }
-                },
-                {   "ModifyIpmiInput", new List<string> {
-                        "modifyIpmi",
-                    }
-                },
-                {   "ModifyMosaicSourceInput", new List<string> {
-                        "updateCassandraSource",
-                        "updateMongodbSource",
-                    }
-                },
-                {   "ModifyMosaicStoreInput", new List<string> {
-                        "updateMosaicStore",
-                    }
-                },
-                {   "MosaicBulkRecoveryRangeInput", new List<string> {
-                        "mongodbBulkRecoverableRange",
-                        "mosaicBulkRecoveryRange",
-                    }
-                },
-                {   "MosaicRestoreDataInput", new List<string> {
-                        "recoverCassandraSource",
-                        "recoverMongodbSource",
-                    }
-                },
-                {   "MosaicStorageLocationQuerySortByField", new List<string> {
-                        "allNosqlStorageLocations",
-                    }
-                },
-                {   "MountDiskInput", new List<string> {
-                        "mountDisk",
-                    }
-                },
-                {   "MountNutanixSnapshotV1Input", new List<string> {
-                        "mountNutanixSnapshotV1",
-                    }
-                },
-                {   "MountOracleDatabaseInput", new List<string> {
-                        "mountOracleDatabase",
-                    }
-                },
-                {   "MssqlCompatibleInstancesSortByInput", new List<string> {
-                        "mssqlCompatibleInstances",
-                    }
-                },
-                {   "MssqlDatabaseLiveMountSortByInput", new List<string> {
-                        "mssqlDatabaseLiveMounts",
-                    }
-                },
-                {   "MssqlGetRestoreFilesV1Input", new List<string> {
-                        "allMssqlDatabaseRestoreFiles",
-                    }
-                },
-                {   "MssqlLogShippingTargetSortByInput", new List<string> {
-                        "cdmMssqlLogShippingTargets",
-                    }
-                },
-                {   "MssqlRestoreEstimateV1Input", new List<string> {
-                        "mssqlDatabaseRestoreEstimate",
-                    }
-                },
-                {   "NfAnomalyResultFilterInput", new List<string> {
-                        "nfAnomalyResults",
-                        "nfAnomalyResultsGrouped",
-                    }
-                },
-                {   "NfAnomalyResultGroupBy", new List<string> {
-                        "nfAnomalyResultsGrouped",
-                    }
-                },
-                {   "NfAnomalyResultSortBy", new List<string> {
-                        "nfAnomalyResults",
-                    }
-                },
-                {   "NodeRemovalCancelPermissionInput", new List<string> {
-                        "nodeRemovalCancelPermission",
-                    }
-                },
-                {   "NodeToReplaceInput", new List<string> {
-                        "nodeToReplace",
-                    }
-                },
-                {   "NutanixLiveMountSortByInput", new List<string> {
-                        "nutanixMounts",
-                    }
-                },
-                {   "NutanixMissedSnapshotsInput", new List<string> {
-                        "nutanixVmMissedSnapshots",
-                    }
-                },
-                {   "O365OauthConsentCompleteInput", new List<string> {
-                        "o365OauthConsentComplete",
-                    }
-                },
-                {   "O365OauthConsentKickoffInput", new List<string> {
-                        "o365OauthConsentKickoff",
-                    }
-                },
-                {   "O365PdlGroupsInput", new List<string> {
-                        "o365PdlGroups",
-                    }
-                },
-                {   "O365SaasSetupCompleteInput", new List<string> {
-                        "o365SaasSetupComplete",
-                    }
-                },
-                {   "ObjectTypeAccessSummarySortBy", new List<string> {
-                        "objectTypeAccessSummary",
-                    }
-                },
-                {   "ObjectTypeSummariesFilter", new List<string> {
-                        "objectTypeAccessSummary",
-                    }
-                },
-                {   "OnedriveSearchFilter", new List<string> {
-                        "browseOnedrive",
-                        "browseSharepointDrive",
-                        "browseSharepointList",
-                        "browseTeamsDrive",
-                        "snappableOnedriveSearch",
-                        "snappableSharepointDriveSearch",
-                        "snappableSharepointListSearch",
-                        "snappableTeamsDriveSearch",
-                        "snapshotOnedriveSearch",
-                        "snapshotSharepointDriveSearch",
-                    }
-                },
-                {   "Operation", new List<string> {
-                        "awsNativeAccounts",
-                        "azureNativeSubscriptions",
-                        "gcpNativeProjects",
-                    }
-                },
-                {   "OracleDbInput", new List<string> {
-                        "oracleDatabaseLogBackupConfig",
-                    }
-                },
-                {   "OracleHostInput", new List<string> {
-                        "oracleHostLogBackupConfig",
-                    }
-                },
-                {   "OracleLiveMountSortBy", new List<string> {
-                        "oracleLiveMounts",
-                    }
-                },
-                {   "OraclePdbDetailsInput", new List<string> {
-                        "oraclePdbDetails",
-                    }
-                },
-                {   "OracleRacInput", new List<string> {
-                        "oracleRacLogBackupConfig",
-                    }
-                },
-                {   "OrgField", new List<string> {
-                        "orgs",
-                    }
-                },
-                {   "PatchAwsAuthenticationServerBasedCloudAccountInput", new List<string> {
-                        "patchAwsAuthenticationServerBasedCloudAccount",
-                    }
-                },
-                {   "PatchAwsIamUserBasedCloudAccountInput", new List<string> {
-                        "patchAwsIamUserBasedCloudAccount",
-                    }
-                },
-                {   "PatchDb2DatabaseInput", new List<string> {
-                        "patchDb2Database",
-                    }
-                },
-                {   "PatchDb2InstanceInput", new List<string> {
-                        "patchDb2Instance",
-                    }
-                },
-                {   "PatchMongoSourceInput", new List<string> {
-                        "patchMongoSource",
-                    }
-                },
-                {   "PatchNutanixMountV1Input", new List<string> {
-                        "patchNutanixMountV1",
-                    }
-                },
-                {   "PatchSapHanaSystemInput", new List<string> {
-                        "patchSapHanaSystem",
-                    }
-                },
-                {   "PauseSlaInput", new List<string> {
-                        "pauseSla",
-                    }
-                },
-                {   "PauseTargetInput", new List<string> {
-                        "pauseTarget",
-                    }
-                },
-                {   "PolicyAssignmentType", new List<string> {
-                        "policy",
-                    }
-                },
-                {   "PolicyDetailsSortBy", new List<string> {
-                        "policy",
-                    }
-                },
-                {   "PolicyObjectFilter", new List<string> {
-                        "policies",
-                    }
-                },
-                {   "PreAddVcenterInput", new List<string> {
-                        "vCenterPreAddInfo",
-                    }
-                },
-                {   "PrepareAwsCloudAccountDeletionInput", new List<string> {
-                        "prepareAwsCloudAccountDeletion",
-                    }
-                },
-                {   "PrepareFeatureUpdateForAwsCloudAccountInput", new List<string> {
-                        "prepareFeatureUpdateForAwsCloudAccount",
-                    }
-                },
-                {   "PreviewFilterInput", new List<string> {
-                        "vCenterAdvancedTagPreview",
-                    }
-                },
-                {   "PreviewerClusterConfigInput", new List<string> {
-                        "updatePreviewerClusterConfig",
-                    }
-                },
-                {   "PromoteReaderTargetInput", new List<string> {
-                        "promoteReaderTarget",
-                    }
-                },
-                {   "PutSmbConfigurationInput", new List<string> {
-                        "putSmbConfiguration",
-                    }
-                },
-                {   "QueryCertificatesInput", new List<string> {
-                        "clusterCertificates",
-                    }
-                },
-                {   "QueryGuestCredentialInput", new List<string> {
-                        "guestCredentials",
-                    }
-                },
-                {   "QueryHypervHostInput", new List<string> {
-                        "hypervServers",
-                    }
-                },
-                {   "QueryLogReportInput", new List<string> {
-                        "databaseLogReportForCluster",
-                    }
-                },
-                {   "QueryLogShippingConfigurationsV2Input", new List<string> {
-                        "mssqlLogShippingTargets",
-                    }
-                },
-                {   "QueryNetworkThrottleInput", new List<string> {
-                        "networkThrottle",
-                    }
-                },
-                {   "QueryReportPropertiesInput", new List<string> {
-                        "databaseLogReportingPropertiesForCluster",
-                    }
-                },
-                {   "QuerySupportBundleInput", new List<string> {
-                        "supportBundle",
-                    }
-                },
-                {   "QueryUnmanagedObjectSnapshotsV1Input", new List<string> {
-                        "snapshotsForUnmanagedObject",
-                    }
-                },
-                {   "RansomwareResultFilterInput", new List<string> {
-                        "ransomwareResults",
-                        "ransomwareResultsGrouped",
-                    }
-                },
-                {   "RansomwareResultGroupBy", new List<string> {
-                        "ransomwareResultsGrouped",
-                    }
-                },
-                {   "RansomwareResultSortBy", new List<string> {
-                        "ransomwareResults",
-                    }
-                },
-                {   "RcsConsumptionStatsInput", new List<string> {
-                        "rcsArchivalLocationsConsumptionStats",
-                    }
-                },
-                {   "RecoverCloudClusterInput", new List<string> {
-                        "recoverCloudCluster",
-                    }
-                },
-                {   "RecoverCloudDirectMultiPathsInput", new List<string> {
-                        "recoverCloudDirectMultiPaths",
-                    }
-                },
-                {   "RecoverCloudDirectPathInput", new List<string> {
-                        "recoverCloudDirectPath",
-                    }
-                },
-                {   "RecoverMongoSourceInput", new List<string> {
-                        "recoverMongoSource",
-                    }
-                },
-                {   "RecoverableRangeInput", new List<string> {
-                        "mongoBulkRecoverableRanges",
-                        "mongoRecoverableRanges",
-                    }
-                },
-                {   "RefreshDb2DatabaseInput", new List<string> {
-                        "refreshDb2Database",
-                    }
-                },
-                {   "RefreshDomainInput", new List<string> {
-                        "refreshDomain",
-                    }
-                },
-                {   "RefreshHostInput", new List<string> {
-                        "refreshHost",
-                    }
-                },
-                {   "RefreshHypervScvmmInput", new List<string> {
-                        "refreshHypervScvmm",
-                    }
-                },
-                {   "RefreshHypervServerInput", new List<string> {
-                        "refreshHypervServer",
-                    }
-                },
-                {   "RefreshK8sClusterInput", new List<string> {
-                        "refreshK8sCluster",
-                    }
-                },
-                {   "RefreshNasSystemsInput", new List<string> {
-                        "refreshNasSystems",
-                    }
-                },
-                {   "RefreshNutanixClusterInput", new List<string> {
-                        "refreshNutanixCluster",
-                    }
-                },
-                {   "RefreshNutanixPrismCentralInput", new List<string> {
-                        "refreshNutanixPrismCentral",
-                    }
-                },
-                {   "RefreshOracleDatabaseInput", new List<string> {
-                        "refreshOracleDatabase",
-                    }
-                },
-                {   "RefreshReaderTargetInput", new List<string> {
-                        "refreshReaderTarget",
-                    }
-                },
-                {   "RefreshStorageArraysInput", new List<string> {
-                        "refreshStorageArrays",
-                    }
-                },
-                {   "RefreshVsphereVcenterInput", new List<string> {
-                        "refreshVsphereVcenter",
-                    }
-                },
-                {   "RegisterAgentHypervVirtualMachineInput", new List<string> {
-                        "registerAgentHypervVirtualMachine",
-                    }
-                },
-                {   "RegisterAgentNutanixVmInput", new List<string> {
-                        "registerAgentNutanixVm",
-                    }
-                },
-                {   "RegisterAwsFeatureArtifactsInput", new List<string> {
-                        "registerAwsFeatureArtifacts",
-                    }
-                },
-                {   "RegisterCloudClusterInput", new List<string> {
-                        "registerCloudCluster",
-                    }
-                },
-                {   "RegisterHypervScvmmInput", new List<string> {
-                        "registerHypervScvmm",
-                    }
-                },
-                {   "RegisterNasSystemInput", new List<string> {
-                        "registerNasSystem",
-                    }
-                },
-                {   "RemoveClusterNodesInput", new List<string> {
-                        "removeClusterNodes",
-                    }
-                },
-                {   "RemoveDiskInput", new List<string> {
-                        "removeDisk",
-                    }
-                },
-                {   "RemoveInventoryWorkloadsInput", new List<string> {
-                        "removeInventoryWorkloads",
-                    }
-                },
-                {   "RemovePrivateEndpointConnectionInput", new List<string> {
-                        "removePrivateEndpointConnection",
-                    }
-                },
-                {   "RemoveProxyConfigInput", new List<string> {
-                        "removeProxyConfig",
-                    }
-                },
-                {   "RemoveVlansInput", new List<string> {
-                        "removeVlans",
-                    }
-                },
-                {   "ReplicationBandwidthIncomingInput", new List<string> {
-                        "replicationIncomingStats",
-                    }
-                },
-                {   "ReplicationBandwidthOutgoingInput", new List<string> {
-                        "replicationOutgoingStats",
-                    }
-                },
-                {   "ReplicationPairsQueryFilter", new List<string> {
-                        "replicationPairs",
-                    }
-                },
-                {   "ReplicationPairsQuerySortByField", new List<string> {
-                        "replicationPairs",
-                    }
-                },
-                {   "ReseedLogShippingSecondaryInput", new List<string> {
-                        "reseedLogShippingSecondary",
-                    }
-                },
-                {   "ResetUsersPasswordsWithUserIdsInput", new List<string> {
-                        "resetUsersPasswordsWithUserIds",
-                    }
-                },
-                {   "ResizeDiskInput", new List<string> {
-                        "resizeDisk",
-                    }
-                },
-                {   "ResizeManagedVolumeInput", new List<string> {
-                        "resizeManagedVolume",
-                    }
-                },
-                {   "ResolveVolumeGroupsConflictInput", new List<string> {
-                        "resolveVolumeGroupsConflict",
-                    }
-                },
-                {   "ResourceInput", new List<string> {
-                        "userFileActivityTimeline",
-                    }
-                },
-                {   "RestoreActiveDirectoryObjectsInput", new List<string> {
-                        "restoreActiveDirectoryObjects",
-                    }
-                },
-                {   "RestoreAzureAdObjectsWithPasswordsInput", new List<string> {
-                        "restoreAzureAdObjectsWithPasswords",
-                    }
-                },
-                {   "RestoreDomainControllerSnapshotInput", new List<string> {
-                        "restoreDomainControllerSnapshot",
-                    }
-                },
-                {   "RestoreFilesNutanixSnapshotInput", new List<string> {
-                        "restoreFilesNutanixSnapshot",
-                    }
-                },
-                {   "RestoreHypervVirtualMachineSnapshotFilesInput", new List<string> {
-                        "restoreHypervVirtualMachineSnapshotFiles",
-                    }
-                },
-                {   "RestoreK8sNamespaceInput", new List<string> {
-                        "restoreK8sNamespace",
-                    }
-                },
-                {   "RestoreMssqlDatabaseInput", new List<string> {
-                        "restoreMssqlDatabase",
-                    }
-                },
-                {   "RestoreO365MailboxInput", new List<string> {
-                        "restoreO365Mailbox",
-                    }
-                },
-                {   "RestoreO365SnappableInput", new List<string> {
-                        "restoreO365Snappable",
-                    }
-                },
-                {   "RestoreO365TeamsConversationsInput", new List<string> {
-                        "restoreO365TeamsConversations",
-                    }
-                },
-                {   "RestoreO365TeamsFilesInput", new List<string> {
-                        "restoreO365TeamsFiles",
-                    }
-                },
-                {   "RestoreOracleLogsInput", new List<string> {
-                        "restoreOracleLogs",
-                    }
-                },
-                {   "RestoreVolumeGroupSnapshotFilesInput", new List<string> {
-                        "restoreVolumeGroupSnapshotFiles",
-                    }
-                },
-                {   "ResumeTargetInput", new List<string> {
-                        "resumeTarget",
-                    }
-                },
-                {   "RetryAddMongoSourceInput", new List<string> {
-                        "retryAddMongoSource",
-                    }
-                },
-                {   "RevokeAllOrgRolesInput", new List<string> {
-                        "revokeAllOrgRoles",
-                    }
-                },
-                {   "RoleFieldEnum", new List<string> {
-                        "getAllRolesInOrgConnection",
-                    }
-                },
-                {   "RotateServiceAccountSecretInput", new List<string> {
-                        "rotateServiceAccountSecret",
-                    }
-                },
-                {   "RunCustomAnalyzerInput", new List<string> {
-                        "runCustomAnalyzer",
-                    }
-                },
-                {   "SapHanaLogSnapshotFilterInput", new List<string> {
-                        "sapHanaLogSnapshots",
-                    }
-                },
-                {   "SapHanaLogSnapshotSortBy", new List<string> {
-                        "sapHanaLogSnapshots",
-                    }
-                },
-                {   "SapHanaRecoverableRangeFilterInput", new List<string> {
-                        "sapHanaRecoverableRanges",
-                    }
-                },
-                {   "SapHanaRecoverableRangeSortBy", new List<string> {
-                        "sapHanaRecoverableRanges",
-                    }
-                },
-                {   "ScheduledReportFilterInput", new List<string> {
-                        "scheduledReports",
-                    }
-                },
-                {   "SddlRequestFiltersInput", new List<string> {
-                        "datagovSecDesc",
-                    }
-                },
-                {   "SearchAzureAdSnapshotInput", new List<string> {
-                        "searchAzureAdSnapshot",
-                    }
-                },
-                {   "SearchFilter", new List<string> {
-                        "snappableEmailSearch",
-                        "snapshotEmailSearch",
-                    }
-                },
-                {   "SearchNutanixVmInput", new List<string> {
-                        "searchNutanixVm",
-                    }
-                },
-                {   "SendPdfReportInput", new List<string> {
-                        "sendPdfReport",
-                    }
-                },
-                {   "SendScheduledReportAsyncInput", new List<string> {
-                        "sendScheduledReportAsync",
-                    }
-                },
-                {   "ServiceAccountSortBy", new List<string> {
-                        "serviceAccounts",
-                    }
-                },
-                {   "ServiceTier", new List<string> {
-                        "isZrsAvailableForLocation",
-                    }
-                },
-                {   "SetAnalyzerRisksInput", new List<string> {
-                        "setAnalyzerRisks",
-                    }
-                },
-                {   "SetAzureCloudAccountCustomerAppCredentialsInput", new List<string> {
-                        "setAzureCloudAccountCustomerAppCredentials",
-                    }
-                },
-                {   "SetCustomerTagsInput", new List<string> {
-                        "setCustomerTags",
-                    }
-                },
-                {   "SetDatastoreFreespaceThresholdsInput", new List<string> {
-                        "setDatastoreFreespaceThresholds",
-                    }
-                },
-                {   "SetLdapMfaSettingInput", new List<string> {
-                        "setLdapMfaSetting",
-                    }
-                },
-                {   "SetMfaSettingInput", new List<string> {
-                        "setMfaSetting",
-                    }
-                },
-                {   "SetPasswordComplexityPolicyInput", new List<string> {
-                        "setPasswordComplexityPolicy",
-                    }
-                },
-                {   "SetSsoCertificateInput", new List<string> {
-                        "setSsoCertificate",
-                    }
-                },
-                {   "SetTotpConfigInput", new List<string> {
-                        "setTotpConfig",
-                    }
-                },
-                {   "SetUpgradeTypeInput", new List<string> {
-                        "setUpgradeType",
-                    }
-                },
-                {   "SetUserLevelTotpEnforcementInput", new List<string> {
-                        "setUserLevelTotpEnforcement",
-                    }
-                },
-                {   "SetWebSignedCertificateInput", new List<string> {
-                        "setWebSignedCertificate",
-                    }
-                },
-                {   "SetWorkloadAlertSettingInput", new List<string> {
-                        "setWorkloadAlertSetting",
-                    }
-                },
-                {   "SetupCloudNativeSqlServerBackupInput", new List<string> {
-                        "setupCloudNativeSqlServerBackup",
-                    }
-                },
-                {   "SetupDiskInput", new List<string> {
-                        "setupDisk",
-                    }
-                },
-                {   "SharePointDescendantType", new List<string> {
-                        "browseSharepointDrive",
-                        "snappableSharepointDriveSearch",
-                    }
-                },
-                {   "SharePointSearchFilter", new List<string> {
-                        "sharepointSiteDescendants",
-                        "sharepointSiteSearch",
-                    }
-                },
-                {   "SlaAssignTypeEnum", new List<string> {
-                        "assignRetentionSLAToSnappables",
-                        "assignRetentionSLAToSnapshots",
-                        "assignSlasForSnappableHierarchies",
-                    }
-                },
-                {   "SlaQuerySortByField", new List<string> {
-                        "globalSlaFilterConnection",
-                        "slaDomains",
-                    }
-                },
-                {   "SmbDomainSortByInput", new List<string> {
-                        "smbDomains",
-                    }
-                },
-                {   "SnappableFilterInput", new List<string> {
-                        "snappableConnection",
-                    }
-                },
-                {   "SnappableFilterInputWithSearch", new List<string> {
-                        "searchSnappableConnection",
-                    }
-                },
-                {   "SnappableGroupByEnum", new List<string> {
-                        "snappableGroupByConnection",
-                    }
-                },
-                {   "SnappableGroupByFilterInput", new List<string> {
-                        "snappableGroupByConnection",
-                    }
-                },
-                {   "SnappableSortByEnum", new List<string> {
-                        "searchSnappableConnection",
-                        "snappableConnection",
-                    }
-                },
-                {   "SnappableType", new List<string> {
-                        "o365Groups",
-                        "o365OrgAtSnappableLevel",
-                    }
-                },
-                {   "SnappablesWithLegalHoldSnapshotsInput", new List<string> {
-                        "snappablesWithLegalHoldSnapshotsSummary",
-                    }
-                },
-                {   "SnapshotDeltaFilterInput", new List<string> {
-                        "snapshotFilesDelta",
-                        "snapshotFilesDeltaV2",
-                    }
-                },
-                {   "SnapshotQuerySortByField", new List<string> {
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                    }
-                },
-                {   "SonarContentReportFilter", new List<string> {
-                        "sonarContentReport",
-                    }
-                },
-                {   "SortOrder", new List<string> {
-                        "activeDirectoryDomainControllers",
-                        "activeDirectoryDomains",
-                        "activitySeriesConnection",
-                        "allAwsComputeSettings",
-                        "allCloudAccounts",
-                        "allClusterConnection",
-                        "allNosqlStorageLocations",
-                        "allPendingActions",
-                        "allTargetMappings",
-                        "allTargets",
-                        "allUsersOnAccountConnection",
-                        "allValidReplicationTargets",
-                        "anomalyResults",
-                        "assignableGlobalCertificates",
-                        "awsNativeAccounts",
-                        "awsNativeEbsVolumes",
-                        "awsNativeEbsVolumesByName",
-                        "awsNativeEc2Instances",
-                        "awsNativeEc2InstancesByName",
-                        "awsNativeRdsInstances",
-                        "azureAdDirectories",
-                        "azureAdObjectsByType",
-                        "azureNativeManagedDisks",
-                        "azureNativeResourceGroups",
-                        "azureNativeSubscriptions",
-                        "azureNativeVirtualMachines",
-                        "azureSqlDatabases",
-                        "azureSqlDatabaseServers",
-                        "azureSqlManagedInstanceDatabases",
-                        "azureSqlManagedInstanceServers",
-                        "cassandraColumnFamilies",
-                        "cassandraKeyspaces",
-                        "cassandraSources",
-                        "certificates",
-                        "certificateSigningRequests",
-                        "cloudNativeLabelRules",
-                        "cloudNativeTagRules",
-                        "clusterConnection",
-                        "clusterWithUpgradesInfo",
-                        "db2Databases",
-                        "db2Instances",
-                        "db2LogSnapshots",
-                        "db2RecoverableRanges",
-                        "exchangeDags",
-                        "exchangeDatabases",
-                        "exchangeServers",
-                        "failoverClusterApps",
-                        "failoverClusterTopLevelDescendants",
-                        "filesetTemplates",
-                        "gcpNativeDisks",
-                        "gcpNativeGceInstances",
-                        "gcpNativeProjects",
-                        "getAllRolesInOrgConnection",
-                        "getCdmReleaseDetailsForClusterFromSupportPortal",
-                        "getCdmReleaseDetailsForVersionFromSupportPortal",
-                        "getCdmReleaseDetailsFromSupportPortal",
-                        "globalCertificates",
-                        "globalSearchResults",
-                        "globalSlaFilterConnection",
-                        "hierarchySnappables",
-                        "hostFailoverClusters",
-                        "hostShares",
-                        "hypervScvmms",
-                        "hypervTopLevelDescendants",
-                        "hypervVirtualMachines",
-                        "k8sClusters",
-                        "k8sNamespaces",
-                        "ldapAuthorizedPrincipalConnection",
-                        "ldapIntegrationConnection",
-                        "ldapPrincipalConnection",
-                        "managedVolumeLiveMounts",
-                        "managedVolumes",
-                        "mongoCollections",
-                        "mongoDatabases",
-                        "mongodbCollections",
-                        "mongodbDatabases",
-                        "mongodbSources",
-                        "mongoSources",
-                        "mssqlDatabases",
-                        "mssqlTopLevelDescendants",
-                        "nasNamespaces",
-                        "nasSystems",
-                        "nasTopLevelDescendants",
-                        "nfAnomalyResults",
-                        "nutanixClusters",
-                        "nutanixPrismCentrals",
-                        "nutanixTopLevelDescendants",
-                        "nutanixVms",
-                        "o365Groups",
-                        "o365Mailboxes",
-                        "o365Onedrives",
-                        "o365Orgs",
-                        "o365SharepointDrives",
-                        "o365SharepointLists",
-                        "o365SharepointObjectList",
-                        "o365SharepointObjects",
-                        "o365SharepointSites",
-                        "o365Sites",
-                        "o365Teams",
-                        "o365UserObjects",
-                        "objectTypeAccessSummary",
-                        "oracleDatabases",
-                        "oracleTopLevelDescendants",
-                        "orgs",
-                        "physicalHosts",
-                        "policy",
-                        "policyObjs",
-                        "protectedObjectsConnection",
-                        "radarClusterConnection",
-                        "replicationPairs",
-                        "reportData",
-                        "sapHanaDatabases",
-                        "sapHanaLogSnapshots",
-                        "sapHanaRecoverableRanges",
-                        "sapHanaSystems",
-                        "searchSnappableConnection",
-                        "serviceAccounts",
-                        "slaDomains",
-                        "slaManagedVolumes",
-                        "snappableConnection",
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                        "sonarContentReport",
-                        "sonarReportRow",
-                        "supportUserAccesses",
-                        "targets",
-                        "taskDetailConnection",
-                        "userAuditConnection",
-                        "vcdVappVms",
-                        "vSphereComputeClusters",
-                        "vSphereDatastoreClusters",
-                        "vSphereDatastoreConnection",
-                        "vSphereFolders",
-                        "vSphereHostConnection",
-                        "vSphereMountConnection",
-                        "vSphereRootRecoveryHierarchy",
-                        "vSphereTopLevelDescendantsConnection",
-                        "vSphereVCenterConnection",
-                        "vSphereVmNewConnection",
-                        "workloadAnomalies",
-                    }
-                },
-                {   "StartAwsExocomputeDisableJobInput", new List<string> {
-                        "startAwsExocomputeDisableJob",
-                    }
-                },
-                {   "StartAwsNativeAccountDisableJobInput", new List<string> {
-                        "startAwsNativeAccountDisableJob",
-                    }
-                },
-                {   "StartAwsNativeEc2InstanceSnapshotsJobInput", new List<string> {
-                        "startAwsNativeEc2InstanceSnapshotsJob",
-                    }
-                },
-                {   "StartAwsNativeRdsInstanceSnapshotsJobInput", new List<string> {
-                        "startAwsNativeRdsInstanceSnapshotsJob",
-                    }
-                },
-                {   "StartAzureAdAppSetupInput", new List<string> {
-                        "startAzureAdAppSetup",
-                    }
-                },
-                {   "StartAzureAdAppUpdateInput", new List<string> {
-                        "startAzureAdAppUpdate",
-                    }
-                },
-                {   "StartAzureCloudAccountOauthInput", new List<string> {
-                        "startAzureCloudAccountOauth",
-                    }
-                },
-                {   "StartCloudNativeSnapshotsIndexJobInput", new List<string> {
-                        "startCloudNativeSnapshotsIndexJob",
-                    }
-                },
-                {   "StartClusterReportMigrationJobInput", new List<string> {
-                        "startClusterReportMigrationJob",
-                    }
-                },
-                {   "StartCreateAwsNativeEbsVolumeSnapshotsJobInput", new List<string> {
-                        "startCreateAwsNativeEbsVolumeSnapshotsJob",
-                    }
-                },
-                {   "StartCreateAzureNativeManagedDiskSnapshotsJobInput", new List<string> {
-                        "startCreateAzureNativeManagedDiskSnapshotsJob",
-                    }
-                },
-                {   "StartCreateAzureNativeVirtualMachineSnapshotsJobInput", new List<string> {
-                        "startCreateAzureNativeVirtualMachineSnapshotsJob",
-                    }
-                },
-                {   "StartDisableAzureCloudAccountJobInput", new List<string> {
-                        "startDisableAzureCloudAccountJob",
-                    }
-                },
-                {   "StartDisableAzureNativeSubscriptionProtectionJobInput", new List<string> {
-                        "startDisableAzureNativeSubscriptionProtectionJob",
-                    }
-                },
-                {   "StartEc2InstanceSnapshotExportJobInput", new List<string> {
-                        "startEc2InstanceSnapshotExportJob",
-                    }
-                },
-                {   "StartExportAwsNativeEbsVolumeSnapshotJobInput", new List<string> {
-                        "startExportAwsNativeEbsVolumeSnapshotJob",
-                    }
-                },
-                {   "StartExportAzureNativeManagedDiskJobInput", new List<string> {
-                        "startExportAzureNativeManagedDiskJob",
-                    }
-                },
-                {   "StartExportAzureNativeVirtualMachineJobInput", new List<string> {
-                        "startExportAzureNativeVirtualMachineJob",
-                    }
-                },
-                {   "StartExportAzureSqlDatabaseDbJobInput", new List<string> {
-                        "startExportAzureSqlDatabaseDbJob",
-                    }
-                },
-                {   "StartExportAzureSqlManagedInstanceDbJobInput", new List<string> {
-                        "startExportAzureSqlManagedInstanceDbJob",
-                    }
-                },
-                {   "StartExportRdsInstanceJobInput", new List<string> {
-                        "startExportRdsInstanceJob",
-                    }
-                },
-                {   "StartRecoverS3SnapshotJobInput", new List<string> {
-                        "startRecoverS3SnapshotJob",
-                    }
-                },
-                {   "StartRefreshAwsNativeAccountsJobInput", new List<string> {
-                        "startRefreshAwsNativeAccountsJob",
-                    }
-                },
-                {   "StartRefreshAzureNativeSubscriptionsJobInput", new List<string> {
-                        "startRefreshAzureNativeSubscriptionsJob",
-                    }
-                },
-                {   "StartRestoreAwsNativeEc2InstanceSnapshotJobInput", new List<string> {
-                        "startRestoreAwsNativeEc2InstanceSnapshotJob",
-                    }
-                },
-                {   "StartRestoreAzureNativeVirtualMachineJobInput", new List<string> {
-                        "startRestoreAzureNativeVirtualMachineJob",
-                    }
-                },
-                {   "StartThreatHuntInput", new List<string> {
-                        "startThreatHunt",
-                    }
-                },
-                {   "StartVolumeGroupMountInput", new List<string> {
-                        "startVolumeGroupMount",
-                    }
-                },
-                {   "StopJobInstanceFromEventSeriesInput", new List<string> {
-                        "stopJobInstanceFromEventSeries",
-                    }
-                },
-                {   "StopJobInstanceInput", new List<string> {
-                        "stopJobInstance",
-                    }
-                },
-                {   "String", new List<string> {
-                        "activeDirectoryDomainControllers",
-                        "activeDirectoryDomains",
-                        "activeDirectorySearchSnapshots",
-                        "activitySeriesConnection",
-                        "adVolumeExports",
-                        "allAwsExocomputeConfigs",
-                        "allAwsInstanceProfileNames",
-                        "allAwsRegions",
-                        "allAzureCloudAccountMissingPermissions",
-                        "allAzureExocomputeConfigsInAccount",
-                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
-                        "allAzureRegions",
-                        "allAzureResourceGroups",
-                        "allAzureSqlDatabaseServerElasticPools",
-                        "allCdpVmsInfos",
-                        "allCloudNativeLabelKeys",
-                        "allCloudNativeLabelValues",
-                        "allCloudNativeTagKeys",
-                        "allCloudNativeTagValues",
-                        "allClusterConnection",
-                        "allDbParameterGroupsByRegionFromAws",
-                        "allEffectiveRbacPermissions",
-                        "allFileActivities",
-                        "allGcpCloudAccountMissingPermissionsForAddition",
-                        "allGcpCloudAccountProjectsByFeature",
-                        "allGcpCloudAccountProjectsForOauth",
-                        "allGcpNativeAvailableKmsCryptoKeys",
-                        "allGcpNativeCompatibleMachineTypes",
-                        "allIntegrations",
-                        "allK8sReplicaSnapshotInfos",
-                        "allO365AdGroups",
-                        "allObjectsAlreadyAssignedToOrgs",
-                        "allOptionGroupsByRegionFromAws",
-                        "allQuarantinedDetailsForWorkload",
-                        "allSnapshotPvcs",
-                        "allSupportedAwsRdsDatabaseInstanceClasses",
-                        "allUsersOnAccount",
-                        "allUsersOnAccountConnection",
-                        "allValidReplicationTargets",
-                        "allWebhooks",
-                        "anomalyResultOpt",
-                        "anomalyResults",
-                        "anomalyResultsGrouped",
-                        "archiveCrawl",
-                        "assignableGlobalCertificates",
-                        "assignRetentionSLAToSnappables",
-                        "assignRetentionSLAToSnapshots",
-                        "assignSlasForSnappableHierarchies",
-                        "awsCloudAccountListSecurityGroups",
-                        "awsCloudAccountListSubnets",
-                        "awsNativeAccounts",
-                        "awsNativeEbsVolumes",
-                        "awsNativeEbsVolumesByName",
-                        "awsNativeEc2Instances",
-                        "awsNativeEc2InstancesByName",
-                        "awsNativeRdsExportDefaults",
-                        "awsNativeRdsInstances",
-                        "awsNativeRdsPointInTimeRestoreWindow",
-                        "azureAdDirectories",
-                        "azureAdObjectsByType",
-                        "azureCloudAccountTenant",
-                        "azureCloudAccountTenantWithExoConfigs",
-                        "azureNativeManagedDisks",
-                        "azureNativeResourceGroups",
-                        "azureNativeSubscriptions",
-                        "azureNativeVirtualMachines",
-                        "azureO365CheckNetworkSubnet",
-                        "azureO365CheckNSGOutboundRules",
-                        "azureO365CheckResourceGroupName",
-                        "azureO365CheckStorageAccountAccessibility",
-                        "azureO365CheckStorageAccountName",
-                        "azureO365CheckSubscriptionQuota",
-                        "azureO365CheckVirtualNetworkName",
-                        "azureO365Exocompute",
-                        "azureO365GetNetworkSubnetUnusedAddr",
-                        "azureO365ValidateUserRoles",
-                        "azureRegions",
-                        "azureResourceGroups",
-                        "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
-                        "azureSqlDatabases",
-                        "azureSqlDatabaseServers",
-                        "azureSqlManagedInstanceDatabases",
-                        "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
-                        "azureSqlManagedInstanceServers",
-                        "azureStorageAccounts",
-                        "azureSubnets",
-                        "azureSubscriptions",
-                        "azureVNets",
-                        "browseCalendar",
-                        "browseContacts",
-                        "browseFolder",
-                        "browseO365TeamConvChannels",
-                        "browseOnedrive",
-                        "browseSharepointDrive",
-                        "browseSharepointList",
-                        "browseSnapshotFileConnection",
-                        "browseTeamsChannels",
-                        "browseTeamsDrive",
-                        "cancelTaskchain",
-                        "cassandraColumnFamilies",
-                        "cassandraKeyspaces",
-                        "cassandraSources",
-                        "cdmMssqlLogShippingTargets",
-                        "certificates",
-                        "certificateSigningRequests",
-                        "checkCloudNativeLabelRuleNameUniqueness",
-                        "checkCloudNativeTagRuleNameUniqueness",
-                        "cloudNativeCheckRequiredPermissionsForFeature",
-                        "cloudNativeSnapshots",
-                        "cloudNativeWorkloadVersionedFiles",
-                        "clusterConnection",
-                        "clusterGroupByConnection",
-                        "clusterReportMigrationStatus",
-                        "clusterSlaDomains",
-                        "clusterWithUpgradesInfo",
-                        "configuredGroupMembers",
-                        "crawl",
-                        "createCustomReport",
-                        "createRole",
-                        "createUser",
-                        "customAnalyzer",
-                        "datagovSecDesc",
-                        "db2Databases",
-                        "db2Instances",
-                        "db2LogSnapshots",
-                        "db2RecoverableRanges",
-                        "deactivateCustomAnalyzer",
-                        "deactivatePolicy",
-                        "decryptExportUrl",
-                        "deleteO365AzureApp",
-                        "deleteRole",
-                        "deleteTotpConfig",
-                        "diffFmd",
-                        "discoverNodes",
-                        "discoveryTimeline",
-                        "doesAzureNativeResourceGroupExist",
-                        "downloadResultsCsv",
-                        "downloadSnapshotResultsCsv",
-                        "enableO365Teams",
-                        "exchangeDags",
-                        "exchangeDatabases",
-                        "exchangeLiveMounts",
-                        "exchangeServers",
-                        "failedRestoreItemsInfo",
-                        "failoverClusterApps",
-                        "failoverClusterTopLevelDescendants",
-                        "filesetSnapshot",
-                        "filesetSnapshotFiles",
-                        "filesetTemplates",
-                        "gcpNativeDisks",
-                        "gcpNativeGceInstances",
-                        "gcpNativeProjects",
-                        "generateCsr",
-                        "generateTotpSecret",
-                        "getAllRolesInOrgConnection",
-                        "getCdmReleaseDetailsForClusterFromSupportPortal",
-                        "getCdmReleaseDetailsForVersionFromSupportPortal",
-                        "getCdmReleaseDetailsFromSupportPortal",
-                        "getKorgTaskchainStatus",
-                        "getPermissions",
-                        "getUserDownloads",
-                        "globalCertificate",
-                        "globalCertificates",
-                        "globalSearchResults",
-                        "globalSlaFilterConnection",
-                        "globalSlaStatuses",
-                        "groupsInCurrentAndDescendantOrganization",
-                        "guestCredentialsV2",
-                        "helpContentSnippets",
-                        "hierarchySnappables",
-                        "hostDiagnosis",
-                        "hostFailoverClusters",
-                        "hostShares",
-                        "hypervMounts",
-                        "hypervScvmms",
-                        "hypervTopLevelDescendants",
-                        "hypervVirtualMachines",
-                        "investigationCsvDownloadLink",
-                        "isAwsNativeEbsVolumeSnapshotRestorable",
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                        "isAwsS3BucketNameAvailable",
-                        "isAzureStorageAccountNameAvailable",
-                        "isSfdcReachable",
-                        "issue",
-                        "issues",
-                        "isTotpMandatoryInTargetVersion",
-                        "k8sAppManifest",
-                        "k8sClusters",
-                        "k8sNamespaces",
-                        "knowledgeBaseArticle",
-                        "ldapAuthorizedPrincipalConnection",
-                        "ldapIntegrationConnection",
-                        "ldapPrincipalConnection",
-                        "legalHoldSnapshotsForSnappable",
-                        "listO365Apps",
-                        "managedVolumeLiveMounts",
-                        "managedVolumes",
-                        "mongoCollections",
-                        "mongoDatabases",
-                        "mongodbCollections",
-                        "mongodbDatabases",
-                        "mongodbSources",
-                        "mongoSources",
-                        "mssqlCompatibleInstances",
-                        "mssqlDatabaseLiveMounts",
-                        "mssqlDatabases",
-                        "mssqlTopLevelDescendants",
-                        "mutateRole",
-                        "nasNamespaces",
-                        "nasSystems",
-                        "nasTopLevelDescendants",
-                        "nfAnomalyResults",
-                        "nfAnomalyResultsGrouped",
-                        "nutanixClusters",
-                        "nutanixMounts",
-                        "nutanixPrismCentrals",
-                        "nutanixTopLevelDescendants",
-                        "nutanixVms",
-                        "o365Groups",
-                        "o365Mailboxes",
-                        "o365Onedrives",
-                        "o365Orgs",
-                        "o365SharepointDrives",
-                        "o365SharepointLists",
-                        "o365SharepointObjectList",
-                        "o365SharepointObjects",
-                        "o365SharepointSites",
-                        "o365Sites",
-                        "o365TeamChannels",
-                        "o365TeamPostedBy",
-                        "o365Teams",
-                        "o365UserObjects",
-                        "oauthCodesForEdgeReg",
-                        "objectFiles",
-                        "objectTypeAccessSummary",
-                        "oracleDatabases",
-                        "oracleLiveMounts",
-                        "oracleTopLevelDescendants",
-                        "org",
-                        "orgs",
-                        "orgsForPrincipal",
-                        "pendingAction",
-                        "physicalHosts",
-                        "policy",
-                        "policyObj",
-                        "policyObjs",
-                        "productDocumentation",
-                        "protectedObjectsConnection",
-                        "radarClusterConnection",
-                        "ransomwareInvestigationAnalysisSummary",
-                        "ransomwareInvestigationWorkloadScannedCount",
-                        "ransomwareResult",
-                        "ransomwareResultOpt",
-                        "ransomwareResults",
-                        "ransomwareResultsGrouped",
-                        "rdsInstanceDetailsFromAws",
-                        "replicationPairs",
-                        "reportData",
-                        "roleTemplates",
-                        "s3BucketStateForRecovery",
-                        "sapHanaDatabases",
-                        "sapHanaLogSnapshots",
-                        "sapHanaRecoverableRanges",
-                        "sapHanaSystems",
-                        "scheduledReports",
-                        "scheduleUpgradeBatchJob",
-                        "searchAzureAdSnapshot",
-                        "searchFileByPrefix",
-                        "searchHost",
-                        "searchSnappableConnection",
-                        "searchSnappableVersionedFiles",
-                        "serviceAccounts",
-                        "setO365ServiceAccount",
-                        "setupAzureO365Exocompute",
-                        "sharepointSiteDescendants",
-                        "sharepointSiteSearch",
-                        "slaAuditDetail",
-                        "slaDomains",
-                        "slaManagedVolumes",
-                        "smbDomains",
-                        "snappableConnection",
-                        "snappableContactSearch",
-                        "snappableEmailSearch",
-                        "snappableEventSearch",
-                        "snappableGroupByConnection",
-                        "snappableOnedriveSearch",
-                        "snappableSharepointDriveSearch",
-                        "snappableSharepointListSearch",
-                        "snappablesWithLegalHoldSnapshotsSummary",
-                        "snappableTeamsConversationsSearch",
-                        "snappableTeamsDriveSearch",
-                        "snapshotEmailSearch",
-                        "snapshotEventSearch",
-                        "snapshotFilesDelta",
-                        "snapshotFilesDeltaV2",
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                        "snapshotOnedriveSearch",
-                        "snapshotResults",
-                        "snapshotsForUnmanagedObject",
-                        "snapshotSharepointDriveSearch",
-                        "sonarContentReport",
-                        "sonarReportRow",
-                        "sonarUserGroups",
-                        "sonarUsers",
-                        "startCrawl",
-                        "startDownloadPackageBatchJob",
-                        "startUpgradeBatchJob",
-                        "supportUserAccesses",
-                        "targets",
-                        "taskchain",
-                        "taskDetailConnection",
-                        "taskDetailGroupByConnection",
-                        "teamChannelNameAvailable",
-                        "threatHuntDetail",
-                        "threatHuntResult",
-                        "threatHunts",
-                        "threatHuntSummary",
-                        "totpConfigStatus",
-                        "unmanagedObjects",
-                        "updateAccountOwner",
-                        "updateCertificate",
-                        "updateLdapIntegration",
-                        "updateRole",
-                        "updateWhitelistedAnalyzers",
-                        "userActivities",
-                        "userActivityTimeline",
-                        "userAnalyzerAccess",
-                        "userAuditConnection",
-                        "userDetail",
-                        "userFileActivityTimeline",
-                        "userGroups",
-                        "usersInCurrentAndDescendantOrganization",
-                        "validateAwsNativeRdsClusterNameForExport",
-                        "validateAwsNativeRdsInstanceNameForExport",
-                        "validateAzureNativeSqlDatabaseDbNameForExport",
-                        "validateAzureNativeSqlManagedInstanceDbNameForExport",
-                        "vcdVappVms",
-                        "volumeGroupMounts",
-                        "vSphereComputeClusters",
-                        "vSphereDatastoreClusters",
-                        "vSphereDatastoreConnection",
-                        "vSphereFolders",
-                        "vSphereHostConnection",
-                        "vSphereLiveMounts",
-                        "vSphereMountConnection",
-                        "vSphereRootRecoveryHierarchy",
-                        "vSphereTopLevelDescendantsConnection",
-                        "vSphereVCenterConnection",
-                        "vSphereVMAsyncRequestStatus",
-                        "vSphereVmNewConnection",
-                        "workloadAnomalies",
-                    }
-                },
-                {   "SupportPortalLoginInput", new List<string> {
-                        "supportPortalLogin",
-                    }
-                },
-                {   "SupportUserAccessSortByField", new List<string> {
-                        "supportUserAccesses",
-                    }
-                },
-                {   "TakeManagedVolumeOnDemandSnapshotInput", new List<string> {
-                        "takeManagedVolumeOnDemandSnapshot",
-                    }
-                },
-                {   "TakeMssqlLogBackupInput", new List<string> {
-                        "takeMssqlLogBackup",
-                    }
-                },
-                {   "TakeOnDemandOracleDatabaseSnapshotInput", new List<string> {
-                        "takeOnDemandOracleDatabaseSnapshot",
-                    }
-                },
-                {   "TakeOnDemandOracleLogSnapshotInput", new List<string> {
-                        "takeOnDemandOracleLogSnapshot",
-                    }
-                },
-                {   "TakeOnDemandSnapshotInput", new List<string> {
-                        "takeOnDemandSnapshot",
-                    }
-                },
-                {   "TaskDetailFilterInput", new List<string> {
-                        "taskDetailConnection",
-                        "taskDetailGroupByConnection",
-                    }
-                },
-                {   "TaskDetailGroupByEnum", new List<string> {
-                        "taskDetailGroupByConnection",
-                    }
-                },
-                {   "TaskDetailSortByEnum", new List<string> {
-                        "taskDetailConnection",
-                    }
-                },
-                {   "TeamsConversationsSearchFilter", new List<string> {
-                        "snappableTeamsConversationsSearch",
-                    }
-                },
-                {   "TestExistingWebhookInput", new List<string> {
-                        "testExistingWebhook",
-                    }
-                },
-                {   "TestSyslogExportRuleInput", new List<string> {
-                        "testSyslogExportRule",
-                    }
-                },
-                {   "TestWebhookInput", new List<string> {
-                        "testWebhook",
-                    }
-                },
-                {   "TimeFilterInput", new List<string> {
-                        "sonarReport",
-                    }
-                },
-                {   "TimeGranularity", new List<string> {
-                        "userFileActivityTimeline",
-                    }
-                },
-                {   "TimeRangeInput", new List<string> {
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                    }
-                },
-                {   "TriggerCloudComputeConnectivityCheckInput", new List<string> {
-                        "triggerCloudComputeConnectivityCheck",
-                    }
-                },
-                {   "TriggerExocomputeHealthCheckInput", new List<string> {
-                        "triggerExocomputeHealthCheck",
-                    }
-                },
-                {   "TriggerRansomwareDetectionInput", new List<string> {
-                        "triggerRansomwareDetection",
-                    }
-                },
-                {   "UUID", new List<string> {
-                        "activeDirectoryDomain",
-                        "activeDirectoryDomainController",
-                        "allAuthorizationsForObject",
-                        "allAvailabilityZonesByRegionFromAws",
-                        "allAzureCloudAccountSubnetsByRegion",
-                        "allAzureDiskEncryptionSetsByRegion",
-                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
-                        "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
-                        "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
-                        "allAzureNativeSecurityGroupsByRegionFromAzure",
-                        "allAzureNativeStorageAccountsFromAzure",
-                        "allAzureNativeSubnetsByRegionFromAzure",
-                        "allAzureNativeVirtualMachineSizes",
-                        "allAzureNativeVirtualNetworks",
-                        "allAzureSqlDatabaseServerElasticPools",
-                        "allCloudNativeFileRecoveryEligibleSnapshots",
-                        "allClusterGlobalSlas",
-                        "allClusterReplicationTargets",
-                        "allDbParameterGroupsByRegionFromAws",
-                        "allDbSubnetGroupsByRegionFromAws",
-                        "allEc2KeyPairsByRegionFromAws",
-                        "allGcpNativeAvailableKmsCryptoKeys",
-                        "allGcpNativeCompatibleMachineTypes",
-                        "allGcpNativeNetworks",
-                        "allGcpNativeProjectsWithAccessibleNetworks",
-                        "allGcpNativeRegions",
-                        "allGcpNativeStoredMachineTypesInProject",
-                        "allGcpNativeStoredNetworkNamesInProject",
-                        "allGcpNativeStoredRegionsInProject",
-                        "allK8sReplicaSnapshotInfos",
-                        "allKmsEncryptionKeysByRegionFromAws",
-                        "allO365AdGroups",
-                        "allOptionGroupsByRegionFromAws",
-                        "allPendingActions",
-                        "allResourceGroupsFromAzure",
-                        "allS3BucketsDetailsFromAws",
-                        "allS3BucketsFromAws",
-                        "allSharepointSiteExclusions",
-                        "allSnapshotPvcs",
-                        "allSupportedAwsRdsDatabaseInstanceClasses",
-                        "allVmRecoveryJobsInfo",
-                        "allVpcsByRegionFromAws",
-                        "allVpcsFromAws",
-                        "anomalyResultOpt",
-                        "archivalStorageUsage",
-                        "areMultiGeoBackupsEnabled",
-                        "assignRetentionSLAToSnappables",
-                        "assignRetentionSLAToSnapshots",
-                        "assignSlasForSnappableHierarchies",
-                        "awsCloudAccountListSecurityGroups",
-                        "awsCloudAccountListSubnets",
-                        "awsCloudAccountListVpcs",
-                        "awsCloudAccountWithFeatures",
-                        "awsComputeSettings",
-                        "awsNativeAccount",
-                        "awsNativeEbsVolume",
-                        "awsNativeEc2Instance",
-                        "awsNativeRdsExportDefaults",
-                        "awsNativeRdsInstance",
-                        "awsNativeRdsPointInTimeRestoreWindow",
-                        "awsNativeS3Bucket",
-                        "azureAdDirectory",
-                        "azureCloudAccountSubscriptionWithFeatures",
-                        "azureCloudAccountTenant",
-                        "azureCloudAccountTenantWithExoConfigs",
-                        "azureNativeManagedDisk",
-                        "azureNativeResourceGroup",
-                        "azureNativeSubscription",
-                        "azureNativeVirtualMachine",
-                        "azureO365CheckNetworkSubnet",
-                        "azureO365CheckNSGOutboundRules",
-                        "azureO365CheckResourceGroupName",
-                        "azureO365CheckStorageAccountAccessibility",
-                        "azureO365CheckStorageAccountName",
-                        "azureO365CheckSubscriptionQuota",
-                        "azureO365CheckVirtualNetworkName",
-                        "azureO365Exocompute",
-                        "azureO365GetNetworkSubnetUnusedAddr",
-                        "azureO365ValidateUserRoles",
-                        "azureRegions",
-                        "azureResourceGroups",
-                        "azureSqlDatabase",
-                        "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
-                        "azureSqlDatabaseServer",
-                        "azureSqlManagedInstanceDatabase",
-                        "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
-                        "azureSqlManagedInstanceServer",
-                        "azureStorageAccounts",
-                        "azureSubnets",
-                        "azureVNets",
-                        "browseCalendar",
-                        "browseContacts",
-                        "browseFolder",
-                        "browseO365TeamConvChannels",
-                        "browseOnedrive",
-                        "browseSharepointDrive",
-                        "browseSharepointList",
-                        "browseSnapshotFileConnection",
-                        "browseTeamsChannels",
-                        "browseTeamsDrive",
-                        "cancelDownloadPackage",
-                        "cancelScheduledUpgrade",
-                        "cassandraColumnFamily",
-                        "cassandraKeyspace",
-                        "cassandraSource",
-                        "cdmHierarchySnappableNew",
-                        "cdmMssqlLogShippingTarget",
-                        "checkAzurePersistentStorageSubscriptionCanUnmap",
-                        "cloudAccount",
-                        "cloudDirectNasExport",
-                        "cloudNativeCheckArchivedSnapshotsLocked",
-                        "cloudNativeCustomerTags",
-                        "cloudNativeSnapshotDetailsForRecovery",
-                        "cloudNativeSnapshots",
-                        "cloudNativeSnapshotTypeDetails",
-                        "cloudNativeWorkloadVersionedFiles",
-                        "cluster",
-                        "clusterDns",
-                        "clusterProxy",
-                        "clusterReportMigrationCount",
-                        "clusterReportMigrationJobStatus",
-                        "clusterReportMigrationStatus",
-                        "configuredGroupMembers",
-                        "countOfObjectsProtectedBySlas",
-                        "db2Database",
-                        "db2Instance",
-                        "db2LogSnapshot",
-                        "db2RecoverableRange",
-                        "decryptExportUrl",
-                        "deleteO365Org",
-                        "deleteO365ServiceAccount",
-                        "diffFmd",
-                        "doesAzureNativeResourceGroupExist",
-                        "downloadPackageStatus",
-                        "exchangeDag",
-                        "exchangeDatabase",
-                        "exchangeServer",
-                        "failedRestoreItemsInfo",
-                        "failoverClusterApp",
-                        "filesetTemplate",
-                        "gcpNativeDisk",
-                        "gcpNativeGceInstance",
-                        "gcpNativeProject",
-                        "gcpNativeStoredDiskLocations",
-                        "globalSlaStatuses",
-                        "hierarchyObject",
-                        "hierarchyObjectRecoveryTarget",
-                        "hostFailoverCluster",
-                        "hostShare",
-                        "hypervCluster",
-                        "hypervScvmm",
-                        "hypervServer",
-                        "hypervVirtualMachine",
-                        "investigationCsvDownloadLink",
-                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
-                        "isAwsS3BucketNameAvailable",
-                        "isAzureNativeManagedDiskSnapshotRestorable",
-                        "isAzureNativeSqlDatabaseSnapshotPersistent",
-                        "isAzureStorageAccountNameAvailable",
-                        "isTotpAckNecessaryForCluster",
-                        "isUpgradeAvailable",
-                        "isUpgradeRecommended",
-                        "isZrsAvailableForLocation",
-                        "k8sAppManifest",
-                        "k8sCluster",
-                        "k8sNamespace",
-                        "k8sNamespaces",
-                        "k8sSnapshotInfo",
-                        "ldapPrincipalConnection",
-                        "linuxFileset",
-                        "m365Regions",
-                        "managedVolume",
-                        "mongoCollection",
-                        "mongoDatabase",
-                        "mongodbCollection",
-                        "mongodbDatabase",
-                        "mongodbSource",
-                        "mongoSource",
-                        "mssqlAvailabilityGroup",
-                        "mssqlDatabase",
-                        "mssqlInstance",
-                        "nasFileset",
-                        "nasNamespace",
-                        "nasShare",
-                        "nasSystem",
-                        "nasVolume",
-                        "nutanixCategory",
-                        "nutanixCategoryValue",
-                        "nutanixCluster",
-                        "nutanixPrismCentral",
-                        "nutanixVm",
-                        "o365Calendar",
-                        "o365Groups",
-                        "o365Mailbox",
-                        "o365Mailboxes",
-                        "o365ObjectAncestors",
-                        "o365Onedrive",
-                        "o365Onedrives",
-                        "o365Org",
-                        "o365OrgAtSnappableLevel",
-                        "o365ServiceAccount",
-                        "o365ServiceStatus",
-                        "o365SharepointDrive",
-                        "o365SharepointDrives",
-                        "o365SharepointList",
-                        "o365SharepointLists",
-                        "o365SharepointObjectList",
-                        "o365SharepointObjects",
-                        "o365SharepointSite",
-                        "o365SharepointSites",
-                        "o365Site",
-                        "o365Sites",
-                        "o365StorageStats",
-                        "o365Team",
-                        "o365TeamChannels",
-                        "o365TeamConversationsFolderID",
-                        "o365TeamPostedBy",
-                        "o365Teams",
-                        "o365User",
-                        "o365UserObjects",
-                        "oracleDatabase",
-                        "oracleDataGuardGroup",
-                        "oracleHost",
-                        "oracleRac",
-                        "phoenixRolloutProgress",
-                        "physicalHost",
-                        "polarisSnapshot",
-                        "prechecksStatus",
-                        "prechecksStatusWithNextJobInfo",
-                        "protectedObjectsConnection",
-                        "ransomwareResult",
-                        "ransomwareResultOpt",
-                        "rdsInstanceDetailsFromAws",
-                        "refreshGlobalManagerConnectivityStatus",
-                        "refreshO365Org",
-                        "removeCdmCluster",
-                        "removeLdapIntegration",
-                        "retryDownloadPackageJob",
-                        "s3BucketStateForRecovery",
-                        "sapHanaDatabase",
-                        "sapHanaLogSnapshot",
-                        "sapHanaRecoverableRange",
-                        "sapHanaSystem",
-                        "searchFileByPrefix",
-                        "searchSnappableVersionedFiles",
-                        "setO365ServiceAccount",
-                        "setupAzureO365Exocompute",
-                        "shareFileset",
-                        "sharepointSiteDescendants",
-                        "sharepointSiteSearch",
-                        "slaAuditDetail",
-                        "slaDomain",
-                        "slaManagedVolume",
-                        "snappableContactSearch",
-                        "snappableEmailSearch",
-                        "snappableEventSearch",
-                        "snappableOnedriveSearch",
-                        "snappableSharepointDriveSearch",
-                        "snappableSharepointListSearch",
-                        "snappableTeamsConversationsSearch",
-                        "snappableTeamsDriveSearch",
-                        "snapshot",
-                        "snapshotEmailSearch",
-                        "snapshotEventSearch",
-                        "snapshotFilesDelta",
-                        "snapshotFilesDeltaV2",
-                        "snapshotOnedriveSearch",
-                        "snapshotSharepointDriveSearch",
-                        "startPeriodicUpgradePrechecksOnDemandJob",
-                        "target",
-                        "targetMapping",
-                        "teamChannelNameAvailable",
-                        "updateClusterLocation",
-                        "updateLdapIntegration",
-                        "upgradeStatus",
-                        "validateAwsNativeRdsClusterNameForExport",
-                        "validateAwsNativeRdsInstanceNameForExport",
-                        "validateAzureNativeSqlDatabaseDbNameForExport",
-                        "validateAzureNativeSqlManagedInstanceDbNameForExport",
-                        "verifySlaWithReplicationToCluster",
-                        "vSphereComputeCluster",
-                        "vSphereDatacenter",
-                        "vSphereDatastore",
-                        "vSphereDatastoreCluster",
-                        "vSphereFolder",
-                        "vSphereHost",
-                        "vSphereMount",
-                        "vSphereNetwork",
-                        "vSphereResourcePool",
-                        "vSphereTag",
-                        "vSphereTagCategory",
-                        "vSphereVCenter",
-                        "vSphereVMAsyncRequestStatus",
-                        "vsphereVMMissedRecoverableRange",
-                        "vSphereVmNew",
-                        "vsphereVMRecoverableRange",
-                        "windowsCluster",
-                        "windowsFileset",
-                        "workloadAlertSetting",
-                    }
-                },
-                {   "UnconfigureSapHanaRestoreInput", new List<string> {
-                        "unconfigureSapHanaRestore",
-                    }
-                },
-                {   "UninstallIoFilterInput", new List<string> {
-                        "uninstallIoFilter",
-                    }
-                },
-                {   "UnlockUsersByAdminInput", new List<string> {
-                        "unlockUsersByAdmin",
-                    }
-                },
-                {   "UnmanagedObjectsInput", new List<string> {
-                        "unmanagedObjects",
-                    }
-                },
-                {   "UnmapAzureCloudAccountExocomputeSubscriptionInput", new List<string> {
-                        "unmapAzureCloudAccountExocomputeSubscription",
-                    }
-                },
-                {   "UnmapAzurePersistentStorageSubscriptionInput", new List<string> {
-                        "unmapAzurePersistentStorageSubscription",
-                    }
-                },
-                {   "UnmapCloudAccountExocomputeAccountInput", new List<string> {
-                        "unmapCloudAccountExocomputeAccount",
-                    }
-                },
-                {   "UnmappingValidationType", new List<string> {
-                        "checkAzurePersistentStorageSubscriptionCanUnmap",
-                    }
-                },
-                {   "UnmountDiskInput", new List<string> {
-                        "unmountDisk",
-                    }
-                },
-                {   "UpdateAuthDomainUsersHiddenStatusInput", new List<string> {
-                        "updateAuthDomainUsersHiddenStatus",
-                    }
-                },
-                {   "UpdateAutoEnablePolicyClusterConfigInput", new List<string> {
-                        "updateAutoEnablePolicyClusterConfig",
-                    }
-                },
-                {   "UpdateAutomaticAwsTargetMappingInput", new List<string> {
-                        "updateAutomaticAwsTargetMapping",
-                    }
-                },
-                {   "UpdateAutomaticAzureTargetMappingInput", new List<string> {
-                        "updateAutomaticAzureTargetMapping",
-                    }
-                },
-                {   "UpdateAwsAccountInput", new List<string> {
-                        "updateAwsAccount",
-                    }
-                },
-                {   "UpdateAwsCloudAccountFeatureInput", new List<string> {
-                        "updateAwsCloudAccountFeature",
-                    }
-                },
-                {   "UpdateAwsCloudAccountInput", new List<string> {
-                        "updateAwsCloudAccount",
-                    }
-                },
-                {   "UpdateAwsComputeSettingInput", new List<string> {
-                        "updateAwsComputeSetting",
-                    }
-                },
-                {   "UpdateAwsExocomputeConfigsInput", new List<string> {
-                        "updateAwsExocomputeConfigs",
-                    }
-                },
-                {   "UpdateAwsTargetInput", new List<string> {
-                        "updateAwsTarget",
-                    }
-                },
-                {   "UpdateAzureAccountInput", new List<string> {
-                        "updateAzureAccount",
-                    }
-                },
-                {   "UpdateAzureCloudAccountInput", new List<string> {
-                        "updateAzureCloudAccount",
-                    }
-                },
-                {   "UpdateAzureTargetInput", new List<string> {
-                        "updateAzureTarget",
-                    }
-                },
-                {   "UpdateBadDiskLedStatusInput", new List<string> {
-                        "updateBadDiskLedStatus",
-                    }
-                },
-                {   "UpdateCertificateHostInput", new List<string> {
-                        "updateCertificateHost",
-                    }
-                },
-                {   "UpdateCloudNativeAwsStorageSettingInput", new List<string> {
-                        "updateCloudNativeAwsStorageSetting",
-                    }
-                },
-                {   "UpdateCloudNativeAzureStorageSettingInput", new List<string> {
-                        "updateCloudNativeAzureStorageSetting",
-                    }
-                },
-                {   "UpdateCloudNativeIndexingStatusInput", new List<string> {
-                        "updateCloudNativeIndexingStatus",
-                    }
-                },
-                {   "UpdateCloudNativeLabelRuleInput", new List<string> {
-                        "updateCloudNativeLabelRule",
-                    }
-                },
-                {   "UpdateCloudNativeRcvAzureStorageSettingInput", new List<string> {
-                        "updateCloudNativeRcvAzureStorageSetting",
-                    }
-                },
-                {   "UpdateCloudNativeTagRuleInput", new List<string> {
-                        "updateCloudNativeTagRule",
-                    }
-                },
-                {   "UpdateClusterDefaultAddressInput", new List<string> {
-                        "updateClusterDefaultAddress",
-                    }
-                },
-                {   "UpdateClusterNtpServersInput", new List<string> {
-                        "updateClusterNtpServers",
-                    }
-                },
-                {   "UpdateClusterSettingsInput", new List<string> {
-                        "updateClusterSettings",
-                    }
-                },
-                {   "UpdateConfiguredGroupInput", new List<string> {
-                        "updateConfiguredGroup",
-                    }
-                },
-                {   "UpdateCustomReportInput", new List<string> {
-                        "updateCustomReport",
-                    }
-                },
-                {   "UpdateDatabaseLogReportingPropertiesForClusterInput", new List<string> {
-                        "updateDatabaseLogReportingPropertiesForCluster",
-                    }
-                },
-                {   "UpdateDistributionListDigestInput", new List<string> {
-                        "updateDistributionListDigest",
-                    }
-                },
-                {   "UpdateDnsServersAndSearchDomainsInput", new List<string> {
-                        "updateDnsServersAndSearchDomains",
-                    }
-                },
-                {   "UpdateEventDigestInput", new List<string> {
-                        "updateEventDigest",
-                    }
-                },
-                {   "UpdateFailoverClusterAppInput", new List<string> {
-                        "updateFailoverClusterApp",
-                    }
-                },
-                {   "UpdateFailoverClusterInput", new List<string> {
-                        "updateFailoverCluster",
-                    }
-                },
-                {   "UpdateFloatingIpsInput", new List<string> {
-                        "updateFloatingIps",
-                    }
-                },
-                {   "UpdateGcpTargetInput", new List<string> {
-                        "updateGcpTarget",
-                    }
-                },
-                {   "UpdateGlacierTargetInput", new List<string> {
-                        "updateGlacierTarget",
-                    }
-                },
-                {   "UpdateGlobalCertificateInput", new List<string> {
-                        "updateGlobalCertificate",
-                    }
-                },
-                {   "UpdateGlobalSlaInput", new List<string> {
-                        "updateGlobalSla",
-                    }
-                },
-                {   "UpdateGuestCredentialInput", new List<string> {
-                        "updateGuestCredential",
-                    }
-                },
-                {   "UpdateHealthMonitorPolicyStatusInput", new List<string> {
-                        "updateHealthMonitorPolicyStatus",
-                    }
-                },
-                {   "UpdateHypervVirtualMachineInput", new List<string> {
-                        "updateHypervVirtualMachine",
-                    }
-                },
-                {   "UpdateHypervVirtualMachineSnapshotMountInput", new List<string> {
-                        "updateHypervVirtualMachineSnapshotMount",
-                    }
-                },
-                {   "UpdateInsightStateInput", new List<string> {
-                        "updateInsightState",
-                    }
-                },
-                {   "UpdateIntegrationInput", new List<string> {
-                        "updateIntegration",
-                    }
-                },
-                {   "UpdateIntegrationsInput", new List<string> {
-                        "updateIntegrations",
-                    }
-                },
-                {   "UpdateLockoutConfigInput", new List<string> {
-                        "updateLockoutConfig",
-                    }
-                },
-                {   "UpdateManagedVolumeInput", new List<string> {
-                        "updateManagedVolume",
-                    }
-                },
-                {   "UpdateManualTargetMappingInput", new List<string> {
-                        "updateManualTargetMapping",
-                    }
-                },
-                {   "UpdateMssqlDefaultPropertiesInput", new List<string> {
-                        "updateMssqlDefaultProperties",
-                    }
-                },
-                {   "UpdateMssqlLogShippingConfigurationInput", new List<string> {
-                        "updateMssqlLogShippingConfiguration",
-                    }
-                },
-                {   "UpdateNasSharesInput", new List<string> {
-                        "updateNasShares",
-                    }
-                },
-                {   "UpdateNasSystemInput", new List<string> {
-                        "updateNasSystem",
-                    }
-                },
-                {   "UpdateNetworkThrottleInput", new List<string> {
-                        "updateNetworkThrottle",
-                    }
-                },
-                {   "UpdateNfsTargetInput", new List<string> {
-                        "updateNfsTarget",
-                    }
-                },
-                {   "UpdateNutanixClusterInput", new List<string> {
-                        "updateNutanixCluster",
-                    }
-                },
-                {   "UpdateNutanixPrismCentralInput", new List<string> {
-                        "updateNutanixPrismCentral",
-                    }
-                },
-                {   "UpdateNutanixVmInput", new List<string> {
-                        "updateNutanixVm",
-                    }
-                },
-                {   "UpdateO365AppAuthStatusInput", new List<string> {
-                        "updateO365AppAuthStatus",
-                    }
-                },
-                {   "UpdateO365AppPermissionsInput", new List<string> {
-                        "updateO365AppPermissions",
-                    }
-                },
-                {   "UpdateO365OrgCustomNameInput", new List<string> {
-                        "updateO365OrgCustomName",
-                    }
-                },
-                {   "UpdateOracleDataGuardGroupInput", new List<string> {
-                        "updateOracleDataGuardGroup",
-                    }
-                },
-                {   "UpdateOrgInput", new List<string> {
-                        "updateOrg",
-                    }
-                },
-                {   "UpdateOrgSecurityPolicyInput", new List<string> {
-                        "updateOrgSecurityPolicy",
-                    }
-                },
-                {   "UpdatePolicyInput", new List<string> {
-                        "updatePolicy",
-                    }
-                },
-                {   "UpdateProxyConfigInput", new List<string> {
-                        "updateProxyConfig",
-                    }
-                },
-                {   "UpdateRcsAutomaticTargetMappingInput", new List<string> {
-                        "updateRcsAutomaticTargetMapping",
-                    }
-                },
-                {   "UpdateRcvTargetInput", new List<string> {
-                        "updateRcvTarget",
-                    }
-                },
-                {   "UpdateReplicationTargetInput", new List<string> {
-                        "updateReplicationTarget",
-                    }
-                },
-                {   "UpdateS3CompatibleTargetInput", new List<string> {
-                        "updateS3CompatibleTarget",
-                    }
-                },
-                {   "UpdateScheduledReportInput", new List<string> {
-                        "updateScheduledReport",
-                    }
-                },
-                {   "UpdateServiceAccountInput", new List<string> {
-                        "updateServiceAccount",
-                    }
-                },
-                {   "UpdateSnmpConfigInput", new List<string> {
-                        "updateSnmpConfig",
-                    }
-                },
-                {   "UpdateStorageArraysInput", new List<string> {
-                        "updateStorageArrays",
-                    }
-                },
-                {   "UpdateSupportUserAccessInput", new List<string> {
-                        "updateSupportUserAccess",
-                    }
-                },
-                {   "UpdateSyslogExportRuleInput", new List<string> {
-                        "updateSyslogExportRule",
-                    }
-                },
-                {   "UpdateTapeTargetInput", new List<string> {
-                        "updateTapeTarget",
-                    }
-                },
-                {   "UpdateTunnelStatusInput", new List<string> {
-                        "updateTunnelStatus",
-                    }
-                },
-                {   "UpdateVcenterHotAddBandwidthInput", new List<string> {
-                        "updateVcenterHotAddBandwidth",
-                    }
-                },
-                {   "UpdateVcenterHotAddNetworkInput", new List<string> {
-                        "updateVcenterHotAddNetwork",
-                    }
-                },
-                {   "UpdateVcenterInput", new List<string> {
-                        "updateVcenter",
-                    }
-                },
-                {   "UpdateVolumeGroupInput", new List<string> {
-                        "updateVolumeGroup",
-                    }
-                },
-                {   "UpdateVsphereAdvancedTagInput", new List<string> {
-                        "updateVsphereAdvancedTag",
-                    }
-                },
-                {   "UpdateVsphereVmInput", new List<string> {
-                        "updateVsphereVm",
-                    }
-                },
-                {   "UpdateWebhookInput", new List<string> {
-                        "updateWebhook",
-                    }
-                },
-                {   "UpgradeAwsCloudAccountFeaturesWithoutCftInput", new List<string> {
-                        "upgradeAwsCloudAccountFeaturesWithoutCft",
-                    }
-                },
-                {   "UpgradeAwsIamUserBasedCloudAccountPermissionsInput", new List<string> {
-                        "upgradeAwsIamUserBasedCloudAccountPermissions",
-                    }
-                },
-                {   "UpgradeAzureCloudAccountInput", new List<string> {
-                        "upgradeAzureCloudAccount",
-                    }
-                },
-                {   "UpgradeAzureCloudAccountPermissionsWithoutOauthInput", new List<string> {
-                        "upgradeAzureCloudAccountPermissionsWithoutOauth",
-                    }
-                },
-                {   "UpgradeCdmManagedTargetInput", new List<string> {
-                        "upgradeCdmManagedTarget",
-                    }
-                },
-                {   "UpgradeGcpCloudAccountPermissionsWithoutOauthInput", new List<string> {
-                        "upgradeGcpCloudAccountPermissionsWithoutOauth",
-                    }
-                },
-                {   "UpgradeInfoSortByEnum", new List<string> {
-                        "clusterWithUpgradesInfo",
-                    }
-                },
-                {   "UpgradeIoFilterInput", new List<string> {
-                        "upgradeIoFilter",
-                    }
-                },
-                {   "UploadDatabaseSnapshotToBlobstoreInput", new List<string> {
-                        "uploadDatabaseSnapshotToBlobstore",
-                    }
-                },
-                {   "UserAuditFilter", new List<string> {
-                        "userAuditConnection",
-                    }
-                },
-                {   "UserAuditSortField", new List<string> {
-                        "userAuditConnection",
-                    }
-                },
-                {   "UserFieldEnum", new List<string> {
-                        "allUsersOnAccountConnection",
-                    }
-                },
-                {   "UserFilterInput", new List<string> {
-                        "usersInCurrentAndDescendantOrganization",
-                    }
-                },
-                {   "UserSortByParam", new List<string> {
-                        "usersInCurrentAndDescendantOrganization",
-                    }
-                },
-                {   "UserTimeRangeInput", new List<string> {
-                        "userActivities",
-                    }
-                },
-                {   "V1SearchDomainControllerRequestObjectType", new List<string> {
-                        "activeDirectorySearchSnapshots",
-                    }
-                },
-                {   "VSphereMountFilter", new List<string> {
-                        "vSphereMountConnection",
-                    }
-                },
-                {   "ValidateAndCreateAwsCloudAccountInput", new List<string> {
-                        "validateAndCreateAwsCloudAccount",
-                    }
-                },
-                {   "ValidateAndSaveCustomerKmsInfoInput", new List<string> {
-                        "validateAndSaveCustomerKmsInfo",
-                    }
-                },
-                {   "ValidateAzureCloudAccountExocomputeConfigurationsInput", new List<string> {
-                        "validateAzureCloudAccountExocomputeConfigurations",
-                    }
-                },
-                {   "ValidateClusterLicenseCapacityInput", new List<string> {
-                        "validateClusterLicenseCapacity",
-                    }
-                },
-                {   "ValidateOracleAcoFileInput", new List<string> {
-                        "validateOracleAcoFile",
-                    }
-                },
-                {   "ValidateOracleDatabaseBackupsInput", new List<string> {
-                        "validateOracleDatabaseBackups",
-                    }
-                },
-                {   "ValidateOrgNameInput", new List<string> {
-                        "validateOrgName",
-                    }
-                },
-                {   "VappSnapshotInstantRecoveryOptionsInput", new List<string> {
-                        "vappSnapshotInstantRecoveryOptions",
-                    }
-                },
-                {   "VappTemplateSnapshotExportOptionsInput", new List<string> {
-                        "vappTemplateSnapshotExportOptions",
-                    }
-                },
-                {   "VirtualMachineFilesInput", new List<string> {
-                        "allVirtualMachineFiles",
-                    }
-                },
-                {   "VmImageUrlInput", new List<string> {
-                        "ncdVmImageUrl",
-                    }
-                },
-                {   "VmwareDownloadSnapshotFromLocationInput", new List<string> {
-                        "vmwareDownloadSnapshotFromLocation",
-                    }
-                },
-                {   "VolumeGroupLiveMountSortByInput", new List<string> {
-                        "volumeGroupMounts",
-                    }
-                },
-                {   "VsphereBulkOnDemandSnapshotInput", new List<string> {
-                        "vsphereBulkOnDemandSnapshot",
-                    }
-                },
-                {   "VsphereDeleteVcenterInput", new List<string> {
-                        "vsphereDeleteVcenter",
-                    }
-                },
-                {   "VsphereExportSnapshotToStandaloneHostV2Input", new List<string> {
-                        "vsphereExportSnapshotToStandaloneHostV2",
-                    }
-                },
-                {   "VsphereLiveMountSortBy", new List<string> {
-                        "vSphereLiveMounts",
-                    }
-                },
-                {   "VsphereMountSortBy", new List<string> {
-                        "vSphereMountConnection",
-                    }
-                },
-                {   "VsphereOnDemandSnapshotInput", new List<string> {
-                        "vsphereOnDemandSnapshot",
-                    }
-                },
-                {   "VsphereVmBatchExportInput", new List<string> {
-                        "vsphereVmBatchExport",
-                    }
-                },
-                {   "VsphereVmBatchExportV3Input", new List<string> {
-                        "vsphereVmBatchExportV3",
-                    }
-                },
-                {   "VsphereVmBatchInPlaceRecoveryInput", new List<string> {
-                        "vsphereVmBatchInPlaceRecovery",
-                    }
-                },
-                {   "VsphereVmDeleteSnapshotInput", new List<string> {
-                        "vsphereVmDeleteSnapshot",
-                    }
-                },
-                {   "VsphereVmDownloadSnapshotFilesInput", new List<string> {
-                        "vsphereVmDownloadSnapshotFiles",
-                    }
-                },
-                {   "VsphereVmDownloadSnapshotInput", new List<string> {
-                        "vsphereVmDownloadSnapshot",
-                    }
-                },
-                {   "VsphereVmExportSnapshotV2Input", new List<string> {
-                        "vsphereVmExportSnapshotV2",
-                    }
-                },
-                {   "VsphereVmExportSnapshotV3Input", new List<string> {
-                        "vsphereVmExportSnapshotV3",
-                    }
-                },
-                {   "VsphereVmExportSnapshotWithDownloadFromCloudInput", new List<string> {
-                        "vsphereVmExportSnapshotWithDownloadFromCloud",
-                    }
-                },
-                {   "VsphereVmInitiateBatchInstantRecoveryInput", new List<string> {
-                        "vsphereVmInitiateBatchInstantRecovery",
-                    }
-                },
-                {   "VsphereVmInitiateBatchLiveMountV2Input", new List<string> {
-                        "vsphereVmInitiateBatchLiveMountV2",
-                    }
-                },
-                {   "VsphereVmInitiateDiskMountInput", new List<string> {
-                        "vsphereVmInitiateDiskMount",
-                    }
-                },
-                {   "VsphereVmInitiateInPlaceRecoveryInput", new List<string> {
-                        "vsphereVmInitiateInPlaceRecovery",
-                    }
-                },
-                {   "VsphereVmInitiateInstantRecoveryV2Input", new List<string> {
-                        "vsphereVmInitiateInstantRecoveryV2",
-                    }
-                },
-                {   "VsphereVmInitiateLiveMountV2Input", new List<string> {
-                        "vsphereVmInitiateLiveMountV2",
-                    }
-                },
-                {   "VsphereVmListEsxiDatastoresInput", new List<string> {
-                        "vsphereVmListEsxiDatastores",
-                    }
-                },
-                {   "VsphereVmMountRelocateInput", new List<string> {
-                        "vsphereVmMountRelocate",
-                    }
-                },
-                {   "VsphereVmMountRelocateV2Input", new List<string> {
-                        "vsphereVmMountRelocateV2",
-                    }
-                },
-                {   "VsphereVmPowerOnOffLiveMountInput", new List<string> {
-                        "vsphereVmPowerOnOffLiveMount",
-                    }
-                },
-                {   "VsphereVmRecoverFilesInput", new List<string> {
-                        "vsphereVmRecoverFiles",
-                    }
-                },
-                {   "VsphereVmRecoverFilesNewInput", new List<string> {
-                        "vsphereVmRecoverFilesNew",
-                    }
-                },
-                {   "VsphereVmRegisterAgentInput", new List<string> {
-                        "vsphereVmRegisterAgent",
-                    }
-                },
-                {   "WarmSearchCacheInput", new List<string> {
-                        "warmSearchCache",
-                    }
-                },
-                {   "WhitelistModeEnum", new List<string> {
-                        "updateIpWhitelist",
-                    }
-                },
-                {   "WorkloadAnomaliesSortBy", new List<string> {
-                        "workloadAnomalies",
-                    }
-                },
-                {   "WorkloadFieldsInput", new List<string> {
-                        "snapshotFilesDelta",
-                        "snapshotFilesDeltaV2",
-                    }
-                },
-                {   "WorkloadLevelHierarchy", new List<string> {
-                        "assignRetentionSLAToSnappables",
-                        "azureNativeSubscriptions",
-                        "gcpNativeProjects",
-                        "o365Orgs",
-                    }
-                },
-                {   "[ActivitySeverityEnum]", new List<string> {
-                        "workloadAnomalies",
-                    }
-                },
-                {   "[AdVolumeExportFilter]", new List<string> {
-                        "adVolumeExports",
-                    }
-                },
-                {   "[AnalysisStatus]", new List<string> {
-                        "policyObjs",
-                    }
-                },
-                {   "[AnalyzerGroupInput]", new List<string> {
-                        "startCrawl",
-                    }
-                },
-                {   "[AppFilter]", new List<string> {
-                        "listO365Apps",
-                    }
-                },
-                {   "[AwsCloudComputeSettingFilterInput]", new List<string> {
-                        "allAwsComputeSettings",
-                    }
-                },
-                {   "[AzureAdObjectSearchType]", new List<string> {
-                        "azureAdObjectsByType",
-                    }
-                },
-                {   "[AzureNativeProtectionFeature]", new List<string> {
-                        "azureNativeResourceGroups",
-                    }
-                },
-                {   "[BackupObject]", new List<string> {
-                        "retryBackup",
-                    }
-                },
-                {   "[BlueprintRecoveryType]", new List<string> {
-                        "workloadAnomalies",
-                    }
-                },
-                {   "[CdmReportMigrationStatus]", new List<string> {
-                        "clusterReportMigrationCount",
-                        "clusterReportMigrationStatus",
-                    }
-                },
-                {   "[CdpPerfDashboardFilterParam]", new List<string> {
-                        "allCdpVmsInfos",
-                    }
-                },
-                {   "[CloudAccountFeature]", new List<string> {
-                        "allAccountsWithExocomputeMappings",
-                        "allAzureCloudAccountTenants",
-                        "allAzureSubscriptionWithExocomputeMappings",
-                        "allCloudAccounts",
-                        "allGcpCloudAccountProjectsForOauth",
-                        "allLatestFeaturePermissionsForCloudAccounts",
-                    }
-                },
-                {   "[CloudAccountFilterInput]", new List<string> {
-                        "allCloudAccounts",
-                    }
-                },
-                {   "[CloudAccountStatus]", new List<string> {
-                        "allAzureCloudAccountSubscriptionsByFeature",
-                        "allGcpCloudAccountProjectsByFeature",
-                        "azureCloudAccountTenant",
-                        "azureCloudAccountTenantWithExoConfigs",
-                    }
-                },
-                {   "[CloudNativeFilter]", new List<string> {
-                        "cloudNativeLabelRules",
-                        "cloudNativeTagRules",
-                    }
-                },
-                {   "[ContextFilterInputField]", new List<string> {
-                        "globalSlaFilterConnection",
-                        "slaDomains",
-                    }
-                },
-                {   "[DataGovObjectType]", new List<string> {
-                        "allTopRiskPolicySummaries",
-                        "discoveryTimeline",
-                        "policy",
-                        "policyObjs",
-                        "sonarContentReport",
-                    }
-                },
-                {   "[DhrcCategory]", new List<string> {
-                        "allDhrcActiveRecommendations",
-                        "allDhrcLatestMetrics",
-                        "allDhrcScores",
-                    }
-                },
-                {   "[EncryptionLevel]", new List<string> {
-                        "workloadAnomalies",
-                    }
-                },
-                {   "[ExchangeLiveMountFilterInput]", new List<string> {
-                        "exchangeLiveMounts",
-                    }
-                },
-                {   "[ExcludeVmDisksInput]", new List<string> {
-                        "excludeVmDisks",
-                    }
-                },
-                {   "[FeatureWithPermissionsGroups]", new List<string> {
-                        "allLatestFeaturePermissionsForCloudAccounts",
-                    }
-                },
-                {   "[Filter]", new List<string> {
-                        "activeDirectoryDomainControllers",
-                        "activeDirectoryDomains",
-                        "azureAdDirectories",
-                        "cassandraColumnFamilies",
-                        "cassandraKeyspaces",
-                        "cassandraSources",
-                        "countOfObjectsProtectedBySlas",
-                        "db2Databases",
-                        "db2Instances",
-                        "exchangeDags",
-                        "exchangeDatabases",
-                        "exchangeServers",
-                        "failoverClusterApps",
-                        "failoverClusterTopLevelDescendants",
-                        "filesetTemplates",
-                        "globalSearchResults",
-                        "hierarchyObjects",
-                        "hierarchySnappables",
-                        "hostFailoverClusters",
-                        "hostShares",
-                        "hypervScvmms",
-                        "hypervTopLevelDescendants",
-                        "hypervVirtualMachines",
-                        "k8sClusters",
-                        "k8sNamespaces",
-                        "managedVolumeLiveMounts",
-                        "managedVolumes",
-                        "mongoCollections",
-                        "mongoDatabases",
-                        "mongodbCollections",
-                        "mongodbDatabases",
-                        "mongodbSources",
-                        "mongoSources",
-                        "mssqlDatabases",
-                        "mssqlTopLevelDescendants",
-                        "nasNamespaces",
-                        "nasSystems",
-                        "nasTopLevelDescendants",
-                        "nutanixClusters",
-                        "nutanixPrismCentrals",
-                        "nutanixTopLevelDescendants",
-                        "nutanixVms",
-                        "o365Groups",
-                        "o365Mailboxes",
-                        "o365Onedrives",
-                        "o365Orgs",
-                        "o365SharepointDrives",
-                        "o365SharepointLists",
-                        "o365SharepointObjectList",
-                        "o365SharepointObjects",
-                        "o365SharepointSites",
-                        "o365Sites",
-                        "o365Teams",
-                        "o365UserObjects",
-                        "oracleDatabases",
-                        "oracleTopLevelDescendants",
-                        "physicalHosts",
-                        "protectedObjectsConnection",
-                        "protectedVolumesCount",
-                        "sapHanaDatabases",
-                        "sapHanaSystems",
-                        "slaManagedVolumes",
-                        "uniqueHypervServersCount",
-                        "uniqueVcdCount",
-                        "vcdVappVms",
-                        "vSphereComputeClusters",
-                        "vSphereDatastoreClusters",
-                        "vSphereDatastoreConnection",
-                        "vSphereFolders",
-                        "vSphereHostConnection",
-                        "vSphereRootRecoveryHierarchy",
-                        "vSphereTopLevelDescendantsConnection",
-                        "vSphereVCenterConnection",
-                        "vSphereVmNewConnection",
-                    }
-                },
-                {   "[GlobalSlaFilterInput]", new List<string> {
-                        "globalSlaFilterConnection",
-                        "slaDomains",
-                    }
-                },
-                {   "[GuestOsCredentialFilterInput]", new List<string> {
-                        "guestCredentialsV2",
-                    }
-                },
-                {   "[HierarchyObjectTypeEnum]", new List<string> {
-                        "awsNativeEc2Instances",
-                        "azureNativeVirtualMachines",
-                        "countOfObjectsProtectedBySlas",
-                        "failoverClusterTopLevelDescendants",
-                        "hypervTopLevelDescendants",
-                        "mssqlTopLevelDescendants",
-                        "nasTopLevelDescendants",
-                        "nutanixTopLevelDescendants",
-                        "oracleTopLevelDescendants",
-                        "vSphereTopLevelDescendantsConnection",
-                    }
-                },
-                {   "[HypervLiveMountFilterInput]", new List<string> {
-                        "hypervMounts",
-                    }
-                },
-                {   "[IntegrationType]", new List<string> {
-                        "allIntegrations",
-                    }
-                },
-                {   "[LdapServerInput]", new List<string> {
-                        "updateLdapIntegration",
-                    }
-                },
-                {   "[MosaicStorageLocationFilterInput]", new List<string> {
-                        "allNosqlStorageLocations",
-                    }
-                },
-                {   "[MssqlCompatibleInstancesFilterInput]", new List<string> {
-                        "mssqlCompatibleInstances",
-                    }
-                },
-                {   "[MssqlDatabaseLiveMountFilterInput]", new List<string> {
-                        "mssqlDatabaseLiveMounts",
-                    }
-                },
-                {   "[MssqlLogShippingTargetFilterInput]", new List<string> {
-                        "cdmMssqlLogShippingTargets",
-                    }
-                },
-                {   "[NutanixLiveMountFilterInput]", new List<string> {
-                        "nutanixMounts",
-                    }
-                },
-                {   "[O365TeamConvChannelInput]", new List<string> {
-                        "snappableTeamsConversationsSearch",
-                    }
-                },
-                {   "[ObjectIdsForHierarchyTypeInput]", new List<string> {
-                        "allObjectsAlreadyAssignedToOrgs",
-                    }
-                },
-                {   "[OracleLiveMountFilterInput]", new List<string> {
-                        "oracleLiveMounts",
-                    }
-                },
-                {   "[PendingActionGroupTypeEnum]", new List<string> {
-                        "allPendingActions",
-                    }
-                },
-                {   "[PendingActionStatus]", new List<string> {
-                        "allPendingActions",
-                    }
-                },
-                {   "[PendingActionSubGroupTypeEnum]", new List<string> {
-                        "allPendingActions",
-                    }
-                },
-                {   "[PermissionInput]", new List<string> {
-                        "createRole",
-                        "mutateRole",
-                        "updateRole",
-                    }
-                },
-                {   "[ProductName]", new List<string> {
-                        "allAccountProducts",
-                    }
-                },
-                {   "[ProductState]", new List<string> {
-                        "allAccountProducts",
-                    }
-                },
-                {   "[ProductType]", new List<string> {
-                        "allAccountProducts",
-                    }
-                },
-                {   "[QuarantineFilter]", new List<string> {
-                        "snapshotFilesDelta",
-                        "snapshotFilesDeltaV2",
-                    }
-                },
-                {   "[QueryDatastoreFreespaceThresholdInput]", new List<string> {
-                        "queryDatastoreFreespaceThresholds",
-                    }
-                },
-                {   "[ReportFilterInput]", new List<string> {
-                        "reportData",
-                    }
-                },
-                {   "[ResourceInput]", new List<string> {
-                        "startCrawl",
-                    }
-                },
-                {   "[RiskLevelType]", new List<string> {
-                        "policyObjs",
-                    }
-                },
-                {   "[SLAAuditDetailFilterInput]", new List<string> {
-                        "slaAuditDetail",
-                    }
-                },
-                {   "[SlaStatusFilterInput]", new List<string> {
-                        "globalSlaStatuses",
-                    }
-                },
-                {   "[SmbDomainFilterInput]", new List<string> {
-                        "smbDomains",
-                    }
-                },
-                {   "[SnappableAggregationsEnum]", new List<string> {
-                        "snappableGroupByConnection",
-                    }
-                },
-                {   "[SnapshotQueryFilterInput]", new List<string> {
-                        "snapshotOfASnappableConnection",
-                        "snapshotOfSnappablesConnection",
-                    }
-                },
-                {   "[String]", new List<string> {
-                        "addPolicyObjects",
-                        "addRoleAssignments",
-                        "allGcpCloudAccountMissingPermissionsForAddition",
-                        "allIssuesJobIds",
-                        "allObjectsAlreadyAssignedToOrgs",
-                        "allOrgsByIds",
-                        "allPendingActions",
-                        "allQuarantinedDetailsForSnapshots",
-                        "allSharepointSiteExclusions",
-                        "allSnapshotsClosestToPointInTime",
-                        "allVmwareCdpStateInfos",
-                        "configuredGroupMembers",
-                        "createUser",
-                        "deleteLdapPrincipals",
-                        "deleteUsersFromAccount",
-                        "discoveryTimeline",
-                        "generateCsr",
-                        "getRolesByIds",
-                        "mutateRole",
-                        "o365SharepointObjectList",
-                        "policy",
-                        "policyObjectUsages",
-                        "policyObjs",
-                        "protectedObjectsConnection",
-                        "ransomwareInvestigationAnalysisSummary",
-                        "removePolicyObjects",
-                        "reportData",
-                        "snapshotOfSnappablesConnection",
-                        "sonarReport",
-                        "sonarReportRow",
-                        "startCrawl",
-                        "threatHunts",
-                        "updateIpWhitelist",
-                        "updateRoleAssignments",
-                        "updateWhitelistedAnalyzers",
-                        "vsphereVmwareCdpLiveInfo",
-                        "workloadAnomalies",
-                    }
-                },
-                {   "[SupportUserAccessFilterInput]", new List<string> {
-                        "supportUserAccesses",
-                    }
-                },
-                {   "[TargetFilterInput]", new List<string> {
-                        "allTargets",
-                        "targets",
-                    }
-                },
-                {   "[TargetMappingFilterInput]", new List<string> {
-                        "allTargetMappings",
-                    }
-                },
-                {   "[ThreatHuntMatchesFound]", new List<string> {
-                        "threatHunts",
-                    }
-                },
-                {   "[ThreatHuntQuarantinedMatchType]", new List<string> {
-                        "threatHunts",
-                    }
-                },
-                {   "[ThreatHuntStatus]", new List<string> {
-                        "threatHunts",
-                    }
-                },
-                {   "[UUID]", new List<string> {
-                        "allAccountsWithExocomputeMappings",
-                        "allAuthorizationsForObjects",
-                        "allAzureCloudAccountMissingPermissions",
-                        "allAzureExocomputeConfigsInAccount",
-                        "allAzureSubscriptionWithExocomputeMappings",
-                        "allCdmGuestCredentials",
-                        "allCloudAccountExocomputeMappings",
-                        "allClustersTotpAckStatus",
-                        "allCurrentFeaturePermissionsForCloudAccounts",
-                        "allLatestFeaturePermissionsForCloudAccounts",
-                        "allNcdObjectsOverTimeData",
-                        "allNcdSlaComplianceData",
-                        "allNcdTaskData",
-                        "allNcdUsageOverTimeData",
-                        "allSlaSummariesByIds",
-                        "allStorageArrays",
-                        "allUsersOnAccountConnection",
-                        "allVcenterHotAddProxyVms",
-                        "assignRetentionSLAToSnappables",
-                        "assignRetentionSLAToSnapshots",
-                        "assignSlasForSnappableHierarchies",
-                        "azureCloudAccountTenant",
-                        "azureCloudAccountTenantWithExoConfigs",
-                        "backupO365Mailbox",
-                        "cdmHierarchySnappablesNew",
-                        "cloudNativeCheckArchivedSnapshotsLocked",
-                        "countOfObjectsProtectedBySlas",
-                        "getCdmReleaseDetailsForClusterFromSupportPortal",
-                        "getCdmReleaseDetailsForVersionFromSupportPortal",
-                        "hierarchyObjects",
-                        "isCloudNativeFileRecoveryFeasible",
-                        "ldapAuthorizedPrincipalConnection",
-                        "ncdBackEndCapacity",
-                        "ncdFrontEndCapacity",
-                        "ncdObjectProtectionStatus",
-                        "protectedObjectsConnection",
-                        "scheduleUpgradeBatchJob",
-                        "serviceAccounts",
-                        "slaConflictObjects",
-                        "startDownloadPackageBatchJob",
-                        "startUpgradeBatchJob",
-                        "userGroups",
-                        "vSphereHostsByFids",
-                    }
-                },
-                {   "[UserGroupToRolesInput]", new List<string> {
-                        "batchDeassignRoleFromUserGroups",
-                    }
-                },
-                {   "[VolumeGroupLiveMountFilterInput]", new List<string> {
-                        "volumeGroupMounts",
-                    }
-                },
-                {   "[VsphereExcludeVmDisksInput]", new List<string> {
-                        "vsphereExcludeVmDisks",
-                    }
-                },
-                {   "[VsphereLiveMountFilterInput]", new List<string> {
-                        "vSphereLiveMounts",
-                    }
-                },
-                {   "[WorkloadLevelHierarchy]", new List<string> {
-                        "assignSlasForSnappableHierarchies",
-                        "azureNativeResourceGroups",
-                    }
-                },
-            };
-            if (lookupDict.TryGetValue(argTypeName, out var rootFieldNames))
-            {
-                return rootFieldNames;
-            }
-            return new List<string>();
-        }
-
         public static string ReturnTypeLookupByGqlRootField(
             string rootFieldName
         )
@@ -35199,7 +30577,7 @@ namespace RubrikSecurityCloud.Types
                 { "activeDirectoryDomains", "ActiveDirectoryDomainConnection"},
                 { "activeDirectoryDomainController", "ActiveDirectoryDomainController"},
                 { "activeDirectoryDomainControllers", "ActiveDirectoryDomainControllerConnection"},
-                { "activeDirectorySearchSnapshots", "ActiveDirectoryObjectSearchResponseConnection"},
+                { "activeDirectorySearchSnapshots", "ActiveDirectorySnappableSearchResponseConnection"},
                 { "activitySeries", "ActivitySeries"},
                 { "activitySeriesConnection", "ActivitySeriesConnection"},
                 { "userActivityTimeline", "ActivityTimelineResultConnection"},
@@ -35215,6 +30593,7 @@ namespace RubrikSecurityCloud.Types
                 { "addClusterCertificate", "AddClusterCertificateReply"},
                 { "addClusterNodes", "AddClusterNodesReply"},
                 { "addConfiguredGroupToHierarchy", "AddConfiguredGroupToHierarchyReply"},
+                { "addCrossAccountServiceConsumer", "AddCrossAccountServiceConsumerReply"},
                 { "addDb2Instance", "AddDb2InstanceReply"},
                 { "addGlobalCertificate", "AddGlobalCertificateReply"},
                 { "addManagedVolume", "AddManagedVolumeReply"},
@@ -35345,6 +30724,7 @@ namespace RubrikSecurityCloud.Types
                 { "hypervOnDemandSnapshot", "AsyncRequestStatus"},
                 { "hypervScvmmAsyncRequestStatus", "AsyncRequestStatus"},
                 { "hypervVirtualMachineAsyncRequestStatus", "AsyncRequestStatus"},
+                { "inplaceExportHypervVirtualMachine", "AsyncRequestStatus"},
                 { "instantRecoverHypervVirtualMachineSnapshot", "AsyncRequestStatus"},
                 { "instantRecoverOracleSnapshot", "AsyncRequestStatus"},
                 { "makePrimary", "AsyncRequestStatus"},
@@ -35386,6 +30766,7 @@ namespace RubrikSecurityCloud.Types
                 { "triggerCloudComputeConnectivityCheck", "AsyncRequestStatus"},
                 { "unconfigureSapHanaRestore", "AsyncRequestStatus"},
                 { "validateOracleDatabaseBackups", "AsyncRequestStatus"},
+                { "vcenterAsyncRequestStatus", "AsyncRequestStatus"},
                 { "vmwareDownloadSnapshotFromLocation", "AsyncRequestStatus"},
                 { "vsphereDeleteVcenter", "AsyncRequestStatus"},
                 { "vsphereExportSnapshotToStandaloneHostV2", "AsyncRequestStatus"},
@@ -35412,6 +30793,7 @@ namespace RubrikSecurityCloud.Types
                 { "awsComputeSettings", "AwsComputeSettings"},
                 { "createAwsComputeSetting", "AwsComputeSettings"},
                 { "updateAwsComputeSetting", "AwsComputeSettings"},
+                { "awsExocomputeClusterConnect", "AwsExocomputeClusterConnectReply"},
                 { "awsNativeAccount", "AwsNativeAccount"},
                 { "awsNativeAccounts", "AwsNativeAccountConnection"},
                 { "awsNativeEbsVolume", "AwsNativeEbsVolume"},
@@ -35653,6 +31035,7 @@ namespace RubrikSecurityCloud.Types
                 { "createCloudNativeLabelRule", "CreateCloudNativeLabelRuleReply"},
                 { "createCloudNativeRcvAzureStorageSetting", "CreateCloudNativeRcvAzureStorageSettingReply"},
                 { "createCloudNativeTagRule", "CreateCloudNativeTagRuleReply"},
+                { "createCrossAccountRegOauthPayload", "CreateCrossAccountRegOauthPayloadReply"},
                 { "createCustomReport", "CreateCustomReportReply"},
                 { "createFailoverClusterApp", "CreateFailoverClusterAppReply"},
                 { "createFailoverCluster", "CreateFailoverClusterReply"},
@@ -35687,6 +31070,8 @@ namespace RubrikSecurityCloud.Types
                 { "certificateSigningRequest", "Csr"},
                 { "generateCsr", "Csr"},
                 { "certificateSigningRequests", "CsrConnection"},
+                { "m365DayToDayModeBackupStats", "DayToDayModeBackupStats"},
+                { "m365DayToDayModeStats", "DayToDayModeStats"},
                 { "db2Database", "Db2Database"},
                 { "db2Databases", "Db2DatabaseConnection"},
                 { "db2Instance", "Db2Instance"},
@@ -35827,6 +31212,7 @@ namespace RubrikSecurityCloud.Types
                 { "hypervServers", "HypervHostSummaryListResponse"},
                 { "hypervScvmmUpdate", "HypervScvmmUpdateReply"},
                 { "hypervServer", "HypervServer"},
+                { "hypervServersPaginated", "HypervServerConnection"},
                 { "hypervTopLevelDescendants", "HypervTopLevelDescendantTypeConnection"},
                 { "hypervVmDetail", "HypervVirtualMachineDetail"},
                 { "maxProtectedAppsCount", "Int"},
@@ -35870,6 +31256,8 @@ namespace RubrikSecurityCloud.Types
                 { "globalLockoutConfig", "LockoutConfig"},
                 { "lockoutConfig", "LockoutConfig"},
                 { "lookupAccount", "LookupAccountReply"},
+                { "m365OrgBackupLocations", "M365OrgBackupLocations"},
+                { "m365OrgOperationModes", "M365OrgOperationModes"},
                 { "m365Regions", "M365RegionsResp"},
                 { "managedVolume", "ManagedVolume"},
                 { "slaManagedVolume", "ManagedVolume"},
@@ -36022,6 +31410,8 @@ namespace RubrikSecurityCloud.Types
                 { "o365UserObjects", "O365UserDescendantMetadataConnection"},
                 { "oauthCodesForEdgeReg", "OauthCodesForEdgeRegReply"},
                 { "objectTypeAccessSummary", "ObjectTypeAccessSummaryConnection"},
+                { "m365OnboardingModeBackupStats", "OnboardingModeBackupStats"},
+                { "m365OnboardingModeStats", "OnboardingModeStats"},
                 { "oracleAcoParameters", "OracleAcoParameterList"},
                 { "oracleDataGuardGroup", "OracleDataGuardGroup"},
                 { "oracleDatabase", "OracleDatabase"},
@@ -36051,7 +31441,6 @@ namespace RubrikSecurityCloud.Types
                 { "patchSapHanaSystem", "PatchSapHanaSystemReply"},
                 { "pauseSla", "PauseSlaReply"},
                 { "pauseTarget", "PauseTargetReply"},
-                { "pendingRansomwareInvestigationResultsCount", "PendingEvaluationResultsReply"},
                 { "phoenixRolloutProgress", "PhoenixRolloutProgress"},
                 { "physicalHost", "PhysicalHost"},
                 { "physicalHosts", "PhysicalHostConnection"},
@@ -36067,16 +31456,15 @@ namespace RubrikSecurityCloud.Types
                 { "prepareAwsCloudAccountDeletion", "PrepareAwsCloudAccountDeletionReply"},
                 { "prepareFeatureUpdateForAwsCloudAccount", "PrepareFeatureUpdateForAwsCloudAccountReply"},
                 { "ldapPrincipalConnection", "PrincipalConnection"},
+                { "privateContainerRegistry", "PrivateContainerRegistryReplyType"},
                 { "processedRansomwareInvestigationWorkloadCount", "ProcessedRansomwareInvestigationWorkloadCountReply"},
                 { "productDocumentation", "ProductDocumentation"},
                 { "protectedObjectsConnection", "ProtectedObjectsConnection"},
-                { "protectedRansomwareInvestigationWorkloadCount", "ProtectedRansomwareInvestigationWorkloadCountReply"},
                 { "putSmbConfiguration", "PutSmbConfigurationReply"},
                 { "queryDatastoreFreespaceThresholds", "QueryDatastoreFreespaceThresholdsReply"},
                 { "datagovSecDesc", "QuerySDDLReply"},
                 { "ransomwareInvestigationAnalysisSummary", "RansomwareInvestigationAnalysisSummaryReply"},
                 { "ransomwareInvestigationEnablement", "RansomwareInvestigationEnablementReply"},
-                { "ransomwareInvestigationWorkloadScannedCount", "RansomwareInvestigationWorkloadScannedCountReply"},
                 { "ransomwareResult", "RansomwareResult"},
                 { "ransomwareResultOpt", "RansomwareResult"},
                 { "ransomwareResults", "RansomwareResultConnection"},
@@ -36097,7 +31485,9 @@ namespace RubrikSecurityCloud.Types
                 { "registerCloudCluster", "RegisterCloudClusterReply"},
                 { "registerNasSystem", "RegisterNasSystemReply"},
                 { "removeVlans", "RemoveVlansReply"},
+                { "replicationNetworkThrottleBypassById", "ReplicationNetworkThrottleBypassReply"},
                 { "replicationPairs", "ReplicationPairConnection"},
+                { "replicationNetworkThrottleBypass", "ReplicationTargetThrottleBypassSummaryListResponse"},
                 { "clusterReportMigrationStatus", "ReportMigrationStatusConnection"},
                 { "clusterReportMigrationCount", "ReportsMigrationCount"},
                 { "addAdGroupsToHierarchy", "RequestStatus"},
@@ -36150,6 +31540,7 @@ namespace RubrikSecurityCloud.Types
                 { "resizeDisk", "ResponseSuccess"},
                 { "updateClusterNtpServers", "ResponseSuccess"},
                 { "updateDnsServersAndSearchDomains", "ResponseSuccess"},
+                { "updateReplicationNetworkThrottleBypass", "ResponseSuccess"},
                 { "restoreAzureAdObjectsWithPasswords", "RestoreAzureAdObjectsWithPasswordsReply"},
                 { "resumeTarget", "ResumeTargetReply"},
                 { "retryBackup", "RetryBackupResp"},
@@ -36197,6 +31588,7 @@ namespace RubrikSecurityCloud.Types
                 { "snapshotResults", "SnapshotResultConnection"},
                 { "snapshotsForUnmanagedObject", "SnapshotSummaryConnection"},
                 { "snmpConfigurations", "SnmpConfiguration"},
+                { "snoozedDirectories", "SnoozedDirectoryConnection"},
                 { "sonarContentReport", "SonarContentReportConnection"},
                 { "sonarReport", "SonarReportConnection"},
                 { "sonarReportRow", "SonarReportRowConnection"},
@@ -36227,6 +31619,7 @@ namespace RubrikSecurityCloud.Types
                 { "isLoggedIntoRubrikSupportPortal", "SupportPortalStatusReply"},
                 { "tunnelStatus", "SupportTunnelInfo"},
                 { "supportUserAccesses", "SupportUserAccessConnection"},
+                { "switchProductToOnboardingMode", "SwitchProductToOnboardingModeReply"},
                 { "syslogExportRules", "SyslogExportRuleSummaryListResponse"},
                 { "tableFilters", "TableFilters"},
                 { "takeOnDemandSnapshot", "TakeOnDemandSnapshotReply"},
@@ -36275,6 +31668,7 @@ namespace RubrikSecurityCloud.Types
                 { "threatHunts", "ThreatHuntConnection"},
                 { "threatHuntResult", "ThreatHuntResult"},
                 { "threatHuntSummary", "ThreatHuntSummaryReply"},
+                { "tprStatusForNodeRemoval", "TprStatusForNodeRemoval"},
                 { "triggerExocomputeHealthCheck", "TriggerExocomputeHealthCheckReply"},
                 { "triggerRansomwareDetection", "TriggerRansomwareDetectionReply"},
                 { "createRole", "UUID"},
@@ -36295,6 +31689,7 @@ namespace RubrikSecurityCloud.Types
                 { "updateClusterDefaultAddress", "UpdateClusterDefaultAddressReply"},
                 { "updateClusterSettings", "UpdateClusterSettingsReply"},
                 { "updateCustomReport", "UpdateCustomReportReply"},
+                { "updateCustomerAppPermissions", "UpdateCustomerAppPermissionsReply"},
                 { "updateDistributionListDigest", "UpdateDistributionListDigestReply"},
                 { "updateEventDigest", "UpdateEventDigestReply"},
                 { "updateFailoverClusterApp", "UpdateFailoverClusterAppReply"},
@@ -36307,6 +31702,7 @@ namespace RubrikSecurityCloud.Types
                 { "updateHypervVirtualMachineSnapshotMount", "UpdateHypervVirtualMachineSnapshotMountReply"},
                 { "updateInsightState", "UpdateInsightStateReply"},
                 { "updateLockoutConfig", "UpdateLockoutConfigReply"},
+                { "updateManagedIdentities", "UpdateManagedIdentitiesReply"},
                 { "updateManagedVolume", "UpdateManagedVolumeReply"},
                 { "mssqlDefaultProperties", "UpdateMssqlDefaultPropertiesReply"},
                 { "updateMssqlDefaultProperties", "UpdateMssqlDefaultPropertiesReply"},
@@ -36344,6 +31740,7 @@ namespace RubrikSecurityCloud.Types
                 { "userSettings", "UserSettings"},
                 { "bulkUpdateExchangeDag", "V1BulkUpdateExchangeDagResponse"},
                 { "allMssqlDatabaseRestoreFiles", "V1MssqlGetRestoreFilesV1Response"},
+                { "allValidReplicationSources", "ValidReplicationSourceConnection"},
                 { "allValidReplicationTargets", "ValidReplicationTargetConnection"},
                 { "validateAndCreateAwsCloudAccount", "ValidateAndCreateAwsCloudAccountReply"},
                 { "validateAndSaveCustomerKmsInfo", "ValidateAndSaveCustomerKmsInfoReply"},
@@ -36365,8 +31762,10 @@ namespace RubrikSecurityCloud.Types
                 { "clusterVlans", "VlanConfigListResponse"},
                 { "vSphereHostDetails", "VmwareHostDetail"},
                 { "azureVNets", "VnetConnection"},
+                { "bulkUpdateRansomwareInvestigationStatus", "Void"},
                 { "cancelThreatHunt", "Void"},
                 { "completeAzureAdAppUpdate", "Void"},
+                { "createCrossAccountPair", "Void"},
                 { "createReplicationPair", "Void"},
                 { "deleteAllOracleDatabaseSnapshots", "Void"},
                 { "deleteAwsComputeSetting", "Void"},
@@ -36401,9 +31800,12 @@ namespace RubrikSecurityCloud.Types
                 { "removePrivateEndpointConnection", "Void"},
                 { "resetAllOrgUsersPasswords", "Void"},
                 { "resetUsersPasswordsWithUserIds", "Void"},
+                { "resolveAnomaly", "Void"},
                 { "revokeAllOrgRoles", "Void"},
+                { "setBundleApprovalStatus", "Void"},
                 { "setCustomerTags", "Void"},
                 { "setPasswordComplexityPolicy", "Void"},
+                { "setPrivateContainerRegistry", "Void"},
                 { "setSsoCertificate", "Void"},
                 { "stopJobInstanceFromEventSeries", "Void"},
                 { "unlockUsersByAdmin", "Void"},
@@ -36697,7 +32099,9 @@ namespace RubrikSecurityCloud.Types
         {
             Unknown,
             Account,
+            ActiveDirectory,
             ActivitySeries,
+            Archival,
             Aws,
             AwsNative,
             Azure,
@@ -36708,23 +32112,28 @@ namespace RubrikSecurityCloud.Types
             CloudAccount,
             CloudNative,
             Cluster,
+            CrossAccount,
             Db2,
             Download,
             Exchange,
+            FailoverCluster,
             Fileset,
             Gcp,
             GcpNative,
             Host,
             Hyperv,
+            Integration,
             K8s,
             Ldap,
             M365,
             ManagedVolume,
             Misc,
             Mongo,
+            MongoDb,
             Mosaic,
             Mssql,
             Nas,
+            Ncd,
             Nfs,
             Nutanix,
             O365,
@@ -36740,12 +32149,16 @@ namespace RubrikSecurityCloud.Types
             Sharepoint,
             Sla,
             Smb,
+            Snappable,
             Snapshot,
+            Snmp,
             Sonar,
             StorageArray,
+            Syslog,
             Tape,
             Threat,
             Vcenter,
+            Vmware,
             Vsphere,
             VsphereVm,
             Webhook,
@@ -36758,8 +32171,12 @@ namespace RubrikSecurityCloud.Types
             var lookupDict = new Dictionary<string, ApiDomainName> {
             { "New-RscQueryAccount", ApiDomainName.Account },
             { "New-RscMutationAccount", ApiDomainName.Account},
+            { "New-RscQueryActiveDirectory", ApiDomainName.ActiveDirectory },
+            { "New-RscMutationActiveDirectory", ApiDomainName.ActiveDirectory},
             { "New-RscQueryActivitySeries", ApiDomainName.ActivitySeries },
             { "New-RscMutationActivitySeries", ApiDomainName.ActivitySeries},
+            { "New-RscQueryArchival", ApiDomainName.Archival },
+            { "New-RscMutationArchival", ApiDomainName.Archival},
             { "New-RscQueryAws", ApiDomainName.Aws },
             { "New-RscMutationAws", ApiDomainName.Aws},
             { "New-RscQueryAwsNative", ApiDomainName.AwsNative },
@@ -36780,12 +32197,16 @@ namespace RubrikSecurityCloud.Types
             { "New-RscMutationCloudNative", ApiDomainName.CloudNative},
             { "New-RscQueryCluster", ApiDomainName.Cluster },
             { "New-RscMutationCluster", ApiDomainName.Cluster},
+            { "New-RscQueryCrossAccount", ApiDomainName.CrossAccount },
+            { "New-RscMutationCrossAccount", ApiDomainName.CrossAccount},
             { "New-RscQueryDb2", ApiDomainName.Db2 },
             { "New-RscMutationDb2", ApiDomainName.Db2},
             { "New-RscQueryDownload", ApiDomainName.Download },
             { "New-RscMutationDownload", ApiDomainName.Download},
             { "New-RscQueryExchange", ApiDomainName.Exchange },
             { "New-RscMutationExchange", ApiDomainName.Exchange},
+            { "New-RscQueryFailoverCluster", ApiDomainName.FailoverCluster },
+            { "New-RscMutationFailoverCluster", ApiDomainName.FailoverCluster},
             { "New-RscQueryFileset", ApiDomainName.Fileset },
             { "New-RscMutationFileset", ApiDomainName.Fileset},
             { "New-RscQueryGcp", ApiDomainName.Gcp },
@@ -36796,6 +32217,8 @@ namespace RubrikSecurityCloud.Types
             { "New-RscMutationHost", ApiDomainName.Host},
             { "New-RscQueryHyperv", ApiDomainName.Hyperv },
             { "New-RscMutationHyperv", ApiDomainName.Hyperv},
+            { "New-RscQueryIntegration", ApiDomainName.Integration },
+            { "New-RscMutationIntegration", ApiDomainName.Integration},
             { "New-RscQueryK8s", ApiDomainName.K8s },
             { "New-RscMutationK8s", ApiDomainName.K8s},
             { "New-RscQueryLdap", ApiDomainName.Ldap },
@@ -36808,12 +32231,16 @@ namespace RubrikSecurityCloud.Types
             { "New-RscMutationMisc", ApiDomainName.Misc},
             { "New-RscQueryMongo", ApiDomainName.Mongo },
             { "New-RscMutationMongo", ApiDomainName.Mongo},
+            { "New-RscQueryMongoDb", ApiDomainName.MongoDb },
+            { "New-RscMutationMongoDb", ApiDomainName.MongoDb},
             { "New-RscQueryMosaic", ApiDomainName.Mosaic },
             { "New-RscMutationMosaic", ApiDomainName.Mosaic},
             { "New-RscQueryMssql", ApiDomainName.Mssql },
             { "New-RscMutationMssql", ApiDomainName.Mssql},
             { "New-RscQueryNas", ApiDomainName.Nas },
             { "New-RscMutationNas", ApiDomainName.Nas},
+            { "New-RscQueryNcd", ApiDomainName.Ncd },
+            { "New-RscMutationNcd", ApiDomainName.Ncd},
             { "New-RscQueryNfs", ApiDomainName.Nfs },
             { "New-RscMutationNfs", ApiDomainName.Nfs},
             { "New-RscQueryNutanix", ApiDomainName.Nutanix },
@@ -36844,18 +32271,26 @@ namespace RubrikSecurityCloud.Types
             { "New-RscMutationSla", ApiDomainName.Sla},
             { "New-RscQuerySmb", ApiDomainName.Smb },
             { "New-RscMutationSmb", ApiDomainName.Smb},
+            { "New-RscQuerySnappable", ApiDomainName.Snappable },
+            { "New-RscMutationSnappable", ApiDomainName.Snappable},
             { "New-RscQuerySnapshot", ApiDomainName.Snapshot },
             { "New-RscMutationSnapshot", ApiDomainName.Snapshot},
+            { "New-RscQuerySnmp", ApiDomainName.Snmp },
+            { "New-RscMutationSnmp", ApiDomainName.Snmp},
             { "New-RscQuerySonar", ApiDomainName.Sonar },
             { "New-RscMutationSonar", ApiDomainName.Sonar},
             { "New-RscQueryStorageArray", ApiDomainName.StorageArray },
             { "New-RscMutationStorageArray", ApiDomainName.StorageArray},
+            { "New-RscQuerySyslog", ApiDomainName.Syslog },
+            { "New-RscMutationSyslog", ApiDomainName.Syslog},
             { "New-RscQueryTape", ApiDomainName.Tape },
             { "New-RscMutationTape", ApiDomainName.Tape},
             { "New-RscQueryThreat", ApiDomainName.Threat },
             { "New-RscMutationThreat", ApiDomainName.Threat},
             { "New-RscQueryVcenter", ApiDomainName.Vcenter },
             { "New-RscMutationVcenter", ApiDomainName.Vcenter},
+            { "New-RscQueryVmware", ApiDomainName.Vmware },
+            { "New-RscMutationVmware", ApiDomainName.Vmware},
             { "New-RscQueryVsphere", ApiDomainName.Vsphere },
             { "New-RscMutationVsphere", ApiDomainName.Vsphere},
             { "New-RscQueryVsphereVm", ApiDomainName.VsphereVm },
@@ -36882,14 +32317,43 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Account,
                     new List<string> {
+                    "CreateOrg",
+                    "CreateOrgSwitchSession",
+                    "CreateRole",
+                    "CreateUser",
+                    "CreateUserWithPassword",
+                    "CurrentUser",
+                    "CurrentUserLoginContext",
+                    "DeleteOrg",
+                    "DeleteRole",
+                    "DeleteTotpConfig",
+                    "DeleteTotpConfigs",
                     "DeleteUsers",
                     "EnabledFeatures",
+                    "GenerateTotpSecret",
                     "Id",
                     "Lookup",
+                    "MutateRole",
                     "Owners",
                     "Products",
                     "Settings",
+                    "UpdateOrg",
+                    "UpdateRole",
                     "Users",
+                    }
+                },
+                {
+                    ApiDomainName.ActiveDirectory,
+                    new List<string> {
+                    "CreateLiveMount",
+                    "CreateUnmount",
+                    "Domain",
+                    "DomainController",
+                    "DomainControllers",
+                    "Domains",
+                    "ModifyLiveMount",
+                    "RestoreObjects",
+                    "SearchSnapshots",
                     }
                 },
                 {
@@ -36902,6 +32366,35 @@ namespace RubrikSecurityCloud.Types
                     "List",
                     "UserFileTimeline",
                     "UserTimeline",
+                    }
+                },
+                {
+                    ApiDomainName.Archival,
+                    new List<string> {
+                    "CreateGlacierReaderTarget",
+                    "CreateManualTargetMapping",
+                    "CreateS3CompatibleReaderTarget",
+                    "CreateS3CompatibleTarget",
+                    "DeleteTarget",
+                    "DeleteTargetMapping",
+                    "DisableTarget",
+                    "EnableTarget",
+                    "HierarchyObjectRecoveryTarget",
+                    "IsTotpMandatoryInTargetVersion",
+                    "PauseTarget",
+                    "PromoteReaderTarget",
+                    "RcsLocationsConsumptionStats",
+                    "RefreshReaderTarget",
+                    "ResumeTarget",
+                    "StorageUsage",
+                    "Target",
+                    "TargetMapping",
+                    "TargetMappings",
+                    "Targets",
+                    "UpdateGlacierTarget",
+                    "UpdateManualTargetMapping",
+                    "UpdateS3CompatibleTarget",
+                    "UpgradeCdmManagedTarget",
                     }
                 },
                 {
@@ -36933,6 +32426,7 @@ namespace RubrikSecurityCloud.Types
                     "DeleteComputeSetting",
                     "DeleteExocomputeConfigs",
                     "Ec2KeyPairsByRegion",
+                    "ExocomputeClusterConnect",
                     "ExocomputeConfigs",
                     "FinalizeCloudAccountDeletion",
                     "FinalizeCloudAccountProtection",
@@ -37167,14 +32661,19 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Certificate,
                     new List<string> {
                     "AddClusterCertificate",
-                    "AddGlobal",
-                    "AssignableGlobal",
-                    "Certificate",
-                    "Cluster",
+                    "AddGlobalCertificate",
+                    "AssignableGlobalCertificates",
+                    "Certificates",
+                    "CertificatesWithKey",
+                    "ClusterCertificates",
+                    "ClusterCsr",
                     "ClusterWebSigned",
                     "Delete",
-                    "DeleteGlobal",
-                    "Global",
+                    "DeleteCsr",
+                    "DeleteGlobalCertificate",
+                    "GenerateCsr",
+                    "GlobalCertificate",
+                    "GlobalCertificates",
                     "Info",
                     "MarkAgentSecondary",
                     "SetSso",
@@ -37182,20 +32681,21 @@ namespace RubrikSecurityCloud.Types
                     "SigningRequest",
                     "SigningRequests",
                     "Update",
-                    "UpdateGlobal",
+                    "UpdateGlobalCertificate",
                     "UpdateHost",
-                    "WithKey",
                     }
                 },
                 {
                     ApiDomainName.CloudAccount,
                     new List<string> {
                     "CloudAccount",
+                    "CloudAccounts",
                     "CurrentFeaturePermissions",
                     "ExocomputeMappings",
                     "LatestFeaturePermissions",
                     "MapExocomputeAccount",
                     "UnmapExocomputeAccount",
+                    "WithExocomputeMappings",
                     }
                 },
                 {
@@ -37238,44 +32738,55 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Cluster,
                     new List<string> {
+                    "AddClusterNodes",
                     "AddNodesToCloud",
-                    "BulkDeleteFailover",
                     "Cluster",
+                    "ComputeClusterStatus",
                     "Connected",
-                    "CreateFailover",
-                    "DatabaseLogReport",
-                    "DatabaseLogReportingProperties",
                     "DefaultGateway",
-                    "DeleteFailover",
                     "Dns",
                     "FloatingIps",
+                    "GenerateClusterRegistrationToken",
+                    "GetCdmReleaseDetailsForClusterFromSupportPortal",
+                    "GetGroupCountByCdmClusterStatus",
                     "GroupByList",
-                    "HostFailover",
                     "Ipmi",
                     "Ipv6Mode",
                     "IsTotpAckNecessary",
+                    "LicensesForClusterProductSummary",
                     "List",
                     "NetworkInterfaces",
                     "Nodes",
                     "NtpServers",
                     "OperationJobProgress",
                     "Proxy",
+                    "RadarClusterList",
                     "RecoverCloud",
                     "RegisterCloud",
                     "RegistrationProductInfo",
                     "RemoveCdm",
+                    "RemoveClusterNodes",
                     "ReplicationTargets",
-                    "ReportMigrationCount",
-                    "ReportMigrationJobStatus",
-                    "ReportMigrationStatus",
                     "TotpAckStatus",
                     "TypeList",
-                    "UpdateDatabaseLogReportingProperties",
-                    "UpdateFailover",
+                    "UpdateClusterDefaultAddress",
+                    "UpdateClusterLocation",
+                    "UpdateClusterNtpServers",
+                    "UpdateClusterSettings",
+                    "UpdatePreviewerClusterConfig",
+                    "ValidateClusterLicenseCapacity",
                     "Vlans",
                     "WebCertsAndIpmis",
                     "Windows",
                     "WithUpgradesInfo",
+                    }
+                },
+                {
+                    ApiDomainName.CrossAccount,
+                    new List<string> {
+                    "AddCrossAccountServiceConsumer",
+                    "CreateCrossAccountPair",
+                    "CreateCrossAccountRegOauthPayload",
                     }
                 },
                 {
@@ -37309,7 +32820,7 @@ namespace RubrikSecurityCloud.Types
                     "ActiveDirectorySnapshotFromLocation",
                     "AuditLogCsvAsync",
                     "CdmUpgradesPdf",
-                    "EdVersionList",
+                    "DownloadedVersionList",
                     "ExchangeSnapshot",
                     "FilesetSnapshot",
                     "FilesetSnapshotFromLocation",
@@ -37342,6 +32853,24 @@ namespace RubrikSecurityCloud.Types
                     "LiveMounts",
                     "Server",
                     "Servers",
+                    }
+                },
+                {
+                    ApiDomainName.FailoverCluster,
+                    new List<string> {
+                    "App",
+                    "Apps",
+                    "BulkDelete",
+                    "BulkDeleteApp",
+                    "Create",
+                    "CreateApp",
+                    "Delete",
+                    "DeleteApp",
+                    "Host",
+                    "Hosts",
+                    "TopLevelDescendants",
+                    "Update",
+                    "UpdateApp",
                     }
                 },
                 {
@@ -37446,6 +32975,7 @@ namespace RubrikSecurityCloud.Types
                     "DownloadVirtualMachineSnapshotFiles",
                     "ExportVirtualMachine",
                     "HostAsyncRequestStatus",
+                    "InplaceExportVirtualMachine",
                     "InstantRecoverVirtualMachineSnapshot",
                     "Mounts",
                     "OnDemandSnapshot",
@@ -37461,6 +32991,7 @@ namespace RubrikSecurityCloud.Types
                     "Scvmms",
                     "Server",
                     "Servers",
+                    "ServersPaginated",
                     "TopLevelDescendants",
                     "UniqueServersCount",
                     "UpdateVirtualMachine",
@@ -37469,6 +33000,19 @@ namespace RubrikSecurityCloud.Types
                     "VirtualMachineAsyncRequestStatus",
                     "VirtualMachines",
                     "VmDetail",
+                    }
+                },
+                {
+                    ApiDomainName.Integration,
+                    new List<string> {
+                    "CreateIntegration",
+                    "CreateIntegrations",
+                    "DeleteIntegration",
+                    "DeleteIntegrations",
+                    "Integration",
+                    "Integrations",
+                    "UpdateIntegration",
+                    "UpdateIntegrations",
                     }
                 },
                 {
@@ -37509,6 +33053,12 @@ namespace RubrikSecurityCloud.Types
                     "BackupOnedrive",
                     "BackupSharepointDrive",
                     "BackupTeam",
+                    "DayToDayModeBackupStats",
+                    "DayToDayModeStats",
+                    "OnboardingModeBackupStats",
+                    "OnboardingModeStats",
+                    "OrgBackupLocations",
+                    "OrgOperationModes",
                     "Regions",
                     }
                 },
@@ -37536,18 +33086,11 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Misc,
                     new List<string> {
                     "ActiveCustomAnalyzers",
-                    "ActiveDirectoryDomain",
-                    "ActiveDirectoryDomainController",
-                    "ActiveDirectoryDomainControllers",
-                    "ActiveDirectoryDomains",
                     "AdVolumeExports",
                     "AddAdGroupsToHierarchy",
-                    "AddClusterNodes",
                     "AddConfiguredGroupToHierarchy",
                     "AddInventoryWorkloads",
-                    "AddPolicyObjects",
                     "AddRoleAssignments",
-                    "AddSyslogExportRule",
                     "AddVlan",
                     "AddVmAppConsistentSpecs",
                     "AllowedOrgAdminOperations",
@@ -37556,13 +33099,15 @@ namespace RubrikSecurityCloud.Types
                     "AnomalyResultOpt",
                     "AnomalyResults",
                     "AnomalyResultsGrouped",
-                    "ArchivalStorageUsage",
                     "ArchiveCrawl",
                     "AreMultiGeoBackupsEnabled",
                     "AssignProtection",
                     "AuthorizationsForGlobalResource",
                     "AuthorizationsForObject",
                     "AuthorizationsForObjects",
+                    "AwsComputeSettings",
+                    "AzureResourceGroups",
+                    "AzureSubnets",
                     "BatchDeassignRoleFromUserGroups",
                     "BrowseCalendar",
                     "BrowseContacts",
@@ -37571,14 +33116,10 @@ namespace RubrikSecurityCloud.Types
                     "BrowseTeamsChannels",
                     "BrowseTeamsDrive",
                     "BulkCreateNasFilesets",
-                    "BulkDeleteFailoverClusterApp",
-                    "BulkDeleteNasSystems",
                     "CancelDownloadPackage",
                     "CancelScheduledUpgrade",
                     "CancelTaskchain",
                     "CdmGuestCredentials",
-                    "CdmHierarchySnappableNew",
-                    "CdmHierarchySnappablesNew",
                     "CdmInventorySubHierarchyRoot",
                     "CdmOvaDetails",
                     "CdmVersionCheck",
@@ -37589,66 +33130,35 @@ namespace RubrikSecurityCloud.Types
                     "CloudDirectShares",
                     "CloudDirectSites",
                     "CloudDirectSystems",
-                    "ComputeClusterStatus",
                     "ConfiguredGroupMembers",
                     "Crawl",
                     "Crawls",
-                    "CreateActiveDirectoryLiveMount",
-                    "CreateActiveDirectoryUnmount",
                     "CreateCustomAnalyzer",
-                    "CreateFailoverClusterApp",
-                    "CreateGlacierReaderTarget",
                     "CreateGuestCredential",
-                    "CreateIntegration",
-                    "CreateIntegrations",
-                    "CreateManualTargetMapping",
                     "CreateOnDemandVolumeGroupBackup",
-                    "CreateOrg",
-                    "CreateOrgSwitchSession",
-                    "CreatePolicy",
-                    "CreateRole",
-                    "CreateS3CompatibleReaderTarget",
-                    "CreateS3CompatibleTarget",
-                    "CreateUser",
-                    "CreateUserWithPassword",
                     "CreateVappsInstantRecovery",
                     "CurrentIpAddress",
                     "CurrentOrg",
                     "CurrentOrgAuthDomainConfig",
                     "CurrentOrgIdentityProviders",
-                    "CurrentUser",
-                    "CurrentUserLoginContext",
                     "CustomAnalyzer",
                     "DashboardSummary",
                     "DatagovSecDesc",
                     "DeactivateCustomAnalyzer",
-                    "DeactivatePolicy",
                     "DecryptExportUrl",
                     "DeleteAdGroupsFromHierarchy",
-                    "DeleteCsr",
                     "DeleteDistributionListDigestBatch",
                     "DeleteEventDigest",
-                    "DeleteFailoverClusterApp",
                     "DeleteGuestCredentialById",
-                    "DeleteIntegration",
-                    "DeleteIntegrations",
                     "DeleteLogShipping",
-                    "DeleteNasSystem",
-                    "DeleteOrg",
-                    "DeleteRole",
-                    "DeleteSyslogExportRule",
-                    "DeleteTarget",
-                    "DeleteTargetMapping",
-                    "DeleteTotpConfig",
-                    "DeleteTotpConfigs",
                     "DeleteVolumeGroupMount",
                     "DeploymentIpAddresses",
                     "DeploymentVersion",
                     "DhrcActiveRecommendations",
                     "DhrcLatestMetrics",
+                    "DhrcScores",
                     "DiffFmd",
                     "DisableSupportUserAccess",
-                    "DisableTarget",
                     "DiscoverNodes",
                     "DiscoveryTimeline",
                     "DistributionListDigest",
@@ -37659,32 +33169,22 @@ namespace RubrikSecurityCloud.Types
                     "EnableAutomaticFmdUpload",
                     "EnableDisableAppConsistency",
                     "EnableSupportUserAccess",
-                    "EnableTarget",
                     "EventDigests",
                     "ExcludeVmDisks",
                     "ExternalDeploymentName",
                     "FailedRestoreItemsInfo",
-                    "FailoverClusterApp",
-                    "FailoverClusterApps",
-                    "FailoverClusterTopLevelDescendants",
                     "FederatedLoginStatus",
                     "FileActivities",
-                    "GenerateClusterRegistrationToken",
                     "GenerateConfigProtectionRestoreForm",
-                    "GenerateCsr",
                     "GenerateSupportBundle",
-                    "GenerateTotpSecret",
                     "GeoLocationList",
                     "GetAllRolesInOrgList",
-                    "GetCdmReleaseDetailsForClusterFromSupportPortal",
                     "GetCdmReleaseDetailsForVersionFromSupportPortal",
                     "GetCdmReleaseDetailsFromSupportPortal",
                     "GetDownloadUrl",
-                    "GetGroupCountByCdmClusterStatus",
                     "GetGroupCountByPrechecksStatus",
                     "GetGroupCountByUpgradeJobStatus",
                     "GetGroupCountByVersionStatus",
-                    "GetHealthMonitorPolicyStatus",
                     "GetKorgTaskchainStatus",
                     "GetPermissions",
                     "GetRolesByIds",
@@ -37701,13 +33201,9 @@ namespace RubrikSecurityCloud.Types
                     "HideRevealNasNamespaces",
                     "HideRevealNasShares",
                     "HierarchyObject",
-                    "HierarchyObjectRecoveryTarget",
                     "HierarchyObjects",
-                    "HierarchySnappables",
                     "InstallIoFilter",
                     "InstalledVersionList",
-                    "Integration",
-                    "Integrations",
                     "InventoryRoot",
                     "InventorySubHierarchyRoot",
                     "InventoryWorkloads",
@@ -37716,10 +33212,8 @@ namespace RubrikSecurityCloud.Types
                     "IpWhitelist",
                     "IsLoggedIntoRubrikSupportPortal",
                     "IsSfdcReachable",
-                    "IsTotpMandatoryInTargetVersion",
                     "IsUpgradeAvailable",
                     "IsUpgradeRecommended",
-                    "IsVMwareManagementEnabled",
                     "IsZrsAvailableForLocation",
                     "Issue",
                     "Issues",
@@ -37727,7 +33221,6 @@ namespace RubrikSecurityCloud.Types
                     "KnowledgeBaseArticle",
                     "LambdaSettings",
                     "LicensedProducts",
-                    "LicensesForClusterProductSummary",
                     "ListCidrsForComputeSetting",
                     "LockUsersByAdmin",
                     "LockoutConfig",
@@ -37736,17 +33229,8 @@ namespace RubrikSecurityCloud.Types
                     "MaxProtectedAppsCount",
                     "MfaSetting",
                     "MinimumCdmVersionForFeatureSet",
-                    "ModifyActiveDirectoryLiveMount",
                     "ModifyIpmi",
                     "MountDisk",
-                    "MutateRole",
-                    "NcdBackEndCapacity",
-                    "NcdFrontEndCapacity",
-                    "NcdObjectProtectionStatus",
-                    "NcdObjectsOverTimeData",
-                    "NcdTaskData",
-                    "NcdUsageOverTimeData",
-                    "NcdVmImageUrl",
                     "NetworkThrottle",
                     "NfAnomalyResults",
                     "NfAnomalyResultsGrouped",
@@ -37759,37 +33243,31 @@ namespace RubrikSecurityCloud.Types
                     "ObjectTypeAccessSummary",
                     "ObjectsAlreadyAssignedToOrgs",
                     "Org",
-                    "OrgSecurityPolicy",
                     "Orgs",
                     "OrgsByIds",
                     "OrgsForPrincipal",
-                    "PasswordComplexityPolicy",
-                    "PauseTarget",
                     "PendingAction",
                     "PendingActions",
                     "PhoenixRolloutProgress",
                     "PipelineHealthForTimeRange",
                     "PolarisInventorySubHierarchyRoot",
+                    "PolicyDetails",
+                    "PolicyObj",
+                    "PolicyObjs",
                     "PrechecksStatus",
                     "PrechecksStatusWithNextJobInfo",
+                    "PrivateContainerRegistry",
                     "ProductDocumentation",
-                    "PromoteReaderTarget",
                     "ProtectedObjectsList",
                     "ProtectedVolumesCount",
                     "QuarantinedDetailsForWorkload",
                     "QueryDatastoreFreespaceThresholds",
-                    "RadarClusterList",
                     "RecoverCloudDirectMultiPaths",
                     "RecoverCloudDirectPath",
                     "RefreshDomain",
                     "RefreshGlobalManagerConnectivityStatus",
-                    "RefreshNasSystems",
-                    "RefreshReaderTarget",
-                    "RegisterNasSystem",
-                    "RemoveClusterNodes",
                     "RemoveDisk",
                     "RemoveInventoryWorkloads",
-                    "RemovePolicyObjects",
                     "RemovePrivateEndpointList",
                     "RemoveProxyConfig",
                     "RemoveVlans",
@@ -37797,9 +33275,8 @@ namespace RubrikSecurityCloud.Types
                     "ResetAllOrgUsersPasswords",
                     "ResetUsersPasswordsWithUserIds",
                     "ResizeDisk",
+                    "ResolveAnomaly",
                     "ResolveVolumeGroupsConflict",
-                    "RestoreActiveDirectoryObjects",
-                    "ResumeTarget",
                     "RetryBackup",
                     "RetryDownloadPackageJob",
                     "RevokeAllOrgRoles",
@@ -37807,28 +33284,19 @@ namespace RubrikSecurityCloud.Types
                     "RunCustomAnalyzer",
                     "ScheduleUpgradeBatchJob",
                     "SearchFileByPrefix",
-                    "SearchSnappableList",
-                    "SearchSnappableVersionedFiles",
                     "SetAnalyzerRisks",
+                    "SetBundleApprovalStatus",
                     "SetCustomerTags",
                     "SetDatastoreFreespaceThresholds",
                     "SetIpWhitelistEnabled",
                     "SetMfaSetting",
-                    "SetPasswordComplexityPolicy",
+                    "SetPrivateContainerRegistry",
                     "SetTotpConfig",
                     "SetUpgradeType",
                     "SetUserLevelTotpEnforcement",
                     "SetWorkloadAlertSetting",
                     "SetupDisk",
-                    "SnappableContactSearch",
-                    "SnappableEmailSearch",
-                    "SnappableEventSearch",
-                    "SnappableGroupByList",
-                    "SnappableList",
-                    "SnappableOnedriveSearch",
-                    "SnappableTeamsConversationsSearch",
-                    "SnappableTeamsDriveSearch",
-                    "SnmpConfigurations",
+                    "SnoozedDirectories",
                     "StartCrawl",
                     "StartDownloadPackageBatchJob",
                     "StartExportRdsInstanceJob",
@@ -37840,19 +33308,15 @@ namespace RubrikSecurityCloud.Types
                     "SupportBundle",
                     "SupportPortalLogin",
                     "SupportUserAccesses",
-                    "SyslogExportRules",
+                    "SwitchProductToOnboardingMode",
                     "TableFilters",
-                    "Target",
-                    "TargetMapping",
-                    "TargetMappings",
                     "Targets",
                     "TaskDetailGroupByList",
                     "TaskDetailList",
                     "Taskchain",
                     "TeamChannelNameAvailable",
-                    "TestSyslogExportRule",
-                    "TopRiskPolicySummaries",
                     "TotpConfigStatus",
+                    "TprStatusForNodeRemoval",
                     "TriggerCloudComputeConnectivityCheck",
                     "TriggerExocomputeHealthCheck",
                     "TunnelStatus",
@@ -37864,47 +33328,28 @@ namespace RubrikSecurityCloud.Types
                     "UnmountDisk",
                     "UpdateAccountOwner",
                     "UpdateAuthDomainUsersHiddenStatus",
-                    "UpdateAutoEnablePolicyClusterConfig",
                     "UpdateBadDiskLedStatus",
-                    "UpdateClusterDefaultAddress",
-                    "UpdateClusterLocation",
-                    "UpdateClusterNtpServers",
-                    "UpdateClusterSettings",
                     "UpdateConfiguredGroup",
                     "UpdateCustomAnalyzer",
+                    "UpdateCustomerAppPermissions",
                     "UpdateDistributionListDigest",
                     "UpdateDnsServersAndSearchDomains",
                     "UpdateEventDigest",
-                    "UpdateFailoverClusterApp",
                     "UpdateFloatingIps",
-                    "UpdateGlacierTarget",
                     "UpdateGuestCredential",
-                    "UpdateHealthMonitorPolicyStatus",
                     "UpdateInsightState",
-                    "UpdateIntegration",
-                    "UpdateIntegrations",
                     "UpdateIpWhitelist",
                     "UpdateLambdaSettings",
                     "UpdateLockoutConfig",
-                    "UpdateManualTargetMapping",
+                    "UpdateManagedIdentities",
                     "UpdateNasShares",
-                    "UpdateNasSystem",
                     "UpdateNetworkThrottle",
-                    "UpdateOrg",
-                    "UpdateOrgSecurityPolicy",
-                    "UpdatePolicy",
-                    "UpdatePreviewerClusterConfig",
                     "UpdateProxyConfig",
-                    "UpdateRole",
                     "UpdateRoleAssignments",
-                    "UpdateS3CompatibleTarget",
-                    "UpdateSnmpConfig",
                     "UpdateSupportUserAccess",
-                    "UpdateSyslogExportRule",
                     "UpdateTunnelStatus",
                     "UpdateVolumeGroup",
                     "UpdateWhitelistedAnalyzers",
-                    "UpgradeCdmManagedTarget",
                     "UpgradeIoFilter",
                     "UpgradeStatus",
                     "UpgradeToRsc",
@@ -37919,12 +33364,10 @@ namespace RubrikSecurityCloud.Types
                     "UsersInCurrentAndDescendantOrganization",
                     "UsersOnAccountList",
                     "ValidateAndSaveCustomerKmsInfo",
-                    "ValidateClusterLicenseCapacity",
                     "ValidateOrgName",
                     "VcdVappVms",
                     "VirtualMachineFiles",
                     "VmRecoveryJobsInfo",
-                    "VmwareCdpStateInfos",
                     "VolumeGroupMounts",
                     "WarmSearchCache",
                     "WorkloadAlertSetting",
@@ -37935,14 +33378,9 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Mongo,
                     new List<string> {
                     "AddSource",
-                    "AssignSlaToCollection",
-                    "BulkDeleteSources",
-                    "BulkRecoverableRange",
                     "BulkRecoverableRanges",
                     "Collection",
-                    "CollectionRecoverableRange",
                     "Collections",
-                    "CreateSource",
                     "Database",
                     "Databases",
                     "DeleteSource",
@@ -37951,6 +33389,24 @@ namespace RubrikSecurityCloud.Types
                     "RecoverSource",
                     "RecoverableRanges",
                     "RetryAddSource",
+                    "Source",
+                    "Sources",
+                    }
+                },
+                {
+                    ApiDomainName.MongoDb,
+                    new List<string> {
+                    "AssignSlaToCollection",
+                    "BulkDeleteSources",
+                    "BulkRecoverableRange",
+                    "Collection",
+                    "CollectionRecoverableRange",
+                    "Collections",
+                    "CreateSource",
+                    "Database",
+                    "Databases",
+                    "DeleteSource",
+                    "RecoverSource",
                     "Source",
                     "Sources",
                     "UpdateSource",
@@ -38010,14 +33466,31 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Nas,
                     new List<string> {
+                    "BulkDeleteNasSystems",
+                    "DeleteNasSystem",
                     "Fileset",
                     "Namespace",
                     "Namespaces",
+                    "RefreshNasSystems",
+                    "RegisterNasSystem",
                     "Share",
                     "System",
                     "Systems",
                     "TopLevelDescendants",
+                    "UpdateNasSystem",
                     "Volume",
+                    }
+                },
+                {
+                    ApiDomainName.Ncd,
+                    new List<string> {
+                    "BackEndCapacity",
+                    "FrontEndCapacity",
+                    "ObjectProtectionStatus",
+                    "ObjectsOverTimeData",
+                    "TaskData",
+                    "UsageOverTimeData",
+                    "VmImageUrl",
                     }
                 },
                 {
@@ -38192,26 +33665,35 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Policy,
                     new List<string> {
-                    "Details",
-                    "Obj",
-                    "ObjectUsages",
-                    "Objs",
-                    "Policies",
+                    "AddPolicyObjects",
+                    "CreatePolicy",
+                    "DeactivatePolicy",
+                    "GetHealthMonitorPolicyStatus",
+                    "OrgSecurityPolicy",
+                    "PasswordComplexityPolicy",
                     "Policies",
                     "Policy",
+                    "PolicyObjectUsages",
+                    "RemovePolicyObjects",
+                    "SeedEnabledPolicies",
+                    "SeedInitialPolicies",
+                    "SetPasswordComplexityPolicy",
+                    "TopRiskPolicySummaries",
+                    "UpdateAutoEnablePolicyClusterConfig",
+                    "UpdateHealthMonitorPolicyStatus",
+                    "UpdateOrgSecurityPolicy",
+                    "UpdatePolicy",
                     }
                 },
                 {
                     ApiDomainName.Ransomware,
                     new List<string> {
+                    "BulkUpdateInvestigationStatus",
                     "DetectionWorkloadLocations",
                     "InvestigationAnalysisSummary",
                     "InvestigationEnablement",
-                    "InvestigationWorkloadScannedCount",
                     "OverallInvestigationSummary",
-                    "PendingInvestigationResultsCount",
                     "ProcessedInvestigationWorkloadCount",
-                    "ProtectedInvestigationWorkloadCount",
                     "Result",
                     "ResultOpt",
                     "Results",
@@ -38222,13 +33704,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Rcs,
                     new List<string> {
-                    "ArchivalLocationsConsumptionStats",
-                    "Cluster",
-                    "CreateAutomaticTargetMapping",
-                    "CreateReaderTarget",
-                    "CreateTarget",
-                    "Dhcores",
-                    "UpdateAutomaticTargetMapping",
+                    "CreateAutomaticRcsTargetMapping",
+                    "CreateRcsReaderTarget",
+                    "CreateRcsTarget",
+                    "UpdateRcsAutomaticTargetMapping",
                     }
                 },
                 {
@@ -38249,26 +33728,40 @@ namespace RubrikSecurityCloud.Types
                     "DisablePause",
                     "EnablePause",
                     "IncomingStats",
+                    "NetworkThrottleBypass",
+                    "NetworkThrottleBypassById",
                     "OutgoingStats",
                     "Pairs",
+                    "UpdateNetworkThrottleBypass",
                     "UpdateTarget",
+                    "ValidSources",
                     "ValidTargets",
                     }
                 },
                 {
                     ApiDomainName.Report,
                     new List<string> {
+                    "ClusterMigrationCount",
+                    "ClusterMigrationJobStatus",
+                    "ClusterMigrationStatus",
                     "CreateCustom",
                     "CreateScheduled",
                     "Data",
+                    "DatabaseLogForCluster",
+                    "DatabaseLogingPropertiesForCluster",
                     "DeleteCustom",
-                    "DeleteScheduled",
-                    "Scheduled",
+                    "DeleteScheduledReport",
+                    "ScheduledReport",
+                    "ScheduledReports",
                     "SendPdf",
-                    "SendScheduledAsync",
+                    "SendScheduledReportAsync",
+                    "Sonar",
+                    "SonarContent",
+                    "SonarRow",
                     "StartClusterMigrationJob",
                     "UpdateCustom",
-                    "UpdateScheduled",
+                    "UpdateDatabaseLogingPropertiesForCluster",
+                    "UpdateScheduledReport",
                     }
                 },
                 {
@@ -38358,9 +33851,26 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    ApiDomainName.Snappable,
+                    new List<string> {
+                    "CdmHierarchySnappableNew",
+                    "CdmHierarchySnappablesNew",
+                    "ContactSearch",
+                    "EmailSearch",
+                    "EventSearch",
+                    "GroupByList",
+                    "Hierarchy",
+                    "List",
+                    "OnedriveSearch",
+                    "Search",
+                    "SearchVersionedFiles",
+                    "TeamsConversationsSearch",
+                    "TeamsDriveSearch",
+                    }
+                },
+                {
                     ApiDomainName.Snapshot,
                     new List<string> {
-                    "ActiveDirectorySearchs",
                     "BatchQuarantine",
                     "BatchReleaseFromQuarantine",
                     "BrowseFileList",
@@ -38369,8 +33879,8 @@ namespace RubrikSecurityCloud.Types
                     "CreateDomainController",
                     "CreateDownloadForVolumeGroup",
                     "CreateFileset",
-                    "DeleteCloudWorkload",
-                    "DeleteFilesets",
+                    "DeleteCloudWorkloadSnapshot",
+                    "DeleteFilesetSnapshots",
                     "EmailSearch",
                     "EventSearch",
                     "FilesDelta",
@@ -38398,15 +33908,18 @@ namespace RubrikSecurityCloud.Types
                     "UploadDatabaseToBlobstore",
                     "VappInstantRecoveryOptions",
                     "VappTemplateExportOptions",
-                    "VmwareDownloadFromLocation",
+                    }
+                },
+                {
+                    ApiDomainName.Snmp,
+                    new List<string> {
+                    "Configurations",
+                    "UpdateConfig",
                     }
                 },
                 {
                     ApiDomainName.Sonar,
                     new List<string> {
-                    "ContentReport",
-                    "Report",
-                    "ReportRow",
                     "UserGroups",
                     "Users",
                     }
@@ -38419,6 +33932,16 @@ namespace RubrikSecurityCloud.Types
                     "Refresh",
                     "StorageArray",
                     "Update",
+                    }
+                },
+                {
+                    ApiDomainName.Syslog,
+                    new List<string> {
+                    "AddExportRule",
+                    "DeleteExportRule",
+                    "ExportRules",
+                    "TestExportRule",
+                    "UpdateExportRule",
                     }
                 },
                 {
@@ -38445,6 +33968,7 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Vcenter,
                     new List<string> {
                     "AdvancedTagPreview",
+                    "AsyncRequestStatus",
                     "Create",
                     "Delete",
                     "HotAddBandwidth",
@@ -38459,6 +33983,14 @@ namespace RubrikSecurityCloud.Types
                     "UpdateHotAddBandwidth",
                     "UpdateHotAddNetwork",
                     "Vcenter",
+                    }
+                },
+                {
+                    ApiDomainName.Vmware,
+                    new List<string> {
+                    "CdpStateInfos",
+                    "DownloadSnapshotFromLocation",
+                    "IsManagementEnabled",
                     }
                 },
                 {

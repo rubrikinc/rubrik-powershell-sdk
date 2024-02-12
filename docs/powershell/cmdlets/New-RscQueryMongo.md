@@ -1,10 +1,5 @@
 # New-RscQueryMongo
 ## Subcommands
-### bulkrecoverablerange
-Recoverable range for multiple Management Objects on NoSQL cluster.
-
-- There is a single argument of type MosaicBulkRecoveryRangeInput.
-- Returns MosaicRecoveryRangeResponse.
 ### bulkrecoverableranges
 Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots.
 
@@ -15,11 +10,6 @@ Provides details for a MongoDB collection identified by the fid.
 
 - There is a single argument of type System.String.
 - Returns MongoCollection.
-### collectionrecoverablerange
-Recoverable Range of a MongoDB collection on NoSQL cluster.
-
-- There is a single argument of type GetMosaicRecoverableRangeInput.
-- Returns GetMosaicRecoverableRangeResponse.
 ### collections
 Paginated list of MongoDB collections.
 

@@ -45,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archiveStorage")]
         public System.Int64? ArchiveStorage { get; set; }
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        [JsonProperty("cloudAccountName")]
+        public System.String? CloudAccountName { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
@@ -115,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recoveryInfo")]
         public WorkloadRecoveryInfo? RecoveryInfo { get; set; }
 
+        //      C# -> WorkloadRegion? Region
+        // GraphQL -> region: WorkloadRegion! (type)
+        [JsonProperty("region")]
+        public WorkloadRegion? Region { get; set; }
+
 
         #endregion
 
@@ -130,6 +145,8 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         System.Int64? ArchiveStorage = null,
+        System.String? CloudAccountId = null,
+        System.String? CloudAccountName = null,
         System.String? ClusterUuid = null,
         System.Boolean? HasSnapshotsWithPolicy = null,
         System.String? Id = null,
@@ -143,7 +160,8 @@ namespace RubrikSecurityCloud.Types
         System.String? WorkloadId = null,
         Cluster? Cluster = null,
         List<LocationPathPoint>? PhysicalLocation = null,
-        WorkloadRecoveryInfo? RecoveryInfo = null
+        WorkloadRecoveryInfo? RecoveryInfo = null,
+        WorkloadRegion? Region = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -160,6 +178,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchiveStorage != null ) {
             this.ArchiveStorage = ArchiveStorage;
+        }
+        if ( CloudAccountId != null ) {
+            this.CloudAccountId = CloudAccountId;
+        }
+        if ( CloudAccountName != null ) {
+            this.CloudAccountName = CloudAccountName;
         }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
@@ -202,6 +226,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RecoveryInfo != null ) {
             this.RecoveryInfo = RecoveryInfo;
+        }
+        if ( Region != null ) {
+            this.Region = Region;
         }
         return this;
     }
@@ -265,6 +292,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "archiveStorage\n" ;
             } else {
                 s += ind + "archiveStorage\n" ;
+            }
+        }
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        if (this.CloudAccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountId\n" ;
+            } else {
+                s += ind + "cloudAccountId\n" ;
+            }
+        }
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        if (this.CloudAccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountName\n" ;
+            } else {
+                s += ind + "cloudAccountName\n" ;
             }
         }
         //      C# -> System.String? ClusterUuid
@@ -402,6 +447,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> WorkloadRegion? Region
+        // GraphQL -> region: WorkloadRegion! (type)
+        if (this.Region != null) {
+            var fspec = this.Region.AsFieldSpec(conf.Child("region"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "region {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -507,6 +564,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchiveStorage != null && ec.Excludes("archiveStorage",true))
         {
             this.ArchiveStorage = null;
+        }
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        if (ec.Includes("cloudAccountId",true))
+        {
+            if(this.CloudAccountId == null) {
+
+                this.CloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
+        {
+            this.CloudAccountId = null;
+        }
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        if (ec.Includes("cloudAccountName",true))
+        {
+            if(this.CloudAccountName == null) {
+
+                this.CloudAccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountName != null && ec.Excludes("cloudAccountName",true))
+        {
+            this.CloudAccountName = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
@@ -751,6 +842,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RecoveryInfo != null && ec.Excludes("recoveryInfo",false))
         {
             this.RecoveryInfo = null;
+        }
+        //      C# -> WorkloadRegion? Region
+        // GraphQL -> region: WorkloadRegion! (type)
+        if (ec.Includes("region",false))
+        {
+            if(this.Region == null) {
+
+                this.Region = new WorkloadRegion();
+                this.Region.ApplyExploratoryFieldSpec(ec.NewChild("region"));
+
+            } else {
+
+                this.Region.ApplyExploratoryFieldSpec(ec.NewChild("region"));
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",false))
+        {
+            this.Region = null;
         }
     }
 

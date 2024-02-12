@@ -3,6 +3,8 @@ Represents the SharePoint items in a site collection to be restored.
 
 - sharepointId: System.String
   - ID of the object in SharePoint Online.
+- objectId: System.String
+  - Rubrik cluster ID for the parent object of the SharePoint item.
 - snappableType: SnappableType
   - Type of the parent object.
 - listItems: list of SharePointListItems

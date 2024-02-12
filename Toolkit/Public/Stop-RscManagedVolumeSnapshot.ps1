@@ -18,6 +18,9 @@ function Stop-RscManagedVolumeSnapshot {
     .PARAMETER SlaDomainId
     THis will be the ID of the SLA Domain that will manage the retention of the snapshot
     
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+
     .EXAMPLE
     $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
     Stop-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume -SlaDomainId $RscManagedVolume.EffectiveSlaDomain.Id
@@ -33,12 +36,22 @@ function Stop-RscManagedVolumeSnapshot {
 
         [Parameter(
             Mandatory = $true, 
+            ValueFromPipeline = $true
+        )]
+        [string]$SlaDomainId,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
             ValueFromPipeline = $false
-        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain
+        )][Switch]$AsQuery
     )
     
     Process {
-        Write-Debug "-Running Stop-RscManagedVolumeSnapshot"
+        # Re-use existing connection, or create a new one:
+        Connect-Rsc -ErrorAction Stop | Out-Null
+
+        Write-Host "Start-RscManagedVolumeSnapshot field profile: $fieldProfile"
         
         #region Create Query
         $query = New-RscMutationManagedVolume -Operation EndSnapshot
@@ -47,10 +60,14 @@ function Stop-RscManagedVolumeSnapshot {
         $query.Var.input.params = New-Object -TypeName RubrikSecurityCloud.Types.EndSnapshotManagedVolumeRequestInput
         $query.Var.input.params.isAsync = $true
         $query.Var.input.params.retentionConfig = New-Object -TypeName RubrikSecurityCloud.Types.BaseOnDemandSnapshotConfigInput
-        $query.Var.input.params.retentionConfig.slaId = $RscSlaDomain.Id
+        $query.Var.input.params.retentionConfig.slaId = $SlaDomainId
         #endregion
 
-        $result = $query.Invoke()
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
         $result
     } 
 }

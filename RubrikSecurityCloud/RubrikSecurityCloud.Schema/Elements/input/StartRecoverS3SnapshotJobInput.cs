@@ -57,6 +57,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectKeys")]
         public List<System.String>? ObjectKeys { get; set; }
 
+        //      C# -> System.String? TargetAwsAccountRubrikId
+        // GraphQL -> targetAwsAccountRubrikId: UUID (scalar)
+        [JsonProperty("targetAwsAccountRubrikId")]
+        public System.String? TargetAwsAccountRubrikId { get; set; }
+
 
         #endregion
 

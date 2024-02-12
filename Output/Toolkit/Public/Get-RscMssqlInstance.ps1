@@ -14,20 +14,27 @@ function Get-RscMssqlInstance{
     .PARAMETER List
     Uses the latest recovery point date and time that Rubrik has for a database
 
-    .PARAMETER RscHost
-    RscHost object retrieved via Get-RscHost
+    .PARAMETER Id
+    Used to return a specific SQL Server Instance based on the Id assigned inside of Rubrik
+
+    .PARAMETER HostName
+    SQL Server Host Name
 
     .PARAMETER InstanceName
     SQL Server Instance Name
     
-    .PARAMETER Id
-    Used to return a specific SQL Server Instance based on the Id assigned inside of Rubrik
-    
-    .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    .PARAMETER clusterId
+    Id of the cluster retrieved from Get-RscCluster
 
     .PARAMETER Detail
     Changes the data profile. This can affect the fields returned
+
+    .PARAMETER IncludeNullProperties
+    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
+    with a NULL in them. 
+
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
 
     .EXAMPLE
     Returns a list of all SQL Server Instances connected to RSC
@@ -35,19 +42,11 @@ function Get-RscMssqlInstance{
 
     .EXAMPLE
     Returns information about the default instance of SQL on a specific host
-    $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscHost = Get-RscHost -Name $HostName -OsType Windows
-    $RscMssqlInstance = Get-RscMssqlInstance -RscHost $RscHost
-    
+    Get-RscMssqlInstance -HostName rp-sql.rubrik-demo.com
+
     .EXAMPLE
     Returns information about a specific instance of SQL on a specific host
-    $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscHost = Get-RscHost -Name $HostName -OsType Windows
-    $RscMssqlInstance = Get-RscMssqlInstance -RscHost $RscHost -InstanceName DEV01
-    
-        .EXAMPLE
-    Return a RscMssqlInstance Object based on a specific MssqlInstance Id
-    Get-RscMssqlInstance -Id "86da734b-2fee-4fdc-bdc8-a73ab5648f" 
+    Get-RscMssqlInstance -HostName rp-sql.rubrik-demo.com -InstanceName DEV01
     #>
 
     [CmdletBinding(
@@ -56,88 +55,119 @@ function Get-RscMssqlInstance{
     Param(
         [Parameter(
             ParameterSetName = "List",
-            Mandatory = $false
+            Mandatory = $false, 
+            ValueFromPipeline = $false
         )][Switch]$List,
-
-        [Parameter(
-            ParameterSetName = "RscHost",
-            Mandatory = $false
-        )][RubrikSecurityCloud.Types.PhysicalHost]$RscHost,
-
-        [Parameter(
-            ParameterSetName = "RscHost",
-            Mandatory = $false
-        )][String]$InstanceName = "MSSQLSERVER",
         
         [Parameter(
             ParameterSetName = "Id",
             Mandatory = $false, 
             ValueFromPipeline = $false
         )][String]$Id,
-       
+
         [Parameter(
-            Mandatory = $false
-        )][RubrikSecurityCloud.Types.Cluster]$RscCluster,
+            ParameterSetName = "HostName",
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][String]$HostName,
+
+        [Parameter(
+            ParameterSetName = "HostName",
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][String]$InstanceName = "MSSQLSERVER",
+        
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][String]$clusterId,
 
         #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
             ValueFromPipeline = $false
-        )][Switch]$Detail
+        )][Switch]$Detail,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$IncludeNullProperties,
+
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
+    
     Process {
+        # Re-use existing connection, or create a new one:
+        Connect-Rsc -ErrorAction Stop | Out-Null
+
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Debug "-Running Get-RscMssqlInstance"
+        Write-Host "Get-RscMssqlInstance field profile: $fieldProfile"
 
         #region Create Query
-        switch ( $PSCmdlet.ParameterSetName){
-            "List"{
-                Write-Debug "-  Creating List Query"
+        switch ( $PSCmdlet.ParameterSetName ){
+            "List" {
+                # // TODO: SPARK-278997 Include Windows Clusters
                 $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
                 $query.Var.filter = @()
                 $query.Var.typeFilter = "PhysicalHost"
             }
-            "RscHost"{
-                Write-Debug "-  Creating Host Query"
-                $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
-                $query.Var.filter = @()
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $RscHost.Name
-                $query.Var.filter += $nameFilter
-            }
             "Id"  {
-                Write-Debug "-  Creating Id Query"
                 $query = New-RscQueryMssql -Op Instance -FieldProfile $fieldProfile -AddField PhysicalPath
                 $query.Var.filter = @()
                 $query.Var.fid = $id
             }
+            "HostName" {
+                $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
+                $query.Var.filter = @()
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+                $nameFilter.texts = $Hostname
+                $query.Var.filter += $nameFilter
+            }
         }
+        #endregion
 
-        if($RscCluster){
-            Write-Debug "-  Creating Cluster Filter"
+        #region filters
+        if($PSBoundParameters.ContainsKey('clusterId')) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
-            $clusterFilter.texts = $RscCluster.Id
+            $clusterFilter.texts = $clusterId
             $query.Var.filter += $clusterFilter
         }
         #endregion
 
         $result = $query.Invoke()
-        
         switch ( $PSCmdlet.ParameterSetName ){
-            "RscHost" {
-                Write-Debug "-  Filtering results based on Instance Name"
-                $result = $result.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
-                $result
-            }
-            default{
-                $result.Nodes.PhysicalChildConnection.Nodes
+            "HostName" {
+                $result = $result | Where-Object {$_.Nodes.PhysicalChildConnection.Nodes.Name -eq $InstanceName}
             }
         }
+
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
+
+        if ($null -ne $result.Nodes){
+            if ( $IncludeNullProperties -eq $true ) {
+                $result.Nodes
+            }else{
+                $result.Nodes | Remove-NullProperties
+            }
+        }else{
+            if ( $IncludeNullProperties -eq $true ) {
+                $result
+            }else{
+                $result | Remove-NullProperties
+            }
+        }   
     } 
 }

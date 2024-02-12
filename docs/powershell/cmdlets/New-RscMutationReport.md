@@ -17,7 +17,7 @@ Delete a custom report.
 
 - There is a single argument of type DeleteCustomReportInput.
 - Returns System.String.
-### deletescheduled
+### deletescheduledreport
 Delete a scheduled report.
 
 - There is a single argument of type DeleteScheduledReportInput.
@@ -27,7 +27,7 @@ DHRC PDF report generation.
 
 - There is a single argument of type SendPdfReportInput.
 - Returns SendPdfReportReply.
-### sendscheduledasync
+### sendscheduledreportasync
 Send a scheduled report now asynchronously via email.
 
 - There is a single argument of type SendScheduledReportAsyncInput.
@@ -42,7 +42,15 @@ Update a custom report.
 
 - There is a single argument of type UpdateCustomReportInput.
 - Returns UpdateCustomReportReply.
-### updatescheduled
+### updatedatabaselogingpropertiesforcluster
+Update the database log backup report properties
+
+Supported in v5.3+
+Update the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
+
+- There is a single argument of type UpdateDatabaseLogReportingPropertiesForClusterInput.
+- Returns DbLogReportProperties.
+### updatescheduledreport
 Update a scheduled report.
 
 - There is a single argument of type UpdateScheduledReportInput.

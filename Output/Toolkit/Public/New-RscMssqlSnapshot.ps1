@@ -16,9 +16,12 @@ function New-RscMssqlSnapshot {
     Incremental Forever snapshots are the equivalent of a SQL Server Full database backup. Do not use this parameter
     if your intent is to reset a broken log chain. That can be achieved by taking a snapshot without this parameter. 
 
-    .PARAMETER RscSlaDomain
+    .PARAMETER SLADomain
     THis will be the ID of the SLA Domain that will manage the retention of the snapshot
 
+    .PARAMETER AsQuery
+    Instead of running the command, the query and variables used for the query will be returned. 
+    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
@@ -44,7 +47,13 @@ function New-RscMssqlSnapshot {
         [Parameter(
             Mandatory = $true, 
             ValueFromPipeline = $false
-        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain
+        )][string]$SLADomain,
+
+        #  Common parameter to all parameter sets:
+        [Parameter(
+            Mandatory = $false, 
+            ValueFromPipeline = $false
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -60,10 +69,14 @@ function New-RscMssqlSnapshot {
         $query.Var.input.config.forceFullSnapshot = $ForceFullSnapshot
 
         $query.Var.input.config.baseOnDemandSnapshotConfig = New-Object RubrikSecurityCloud.Types.BaseOnDemandSnapshotConfigInput
-        $query.Var.input.config.baseOnDemandSnapshotConfig.slaId = $RscSlaDomain.Id
+        $query.Var.input.config.baseOnDemandSnapshotConfig.slaId = $SLADomain
         #endregion
         
-        $result = $query.Invoke()
+        if ( $AsQuery -eq $true ) {
+            $result = $query.GqlRequest()
+        }else{
+            $result = $query.Invoke()
+        }
         $result
     } 
 }

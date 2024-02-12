@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
         //      C# -> System.String? Domain
         // GraphQL -> domain: String (scalar)
         [JsonProperty("domain")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CreateGuestCredentialReply Set(
+        System.String? Description = null,
         System.String? Domain = null,
         System.String? Id = null,
         BaseGuestCredentialDetail? BaseGuestCredentialDetail = null
     ) 
     {
+        if ( Description != null ) {
+            this.Description = Description;
+        }
         if ( Domain != null ) {
             this.Domain = Domain;
         }
@@ -70,6 +79,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        if (this.Description != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
+        }
         //      C# -> System.String? Domain
         // GraphQL -> domain: String (scalar)
         if (this.Domain != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        if (ec.Includes("description",true))
+        {
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
+        }
         //      C# -> System.String? Domain
         // GraphQL -> domain: String (scalar)
         if (ec.Includes("domain",true))
