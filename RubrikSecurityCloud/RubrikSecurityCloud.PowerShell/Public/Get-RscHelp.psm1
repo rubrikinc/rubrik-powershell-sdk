@@ -115,6 +115,7 @@ function Get-RscHelp {
         }
 
         function LookupSchema {
+            $tableData = @()
             # Get all the enums within the SchemaMeta class
             $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName' -and $_.Name -ne 'RootFieldKind' }
 
@@ -128,16 +129,22 @@ function Get-RscHelp {
                     if ($Match -eq "" -or $value -like $Match) {
                         # Extract the middle part of the enum name
                         $enumName = $enum.Name -replace '^Gql', '' -replace 'Name$', ''
-                        Write-Output "${enumName}: $value"
+                        $entry = New-Object PSObject -Property @{
+                            Type = $enumName
+                            Name = $value
+                        }
+                        $tableData += $entry
                         $found += 1
                     }
                 }
             }
+            $found = $tableData.Count
             if ($found -eq 0) {
-                Write-Output "No match found for '$Match'."
+                Write-Output "# No match found for '$Match'."
             }
-            elseif ($found -gt 1) {
-                Write-Output "${found} matches found for '$Match'."
+            else {
+                $tableData | Sort-Object Type, Name | Format-Table -Property Type, Name -AutoSize
+                Write-Output "# ${found} matches found for '$Match'."
             }
         }
 
