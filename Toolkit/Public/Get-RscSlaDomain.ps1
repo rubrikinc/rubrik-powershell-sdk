@@ -55,19 +55,23 @@ function Get-RscSlaDomain {
         }
 
         if ($Id) {
-            $query = New-RscQuerySla -Operation Domain -FieldProfile $fieldProfile
+            $query = New-RscQuerySla -Operation Domain -FieldProfile EMPTY -AddField Name,Id
             $query.Var.id = $Id
-            $query.field.BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
-            $query.field.BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
-            $query.field.BaseFrequency.DurationField = 1
-            $query.field.ProtectedObjectCount = 1
-            $query.field.ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
-            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
-            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
-            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
-            $query.field.ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
-            $query.field.ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
-            $query.field.ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            # Workaround for SPARK-291578
+            # Getting SLA by Id is useless right now since we cannot get GlobalSlaReply fields
+            #$query.field.BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+            #$query.field.BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
+            #$query.field.BaseFrequency.DurationField = 1
+            #$query.field.ProtectedObjectCount = 1
+            #$query.field.ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
+            #$query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
+            #$query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
+            #$query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
+            #$query.field.ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
+            #$query.field.ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
+            #$query.field.ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $result = Invoke-Rsc -Query $query
+            $result
         } 
         else {
             $query = (New-RscQuerySla -Operation Domains -FieldProfile $fieldProfile)
@@ -85,9 +89,10 @@ function Get-RscSlaDomain {
             $query.field.nodes[1].ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $result = Invoke-Rsc -Query $query
+            $result.nodes
         }
 
-        $result = Invoke-Rsc -Query $query
-        $result
+
     } 
 }
