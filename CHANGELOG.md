@@ -4,6 +4,8 @@
 
 New Features:
 
+Fixes:
+
 ## Version 0.22
 
 New Features:
