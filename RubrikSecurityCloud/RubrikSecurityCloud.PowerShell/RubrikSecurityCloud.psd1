@@ -8,7 +8,7 @@
 # RootModule = 'RubrikSecurityCloud.PowerShell.dll'
 
 # Version number of this module.
-ModuleVersion = '0.22'
+ModuleVersion = '0.23'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()

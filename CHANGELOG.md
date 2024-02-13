@@ -6,12 +6,9 @@ New Features:
 
 - Get cmdlets for SLAs and vSphere VMs
   [From PR 27](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/27)
+  [From PR 33](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/33)
 - MsSql cmdlets
   [From PR 30](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/30)
-
-Fixes:
-
-Breaking Changes:
 
 ## Version 0.22
 
