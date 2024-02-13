@@ -13,10 +13,14 @@ An Azure storage account that contains Azure storage data objects including blob
   - Region where the storage account is located.
 - usedCapacityBytes: System.Int64
   - The used capacity bytes of the storage account.
-- accessTier: System.String
+- accessTier: AzureStorageAccessTier
   - The access tier of the storage account.
 - numContainers: System.Int64
   - The number of containers in the storage account.
+- accountKind: AzureStorageAccountKind
+  - The Storage Account type.
+- isHierarchicalNamespaceEnabled: System.Boolean
+  - Specifies whether hierarchical namespace is enabled for the storage account or not. When the value is true, hierarchical namespace is enabled.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - resourceGroup: AzureNativeResourceGroup

@@ -1,5 +1,5 @@
 ### VirtualMachineTemplateType
-Supported in v9.1
+Supported in v9.1+
   Virtual machine template type.
 
 - VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM

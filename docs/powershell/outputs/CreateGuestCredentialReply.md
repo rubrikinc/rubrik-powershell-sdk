@@ -7,3 +7,5 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - baseGuestCredentialDetail: BaseGuestCredentialDetail
   - Base guest credential details.
+- description: System.String
+  - 

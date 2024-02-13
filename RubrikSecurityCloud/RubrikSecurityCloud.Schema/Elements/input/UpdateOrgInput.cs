@@ -114,6 +114,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isServiceAccountEnabled")]
         public System.Boolean? IsServiceAccountEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsServiceAccountDisabled
+        // GraphQL -> isServiceAccountDisabled: Boolean (scalar)
+        [JsonProperty("isServiceAccountDisabled")]
+        public System.Boolean? IsServiceAccountDisabled { get; set; }
+
         //      C# -> List<CrossAccountCapability>? CrossAccountCapabilities
         // GraphQL -> crossAccountCapabilities: [CrossAccountCapability!] (enum)
         [JsonProperty("crossAccountCapabilities")]

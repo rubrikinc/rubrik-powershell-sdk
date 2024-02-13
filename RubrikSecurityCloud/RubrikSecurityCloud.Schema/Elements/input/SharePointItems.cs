@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sharepointId")]
         public System.String? SharepointId { get; set; }
 
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String (scalar)
+        [JsonProperty("objectId")]
+        public System.String? ObjectId { get; set; }
+
         //      C# -> SnappableType? SnappableType
         // GraphQL -> snappableType: SnappableType (enum)
         [JsonProperty("snappableType")]

@@ -51,6 +51,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        [JsonProperty("appId")]
+        public System.String? AppId { get; set; }
+
+        //      C# -> System.String? AppOwner
+        // GraphQL -> appOwner: String! (scalar)
+        [JsonProperty("appOwner")]
+        public System.String? AppOwner { get; set; }
+
         //      C# -> System.String? DirectoryId
         // GraphQL -> directoryId: String! (scalar)
         [JsonProperty("directoryId")]
@@ -197,6 +207,8 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? AppId = null,
+        System.String? AppOwner = null,
         System.String? DirectoryId = null,
         System.String? DomainName = null,
         System.String? ExocomputeId = null,
@@ -242,6 +254,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( AppId != null ) {
+            this.AppId = AppId;
+        }
+        if ( AppOwner != null ) {
+            this.AppOwner = AppOwner;
         }
         if ( DirectoryId != null ) {
             this.DirectoryId = DirectoryId;
@@ -396,6 +414,24 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        if (this.AppId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "appId\n" ;
+            } else {
+                s += ind + "appId\n" ;
+            }
+        }
+        //      C# -> System.String? AppOwner
+        // GraphQL -> appOwner: String! (scalar)
+        if (this.AppOwner != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "appOwner\n" ;
+            } else {
+                s += ind + "appOwner\n" ;
             }
         }
         //      C# -> System.String? DirectoryId
@@ -797,6 +833,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        if (ec.Includes("appId",true))
+        {
+            if(this.AppId == null) {
+
+                this.AppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppId != null && ec.Excludes("appId",true))
+        {
+            this.AppId = null;
+        }
+        //      C# -> System.String? AppOwner
+        // GraphQL -> appOwner: String! (scalar)
+        if (ec.Includes("appOwner",true))
+        {
+            if(this.AppOwner == null) {
+
+                this.AppOwner = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppOwner != null && ec.Excludes("appOwner",true))
+        {
+            this.AppOwner = null;
         }
         //      C# -> System.String? DirectoryId
         // GraphQL -> directoryId: String! (scalar)

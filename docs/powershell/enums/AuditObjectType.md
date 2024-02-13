@@ -116,3 +116,5 @@ Represents all the object types for which we expect to see audits.
 - TPR_REQUEST - TPR request.
 - TPR_CONFIG - TPR configuration.
 - OAUTH_TOKEN - OAuth token.
+- EXOCOMPUTE - Exocompute.
+- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS export.

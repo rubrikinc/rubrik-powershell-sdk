@@ -15,3 +15,6 @@ Response for the update Nutanix Prism Central operation.
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v9.0+
   Describes any pending SLA Domain assignment on this object.
+- refreshJobAsyncReqStatus: AsyncRequestStatus
+  - Supported in v9.1+
+  Displays the status of the initiated refresh job.

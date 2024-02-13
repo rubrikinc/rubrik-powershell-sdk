@@ -1,5 +1,5 @@
 ### PcrAwsImagePullDetailsInput
-Details of how a customer pulls images into their PCR from their AWS account.
+AWS specific details of how user will be pulling images from our registry.
 
 - awsNativeId: System.String
-  - AWS account ID from which the customer will pull images.
+  - Native ID of the AWS account from which user will be retrieving images.

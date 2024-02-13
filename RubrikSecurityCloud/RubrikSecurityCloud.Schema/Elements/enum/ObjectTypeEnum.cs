@@ -174,6 +174,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RubrikEc2Instance")]
         RUBRIK_EC2_INSTANCE,
 
+        [EnumMember(Value = "SAP_HANA_SYSTEM")]
+        SAP_HANA_SYSTEM,
+
         [EnumMember(Value = "SapHanaDatabase")]
         SAP_HANA_DATABASE,
 

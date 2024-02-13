@@ -1,6 +1,6 @@
 # API Domains and Operations
 
-The RSC API is organized into 52 domain.
+The RSC API is organized into 64 domain.
 Each API domain is a set of related operations.
 
 ## Table of Contents
@@ -9,17 +9,19 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (7,1)](#account-domain) | [Cluster (29,9)](#cluster-domain) | [Microsoft 365 (1,4)](#microsoft-365-domain) | [Ransomware (12,1)](#ransomware-domain) | [Sonar (5,0)](#sonar-domain) |
-| [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [RCS (3,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
-| [AWS (28,32)](#aws-domain) | [Report Download (3,17)](#report-download-domain) | [Mongo DB (10,10)](#mongo-db-domain) | [RCV (2,3)](#rcv-domain) | [Tape (0,3)](#tape-domain) |
-| [AWS Native (19,8)](#aws-native-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mosaic (4,3)](#mosaic-domain) | [Replication (4,5)](#replication-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure (44,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Microsoft SQL Server (17,17)](#microsoft-sql-server-domain) | [Report (2,9)](#report-domain) | [VMware vSphere vCenter (9,6)](#vmware-vsphere-vcenter-domain) |
-| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [NAS (8,0)](#nas-domain) | [SAP HANA (8,9)](#sap-hana-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
-| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NFS (0,3)](#nfs-domain) | [Service Account (1,4)](#service-account-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [Nutanix (18,25)](#nutanix-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [Webhook (1,5)](#webhook-domain) |
-| [Certificates (9,10)](#certificates-domain) | [Microsoft Hyper-V (14,23)](#microsoft-hyper-v-domain) | [Office 365 (37,31)](#office-365-domain) | [SLA (14,9)](#sla-domain) |  |
-| [Cloud Account (4,2)](#cloud-account-domain) | [Kubernetes (7,7)](#kubernetes-domain) | [Oracle (17,18)](#oracle-domain) | [SMB (2,4)](#smb-domain) |  |
-| [Cloud Native (19,13)](#cloud-native-domain) | [LDAP (3,4)](#ldap-domain) | [Policy (6,1)](#policy-domain) | [Snapshot (21,17)](#snapshot-domain) |  |
+| [Account (9,14)](#account-domain) | [Cluster (29,12)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,18)](#oracle-domain) | [Snapshot (21,16)](#snapshot-domain) |
+| [Active Directory (5,4)](#active-directory-domain) | [Cross Account (0,3)](#cross-account-domain) | [Microsoft 365 (7,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
+| [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (168,119)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [AWS (28,33)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (2,3)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
+| [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
+| [Azure (44,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
+| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,17)](#microsoft-sql-server-domain) | [SAP HANA (8,10)](#sap-hana-domain) | [VMware vSphere vCenter (10,6)](#vmware-vsphere-vcenter-domain) |
+| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,5)](#nas-domain) | [Service Account (1,4)](#service-account-domain) | [VMware (2,1)](#vmware-domain) |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
+| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (15,24)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (14,9)](#sla-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
+| [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (18,25)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
+| [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (7,7)](#kubernetes-domain) | [Office 365 (37,31)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
 
@@ -31,6 +33,8 @@ Cmdlets: `New-RscQueryAccount` and `New-RscMutationAccount`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| CurrentUser | Currently logged-in user. | `New-RscQueryAccount -Operation CurrentUser`<BR> | [currentUser](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CurrentUserLoginContext | Current user login context. | `New-RscQueryAccount -Operation CurrentUserLoginContext`<BR> | [currentUserLoginContext](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EnabledFeatures | Provides a list of all features enabled for the Rubrik account. | `New-RscQueryAccount -Operation EnabledFeatures`<BR> | [allEnabledFeaturesForAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Id | Account ID. | `New-RscQueryAccount -Operation Id`<BR> | [accountId](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Lookup | Retrieve account information. | `New-RscQueryAccount -Operation Lookup`<BR> | [lookupAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -44,7 +48,62 @@ Cmdlets: `New-RscQueryAccount` and `New-RscMutationAccount`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| CreateOrg | Create a new organization under global org. | `New-RscMutationAccount -Operation CreateOrg`<BR> | [createOrg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateOrgSwitchSession | Generate a new authentication token for a user to switch organizations. | `New-RscMutationAccount -Operation CreateOrgSwitchSession`<BR> | [createOrgSwitchSession](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateRole | This endpoint is deprecated. | `New-RscMutationAccount -Operation CreateRole`<BR> | [createRole](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateUser | N/A | `New-RscMutationAccount -Operation CreateUser`<BR> | [createUser](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateUserWithPassword | N/A | `New-RscMutationAccount -Operation CreateUserWithPassword`<BR> | [createUserWithPassword](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteOrg | Delete an organization. | `New-RscMutationAccount -Operation DeleteOrg`<BR> | [deleteOrg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteRole | N/A | `New-RscMutationAccount -Operation DeleteRole`<BR> | [deleteRole](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteTotpConfig | Reset TOTP configuration for a user. Return true when the operation succeeds. | `New-RscMutationAccount -Operation DeleteTotpConfig`<BR> | [deleteTotpConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteTotpConfigs | Reset TOTP configuration for users in batch. Return true when the operation succeeds. | `New-RscMutationAccount -Operation DeleteTotpConfigs`<BR> | [deleteTotpConfigs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteUsers | N/A | `New-RscMutationAccount -Operation DeleteUsers`<BR> | [deleteUsersFromAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GenerateTotpSecret | Generate TOTP secret for a user. | `New-RscMutationAccount -Operation GenerateTotpSecret`<BR> | [generateTotpSecret](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MutateRole | N/A | `New-RscMutationAccount -Operation MutateRole`<BR> | [mutateRole](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateOrg | Update an organization. | `New-RscMutationAccount -Operation UpdateOrg`<BR> | [updateOrg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateRole | This endpoint is deprecated. | `New-RscMutationAccount -Operation UpdateRole`<BR> | [updateRole](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Active Directory domain
+
+Domain key: ActiveDirectory
+
+Cmdlets: `New-RscQueryActiveDirectory` and `New-RscMutationActiveDirectory`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| Domain | Summary of the given Active Directory domain. | `New-RscQueryActiveDirectory -Operation Domain`<BR> | [activeDirectoryDomain](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DomainController | Summary of the given Active Directory domain controller. | `New-RscQueryActiveDirectory -Operation DomainController`<BR> | [activeDirectoryDomainController](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DomainControllers | Summary of all Active Directory domain controllers. | `New-RscQueryActiveDirectory -Operation DomainControllers`<BR> | [activeDirectoryDomainControllers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Domains | Summary of all Active Directory domains. | `New-RscQueryActiveDirectory -Operation Domains`<BR> | [activeDirectoryDomains](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SearchSnapshots | Search across a range of snapshots of a domain controller for Active Directory objects  
+  
+Supported in v9.1+  
+Return the Active Directory objects matching the search criteria. | `New-RscQueryActiveDirectory -Operation SearchSnapshots`<BR> | [activeDirectorySearchSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| CreateLiveMount | Initiate a Live Mount of an Active Directory Domain Controller snapshot  
+  
+Supported in v9.0+  
+Initiates a job to perform a Live Mount of an Active Directory Domain Controller snapshot. Returns the job instance ID. | `New-RscMutationActiveDirectory -Operation CreateLiveMount`<BR> | [createActiveDirectoryLiveMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateUnmount | Remove a Live Mount of an Active Directory Domain Controller snapshot  
+  
+Supported in v9.0+  
+Initiates a job to remove a Live Mount of an Active Directory Domain Controller snapshot. Returns the job instance ID. | `New-RscMutationActiveDirectory -Operation CreateUnmount`<BR> | [createActiveDirectoryUnmount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ModifyLiveMount | Modifies a Live Mount of an Active Directory domain controller snapshot  
+  
+Supported in v9.0+  
+Modifies the parameters of a Live Mount of an Active Directory domain controller snapshot. | `New-RscMutationActiveDirectory -Operation ModifyLiveMount`<BR> | [modifyActiveDirectoryLiveMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RestoreObjects | Restore the given objects to the Active Directory  
+  
+Supported in v9.0+  
+Initiates a recovery for the given Active Directory objects. | `New-RscMutationActiveDirectory -Operation RestoreObjects`<BR> | [restoreActiveDirectoryObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Activity series domain
@@ -70,6 +129,48 @@ Cmdlets: `New-RscQueryActivitySeries` and `New-RscMutationActivitySeries`
 | Cancel | Cancel an activity series. | `New-RscMutationActivitySeries -Operation Cancel`<BR> | [cancelActivitySeries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadUserCsv | Schedule a download CSV job for a user's activity. | `New-RscMutationActivitySeries -Operation DownloadUserCsv`<BR> | [downloadUserActivityCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadUserFileCsv | Schedule a download CSV job for user activity on a specific file. | `New-RscMutationActivitySeries -Operation DownloadUserFileCsv`<BR> | [downloadUserFileActivityCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Archival domain
+
+Domain key: Archival
+
+Cmdlets: `New-RscQueryArchival` and `New-RscMutationArchival`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| HierarchyObjectRecoveryTarget | Returns a single hierarchy object to be used as a recovery target. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. | `New-RscQueryArchival -Operation HierarchyObjectRecoveryTarget`<BR> | [hierarchyObjectRecoveryTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsTotpMandatoryInTargetVersion | Checks whether enabling Time-based, One-Time Password (TOTP) is mandatory in the target Rubrik CDM upgrade version. | `New-RscQueryArchival -Operation IsTotpMandatoryInTargetVersion`<BR> | [isTotpMandatoryInTargetVersion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RcsLocationsConsumptionStats | RCS Azure archival location consumption stats. | `New-RscQueryArchival -Operation RcsLocationsConsumptionStats`<BR> | [rcsArchivalLocationsConsumptionStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StorageUsage | Storage usage of an archival location. | `New-RscQueryArchival -Operation StorageUsage`<BR> | [archivalStorageUsage](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Target | N/A | `New-RscQueryArchival -Operation Target`<BR> | [target](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TargetMapping | N/A | `New-RscQueryArchival -Operation TargetMapping`<BR> | [targetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TargetMappings | List all target mappings. | `New-RscQueryArchival -Operation TargetMappings`<BR> | [allTargetMappings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Targets | All archival locations. | `New-RscQueryArchival -Operation Targets`<BR> | [targets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| CreateGlacierReaderTarget | Create a reader target of type Glacier on a Rubrik cluster. | `New-RscMutationArchival -Operation CreateGlacierReaderTarget`<BR> | [createGlacierReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateManualTargetMapping | N/A | `New-RscMutationArchival -Operation CreateManualTargetMapping`<BR> | [createManualTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateS3CompatibleReaderTarget | Creates reader type for S3Compatible archival location on a CDM cluster. | `New-RscMutationArchival -Operation CreateS3CompatibleReaderTarget`<BR> | [createS3CompatibleReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateS3CompatibleTarget | N/A | `New-RscMutationArchival -Operation CreateS3CompatibleTarget`<BR> | [createS3CompatibleTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteTarget | Deletes an archival location. | `New-RscMutationArchival -Operation DeleteTarget`<BR> | [deleteTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteTargetMapping | Deletes mapping of a target. | `New-RscMutationArchival -Operation DeleteTargetMapping`<BR> | [deleteTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DisableTarget | Disables an Archival Location. | `New-RscMutationArchival -Operation DisableTarget`<BR> | [disableTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EnableTarget | Enables an Archival Location. | `New-RscMutationArchival -Operation EnableTarget`<BR> | [enableTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PauseTarget | N/A | `New-RscMutationArchival -Operation PauseTarget`<BR> | [pauseTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PromoteReaderTarget | Promotes a reader Archival Location. | `New-RscMutationArchival -Operation PromoteReaderTarget`<BR> | [promoteReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RefreshReaderTarget | Refreshes a reader Archival Location. | `New-RscMutationArchival -Operation RefreshReaderTarget`<BR> | [refreshReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResumeTarget | N/A | `New-RscMutationArchival -Operation ResumeTarget`<BR> | [resumeTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateGlacierTarget | Edit a reader target of type Glacier on a Rubrik cluster. | `New-RscMutationArchival -Operation UpdateGlacierTarget`<BR> | [updateGlacierTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateManualTargetMapping | N/A | `New-RscMutationArchival -Operation UpdateManualTargetMapping`<BR> | [updateManualTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateS3CompatibleTarget | N/A | `New-RscMutationArchival -Operation UpdateS3CompatibleTarget`<BR> | [updateS3CompatibleTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpgradeCdmManagedTarget | Upgrade archival locations managed through a Rubrik cluster. | `New-RscMutationArchival -Operation UpgradeCdmManagedTarget`<BR> | [upgradeCdmManagedTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## AWS domain
@@ -129,6 +230,7 @@ Cmdlets: `New-RscQueryAws` and `New-RscMutationAws`
 | CreateTarget | N/A | `New-RscMutationAws -Operation CreateTarget`<BR> | [createAwsTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteComputeSetting | N/A | `New-RscMutationAws -Operation DeleteComputeSetting`<BR> | [deleteAwsComputeSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteExocomputeConfigs | Deletes AWS Exocompute configs. | `New-RscMutationAws -Operation DeleteExocomputeConfigs`<BR> | [deleteAwsExocomputeConfigs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ExocomputeClusterConnect | Connects a customer-managed cluster to RSC and obtains the connection command. | `New-RscMutationAws -Operation ExocomputeClusterConnect`<BR> | [awsExocomputeClusterConnect](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FinalizeCloudAccountDeletion | Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features. | `New-RscMutationAws -Operation FinalizeCloudAccountDeletion`<BR> | [finalizeAwsCloudAccountDeletion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FinalizeCloudAccountProtection | Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step. | `New-RscMutationAws -Operation FinalizeCloudAccountProtection`<BR> | [finalizeAwsCloudAccountProtection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PatchAuthenticationServerBasedCloudAccount | Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message. | `New-RscMutationAws -Operation PatchAuthenticationServerBasedCloudAccount`<BR> | [patchAwsAuthenticationServerBasedCloudAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -419,21 +521,26 @@ Cmdlets: `New-RscQueryCertificate` and `New-RscMutationCertificate`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| AssignableGlobal | Global certificates that can be assigned to an organization. | `New-RscQueryCertificate -Operation AssignableGlobal`<BR> | [assignableGlobalCertificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Certificate | Browse certificates. | `New-RscQueryCertificate -Operation Certificate`<BR> | [certificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Cluster | Get all certificates  
+| AssignableGlobalCertificates | Global certificates that can be assigned to an organization. | `New-RscQueryCertificate -Operation AssignableGlobalCertificates`<BR> | [assignableGlobalCertificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Certificates | Browse certificates. | `New-RscQueryCertificate -Operation Certificates`<BR> | [certificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CertificatesWithKey | Certificates having private key. | `New-RscQueryCertificate -Operation CertificatesWithKey`<BR> | [certificatesWithKey](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ClusterCertificates | Get all certificates  
   
 Supported in v5.1+  
-Get all certificates. | `New-RscQueryCertificate -Operation Cluster`<BR> | [clusterCertificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+Get all certificates. | `New-RscQueryCertificate -Operation ClusterCertificates`<BR> | [clusterCertificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ClusterCsr | Get the cluster certificate signing request  
+  
+Supported in v7.0+  
+Returns the certificate signing request generated from the private key of the Rubrik cluster. | `New-RscQueryCertificate -Operation ClusterCsr`<BR> | [clusterCsr](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ClusterWebSigned | Get the signed certificate for Web server  
   
 Supported in v5.2+  
 If the web server uses a signed certificate, fetch it. | `New-RscQueryCertificate -Operation ClusterWebSigned`<BR> | [clusterWebSignedCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Global | Global certificate. | `New-RscQueryCertificate -Operation Global`<BR> | [globalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GlobalCertificate | Global certificate. | `New-RscQueryCertificate -Operation GlobalCertificate`<BR> | [globalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GlobalCertificates | Global certificates. | `New-RscQueryCertificate -Operation GlobalCertificates`<BR> | [globalCertificates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Info | Metadata of a certificate. | `New-RscQueryCertificate -Operation Info`<BR> | [certificateInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SigningRequest | Get Certificate Signing Request (CSR). | `New-RscQueryCertificate -Operation SigningRequest`<BR> | [certificateSigningRequest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SigningRequests | Browse Certificate Signing Requests (CSRs). | `New-RscQueryCertificate -Operation SigningRequests`<BR> | [certificateSigningRequests](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| WithKey | Certificates having private key. | `New-RscQueryCertificate -Operation WithKey`<BR> | [certificatesWithKey](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -444,9 +551,11 @@ If the web server uses a signed certificate, fetch it. | `New-RscQueryCertificat
   
 Supported in v5.1+  
 Import a certificate. | `New-RscMutationCertificate -Operation AddClusterCertificate`<BR> | [addClusterCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| AddGlobal | Add a global certificate. | `New-RscMutationCertificate -Operation AddGlobal`<BR> | [addGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddGlobalCertificate | Add a global certificate. | `New-RscMutationCertificate -Operation AddGlobalCertificate`<BR> | [addGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Delete | Delete Certificate. | `New-RscMutationCertificate -Operation Delete`<BR> | [deleteCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteGlobal | Delete an existing global certificate. | `New-RscMutationCertificate -Operation DeleteGlobal`<BR> | [deleteGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteCsr | Delete Certificate Signing Request. | `New-RscMutationCertificate -Operation DeleteCsr`<BR> | [deleteCsr](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteGlobalCertificate | Delete an existing global certificate. | `New-RscMutationCertificate -Operation DeleteGlobalCertificate`<BR> | [deleteGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GenerateCsr | Generate CSR. | `New-RscMutationCertificate -Operation GenerateCsr`<BR> | [generateCsr](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MarkAgentSecondary | Mark a secondary cluster certificate to be asynchronously synced to all Rubrik Backup Service instances for which this cluster is the primary. | `New-RscMutationCertificate -Operation MarkAgentSecondary`<BR> | [markAgentSecondaryCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetSso | Set User defined SSO certs. | `New-RscMutationCertificate -Operation SetSso`<BR> | [setSsoCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetWebSigned | Set a signed certificate for Web server  
@@ -454,7 +563,7 @@ Import a certificate. | `New-RscMutationCertificate -Operation AddClusterCertifi
 Supported in v5.3+  
 Setting the given certificate for each node's web server to use. | `New-RscMutationCertificate -Operation SetWebSigned`<BR> | [setWebSignedCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Update | Edit Certificate. | `New-RscMutationCertificate -Operation Update`<BR> | [updateCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateGlobal | Edit an existing global certificate. | `New-RscMutationCertificate -Operation UpdateGlobal`<BR> | [updateGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateGlobalCertificate | Edit an existing global certificate. | `New-RscMutationCertificate -Operation UpdateGlobalCertificate`<BR> | [updateGlobalCertificate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateHost | N/A | `New-RscMutationCertificate -Operation UpdateHost`<BR> | [updateCertificateHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -469,9 +578,11 @@ Cmdlets: `New-RscQueryCloudAccount` and `New-RscMutationCloudAccount`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | CloudAccount | N/A | `New-RscQueryCloudAccount -Operation CloudAccount`<BR> | [cloudAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudAccounts | List all cloud accounts. | `New-RscQueryCloudAccount -Operation CloudAccounts`<BR> | [allCloudAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CurrentFeaturePermissions | Current permissions are the set of permissions the client has given to Rubrik. This will retrieve permissions for all the features currently active in the account. If these permissions are older than the latest set of permissions we require, the account will go in Update Permissions state | `New-RscQueryCloudAccount -Operation CurrentFeaturePermissions`<BR> | [allCurrentFeaturePermissionsForCloudAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExocomputeMappings | List the mappings from accounts to Exocompute cloud accounts with specified filters. | `New-RscQueryCloudAccount -Operation ExocomputeMappings`<BR> | [allCloudAccountExocomputeMappings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LatestFeaturePermissions | Latest Permissions are the most recent set of permissions we require for a feature. This will retrieve the permissions for all the features currently active in the accounts along with the features passed in the call. | `New-RscQueryCloudAccount -Operation LatestFeaturePermissions`<BR> | [allLatestFeaturePermissionsForCloudAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| WithExocomputeMappings | Retrieves the list of all accounts with their Exocompute account mapping, if exists. | `New-RscQueryCloudAccount -Operation WithExocomputeMappings`<BR> | [allAccountsWithExocomputeMappings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -543,16 +654,11 @@ Cmdlets: `New-RscQueryCluster` and `New-RscMutationCluster`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | Cluster | A cluster object. | `New-RscQueryCluster -Operation Cluster`<BR> | [cluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ComputeClusterStatus | Get details for the compute cluster  
+  
+Supported in v5.1+  
+Get details for the compute cluster. | `New-RscQueryCluster -Operation ComputeClusterStatus`<BR> | [computeClusterStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Connected | List all connected clusters. | `New-RscQueryCluster -Operation Connected`<BR> | [allConnectedClusters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DatabaseLogReport | Get the database log backup delay information  
-  
-Supported in v5.3+  
-v5.3:   
-v6.0+: Get the database log backup delay information. | `New-RscQueryCluster -Operation DatabaseLogReport`<BR> | [databaseLogReportForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DatabaseLogReportingProperties | Get the database log backup report properties  
-  
-Supported in v5.3+  
-Get the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin. | `New-RscQueryCluster -Operation DatabaseLogReportingProperties`<BR> | [databaseLogReportingPropertiesForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DefaultGateway | Get current default gateway  
   
 Supported in v5.0+  
@@ -562,14 +668,16 @@ Get current default gateway. | `New-RscQueryCluster -Operation DefaultGateway`<B
   
 Supported in v5.0+  
 Get a list of a cluster's always-available Ips. | `New-RscQueryCluster -Operation FloatingIps`<BR> | [clusterFloatingIps](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetCdmReleaseDetailsForClusterFromSupportPortal | Get CDM release details from support portal for a given list of clusters. | `New-RscQueryCluster -Operation GetCdmReleaseDetailsForClusterFromSupportPortal`<BR> | [getCdmReleaseDetailsForClusterFromSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetGroupCountByCdmClusterStatus | N/A | `New-RscQueryCluster -Operation GetGroupCountByCdmClusterStatus`<BR> | [getGroupCountByCdmClusterStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | GroupByList | N/A | `New-RscQueryCluster -Operation GroupByList`<BR> | [clusterGroupByConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| HostFailover | Get details of the given host failover cluster. | `New-RscQueryCluster -Operation HostFailover`<BR> | [hostFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Ipmi | Get IPMI details  
   
 Supported in v5.0+  
 get IPMI details of availability and enabled access in the cluster. | `New-RscQueryCluster -Operation Ipmi`<BR> | [clusterIpmi](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Ipv6Mode | Rubrik cluster IPv6 mode. | `New-RscQueryCluster -Operation Ipv6Mode`<BR> | [clusterIpv6Mode](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsTotpAckNecessary | Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version. | `New-RscQueryCluster -Operation IsTotpAckNecessary`<BR> | [isTotpAckNecessaryForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| LicensesForClusterProductSummary | Information about licenses for a specific cluster product, grouped by the product type. | `New-RscQueryCluster -Operation LicensesForClusterProductSummary`<BR> | [licensesForClusterProductSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | List | List of the available cluster objects. | `New-RscQueryCluster -Operation List`<BR> | [clusterConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NetworkInterfaces | Get network interfaces for a Rubrik Cluster cluster  
   
@@ -585,13 +693,12 @@ Supported in v5.0+
 Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption keys are not reported. | `New-RscQueryCluster -Operation NtpServers`<BR> | [clusterNtpServers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OperationJobProgress | Get updates on the job progress of the Rubrik cluster operation. | `New-RscQueryCluster -Operation OperationJobProgress`<BR> | [clusterOperationJobProgress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Proxy | Rubrik cluster proxy information. | `New-RscQueryCluster -Operation Proxy`<BR> | [clusterProxy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RadarClusterList | N/A | `New-RscQueryCluster -Operation RadarClusterList`<BR> | [radarClusterConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RegistrationProductInfo | Info about the cluster product types the user is entitled to. | `New-RscQueryCluster -Operation RegistrationProductInfo`<BR> | [clusterRegistrationProductInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ReplicationTargets | All replication targets for a cluster. | `New-RscQueryCluster -Operation ReplicationTargets`<BR> | [allClusterReplicationTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ReportMigrationCount | Retrieve the counts of the Rubrik cluster reports migration. | `New-RscQueryCluster -Operation ReportMigrationCount`<BR> | [clusterReportMigrationCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ReportMigrationJobStatus | Retrieve the status of the cluster report migration job. | `New-RscQueryCluster -Operation ReportMigrationJobStatus`<BR> | [clusterReportMigrationJobStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ReportMigrationStatus | Retrieve details of the Rubrik clusters' reports migration. | `New-RscQueryCluster -Operation ReportMigrationStatus`<BR> | [clusterReportMigrationStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TotpAckStatus | Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version. | `New-RscQueryCluster -Operation TotpAckStatus`<BR> | [allClustersTotpAckStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TypeList | N/A | `New-RscQueryCluster -Operation TypeList`<BR> | [clusterTypeList](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateClusterLicenseCapacity | Information about cluster license capacity validations. | `New-RscQueryCluster -Operation ValidateClusterLicenseCapacity`<BR> | [validateClusterLicenseCapacity](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Vlans | Rubrik cluster VLAN information. | `New-RscQueryCluster -Operation Vlans`<BR> | [clusterVlans](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | WebCertsAndIpmis | Get web server certificate and IPMI details for multiple clusters. | `New-RscQueryCluster -Operation WebCertsAndIpmis`<BR> | [allClusterWebCertsAndIpmis](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Windows | A Windows Cluster. | `New-RscQueryCluster -Operation Windows`<BR> | [windowsCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -602,30 +709,42 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| AddClusterNodes | Add nodes to the CDM cluster. | `New-RscMutationCluster -Operation AddClusterNodes`<BR> | [addClusterNodes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddNodesToCloud | Add nodes to cloud cluster. | `New-RscMutationCluster -Operation AddNodesToCloud`<BR> | [addNodesToCloudCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| BulkDeleteFailover | Delete the provided failover clusters  
-  
-Supported in v5.3+  
-Delete the provided failover clusters. | `New-RscMutationCluster -Operation BulkDeleteFailover`<BR> | [bulkDeleteFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CreateFailover | Create a failover cluster  
-  
-Supported in v5.2+  
-Create a failover cluster. | `New-RscMutationCluster -Operation CreateFailover`<BR> | [createFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteFailover | Delete a failover cluster  
-  
-Supported in v5.2+  
-Delete a failover cluster. | `New-RscMutationCluster -Operation DeleteFailover`<BR> | [deleteFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GenerateClusterRegistrationToken | Generate a JWT that can be used to register clusters with Rubrik. If ManagedByRubrikArg is not given, the product type is inferred automatically. | `New-RscMutationCluster -Operation GenerateClusterRegistrationToken`<BR> | [generateClusterRegistrationToken](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverCloud | Recover a Rubrik Cloud Cluster. | `New-RscMutationCluster -Operation RecoverCloud`<BR> | [recoverCloudCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RegisterCloud | Register a cloud cluster. | `New-RscMutationCluster -Operation RegisterCloud`<BR> | [registerCloudCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RemoveCdm | N/A | `New-RscMutationCluster -Operation RemoveCdm`<BR> | [removeCdmCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateDatabaseLogReportingProperties | Update the database log backup report properties  
+| RemoveClusterNodes | Remove healthy nodes from a cluster. | `New-RscMutationCluster -Operation RemoveClusterNodes`<BR> | [removeClusterNodes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateClusterDefaultAddress | Update the default address of a Rubrik cluster. | `New-RscMutationCluster -Operation UpdateClusterDefaultAddress`<BR> | [updateClusterDefaultAddress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateClusterLocation | N/A | `New-RscMutationCluster -Operation UpdateClusterLocation`<BR> | [updateClusterLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateClusterNtpServers | Assign NTP servers to Rubrik cluster  
   
-Supported in v5.3+  
-Update the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin. | `New-RscMutationCluster -Operation UpdateDatabaseLogReportingProperties`<BR> | [updateDatabaseLogReportingPropertiesForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateFailover | Update a failover cluster  
-  
-Supported in v5.2+  
-Update failover cluster with specified properties. | `New-RscMutationCluster -Operation UpdateFailover`<BR> | [updateFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+Supported in v5.0+  
+Assign NTP servers to Rubrik cluster. | `New-RscMutationCluster -Operation UpdateClusterNtpServers`<BR> | [updateClusterNtpServers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateClusterSettings | Update Rubrik CDM cluster settings. | `New-RscMutationCluster -Operation UpdateClusterSettings`<BR> | [updateClusterSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdatePreviewerClusterConfig | Update previewer cluster configuration. | `New-RscMutationCluster -Operation UpdatePreviewerClusterConfig`<BR> | [updatePreviewerClusterConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Cross Account domain
+
+Domain key: CrossAccount
+
+Cmdlets: `New-RscQueryCrossAccount` and `New-RscMutationCrossAccount`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| AddCrossAccountServiceConsumer | Add service consumer to provider RSC account. | `New-RscMutationCrossAccount -Operation AddCrossAccountServiceConsumer`<BR> | [addCrossAccountServiceConsumer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateCrossAccountPair | Create cross-account pair between service-consumer and service-provider accounts. | `New-RscMutationCrossAccount -Operation CreateCrossAccountPair`<BR> | [createCrossAccountPair](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateCrossAccountRegOauthPayload | Create a payload for cross-account OAuth registration. | `New-RscMutationCrossAccount -Operation CreateCrossAccountRegOauthPayload`<BR> | [createCrossAccountRegOauthPayload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Db2 domain
@@ -704,7 +823,7 @@ Cmdlets: `New-RscQueryDownload` and `New-RscMutationDownload`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | CdmUpgradesPdf | Download cdm upgrades table pdf. | `New-RscQueryDownload -Operation CdmUpgradesPdf`<BR> | [downloadCdmUpgradesPdf](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| EdVersionList | N/A | `New-RscQueryDownload -Operation EdVersionList`<BR> | [downloadedVersionList](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DownloadedVersionList | N/A | `New-RscQueryDownload -Operation DownloadedVersionList`<BR> | [downloadedVersionList](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PackageStatus | Get Status of download package job. | `New-RscQueryDownload -Operation PackageStatus`<BR> | [downloadPackageStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -794,6 +913,61 @@ Takes an on-demand backup of a Microsoft Exchange database. The forceFullSnapsho
   
 Supported in v8.0+  
 Request to delete a mount for Microsoft Exchange database snapshot. | `New-RscMutationExchange -Operation DeleteSnapshotMount`<BR> | [deleteExchangeSnapshotMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Failover Cluster domain
+
+Domain key: FailoverCluster
+
+Cmdlets: `New-RscQueryFailoverCluster` and `New-RscMutationFailoverCluster`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| App | Get details of the given failover cluster app. | `New-RscQueryFailoverCluster -Operation App`<BR> | [failoverClusterApp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Apps | Get a summary of all failover cluster apps. | `New-RscQueryFailoverCluster -Operation Apps`<BR> | [failoverClusterApps](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Host | Get details of the given host failover cluster. | `New-RscQueryFailoverCluster -Operation Host`<BR> | [hostFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Hosts | Get a summary of all host failover clusters. | `New-RscQueryFailoverCluster -Operation Hosts`<BR> | [hostFailoverClusters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TopLevelDescendants | Get a summary of all failover cluster top level descendants. | `New-RscQueryFailoverCluster -Operation TopLevelDescendants`<BR> | [failoverClusterTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| BulkDelete | Delete the provided failover clusters  
+  
+Supported in v5.3+  
+Delete the provided failover clusters. | `New-RscMutationFailoverCluster -Operation BulkDelete`<BR> | [bulkDeleteFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkDeleteApp | Delete failover cluster applications  
+  
+Supported in v5.3+  
+Delete failover cluster applications from Rubrik cluster. | `New-RscMutationFailoverCluster -Operation BulkDeleteApp`<BR> | [bulkDeleteFailoverClusterApp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Create | Create a failover cluster  
+  
+Supported in v5.2+  
+Create a failover cluster. | `New-RscMutationFailoverCluster -Operation Create`<BR> | [createFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateApp | Create a failover cluster app  
+  
+Supported in v5.2+  
+Create a failover cluster app. | `New-RscMutationFailoverCluster -Operation CreateApp`<BR> | [createFailoverClusterApp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Delete | Delete a failover cluster  
+  
+Supported in v5.2+  
+Delete a failover cluster. | `New-RscMutationFailoverCluster -Operation Delete`<BR> | [deleteFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteApp | Delete a failover cluster  
+  
+Supported in v5.2+  
+Delete a failover cluster. | `New-RscMutationFailoverCluster -Operation DeleteApp`<BR> | [deleteFailoverClusterApp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Update | Update a failover cluster  
+  
+Supported in v5.2+  
+Update failover cluster with specified properties. | `New-RscMutationFailoverCluster -Operation Update`<BR> | [updateFailoverCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateApp | Update a failover cluster app  
+  
+Supported in v5.2+  
+Update the failover cluster app with specified properties. | `New-RscMutationFailoverCluster -Operation UpdateApp`<BR> | [updateFailoverClusterApp](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Fileset domain
@@ -984,6 +1158,7 @@ Get details about a Hyper-V SCVMM related async request. | `New-RscQueryHyperv -
   
 Supported in v5.0+  
 Get summary of all the Hyper-V hosts. | `New-RscQueryHyperv -Operation Servers`<BR> | [hypervServers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ServersPaginated | Paginated list of Hyper-V Servers. | `New-RscQueryHyperv -Operation ServersPaginated`<BR> | [hypervServersPaginated](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TopLevelDescendants | Paginated list of the highest-level HyperV Objects accessible by the current user. | `New-RscQueryHyperv -Operation TopLevelDescendants`<BR> | [hypervTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UniqueServersCount | Count of unique HyperV Servers. | `New-RscQueryHyperv -Operation UniqueServersCount`<BR> | [uniqueHypervServersCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VirtualMachine | Details of the given Hyper-V Virtual Machine. | `New-RscQueryHyperv -Operation VirtualMachine`<BR> | [hypervVirtualMachine](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1047,6 +1222,10 @@ Start an asynchronous job to download multiple files and folders from a specifie
   
 Supported in v5.0+  
 Export snapshot of a vm. | `New-RscMutationHyperv -Operation ExportVirtualMachine`<BR> | [exportHypervVirtualMachine](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InplaceExportVirtualMachine | In-place exports a virtual machine snapshot on the host  
+  
+Supported in v9.1+  
+Overwrites the Hyperv virtual machine's configuration and virtual disks in-place based on the snapshot. The recovery process only transfers the changed blocks to the target host. | `New-RscMutationHyperv -Operation InplaceExportVirtualMachine`<BR> | [inplaceExportHypervVirtualMachine](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InstantRecoverVirtualMachineSnapshot | Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot  
   
 Supported in v5.0+  
@@ -1079,6 +1258,32 @@ Update VM with specified properties. | `New-RscMutationHyperv -Operation UpdateV
   
 Supported in v5.0+  
 Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off. | `New-RscMutationHyperv -Operation UpdateVirtualMachineSnapshotMount`<BR> | [updateHypervVirtualMachineSnapshotMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Integration domain
+
+Domain key: Integration
+
+Cmdlets: `New-RscQueryIntegration` and `New-RscMutationIntegration`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| Integration | Read the integration with the specified integration ID. | `New-RscQueryIntegration -Operation Integration`<BR> | [integration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Integrations | List the integrations of the specified types. | `New-RscQueryIntegration -Operation Integrations`<BR> | [allIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| CreateIntegration | Creates a new integration. | `New-RscMutationIntegration -Operation CreateIntegration`<BR> | [createIntegration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateIntegrations | Create a batch of new integrations. | `New-RscMutationIntegration -Operation CreateIntegrations`<BR> | [createIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteIntegration | Delete the integration with the specified integration ID. | `New-RscMutationIntegration -Operation DeleteIntegration`<BR> | [deleteIntegration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteIntegrations | Delete a batch of integrations. | `New-RscMutationIntegration -Operation DeleteIntegrations`<BR> | [deleteIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateIntegration | Update the integration with the specified integration ID. | `New-RscMutationIntegration -Operation UpdateIntegration`<BR> | [updateIntegration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateIntegrations | Update a batch of integrations. | `New-RscMutationIntegration -Operation UpdateIntegrations`<BR> | [updateIntegrations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Kubernetes domain
@@ -1148,6 +1353,12 @@ Cmdlets: `New-RscQueryM365` and `New-RscMutationM365`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| DayToDayModeBackupStats | Returns the backup statistics of an M365 organization product in day-to-day mode. | `New-RscQueryM365 -Operation DayToDayModeBackupStats`<BR> | [m365DayToDayModeBackupStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DayToDayModeStats | Returns the statistics of an M365 organization product in day-to-day mode. | `New-RscQueryM365 -Operation DayToDayModeStats`<BR> | [m365DayToDayModeStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OnboardingModeBackupStats | Returns the backup statistics of an M365 organization product in onboarding mode. | `New-RscQueryM365 -Operation OnboardingModeBackupStats`<BR> | [m365OnboardingModeBackupStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OnboardingModeStats | Returns the statistics of an M365 organization product in onboarding mode. | `New-RscQueryM365 -Operation OnboardingModeStats`<BR> | [m365OnboardingModeStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OrgBackupLocations | Returns the backup locations of an M365 organization. | `New-RscQueryM365 -Operation OrgBackupLocations`<BR> | [m365OrgBackupLocations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OrgOperationModes | Returns the operation modes of an M365 organization. | `New-RscQueryM365 -Operation OrgOperationModes`<BR> | [m365OrgOperationModes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Regions | Retrieves the M365 regions for the organization. | `New-RscQueryM365 -Operation Regions`<BR> | [m365Regions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -1227,7 +1438,389 @@ Create a job for an on-demand snapshot of an SLA Managed Volume. The response re
 | Update | Mutation to update an existing Managed Volume. | `New-RscMutationManagedVolume -Operation Update`<BR> | [updateManagedVolume](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
-## Mongo DB domain
+## Miscellaneous domain
+
+Domain key: Misc
+
+Cmdlets: `New-RscQueryMisc` and `New-RscMutationMisc`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| ActiveCustomAnalyzers | N/A | `New-RscQueryMisc -Operation ActiveCustomAnalyzers`<BR> | [activeCustomAnalyzers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AdVolumeExports | Active Directory volume export connection. | `New-RscQueryMisc -Operation AdVolumeExports`<BR> | [adVolumeExports](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AllowedOrgAdminOperations | Returns privileges that are allowed to be asssigned to org admin roles. | `New-RscQueryMisc -Operation AllowedOrgAdminOperations`<BR> | [allAllowedOrgAdminOperations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AnalyzerGroups | N/A | `New-RscQueryMisc -Operation AnalyzerGroups`<BR> | [analyzerGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AnalyzerUsages | Returns which policies are using each analyzer. | `New-RscQueryMisc -Operation AnalyzerUsages`<BR> | [analyzerUsages](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AnomalyResultOpt | Optional result of the Anomaly Investigation. | `New-RscQueryMisc -Operation AnomalyResultOpt`<BR> | [anomalyResultOpt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AnomalyResults | Results for Anomaly Investigations. | `New-RscQueryMisc -Operation AnomalyResults`<BR> | [anomalyResults](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AnomalyResultsGrouped | Results for Anomaly Investigations grouped by an argument. | `New-RscQueryMisc -Operation AnomalyResultsGrouped`<BR> | [anomalyResultsGrouped](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AreMultiGeoBackupsEnabled | Retrieves the status of multi-geo backups for the specified organization. | `New-RscQueryMisc -Operation AreMultiGeoBackupsEnabled`<BR> | [areMultiGeoBackupsEnabled](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AuthorizationsForGlobalResource | List of authorized operations for global resource. | `New-RscQueryMisc -Operation AuthorizationsForGlobalResource`<BR> | [allAuthorizationsForGlobalResource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AuthorizationsForObject | List of authorizations for the object. | `New-RscQueryMisc -Operation AuthorizationsForObject`<BR> | [allAuthorizationsForObject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AuthorizationsForObjects | List of authorizations for the objects. | `New-RscQueryMisc -Operation AuthorizationsForObjects`<BR> | [allAuthorizationsForObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AwsComputeSettings | List all aws compute settings. | `New-RscQueryMisc -Operation AwsComputeSettings`<BR> | [allAwsComputeSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AzureResourceGroups | Get resource groups for a service principal in Azure. | `New-RscQueryMisc -Operation AzureResourceGroups`<BR> | [allAzureResourceGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AzureSubnets | Get subnets for a given account in Azure. | `New-RscQueryMisc -Operation AzureSubnets`<BR> | [allAzureSubnets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BrowseCalendar | Browse Exchange calendar. | `New-RscQueryMisc -Operation BrowseCalendar`<BR> | [browseCalendar](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BrowseContacts | Browse Exchange contacts. | `New-RscQueryMisc -Operation BrowseContacts`<BR> | [browseContacts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BrowseFolder | N/A | `New-RscQueryMisc -Operation BrowseFolder`<BR> | [browseFolder](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BrowseOnedrive | Browse OneDrive files and folders. | `New-RscQueryMisc -Operation BrowseOnedrive`<BR> | [browseOnedrive](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BrowseTeamsChannels | Browse channels in a Teams files snapshot. | `New-RscQueryMisc -Operation BrowseTeamsChannels`<BR> | [browseTeamsChannels](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BrowseTeamsDrive | Browse team files. | `New-RscQueryMisc -Operation BrowseTeamsDrive`<BR> | [browseTeamsDrive](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CdmGuestCredentials | Get all cdm guest credentials. | `New-RscQueryMisc -Operation CdmGuestCredentials`<BR> | [allCdmGuestCredentials](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CdmInventorySubHierarchyRoot | N/A | `New-RscQueryMisc -Operation CdmInventorySubHierarchyRoot`<BR> | [cdmInventorySubHierarchyRoot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CdmOvaDetails | The Rubrik CDM OVA details. | `New-RscQueryMisc -Operation CdmOvaDetails`<BR> | [allCdmOvaDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CdmVersionCheck | Check supported feature for cluster version. | `New-RscQueryMisc -Operation CdmVersionCheck`<BR> | [cdmVersionCheck](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CdpVmsInfos | Details of all the virtual machines with Continuous Data Protection (CDP) SLA Domain. | `New-RscQueryMisc -Operation CdpVmsInfos`<BR> | [allCdpVmsInfos](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CheckCloudComputeConnectivityJobProgress | Get details of the cloud compute connectivity check request  
+  
+Supported in v6.0+  
+Gets the details of the request that was triggered to check the cloud compute connectivity of an archival location. | `New-RscQueryMisc -Operation CheckCloudComputeConnectivityJobProgress`<BR> | [checkCloudComputeConnectivityJobProgress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectNasExport | A Cloud Direct NAS export object. | `New-RscQueryMisc -Operation CloudDirectNasExport`<BR> | [cloudDirectNasExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectShares | Retrieve shares from Cloud Direct site. | `New-RscQueryMisc -Operation CloudDirectShares`<BR> | [allCloudDirectShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectSites | List of the Cloud Direct Sites accessible by the current user. | `New-RscQueryMisc -Operation CloudDirectSites`<BR> | [allCloudDirectSites](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectSystems | Retrieve systems managed by the Cloud Direct site. | `New-RscQueryMisc -Operation CloudDirectSystems`<BR> | [cloudDirectSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ConfiguredGroupMembers | Objects that match the specifications of a configured group. | `New-RscQueryMisc -Operation ConfiguredGroupMembers`<BR> | [configuredGroupMembers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Crawl | Returns details for one crawl. | `New-RscQueryMisc -Operation Crawl`<BR> | [crawl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Crawls | Returns crawls for an account. | `New-RscQueryMisc -Operation Crawls`<BR> | [crawls](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CurrentIpAddress | N/A | `New-RscQueryMisc -Operation CurrentIpAddress`<BR> | [currentIpAddress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CurrentOrg | Details of the user's current organization. | `New-RscQueryMisc -Operation CurrentOrg`<BR> | [currentOrg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CurrentOrgAuthDomainConfig | Authentication domain configuration of the current organization. | `New-RscQueryMisc -Operation CurrentOrgAuthDomainConfig`<BR> | [currentOrgAuthDomainConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CurrentOrgIdentityProviders | Lists all identity providers for the current organization. | `New-RscQueryMisc -Operation CurrentOrgIdentityProviders`<BR> | [allCurrentOrgIdentityProviders](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CustomAnalyzer | N/A | `New-RscQueryMisc -Operation CustomAnalyzer`<BR> | [customAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DashboardSummary | Returns hits grouped by analyzer and policy. | `New-RscQueryMisc -Operation DashboardSummary`<BR> | [dashboardSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatagovSecDesc | Returns permissions associated with a path. | `New-RscQueryMisc -Operation DatagovSecDesc`<BR> | [datagovSecDesc](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DecryptExportUrl | Decrypt Export URL. | `New-RscQueryMisc -Operation DecryptExportUrl`<BR> | [decryptExportUrl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeploymentIpAddresses | All IP addresses on the Rubrik deployment. | `New-RscQueryMisc -Operation DeploymentIpAddresses`<BR> | [allDeploymentIpAddresses](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeploymentVersion | Polaris deployment version. | `New-RscQueryMisc -Operation DeploymentVersion`<BR> | [deploymentVersion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DhrcActiveRecommendations | Active DHRC recommendations for the requested categories. | `New-RscQueryMisc -Operation DhrcActiveRecommendations`<BR> | [allDhrcActiveRecommendations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DhrcLatestMetrics | Latest DHRC metrics for the requested categories. | `New-RscQueryMisc -Operation DhrcLatestMetrics`<BR> | [allDhrcLatestMetrics](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DhrcScores | DHRC scores for the requested categories and time span. | `New-RscQueryMisc -Operation DhrcScores`<BR> | [allDhrcScores](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DiffFmd | Browse diff FMD under given path. | `New-RscQueryMisc -Operation DiffFmd`<BR> | [diffFmd](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DiscoverNodes | v5.0-v5.1: Discover bootstrappable nodes  
+v5.2+: (DEPRECATED) Discover bootstrappable nodes  
+  
+Supported in v5.0+  
+v5.0-v5.1: Searches for nodes bootstrappable to the specified Rubrik cluster  
+v5.2+: Searches for nodes that can bootstrap into the specified Rubrik cluster. This endpoint will be moved to v1 in the next major version. | `New-RscQueryMisc -Operation DiscoverNodes`<BR> | [discoverNodes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DiscoveryTimeline | Returns timeline data for all policies of an account. | `New-RscQueryMisc -Operation DiscoveryTimeline`<BR> | [discoveryTimeline](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DistributionListDigest | Retrieve a custom distribution list event digest by ID. | `New-RscQueryMisc -Operation DistributionListDigest`<BR> | [distributionListDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DistributionListDigests | Retrieve all custom distribution list event digests. | `New-RscQueryMisc -Operation DistributionListDigests`<BR> | [allDistributionListDigests](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DummyFieldWithAdminOnlyTag | N/A | `New-RscQueryMisc -Operation DummyFieldWithAdminOnlyTag`<BR> | [dummyFieldWithAdminOnlyTag](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EdgeWindowsToolLink | Download link for Rubrik Edge Deployment Tool for Microsoft Windows. | `New-RscQueryMisc -Operation EdgeWindowsToolLink`<BR> | [edgeWindowsToolLink](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EffectiveRbacPermissions | Permissions assigned to the role that are in effect. | `New-RscQueryMisc -Operation EffectiveRbacPermissions`<BR> | [allEffectiveRbacPermissions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EventDigests | Retrieve event digests for specific recipients. | `New-RscQueryMisc -Operation EventDigests`<BR> | [allEventDigests](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ExternalDeploymentName | Customer facing Polaris deployment name. | `New-RscQueryMisc -Operation ExternalDeploymentName`<BR> | [externalDeploymentName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| FailedRestoreItemsInfo | Information on Microsoft 365 restore failed items. | `New-RscQueryMisc -Operation FailedRestoreItemsInfo`<BR> | [failedRestoreItemsInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| FederatedLoginStatus | Status of the federated login. | `New-RscQueryMisc -Operation FederatedLoginStatus`<BR> | [federatedLoginStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| FileActivities | List user activity for a specific file on a specific snapshot. | `New-RscQueryMisc -Operation FileActivities`<BR> | [allFileActivities](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GeoLocationList | N/A | `New-RscQueryMisc -Operation GeoLocationList`<BR> | [geoLocationList](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetAllRolesInOrgList | N/A | `New-RscQueryMisc -Operation GetAllRolesInOrgList`<BR> | [getAllRolesInOrgConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetCdmReleaseDetailsForVersionFromSupportPortal | Get CDM release details from support portal for a given list of clusters specific to a target version. | `New-RscQueryMisc -Operation GetCdmReleaseDetailsForVersionFromSupportPortal`<BR> | [getCdmReleaseDetailsForVersionFromSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetCdmReleaseDetailsFromSupportPortal | Get available versions on support portal for a cluster. | `New-RscQueryMisc -Operation GetCdmReleaseDetailsFromSupportPortal`<BR> | [getCdmReleaseDetailsFromSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetGroupCountByPrechecksStatus | N/A | `New-RscQueryMisc -Operation GetGroupCountByPrechecksStatus`<BR> | [getGroupCountByPrechecksStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetGroupCountByUpgradeJobStatus | N/A | `New-RscQueryMisc -Operation GetGroupCountByUpgradeJobStatus`<BR> | [getGroupCountByUpgradeJobStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetGroupCountByVersionStatus | N/A | `New-RscQueryMisc -Operation GetGroupCountByVersionStatus`<BR> | [getGroupCountByVersionStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetKorgTaskchainStatus | N/A | `New-RscQueryMisc -Operation GetKorgTaskchainStatus`<BR> | [getKorgTaskchainStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetPermissions | N/A | `New-RscQueryMisc -Operation GetPermissions`<BR> | [getPermissions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetRolesByIds | N/A | `New-RscQueryMisc -Operation GetRolesByIds`<BR> | [getRolesByIds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetUserDownloads | N/A | `New-RscQueryMisc -Operation GetUserDownloads`<BR> | [getUserDownloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GlobalFileSearch | All files matching input filters. | `New-RscQueryMisc -Operation GlobalFileSearch`<BR> | [globalFileSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GlobalLockoutConfig | Get the lockout configurations of the global organization. | `New-RscQueryMisc -Operation GlobalLockoutConfig`<BR> | [globalLockoutConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GlobalMfaSetting | Get global multifactor authentication (MFA) for an account. | `New-RscQueryMisc -Operation GlobalMfaSetting`<BR> | [globalMfaSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GlobalSearchResults | N/A | `New-RscQueryMisc -Operation GlobalSearchResults`<BR> | [globalSearchResults](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GroupsInCurrentAndDescendantOrganization | Retrieve groups from current and descendant organizations based on the specified filters. | `New-RscQueryMisc -Operation GroupsInCurrentAndDescendantOrganization`<BR> | [groupsInCurrentAndDescendantOrganization](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GuestCredentials | N/A | `New-RscQueryMisc -Operation GuestCredentials`<BR> | [guestCredentials](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GuestCredentialsV2 | Get Guest OS credentials. | `New-RscQueryMisc -Operation GuestCredentialsV2`<BR> | [guestCredentialsV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HasIdpConfigured | Determine whether the current organization has configured identity providers. | `New-RscQueryMisc -Operation HasIdpConfigured`<BR> | [hasIdpConfigured](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HelpContentSnippets | Paginated list of help content snippets. | `New-RscQueryMisc -Operation HelpContentSnippets`<BR> | [helpContentSnippets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HierarchyObject | N/A | `New-RscQueryMisc -Operation HierarchyObject`<BR> | [hierarchyObject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HierarchyObjects | N/A | `New-RscQueryMisc -Operation HierarchyObjects`<BR> | [hierarchyObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InstalledVersionList | N/A | `New-RscQueryMisc -Operation InstalledVersionList`<BR> | [installedVersionList](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InventoryRoot | N/A | `New-RscQueryMisc -Operation InventoryRoot`<BR> | [inventoryRoot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InventorySubHierarchyRoot | N/A | `New-RscQueryMisc -Operation InventorySubHierarchyRoot`<BR> | [inventorySubHierarchyRoot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InventoryWorkloads | All account level inventory workloads. | `New-RscQueryMisc -Operation InventoryWorkloads`<BR> | [allInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InvestigationCsvDownloadLink | Link to downloadable investigation results in CSV format. | `New-RscQueryMisc -Operation InvestigationCsvDownloadLink`<BR> | [investigationCsvDownloadLink](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IpWhitelist | N/A | `New-RscQueryMisc -Operation IpWhitelist`<BR> | [ipWhitelist](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsLoggedIntoRubrikSupportPortal | Is Logged into Rubrik support portal. | `New-RscQueryMisc -Operation IsLoggedIntoRubrikSupportPortal`<BR> | [isLoggedIntoRubrikSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsSfdcReachable | Is Rubrik Suppport Portal reachable from this deployment. | `New-RscQueryMisc -Operation IsSfdcReachable`<BR> | [isSfdcReachable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsUpgradeAvailable | Is upgrade available for a particular cluster. | `New-RscQueryMisc -Operation IsUpgradeAvailable`<BR> | [isUpgradeAvailable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsUpgradeRecommended | Is upgrade recommended for a particular cluster. | `New-RscQueryMisc -Operation IsUpgradeRecommended`<BR> | [isUpgradeRecommended](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsZrsAvailableForLocation | Checks if Zone Redundant Storage (ZRS) is available for a given combination of account, region, subscription and service tier. | `New-RscQueryMisc -Operation IsZrsAvailableForLocation`<BR> | [isZrsAvailableForLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Issue | Returns details of one issue. | `New-RscQueryMisc -Operation Issue`<BR> | [issue](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Issues | Returns all issues filtered by status. | `New-RscQueryMisc -Operation Issues`<BR> | [issues](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IssuesJobIds | List IDs of running SONAR issues jobs. | `New-RscQueryMisc -Operation IssuesJobIds`<BR> | [allIssuesJobIds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| KnowledgeBaseArticle | A knowledge base article. | `New-RscQueryMisc -Operation KnowledgeBaseArticle`<BR> | [knowledgeBaseArticle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| LambdaSettings | N/A | `New-RscQueryMisc -Operation LambdaSettings`<BR> | [lambdaSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| LicensedProducts | Information about the licenses at the product level. | `New-RscQueryMisc -Operation LicensedProducts`<BR> | [allLicensedProducts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| LockoutConfig | Get the lockout configurations of the current organization. | `New-RscQueryMisc -Operation LockoutConfig`<BR> | [lockoutConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MaxProtectedAppsCount | Maximum number of protected apps that can be added per account. | `New-RscQueryMisc -Operation MaxProtectedAppsCount`<BR> | [maxProtectedAppsCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MfaSetting | Get multifactor authentication (MFA) settings for an account. | `New-RscQueryMisc -Operation MfaSetting`<BR> | [mfaSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MinimumCdmVersionForFeatureSet | Get minimum cluster version to support feature set. | `New-RscQueryMisc -Operation MinimumCdmVersionForFeatureSet`<BR> | [minimumCdmVersionForFeatureSet](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NetworkThrottle | Network Throttle Information. | `New-RscQueryMisc -Operation NetworkThrottle`<BR> | [networkThrottle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NfAnomalyResults | Results for Non-Filesystem Anomaly Investigations. | `New-RscQueryMisc -Operation NfAnomalyResults`<BR> | [nfAnomalyResults](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NfAnomalyResultsGrouped | Results for Non-Filesystem Anomaly Investigations grouped by an argument. | `New-RscQueryMisc -Operation NfAnomalyResultsGrouped`<BR> | [nfAnomalyResultsGrouped](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NodeRemovalCancelPermission | Check if the running node-removal job is cancelable. | `New-RscQueryMisc -Operation NodeRemovalCancelPermission`<BR> | [nodeRemovalCancelPermission](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NodeToReplace | The ID of the Rubrik cluster node to replace. | `New-RscQueryMisc -Operation NodeToReplace`<BR> | [nodeToReplace](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NosqlStorageLocations | List of Mosaic Storage Locations used for NoSQL backups | `New-RscQueryMisc -Operation NosqlStorageLocations`<BR> | [allNosqlStorageLocations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OauthCodesForEdgeReg | Reply for request to download Rubrik Edge from Rubrik Security Cloud. | `New-RscQueryMisc -Operation OauthCodesForEdgeReg`<BR> | [oauthCodesForEdgeReg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ObjectFiles | N/A | `New-RscQueryMisc -Operation ObjectFiles`<BR> | [objectFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ObjectTypeAccessSummary | Returns total sensitive hits grouped by object type and also gives policy level breakdown for each object type. | `New-RscQueryMisc -Operation ObjectTypeAccessSummary`<BR> | [objectTypeAccessSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ObjectsAlreadyAssignedToOrgs | Returns objects that have already been assigned to existing orgs. | `New-RscQueryMisc -Operation ObjectsAlreadyAssignedToOrgs`<BR> | [allObjectsAlreadyAssignedToOrgs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Org | Org details of the given org ID. | `New-RscQueryMisc -Operation Org`<BR> | [org](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Orgs | All orgs. | `New-RscQueryMisc -Operation Orgs`<BR> | [orgs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OrgsByIds | Orgs of given IDs. | `New-RscQueryMisc -Operation OrgsByIds`<BR> | [allOrgsByIds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OrgsForPrincipal | Returns the list of organizations to which the principal has access. | `New-RscQueryMisc -Operation OrgsForPrincipal`<BR> | [orgsForPrincipal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PendingAction | N/A | `New-RscQueryMisc -Operation PendingAction`<BR> | [pendingAction](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PendingActions | Pending actions. | `New-RscQueryMisc -Operation PendingActions`<BR> | [allPendingActions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PhoenixRolloutProgress | Retrieve Phoenix rollout progress. | `New-RscQueryMisc -Operation PhoenixRolloutProgress`<BR> | [phoenixRolloutProgress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PipelineHealthForTimeRange | Get the health metric for the radar pipeline covering the backup, indexing, and analysis jobs. | `New-RscQueryMisc -Operation PipelineHealthForTimeRange`<BR> | [pipelineHealthForTimeRange](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PolarisInventorySubHierarchyRoot | N/A | `New-RscQueryMisc -Operation PolarisInventorySubHierarchyRoot`<BR> | [polarisInventorySubHierarchyRoot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PolicyDetails | Returns active policies for an account. | `New-RscQueryMisc -Operation PolicyDetails`<BR> | [policyDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PolicyObj | Returns details for one policy object. | `New-RscQueryMisc -Operation PolicyObj`<BR> | [policyObj](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PolicyObjs | Returns status for all objects at a specified timestamp. | `New-RscQueryMisc -Operation PolicyObjs`<BR> | [policyObjs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PrechecksStatus | Gets status of last prechecks job. | `New-RscQueryMisc -Operation PrechecksStatus`<BR> | [prechecksStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PrechecksStatusWithNextJobInfo | Get status of last completed prechecks Job along with details of currently running/scheduled next prechecks Job. | `New-RscQueryMisc -Operation PrechecksStatusWithNextJobInfo`<BR> | [prechecksStatusWithNextJobInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PrivateContainerRegistry | Retrieves the Private Container Registry (PCR) details for an Exocompute cloud account. | `New-RscQueryMisc -Operation PrivateContainerRegistry`<BR> | [privateContainerRegistry](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ProductDocumentation | A product documentation. | `New-RscQueryMisc -Operation ProductDocumentation`<BR> | [productDocumentation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ProtectedObjectsList | List of all objects protected by the SLA Domains. | `New-RscQueryMisc -Operation ProtectedObjectsList`<BR> | [protectedObjectsConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ProtectedVolumesCount | Total number of protected volumes across all hosts. | `New-RscQueryMisc -Operation ProtectedVolumesCount`<BR> | [protectedVolumesCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| QuarantinedDetailsForWorkload | Quarantine details of a workload. | `New-RscQueryMisc -Operation QuarantinedDetailsForWorkload`<BR> | [allQuarantinedDetailsForWorkload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| QueryDatastoreFreespaceThresholds | Query datastore threshold configurations. | `New-RscQueryMisc -Operation QueryDatastoreFreespaceThresholds`<BR> | [queryDatastoreFreespaceThresholds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RoleTemplates | The list of available role templates. | `New-RscQueryMisc -Operation RoleTemplates`<BR> | [roleTemplates](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SearchFileByPrefix | Search file under given folder and with given prefix. | `New-RscQueryMisc -Operation SearchFileByPrefix`<BR> | [searchFileByPrefix](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SnoozedDirectories | Lists the snoozed directories for the account. | `New-RscQueryMisc -Operation SnoozedDirectories`<BR> | [snoozedDirectories](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SupportBundle | Get the status of generating support bundle  
+  
+Supported in v5.0+  
+Given a request ID for generate support bundle request, provide the status of the request. If the request is successful, the download link for the support bundle would be included. | `New-RscQueryMisc -Operation SupportBundle`<BR> | [supportBundle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SupportUserAccesses | All support user access objects that satisfy the query criteria. | `New-RscQueryMisc -Operation SupportUserAccesses`<BR> | [supportUserAccesses](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TableFilters | N/A | `New-RscQueryMisc -Operation TableFilters`<BR> | [tableFilters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Targets | List all targets. | `New-RscQueryMisc -Operation Targets`<BR> | [allTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TaskDetailGroupByList | N/A | `New-RscQueryMisc -Operation TaskDetailGroupByList`<BR> | [taskDetailGroupByConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TaskDetailList | N/A | `New-RscQueryMisc -Operation TaskDetailList`<BR> | [taskDetailConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Taskchain | Details of a taskchain. | `New-RscQueryMisc -Operation Taskchain`<BR> | [taskchain](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TeamChannelNameAvailable | Checks the availability of the channel name in the Team. | `New-RscQueryMisc -Operation TeamChannelNameAvailable`<BR> | [teamChannelNameAvailable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TotpConfigStatus | Get TOTP configuration status for a user. | `New-RscQueryMisc -Operation TotpConfigStatus`<BR> | [totpConfigStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TprStatusForNodeRemoval | Check and update TPR request for node removal. | `New-RscQueryMisc -Operation TprStatusForNodeRemoval`<BR> | [tprStatusForNodeRemoval](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TunnelStatus | Check support tunnel status for a particular node  
+  
+Supported in v5.0+  
+To be used by Admin to check status of the support tunnel. | `New-RscQueryMisc -Operation TunnelStatus`<BR> | [tunnelStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UniqueVcdCount | Number of unique vCloud Director instances. | `New-RscQueryMisc -Operation UniqueVcdCount`<BR> | [uniqueVcdCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UnmanagedObjects | List of unmanaged objects. | `New-RscQueryMisc -Operation UnmanagedObjects`<BR> | [unmanagedObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UnmanagedObjectsSupportedTypes | List of supported object types. | `New-RscQueryMisc -Operation UnmanagedObjectsSupportedTypes`<BR> | [allUnmanagedObjectsSupportedTypes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpgradeStatus | Gets the status for completed/running upgrade process. | `New-RscQueryMisc -Operation UpgradeStatus`<BR> | [upgradeStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserActivities | N/A | `New-RscQueryMisc -Operation UserActivities`<BR> | [userActivities](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserAnalyzerAccess | N/A | `New-RscQueryMisc -Operation UserAnalyzerAccess`<BR> | [userAnalyzerAccess](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserAuditList | N/A | `New-RscQueryMisc -Operation UserAuditList`<BR> | [userAuditConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserDetail | N/A | `New-RscQueryMisc -Operation UserDetail`<BR> | [userDetail](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserGroups | N/A | `New-RscQueryMisc -Operation UserGroups`<BR> | [userGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserNotifications | An object containing production notifications information for the current user. | `New-RscQueryMisc -Operation UserNotifications`<BR> | [userNotifications](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserSessionManagementConfig | Get the session management configurations for the user account. | `New-RscQueryMisc -Operation UserSessionManagementConfig`<BR> | [userSessionManagementConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UserSettings | N/A | `New-RscQueryMisc -Operation UserSettings`<BR> | [userSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UsersInCurrentAndDescendantOrganization | Retrieve users from current and descendant organizations based on the specified filters. | `New-RscQueryMisc -Operation UsersInCurrentAndDescendantOrganization`<BR> | [usersInCurrentAndDescendantOrganization](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UsersOnAccountList | N/A | `New-RscQueryMisc -Operation UsersOnAccountList`<BR> | [allUsersOnAccountConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateOrgName | Checks whether the tenant org name is valid and unique. | `New-RscQueryMisc -Operation ValidateOrgName`<BR> | [validateOrgName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VcdVappVms | Paginated list of virtual machines under vCloud Director hiearchy. | `New-RscQueryMisc -Operation VcdVappVms`<BR> | [vcdVappVms](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VirtualMachineFiles | Get virtual machine files for a snapshot  
+  
+Supported in v9.0+  
+Returns all virtual machine files, such as .vmdk, .vmx, and .nvram files, for the specified virtual machine snapshot. | `New-RscQueryMisc -Operation VirtualMachineFiles`<BR> | [allVirtualMachineFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VmRecoveryJobsInfo | All Vm recovery jobs info. | `New-RscQueryMisc -Operation VmRecoveryJobsInfo`<BR> | [allVmRecoveryJobsInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VolumeGroupMounts | Volume Group Live Mount Connection. | `New-RscQueryMisc -Operation VolumeGroupMounts`<BR> | [volumeGroupMounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| WorkloadAlertSetting | Get whether alerts for a given workload are enabled. | `New-RscQueryMisc -Operation WorkloadAlertSetting`<BR> | [workloadAlertSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| WorkloadAnomalies | Specifies workloads that have an anomalous snapshot. | `New-RscQueryMisc -Operation WorkloadAnomalies`<BR> | [workloadAnomalies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| AddAdGroupsToHierarchy | Add AD Groups to O365 hierarchy. | `New-RscMutationMisc -Operation AddAdGroupsToHierarchy`<BR> | [addAdGroupsToHierarchy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddConfiguredGroupToHierarchy | Add a Configured Group to the O365 hierarchy. | `New-RscMutationMisc -Operation AddConfiguredGroupToHierarchy`<BR> | [addConfiguredGroupToHierarchy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddInventoryWorkloads | Add account level inventory workloads. | `New-RscMutationMisc -Operation AddInventoryWorkloads`<BR> | [addInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddRoleAssignments | N/A | `New-RscMutationMisc -Operation AddRoleAssignments`<BR> | [addRoleAssignments](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddVlan | Add VLAN to Rubrik cluster. | `New-RscMutationMisc -Operation AddVlan`<BR> | [addVlan](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddVmAppConsistentSpecs | Add Vm App consistent specs info | `New-RscMutationMisc -Operation AddVmAppConsistentSpecs`<BR> | [addVmAppConsistentSpecs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ArchiveCrawl | Archive a crawl. | `New-RscMutationMisc -Operation ArchiveCrawl`<BR> | [archiveCrawl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AssignProtection | Assign protection to cassandra objects. | `New-RscMutationMisc -Operation AssignProtection`<BR> | [assignProtection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BatchDeassignRoleFromUserGroups | N/A | `New-RscMutationMisc -Operation BatchDeassignRoleFromUserGroups`<BR> | [batchDeassignRoleFromUserGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkCreateNasFilesets | Create filesets in bulk for NAS shares  
+  
+Supported in v7.0+  
+Create primary filesets for a list of NAS shares. | `New-RscMutationMisc -Operation BulkCreateNasFilesets`<BR> | [bulkCreateNasFilesets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CancelDownloadPackage | Cancels download package job of a cluster. | `New-RscMutationMisc -Operation CancelDownloadPackage`<BR> | [cancelDownloadPackage](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CancelScheduledUpgrade | Cancels scheduled upgrade job of a cluster. | `New-RscMutationMisc -Operation CancelScheduledUpgrade`<BR> | [cancelScheduledUpgrade](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CancelTaskchain | Cancels the taskchain. | `New-RscMutationMisc -Operation CancelTaskchain`<BR> | [cancelTaskchain](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ChangePassword | N/A | `New-RscMutationMisc -Operation ChangePassword`<BR> | [changePassword](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateCustomAnalyzer | Create a new custom analyzer. | `New-RscMutationMisc -Operation CreateCustomAnalyzer`<BR> | [createCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateGuestCredential | Create guest OS credentials. | `New-RscMutationMisc -Operation CreateGuestCredential`<BR> | [createGuestCredential](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateOnDemandVolumeGroupBackup | Create on-demand snapshot for the Volume Group  
+  
+Supported in v5.3+  
+Create an on-demand snapshot for the given Volume Group ID. | `New-RscMutationMisc -Operation CreateOnDemandVolumeGroupBackup`<BR> | [createOnDemandVolumeGroupBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateVappsInstantRecovery | Initiate instant recovery from vApp snapshots. | `New-RscMutationMisc -Operation CreateVappsInstantRecovery`<BR> | [createVappsInstantRecovery](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeactivateCustomAnalyzer | Deactivate a custom analyzer. | `New-RscMutationMisc -Operation DeactivateCustomAnalyzer`<BR> | [deactivateCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteAdGroupsFromHierarchy | Delete AD Groups from O365 hierarchy. | `New-RscMutationMisc -Operation DeleteAdGroupsFromHierarchy`<BR> | [deleteAdGroupsFromHierarchy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteDistributionListDigestBatch | Delete specific distribution list digests. | `New-RscMutationMisc -Operation DeleteDistributionListDigestBatch`<BR> | [deleteDistributionListDigestBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteEventDigest | Delete event digests for specific recipients. | `New-RscMutationMisc -Operation DeleteEventDigest`<BR> | [deleteEventDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteGuestCredentialById | Delete guest OS credentials. | `New-RscMutationMisc -Operation DeleteGuestCredentialById`<BR> | [deleteGuestCredentialById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteLogShipping | Delete a specified log shipping configuration. | `New-RscMutationMisc -Operation DeleteLogShipping`<BR> | [deleteLogShipping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteVolumeGroupMount | Requst to delete a mount  
+  
+Supported in v5.0+  
+Create a request to delete a mount. If there are volumes mounted on a target host, this will use best-effort to unmount those volumes from the host, and proceed to unmount storage on Rubrik. | `New-RscMutationMisc -Operation DeleteVolumeGroupMount`<BR> | [deleteVolumeGroupMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DisableSupportUserAccess | Disables a Rubrik Support representative's access to the customer's account. | `New-RscMutationMisc -Operation DisableSupportUserAccess`<BR> | [disableSupportUserAccess](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EnableAutomaticFmdUpload | Enable/disable auto fmd upload on given cluster. | `New-RscMutationMisc -Operation EnableAutomaticFmdUpload`<BR> | [enableAutomaticFmdUpload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EnableDisableAppConsistency | Enable/ Disable App consistency for a VM | `New-RscMutationMisc -Operation EnableDisableAppConsistency`<BR> | [enableDisableAppConsistency](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EnableSupportUserAccess | Enables a Rubrik Support representative's access to the customer's account. | `New-RscMutationMisc -Operation EnableSupportUserAccess`<BR> | [enableSupportUserAccess](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ExcludeVmDisks | Exclude or include virtual disks during snapshot. | `New-RscMutationMisc -Operation ExcludeVmDisks`<BR> | [excludeVmDisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GenerateConfigProtectionRestoreForm | Generate restore form for the configuration backup file. | `New-RscMutationMisc -Operation GenerateConfigProtectionRestoreForm`<BR> | [generateConfigProtectionRestoreForm](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GenerateSupportBundle | Collect log files from the cluster  
+  
+Supported in v5.0+  
+To be used by Admin to collect necessary Rubrik's log files from all the nodes. Both event_id and reqeust_ids are optional. If nothing is specified, the whole support bundle is to be collected, if event_id is specified, the reqeuest_ids is ignored. If request id is specified, only collect logs related to the specific request, otherwise collect all the logs. | `New-RscMutationMisc -Operation GenerateSupportBundle`<BR> | [generateSupportBundle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetDownloadUrl | N/A | `New-RscMutationMisc -Operation GetDownloadUrl`<BR> | [getDownloadUrl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HideRevealNasNamespaces | Hide and reveal NAS namespaces  
+  
+Supported in v7.0+  
+Hide individually selected NAS namespaces by setting the "action" field to "Hide". Reveal the selected NAS namespaces by setting the "action" field to "Reveal". | `New-RscMutationMisc -Operation HideRevealNasNamespaces`<BR> | [hideRevealNasNamespaces](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HideRevealNasShares | Hide or reveal NAS shares  
+  
+Supported in v7.0+  
+Hide individually selected NAS shares by setting the "action" field to "Hide". Reveal selected NAS shares by setting the "action" field to "Reveal". | `New-RscMutationMisc -Operation HideRevealNasShares`<BR> | [hideRevealNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InstallIoFilter | Install the Rubrik ioFilter to the VMware cluster with a specific ID  
+  
+Supported in v5.1+  
+Install the latest version of Rubrik ioFilter to the VMware cluster with a specific ID. The cluster must be in maintenance mode to install the ioFilter successfully. The vCenter of the VMware compute cluster must be of version 6.7 and above. | `New-RscMutationMisc -Operation InstallIoFilter`<BR> | [installIoFilter](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| InviteSsoGroup | Assigns roles to SSO groups in the current organization using the given group name and role IDs. | `New-RscMutationMisc -Operation InviteSsoGroup`<BR> | [inviteSsoGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ListCidrsForComputeSetting | List CIDRs for compute setting. | `New-RscMutationMisc -Operation ListCidrsForComputeSetting`<BR> | [listCidrsForComputeSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| LockUsersByAdmin | Specifies the endpoint through which the admin can lock the user accounts. | `New-RscMutationMisc -Operation LockUsersByAdmin`<BR> | [lockUsersByAdmin](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| LogoutFromRubrikSupportPortal | Logout from Rubrik support portal using username. | `New-RscMutationMisc -Operation LogoutFromRubrikSupportPortal`<BR> | [logoutFromRubrikSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MakePrimary | Make this cluster the primary for agents on a set of hosts  
+  
+Supported in v5.3+  
+Migrate the primary cluster with which the agent is able to perform regular operations (backup, restore etc). This can be done on a specified set of hosts or for all hosts that currently have a specified primary cluster for disaster recovery. Specify exactly one of `ids` or `oldPrimaryClusterUuid`. | `New-RscMutationMisc -Operation MakePrimary`<BR> | [makePrimary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ModifyIpmi | Modify IPMI settings  
+  
+Supported in v5.0+  
+modify IPMI settings. | `New-RscMutationMisc -Operation ModifyIpmi`<BR> | [modifyIpmi](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MountDisk | Mount disks to the given workload. | `New-RscMutationMisc -Operation MountDisk`<BR> | [mountDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NotificationForGetLicense | Send notification when the user clicks on the Get License button. | `New-RscMutationMisc -Operation NotificationForGetLicense`<BR> | [notificationForGetLicense](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RecoverCloudDirectMultiPaths | Cloud Direct MultiPaths Recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectMultiPaths`<BR> | [recoverCloudDirectMultiPaths](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RecoverCloudDirectPath | Cloud Direct Path Recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectPath`<BR> | [recoverCloudDirectPath](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RefreshDomain | Initiates an on-demand refresh job of a specified Active Directory domain. | `New-RscMutationMisc -Operation RefreshDomain`<BR> | [refreshDomain](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RefreshGlobalManagerConnectivityStatus | N/A | `New-RscMutationMisc -Operation RefreshGlobalManagerConnectivityStatus`<BR> | [refreshGlobalManagerConnectivityStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RemoveDisk | Marks the disk removed and updates cluster metadata | `New-RscMutationMisc -Operation RemoveDisk`<BR> | [removeDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RemoveInventoryWorkloads | Remove account level inventory workloads. | `New-RscMutationMisc -Operation RemoveInventoryWorkloads`<BR> | [removeInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RemovePrivateEndpointList | Remove private endpoint connection to RCV location. | `New-RscMutationMisc -Operation RemovePrivateEndpointList`<BR> | [removePrivateEndpointConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RemoveProxyConfig | Delete existing proxy configuration  
+  
+Supported in v5.0+  
+Delete an existing proxy that was configured. | `New-RscMutationMisc -Operation RemoveProxyConfig`<BR> | [removeProxyConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RemoveVlans | Delete cluster VLAN(s). | `New-RscMutationMisc -Operation RemoveVlans`<BR> | [removeVlans](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ReseedLogShippingSecondary | Reseed a secondary database. | `New-RscMutationMisc -Operation ReseedLogShippingSecondary`<BR> | [reseedLogShippingSecondary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResetAllOrgUsersPasswords | Used by the administrator to reset passwords for all users in the organization. | `New-RscMutationMisc -Operation ResetAllOrgUsersPasswords`<BR> | [resetAllOrgUsersPasswords](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResetUsersPasswordsWithUserIds | Used by the administrator to reset passwords for selected users in the organization. | `New-RscMutationMisc -Operation ResetUsersPasswordsWithUserIds`<BR> | [resetUsersPasswordsWithUserIds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResizeDisk | Resize the disk and updates cluster metadata. | `New-RscMutationMisc -Operation ResizeDisk`<BR> | [resizeDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResolveAnomaly | Resolve an anomaly. | `New-RscMutationMisc -Operation ResolveAnomaly`<BR> | [resolveAnomaly](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ResolveVolumeGroupsConflict | Marks that the user has resolved that there are no conflicting volume groups on the host where this Exchange server exists  
+  
+Supported in v8.0+  
+Marks that the user has resolved that there are no conflicting volume groups on the host where this Exchange server exists. | `New-RscMutationMisc -Operation ResolveVolumeGroupsConflict`<BR> | [resolveVolumeGroupsConflict](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RetryBackup | Initiates retry for a failed job. | `New-RscMutationMisc -Operation RetryBackup`<BR> | [retryBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RetryDownloadPackageJob | Retry the previous failed download package CDM job. | `New-RscMutationMisc -Operation RetryDownloadPackageJob`<BR> | [retryDownloadPackageJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RevokeAllOrgRoles | Revoke all roles of the current organization from the specified users and groups. | `New-RscMutationMisc -Operation RevokeAllOrgRoles`<BR> | [revokeAllOrgRoles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RunCustomAnalyzer | N/A | `New-RscMutationMisc -Operation RunCustomAnalyzer`<BR> | [runCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ScheduleUpgradeBatchJob | Schedule an upgrade job in batch. | `New-RscMutationMisc -Operation ScheduleUpgradeBatchJob`<BR> | [scheduleUpgradeBatchJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetAnalyzerRisks | Set risk for analyzers. | `New-RscMutationMisc -Operation SetAnalyzerRisks`<BR> | [setAnalyzerRisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetBundleApprovalStatus | Sets the approval status of an Exocompute container image bundle. | `New-RscMutationMisc -Operation SetBundleApprovalStatus`<BR> | [setBundleApprovalStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetCustomerTags | Sets customer-specified tags and the value whether the resource tags should be overridden by customer-specified tags for a given cloud type. | `New-RscMutationMisc -Operation SetCustomerTags`<BR> | [setCustomerTags](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetDatastoreFreespaceThresholds | Set datastore freespace thresholds. | `New-RscMutationMisc -Operation SetDatastoreFreespaceThresholds`<BR> | [setDatastoreFreespaceThresholds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetIpWhitelistEnabled | N/A | `New-RscMutationMisc -Operation SetIpWhitelistEnabled`<BR> | [setIpWhitelistEnabled](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetMfaSetting | Update the MFA settings for the account. Return true when the operation succeeds. | `New-RscMutationMisc -Operation SetMfaSetting`<BR> | [setMfaSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetPrivateContainerRegistry | Sets the Private Container Registry (PCR) details for an Exocompute cloud account. Updates the details if the registry already exists and creates a new entry if it does not exist. | `New-RscMutationMisc -Operation SetPrivateContainerRegistry`<BR> | [setPrivateContainerRegistry](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetTotpConfig | Setup TOTP configuration for a user. Return true when the operation succeeds. | `New-RscMutationMisc -Operation SetTotpConfig`<BR> | [setTotpConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetUpgradeType | Sets upgrade type of a cluster. | `New-RscMutationMisc -Operation SetUpgradeType`<BR> | [setUpgradeType](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetUserLevelTotpEnforcement | Update the user-level TOTP enforcement for given users. Return true when the operation succeeds. | `New-RscMutationMisc -Operation SetUserLevelTotpEnforcement`<BR> | [setUserLevelTotpEnforcement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetWorkloadAlertSetting | Enable/disable alerts for given workload on given cluster. | `New-RscMutationMisc -Operation SetWorkloadAlertSetting`<BR> | [setWorkloadAlertSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetupDisk | Setup an unformatted disk | `New-RscMutationMisc -Operation SetupDisk`<BR> | [setupDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartCrawl | Start a crawl. | `New-RscMutationMisc -Operation StartCrawl`<BR> | [startCrawl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartDownloadPackageBatchJob | Starts CDM job to download installer package in batch. | `New-RscMutationMisc -Operation StartDownloadPackageBatchJob`<BR> | [startDownloadPackageBatchJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartExportRdsInstanceJob | Start a job to export RDS Instance. The job creates a new RDS Instance with the same properties as that of the instance that is exported. | `New-RscMutationMisc -Operation StartExportRdsInstanceJob`<BR> | [startExportRdsInstanceJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartPeriodicUpgradePrechecksOnDemandJob | Starts an on demand periodic upgrade prechecks job in CDM cluster. | `New-RscMutationMisc -Operation StartPeriodicUpgradePrechecksOnDemandJob`<BR> | [startPeriodicUpgradePrechecksOnDemandJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartUpgradeBatchJob | Starts cdm upgrades instantly, monitors the upgrade until terminal state is reached. | `New-RscMutationMisc -Operation StartUpgradeBatchJob`<BR> | [startUpgradeBatchJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StartVolumeGroupMount | Initiate a live mount for a given Volume Group snapshot  
+  
+Supported in v5.0+  
+Create a live mount request for a Volume Group snapshot. | `New-RscMutationMisc -Operation StartVolumeGroupMount`<BR> | [startVolumeGroupMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StopJobInstance | Issue request to stop a job instance. If successful, stop process for job instance is initiated. Job instance is stopped asynchronously in the background. The input must contain either the job instance ID or the event series ID. If it contains the job instance ID, this will stop the job instance corresponding to the ID. If it contains the event series ID, it will retrieve the latest job instance associated with the event series, and stop it. | `New-RscMutationMisc -Operation StopJobInstance`<BR> | [stopJobInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| StopJobInstanceFromEventSeries | Send a request to stop a job instance with the event series ID. If successful, stop process for the job instance is initiated, and the job instance is terminated asynchronously in the background. | `New-RscMutationMisc -Operation StopJobInstanceFromEventSeries`<BR> | [stopJobInstanceFromEventSeries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SupportPortalLogin | Log in to the Rubrik Support portal using username and password. | `New-RscMutationMisc -Operation SupportPortalLogin`<BR> | [supportPortalLogin](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SwitchProductToOnboardingMode | Moves an M365 organization product from day-to-day mode to onboarding mode. | `New-RscMutationMisc -Operation SwitchProductToOnboardingMode`<BR> | [switchProductToOnboardingMode](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TriggerCloudComputeConnectivityCheck | Trigger cloud compute connectivity check  
+  
+Supported in v6.0+  
+Triggers a background job to perform the cloud compute connectivity check for the specified archival location. | `New-RscMutationMisc -Operation TriggerCloudComputeConnectivityCheck`<BR> | [triggerCloudComputeConnectivityCheck](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TriggerExocomputeHealthCheck | Initiates on-demand Exocompute health check. | `New-RscMutationMisc -Operation TriggerExocomputeHealthCheck`<BR> | [triggerExocomputeHealthCheck](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UninstallIoFilter | Uninstall the Rubrik ioFilter from the VMware cluster with a specific ID  
+  
+Supported in v5.1+  
+Uninstall the Rubrik ioFilter from the VMware cluster with a specific ID. The cluster must be in maintenance mode to uninstall the ioFilter successfully. The vCenter of the VMware compute cluster must be of version 6.7 and above. | `New-RscMutationMisc -Operation UninstallIoFilter`<BR> | [uninstallIoFilter](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UnlockUsersByAdmin | Specifies the endpoint through which the admin can unlock the user accounts. | `New-RscMutationMisc -Operation UnlockUsersByAdmin`<BR> | [unlockUsersByAdmin](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UnmountDisk | Unmount selected disks. | `New-RscMutationMisc -Operation UnmountDisk`<BR> | [unmountDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateAccountOwner | N/A | `New-RscMutationMisc -Operation UpdateAccountOwner`<BR> | [updateAccountOwner](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateAuthDomainUsersHiddenStatus | Update the hidden status for the given auth domain users. | `New-RscMutationMisc -Operation UpdateAuthDomainUsersHiddenStatus`<BR> | [updateAuthDomainUsersHiddenStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateBadDiskLedStatus | Find bad disk of a node in the CDM cluster. | `New-RscMutationMisc -Operation UpdateBadDiskLedStatus`<BR> | [updateBadDiskLedStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateConfiguredGroup | Update the configuration, name, or deletion status of a configured group. | `New-RscMutationMisc -Operation UpdateConfiguredGroup`<BR> | [updateConfiguredGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateCustomAnalyzer | Update a custom analyzer. | `New-RscMutationMisc -Operation UpdateCustomAnalyzer`<BR> | [updateCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateCustomerAppPermissions | Updates the Azure app for the specified account with specified permissions in an idempotent manner. | `New-RscMutationMisc -Operation UpdateCustomerAppPermissions`<BR> | [updateCustomerAppPermissions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateDistributionListDigest | Update specific distribution list digests. | `New-RscMutationMisc -Operation UpdateDistributionListDigest`<BR> | [updateDistributionListDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateDnsServersAndSearchDomains | Update cluster DNS servers and search domains. | `New-RscMutationMisc -Operation UpdateDnsServersAndSearchDomains`<BR> | [updateDnsServersAndSearchDomains](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateEventDigest | Update event digests for specific recipients. | `New-RscMutationMisc -Operation UpdateEventDigest`<BR> | [updateEventDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateFloatingIps | Modify the list of cluster IPs  
+  
+Supported in v5.0+  
+Modify the list of cluster IPs. | `New-RscMutationMisc -Operation UpdateFloatingIps`<BR> | [updateFloatingIps](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateGuestCredential | Update guest OS credentials. | `New-RscMutationMisc -Operation UpdateGuestCredential`<BR> | [updateGuestCredential](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateInsightState | Toggle the dismissed state of an insight. | `New-RscMutationMisc -Operation UpdateInsightState`<BR> | [updateInsightState](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateIpWhitelist | N/A | `New-RscMutationMisc -Operation UpdateIpWhitelist`<BR> | [updateIpWhitelist](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateLambdaSettings | N/A | `New-RscMutationMisc -Operation UpdateLambdaSettings`<BR> | [updateLambdaSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateLockoutConfig | Used by the administrator to update the account lockout settings for an organization. | `New-RscMutationMisc -Operation UpdateLockoutConfig`<BR> | [updateLockoutConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateManagedIdentities | Transition to Managed Identities. | `New-RscMutationMisc -Operation UpdateManagedIdentities`<BR> | [updateManagedIdentities](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateNasShares | Bulk update multiple NAS shares  
+  
+Supported in v7.0+  
+Updates fields like changelist of multiple NAS shares. | `New-RscMutationMisc -Operation UpdateNasShares`<BR> | [updateNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateNetworkThrottle | N/A | `New-RscMutationMisc -Operation UpdateNetworkThrottle`<BR> | [updateNetworkThrottle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateProxyConfig | Update proxy config  
+  
+Supported in v5.0+  
+Update proxy config. | `New-RscMutationMisc -Operation UpdateProxyConfig`<BR> | [updateProxyConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateRoleAssignments | N/A | `New-RscMutationMisc -Operation UpdateRoleAssignments`<BR> | [updateRoleAssignments](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateSupportUserAccess | Updates a Rubrik Support representative's access to the customer's account. | `New-RscMutationMisc -Operation UpdateSupportUserAccess`<BR> | [updateSupportUserAccess](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateTunnelStatus | Enable or disable the SSH Tunnel for Support Access  
+  
+Supported in v5.0+  
+To be used by Admin to open or close a SSH tunnel for support. When enabling the support tunnel, the node 'id' must be *me* or the current node's 'id', because remote open is not supported. When disabling a support tunnel, the node 'id' can be that of any node in the cluster. | `New-RscMutationMisc -Operation UpdateTunnelStatus`<BR> | [updateTunnelStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateVolumeGroup | Update Volume Group properties  
+  
+Supported in v5.3+  
+Patch Volume Group with specified properties. | `New-RscMutationMisc -Operation UpdateVolumeGroup`<BR> | [updateVolumeGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateWhitelistedAnalyzers | Update whitelisted analyzers for a path. | `New-RscMutationMisc -Operation UpdateWhitelistedAnalyzers`<BR> | [updateWhitelistedAnalyzers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpgradeIoFilter | Upgrade the Rubrik ioFilter for the VMware cluster with a specific ID  
+  
+Supported in v5.1+  
+Upgrade the Rubrik ioFilter for a VMware cluster with a specific ID. The cluster must be in maintenance mode to upgrade the ioFilter successfully. The vCenter of the VMware compute cluster must be of version 6.7 and above. | `New-RscMutationMisc -Operation UpgradeIoFilter`<BR> | [upgradeIoFilter](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpgradeToRsc | Converts a GPS account to an RSC account. | `New-RscMutationMisc -Operation UpgradeToRsc`<BR> | [upgradeToRsc](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateAndSaveCustomerKmsInfo | Validate KMS input provided on O365 subscription setup. | `New-RscMutationMisc -Operation ValidateAndSaveCustomerKmsInfo`<BR> | [validateAndSaveCustomerKmsInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| WarmSearchCache | Warms the search cache for an O365 workload. | `New-RscMutationMisc -Operation WarmSearchCache`<BR> | [warmSearchCache](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Mongo domain
 
 Domain key: Mongo
 
@@ -1237,10 +1830,8 @@ Cmdlets: `New-RscQueryMongo` and `New-RscMutationMongo`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| BulkRecoverableRange | Recoverable range for multiple Management Objects on NoSQL cluster. | `New-RscQueryMongo -Operation BulkRecoverableRange`<BR> | [mongodbBulkRecoverableRange](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | BulkRecoverableRanges | Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots. | `New-RscQueryMongo -Operation BulkRecoverableRanges`<BR> | [mongoBulkRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Collection | Provides details for a MongoDB collection identified by the fid. | `New-RscQueryMongo -Operation Collection`<BR> | [mongoCollection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CollectionRecoverableRange | Recoverable Range of a MongoDB collection on NoSQL cluster. | `New-RscQueryMongo -Operation CollectionRecoverableRange`<BR> | [mongodbCollectionRecoverableRange](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Collections | Paginated list of MongoDB collections. | `New-RscQueryMongo -Operation Collections`<BR> | [mongoCollections](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Database | Provides details for a MongoDB database identified by the fid. | `New-RscQueryMongo -Operation Database`<BR> | [mongoDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Databases | Paginated list of MongoDB databases. | `New-RscQueryMongo -Operation Databases`<BR> | [mongoDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1257,16 +1848,6 @@ Cmdlets: `New-RscQueryMongo` and `New-RscMutationMongo`
   
 Supported in v8.1+  
 Adds a new MongoDB source to the Rubrik Cluster. | `New-RscMutationMongo -Operation AddSource`<BR> | [addMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| AssignSlaToCollection | Assign SLA Domain to MongoDB collection objects  
-  
-Supported in v8.1+  
-Assigns SLA Domain to the given MongoDB collection objects. | `New-RscMutationMongo -Operation AssignSlaToCollection`<BR> | [assignSlaToMongoDbCollection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| BulkDeleteSources | Bulk Delete Sources  
-  
-Supported in m3.2.0-m4.2.0. | `New-RscMutationMongo -Operation BulkDeleteSources`<BR> | [bulkDeleteMongodbSources](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CreateSource | Register a new MongoDB source to NoSQL cluster.   
-For MongoDB, the term "source" is usually used for either a replica set or a sharded cluster.  
-For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/. | `New-RscMutationMongo -Operation CreateSource`<BR> | [createMongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteSource | Delete a MongoDB source  
   
 Supported in v8.1+  
@@ -1284,7 +1865,52 @@ Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB canno
   
 Supported in v8.1+  
 Updates a MongoDB source details. You can use this endpoint for updating MongoDB source details when the request to add a source fails. | `New-RscMutationMongo -Operation RetryAddSource`<BR> | [retryAddMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateSource | Modifies configuration for a registered MongoDB source in NoSQL cluster. | `New-RscMutationMongo -Operation UpdateSource`<BR> | [updateMongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Mongo DB domain
+
+Domain key: MongoDb
+
+Cmdlets: `New-RscQueryMongoDb` and `New-RscMutationMongoDb`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| BulkRecoverableRange | Recoverable range for multiple Management Objects on NoSQL cluster. | `New-RscQueryMongoDb -Operation BulkRecoverableRange`<BR> | [mongodbBulkRecoverableRange](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Collection | MongoDB collection identified by FID on NoSQL cluster.   
+MongoDB stores data records as documents which are gathered together in collections.   
+For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections | `New-RscQueryMongoDb -Operation Collection`<BR> | [mongodbCollection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CollectionRecoverableRange | Recoverable Range of a MongoDB collection on NoSQL cluster. | `New-RscQueryMongoDb -Operation CollectionRecoverableRange`<BR> | [mongodbCollectionRecoverableRange](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Collections | Paginated list of MongoDB collections on NoSQL cluster. | `New-RscQueryMongoDb -Operation Collections`<BR> | [mongodbCollections](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Database | MongoDB database identified by FID on NoSQL cluster.   
+MongoDB stores data records as documents which are gathered together in collections.   
+A database stores one or more collections of documents.   
+For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections/ | `New-RscQueryMongoDb -Operation Database`<BR> | [mongodbDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Databases | Paginated list of MongoDB databases on NoSQL cluster. | `New-RscQueryMongoDb -Operation Databases`<BR> | [mongodbDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Source | MongoDB source cluster identified by FID on NoSQL cluster.   
+For MongoDB, the term "source" is usually used for either a replica set or a sharded cluster.   
+For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/introduction/ | `New-RscQueryMongoDb -Operation Source`<BR> | [mongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Sources | Paginated list of MongoDB sources on NoSQL cluster. | `New-RscQueryMongoDb -Operation Sources`<BR> | [mongodbSources](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| AssignSlaToCollection | Assign SLA Domain to MongoDB collection objects  
+  
+Supported in v8.1+  
+Assigns SLA Domain to the given MongoDB collection objects. | `New-RscMutationMongoDb -Operation AssignSlaToCollection`<BR> | [assignSlaToMongoDbCollection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkDeleteSources | Bulk Delete Sources  
+  
+Supported in m3.2.0-m4.2.0. | `New-RscMutationMongoDb -Operation BulkDeleteSources`<BR> | [bulkDeleteMongodbSources](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateSource | Register a new MongoDB source to NoSQL cluster.   
+For MongoDB, the term "source" is usually used for either a replica set or a sharded cluster.  
+For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/. | `New-RscMutationMongoDb -Operation CreateSource`<BR> | [createMongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteSource | Remove a registered MongoDB source from NoSQL cluster. | `New-RscMutationMongoDb -Operation DeleteSource`<BR> | [deleteMongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RecoverSource | Recover a MongoDB source from NoSQL cluster. | `New-RscMutationMongoDb -Operation RecoverSource`<BR> | [recoverMongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateSource | Modifies configuration for a registered MongoDB source in NoSQL cluster. | `New-RscMutationMongoDb -Operation UpdateSource`<BR> | [updateMongodbSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Mosaic domain
@@ -1396,6 +2022,51 @@ Cmdlets: `New-RscQueryNas` and `New-RscMutationNas`
 | Systems | Paginated list of NAS Systems. | `New-RscQueryNas -Operation Systems`<BR> | [nasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TopLevelDescendants | Paginated list of the highest-level NAS Objects accessible by the current user. | `New-RscQueryNas -Operation TopLevelDescendants`<BR> | [nasTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Volume | A NAS Volume. | `New-RscQueryNas -Operation Volume`<BR> | [nasVolume](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| BulkDeleteNasSystems | Delete multiple NAS systems  
+  
+Supported in v7.0+  
+Triggers a delete of the specified NAS systems. Returns an asynchronous request to check their delete status. | `New-RscMutationNas -Operation BulkDeleteNasSystems`<BR> | [bulkDeleteNasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteNasSystem | Delete a registered NAS system  
+  
+Supported in v7.0+  
+Delete a NAS system by specifying the NAS system ID. | `New-RscMutationNas -Operation DeleteNasSystem`<BR> | [deleteNasSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RefreshNasSystems | On-demand discovery of a list of NAS systems  
+  
+Supported in v7.0+  
+Runs the NAS_DISCOVER job for autodiscovery/refresh of NAS systems. | `New-RscMutationNas -Operation RefreshNasSystems`<BR> | [refreshNasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RegisterNasSystem | Register a NAS System  
+  
+Supported in v7.0+  
+Register a NAS system such as a NetApp or an Isilon cluster to be protected. | `New-RscMutationNas -Operation RegisterNasSystem`<BR> | [registerNasSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateNasSystem | Modify the information for a registered NAS system  
+  
+Supported in v7.0+  
+Change the hostname that is associated with a NAS system. Update the credentials used to access the vendor-specific APIs. | `New-RscMutationNas -Operation UpdateNasSystem`<BR> | [updateNasSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## NAS Cloud Direct domain
+
+Domain key: Ncd
+
+Cmdlets: `New-RscQueryNcd` and `New-RscMutationNcd`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| BackEndCapacity | NAS Cloud Direct back-end capacity for the requested clusters. | `New-RscQueryNcd -Operation BackEndCapacity`<BR> | [ncdBackEndCapacity](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| FrontEndCapacity | NAS Cloud Direct front-end capacity for the requested clusters. | `New-RscQueryNcd -Operation FrontEndCapacity`<BR> | [ncdFrontEndCapacity](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ObjectProtectionStatus | NAS Cloud Direct object protection status for the requested clusters. | `New-RscQueryNcd -Operation ObjectProtectionStatus`<BR> | [ncdObjectProtectionStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ObjectsOverTimeData | NAS Cloud Direct objects over time data for the requested clusters. | `New-RscQueryNcd -Operation ObjectsOverTimeData`<BR> | [allNcdObjectsOverTimeData](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TaskData | NAS Cloud Direct task data for the requested clusters. | `New-RscQueryNcd -Operation TaskData`<BR> | [allNcdTaskData](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UsageOverTimeData | NAS Cloud Direct usage over time data for the requested clusters. | `New-RscQueryNcd -Operation UsageOverTimeData`<BR> | [allNcdUsageOverTimeData](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VmImageUrl | NAS Cloud Direct virtual machine image download URL. | `New-RscQueryNcd -Operation VmImageUrl`<BR> | [ncdVmImageUrl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -1830,19 +2501,30 @@ Cmdlets: `New-RscQueryPolicy` and `New-RscMutationPolicy`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| Details | Returns active policies for an account. | `New-RscQueryPolicy -Operation Details`<BR> | [policyDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Obj | Returns details for one policy object. | `New-RscQueryPolicy -Operation Obj`<BR> | [policyObj](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ObjectUsages | Returns the policies assigned to each object. | `New-RscQueryPolicy -Operation ObjectUsages`<BR> | [policyObjectUsages](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Objs | Returns status for all objects at a specified timestamp. | `New-RscQueryPolicy -Operation Objs`<BR> | [policyObjs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OrgSecurityPolicy | Organization security policy. | `New-RscQueryPolicy -Operation OrgSecurityPolicy`<BR> | [orgSecurityPolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PasswordComplexityPolicy | Get the password policy for the current organization. | `New-RscQueryPolicy -Operation PasswordComplexityPolicy`<BR> | [passwordComplexityPolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Policies | Returns active policies for an account. | `New-RscQueryPolicy -Operation Policies`<BR> | [policies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Policy | Returns detailed policy information. | `New-RscQueryPolicy -Operation Policy`<BR> | [policy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PolicyObjectUsages | Returns the policies assigned to each object. | `New-RscQueryPolicy -Operation PolicyObjectUsages`<BR> | [policyObjectUsages](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TopRiskPolicySummaries | Retrieve most risky policies. | `New-RscQueryPolicy -Operation TopRiskPolicySummaries`<BR> | [allTopRiskPolicySummaries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| Policies | DEPRECATED (use seedEnabledPolicies instead) Seed account with initial policies. | `New-RscMutationPolicy -Operation Policies`<BR> | [seedInitialPolicies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddPolicyObjects | Add policies to objects. | `New-RscMutationPolicy -Operation AddPolicyObjects`<BR> | [addPolicyObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreatePolicy | Create a classification policy. | `New-RscMutationPolicy -Operation CreatePolicy`<BR> | [createPolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeactivatePolicy | Deactivate a classification policy. | `New-RscMutationPolicy -Operation DeactivatePolicy`<BR> | [deactivatePolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GetHealthMonitorPolicyStatus | Get health monitor policies on the Rubrik cluster. | `New-RscMutationPolicy -Operation GetHealthMonitorPolicyStatus`<BR> | [getHealthMonitorPolicyStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RemovePolicyObjects | Remove policies from objects. | `New-RscMutationPolicy -Operation RemovePolicyObjects`<BR> | [removePolicyObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SeedEnabledPolicies | Seed account with enabled policies. | `New-RscMutationPolicy -Operation SeedEnabledPolicies`<BR> | [seedEnabledPolicies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SeedInitialPolicies | DEPRECATED (use seedEnabledPolicies instead) Seed account with initial policies. | `New-RscMutationPolicy -Operation SeedInitialPolicies`<BR> | [seedInitialPolicies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetPasswordComplexityPolicy | Set the password complexity policy for the current organization. | `New-RscMutationPolicy -Operation SetPasswordComplexityPolicy`<BR> | [setPasswordComplexityPolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateAutoEnablePolicyClusterConfig | Update Rubrik cluster configuration to enable or not enable the Auto-enabled Data Discovery Policies feature. | `New-RscMutationPolicy -Operation UpdateAutoEnablePolicyClusterConfig`<BR> | [updateAutoEnablePolicyClusterConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateHealthMonitorPolicyStatus | Run health monitor policies on the CDM cluster. | `New-RscMutationPolicy -Operation UpdateHealthMonitorPolicyStatus`<BR> | [updateHealthMonitorPolicyStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateOrgSecurityPolicy | Update organization security policy. | `New-RscMutationPolicy -Operation UpdateOrgSecurityPolicy`<BR> | [updateOrgSecurityPolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdatePolicy | Update a classification policy. | `New-RscMutationPolicy -Operation UpdatePolicy`<BR> | [updatePolicy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Ransomware domain
@@ -1858,11 +2540,8 @@ Cmdlets: `New-RscQueryRansomware` and `New-RscMutationRansomware`
 | DetectionWorkloadLocations | Get the list of workload locations on which Ransomware Investigation has run. | `New-RscQueryRansomware -Operation DetectionWorkloadLocations`<BR> | [ransomwareDetectionWorkloadLocations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InvestigationAnalysisSummary | Get a per day summary of the radar analysis results from start day to end day. | `New-RscQueryRansomware -Operation InvestigationAnalysisSummary`<BR> | [ransomwareInvestigationAnalysisSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InvestigationEnablement | Get the enablement status of entities on which Ransomware Monitoring can be enabled. | `New-RscQueryRansomware -Operation InvestigationEnablement`<BR> | [ransomwareInvestigationEnablement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| InvestigationWorkloadScannedCount | Get the total number of times that Radar has scanned a workload. | `New-RscQueryRansomware -Operation InvestigationWorkloadScannedCount`<BR> | [ransomwareInvestigationWorkloadScannedCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OverallInvestigationSummary | Overall ransomware investigation summary. | `New-RscQueryRansomware -Operation OverallInvestigationSummary`<BR> | [overallRansomwareInvestigationSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| PendingInvestigationResultsCount | Get information about workloads passing through the Radar pipeline. | `New-RscQueryRansomware -Operation PendingInvestigationResultsCount`<BR> | [pendingRansomwareInvestigationResultsCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ProcessedInvestigationWorkloadCount | Get the number of workloads that have passed through the Radar pipeline in the past 24 hours. | `New-RscQueryRansomware -Operation ProcessedInvestigationWorkloadCount`<BR> | [processedRansomwareInvestigationWorkloadCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ProtectedInvestigationWorkloadCount | Get the total number of workloads protected by Radar. | `New-RscQueryRansomware -Operation ProtectedInvestigationWorkloadCount`<BR> | [protectedRansomwareInvestigationWorkloadCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Result | Result of the Ransomware Investigation. | `New-RscQueryRansomware -Operation Result`<BR> | [ransomwareResult](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ResultOpt | Optional result of the Ransomware Investigation. | `New-RscQueryRansomware -Operation ResultOpt`<BR> | [ransomwareResultOpt](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Results | Results for Ransomware Investigations. | `New-RscQueryRansomware -Operation Results`<BR> | [ransomwareResults](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1873,6 +2552,7 @@ Cmdlets: `New-RscQueryRansomware` and `New-RscMutationRansomware`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| BulkUpdateInvestigationStatus | Set whether Ransomware Investigation is enabled or not in bulk. | `New-RscMutationRansomware -Operation BulkUpdateInvestigationStatus`<BR> | [bulkUpdateRansomwareInvestigationStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TriggerDetection | Trigger detect ransomware job for given snapshot. | `New-RscMutationRansomware -Operation TriggerDetection`<BR> | [triggerRansomwareDetection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -1886,22 +2566,16 @@ Cmdlets: `New-RscQueryRcs` and `New-RscMutationRcs`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| ArchivalLocationsConsumptionStats | RCS Azure archival location consumption stats. | `New-RscQueryRcs -Operation ArchivalLocationsConsumptionStats`<BR> | [rcsArchivalLocationsConsumptionStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Cluster | Get the cluster certificate signing request  
-  
-Supported in v7.0+  
-Returns the certificate signing request generated from the private key of the Rubrik cluster. | `New-RscQueryRcs -Operation Cluster`<BR> | [clusterCsr](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Dhcores | DHRC scores for the requested categories and time span. | `New-RscQueryRcs -Operation Dhcores`<BR> | [allDhrcScores](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| CreateAutomaticTargetMapping | N/A | `New-RscMutationRcs -Operation CreateAutomaticTargetMapping`<BR> | [createAutomaticRcsTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CreateReaderTarget | Creates reader type for RCS Azure archival location on a CDM cluster. | `New-RscMutationRcs -Operation CreateReaderTarget`<BR> | [createRcsReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CreateTarget | N/A | `New-RscMutationRcs -Operation CreateTarget`<BR> | [createRcsTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateAutomaticTargetMapping | Update RCS automatic target mapping. | `New-RscMutationRcs -Operation UpdateAutomaticTargetMapping`<BR> | [updateRcsAutomaticTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateAutomaticRcsTargetMapping | N/A | `New-RscMutationRcs -Operation CreateAutomaticRcsTargetMapping`<BR> | [createAutomaticRcsTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateRcsReaderTarget | Creates reader type for RCS Azure archival location on a CDM cluster. | `New-RscMutationRcs -Operation CreateRcsReaderTarget`<BR> | [createRcsReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateRcsTarget | N/A | `New-RscMutationRcs -Operation CreateRcsTarget`<BR> | [createRcsTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateRcsAutomaticTargetMapping | Update RCS automatic target mapping. | `New-RscMutationRcs -Operation UpdateRcsAutomaticTargetMapping`<BR> | [updateRcsAutomaticTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## RCV domain
@@ -1938,9 +2612,12 @@ Cmdlets: `New-RscQueryReplication` and `New-RscMutationReplication`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | IncomingStats | Get a time series of total incoming bandwidth to the replication clusters. | `New-RscQueryReplication -Operation IncomingStats`<BR> | [replicationIncomingStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NetworkThrottleBypass | Retrieves replication throttle bypass status for all the targets of a replication source. | `New-RscQueryReplication -Operation NetworkThrottleBypass`<BR> | [replicationNetworkThrottleBypass](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| NetworkThrottleBypassById | Retrieves replication throttle bypass status for a specified replication target and source. | `New-RscQueryReplication -Operation NetworkThrottleBypassById`<BR> | [replicationNetworkThrottleBypassById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OutgoingStats | Get the time series of total outgoing bandwidth from the replication clusters. | `New-RscQueryReplication -Operation OutgoingStats`<BR> | [replicationOutgoingStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Pairs | List of all replication pair Rubrik clusters. | `New-RscQueryReplication -Operation Pairs`<BR> | [replicationPairs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ValidTargets | List all valid replication target clusters. | `New-RscQueryReplication -Operation ValidTargets`<BR> | [allValidReplicationTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidSources | Lists all valid replication source clusters. | `New-RscQueryReplication -Operation ValidSources`<BR> | [allValidReplicationSources](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidTargets | Lists all valid replication target clusters. | `New-RscQueryReplication -Operation ValidTargets`<BR> | [allValidReplicationTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -1951,6 +2628,7 @@ Cmdlets: `New-RscQueryReplication` and `New-RscMutationReplication`
 | DeletePair | Deletes replication pairing between two Rubrik clusters. | `New-RscMutationReplication -Operation DeletePair`<BR> | [deleteReplicationPair](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DisablePause | A single Rubrik cluster can be the replication target for multiple source Rubrik clusters. For each source cluster specified, this resumes replication from that source cluster to the target cluster. | `New-RscMutationReplication -Operation DisablePause`<BR> | [disableReplicationPause](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EnablePause | A single Rubrik cluster can be the replication target for multiple source Rubrik clusters. For each source cluster specified, this pauses replication from that source cluster to the target cluster. | `New-RscMutationReplication -Operation EnablePause`<BR> | [enableReplicationPause](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateNetworkThrottleBypass | Update the throttle bypass configuration of a replication target location on a particular source. | `New-RscMutationReplication -Operation UpdateNetworkThrottleBypass`<BR> | [updateReplicationNetworkThrottleBypass](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateTarget | Update the setup information, address, username, and password for the replication target. | `New-RscMutationReplication -Operation UpdateTarget`<BR> | [updateReplicationTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -1964,8 +2642,24 @@ Cmdlets: `New-RscQueryReport` and `New-RscMutationReport`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| ClusterMigrationCount | Retrieve the counts of the Rubrik cluster reports migration. | `New-RscQueryReport -Operation ClusterMigrationCount`<BR> | [clusterReportMigrationCount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ClusterMigrationJobStatus | Retrieve the status of the cluster report migration job. | `New-RscQueryReport -Operation ClusterMigrationJobStatus`<BR> | [clusterReportMigrationJobStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ClusterMigrationStatus | Retrieve details of the Rubrik clusters' reports migration. | `New-RscQueryReport -Operation ClusterMigrationStatus`<BR> | [clusterReportMigrationStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Data | N/A | `New-RscQueryReport -Operation Data`<BR> | [reportData](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Scheduled | Retrieve details of a scheduled report. | `New-RscQueryReport -Operation Scheduled`<BR> | [scheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseLogForCluster | Get the database log backup delay information  
+  
+Supported in v5.3+  
+v5.3:   
+v6.0+: Get the database log backup delay information. | `New-RscQueryReport -Operation DatabaseLogForCluster`<BR> | [databaseLogReportForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseLogingPropertiesForCluster | Get the database log backup report properties  
+  
+Supported in v5.3+  
+Get the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin. | `New-RscQueryReport -Operation DatabaseLogingPropertiesForCluster`<BR> | [databaseLogReportingPropertiesForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ScheduledReport | Retrieve details of a scheduled report. | `New-RscQueryReport -Operation ScheduledReport`<BR> | [scheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ScheduledReports | Retrieve details of scheduled reports. If the reportId is None, return schedules of all reports. Otherwise, return the schedules of reportId. | `New-RscQueryReport -Operation ScheduledReports`<BR> | [scheduledReports](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Sonar | Returns groupBy for SonarReport. | `New-RscQueryReport -Operation Sonar`<BR> | [sonarReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SonarContent | Returns groupBy results for SonarContentReport. | `New-RscQueryReport -Operation SonarContent`<BR> | [sonarContentReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SonarRow | Returns rows for SonarReport table. | `New-RscQueryReport -Operation SonarRow`<BR> | [sonarReportRow](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -1975,12 +2669,16 @@ Cmdlets: `New-RscQueryReport` and `New-RscMutationReport`
 | CreateCustom | Create a custom report. | `New-RscMutationReport -Operation CreateCustom`<BR> | [createCustomReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateScheduled | Create a scheduled report. | `New-RscMutationReport -Operation CreateScheduled`<BR> | [createScheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteCustom | Delete a custom report. | `New-RscMutationReport -Operation DeleteCustom`<BR> | [deleteCustomReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteScheduled | Delete a scheduled report. | `New-RscMutationReport -Operation DeleteScheduled`<BR> | [deleteScheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteScheduledReport | Delete a scheduled report. | `New-RscMutationReport -Operation DeleteScheduledReport`<BR> | [deleteScheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SendPdf | DHRC PDF report generation. | `New-RscMutationReport -Operation SendPdf`<BR> | [sendPdfReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| SendScheduledAsync | Send a scheduled report now asynchronously via email. | `New-RscMutationReport -Operation SendScheduledAsync`<BR> | [sendScheduledReportAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SendScheduledReportAsync | Send a scheduled report now asynchronously via email. | `New-RscMutationReport -Operation SendScheduledReportAsync`<BR> | [sendScheduledReportAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | StartClusterMigrationJob | Start a job to migrate reports from Rubrik cluster to RSC. | `New-RscMutationReport -Operation StartClusterMigrationJob`<BR> | [startClusterReportMigrationJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateCustom | Update a custom report. | `New-RscMutationReport -Operation UpdateCustom`<BR> | [updateCustomReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateScheduled | Update a scheduled report. | `New-RscMutationReport -Operation UpdateScheduled`<BR> | [updateScheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateDatabaseLogingPropertiesForCluster | Update the database log backup report properties  
+  
+Supported in v5.3+  
+Update the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin. | `New-RscMutationReport -Operation UpdateDatabaseLogingPropertiesForCluster`<BR> | [updateDatabaseLogReportingPropertiesForCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateScheduledReport | Update a scheduled report. | `New-RscMutationReport -Operation UpdateScheduledReport`<BR> | [updateScheduledReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## SAP HANA domain
@@ -2019,6 +2717,11 @@ Initiates a job to configure the specified target database for a system copy res
   
 Supported in v5.3+  
 Initiates a job to take an on demand full snapshot of a specified SAP HANA database object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationSapHana -Operation CreateOnDemandBackup`<BR> | [createOnDemandSapHanaBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateOnDemandStorageSnapshot | Create on demand storage snapshot  
+  
+Supported in v9.1+  
+v9.1: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.  
+v9.2: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationSapHana -Operation CreateOnDemandStorageSnapshot`<BR> | [createOnDemandSapHanaStorageSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateSystemRefresh | Refresh SAP HANA system metadata  
   
 Supported in v5.3+  
@@ -2183,6 +2886,37 @@ Supported in v5.0+
 SMB configuration. | `New-RscMutationSmb -Operation PutConfiguration`<BR> | [putSmbConfiguration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
+## Snappable domain
+
+Domain key: Snappable
+
+Cmdlets: `New-RscQuerySnappable` and `New-RscMutationSnappable`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| CdmHierarchySnappableNew | N/A | `New-RscQuerySnappable -Operation CdmHierarchySnappableNew`<BR> | [cdmHierarchySnappableNew](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CdmHierarchySnappablesNew | N/A | `New-RscQuerySnappable -Operation CdmHierarchySnappablesNew`<BR> | [cdmHierarchySnappablesNew](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ContactSearch | Search over Exchange contacts. | `New-RscQuerySnappable -Operation ContactSearch`<BR> | [snappableContactSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EmailSearch | N/A | `New-RscQuerySnappable -Operation EmailSearch`<BR> | [snappableEmailSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| EventSearch | N/A | `New-RscQuerySnappable -Operation EventSearch`<BR> | [snappableEventSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GroupByList | N/A | `New-RscQuerySnappable -Operation GroupByList`<BR> | [snappableGroupByConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Hierarchy | N/A | `New-RscQuerySnappable -Operation Hierarchy`<BR> | [hierarchySnappables](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| List | N/A | `New-RscQuerySnappable -Operation List`<BR> | [snappableConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| OnedriveSearch | N/A | `New-RscQuerySnappable -Operation OnedriveSearch`<BR> | [snappableOnedriveSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Search | N/A | `New-RscQuerySnappable -Operation Search`<BR> | [searchSnappableConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SearchVersionedFiles | N/A | `New-RscQuerySnappable -Operation SearchVersionedFiles`<BR> | [searchSnappableVersionedFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TeamsConversationsSearch | N/A | `New-RscQuerySnappable -Operation TeamsConversationsSearch`<BR> | [snappableTeamsConversationsSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TeamsDriveSearch | N/A | `New-RscQuerySnappable -Operation TeamsDriveSearch`<BR> | [snappableTeamsDriveSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+
+[Go to top](#)
 ## Snapshot domain
 
 Domain key: Snapshot
@@ -2238,8 +2972,8 @@ Initiates an on-demand snapshot job of a specified Active Directory Domain Contr
 Supported in v5.0+  
 Download a snapshot from archival. | `New-RscMutationSnapshot -Operation CreateDownloadForVolumeGroup`<BR> | [createDownloadSnapshotForVolumeGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateFileset | N/A | `New-RscMutationSnapshot -Operation CreateFileset`<BR> | [createFilesetSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteCloudWorkload | Deletes the Rubrik Security Cloud on-demand snapshot by ID. | `New-RscMutationSnapshot -Operation DeleteCloudWorkload`<BR> | [deleteCloudWorkloadSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteFilesets | N/A | `New-RscMutationSnapshot -Operation DeleteFilesets`<BR> | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteCloudWorkloadSnapshot | Deletes the Rubrik Security Cloud on-demand snapshot by ID. | `New-RscMutationSnapshot -Operation DeleteCloudWorkloadSnapshot`<BR> | [deleteCloudWorkloadSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteFilesetSnapshots | N/A | `New-RscMutationSnapshot -Operation DeleteFilesetSnapshots`<BR> | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FilesetDownloadFiles | Download files from a fileset backup  
   
 Supported in v5.0+  
@@ -2260,7 +2994,32 @@ Restore filess to the original Host. | `New-RscMutationSnapshot -Operation Resto
 | StartRecoverS3Job | Starts an on-demand snapshot recovery job for the specified AWS S3 bucket. Returns the ID of the taskchain initiated for the recovery job. | `New-RscMutationSnapshot -Operation StartRecoverS3Job`<BR> | [startRecoverS3SnapshotJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TakeOnDemand | Triggers on-demand snapshot for the given workloads. | `New-RscMutationSnapshot -Operation TakeOnDemand`<BR> | [takeOnDemandSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UploadDatabaseToBlobstore | Start a job to upload a database snapshot to a target blobstore. | `New-RscMutationSnapshot -Operation UploadDatabaseToBlobstore`<BR> | [uploadDatabaseSnapshotToBlobstore](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| VmwareDownloadFromLocation | N/A | `New-RscMutationSnapshot -Operation VmwareDownloadFromLocation`<BR> | [vmwareDownloadSnapshotFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## SNMP domain
+
+Domain key: Snmp
+
+Cmdlets: `New-RscQuerySnmp` and `New-RscMutationSnmp`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| Configurations | Get SNMP configuration of the cluster  
+  
+Supported in v5.0+  
+Get SNMP configuration of the queried cluster. | `New-RscQuerySnmp -Operation Configurations`<BR> | [snmpConfigurations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| UpdateConfig | Update SNMP configuration  
+  
+Supported in v5.0+  
+Update the SNMP configuration for a specified Rubrik cluster. | `New-RscMutationSnmp -Operation UpdateConfig`<BR> | [updateSnmpConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Sonar domain
@@ -2273,9 +3032,6 @@ Cmdlets: `New-RscQuerySonar` and `New-RscMutationSonar`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| ContentReport | Returns groupBy results for SonarContentReport. | `New-RscQuerySonar -Operation ContentReport`<BR> | [sonarContentReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| Report | Returns groupBy for SonarReport. | `New-RscQuerySonar -Operation Report`<BR> | [sonarReport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| ReportRow | Returns rows for SonarReport table. | `New-RscQuerySonar -Operation ReportRow`<BR> | [sonarReportRow](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UserGroups | N/A | `New-RscQuerySonar -Operation UserGroups`<BR> | [sonarUserGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Users | N/A | `New-RscQuerySonar -Operation Users`<BR> | [sonarUsers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
@@ -2310,6 +3066,44 @@ Retrieve the host IP and username for all storage arrays. | `New-RscQueryStorage
 | Delete | Delete storage arrays from Rubrik clusters. | `New-RscMutationStorageArray -Operation Delete`<BR> | [deleteStorageArrays](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Refresh | Refresh storage arrays in Rubrik clusters. | `New-RscMutationStorageArray -Operation Refresh`<BR> | [refreshStorageArrays](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Update | Update storage arrays in Rubrik clusters. | `New-RscMutationStorageArray -Operation Update`<BR> | [updateStorageArrays](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## Syslog domain
+
+Domain key: Syslog
+
+Cmdlets: `New-RscQuerySyslog` and `New-RscMutationSyslog`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| ExportRules | Get the configured syslog export rules  
+  
+Supported in v5.1+  
+Return the list of all configured syslog export rules. | `New-RscQuerySyslog -Operation ExportRules`<BR> | [syslogExportRules](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| AddExportRule | Add a new syslog export rule  
+  
+Supported in v5.1+  
+Adds a new rule specifying where to export the specified syslog information. | `New-RscMutationSyslog -Operation AddExportRule`<BR> | [addSyslogExportRule](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteExportRule | Delete the specified syslog export rule  
+  
+Supported in v5.1+  
+Delete the syslog export rule specified by the given id. | `New-RscMutationSyslog -Operation DeleteExportRule`<BR> | [deleteSyslogExportRule](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| TestExportRule | Test the specified syslog export rule  
+  
+Supported in v5.1+  
+Send a test message using the syslog export rule specified by the given id. | `New-RscMutationSyslog -Operation TestExportRule`<BR> | [testSyslogExportRule](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateExportRule | Update the specified syslog export rule  
+  
+Supported in v5.1+  
+Update the syslog export rule specified by the given id. | `New-RscMutationSyslog -Operation UpdateExportRule`<BR> | [updateSyslogExportRule](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Tape domain
@@ -2372,6 +3166,7 @@ Cmdlets: `New-RscQueryVcenter` and `New-RscMutationVcenter`
   
 Supported in v7.0+  
 Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh. | `New-RscQueryVcenter -Operation AdvancedTagPreview`<BR> | [vCenterAdvancedTagPreview](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AsyncRequestStatus | Get async status of vcenter request. | `New-RscQueryVcenter -Operation AsyncRequestStatus`<BR> | [vcenterAsyncRequestStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | HotAddBandwidth | Get the ingest and export bandwidth limits for HotAdd with the vCenter  
   
 Supported in v5.3+  
@@ -2422,6 +3217,27 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
   
 Supported in v5.3+  
 Set the user-configured network for HotAdd backup and recovery operations on VMware on AWS. | `New-RscMutationVcenter -Operation UpdateHotAddNetwork`<BR> | [updateVcenterHotAddNetwork](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+## VMware domain
+
+Domain key: Vmware
+
+Cmdlets: `New-RscQueryVmware` and `New-RscMutationVmware`
+
+### Queries
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| CdpStateInfos | Batch get vsphere vmware cdp state infos. | `New-RscQueryVmware -Operation CdpStateInfos`<BR> | [allVmwareCdpStateInfos](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsManagementEnabled | N/A | `New-RscQueryVmware -Operation IsManagementEnabled`<BR> | [isVMwareManagementEnabled](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+
+[Go to top](#)
+### Mutations
+
+| Operation | Description | Invocation | GraphQL Root Field |
+| --- | --- | --- | --- |
+| DownloadSnapshotFromLocation | N/A | `New-RscMutationVmware -Operation DownloadSnapshotFromLocation`<BR> | [vmwareDownloadSnapshotFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## VMware vSphere domain

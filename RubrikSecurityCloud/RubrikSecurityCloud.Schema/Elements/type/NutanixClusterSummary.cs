@@ -30,15 +30,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostname")]
         public System.String? Hostname { get; set; }
 
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        [JsonProperty("lastRefreshTime")]
+        public DateTime? LastRefreshTime { get; set; }
+
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         [JsonProperty("naturalId")]
         public System.String? NaturalId { get; set; }
 
+        //      C# -> System.String? PrismCentralId
+        // GraphQL -> prismCentralId: String (scalar)
+        [JsonProperty("prismCentralId")]
+        public System.String? PrismCentralId { get; set; }
+
+        //      C# -> System.String? PrismCentralName
+        // GraphQL -> prismCentralName: String (scalar)
+        [JsonProperty("prismCentralName")]
+        public System.String? PrismCentralName { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
 
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
@@ -67,8 +87,12 @@ namespace RubrikSecurityCloud.Types
     public NutanixClusterSummary Set(
         CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
         System.String? Hostname = null,
+        DateTime? LastRefreshTime = null,
         System.String? NaturalId = null,
+        System.String? PrismCentralId = null,
+        System.String? PrismCentralName = null,
         System.String? Username = null,
+        System.String? Version = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
         SlaAssignable? SlaAssignable = null
@@ -80,11 +104,23 @@ namespace RubrikSecurityCloud.Types
         if ( Hostname != null ) {
             this.Hostname = Hostname;
         }
+        if ( LastRefreshTime != null ) {
+            this.LastRefreshTime = LastRefreshTime;
+        }
         if ( NaturalId != null ) {
             this.NaturalId = NaturalId;
         }
+        if ( PrismCentralId != null ) {
+            this.PrismCentralId = PrismCentralId;
+        }
+        if ( PrismCentralName != null ) {
+            this.PrismCentralName = PrismCentralName;
+        }
         if ( Username != null ) {
             this.Username = Username;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
         }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
@@ -124,6 +160,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "hostname\n" ;
             }
         }
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        if (this.LastRefreshTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRefreshTime\n" ;
+            } else {
+                s += ind + "lastRefreshTime\n" ;
+            }
+        }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         if (this.NaturalId != null) {
@@ -133,6 +178,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "naturalId\n" ;
             }
         }
+        //      C# -> System.String? PrismCentralId
+        // GraphQL -> prismCentralId: String (scalar)
+        if (this.PrismCentralId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prismCentralId\n" ;
+            } else {
+                s += ind + "prismCentralId\n" ;
+            }
+        }
+        //      C# -> System.String? PrismCentralName
+        // GraphQL -> prismCentralName: String (scalar)
+        if (this.PrismCentralName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prismCentralName\n" ;
+            } else {
+                s += ind + "prismCentralName\n" ;
+            }
+        }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
@@ -140,6 +203,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "username\n" ;
             } else {
                 s += ind + "username\n" ;
+            }
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
             }
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
@@ -219,6 +291,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Hostname = null;
         }
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        if (ec.Includes("lastRefreshTime",true))
+        {
+            if(this.LastRefreshTime == null) {
+
+                this.LastRefreshTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRefreshTime != null && ec.Excludes("lastRefreshTime",true))
+        {
+            this.LastRefreshTime = null;
+        }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         if (ec.Includes("naturalId",true))
@@ -236,6 +325,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.NaturalId = null;
         }
+        //      C# -> System.String? PrismCentralId
+        // GraphQL -> prismCentralId: String (scalar)
+        if (ec.Includes("prismCentralId",true))
+        {
+            if(this.PrismCentralId == null) {
+
+                this.PrismCentralId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrismCentralId != null && ec.Excludes("prismCentralId",true))
+        {
+            this.PrismCentralId = null;
+        }
+        //      C# -> System.String? PrismCentralName
+        // GraphQL -> prismCentralName: String (scalar)
+        if (ec.Includes("prismCentralName",true))
+        {
+            if(this.PrismCentralName == null) {
+
+                this.PrismCentralName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrismCentralName != null && ec.Excludes("prismCentralName",true))
+        {
+            this.PrismCentralName = null;
+        }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (ec.Includes("username",true))
@@ -252,6 +375,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Username != null && ec.Excludes("username",true))
         {
             this.Username = null;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)

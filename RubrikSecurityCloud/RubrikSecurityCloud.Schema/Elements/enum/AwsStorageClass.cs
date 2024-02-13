@@ -15,6 +15,12 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AwsStorageClass
     {
+        [EnumMember(Value = "GLACIER_DEEP_ARCHIVE")]
+        GLACIER_DEEP_ARCHIVE,
+
+        [EnumMember(Value = "GLACIER_FLEXIBLE_RETRIEVAL")]
+        GLACIER_FLEXIBLE_RETRIEVAL,
+
         [EnumMember(Value = "GLACIER_INSTANT_RETRIEVAL")]
         GLACIER_INSTANT_RETRIEVAL,
 

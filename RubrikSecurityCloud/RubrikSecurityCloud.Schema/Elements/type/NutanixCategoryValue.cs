@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region NutanixCategoryValue
  
-    public class NutanixCategoryValue: BaseType, CdmHierarchyObject, HierarchyObject, NutanixCategoryDescendantType, NutanixCategoryLogicalChildType, NutanixPrismCentralDescendantType
+    public class NutanixCategoryValue: BaseType, CdmHierarchyObject, HierarchyObject, NutanixCategoryDescendantType, NutanixCategoryLogicalChildType, NutanixMultiClusterObjectType, NutanixPrismCentralDescendantType
     {
         #region members
 
@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         public SlaDomain? ConfiguredSlaDomain { get; set; }
+
+        //      C# -> List<CdmHierarchyObject>? DuplicateObjects
+        // GraphQL -> duplicateObjects: [CdmHierarchyObject!]! (interface)
+        [JsonProperty("duplicateObjects")]
+        public List<CdmHierarchyObject>? DuplicateObjects { get; set; }
 
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
@@ -70,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
+
+        //      C# -> System.Int32? DuplicateObjectsAbsoluteCount
+        // GraphQL -> duplicateObjectsAbsoluteCount: Int! (scalar)
+        [JsonProperty("duplicateObjectsAbsoluteCount")]
+        public System.Int32? DuplicateObjectsAbsoluteCount { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -141,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> CdmHierarchyObjectConnection? NutanixVms
+        // GraphQL -> nutanixVms: CdmHierarchyObjectConnection! (type)
+        [JsonProperty("nutanixVms")]
+        public CdmHierarchyObjectConnection? NutanixVms { get; set; }
+
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         [JsonProperty("pendingObjectDeletionStatus")]
@@ -175,12 +190,14 @@ namespace RubrikSecurityCloud.Types
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
+        List<CdmHierarchyObject>? DuplicateObjects = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CategoryId = null,
         System.String? CdmId = null,
+        System.Int32? DuplicateObjectsAbsoluteCount = null,
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -195,6 +212,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         NutanixCategoryValueLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        CdmHierarchyObjectConnection? NutanixVms = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
@@ -213,6 +231,9 @@ namespace RubrikSecurityCloud.Types
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
         }
+        if ( DuplicateObjects != null ) {
+            this.DuplicateObjects = DuplicateObjects;
+        }
         if ( EffectiveRetentionSlaDomain != null ) {
             this.EffectiveRetentionSlaDomain = EffectiveRetentionSlaDomain;
         }
@@ -230,6 +251,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
+        }
+        if ( DuplicateObjectsAbsoluteCount != null ) {
+            this.DuplicateObjectsAbsoluteCount = DuplicateObjectsAbsoluteCount;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -272,6 +296,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( NutanixVms != null ) {
+            this.NutanixVms = NutanixVms;
         }
         if ( PendingObjectDeletionStatus != null ) {
             this.PendingObjectDeletionStatus = PendingObjectDeletionStatus;
@@ -333,6 +360,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                }
+            }
+        }
+        //      C# -> List<CdmHierarchyObject>? DuplicateObjects
+        // GraphQL -> duplicateObjects: [CdmHierarchyObject!]! (interface)
+        if (this.DuplicateObjects != null) {
+                var fspec = this.DuplicateObjects.AsFieldSpec(conf.Child("duplicateObjects"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "duplicateObjects {\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -404,6 +444,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdmId\n" ;
             } else {
                 s += ind + "cdmId\n" ;
+            }
+        }
+        //      C# -> System.Int32? DuplicateObjectsAbsoluteCount
+        // GraphQL -> duplicateObjectsAbsoluteCount: Int! (scalar)
+        if (this.DuplicateObjectsAbsoluteCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "duplicateObjectsAbsoluteCount\n" ;
+            } else {
+                s += ind + "duplicateObjectsAbsoluteCount\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -556,6 +605,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CdmHierarchyObjectConnection? NutanixVms
+        // GraphQL -> nutanixVms: CdmHierarchyObjectConnection! (type)
+        if (this.NutanixVms != null) {
+            var fspec = this.NutanixVms.AsFieldSpec(conf.Child("nutanixVms"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nutanixVms {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         if (this.PendingObjectDeletionStatus != null) {
@@ -686,6 +747,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.ConfiguredSlaDomain = null;
         }
+        //      C# -> List<CdmHierarchyObject>? DuplicateObjects
+        // GraphQL -> duplicateObjects: [CdmHierarchyObject!]! (interface)
+        if (ec.Includes("duplicateObjects",false))
+        {
+            if(this.DuplicateObjects == null) {
+
+                this.DuplicateObjects = new List<CdmHierarchyObject>();
+                this.DuplicateObjects.ApplyExploratoryFieldSpec(ec.NewChild("duplicateObjects"));
+
+            } else {
+
+                this.DuplicateObjects.ApplyExploratoryFieldSpec(ec.NewChild("duplicateObjects"));
+
+            }
+        }
+        else if (this.DuplicateObjects != null && ec.Excludes("duplicateObjects",false))
+        {
+            this.DuplicateObjects = null;
+        }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (ec.Includes("effectiveRetentionSlaDomain",false))
@@ -810,6 +890,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CdmId != null && ec.Excludes("cdmId",true))
         {
             this.CdmId = null;
+        }
+        //      C# -> System.Int32? DuplicateObjectsAbsoluteCount
+        // GraphQL -> duplicateObjectsAbsoluteCount: Int! (scalar)
+        if (ec.Includes("duplicateObjectsAbsoluteCount",true))
+        {
+            if(this.DuplicateObjectsAbsoluteCount == null) {
+
+                this.DuplicateObjectsAbsoluteCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DuplicateObjectsAbsoluteCount != null && ec.Excludes("duplicateObjectsAbsoluteCount",true))
+        {
+            this.DuplicateObjectsAbsoluteCount = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -1064,6 +1161,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> CdmHierarchyObjectConnection? NutanixVms
+        // GraphQL -> nutanixVms: CdmHierarchyObjectConnection! (type)
+        if (ec.Includes("nutanixVms",false))
+        {
+            if(this.NutanixVms == null) {
+
+                this.NutanixVms = new CdmHierarchyObjectConnection();
+                this.NutanixVms.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVms"));
+
+            } else {
+
+                this.NutanixVms.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVms"));
+
+            }
+        }
+        else if (this.NutanixVms != null && ec.Excludes("nutanixVms",false))
+        {
+            this.NutanixVms = null;
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)

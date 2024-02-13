@@ -19,6 +19,10 @@ Details of the Azure AD directory object.
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime
   - Time of the latest snapshot.
+- appId: System.String
+  - ID of the onboarded Azure AD app.
+- appOwner: System.String
+  - Owner of the onboarded Azure AD app.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsAnomalousPolicy
+        // GraphQL -> isAnomalousPolicy: Boolean! (scalar)
+        [JsonProperty("isAnomalousPolicy")]
+        public System.Boolean? IsAnomalousPolicy { get; set; }
+
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         [JsonProperty("policyId")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PolicySummaryDetails Set(
+        System.Boolean? IsAnomalousPolicy = null,
         System.String? PolicyId = null,
         System.String? PolicyName = null,
         HitsSummary? HitsSummary = null
     ) 
     {
+        if ( IsAnomalousPolicy != null ) {
+            this.IsAnomalousPolicy = IsAnomalousPolicy;
+        }
         if ( PolicyId != null ) {
             this.PolicyId = PolicyId;
         }
@@ -70,6 +79,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? IsAnomalousPolicy
+        // GraphQL -> isAnomalousPolicy: Boolean! (scalar)
+        if (this.IsAnomalousPolicy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomalousPolicy\n" ;
+            } else {
+                s += ind + "isAnomalousPolicy\n" ;
+            }
+        }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.Boolean? IsAnomalousPolicy
+        // GraphQL -> isAnomalousPolicy: Boolean! (scalar)
+        if (ec.Includes("isAnomalousPolicy",true))
+        {
+            if(this.IsAnomalousPolicy == null) {
+
+                this.IsAnomalousPolicy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomalousPolicy != null && ec.Excludes("isAnomalousPolicy",true))
+        {
+            this.IsAnomalousPolicy = null;
+        }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (ec.Includes("policyId",true))

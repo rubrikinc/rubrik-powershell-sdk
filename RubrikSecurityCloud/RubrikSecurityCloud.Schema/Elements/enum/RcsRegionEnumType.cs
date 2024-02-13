@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUSTRALIA_SOUTHEAST")]
         AUSTRALIA_SOUTHEAST,
 
+        [EnumMember(Value = "CANADA_CENTRAL")]
+        CANADA_CENTRAL,
+
         [EnumMember(Value = "CANADA_EAST")]
         CANADA_EAST,
 
@@ -54,8 +57,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JAPAN_EAST")]
         JAPAN_EAST,
 
+        [EnumMember(Value = "JAPAN_WEST")]
+        JAPAN_WEST,
+
         [EnumMember(Value = "NORWAY_EAST")]
         NORWAY_EAST,
+
+        [EnumMember(Value = "POLAND_CENTRAL")]
+        POLAND_CENTRAL,
 
         [EnumMember(Value = "SOUTH_AFRICA_NORTH")]
         SOUTH_AFRICA_NORTH,
@@ -71,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "UK_SOUTH")]
         UK_SOUTH,
+
+        [EnumMember(Value = "UK_WEST")]
+        UK_WEST,
 
         [EnumMember(Value = "UNKNOWN_AZURE_REGION")]
         UNKNOWN_AZURE_REGION,

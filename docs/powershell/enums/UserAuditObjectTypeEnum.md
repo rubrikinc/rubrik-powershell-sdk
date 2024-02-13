@@ -11,6 +11,7 @@ User audit object type.
 - DataLocation - Data location type.
 - DB2_INSTANCE - Db2 instance type.
 - DB2_DATABASE - Db2 database type.
+- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
 - HypervScvmm - Hyper-V SCVMM type.
 - O365Onedrive - Office 365 OneDrive type.
 - CASSANDRA_SOURCE - Cassandra source type.
@@ -27,6 +28,7 @@ User audit object type.
 - NutanixVm - Nutanix virtual machine type.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
 - ATLASSIAN_SITE - Atlassian site.
+- EXOCOMPUTE - Exocompute.
 - MONGODB_SOURCE - MongoDB source type.
 - HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.

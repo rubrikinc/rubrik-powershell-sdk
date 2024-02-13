@@ -28,8 +28,11 @@ Supported in Rubrik CDM version 9.0 and later.
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - Target snapshot ID or a point in time for recovery.
 - folderId: System.String
-  - ID of the virtual machine folder to export the new virtual machine to.
+  - Supported in v9.1+
+      ID of the virtual machine folder to export the new virtual machine to.
 - contentLibraryId: System.String
-  - ID of the content library to which the new content library item is being exported.
+  - Supported in v9.1+
+      ID of the content library to which the new content library item is being exported.
 - shouldConvertToTemplate: System.Boolean
-  - Specifies whether Export converts the recovered virtual machine to a template.
+  - Supported in v9.1+
+      Specifies whether Export converts the recovered virtual machine to a template.

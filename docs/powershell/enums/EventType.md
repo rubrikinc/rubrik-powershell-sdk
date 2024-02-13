@@ -52,7 +52,6 @@ Enum representing all the possible event types.
 - ISOLATED_RECOVERY - Isolated recovery.
 - OWNERSHIP - Ownership change event.
 - LOG_BACKUP - Log Backup event type.
-- K8S - Kubernetes event type.
 - BULK_RECOVERY - Bulk recovery event type.
 - TENANT_OVERLAP - Tenant overlap event type.
 - ENCRYPTION_MANAGEMENT_OPERATION - Encryption Management event type.

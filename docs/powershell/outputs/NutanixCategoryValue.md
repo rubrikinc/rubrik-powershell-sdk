@@ -13,6 +13,8 @@ Nutanix Category Value details.
   - List of descendants.
 - logicalChildConnection: NutanixCategoryValueLogicalChildTypeConnection
   - List of logical children.
+- nutanixVms: CdmHierarchyObjectConnection
+  - Provide a list of child Nutanix virtual machine objects for the current Nutanix category value.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
@@ -57,3 +59,7 @@ Nutanix Category Value details.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- duplicateObjectsAbsoluteCount: System.Int32
+  - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+- duplicateObjects: list of CdmHierarchyObjects
+  - Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.

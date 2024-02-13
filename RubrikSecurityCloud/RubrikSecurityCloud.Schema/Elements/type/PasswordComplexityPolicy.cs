@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> PasswordComplexityPolicyTemplate? LeakedDetectionPolicy
+        // GraphQL -> leakedDetectionPolicy: PasswordComplexityPolicyTemplate (type)
+        [JsonProperty("leakedDetectionPolicy")]
+        public PasswordComplexityPolicyTemplate? LeakedDetectionPolicy { get; set; }
+
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
         [JsonProperty("lengthPolicy")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PasswordComplexityPolicy Set(
+        PasswordComplexityPolicyTemplate? LeakedDetectionPolicy = null,
         PasswordComplexityPolicyTemplate? LengthPolicy = null,
         PasswordComplexityPolicyTemplate? LowercasePolicy = null,
         PasswordComplexityPolicyTemplate? NumericPolicy = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         PasswordComplexityPolicyTemplate? UppercasePolicy = null
     ) 
     {
+        if ( LeakedDetectionPolicy != null ) {
+            this.LeakedDetectionPolicy = LeakedDetectionPolicy;
+        }
         if ( LengthPolicy != null ) {
             this.LengthPolicy = LengthPolicy;
         }
@@ -106,6 +115,18 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> PasswordComplexityPolicyTemplate? LeakedDetectionPolicy
+        // GraphQL -> leakedDetectionPolicy: PasswordComplexityPolicyTemplate (type)
+        if (this.LeakedDetectionPolicy != null) {
+            var fspec = this.LeakedDetectionPolicy.AsFieldSpec(conf.Child("leakedDetectionPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "leakedDetectionPolicy {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LengthPolicy != null) {
@@ -197,6 +218,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> PasswordComplexityPolicyTemplate? LeakedDetectionPolicy
+        // GraphQL -> leakedDetectionPolicy: PasswordComplexityPolicyTemplate (type)
+        if (ec.Includes("leakedDetectionPolicy",false))
+        {
+            if(this.LeakedDetectionPolicy == null) {
+
+                this.LeakedDetectionPolicy = new PasswordComplexityPolicyTemplate();
+                this.LeakedDetectionPolicy.ApplyExploratoryFieldSpec(ec.NewChild("leakedDetectionPolicy"));
+
+            } else {
+
+                this.LeakedDetectionPolicy.ApplyExploratoryFieldSpec(ec.NewChild("leakedDetectionPolicy"));
+
+            }
+        }
+        else if (this.LeakedDetectionPolicy != null && ec.Excludes("leakedDetectionPolicy",false))
+        {
+            this.LeakedDetectionPolicy = null;
+        }
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
         if (ec.Includes("lengthPolicy",false))

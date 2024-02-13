@@ -1138,6 +1138,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? BulkUpdateRansomwareInvestigationStatus
+        // GraphQL -> bulkUpdateRansomwareInvestigationStatus: Void (scalar)
+        public static string BulkUpdateRansomwareInvestigationStatus_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateRansomwareInvestigationStatus" + args + "\n";
+        }
+        public static string BulkUpdateRansomwareInvestigationStatus_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BulkUpdateRansomwareInvestigationStatus((System.String)fieldSpecObj);
+        }
+        public static string BulkUpdateRansomwareInvestigationStatus(System.String fieldSpec)
+        {
+            return BulkUpdateRansomwareInvestigationStatus_TypedFieldSpec(fieldSpec);
+        }
+        public static string BulkUpdateRansomwareInvestigationStatus(object fieldSpecObj)
+        {
+            return BulkUpdateRansomwareInvestigationStatus_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BulkUpdateRansomwareInvestigationStatusFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.Boolean? CancelActivitySeries
         // GraphQL -> cancelActivitySeries: Boolean! (scalar)
         public static string CancelActivitySeries_TypedFieldSpec(System.Boolean fieldSpec)
@@ -1245,6 +1274,35 @@ namespace RubrikSecurityCloud.Types
             return CompleteAzureAdAppUpdate_ObjectFieldSpec(fieldSpecObj);
         }
         public static object CompleteAzureAdAppUpdateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? CreateCrossAccountPair
+        // GraphQL -> createCrossAccountPair: Void (scalar)
+        public static string CreateCrossAccountPair_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createCrossAccountPair" + args + "\n";
+        }
+        public static string CreateCrossAccountPair_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateCrossAccountPair((System.String)fieldSpecObj);
+        }
+        public static string CreateCrossAccountPair(System.String fieldSpec)
+        {
+            return CreateCrossAccountPair_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateCrossAccountPair(object fieldSpecObj)
+        {
+            return CreateCrossAccountPair_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateCrossAccountPairFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -2965,6 +3023,35 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? ResolveAnomaly
+        // GraphQL -> resolveAnomaly: Void (scalar)
+        public static string ResolveAnomaly_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "resolveAnomaly" + args + "\n";
+        }
+        public static string ResolveAnomaly_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ResolveAnomaly((System.String)fieldSpecObj);
+        }
+        public static string ResolveAnomaly(System.String fieldSpec)
+        {
+            return ResolveAnomaly_TypedFieldSpec(fieldSpec);
+        }
+        public static string ResolveAnomaly(object fieldSpecObj)
+        {
+            return ResolveAnomaly_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ResolveAnomalyFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? RevokeAllOrgRoles
         // GraphQL -> revokeAllOrgRoles: Void (scalar)
         public static string RevokeAllOrgRoles_TypedFieldSpec(System.String fieldSpec)
@@ -3021,6 +3108,35 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return true ;
+        }
+
+        //      C# -> System.String? SetBundleApprovalStatus
+        // GraphQL -> setBundleApprovalStatus: Void (scalar)
+        public static string SetBundleApprovalStatus_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "setBundleApprovalStatus" + args + "\n";
+        }
+        public static string SetBundleApprovalStatus_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return SetBundleApprovalStatus((System.String)fieldSpecObj);
+        }
+        public static string SetBundleApprovalStatus(System.String fieldSpec)
+        {
+            return SetBundleApprovalStatus_TypedFieldSpec(fieldSpec);
+        }
+        public static string SetBundleApprovalStatus(object fieldSpecObj)
+        {
+            return SetBundleApprovalStatus_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object SetBundleApprovalStatusFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
         }
 
         //      C# -> System.String? SetCustomerTags
@@ -3159,6 +3275,35 @@ namespace RubrikSecurityCloud.Types
             return SetPasswordComplexityPolicy_ObjectFieldSpec(fieldSpecObj);
         }
         public static object SetPasswordComplexityPolicyFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? SetPrivateContainerRegistry
+        // GraphQL -> setPrivateContainerRegistry: Void (scalar)
+        public static string SetPrivateContainerRegistry_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "setPrivateContainerRegistry" + args + "\n";
+        }
+        public static string SetPrivateContainerRegistry_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return SetPrivateContainerRegistry((System.String)fieldSpecObj);
+        }
+        public static string SetPrivateContainerRegistry(System.String fieldSpec)
+        {
+            return SetPrivateContainerRegistry_TypedFieldSpec(fieldSpec);
+        }
+        public static string SetPrivateContainerRegistry(object fieldSpecObj)
+        {
+            return SetPrivateContainerRegistry_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object SetPrivateContainerRegistryFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -4495,6 +4640,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AddCrossAccountServiceConsumerReply? AddCrossAccountServiceConsumer
+        // GraphQL -> addCrossAccountServiceConsumer: AddCrossAccountServiceConsumerReply! (type)
+        public static string AddCrossAccountServiceConsumer_TypedFieldSpec(AddCrossAccountServiceConsumerReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "addCrossAccountServiceConsumer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AddCrossAccountServiceConsumer_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AddCrossAccountServiceConsumer((AddCrossAccountServiceConsumerReply)fieldSpecObj);
+        }
+        public static string AddCrossAccountServiceConsumer(AddCrossAccountServiceConsumerReply fieldSpec)
+        {
+            return AddCrossAccountServiceConsumer_TypedFieldSpec(fieldSpec);
+        }
+        public static string AddCrossAccountServiceConsumer(object fieldSpecObj)
+        {
+            return AddCrossAccountServiceConsumer_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AddCrossAccountServiceConsumerFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AddCrossAccountServiceConsumerReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AddDb2InstanceReply? AddDb2Instance
         // GraphQL -> addDb2Instance: AddDb2InstanceReply! (type)
         public static string AddDb2Instance_TypedFieldSpec(AddDb2InstanceReply fieldSpec)
@@ -5142,6 +5318,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new List<SlaAssignResult>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AwsExocomputeClusterConnectReply? AwsExocomputeClusterConnect
+        // GraphQL -> awsExocomputeClusterConnect: AwsExocomputeClusterConnectReply! (type)
+        public static string AwsExocomputeClusterConnect_TypedFieldSpec(AwsExocomputeClusterConnectReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "awsExocomputeClusterConnect" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AwsExocomputeClusterConnect_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AwsExocomputeClusterConnect((AwsExocomputeClusterConnectReply)fieldSpecObj);
+        }
+        public static string AwsExocomputeClusterConnect(AwsExocomputeClusterConnectReply fieldSpec)
+        {
+            return AwsExocomputeClusterConnect_TypedFieldSpec(fieldSpec);
+        }
+        public static string AwsExocomputeClusterConnect(object fieldSpecObj)
+        {
+            return AwsExocomputeClusterConnect_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AwsExocomputeClusterConnectFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AwsExocomputeClusterConnectReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7440,6 +7647,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CreateCrossAccountRegOauthPayloadReply? CreateCrossAccountRegOauthPayload
+        // GraphQL -> createCrossAccountRegOauthPayload: CreateCrossAccountRegOauthPayloadReply! (type)
+        public static string CreateCrossAccountRegOauthPayload_TypedFieldSpec(CreateCrossAccountRegOauthPayloadReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createCrossAccountRegOauthPayload" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateCrossAccountRegOauthPayload_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateCrossAccountRegOauthPayload((CreateCrossAccountRegOauthPayloadReply)fieldSpecObj);
+        }
+        public static string CreateCrossAccountRegOauthPayload(CreateCrossAccountRegOauthPayloadReply fieldSpec)
+        {
+            return CreateCrossAccountRegOauthPayload_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateCrossAccountRegOauthPayload(object fieldSpecObj)
+        {
+            return CreateCrossAccountRegOauthPayload_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateCrossAccountRegOauthPayloadFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CreateCrossAccountRegOauthPayloadReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> Analyzer? CreateCustomAnalyzer
         // GraphQL -> createCustomAnalyzer: Analyzer! (type)
         public static string CreateCustomAnalyzer_TypedFieldSpec(Analyzer fieldSpec)
@@ -8330,6 +8568,37 @@ namespace RubrikSecurityCloud.Types
             return CreateOnDemandSapHanaBackup_ObjectFieldSpec(fieldSpecObj);
         }
         public static object CreateOnDemandSapHanaBackupFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? CreateOnDemandSapHanaStorageSnapshot
+        // GraphQL -> createOnDemandSapHanaStorageSnapshot: AsyncRequestStatus! (type)
+        public static string CreateOnDemandSapHanaStorageSnapshot_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createOnDemandSapHanaStorageSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateOnDemandSapHanaStorageSnapshot_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateOnDemandSapHanaStorageSnapshot((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string CreateOnDemandSapHanaStorageSnapshot(AsyncRequestStatus fieldSpec)
+        {
+            return CreateOnDemandSapHanaStorageSnapshot_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateOnDemandSapHanaStorageSnapshot(object fieldSpecObj)
+        {
+            return CreateOnDemandSapHanaStorageSnapshot_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateOnDemandSapHanaStorageSnapshotFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -12586,6 +12855,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? InplaceExportHypervVirtualMachine
+        // GraphQL -> inplaceExportHypervVirtualMachine: AsyncRequestStatus! (type)
+        public static string InplaceExportHypervVirtualMachine_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "inplaceExportHypervVirtualMachine" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string InplaceExportHypervVirtualMachine_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return InplaceExportHypervVirtualMachine((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string InplaceExportHypervVirtualMachine(AsyncRequestStatus fieldSpec)
+        {
+            return InplaceExportHypervVirtualMachine_TypedFieldSpec(fieldSpec);
+        }
+        public static string InplaceExportHypervVirtualMachine(object fieldSpecObj)
+        {
+            return InplaceExportHypervVirtualMachine_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object InplaceExportHypervVirtualMachineFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RequestStatus? InsertCustomerO365App
         // GraphQL -> insertCustomerO365App: RequestStatus! (type)
         public static string InsertCustomerO365App_TypedFieldSpec(RequestStatus fieldSpec)
@@ -15500,37 +15800,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> SetPrivateContainerRegistryDetailsReply? SetPrivateContainerRegistryDetails
-        // GraphQL -> setPrivateContainerRegistryDetails: SetPrivateContainerRegistryDetailsReply! (type)
-        public static string SetPrivateContainerRegistryDetails_TypedFieldSpec(SetPrivateContainerRegistryDetailsReply fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "setPrivateContainerRegistryDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string SetPrivateContainerRegistryDetails_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return SetPrivateContainerRegistryDetails((SetPrivateContainerRegistryDetailsReply)fieldSpecObj);
-        }
-        public static string SetPrivateContainerRegistryDetails(SetPrivateContainerRegistryDetailsReply fieldSpec)
-        {
-            return SetPrivateContainerRegistryDetails_TypedFieldSpec(fieldSpec);
-        }
-        public static string SetPrivateContainerRegistryDetails(object fieldSpecObj)
-        {
-            return SetPrivateContainerRegistryDetails_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object SetPrivateContainerRegistryDetailsFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new SetPrivateContainerRegistryDetailsReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> SetUpgradeTypeReply? SetUpgradeType
         // GraphQL -> setUpgradeType: SetUpgradeTypeReply! (type)
         public static string SetUpgradeType_TypedFieldSpec(SetUpgradeTypeReply fieldSpec)
@@ -16771,6 +17040,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SwitchProductToOnboardingModeReply? SwitchProductToOnboardingMode
+        // GraphQL -> switchProductToOnboardingMode: SwitchProductToOnboardingModeReply! (type)
+        public static string SwitchProductToOnboardingMode_TypedFieldSpec(SwitchProductToOnboardingModeReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "switchProductToOnboardingMode" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string SwitchProductToOnboardingMode_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return SwitchProductToOnboardingMode((SwitchProductToOnboardingModeReply)fieldSpecObj);
+        }
+        public static string SwitchProductToOnboardingMode(SwitchProductToOnboardingModeReply fieldSpec)
+        {
+            return SwitchProductToOnboardingMode_TypedFieldSpec(fieldSpec);
+        }
+        public static string SwitchProductToOnboardingMode(object fieldSpecObj)
+        {
+            return SwitchProductToOnboardingMode_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object SwitchProductToOnboardingModeFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new SwitchProductToOnboardingModeReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? TakeManagedVolumeOnDemandSnapshot
         // GraphQL -> takeManagedVolumeOnDemandSnapshot: AsyncRequestStatus! (type)
         public static string TakeManagedVolumeOnDemandSnapshot_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -17856,6 +18156,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> UpdateCustomerAppPermissionsReply? UpdateCustomerAppPermissions
+        // GraphQL -> updateCustomerAppPermissions: UpdateCustomerAppPermissionsReply! (type)
+        public static string UpdateCustomerAppPermissions_TypedFieldSpec(UpdateCustomerAppPermissionsReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateCustomerAppPermissions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateCustomerAppPermissions_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateCustomerAppPermissions((UpdateCustomerAppPermissionsReply)fieldSpecObj);
+        }
+        public static string UpdateCustomerAppPermissions(UpdateCustomerAppPermissionsReply fieldSpec)
+        {
+            return UpdateCustomerAppPermissions_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateCustomerAppPermissions(object fieldSpecObj)
+        {
+            return UpdateCustomerAppPermissions_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateCustomerAppPermissionsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateCustomerAppPermissionsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> DbLogReportProperties? UpdateDatabaseLogReportingPropertiesForCluster
         // GraphQL -> updateDatabaseLogReportingPropertiesForCluster: DbLogReportProperties! (type)
         public static string UpdateDatabaseLogReportingPropertiesForCluster_TypedFieldSpec(DbLogReportProperties fieldSpec)
@@ -18348,6 +18679,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new UpdateLockoutConfigReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateManagedIdentitiesReply? UpdateManagedIdentities
+        // GraphQL -> updateManagedIdentities: UpdateManagedIdentitiesReply! (type)
+        public static string UpdateManagedIdentities_TypedFieldSpec(UpdateManagedIdentitiesReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateManagedIdentities" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateManagedIdentities_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateManagedIdentities((UpdateManagedIdentitiesReply)fieldSpecObj);
+        }
+        public static string UpdateManagedIdentities(UpdateManagedIdentitiesReply fieldSpec)
+        {
+            return UpdateManagedIdentities_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateManagedIdentities(object fieldSpecObj)
+        {
+            return UpdateManagedIdentities_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateManagedIdentitiesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateManagedIdentitiesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -18906,6 +19268,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new TargetMapping() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ResponseSuccess? UpdateReplicationNetworkThrottleBypass
+        // GraphQL -> updateReplicationNetworkThrottleBypass: ResponseSuccess! (type)
+        public static string UpdateReplicationNetworkThrottleBypass_TypedFieldSpec(ResponseSuccess fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateReplicationNetworkThrottleBypass" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateReplicationNetworkThrottleBypass_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateReplicationNetworkThrottleBypass((ResponseSuccess)fieldSpecObj);
+        }
+        public static string UpdateReplicationNetworkThrottleBypass(ResponseSuccess fieldSpec)
+        {
+            return UpdateReplicationNetworkThrottleBypass_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateReplicationNetworkThrottleBypass(object fieldSpecObj)
+        {
+            return UpdateReplicationNetworkThrottleBypass_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateReplicationNetworkThrottleBypassFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ResponseSuccess() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -15,6 +15,12 @@ namespace RubrikSecurityCloud.Types
 {
     public enum HypervMountedVmStatusType
     {
+        [EnumMember(Value = "MOUNTED")]
+        MOUNTED,
+
+        [EnumMember(Value = "MOUNTING")]
+        MOUNTING,
+
         [EnumMember(Value = "POWEREDOFF")]
         POWEREDOFF,
 
@@ -28,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         POWERINGON,
 
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "UNMOUNTING")]
+        UNMOUNTING
 
 
     } // enum HypervMountedVmStatusType

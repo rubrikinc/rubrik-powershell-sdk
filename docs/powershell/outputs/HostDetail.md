@@ -2,9 +2,9 @@
 Supported in v5.0+
 
 - agentId: System.String
-  - Supported in v5.0+
+  - Supported in v5.0-v9.0
   v5.0-v5.2: 
-  v5.3+: ID of the Rubrik Backup Service (RBS) installed on the host.
+  v5.3-v9.0: ID of the Rubrik Backup Service (RBS) installed on the host.
 - compressionEnabled: System.Boolean
   - Supported in v5.0+
   v5.0-v5.2: 

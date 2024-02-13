@@ -106,6 +106,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
             // set static delegate on RscOp:
             RubrikSecurityCloud.RscOp.FillInRscOp =
                 SchemaMeta.FillInRscOp;
+            RubrikSecurityCloud.RscOp.GetRootFieldKind =
+                SchemaMeta.GetRootFieldKind;
         }
 
         internal string _OpObjToString(object opObj)

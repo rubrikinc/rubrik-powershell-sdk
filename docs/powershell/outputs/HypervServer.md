@@ -4,7 +4,9 @@ Hyper-V server details.
 - status: HyperVStatus
   - Status of the Hyper-V server.
 - connectionStatus: HypervHostStatusType
-  - Connectivity Status of HyperV Host.
+  - Connectivity Status of Hyper-V Host.
+- hostname: System.String
+  - Name or IP Address of Hyper-V Host.
 - descendantConnection: HypervServerDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: HypervServerLogicalChildTypeConnection

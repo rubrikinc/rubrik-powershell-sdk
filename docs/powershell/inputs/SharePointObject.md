@@ -3,6 +3,8 @@ Represents the SharePoint object (document library, list, site, or web part) to 
 
 - objectSharepointId: System.String
   - ID of the object in SharePoint Online.
+- objectId: System.String
+  - Rubrik cluster ID of the SharePoint object.
 - objectName: System.String
   - Name or title of the object.
 - objectType: SnappableType

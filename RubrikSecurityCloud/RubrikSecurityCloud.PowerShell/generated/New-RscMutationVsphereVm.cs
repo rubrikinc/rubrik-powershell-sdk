@@ -1668,6 +1668,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
     /// 		# OPTIONAL
+    /// 		description = $someString
+    /// 		# OPTIONAL
     /// 		shouldUseMountDisks = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
@@ -3614,6 +3616,8 @@ $query.Var.input = @{
 		shouldUseAgent = $someBoolean
 		# OPTIONAL
 		guestCredentialId = $someString
+		# OPTIONAL
+		description = $someString
 		# OPTIONAL
 		shouldUseMountDisks = $someBoolean
 		# REQUIRED

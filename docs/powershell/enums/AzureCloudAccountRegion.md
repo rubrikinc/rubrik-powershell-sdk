@@ -53,3 +53,5 @@ Azure cloud account region Enum.
 - QATARCENTRAL - Azure Cloud account region is Qatar Central.
 - SWEDENCENTRAL - Azure Cloud account region is Sweden Central.
 - POLANDCENTRAL - Azure Cloud account region is Poland Central.
+- ISRAELCENTRAL - Azure Cloud account region is Israel Central.
+- ITALYNORTH - Azure Cloud account region is Italy North.

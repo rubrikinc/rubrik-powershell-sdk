@@ -5,3 +5,5 @@ Supported in v5.0+
   - Supported in v5.0+
 - baseGuestCredential: BaseGuestCredentialInput
   - 
+- description: System.String
+  - 

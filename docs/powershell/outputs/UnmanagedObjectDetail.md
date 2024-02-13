@@ -31,6 +31,12 @@ UnmanagedObjectDetails.
   - Snapshot count.
 - unmanagedStatus: UnmanagedObjectAvailabilityFilter
   - Unmanaged Status of this object.
+- region: WorkloadRegion
+  - Region where the object is present.
+- cloudAccountId: System.String
+  - Cloud account ID of the AWS account associated with the object.
+- cloudAccountName: System.String
+  - Cloud account name of the AWS account associated with the object.
 - effectiveSlaDomain: SlaDomain
   - The effective SLA Domain of the unmanaged object.
 - cluster: Cluster

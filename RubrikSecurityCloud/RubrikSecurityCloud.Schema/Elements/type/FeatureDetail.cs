@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
 
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!] (enum)
+        [JsonProperty("permissionsGroups")]
+        public List<PermissionsGroup>? PermissionsGroups { get; set; }
+
         //      C# -> CloudAccountStatus? Status
         // GraphQL -> status: CloudAccountStatus! (enum)
         [JsonProperty("status")]
@@ -72,6 +77,7 @@ namespace RubrikSecurityCloud.Types
     public FeatureDetail Set(
         List<AwsCloudAccountRegion>? AwsRegions = null,
         CloudAccountFeature? Feature = null,
+        List<PermissionsGroup>? PermissionsGroups = null,
         CloudAccountStatus? Status = null,
         System.String? AccessKey = null,
         System.String? RoleArn = null,
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Feature != null ) {
             this.Feature = Feature;
+        }
+        if ( PermissionsGroups != null ) {
+            this.PermissionsGroups = PermissionsGroups;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -131,6 +140,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "feature\n" ;
             } else {
                 s += ind + "feature\n" ;
+            }
+        }
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!] (enum)
+        if (this.PermissionsGroups != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "permissionsGroups\n" ;
+            } else {
+                s += ind + "permissionsGroups\n" ;
             }
         }
         //      C# -> CloudAccountStatus? Status
@@ -230,6 +248,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Feature != null && ec.Excludes("feature",true))
         {
             this.Feature = null;
+        }
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!] (enum)
+        if (ec.Includes("permissionsGroups",true))
+        {
+            if(this.PermissionsGroups == null) {
+
+                this.PermissionsGroups = new List<PermissionsGroup>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermissionsGroups != null && ec.Excludes("permissionsGroups",true))
+        {
+            this.PermissionsGroups = null;
         }
         //      C# -> CloudAccountStatus? Status
         // GraphQL -> status: CloudAccountStatus! (enum)

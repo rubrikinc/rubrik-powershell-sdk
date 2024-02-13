@@ -223,7 +223,7 @@
 - DOES_PHYSICAL_HOST_HAVE_PROTECTED_FILESETS - Filter physical hosts that have protected filesets.
 - IS_DELETED_IN_CDM - Filter workloads deleted from the Rubrik cluster.
 - HOST_VENDOR_TYPE - Filter by the vendor type of the NAS Host.
-- NUTANIX_PRISM_CENTRAL_ID - Filter Nutanix clusters by the Nutanix Prism Central ID.
+- NUTANIX_PRISM_CENTRAL_ID - Filter Nutanix clusters by Nutanix Prism Central ID(s).
 - MONGO_COLLECTION_PROTECTED - Filter protected MongoDB collections.
 - TOP_LEVEL_SITES_OF_O365_ORG - Filter objects that are top level sites of all the O365 Orgs.
  Note that an org ID is not passed as a filter here so the top level
@@ -254,3 +254,12 @@
 - EXCLUDED_ROOT_RESOURCE_POOL_TYPE - Filter to exclude root resource pool.
 - VMWARE_VM_TEMPLATE_TYPE - Filter template type of VMware virtual machines.
 - K8S_CLUSTER_STATUS - Filter by the status of the K8s cluster.
+- MANAGED_VOLUME_HOST_ID - Filter the Managed Volume based on its host ID.
+- MANAGED_VOLUME_HOST_CONNECTION_STATUS - Filter the Managed Volume based on the RBS status of its host.
+- DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS - Filter to select a singular object from a group of duplicated nutanix objects.
+- NUTANIX_VM_BY_CAT_VAL_ID - Filter Nutanix virtual machines by Nutanix Category Value ID(s).
+- HYPERV_HOST_OR_SERVER_NAME - Filter Hyperv servers by Windows Host name or Hyperv Server name.
+- AZURE_BLOB_STORAGE_ACCOUNT_RG_NAME - Filter Azure storage accounts by resource group name.
+- AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID - Filter Azure storage accounts by subscription ID.
+- AZURE_BLOB_STORAGE_ACCOUNT_ACCESS_TIER - Filter Azure storage accounts by access tier.
+- AZURE_BLOB_STORAGE_ACCOUNT_HNS_STATUS - Filter Azure storage accounts by hierarchical namespace status.

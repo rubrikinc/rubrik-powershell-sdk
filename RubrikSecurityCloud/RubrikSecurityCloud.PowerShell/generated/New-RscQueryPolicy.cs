@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <summary>
     /// Create a new RscQuery object for any of the 6
     /// operations in the 'Policy' API domain:
-    /// Details, Obj, ObjectUsages, Objs, Policies, or Policy.
+    /// OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, or TopRiskPolicySummaries.
     /// </summary>
     /// <description>
     /// New-RscQueryPolicy creates a new
@@ -39,11 +39,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Details, Obj, ObjectUsages, Objs, Policies, or Policy.
+    /// one of: OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, or TopRiskPolicySummaries.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryPolicy -Details).Info().
+    /// (New-RscQueryPolicy -OrgSecurityPolicy).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,14 +70,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryPolicy -Details).Info().
+    /// (New-RscQueryPolicy -OrgSecurityPolicy).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the Details operation
+    /// Runs the OrgSecurityPolicy operation
     /// of the 'Policy' API domain.
     /// <code>
     /// PS &gt;
@@ -85,9 +85,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Policy
-    /// # API Operation: Details
+    /// # API Operation: OrgSecurityPolicy
     /// 
-    /// $query = New-RscQueryPolicy -Details
+    /// $query = New-RscQueryPolicy -OrgSecurityPolicy
     /// 
     /// # No variables for this query.
     /// 
@@ -95,7 +95,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: PolicyDetailConnection
+    /// Write-Host $result.GetType().Name # prints: OrgSecurityPolicy
     /// 
     /// 
     /// 
@@ -104,7 +104,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the Obj operation
+    /// Runs the PasswordComplexityPolicy operation
     /// of the 'Policy' API domain.
     /// <code>
     /// PS &gt;
@@ -112,132 +112,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Policy
-    /// # API Operation: Obj
+    /// # API Operation: PasswordComplexityPolicy
     /// 
-    /// $query = New-RscQueryPolicy -Obj
+    /// $query = New-RscQueryPolicy -PasswordComplexityPolicy
     /// 
-    /// # REQUIRED
-    /// $query.Var.snappableFid = $someString
-    /// # REQUIRED
-    /// $query.Var.snapshotFid = $someString
-    /// # OPTIONAL
-    /// $query.Var.includeWhitelistedResults = $someBoolean
+    /// # No variables for this query.
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: PolicyObj
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ObjectUsages operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: ObjectUsages
-    /// 
-    /// $query = New-RscQueryPolicy -ObjectUsages
-    /// 
-    /// # REQUIRED
-    /// $query.Var.objectIds = @(
-    /// 	$someString
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: PolicyObjectUsageConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the Objs operation
-    /// of the 'Policy' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Policy
-    /// # API Operation: Objs
-    /// 
-    /// $query = New-RscQueryPolicy -Objs
-    /// 
-    /// # REQUIRED
-    /// $query.Var.day = $someString
-    /// # REQUIRED
-    /// $query.Var.timezone = $someString
-    /// # REQUIRED
-    /// $query.Var.workloadTypes = @(
-    /// 	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.analysisStatusesFilter = @(
-    /// 	$someAnalysisStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalysisStatus]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.policyIdsFilter = @(
-    /// 	$someString
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.riskLevelsFilter = @(
-    /// 	$someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.clusterIdsFilter = @(
-    /// 	$someString
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.searchObjectName = $someString
-    /// # OPTIONAL
-    /// $query.Var.subscriptionIdsFilter = @(
-    /// 	$someString
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.includeWhitelistedResults = $someBoolean
-    /// # OPTIONAL
-    /// $query.Var.sids = @(
-    /// 	$someString
-    /// )
-    /// # OPTIONAL
-    /// $query.Var.insightsMetadataId = $someString
-    /// # OPTIONAL
-    /// $query.Var.includeInsightsMarker = $someBoolean
-    /// # REQUIRED
-    /// $query.Var.userAccessObjectsFilter = $someBoolean
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: PolicyObjConnection
+    /// Write-Host $result.GetType().Name # prints: PasswordComplexityPolicy
     /// 
     /// 
     /// 
@@ -333,6 +218,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the PolicyObjectUsages operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyObjectUsages
+    /// 
+    /// $query = New-RscQueryPolicy -PolicyObjectUsages
+    /// 
+    /// # REQUIRED
+    /// $query.Var.objectIds = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PolicyObjectUsageConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the TopRiskPolicySummaries operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: TopRiskPolicySummaries
+    /// 
+    /// $query = New-RscQueryPolicy -TopRiskPolicySummaries
+    /// 
+    /// # REQUIRED
+    /// $query.Var.getWhitelistedResults = $someBoolean
+    /// # REQUIRED
+    /// $query.Var.limit = $someInt
+    /// # REQUIRED
+    /// $query.Var.workloadTypes = @(
+    /// 	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;PolicySummary&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -349,12 +298,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "Details",
-                "Obj",
-                "ObjectUsages",
-                "Objs",
+                "OrgSecurityPolicy",
+                "PasswordComplexityPolicy",
                 "Policies",
                 "Policy",
+                "PolicyObjectUsages",
+                "TopRiskPolicySummaries",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -370,23 +319,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "Details":
-                        this.ProcessRecord_Details();
+                    case "OrgSecurityPolicy":
+                        this.ProcessRecord_OrgSecurityPolicy();
                         break;
-                    case "Obj":
-                        this.ProcessRecord_Obj();
-                        break;
-                    case "ObjectUsages":
-                        this.ProcessRecord_ObjectUsages();
-                        break;
-                    case "Objs":
-                        this.ProcessRecord_Objs();
+                    case "PasswordComplexityPolicy":
+                        this.ProcessRecord_PasswordComplexityPolicy();
                         break;
                     case "Policies":
                         this.ProcessRecord_Policies();
                         break;
                     case "Policy":
                         this.ProcessRecord_Policy();
+                        break;
+                    case "PolicyObjectUsages":
+                        this.ProcessRecord_PolicyObjectUsages();
+                        break;
+                    case "TopRiskPolicySummaries":
+                        this.ProcessRecord_TopRiskPolicySummaries();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -399,39 +348,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // policyDetails.
-        internal void ProcessRecord_Details()
+        // orgSecurityPolicy.
+        internal void ProcessRecord_OrgSecurityPolicy()
         {
-            this._logger.name += " -Details";
-            // Create new graphql operation policyDetails
-            InitQueryPolicyDetails();
+            this._logger.name += " -OrgSecurityPolicy";
+            // Create new graphql operation orgSecurityPolicy
+            InitQueryOrgSecurityPolicy();
         }
 
         // This parameter set invokes a single graphql operation:
-        // policyObj.
-        internal void ProcessRecord_Obj()
+        // passwordComplexityPolicy.
+        internal void ProcessRecord_PasswordComplexityPolicy()
         {
-            this._logger.name += " -Obj";
-            // Create new graphql operation policyObj
-            InitQueryPolicyObj();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // policyObjectUsages.
-        internal void ProcessRecord_ObjectUsages()
-        {
-            this._logger.name += " -ObjectUsages";
-            // Create new graphql operation policyObjectUsages
-            InitQueryPolicyObjectUsages();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // policyObjs.
-        internal void ProcessRecord_Objs()
-        {
-            this._logger.name += " -Objs";
-            // Create new graphql operation policyObjs
-            InitQueryPolicyObjs();
+            this._logger.name += " -PasswordComplexityPolicy";
+            // Create new graphql operation passwordComplexityPolicy
+            InitQueryPasswordComplexityPolicy();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -452,182 +383,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryPolicy();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // policyObjectUsages.
+        internal void ProcessRecord_PolicyObjectUsages()
+        {
+            this._logger.name += " -PolicyObjectUsages";
+            // Create new graphql operation policyObjectUsages
+            InitQueryPolicyObjectUsages();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allTopRiskPolicySummaries.
+        internal void ProcessRecord_TopRiskPolicySummaries()
+        {
+            this._logger.name += " -TopRiskPolicySummaries";
+            // Create new graphql operation allTopRiskPolicySummaries
+            InitQueryAllTopRiskPolicySummaries();
+        }
+
 
         // Create new GraphQL Query:
-        // policyDetails: PolicyDetailConnection!
-        internal void InitQueryPolicyDetails()
+        // orgSecurityPolicy: OrgSecurityPolicy!
+        internal void InitQueryOrgSecurityPolicy()
         {
             Tuple<string, string>[] argDefs = {
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryPolicyDetails",
+                "QueryOrgSecurityPolicy",
                 "",
-                "PolicyDetailConnection",
-                Query.PolicyDetails_ObjectFieldSpec,
-                Query.PolicyDetailsFieldSpec,
+                "OrgSecurityPolicy",
+                Query.OrgSecurityPolicy_ObjectFieldSpec,
+                Query.OrgSecurityPolicyFieldSpec,
                 @""
             );
         }
 
         // Create new GraphQL Query:
-        // policyObj(snappableFid: String!, snapshotFid: String!, includeWhitelistedResults: Boolean): PolicyObj!
-        internal void InitQueryPolicyObj()
+        // passwordComplexityPolicy: PasswordComplexityPolicy!
+        internal void InitQueryPasswordComplexityPolicy()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("snappableFid", "String!"),
-                Tuple.Create("snapshotFid", "String!"),
-                Tuple.Create("includeWhitelistedResults", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryPolicyObj",
-                "($snappableFid: String!,$snapshotFid: String!,$includeWhitelistedResults: Boolean)",
-                "PolicyObj",
-                Query.PolicyObj_ObjectFieldSpec,
-                Query.PolicyObjFieldSpec,
-                @"# REQUIRED
-$query.Var.snappableFid = $someString
-# REQUIRED
-$query.Var.snapshotFid = $someString
-# OPTIONAL
-$query.Var.includeWhitelistedResults = $someBoolean"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
-        internal void InitQueryPolicyObjectUsages()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("objectIds", "[String!]!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryPolicyObjectUsages",
-                "($objectIds: [String!]!)",
-                "PolicyObjectUsageConnection",
-                Query.PolicyObjectUsages_ObjectFieldSpec,
-                Query.PolicyObjectUsagesFieldSpec,
-                @"# REQUIRED
-$query.Var.objectIds = @(
-	$someString
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // policyObjs(
-        //     day: String!
-        //     timezone: String!
-        //     workloadTypes: [DataGovObjectType!]! = []
-        //     sortBy: String
-        //     sortOrder: SortOrder
-        //     analysisStatusesFilter: [AnalysisStatus!]
-        //     policyIdsFilter: [String!]
-        //     riskLevelsFilter: [RiskLevelType!]
-        //     clusterIdsFilter: [String!]
-        //     searchObjectName: String
-        //     subscriptionIdsFilter: [String!]
-        //     includeWhitelistedResults: Boolean
-        //     sids: [String!]
-        //     insightsMetadataId: String
-        //     includeInsightsMarker: Boolean
-        //     userAccessObjectsFilter: Boolean! = false
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): PolicyObjConnection!
-        internal void InitQueryPolicyObjs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("day", "String!"),
-                Tuple.Create("timezone", "String!"),
-                Tuple.Create("workloadTypes", "[DataGovObjectType!]!"),
-                Tuple.Create("sortBy", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("analysisStatusesFilter", "[AnalysisStatus!]"),
-                Tuple.Create("policyIdsFilter", "[String!]"),
-                Tuple.Create("riskLevelsFilter", "[RiskLevelType!]"),
-                Tuple.Create("clusterIdsFilter", "[String!]"),
-                Tuple.Create("searchObjectName", "String"),
-                Tuple.Create("subscriptionIdsFilter", "[String!]"),
-                Tuple.Create("includeWhitelistedResults", "Boolean"),
-                Tuple.Create("sids", "[String!]"),
-                Tuple.Create("insightsMetadataId", "String"),
-                Tuple.Create("includeInsightsMarker", "Boolean"),
-                Tuple.Create("userAccessObjectsFilter", "Boolean!"),
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryPolicyObjs",
-                "($day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$sortBy: String,$sortOrder: SortOrder,$analysisStatusesFilter: [AnalysisStatus!],$policyIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$clusterIdsFilter: [String!],$searchObjectName: String,$subscriptionIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sids: [String!],$insightsMetadataId: String,$includeInsightsMarker: Boolean,$userAccessObjectsFilter: Boolean!,$first: Int,$after: String,$last: Int,$before: String)",
-                "PolicyObjConnection",
-                Query.PolicyObjs_ObjectFieldSpec,
-                Query.PolicyObjsFieldSpec,
-                @"# REQUIRED
-$query.Var.day = $someString
-# REQUIRED
-$query.Var.timezone = $someString
-# REQUIRED
-$query.Var.workloadTypes = @(
-	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
-)
-# OPTIONAL
-$query.Var.sortBy = $someString
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.analysisStatusesFilter = @(
-	$someAnalysisStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalysisStatus]) for enum values.
-)
-# OPTIONAL
-$query.Var.policyIdsFilter = @(
-	$someString
-)
-# OPTIONAL
-$query.Var.riskLevelsFilter = @(
-	$someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
-)
-# OPTIONAL
-$query.Var.clusterIdsFilter = @(
-	$someString
-)
-# OPTIONAL
-$query.Var.searchObjectName = $someString
-# OPTIONAL
-$query.Var.subscriptionIdsFilter = @(
-	$someString
-)
-# OPTIONAL
-$query.Var.includeWhitelistedResults = $someBoolean
-# OPTIONAL
-$query.Var.sids = @(
-	$someString
-)
-# OPTIONAL
-$query.Var.insightsMetadataId = $someString
-# OPTIONAL
-$query.Var.includeInsightsMarker = $someBoolean
-# REQUIRED
-$query.Var.userAccessObjectsFilter = $someBoolean
-# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
+                "QueryPasswordComplexityPolicy",
+                "",
+                "PasswordComplexityPolicy",
+                Query.PasswordComplexityPolicy_ObjectFieldSpec,
+                Query.PasswordComplexityPolicyFieldSpec,
+                @""
             );
         }
 
@@ -727,6 +534,56 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
+        internal void InitQueryPolicyObjectUsages()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("objectIds", "[String!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryPolicyObjectUsages",
+                "($objectIds: [String!]!)",
+                "PolicyObjectUsageConnection",
+                Query.PolicyObjectUsages_ObjectFieldSpec,
+                Query.PolicyObjectUsagesFieldSpec,
+                @"# REQUIRED
+$query.Var.objectIds = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allTopRiskPolicySummaries(getWhitelistedResults: Boolean!, limit: Int! = 0, workloadTypes: [DataGovObjectType!]! = []): [PolicySummary!]!
+        internal void InitQueryAllTopRiskPolicySummaries()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("getWhitelistedResults", "Boolean!"),
+                Tuple.Create("limit", "Int!"),
+                Tuple.Create("workloadTypes", "[DataGovObjectType!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllTopRiskPolicySummaries",
+                "($getWhitelistedResults: Boolean!,$limit: Int!,$workloadTypes: [DataGovObjectType!]!)",
+                "List<PolicySummary>",
+                Query.AllTopRiskPolicySummaries_ObjectFieldSpec,
+                Query.AllTopRiskPolicySummariesFieldSpec,
+                @"# REQUIRED
+$query.Var.getWhitelistedResults = $someBoolean
+# REQUIRED
+$query.Var.limit = $someInt
+# REQUIRED
+$query.Var.workloadTypes = @(
+	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
+)"
             );
         }
 

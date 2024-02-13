@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 24
     /// operations in the 'Microsoft Hyper-V' API domain:
-    /// BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
+    /// BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InplaceExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
     /// </summary>
     /// <description>
     /// New-RscMutationHyperv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 24 operations
     /// in the 'Microsoft Hyper-V' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
+    /// one of: BatchExportVm, BatchInstantRecoverVm, BatchMountVm, BatchOnDemandBackupVm, CreateVirtualMachineSnapshotMount, DeleteAllSnapshots, DeleteVirtualMachineSnapshot, DeleteVirtualMachineSnapshotMount, DownloadSnapshotFromLocation, DownloadVirtualMachineSnapshot, DownloadVirtualMachineSnapshotFiles, ExportVirtualMachine, InplaceExportVirtualMachine, InstantRecoverVirtualMachineSnapshot, OnDemandSnapshot, RefreshScvmm, RefreshServer, RegisterAgentVirtualMachine, RegisterScvmm, RestoreVirtualMachineSnapshotFiles, ScvmmDelete, ScvmmUpdate, UpdateVirtualMachine, or UpdateVirtualMachineSnapshotMount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -604,6 +604,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the InplaceExportVirtualMachine operation
+    /// of the 'Microsoft Hyper-V' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: InplaceExportVirtualMachine
+    /// 
+    /// $query = New-RscMutationHyperv -InplaceExportVirtualMachine
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		exportVmPath = $someString
+    /// 		# OPTIONAL
+    /// 		hostId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldKeepHypervSnapshotAfterRecovery = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldKeepHypervVmCopyAfterRecovery = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the InstantRecoverVirtualMachineSnapshot operation
     /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
@@ -1039,6 +1081,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DownloadVirtualMachineSnapshot",
                 "DownloadVirtualMachineSnapshotFiles",
                 "ExportVirtualMachine",
+                "InplaceExportVirtualMachine",
                 "InstantRecoverVirtualMachineSnapshot",
                 "OnDemandSnapshot",
                 "RefreshScvmm",
@@ -1100,6 +1143,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExportVirtualMachine":
                         this.ProcessRecord_ExportVirtualMachine();
+                        break;
+                    case "InplaceExportVirtualMachine":
+                        this.ProcessRecord_InplaceExportVirtualMachine();
                         break;
                     case "InstantRecoverVirtualMachineSnapshot":
                         this.ProcessRecord_InstantRecoverVirtualMachineSnapshot();
@@ -1250,6 +1296,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExportVirtualMachine";
             // Create new graphql operation exportHypervVirtualMachine
             InitMutationExportHypervVirtualMachine();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // inplaceExportHypervVirtualMachine.
+        internal void ProcessRecord_InplaceExportVirtualMachine()
+        {
+            this._logger.name += " -InplaceExportVirtualMachine";
+            // Create new graphql operation inplaceExportHypervVirtualMachine
+            InitMutationInplaceExportHypervVirtualMachine();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1776,6 +1831,40 @@ $query.Var.input = @{
 		vmName = $someString
 		# REQUIRED
 		path = $someString
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // inplaceExportHypervVirtualMachine(input: InplaceExportHypervVirtualMachineInput!): AsyncRequestStatus!
+        internal void InitMutationInplaceExportHypervVirtualMachine()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "InplaceExportHypervVirtualMachineInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationInplaceExportHypervVirtualMachine",
+                "($input: InplaceExportHypervVirtualMachineInput!)",
+                "AsyncRequestStatus",
+                Mutation.InplaceExportHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.InplaceExportHypervVirtualMachineFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		exportVmPath = $someString
+		# OPTIONAL
+		hostId = $someString
+		# OPTIONAL
+		shouldKeepHypervSnapshotAfterRecovery = $someBoolean
+		# OPTIONAL
+		shouldKeepHypervVmCopyAfterRecovery = $someBoolean
 	}
 	# REQUIRED
 	id = $someString

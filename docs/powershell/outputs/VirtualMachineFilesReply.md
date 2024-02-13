@@ -13,4 +13,4 @@ List of Virtual Machine file info.
 - nextCursor: System.String
   - Supported in v9.0+
   v9.0: Cursor to fetch the next set of results.
-  v9.1: Cursor to retrieve the next set of results.
+  v9.1+: Cursor to retrieve the next set of results.

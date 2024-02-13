@@ -27,11 +27,14 @@ namespace RubrikSecurityCloud.Types
         public CloudAccountFeature? Feature { get; set; }
 
         //      C# -> System.Int32? Version
-        // GraphQL -> version: Int! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> version: Int (scalar)
         [JsonProperty("version")]
         public System.Int32? Version { get; set; }
+
+        //      C# -> List<PermissionsGroupWithVersionInput>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersionInput!] (input)
+        [JsonProperty("permissionsGroupVersions")]
+        public List<PermissionsGroupWithVersionInput>? PermissionsGroupVersions { get; set; }
 
 
         #endregion

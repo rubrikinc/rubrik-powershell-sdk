@@ -58,6 +58,16 @@ Get summary of all the Hyper-V hosts.
 
 - There is a single argument of type QueryHypervHostInput.
 - Returns HypervHostSummaryListResponse.
+### serverspaginated
+Paginated list of Hyper-V Servers.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns HypervServerConnection.
 ### topleveldescendants
 Paginated list of the highest-level HyperV Objects accessible by the current user.
 

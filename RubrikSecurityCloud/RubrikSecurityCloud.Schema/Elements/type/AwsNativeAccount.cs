@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig! (type)
+        [JsonProperty("applicationCloudAccountExoConfigs")]
+        public ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs { get; set; }
+
         //      C# -> AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes
         // GraphQL -> awsNativeEbsVolumes: AwsNativeEbsVolumeConnection! (type)
         [JsonProperty("awsNativeEbsVolumes")]
@@ -185,6 +190,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? S3BucketCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
+        ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs = null,
         AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes = null,
         AwsNativeEc2InstanceConnection? AwsNativeEc2Instances = null,
         AwsNativeRdsInstanceConnection? AwsNativeRdsInstances = null,
@@ -251,6 +257,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( ApplicationCloudAccountExoConfigs != null ) {
+            this.ApplicationCloudAccountExoConfigs = ApplicationCloudAccountExoConfigs;
         }
         if ( AwsNativeEbsVolumes != null ) {
             this.AwsNativeEbsVolumes = AwsNativeEbsVolumes;
@@ -470,6 +479,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig! (type)
+        if (this.ApplicationCloudAccountExoConfigs != null) {
+            var fspec = this.ApplicationCloudAccountExoConfigs.AsFieldSpec(conf.Child("applicationCloudAccountExoConfigs"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "applicationCloudAccountExoConfigs {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -921,6 +942,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> ApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig! (type)
+        if (ec.Includes("applicationCloudAccountExoConfigs",false))
+        {
+            if(this.ApplicationCloudAccountExoConfigs == null) {
+
+                this.ApplicationCloudAccountExoConfigs = new ApplicationCloudAccountToExocomputeConfig();
+                this.ApplicationCloudAccountExoConfigs.ApplyExploratoryFieldSpec(ec.NewChild("applicationCloudAccountExoConfigs"));
+
+            } else {
+
+                this.ApplicationCloudAccountExoConfigs.ApplyExploratoryFieldSpec(ec.NewChild("applicationCloudAccountExoConfigs"));
+
+            }
+        }
+        else if (this.ApplicationCloudAccountExoConfigs != null && ec.Excludes("applicationCloudAccountExoConfigs",false))
+        {
+            this.ApplicationCloudAccountExoConfigs = null;
         }
         //      C# -> AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes
         // GraphQL -> awsNativeEbsVolumes: AwsNativeEbsVolumeConnection! (type)

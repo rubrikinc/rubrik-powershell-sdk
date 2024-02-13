@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        [JsonProperty("hostname")]
+        public System.String? Hostname { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -170,6 +175,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? Hostname = null,
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -215,6 +221,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( Hostname != null ) {
+            this.Hostname = Hostname;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -377,6 +386,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -757,6 +775,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
         {
             this.ReplicatedObjects = null;
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (ec.Includes("hostname",true))
+        {
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

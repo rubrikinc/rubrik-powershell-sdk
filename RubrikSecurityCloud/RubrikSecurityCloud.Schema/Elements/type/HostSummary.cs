@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlCbtEnabled")]
         public MssqlCbtStatusType? MssqlCbtEnabled { get; set; }
 
+        //      C# -> HostRbsConnectionStatus? StatusEnum
+        // GraphQL -> statusEnum: HostRbsConnectionStatus (enum)
+        [JsonProperty("statusEnum")]
+        public HostRbsConnectionStatus? StatusEnum { get; set; }
+
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        [JsonProperty("agentId")]
+        public System.String? AgentId { get; set; }
+
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)
         [JsonProperty("alias")]
@@ -112,6 +122,8 @@ namespace RubrikSecurityCloud.Types
     public HostSummary Set(
         MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus = null,
         MssqlCbtStatusType? MssqlCbtEnabled = null,
+        HostRbsConnectionStatus? StatusEnum = null,
+        System.String? AgentId = null,
         System.String? Alias = null,
         System.String? Hostname = null,
         System.String? Id = null,
@@ -133,6 +145,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MssqlCbtEnabled != null ) {
             this.MssqlCbtEnabled = MssqlCbtEnabled;
+        }
+        if ( StatusEnum != null ) {
+            this.StatusEnum = StatusEnum;
+        }
+        if ( AgentId != null ) {
+            this.AgentId = AgentId;
         }
         if ( Alias != null ) {
             this.Alias = Alias;
@@ -203,6 +221,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mssqlCbtEnabled\n" ;
             } else {
                 s += ind + "mssqlCbtEnabled\n" ;
+            }
+        }
+        //      C# -> HostRbsConnectionStatus? StatusEnum
+        // GraphQL -> statusEnum: HostRbsConnectionStatus (enum)
+        if (this.StatusEnum != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "statusEnum\n" ;
+            } else {
+                s += ind + "statusEnum\n" ;
+            }
+        }
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        if (this.AgentId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "agentId\n" ;
+            } else {
+                s += ind + "agentId\n" ;
             }
         }
         //      C# -> System.String? Alias
@@ -377,6 +413,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlCbtEnabled != null && ec.Excludes("mssqlCbtEnabled",true))
         {
             this.MssqlCbtEnabled = null;
+        }
+        //      C# -> HostRbsConnectionStatus? StatusEnum
+        // GraphQL -> statusEnum: HostRbsConnectionStatus (enum)
+        if (ec.Includes("statusEnum",true))
+        {
+            if(this.StatusEnum == null) {
+
+                this.StatusEnum = new HostRbsConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StatusEnum != null && ec.Excludes("statusEnum",true))
+        {
+            this.StatusEnum = null;
+        }
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        if (ec.Includes("agentId",true))
+        {
+            if(this.AgentId == null) {
+
+                this.AgentId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentId != null && ec.Excludes("agentId",true))
+        {
+            this.AgentId = null;
         }
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)

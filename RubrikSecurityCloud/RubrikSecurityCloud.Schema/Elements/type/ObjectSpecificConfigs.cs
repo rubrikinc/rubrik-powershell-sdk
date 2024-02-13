@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleConfig")]
         public OracleConfig? OracleConfig { get; set; }
 
+        //      C# -> PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig
+        // GraphQL -> postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig (type)
+        [JsonProperty("postgresDbClusterSlaConfig")]
+        public PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig { get; set; }
+
         //      C# -> SapHanaConfig? SapHanaConfig
         // GraphQL -> sapHanaConfig: SapHanaConfig (type)
         [JsonProperty("sapHanaConfig")]
@@ -100,6 +105,7 @@ namespace RubrikSecurityCloud.Types
         MongoConfig? MongoConfig = null,
         MssqlConfig? MssqlConfig = null,
         OracleConfig? OracleConfig = null,
+        PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig = null,
         SapHanaConfig? SapHanaConfig = null,
         VmwareVmConfig? VmwareVmConfig = null
     ) 
@@ -133,6 +139,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OracleConfig != null ) {
             this.OracleConfig = OracleConfig;
+        }
+        if ( PostgresDbClusterSlaConfig != null ) {
+            this.PostgresDbClusterSlaConfig = PostgresDbClusterSlaConfig;
         }
         if ( SapHanaConfig != null ) {
             this.SapHanaConfig = SapHanaConfig;
@@ -268,6 +277,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "oracleConfig {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig
+        // GraphQL -> postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig (type)
+        if (this.PostgresDbClusterSlaConfig != null) {
+            var fspec = this.PostgresDbClusterSlaConfig.AsFieldSpec(conf.Child("postgresDbClusterSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "postgresDbClusterSlaConfig {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -491,6 +512,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OracleConfig != null && ec.Excludes("oracleConfig",false))
         {
             this.OracleConfig = null;
+        }
+        //      C# -> PostgresDbClusterSlaConfig? PostgresDbClusterSlaConfig
+        // GraphQL -> postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig (type)
+        if (ec.Includes("postgresDbClusterSlaConfig",false))
+        {
+            if(this.PostgresDbClusterSlaConfig == null) {
+
+                this.PostgresDbClusterSlaConfig = new PostgresDbClusterSlaConfig();
+                this.PostgresDbClusterSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("postgresDbClusterSlaConfig"));
+
+            } else {
+
+                this.PostgresDbClusterSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("postgresDbClusterSlaConfig"));
+
+            }
+        }
+        else if (this.PostgresDbClusterSlaConfig != null && ec.Excludes("postgresDbClusterSlaConfig",false))
+        {
+            this.PostgresDbClusterSlaConfig = null;
         }
         //      C# -> SapHanaConfig? SapHanaConfig
         // GraphQL -> sapHanaConfig: SapHanaConfig (type)

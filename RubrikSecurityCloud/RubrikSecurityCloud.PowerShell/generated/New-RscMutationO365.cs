@@ -640,6 +640,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	redirectUrl = $someString
     /// 	# REQUIRED
     /// 	resourceNaturalId = $someString
+    /// 	# OPTIONAL
+    /// 	resourceId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -673,6 +675,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	orgId = $someString
     /// 	# REQUIRED
     /// 	appType = $someString
+    /// 	# OPTIONAL
+    /// 	resourceId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -973,6 +977,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			spObjectToRestore = @{
     /// 				# REQUIRED
     /// 				objectSharepointId = $someString
+    /// 				# OPTIONAL
+    /// 				objectId = $someString
     /// 				# REQUIRED
     /// 				objectName = $someString
     /// 				# OPTIONAL
@@ -988,6 +994,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			spItemsToRestore = @{
     /// 				# REQUIRED
     /// 				sharepointId = $someString
+    /// 				# OPTIONAL
+    /// 				objectId = $someString
     /// 				# OPTIONAL
     /// 				snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
     /// 				# REQUIRED
@@ -1383,6 +1391,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		inplaceRestoreConfig = @{
     /// 			# REQUIRED
     /// 			nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		failedItemsRecoveryConfig = @{
+    /// 			# REQUIRED
+    /// 			failedItemsInstanceId = $someString
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -2759,6 +2772,8 @@ $query.Var.input = @{
 	redirectUrl = $someString
 	# REQUIRED
 	resourceNaturalId = $someString
+	# OPTIONAL
+	resourceId = $someString
 }"
             );
         }
@@ -2784,6 +2799,8 @@ $query.Var.input = @{
 	orgId = $someString
 	# REQUIRED
 	appType = $someString
+	# OPTIONAL
+	resourceId = $someString
 }"
             );
         }
@@ -3052,6 +3069,8 @@ $query.Var.input = @{
 			spObjectToRestore = @{
 				# REQUIRED
 				objectSharepointId = $someString
+				# OPTIONAL
+				objectId = $someString
 				# REQUIRED
 				objectName = $someString
 				# OPTIONAL
@@ -3067,6 +3086,8 @@ $query.Var.input = @{
 			spItemsToRestore = @{
 				# REQUIRED
 				sharepointId = $someString
+				# OPTIONAL
+				objectId = $someString
 				# OPTIONAL
 				snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
 				# REQUIRED
@@ -3462,6 +3483,11 @@ $query.Var.input = @{
 		inplaceRestoreConfig = @{
 			# REQUIRED
 			nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+		}
+		# OPTIONAL
+		failedItemsRecoveryConfig = @{
+			# REQUIRED
+			failedItemsInstanceId = $someString
 		}
 	}
 	# REQUIRED

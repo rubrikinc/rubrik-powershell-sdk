@@ -15,3 +15,5 @@ Specifies the password policy to be used by the organization.
   - Policy for controlling password reuse.
 - passwordExpirationPolicy: PasswordComplexityPolicyTemplateInput
   - Policy for controlling password expiration.
+- leakedDetectionPolicy: PasswordComplexityPolicyTemplateInput
+  - Policy for controlling leaked password detection.

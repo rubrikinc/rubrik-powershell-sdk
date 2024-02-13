@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <summary>
     /// Create a new RscQuery object for any of the 4
     /// operations in the 'RCS' API domain:
-    /// CreateAutomaticTargetMapping, CreateReaderTarget, CreateTarget, or UpdateAutomaticTargetMapping.
+    /// CreateAutomaticRcsTargetMapping, CreateRcsReaderTarget, CreateRcsTarget, or UpdateRcsAutomaticTargetMapping.
     /// </summary>
     /// <description>
     /// New-RscMutationRcs creates a new
@@ -39,11 +39,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// in the 'RCS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateAutomaticTargetMapping, CreateReaderTarget, CreateTarget, or UpdateAutomaticTargetMapping.
+    /// one of: CreateAutomaticRcsTargetMapping, CreateRcsReaderTarget, CreateRcsTarget, or UpdateRcsAutomaticTargetMapping.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationRcs -CreateAutomaticTargetMapping).Info().
+    /// (New-RscMutationRcs -CreateAutomaticRcsTargetMapping).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,14 +70,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationRcs -CreateAutomaticTargetMapping).Info().
+    /// (New-RscMutationRcs -CreateAutomaticRcsTargetMapping).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
     ///
     /// <example>
-    /// Runs the CreateAutomaticTargetMapping operation
+    /// Runs the CreateAutomaticRcsTargetMapping operation
     /// of the 'RCS' API domain.
     /// <code>
     /// PS &gt;
@@ -85,9 +85,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Rcs
-    /// # API Operation: CreateAutomaticTargetMapping
+    /// # API Operation: CreateAutomaticRcsTargetMapping
     /// 
-    /// $query = New-RscMutationRcs -CreateAutomaticTargetMapping
+    /// $query = New-RscMutationRcs -CreateAutomaticRcsTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CreateReaderTarget operation
+    /// Runs the CreateRcsReaderTarget operation
     /// of the 'RCS' API domain.
     /// <code>
     /// PS &gt;
@@ -141,9 +141,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Rcs
-    /// # API Operation: CreateReaderTarget
+    /// # API Operation: CreateRcsReaderTarget
     /// 
-    /// $query = New-RscMutationRcs -CreateReaderTarget
+    /// $query = New-RscMutationRcs -CreateRcsReaderTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -170,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CreateTarget operation
+    /// Runs the CreateRcsTarget operation
     /// of the 'RCS' API domain.
     /// <code>
     /// PS &gt;
@@ -178,9 +178,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Rcs
-    /// # API Operation: CreateTarget
+    /// # API Operation: CreateRcsTarget
     /// 
-    /// $query = New-RscMutationRcs -CreateTarget
+    /// $query = New-RscMutationRcs -CreateRcsTarget
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -217,7 +217,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateAutomaticTargetMapping operation
+    /// Runs the UpdateRcsAutomaticTargetMapping operation
     /// of the 'RCS' API domain.
     /// <code>
     /// PS &gt;
@@ -225,9 +225,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Rcs
-    /// # API Operation: UpdateAutomaticTargetMapping
+    /// # API Operation: UpdateRcsAutomaticTargetMapping
     /// 
-    /// $query = New-RscMutationRcs -UpdateAutomaticTargetMapping
+    /// $query = New-RscMutationRcs -UpdateRcsAutomaticTargetMapping
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -273,10 +273,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "CreateAutomaticTargetMapping",
-                "CreateReaderTarget",
-                "CreateTarget",
-                "UpdateAutomaticTargetMapping",
+                "CreateAutomaticRcsTargetMapping",
+                "CreateRcsReaderTarget",
+                "CreateRcsTarget",
+                "UpdateRcsAutomaticTargetMapping",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -292,17 +292,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "CreateAutomaticTargetMapping":
-                        this.ProcessRecord_CreateAutomaticTargetMapping();
+                    case "CreateAutomaticRcsTargetMapping":
+                        this.ProcessRecord_CreateAutomaticRcsTargetMapping();
                         break;
-                    case "CreateReaderTarget":
-                        this.ProcessRecord_CreateReaderTarget();
+                    case "CreateRcsReaderTarget":
+                        this.ProcessRecord_CreateRcsReaderTarget();
                         break;
-                    case "CreateTarget":
-                        this.ProcessRecord_CreateTarget();
+                    case "CreateRcsTarget":
+                        this.ProcessRecord_CreateRcsTarget();
                         break;
-                    case "UpdateAutomaticTargetMapping":
-                        this.ProcessRecord_UpdateAutomaticTargetMapping();
+                    case "UpdateRcsAutomaticTargetMapping":
+                        this.ProcessRecord_UpdateRcsAutomaticTargetMapping();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -316,36 +316,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAutomaticRcsTargetMapping.
-        internal void ProcessRecord_CreateAutomaticTargetMapping()
+        internal void ProcessRecord_CreateAutomaticRcsTargetMapping()
         {
-            this._logger.name += " -CreateAutomaticTargetMapping";
+            this._logger.name += " -CreateAutomaticRcsTargetMapping";
             // Create new graphql operation createAutomaticRcsTargetMapping
             InitMutationCreateAutomaticRcsTargetMapping();
         }
 
         // This parameter set invokes a single graphql operation:
         // createRcsReaderTarget.
-        internal void ProcessRecord_CreateReaderTarget()
+        internal void ProcessRecord_CreateRcsReaderTarget()
         {
-            this._logger.name += " -CreateReaderTarget";
+            this._logger.name += " -CreateRcsReaderTarget";
             // Create new graphql operation createRcsReaderTarget
             InitMutationCreateRcsReaderTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // createRcsTarget.
-        internal void ProcessRecord_CreateTarget()
+        internal void ProcessRecord_CreateRcsTarget()
         {
-            this._logger.name += " -CreateTarget";
+            this._logger.name += " -CreateRcsTarget";
             // Create new graphql operation createRcsTarget
             InitMutationCreateRcsTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateRcsAutomaticTargetMapping.
-        internal void ProcessRecord_UpdateAutomaticTargetMapping()
+        internal void ProcessRecord_UpdateRcsAutomaticTargetMapping()
         {
-            this._logger.name += " -UpdateAutomaticTargetMapping";
+            this._logger.name += " -UpdateRcsAutomaticTargetMapping";
             // Create new graphql operation updateRcsAutomaticTargetMapping
             InitMutationUpdateRcsAutomaticTargetMapping();
         }

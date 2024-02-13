@@ -26,11 +26,14 @@ Supported in v5.1+
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - 
 - folderId: System.String
-  - ID of the virtual machine folder to export the new virtual machine to.
+  - Supported in v9.1+
+      ID of the virtual machine folder to export the new virtual machine to.
 - contentLibraryId: System.String
-  - ID of the content library to which the new content library item is being exported.
+  - Supported in v9.1+
+      ID of the content library to which the new content library item is being exported.
 - shouldConvertToTemplate: System.Boolean
-  - Specifies whether Export converts the recovered virtual machine to a template.
+  - Supported in v9.1+
+      Specifies whether Export converts the recovered virtual machine to a template.
 - datastoreId: System.String
   - Required. Supported in v5.1+
       ID of the datastore to assign to the exported virtual machine.

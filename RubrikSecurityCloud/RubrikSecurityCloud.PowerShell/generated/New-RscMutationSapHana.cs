@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'SAP HANA' API domain:
-    /// AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
+    /// AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
     /// </summary>
     /// <description>
     /// New-RscMutationSapHana creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'SAP HANA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
+    /// one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -199,6 +199,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # API Operation: CreateOnDemandBackup
     /// 
     /// $query = New-RscMutationSapHana -CreateOnDemandBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateOnDemandStorageSnapshot operation
+    /// of the 'SAP HANA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    SapHana
+    /// # API Operation: CreateOnDemandStorageSnapshot
+    /// 
+    /// $query = New-RscMutationSapHana -CreateOnDemandStorageSnapshot
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
@@ -475,6 +511,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddSystem",
                 "ConfigureRestore",
                 "CreateOnDemandBackup",
+                "CreateOnDemandStorageSnapshot",
                 "CreateSystemRefresh",
                 "DeleteDbSnapshot",
                 "DeleteSystem",
@@ -504,6 +541,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateOnDemandBackup":
                         this.ProcessRecord_CreateOnDemandBackup();
+                        break;
+                    case "CreateOnDemandStorageSnapshot":
+                        this.ProcessRecord_CreateOnDemandStorageSnapshot();
                         break;
                     case "CreateSystemRefresh":
                         this.ProcessRecord_CreateSystemRefresh();
@@ -558,6 +598,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateOnDemandBackup";
             // Create new graphql operation createOnDemandSapHanaBackup
             InitMutationCreateOnDemandSapHanaBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createOnDemandSapHanaStorageSnapshot.
+        internal void ProcessRecord_CreateOnDemandStorageSnapshot()
+        {
+            this._logger.name += " -CreateOnDemandStorageSnapshot";
+            // Create new graphql operation createOnDemandSapHanaStorageSnapshot
+            InitMutationCreateOnDemandSapHanaStorageSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -725,6 +774,34 @@ $query.Var.input = @{
                 "AsyncRequestStatus",
                 Mutation.CreateOnDemandSapHanaBackup_ObjectFieldSpec,
                 Mutation.CreateOnDemandSapHanaBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createOnDemandSapHanaStorageSnapshot(input: CreateOnDemandSapHanaStorageSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationCreateOnDemandSapHanaStorageSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateOnDemandSapHanaStorageSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateOnDemandSapHanaStorageSnapshot",
+                "($input: CreateOnDemandSapHanaStorageSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandSapHanaStorageSnapshot_ObjectFieldSpec,
+                Mutation.CreateOnDemandSapHanaStorageSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL

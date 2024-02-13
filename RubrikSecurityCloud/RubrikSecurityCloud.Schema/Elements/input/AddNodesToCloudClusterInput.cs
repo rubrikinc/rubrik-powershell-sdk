@@ -24,11 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numberOfNodes")]
         public System.Int32? NumberOfNodes { get; set; }
 
-        //      C# -> System.Boolean? ShouldKeepResourcesOnFailure
-        // GraphQL -> shouldKeepResourcesOnFailure: Boolean (scalar)
-        [JsonProperty("shouldKeepResourcesOnFailure")]
-        public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
-
         //      C# -> System.String? AwsImageId
         // GraphQL -> awsImageId: String (scalar)
         [JsonProperty("awsImageId")]
@@ -59,6 +54,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
+        //      C# -> System.Boolean? ShouldKeepResourcesOnFailure
+        // GraphQL -> shouldKeepResourcesOnFailure: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldKeepResourcesOnFailure")]
+        public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
 
 
         #endregion

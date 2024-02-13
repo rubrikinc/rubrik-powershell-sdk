@@ -1,15 +1,22 @@
 ### NutanixFileServerParametersInput
-API credentials to add or update the Nutanix File Server with API integration. Also contains credentials for SMB share access.
+Supported in v8.1+
+  API credentials to add or update the Nutanix File Server with API integration. Also contains credentials for SMB share access.
 
 - apiCertificate: System.String
-  - TLS certification to validate the NAS system.
+  - Supported in v8.1+
+      TLS certification to validate the NAS system.
 - certificateId: System.String
-  - ID corresponding to the imported certificate.
+  - Supported in v8.1+
+      ID corresponding to the imported certificate.
 - smbCredentials: GenericNasSystemCredentialsInput
-  - Credentials to access SMB shares.
+  - Supported in v8.1+
+      Credentials to access SMB shares.
 - apiPassword: System.String
-  - Password associated with the NAS API user account.
+  - Supported in v8.1+
+      Password associated with the NAS API user account.
 - apiUsername: System.String
-  - Username to access the vendor-specific NAS API.
+  - Supported in v8.1+
+      Username to access the vendor-specific NAS API.
 - hasSmbSupport: System.Boolean
-  - Required. Specifies whether to enable SMB for the NAS system.
+  - Required. Supported in v8.1+
+      Specifies whether to enable SMB for the NAS system.

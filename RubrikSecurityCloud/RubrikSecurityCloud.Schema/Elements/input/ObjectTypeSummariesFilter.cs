@@ -24,10 +24,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("policyId")]
         public System.String? PolicyId { get; set; }
 
-        //      C# -> DataGovObjectType? ObjectType
-        // GraphQL -> objectType: DataGovObjectType (enum)
-        [JsonProperty("objectType")]
-        public DataGovObjectType? ObjectType { get; set; }
+        //      C# -> List<DataGovObjectType>? ObjectTypes
+        // GraphQL -> objectTypes: [DataGovObjectType!] (enum)
+        [JsonProperty("objectTypes")]
+        public List<DataGovObjectType>? ObjectTypes { get; set; }
 
 
         #endregion

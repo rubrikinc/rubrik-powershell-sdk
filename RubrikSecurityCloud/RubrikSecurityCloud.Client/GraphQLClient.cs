@@ -90,6 +90,14 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
         private ClientToken _clientToken;
 
+        public string AccessToken
+        {
+            get
+            {
+                return _clientToken.AccessToken;
+            }
+        }
+
         private string GetGraphQLQuery(string queryName)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -212,15 +220,12 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             HttpResponseMessage response = await apiClient.DeleteAsync("api/session").ConfigureAwait(false);
 
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                this.AuthenticationState = AuthenticationState.NOT_AUTHORIZED;
-                return;
+                Console.WriteLine($"Call DELETE to \"api/session\" failed with : {response.ReasonPhrase}");
             }
-            else
-            {
-                throw new Exception($"Call DELETE to \"api/session\" failed with : {response.ReasonPhrase}");
-            }
+
+            this.AuthenticationState = AuthenticationState.NOT_AUTHORIZED;
         }
 
         private async Task<T> InvokeGraphQLQuery<T>(

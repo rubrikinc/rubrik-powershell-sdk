@@ -55,3 +55,5 @@ Regions for Azure.
 - QATAR_CENTRAL - Azure region is Qatar Central.
 - SWEDEN_CENTRAL - Azure region is Sweden Central.
 - POLAND_CENTRAL - Azure region is Poland Central.
+- ISRAEL_CENTRAL - Azure region is Israel Central.
+- ITALY_NORTH - Azure region is Italy North.

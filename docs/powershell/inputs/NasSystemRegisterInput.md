@@ -11,9 +11,9 @@ Supported in v7.0+
 - nasTmpApiCredentials: NasApiCredentialsInput
   - Supported in v7.0+
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
-  - Supported in v9.0+
+  - Supported in v8.1+
 - nutanixFileServerParameters: NutanixFileServerParametersInput
-  - 
+  - Supported in v8.1+
 - nasVendorType: NasVendorType
   - Required. Supported in v7.0+
 - hostname: System.String

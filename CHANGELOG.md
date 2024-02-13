@@ -1,5 +1,45 @@
 # Changelog
 
+## Version 0.23
+
+New Features:
+
+- Get cmdlets for SLAs and vSphere VMs
+  [From PR 27](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/27)
+  [From PR 33](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/33)
+- MsSql cmdlets
+  [From PR 30](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/30)
+
+## Version 0.22
+
+New Features:
+
+- New _Archival_ API Domain:
+  `New-RscQueryArchival` and `New-RscMutationArchival`.
+- New _Cross Account_ API Domain:
+  `New-RscQueryCrossAccount` and `New-RscMutationCrossAccount`.
+- New _Syslog_ API Domain:
+  `New-RscQuerySyslog` and `New-RscMutationSyslog`.
+
+Fixes:
+
+- Fixed issue with sharing connection with nested powershell scripts.
+
+Breaking Changes:
+
+- The _Cluster_ API Domain became too large and was split into 2 domains:
+  _Cluster_ and _Failover Cluster_. See:
+  `New-RscQueryFailoverCluster` and `New-RscMutationFailoverCluster`.
+
+## Version 0.21
+
+Fixes:
+
+- Fixed bug in `New-RscQuery` and `New-RscMutation` that caused
+  GraphQL operations that were not associated with an API domain
+  to fail. All GraphQL operations that were not associated with
+  an API domain are now associated with the `Misc` domain.
+
 ## Version 0.20
 
 New Features:

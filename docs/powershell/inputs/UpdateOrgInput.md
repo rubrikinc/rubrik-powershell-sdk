@@ -30,6 +30,8 @@ Update organization details.
 - newSsoGroups: list of NewSsoGroupInputs
   - New SSO groups to be authorized for this tenant organization.
 - isServiceAccountEnabled: System.Boolean
-  - Specifies if service accounts are enabled for this organization.
+  - Deprecated. Use isServiceAccountDisabled instead.
+- isServiceAccountDisabled: System.Boolean
+  - Specifies whether service accounts are not enabled for this organization.
 - crossAccountCapabilities: list of CrossAccountCapabilitys
   - Specifies cross-account capabilities enabled for this organization.

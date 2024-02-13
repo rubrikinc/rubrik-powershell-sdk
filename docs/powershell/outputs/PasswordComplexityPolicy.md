@@ -15,3 +15,5 @@ Represents the password complexity policy that applies when users in the organiz
   - Policy for controlling password reuse.
 - passwordExpirationPolicy: PasswordComplexityPolicyTemplate
   - Policy for controlling password expiration.
+- leakedDetectionPolicy: PasswordComplexityPolicyTemplate
+  - Policy for controlling leaked password detection.

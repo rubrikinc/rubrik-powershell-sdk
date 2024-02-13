@@ -7,3 +7,5 @@ Lists of entities and their Ransomware Monitoring enablement status.
   - Rubrik Cloud Vault archival locations on which Ransomware Monitoring can be enabled.
 - cloudDirectClusters: list of CloudDirectClusterRansomwareInvestigationEnablements
   - Cloud Direct clusters on which Ransomware Monitoring can be enabled.
+- azureSubscriptions: list of AzureSubscriptionRansomwareInvestigationEnablements
+  - The Azure subscriptions on which Ransomware Investigation can be enabled.

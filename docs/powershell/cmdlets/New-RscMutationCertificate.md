@@ -8,7 +8,7 @@ Import a certificate.
 
 - There is a single argument of type AddClusterCertificateInput.
 - Returns AddClusterCertificateReply.
-### addglobal
+### addglobalcertificate
 Add a global certificate.
 
 - There is a single argument of type AddGlobalCertificateInput.
@@ -18,11 +18,31 @@ Delete Certificate.
 
 - There is a single argument of type System.Int64.
 - Returns System.Boolean.
-### deleteglobal
+### deletecsr
+Delete Certificate Signing Request.
+
+- There is a single argument of type DeleteCsrInput.
+- Returns System.String.
+### deleteglobalcertificate
 Delete an existing global certificate.
 
 - There is a single argument of type DeleteGlobalCertificateInput.
 - Returns DeleteGlobalCertificateReply.
+### generatecsr
+Generate CSR.
+
+- There are 10 arguments.
+    - name - System.String: Name for your CSR.
+    - hostnames - list of System.Strings: Hostnames for your CSR.
+    - organization - System.String: Organization for your CSR.
+    - organizationUnit - System.String: Organization unit for your CSR.
+    - country - System.String: Country for your CSR.
+    - state - System.String: State for your CSR.
+    - city - System.String: City for your CSR.
+    - email - System.String: Email for your CSR.
+    - surname - System.String: Surname for your CSR.
+    - userId - System.String: User ID for your CSR.
+- Returns Csr.
 ### markagentsecondary
 Mark a secondary cluster certificate to be asynchronously synced to all Rubrik Backup Service instances for which this cluster is the primary.
 
@@ -50,7 +70,7 @@ Edit Certificate.
     - description - System.String: Certificate description.
     - certificate - System.String: Certificate.
 - Returns System.Boolean.
-### updateglobal
+### updateglobalcertificate
 Edit an existing global certificate.
 
 - There is a single argument of type UpdateGlobalCertificateInput.

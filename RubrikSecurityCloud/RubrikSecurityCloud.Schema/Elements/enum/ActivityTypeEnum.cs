@@ -99,9 +99,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Instantiate")]
         INSTANTIATE,
 
-        [EnumMember(Value = "K8S")]
-        K8_S,
-
         [EnumMember(Value = "LOG_BACKUP")]
         LOG_BACKUP,
 

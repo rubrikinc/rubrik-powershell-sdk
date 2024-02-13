@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_ELIGIBLE_FOR_UPGRADE")]
         IS_ELIGIBLE_FOR_UPGRADE,
 
+        [EnumMember(Value = "IS_READ_ONLY")]
+        IS_READ_ONLY,
+
         [EnumMember(Value = "NAME")]
         NAME,
 

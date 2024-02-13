@@ -15,3 +15,9 @@ Input to query unmanaged objects.
   - Sorting Parameters.
 - objectId: System.String
   - Object Id.
+- regions: list of WorkloadRegionInputs
+  - Regions to filter.
+- cloudAccountIds: list of System.Strings
+  - Cloud account IDs to filter.
+- managedBy: CloudVendor
+  - Managed by to filter.

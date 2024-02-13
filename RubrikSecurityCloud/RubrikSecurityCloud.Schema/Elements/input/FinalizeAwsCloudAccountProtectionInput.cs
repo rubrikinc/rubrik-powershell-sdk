@@ -27,9 +27,7 @@ namespace RubrikSecurityCloud.Types
         public CloudAccountAction? Action { get; set; }
 
         //      C# -> List<CloudAccountFeature>? Features
-        // GraphQL -> features: [CloudAccountFeature!]! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> features: [CloudAccountFeature!] (enum)
         [JsonProperty("features")]
         public List<CloudAccountFeature>? Features { get; set; }
 
@@ -69,6 +67,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featureVersion: [AwsCloudAccountFeatureVersionInput!] (input)
         [JsonProperty("featureVersion")]
         public List<AwsCloudAccountFeatureVersionInput>? FeatureVersion { get; set; }
+
+        //      C# -> List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups
+        // GraphQL -> featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] (input)
+        [JsonProperty("featuresWithPermissionsGroups")]
+        public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups { get; set; }
 
 
         #endregion

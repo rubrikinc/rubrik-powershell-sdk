@@ -1,5 +1,15 @@
 # New-RscQueryAccount
 ## Subcommands
+### currentuser
+Currently logged-in user.
+
+- The currentuser subcommand takes no arguments.
+- Returns User.
+### currentuserlogincontext
+Current user login context.
+
+- The currentuserlogincontext subcommand takes no arguments.
+- Returns UserLoginContext.
 ### enabledfeatures
 Provides a list of all features enabled for the Rubrik account.
 

@@ -9,13 +9,16 @@ Regions for Rubrik Cloud Storage Archival Location.
 - GERMANY_WEST_CENTRAL - Germany West Central or Frankfurt.
 - AUSTRALIA_EAST - Australia East or New South Wales.
 - US_NORTH_CENTRAL - US north central or Illinois.
+- JAPAN_WEST - Japan West or Osaka.
 - SOUTH_AFRICA_NORTH - South Africa North or Johannesburg.
 - US_EAST_2 - US east 2 or Virginia.
+- POLAND_CENTRAL - Poland Central or Warsaw.
 - UK_SOUTH - UK South or London.
 - SWEDEN_CENTRAL - Sweden Central or Gavle.
 - GOV_US_VIRGINIA - Gov US Virginia or US Gov Virginia.
 - AUSTRALIA_SOUTHEAST - Australia Southeast or Victoria.
 - US_WEST_2 - US west 2 or Washington.
+- CANADA_CENTRAL - Canada Central or Toronto.
 - US_WEST - US west or California.
 - UNKNOWN_AZURE_REGION - Rubrik Cloud Vault Azure region is unknown.
 - EUROPE_NORTH - Europe north or Netherlands.
@@ -25,6 +28,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - ASIA_EAST - Asia East or Hong Kong.
 - FRANCE_CENTRAL - France Central or Paris.
 - ASIA_SOUTHEAST - Asia Southeast or Singapore.
+- UK_WEST - UK West or Cardiff.
 - INDIA_SOUTH - India South or Chennai.
 - US_SOUTH_CENTRAL - US south central or Texas.
 - JAPAN_EAST - Japan East or Tokyo.

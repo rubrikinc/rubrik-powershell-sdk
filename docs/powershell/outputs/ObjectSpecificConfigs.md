@@ -25,3 +25,5 @@ Object-specific configurations.
   - SLA Domain configuration for AWS S3 bucket.
 - managedVolumeSlaConfig: ManagedVolumeSlaConfig
   - SLA Domain configuration for Managed Volume object.
+- postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig
+  - SLA Domain configuration for Postgres DB Cluster object.

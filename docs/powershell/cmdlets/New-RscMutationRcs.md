@@ -1,17 +1,17 @@
 # New-RscMutationRcs
 ## Subcommands
-### createautomatictargetmapping
+### createautomaticrcstargetmapping
 - There is a single argument of type CreateAutomaticRcsTargetMappingInput.
 - Returns TargetMapping.
-### createreadertarget
+### creatercsreadertarget
 Creates reader type for RCS Azure archival location on a CDM cluster.
 
 - There is a single argument of type CreateRcsReaderTargetInput.
 - Returns Target.
-### createtarget
+### creatercstarget
 - There is a single argument of type CreateRcsTargetInput.
 - Returns Target.
-### updateautomatictargetmapping
+### updatercsautomatictargetmapping
 Update RCS automatic target mapping.
 
 - There is a single argument of type UpdateRcsAutomaticTargetMappingInput.

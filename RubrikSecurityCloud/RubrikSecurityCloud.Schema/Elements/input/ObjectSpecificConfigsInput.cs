@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedVolumeSlaConfigInput")]
         public ManagedVolumeSlaConfigInput? ManagedVolumeSlaConfigInput { get; set; }
 
+        //      C# -> PostgresDbClusterSlaConfigInput? PostgresDbClusterSlaConfigInput
+        // GraphQL -> postgresDbClusterSlaConfigInput: PostgresDbClusterSlaConfigInput (input)
+        [JsonProperty("postgresDbClusterSlaConfigInput")]
+        public PostgresDbClusterSlaConfigInput? PostgresDbClusterSlaConfigInput { get; set; }
+
 
         #endregion
 

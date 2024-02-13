@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 2
     /// operations in the 'Ransomware' API domain:
-    /// ['TriggerDetection'].
+    /// BulkUpdateInvestigationStatus, or TriggerDetection.
     /// </summary>
     /// <description>
     /// New-RscMutationRansomware creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 2 operations
     /// in the 'Ransomware' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ['TriggerDetection'].
+    /// one of: BulkUpdateInvestigationStatus, or TriggerDetection.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationRansomware -TriggerDetection).Info().
+    /// (New-RscMutationRansomware -BulkUpdateInvestigationStatus).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationRansomware -TriggerDetection).Info().
+    /// (New-RscMutationRansomware -BulkUpdateInvestigationStatus).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the BulkUpdateInvestigationStatus operation
+    /// of the 'Ransomware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Ransomware
+    /// # API Operation: BulkUpdateInvestigationStatus
+    /// 
+    /// $query = New-RscMutationRansomware -BulkUpdateInvestigationStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	entities = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			entityType = $someDataThreatAnalyticsEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataThreatAnalyticsEnablementEntity]) for enum values.
+    /// 			# REQUIRED
+    /// 			entityId = $someString
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	isRansomwareMonitoringEnabled = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the TriggerDetection operation
@@ -129,6 +169,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "BulkUpdateInvestigationStatus",
                 "TriggerDetection",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -145,6 +186,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "BulkUpdateInvestigationStatus":
+                        this.ProcessRecord_BulkUpdateInvestigationStatus();
+                        break;
                     case "TriggerDetection":
                         this.ProcessRecord_TriggerDetection();
                         break;
@@ -159,6 +203,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // bulkUpdateRansomwareInvestigationStatus.
+        internal void ProcessRecord_BulkUpdateInvestigationStatus()
+        {
+            this._logger.name += " -BulkUpdateInvestigationStatus";
+            // Create new graphql operation bulkUpdateRansomwareInvestigationStatus
+            InitMutationBulkUpdateRansomwareInvestigationStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // triggerRansomwareDetection.
         internal void ProcessRecord_TriggerDetection()
         {
@@ -167,6 +220,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationTriggerRansomwareDetection();
         }
 
+
+        // Create new GraphQL Mutation:
+        // bulkUpdateRansomwareInvestigationStatus(input: BulkUpdateRansomwareInvestigationEnabledInput!): Void
+        internal void InitMutationBulkUpdateRansomwareInvestigationStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateRansomwareInvestigationEnabledInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateRansomwareInvestigationStatus",
+                "($input: BulkUpdateRansomwareInvestigationEnabledInput!)",
+                "System.String",
+                Mutation.BulkUpdateRansomwareInvestigationStatus_ObjectFieldSpec,
+                Mutation.BulkUpdateRansomwareInvestigationStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	entities = @(
+		@{
+			# REQUIRED
+			entityType = $someDataThreatAnalyticsEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataThreatAnalyticsEnablementEntity]) for enum values.
+			# REQUIRED
+			entityId = $someString
+		}
+	)
+	# REQUIRED
+	isRansomwareMonitoringEnabled = $someBoolean
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // triggerRansomwareDetection(input: TriggerRansomwareDetectionInput!): TriggerRansomwareDetectionReply!

@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdObjects")]
         public AzureAdObjects? AzureAdObjects { get; set; }
 
+        //      C# -> Map? Relationships
+        // GraphQL -> relationships: Map! (type)
+        [JsonProperty("relationships")]
+        public Map? Relationships { get; set; }
+
+        //      C# -> List<AzureAdReverseRelationship>? ReverseRelationships
+        // GraphQL -> reverseRelationships: [AzureAdReverseRelationship!]! (type)
+        [JsonProperty("reverseRelationships")]
+        public List<AzureAdReverseRelationship>? ReverseRelationships { get; set; }
+
 
         #endregion
 
@@ -53,7 +63,9 @@ namespace RubrikSecurityCloud.Types
         AzureAdObjectType? Type = null,
         System.String? ObjectId = null,
         System.String? SnapshotId = null,
-        AzureAdObjects? AzureAdObjects = null
+        AzureAdObjects? AzureAdObjects = null,
+        Map? Relationships = null,
+        List<AzureAdReverseRelationship>? ReverseRelationships = null
     ) 
     {
         if ( Type != null ) {
@@ -67,6 +79,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureAdObjects != null ) {
             this.AzureAdObjects = AzureAdObjects;
+        }
+        if ( Relationships != null ) {
+            this.Relationships = Relationships;
+        }
+        if ( ReverseRelationships != null ) {
+            this.ReverseRelationships = ReverseRelationships;
         }
         return this;
     }
@@ -115,6 +133,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdObjects {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Map? Relationships
+        // GraphQL -> relationships: Map! (type)
+        if (this.Relationships != null) {
+            var fspec = this.Relationships.AsFieldSpec(conf.Child("relationships"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "relationships {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzureAdReverseRelationship>? ReverseRelationships
+        // GraphQL -> reverseRelationships: [AzureAdReverseRelationship!]! (type)
+        if (this.ReverseRelationships != null) {
+            var fspec = this.ReverseRelationships.AsFieldSpec(conf.Child("reverseRelationships"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "reverseRelationships {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -194,6 +236,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdObjects != null && ec.Excludes("azureAdObjects",false))
         {
             this.AzureAdObjects = null;
+        }
+        //      C# -> Map? Relationships
+        // GraphQL -> relationships: Map! (type)
+        if (ec.Includes("relationships",false))
+        {
+            if(this.Relationships == null) {
+
+                this.Relationships = new Map();
+                this.Relationships.ApplyExploratoryFieldSpec(ec.NewChild("relationships"));
+
+            } else {
+
+                this.Relationships.ApplyExploratoryFieldSpec(ec.NewChild("relationships"));
+
+            }
+        }
+        else if (this.Relationships != null && ec.Excludes("relationships",false))
+        {
+            this.Relationships = null;
+        }
+        //      C# -> List<AzureAdReverseRelationship>? ReverseRelationships
+        // GraphQL -> reverseRelationships: [AzureAdReverseRelationship!]! (type)
+        if (ec.Includes("reverseRelationships",false))
+        {
+            if(this.ReverseRelationships == null) {
+
+                this.ReverseRelationships = new List<AzureAdReverseRelationship>();
+                this.ReverseRelationships.ApplyExploratoryFieldSpec(ec.NewChild("reverseRelationships"));
+
+            } else {
+
+                this.ReverseRelationships.ApplyExploratoryFieldSpec(ec.NewChild("reverseRelationships"));
+
+            }
+        }
+        else if (this.ReverseRelationships != null && ec.Excludes("reverseRelationships",false))
+        {
+            this.ReverseRelationships = null;
         }
     }
 

@@ -28,3 +28,4 @@ Represents audit types.
 - RECOVERY_SCHEDULE - Orchestrated Application Recovery schedule audit.
 - FILE_DOWNLOAD - File download audit.
 - RUBY_AI - AI confirmation audit.
+- ANOMALY - Anomaly audit.

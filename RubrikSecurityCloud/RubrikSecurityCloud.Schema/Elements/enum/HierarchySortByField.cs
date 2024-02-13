@@ -36,6 +36,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_VPC_ID")]
         AWS_VPC_ID,
 
+        [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_CAPACITY_USED")]
+        AZURE_BLOB_STORAGE_ACCOUNT_CAPACITY_USED,
+
+        [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT")]
+        AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT,
+
         [EnumMember(Value = "AZURE_DISK_ATTACHED_VM")]
         AZURE_DISK_ATTACHED_VM,
 

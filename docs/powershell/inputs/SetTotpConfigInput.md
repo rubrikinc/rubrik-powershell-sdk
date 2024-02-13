@@ -1,6 +1,6 @@
 ### SetTotpConfigInput
 - userId: System.String
 - secret: System.String
-  - TOTP secret for setting up TOTP as 2FA.
+  - Deprecated. Not supported.
 - otp: System.String
   - TOTP one-time password.

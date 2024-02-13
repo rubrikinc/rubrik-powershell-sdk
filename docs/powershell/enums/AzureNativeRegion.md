@@ -10,6 +10,7 @@ Azure native regions.
 - EAST_ASIA - Azure native region is East Asia.
 - KOREA_SOUTH - Azure native region is Korea South.
 - SWITZERLAND_NORTH - Azure native region is Switzerland North.
+- ITALY_NORTH - Azure native region is Italy North.
 - CANADA_EAST - Azure native region is Canada East.
 - SOUTH_CENTRAL_US - Azure native region is South Central US.
 - UAE_NORTH - Azure native region is UAE North.
@@ -19,6 +20,7 @@ Azure native regions.
 - AUSTRALIA_CENTRAL2 - Azure native region is Australia Central 2.
 - SWITZERLAND_WEST - Azure native region is Switzerland West.
 - UAE_CENTRAL - Azure native region is UAE Central.
+- ISRAEL_CENTRAL - Azure native region is Israel Central.
 - SOUTHEAST_ASIA - Azure native region is Southeast Asia.
 - JAPAN_WEST - Azure native region is Japan West.
 - SOUTH_AFRICA_NORTH - Azure native region is South Africa North.

@@ -166,6 +166,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> DateTime? NcdLatestArchiveSnapshot
+        // GraphQL -> ncdLatestArchiveSnapshot: DateTime (scalar)
+        [JsonProperty("ncdLatestArchiveSnapshot")]
+        public DateTime? NcdLatestArchiveSnapshot { get; set; }
+
+        //      C# -> System.String? NcdPolicyName
+        // GraphQL -> ncdPolicyName: String (scalar)
+        [JsonProperty("ncdPolicyName")]
+        public System.String? NcdPolicyName { get; set; }
+
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
         [JsonProperty("orgId")]
@@ -210,6 +220,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationSnapshotLag: Int (scalar)
         [JsonProperty("replicationSnapshotLag")]
         public System.Int32? ReplicationSnapshotLag { get; set; }
+
+        //      C# -> System.String? SourceProtocol
+        // GraphQL -> sourceProtocol: String (scalar)
+        [JsonProperty("sourceProtocol")]
+        public System.String? SourceProtocol { get; set; }
 
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int (scalar)
@@ -275,6 +290,8 @@ namespace RubrikSecurityCloud.Types
         System.Single? LogicalDataReduction = null,
         System.Int32? MissedSnapshots = null,
         System.String? Name = null,
+        DateTime? NcdLatestArchiveSnapshot = null,
+        System.String? NcdPolicyName = null,
         System.String? OrgId = null,
         System.String? OrgName = null,
         System.Int64? PhysicalBytes = null,
@@ -284,6 +301,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicaSnapshots = null,
         System.Int64? ReplicaStorage = null,
         System.Int32? ReplicationSnapshotLag = null,
+        System.String? SourceProtocol = null,
         System.Int32? TotalSnapshots = null,
         System.Int64? TransferredBytes = null,
         System.Int64? UsedBytes = null,
@@ -378,6 +396,12 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( NcdLatestArchiveSnapshot != null ) {
+            this.NcdLatestArchiveSnapshot = NcdLatestArchiveSnapshot;
+        }
+        if ( NcdPolicyName != null ) {
+            this.NcdPolicyName = NcdPolicyName;
+        }
         if ( OrgId != null ) {
             this.OrgId = OrgId;
         }
@@ -404,6 +428,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicationSnapshotLag != null ) {
             this.ReplicationSnapshotLag = ReplicationSnapshotLag;
+        }
+        if ( SourceProtocol != null ) {
+            this.SourceProtocol = SourceProtocol;
         }
         if ( TotalSnapshots != null ) {
             this.TotalSnapshots = TotalSnapshots;
@@ -696,6 +723,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> DateTime? NcdLatestArchiveSnapshot
+        // GraphQL -> ncdLatestArchiveSnapshot: DateTime (scalar)
+        if (this.NcdLatestArchiveSnapshot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ncdLatestArchiveSnapshot\n" ;
+            } else {
+                s += ind + "ncdLatestArchiveSnapshot\n" ;
+            }
+        }
+        //      C# -> System.String? NcdPolicyName
+        // GraphQL -> ncdPolicyName: String (scalar)
+        if (this.NcdPolicyName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ncdPolicyName\n" ;
+            } else {
+                s += ind + "ncdPolicyName\n" ;
+            }
+        }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
         if (this.OrgId != null) {
@@ -775,6 +820,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "replicationSnapshotLag\n" ;
             } else {
                 s += ind + "replicationSnapshotLag\n" ;
+            }
+        }
+        //      C# -> System.String? SourceProtocol
+        // GraphQL -> sourceProtocol: String (scalar)
+        if (this.SourceProtocol != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceProtocol\n" ;
+            } else {
+                s += ind + "sourceProtocol\n" ;
             }
         }
         //      C# -> System.Int32? TotalSnapshots
@@ -1335,6 +1389,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> DateTime? NcdLatestArchiveSnapshot
+        // GraphQL -> ncdLatestArchiveSnapshot: DateTime (scalar)
+        if (ec.Includes("ncdLatestArchiveSnapshot",true))
+        {
+            if(this.NcdLatestArchiveSnapshot == null) {
+
+                this.NcdLatestArchiveSnapshot = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NcdLatestArchiveSnapshot != null && ec.Excludes("ncdLatestArchiveSnapshot",true))
+        {
+            this.NcdLatestArchiveSnapshot = null;
+        }
+        //      C# -> System.String? NcdPolicyName
+        // GraphQL -> ncdPolicyName: String (scalar)
+        if (ec.Includes("ncdPolicyName",true))
+        {
+            if(this.NcdPolicyName == null) {
+
+                this.NcdPolicyName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NcdPolicyName != null && ec.Excludes("ncdPolicyName",true))
+        {
+            this.NcdPolicyName = null;
+        }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
         if (ec.Includes("orgId",true))
@@ -1487,6 +1575,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicationSnapshotLag != null && ec.Excludes("replicationSnapshotLag",true))
         {
             this.ReplicationSnapshotLag = null;
+        }
+        //      C# -> System.String? SourceProtocol
+        // GraphQL -> sourceProtocol: String (scalar)
+        if (ec.Includes("sourceProtocol",true))
+        {
+            if(this.SourceProtocol == null) {
+
+                this.SourceProtocol = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceProtocol != null && ec.Excludes("sourceProtocol",true))
+        {
+            this.SourceProtocol = null;
         }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int (scalar)

@@ -12,12 +12,12 @@ Describe -Name "Test New-RscQuery and New-RscMutation" -Fixture {
         $q.GqlRequest().Query | Should -Be $q3.GqlRequest().Query
 
         $q4 = new-rscmutation -gqlmutation deleteFailoverCluster
-        $q5 = New-RscMutationCluster -op DeleteFailover
+        $q5 = New-RscMutationFailoverCluster -op Delete
         $q4.GqlRequest().Query | Should -Be $q5.GqlRequest().Query
-        $q6 = New-RscMutationCluster -Operation DeleteFailover
+        $q6 = New-RscMutationFailoverCluster -Operation Delete
         $q6.GqlRequest().Query | Should -Be $q5.GqlRequest().Query
 
-        # You can build a query from a mutation root field:
+        # You cannot build a query from a mutation root field:
         {New-RscQuery -GqlQuery deleteFailoverCluster} | Should -Throw
         # and vice versa:
         {New-RscMutation -GqlMutation clusterConnection} | Should -Throw

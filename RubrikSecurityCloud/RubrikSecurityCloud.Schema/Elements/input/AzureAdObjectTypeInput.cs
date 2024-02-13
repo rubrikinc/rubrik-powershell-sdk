@@ -26,6 +26,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
+        //      C# -> System.String? WorkloadFid
+        // GraphQL -> workloadFid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("workloadFid")]
+        public System.String? WorkloadFid { get; set; }
+
         //      C# -> AzureAdObjectType? AzureAdObjectType
         // GraphQL -> azureAdObjectType: AzureAdObjectType! (enum)
         [Required]

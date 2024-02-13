@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CERTIFICATE_MANAGEMENT")]
         CERTIFICATE_MANAGEMENT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
+        CLOUD_DIRECT_NAS_EXPORT,
+
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE")]
         CLOUD_NATIVE_TAG_RULE,
 
@@ -122,6 +125,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EXCHANGE_SERVER")]
         EXCHANGE_SERVER,
+
+        [EnumMember(Value = "EXOCOMPUTE")]
+        EXOCOMPUTE,
 
         [EnumMember(Value = "FAILOVER_CLUSTER_APP")]
         FAILOVER_CLUSTER_APP,

@@ -5,28 +5,19 @@ A cluster object.
 
 - There is a single argument of type System.String.
 - Returns Cluster.
+### computeclusterstatus
+Get details for the compute cluster
+
+Supported in v5.1+
+Get details for the compute cluster.
+
+- There is a single argument of type GetComputeClusterInput.
+- Returns ComputeClusterDetail.
 ### connected
 List all connected clusters.
 
 - There is a single argument of type ClusterTypeEnum.
 - Returns list of DataLocationSupportedClusters.
-### databaselogreport
-Get the database log backup delay information
-
-Supported in v5.3+
-v5.3: 
-v6.0+: Get the database log backup delay information.
-
-- There is a single argument of type QueryLogReportInput.
-- Returns DbLogReportSummaryListReply.
-### databaselogreportingproperties
-Get the database log backup report properties
-
-Supported in v5.3+
-Get the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
-
-- There is a single argument of type QueryReportPropertiesInput.
-- Returns DbLogReportProperties.
 ### defaultgateway
 Get current default gateway
 
@@ -48,6 +39,21 @@ Get a list of a cluster's always-available Ips.
 
 - There is a single argument of type GetClusterIpsInput.
 - Returns InternalGetClusterIpsResponse.
+### getcdmreleasedetailsforclusterfromsupportportal
+Get CDM release details from support portal for a given list of clusters.
+
+- There are 7 arguments.
+    - listClusterUuid - list of System.Strings: Specifies the list of cluster UUIDs.
+    - filterVersion - System.String: Prefix filter for available versions.
+    - fetchLinks - System.Boolean: Retrieves version details.
+    - filterUpgradeable - System.Boolean: Filters for the available upgrade versions.
+    - shouldShowAll - System.Boolean: Shows all versions.
+    - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
+    - sortOrder - SortOrder: Sorting order for the results.
+- Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
+### getgroupcountbycdmclusterstatus
+- The getgroupcountbycdmclusterstatus subcommand takes no arguments.
+- Returns GroupCountListWithTotal.
 ### groupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -58,11 +64,6 @@ Get a list of a cluster's always-available Ips.
     - filter - ClusterFilterInput: Filter by cluster.
     - timezoneOffset - System.Single: Offset based on customer timezone.
 - Returns ClusterGroupByConnection.
-### hostfailover
-Get details of the given host failover cluster.
-
-- There is a single argument of type System.String.
-- Returns HostFailoverCluster.
 ### ipmi
 Get IPMI details
 
@@ -81,6 +82,11 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### licensesforclusterproductsummary
+Information about licenses for a specific cluster product, grouped by the product type.
+
+- There is a single argument of type LicensesForClusterProductSummaryInput.
+- Returns LicensesForClusterProductReply.
 ### list
 List of the available cluster objects.
 
@@ -127,6 +133,16 @@ Rubrik cluster proxy information.
 
 - There is a single argument of type System.String.
 - Returns ClusterProxyReply.
+### radarclusterlist
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - filter - ClusterFilterInput: Filter by cluster.
+    - sortOrder - SortOrder: Cluster sort order.
+    - sortBy - ClusterSortByEnum: Sort clusters by field.
+- Returns ClusterConnection.
 ### registrationproductinfo
 Info about the cluster product types the user is entitled to.
 
@@ -137,29 +153,6 @@ All replication targets for a cluster.
 
 - There is a single argument of type System.String.
 - Returns list of ClusterReplicationTargets.
-### reportmigrationcount
-Retrieve the counts of the Rubrik cluster reports migration.
-
-- There are 2 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
-- Returns ReportsMigrationCount.
-### reportmigrationjobstatus
-Retrieve the status of the cluster report migration job.
-
-- There is a single argument of type System.String.
-- Returns ClusterReportMigrationJobStatus.
-### reportmigrationstatus
-Retrieve details of the Rubrik clusters' reports migration.
-
-- There are 6 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns ReportMigrationStatusConnection.
 ### totpackstatus
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 
@@ -168,6 +161,11 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 ### typelist
 - The typelist subcommand takes no arguments.
 - Returns list of GroupCounts.
+### validateclusterlicensecapacity
+Information about cluster license capacity validations.
+
+- There is a single argument of type ValidateClusterLicenseCapacityInput.
+- Returns ClusterLicenseCapacityValidations.
 ### vlans
 Rubrik cluster VLAN information.
 

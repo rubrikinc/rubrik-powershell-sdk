@@ -21,3 +21,4 @@ Cloud account features.
 - DATA_CENTER_CONSOLIDATION - Cloud account feature is Data Center Archival Consolidation.
 - DATA_CENTER_IMMUTABILITY - Cloud account feature is Data Center Archival Immutability.
 - ALL - All cloud account features.
+- FEATURE_UNSPECIFIED - Feature is not specified.

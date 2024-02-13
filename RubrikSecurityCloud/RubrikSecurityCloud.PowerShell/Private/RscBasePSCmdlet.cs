@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         {
             try
             {
-                this._rbkClient = (RscGraphQLClient)SessionState.PSVariable.GetValue("RscConnectionClient");
+                this._rbkClient = (RscGraphQLClient)SessionState.PSVariable.GetValue(Config.SessionVariableName);
 
                 //Check if the token has expired. If it has, attempt a new the session and return.
                 if (this._rbkClient != null && _rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
@@ -137,7 +137,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 this._logger.Flush();
                 var error = new ErrorRecord(
                     ex,
-                    "RscConnectionClient",
+                    Config.SessionVariableName,
                     ErrorCategory.ConnectionError,
                     null);
                 ThrowTerminatingError(error);

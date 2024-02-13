@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("baseGuestCredential")]
         public BaseGuestCredentialInput? BaseGuestCredential { get; set; }
 
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
 
         #endregion
 

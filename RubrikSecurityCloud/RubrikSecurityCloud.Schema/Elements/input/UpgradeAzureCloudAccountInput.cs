@@ -27,9 +27,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? SessionId { get; set; }
 
         //      C# -> List<CloudAccountFeature>? Features
-        // GraphQL -> features: [CloudAccountFeature!]! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> features: [CloudAccountFeature!] (enum)
         [JsonProperty("features")]
         public List<CloudAccountFeature>? Features { get; set; }
 

@@ -37,12 +37,12 @@ Download a snapshot from archival.
 ### createfileset
 - There is a single argument of type CreateFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
-### deletecloudworkload
+### deletecloudworkloadsnapshot
 Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 
 - There is a single argument of type DeleteCloudWorkloadSnapshotInput.
 - Returns System.Boolean.
-### deletefilesets
+### deletefilesetsnapshots
 - There is a single argument of type DeleteFilesetSnapshotsInput.
 - Returns ResponseSuccess.
 ### filesetdownloadfiles
@@ -97,6 +97,3 @@ Start a job to upload a database snapshot to a target blobstore.
 
 - There is a single argument of type UploadDatabaseSnapshotToBlobstoreInput.
 - Returns AsyncJobStatus.
-### vmwaredownloadfromlocation
-- There is a single argument of type VmwareDownloadSnapshotFromLocationInput.
-- Returns AsyncRequestStatus.

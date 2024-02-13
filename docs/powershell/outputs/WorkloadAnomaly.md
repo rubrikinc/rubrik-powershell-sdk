@@ -38,6 +38,8 @@ A workload that has a snapshot or children with anomalous activity.
   - Time when the anomaly was detected.
 - anomalyId: System.String
   - Identifies the anomaly for a given workload.
+- resolutionStatus: ResolutionStatus
+  - The resolution status of the anomaly.
 - objectType: HierarchyObjectTypeEnum
   - The object type of the workload.
 - anomalousSnapshotDate: DateTime

@@ -27,3 +27,6 @@ Supported in v6.0+
       Boolean value specifying whether to use secure thrift as the data transfer mechanism between the Rubrik cluster and the Oracle database instead of NFS. The default data transfer mechanism is NFS.
 - sectionSizeInGb: System.Int32
   - Supported in Rubrik CDM version 9.0 and later. Specifies the section size, in gigabytes, to be used during database backup.
+- isPaused: System.Boolean
+  - Supported in v9.1+
+      Whether to pause or resume backups and archival for this database. This setting is supported for Oracle databases and Data Guard groups but is not supported for Oracle hosts and RACs.

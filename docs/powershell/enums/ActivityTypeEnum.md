@@ -19,7 +19,6 @@ Enum representing different type of activities.
 - HypervServer
 - ISOLATED_RECOVERY - Recovering selected objects to an Isolated Recovery Environment (IRE).
 - Configuration
-- K8S - Activity representing Kubernetes event type.
 - Upgrade
 - ENCRYPTION_MANAGEMENT_OPERATION - Activity representing Encryption Management event type.
 - CloudNativeVm

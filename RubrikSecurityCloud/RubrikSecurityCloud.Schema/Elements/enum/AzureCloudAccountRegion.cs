@@ -75,6 +75,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GERMANYWESTCENTRAL")]
         GERMANYWESTCENTRAL,
 
+        [EnumMember(Value = "ISRAELCENTRAL")]
+        ISRAELCENTRAL,
+
+        [EnumMember(Value = "ITALYNORTH")]
+        ITALYNORTH,
+
         [EnumMember(Value = "JAPANEAST")]
         JAPANEAST,
 

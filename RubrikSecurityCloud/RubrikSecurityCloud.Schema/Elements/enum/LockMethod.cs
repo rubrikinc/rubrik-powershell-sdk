@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BRUTE_FORCE")]
         BRUTE_FORCE,
 
+        [EnumMember(Value = "LEAKED_PASSWORD")]
+        LEAKED_PASSWORD,
+
         [EnumMember(Value = "LOCK_METHOD_UNSPECIFIED")]
         LOCK_METHOD_UNSPECIFIED
 

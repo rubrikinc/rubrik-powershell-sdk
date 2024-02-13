@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("expirationDate")]
         public DateTime? ExpirationDate { get; set; }
 
+        //      C# -> System.String? MetadataJson
+        // GraphQL -> metadataJson: String! (scalar)
+        [JsonProperty("metadataJson")]
+        public System.String? MetadataJson { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -49,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> signOutUrl: String! (scalar)
         [JsonProperty("signOutUrl")]
         public System.String? SignOutUrl { get; set; }
+
+        //      C# -> System.String? SigningCertificate
+        // GraphQL -> signingCertificate: String! (scalar)
+        [JsonProperty("signingCertificate")]
+        public System.String? SigningCertificate { get; set; }
 
         //      C# -> System.String? SpInitiatedSignInUrl
         // GraphQL -> spInitiatedSignInUrl: String! (scalar)
@@ -72,10 +82,12 @@ namespace RubrikSecurityCloud.Types
     public IdentityProvider Set(
         System.String? EntityId = null,
         DateTime? ExpirationDate = null,
+        System.String? MetadataJson = null,
         System.String? Name = null,
         System.String? OwnerOrgId = null,
         System.String? SignInUrl = null,
         System.String? SignOutUrl = null,
+        System.String? SigningCertificate = null,
         System.String? SpInitiatedSignInUrl = null,
         System.String? SpInitiatedTestUrl = null
     ) 
@@ -85,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExpirationDate != null ) {
             this.ExpirationDate = ExpirationDate;
+        }
+        if ( MetadataJson != null ) {
+            this.MetadataJson = MetadataJson;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -97,6 +112,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SignOutUrl != null ) {
             this.SignOutUrl = SignOutUrl;
+        }
+        if ( SigningCertificate != null ) {
+            this.SigningCertificate = SigningCertificate;
         }
         if ( SpInitiatedSignInUrl != null ) {
             this.SpInitiatedSignInUrl = SpInitiatedSignInUrl;
@@ -133,6 +151,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "expirationDate\n" ;
             }
         }
+        //      C# -> System.String? MetadataJson
+        // GraphQL -> metadataJson: String! (scalar)
+        if (this.MetadataJson != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "metadataJson\n" ;
+            } else {
+                s += ind + "metadataJson\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -167,6 +194,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "signOutUrl\n" ;
             } else {
                 s += ind + "signOutUrl\n" ;
+            }
+        }
+        //      C# -> System.String? SigningCertificate
+        // GraphQL -> signingCertificate: String! (scalar)
+        if (this.SigningCertificate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "signingCertificate\n" ;
+            } else {
+                s += ind + "signingCertificate\n" ;
             }
         }
         //      C# -> System.String? SpInitiatedSignInUrl
@@ -227,6 +263,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
         {
             this.ExpirationDate = null;
+        }
+        //      C# -> System.String? MetadataJson
+        // GraphQL -> metadataJson: String! (scalar)
+        if (ec.Includes("metadataJson",true))
+        {
+            if(this.MetadataJson == null) {
+
+                this.MetadataJson = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MetadataJson != null && ec.Excludes("metadataJson",true))
+        {
+            this.MetadataJson = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -295,6 +348,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SignOutUrl != null && ec.Excludes("signOutUrl",true))
         {
             this.SignOutUrl = null;
+        }
+        //      C# -> System.String? SigningCertificate
+        // GraphQL -> signingCertificate: String! (scalar)
+        if (ec.Includes("signingCertificate",true))
+        {
+            if(this.SigningCertificate == null) {
+
+                this.SigningCertificate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SigningCertificate != null && ec.Excludes("signingCertificate",true))
+        {
+            this.SigningCertificate = null;
         }
         //      C# -> System.String? SpInitiatedSignInUrl
         // GraphQL -> spInitiatedSignInUrl: String! (scalar)

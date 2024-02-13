@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> ResolutionStatus? ResolutionStatus
+        // GraphQL -> resolutionStatus: ResolutionStatus! (enum)
+        [JsonProperty("resolutionStatus")]
+        public ResolutionStatus? ResolutionStatus { get; set; }
+
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
         [JsonProperty("severity")]
@@ -148,6 +153,7 @@ namespace RubrikSecurityCloud.Types
         AnomalyType? AnomalyType = null,
         EncryptionLevel? Encryption = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        ResolutionStatus? ResolutionStatus = null,
         ActivitySeverityEnum? Severity = null,
         DateTime? AnomalousSnapshotDate = null,
         System.String? AnomalousSnapshotFid = null,
@@ -178,6 +184,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( ResolutionStatus != null ) {
+            this.ResolutionStatus = ResolutionStatus;
         }
         if ( Severity != null ) {
             this.Severity = Severity;
@@ -275,6 +284,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> ResolutionStatus? ResolutionStatus
+        // GraphQL -> resolutionStatus: ResolutionStatus! (enum)
+        if (this.ResolutionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resolutionStatus\n" ;
+            } else {
+                s += ind + "resolutionStatus\n" ;
             }
         }
         //      C# -> ActivitySeverityEnum? Severity
@@ -529,6 +547,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> ResolutionStatus? ResolutionStatus
+        // GraphQL -> resolutionStatus: ResolutionStatus! (enum)
+        if (ec.Includes("resolutionStatus",true))
+        {
+            if(this.ResolutionStatus == null) {
+
+                this.ResolutionStatus = new ResolutionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResolutionStatus != null && ec.Excludes("resolutionStatus",true))
+        {
+            this.ResolutionStatus = null;
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)

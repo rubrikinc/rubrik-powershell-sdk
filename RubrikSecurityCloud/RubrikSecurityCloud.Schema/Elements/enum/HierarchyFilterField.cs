@@ -48,6 +48,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_VPC_ID")]
         AWS_VPC_ID,
 
+        [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_ACCESS_TIER")]
+        AZURE_BLOB_STORAGE_ACCOUNT_ACCESS_TIER,
+
+        [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_HNS_STATUS")]
+        AZURE_BLOB_STORAGE_ACCOUNT_HNS_STATUS,
+
+        [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_RG_NAME")]
+        AZURE_BLOB_STORAGE_ACCOUNT_RG_NAME,
+
+        [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID")]
+        AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID,
+
         [EnumMember(Value = "AZURE_DISK_ATTACHED_VM")]
         AZURE_DISK_ATTACHED_VM,
 
@@ -191,6 +203,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DB2_INSTANCE_STATUS")]
         DB2_INSTANCE_STATUS,
+
+        [EnumMember(Value = "DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS")]
+        DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS,
 
         [EnumMember(Value = "DOES_NAS_SHARE_HAVE_RELIC_FILESETS")]
         DOES_NAS_SHARE_HAVE_RELIC_FILESETS,
@@ -375,6 +390,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HOST_VENDOR_TYPE")]
         HOST_VENDOR_TYPE,
 
+        [EnumMember(Value = "HYPERV_HOST_OR_SERVER_NAME")]
+        HYPERV_HOST_OR_SERVER_NAME,
+
         [EnumMember(Value = "HYPERV_VM_BY_AGENT_STATUS")]
         HYPERV_VM_BY_AGENT_STATUS,
 
@@ -471,6 +489,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT_MOUNT_TYPE")]
         MANAGED_VOLUME_EXPORT_MOUNT_TYPE,
 
+        [EnumMember(Value = "MANAGED_VOLUME_HOST_CONNECTION_STATUS")]
+        MANAGED_VOLUME_HOST_CONNECTION_STATUS,
+
+        [EnumMember(Value = "MANAGED_VOLUME_HOST_ID")]
+        MANAGED_VOLUME_HOST_ID,
+
         [EnumMember(Value = "MANAGED_VOLUME_ID")]
         MANAGED_VOLUME_ID,
 
@@ -551,6 +575,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_VM_BY_AGENT_STATUS")]
         NUTANIX_VM_BY_AGENT_STATUS,
+
+        [EnumMember(Value = "NUTANIX_VM_BY_CAT_VAL_ID")]
+        NUTANIX_VM_BY_CAT_VAL_ID,
 
         [EnumMember(Value = "NUTANIX_VM_BY_NUTANIX_CLUSTER_CDMID")]
         NUTANIX_VM_BY_NUTANIX_CLUSTER_CDMID,

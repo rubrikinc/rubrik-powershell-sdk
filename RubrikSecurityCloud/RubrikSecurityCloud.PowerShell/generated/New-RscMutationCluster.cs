@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Cluster' API domain:
-    /// AddNodesToCloud, BulkDeleteFailover, CreateFailover, DeleteFailover, RecoverCloud, RegisterCloud, RemoveCdm, UpdateDatabaseLogReportingProperties, or UpdateFailover.
+    /// AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 12 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddNodesToCloud, BulkDeleteFailover, CreateFailover, DeleteFailover, RecoverCloud, RegisterCloud, RemoveCdm, UpdateDatabaseLogReportingProperties, or UpdateFailover.
+    /// one of: AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCluster -AddNodesToCloud).Info().
+    /// (New-RscMutationCluster -AddClusterNodes).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,105 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCluster -AddNodesToCloud).Info().
+    /// (New-RscMutationCluster -AddClusterNodes).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the AddClusterNodes operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: AddClusterNodes
+    /// 
+    /// $query = New-RscMutationCluster -AddClusterNodes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.AddClusterNodesInput = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	nodesMap = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			key = $someString
+    /// 			# REQUIRED
+    /// 			value = @{
+    /// 				# OPTIONAL
+    /// 				dataIpConfig = @{
+    /// 					# OPTIONAL
+    /// 					vlan = $someInt
+    /// 					# REQUIRED
+    /// 					address = $someString
+    /// 					# REQUIRED
+    /// 					gateway = $someString
+    /// 					# REQUIRED
+    /// 					netmask = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				ipmiIpConfig = @{
+    /// 					# OPTIONAL
+    /// 					vlan = $someInt
+    /// 					# REQUIRED
+    /// 					address = $someString
+    /// 					# REQUIRED
+    /// 					gateway = $someString
+    /// 					# REQUIRED
+    /// 					netmask = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				managementIpConfig = @{
+    /// 					# OPTIONAL
+    /// 					vlan = $someInt
+    /// 					# REQUIRED
+    /// 					address = $someString
+    /// 					# REQUIRED
+    /// 					gateway = $someString
+    /// 					# REQUIRED
+    /// 					netmask = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				vlanIpConfigs = @(
+    /// 					@{
+    /// 						# REQUIRED
+    /// 						ip = $someString
+    /// 						# REQUIRED
+    /// 						vlan = $someInt
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	request = @{
+    /// 		# OPTIONAL
+    /// 		encryptionPassword = $someString
+    /// 		# OPTIONAL
+    /// 		isIpv4ManualDiscoveryMode = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isLinkLocalIpv4Mode = $someBoolean
+    /// 		# REQUIRED
+    /// 		ipmiPassword = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddClusterNodesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the AddNodesToCloud operation
@@ -94,8 +188,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	numberOfNodes = $someInt
     /// 	# OPTIONAL
-    /// 	shouldKeepResourcesOnFailure = $someBoolean
-    /// 	# OPTIONAL
     /// 	awsImageId = $someString
     /// 	# OPTIONAL
     /// 	azureImageName = $someString
@@ -105,6 +197,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	shouldKeepResourcesOnFailure = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -120,7 +214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the BulkDeleteFailover operation
+    /// Runs the GenerateClusterRegistrationToken operation
     /// of the 'Cluster' API domain.
     /// <code>
     /// PS &gt;
@@ -128,100 +222,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Cluster
-    /// # API Operation: BulkDeleteFailover
+    /// # API Operation: GenerateClusterRegistrationToken
     /// 
-    /// $query = New-RscMutationCluster -BulkDeleteFailover
+    /// $query = New-RscMutationCluster -GenerateClusterRegistrationToken
     /// 
-    /// # REQUIRED
+    /// # OPTIONAL
     /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
-    /// 	# REQUIRED
-    /// 	ids = @(
-    /// 		$someString
+    /// 	managedByPolaris = $someBoolean
+    /// 	# OPTIONAL
+    /// 	nodeConfigs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			id = $someString
+    /// 			# OPTIONAL
+    /// 			manufactureTime = $someDateTime
+    /// 			# OPTIONAL
+    /// 			serial = $someString
+    /// 			# OPTIONAL
+    /// 			systemUuid = $someString
+    /// 			# OPTIONAL
+    /// 			teleportToken = $someString
+    /// 			# OPTIONAL
+    /// 			clusterUuid = $someString
+    /// 			# OPTIONAL
+    /// 			platform = $someString
+    /// 			# OPTIONAL
+    /// 			capacity = $someString
+    /// 			# OPTIONAL
+    /// 			isEntitled = $someBoolean
+    /// 		}
     /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the CreateFailover operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: CreateFailover
-    /// 
-    /// $query = New-RscMutationCluster -CreateFailover
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		configuredSlaDomainId = $someString
-    /// 		# REQUIRED
-    /// 		hostIds = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		name = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreateFailoverClusterReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DeleteFailover operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: DeleteFailover
-    /// 
-    /// $query = New-RscMutationCluster -DeleteFailover
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
-    /// 	# REQUIRED
-    /// 	id = $someString
+    /// 	isOfflineRegistration = $someBoolean
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// Write-Host $result.GetType().Name # prints: ClusterRegistrationToken
     /// 
     /// 
     /// 
@@ -400,7 +440,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateDatabaseLogReportingProperties operation
+    /// Runs the RemoveClusterNodes operation
     /// of the 'Cluster' API domain.
     /// <code>
     /// PS &gt;
@@ -408,30 +448,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Cluster
-    /// # API Operation: UpdateDatabaseLogReportingProperties
+    /// # API Operation: RemoveClusterNodes
     /// 
-    /// $query = New-RscMutationCluster -UpdateDatabaseLogReportingProperties
+    /// $query = New-RscMutationCluster -RemoveClusterNodes
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	nodeIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	useQuickDrain = $someBoolean
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	properties = @{
-    /// 		# OPTIONAL
-    /// 		enableDelayNotification = $someBoolean
-    /// 		# OPTIONAL
-    /// 		logDelayThresholdInMin = $someInt64
-    /// 		# OPTIONAL
-    /// 		logDelayNotificationFrequencyInMin = $someInt64
-    /// 	}
+    /// 	# OPTIONAL
+    /// 	nodeMetadata = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			nodeId = $someString
+    /// 			# OPTIONAL
+    /// 			chassisId = $someString
+    /// 			# OPTIONAL
+    /// 			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
+    /// 			# OPTIONAL
+    /// 			useQuickDrain = $someBoolean
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: DbLogReportProperties
+    /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
     /// 
     /// 
     /// 
@@ -440,7 +492,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateFailover operation
+    /// Runs the UpdateClusterDefaultAddress operation
     /// of the 'Cluster' API domain.
     /// <code>
     /// PS &gt;
@@ -448,32 +500,192 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Cluster
-    /// # API Operation: UpdateFailover
+    /// # API Operation: UpdateClusterDefaultAddress
     /// 
-    /// $query = New-RscMutationCluster -UpdateFailover
+    /// $query = New-RscMutationCluster -UpdateClusterDefaultAddress
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
-    /// 	updateProperties = @{
-    /// 		# OPTIONAL
-    /// 		configuredSlaDomainId = $someString
-    /// 		# REQUIRED
-    /// 		hostIds = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		name = $someString
-    /// 	}
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	address = $someString
+    /// 	# OPTIONAL
+    /// 	port = $someInt
     /// }
     /// 
     /// # Execute the query
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: UpdateFailoverClusterReply
+    /// Write-Host $result.GetType().Name # prints: UpdateClusterDefaultAddressReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateClusterLocation operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: UpdateClusterLocation
+    /// 
+    /// $query = New-RscMutationCluster -UpdateClusterLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # REQUIRED
+    /// $query.Var.clusterLocation = @{
+    /// 	# REQUIRED
+    /// 	address = $someString
+    /// 	# REQUIRED
+    /// 	latitude = $someSingle
+    /// 	# REQUIRED
+    /// 	longitude = $someSingle
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Cluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateClusterNtpServers operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: UpdateClusterNtpServers
+    /// 
+    /// $query = New-RscMutationCluster -UpdateClusterNtpServers
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	ntpServerConfigs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			symmetricKey = @{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				keyId = $someInt
+    /// 				# REQUIRED
+    /// 				keyType = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			server = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateClusterSettings operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: UpdateClusterSettings
+    /// 
+    /// $query = New-RscMutationCluster -UpdateClusterSettings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUpdate = @{
+    /// 		# OPTIONAL
+    /// 		acceptedEulaVersion = $someString
+    /// 		# OPTIONAL
+    /// 		geolocation = @{
+    /// 			# REQUIRED
+    /// 			address = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		timezone = @{
+    /// 			# REQUIRED
+    /// 			timezone = $someClusterTimezoneType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTimezoneType]) for enum values.
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateClusterSettingsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdatePreviewerClusterConfig operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: UpdatePreviewerClusterConfig
+    /// 
+    /// $query = New-RscMutationCluster -UpdatePreviewerClusterConfig
+    /// 
+    /// # REQUIRED
+    /// $query.Var.previewerClusterConfig = @{
+    /// 	# OPTIONAL
+    /// 	clusterId = $someString
+    /// 	# OPTIONAL
+    /// 	enabled = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Cluster
     /// 
     /// 
     /// 
@@ -497,15 +709,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "AddClusterNodes",
                 "AddNodesToCloud",
-                "BulkDeleteFailover",
-                "CreateFailover",
-                "DeleteFailover",
+                "GenerateClusterRegistrationToken",
                 "RecoverCloud",
                 "RegisterCloud",
                 "RemoveCdm",
-                "UpdateDatabaseLogReportingProperties",
-                "UpdateFailover",
+                "RemoveClusterNodes",
+                "UpdateClusterDefaultAddress",
+                "UpdateClusterLocation",
+                "UpdateClusterNtpServers",
+                "UpdateClusterSettings",
+                "UpdatePreviewerClusterConfig",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -521,17 +736,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "AddClusterNodes":
+                        this.ProcessRecord_AddClusterNodes();
+                        break;
                     case "AddNodesToCloud":
                         this.ProcessRecord_AddNodesToCloud();
                         break;
-                    case "BulkDeleteFailover":
-                        this.ProcessRecord_BulkDeleteFailover();
-                        break;
-                    case "CreateFailover":
-                        this.ProcessRecord_CreateFailover();
-                        break;
-                    case "DeleteFailover":
-                        this.ProcessRecord_DeleteFailover();
+                    case "GenerateClusterRegistrationToken":
+                        this.ProcessRecord_GenerateClusterRegistrationToken();
                         break;
                     case "RecoverCloud":
                         this.ProcessRecord_RecoverCloud();
@@ -542,11 +754,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RemoveCdm":
                         this.ProcessRecord_RemoveCdm();
                         break;
-                    case "UpdateDatabaseLogReportingProperties":
-                        this.ProcessRecord_UpdateDatabaseLogReportingProperties();
+                    case "RemoveClusterNodes":
+                        this.ProcessRecord_RemoveClusterNodes();
                         break;
-                    case "UpdateFailover":
-                        this.ProcessRecord_UpdateFailover();
+                    case "UpdateClusterDefaultAddress":
+                        this.ProcessRecord_UpdateClusterDefaultAddress();
+                        break;
+                    case "UpdateClusterLocation":
+                        this.ProcessRecord_UpdateClusterLocation();
+                        break;
+                    case "UpdateClusterNtpServers":
+                        this.ProcessRecord_UpdateClusterNtpServers();
+                        break;
+                    case "UpdateClusterSettings":
+                        this.ProcessRecord_UpdateClusterSettings();
+                        break;
+                    case "UpdatePreviewerClusterConfig":
+                        this.ProcessRecord_UpdatePreviewerClusterConfig();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -559,6 +783,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addClusterNodes.
+        internal void ProcessRecord_AddClusterNodes()
+        {
+            this._logger.name += " -AddClusterNodes";
+            // Create new graphql operation addClusterNodes
+            InitMutationAddClusterNodes();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // addNodesToCloudCluster.
         internal void ProcessRecord_AddNodesToCloud()
         {
@@ -568,30 +801,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // bulkDeleteFailoverCluster.
-        internal void ProcessRecord_BulkDeleteFailover()
+        // generateClusterRegistrationToken.
+        internal void ProcessRecord_GenerateClusterRegistrationToken()
         {
-            this._logger.name += " -BulkDeleteFailover";
-            // Create new graphql operation bulkDeleteFailoverCluster
-            InitMutationBulkDeleteFailoverCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createFailoverCluster.
-        internal void ProcessRecord_CreateFailover()
-        {
-            this._logger.name += " -CreateFailover";
-            // Create new graphql operation createFailoverCluster
-            InitMutationCreateFailoverCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteFailoverCluster.
-        internal void ProcessRecord_DeleteFailover()
-        {
-            this._logger.name += " -DeleteFailover";
-            // Create new graphql operation deleteFailoverCluster
-            InitMutationDeleteFailoverCluster();
+            this._logger.name += " -GenerateClusterRegistrationToken";
+            // Create new graphql operation generateClusterRegistrationToken
+            InitMutationGenerateClusterRegistrationToken();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -622,23 +837,145 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateDatabaseLogReportingPropertiesForCluster.
-        internal void ProcessRecord_UpdateDatabaseLogReportingProperties()
+        // removeClusterNodes.
+        internal void ProcessRecord_RemoveClusterNodes()
         {
-            this._logger.name += " -UpdateDatabaseLogReportingProperties";
-            // Create new graphql operation updateDatabaseLogReportingPropertiesForCluster
-            InitMutationUpdateDatabaseLogReportingPropertiesForCluster();
+            this._logger.name += " -RemoveClusterNodes";
+            // Create new graphql operation removeClusterNodes
+            InitMutationRemoveClusterNodes();
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateFailoverCluster.
-        internal void ProcessRecord_UpdateFailover()
+        // updateClusterDefaultAddress.
+        internal void ProcessRecord_UpdateClusterDefaultAddress()
         {
-            this._logger.name += " -UpdateFailover";
-            // Create new graphql operation updateFailoverCluster
-            InitMutationUpdateFailoverCluster();
+            this._logger.name += " -UpdateClusterDefaultAddress";
+            // Create new graphql operation updateClusterDefaultAddress
+            InitMutationUpdateClusterDefaultAddress();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // updateClusterLocation.
+        internal void ProcessRecord_UpdateClusterLocation()
+        {
+            this._logger.name += " -UpdateClusterLocation";
+            // Create new graphql operation updateClusterLocation
+            InitMutationUpdateClusterLocation();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateClusterNtpServers.
+        internal void ProcessRecord_UpdateClusterNtpServers()
+        {
+            this._logger.name += " -UpdateClusterNtpServers";
+            // Create new graphql operation updateClusterNtpServers
+            InitMutationUpdateClusterNtpServers();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateClusterSettings.
+        internal void ProcessRecord_UpdateClusterSettings()
+        {
+            this._logger.name += " -UpdateClusterSettings";
+            // Create new graphql operation updateClusterSettings
+            InitMutationUpdateClusterSettings();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updatePreviewerClusterConfig.
+        internal void ProcessRecord_UpdatePreviewerClusterConfig()
+        {
+            this._logger.name += " -UpdatePreviewerClusterConfig";
+            // Create new graphql operation updatePreviewerClusterConfig
+            InitMutationUpdatePreviewerClusterConfig();
+        }
+
+
+        // Create new GraphQL Mutation:
+        // addClusterNodes(AddClusterNodesInput: AddClusterNodesInput!): AddClusterNodesReply!
+        internal void InitMutationAddClusterNodes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("AddClusterNodesInput", "AddClusterNodesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddClusterNodes",
+                "($AddClusterNodesInput: AddClusterNodesInput!)",
+                "AddClusterNodesReply",
+                Mutation.AddClusterNodes_ObjectFieldSpec,
+                Mutation.AddClusterNodesFieldSpec,
+                @"# REQUIRED
+$query.Var.AddClusterNodesInput = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	nodesMap = @(
+		@{
+			# OPTIONAL
+			key = $someString
+			# REQUIRED
+			value = @{
+				# OPTIONAL
+				dataIpConfig = @{
+					# OPTIONAL
+					vlan = $someInt
+					# REQUIRED
+					address = $someString
+					# REQUIRED
+					gateway = $someString
+					# REQUIRED
+					netmask = $someString
+				}
+				# REQUIRED
+				ipmiIpConfig = @{
+					# OPTIONAL
+					vlan = $someInt
+					# REQUIRED
+					address = $someString
+					# REQUIRED
+					gateway = $someString
+					# REQUIRED
+					netmask = $someString
+				}
+				# REQUIRED
+				managementIpConfig = @{
+					# OPTIONAL
+					vlan = $someInt
+					# REQUIRED
+					address = $someString
+					# REQUIRED
+					gateway = $someString
+					# REQUIRED
+					netmask = $someString
+				}
+				# OPTIONAL
+				vlanIpConfigs = @(
+					@{
+						# REQUIRED
+						ip = $someString
+						# REQUIRED
+						vlan = $someInt
+					}
+				)
+			}
+		}
+	)
+	# REQUIRED
+	request = @{
+		# OPTIONAL
+		encryptionPassword = $someString
+		# OPTIONAL
+		isIpv4ManualDiscoveryMode = $someBoolean
+		# OPTIONAL
+		isLinkLocalIpv4Mode = $someBoolean
+		# REQUIRED
+		ipmiPassword = $someString
+	}
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // addNodesToCloudCluster(input: AddNodesToCloudClusterInput!): CcProvisionJobReply!
@@ -660,8 +997,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	numberOfNodes = $someInt
 	# OPTIONAL
-	shouldKeepResourcesOnFailure = $someBoolean
-	# OPTIONAL
 	awsImageId = $someString
 	# OPTIONAL
 	azureImageName = $someString
@@ -671,92 +1006,56 @@ $query.Var.input = @{
 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 	# REQUIRED
 	clusterUuid = $someString
+	# REQUIRED
+	shouldKeepResourcesOnFailure = $someBoolean
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!): ResponseSuccess!
-        internal void InitMutationBulkDeleteFailoverCluster()
+        // generateClusterRegistrationToken(input: GenerateClusterRegistrationTokenInput): ClusterRegistrationToken!
+        internal void InitMutationGenerateClusterRegistrationToken()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BulkDeleteFailoverClusterInput!"),
+                Tuple.Create("input", "GenerateClusterRegistrationTokenInput"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationBulkDeleteFailoverCluster",
-                "($input: BulkDeleteFailoverClusterInput!)",
-                "ResponseSuccess",
-                Mutation.BulkDeleteFailoverCluster_ObjectFieldSpec,
-                Mutation.BulkDeleteFailoverClusterFieldSpec,
-                @"# REQUIRED
+                "MutationGenerateClusterRegistrationToken",
+                "($input: GenerateClusterRegistrationTokenInput)",
+                "ClusterRegistrationToken",
+                Mutation.GenerateClusterRegistrationToken_ObjectFieldSpec,
+                Mutation.GenerateClusterRegistrationTokenFieldSpec,
+                @"# OPTIONAL
 $query.Var.input = @{
 	# OPTIONAL
-	preserveSnapshots = $someBoolean
-	# REQUIRED
-	ids = @(
-		$someString
+	managedByPolaris = $someBoolean
+	# OPTIONAL
+	nodeConfigs = @(
+		@{
+			# OPTIONAL
+			id = $someString
+			# OPTIONAL
+			manufactureTime = $someDateTime
+			# OPTIONAL
+			serial = $someString
+			# OPTIONAL
+			systemUuid = $someString
+			# OPTIONAL
+			teleportToken = $someString
+			# OPTIONAL
+			clusterUuid = $someString
+			# OPTIONAL
+			platform = $someString
+			# OPTIONAL
+			capacity = $someString
+			# OPTIONAL
+			isEntitled = $someBoolean
+		}
 	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createFailoverCluster(input: CreateFailoverClusterInput!): CreateFailoverClusterReply!
-        internal void InitMutationCreateFailoverCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateFailoverClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateFailoverCluster",
-                "($input: CreateFailoverClusterInput!)",
-                "CreateFailoverClusterReply",
-                Mutation.CreateFailoverCluster_ObjectFieldSpec,
-                Mutation.CreateFailoverClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		configuredSlaDomainId = $someString
-		# REQUIRED
-		hostIds = @(
-			$someString
-		)
-		# REQUIRED
-		name = $someString
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteFailoverCluster(input: DeleteFailoverClusterInput!): ResponseSuccess!
-        internal void InitMutationDeleteFailoverCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteFailoverClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteFailoverCluster",
-                "($input: DeleteFailoverClusterInput!)",
-                "ResponseSuccess",
-                Mutation.DeleteFailoverCluster_ObjectFieldSpec,
-                Mutation.DeleteFailoverClusterFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
 	# OPTIONAL
-	preserveSnapshots = $someBoolean
-	# REQUIRED
-	id = $someString
+	isOfflineRegistration = $someBoolean
 }"
             );
         }
@@ -910,67 +1209,208 @@ $query.Var.expireInDays = $someInt64"
         }
 
         // Create new GraphQL Mutation:
-        // updateDatabaseLogReportingPropertiesForCluster(input: UpdateDatabaseLogReportingPropertiesForClusterInput!): DbLogReportProperties!
-        internal void InitMutationUpdateDatabaseLogReportingPropertiesForCluster()
+        // removeClusterNodes(input: RemoveClusterNodesInput!): CcProvisionJobReply!
+        internal void InitMutationRemoveClusterNodes()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateDatabaseLogReportingPropertiesForClusterInput!"),
+                Tuple.Create("input", "RemoveClusterNodesInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationUpdateDatabaseLogReportingPropertiesForCluster",
-                "($input: UpdateDatabaseLogReportingPropertiesForClusterInput!)",
-                "DbLogReportProperties",
-                Mutation.UpdateDatabaseLogReportingPropertiesForCluster_ObjectFieldSpec,
-                Mutation.UpdateDatabaseLogReportingPropertiesForClusterFieldSpec,
+                "MutationRemoveClusterNodes",
+                "($input: RemoveClusterNodesInput!)",
+                "CcProvisionJobReply",
+                Mutation.RemoveClusterNodes_ObjectFieldSpec,
+                Mutation.RemoveClusterNodesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	nodeIds = @(
+		$someString
+	)
+	# OPTIONAL
+	useQuickDrain = $someBoolean
 	# REQUIRED
 	clusterUuid = $someString
-	# REQUIRED
-	properties = @{
-		# OPTIONAL
-		enableDelayNotification = $someBoolean
-		# OPTIONAL
-		logDelayThresholdInMin = $someInt64
-		# OPTIONAL
-		logDelayNotificationFrequencyInMin = $someInt64
-	}
+	# OPTIONAL
+	nodeMetadata = @(
+		@{
+			# OPTIONAL
+			nodeId = $someString
+			# OPTIONAL
+			chassisId = $someString
+			# OPTIONAL
+			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
+			# OPTIONAL
+			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
+			# OPTIONAL
+			useQuickDrain = $someBoolean
+		}
+	)
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // updateFailoverCluster(input: UpdateFailoverClusterInput!): UpdateFailoverClusterReply!
-        internal void InitMutationUpdateFailoverCluster()
+        // updateClusterDefaultAddress(input: UpdateClusterDefaultAddressInput!): UpdateClusterDefaultAddressReply!
+        internal void InitMutationUpdateClusterDefaultAddress()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateFailoverClusterInput!"),
+                Tuple.Create("input", "UpdateClusterDefaultAddressInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationUpdateFailoverCluster",
-                "($input: UpdateFailoverClusterInput!)",
-                "UpdateFailoverClusterReply",
-                Mutation.UpdateFailoverCluster_ObjectFieldSpec,
-                Mutation.UpdateFailoverClusterFieldSpec,
+                "MutationUpdateClusterDefaultAddress",
+                "($input: UpdateClusterDefaultAddressInput!)",
+                "UpdateClusterDefaultAddressReply",
+                Mutation.UpdateClusterDefaultAddress_ObjectFieldSpec,
+                Mutation.UpdateClusterDefaultAddressFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# OPTIONAL
+	address = $someString
+	# OPTIONAL
+	port = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateClusterLocation(clusterUuid: UUID!, clusterLocation: ClusterLocationEdit!): Cluster!
+        internal void InitMutationUpdateClusterLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("clusterLocation", "ClusterLocationEdit!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateClusterLocation",
+                "($clusterUuid: UUID!,$clusterLocation: ClusterLocationEdit!)",
+                "Cluster",
+                Mutation.UpdateClusterLocation_ObjectFieldSpec,
+                Mutation.UpdateClusterLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString
+# REQUIRED
+$query.Var.clusterLocation = @{
+	# REQUIRED
+	address = $someString
+	# REQUIRED
+	latitude = $someSingle
+	# REQUIRED
+	longitude = $someSingle
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateClusterNtpServers(input: UpdateClusterNtpServersInput!): ResponseSuccess!
+        internal void InitMutationUpdateClusterNtpServers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateClusterNtpServersInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateClusterNtpServers",
+                "($input: UpdateClusterNtpServersInput!)",
+                "ResponseSuccess",
+                Mutation.UpdateClusterNtpServers_ObjectFieldSpec,
+                Mutation.UpdateClusterNtpServersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
 	# REQUIRED
-	updateProperties = @{
+	ntpServerConfigs = @(
+		@{
+			# OPTIONAL
+			symmetricKey = @{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				keyId = $someInt
+				# REQUIRED
+				keyType = $someString
+			}
+			# REQUIRED
+			server = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateClusterSettings(input: UpdateClusterSettingsInput!): UpdateClusterSettingsReply!
+        internal void InitMutationUpdateClusterSettings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateClusterSettingsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateClusterSettings",
+                "($input: UpdateClusterSettingsInput!)",
+                "UpdateClusterSettingsReply",
+                Mutation.UpdateClusterSettings_ObjectFieldSpec,
+                Mutation.UpdateClusterSettingsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUpdate = @{
 		# OPTIONAL
-		configuredSlaDomainId = $someString
-		# REQUIRED
-		hostIds = @(
-			$someString
-		)
-		# REQUIRED
+		acceptedEulaVersion = $someString
+		# OPTIONAL
+		geolocation = @{
+			# REQUIRED
+			address = $someString
+		}
+		# OPTIONAL
 		name = $someString
+		# OPTIONAL
+		timezone = @{
+			# REQUIRED
+			timezone = $someClusterTimezoneType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTimezoneType]) for enum values.
+		}
 	}
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updatePreviewerClusterConfig(previewerClusterConfig: PreviewerClusterConfigInput!): Cluster!
+        internal void InitMutationUpdatePreviewerClusterConfig()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("previewerClusterConfig", "PreviewerClusterConfigInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdatePreviewerClusterConfig",
+                "($previewerClusterConfig: PreviewerClusterConfigInput!)",
+                "Cluster",
+                Mutation.UpdatePreviewerClusterConfig_ObjectFieldSpec,
+                Mutation.UpdatePreviewerClusterConfigFieldSpec,
+                @"# REQUIRED
+$query.Var.previewerClusterConfig = @{
+	# OPTIONAL
+	clusterId = $someString
+	# OPTIONAL
+	enabled = $someBoolean
 }"
             );
         }

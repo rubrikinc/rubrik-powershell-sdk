@@ -17,3 +17,5 @@ Feature specific details for a cloud account.
   - IAM user access key for feature. This field has a non-empty value only for accounts with an IAM user credential provider.
 - authServerDetail: AwsAuthServerDetail
   - Details for authentication server-based cloud accounts. This field is only applicable to the accounts in AWS DCA and LCK regions.
+- permissionsGroups: list of PermissionsGroups
+  - Permissions groups onboarded for the cloud accounts feature. Permissions groups will be present only for customer-managed cluster users.

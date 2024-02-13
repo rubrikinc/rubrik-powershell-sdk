@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("continuousBackupRetentionInDays")]
         public System.Int32? ContinuousBackupRetentionInDays { get; set; }
 
+        //      C# -> System.String? BackupLocationId
+        // GraphQL -> backupLocationId: String (scalar)
+        [JsonProperty("backupLocationId")]
+        public System.String? BackupLocationId { get; set; }
+
 
         #endregion
 

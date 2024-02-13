@@ -62,6 +62,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectId")]
         public System.String? ObjectId { get; set; }
 
+        //      C# -> List<WorkloadRegionInput>? Regions
+        // GraphQL -> regions: [WorkloadRegionInput!] (input)
+        [JsonProperty("regions")]
+        public List<WorkloadRegionInput>? Regions { get; set; }
+
+        //      C# -> List<System.String>? CloudAccountIds
+        // GraphQL -> cloudAccountIds: [String!] (scalar)
+        [JsonProperty("cloudAccountIds")]
+        public List<System.String>? CloudAccountIds { get; set; }
+
+        //      C# -> CloudVendor? ManagedBy
+        // GraphQL -> managedBy: CloudVendor (enum)
+        [JsonProperty("managedBy")]
+        public CloudVendor? ManagedBy { get; set; }
+
 
         #endregion
 

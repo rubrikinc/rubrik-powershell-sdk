@@ -19,3 +19,5 @@ Input to finalize set up of an AWS cloud account.
   - External ID of the IAM role trust policy for the cloud account.
 - featureVersion: list of AwsCloudAccountFeatureVersionInputs
   - List of feature types to be protected for the cloud account.
+- featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss
+  - List of features to onboard for the cloud account along with specific permissions groups. This list is a valid input only for customer-managed cluster users.

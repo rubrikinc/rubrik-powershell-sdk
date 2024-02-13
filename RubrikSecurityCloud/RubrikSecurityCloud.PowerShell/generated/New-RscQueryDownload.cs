@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <summary>
     /// Create a new RscQuery object for any of the 3
     /// operations in the 'Report Download' API domain:
-    /// CdmUpgradesPdf, EdVersionList, or PackageStatus.
+    /// CdmUpgradesPdf, DownloadedVersionList, or PackageStatus.
     /// </summary>
     /// <description>
     /// New-RscQueryDownload creates a new
@@ -39,7 +39,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// in the 'Report Download' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CdmUpgradesPdf, EdVersionList, or PackageStatus.
+    /// one of: CdmUpgradesPdf, DownloadedVersionList, or PackageStatus.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -142,7 +142,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the EdVersionList operation
+    /// Runs the DownloadedVersionList operation
     /// of the 'Report Download' API domain.
     /// <code>
     /// PS &gt;
@@ -150,9 +150,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # Create an RscQuery object for:
     /// # API Domain:    Download
-    /// # API Operation: EdVersionList
+    /// # API Operation: DownloadedVersionList
     /// 
-    /// $query = New-RscQueryDownload -EdVersionList
+    /// $query = New-RscQueryDownload -DownloadedVersionList
     /// 
     /// # No variables for this query.
     /// 
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "CdmUpgradesPdf",
-                "EdVersionList",
+                "DownloadedVersionList",
                 "PackageStatus",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -233,8 +233,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CdmUpgradesPdf":
                         this.ProcessRecord_CdmUpgradesPdf();
                         break;
-                    case "EdVersionList":
-                        this.ProcessRecord_EdVersionList();
+                    case "DownloadedVersionList":
+                        this.ProcessRecord_DownloadedVersionList();
                         break;
                     case "PackageStatus":
                         this.ProcessRecord_PackageStatus();
@@ -260,9 +260,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // downloadedVersionList.
-        internal void ProcessRecord_EdVersionList()
+        internal void ProcessRecord_DownloadedVersionList()
         {
-            this._logger.name += " -EdVersionList";
+            this._logger.name += " -DownloadedVersionList";
             // Create new graphql operation downloadedVersionList
             InitQueryDownloadedVersionList();
         }

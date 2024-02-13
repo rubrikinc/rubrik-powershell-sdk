@@ -36,4 +36,5 @@ Supported in v5.1+
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - 
 - folderId: System.String
-  - ID of the virtual machine folder where the new virtual machine will be mounted.
+  - Supported in v9.1+
+      ID of the virtual machine folder where the new virtual machine will be mounted.

@@ -68,6 +68,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("passwordExpirationPolicy")]
         public PasswordComplexityPolicyTemplateInput? PasswordExpirationPolicy { get; set; }
 
+        //      C# -> PasswordComplexityPolicyTemplateInput? LeakedDetectionPolicy
+        // GraphQL -> leakedDetectionPolicy: PasswordComplexityPolicyTemplateInput (input)
+        [JsonProperty("leakedDetectionPolicy")]
+        public PasswordComplexityPolicyTemplateInput? LeakedDetectionPolicy { get; set; }
+
 
         #endregion
 
