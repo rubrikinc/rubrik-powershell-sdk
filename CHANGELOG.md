@@ -6,6 +6,8 @@ New Features:
 
 Fixes:
 
+Breaking Changes:
+
 ## Version 0.22
 
 New Features:
