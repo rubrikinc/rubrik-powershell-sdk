@@ -55,9 +55,11 @@ if ($hits.Success -and $hits.Groups.Count -gt 1) {
     $latestVersionEntry = $hits.Groups[1].Value
     # Remove the initial "## " for the version string
     $latestVersionEntry = $latestVersionEntry -replace '## ', ''
+    Write-Host "Latest version entry: `"$latestVersionEntry`""
     # Extract the version tag from the first line
     $versionTag = ($latestVersionEntry -split "`n")[0] -replace ' ', '_'
-
+    Write-Host "Version tag: `"$versionTag`""
+    
     # Commit changes with the latest version entry as the commit message
     try {
         if ($Dry) {
