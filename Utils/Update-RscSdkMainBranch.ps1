@@ -1,6 +1,6 @@
 param(
-    [switch]$Dry = $false,
-    [switch]$SkipBuild = $false
+    [switch]$SkipBuild = $false,
+    [switch]$NotDry = $false
 )
 
 # Change to the root of the repository
@@ -47,48 +47,56 @@ catch {
     throw "Failed to build the SDK."
 }
 
-$changelogContent = Get-Content -Path .\CHANGELOG.md -Raw
+$changelogScriptPath = Join-Path -Path $PSScriptRoot -ChildPath "Get-RscSdkLatestChangelog.ps1"
+$changelogLatest = & $changelogScriptPath
+if ( -Not $changelogLatest ) {
+    throw "Failed to get the latest changelog entry."
+}
+$versionTag = $changelogLatest.latestVersionTag
+$versionEntry = $changelogLatest.latestVersionEntry
 
-# Use regex to capture the latest version entry
-$hits = [regex]::Match($changelogContent, "(## Version .+?)(?=\r?\n## Version |\z)", 'Singleline')
-if ($hits.Success -and $hits.Groups.Count -gt 1) {
-    $latestVersionEntry = $hits.Groups[1].Value
-    # Remove the initial "## " for the version string
-    $latestVersionEntry = $latestVersionEntry -replace '## ', ''
-    Write-Host "Latest version entry: `"$latestVersionEntry`""
-    # Extract the version tag from the first line
-    $versionTag = ($latestVersionEntry -split "`n")[0] -replace ' ', '_'
-    Write-Host "Version tag: `"$versionTag`""
-    
-    # Commit changes with the latest version entry as the commit message
-    try {
-        if ($Dry) {
-            Write-Host "Dry run: git commit -am `"$latestVersionEntry`""
-        }
-        else {
-            git commit -am "$latestVersionEntry"
-        }
-    }
-    catch {
-        throw "Failed to commit changes."
-    }
+Write-Host "Latest version tag: " -NoNewline
+Write-Host $versionTag -ForegroundColor Cyan
+Write-Host "Latest version entry:"
+Write-Host $versionEntry -ForegroundColor Cyan
 
-    # Create a new GitHub release
-    try {
-        if ($Dry) {
-            Write-Host "Dry run: gh release create $versionTag -t $versionTag -n `"$latestVersionEntry`""
-            return
+function RunIfNotDry {
+    param(
+        [ScriptBlock]$CodeBlock
+    )
+
+    # Check if the global variable $NotDry is set and not false
+    if ($global:NotDry) {
+        Write-Output "Run: $($CodeBlock.ToString())"
+        try {
+            # Execute the script block
+            & $CodeBlock
         }
-        else {
-            gh release create $versionTag -t $versionTag -n "$latestVersionEntry"
+        catch {
+            throw "Failed to execute $($CodeBlock.ToString()): $_"
         }
     }
-    catch {
-        throw "Failed to create GitHub release."
+    else {
+        # Print the script block without executing
+        Write-Output "Dry run: $($CodeBlock.ToString())"
     }
 }
-else {
-    throw "Failed to find the latest version entry in CHANGELOG.md."
+
+# Commit changes with the latest version entry as the commit message
+RunIfNotDry {
+    git commit -am "$versionEntry"
 }
 
-Write-Host "Build and release process completed successfully."
+# Push the changes to the main branch
+RunIfNotDry {
+    git push origin main
+}
+
+# Create a new GitHub release
+RunIfNotDry {
+    gh release create $versionTag -t $versionTag -n "$versionEntry"
+}
+
+Write-Host "Done." -ForegroundColor Green
+Write-Host "git status:"
+git status
