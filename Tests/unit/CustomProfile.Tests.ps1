@@ -47,7 +47,12 @@ Describe -Name "Test custom input profile" -Fixture {
     It -Name 'AccountSettings custom operation' -Test {
         $gqlRequest = (New-RscQueryAccount -Op Settings).GqlRequest()
         $gqlRequest.GetType().Name | Should -Be "RscGqlRequest"
-        $gqlRequest.DefaultFileName() | Should -Be $script:QueryAccountSettings_CustomFileName 
+
+        # Normalize directory separators in both paths to '/'
+        $expectedPath = $script:QueryAccountSettings_CustomFileName -replace '\\', '/'
+        $actualPath = $gqlRequest.DefaultFileName() -replace '\\', '/'
+
+        $actualPath | Should -Be $expectedPath
 
         $script:QueryAccountSettings_CustomFileName | Should -Not -Exist
         $gqlRequest.SaveQueryToFile()
