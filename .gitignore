@@ -48,6 +48,7 @@ Generated\ Files/
 # NUnit
 *.VisualState.xml
 TestResult.xml
+testResults.xml
 nunit-*.xml
 
 # Build Results of an ATL Project
@@ -374,6 +375,4 @@ GraphQL Schme Downloader/schema/.env.json
 
 # PowerShell module
 Output/
-.vscode/launch.json
-docs/powershell/outputs/O365SharePointDrive.md
-Toolkit/Public/Get-RscSlaDomain.ps1
+.vscode/

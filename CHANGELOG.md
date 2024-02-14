@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.24
+
+New Features:
+
+- MsSql cmdlets
+  [From PR 34](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/34)
+- New-RscSlaDomain and New-RscSnapshotSchedule cmdlets
+  [From PR 39](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/39)
+
 ## Version 0.23
 
 New Features:
