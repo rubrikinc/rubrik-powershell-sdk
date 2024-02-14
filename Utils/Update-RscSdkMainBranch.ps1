@@ -1,3 +1,7 @@
+param(
+    [switch]$Dry = $false
+)
+
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
 
@@ -40,11 +44,34 @@ try {
 $matches = [regex]::Match($changelogContent, "(## Version .+?)(?=\r?\n## Version |\z)", 'Singleline')
 if ($matches.Success -and $matches.Groups.Count -gt 1) {
     $latestVersionEntry = $matches.Groups[1].Value
+    # Remove the initial "## " for the version string
+    $latestVersionEntry = $latestVersionEntry -replace '## ', ''
+    # Extract the version tag from the first line
+    $versionTag = ($latestVersionEntry -split "`n")[0] -replace ' ', '_'
+
     # Commit changes with the latest version entry as the commit message
     try {
-        git commit -am "$latestVersionEntry"
+        if ($Dry) {
+            Write-Host "Dry run: git commit -am `"$latestVersionEntry`""
+        }
+        else {
+            git commit -am "$latestVersionEntry"
+        }
     } catch {
         throw "Failed to commit changes."
+    }
+
+    # Create a new GitHub release
+    try {
+        if($Dry) {
+            Write-Host "Dry run: gh release create $versionTag -t $versionTag -n `"$latestVersionEntry`""
+            return
+        }
+        else {
+            gh release create $versionTag -t $versionTag -n "$latestVersionEntry"
+        }
+    } catch {
+        throw "Failed to create GitHub release."
     }
 } else {
     throw "Failed to find the latest version entry in CHANGELOG.md."
