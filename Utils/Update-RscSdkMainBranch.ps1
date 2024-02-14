@@ -1,5 +1,6 @@
 param(
-    [switch]$Dry = $false
+    [switch]$Dry = $false,
+    [switch]$SkipBuild = $false
 )
 
 # Change to the root of the repository
@@ -14,14 +15,16 @@ if ($gitStatus) {
 # Checkout main branch
 try {
     git checkout main
-} catch {
+}
+catch {
     throw "Failed to checkout 'main' branch."
 }
 
 # Merge devel into main without commit
 try {
     git merge devel --no-commit --no-ff
-} catch {
+}
+catch {
     throw "Failed to merge 'devel' into 'main'."
 }
 
@@ -29,21 +32,27 @@ try {
 try {
     git restore --source=HEAD --staged -- Output/
     git restore --source=HEAD -- Output/
-} catch {
+}
+catch {
     throw "Failed to restore 'Output/' directory."
 }
 
 # Build the SDK
 try {
-    & .\Utils\Build-RscSdk.ps1
-} catch {
+    if (-not $SkipBuild) {
+        .\Utils\Build-RscSdk.ps1
+    }
+}
+catch {
     throw "Failed to build the SDK."
 }
 
+$changelogContent = Get-Content -Path .\CHANGELOG.md -Raw
+
 # Use regex to capture the latest version entry
-$matches = [regex]::Match($changelogContent, "(## Version .+?)(?=\r?\n## Version |\z)", 'Singleline')
-if ($matches.Success -and $matches.Groups.Count -gt 1) {
-    $latestVersionEntry = $matches.Groups[1].Value
+$hits = [regex]::Match($changelogContent, "(## Version .+?)(?=\r?\n## Version |\z)", 'Singleline')
+if ($hits.Success -and $hits.Groups.Count -gt 1) {
+    $latestVersionEntry = $hits.Groups[1].Value
     # Remove the initial "## " for the version string
     $latestVersionEntry = $latestVersionEntry -replace '## ', ''
     # Extract the version tag from the first line
@@ -57,23 +66,26 @@ if ($matches.Success -and $matches.Groups.Count -gt 1) {
         else {
             git commit -am "$latestVersionEntry"
         }
-    } catch {
+    }
+    catch {
         throw "Failed to commit changes."
     }
 
     # Create a new GitHub release
     try {
-        if($Dry) {
+        if ($Dry) {
             Write-Host "Dry run: gh release create $versionTag -t $versionTag -n `"$latestVersionEntry`""
             return
         }
         else {
             gh release create $versionTag -t $versionTag -n "$latestVersionEntry"
         }
-    } catch {
+    }
+    catch {
         throw "Failed to create GitHub release."
     }
-} else {
+}
+else {
     throw "Failed to find the latest version entry in CHANGELOG.md."
 }
 
