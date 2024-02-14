@@ -9,6 +9,7 @@ New Features:
   [From PR 33](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/33)
 - MsSql cmdlets
   [From PR 30](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/30)
+  [From PR 34](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/34)
 
 ## Version 0.22
 
