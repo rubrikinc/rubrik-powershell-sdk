@@ -58,7 +58,7 @@ function New-RscMssqlExport{
         newFilename = "Lumnah_Test_log.ldf"
     } 
 
-    ExportPath value cannot be changed, but logicalName and newFilename values can. 
+    logicalName value cannot be changed, but exportPath and newFilename values can. 
 
     Case matters. Make sure to use the case listed above for exportPath, logicalName, and newFilename. Variations of the spellings in different cases, will not work. 
     .PARAMETER Overwrite
@@ -95,7 +95,7 @@ function New-RscMssqlExport{
     each file in the database. 
 
     This gives you full control over each file and path. 
-    The value in exportPath *MUST* be the same value that is in the database at the time of the backup. You can see these
+    The value in logicalName *MUST* be the same value that is in the database at the time of the backup. You can see these
     values by using Get-RscMssqlDatabaseFiles. 
     
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
