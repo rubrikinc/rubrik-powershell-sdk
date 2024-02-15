@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+ADMIN USE ONLY. Update the GitHub repo's main branch with the latest changes from the devel branch.
+
+.DESCRIPTION
+ADMIN USE ONLY: this script updates the GitHub repo and needs to be run by an admin.
+Running it as a non-admin will not alter the repository and
+will only show what would have been done.
+
+You can safely run: .\Utils\Update-RscSdkMainBranch.ps1 -SkipBuild
+to see what would have been done without actually doing it.
+
+This script will:
+1. Check out the main branch
+2. Merge the devel branch into main without committing
+3. Restore the Output directory
+4. Build the SDK and populate the Output directory (unless -SkipBuild is given)
+5. Get the latest changelog entry
+6. Commit the changes with the latest version entry as the commit message
+7. Push the changes to the main branch
+8. Create a new GitHub release
+
+.EXAMPLE
+.\Utils\Update-RscSdkMainBranch.ps1 -SkipBuild
+#>
 param(
     [switch]$SkipBuild = $false,
     [switch]$NotDry = $false
