@@ -165,3 +165,8 @@ TDD Workflow:
 ```powershell
 PS ~/rubrik-powershell-sdk/Toolkit> Update-RscToolkit -RunE2eTests
 ```
+
+## Submitting PRs
+
+Run `.\Utils\Clean-RscSdk.ps1` before submitting a PR
+to make sure you don't submit any build artifacts.
