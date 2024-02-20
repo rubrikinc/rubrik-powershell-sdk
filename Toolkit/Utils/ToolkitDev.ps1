@@ -48,8 +48,9 @@ function Copy-ToolkitFileToOutputDir {
     $srcInfo = Get-Item $SourceFile -ErrorAction Stop
     $destFile = MatchingOutputFileName $SourceFile
     $copied = CopyFileIfDifferent $srcInfo.FullName $destFile
-    $src = $srcInfo.FullName -Replace $Toolkit.SdkDir, "<SDK root>"
-    $dst = $destFile -Replace $Toolkit.SdkDir, "<SDK root>"
+    $escapedSdkDir = [regex]::Escape($Toolkit.SdkDir)
+    $src = $srcInfo.FullName -Replace $escapedSdkDir, "<SDK root>"
+    $dst = $destFile -Replace $escapedSdkDir, "<SDK root>"
     if ($copied) {
         Write-Host "Copied $src to $dst."
         return $true
@@ -103,10 +104,7 @@ function Update-RscToolkit {
     Get-RscToolkitStatus -Brief
 
     if ( ! $SkipTest ) {
-        . "$PSScriptRoot\..\Utils\Run-PesterTests.ps1" -TestPath "$PSScriptRoot\..\Tests\unit"
-        if ($RunE2eTests) {
-            . "$PSScriptRoot\..\Utils\Run-PesterTests.ps1" -TestPath "$PSScriptRoot\..\Tests\e2e"
-        }
+        Test-RscToolkit
     }
 }
 
@@ -200,6 +198,11 @@ function ToolkitDevInfo() {
     Write-Host "-> Run " -NoNewline
     Write-Host "Get-RscToolkitStatus" -NoNewline -ForegroundColor Green
     Write-Host " to compare the source files with the Output directory."
+}
+
+function Test-RscToolkit {
+    $scriptPath = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Utils\Test-RscSdk.ps1"
+    & $scriptPath -SkipCoreTests
 }
 
 if ( ! $Quiet ) {
