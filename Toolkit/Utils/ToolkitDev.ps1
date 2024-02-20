@@ -1,33 +1,70 @@
 <#
 .SYNOPSIS
 Utilities for RSC Toolkit development
+
+.DESCRIPTION
+This script provides utility functions for developing the RSC Toolkit.
+Bring these utilities into your PowerShell session by running:
+    . .\ToolkitDev.ps1
+
+The functions are:
+
+- Update-RscToolkit: Copies the toolkit files to the Output directory and re-imports the module.
+- Get-RscToolkitStatus: Compares the source files with the Output directory.
+- Test-RscToolkit: Runs the toolkit tests.
+
+see https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/Toolkit/Docs/TOOLKIT_DEVELOPER_MANUAL.md for more information.
+
+.PARAMETER Quiet
+If set, the intro message is suppressed.
+
+.PARAMETER Connect
+If set, Connect-Rsc is called at the beginning of the script.
 #>
 param (
     [switch]$Quiet,
-    [switch]$Connect
+    [switch]$Connect,
+    [string]$OutputDir = ""
 )
 
-. "$PSScriptRoot\..\Private\FileUtils.ps1"
-. "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1"
-
-if ( ! $Quiet ) {
-    Write-Host "`nRubrikSecurityCloud module imported from Output directory."
+if ( -Not $OutputDir ) {
+    $OutputDir = Join-Path $PSScriptRoot "..\..\Output"
+    # If "Output" doesn't exist but "Output.Release" does, use that instead
+    if (-not (Test-Path $OutputDir)) {
+        $OutputDir = Join-Path $PSScriptRoot "..\..\Output.Release"
+    }
 }
-if ( $Connect ) {
-    Connect-Rsc
+# Resolve "." and ".." in the path
+$OutputDir = (Get-Item -Path $OutputDir).FullName
+if (-not (Test-Path $OutputDir)) {
+    Write-Error "Output directory not found."
+    return
 }
 
 $tkdir = (Get-Item $PSScriptRoot).Parent
 $Toolkit = [PSCustomObject]@{
+    SdkDir     = (Get-Item $tkdir).Parent
     Dir        = $tkdir
     PublicDir  = Join-Path $tkdir "Public"
     PrivateDir = Join-Path $tkdir "Private"
     FormatDir  = Join-Path $tkdir "Format"
-    SdkDir     = (Get-Item $tkdir).Parent
-    OutputDir  = Join-Path $tkdir.Parent "Output" "Toolkit"
-
+    OutputDir  = Join-Path $OutputDir "Toolkit"
 }
 Remove-Variable -Name 'tkdir'
+
+. "$($Toolkit.PrivateDir)\FileUtils.ps1"
+$params = @{
+    OutputDir = $OutputDir
+}
+if ($Quiet) {
+    $params['Quiet'] = $true
+}
+. "$($Toolkit.SdkDir)\Utils\Import-RscModuleFromLocalOutputDir.ps1" @params
+
+
+if ( $Connect ) {
+    Connect-Rsc
+}
 
 function MatchingOutputFileName {
     param(
@@ -41,6 +78,7 @@ function MatchingOutputFileName {
     }
     return Join-Path $Toolkit.OutputDir $sourceDir $srcInfo.Name
 }
+
 function Copy-ToolkitFileToOutputDir {
     param (
         [string]$SourceFile
@@ -87,10 +125,17 @@ function Copy-ToolkitToOutputDir {
 }
 
 function Update-RscToolkit {
+    <#
+    .SYNOPSIS
+    Update the RSC Toolkit in the Output directory and re-import the module.
+
+    .DESCRIPTION
+    This function copies the toolkit files to the Output directory and re-imports the module.
+    It also runs the tests by default, but you can skip them with the -SkipTest switch.
+    #>
     [CmdletBinding()] # To allow things like -Verbose
     Param(
-        [switch]$SkipTest,
-        [switch]$RunE2eTests
+        [switch]$SkipTest
     )
 
     # Copy the toolkit files to the Output directory
@@ -98,7 +143,7 @@ function Update-RscToolkit {
     Write-Output "Copied $copyCount files to Output directory."
 
     # Re-Import the module from the Output directory
-    . "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1"
+    . "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1" -OutputDir $OutputDir
     Write-Output "Imported module from Output directory."
 
     Get-RscToolkitStatus -Brief
@@ -126,6 +171,20 @@ function DetermineSystemInstalledToolkitLocation {
 }
 
 function Get-RscToolkitStatus {
+    <#
+    .SYNOPSIS
+    Compare the source files with the Output directory.
+
+    .DESCRIPTION
+    This function compares the source files with the Output directory.
+    It also checks if the system-installed toolkit is present.
+
+    .PARAMETER Brief
+    If set, the source and output directories are abbreviated to "<SDK root>".
+
+    .PARAMETER Filter
+    A filter to apply to the source files. Default is "*.ps*".
+    #>
     [CmdletBinding()] # To allow things like -Verbose
     Param(
         [switch]$Brief = $false,
@@ -188,6 +247,15 @@ Note: the Toolkit dev workflow does not update the system-installed toolkit.
 
 }
 
+function Test-RscToolkit {
+    <#
+    .SYNOPSIS
+    Run the RSC Toolkit tests.
+    #>
+    $scriptPath = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Utils\Test-RscSdk.ps1"
+    & $scriptPath -SkipCoreTests
+}
+
 function ToolkitDevInfo() {
     Get-RscToolkitStatus -Brief
     Write-Host "`n$([char]::ConvertFromUtf32(0x1F6E0))  Toolkit development utilities:"
@@ -200,11 +268,6 @@ function ToolkitDevInfo() {
     Write-Host " to compare the source files with the Output directory."
 }
 
-function Test-RscToolkit {
-    $scriptPath = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Utils\Test-RscSdk.ps1"
-    & $scriptPath -SkipCoreTests
-}
-
-if ( ! $Quiet ) {
+if ( -Not $Quiet ) {
     ToolkitDevInfo
 }

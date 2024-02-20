@@ -1,3 +1,7 @@
+<#
+.SYNOPSIS
+    Get the latest version entry from the CHANGELOG.md file.
+#>
 $changelogPath = Join-Path -Path $PSScriptRoot\.. -ChildPath "CHANGELOG.md"
 $changelogContent = Get-Content -Path $changelogPath -Raw
 

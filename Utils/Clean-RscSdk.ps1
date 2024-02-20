@@ -1,3 +1,7 @@
+<#
+.SYNOPSIS
+    Clean up the Rubrik Security Cloud SDK build artifacts.
+#>
 Set-Location $PSScriptRoot\.. 
 
 if (Test-Path -Path .\Output) {

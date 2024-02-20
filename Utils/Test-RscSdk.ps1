@@ -1,3 +1,41 @@
+<#
+.SYNOPSIS
+    Run the Rubrik PowerShell SDK tests.
+
+.DESCRIPTION
+    This script runs the unit and e2e tests for both
+    the Core and Toolkit components of the RSC SDK.
+
+    By default, all tests are run. You can skip some tests
+    by passing the appropriate switches.
+
+    The script will stop on the first error.
+
+.PARAMETER SkipUnitTests
+    Skip all unit tests (in Core and Toolkit).
+
+.PARAMETER SkipE2ETests
+    Skip all e2e tests (in Core and Toolkit).
+
+.PARAMETER SkipCoreTests
+    Skip all Core tests (unit and e2e).
+
+.PARAMETER SkipToolkitTests
+    Skip all Toolkit tests (unit and e2e).
+
+.EXAMPLE
+    .\Utils\Test-RscSdk.ps1 -SkipUnitTests
+    # Run only e2e tests for Core and Toolkit.
+
+.EXAMPLE
+    .\Utils\Test-RscSdk.ps1 -SkipCoreTests
+    # Run only Toolkit tests.
+    # Note: this is what ToolkitDev.ps1's Test-RscToolkit does.
+
+.EXAMPLE
+    .\Utils\Test-RscSdk.ps1 -SkipE2ETests -SkipCoreTests
+    # Run only Toolkit unit tests.
+#>
 param(
     [switch]$SkipUnitTests = $false,
     [switch]$SkipE2ETests = $false,

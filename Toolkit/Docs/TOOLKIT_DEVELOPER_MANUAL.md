@@ -1,6 +1,6 @@
 # RSC SDK Toolkit Developer Manual
 
-## Introduction
+## 1 Introduction
 
 From an end-user point of view, the RSC PowerShell SDK presents itself
 as one package:
@@ -22,7 +22,7 @@ Internally to the SDK, there are two components:
 This document is about the **Toolkit** component, and how to develop
 new cmdlets for it.
 
-## Cmdlet Development
+### 1.1 Cmdlet Development
 
 Toolkit cmdlets are written in PowerShell, and are located in the
 `Toolkit/Public` directory.
@@ -32,14 +32,14 @@ part of the build, and will be included in the module.
 
 Please see: [Public Functions](../Public/README.md)
 
-## Format file Development
+### 1.2 Format file Development
 
 All `.ps1xml` files in `Toolkit/Format` are part of the build, and will
 be included in the module.
 
 Please see: [Format Files](../Format/README.md)
 
-## Private Functions
+### 1.3 Private Functions
 
 `Toolkit/Private` is also part of the build, but is not exported as
 part of the module. It is used for internal functions, and for
@@ -47,45 +47,75 @@ functions that are not ready for public consumption.
 
 Please see: [Private Functions](../Private/README.md)
 
-## Developer Workflow
+## 2 Developer Workflow
+
+All work is done on the repo's `devel` branch.
+
+There are
+[2 branches on the repo](https://github.com/rubrikinc/rubrik-powershell-sdk/branches)
+that are of interest to developers: `main` and `devel`
+
+- `main` is the stable branch, and it is the branch that is used to
+  build the module that is published to the PowerShell Gallery.
+  Only SDK maintainers can push to `main`.
+- `devel` is the development branch, and it is the branch that is used
+  to push PRs to. All work is done on `devel`. Note also that we don't
+  `git push` to `devel` but rather submit PRs to it.
+
+### 2.1 Clone the devel branch
+
+Bring the SDK down to your local machine. For example:
+
+```powershell
+PS ~/> git clone -b devel git@github.com:rubrikinc/rubrik-powershell-sdk.git
+```
+
+You can also use the HTTPS URL, or the GitHub CLI,
+or any other method you prefer (you could also fork the repo),
+just make sure you're on the `devel` branch.
+
+### 2.2 Build the SDK
 
 Start by building the SDK in Debug Mode, in the `Output/` directory:
 
 ```powershell
-PS ~/rubrik-powershell-sdk> make
+PS ~/rubrik-powershell-sdk> .\Utils\Build-RscSdk.ps1
 ```
+
+`Build-RscSdk.ps1` will build the SDK core and assemble it with Toolkit scripts
+into the `Output/` directory. Build times are vastly different depending on
+the OS: it takes a few minutes on Windows, but up to an hour (!)
+on macOS or Linux (due to the .NET Core build system being drastically slower
+on non-Windows platforms).
+
+`Build-RscSdk.ps1` cleans up the local repo, builds the SDK, copies it
+to the `Output/` directory, and then tests it. As this point you should not
+see any build errors and all tests should pass.
 
 Once built, you can import the module from `Output/` with a Utils script:
 
 ```powershell
-PS ~/rubrik-powershell-sdk> cd Toolkit
-PS ~/rubrik-powershell-sdk/Toolkit> ./Utils/Import-ModuleFromOutputDir.ps1
-
-Welcome to the Rubrik Security Cloud PowerShell SDK!
-
- Please refer to the Getting Started section of the Readme documentation:
- https://github.com/rubrikinc/rubrik-powershell-sdk#getting-started
-
-PS ~/rubrik-powershell-sdk/Toolkit>
+PS ~/rubrik-powershell-sdk> ./Utils/Import-RscModuleFromLocalOutputDir.ps1
 ```
 
-We work with the RubrikSecurityCloud module that's in the `Output/` directory
-because it allows you to test your changes without having to install the
-module.
+At this point you could start working on the Toolkit, and just
+run `.\Utils\Build-RscSdk.ps1` to test your changes, but it will
+be a slow dev workflow.
+Instead, we recommend using the ToolkitDev.ps1 script.
+
+### 2.3 ToolkitDev.ps1
 
 To aid in the development of the toolkit, we have provided a
-`ToolkitDev.ps1` script under `Toolkit/Utils`.
+`ToolkitDev.ps1` script under `Toolkit/Utils`. Source it in your
+PowerShell session to get a development environment set up:
 
 ```powershell
-PS ~/rubrik-powershell-sdk/Toolkit> . ./Utils/ToolkitDev.ps1
+PS ~/rubrik-powershell-sdk> . ./Toolkit/Utils/ToolkitDev.ps1
 
-Welcome to the Rubrik Security Cloud PowerShell SDK!
+Importing RubrikSecurityCloud module from ~/Output
+RSC Toolkit loaded.
+Imported 167 cmdlets and functions from RubrikSecurityCloud.
 
- Please refer to the Getting Started section of the Readme documentation:
- https://github.com/rubrikinc/rubrik-powershell-sdk#getting-started
-
-
-RubrikSecurityCloud module imported from Output directory.
 
 Toolkit status:
 ---------------
@@ -103,70 +133,95 @@ Toolkit development utilities:
 -> Run Get-RscToolkitStatus to compare the source files with the Output directory.
 ```
 
-Note that the `ToolkitDev.ps1` script will automatically import the
+Note that the `ToolkitDev.ps1` script automatically imports the
 module from the `Output/` directory, so you don't need to run
-`Import-ModuleFromOutputDir.ps1` if you're sourcing `ToolkitDev.ps1`.
+`Import-RscModuleFromLocalOutputDir.ps1` if you're sourcing `ToolkitDev.ps1`.
 
-`Update-RscToolkit` will update the `Output/` directory with the latest
-changes from the `Toolkit/` directory, and re-import the module.
+ToolkitDev.ps1 brings 3 utility functions into your session:
 
-### Manual workflow
+- `Update-RscToolkit`: Copies the toolkit files to the Output directory
+  and re-imports the module.
+- `Get-RscToolkitStatus`: Compares the source files with the Output directory.
+- `Test-RscToolkit`: Runs the toolkit tests. Note that `Update-RscToolkit`
+  runs `Test-RscToolkit` by default.
 
-So say you're working on `Toolkit/Public/Get-RscStuff.ps1` :
+Typically, you just run `Update-RscToolkit` after making changes to the
+Toolkit source files (anything under `Toolkit/`), and it will copy the
+files to the `Output/` directory, and re-import the module, and
+run the tests. If you want to skip the tests, you can use the `-SkipTest`
+switch.
 
-1. Make your changes to `Toolkit/Public/Get-RscStuff.ps1`
-2. Run `Update-RscToolkit -SkipTest` to update the `Output/` directory.
-   It will also automatically re-import the module.
-3. Test your changes manually by running `Get-RscStuff` in the
-   PowerShell console.
+### 2.4 Example workflow
 
-### TDD workflow
-
-The manual workflow is fine to start with, but we want to
-be Test-Driven, so we need to include testing in our workflow.
-
-When `Update-RscToolkit` is run without the `-SkipTest` switch, it will
-also run all unit tests in `Toolkit/Tests/Unit` :
-
-```powershell
-PS ~/rubrik-powershell-sdk/Toolkit> Update-RscToolkit
-
-Copied 0 files to Output directory.
-Imported module from Output directory.
-
-Toolkit status:
----------------
-
-SDK root: ~/rubrik-powershell-sdk
-Source directory: <SDK root>/Toolkit
-Output directory: <SDK root>/Output/Toolkit
-
-All toolkit files in Output are up to date.
-
-[unit] Running Pester tests in Toolkit/Tests/unit
-
-Starting discovery in 1 files.
-Discovery found 1 tests in 13ms.
-Running tests.
-Tests completed in 132ms
-Tests Passed: 1, Failed: 0, Skipped: 0 NotRun: 0
-
-PS ~/rubrik-powershell-sdk/Toolkit>
-```
-
-TDD Workflow:
-
-1. Make your changes to `Toolkit/Public/Get-RscStuff.ps1`
-2. Update the tests in `Toolkit/Tests/Get-RscStuff.Tests.ps1`
-3. Run `Update-RscToolkit`
-
-`Update-RscToolkit` only runs the unit tests. To run the e2e tests too, do:
+Say you're working on a new cmdlet, `Get-RscStuff` . It's a public cmdlet so
+its source file is `Toolkit/Public/Get-RscStuff.ps1` . You can inspire yourself
+from other ps1 files in `Toolkit/Public`, but typically you'll want to
+write a function with the same name:
 
 ```powershell
-PS ~/rubrik-powershell-sdk/Toolkit> Update-RscToolkit -RunE2eTests
+#Requires -Version 3
+function Get-RscStuff {
+    <#
+    .SYNOPSIS
+    ...
+    .DESCRIPTION
+    ...
+    .PARAMETER ...
+    #>
+    [CmdletBinding()]
+    Param ( ..... )
+    Process { ......}
+}
 ```
 
-## Submitting PRs
+Its companion test file is `Toolkit/Tests/Unit/Get-RscStuff.Tests.ps1` . You can
+start with a simple test - for example, to make sure the cmdlet has a
+`Synopsis` and a `Description`:
 
-Run `.\Utils\Clean-RscSdk.ps1` before submitting a PR
-to make sure you don't submit any build artifacts.
+```powershell
+<#
+.SYNOPSIS
+Basic tests for Get-RscStuff
+#>
+BeforeAll {
+    . "$PSScriptRoot\..\..\Utils\ToolkitDev.ps1" -Quiet
+}
+
+Describe -Name "Get-RscStuff" -Fixture {
+  It -Name "Get-RscStuff" -Test {
+    (Get-Help Get-RscStuff).Synopsis | Should -Not -BeNullOrEmpty
+    (Get-Help Get-RscStuff).Description | Should -Not -BeNullOrEmpty
+  }
+}
+```
+
+Now you have a new cmdlet and a test for it. You can run `Update-RscToolkit`
+to copy the files to the `Output/` directory, re-import the module, and run
+the tests (especially the new test you just wrote).
+
+As you develop `Get-RscStuff`, use the unit test to test, validate and
+experiment with the cmdlet.
+
+Once you're happy with `Get-RscStuff`, you can submit a PR.
+
+## Submitting a PR
+
+When you're ready to submit a PR, make sure you've done the following:
+
+1. Clean up your cmdlet code and tests. Make sure your code is clean,
+   and that your tests pass. For example:
+   - During your dev workflow you may have added
+     tests that helped you develop the cmdlet, but that are not necessary
+     for the final version of the cmdlet.
+   - Maybe you have some `Write-Host`
+     statements that you used for debugging, etc.
+   - Maybe you have some commented-out code that you used for
+     experimenting, etc.
+   - Analyze your cmdlet code: maybe some parts of it can be refactored
+     into a private function (that would be in `Toolkit/Private`), etc.
+2. Update the `CHANGELOG.md` file with your changes.
+3. Rebase your branch on the `devel` branch:
+   `git rebase --rebase origin devel`
+4. Run `Utils\Build-RscSdk.ps1` . It will build the SDK from scratch,
+   including the core and the Toolkit, and run the tests. It will also
+   clean up the local repo, so you can be sure that your PR is clean.
