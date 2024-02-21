@@ -17,7 +17,7 @@ function New-RscMssqlSnapshot {
     if your intent is to reset a broken log chain. That can be achieved by taking a snapshot without this parameter. 
 
     .PARAMETER RscSlaDomain
-    THis will be the ID of the SLA Domain that will manage the retention of the snapshot
+    SLA Domain Object as retrieved from Get-RscSlaDomain
 
     .LINK
     Schema reference:
