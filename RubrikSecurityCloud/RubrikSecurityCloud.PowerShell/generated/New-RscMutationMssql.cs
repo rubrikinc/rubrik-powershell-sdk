@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+    /// AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// </summary>
     /// <description>
     /// New-RscMutationMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+    /// one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -688,6 +688,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeleteLogShipping operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: DeleteLogShipping
+    /// 
+    /// $query = New-RscMutationMssql -DeleteLogShipping
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	deleteSecondaryDatabase = $someBoolean
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DownloadDatabaseBackupFiles operation
     /// of the 'Microsoft SQL Server' API domain.
     /// <code>
@@ -1044,6 +1077,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateOnDemandBackup",
                 "DeleteDbSnapshots",
                 "DeleteLiveMount",
+                "DeleteLogShipping",
                 "DownloadDatabaseBackupFiles",
                 "DownloadDatabaseFilesFromArchivalLocation",
                 "ExportDatabase",
@@ -1095,6 +1129,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteLiveMount":
                         this.ProcessRecord_DeleteLiveMount();
+                        break;
+                    case "DeleteLogShipping":
+                        this.ProcessRecord_DeleteLogShipping();
                         break;
                     case "DownloadDatabaseBackupFiles":
                         this.ProcessRecord_DownloadDatabaseBackupFiles();
@@ -1215,6 +1252,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteLiveMount";
             // Create new graphql operation deleteMssqlLiveMount
             InitMutationDeleteMssqlLiveMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteLogShipping.
+        internal void ProcessRecord_DeleteLogShipping()
+        {
+            this._logger.name += " -DeleteLogShipping";
+            // Create new graphql operation deleteLogShipping
+            InitMutationDeleteLogShipping();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1806,6 +1852,31 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	force = $someBoolean
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteLogShipping(input: DeleteLogShippingInput!): AsyncRequestStatus!
+        internal void InitMutationDeleteLogShipping()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteLogShippingInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteLogShipping",
+                "($input: DeleteLogShippingInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeleteLogShipping_ObjectFieldSpec,
+                Mutation.DeleteLogShippingFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	deleteSecondaryDatabase = $someBoolean
 	# REQUIRED
 	id = $someString
 }"

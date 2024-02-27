@@ -351,6 +351,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		networkConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// 	# OPTIONAL
     /// 	awsRegion = $someString
@@ -1144,6 +1153,15 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+		# OPTIONAL
+		networkConfig = @(
+			@{
+				# OPTIONAL
+				availabilityZone = $someString
+				# OPTIONAL
+				subnet = $someString
+			}
+		)
 	}
 	# OPTIONAL
 	awsRegion = $someString

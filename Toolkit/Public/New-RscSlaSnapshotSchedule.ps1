@@ -1,11 +1,11 @@
 #Requires -Version 3
-function New-RscSnapshotSchedule {
+function New-RscSlaSnapshotSchedule {
     <#
     .SYNOPSIS
-    Creates a Snapshot Schedule for use with New-RscSlaDomain
+    Creates a Snapshot Schedule for use with New-RscSla
 
     .DESCRIPTION
-    Creates a Snapshot Schedule for use with New-RscSlaDomain
+    Creates a Snapshot Schedule for use with New-RscSla
 
     .PARAMETER Type
     The Type of Schedule
@@ -28,8 +28,8 @@ function New-RscSnapshotSchedule {
     .EXAMPLE
     Create a Snapshot schedule to take a snapshot every 1 hour and retain that snapshot for 7 days. Then create the SLA Domain with that schedule.
 
-    $hourlySchedule = New-RscSnapshotSchedule -Type Hourly -Frequency 1 -Retention 7 -RetentionUnit DAYS
-    New-RscSlaDomain -Name "Platinum" -HourlySchedule $hourlySchedule -ObjectType VSPHERE_OBJECT_TYPE
+    $hourlySchedule = New-RscSlaSnapshotSchedule -Type Hourly -Frequency 1 -Retention 7 -RetentionUnit DAYS
+    New-RscSla -Name "Platinum" -HourlySchedule $hourlySchedule -ObjectType VSPHERE_OBJECT_TYPE
     
     #>
 

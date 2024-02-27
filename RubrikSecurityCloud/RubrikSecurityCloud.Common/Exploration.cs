@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using RubrikSecurityCloud.Types;
 using System.IO;
+using System.Linq;
 
 namespace RubrikSecurityCloud
 {
@@ -222,11 +223,20 @@ namespace RubrikSecurityCloud
                 return false;
             }
 
-            foreach (var pattern in RubrikSecurityCloud.Config.DefaultProfileLeafPattern)
+            foreach (var pattern in RubrikSecurityCloud.Config.DefaultProfileLeafPatternWithExceptions)
             {
-                if (Regex.IsMatch(lastNode, pattern))
+                if (Regex.IsMatch(lastNode, pattern.Key, RegexOptions.IgnoreCase))
                 {
-                    return true;
+                    if (pattern.Value == null) {
+                        return true;
+                    }
+
+                    // If there are exceptions, check if lastNode matches any exception
+                    bool isException = pattern.Value.Any(exception => lastNode.Equals(exception, StringComparison.OrdinalIgnoreCase));
+            
+                    if (!isException) {
+                        return true;
+                    }
                 }
             }
 

@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 0.25
+
+New Features:
+
+- New _MsSql_ API Operation:
+  `DeleteLogShipping`
+- New Cmdlets for working with SLAs:
+  `Set-RscSla`, `Remove-RscSla`, `Resume-RscSla`, `Suspend-RscSla`,
+  `New-RscSlaArchivalSpecs`, `New-RscSlaBackupWindow`, `New-RscSlaDuration`,
+  `New-RscSlaObjectSpecificConfig`, `New-RscSlaReplicationSpecs`
+
+Breaking Changes:
+
+- `Get-RscSlaDomain` and `New-RscSlaDomain` Cmdlets have been renamed.
+   The new names are `Get-RscSla` and `New-RscSla` respectively.
+- `New-RscSnapshotSchedule` Cmdlet has been renamed to
+  `New-RscSlaSnapshotSchedule`.
+
 ## Version 0.24
 
 New Features:

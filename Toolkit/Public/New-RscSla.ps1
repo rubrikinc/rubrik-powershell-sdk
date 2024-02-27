@@ -1,12 +1,12 @@
 #Requires -Version 3
-function New-RscSlaDomain
+function New-RscSla
 {
   <#
     .SYNOPSIS
     Creates a new Rubrik SLA Domain
 
     .DESCRIPTION
-    The New-RscSlaDomain cmdlet will create a new SLA Domain. Rubrik SLA Domains are policies that define the frequency, retention, and rules for acrhival and replication.
+    The New-RscSla cmdlet will create a new SLA Domain. Rubrik SLA Domains are policies that define the frequency, retention, and rules for acrhival and replication.
 
     .LINK
     Schema reference:
@@ -15,8 +15,8 @@ function New-RscSlaDomain
     .EXAMPLE
     Create a Snapshot schedule to take a snapshot every 1 hour and retain that snapshot for 7 days. Then create the SLA Domain with that schedule.
     
-    $hourlySchedule = New-RscSnapshotSchedule -Type Hourly -Frequency 1 -Retention 7 -RetentionUnit DAYS
-    New-RscSlaDomain -Name "Platinum" -HourlySchedule $hourlySchedule -ObjectType VSPHERE_OBJECT_TYPE
+    $hourlySchedule = New-RscSlaSnapshotSchedule -Type Hourly -Frequency 1 -Retention 7 -RetentionUnit DAYS
+    New-RscSla -Name "Platinum" -HourlySchedule $hourlySchedule -ObjectType VSPHERE_OBJECT_TYPE
   #>
 
   [CmdletBinding()]

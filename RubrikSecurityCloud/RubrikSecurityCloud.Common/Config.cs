@@ -46,32 +46,33 @@ namespace RubrikSecurityCloud
         public static uint ApiClientTimeOutMinutes = 6;
 
         /// <summary>
-        /// Default profile leaf pattern.
+        /// Default profile leaf pattern. Keys are patterns to match against
+        /// leaf node names. Values are lists of exceptions to the pattern.
         /// </summary>
-        public static System.Collections.Generic.HashSet<string> DefaultProfileLeafPattern = new System.Collections.Generic.HashSet<string> {
+        public static Dictionary<string, List<string>?> DefaultProfileLeafPatternWithExceptions = new Dictionary<string, List<string>?> {
             // full matches
-            "^count$",
-            "^description$" ,
-            "^email$" ,
-            "^endcursor$" ,
-            "id$" ,
-            "^message$",
-            "^name$" ,
-            "^numworkloaddescendants$" ,
-            "^objecttype$" ,
-            "^slaassignment$" ,
-            "^startcursor$" ,
-            "^success$",
-            "^total$",
-            "^type$" ,
-            "^username$" ,
-            "^version$" ,
+            {"^count$" , null }, // null means: no exceptions to the pattern.
+            {"^description$" , null },
+            {"^email$" , null },
+            {"^endcursor$" , null },
+            {"id$" , null },
+            {"^message$", null },
+            {"^name$" , null },
+            {"^numworkloaddescendants$" , null },
+            {"^objecttype$" , null },
+            {"^slaassignment$" , null },
+            {"^startcursor$" , null },
+            {"^success$", null },
+            {"^total$", null },
+            {"^type$" , null },
+            {"^username$" , null },
+            {"^version$" , null },
             // prefix matches
-            "^has",
-            "^is",
+            {"^has", null },
+            {"^is", null },
             // partial matches
-            "status",
-            "state"
+            {"status", new List<string>{ "cdmRbacMigrationStatus", "eosStatus" } },
+            {"state", null },
         };
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace RubrikSecurityCloud
         /// connection query's "first" parameter.
         /// Setting this value to 0 or less will disable this limit.
         /// </summary>
-        public static int ConnectionMaxPageSize = 50 ;
+        public static int ConnectionMaxPageSize = 50;
 
         /// <summary>
         /// Log a warning if ConnectionMaxPageSize is exceeded.

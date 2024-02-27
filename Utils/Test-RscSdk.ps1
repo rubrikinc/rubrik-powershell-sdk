@@ -51,16 +51,18 @@ $ErrorActionPreference = "Stop"
 if ( -not $SkipUnitTests ) {
     if ( -not $SkipCoreTests ) {
         # Run Core unit tests (Pester)
+        Set-Location $PSScriptRoot\..
         .\Toolkit\Utils\Run-PesterTests.ps1 .\Tests\unit
 
         # Run Core unit tests (C#)
-        Set-Location .\RubrikSecurityCloud\RubrikSecurityCloud.Common.Tests\
+        Set-Location $PSScriptRoot\..\RubrikSecurityCloud\RubrikSecurityCloud.Common.Tests\
         dotnet test
         Set-Location $PSScriptRoot\..
     }
 
     if ( -not $SkipToolkitTests ) {
         # Run Toolkit unit tests (Pester)
+        Set-Location $PSScriptRoot\..
         .\Toolkit\Utils\Run-PesterTests.ps1 .\Toolkit\Tests\unit
     }
 }
@@ -68,11 +70,13 @@ if ( -not $SkipUnitTests ) {
 if ( -not $SkipE2ETests ) {
     if ( -not $SkipCoreTests ) {
         # Run Core e2e tests (Pester)
+        Set-Location $PSScriptRoot\..
         .\Toolkit\Utils\Run-PesterTests.ps1 .\Tests\e2e
     }
 
     if ( -not $SkipToolkitTests ) {
         # Run Toolkit e2e tests (Pester)
+        Set-Location $PSScriptRoot\..
         .\Toolkit\Utils\Run-PesterTests.ps1 .\Toolkit\Tests\e2e
     }
 }

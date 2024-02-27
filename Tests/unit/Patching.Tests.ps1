@@ -31,10 +31,11 @@ Describe -Name "Test patching" -Fixture {
     It -Name "With New-RscQueryCluster -Op List" -Test {
 
         # Some schema definitions
-        # If this UT fails, first make sure the schema hasn't changed.
-        # If we were to fully dynamically retrieve these, the tests could
-        # pass by confirming its garbage is consistent.
+
+        # The following hard-coded list needs to be updated manually
+        # when the schema changes. The repetition is intentional.
         $defaultNodes = "pauseStatus status subStatus systemStatus type id isHealthy name systemStatusMessage version"
+
         $defaultNodesSnapshot = $defaultNodes -replace 'name', 'name snapshotcount'
         $pageInfo = "pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
         $cdmUpgradeInfoFieldSpec = ((New-RscQueryCluster -Op List -AddField Nodes.CdmUpgradeInfo).Field.Nodes.CdmUpgradeInfo.AsFieldSpec()).Replace("`n", " ").Trim()
@@ -101,7 +102,11 @@ Describe -Name "Test patching" -Fixture {
         # Cascading copies, add a scalar
         $qc2 = New-RscQueryCluster -Op List -Copy $qc1 -AddField nodes.estimatedrunway
         $qc2Fs = FieldSpec($qc2)
+
+        # The following hard-coded list needs to be updated manually
+        # when the schema changes. The repetition is intentional.
         $defaultWithSnapshotAndEstimatedRunway = "pauseStatus status subStatus systemStatus type estimatedRunway id isHealthy name snapshotCount systemStatusMessage version"
+
         $qc2ExpectedFs = "count nodes { $defaultWithSnapshotAndEstimatedRunway } $pageInfo"
         $qc2Fs | Should -Be $qc2ExpectedFs
 
@@ -152,7 +157,11 @@ Describe -Name "Test patching" -Fixture {
         # Take first one back
         $qf3 = New-RscQueryCluster -Op List -Field $qf2b.Field -RemoveField nodes.snapshotcount
         $qf3Fs = FieldSpec($qf3)
+
+        # The following hard-coded list needs to be updated manually
+        # when the schema changes. The repetition is intentional.
         $defaultNodesEstimatedRunway = "pauseStatus status subStatus systemStatus type estimatedRunway id isHealthy name systemStatusMessage version"
+
         $qf3ExpectedFs = "count nodes { $defaultNodesEstimatedRunway } $pageInfo"
         $qf3Fs | Should -Be $qf3ExpectedFs
 
