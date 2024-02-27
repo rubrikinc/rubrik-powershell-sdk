@@ -5,10 +5,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = 'RubrikSecurityCloud.PowerShell.dll'
+RootModule = 'LoadModule.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.24'
+ModuleVersion = '0.25'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20240205-15 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20240219-20 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'
@@ -66,7 +66,7 @@ FormatsToProcess = @(
   "Toolkit/Format/VsphereVm.Format.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('LoadModule.psm1','PublicFunctions.psm1')
+NestedModules = @('PublicFunctions.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 # FunctionsToExport = @('List-RscCluster')

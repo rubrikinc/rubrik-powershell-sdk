@@ -5,14 +5,16 @@
 try {
     If ($PSVersionTable.PSEdition -eq "Desktop") {
         Write-Output("`nLoading Rubrik Security Cloud PowerShell Module (WindowsPowerShell)...`n")
-        $modulePath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath "net472") -ChildPath "RubrikSecurityCloud.PowerShell.dll"
+        $moduleDir = Join-Path -Path $PSScriptRoot -ChildPath "net472"
     }
     else {
         Write-Output("`nLoading Rubrik Security Cloud PowerShell Module (PowerShell Core)...`n")
-        $modulePath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath "net6.0") -ChildPath "RubrikSecurityCloud.PowerShell.dll"
+        $moduleDir = Join-Path -Path $PSScriptRoot -ChildPath "net6.0"
     }
 
     Write-Output "LoadModule.psm1: Import-Module $modulePath"
+    Set-Location -Path $moduleDir
+    $modulePath = Join-Path -Path $moduleDir -ChildPath "RubrikSecurityCloud.PowerShell.Dll"
     Import-Module $modulePath -ErrorAction Stop
 
     Write-Output("Welcome to the Rubrik Security Cloud PowerShell SDK!`n")
