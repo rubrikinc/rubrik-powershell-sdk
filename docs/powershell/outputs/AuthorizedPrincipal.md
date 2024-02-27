@@ -17,4 +17,6 @@ LDAP authorized principal.
   - Last login timestamp.
 - totpStatus: LdapTotpStatus
   - TOTP status for a LDAP principal.
+- lockoutStatus: LdapLockoutStatus
+  - Lockout status for an LDAP principal.
 - roles: list of Roles

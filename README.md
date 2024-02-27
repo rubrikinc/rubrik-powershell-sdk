@@ -93,6 +93,18 @@ retrieved from the RSC UI).
 
 You only need to do the step with `Set-RscServiceAccountFile` once.
 
+> :warning: If no user profile is created and -OutputFilePath is not specified,
+> follow these steps:
+>
+> 1. Check whether a profile exists by running `Test-Path $PROFILE` in
+>    PowerShell. If this command returns `True`, then a profile exists.
+>    If it returns `False`, proceed to the next step.
+>
+> 2. You can create a new profile using the `New-Item` command:
+>    `New-Item -ItemType File -Path $PROFILE -Force`.
+>    This creates a new file at the location specified by `$PROFILE`,
+>    which is where PowerShell looks for your profile.
+
 ### :electric_plug: Connecting to RSC
 
 After that, you can connect to RSC with:

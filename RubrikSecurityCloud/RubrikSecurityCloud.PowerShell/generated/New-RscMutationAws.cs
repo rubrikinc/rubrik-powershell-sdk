@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 33
+    /// Create a new RscQuery object for any of the 34
     /// operations in the 'AWS' API domain:
-    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 33 operations
+    /// There are 34 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
+    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -496,6 +496,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		networkConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -919,6 +928,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DisconnectExocomputeCluster operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: DisconnectExocomputeCluster
+    /// 
+    /// $query = New-RscMutationAws -DisconnectExocomputeCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ExocomputeClusterConnect operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1221,6 +1261,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
     /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	# OPTIONAL
+    /// 	awsRoleCustomization = @{
+    /// 		# OPTIONAL
+    /// 		crossAccountRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		crossAccountRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		masterRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		masterRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		workerRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		workerRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfileName = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		ec2RecoveryRolePath = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1267,6 +1328,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	awsRoleCustomization = @{
+    /// 		# OPTIONAL
+    /// 		crossAccountRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		crossAccountRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		masterRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		masterRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		workerRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		workerRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfileName = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		ec2RecoveryRolePath = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1969,6 +2051,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateTarget",
                 "DeleteComputeSetting",
                 "DeleteExocomputeConfigs",
+                "DisconnectExocomputeCluster",
                 "ExocomputeClusterConnect",
                 "FinalizeCloudAccountDeletion",
                 "FinalizeCloudAccountProtection",
@@ -2042,6 +2125,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteExocomputeConfigs":
                         this.ProcessRecord_DeleteExocomputeConfigs();
+                        break;
+                    case "DisconnectExocomputeCluster":
+                        this.ProcessRecord_DisconnectExocomputeCluster();
                         break;
                     case "ExocomputeClusterConnect":
                         this.ProcessRecord_ExocomputeClusterConnect();
@@ -2228,6 +2314,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteExocomputeConfigs";
             // Create new graphql operation deleteAwsExocomputeConfigs
             InitMutationDeleteAwsExocomputeConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // disconnectAwsExocomputeCluster.
+        internal void ProcessRecord_DisconnectExocomputeCluster()
+        {
+            this._logger.name += " -DisconnectExocomputeCluster";
+            // Create new graphql operation disconnectAwsExocomputeCluster
+            InitMutationDisconnectAwsExocomputeCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2785,6 +2880,15 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+		# OPTIONAL
+		networkConfig = @(
+			@{
+				# OPTIONAL
+				availabilityZone = $someString
+				# OPTIONAL
+				subnet = $someString
+			}
+		)
 	}
 }"
             );
@@ -3150,6 +3254,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // disconnectAwsExocomputeCluster(input: DisconnectAwsExocomputeClusterInput!): Void
+        internal void InitMutationDisconnectAwsExocomputeCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DisconnectAwsExocomputeClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDisconnectAwsExocomputeCluster",
+                "($input: DisconnectAwsExocomputeClusterInput!)",
+                "System.String",
+                Mutation.DisconnectAwsExocomputeCluster_ObjectFieldSpec,
+                Mutation.DisconnectAwsExocomputeClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // awsExocomputeClusterConnect(input: AwsExocomputeClusterConnectInput!): AwsExocomputeClusterConnectReply!
         internal void InitMutationAwsExocomputeClusterConnect()
         {
@@ -3414,6 +3541,27 @@ $query.Var.input = @{
 	cloudAccountId = $someString
 	# REQUIRED
 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRoleCustomization = @{
+		# OPTIONAL
+		crossAccountRoleName = $someString
+		# OPTIONAL
+		crossAccountRolePath = $someString
+		# OPTIONAL
+		masterRoleName = $someString
+		# OPTIONAL
+		masterRolePath = $someString
+		# OPTIONAL
+		workerRoleName = $someString
+		# OPTIONAL
+		workerRolePath = $someString
+		# OPTIONAL
+		instanceProfileName = $someString
+		# OPTIONAL
+		instanceProfilePath = $someString
+		# OPTIONAL
+		ec2RecoveryRolePath = $someString
+	}
 }"
             );
         }
@@ -3452,6 +3600,27 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	awsRoleCustomization = @{
+		# OPTIONAL
+		crossAccountRoleName = $someString
+		# OPTIONAL
+		crossAccountRolePath = $someString
+		# OPTIONAL
+		masterRoleName = $someString
+		# OPTIONAL
+		masterRolePath = $someString
+		# OPTIONAL
+		workerRoleName = $someString
+		# OPTIONAL
+		workerRolePath = $someString
+		# OPTIONAL
+		instanceProfileName = $someString
+		# OPTIONAL
+		instanceProfilePath = $someString
+		# OPTIONAL
+		ec2RecoveryRolePath = $someString
+	}
 }"
             );
         }

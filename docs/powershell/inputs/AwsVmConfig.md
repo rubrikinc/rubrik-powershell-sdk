@@ -21,3 +21,5 @@ Configuration for creating AWS instances.
   - List of security groups to assign to instances.
 - instanceType: AwsInstanceType
   - AWS instance type.
+- networkConfig: list of AwsVmNetworkConfigs
+  - Network configuration for CDM nodes.

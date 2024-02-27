@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> ObjectClusterSummary? Cluster
+        // GraphQL -> cluster: ObjectClusterSummary (type)
+        [JsonProperty("cluster")]
+        public ObjectClusterSummary? Cluster { get; set; }
+
 
         #endregion
 
@@ -72,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsArchived = null,
         System.Boolean? IsUnprotected = null,
         System.String? Name = null,
-        System.Boolean? SlaPauseStatus = null
+        System.Boolean? SlaPauseStatus = null,
+        ObjectClusterSummary? Cluster = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -95,6 +101,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( Cluster != null ) {
+            this.Cluster = Cluster;
         }
         return this;
     }
@@ -168,6 +177,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> ObjectClusterSummary? Cluster
+        // GraphQL -> cluster: ObjectClusterSummary (type)
+        if (this.Cluster != null) {
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -295,6 +316,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> ObjectClusterSummary? Cluster
+        // GraphQL -> cluster: ObjectClusterSummary (type)
+        if (ec.Includes("cluster",false))
+        {
+            if(this.Cluster == null) {
+
+                this.Cluster = new ObjectClusterSummary();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 

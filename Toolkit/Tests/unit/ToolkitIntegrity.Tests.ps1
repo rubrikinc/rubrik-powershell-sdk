@@ -15,5 +15,27 @@ Describe -Name "Toolkit" -Fixture {
             $directoryPath | Should -Exist
             { Get-ChildItem -Path $directoryPath } | Should -Not -Throw
         }
+
+        # Check public scripts
+        $publicFiles = Get-ChildItem -Path $Toolkit.PublicDir -Filter "*.ps1"
+        foreach ($file in $publicFiles) {
+
+            # For all .ps1 files in $Toolkit.PublicDir, check that they are
+            # syntactically correct: <VERB>-Rsc<NOUN>.ps1
+            # where <VERB> is a valid PowerShell verb and <NOUN> is anything
+
+            # Exceptions:
+            if ($file.name -eq "Remove-NullProperties.ps1") {
+                continue
+            }
+            # Extract the verb:
+            $verb = $file.BaseName.Split('-')[0]
+            $validVerbs = (Get-Verb).Verb
+            $verb | Should -BeIn $validVerbs
+            $file.name | Should -Match "^[a-zA-Z]+-Rsc[a-zA-Z]+\.ps1$"
+
+            # Check that the file can be loaded without error or side effects
+            { . $file.FullName } | Should -Not -Throw
+        }
     }
 }

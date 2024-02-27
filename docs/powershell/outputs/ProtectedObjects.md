@@ -13,5 +13,7 @@ Metadata for rendering protected objects.
   - Specifies whether the object is unprotected.
 - objectType: ManagedObjectType
   - Object type.
+- cluster: ObjectClusterSummary
+  - The cluster corresponding to the object.
 - slaPauseStatus: System.Boolean
   - The pause status of the protected object.

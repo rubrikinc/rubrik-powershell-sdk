@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'SAP HANA' API domain:
-    /// AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
+    /// AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RestoreSystemStorage, or UnconfigureRestore.
     /// </summary>
     /// <description>
     /// New-RscMutationSapHana creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 11 operations
     /// in the 'SAP HANA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, or UnconfigureRestore.
+    /// one of: AddSystem, ConfigureRestore, CreateOnDemandBackup, CreateOnDemandStorageSnapshot, CreateSystemRefresh, DeleteDbSnapshot, DeleteSystem, ExpireDownloadedSnapshots, PatchSystem, RestoreSystemStorage, or UnconfigureRestore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -462,6 +462,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestoreSystemStorage operation
+    /// of the 'SAP HANA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    SapHana
+    /// # API Operation: RestoreSystemStorage
+    /// 
+    /// $query = New-RscMutationSapHana -RestoreSystemStorage
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		snapshotId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UnconfigureRestore operation
     /// of the 'SAP HANA' API domain.
     /// <code>
@@ -517,6 +553,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteSystem",
                 "ExpireDownloadedSnapshots",
                 "PatchSystem",
+                "RestoreSystemStorage",
                 "UnconfigureRestore",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -559,6 +596,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "PatchSystem":
                         this.ProcessRecord_PatchSystem();
+                        break;
+                    case "RestoreSystemStorage":
+                        this.ProcessRecord_RestoreSystemStorage();
                         break;
                     case "UnconfigureRestore":
                         this.ProcessRecord_UnconfigureRestore();
@@ -652,6 +692,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PatchSystem";
             // Create new graphql operation patchSapHanaSystem
             InitMutationPatchSapHanaSystem();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreSapHanaSystemStorage.
+        internal void ProcessRecord_RestoreSystemStorage()
+        {
+            this._logger.name += " -RestoreSystemStorage";
+            // Create new graphql operation restoreSapHanaSystemStorage
+            InitMutationRestoreSapHanaSystemStorage();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -973,6 +1022,34 @@ $query.Var.input = @{
 		# OPTIONAL
 		azureFeatureId = $someString
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreSapHanaSystemStorage(input: RestoreSapHanaSystemStorageInput!): AsyncRequestStatus!
+        internal void InitMutationRestoreSapHanaSystemStorage()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreSapHanaSystemStorageInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreSapHanaSystemStorage",
+                "($input: RestoreSapHanaSystemStorageInput!)",
+                "AsyncRequestStatus",
+                Mutation.RestoreSapHanaSystemStorage_ObjectFieldSpec,
+                Mutation.RestoreSapHanaSystemStorageFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshotId = $someString
+	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

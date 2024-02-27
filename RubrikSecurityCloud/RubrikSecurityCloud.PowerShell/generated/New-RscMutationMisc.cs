@@ -25,7 +25,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <summary>
     /// Create a new RscQuery object for any of the 119
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateGuestCredential, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteLogShipping, DeleteVolumeGroupMount, DisableSupportUserAccess, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, HideRevealNasShares, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAuthDomainUsersHiddenStatus, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNasShares, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, or WarmSearchCache.
+    /// AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateGuestCredential, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteVolumeGroupMount, DisableSupportUserAccess, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, HideRevealNasShares, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAuthDomainUsersHiddenStatus, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNasShares, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, or WarmSearchCache.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -39,7 +39,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateGuestCredential, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteLogShipping, DeleteVolumeGroupMount, DisableSupportUserAccess, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, HideRevealNasShares, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAuthDomainUsersHiddenStatus, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNasShares, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, or WarmSearchCache.
+    /// one of: AddAdGroupsToHierarchy, AddConfiguredGroupToHierarchy, AddInventoryWorkloads, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BulkCreateNasFilesets, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, ChangePassword, CreateCustomAnalyzer, CreateGuestCredential, CreateOnDemandVolumeGroupBackup, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteVolumeGroupMount, DisableSupportUserAccess, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, ExcludeVmDisks, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, HideRevealNasShares, InstallIoFilter, InviteSsoGroup, ListCidrsForComputeSetting, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ModifyIpmi, MountDisk, NotificationForGetLicense, RecoverCloudDirectMultiPaths, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemovePrivateEndpointList, RemoveProxyConfig, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAuthDomainUsersHiddenStatus, UpdateBadDiskLedStatus, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIpWhitelist, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateNasShares, UpdateNetworkThrottle, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTunnelStatus, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, or WarmSearchCache.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -678,6 +678,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// 	}
     /// 	# OPTIONAL
+    /// 	tagId = $someInt
+    /// 	# OPTIONAL
     /// 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// }
     /// 
@@ -1015,39 +1017,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the DeleteLogShipping operation
-    /// of the 'Miscellaneous' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Misc
-    /// # API Operation: DeleteLogShipping
-    /// 
-    /// $query = New-RscMutationMisc -DeleteLogShipping
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	deleteSecondaryDatabase = $someBoolean
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the DeleteVolumeGroupMount operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -1244,6 +1213,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExpireSnoozedDirectories operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ExpireSnoozedDirectories
+    /// 
+    /// $query = New-RscMutationMisc -ExpireSnoozedDirectories
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	directories = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ExpireSnoozedDirectoriesReply
     /// 
     /// 
     /// 
@@ -2931,6 +2933,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// 				}
     /// 				# OPTIONAL
+    /// 				tagId = $someInt
+    /// 				# OPTIONAL
     /// 				risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// 			}
     /// 		)
@@ -3683,6 +3687,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	tagId = $someInt
     /// 	# OPTIONAL
     /// 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
     /// }
@@ -4711,13 +4717,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteDistributionListDigestBatch",
                 "DeleteEventDigest",
                 "DeleteGuestCredentialById",
-                "DeleteLogShipping",
                 "DeleteVolumeGroupMount",
                 "DisableSupportUserAccess",
                 "EnableAutomaticFmdUpload",
                 "EnableDisableAppConsistency",
                 "EnableSupportUserAccess",
                 "ExcludeVmDisks",
+                "ExpireSnoozedDirectories",
                 "GenerateConfigProtectionRestoreForm",
                 "GenerateSupportBundle",
                 "GetDownloadUrl",
@@ -4891,9 +4897,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteGuestCredentialById":
                         this.ProcessRecord_DeleteGuestCredentialById();
                         break;
-                    case "DeleteLogShipping":
-                        this.ProcessRecord_DeleteLogShipping();
-                        break;
                     case "DeleteVolumeGroupMount":
                         this.ProcessRecord_DeleteVolumeGroupMount();
                         break;
@@ -4911,6 +4914,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExcludeVmDisks":
                         this.ProcessRecord_ExcludeVmDisks();
+                        break;
+                    case "ExpireSnoozedDirectories":
+                        this.ProcessRecord_ExpireSnoozedDirectories();
                         break;
                     case "GenerateConfigProtectionRestoreForm":
                         this.ProcessRecord_GenerateConfigProtectionRestoreForm();
@@ -5397,15 +5403,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // deleteLogShipping.
-        internal void ProcessRecord_DeleteLogShipping()
-        {
-            this._logger.name += " -DeleteLogShipping";
-            // Create new graphql operation deleteLogShipping
-            InitMutationDeleteLogShipping();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // deleteVolumeGroupMount.
         internal void ProcessRecord_DeleteVolumeGroupMount()
         {
@@ -5457,6 +5454,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExcludeVmDisks";
             // Create new graphql operation excludeVmDisks
             InitMutationExcludeVmDisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // expireSnoozedDirectories.
+        internal void ProcessRecord_ExpireSnoozedDirectories()
+        {
+            this._logger.name += " -ExpireSnoozedDirectories";
+            // Create new graphql operation expireSnoozedDirectories
+            InitMutationExpireSnoozedDirectories();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -6755,6 +6761,8 @@ $query.Var.input = @{
 		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 	}
 	# OPTIONAL
+	tagId = $someInt
+	# OPTIONAL
 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 }"
             );
@@ -7018,31 +7026,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // deleteLogShipping(input: DeleteLogShippingInput!): AsyncRequestStatus!
-        internal void InitMutationDeleteLogShipping()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteLogShippingInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteLogShipping",
-                "($input: DeleteLogShippingInput!)",
-                "AsyncRequestStatus",
-                Mutation.DeleteLogShipping_ObjectFieldSpec,
-                Mutation.DeleteLogShippingFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	deleteSecondaryDatabase = $someBoolean
-	# REQUIRED
-	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // deleteVolumeGroupMount(input: DeleteVolumeGroupMountInput!): AsyncRequestStatus!
         internal void InitMutationDeleteVolumeGroupMount()
         {
@@ -7195,6 +7178,31 @@ $query.Var.input = @(
 		excludeFromSnapshots = $someBoolean
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // expireSnoozedDirectories(input: ExpireSnoozedDirectoriesInput!): ExpireSnoozedDirectoriesReply!
+        internal void InitMutationExpireSnoozedDirectories()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExpireSnoozedDirectoriesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExpireSnoozedDirectories",
+                "($input: ExpireSnoozedDirectoriesInput!)",
+                "ExpireSnoozedDirectoriesReply",
+                Mutation.ExpireSnoozedDirectories_ObjectFieldSpec,
+                Mutation.ExpireSnoozedDirectoriesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	directories = @(
+		$someString
+	)
+}"
             );
         }
 
@@ -8530,6 +8538,8 @@ $query.Var.analyzerGroups = @(
 					risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 				}
 				# OPTIONAL
+				tagId = $someInt
+				# OPTIONAL
 				risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 			}
 		)
@@ -9150,6 +9160,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 	}
+	# OPTIONAL
+	tagId = $someInt
 	# OPTIONAL
 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
 }"

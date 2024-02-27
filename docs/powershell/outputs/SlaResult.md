@@ -1,0 +1,2 @@
+### SlaResult
+- success: System.Boolean

@@ -246,6 +246,18 @@ Returns crawls for an account.
 
 - The crawls subcommand takes no arguments.
 - Returns CrawlConnection.
+### crossaccountpairs
+Lists all cross-account pairs.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - sortBy - GetCrossAccountPairsSortByField: Specifies the field by which the list of cross-account pairs will be sorted.
+    - filter - list of GetCrossAccountPairsFilters: Specification on how to filter a list of cross-account pairs.
+    - sortOrder - SortOrder: Sorting order for the results.
+- Returns CrossAccountPairInfoConnection.
 ### currentipaddress
 - The currentipaddress subcommand takes no arguments.
 - Returns System.String.
@@ -1019,7 +1031,9 @@ List of unmanaged objects.
 ### unmanagedobjectssupportedtypes
 List of supported object types.
 
-- There is a single argument of type ProductTargetType.
+- There are 2 arguments.
+    - productType - ProductTargetType: Type of the product.
+    - cloudVendor - CloudVendor: The cloud vendor type.
 - Returns list of ManagedObjectTypes.
 ### upgradestatus
 Gets the status for completed/running upgrade process.

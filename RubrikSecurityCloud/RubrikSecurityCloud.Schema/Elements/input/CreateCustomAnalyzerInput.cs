@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerRiskInstance")]
         public AnalyzerRiskInstanceInput? AnalyzerRiskInstance { get; set; }
 
+        //      C# -> System.Int32? TagId
+        // GraphQL -> tagId: Int (scalar)
+        [JsonProperty("tagId")]
+        public System.Int32? TagId { get; set; }
+
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType (enum)
         [JsonProperty("risk")]

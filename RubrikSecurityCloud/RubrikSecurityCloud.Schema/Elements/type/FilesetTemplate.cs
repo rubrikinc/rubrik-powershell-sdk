@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupScriptErrorHandling")]
         public System.String? BackupScriptErrorHandling { get; set; }
 
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        [JsonProperty("cdmId")]
+        public System.String? CdmId { get; set; }
+
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
         [JsonProperty("exceptions")]
@@ -219,6 +224,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? AllowBackupHiddenFoldersInNetworkMounts = null,
         System.Boolean? AllowBackupNetworkMounts = null,
         System.String? BackupScriptErrorHandling = null,
+        System.String? CdmId = null,
         List<System.String>? Exceptions = null,
         List<System.String>? Excludes = null,
         System.String? Id = null,
@@ -281,6 +287,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BackupScriptErrorHandling != null ) {
             this.BackupScriptErrorHandling = BackupScriptErrorHandling;
+        }
+        if ( CdmId != null ) {
+            this.CdmId = CdmId;
         }
         if ( Exceptions != null ) {
             this.Exceptions = Exceptions;
@@ -494,6 +503,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "backupScriptErrorHandling\n" ;
             } else {
                 s += ind + "backupScriptErrorHandling\n" ;
+            }
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
             }
         }
         //      C# -> List<System.String>? Exceptions
@@ -984,6 +1002,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BackupScriptErrorHandling != null && ec.Excludes("backupScriptErrorHandling",true))
         {
             this.BackupScriptErrorHandling = null;
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (ec.Includes("cdmId",true))
+        {
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)

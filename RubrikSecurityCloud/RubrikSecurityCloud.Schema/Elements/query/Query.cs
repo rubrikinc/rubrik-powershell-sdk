@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allUnmanagedObjectsSupportedTypes: [ManagedObjectType!]! (enum)
         public static string AllUnmanagedObjectsSupportedTypes_TypedFieldSpec(List<ManagedObjectType> fieldSpec)
         {
-            string args = "\n(\nproductType: $productType\n)";
+            string args = "\n(\nproductType: $productType\ncloudVendor: $cloudVendor\n)";
             return "allUnmanagedObjectsSupportedTypes" + args + "\n";
         }
         public static string AllUnmanagedObjectsSupportedTypes_ObjectFieldSpec(object fieldSpecObj)
@@ -2903,7 +2903,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allAzureCloudAccountSubscriptionsByFeature: [AzureSubscriptionWithFeaturesType!]! (type)
         public static string AllAzureCloudAccountSubscriptionsByFeature_TypedFieldSpec(List<AzureSubscriptionWithFeaturesType> fieldSpec)
         {
-            string args = "\n(\nfeature: $feature\nsubscriptionStatusFilters: $subscriptionStatusFilters\n)";
+            string args = "\n(\nfeature: $feature\nsubscriptionStatusFilters: $subscriptionStatusFilters\npermissionsGroupFilters: $permissionsGroupFilters\n)";
             return "allAzureCloudAccountSubscriptionsByFeature" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";
@@ -10149,6 +10149,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new CrawlConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CrossAccountPairInfoConnection? CrossAccountPairs
+        // GraphQL -> crossAccountPairs: CrossAccountPairInfoConnection! (type)
+        public static string CrossAccountPairs_TypedFieldSpec(CrossAccountPairInfoConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\nsortOrder: $sortOrder\n)";
+            return "crossAccountPairs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CrossAccountPairs_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CrossAccountPairs((CrossAccountPairInfoConnection)fieldSpecObj);
+        }
+        public static string CrossAccountPairs(CrossAccountPairInfoConnection fieldSpec)
+        {
+            return CrossAccountPairs_TypedFieldSpec(fieldSpec);
+        }
+        public static string CrossAccountPairs(object fieldSpecObj)
+        {
+            return CrossAccountPairs_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CrossAccountPairsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CrossAccountPairInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

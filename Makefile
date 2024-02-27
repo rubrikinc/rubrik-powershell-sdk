@@ -5,7 +5,7 @@ build: build-debug
 release: build-release
 
 build-debug:
-	pwsh -c "./Utils/Build-RscSdk.ps1"
+	pwsh -c "./Utils/Build-RscSdk.ps1 -NoClean -NoTests"
 
 build-release:
 	pwsh -c "./Utils/Build-RscSdk.ps1 -Release"

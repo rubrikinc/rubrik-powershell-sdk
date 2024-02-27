@@ -96,6 +96,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_OBJECT_TYPE")]
         POSTGRES_DB_CLUSTER_OBJECT_TYPE,
 
+        [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
+        SALESFORCE_OBJECT_TYPE,
+
         [EnumMember(Value = "SAP_HANA_OBJECT_TYPE")]
         SAP_HANA_OBJECT_TYPE,
 

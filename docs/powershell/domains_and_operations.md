@@ -12,14 +12,14 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Account (9,14)](#account-domain) | [Cluster (29,12)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,18)](#oracle-domain) | [Snapshot (21,16)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (0,3)](#cross-account-domain) | [Microsoft 365 (7,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (168,119)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
-| [AWS (28,33)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (2,3)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (169,119)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [AWS (28,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (2,3)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (44,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,17)](#microsoft-sql-server-domain) | [SAP HANA (8,10)](#sap-hana-domain) | [VMware vSphere vCenter (10,6)](#vmware-vsphere-vcenter-domain) |
+| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,18)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (10,6)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,5)](#nas-domain) | [Service Account (1,4)](#service-account-domain) | [VMware (2,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
-| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (15,24)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (14,9)](#sla-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
+| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (15,24)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (14,10)](#sla-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (18,25)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
 | [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (7,7)](#kubernetes-domain) | [Office 365 (37,31)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
@@ -230,6 +230,7 @@ Cmdlets: `New-RscQueryAws` and `New-RscMutationAws`
 | CreateTarget | N/A | `New-RscMutationAws -Operation CreateTarget`<BR> | [createAwsTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteComputeSetting | N/A | `New-RscMutationAws -Operation DeleteComputeSetting`<BR> | [deleteAwsComputeSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteExocomputeConfigs | Deletes AWS Exocompute configs. | `New-RscMutationAws -Operation DeleteExocomputeConfigs`<BR> | [deleteAwsExocomputeConfigs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DisconnectExocomputeCluster | Disconnects a customer-managed cluster from RSC. | `New-RscMutationAws -Operation DisconnectExocomputeCluster`<BR> | [disconnectAwsExocomputeCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExocomputeClusterConnect | Connects a customer-managed cluster to RSC and obtains the connection command. | `New-RscMutationAws -Operation ExocomputeClusterConnect`<BR> | [awsExocomputeClusterConnect](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FinalizeCloudAccountDeletion | Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features. | `New-RscMutationAws -Operation FinalizeCloudAccountDeletion`<BR> | [finalizeAwsCloudAccountDeletion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FinalizeCloudAccountProtection | Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step. | `New-RscMutationAws -Operation FinalizeCloudAccountProtection`<BR> | [finalizeAwsCloudAccountProtection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1485,6 +1486,7 @@ Gets the details of the request that was triggered to check the cloud compute co
 | ConfiguredGroupMembers | Objects that match the specifications of a configured group. | `New-RscQueryMisc -Operation ConfiguredGroupMembers`<BR> | [configuredGroupMembers](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Crawl | Returns details for one crawl. | `New-RscQueryMisc -Operation Crawl`<BR> | [crawl](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Crawls | Returns crawls for an account. | `New-RscQueryMisc -Operation Crawls`<BR> | [crawls](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CrossAccountPairs | Lists all cross-account pairs. | `New-RscQueryMisc -Operation CrossAccountPairs`<BR> | [crossAccountPairs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CurrentIpAddress | N/A | `New-RscQueryMisc -Operation CurrentIpAddress`<BR> | [currentIpAddress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CurrentOrg | Details of the user's current organization. | `New-RscQueryMisc -Operation CurrentOrg`<BR> | [currentOrg](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CurrentOrgAuthDomainConfig | Authentication domain configuration of the current organization. | `New-RscQueryMisc -Operation CurrentOrgAuthDomainConfig`<BR> | [currentOrgAuthDomainConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1668,7 +1670,6 @@ Create an on-demand snapshot for the given Volume Group ID. | `New-RscMutationMi
 | DeleteDistributionListDigestBatch | Delete specific distribution list digests. | `New-RscMutationMisc -Operation DeleteDistributionListDigestBatch`<BR> | [deleteDistributionListDigestBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteEventDigest | Delete event digests for specific recipients. | `New-RscMutationMisc -Operation DeleteEventDigest`<BR> | [deleteEventDigest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteGuestCredentialById | Delete guest OS credentials. | `New-RscMutationMisc -Operation DeleteGuestCredentialById`<BR> | [deleteGuestCredentialById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DeleteLogShipping | Delete a specified log shipping configuration. | `New-RscMutationMisc -Operation DeleteLogShipping`<BR> | [deleteLogShipping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteVolumeGroupMount | Requst to delete a mount  
   
 Supported in v5.0+  
@@ -1678,6 +1679,7 @@ Create a request to delete a mount. If there are volumes mounted on a target hos
 | EnableDisableAppConsistency | Enable/ Disable App consistency for a VM | `New-RscMutationMisc -Operation EnableDisableAppConsistency`<BR> | [enableDisableAppConsistency](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | EnableSupportUserAccess | Enables a Rubrik Support representative's access to the customer's account. | `New-RscMutationMisc -Operation EnableSupportUserAccess`<BR> | [enableSupportUserAccess](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExcludeVmDisks | Exclude or include virtual disks during snapshot. | `New-RscMutationMisc -Operation ExcludeVmDisks`<BR> | [excludeVmDisks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ExpireSnoozedDirectories | Expire snoozed directories. | `New-RscMutationMisc -Operation ExpireSnoozedDirectories`<BR> | [expireSnoozedDirectories](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | GenerateConfigProtectionRestoreForm | Generate restore form for the configuration backup file. | `New-RscMutationMisc -Operation GenerateConfigProtectionRestoreForm`<BR> | [generateConfigProtectionRestoreForm](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | GenerateSupportBundle | Collect log files from the cluster  
   
@@ -1992,6 +1994,7 @@ Cmdlets: `New-RscQueryMssql` and `New-RscMutationMssql`
   
 Supported in v5.0+  
 Create an async request to delete a Live Mount of a SQL Server database. Poll the task status by using /mssql/request/{id}. | `New-RscMutationMssql -Operation DeleteLiveMount`<BR> | [deleteMssqlLiveMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteLogShipping | Delete a specified log shipping configuration. | `New-RscMutationMssql -Operation DeleteLogShipping`<BR> | [deleteLogShipping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadDatabaseBackupFiles | Downloads a list of snapshot and log backups from a Microsoft SQL database  
   
 Supported in v5.2+  
@@ -2744,6 +2747,10 @@ v9.0+: Update the system properties of the SAP HANA system
 Supported in v5.3+  
 v5.3-v8.1: Update the SLA Domain that is configured for a SAP HANA system.  
 v9.0+: Update the system properties for the SAP HANA system. | `New-RscMutationSapHana -Operation PatchSystem`<BR> | [patchSapHanaSystem](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RestoreSystemStorage | Restore SAP HANA storage to a storage snapshot  
+  
+Supported in v9.2  
+Initiates a job to restore the storage of a SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationSapHana -Operation RestoreSystemStorage`<BR> | [restoreSapHanaSystemStorage](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UnconfigureRestore | Reset the configuration for system copy restore on target database  
   
 Supported in v6.0+  
@@ -2835,6 +2842,7 @@ Cmdlets: `New-RscQuerySla` and `New-RscMutationSla`
 | AssignRetentionToSnapshots | Endpoint to assign retention SLA Domain to snapshots. | `New-RscMutationSla -Operation AssignRetentionToSnapshots`<BR> | [assignRetentionSLAToSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AssignsForSnappableHierarchies | Assign SLA Domain to workloads with multiple hierarchies. | `New-RscMutationSla -Operation AssignsForSnappableHierarchies`<BR> | [assignSlasForSnappableHierarchies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateGlobal | Create SLA Domain. | `New-RscMutationSla -Operation CreateGlobal`<BR> | [createGlobalSla](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteGlobal | N/A | `New-RscMutationSla -Operation DeleteGlobal`<BR> | [deleteGlobalSla](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportManagedVolumeSnapshot | Create a request to export a snapshot and mount it on a host  
   
 Supported in v5.3+  

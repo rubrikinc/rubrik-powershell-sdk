@@ -25,10 +25,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("adoptionStatus")]
         public AdoptionStatus? AdoptionStatus { get; set; }
 
+        //      C# -> EosStatus? EosStatus
+        // GraphQL -> eosStatus: EosStatus! (enum)
+        [JsonProperty("eosStatus")]
+        public EosStatus? EosStatus { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
         public System.String? Description { get; set; }
+
+        //      C# -> System.String? EosDate
+        // GraphQL -> eosDate: String! (scalar)
+        [JsonProperty("eosDate")]
+        public System.String? EosDate { get; set; }
 
         //      C# -> System.String? GaReleaseDate
         // GraphQL -> gaReleaseDate: String! (scalar)
@@ -86,7 +96,9 @@ namespace RubrikSecurityCloud.Types
 
     public CdmUpgradeReleaseDetail Set(
         AdoptionStatus? AdoptionStatus = null,
+        EosStatus? EosStatus = null,
         System.String? Description = null,
+        System.String? EosDate = null,
         System.String? GaReleaseDate = null,
         System.Boolean? IsRecommended = null,
         System.Boolean? IsUpgradable = null,
@@ -101,8 +113,14 @@ namespace RubrikSecurityCloud.Types
         if ( AdoptionStatus != null ) {
             this.AdoptionStatus = AdoptionStatus;
         }
+        if ( EosStatus != null ) {
+            this.EosStatus = EosStatus;
+        }
         if ( Description != null ) {
             this.Description = Description;
+        }
+        if ( EosDate != null ) {
+            this.EosDate = EosDate;
         }
         if ( GaReleaseDate != null ) {
             this.GaReleaseDate = GaReleaseDate;
@@ -151,6 +169,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "adoptionStatus\n" ;
             }
         }
+        //      C# -> EosStatus? EosStatus
+        // GraphQL -> eosStatus: EosStatus! (enum)
+        if (this.EosStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eosStatus\n" ;
+            } else {
+                s += ind + "eosStatus\n" ;
+            }
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
@@ -158,6 +185,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "description\n" ;
             } else {
                 s += ind + "description\n" ;
+            }
+        }
+        //      C# -> System.String? EosDate
+        // GraphQL -> eosDate: String! (scalar)
+        if (this.EosDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eosDate\n" ;
+            } else {
+                s += ind + "eosDate\n" ;
             }
         }
         //      C# -> System.String? GaReleaseDate
@@ -265,6 +301,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AdoptionStatus = null;
         }
+        //      C# -> EosStatus? EosStatus
+        // GraphQL -> eosStatus: EosStatus! (enum)
+        if (ec.Includes("eosStatus",true))
+        {
+            if(this.EosStatus == null) {
+
+                this.EosStatus = new EosStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EosStatus != null && ec.Excludes("eosStatus",true))
+        {
+            this.EosStatus = null;
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (ec.Includes("description",true))
@@ -281,6 +334,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Description != null && ec.Excludes("description",true))
         {
             this.Description = null;
+        }
+        //      C# -> System.String? EosDate
+        // GraphQL -> eosDate: String! (scalar)
+        if (ec.Includes("eosDate",true))
+        {
+            if(this.EosDate == null) {
+
+                this.EosDate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EosDate != null && ec.Excludes("eosDate",true))
+        {
+            this.EosDate = null;
         }
         //      C# -> System.String? GaReleaseDate
         // GraphQL -> gaReleaseDate: String! (scalar)

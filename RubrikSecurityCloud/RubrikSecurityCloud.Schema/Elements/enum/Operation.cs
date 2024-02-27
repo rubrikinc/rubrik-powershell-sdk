@@ -231,6 +231,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_RECOVERY_PLAN")]
         MANAGE_RECOVERY_PLAN,
 
+        [EnumMember(Value = "MANAGE_SERVICENOW_INTEGRATION")]
+        MANAGE_SERVICENOW_INTEGRATION,
+
         [EnumMember(Value = "MANAGE_SLA")]
         MANAGE_SLA,
 
@@ -410,6 +413,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_SECURITY_SETTINGS")]
         VIEW_SECURITY_SETTINGS,
+
+        [EnumMember(Value = "VIEW_SERVICENOW_INTEGRATION")]
+        VIEW_SERVICENOW_INTEGRATION,
 
         [EnumMember(Value = "VIEW_SLA")]
         VIEW_SLA,

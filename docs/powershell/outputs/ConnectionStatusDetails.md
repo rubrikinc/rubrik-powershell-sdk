@@ -6,4 +6,6 @@ Additional information about the connection status of the replication pair Rubri
 - targetAndRubrik: ClusterConnectionStatus
   - Connection between target cluster and Rubrik (connected, disconnected, or not added).
 - sourceAndTarget: ConnectionStatusType
-  - Connection between source and target Rubrik clusters (connected or disconnected).
+  - Connection between source and target Rubrik clusters (connected, disconnected, or unavailable).
+- targetAndSource: ConnectionStatusType
+  - Connection between target and source Rubrik clusters (connected, disconnected, or unavailable).

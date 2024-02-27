@@ -35,6 +35,8 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - Specifies if this SLA Domain is Retention Locked or not.
 - objectSpecificConfigs: ObjectSpecificConfigs
   - The object-specific configurations of the SLA Domain.
+- isReadOnly: System.Boolean
+  - Specifies whether the SLA Domain is read-only.
 - cluster: Cluster
   - Rubrik cluster ID of SLA Domain.
 - id: System.String

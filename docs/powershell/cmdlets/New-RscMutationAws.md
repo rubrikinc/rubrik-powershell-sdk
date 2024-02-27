@@ -53,6 +53,11 @@ Deletes AWS Exocompute configs.
 
 - There is a single argument of type DeleteAwsExocomputeConfigsInput.
 - Returns DeleteAwsExocomputeConfigsReply.
+### disconnectexocomputecluster
+Disconnects a customer-managed cluster from RSC.
+
+- There is a single argument of type DisconnectAwsExocomputeClusterInput.
+- Returns System.String.
 ### exocomputeclusterconnect
 Connects a customer-managed cluster to RSC and obtains the connection command.
 

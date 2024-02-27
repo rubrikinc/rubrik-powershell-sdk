@@ -210,6 +210,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	workloadFid = $someString
     /// 	# REQUIRED
+    /// 	keywordSearchFilters = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			searchKeyword = $someString
+    /// 			# OPTIONAL
+    /// 			searchKeywordType = $someString
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
     /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// }
     /// 
@@ -478,6 +487,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.subscriptionStatusFilters = @(
     /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.permissionsGroupFilters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 		# OPTIONAL
+    /// 		permissionsGroups = @(
+    /// 			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 		)
+    /// }
     /// )
     /// 
     /// # Execute the query
@@ -977,6 +997,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	azureAdSearchKeyword = $someString
     /// 	# REQUIRED
     /// 	workloadFid = $someString
+    /// 	# REQUIRED
+    /// 	keywordSearchFilters = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			searchKeyword = $someString
+    /// 			# OPTIONAL
+    /// 			searchKeywordType = $someString
+    /// 		}
+    /// 	)
     /// 	# REQUIRED
     /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 	# REQUIRED
@@ -2548,6 +2577,15 @@ $query.Var.input = @{
 	# REQUIRED
 	workloadFid = $someString
 	# REQUIRED
+	keywordSearchFilters = @(
+		@{
+			# OPTIONAL
+			searchKeyword = $someString
+			# OPTIONAL
+			searchKeywordType = $someString
+		}
+	)
+	# REQUIRED
 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 }"
             );
@@ -2738,18 +2776,19 @@ $query.Var.cloudAccountId = $someString"
         }
 
         // Create new GraphQL Query:
-        // allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!): [AzureSubscriptionWithFeaturesType!]!
+        // allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!, permissionsGroupFilters: [FeatureWithPermissionsGroups!]): [AzureSubscriptionWithFeaturesType!]!
         internal void InitQueryAllAzureCloudAccountSubscriptionsByFeature()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
+                Tuple.Create("permissionsGroupFilters", "[FeatureWithPermissionsGroups!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllAzureCloudAccountSubscriptionsByFeature",
-                "($feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!)",
+                "($feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$permissionsGroupFilters: [FeatureWithPermissionsGroups!])",
                 "List<AzureSubscriptionWithFeaturesType>",
                 Query.AllAzureCloudAccountSubscriptionsByFeature_ObjectFieldSpec,
                 Query.AllAzureCloudAccountSubscriptionsByFeatureFieldSpec,
@@ -2758,6 +2797,17 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
 # REQUIRED
 $query.Var.subscriptionStatusFilters = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)
+# OPTIONAL
+$query.Var.permissionsGroupFilters = @(
+	@{
+		# OPTIONAL
+		featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		# OPTIONAL
+		permissionsGroups = @(
+			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+		)
+}
 )"
             );
         }
@@ -3166,6 +3216,15 @@ $query.Var.input = @{
 	azureAdSearchKeyword = $someString
 	# REQUIRED
 	workloadFid = $someString
+	# REQUIRED
+	keywordSearchFilters = @(
+		@{
+			# OPTIONAL
+			searchKeyword = $someString
+			# OPTIONAL
+			searchKeywordType = $someString
+		}
+	)
 	# REQUIRED
 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 	# REQUIRED

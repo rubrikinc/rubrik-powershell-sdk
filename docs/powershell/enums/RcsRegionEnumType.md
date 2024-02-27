@@ -17,6 +17,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - SWEDEN_CENTRAL - Sweden Central or Gavle.
 - GOV_US_VIRGINIA - Gov US Virginia or US Gov Virginia.
 - AUSTRALIA_SOUTHEAST - Australia Southeast or Victoria.
+- WEST_US3 - West US 3 or Arizona.
 - US_WEST_2 - US west 2 or Washington.
 - CANADA_CENTRAL - Canada Central or Toronto.
 - US_WEST - US west or California.

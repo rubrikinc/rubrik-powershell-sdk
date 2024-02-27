@@ -21,5 +21,9 @@ CDM release detail.
   - Is this a recommended version.
 - isUpgradable: System.Boolean
   - Is cluster upgradeable to version.
+- eosDate: System.String
+  - End of support date for version.
 - adoptionStatus: AdoptionStatus
   - The customer adoption status of the Rubrik CDM release.
+- eosStatus: EosStatus
+  - The end of support status of the Rubrik CDM release.

@@ -55,7 +55,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public string Name { get; set; }
 
         // SLA Domain policy assigned to the virtual machine - This can only be
-        // implemented once the Get-RscSlaDomain cmdlet works.
+        // implemented once the Get-RscSla cmdlet works.
         //[Parameter(ParameterSetName = "Query")]
         //[ValidateNotNullOrEmpty()]
         //public string SLA { get; set; }

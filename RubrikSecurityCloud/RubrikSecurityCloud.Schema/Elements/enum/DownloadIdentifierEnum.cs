@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DownloadIdentifierEnum
     {
+        [EnumMember(Value = "CDM_RBAC_MIGRATION_SUMMARY")]
+        CDM_RBAC_MIGRATION_SUMMARY,
+
         [EnumMember(Value = "ORION_THREAT_HUNT_DOWNLOAD")]
         ORION_THREAT_HUNT_DOWNLOAD,
 

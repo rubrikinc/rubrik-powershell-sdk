@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudVendor
     {
+        [EnumMember(Value = "ALL_VENDORS")]
+        ALL_VENDORS,
+
         [EnumMember(Value = "AWS")]
         AWS,
 

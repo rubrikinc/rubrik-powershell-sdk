@@ -118,11 +118,6 @@ Delete guest OS credentials.
 
 - There is a single argument of type DeleteGuestCredentialByIdInput.
 - Returns System.Boolean.
-### deletelogshipping
-Delete a specified log shipping configuration.
-
-- There is a single argument of type DeleteLogShippingInput.
-- Returns AsyncRequestStatus.
 ### deletevolumegroupmount
 Requst to delete a mount
 
@@ -156,6 +151,11 @@ Exclude or include virtual disks during snapshot.
 
 - There is a single argument of type list of ExcludeVmDisksInputs.
 - Returns RequestSuccess.
+### expiresnoozeddirectories
+Expire snoozed directories.
+
+- There is a single argument of type ExpireSnoozedDirectoriesInput.
+- Returns ExpireSnoozedDirectoriesReply.
 ### generateconfigprotectionrestoreform
 Generate restore form for the configuration backup file.
 

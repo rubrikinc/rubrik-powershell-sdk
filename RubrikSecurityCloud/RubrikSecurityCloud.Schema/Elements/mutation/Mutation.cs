@@ -2298,6 +2298,35 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? DisconnectAwsExocomputeCluster
+        // GraphQL -> disconnectAwsExocomputeCluster: Void (scalar)
+        public static string DisconnectAwsExocomputeCluster_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "disconnectAwsExocomputeCluster" + args + "\n";
+        }
+        public static string DisconnectAwsExocomputeCluster_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DisconnectAwsExocomputeCluster((System.String)fieldSpecObj);
+        }
+        public static string DisconnectAwsExocomputeCluster(System.String fieldSpec)
+        {
+            return DisconnectAwsExocomputeCluster_TypedFieldSpec(fieldSpec);
+        }
+        public static string DisconnectAwsExocomputeCluster(object fieldSpecObj)
+        {
+            return DisconnectAwsExocomputeCluster_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DisconnectAwsExocomputeClusterFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? EnableSupportUserAccess
         // GraphQL -> enableSupportUserAccess: Void (scalar)
         public static string EnableSupportUserAccess_TypedFieldSpec(System.String fieldSpec)
@@ -9445,6 +9474,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SlaResult? DeleteGlobalSla
+        // GraphQL -> deleteGlobalSla: SlaResult! (type)
+        public static string DeleteGlobalSla_TypedFieldSpec(SlaResult fieldSpec)
+        {
+            string args = "\n(\nid: $id\nuserNote: $userNote\n)";
+            return "deleteGlobalSla" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DeleteGlobalSla_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteGlobalSla((SlaResult)fieldSpecObj);
+        }
+        public static string DeleteGlobalSla(SlaResult fieldSpec)
+        {
+            return DeleteGlobalSla_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteGlobalSla(object fieldSpecObj)
+        {
+            return DeleteGlobalSla_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteGlobalSlaFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new SlaResult() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RequestSuccess? DeleteHypervVirtualMachineSnapshot
         // GraphQL -> deleteHypervVirtualMachineSnapshot: RequestSuccess! (type)
         public static string DeleteHypervVirtualMachineSnapshot_TypedFieldSpec(RequestSuccess fieldSpec)
@@ -11704,6 +11764,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ExpireSnoozedDirectoriesReply? ExpireSnoozedDirectories
+        // GraphQL -> expireSnoozedDirectories: ExpireSnoozedDirectoriesReply! (type)
+        public static string ExpireSnoozedDirectories_TypedFieldSpec(ExpireSnoozedDirectoriesReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "expireSnoozedDirectories" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ExpireSnoozedDirectories_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ExpireSnoozedDirectories((ExpireSnoozedDirectoriesReply)fieldSpecObj);
+        }
+        public static string ExpireSnoozedDirectories(ExpireSnoozedDirectoriesReply fieldSpec)
+        {
+            return ExpireSnoozedDirectories_TypedFieldSpec(fieldSpec);
+        }
+        public static string ExpireSnoozedDirectories(object fieldSpecObj)
+        {
+            return ExpireSnoozedDirectories_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ExpireSnoozedDirectoriesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ExpireSnoozedDirectoriesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15326,6 +15417,37 @@ namespace RubrikSecurityCloud.Types
             return RestoreOracleLogs_ObjectFieldSpec(fieldSpecObj);
         }
         public static object RestoreOracleLogsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? RestoreSapHanaSystemStorage
+        // GraphQL -> restoreSapHanaSystemStorage: AsyncRequestStatus! (type)
+        public static string RestoreSapHanaSystemStorage_TypedFieldSpec(AsyncRequestStatus fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "restoreSapHanaSystemStorage" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string RestoreSapHanaSystemStorage_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RestoreSapHanaSystemStorage((AsyncRequestStatus)fieldSpecObj);
+        }
+        public static string RestoreSapHanaSystemStorage(AsyncRequestStatus fieldSpec)
+        {
+            return RestoreSapHanaSystemStorage_TypedFieldSpec(fieldSpec);
+        }
+        public static string RestoreSapHanaSystemStorage(object fieldSpecObj)
+        {
+            return RestoreSapHanaSystemStorage_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RestoreSapHanaSystemStorageFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();

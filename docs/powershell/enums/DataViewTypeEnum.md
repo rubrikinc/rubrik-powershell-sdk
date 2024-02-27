@@ -33,3 +33,4 @@ All reporting table schemas.
 - OBJECT_PROTECTION_AUDIT_DETAIL - Specifies all protection audit information for the single protected workload.
 - QAUTH_OBJECTS - Specifies the database schema for QAuth objects.
 - QAUTH_ROLES -  Specifies the database schema for QAuth roles.
+- OBJECT_BACKUP_TASK_SUMMARY - Specifies the database schema for the object backup task summary.

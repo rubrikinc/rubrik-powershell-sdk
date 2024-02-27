@@ -3977,6 +3977,11 @@ type Query {
     # Returns the elements in the list that come before the specified cursor.
     before: String): IssueConnection!
 
+  # Information about a job running on CDM. Note that some types of jobs cannot be queries using this field. Refer to `JobType` enum to see which jobs types are available. Only users with Admin or Owner roles are allowed to access the field.
+  jobInfo(
+    # Request to retrieve information about a job.
+    input: JobInfoRequest!): JobInfo!
+
   # Kubernetes Rubrik Backup Service manifest.
   k8sAppManifest(
     # Name of the Kubernetes Rubrik Backup Service app.
@@ -8832,6 +8837,11 @@ type Mutation {
     # Input to delete Rubrik Security Cloud snapshot.
     input: DeleteCloudWorkloadSnapshotInput!): Boolean!
 
+  # Delete cross-account pair.
+  deleteCrossAccountPair(
+    # Cross-account ID input for pair deletion.
+    input: DeleteCrossAccountPairInput!): Void
+
   # Delete Certificate Signing Request.
   deleteCsr(
     # Certificate Signing Request IDs.
@@ -9184,6 +9194,11 @@ type Mutation {
   disableTarget(
     # Request for disabling an Archival Location.
     input: DisableTargetInput!): DisableTargetReply!
+
+  # Disconnects a customer-managed cluster from RSC.
+  disconnectAwsExocomputeCluster(
+    # Input to disconnect a customer-managed cluster from RSC.
+    input: DisconnectAwsExocomputeClusterInput!): Void
 
   # On-demand discovery of a Db2 instance
   # 
@@ -13076,6 +13091,9 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is Oracle RAC.
   OracleRac
 
+  # Specifies that the activity object type is Postgres Database Cluster.
+  POSTGRES_DB_CLUSTER
+
   # Specifies that the activity object type is RSC Account.
   PolarisAccount
 
@@ -14112,6 +14130,11 @@ type AddGlobalCertificateReply {
 input AddInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
+}
+# Additional info for `ADD_MANAGED_VOLUME` jobs.
+input AddManagedVolumeInfo {
+  # ID of the managed volume.
+  managedVolumeFid: String = ""
 }
 # Input for adding a Managed Volume.
 input AddManagedVolumeInput {
@@ -15406,6 +15429,47 @@ enum ArchivalGroupType {
   # Type of archival location is unknown.
   UNKNOWN_ARCHIVAL_GROUP
 }
+# ArchivalLocationInfo is message definition for archival
+# polling operations (`ARCHIVAL_LOCATION`). It contains fields required
+# for archival job polling operations.
+input ArchivalLocationInfo {
+  # ID of location.
+  polarisManagedLocId: String = ""
+
+  # Name of the location.
+  locationName: String = ""
+
+  # Type of the location.
+  locationType: String = ""
+
+  # Type of operation.
+  operationType: ArchivalLocationOperationType = OPERATION_UNSPECIFIED
+
+  # Operation ID is used to group together multiple events emitted as part of
+  # the same user action, and separate events emitted by different actions on
+  # the same archival location. When a customer performs an action, such as
+  # editing a location, a unique OperationID` is generated which is used to
+  # group any events emitted by that operation in the UI and also distinguish
+  # it from other customer actions.
+  operationId: String = ""
+}
+# Operation type for which we are polling.
+enum ArchivalLocationOperationType {
+  # Create or edit.
+  CREATE_EDIT
+
+  # Delete.
+  DELETE
+
+  # Type of operation is unspecified.
+  OPERATION_UNSPECIFIED
+
+  # Promote to owner.
+  PROMOTE_TO_OWNER
+
+  # Refresh reader location.
+  READER_REFRESH
+}
 # Archival locations sort fields.
 enum ArchivalLocationQuerySortByField {
   # Name of the mapping the storage archival is part of.
@@ -15922,6 +15986,9 @@ enum AuditObjectType {
   # Cluster audit object.
   CLUSTER
 
+  # Data Center Cloud Account.
+  DATA_CENTER_CLOUD_ACCOUNT
+
   # Data location audit object.
   DATA_LOCATION
 
@@ -16387,6 +16454,9 @@ type AuthorizedPrincipal {
   # Lockout status for an LDAP principal.
   lockoutStatus: LdapLockoutStatus
   roles: [Role!]!
+
+  # Email notification configurations.
+  emailConfig: [EventDigest!]!
 }
 # Paginated list of AuthorizedPrincipal objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type AuthorizedPrincipalConnection {
@@ -22265,6 +22335,17 @@ input AwsVmConfig {
 
   # AWS instance type.
   instanceType: AwsInstanceType
+
+  # Network configuration for CDM nodes.
+  networkConfig: [AwsVmNetworkConfig!]
+}
+# Network configuration for CDM nodes on AWS.
+input AwsVmNetworkConfig {
+  # Availability Zone for CDM node placement.
+  availabilityZone: String = ""
+
+  # Subnet ID for node placement.
+  subnet: String = ""
 }
 # A Virtual Private Cloud (VPC) in AWS realm.
 type AwsVpc {
@@ -22770,7 +22851,7 @@ type AzureAdUser {
   # Creation type of the Azure AD user.
   creationType: String!
 
-  # On-prem sync status of the Azure AD group.
+  # On-prem sync status of the Azure AD user.
   onPremSyncStatus: AzureAdOnPremSyncStatus!
 }
 # AzureAppPermission represents the enumeration of various Azure app permissions
@@ -27620,6 +27701,11 @@ input BatchVmwareVmRecoverableRangesRequestInput {
   # Required. Supported in v5.3+
   # The ID of each CDP-enabled virtual machine for which recoverable ranges are being retrieved.
   vmIds: [String!]!
+}
+# Additional info for `BEGIN_MANAGED_VOLUME_SNAPSHOT` jobs.
+input BeginManagedVolumeSnapshotInfo {
+  # ID of the managed volume.
+  managedVolumeFid: String = ""
 }
 # Input for invoking the API endpoint to begin a Managed Volume snapshot.
 input BeginManagedVolumeSnapshotInput {
@@ -32757,6 +32843,12 @@ type Cluster {
   # Pause status of the cluster.
   pauseStatus: ClusterPauseStatus
 
+  # End of support date.
+  eosDate: String
+
+  # End of support status.
+  eosStatus: ClusterEosStatus
+
   # Human readable message explaining the systemStatus.
   systemStatusMessage: String
 
@@ -33216,6 +33308,20 @@ type ClusterEdge {
 
   # The actual Cluster object wrapped by this edge.
   node: Cluster!
+}
+# End of support status of the Rubrik cluster.
+enum ClusterEosStatus {
+  # Plan upgrade soon.
+  EOS_STATUS_PLAN_UPGRADE
+
+  # Rubrik CDM version supported.
+  EOS_STATUS_SUPPORTED
+
+  # Unknown status.
+  EOS_STATUS_UNKNOWN
+
+  # Rubrik CDM version not supported.
+  EOS_STATUS_UNSUPPORTED
 }
 # Filters for the cluster list.
 input ClusterFilterInput {
@@ -35519,6 +35625,11 @@ enum ConfigurationTypes {
   # Windows and Unix hosts configuration.
   CONFIGURATION_TYPES_WIN_AND_UNIX_HOSTS
 }
+# Additional info for `CONFIGURE_MANAGED_VOLUME_LOG_EXPORT` jobs.
+input ConfigureManagedVolumeLogExportInfo {
+  # ID of the managed volume.
+  managedVolumeFid: String = ""
+}
 # Input for configuring SAP HANA database for restore.
 input ConfigureSapHanaRestoreInput {
   # Required. ID of the target SAP HANA database to be configured.
@@ -36811,6 +36922,16 @@ input CreateMssqlLogShippingConfigurationInput {
   # Required. ID of the primary database object.
   id: String!
 }
+# Supported in v5.0+
+input CreateNewVappParamsInput {
+  # Required. Supported in v5.0+
+  # Name of the specified vApp within vCloud.
+  name: String!
+
+  # Required. Supported in v5.0+
+  # ID assigned to the Organization VDC object that will contain the newly created vApp object.
+  orgVdcId: String!
+}
 # Input for creating a NFS Reader Target.
 input CreateNfsReaderTargetInput {
   # Field for specifying name of the target.
@@ -37428,6 +37549,14 @@ input CreateVappInstantRecoveryInput {
 
   # Required. ID assigned to the vApp snapshot object.
   snapshotId: String!
+}
+# Supported in v5.0+
+input CreateVappNetworkParamsInput {
+  # Supported in v5.0+
+  # v5.0-v5.3: Name to assign within vCloud to the vApp network that is referenced by the specified new vApp network object. The Rubrik REST API server uses this value, when present, to rename the vApp network within vCloud. When this value is empty the vApp network uses the existing name.
+  # v6.0+: Name to assign to the vApp network that is referenced by the specified new vApp network object. If a name is specified, the Rubrik REST API server uses the name to rename the vApp network within the vCloud. If the value is empty, the vApp network is not renamed.
+  newName: String
+  vappNetworkSummary: VappNetworkSummaryInput
 }
 # Instantly recover vApp snapshots in bulk.
 input CreateVappsInstantRecoveryInput {
@@ -38298,6 +38427,8 @@ enum DataTypeEnum {
 }
 # All reporting table schemas.
 enum DataViewTypeEnum {
+  # Specifies the database schema for audits.
+  AUDIT_LIST
   BACKUP_COMPLIANCE
   CDM_UPGRADES
 
@@ -38324,6 +38455,9 @@ enum DataViewTypeEnum {
   MONITORING_TASK_COUNT_TIME_SERIES
   OBJECT_AUDIT_DETAIL
   OBJECT_AUDIT_LIST
+
+  # Specifies the database schema for the object backup task summary.
+  OBJECT_BACKUP_TASK_SUMMARY
 
   # Specifies all protection audit information for the single protected workload.
   OBJECT_PROTECTION_AUDIT_DETAIL
@@ -38862,6 +38996,10 @@ type Db2DatabaseEdge {
   # The actual Db2Database object wrapped by this edge.
   node: Db2Database!
 }
+# Additional info for `DB2_DATABASE` jobs.
+input Db2DatabaseInfo {
+  db2DbFid: String = ""
+}
 # Db2 database status.
 enum Db2DatabaseStatus {
   # Unable to determine the status of the Db2 database.
@@ -39171,6 +39309,10 @@ type Db2InstanceEdge {
 
   # The actual Db2Instance object wrapped by this edge.
   node: Db2Instance!
+}
+# Additional info for `DB2_INSTANCE` jobs.
+input Db2InstanceInfo {
+  db2InstanceFid: String = ""
 }
 # Supported in v7.0+
 input Db2InstancePatchRequestConfigInput {
@@ -39818,6 +39960,11 @@ input DeleteCloudNativeTagRuleInput {
 input DeleteCloudWorkloadSnapshotInput {
   # The forever UUID in Rubrik Security Cloud for the snapshot to be deleted.
   snapshotId: UUID!
+}
+# Input for deleting cross-account pair.
+input DeleteCrossAccountPairInput {
+  # Cross-account ID for pair deletion.
+  crossAccountId: String!
 }
 # Input required for deleting a certificate signing request (CSR).
 input DeleteCsrInput {
@@ -40567,6 +40714,11 @@ type DisableTargetReply {
   # Ownership status of the archival location.
   status: ArchivalLocationStatus!
 }
+# Input to disconnect a customer-managed cluster from RSC and mark it as terminated.
+input DisconnectAwsExocomputeClusterInput {
+  # Represents the ID of the customer-managed cluster that must be disconnected from RSC.
+  clusterId: UUID!
+}
 # Input for discovering a Db2 instance.
 input DiscoverDb2InstanceInput {
   # Required. ID of the Db2 instance.
@@ -41310,6 +41462,29 @@ input DownloadSapHanaSnapshotsForPointInTimeRecoveryInput {
   # Required. ID of the SAP HANA database.
   id: String!
 }
+# Additional info for `DOWNLOAD_SNAPSHOT_FROM_LOCATION`
+# and `ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION` jobs.
+input DownloadSnapshotFromLocationInfo {
+  # ID of the snapshot.
+  snapshotId: String = ""
+
+  # Type of workload.
+  snappableType: DownloadSnapshotFromLocationSnappableType = NONE
+}
+# Type of workload.
+enum DownloadSnapshotFromLocationSnappableType {
+  # Active Directory.
+  ACTIVE_DIRECTORY
+
+  # Type of workload is not specified.
+  NONE
+
+  # VCD.
+  VCD
+
+  # VSphere.
+  VSPHERE
+}
 enum DownloadStatusEnum {
   COMPLETED
   FAILED
@@ -41634,6 +41809,11 @@ type EndDateRecurrenceRange {
 
   # The ending date of the recurrence.
   endDate: DateTime!
+}
+# Additional info for `END_MANAGED_VOLUME_SNAPSHOT` jobs.
+input EndManagedVolumeSnapshotInfo {
+  # ID of the managed volume.
+  managedVolumeFid: String = ""
 }
 # Input for invoking the API endpoint to end a Managed Volume snapshot.
 input EndManagedVolumeSnapshotInput {
@@ -42072,6 +42252,9 @@ enum EventObjectType {
 
   # Oracle RAC object.
   ORACLE_RAC
+
+  # Postgres Database Cluster.
+  POSTGRES_DB_CLUSTER
 
   # Public cloud machine instance.
   PUBLIC_CLOUD_MACHINE_INSTANCE
@@ -43294,6 +43477,9 @@ type ExocomputeHealthCheckStatus {
 }
 # Status values for Exocompute health check.
 enum ExocomputeHealthCheckStatusValue {
+  # No customer managed cluster has been registered.
+  CUSTOMER_MANAGED_CLUSTER_NOT_REGISTERED
+
   # Exocompute is healthy.
   HEALTHY
 
@@ -43374,6 +43560,14 @@ input ExportK8sNamespaceInput {
 
   # Filter resources based on labels.
   labelSelector: LabelSelector
+}
+# Additional info for `EXPORT_MANAGED_VOLUME_SNAPSHOT` jobs.
+input ExportManagedVolumeSnapshotInfo {
+  # ID of the snapshot.
+  snapshotFid: String = ""
+
+  # Export ID.
+  exportId: String = ""
 }
 # Input for the mutation to export a Managed Volume snapshot.
 input ExportManagedVolumeSnapshotInput {
@@ -43768,6 +43962,14 @@ type ExportUrlSpecs {
 
   # Polaris account of the user.
   polarisAccount: String!
+}
+# Not in use.
+input ExportVcdVappSnapshotInfo {
+  # ID of the snapshot.
+  snapshotFid: String = ""
+
+  # Configuration of vApp snapshot export job.
+  config: VappExportSnapshotJobConfigInput
 }
 # Key value pair for external artifacts associated with an AWS account.
 input ExternalArtifactMap {
@@ -49526,6 +49728,9 @@ enum HierarchyFilterField {
   # Filter by name of an Active Directory domain.
   ACTIVE_DIRECTORY_DOMAIN_NAME
 
+  # Filter by the SID of the Active Directory domain.
+  ACTIVE_DIRECTORY_DOMAIN_SID
+
   # Filter AWS EC2 instances based on RBS connection status.
   AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS
 
@@ -50467,6 +50672,9 @@ enum HierarchyObjectTypeEnum {
   OracleDatabase
   OracleHost
   OracleRac
+
+  # Postgres Database Cluster.
+  POSTGRES_DB_CLUSTER
   PhysicalHost
   RubrikEbsVolume
   RubrikEc2Instance
@@ -51382,6 +51590,11 @@ type HostInfo {
   # Required. Supported in v5.3+
   # Oracle sysdba user to use on the host.
   oracleSysDbaUser: String!
+}
+# Additional info for `HOST_MAKE_PRIMARY_POLLER` jobs.
+input HostMakePrimaryInfo {
+  # The FIDs of the hosts on the clusters requested to be primary cluster.
+  hostFids: [String!] = []
 }
 # Supported in v5.3+
 input HostMakePrimaryRequestInput {
@@ -53381,6 +53594,11 @@ input HypervMountSnapshotConfigForBatchInput {
   # ID of the virtual machine with snapshot that requires mounting.
   vmId: String!
 }
+# Additional info for `HYPERV_LIVE_MOUNT` jobs.
+input HypervMountSnapshotInfo {
+  # ID of the snapshot.
+  snapshotFid: String = ""
+}
 # Supported in v5.0+
 input HypervMountSnapshotJobConfigInput {
   # Supported in v5.0+
@@ -54691,6 +54909,9 @@ enum InventoryCard {
   # Inventory Card is Oracle DBs.
   ORACLE_DBS_CDM
 
+  # Inventory Card is PostgreSQL.
+  POSTGRESQL
+
   # Inventory Card is Sap Hana.
   SAP_HANA
 
@@ -54861,6 +55082,9 @@ enum InventorySubHierarchyRootEnum {
   ORACLE_ROOT
   PHYSICAL_HOST_ROOT
 
+  # Postgres root.
+  POSTGRES_ROOT
+
   # Salesforce root.
   SALESFORCE_ROOT
   SAP_HANA_ROOT
@@ -55015,6 +55239,141 @@ enum IssueStatus {
   OPEN
   RESOLVED
 }
+# Status of a CDM job.
+type JobInfo {
+  # Status of a CDM job.
+  status: JobStatus!
+}
+# Request message for polling the status of a job.
+input JobInfoRequest {
+  # Name of the account.
+  accountName: String = ""
+
+  # ID of the request.
+  requestId: String = ""
+
+  # ID of the cluster.
+  clusterUuid: String = ""
+
+  # Type of job to be polled.
+  type: JobType = NONE
+
+  # Additional information that may be required for certain job types.
+  additionalInfo: JobInfoRequestDetails!
+}
+# Additional information needed to fetch the status of the job. At most one field may be populated.
+input JobInfoRequestDetails {
+  # Populate for `UNMOUNT_ORACLE` jobs.
+  unmountInfo: UnmountInfo
+
+  # Populate for `VSPHERE_QUERY_MOUNT` jobs.
+  queryMountInfo: QueryMountInfo
+
+  # Populate for `SAP_HANA_SYSTEM` jobs.
+  sapHanaSystemInfo: PollerSapHanaSystemInfo
+
+  # Populate for `ARCHIVAL_LOCATION` jobs.
+  archivalLocationInfo: ArchivalLocationInfo
+
+  # Populate for `MOSAIC_SOURCE` and `DELETE_MOSAIC_SOURCE` jobs.
+  mosaicSourceInfo: MosaicSourceInfo
+
+  # Populate for `DOWNLOAD_SNAPSHOT_FILES` jobs.
+  snapshotFileDownloadInfo: SnapshotFileDownloadInfo
+
+  # Populate for `MOSAIC_STORAGE_LOCATION`
+  # and `DELETE_MOSAIC_STORAGE_LOCATION` jobs.
+  mosaicStorageLocationInfo: MosaicStorageLocationInfo
+
+  # Populate for `PENDING_SLA` jobs.
+  pendingSlaInfo: PendingSlaInfo
+
+  # Populate for `VOLUME_GROUP_UNMOUNT` jobs.
+  volumeGroupUnmountInfo: VolumeGroupUnmountInfo
+
+  # Populate for `DB2_INSTANCE` jobs.
+  db2InstanceInfo: Db2InstanceInfo
+
+  # Populate for `MSSQL_RESTORE` jobs.
+  mssqlDbInfo: MssqlDbInfo
+
+  # Populate for `MSSQL_CREATE_LOG_SHIPPING`
+  # and `MSSQL_DELETE_LOG_SHIPPING` jobs.
+  logShippingInfo: LogShippingInfo
+
+  # Populate for `ADD_MANAGED_VOLUME` jobs.
+  addManagedVolumeInfo: AddManagedVolumeInfo
+
+  # Populate for `TAKE_MANAGED_VOLUME_ON_DEMAND_SNAPSHOT` jobs.
+  takeManagedVolumeOnDemandSnapshotInfo: TakeManagedVolumeOnDemandSnapshotInfo
+
+  # Populate for `BEGIN_MANAGED_VOLUME_SNAPSHOT` jobs.
+  beginManagedVolumeSnapshotInfo: BeginManagedVolumeSnapshotInfo
+
+  # Populate for `END_MANAGED_VOLUME_SNAPSHOT` jobs.
+  endManagedVolumeSnapshotInfo: EndManagedVolumeSnapshotInfo
+
+  # Populate for `RESIZE_MANAGED_VOLUME` jobs.
+  resizeManagedVolumeInfo: ResizeManagedVolumeInfo
+
+  # Populate for `EXPORT_MANAGED_VOLUME_SNAPSHOT` jobs.
+  exportManagedVolumeSnapshotInfo: ExportManagedVolumeSnapshotInfo
+
+  # Populate for `EXPORT_ORACLE` jobs.
+  oracleExportInfo: OracleExportInfo
+
+  # Populate for `SAP_HANA_DATABASE` jobs.
+  sapHanaDatabaseInfo: SapHanaDatabaseInfo
+
+  # Do not use.
+  exportVcdVappSnapshotInfo: ExportVcdVappSnapshotInfo
+
+  # Populate for `VSPHERE_LIVE_MOUNT_RELOCATE` jobs.
+  liveMountRelocateInfo: LiveMountRelocateInfo
+
+  # Populate for `ADD_MONGO_SOURCE` jobs.
+  mongoSourceInfo: MongoSourceInfo
+
+  # Populate for `HYPERV_LIVE_MOUNT` jobs.
+  hypervMountSnapshotInfo: HypervMountSnapshotInfo
+
+  # Populate for `CLUSTER_WEB_CERT` jobs.
+  webCertificateInfo: WebCertificateInfo
+
+  # Populate for `DB2_DATABASE` jobs.
+  db2DatabaseInfo: Db2DatabaseInfo
+
+  # Populate for `ASSIGN_SLA_MONGO_COLLECTION` jobs.
+  mongoCollectionsInfo: MongoCollectionsInfo
+
+  # Populate for `VSPHERE_RESTORE_FILE_TO_VM` jobs.
+  vsphereFileRestoreInfo: VsphereFileRestoreInfo
+
+  # Populate for `CONFIGURE_MANAGED_VOLUME_LOG_EXPORT` jobs.
+  configureManagedVolumeLogExportInfo: ConfigureManagedVolumeLogExportInfo
+
+  # Populate for `DOWNLOAD_SNAPSHOT_FROM_LOCATION`
+  # and `ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION` jobs.
+  downloadSnapshotFromLocationInfo: DownloadSnapshotFromLocationInfo
+
+  # Do not use.
+  registeredHostInfo: RegisterdHostInfo
+
+  # Populate for `DISCOVERED_ORACLE_OBJECTS_SYNC_METRIC_POLLER` jobs.
+  registerOracleHostsInfo: RegisterOracleHostsInfo
+
+  # Populate for `LLM_FUNCTION_CALL` jobs.
+  llmInfo: LlmFunctionCallInfo
+
+  # Populate for `HOST_MAKE_PRIMARY_POLLER` jobs.
+  hostMakePrimaryInfo: HostMakePrimaryInfo
+
+  # Populate for `VCENTER_DIAGNOSTIC_REFRESH` jobs.
+  vcenterDiagnosticRefreshInfo: VcenterDiagnosticRefreshInfo
+
+  # Populate for `POSTGRES_DB_CLUSTER` jobs.
+  postgresDbClusterInfo: PostgresDbClusterInfo
+}
 type JobMetadata {
   id: Long!
   createdAt: DateTime
@@ -55043,6 +55402,236 @@ type JobReply {
   clusterUuid: String!
   clusterName: String!
   version: String!
+}
+# Status of job poller.
+enum JobStatus {
+  # The job has completed with a failure (possibly canceled
+  # by the user).
+  FAILURE
+
+  # The job is still in progress.
+  IN_PROGRESS
+
+  # The job has completed successfully.
+  SUCCESS
+
+  # Status of job poller is not specified.
+  UNSPECIFIED
+}
+# Type of poller. Different types of jobs are polled by corresponding poller.
+enum JobType {
+  # Active Directory snapshot download from given location.
+  ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION
+
+  # Active directory live mount.
+  ACTIVE_DIRECTORY_LIVE_MOUNT_POLLER
+
+  # Refresh of Active Directory domain.
+  ACTIVE_DIRECTORY_REFRESH_DOMAIN
+
+  # Addition of a managed volume.
+  ADD_MANAGED_VOLUME
+
+  # Addition of Mongo source.
+  ADD_MONGO_SOURCE
+
+  # Addition or removal of a VSphere VCenter.
+  ADD_OR_REMOVE_VCENTER
+
+  # Addition, removal, or refresh of VCD.
+  ADD_REMOVE_OR_REFRESH_VCD
+
+  # Addition or removal of System Center Virtual Machine Manager.
+  ADD_REMOVE_SCVMM
+
+  # Archival location.
+  ARCHIVAL_LOCATION
+
+  # Assign SLA to a Mongo collection.
+  ASSIGN_SLA_MONGO_COLLECTION
+
+  # Start of a managed volume snapshot.
+  BEGIN_MANAGED_VOLUME_SNAPSHOT
+
+  # Cluster web certificate.
+  CLUSTER_WEB_CERT
+
+  # Configure log export of a managed volume.
+  CONFIGURE_MANAGED_VOLUME_LOG_EXPORT
+
+  # DB2 database.
+  DB2_DATABASE
+
+  # DB2 instance.
+  DB2_INSTANCE
+
+  # Deletion of Mongo source.
+  DELETE_MONGO_SOURCE
+
+  # Deletion of a mosaic source.
+  DELETE_MOSAIC_SOURCE
+
+  # Deletetion of a Mosaic storage location.
+  DELETE_MOSAIC_STORAGE_LOCATION
+
+  # Discovered Microsoft SQL Server objects metrics.
+  DISCOVERED_MSSQL_OBJECTS_SYNC_METRIC_POLLER
+
+  # Discovered Oracle objects metrics.
+  DISCOVERED_ORACLE_OBJECTS_SYNC_METRIC_POLLER
+
+  # Download of snaphot files.
+  DOWNLOAD_SNAPSHOT_FILES
+
+  # Snapshot download from given location.
+  DOWNLOAD_SNAPSHOT_FROM_LOCATION
+
+  # End of a managed volume snapshot.
+  END_MANAGED_VOLUME_SNAPSHOT
+
+  # Exchange mount.
+  EXCHANGE_MOUNT
+
+  # Exchange unmount.
+  EXCHANGE_UNMOUNT
+
+  # Export a managed volume snapshot.
+  EXPORT_MANAGED_VOLUME_SNAPSHOT
+
+  # Oracle export.
+  EXPORT_ORACLE
+
+  # Export of VCD VApp snapshot.
+  EXPORT_VCD_VAPP_SNAPSHOT
+
+  # Make host primary.
+  HOST_MAKE_PRIMARY_POLLER
+
+  # Hyper-V Live Mount.
+  HYPERV_LIVE_MOUNT
+
+  # Hyper-V server.
+  HYPERV_SERVER
+
+  # Hyper-V VM snapshot.
+  HYPERV_VM_SNAPSHOT
+
+  # Hyper-V VM.
+  HYPERV_VM_V1
+
+  # Instance recover of VCD VApp.
+  INSTANT_RECOVER_VCD_VAPP
+
+  # Refresh Kubernetes cluster.
+  K8S_CLUSTER_REFRESH
+
+  # Key rotation.
+  KEY_ROTATION
+
+  # Oracle Live Mount.
+  LIVE_MOUNT_ORACLE
+
+  # Function call of a Large Language Model.
+  LLM_FUNCTION_CALL
+
+  # Mosaic source.
+  MOSAIC_SOURCE
+
+  # Mosaic storage location.
+  MOSAIC_STORAGE_LOCATION
+
+  # Microsoft SQL Server shipping log creation.
+  MSSQL_CREATE_LOG_SHIPPING
+
+  # Microsoft SQL Server shipping log deletion.
+  MSSQL_DELETE_LOG_SHIPPING
+
+  # Export of Microsoft SQL Server.
+  MSSQL_EXPORT
+
+  # Microsoft SQL Server Live Mount.
+  MSSQL_LIVE_MOUNT
+
+  # Microsoft SQL Server restore.
+  MSSQL_RESTORE
+
+  # Unmount of a Microsoft SQL Server.
+  MSSQL_UNMOUNT
+
+  # NAS system operation.
+  NAS_SYSTEM_CRUD
+
+  # Not specified.
+  NONE
+
+  # Nutanix cluster.
+  NUTANIX_CLUSTER_OPS
+
+  # Nutanix live mount.
+  NUTANIX_LIVE_MOUNT
+
+  # Nutanix prism central operations.
+  NUTANIX_PRISM_CENTRAL_OPS
+
+  # Nutanix snapshot.
+  NUTANIX_SNAPSHOT_OPS
+
+  # Nutanix VM.
+  NUTANIX_VM_V1
+
+  # Pending SLA.
+  PENDING_SLA
+
+  # RCS information.
+  POLARIS_INFO
+
+  # Postgres DB cluster.
+  POSTGRES_DB_CLUSTER
+
+  # Resie of a managed volume.
+  RESIZE_MANAGED_VOLUME
+
+  # Sap Hana database.
+  SAP_HANA_DATABASE
+
+  # SAP Hana system.
+  SAP_HANA_SYSTEM
+
+  # On demand snapshot of a managed volume.
+  TAKE_MANAGED_VOLUME_ON_DEMAND_SNAPSHOT
+
+  # Oracle unmount.
+  UNMOUNT_ORACLE
+
+  # Refresh vCenter diagnostics.
+  VCENTER_DIAGNOSTIC_REFRESH
+
+  # Mount of a Volume Group.
+  VOLUME_GROUP_MOUNT
+
+  # Unmount of a Volume Group.
+  VOLUME_GROUP_UNMOUNT
+
+  # Export of a VSphere VM.
+  VSPHERE_EXPORT_VM
+
+  # VSphere live mount.
+  VSPHERE_LIVE_MOUNT
+
+  # Relocation of VSphere live mount.
+  VSPHERE_LIVE_MOUNT_RELOCATE
+
+  # VSphere query.
+  VSPHERE_QUERY_MOUNT
+
+  # VSphere restore file to VM.
+  VSPHERE_RESTORE_FILE_TO_VM
+
+  # VSphere snapshot.
+  VSPHERE_SNAPSHOT
+
+  # Vsphere unmount.
+  VSPHERE_UNMOUNT
 }
 type JobsReply {
   jobs: [JobReply!]!
@@ -56582,6 +57171,36 @@ type ListVersionResponse {
   # Status of the request.
   status: Boolean
 }
+# Additional info for `VSPHERE_LIVE_MOUNT_RELOCATE` jobs.
+input LiveMountRelocateInfo {
+  # ID of the Live Mount.
+  liveMountFid: String = ""
+}
+# Type of function.
+enum LlmFunctionCallFunctionType {
+  # Threat hunt.
+  THREAT_HUNT
+
+  # Type of function is not specified.
+  UNSPECIFIED
+
+  # Vsphere snapshot download.
+  VSPHERE_DOWNLOAD_SNAPSHOT
+
+  # Vsphere in-place recovery.
+  VSPHERE_IN_PLACE_RECOVERY
+}
+# Additional info for `LLM_FUNCTION_CALL` jobs.
+input LlmFunctionCallInfo {
+  # Type of function.
+  functionType: LlmFunctionCallFunctionType = UNSPECIFIED
+
+  # Function ID.
+  functionUuid: String = ""
+
+  # Subject contexts.
+  subjectContexts: [SubjectContext!] = []
+}
 # The `LocalTimeType` scalar type a time of day (i.e., between 00:00 and 23:59) WITHOUT an associated timezone. The timezone is assumed to be the local timezone, so if you want an explicit timezone you'll need to associate it explicitly.
 scalar LocalTime
 # Immutability settings for creating archival locations.
@@ -56700,6 +57319,15 @@ enum LogLevel {
 
   # Information level logs.
   INFO
+}
+# Additional info for `MSSQL_CREATE_LOG_SHIPPING` and
+# `MSSQL_DELETE_LOG_SHIPPING` jobs.
+input LogShippingInfo {
+  # Name of the secondary database.
+  secondaryDatabaseName: String = ""
+
+  # ID of the database.
+  databaseFid: String = ""
 }
 # Input for logging in.
 input LoginCredentials {
@@ -57422,6 +58050,9 @@ enum ManagedObjectType {
 
   # Physical host.
   PHYSICAL_HOST
+
+  # Postgres Database Cluster.
+  POSTGRES_DB_CLUSTER
 
   # Recovery plan - deprecated.
   RECOVERY_PLAN
@@ -59866,6 +60497,11 @@ type MongoCollectionSetPhysicalChildTypeEdge {
   # The actual MongoCollectionSetPhysicalChildType object wrapped by this edge.
   node: MongoCollectionSetPhysicalChildType!
 }
+# Additional info for `ASSIGN_SLA_MONGO_COLLECTION` jobs.
+input MongoCollectionsInfo {
+  # IDs of Mongo collections.
+  collectionFids: [String!] = []
+}
 # The SLA Domain configuration for MongoDB database.
 type MongoConfig {
   # Frequency value for log backup of MongoDB databases.
@@ -60702,6 +61338,11 @@ type MongoSourceEdge {
 
   # The actual MongoSource object wrapped by this edge.
   node: MongoSource!
+}
+# Additional info for `ADD_MONGO_SOURCE` jobs.
+input MongoSourceInfo {
+  # ID of Mongo source.
+  mongoSourceFid: String = ""
 }
 # Supported in v8.1+
 # Configuration for patching a MongoDB source.
@@ -62165,6 +62806,28 @@ enum MosaicSnapshotType {
   # Invalid snapshot type.
   INVALID
 }
+# Additional info for `MOSAIC_SOURCE` and `DELETE_MOSAIC_SOURCE` jobs.
+input MosaicSourceInfo {
+  # Names of sources.
+  sourceNames: [String!] = []
+
+  # Specifies whether to refresh effective SLA.
+  refreshEffectiveSla: Boolean = false
+
+  # Type of Nosql source.
+  sourceType: MosaicSourceNosqlSourceType = UNDEFINED
+}
+# Type of Nosql source.
+enum MosaicSourceNosqlSourceType {
+  # Cassandra.
+  CASSANDRA
+
+  # Mongo DB.
+  MONGODB
+
+  # Type of Nosql source is not specified.
+  UNDEFINED
+}
 # Response object for list store on mosaic.
 type MosaicStorageLocation {
   # Fid of Mosaic Storage Locations.
@@ -62215,6 +62878,12 @@ input MosaicStorageLocationFilterInput {
 
   # Value of the field.
   text: String = ""
+}
+# Additional info for `MOSAIC_STORAGE_LOCATION`
+# and `DELETE_MOSAIC_STORAGE_LOCATION` jobs.
+input MosaicStorageLocationInfo {
+  # Name of the storage location.
+  storageLocationName: String = ""
 }
 # Field to sort by for mosaic storage locations.
 enum MosaicStorageLocationQuerySortByField {
@@ -63677,6 +64346,11 @@ input MssqlDbFileExportPathInput {
   # Required. Supported in v5.0+
   # Logical name of the database file.
   logicalName: String!
+}
+# Additional info for `MSSQL_RESTORE` jobs.
+input MssqlDbInfo {
+  # ID of the database.
+  mssqlDbFid: String = ""
 }
 # Supported in v5.0+
 type MssqlDbReplica {
@@ -73489,6 +74163,9 @@ enum ObjectTypeEnum {
   O365Teams
   ORACLE_DATA_GUARD_GROUP
   OracleDatabase
+
+  # Postgres Database Cluster.
+  POSTGRES_DB_CLUSTER
   RubrikEbsVolume
   RubrikEc2Instance
 
@@ -75026,6 +75703,17 @@ type OracleDbSummary {
 type OracleDirectoryPaths {
   # Directory paths of the archived redo logs of the Oracle database.
   archiveDests: String!
+}
+# Additional info for `EXPORT_ORACLE` jobs.
+input OracleExportInfo {
+  # Specifies whether restore happens on the same host.
+  isSameHostRestore: Boolean = false
+
+  # ID ot target host or RAC.
+  targetHostOrRacFid: String = ""
+
+  # Name of target database.
+  targetDbName: String = ""
 }
 # Supported in v5.3+
 type OracleFileDownloadLink {
@@ -76974,6 +77662,11 @@ type PendingActionType {
   pendingActionSubGroupType: PendingActionSubGroupTypeEnum!
   pendingActionSyncType: PendingActionSyncType!
 }
+# Additional info for `PENDING_SLA` jobs.
+input PendingSlaInfo {
+  # Object IDs.
+  objectFids: [String!] = []
+}
 # Supported in v5.2+
 input PendingSlaOperationsRequestInput {
   # Required. Supported in v5.2+
@@ -78214,6 +78907,11 @@ type PolicySummaryDetails {
   # Specifies whether the policy is anomalous.
   isAnomalousPolicy: Boolean!
 }
+# Additional info for `SAP_HANA_SYSTEM` jobs.
+input PollerSapHanaSystemInfo {
+  # ID of SAP Hana system.
+  sapHanaSystemFid: String = ""
+}
 # Range of ports that are allowed to be accessed.
 input PortRange {
   # The minimum port in the port range.
@@ -78221,6 +78919,11 @@ input PortRange {
 
   # The maximum port in the port range.
   portMax: Int = 0
+}
+# Additional info for `POSTGRES_DB_CLUSTER` jobs.
+input PostgresDbClusterInfo {
+  # ID of the postgres DB cluster.
+  postgresDbClusterFid: String = ""
 }
 # SLA Domain configuration for Postgres DB Cluster.
 type PostgresDbClusterSlaConfig {
@@ -79141,6 +79844,11 @@ input QueryLogShippingConfigurationsV2Input {
 
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
+}
+# Additional info for `VSPHERE_QUERY_MOUNT` jobs.
+input QueryMountInfo {
+  # ID of the snapshot.
+  snapshotFid: String = ""
 }
 # Input for Network Throttle Query.
 input QueryNetworkThrottleInput {
@@ -80129,6 +80837,22 @@ type RegisterNasSystemReply {
   # The asynchronous request status of the job that registers the NAS system.
   nasDiscoverJobStatus: AsyncRequestStatus
 }
+# Additional info for `DISCOVERED_ORACLE_OBJECTS_SYNC_METRIC_POLLER` jobs.
+input RegisterOracleHostsInfo {
+  # IDs of added oracle hosts.
+  addedOracleHostFids: [String!] = []
+
+  # Timestamp of host registration.
+  hostRegisteredTime: DateTime
+}
+# Not in use.
+input RegisterdHostInfo {
+  # ID of the host.
+  hostFid: String = ""
+
+  # Timestamp of host registration.
+  hostRegisteredTime: DateTime
+}
 # Registered mode.
 enum RegisteredMode {
   # Hybrid.
@@ -80988,6 +81712,11 @@ input ResizeDiskInput {
   # Required. ID of the Rubrik cluster or *me* for self.
   id: String!
 }
+# Additional info for `RESIZE_MANAGED_VOLUME` jobs.
+input ResizeManagedVolumeInfo {
+  # ID of the managed volume.
+  managedVolumeFid: String = ""
+}
 # Input for resizing a Managed Volume.
 input ResizeManagedVolumeInput {
   # Required. ID of managed volume.
@@ -81023,6 +81752,9 @@ input ResolveAnomalyInput {
 
   # An optional false positive report for the anomaly resolution.
   falsePositiveReport: AnomalyFalsePositiveReport
+
+  # An optional list of directories to snooze if a false positive is reported.
+  directoriesToSnooze: [String!]
 }
 input ResolveVolumeGroupsConflictInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -83210,6 +83942,14 @@ type SapHanaDatabaseEdge {
   # The actual SapHanaDatabase object wrapped by this edge.
   node: SapHanaDatabase!
 }
+# Additional info for `SAP_HANA_DATABASE` jobs.
+input SapHanaDatabaseInfo {
+  # ID of SAP Hana database.
+  sapHanaDatabaseFid: String = ""
+
+  # Specifies whether to sync DB log snapshot.
+  syncDbLogSnapshot: Boolean = false
+}
 # Additional information about backint and database configuration.
 type SapHanaDatabaseInfoObject {
   # Database type (SYSTEM / TENANT).
@@ -84404,6 +85144,9 @@ input SearchFilter {
 
   # Parameters for using Lambda filters in the query.
   lambdaFilters: LambdaPathFilters
+
+  # Determines whether to ignore in-place archive folder.
+  ignoreArchive: Boolean = false
 }
 # Search keyword and keyword type.
 input SearchKeywordFilter {
@@ -86828,6 +87571,34 @@ type SnapshotFileDeltaV2Edge {
   # The actual SnapshotFileDeltaV2 object wrapped by this edge.
   node: SnapshotFileDeltaV2!
 }
+# Additional info for `DOWNLOAD_SNAPSHOT_FILES` jobs.
+input SnapshotFileDownloadInfo {
+  # ID of the download.
+  downloadId: Long = 0
+
+  # Type of workload.
+  snappableType: SnapshotFileDownloadSnappableType = NONE
+}
+# Type of workload.
+enum SnapshotFileDownloadSnappableType {
+  # Fileset.
+  FILESET
+
+  # Hyperv.
+  HYPERV
+
+  # Type of workload is not specified.
+  NONE
+
+  # Nutanix.
+  NUTANIX
+
+  # VSphere.
+  VSPHERE
+
+  # Windows volume group.
+  WINDOWS_VOLUME_GROUP
+}
 # Wrapper around the SnapshotFile object. This wrapper is used for pagination.
 type SnapshotFileEdge {
   # String used to identify this edge.
@@ -88825,6 +89596,15 @@ type StrainInfo {
 }
 # The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 scalar String
+input SubjectContext {
+  organizationId: String = ""
+  subjectId: String = ""
+  subjectType: SubjectContextType = USER
+}
+enum SubjectContextType {
+  USER
+  USER_GROUP
+}
 type Subnet {
   id: String!
   name: String!
@@ -89379,6 +90159,11 @@ input TagType {
 input TagsInput {
   # List of tags.
   tagList: [TagInput!]!
+}
+# Additional info for `TAKE_MANAGED_VOLUME_ON_DEMAND_SNAPSHOT` jobs.
+input TakeManagedVolumeOnDemandSnapshotInfo {
+  # ID of the managed volume.
+  managedVolumeFid: String = ""
 }
 # Input for api call to take on demand snapshot of a Managed Volume.
 input TakeManagedVolumeOnDemandSnapshotInput {
@@ -91076,6 +91861,11 @@ input UnmountDiskInput {
 
   # Target Workload ID for which disk must be unmounted.
   targetWorkloadId: UUID!
+}
+# Additional info for `VOLUME_GROUP_UNMOUNT` jobs.
+input UnmountInfo {
+  # ID of the Live Mount.
+  liveMountFid: String = ""
 }
 # Specifies the information about the auth domain users to be hidden or unhidden.
 input UpdateAuthDomainUsersHiddenStatusInput {
@@ -93553,6 +94343,9 @@ enum UserAuditObjectTypeEnum {
   # Rubrik cluster type.
   Cluster
 
+  # Data Center Cloud Account.
+  DATA_CENTER_CLOUD_ACCOUNT
+
   # Db2 database type.
   DB2_DATABASE
 
@@ -94497,6 +95290,36 @@ type VappAppMetadata {
   networkConnections: [VmNetworkConnection!]!
 }
 # Supported in v5.0+
+# Target type for the specified vApp export.
+enum VappExportMode {
+  VAPP_EXPORT_MODE_EXPORT_TO_NEW_VAPP
+  VAPP_EXPORT_MODE_EXPORT_TO_TARGET_VAPP
+}
+# Supported in v5.0+
+input VappExportSnapshotJobConfigInput {
+  # Supported in v5.0+
+  newVappParams: CreateNewVappParamsInput
+
+  # Supported in v5.0+
+  # Boolean value that indicates whether to power on the exported vApp. Use 'true' to turn the power on for the exported vApp or use 'false' to leave the power off for the exported vApp.
+  shouldPowerOnVappAfterExport: Boolean
+
+  # Supported in v5.0+
+  # ID assigned to the target vApp object, when the export is into an existing vApp. When the export is not into a target vApp, remove the 'targetVappId' member.
+  targetVappId: String
+
+  # Required. Supported in v5.0+
+  exportMode: VappExportMode!
+
+  # Required. Supported in v5.0+
+  # Array of vApp networks that are in the specified vApp snapshot and should be set up as part of the export operation. A vApp network that is not included in the array will not be set up in the exported vApp.
+  networksToRestore: [CreateVappNetworkParamsInput!]!
+
+  # Required. Supported in v5.0+
+  # An array containing summary information for the virtual machines included in the vApp export.
+  vmsToExport: [VappVmRestoreSpecInput!]!
+}
+# Supported in v5.0+
 input VappInstantRecoveryJobConfigInput {
   # Supported in v5.0+
   # Boolean value that indicates whether to power on the recovered virtual machines in a vApp after Instant Recovery. Use 'true' to turn the power on for the recovered virtual machines or use 'false' to leave the power off for the virtual machines.
@@ -94530,6 +95353,21 @@ type VappNetworkSummary {
   # Supported in v5.0+
   # vCloud Director ID of the associated organization VDC network object. For an Isolated network, the value is empty.
   parentNetworkId: String
+}
+# Supported in v5.0+
+input VappNetworkSummaryInput {
+  # Supported in v5.0+
+  # vCloud Director ID of the associated organization VDC network object. For an Isolated network, the value is empty.
+  parentNetworkId: String
+
+  # Required. Supported in v5.0+
+  # Boolean value that indicates whether the specified vApp network object has been deployed. Value is 'true' when the vApp network object has been deployed and 'false' when it has not been deployed.
+  isDeployed: Boolean!
+
+  # Required. Supported in v5.0+
+  # v5.0-v5.3: Name for the specified vApp network object.
+  # v6.0+: Name of the specified vApp network object.
+  name: String!
 }
 # Input for vApp snapshot instant recovery options.
 input VappSnapshotInstantRecoveryOptionsInput {
@@ -96393,6 +97231,11 @@ input VcenterConnectionConfigInput {
   # Username of the new vCenter.
   username: String!
 }
+# Additional info for `VCENTER_DIAGNOSTIC_REFRESH` jobs.
+input VcenterDiagnosticRefreshInfo {
+  # The FID of the vCenter.
+  vcenterFid: String = ""
+}
 # Vcenter HotAdd Proxy VMs.
 type VcenterHotAddProxyVmInfo {
   # Details of all proxy VMs in cluster.
@@ -96702,6 +97545,8 @@ type VirtualMachineSummary {
   instanceUuid: String
   snappable: CdmWorkload
   snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate!
+
+  # Virtual Machine Template summary.
   templateType: VirtualMachineTemplateType
 
   # Supported in v5.0+
@@ -96726,9 +97571,16 @@ enum VirtualMachineSummarySnapshotConsistencyMandate {
 # Supported in v9.1+
 # Virtual machine template type.
 enum VirtualMachineTemplateType {
+  # Virtual Machine Template type library item.
   VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM
+
+  # Virtual Machine Template type.
   VIRTUAL_MACHINE_TEMPLATE_TYPE_TEMPLATE
+
+  # Virtual Machine Template type is Undefined.
   VIRTUAL_MACHINE_TEMPLATE_TYPE_UNDEFINED
+
+  # Virtual Machine Template type is VM.
   VIRTUAL_MACHINE_TEMPLATE_TYPE_VM
 }
 # Supported in v5.0+
@@ -97640,6 +98492,11 @@ type VolumeGroupSummary {
   # Specifies whether the Volume Group needs to be migrated in order to use the fast VHDX builder. This flag is set only when the Volume Group's last backup job failed due to an error during data fetch, and the backup job did not use the fast VHDX builder.
   needsMigration: Boolean
   snappable: CdmWorkload
+}
+# Additional info for `VOLUME_GROUP_UNMOUNT` jobs.
+input VolumeGroupUnmountInfo {
+  # ID of live mount.
+  liveMountFid: String = ""
 }
 # Supported in v5.0+
 input VolumeGroupVolumeMountConfigInput {
@@ -99265,6 +100122,11 @@ input VsphereExportSnapshotToStandaloneHostV2Input {
 
   # Required. ID of snapshot.
   id: String!
+}
+# Additional info for `VSPHERE_RESTORE_FILE_TO_VM` jobs.
+input VsphereFileRestoreInfo {
+  # ID of VSphere VM.
+  vmFid: String = ""
 }
 type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterDescendantType , VsphereDatacenterFolderLogicalChildType , VsphereDatacenterFolderDescendantType , VsphereDatacenterLogicalChildType , VsphereDatacenterDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType {
   # Vsphere folder CDM ID.
@@ -102420,6 +103282,11 @@ input VsphereVmRegisterAgentInput {
 input WarmSearchCacheInput {
   # The fid for the workload.
   workloadFid: UUID!
+}
+# Additional info for `CLUSTER_WEB_CERT` jobs.
+input WebCertificateInfo {
+  # ID of the certificate.
+  cdmCertificateId: String = ""
 }
 # Supported in v5.2+
 input WebServerCertificatePayloadInput {

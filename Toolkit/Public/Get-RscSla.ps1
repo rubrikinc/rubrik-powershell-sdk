@@ -1,5 +1,5 @@
 #Requires -Version 3
-function Get-RscSlaDomain {
+function Get-RscSla {
     <#
     .SYNOPSIS
     Retrieves Global SLA Domains defined in Rubrik Security Cloud 
@@ -14,16 +14,16 @@ function Get-RscSlaDomain {
 
     .EXAMPLE
     # Return all SLA Domains
-    Get-RscSlaDomain
+    Get-RscSla
 
     .EXAMPLE
     # Return an SLA Domain with 'Gold' in the name
-    Get-RscSlaDomain "Gold"
+    Get-RscSla "Gold"
 
     .EXAMPLE
     # You can pipe the output of the cmdlet to another cmdlet. 
     # In this case, we get a list of VMware VMs that are a member of SLAs with 'gold' in the name.
-    Get-RscSlaDomain "Gold" | Get-RscVmwareVm
+    Get-RscSla "Gold" | Get-RscVmwareVm
     #>
 
     [CmdletBinding(

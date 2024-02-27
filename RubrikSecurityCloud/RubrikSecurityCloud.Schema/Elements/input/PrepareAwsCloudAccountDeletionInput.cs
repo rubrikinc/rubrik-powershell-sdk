@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
 
+        //      C# -> AwsRoleCustomization? AwsRoleCustomization
+        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
+        [JsonProperty("awsRoleCustomization")]
+        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+
 
         #endregion
 

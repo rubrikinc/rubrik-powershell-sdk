@@ -1,8 +1,28 @@
+<#
+.SYNOPSIS
+Build the Rubrik Security Cloud SDK.
+
+.DESCRIPTION
+This script
+
+- runs Clean-RscSdk.ps1 to remove any previous build artifacts.
+- builds the Rubrik Security Cloud SDK and copies the output
+  to the Output/ directory.
+- runs Test-RscSdk.ps1 to run the tests.
+
+By default, the script will run the tests.
+You can skip the tests by passing -NoTests.
+
+By default, the script will build the Debug version of the SDK.
+You can build the Release version by passing -Release.
+Note that the Release build is copied to the Output.Release/ directory
+instead of Output/.
+#>
 param(
-    [bool]$NoClean = $false,
-    [bool]$Release = $false,
-    [bool]$NoDocs = $false,
-    [bool]$NoTests = $false
+    [switch]$NoClean = $false,
+    [switch]$Release = $false,
+    [switch]$NoDocs = $false,
+    [switch]$NoTests = $false
 )
 
 # Change to the root of the repository

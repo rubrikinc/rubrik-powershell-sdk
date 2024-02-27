@@ -13,6 +13,10 @@ A Rubrik CDM Cluster.
   - System status of the cluster. For Mosaic clusters and Rubrik clusters running CDM versions earlier than 5.0, this value is null.
 - pauseStatus: ClusterPauseStatus
   - Pause status of the cluster.
+- eosDate: System.String
+  - End of support date.
+- eosStatus: ClusterEosStatus
+  - End of support status.
 - systemStatusMessage: System.String
   - Human readable message explaining the systemStatus.
 - systemStatusAffectedNodes: list of ClusterNodes
@@ -103,3 +107,5 @@ A Rubrik CDM Cluster.
   - The licensed products that belong to this cluster.
 - registeredMode: ClusterRegistrationMode
   - The Rubrik cluster's registered mode.
+- cdmRbacMigrationStatus: System.String
+  - CDM to RSC RBAC migration status for the current cluster.
