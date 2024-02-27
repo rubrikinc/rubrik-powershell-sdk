@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region VsphereDatacenter
  
-    public class VsphereDatacenter: BaseType, CdmHierarchyObject, HierarchyObject, VsphereDatacenterFolderDescendantType, VsphereDatacenterFolderLogicalChildType, VsphereVcenterDescendantType, VsphereVcenterLogicalChildType, VsphereVcenterPhysicalChildType
+    public class VsphereDatacenter: BaseType, CdmHierarchyObject, HierarchyObject, VsphereDatacenterFolderDescendantType, VsphereDatacenterFolderLogicalChildType, VsphereDatacenterFolderPhysicalChildType, VsphereVcenterDescendantType, VsphereVcenterLogicalChildType, VsphereVcenterPhysicalChildType
     {
         #region members
 

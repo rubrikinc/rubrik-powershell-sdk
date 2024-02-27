@@ -33,6 +33,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadFid")]
         public System.String? WorkloadFid { get; set; }
 
+        //      C# -> List<AzureAdKeywordSearchFilterInput>? KeywordSearchFilters
+        // GraphQL -> keywordSearchFilters: [AzureAdKeywordSearchFilterInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("keywordSearchFilters")]
+        public List<AzureAdKeywordSearchFilterInput>? KeywordSearchFilters { get; set; }
+
         //      C# -> AzureAdObjectType? AzureAdObjectType
         // GraphQL -> azureAdObjectType: AzureAdObjectType! (enum)
         [Required]

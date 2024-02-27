@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authType")]
         public SapHanaSystemAuthType? AuthType { get; set; }
 
+        //      C# -> System.String? AzureCustomerSubscriptionName
+        // GraphQL -> azureCustomerSubscriptionName: String! (scalar)
+        [JsonProperty("azureCustomerSubscriptionName")]
+        public System.String? AzureCustomerSubscriptionName { get; set; }
+
+        //      C# -> System.String? AzureFeatureUuid
+        // GraphQL -> azureFeatureUuid: UUID (scalar)
+        [JsonProperty("azureFeatureUuid")]
+        public System.String? AzureFeatureUuid { get; set; }
+
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
         [JsonProperty("hanaVersion")]
@@ -46,12 +56,20 @@ namespace RubrikSecurityCloud.Types
 
     public SapHanaSystemInformation Set(
         SapHanaSystemAuthType? AuthType = null,
+        System.String? AzureCustomerSubscriptionName = null,
+        System.String? AzureFeatureUuid = null,
         System.String? HanaVersion = null,
         System.Boolean? IsDtEnabled = null
     ) 
     {
         if ( AuthType != null ) {
             this.AuthType = AuthType;
+        }
+        if ( AzureCustomerSubscriptionName != null ) {
+            this.AzureCustomerSubscriptionName = AzureCustomerSubscriptionName;
+        }
+        if ( AzureFeatureUuid != null ) {
+            this.AzureFeatureUuid = AzureFeatureUuid;
         }
         if ( HanaVersion != null ) {
             this.HanaVersion = HanaVersion;
@@ -77,6 +95,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authType\n" ;
             } else {
                 s += ind + "authType\n" ;
+            }
+        }
+        //      C# -> System.String? AzureCustomerSubscriptionName
+        // GraphQL -> azureCustomerSubscriptionName: String! (scalar)
+        if (this.AzureCustomerSubscriptionName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureCustomerSubscriptionName\n" ;
+            } else {
+                s += ind + "azureCustomerSubscriptionName\n" ;
+            }
+        }
+        //      C# -> System.String? AzureFeatureUuid
+        // GraphQL -> azureFeatureUuid: UUID (scalar)
+        if (this.AzureFeatureUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureFeatureUuid\n" ;
+            } else {
+                s += ind + "azureFeatureUuid\n" ;
             }
         }
         //      C# -> System.String? HanaVersion
@@ -120,6 +156,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthType != null && ec.Excludes("authType",true))
         {
             this.AuthType = null;
+        }
+        //      C# -> System.String? AzureCustomerSubscriptionName
+        // GraphQL -> azureCustomerSubscriptionName: String! (scalar)
+        if (ec.Includes("azureCustomerSubscriptionName",true))
+        {
+            if(this.AzureCustomerSubscriptionName == null) {
+
+                this.AzureCustomerSubscriptionName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureCustomerSubscriptionName != null && ec.Excludes("azureCustomerSubscriptionName",true))
+        {
+            this.AzureCustomerSubscriptionName = null;
+        }
+        //      C# -> System.String? AzureFeatureUuid
+        // GraphQL -> azureFeatureUuid: UUID (scalar)
+        if (ec.Includes("azureFeatureUuid",true))
+        {
+            if(this.AzureFeatureUuid == null) {
+
+                this.AzureFeatureUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureFeatureUuid != null && ec.Excludes("azureFeatureUuid",true))
+        {
+            this.AzureFeatureUuid = null;
         }
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)

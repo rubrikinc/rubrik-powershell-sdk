@@ -1,4 +1,4 @@
-// ConnectionStatusType.cs
+// CrossAccountRole.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,18 @@ using System.Runtime.Serialization;
 
 namespace RubrikSecurityCloud.Types
 {
-    public enum ConnectionStatusType
+    public enum CrossAccountRole
     {
-        [EnumMember(Value = "CONNECTED")]
-        CONNECTED,
+        [EnumMember(Value = "ROLE_UNSPECIFIED")]
+        ROLE_UNSPECIFIED,
 
-        [EnumMember(Value = "DISCONNECTED")]
-        DISCONNECTED,
+        [EnumMember(Value = "SERVICE_CONSUMER")]
+        SERVICE_CONSUMER,
 
-        [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        [EnumMember(Value = "SERVICE_PROVIDER")]
+        SERVICE_PROVIDER
 
 
-    } // enum ConnectionStatusType
+    } // enum CrossAccountRole
 
 } // namespace RubrikSecurityCloud.Types

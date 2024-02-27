@@ -174,6 +174,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RubrikEc2Instance")]
         RUBRIK_EC2_INSTANCE,
 
+        [EnumMember(Value = "SALESFORCE_FIXED_OBJECT")]
+        SALESFORCE_FIXED_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT")]
+        SALESFORCE_OBJECT,
+
         [EnumMember(Value = "SAP_HANA_SYSTEM")]
         SAP_HANA_SYSTEM,
 

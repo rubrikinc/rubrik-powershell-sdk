@@ -1,4 +1,4 @@
-// PrepareAwsCloudAccountDeletionInput.cs
+// SapHanaSystemRestoreConfigInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region PrepareAwsCloudAccountDeletionInput
+    #region SapHanaSystemRestoreConfigInput
 
-    public class PrepareAwsCloudAccountDeletionInput: IInput
+    public class SapHanaSystemRestoreConfigInput: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
-
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRoleCustomization? AwsRoleCustomization
-        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("awsRoleCustomization")]
-        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+        [JsonProperty("snapshotId")]
+        public System.String? SnapshotId { get; set; }
 
 
         #endregion
@@ -64,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class PrepareAwsCloudAccountDeletionInput
+    } // class SapHanaSystemRestoreConfigInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

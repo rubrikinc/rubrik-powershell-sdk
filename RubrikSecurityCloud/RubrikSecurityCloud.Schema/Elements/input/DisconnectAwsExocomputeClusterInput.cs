@@ -1,4 +1,4 @@
-// PrepareAwsCloudAccountDeletionInput.cs
+// DisconnectAwsExocomputeClusterInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region PrepareAwsCloudAccountDeletionInput
+    #region DisconnectAwsExocomputeClusterInput
 
-    public class PrepareAwsCloudAccountDeletionInput: IInput
+    public class DisconnectAwsExocomputeClusterInput: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: UUID! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
-
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRoleCustomization? AwsRoleCustomization
-        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("awsRoleCustomization")]
-        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+        [JsonProperty("clusterId")]
+        public System.String? ClusterId { get; set; }
 
 
         #endregion
@@ -64,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class PrepareAwsCloudAccountDeletionInput
+    } // class DisconnectAwsExocomputeClusterInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

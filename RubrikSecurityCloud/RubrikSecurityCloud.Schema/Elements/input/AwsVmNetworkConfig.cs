@@ -1,4 +1,4 @@
-// PrepareAwsCloudAccountDeletionInput.cs
+// AwsVmNetworkConfig.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,21 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region PrepareAwsCloudAccountDeletionInput
+    #region AwsVmNetworkConfig
 
-    public class PrepareAwsCloudAccountDeletionInput: IInput
+    public class AwsVmNetworkConfig: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
+        //      C# -> System.String? AvailabilityZone
+        // GraphQL -> availabilityZone: String (scalar)
+        [JsonProperty("availabilityZone")]
+        public System.String? AvailabilityZone { get; set; }
 
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRoleCustomization? AwsRoleCustomization
-        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("awsRoleCustomization")]
-        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+        //      C# -> System.String? Subnet
+        // GraphQL -> subnet: String (scalar)
+        [JsonProperty("subnet")]
+        public System.String? Subnet { get; set; }
 
 
         #endregion
@@ -64,7 +55,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class PrepareAwsCloudAccountDeletionInput
+    } // class AwsVmNetworkConfig
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

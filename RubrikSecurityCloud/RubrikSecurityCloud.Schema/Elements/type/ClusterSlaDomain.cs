@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        [JsonProperty("isReadOnly")]
+        public System.Boolean? IsReadOnly { get; set; }
+
         //      C# -> System.Boolean? IsRetentionLockedSla
         // GraphQL -> isRetentionLockedSla: Boolean! (scalar)
         [JsonProperty("isRetentionLockedSla")]
@@ -155,6 +160,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmId = null,
         System.String? Fid = null,
         System.String? Id = null,
+        System.Boolean? IsReadOnly = null,
         System.Boolean? IsRetentionLockedSla = null,
         System.String? Name = null,
         System.String? OwnerOrgName = null,
@@ -188,6 +194,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsReadOnly != null ) {
+            this.IsReadOnly = IsReadOnly;
         }
         if ( IsRetentionLockedSla != null ) {
             this.IsRetentionLockedSla = IsRetentionLockedSla;
@@ -294,6 +303,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        if (this.IsReadOnly != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReadOnly\n" ;
+            } else {
+                s += ind + "isReadOnly\n" ;
             }
         }
         //      C# -> System.Boolean? IsRetentionLockedSla
@@ -592,6 +610,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        if (ec.Includes("isReadOnly",true))
+        {
+            if(this.IsReadOnly == null) {
+
+                this.IsReadOnly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReadOnly != null && ec.Excludes("isReadOnly",true))
+        {
+            this.IsReadOnly = null;
         }
         //      C# -> System.Boolean? IsRetentionLockedSla
         // GraphQL -> isRetentionLockedSla: Boolean! (scalar)

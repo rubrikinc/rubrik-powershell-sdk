@@ -106,7 +106,10 @@ namespace RubrikSecurityCloud.Types
         US_WEST,
 
         [EnumMember(Value = "US_WEST_2")]
-        US_WEST_2
+        US_WEST_2,
+
+        [EnumMember(Value = "WEST_US3")]
+        WEST_US3
 
 
     } // enum RcsRegionEnumType

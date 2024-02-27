@@ -82,7 +82,10 @@ namespace RubrikSecurityCloud.Types
         UNSPECIFIED_NAME,
 
         [EnumMember(Value = "USER_ACCESS")]
-        USER_ACCESS
+        USER_ACCESS,
+
+        [EnumMember(Value = "USER_INTELLIGENCE")]
+        USER_INTELLIGENCE
 
 
     } // enum ProductName

@@ -306,6 +306,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_PLAN")]
         RECOVERY_PLAN,
 
+        [EnumMember(Value = "SALESFORCE_FIXED_OBJECT")]
+        SALESFORCE_FIXED_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT")]
+        SALESFORCE_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_ORGANIZATION")]
+        SALESFORCE_ORGANIZATION,
+
         [EnumMember(Value = "SAP_HANA_DATABASE")]
         SAP_HANA_DATABASE,
 

@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceType")]
         public AwsInstanceType? InstanceType { get; set; }
 
+        //      C# -> List<AwsVmNetworkConfig>? NetworkConfig
+        // GraphQL -> networkConfig: [AwsVmNetworkConfig!] (input)
+        [JsonProperty("networkConfig")]
+        public List<AwsVmNetworkConfig>? NetworkConfig { get; set; }
+
 
         #endregion
 

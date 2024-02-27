@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regex")]
         public System.String? Regex { get; set; }
 
+        //      C# -> System.Int32? TagId
+        // GraphQL -> tagId: Int! (scalar)
+        [JsonProperty("tagId")]
+        public System.Int32? TagId { get; set; }
+
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)
         [JsonProperty("analyzerRiskInstance")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.String? Regex = null,
+        System.Int32? TagId = null,
         AnalyzerRiskInstance? AnalyzerRiskInstance = null
     ) 
     {
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Regex != null ) {
             this.Regex = Regex;
+        }
+        if ( TagId != null ) {
+            this.TagId = TagId;
         }
         if ( AnalyzerRiskInstance != null ) {
             this.AnalyzerRiskInstance = AnalyzerRiskInstance;
@@ -176,6 +185,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "regex\n" ;
             } else {
                 s += ind + "regex\n" ;
+            }
+        }
+        //      C# -> System.Int32? TagId
+        // GraphQL -> tagId: Int! (scalar)
+        if (this.TagId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tagId\n" ;
+            } else {
+                s += ind + "tagId\n" ;
             }
         }
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
@@ -315,6 +333,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Regex != null && ec.Excludes("regex",true))
         {
             this.Regex = null;
+        }
+        //      C# -> System.Int32? TagId
+        // GraphQL -> tagId: Int! (scalar)
+        if (ec.Includes("tagId",true))
+        {
+            if(this.TagId == null) {
+
+                this.TagId = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TagId != null && ec.Excludes("tagId",true))
+        {
+            this.TagId = null;
         }
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)

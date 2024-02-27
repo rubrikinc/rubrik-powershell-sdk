@@ -1,4 +1,4 @@
-// ConnectionStatusType.cs
+// LdapUnlockReason.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,15 @@ using System.Runtime.Serialization;
 
 namespace RubrikSecurityCloud.Types
 {
-    public enum ConnectionStatusType
+    public enum LdapUnlockReason
     {
-        [EnumMember(Value = "CONNECTED")]
-        CONNECTED,
+        [EnumMember(Value = "ADMINISTRATIVE_UNLOCK")]
+        ADMINISTRATIVE_UNLOCK,
 
-        [EnumMember(Value = "DISCONNECTED")]
-        DISCONNECTED,
-
-        [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        [EnumMember(Value = "UNLOCK_REASON_UNSPECIFIED")]
+        UNLOCK_REASON_UNSPECIFIED
 
 
-    } // enum ConnectionStatusType
+    } // enum LdapUnlockReason
 
 } // namespace RubrikSecurityCloud.Types

@@ -1,4 +1,4 @@
-// ConnectionStatusType.cs
+// GetCrossAccountPairsSortByField.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,15 @@ using System.Runtime.Serialization;
 
 namespace RubrikSecurityCloud.Types
 {
-    public enum ConnectionStatusType
+    public enum GetCrossAccountPairsSortByField
     {
-        [EnumMember(Value = "CONNECTED")]
-        CONNECTED,
+        [EnumMember(Value = "NAME")]
+        NAME,
 
-        [EnumMember(Value = "DISCONNECTED")]
-        DISCONNECTED,
-
-        [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        [EnumMember(Value = "SORT_BY_FIELD_UNSPECIFIED")]
+        SORT_BY_FIELD_UNSPECIFIED
 
 
-    } // enum ConnectionStatusType
+    } // enum GetCrossAccountPairsSortByField
 
 } // namespace RubrikSecurityCloud.Types

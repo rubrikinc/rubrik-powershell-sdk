@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetAndRubrik")]
         public ClusterConnectionStatus? TargetAndRubrik { get; set; }
 
+        //      C# -> ConnectionStatusType? TargetAndSource
+        // GraphQL -> targetAndSource: ConnectionStatusType! (enum)
+        [JsonProperty("targetAndSource")]
+        public ConnectionStatusType? TargetAndSource { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public ConnectionStatusDetails Set(
         ClusterConnectionStatus? SourceAndRubrik = null,
         ConnectionStatusType? SourceAndTarget = null,
-        ClusterConnectionStatus? TargetAndRubrik = null
+        ClusterConnectionStatus? TargetAndRubrik = null,
+        ConnectionStatusType? TargetAndSource = null
     ) 
     {
         if ( SourceAndRubrik != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TargetAndRubrik != null ) {
             this.TargetAndRubrik = TargetAndRubrik;
+        }
+        if ( TargetAndSource != null ) {
+            this.TargetAndSource = TargetAndSource;
         }
         return this;
     }
@@ -95,6 +104,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "targetAndRubrik\n" ;
             } else {
                 s += ind + "targetAndRubrik\n" ;
+            }
+        }
+        //      C# -> ConnectionStatusType? TargetAndSource
+        // GraphQL -> targetAndSource: ConnectionStatusType! (enum)
+        if (this.TargetAndSource != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetAndSource\n" ;
+            } else {
+                s += ind + "targetAndSource\n" ;
             }
         }
         return s;
@@ -154,6 +172,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TargetAndRubrik != null && ec.Excludes("targetAndRubrik",true))
         {
             this.TargetAndRubrik = null;
+        }
+        //      C# -> ConnectionStatusType? TargetAndSource
+        // GraphQL -> targetAndSource: ConnectionStatusType! (enum)
+        if (ec.Includes("targetAndSource",true))
+        {
+            if(this.TargetAndSource == null) {
+
+                this.TargetAndSource = new ConnectionStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetAndSource != null && ec.Excludes("targetAndSource",true))
+        {
+            this.TargetAndSource = null;
         }
     }
 

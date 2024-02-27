@@ -1,4 +1,4 @@
-// PrepareAwsCloudAccountDeletionInput.cs
+// ExpireSnoozedDirectoriesInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,16 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region PrepareAwsCloudAccountDeletionInput
+    #region ExpireSnoozedDirectoriesInput
 
-    public class PrepareAwsCloudAccountDeletionInput: IInput
+    public class ExpireSnoozedDirectoriesInput: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
-
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRoleCustomization? AwsRoleCustomization
-        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("awsRoleCustomization")]
-        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+        //      C# -> List<System.String>? Directories
+        // GraphQL -> directories: [String!] (scalar)
+        [JsonProperty("directories")]
+        public List<System.String>? Directories { get; set; }
 
 
         #endregion
@@ -64,7 +50,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class PrepareAwsCloudAccountDeletionInput
+    } // class ExpireSnoozedDirectoriesInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

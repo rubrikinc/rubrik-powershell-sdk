@@ -1,4 +1,4 @@
-// PrepareAwsCloudAccountDeletionInput.cs
+// GetCrossAccountPairsFilter.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,21 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region PrepareAwsCloudAccountDeletionInput
+    #region GetCrossAccountPairsFilter
 
-    public class PrepareAwsCloudAccountDeletionInput: IInput
+    public class GetCrossAccountPairsFilter: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
+        //      C# -> GetCrossAccountPairsFilterField? Field
+        // GraphQL -> field: GetCrossAccountPairsFilterField (enum)
+        [JsonProperty("field")]
+        public GetCrossAccountPairsFilterField? Field { get; set; }
 
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRoleCustomization? AwsRoleCustomization
-        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("awsRoleCustomization")]
-        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+        //      C# -> System.String? Text
+        // GraphQL -> text: String (scalar)
+        [JsonProperty("text")]
+        public System.String? Text { get; set; }
 
 
         #endregion
@@ -64,7 +55,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class PrepareAwsCloudAccountDeletionInput
+    } // class GetCrossAccountPairsFilter
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

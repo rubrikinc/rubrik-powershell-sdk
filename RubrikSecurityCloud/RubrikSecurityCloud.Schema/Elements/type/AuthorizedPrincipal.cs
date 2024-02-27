@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> LdapLockoutStatus? LockoutStatus
+        // GraphQL -> lockoutStatus: LdapLockoutStatus (type)
+        [JsonProperty("lockoutStatus")]
+        public LdapLockoutStatus? LockoutStatus { get; set; }
+
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         [JsonProperty("roles")]
@@ -82,6 +87,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         DateTime? LastLogin = null,
         System.String? Name = null,
+        LdapLockoutStatus? LockoutStatus = null,
         List<Role>? Roles = null,
         LdapTotpStatus? TotpStatus = null
     ) 
@@ -106,6 +112,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( LockoutStatus != null ) {
+            this.LockoutStatus = LockoutStatus;
         }
         if ( Roles != null ) {
             this.Roles = Roles;
@@ -185,6 +194,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> LdapLockoutStatus? LockoutStatus
+        // GraphQL -> lockoutStatus: LdapLockoutStatus (type)
+        if (this.LockoutStatus != null) {
+            var fspec = this.LockoutStatus.AsFieldSpec(conf.Child("lockoutStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lockoutStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Role>? Roles
@@ -336,6 +357,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> LdapLockoutStatus? LockoutStatus
+        // GraphQL -> lockoutStatus: LdapLockoutStatus (type)
+        if (ec.Includes("lockoutStatus",false))
+        {
+            if(this.LockoutStatus == null) {
+
+                this.LockoutStatus = new LdapLockoutStatus();
+                this.LockoutStatus.ApplyExploratoryFieldSpec(ec.NewChild("lockoutStatus"));
+
+            } else {
+
+                this.LockoutStatus.ApplyExploratoryFieldSpec(ec.NewChild("lockoutStatus"));
+
+            }
+        }
+        else if (this.LockoutStatus != null && ec.Excludes("lockoutStatus",false))
+        {
+            this.LockoutStatus = null;
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)

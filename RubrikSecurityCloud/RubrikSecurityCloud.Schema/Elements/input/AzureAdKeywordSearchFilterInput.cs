@@ -1,4 +1,4 @@
-// PrepareAwsCloudAccountDeletionInput.cs
+// AzureAdKeywordSearchFilterInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,21 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region PrepareAwsCloudAccountDeletionInput
+    #region AzureAdKeywordSearchFilterInput
 
-    public class PrepareAwsCloudAccountDeletionInput: IInput
+    public class AzureAdKeywordSearchFilterInput: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
+        //      C# -> System.String? SearchKeyword
+        // GraphQL -> searchKeyword: String (scalar)
+        [JsonProperty("searchKeyword")]
+        public System.String? SearchKeyword { get; set; }
 
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRoleCustomization? AwsRoleCustomization
-        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("awsRoleCustomization")]
-        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
+        //      C# -> System.String? SearchKeywordType
+        // GraphQL -> searchKeywordType: String (scalar)
+        [JsonProperty("searchKeywordType")]
+        public System.String? SearchKeywordType { get; set; }
 
 
         #endregion
@@ -64,7 +55,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class PrepareAwsCloudAccountDeletionInput
+    } // class AzureAdKeywordSearchFilterInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

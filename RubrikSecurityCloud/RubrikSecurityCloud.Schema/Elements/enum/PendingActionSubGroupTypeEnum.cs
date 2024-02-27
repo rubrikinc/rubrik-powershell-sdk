@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_ROLE_BASED_ARCHIVAL_LOCATION")]
         AWS_ROLE_BASED_ARCHIVAL_LOCATION,
 
+        [EnumMember(Value = "AZURE_CUSTOMER_FEATURE_UPSERT")]
+        AZURE_CUSTOMER_FEATURE_UPSERT,
+
         [EnumMember(Value = "BLUEPRINT_CREATE")]
         BLUEPRINT_CREATE,
 

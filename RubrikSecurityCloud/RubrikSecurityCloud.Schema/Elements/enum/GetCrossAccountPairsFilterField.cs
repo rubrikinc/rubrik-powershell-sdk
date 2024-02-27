@@ -1,4 +1,4 @@
-// ConnectionStatusType.cs
+// GetCrossAccountPairsFilterField.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,18 @@ using System.Runtime.Serialization;
 
 namespace RubrikSecurityCloud.Types
 {
-    public enum ConnectionStatusType
+    public enum GetCrossAccountPairsFilterField
     {
-        [EnumMember(Value = "CONNECTED")]
-        CONNECTED,
+        [EnumMember(Value = "ACCOUNT_ROLE")]
+        ACCOUNT_ROLE,
 
-        [EnumMember(Value = "DISCONNECTED")]
-        DISCONNECTED,
+        [EnumMember(Value = "NAME")]
+        NAME,
 
-        [EnumMember(Value = "UNAVAILABLE")]
-        UNAVAILABLE
+        [EnumMember(Value = "STATUS")]
+        STATUS
 
 
-    } // enum ConnectionStatusType
+    } // enum GetCrossAccountPairsFilterField
 
 } // namespace RubrikSecurityCloud.Types

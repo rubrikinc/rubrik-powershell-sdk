@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterEosStatus? EosStatus
+        // GraphQL -> eosStatus: ClusterEosStatus (enum)
+        [JsonProperty("eosStatus")]
+        public ClusterEosStatus? EosStatus { get; set; }
+
         //      C# -> List<Product>? LicensedProducts
         // GraphQL -> licensedProducts: [Product!]! (enum)
         [JsonProperty("licensedProducts")]
@@ -61,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("type")]
         public ClusterTypeEnum? Type { get; set; }
 
+        //      C# -> System.String? CdmRbacMigrationStatus
+        // GraphQL -> cdmRbacMigrationStatus: String (scalar)
+        [JsonProperty("cdmRbacMigrationStatus")]
+        public System.String? CdmRbacMigrationStatus { get; set; }
+
         //      C# -> DateTime? ConnectivityLastUpdated
         // GraphQL -> connectivityLastUpdated: DateTime (scalar)
         [JsonProperty("connectivityLastUpdated")]
@@ -80,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> encryptionEnabled: Boolean! (scalar)
         [JsonProperty("encryptionEnabled")]
         public System.Boolean? EncryptionEnabled { get; set; }
+
+        //      C# -> System.String? EosDate
+        // GraphQL -> eosDate: String (scalar)
+        [JsonProperty("eosDate")]
+        public System.String? EosDate { get; set; }
 
         //      C# -> System.Int64? EstimatedRunway
         // GraphQL -> estimatedRunway: Long! (scalar)
@@ -286,6 +301,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Cluster Set(
+        ClusterEosStatus? EosStatus = null,
         List<Product>? LicensedProducts = null,
         ClusterPauseStatus? PauseStatus = null,
         ClusterProductEnum? ProductType = null,
@@ -294,10 +310,12 @@ namespace RubrikSecurityCloud.Types
         ClusterSubStatus? SubStatus = null,
         ClusterSystemStatus? SystemStatus = null,
         ClusterTypeEnum? Type = null,
+        System.String? CdmRbacMigrationStatus = null,
         DateTime? ConnectivityLastUpdated = null,
         System.String? DefaultAddress = null,
         System.Int32? DefaultPort = null,
         System.Boolean? EncryptionEnabled = null,
+        System.String? EosDate = null,
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
@@ -339,6 +357,9 @@ namespace RubrikSecurityCloud.Types
         List<ClusterNode>? SystemStatusAffectedNodes = null
     ) 
     {
+        if ( EosStatus != null ) {
+            this.EosStatus = EosStatus;
+        }
         if ( LicensedProducts != null ) {
             this.LicensedProducts = LicensedProducts;
         }
@@ -363,6 +384,9 @@ namespace RubrikSecurityCloud.Types
         if ( Type != null ) {
             this.Type = Type;
         }
+        if ( CdmRbacMigrationStatus != null ) {
+            this.CdmRbacMigrationStatus = CdmRbacMigrationStatus;
+        }
         if ( ConnectivityLastUpdated != null ) {
             this.ConnectivityLastUpdated = ConnectivityLastUpdated;
         }
@@ -374,6 +398,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EncryptionEnabled != null ) {
             this.EncryptionEnabled = EncryptionEnabled;
+        }
+        if ( EosDate != null ) {
+            this.EosDate = EosDate;
         }
         if ( EstimatedRunway != null ) {
             this.EstimatedRunway = EstimatedRunway;
@@ -503,6 +530,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ClusterEosStatus? EosStatus
+        // GraphQL -> eosStatus: ClusterEosStatus (enum)
+        if (this.EosStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eosStatus\n" ;
+            } else {
+                s += ind + "eosStatus\n" ;
+            }
+        }
         //      C# -> List<Product>? LicensedProducts
         // GraphQL -> licensedProducts: [Product!]! (enum)
         if (this.LicensedProducts != null) {
@@ -575,6 +611,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "type\n" ;
             }
         }
+        //      C# -> System.String? CdmRbacMigrationStatus
+        // GraphQL -> cdmRbacMigrationStatus: String (scalar)
+        if (this.CdmRbacMigrationStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmRbacMigrationStatus\n" ;
+            } else {
+                s += ind + "cdmRbacMigrationStatus\n" ;
+            }
+        }
         //      C# -> DateTime? ConnectivityLastUpdated
         // GraphQL -> connectivityLastUpdated: DateTime (scalar)
         if (this.ConnectivityLastUpdated != null) {
@@ -609,6 +654,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "encryptionEnabled\n" ;
             } else {
                 s += ind + "encryptionEnabled\n" ;
+            }
+        }
+        //      C# -> System.String? EosDate
+        // GraphQL -> eosDate: String (scalar)
+        if (this.EosDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eosDate\n" ;
+            } else {
+                s += ind + "eosDate\n" ;
             }
         }
         //      C# -> System.Int64? EstimatedRunway
@@ -1050,6 +1104,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ClusterEosStatus? EosStatus
+        // GraphQL -> eosStatus: ClusterEosStatus (enum)
+        if (ec.Includes("eosStatus",true))
+        {
+            if(this.EosStatus == null) {
+
+                this.EosStatus = new ClusterEosStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EosStatus != null && ec.Excludes("eosStatus",true))
+        {
+            this.EosStatus = null;
+        }
         //      C# -> List<Product>? LicensedProducts
         // GraphQL -> licensedProducts: [Product!]! (enum)
         if (ec.Includes("licensedProducts",true))
@@ -1186,6 +1257,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Type = null;
         }
+        //      C# -> System.String? CdmRbacMigrationStatus
+        // GraphQL -> cdmRbacMigrationStatus: String (scalar)
+        if (ec.Includes("cdmRbacMigrationStatus",true))
+        {
+            if(this.CdmRbacMigrationStatus == null) {
+
+                this.CdmRbacMigrationStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmRbacMigrationStatus != null && ec.Excludes("cdmRbacMigrationStatus",true))
+        {
+            this.CdmRbacMigrationStatus = null;
+        }
         //      C# -> DateTime? ConnectivityLastUpdated
         // GraphQL -> connectivityLastUpdated: DateTime (scalar)
         if (ec.Includes("connectivityLastUpdated",true))
@@ -1253,6 +1341,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EncryptionEnabled != null && ec.Excludes("encryptionEnabled",true))
         {
             this.EncryptionEnabled = null;
+        }
+        //      C# -> System.String? EosDate
+        // GraphQL -> eosDate: String (scalar)
+        if (ec.Includes("eosDate",true))
+        {
+            if(this.EosDate == null) {
+
+                this.EosDate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EosDate != null && ec.Excludes("eosDate",true))
+        {
+            this.EosDate = null;
         }
         //      C# -> System.Int64? EstimatedRunway
         // GraphQL -> estimatedRunway: Long! (scalar)

@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_AUDIT_LIST")]
         OBJECT_AUDIT_LIST,
 
+        [EnumMember(Value = "OBJECT_BACKUP_TASK_SUMMARY")]
+        OBJECT_BACKUP_TASK_SUMMARY,
+
         [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_DETAIL")]
         OBJECT_PROTECTION_AUDIT_DETAIL,
 
