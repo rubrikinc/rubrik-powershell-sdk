@@ -37,9 +37,19 @@ if ($gitStatus) {
     throw "Repository is not clean. Please commit or stash changes before running this script."
 }
 
+# Update devel branch
+try {
+    git checkout devel
+    git pull --rebase origin devel
+}
+catch {
+    throw "Failed to checkout 'devel' branch."
+}
+
 # Checkout main branch
 try {
     git checkout main
+    git pull --rebase origin main
 }
 catch {
     throw "Failed to checkout 'main' branch."
