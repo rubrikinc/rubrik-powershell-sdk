@@ -34,3 +34,4 @@ Type of objects managed by SLA Domains.
 - K8S_OBJECT_TYPE - CDM Native K8s object.
 - ATLASSIAN_JIRA_OBJECT_TYPE - Atlassian Jira object.
 - POSTGRES_DB_CLUSTER_OBJECT_TYPE - PostgreSQL DB Cluster object.
+- SALESFORCE_OBJECT_TYPE - Salesforce object.

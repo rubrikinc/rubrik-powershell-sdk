@@ -24,3 +24,4 @@ Name of product.
 - AAD - Azure Active Directory protection.
 - ONPREM_AD - On-premise Active Directory Protection.
 - ATLASSIAN_JIRA - Atlassian Jira protection.
+- USER_INTELLIGENCE - User Intelligence.

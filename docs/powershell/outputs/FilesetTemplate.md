@@ -1,6 +1,8 @@
 ### FilesetTemplate
 Fileset template.
 
+- cdmId: System.String
+  - ID associated with fileset template in CDM.
 - exceptions: list of System.Strings
   - Exceptions for backup of fileset.
 - excludes: list of System.Strings

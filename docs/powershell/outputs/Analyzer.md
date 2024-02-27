@@ -9,3 +9,5 @@
   - Represents the latest analyzer risk.
 - risk: RiskLevelType
   - Represents risk associated with the given analyzer.
+- tagId: System.Int32
+  - Represents the tag ID for the given analyzer.

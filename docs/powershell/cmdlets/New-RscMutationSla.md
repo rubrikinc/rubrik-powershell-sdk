@@ -45,6 +45,11 @@ Create SLA Domain.
 
 - There is a single argument of type CreateGlobalSlaInput.
 - Returns GlobalSlaReply.
+### deleteglobal
+- There are 2 arguments.
+    - id - System.String: SLA Domain ID.
+    - userNote - System.String: Optional user note.
+- Returns SlaResult.
 ### exportmanagedvolumesnapshot
 Create a request to export a snapshot and mount it on a host
 

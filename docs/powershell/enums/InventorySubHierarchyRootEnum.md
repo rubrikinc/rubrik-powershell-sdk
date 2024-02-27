@@ -32,3 +32,4 @@ Inventory workloads that are supported on Rubrik.
 - ACTIVE_DIRECTORY_ROOT - Active Directory root.
 - ATLASSIAN_ROOT - Atlassian root.
 - K8S_ROOT - K8S root.
+- SALESFORCE_ROOT - Salesforce root.

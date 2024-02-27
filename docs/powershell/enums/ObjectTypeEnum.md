@@ -1,5 +1,6 @@
 ### ObjectTypeEnum
 - KuprNamespace
+- SALESFORCE_OBJECT - Salesforce object.
 - MssqlDatabaseBatchMaintenance
 - O365Teams
 - CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
@@ -56,6 +57,7 @@
 - JIRA_PROJECT - Jira project.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
+- SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
 - NutanixVirtualMachine
 - SapHanaDatabase - SAP HANA Database.

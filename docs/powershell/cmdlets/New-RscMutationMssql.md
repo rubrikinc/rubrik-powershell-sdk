@@ -53,6 +53,11 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 
 - There is a single argument of type DeleteMssqlLiveMountInput.
 - Returns AsyncRequestStatus.
+### deletelogshipping
+Delete a specified log shipping configuration.
+
+- There is a single argument of type DeleteLogShippingInput.
+- Returns AsyncRequestStatus.
 ### downloaddatabasebackupfiles
 Downloads a list of snapshot and log backups from a Microsoft SQL database
 

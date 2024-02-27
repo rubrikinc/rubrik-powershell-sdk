@@ -5,6 +5,7 @@ Type of hierarchy object.
 - K8S_CLUSTER - Kubernetes cluster.
 - KuprNamespace
 - HostShare
+- SALESFORCE_OBJECT - Salesforce object.
 - MssqlDatabaseBatchMaintenance
 - OracleRac
 - NUTANIX_CATEGORY - Nutanix Category.
@@ -93,6 +94,7 @@ Type of hierarchy object.
 - Db2Instance
 - LinuxFileset
 - O365Site
+- SALESFORCE_ORGANIZATION - Salesforce organization.
 - RubrikEbsVolume
 - NasShare
 - VcdVapp
@@ -111,6 +113,7 @@ Type of hierarchy object.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
 - HypervSCVMM
+- SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
 - NasNamespace
 - NutanixVirtualMachine

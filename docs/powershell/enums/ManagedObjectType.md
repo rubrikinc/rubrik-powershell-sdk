@@ -127,6 +127,9 @@ All supported managed objects.
 - K8S_PROTECTION_SET - On-prem Kubernetes Protection Set.
 - VSPHERE_DATACENTER_FOLDER - VMware vSphere datacenter folder.
 - VSPHERE_CONTENT_LIBRARY - VMware vSphere content library.
+- SALESFORCE_OBJECT - Salesforce object.
+- SALESFORCE_FIXED_OBJECT - Salesforce metadata.
+- SALESFORCE_ORGANIZATION - Salesforce organization.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.
  using 10000 to make coding and debugging easier with number in logs.

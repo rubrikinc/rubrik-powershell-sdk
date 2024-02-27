@@ -8,7 +8,7 @@ Request to create a replication pair between two Rubrik clusters.
 - targetNetworkInterface: NetworkInterfaceDetails
   - Network interface for communication between the source and target clusters.
 - isCrossAccount: System.Boolean
-  - Specifies whether the replication pair is cross-account.
+  - Deprecated: The field is set automatically according to the Rubrik CDM cluster involved in replication pairing.
 - sourceClusterUuid: System.String
   - Source Rubrik cluster UUID.
 - targetClusterUuid: System.String
