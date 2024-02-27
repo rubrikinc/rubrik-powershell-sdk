@@ -118,10 +118,8 @@ function RunIfNotDry {
 }
 
 # Commit changes with the latest version entry as the commit message
-RunIfNotDry {
-    git add -f Output/
-    git commit -a -m "$versionEntry"
-}
+git add -f Output/
+git commit -a -m "$versionEntry"
 
 # Push the changes to the main branch
 RunIfNotDry {
