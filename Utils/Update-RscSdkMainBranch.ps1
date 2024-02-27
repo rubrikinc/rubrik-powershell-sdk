@@ -37,9 +37,19 @@ if ($gitStatus) {
     throw "Repository is not clean. Please commit or stash changes before running this script."
 }
 
+# Update devel branch
+try {
+    git checkout devel
+    git pull --rebase origin devel
+}
+catch {
+    throw "Failed to checkout 'devel' branch."
+}
+
 # Checkout main branch
 try {
     git checkout main
+    git pull --rebase origin main
 }
 catch {
     throw "Failed to checkout 'main' branch."
@@ -109,7 +119,8 @@ function RunIfNotDry {
 
 # Commit changes with the latest version entry as the commit message
 RunIfNotDry {
-    git commit -am "$versionEntry"
+    git add -f Output/
+    git commit -a -m "$versionEntry"
 }
 
 # Push the changes to the main branch

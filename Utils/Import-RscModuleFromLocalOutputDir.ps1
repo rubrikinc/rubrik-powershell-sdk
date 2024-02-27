@@ -72,6 +72,7 @@ else {
     $OutputDir = (Get-Item -Path $OutputDir).FullName
     $DllPath = Join-Path $OutputDir "${ModuleName}.psd1"
     Write-OutputIfNotQuiet "Importing ${ModuleName} module from ${DllPath}."
+    Remove-Module $ModuleName -ErrorAction SilentlyContinue
     Import-Module $DllPath -ErrorAction Stop -Force
 }
 
