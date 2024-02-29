@@ -1,152 +1,152 @@
 ### Operation
 Operations defined in the RBAC system.
 
-- VIEW_CLUSTER
-- VIEW_AUDIT_LOG
-- EDIT_REPLICATION_SETTINGS
-- DOWNLOAD_VIRTUAL_MACHINE_FILE - Download VM-level files.
-- EDIT_STORAGE_SETTINGS
+- VIEW_DL_EMAIL_SETTINGS - View distribution list email settings.
+- CREATE_REPORT
+- VIEW_WEBHOOKS
+- EDIT_AWS_CLOUD_ACCOUNT
+- VIEW_DATA_CLASS_GLOBAL
+- GRANULAR_RECOVERY - Recover specific objects from backup.
+- VIEW_ZSCALER_DLP_INTEGRATION - View Zscaler integration.
+- VIEW_SYSLOG - View syslog rules.
+- CATEGORY_VIEW_DATA_SOURCE
+- MANAGE_SNMP - Manage SNMP configuration.
+- DOWNLOAD_FROM_ARCHIVAL_LOCATION
+- DELETE_AZURE_CLOUD_ACCOUNT
+- VIEW_ACCESS
+- MANAGE_GUEST_OS_CREDENTIAL - Manage Guest OS credentials.
+- MANAGE_ZSCALER_DLP_INTEGRATION - Manage Zscaler integration.
+- VIEW_AZURE_CLOUD_ACCOUNT
+- VIEW_EVENT_CLUSTER_SETTING - View event cluster settings.
+- MANAGE_CORS_SETTINGS - Manage CORS settings.
+- ADD_CLUSTER_NODES - Add nodes to the cluster.
 - MANAGE_CLUSTER_SETTINGS - Edit cluster settings.
 - MANAGE_TPR_POLICY - Manage TPR policy.
-- MODIFY_EVENT_CLUSTER_SETTING - Modify event cluster settings.
-- VIEW_ORGANIZATION
-- MANAGE_CLUSTER_DISKS - Set up or remove disks on a cluster.
-- DELETE_STORAGE_SETTINGS
-- MANAGE_CROSS_ACCOUNT_PAIR - Manage cross-account pair.
-- EDIT_NETWORK_THROTTLE_SETTINGS
-- VIEW_CROSS_ACCOUNT_PAIR - View cross-account pair.
-- MANAGE_SERVICENOW_INTEGRATION - Manage ServiceNow Integration.
-- MANAGE_SYSLOG - Manage syslog rules.
-- MANAGE_DL_EMAIL_SETTINGS - Manage distribution list email settings.
-- TRANSFER_ACCOUNT_OWNERSHIP
-- REMOVE_CLUSTER
-- MANAGE_PROTECTION
-- MANAGE_DATA_SOURCE
-- RESTORE_TO_ORIGIN
-- EXPORT
-- MANAGE_TPR_ENABLEMENT - Manage TPR enablement.
-- VIEW_NETWORK_THROTTLE_SETTINGS - View Network Throttle Settings.
-- TOGGLE_BLACKOUT_WINDOW
-- APPROVE_TPR_REQUEST - Approve TPR request.
-- MANAGE_CERTIFICATE - Manage certificates and certificate signing requests.
-- EDIT_AWS_CLOUD_ACCOUNT
-- VIEW_ZSCALER_DLP_INTEGRATION - View Zscaler integration.
-- ADD_GCP_CLOUD_ACCOUNT
-- MODIFY_INVENTORY
-- CANCEL_TPR_REQUEST - Cancel TPR request.
-- CONFIGURE_DB_LOG_REPORT_PROPERTIES - Configure the database log reporting properties for a cluster.
 - VIEW_SYSTEM_PREFERENCE
-- REMOVE_CLUSTER_NODES - Remove nodes from the cluster.
-- REFRESH_DATA_SOURCE
-- EXPORT_SNAPSHOTS
-- EDIT_SYSTEM_PREFERENCE
-- VIEW_SYSTEM_EVENT
-- DELETE_AWS_CLOUD_ACCOUNT
-- INSTANT_RECOVER
-- VIEW_CDM_NETWORK_SETTING
-- MANAGE_ACCESS
-- ADD_CLUSTER_NODES - Add nodes to the cluster.
 - VIEW_USER_MANAGEMENT
-- VIEW_ACCESS
-- DELETE_INVENTORY
-- MANAGE_SUPPORT_BUNDLE - Manage support bundle.
-- CROSS_ACCOUNT_REPLICATION - Internal permission to support cross-account replication.
-- ADD_CERTIFICATE - Add certificates and certificate signing requests in tenant organization.
-- VIEW_TPR_POLICY - View TPR policy.
-- VIEW_CERTIFICATE - View certificates and certificate signing requests.
-- DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET
-- CATEGORY_RECOVERY
-- VIEW_INVENTORY
-- VIEW_DL_EMAIL_SETTINGS - View distribution list email settings.
-- VIEW_DASHBOARD
-- VIEW_SNMP - View SNMP configuration.
-- EXPORT_FILES
-- VIEW_SERVICENOW_INTEGRATION - View ServiceNow Integration.
-- EDIT_CDM_NETWORK_SETTING
-- MANAGE_WEBHOOKS
-- VIEW_SLA
-- ADD_INVENTORY
-- MANAGE_ARCHIVAL_NETWORK_THROTTLE_SETTINGS - Manage archival network throttle settings.
 - DELETE_GCP_CLOUD_ACCOUNT
-- VIEW_REPLICATION_SETTINGS
-- DELETE_REPORT
-- VIEW_GUEST_OS_CREDENTIAL - View Guest OS credentials.
-- EDIT_CDM_SUPPORT_SETTING
 - DELETE_SNAPSHOT
-- DOWNLOAD
-- VIEW_CDM_SYS_CONFIG
-- MANAGE_ORCHESTRATED_RECOVERY - Manage recoveries within Orchestrated Recovery.
-- CATEGORY_MANAGE_DATA_SOURCE
-- TAKE_ON_DEMAND_SNAPSHOT
-- MANAGE_TPR_CONFIGURATION - Manage TPR configuration.
-- PROVISION_ON_INFRASTRUCTURE
-- CATEGORY_VIEW_DATA_SOURCE
-- VIEW_WEBHOOKS
-- MANAGE_SLA
+- VIEW_SYSTEM_EVENT
+- VIEW_CERTIFICATE - View certificates and certificate signing requests.
 - EDIT_CDM_SYS_CONFIG
-- VIEW_DB_LOG_REPORT_PROPERTIES - View the database log reporting properties for a cluster.
-- MANAGE_GUEST_OS_CREDENTIAL - Manage Guest OS credentials.
-- EDIT_AZURE_CLOUD_ACCOUNT
-- VIEW_SYSLOG - View syslog rules.
-- EXPORT_DATA_CLASS_GLOBAL
-- VIEW_AZURE_CLOUD_ACCOUNT
-- CREATE_THREAT_HUNT
-- EDIT_SECURITY_SETTINGS
-- CATEGORY_PROTECTION
-- VIEW_GCP_CLOUD_ACCOUNT
-- RECOVER_FROM_QUARANTINE
-- MOUNT
-- VIEW_SUPPORT_BUNDLE - Download support bundle.
-- ADD_CLUSTER
-- MANAGE_MIGRATION_DASHBOARD - Manage migration dashboard.
-- MANAGE_CORS_SETTINGS - Manage CORS settings.
-- RESTORE
-- MANAGE_SMB_DOMAIN - The operation to manage the SMB domain.
-- DELETE_SLA
-- MANAGE_CDP_IO_FILTER - The operation to manage CDP IO Filter.
-- VIEW_CDM_SUPPORT_SETTING
-- EDIT_USER_MANAGEMENT
-- VIEW_CLUSTER_LICENSES - View cluster licenses.
-- VIEW_NON_SYSTEM_EVENT
-- VIEW_DATA_SECURITY_DETAILS - View account-wide data security risk metrics, scores, and recommendations.
-- USE_AS_REPLICATION_TARGET - Use the Rubrik cluster as a replication target.
-- VIEW_CORS_SETTINGS - View CORS settings.
-- MANAGE_ZSCALER_DLP_INTEGRATION - Manage Zscaler integration.
-- CONFIGURE_DATA_CLASS_GLOBAL
-- CREATE_REPORT
-- VIEW_REPORT
-- TIER_EXISTING_SNAPSHOTS - The operation to tier existing snapshots in bulk through snapshot management.
-- VIEW_TPR_CONFIGURATION - View TPR configuration.
-- UPDATE_ACCOUNT_OWNERSHIP
-- VIEW_SECURITY_SETTINGS
-- VIEW_TPR_REQUEST - View TPR request.
-- MANAGE_RECOVERY_PLAN - Manage Recovery Plans within Orchestrated Recovery.
-- CREATE_CROSS_ACCOUNT_PAIR - Create cross-account pair.
-- ADD_AWS_CLOUD_ACCOUNT
-- VIEW_DATA_CLASS_GLOBAL
-- MANAGE_SNMP - Manage SNMP configuration.
-- VIEW_THREAT_HUNT_RESULTS
-- EDIT_QUARANTINE
-- MODIFY_REPORT
-- DOWNLOAD_FROM_ARCHIVAL_LOCATION
-- VIEW_STORAGE_SETTINGS
-- ALLOW_SUPPORT_USER_SESSIONS
-- VIEW_SMB_DOMAIN - The operation to view the SMB domain.
-- EDIT_ORGANIZATION
-- ADD_STORAGE_SETTINGS
-- UPGRADE_CLUSTER
-- MODIFY_SLA
-- VIEW_ORCHESTRATED_RECOVERY_APP - View Orchestrated Recovery application.
-- MODIFY_CLUSTER
+- CATEGORY_RECOVERY
+- MANAGE_ORCHESTRATED_RECOVERY - Manage recoveries within Orchestrated Recovery.
 - RESIZE_MANAGED_VOLUME - Operation to Resize Managed Volume.
-- GRANULAR_RECOVERY - Recover specific objects from backup.
-- VIEW_AWS_CLOUD_ACCOUNT
+- VIEW_INVENTORY
+- MANAGE_SUPPORT_BUNDLE - Manage support bundle.
+- UPDATE_ACCOUNT_OWNERSHIP
+- CREATE_SLA
+- VIEW_ORCHESTRATED_RECOVERY_APP - View Orchestrated Recovery application.
+- CATEGORY_PROTECTION
+- CANCEL_TPR_REQUEST - Cancel TPR request.
+- MODIFY_REPORT
+- ADD_STORAGE_SETTINGS
+- VIEW_STORAGE_SETTINGS
+- DELETE_REPORT
+- EXPORT
 - CANCEL_RUNNING_ACTIVITY
+- EDIT_NETWORK_THROTTLE_SETTINGS
+- REFRESH_DATA_SOURCE
+- MODIFY_CLUSTER
+- MANAGE_DATA_SOURCE
+- VIEW_CROSS_ACCOUNT_PAIR - View cross-account pair.
+- MODIFY_SLA
+- DOWNLOAD_VIRTUAL_MACHINE_FILE - Download VM-level files.
+- MANAGE_GPS_TO_RSC_UPGRADE - Manage GPS to RSC upgrade.
+- VIEW_DATA_SECURITY_DETAILS - View account-wide data security risk metrics, scores, and recommendations.
+- VIEW_CLUSTER_LICENSES - View cluster licenses.
 - EDIT_GCP_CLOUD_ACCOUNT
 - MANAGE_LEGAL_HOLD
-- ADD_AZURE_CLOUD_ACCOUNT
+- USE_AS_REPLICATION_TARGET - Use the Rubrik cluster as a replication target.
+- VIEW_CDM_SYS_CONFIG
+- DELETE_SLA
+- VIEW_TPR_POLICY - View TPR policy.
+- REMOVE_CLUSTER_NODES - Remove nodes from the cluster.
+- EDIT_CDM_NETWORK_SETTING
+- EDIT_STORAGE_SETTINGS
+- MANAGE_CLUSTER_DISKS - Set up or remove disks on a cluster.
+- DELETE_STORAGE_SETTINGS
+- EDIT_CDM_SUPPORT_SETTING
+- VIEW_DASHBOARD
+- TOGGLE_BLACKOUT_WINDOW
+- MANAGE_MIGRATION_DASHBOARD - Manage migration dashboard.
+- MANAGE_PROTECTION
+- ADD_AWS_CLOUD_ACCOUNT
+- VIEW_SERVICENOW_INTEGRATION - View ServiceNow Integration.
+- RECOVER_FROM_QUARANTINE
+- VIEW_GCP_CLOUD_ACCOUNT
+- VIEW_NON_SYSTEM_EVENT
+- VIEW_THREAT_HUNT_RESULTS
+- VIEW_SMB_DOMAIN - The operation to view the SMB domain.
+- EXPORT_SNAPSHOTS
+- EDIT_SECURITY_SETTINGS
+- ADD_CERTIFICATE - Add certificates and certificate signing requests in tenant organization.
+- VIEW_AUDIT_LOG
+- UPGRADE_CLUSTER
+- VIEW_CDM_SUPPORT_SETTING
+- EDIT_REPLICATION_SETTINGS
+- VIEW_DB_LOG_REPORT_PROPERTIES - View the database log reporting properties for a cluster.
+- CREATE_THREAT_HUNT
+- MANAGE_TPR_CONFIGURATION - Manage TPR configuration.
+- MANAGE_SERVICENOW_INTEGRATION - Manage ServiceNow Integration.
+- PROVISION_ON_INFRASTRUCTURE
+- MANAGE_CDP_IO_FILTER - The operation to manage CDP IO Filter.
+- MODIFY_INVENTORY
+- MANAGE_DL_EMAIL_SETTINGS - Manage distribution list email settings.
+- INSTANT_RECOVER
+- MANAGE_ACCESS
+- DELETE_AWS_CLOUD_ACCOUNT
+- VIEW_CLUSTER
+- MANAGE_SLA
+- CROSS_ACCOUNT_REPLICATION - Internal permission to support cross-account replication.
+- CATEGORY_MANAGE_DATA_SOURCE
+- TAKE_ON_DEMAND_SNAPSHOT
+- EDIT_AZURE_CLOUD_ACCOUNT
+- VIEW_SLA
+- TIER_EXISTING_SNAPSHOTS - The operation to tier existing snapshots in bulk through snapshot management.
+- EDIT_ORGANIZATION
+- RESTORE_TO_ORIGIN
+- APPROVE_TPR_REQUEST - Approve TPR request.
+- VIEW_TPR_CONFIGURATION - View TPR configuration.
+- VIEW_SECURITY_SETTINGS
+- CREATE_CROSS_ACCOUNT_PAIR - Create cross-account pair.
+- EDIT_QUARANTINE
+- REMOVE_CLUSTER
+- MANAGE_SMB_DOMAIN - The operation to manage the SMB domain.
+- MANAGE_CROSS_ACCOUNT_PAIR - Manage cross-account pair.
+- VIEW_SUPPORT_BUNDLE - Download support bundle.
+- MANAGE_WEBHOOKS
+- VIEW_TPR_REQUEST - View TPR request.
+- MANAGE_TPR_ENABLEMENT - Manage TPR enablement.
+- EDIT_USER_MANAGEMENT
+- MANAGE_CERTIFICATE - Manage certificates and certificate signing requests.
+- EDIT_SYSTEM_PREFERENCE
+- ADD_CLUSTER
+- MANAGE_RECOVERY_PLAN - Manage Recovery Plans within Orchestrated Recovery.
+- MANAGE_ARCHIVAL_NETWORK_THROTTLE_SETTINGS - Manage archival network throttle settings.
+- VIEW_GUEST_OS_CREDENTIAL - View Guest OS credentials.
+- DELETE_INVENTORY
+- ADD_INVENTORY
 - VIEW_ARCHIVAL_LOCATION - View archival location.
-- MANAGE_GPS_TO_RSC_UPGRADE - Manage GPS to RSC upgrade.
-- DELETE_AZURE_CLOUD_ACCOUNT
-- VIEW_EVENT_CLUSTER_SETTING - View event cluster settings.
-- CREATE_SLA
+- VIEW_AWS_CLOUD_ACCOUNT
+- ADD_AZURE_CLOUD_ACCOUNT
+- ADD_GCP_CLOUD_ACCOUNT
+- EXPORT_DATA_CLASS_GLOBAL
+- VIEW_CDM_NETWORK_SETTING
+- DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET
+- CONFIGURE_DATA_CLASS_GLOBAL
+- VIEW_ORGANIZATION
+- VIEW_REPLICATION_SETTINGS
+- VIEW_NETWORK_THROTTLE_SETTINGS - View Network Throttle Settings.
+- MODIFY_EVENT_CLUSTER_SETTING - Modify event cluster settings.
+- MOUNT
+- VIEW_CORS_SETTINGS - View CORS settings.
+- VIEW_REPORT
+- RESTORE
+- CONFIGURE_DB_LOG_REPORT_PROPERTIES - Configure the database log reporting properties for a cluster.
+- EXPORT_FILES
+- DOWNLOAD
+- MANAGE_SYSLOG - Manage syslog rules.
+- TRANSFER_ACCOUNT_OWNERSHIP
+- ALLOW_SUPPORT_USER_SESSIONS
+- VIEW_SNMP - View SNMP configuration.
