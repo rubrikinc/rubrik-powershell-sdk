@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.27
+
+New Features:
+
+Fixes:
+
+Breaking Changes:
+
 ## Version 0.26
 
 New Features:
