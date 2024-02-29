@@ -8228,10 +8228,30 @@ type Mutation {
     # Input for InternalBulkUpdateHost.
     input: BulkUpdateHostInput!): BulkUpdateHostReply!
 
+  # Update multiple Microsoft SQL Availability Groups with the specified properties.
+  bulkUpdateMssqlAvailabilityGroup(
+    # Input for V1BulkUpdateMssqlAvailabilityGroup.
+    input: BulkUpdateMssqlAvailabilityGroupInput!): BulkUpdateMssqlAvailabilityGroupReply!
+
   # Update multiple Microsoft SQL databases with the specified properties.
   bulkUpdateMssqlDbs(
     # Input for V1BulkUpdateMssqlDbV1.
     input: BulkUpdateMssqlDbsInput!): BulkUpdateMssqlDbsReply!
+
+  # Update multiple Microsoft SQL instances with the specified properties.
+  bulkUpdateMssqlInstance(
+    # Input for V1BulkUpdateMssqlInstance.
+    input: BulkUpdateMssqlInstanceInput!): BulkUpdateMssqlInstanceReply!
+
+  # Update multiple Microsoft SQL hosts with the specified properties.
+  bulkUpdateMssqlPropertiesOnHost(
+    # Input for V1BulkUpdateMssqlPropertiesOnHost.
+    input: BulkUpdateMssqlPropertiesOnHostInput!): BulkUpdateMssqlPropertiesOnHostReply!
+
+  # Update multiple Microsoft SQL Windows Clusters with the specified properties.
+  bulkUpdateMssqlPropertiesOnWindowsCluster(
+    # Input for V1BulkUpdateMssqlPropertiesOnWindowsCluster.
+    input: BulkUpdateMssqlPropertiesOnWindowsClusterInput!): BulkUpdateMssqlPropertiesOnWindowsClusterReply!
 
   # Update Oracle Databases
   # 
@@ -8640,8 +8660,7 @@ type Mutation {
   # Create on demand storage snapshot
   # 
   # Supported in v9.1+
-  # v9.1: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.
-  # v9.2: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
+  # Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
   createOnDemandSapHanaStorageSnapshot(
     # Input for V1CreateOnDemandSapHanaStorageSnapshot.
     input: CreateOnDemandSapHanaStorageSnapshotInput!): AsyncRequestStatus!
@@ -10377,7 +10396,7 @@ type Mutation {
 
   # Restore SAP HANA storage to a storage snapshot
   # 
-  # Supported in v9.2
+  # Supported in v9.1+
   # Initiates a job to restore the storage of a SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
   restoreSapHanaSystemStorage(
     # Input for V1RestoreSapHanaSystemStorage.
@@ -11789,7 +11808,7 @@ type AccountProduct {
   state: ProductState!
 
   # Date when product expires.
-  expirationDate: DateTime!
+  expirationDate: DateTime
 }
 # User account setting per Rubrik account.
 type AccountSetting {
@@ -22966,6 +22985,9 @@ type AzureCloudAccountFeatureDetail {
   # Azure regions.
   regions: [AzureCloudAccountRegion!]!
 
+  # Customer feature UUID.
+  customerFeatureId: UUID!
+
   # User assigned managed identity for encryption feature. It is null for features other than Cloud Native Archival Encryption.
   userAssignedManagedIdentity: AzureUserAssignedManagedIdentity
 
@@ -28256,6 +28278,16 @@ input BulkUpdateHostInput {
 type BulkUpdateHostReply {
   output: InternalBulkUpdateHostResponse
 }
+# Input for updating multiple Microsoft SQL Server Availability Groups.
+input BulkUpdateMssqlAvailabilityGroupInput {
+  # Required. Properties to update.
+  availabilityGroupsUpdateProperties: [MssqlAvailabilityGroupUpdateIdInput!]!
+}
+# Response of the operation that updates Microsoft SQL Server Availability Groups in bulk.
+type BulkUpdateMssqlAvailabilityGroupReply {
+  # Details of the updated Microsoft SQL Server Availability Groups.
+  items: [MssqlAvailabilityGroupDetail!]!
+}
 # Input for BulkUpdateMssqlDbs.
 input BulkUpdateMssqlDbsInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -28268,6 +28300,36 @@ input BulkUpdateMssqlDbsInput {
 type BulkUpdateMssqlDbsReply {
   # Details of the updated SQL Server databases.
   items: [MssqlDbDetail!]!
+}
+# Input for updating multiple Microsoft SQL Server instances.
+input BulkUpdateMssqlInstanceInput {
+  # Required. Properties to update for each instance.
+  instancesUpdateProperties: [MssqlInstanceUpdateIdInput!]!
+}
+# Response of the operation that updates Microsoft SQL Server instances in bulk.
+type BulkUpdateMssqlInstanceReply {
+  # Details of the updated Microsoft SQL Server instances.
+  items: [MssqlInstanceDetail!]!
+}
+# Input for updating multiple Microsoft SQL Server hosts.
+input BulkUpdateMssqlPropertiesOnHostInput {
+  # Required. Properties to update for each host.
+  hostsUpdateProperties: [MssqlHostUpdateIdInput!]!
+}
+# Response of the operation that updates Microsoft SQL Server hosts in bulk.
+type BulkUpdateMssqlPropertiesOnHostReply {
+  # Details of the Microsoft SQL Server instances in bulk.
+  items: [MssqlInstanceDetail!]!
+}
+# Input for updating multiple Microsoft SQL Server Windows Clusters.
+input BulkUpdateMssqlPropertiesOnWindowsClusterInput {
+  # Required. Properties to update for Microsoft SQL Server instances in Windows Clusters.
+  windowsClustersUpdateProperties: [MssqlWindowsClusterUpdateIdInput!]!
+}
+# Response of the operation that updates Microsoft SQL Server Windows Clusters in bulk.
+type BulkUpdateMssqlPropertiesOnWindowsClusterReply {
+  # Input for updating multiple Microsoft SQL Server instances in bulk.
+  items: [MssqlInstanceDetail!]!
 }
 input BulkUpdateOracleDatabasesInput {
   # Required. Properties to use for the update of Oracle Database objects.
@@ -31175,6 +31237,9 @@ input CdmUpgradeInfoFilterInput {
   # Cluster software version greater than or equal to.
   downloadedVersion: [String!]
   installedVersion: [String!]
+
+  # End of support status of the Rubrik cluster.
+  eosStatus: [ClusterEosStatus!]
 
   # Cluster upgrade job status.
   upgradeJobStatus: [ClusterJobStatusTypeEnum!]
@@ -36003,7 +36068,7 @@ input CreateAutomaticRcsTargetMappingInput {
   tier: RcsTierEnumType!
 
   # Immutability lock period in days.
-  lockDurationDays: Long!
+  lockDurationDays: Long
 
   # List of Rubrik cluster UUIDs.
   clusterUuidList: [String!]
@@ -37260,7 +37325,7 @@ input CreateRcvLocationsFromTemplateInput {
   tier: RcsTierEnumType!
 
   # Immutability lock period in days.
-  lockDurationDays: Long!
+  lockDurationDays: Long
 
   # List of Rubrik cluster UUIDs.
   clusterUuidList: [String!]
@@ -37644,6 +37709,14 @@ enum CrossAccountCapability {
   # Replication as a service capability.
   REPLICATION_AS_A_SERVICE
 }
+# Details of an organization associated with an cross-account pair.
+type CrossAccountOrganization {
+  # ID of the organization.
+  id: String!
+
+  # Name of the organization.
+  name: String!
+}
 # The cross-account pair information.
 type CrossAccountPairInfo {
   # Name of the cross-account involved in pair.
@@ -37654,6 +37727,9 @@ type CrossAccountPairInfo {
 
   # UUID of the cross-account pair.
   uuid: UUID!
+
+  # Specifies the organization of the cross-account relationship.
+  organization: CrossAccountOrganization!
 
   # Role of the cross-account involved in pair.
   role: CrossAccountRole!
@@ -38381,6 +38457,10 @@ type DataStoreSummary {
 
   # Supported in v5.0+
   name: String
+
+  # Supported in v9.2
+  # Amount of free space in the datastore.
+  freeSpaceInBytes: Long
 }
 # Entities on which Ransomware Investigation can be enabled.
 enum DataThreatAnalyticsEnablementEntity {
@@ -43712,7 +43792,8 @@ input ExportOracleDbConfigInput {
   pdbsToClone: [String!] = []
 
   # Supported in v8.1+
-  # Indicates whether to skip dropping the database in undo task if the database was partially recovered.
+  # v8.1-v9.1: Indicates whether to skip dropping the database in undo task if the database was partially recovered.
+  # v9.2: Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
 
   # Supported in v9.0+
@@ -48179,6 +48260,9 @@ enum GetCrossAccountPairsSortByField {
   # Cross-account pair name.
   NAME
 
+  # Cross-account pair org name.
+  ORG_NAME
+
   # Unspecified sort by field.
   SORT_BY_FIELD_UNSPECIFIED
 }
@@ -49005,6 +49089,9 @@ enum GlobalSlaQueryFilterInputField {
   # Get all Global and cluster SLA Domains.
   SHOW_ALL_RUBRIK_AND_APPLIANCE_SLAS
 
+  # Filter SLA Domains created on a Rubrik cluster that are assigned to objects.
+  SHOW_ASSIGNED_CLUSTER_SLAS_ONLY
+
   # Filter SLA Domains for this Rubrik cluster.
   SHOW_CLUSTER_SLAS_ONLY
 
@@ -49268,7 +49355,11 @@ enum GroupByFieldEnum {
 }
 # Group configuration.
 input GroupConfig {
+  # The name of the Resource Group.
   name: String = ""
+
+  # The complete ID of the Resource Group to be used in the event of failover. It is empty if the cluster does not support failover.
+  failoverGroupId: String = ""
 }
 # Paginated list of Group objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type GroupConnection {
@@ -49508,72 +49599,72 @@ enum HashType {
   HASH_TYPE_SH_A1
   HASH_TYPE_SH_A256
 }
-# Supported in v5.2+
+# Supported in v5.2-v9.1
 type HdfsBaseConfig {
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # API token to access Hdfs.
   apiToken: String
 
-  # Required. Supported in v5.2+
+  # Required. Supported in v5.2-v9.1
   # List of Hdfs Namenode Hosts.
   hosts: [HdfsHost!]!
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # Ticket Cache Path of Kerberos Ticket.
   kerberosTicket: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # Logical name for nameservice for Hdfs HA.
   nameservices: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # Username to access Hdfs API.
   username: String
 }
-# Supported in v5.2+
+# Supported in v5.2-v9.1
 input HdfsBaseConfigInput {
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # API token to access Hdfs.
   apiToken: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # Ticket Cache Path of Kerberos Ticket.
   kerberosTicket: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # Logical name for nameservice for Hdfs HA.
   nameservices: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   # Username to access Hdfs API.
   username: String
 
-  # Required. Supported in v5.2+
+  # Required. Supported in v5.2-v9.1
   # List of Hdfs Namenode Hosts.
   hosts: [HdfsHostInput!]!
 }
-# Supported in v5.2+
+# Supported in v5.2-v9.1
 input HdfsConfigInput {
   # HDFS base config.
   hdfsBaseConfig: HdfsBaseConfigInput
 }
-# Supported in v5.2+
+# Supported in v5.2-v9.1
 type HdfsHost {
-  # Required. Supported in v5.2+
+  # Required. Supported in v5.2-v9.1
   # Hostname or Ip of Namenode.
   hostname: String!
 
-  # Required. Supported in v5.2+
+  # Required. Supported in v5.2-v9.1
   # Port number of Namenode.
   port: Int!
 }
-# Supported in v5.2+
+# Supported in v5.2-v9.1
 input HdfsHostInput {
-  # Required. Supported in v5.2+
+  # Required. Supported in v5.2-v9.1
   # Hostname or Ip of Namenode.
   hostname: String!
 
-  # Required. Supported in v5.2+
+  # Required. Supported in v5.2-v9.1
   # Port number of Namenode.
   port: Int!
 }
@@ -51665,12 +51756,16 @@ input HostRegisterInput {
   # A user-specified string that returns this host in searches.
   alias: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   hdfsConfig: HdfsConfigInput
 
   # Supported in v5.2+
   # A Boolean that specifies whether to discover Oracle information at registration. A value of 'true' discovers Oracle information at registration.
   isOracleHost: Boolean
+
+  # Supported in v9.2
+  # The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
+  mssqlSddUserCredentials: SddUserCredentialsInput
 
   # Supported in v8.1+
   # The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
@@ -52067,7 +52162,7 @@ type HostSummary {
   # A user-specified string that returns this host in searches.
   alias: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   hdfsBaseConfig: HdfsBaseConfig
 
   # Supported in v9.0+
@@ -52144,7 +52239,7 @@ input HostUpdateInput {
   # A user-specified string that returns this host in searches.
   alias: String
 
-  # Supported in v5.2+
+  # Supported in v5.2-v9.1
   hdfsConfig: HdfsConfigInput
 
   # Supported in v5.2+
@@ -52159,12 +52254,18 @@ input HostUpdateInput {
   isOracleHost: Boolean
 
   # Supported in v7.0+
-  # A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
+  # v7.0-v9.1: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
+  # 
+  # v9.2: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
   isUpdateCertAndAgentIdEnabled: Boolean
 
   # Supported in v9.0+
   # A Boolean that specifies whether the host refresh is paused or not.
   isRefreshPaused: Boolean
+
+  # Supported in v9.2
+  # The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
+  mssqlSddUserCredentials: SddUserCredentialsInput
 
   # Supported in v5.0+
   hostVfdEnabled: HostVfdInstallConfig
@@ -57474,8 +57575,8 @@ type MalwareMatch {
 # Supported in v6.0+
 type MalwareScanFileCriteria {
   # Supported in v6.0+
-  # v6.0-v9.1: Specify the smallest and largest files to scan.
-  # v9.2: Specify the smallest and largest files to scan. This option is only compatible with Yara or Hash IOCs. Limits for Path IOC will not be respected.
+  # v6.0-v9.0: Specify the smallest and largest files to scan.
+  # v9.1+: Specify the smallest and largest files to scan. This option is only compatible with Yara or Hash IOCs. Limits for Path IOC will not be respected.
   fileSizeLimits: MalwareScanFileSizeLimits
 
   # Supported in v6.0+
@@ -57488,8 +57589,8 @@ type MalwareScanFileCriteria {
 # Supported in v6.0+
 input MalwareScanFileCriteriaInput {
   # Supported in v6.0+
-  # v6.0-v9.1: Specify the smallest and largest files to scan.
-  # v9.2: Specify the smallest and largest files to scan. This option is only compatible with Yara or Hash IOCs. Limits for Path IOC will not be respected.
+  # v6.0-v9.0: Specify the smallest and largest files to scan.
+  # v9.1+: Specify the smallest and largest files to scan. This option is only compatible with Yara or Hash IOCs. Limits for Path IOC will not be respected.
   fileSizeLimits: MalwareScanFileSizeLimitsInput
 
   # Supported in v6.0+
@@ -57497,8 +57598,8 @@ input MalwareScanFileCriteriaInput {
   fileTimeLimits: MalwareScanFileTimeLimitsInput
 
   # Supported in v6.0+
-  # v6.0-v9.1: Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted.
-  # v9.2: Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted. This option is only compatible with Yara or Hash IOCs. Filters for Path IOC will not be respected.
+  # v6.0-v9.0: Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted.
+  # v9.1+: Please see /fileset_template for a detailed description of how includes, excludes, and exceptions are interpreted. This option is only compatible with Yara or Hash IOCs. Filters for Path IOC will not be respected.
   pathFilter: MalwareScanPathFilterInput
 }
 # Supported in v6.0+
@@ -63186,6 +63287,9 @@ input MountOracleDbConfigInput {
   # List of RAC host simple IDs to recover the database during the Live Mount.
   targetRacHostIds: [String!] = []
 
+  # Indicates whether to skip dropping the databasee during an undo task if the database was partially recovered.
+  shouldSkipDropDbInUndo: Boolean
+
   # Supported in v9.0+
   # The new value of the db_name parameter for a LM operation. This is used to specify the new target database name of the live mounted database.
   lmDbName: String
@@ -63545,6 +63649,11 @@ type MssqlAvailabilityGroupDescendantTypeEdge {
   # The actual MssqlAvailabilityGroupDescendantType object wrapped by this edge.
   node: MssqlAvailabilityGroupDescendantType!
 }
+# Supported in v5.0+
+type MssqlAvailabilityGroupDetail {
+  # Summary of the Microsoft SQL Server Availability Group.
+  mssqlAvailabilityGroupSummary: MssqlAvailabilityGroupSummary
+}
 # SQL Server availability group logical child.
 interface MssqlAvailabilityGroupLogicalChildType {
   # Rubrik cluster where this object originated.
@@ -63634,6 +63743,43 @@ type MssqlAvailabilityGroupLogicalChildTypeEdge {
 
   # The actual MssqlAvailabilityGroupLogicalChildType object wrapped by this edge.
   node: MssqlAvailabilityGroupLogicalChildType!
+}
+# Supported in v5.0+
+type MssqlAvailabilityGroupSummary {
+  # Supported in Rubrik cluster versions 4.0 and later. Non-SLA-Domain properties of a Microsoft SQL Server Availability Group.
+  # In Rubrik cluster versions 9.0 and later, use 'MssqlSlaRelatedProperties' instead.
+  mssqlNonSlaProperties: MssqlNonSlaProperties
+
+  # Supported in Rubrik cluster versions 9.0 and later. Non-SLA-Domain properties of a Microsoft SQL Server Availability Group.
+  mssqlSlaRelatedProperties: MssqlSlaRelatedProperties
+
+  # Additional information about the workload.
+  snappable: CdmWorkload
+}
+# Input for updating Microsoft SQL Server Avaiability Group.
+input MssqlAvailabilityGroupUpdateIdInput {
+  # Required. Supported in v9.0+
+  # ID of the Microsoft SQL availability group.
+  availabilityGroupId: String!
+
+  # Required. Supported in v9.0+
+  updateProperties: MssqlAvailabilityGroupUpdateInput!
+}
+# Supported in v5.0+
+input MssqlAvailabilityGroupUpdateInput {
+  # Supported in Rubrik cluster versions 4.0 and later. Non-SLA-Domain properties of a Microsoft SQL Server Availability Group.
+  # In Rubrik cluster versions 5.2 and later, use 'MssqlSlaPatchProperties' instead.
+  # In Rubrik cluster versions 9.0 and later, use 'MssqlSlaRelatedProperties' instead.
+  mssqlNonSlaProperties: MssqlNonSlaPropertiesInput
+
+  # Supported in Rubrik cluster versions 9.0 and later. Non-SLA-Domain properties of a Microsoft SQL Server Availability Group.
+  mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput
+
+  # Supported in Rubrik cluster versions 5.2 and later. SLA Domain properties of a SQL Server database. In Rubrik cluster versions 9.0 and later, use 'MssqlSlaRelatedProperties' instead.
+  mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput
+
+  # ID of the SLA Domain assigned to the Microsoft SQL Server Availability Group.
+  configuredSlaDomainId: String
 }
 # Supported in v5.2+
 type MssqlBackup {
@@ -64631,6 +64777,20 @@ input MssqlGetRestoreFilesV1Input {
   # Required. ID of the Microsoft SQL database.
   id: String!
 }
+# Input for updating Microsoft SQL Server hosts in bulk.
+input MssqlHostUpdateIdInput {
+  # Required. Supported in v9.0+
+  # ID of the MSSQL host.
+  hostId: String!
+
+  # Required. Supported in v9.0+
+  updateProperties: MssqlHostUpdateInput!
+}
+# Input for updating Microsoft SQL Server host.
+input MssqlHostUpdateInput {
+  # Non-SLA-Domain properties of a SQL Server object.
+  mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput
+}
 # SQL Server instance.
 type MssqlInstance implements HierarchyObject , CdmHierarchyObject , MssqlTopLevelDescendantType , PhysicalHostDescendantType , PhysicalHostPhysicalChildType , WindowsClusterDescendantType , WindowsClusterLogicalChildType {
   # List of reasons that a SQL Server instance cannot be protected.
@@ -64850,6 +65010,11 @@ type MssqlInstanceDescendantTypeEdge {
   # The actual MssqlInstanceDescendantType object wrapped by this edge.
   node: MssqlInstanceDescendantType!
 }
+# Details of the updated Microsoft SQL Server instance.
+type MssqlInstanceDetail {
+  # Summary of the updated Microsoft SQL Server instance.
+  mssqlInstanceSummary: MssqlInstanceSummary
+}
 # SQL Server instance logical child.
 interface MssqlInstanceLogicalChildType {
   # Rubrik cluster where this object originated.
@@ -65044,6 +65209,31 @@ type MssqlInstanceSummaryListResponse {
   # v9.0: Cursor to fetch the next set of results.
   # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
+}
+# Input for updating Microsoft SQL Server instances in bulk.
+input MssqlInstanceUpdateIdInput {
+  # Required. Supported in v9.0+
+  # ID of the Microsoft SQL instance.
+  instanceId: String!
+
+  # Required. Supported in v9.0+
+  updateProperties: MssqlInstanceUpdateInput!
+}
+# Supported in v5.0+
+input MssqlInstanceUpdateInput {
+  # Supported in Rubrik cluster versions 4.0 and later. Non-SLA-Domain properties of a SQL Server database.
+  # In Rubrik cluster versions 5.2 and later, use 'MssqlSlaPatchProperties' instead.
+  # In Rubrik cluster versions 9.0 and later, use 'MssqlSlaRelatedProperties' instead.
+  mssqlNonSlaProperties: MssqlNonSlaPropertiesInput
+
+  # Supported in Rubrik cluster versions 9.0 and later. Non-SLA-Domain properties of a SQL Server database.
+  mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput
+
+  # Supported in Rubrik cluster versions 5.2 and later. SLA Domain properties of a SQL Server database. In Rubrik cluster versions 9.0 and later, use 'MssqlSlaRelatedProperties' instead.
+  mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput
+
+  # ID of the SLA Domain assigned to the SQL Server instance.
+  configuredSlaDomainId: String
 }
 # Supported in v5.0+
 input MssqlLogShippingCreateConfigInput {
@@ -65729,6 +65919,20 @@ type MssqlUnprotectableReason {
 # Unprotectable type
 enum MssqlUnprotectableType {
   MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS
+}
+# Input for updating Microsoft SQL Server Windows Clusters in bulk.
+input MssqlWindowsClusterUpdateIdInput {
+  # Required. Supported in v9.0+
+  updateProperties: MssqlWindowsClusterUpdateInput!
+
+  # Required. Supported in v9.0+
+  # ID of the Windows Cluster.
+  windowsClusterId: String!
+}
+# Input for updating Microsoft SQL Server Windows Cluster.
+input MssqlWindowsClusterUpdateInput {
+  # Supported in Rubrik cluster versions 9.0 and later. Non-SLA-Domain properties of a SQL Server Windows Cluster.
+  mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput
 }
 # Name collision resolution rule.
 enum NameCollisionRule {
@@ -66576,6 +66780,14 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 }
+# Credentials to add or update for NAS shares, NAS namespaces, or NAS systems.
+input NasShareCredentialsInput {
+  # Password associated with the NAS user account.
+  password: String
+
+  # Required. Username to access the NAS server and share. If the username is empty, the credentials will be removed from the underlying NAS share, NAS namespace, or NAS system object.
+  username: String!
+}
 # NAS share descendant type.
 interface NasShareDescendantType {
   # Rubrik cluster where this object originated.
@@ -67172,6 +67384,9 @@ input NasSystemRegisterInput {
   # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
+  # Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
+  smbCredentials: NasShareCredentialsInput
+
   # Supported in v8.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 
@@ -67203,6 +67418,9 @@ input NasSystemUpdateInput {
 
   # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+
+  # Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
+  smbCredentials: NasShareCredentialsInput
 
   # Supported in v8.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
@@ -67908,9 +68126,23 @@ input NetworkThrottleUpdateInput {
 }
 # New compute configuration.
 input NewComputeConfig {
+  # The name of the Virtual Network.
   vnetName: String = ""
+
+  # The name of the subnet.
   subnetName: String = ""
+
+  # The name of the Network Security Group.
   securityGroupName: String = ""
+
+  # The name of the failover Virtual Network.
+  failoverVnetName: String = ""
+
+  # The name of the failover subnet.
+  failoverSubnetName: String = ""
+
+  # The name of the failover Network Security Group.
+  failoverSecurityGroupName: String = ""
 }
 # Details of a new SSO Group that has not yet been authorized on Rubrik.
 input NewSsoGroupInput {
@@ -74002,6 +74234,20 @@ input ObjectSpecificConfigsInput {
 
   # Input to configure the SLA Domain for Postgres DB Cluster.
   postgresDbClusterSlaConfigInput: PostgresDbClusterSlaConfigInput
+}
+# State of the object.
+enum ObjectState {
+  # The object is active.
+  ACTIVE
+
+  # The object is archived.
+  ARCHIVED
+
+  # The object is not specified.
+  NOT_SPECIFIED
+
+  # The object is relic.
+  RELIC
 }
 type ObjectStatus {
   id: String!
@@ -80594,6 +80840,9 @@ input RecoverOracleDbConfigInput {
   # v6.0+: Number of channels used during instant recovery.
   numChannels: Int
 
+  # Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
+  shouldSkipDropDbInUndo: Boolean
+
   # Required. Supported in v5.0+
   # Snapshot ID or timestamp for which the export is done.
   recoveryPoint: OracleRecoveryPointInput!
@@ -80929,6 +81178,11 @@ type RelativeYearlyRecurrencePattern {
 # Filter to return objects which are relic or not.
 input RelicFilter {
   relic: Boolean!
+}
+# Represents the relic restore configurations.
+input RelicRestoreConfig {
+  # Unused input.
+  unused: Boolean
 }
 # Supported in v5.0+
 input RelocateMountConfigInput {
@@ -84893,7 +85147,8 @@ type SapHanaSystemPhysicalChildTypeEdge {
 }
 # Input config for SAP HANA system storage restore.
 input SapHanaSystemRestoreConfigInput {
-  # Required. ID of the snapshot to restore.
+  # Required. Supported in v9.1+
+  # ID of the snapshot to restore.
   snapshotId: String!
 }
 # SAP HANA system status.
@@ -85108,6 +85363,16 @@ enum ScriptErrorAction {
 type ScvmmInfo {
   # Version of the SCVMM.
   version: String!
+}
+# Supported in v9.2+.
+input SddUserCredentialsInput {
+  # Required. Supported in v9.2
+  # Password to connect to the database for sensitive data discovery.
+  password: String!
+
+  # Required. Supported in v9.2
+  # Username to connect to the database for sensitive data discovery.
+  username: String!
 }
 # Filters for Security Descriptor resolution.
 input SddlRequestFiltersInput {
@@ -86936,6 +87201,9 @@ type Snappable {
   cluster: Cluster
   fid: UUID
 
+  # The state of the workload (Active, Relic or Archived).
+  objectState: ObjectState
+
   # The number of snapshots locally present.
   localSnapshots: Int
 
@@ -87257,6 +87525,9 @@ input SnappableRestoreConfig {
 
   # Configuration for failed items recovery jobs.
   failedItemsRecoveryConfig: FailedItemsRecoveryConfig
+
+  # Relic restore configuration for restore jobs.
+  relicRestoreConfig: RelicRestoreConfig
 }
 enum SnappableSlaAssignment {
   SNAPPABLE_SLA_ASSIGNMENT_DERIVED
@@ -87289,6 +87560,7 @@ enum SnappableSortByEnum {
   LogicalDataReduction
   MissedSnapshots
   Name
+  OBJECT_STATE
   ObjectType
   PULL_TIME
   PhysicalBytes
@@ -88448,6 +88720,7 @@ enum SortByFieldEnum {
   NumFailed
   NumSucceeded
   OBJECT_NAME
+  OBJECT_STATE
 
   # Type of the object.
   OBJECT_TYPE

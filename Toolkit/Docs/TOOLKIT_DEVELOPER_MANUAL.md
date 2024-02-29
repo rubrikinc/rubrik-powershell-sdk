@@ -76,6 +76,10 @@ just make sure you're on the `devel` branch.
 
 ### 2.2 Build the SDK
 
+> Note: you will need to have the .NET Core SDK
+> installed on your machine to build the Rubrik Security Cloud SDK.
+> You can download it from [here](https://dotnet.microsoft.com/download).
+
 Start by building the SDK in Debug Mode, in the `Output/` directory:
 
 ```powershell
