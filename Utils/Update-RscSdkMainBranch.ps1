@@ -101,7 +101,7 @@ function RunIfNotDry {
     )
 
     # Check if the global variable $NotDry is set and not false
-    if ($global:NotDry) {
+    if ($script:NotDry) {
         Write-Output "Run: $($CodeBlock.ToString())"
         try {
             # Execute the script block
