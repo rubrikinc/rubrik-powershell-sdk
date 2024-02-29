@@ -104,14 +104,8 @@ function Get-RscMssqlInstance{
             "RscHost"{
                 Write-Debug "-  Creating Host Query"
                 $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
-                # $query.Var.filter = @()
-                # $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                # $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                # $nameFilter.texts = $RscHost.Name
-                # $query.Var.filter += $nameFilter
-
-                $query.Var.typeFilter = @()
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.HierarchyObjectTypeEnum
+                $query.Var.filter = @()
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
                 $nameFilter.texts = $RscHost.Name
                 $query.Var.filter += $nameFilter
@@ -139,6 +133,9 @@ function Get-RscMssqlInstance{
             "RscHost" {
                 Write-Debug "-  Filtering results based on Instance Name"
                 $result = $result.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                $result
+            }
+            "Id"{
                 $result
             }
             default{

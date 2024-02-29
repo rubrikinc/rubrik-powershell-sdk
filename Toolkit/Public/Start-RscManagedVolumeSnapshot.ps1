@@ -13,10 +13,7 @@ function Start-RscManagedVolumeSnapshot {
 
     .PARAMETER RscManagedVolume
     Managed Volume Object as retrieved from Get-RscManagedVolume
-
-    .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
-    
+   
     .EXAMPLE
     $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
     Start-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume

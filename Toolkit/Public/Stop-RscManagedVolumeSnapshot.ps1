@@ -15,8 +15,8 @@ function Stop-RscManagedVolumeSnapshot {
     .PARAMETER RscManagedVolume
     Managed Volume Object as retrieved from Get-RscManagedVolume
 
-    .PARAMETER SlaDomainId
-    THis will be the ID of the SLA Domain that will manage the retention of the snapshot
+    .PARAMETER RscSlaDomain
+    SLA Domain Object as retrieved from Get-RscSlaDomain
     
     .EXAMPLE
     $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
