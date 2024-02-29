@@ -131,6 +131,17 @@ RunIfNotDry {
     gh release create $versionTag -t $versionTag -n "$versionEntry"
 }
 
+# Prepare devel branch for further development
+RunIfNotDry {
+    git checkout devel
+    Set-Location $PSScriptRoot\..
+    .\Utils\New-RscSdkChangeLogEntry.ps1
+
+    git add $changelogPath
+    git commit -m "Prepare for next development iteration"
+    git push origin devel
+}
+
 Write-Host "Done." -ForegroundColor Green
 Write-Host "git status:"
 git status
