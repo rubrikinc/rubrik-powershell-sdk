@@ -1,8 +1,4 @@
 # Changelog
-lumnah
-xxxx
-
-x
 
 ## Version 0.27
 
