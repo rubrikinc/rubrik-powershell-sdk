@@ -135,10 +135,7 @@ RunIfNotDry {
 RunIfNotDry {
     git checkout devel
     Set-Location $PSScriptRoot\..
-    .\Utils\New-RscSdkChangeLogEntry.ps1
-
-    git add $changelogPath
-    git commit -m "Prepare for next development iteration"
+    .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
     git push origin devel
 }
 

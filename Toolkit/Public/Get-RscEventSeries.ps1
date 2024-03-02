@@ -138,9 +138,6 @@ function Get-RscEventSeries {
     )
   
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         # Determine field profile:
         $fieldProfile = "DEFAULT"
         if ( $Detail -eq $true ) {

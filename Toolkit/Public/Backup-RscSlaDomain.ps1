@@ -70,13 +70,8 @@ function Backup-SlaDomain {
   )
 
   Begin {
-
-    # Re-use existing connection, or create a new one:
-    Connect-Rsc -ErrorAction Stop | Out-Null
-
     # API Domain: SLA
     # API Operation: Assign
-    $operation = "Assign"  
   }
 
   Process {
