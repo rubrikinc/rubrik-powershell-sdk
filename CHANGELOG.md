@@ -4,6 +4,9 @@
 
 New Features:
 
+- New cmdlets
+  - `Protect-RscSnappable`
+
 Fixes:
 
 Breaking Changes:
