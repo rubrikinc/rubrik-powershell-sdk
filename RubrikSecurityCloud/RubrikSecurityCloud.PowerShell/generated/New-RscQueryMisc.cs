@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 169
+    /// Create a new RscQuery object for any of the 170
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
+    /// ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 169 operations
+    /// There are 170 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
+    /// one of: ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -3543,6 +3543,341 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the JobInfo operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: JobInfo
+    /// 
+    /// $query = New-RscQueryMisc -JobInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	accountName = $someString
+    /// 	# OPTIONAL
+    /// 	requestId = $someString
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	type = $someJobType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.JobType]) for enum values.
+    /// 	# REQUIRED
+    /// 	additionalInfo = @{
+    /// 		# OPTIONAL
+    /// 		unmountInfo = @{
+    /// 			# OPTIONAL
+    /// 			liveMountFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		queryMountInfo = @{
+    /// 			# OPTIONAL
+    /// 			snapshotFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		sapHanaSystemInfo = @{
+    /// 			# OPTIONAL
+    /// 			sapHanaSystemFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		archivalLocationInfo = @{
+    /// 			# OPTIONAL
+    /// 			polarisManagedLocId = $someString
+    /// 			# OPTIONAL
+    /// 			locationName = $someString
+    /// 			# OPTIONAL
+    /// 			locationType = $someString
+    /// 			# OPTIONAL
+    /// 			operationType = $someArchivalLocationOperationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationOperationType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			operationId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mosaicSourceInfo = @{
+    /// 			# OPTIONAL
+    /// 			sourceNames = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			refreshEffectiveSla = $someBoolean
+    /// 			# OPTIONAL
+    /// 			sourceType = $someMosaicSourceNosqlSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicSourceNosqlSourceType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		snapshotFileDownloadInfo = @{
+    /// 			# OPTIONAL
+    /// 			downloadId = $someInt64
+    /// 			# OPTIONAL
+    /// 			snappableType = $someSnapshotFileDownloadSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotFileDownloadSnappableType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mosaicStorageLocationInfo = @{
+    /// 			# OPTIONAL
+    /// 			storageLocationName = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		pendingSlaInfo = @{
+    /// 			# OPTIONAL
+    /// 			objectFids = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		volumeGroupUnmountInfo = @{
+    /// 			# OPTIONAL
+    /// 			liveMountFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		db2InstanceInfo = @{
+    /// 			# OPTIONAL
+    /// 			db2InstanceFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mssqlDbInfo = @{
+    /// 			# OPTIONAL
+    /// 			mssqlDbFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		logShippingInfo = @{
+    /// 			# OPTIONAL
+    /// 			secondaryDatabaseName = $someString
+    /// 			# OPTIONAL
+    /// 			databaseFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		addManagedVolumeInfo = @{
+    /// 			# OPTIONAL
+    /// 			managedVolumeFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		takeManagedVolumeOnDemandSnapshotInfo = @{
+    /// 			# OPTIONAL
+    /// 			managedVolumeFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		beginManagedVolumeSnapshotInfo = @{
+    /// 			# OPTIONAL
+    /// 			managedVolumeFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		endManagedVolumeSnapshotInfo = @{
+    /// 			# OPTIONAL
+    /// 			managedVolumeFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		resizeManagedVolumeInfo = @{
+    /// 			# OPTIONAL
+    /// 			managedVolumeFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		exportManagedVolumeSnapshotInfo = @{
+    /// 			# OPTIONAL
+    /// 			snapshotFid = $someString
+    /// 			# OPTIONAL
+    /// 			exportId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		oracleExportInfo = @{
+    /// 			# OPTIONAL
+    /// 			isSameHostRestore = $someBoolean
+    /// 			# OPTIONAL
+    /// 			targetHostOrRacFid = $someString
+    /// 			# OPTIONAL
+    /// 			targetDbName = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		sapHanaDatabaseInfo = @{
+    /// 			# OPTIONAL
+    /// 			sapHanaDatabaseFid = $someString
+    /// 			# OPTIONAL
+    /// 			syncDbLogSnapshot = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		exportVcdVappSnapshotInfo = @{
+    /// 			# OPTIONAL
+    /// 			snapshotFid = $someString
+    /// 			# OPTIONAL
+    /// 			config = @{
+    /// 				# OPTIONAL
+    /// 				newVappParams = @{
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 					# REQUIRED
+    /// 					orgVdcId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				shouldPowerOnVappAfterExport = $someBoolean
+    /// 				# OPTIONAL
+    /// 				targetVappId = $someString
+    /// 				# REQUIRED
+    /// 				exportMode = $someVappExportMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappExportMode]) for enum values.
+    /// 				# REQUIRED
+    /// 				networksToRestore = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						newName = $someString
+    /// 						# OPTIONAL
+    /// 						vappNetworkSummary = @{
+    /// 							# OPTIONAL
+    /// 							parentNetworkId = $someString
+    /// 							# REQUIRED
+    /// 							isDeployed = $someBoolean
+    /// 							# REQUIRED
+    /// 							name = $someString
+    /// 						}
+    /// 					}
+    /// 				)
+    /// 				# REQUIRED
+    /// 				vmsToExport = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						storagePolicyId = $someString
+    /// 						# REQUIRED
+    /// 						name = $someString
+    /// 						# REQUIRED
+    /// 						networkConnections = @(
+    /// 							@{
+    /// 								# OPTIONAL
+    /// 								ipAddress = $someString
+    /// 								# OPTIONAL
+    /// 								macAddress = $someString
+    /// 								# OPTIONAL
+    /// 								vappNetworkName = $someString
+    /// 								# OPTIONAL
+    /// 								networkAdapterType = $someString
+    /// 								# REQUIRED
+    /// 								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
+    /// 								# REQUIRED
+    /// 								isConnected = $someBoolean
+    /// 								# REQUIRED
+    /// 								nicIndex = $someInt
+    /// 							}
+    /// 						)
+    /// 						# REQUIRED
+    /// 						vcdMoid = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		liveMountRelocateInfo = @{
+    /// 			# OPTIONAL
+    /// 			liveMountFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mongoSourceInfo = @{
+    /// 			# OPTIONAL
+    /// 			mongoSourceFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		hypervMountSnapshotInfo = @{
+    /// 			# OPTIONAL
+    /// 			snapshotFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		webCertificateInfo = @{
+    /// 			# OPTIONAL
+    /// 			cdmCertificateId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		db2DatabaseInfo = @{
+    /// 			# OPTIONAL
+    /// 			db2DbFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mongoCollectionsInfo = @{
+    /// 			# OPTIONAL
+    /// 			collectionFids = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		vsphereFileRestoreInfo = @{
+    /// 			# OPTIONAL
+    /// 			vmFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		configureManagedVolumeLogExportInfo = @{
+    /// 			# OPTIONAL
+    /// 			managedVolumeFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		downloadSnapshotFromLocationInfo = @{
+    /// 			# OPTIONAL
+    /// 			snapshotId = $someString
+    /// 			# OPTIONAL
+    /// 			snappableType = $someDownloadSnapshotFromLocationSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DownloadSnapshotFromLocationSnappableType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		registeredHostInfo = @{
+    /// 			# OPTIONAL
+    /// 			hostFid = $someString
+    /// 			# OPTIONAL
+    /// 			hostRegisteredTime = $someDateTime
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		registerOracleHostsInfo = @{
+    /// 			# OPTIONAL
+    /// 			addedOracleHostFids = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			hostRegisteredTime = $someDateTime
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		llmInfo = @{
+    /// 			# OPTIONAL
+    /// 			functionType = $someLlmFunctionCallFunctionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LlmFunctionCallFunctionType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			functionUuid = $someString
+    /// 			# OPTIONAL
+    /// 			subjectContexts = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					organizationId = $someString
+    /// 					# OPTIONAL
+    /// 					subjectId = $someString
+    /// 					# OPTIONAL
+    /// 					subjectType = $someSubjectContextType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SubjectContextType]) for enum values.
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		hostMakePrimaryInfo = @{
+    /// 			# OPTIONAL
+    /// 			hostFids = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		vcenterDiagnosticRefreshInfo = @{
+    /// 			# OPTIONAL
+    /// 			vcenterFid = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		postgresDbClusterInfo = @{
+    /// 			# OPTIONAL
+    /// 			postgresDbClusterFid = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: JobInfo
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the KnowledgeBaseArticle operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -6723,6 +7058,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Issue",
                 "Issues",
                 "IssuesJobIds",
+                "JobInfo",
                 "KnowledgeBaseArticle",
                 "LambdaSettings",
                 "LicensedProducts",
@@ -7100,6 +7436,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IssuesJobIds":
                         this.ProcessRecord_IssuesJobIds();
+                        break;
+                    case "JobInfo":
+                        this.ProcessRecord_JobInfo();
                         break;
                     case "KnowledgeBaseArticle":
                         this.ProcessRecord_KnowledgeBaseArticle();
@@ -8198,6 +8537,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IssuesJobIds";
             // Create new graphql operation allIssuesJobIds
             InitQueryAllIssuesJobIds();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // jobInfo.
+        internal void ProcessRecord_JobInfo()
+        {
+            this._logger.name += " -JobInfo";
+            // Create new graphql operation jobInfo
+            InitQueryJobInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11842,6 +12190,333 @@ $query.Var.before = $someString"
 $query.Var.queryIds = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // jobInfo(input: JobInfoRequest!): JobInfo!
+        internal void InitQueryJobInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "JobInfoRequest!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryJobInfo",
+                "($input: JobInfoRequest!)",
+                "JobInfo",
+                Query.JobInfo_ObjectFieldSpec,
+                Query.JobInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	accountName = $someString
+	# OPTIONAL
+	requestId = $someString
+	# OPTIONAL
+	clusterUuid = $someString
+	# OPTIONAL
+	type = $someJobType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.JobType]) for enum values.
+	# REQUIRED
+	additionalInfo = @{
+		# OPTIONAL
+		unmountInfo = @{
+			# OPTIONAL
+			liveMountFid = $someString
+		}
+		# OPTIONAL
+		queryMountInfo = @{
+			# OPTIONAL
+			snapshotFid = $someString
+		}
+		# OPTIONAL
+		sapHanaSystemInfo = @{
+			# OPTIONAL
+			sapHanaSystemFid = $someString
+		}
+		# OPTIONAL
+		archivalLocationInfo = @{
+			# OPTIONAL
+			polarisManagedLocId = $someString
+			# OPTIONAL
+			locationName = $someString
+			# OPTIONAL
+			locationType = $someString
+			# OPTIONAL
+			operationType = $someArchivalLocationOperationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationOperationType]) for enum values.
+			# OPTIONAL
+			operationId = $someString
+		}
+		# OPTIONAL
+		mosaicSourceInfo = @{
+			# OPTIONAL
+			sourceNames = @(
+				$someString
+			)
+			# OPTIONAL
+			refreshEffectiveSla = $someBoolean
+			# OPTIONAL
+			sourceType = $someMosaicSourceNosqlSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicSourceNosqlSourceType]) for enum values.
+		}
+		# OPTIONAL
+		snapshotFileDownloadInfo = @{
+			# OPTIONAL
+			downloadId = $someInt64
+			# OPTIONAL
+			snappableType = $someSnapshotFileDownloadSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotFileDownloadSnappableType]) for enum values.
+		}
+		# OPTIONAL
+		mosaicStorageLocationInfo = @{
+			# OPTIONAL
+			storageLocationName = $someString
+		}
+		# OPTIONAL
+		pendingSlaInfo = @{
+			# OPTIONAL
+			objectFids = @(
+				$someString
+			)
+		}
+		# OPTIONAL
+		volumeGroupUnmountInfo = @{
+			# OPTIONAL
+			liveMountFid = $someString
+		}
+		# OPTIONAL
+		db2InstanceInfo = @{
+			# OPTIONAL
+			db2InstanceFid = $someString
+		}
+		# OPTIONAL
+		mssqlDbInfo = @{
+			# OPTIONAL
+			mssqlDbFid = $someString
+		}
+		# OPTIONAL
+		logShippingInfo = @{
+			# OPTIONAL
+			secondaryDatabaseName = $someString
+			# OPTIONAL
+			databaseFid = $someString
+		}
+		# OPTIONAL
+		addManagedVolumeInfo = @{
+			# OPTIONAL
+			managedVolumeFid = $someString
+		}
+		# OPTIONAL
+		takeManagedVolumeOnDemandSnapshotInfo = @{
+			# OPTIONAL
+			managedVolumeFid = $someString
+		}
+		# OPTIONAL
+		beginManagedVolumeSnapshotInfo = @{
+			# OPTIONAL
+			managedVolumeFid = $someString
+		}
+		# OPTIONAL
+		endManagedVolumeSnapshotInfo = @{
+			# OPTIONAL
+			managedVolumeFid = $someString
+		}
+		# OPTIONAL
+		resizeManagedVolumeInfo = @{
+			# OPTIONAL
+			managedVolumeFid = $someString
+		}
+		# OPTIONAL
+		exportManagedVolumeSnapshotInfo = @{
+			# OPTIONAL
+			snapshotFid = $someString
+			# OPTIONAL
+			exportId = $someString
+		}
+		# OPTIONAL
+		oracleExportInfo = @{
+			# OPTIONAL
+			isSameHostRestore = $someBoolean
+			# OPTIONAL
+			targetHostOrRacFid = $someString
+			# OPTIONAL
+			targetDbName = $someString
+		}
+		# OPTIONAL
+		sapHanaDatabaseInfo = @{
+			# OPTIONAL
+			sapHanaDatabaseFid = $someString
+			# OPTIONAL
+			syncDbLogSnapshot = $someBoolean
+		}
+		# OPTIONAL
+		exportVcdVappSnapshotInfo = @{
+			# OPTIONAL
+			snapshotFid = $someString
+			# OPTIONAL
+			config = @{
+				# OPTIONAL
+				newVappParams = @{
+					# REQUIRED
+					name = $someString
+					# REQUIRED
+					orgVdcId = $someString
+				}
+				# OPTIONAL
+				shouldPowerOnVappAfterExport = $someBoolean
+				# OPTIONAL
+				targetVappId = $someString
+				# REQUIRED
+				exportMode = $someVappExportMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappExportMode]) for enum values.
+				# REQUIRED
+				networksToRestore = @(
+					@{
+						# OPTIONAL
+						newName = $someString
+						# OPTIONAL
+						vappNetworkSummary = @{
+							# OPTIONAL
+							parentNetworkId = $someString
+							# REQUIRED
+							isDeployed = $someBoolean
+							# REQUIRED
+							name = $someString
+						}
+					}
+				)
+				# REQUIRED
+				vmsToExport = @(
+					@{
+						# OPTIONAL
+						storagePolicyId = $someString
+						# REQUIRED
+						name = $someString
+						# REQUIRED
+						networkConnections = @(
+							@{
+								# OPTIONAL
+								ipAddress = $someString
+								# OPTIONAL
+								macAddress = $someString
+								# OPTIONAL
+								vappNetworkName = $someString
+								# OPTIONAL
+								networkAdapterType = $someString
+								# REQUIRED
+								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
+								# REQUIRED
+								isConnected = $someBoolean
+								# REQUIRED
+								nicIndex = $someInt
+							}
+						)
+						# REQUIRED
+						vcdMoid = $someString
+					}
+				)
+			}
+		}
+		# OPTIONAL
+		liveMountRelocateInfo = @{
+			# OPTIONAL
+			liveMountFid = $someString
+		}
+		# OPTIONAL
+		mongoSourceInfo = @{
+			# OPTIONAL
+			mongoSourceFid = $someString
+		}
+		# OPTIONAL
+		hypervMountSnapshotInfo = @{
+			# OPTIONAL
+			snapshotFid = $someString
+		}
+		# OPTIONAL
+		webCertificateInfo = @{
+			# OPTIONAL
+			cdmCertificateId = $someString
+		}
+		# OPTIONAL
+		db2DatabaseInfo = @{
+			# OPTIONAL
+			db2DbFid = $someString
+		}
+		# OPTIONAL
+		mongoCollectionsInfo = @{
+			# OPTIONAL
+			collectionFids = @(
+				$someString
+			)
+		}
+		# OPTIONAL
+		vsphereFileRestoreInfo = @{
+			# OPTIONAL
+			vmFid = $someString
+		}
+		# OPTIONAL
+		configureManagedVolumeLogExportInfo = @{
+			# OPTIONAL
+			managedVolumeFid = $someString
+		}
+		# OPTIONAL
+		downloadSnapshotFromLocationInfo = @{
+			# OPTIONAL
+			snapshotId = $someString
+			# OPTIONAL
+			snappableType = $someDownloadSnapshotFromLocationSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DownloadSnapshotFromLocationSnappableType]) for enum values.
+		}
+		# OPTIONAL
+		registeredHostInfo = @{
+			# OPTIONAL
+			hostFid = $someString
+			# OPTIONAL
+			hostRegisteredTime = $someDateTime
+		}
+		# OPTIONAL
+		registerOracleHostsInfo = @{
+			# OPTIONAL
+			addedOracleHostFids = @(
+				$someString
+			)
+			# OPTIONAL
+			hostRegisteredTime = $someDateTime
+		}
+		# OPTIONAL
+		llmInfo = @{
+			# OPTIONAL
+			functionType = $someLlmFunctionCallFunctionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LlmFunctionCallFunctionType]) for enum values.
+			# OPTIONAL
+			functionUuid = $someString
+			# OPTIONAL
+			subjectContexts = @(
+				@{
+					# OPTIONAL
+					organizationId = $someString
+					# OPTIONAL
+					subjectId = $someString
+					# OPTIONAL
+					subjectType = $someSubjectContextType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SubjectContextType]) for enum values.
+				}
+			)
+		}
+		# OPTIONAL
+		hostMakePrimaryInfo = @{
+			# OPTIONAL
+			hostFids = @(
+				$someString
+			)
+		}
+		# OPTIONAL
+		vcenterDiagnosticRefreshInfo = @{
+			# OPTIONAL
+			vcenterFid = $someString
+		}
+		# OPTIONAL
+		postgresDbClusterInfo = @{
+			# OPTIONAL
+			postgresDbClusterFid = $someString
+		}
+	}
+}"
             );
         }
 

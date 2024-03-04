@@ -97,7 +97,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	region = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
     /// 	# REQUIRED
     /// 	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	lockDurationDays = $someInt64
     /// 	# OPTIONAL
     /// 	clusterUuidList = @(
@@ -315,7 +315,7 @@ $query.Var.input = @{
 	region = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
 	# REQUIRED
 	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	lockDurationDays = $someInt64
 	# OPTIONAL
 	clusterUuidList = @(

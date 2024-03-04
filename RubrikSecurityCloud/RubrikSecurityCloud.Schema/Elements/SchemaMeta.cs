@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240219-20" ;
+        public static string GraphqlSchemaVersion = "v20240226-26" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1135,6 +1135,7 @@ namespace RubrikSecurityCloud.Types
             IssueEdge,
             IssueEvent,
             IsVolumeSnapshotRestorableReply,
+            JobInfo,
             JobMetadata,
             JobReply,
             JobsReply,
@@ -1540,8 +1541,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2426,6 +2427,7 @@ namespace RubrikSecurityCloud.Types
             AddDb2InstanceInput,
             AddGlobalCertificateInput,
             AddInventoryWorkloadsInput,
+            AddManagedVolumeInfo,
             AddManagedVolumeInput,
             AddMongoSourceInput,
             AddMosaicSourceInput,
@@ -2452,6 +2454,7 @@ namespace RubrikSecurityCloud.Types
             AnomalyResultFilterInput,
             AppFilter,
             AppSortByParam,
+            ArchivalLocationInfo,
             ArchivalLocationToClusterMappingInput,
             ArchivalSpecInput,
             ArchivalTieringSpecInput,
@@ -2608,6 +2611,7 @@ namespace RubrikSecurityCloud.Types
             BatchQuarantineSnapshotInput,
             BatchReleaseFromQuarantineSnapshotInput,
             BatchVmwareVmRecoverableRangesRequestInput,
+            BeginManagedVolumeSnapshotInfo,
             BeginManagedVolumeSnapshotInput,
             BeginSnapshotManagedVolumeRequestInput,
             BidirectionalReplicationSpecInput,
@@ -2692,6 +2696,7 @@ namespace RubrikSecurityCloud.Types
             CompleteAzureAdAppSetupInput,
             CompleteAzureAdAppUpdateInput,
             CompleteAzureCloudAccountOauthInput,
+            ConfigureManagedVolumeLogExportInfo,
             ConfigureSapHanaRestoreInput,
             ContactFolderInfo,
             ContactInfo,
@@ -2746,6 +2751,7 @@ namespace RubrikSecurityCloud.Types
             CreateManualTargetMappingInput,
             CreateMssqlLiveMountInput,
             CreateMssqlLogShippingConfigurationInput,
+            CreateNewVappParamsInput,
             CreateNfsReaderTargetInput,
             CreateNfsTargetInput,
             CreateNutanixClusterInput,
@@ -2778,6 +2784,7 @@ namespace RubrikSecurityCloud.Types
             CreateTapeTargetInput,
             CreateUserWithPasswordInput,
             CreateVappInstantRecoveryInput,
+            CreateVappNetworkParamsInput,
             CreateVappsInstantRecoveryInput,
             CreateVsphereAdvancedTagInput,
             CreateVsphereVcenterInput,
@@ -2791,7 +2798,9 @@ namespace RubrikSecurityCloud.Types
             DayOfWeekOptInput,
             Db2ConfigInput,
             Db2DatabaseConfigInput,
+            Db2DatabaseInfo,
             Db2DownloadRecoverableRangeRequestInput,
+            Db2InstanceInfo,
             Db2InstancePatchRequestConfigInput,
             Db2InstanceRequestConfigInput,
             Db2LogSnapshotFilterInput,
@@ -2808,6 +2817,7 @@ namespace RubrikSecurityCloud.Types
             DeleteCloudNativeLabelRuleInput,
             DeleteCloudNativeTagRuleInput,
             DeleteCloudWorkloadSnapshotInput,
+            DeleteCrossAccountPairInput,
             DeleteCsrInput,
             DeleteCustomReportInput,
             DeleteDb2DatabaseInput,
@@ -2900,6 +2910,7 @@ namespace RubrikSecurityCloud.Types
             DownloadSapHanaSnapshotFromLocationInput,
             DownloadSapHanaSnapshotInput,
             DownloadSapHanaSnapshotsForPointInTimeRecoveryInput,
+            DownloadSnapshotFromLocationInfo,
             DownloadThreatHuntCsvInput,
             DownloadUserActivityCsvInput,
             DownloadUserFileActivityCsvInput,
@@ -2918,6 +2929,7 @@ namespace RubrikSecurityCloud.Types
             EnableSupportUserAccessInput,
             EnableTargetInput,
             EnableThreatMonitoringInput,
+            EndManagedVolumeSnapshotInfo,
             EndManagedVolumeSnapshotInput,
             EndSnapshotManagedVolumeRequestInput,
             EventDigestConfig,
@@ -2941,6 +2953,7 @@ namespace RubrikSecurityCloud.Types
             ExpireSnoozedDirectoriesInput,
             ExportHypervVirtualMachineInput,
             ExportK8sNamespaceInput,
+            ExportManagedVolumeSnapshotInfo,
             ExportManagedVolumeSnapshotInput,
             ExportMssqlDatabaseInput,
             ExportMssqlDbJobConfigInput,
@@ -2957,6 +2970,7 @@ namespace RubrikSecurityCloud.Types
             ExportSnapshotJobConfigV2Input,
             ExportSnapshotJobConfigV3Input,
             ExportSnapshotToStandaloneHostRequestInput,
+            ExportVcdVappSnapshotInfo,
             ExternalArtifactMap,
             ExternalArtifacts,
             FailedItemsRecoveryConfig,
@@ -3099,6 +3113,7 @@ namespace RubrikSecurityCloud.Types
             HideNasSharesRequestInput,
             HideRevealNasNamespacesInput,
             HideRevealNasSharesInput,
+            HostMakePrimaryInfo,
             HostMakePrimaryRequestInput,
             HostRegisterInput,
             HostUpdateIdInput,
@@ -3121,6 +3136,7 @@ namespace RubrikSecurityCloud.Types
             HypervLiveMountFilterInput,
             HypervLiveMountSortByInput,
             HypervMountSnapshotConfigForBatchInput,
+            HypervMountSnapshotInfo,
             HypervMountSnapshotJobConfigInput,
             HypervOnDemandBackupJobConfigForBatchInput,
             HypervOnDemandSnapshotInput,
@@ -3151,6 +3167,8 @@ namespace RubrikSecurityCloud.Types
             IpMappingInput,
             IpmiAccessUpdateInput,
             IpmiUpdateInput,
+            JobInfoRequest,
+            JobInfoRequestDetails,
             JoinSmbDomainInput,
             K8sNamespaceSnapshot,
             KmsCryptoKey,
@@ -3172,10 +3190,13 @@ namespace RubrikSecurityCloud.Types
             ListCidrsForComputeSettingInput,
             ListFileActivitiesInput,
             ListObjectFilesFiltersInput,
+            LiveMountRelocateInfo,
+            LlmFunctionCallInfo,
             LocationImmutabilitySettings,
             LockUsersByAdminInput,
             LogConfig,
             LoginCredentials,
+            LogShippingInfo,
             LookupAccountInput,
             LsnRecoveryPointInput,
             MailboxRestoreConfig,
@@ -3214,9 +3235,11 @@ namespace RubrikSecurityCloud.Types
             ModifyMosaicStoreInput,
             MongoClientHostInput,
             MongoCollectionAssignSlaConfigInput,
+            MongoCollectionsInfo,
             MongoConfigInput,
             MongoRecoveryRequestConfigInput,
             MongoSourceAddRequestConfigInput,
+            MongoSourceInfo,
             MongoSourcePatchRequestConfigInput,
             MonthlySnapshotScheduleInput,
             MosaicAddStoreRequestInput,
@@ -3232,7 +3255,9 @@ namespace RubrikSecurityCloud.Types
             MosaicRestoreDataInput,
             MosaicRetrieveRequestInput,
             MosaicSlaInfoInput,
+            MosaicSourceInfo,
             MosaicStorageLocationFilterInput,
+            MosaicStorageLocationInfo,
             MountDiskInput,
             MountDiskJobConfigInput,
             MountExportSnapshotJobCommonOptionsInput,
@@ -3253,6 +3278,7 @@ namespace RubrikSecurityCloud.Types
             MssqlDatabaseLiveMountSortByInput,
             MssqlDbDefaultsUpdateInput,
             MssqlDbFileExportPathInput,
+            MssqlDbInfo,
             MssqlDbUpdateIdInput,
             MssqlDbUpdateInput,
             MssqlDownloadFromArchiveConfigInput,
@@ -3343,6 +3369,7 @@ namespace RubrikSecurityCloud.Types
             OracleConfigInput,
             OracleDataGuardGroupUpdateInput,
             OracleDbInput,
+            OracleExportInfo,
             OracleHostInput,
             OracleLiveMountFilterInput,
             OracleLiveMountSortBy,
@@ -3370,10 +3397,13 @@ namespace RubrikSecurityCloud.Types
             PauseSlaInput,
             PauseTargetInput,
             PcrAwsImagePullDetailsInput,
+            PendingSlaInfo,
             PendingSlaOperationsRequestInput,
             PermissionInput,
             PermissionsGroupWithVersionInput,
+            PollerSapHanaSystemInfo,
             PortRange,
+            PostgresDbClusterInfo,
             PostgresDbClusterSlaConfigInput,
             PreAddVcenterInput,
             PrepareAwsCloudAccountDeletionInput,
@@ -3395,6 +3425,7 @@ namespace RubrikSecurityCloud.Types
             QueryHypervHostInput,
             QueryLogReportInput,
             QueryLogShippingConfigurationsV2Input,
+            QueryMountInfo,
             QueryNetworkThrottleInput,
             QueryReplicationTargetInfoInput,
             QueryReportPropertiesInput,
@@ -3425,8 +3456,10 @@ namespace RubrikSecurityCloud.Types
             RegisterAgentNutanixVmInput,
             RegisterAwsFeatureArtifactsInput,
             RegisterCloudClusterInput,
+            RegisterdHostInfo,
             RegisterHypervScvmmInput,
             RegisterNasSystemInput,
+            RegisterOracleHostsInfo,
             RelativeTimeRangeInput,
             RelicFilter,
             RelocateMountConfigInput,
@@ -3454,6 +3487,7 @@ namespace RubrikSecurityCloud.Types
             ReseedLogShippingSecondaryInput,
             ResetUsersPasswordsWithUserIdsInput,
             ResizeDiskInput,
+            ResizeManagedVolumeInfo,
             ResizeManagedVolumeInput,
             ResolveAnomalyInput,
             ResolveVolumeGroupsConflictInput,
@@ -3488,6 +3522,7 @@ namespace RubrikSecurityCloud.Types
             RunCustomAnalyzerInput,
             RunPolicyArgInput,
             SapHanaConfigInput,
+            SapHanaDatabaseInfo,
             SapHanaDownloadRecoverableRangeRequestInput,
             SapHanaDownloadRequestInput,
             SapHanaLogSnapshotFilterInput,
@@ -3560,6 +3595,7 @@ namespace RubrikSecurityCloud.Types
             SnappableSlaDomainFilterInput,
             SnappablesWithLegalHoldSnapshotsInput,
             SnapshotDeltaFilterInput,
+            SnapshotFileDownloadInfo,
             SnapshotQueryFilterInput,
             SnmpConfigurationInput,
             SnmpConfigurationPatchInput,
@@ -3603,6 +3639,7 @@ namespace RubrikSecurityCloud.Types
             StorageAccountConfigItem,
             StorageArrayDefinitionInput,
             StorageArrayInput,
+            SubjectContext,
             SubscriptionSeverityInput,
             SubscriptionTypeInput,
             SupportPortalLoginInput,
@@ -3617,6 +3654,7 @@ namespace RubrikSecurityCloud.Types
             TagInput,
             TagsInput,
             TagType,
+            TakeManagedVolumeOnDemandSnapshotInfo,
             TakeManagedVolumeOnDemandSnapshotInput,
             TakeMssqlLogBackupInput,
             TakeOnDemandOracleDatabaseSnapshotInput,
@@ -3654,6 +3692,7 @@ namespace RubrikSecurityCloud.Types
             UnmapAzurePersistentStorageSubscriptionInput,
             UnmapCloudAccountExocomputeAccountInput,
             UnmountDiskInput,
+            UnmountInfo,
             UpdateAuthDomainUsersHiddenStatusInput,
             UpdateAutoEnablePolicyClusterConfigInput,
             UpdateAutomaticAwsTargetMappingInput,
@@ -3768,7 +3807,9 @@ namespace RubrikSecurityCloud.Types
             ValidateOracleAcoFileInput,
             ValidateOracleDatabaseBackupsInput,
             ValidateOrgNameInput,
+            VappExportSnapshotJobConfigInput,
             VappInstantRecoveryJobConfigInput,
+            VappNetworkSummaryInput,
             VappSnapshotInstantRecoveryOptionsInput,
             VappTemplateSnapshotExportOptionsInput,
             VappVmNetworkConnectionInput,
@@ -3777,6 +3818,7 @@ namespace RubrikSecurityCloud.Types
             VcenterConfigInput,
             VcenterConfigV2Input,
             VcenterConnectionConfigInput,
+            VcenterDiagnosticRefreshInfo,
             VcenterPreAddConfigInput,
             VersionInput,
             VirtualMachineFilesInput,
@@ -3807,12 +3849,14 @@ namespace RubrikSecurityCloud.Types
             VolumeGroupRestoreFileConfigInput,
             VolumeGroupRestoreFilesConfigInput,
             VolumeGroupSnapshotDownloadConfigInput,
+            VolumeGroupUnmountInfo,
             VolumeGroupVolumeMountConfigInput,
             VolumeIdExclusion,
             VsphereBulkOnDemandSnapshotInput,
             VsphereDeleteVcenterInput,
             VsphereExcludeVmDisksInput,
             VsphereExportSnapshotToStandaloneHostV2Input,
+            VsphereFileRestoreInfo,
             VsphereLiveMountFilterInput,
             VsphereLiveMountSortBy,
             VsphereLoginInfoInput,
@@ -3841,6 +3885,7 @@ namespace RubrikSecurityCloud.Types
             VsphereVmRecoverFilesNewInput,
             VsphereVmRegisterAgentInput,
             WarmSearchCacheInput,
+            WebCertificateInfo,
             WebServerCertificatePayloadInput,
             WeeklySnapshotScheduleInput,
             WorkloadFieldsInput,
@@ -4285,6 +4330,7 @@ namespace RubrikSecurityCloud.Types
             isUpgradeRecommended,
             isVMwareManagementEnabled,
             isZrsAvailableForLocation,
+            jobInfo,
             k8sAppManifest,
             k8sCluster,
             k8sClusters,
@@ -4834,6 +4880,7 @@ namespace RubrikSecurityCloud.Types
             deleteCloudNativeLabelRule,
             deleteCloudNativeTagRule,
             deleteCloudWorkloadSnapshot,
+            deleteCrossAccountPair,
             deleteCsr,
             deleteCustomReport,
             deleteDb2Database,
@@ -5360,6 +5407,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalGroupQuerySortByField,
             ArchivalGroupTieringStatus,
             ArchivalGroupType,
+            ArchivalLocationOperationType,
             ArchivalLocationQuerySortByField,
             ArchivalLocationStatus,
             ArchivalLocationUpgradeUnsupportedReason,
@@ -5559,6 +5607,7 @@ namespace RubrikSecurityCloud.Types
             DlpConfigTargetType,
             DlpStatusCode,
             DownloadIdentifierEnum,
+            DownloadSnapshotFromLocationSnappableType,
             DownloadStatusEnum,
             EmailAddressFilterType,
             EncryptionLevel,
@@ -5662,6 +5711,8 @@ namespace RubrikSecurityCloud.Types
             IoFilterStatus,
             IssueEventType,
             IssueStatus,
+            JobStatus,
+            JobType,
             K8sClusterProtoType,
             K8sClusterStatus,
             K8sClusterType,
@@ -5677,6 +5728,7 @@ namespace RubrikSecurityCloud.Types
             ListAccessUsersSort,
             ListValidReplicationSourcesSortByField,
             ListValidReplicationTargetsSortByField,
+            LlmFunctionCallFunctionType,
             LocationScope,
             LockMethod,
             LockoutStateFilter,
@@ -5706,6 +5758,7 @@ namespace RubrikSecurityCloud.Types
             MosaicRecoverableRangeRequestSourceType,
             MosaicRetrieveRequestSourceType,
             MosaicSnapshotType,
+            MosaicSourceNosqlSourceType,
             MosaicStorageLocationFilterField,
             MosaicStorageLocationQuerySortByField,
             MosaicStoreConnectionStatus,
@@ -5879,6 +5932,7 @@ namespace RubrikSecurityCloud.Types
             SnapshotCloudStorageTier,
             SnapshotConsistencyLevel,
             SnapshotCustomization,
+            SnapshotFileDownloadSnappableType,
             SnapshotFrequency,
             SnapshotQueryFilterField,
             SnapshotQuerySortByField,
@@ -5903,6 +5957,7 @@ namespace RubrikSecurityCloud.Types
             StorageAccountSku,
             StorageAccountTier,
             StorageArrayType,
+            SubjectContextType,
             SupportUserAccessFilterField,
             SupportUserAccessSortByField,
             SupportUserAccessStatus,
@@ -5968,6 +6023,7 @@ namespace RubrikSecurityCloud.Types
             V2QueryLogShippingConfigurationsV2RequestSortBy,
             V2QueryLogShippingConfigurationsV2RequestSortOrder,
             V2QueryLogShippingConfigurationsV2RequestStatus,
+            VappExportMode,
             VappVmIpAddressingMode,
             VcenterConfigConflictResolutionAuthz,
             VcenterConfigV2ConflictResolutionAuthz,
@@ -8217,6 +8273,7 @@ namespace RubrikSecurityCloud.Types
             deleteCloudNativeLabelRule,
             deleteCloudNativeTagRule,
             deleteCloudWorkloadSnapshot,
+            deleteCrossAccountPair,
             deleteCsr,
             deleteCustomReport,
             deleteDb2Database,
@@ -8484,6 +8541,7 @@ namespace RubrikSecurityCloud.Types
             isZrsAvailableForLocation,
             issue,
             issues,
+            jobInfo,
             joinSmbDomain,
             k8sAppManifest,
             k8sCluster,
@@ -13285,6 +13343,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteCrossAccountPair,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCrossAccount",
+                        cmdletSwitchName: "DeleteCrossAccountPair",
+                        gqlRootFieldName: "deleteCrossAccountPair"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteCsr,
                     new RscOp(
                         cmdletName: "New-RscMutationCertificate",
@@ -15418,6 +15484,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "Issues",
                         gqlRootFieldName: "issues"
+                    )
+                },
+                {
+                    GqlRootFieldName.jobInfo,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "JobInfo",
+                        gqlRootFieldName: "jobInfo"
                     )
                 },
                 {
@@ -22828,6 +22902,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteCloudWorkloadSnapshot
                 },
                 {
+                    "New-RscMutationCrossAccount -Op DeleteCrossAccountPair",
+                    GqlRootFieldName.deleteCrossAccountPair
+                },
+                {
                     "New-RscMutationCertificate -Op DeleteCsr",
                     GqlRootFieldName.deleteCsr
                 },
@@ -23894,6 +23972,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMisc -Op Issues",
                     GqlRootFieldName.issues
+                },
+                {
+                    "New-RscQueryMisc -Op JobInfo",
+                    GqlRootFieldName.jobInfo
                 },
                 {
                     "New-RscMutationSmb -Op JoinDomain",
@@ -28317,6 +28399,10 @@ namespace RubrikSecurityCloud.Types
                         "issues",
                     }
                 },
+                {   "JobInfo", new List<string> {
+                        "jobInfo",
+                    }
+                },
                 {   "K8sAppManifest", new List<string> {
                         "k8sAppManifest",
                     }
@@ -30004,6 +30090,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteAwsComputeSetting",
                         "deleteCloudNativeLabelRule",
                         "deleteCloudNativeTagRule",
+                        "deleteCrossAccountPair",
                         "deleteCsr",
                         "deleteCustomReport",
                         "deleteDistributionListDigestBatch",
@@ -31978,6 +32065,10 @@ namespace RubrikSecurityCloud.Types
                         "deleteCloudWorkloadSnapshot",
                     }
                 },
+                {   "DeleteCrossAccountPairInput", new List<string> {
+                        "deleteCrossAccountPair",
+                    }
+                },
                 {   "DeleteCsrInput", new List<string> {
                         "deleteCsr",
                     }
@@ -33189,6 +33280,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "IssueStatus", new List<string> {
                         "issues",
+                    }
+                },
+                {   "JobInfoRequest", new List<string> {
+                        "jobInfo",
                     }
                 },
                 {   "JoinSmbDomainInput", new List<string> {
@@ -36853,6 +36948,7 @@ namespace RubrikSecurityCloud.Types
                 { "isAwsNativeEbsVolumeSnapshotRestorable", "IsVolumeSnapshotRestorableReply"},
                 { "issue", "Issue"},
                 { "issues", "IssueConnection"},
+                { "jobInfo", "JobInfo"},
                 { "k8sAppManifest", "K8sAppManifest"},
                 { "k8sCluster", "K8sCluster"},
                 { "k8sClusters", "K8sClusterConnection"},
@@ -37393,6 +37489,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteAwsComputeSetting", "Void"},
                 { "deleteCloudNativeLabelRule", "Void"},
                 { "deleteCloudNativeTagRule", "Void"},
+                { "deleteCrossAccountPair", "Void"},
                 { "deleteCsr", "Void"},
                 { "deleteCustomReport", "Void"},
                 { "deleteDistributionListDigestBatch", "Void"},
@@ -38411,6 +38508,7 @@ namespace RubrikSecurityCloud.Types
                     "AddCrossAccountServiceConsumer",
                     "CreateCrossAccountPair",
                     "CreateCrossAccountRegOauthPayload",
+                    "DeleteCrossAccountPair",
                     }
                 },
                 {
@@ -38843,6 +38941,7 @@ namespace RubrikSecurityCloud.Types
                     "Issue",
                     "Issues",
                     "IssuesJobIds",
+                    "JobInfo",
                     "KnowledgeBaseArticle",
                     "LambdaSettings",
                     "LicensedProducts",

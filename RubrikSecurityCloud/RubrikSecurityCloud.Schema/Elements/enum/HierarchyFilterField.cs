@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_NAME")]
         ACTIVE_DIRECTORY_DOMAIN_NAME,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_SID")]
+        ACTIVE_DIRECTORY_DOMAIN_SID,
+
         [EnumMember(Value = "AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS")]
         AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS,
 

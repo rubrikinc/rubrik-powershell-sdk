@@ -263,3 +263,4 @@
 - AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID - Filter Azure storage accounts by subscription ID.
 - AZURE_BLOB_STORAGE_ACCOUNT_ACCESS_TIER - Filter Azure storage accounts by access tier.
 - AZURE_BLOB_STORAGE_ACCOUNT_HNS_STATUS - Filter Azure storage accounts by hierarchical namespace status.
+- ACTIVE_DIRECTORY_DOMAIN_SID - Filter by the SID of the Active Directory domain.

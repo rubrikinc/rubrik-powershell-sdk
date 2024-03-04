@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("falsePositiveReport")]
         public AnomalyFalsePositiveReport? FalsePositiveReport { get; set; }
 
+        //      C# -> List<System.String>? DirectoriesToSnooze
+        // GraphQL -> directoriesToSnooze: [String!] (scalar)
+        [JsonProperty("directoriesToSnooze")]
+        public List<System.String>? DirectoriesToSnooze { get; set; }
+
 
         #endregion
 

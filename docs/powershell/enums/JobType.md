@@ -1,0 +1,74 @@
+### JobType
+Type of poller. Different types of jobs are polled by corresponding poller.
+
+- NONE - Not specified.
+- VSPHERE_LIVE_MOUNT - VSphere live mount.
+- VSPHERE_UNMOUNT - Vsphere unmount.
+- ADD_OR_REMOVE_VCENTER - Addition or removal of a VSphere VCenter.
+- VSPHERE_QUERY_MOUNT - VSphere query.
+- VSPHERE_EXPORT_VM - Export of a VSphere VM.
+- SAP_HANA_SYSTEM - SAP Hana system.
+- VSPHERE_SNAPSHOT - VSphere snapshot.
+- MSSQL_LIVE_MOUNT - Microsoft SQL Server Live Mount.
+- ARCHIVAL_LOCATION - Archival location.
+- MOSAIC_SOURCE - Mosaic source.
+- DELETE_MOSAIC_SOURCE - Deletion of a mosaic source.
+- DOWNLOAD_SNAPSHOT_FILES - Download of snaphot files.
+- NAS_SYSTEM_CRUD - NAS system operation.
+- MOSAIC_STORAGE_LOCATION - Mosaic storage location.
+- DELETE_MOSAIC_STORAGE_LOCATION - Deletetion of a Mosaic storage location.
+- PENDING_SLA - Pending SLA.
+- VOLUME_GROUP_MOUNT - Mount of a Volume Group.
+- VOLUME_GROUP_UNMOUNT - Unmount of a Volume Group.
+- MSSQL_UNMOUNT - Unmount of a Microsoft SQL Server.
+- DB2_INSTANCE - DB2 instance.
+- ADD_REMOVE_SCVMM - Addition or removal of System Center Virtual Machine Manager.
+- MSSQL_RESTORE - Microsoft SQL Server restore.
+- HYPERV_VM_SNAPSHOT - Hyper-V VM snapshot.
+- EXCHANGE_MOUNT - Exchange mount.
+- EXCHANGE_UNMOUNT - Exchange unmount.
+- MSSQL_DELETE_LOG_SHIPPING - Microsoft SQL Server shipping log deletion.
+- MSSQL_CREATE_LOG_SHIPPING - Microsoft SQL Server shipping log creation.
+- NUTANIX_CLUSTER_OPS - Nutanix cluster.
+- NUTANIX_SNAPSHOT_OPS - Nutanix snapshot.
+- MSSQL_EXPORT - Export of Microsoft SQL Server.
+- ADD_MANAGED_VOLUME - Addition of a managed volume.
+- TAKE_MANAGED_VOLUME_ON_DEMAND_SNAPSHOT - On demand snapshot of a managed volume.
+- BEGIN_MANAGED_VOLUME_SNAPSHOT - Start of a managed volume snapshot.
+- END_MANAGED_VOLUME_SNAPSHOT - End of a managed volume snapshot.
+- HYPERV_VM_V1 - Hyper-V VM.
+- RESIZE_MANAGED_VOLUME - Resie of a managed volume.
+- EXPORT_MANAGED_VOLUME_SNAPSHOT - Export a managed volume snapshot.
+- EXPORT_ORACLE - Oracle export.
+- LIVE_MOUNT_ORACLE - Oracle Live Mount.
+- UNMOUNT_ORACLE - Oracle unmount.
+- NUTANIX_VM_V1 - Nutanix VM.
+- SAP_HANA_DATABASE - Sap Hana database.
+- ADD_REMOVE_OR_REFRESH_VCD - Addition, removal, or refresh of VCD.
+- EXPORT_VCD_VAPP_SNAPSHOT - Export of VCD VApp snapshot.
+- VSPHERE_LIVE_MOUNT_RELOCATE - Relocation of VSphere live mount.
+- ADD_MONGO_SOURCE - Addition of Mongo source.
+- DELETE_MONGO_SOURCE - Deletion of Mongo source.
+- POLARIS_INFO - RCS information.
+- HYPERV_SERVER - Hyper-V server.
+- HYPERV_LIVE_MOUNT - Hyper-V Live Mount.
+- INSTANT_RECOVER_VCD_VAPP - Instance recover of VCD VApp.
+- CLUSTER_WEB_CERT - Cluster web certificate.
+- DB2_DATABASE - DB2 database.
+- NUTANIX_LIVE_MOUNT - Nutanix live mount.
+- ASSIGN_SLA_MONGO_COLLECTION - Assign SLA to a Mongo collection.
+- VSPHERE_RESTORE_FILE_TO_VM - VSphere restore file to VM.
+- KEY_ROTATION - Key rotation.
+- CONFIGURE_MANAGED_VOLUME_LOG_EXPORT - Configure log export of a managed volume.
+- NUTANIX_PRISM_CENTRAL_OPS - Nutanix prism central operations.
+- ACTIVE_DIRECTORY_LIVE_MOUNT_POLLER - Active directory live mount.
+- DOWNLOAD_SNAPSHOT_FROM_LOCATION - Snapshot download from given location.
+- ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION - Active Directory snapshot download from given location.
+- DISCOVERED_MSSQL_OBJECTS_SYNC_METRIC_POLLER - Discovered Microsoft SQL Server objects metrics.
+- ACTIVE_DIRECTORY_REFRESH_DOMAIN - Refresh of Active Directory domain.
+- DISCOVERED_ORACLE_OBJECTS_SYNC_METRIC_POLLER - Discovered Oracle objects metrics.
+- LLM_FUNCTION_CALL - Function call of a Large Language Model.
+- HOST_MAKE_PRIMARY_POLLER - Make host primary.
+- VCENTER_DIAGNOSTIC_REFRESH - Refresh vCenter diagnostics.
+- K8S_CLUSTER_REFRESH - Refresh Kubernetes cluster.
+- POSTGRES_DB_CLUSTER - Postgres DB cluster.

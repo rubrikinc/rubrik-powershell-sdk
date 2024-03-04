@@ -15,3 +15,8 @@ Create a payload for cross-account OAuth registration.
 
 - There is a single argument of type CreateCrossAccountRegOauthPayloadInput.
 - Returns CreateCrossAccountRegOauthPayloadReply.
+### deletecrossaccountpair
+Delete cross-account pair.
+
+- There is a single argument of type DeleteCrossAccountPairInput.
+- Returns System.String.

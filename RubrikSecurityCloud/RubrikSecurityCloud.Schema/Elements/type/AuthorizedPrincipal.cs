@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<EventDigest>? EmailConfig
+        // GraphQL -> emailConfig: [EventDigest!]! (type)
+        [JsonProperty("emailConfig")]
+        public List<EventDigest>? EmailConfig { get; set; }
+
         //      C# -> LdapLockoutStatus? LockoutStatus
         // GraphQL -> lockoutStatus: LdapLockoutStatus (type)
         [JsonProperty("lockoutStatus")]
@@ -87,6 +92,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         DateTime? LastLogin = null,
         System.String? Name = null,
+        List<EventDigest>? EmailConfig = null,
         LdapLockoutStatus? LockoutStatus = null,
         List<Role>? Roles = null,
         LdapTotpStatus? TotpStatus = null
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( EmailConfig != null ) {
+            this.EmailConfig = EmailConfig;
         }
         if ( LockoutStatus != null ) {
             this.LockoutStatus = LockoutStatus;
@@ -194,6 +203,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> List<EventDigest>? EmailConfig
+        // GraphQL -> emailConfig: [EventDigest!]! (type)
+        if (this.EmailConfig != null) {
+            var fspec = this.EmailConfig.AsFieldSpec(conf.Child("emailConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "emailConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> LdapLockoutStatus? LockoutStatus
@@ -357,6 +378,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> List<EventDigest>? EmailConfig
+        // GraphQL -> emailConfig: [EventDigest!]! (type)
+        if (ec.Includes("emailConfig",false))
+        {
+            if(this.EmailConfig == null) {
+
+                this.EmailConfig = new List<EventDigest>();
+                this.EmailConfig.ApplyExploratoryFieldSpec(ec.NewChild("emailConfig"));
+
+            } else {
+
+                this.EmailConfig.ApplyExploratoryFieldSpec(ec.NewChild("emailConfig"));
+
+            }
+        }
+        else if (this.EmailConfig != null && ec.Excludes("emailConfig",false))
+        {
+            this.EmailConfig = null;
         }
         //      C# -> LdapLockoutStatus? LockoutStatus
         // GraphQL -> lockoutStatus: LdapLockoutStatus (type)

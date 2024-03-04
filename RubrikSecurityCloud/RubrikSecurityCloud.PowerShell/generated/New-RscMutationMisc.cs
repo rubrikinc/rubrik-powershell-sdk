@@ -2213,6 +2213,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		otherReason = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	directoriesToSnooze = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -7949,6 +7953,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		otherReason = $someString
 	}
+	# OPTIONAL
+	directoriesToSnooze = @(
+		$someString
+	)
 }"
             );
         }

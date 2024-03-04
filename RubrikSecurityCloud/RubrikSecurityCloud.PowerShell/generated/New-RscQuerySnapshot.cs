@@ -217,6 +217,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	ignoreArchive = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1661,6 +1663,8 @@ $query.Var.searchFilter = @{
 		# OPTIONAL
 		searchRecurseFolderId = $someString
 	}
+	# OPTIONAL
+	ignoreArchive = $someBoolean
 }"
             );
         }

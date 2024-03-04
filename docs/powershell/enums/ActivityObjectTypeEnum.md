@@ -29,6 +29,7 @@ The list of object types for activities.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
 - ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
 - MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
+- POSTGRES_DB_CLUSTER - Specifies that the activity object type is Postgres Database Cluster.
 - HypervServer - Specifies that the activity object type is HyperV Server.
 - O365SharePointList - Specifies that the activity object type is O365 SharePoint List.
 - Vcenter - Specifies that the activity object type is vCenter.

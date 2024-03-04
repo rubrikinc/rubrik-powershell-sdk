@@ -99,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Cluster")]
         CLUSTER,
 
+        [EnumMember(Value = "DATA_CENTER_CLOUD_ACCOUNT")]
+        DATA_CENTER_CLOUD_ACCOUNT,
+
         [EnumMember(Value = "DB2_DATABASE")]
         DB2_DATABASE,
 

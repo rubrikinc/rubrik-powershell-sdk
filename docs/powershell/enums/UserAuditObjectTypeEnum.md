@@ -5,6 +5,7 @@ User audit object type.
 - TPR_POLICY - TPR policy type.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
+- DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
 - OracleRac - Oracle RAC type.
 - IpWhitelist - IP whitelist type.
 - HypervVm - Hyper-V virtual machine type.

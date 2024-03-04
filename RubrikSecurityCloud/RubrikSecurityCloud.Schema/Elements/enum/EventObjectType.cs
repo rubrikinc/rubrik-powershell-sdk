@@ -297,6 +297,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLE_RAC")]
         ORACLE_RAC,
 
+        [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
+        POSTGRES_DB_CLUSTER,
+
         [EnumMember(Value = "PUBLIC_CLOUD_MACHINE_INSTANCE")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,
 

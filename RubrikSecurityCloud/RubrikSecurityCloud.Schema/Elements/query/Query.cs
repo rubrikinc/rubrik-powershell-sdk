@@ -13594,6 +13594,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> JobInfo? JobInfo
+        // GraphQL -> jobInfo: JobInfo! (type)
+        public static string JobInfo_TypedFieldSpec(JobInfo fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "jobInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string JobInfo_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return JobInfo((JobInfo)fieldSpecObj);
+        }
+        public static string JobInfo(JobInfo fieldSpec)
+        {
+            return JobInfo_TypedFieldSpec(fieldSpec);
+        }
+        public static string JobInfo(object fieldSpecObj)
+        {
+            return JobInfo_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object JobInfoFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new JobInfo() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> K8sAppManifest? K8sAppManifest
         // GraphQL -> k8sAppManifest: K8sAppManifest! (type)
         public static string K8sAppManifest_TypedFieldSpec(K8sAppManifest fieldSpec)

@@ -1630,6 +1630,11 @@ type Query {
     # Input for the azureAdObjectsByType API.
     input: AzureAdObjectTypeInput!): AzureAdObjectConnection!
 
+  # Retrieves the cloud account details from azure customer feature ID.
+  azureCloudAccountDetailsForFeature(
+    # Azure customer feature ID.
+    featureId: UUID!): AzureCloudAccountDetailsForFeatureReply!
+
   # Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
   azureCloudAccountPermissionConfig(
     # A cloud account feature of Rubrik Security Cloud.
@@ -5884,6 +5889,11 @@ type Query {
 
     # The Rubrik ID for the AWS RDS database.
     rdsDatabaseRubrikId: UUID): RdsInstanceDetailsFromAws!
+
+  # Get the information for removed nodes.
+  removedNodeDetails(
+    # Input for getting the details of removed nodes.
+    input: RemovedNodeDetailsInput!): RemoveNodeDetailsReply!
 
   # Get a time series of total incoming bandwidth to the replication clusters.
   replicationIncomingStats(
@@ -12924,6 +12934,9 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is Cloud Direct NAS export.
   CLOUD_DIRECT_NAS_EXPORT
 
+  # Cross-account pair.
+  CROSS_ACCOUNT_PAIR
+
   # Specifies that the activity object type is Capacity Bundle.
   CapacityBundle
 
@@ -13653,6 +13666,9 @@ type AdVolumeExport {
 
   # The whitelisted IP addresses that can access Active Directory live mount.
   smbValidIps: [String!]!
+
+  # Mount Node IP address of the volume export. This IP address is preferred over floating IP address.
+  mountNodeIp: String
 
   # Fid of the volume export.
   id: UUID!
@@ -16005,6 +16021,9 @@ enum AuditObjectType {
   # Cluster audit object.
   CLUSTER
 
+  # Cross-account pair.
+  CROSS_ACCOUNT_PAIR
+
   # Data Center Cloud Account.
   DATA_CENTER_CLOUD_ACCOUNT
 
@@ -16181,6 +16200,15 @@ enum AuditObjectType {
 
   # Rubrik cluster replication pair.
   REPLICATION_PAIR
+
+  # Salesforce metadata.
+  SALESFORCE_METADATA
+
+  # Salesforce object.
+  SALESFORCE_OBJECT
+
+  # Salesforce organization.
+  SALESFORCE_ORGANIZATION
 
   # SAP HANA database object.
   SAP_HANA_DB
@@ -22973,6 +23001,20 @@ type AzureCdmVersionTag {
 
   # Tag value.
   value: String!
+}
+# Cloud account details for a given customer ID.
+type AzureCloudAccountDetailsForFeatureReply {
+  # Azure tenant ID.
+  tenantId: String!
+
+  # Azure tenant domain name.
+  tenantDomain: String!
+
+  # Azure cloud type.
+  azureCloudType: AzureCloudType!
+
+  # Permissions groups for azure cloud account.
+  permissionsGroups: [PermissionsGroup!]!
 }
 # Azure Cloud Account Feature details.
 type AzureCloudAccountFeatureDetail {
@@ -42141,6 +42183,9 @@ enum EventObjectType {
   # Compute instance object.
   COMPUTE_INSTANCE
 
+  # Cross-account pair event type.
+  CROSS_ACCOUNT_PAIR
+
   # Data location object.
   DATA_LOCATION
 
@@ -42350,6 +42395,15 @@ enum EventObjectType {
 
   # Rubrik SAAS EC2 instance.
   RUBRIK_SAAS_EC2_INSTANCE
+
+  # Salesforce metadata.
+  SALESFORCE_METADATA
+
+  # Salesforce objects.
+  SALESFORCE_OBJECT
+
+  # Salesforce organization.
+  SALESFORCE_ORGANIZATION
 
   # SAML single sign-on.
   SAML_SSO
@@ -48128,6 +48182,9 @@ type GetAnomalyDetailsReply {
 
   # Specifies the resolution status of the anomaly.
   resolutionStatus: ResolutionStatus!
+
+  # The list of directories that can be snoozed from the anomaly.
+  potentialSnoozedDirectories: [String!]!
 
   # Severity of the anomaly.
   severity: ActivitySeverityEnum!
@@ -74243,10 +74300,10 @@ enum ObjectState {
   # The object is archived.
   ARCHIVED
 
-  # The object is not specified.
+  # The object state is not specified.
   NOT_SPECIFIED
 
-  # The object is relic.
+  # The object is a relic.
   RELIC
 }
 type ObjectStatus {
@@ -80563,6 +80620,9 @@ enum RcsRegionEnumType {
   # US west 2 or Washington.
   US_WEST_2
 
+  # US West Central or Wyoming.
+  US_WEST_CENTRAL
+
   # West US 3 or Arizona.
   WEST_US3
 }
@@ -81242,6 +81302,11 @@ input RemoveInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
 }
+# The details of removed nodes.
+type RemoveNodeDetailsReply {
+  # The details of removed nodes.
+  removeNodeDetails: [RemovedNodeDetail!]!
+}
 # Input for removing private endpoint connection to RCV location.
 input RemovePrivateEndpointConnectionInput {
   # Field for specifying location identifier of the target.
@@ -81269,6 +81334,28 @@ type RemoveVlansReply {
 
   # VLAN ID(s) that failed to be deleted.
   failureVlanIds: [Int!]!
+}
+# The detail of a removed nodes.
+type RemovedNodeDetail {
+  # Hostname of the Rubrik cluster node.
+  nodeName: String!
+
+  # Chassis ID of the Rubrik cluster node.
+  chassisId: String!
+
+  # Rear view position of the Rubrik cluster node.
+  position: String!
+
+  # IP address of the Rubrik cluster node.
+  ipAddress: String!
+}
+# Request parameters for getting the details of removed nodes.
+input RemovedNodeDetailsInput {
+  # Rubrik Cluster UUID.
+  clusterUuid: UUID!
+
+  # Names of the removed nodes.
+  nodeNames: [String!]!
 }
 # Information about Kubernetes Replicated Snapshots.
 type ReplicatedSnapshotInfo {
@@ -86688,6 +86775,9 @@ enum SlaMigrationIneligibilityReason {
   # To upgrade to a retention-locked SLA Domain in governance mode, make sure quorum authorization is enabled in RSC and your Rubrik cluster is running CDM version 9.0.1 or later.
   GOVERNANCE_RETENTION_LOCK_CONFIGURED
 
+  # To upgrade to a retention-locked SLA Domain in governance mode, make sure your Rubrik cluster is running CDM version 9.0.1 or later.
+  GOVERNANCE_RETENTION_LOCK_UNSUPPORTED_CLUSTER_VERSION
+
   # The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.
   GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER
 
@@ -86714,6 +86804,9 @@ enum SlaMigrationIneligibilityReason {
 
   # Replication targets associated with the SLA Domain are disconnected.
   REPLICATION_TARGET_DISCONNECTED
+
+  # The SLA Domain is retention-locked and has cross-account replication targets configured in it. Upgrading such SLA Domains is not supported.
+  RETENTION_LOCKED_SLA_WITH_CROSS_ACCOUNT_REPLICATION_TARGETS
 
   # The SLA Domain has retention lock configured, which is not supported in Rubrik currently.
   RETENTION_LOCK_CONFIGURED
@@ -87136,6 +87229,9 @@ type Snappable {
   # The type of the workload.
   objectType: ObjectTypeEnum!
 
+  # The state of the workload (Active, Relic or Archived).
+  objectState: ObjectState!
+
   # The date and time when the workload was last protected.
   protectedOn: DateTime
 
@@ -87200,9 +87296,6 @@ type Snappable {
   # The Rubrik cluster to which the protected objects belong.
   cluster: Cluster
   fid: UUID
-
-  # The state of the workload (Active, Relic or Archived).
-  objectState: ObjectState
 
   # The number of snapshots locally present.
   localSnapshots: Int
@@ -87356,6 +87449,9 @@ input SnappableFilterInput {
 
   # The organization ID of the workload.
   orgId: [UUID!]
+
+  # The state of the workload.
+  objectState: [ObjectState!]
 }
 # Filter workload data, including search capability.
 input SnappableFilterInputWithSearch {
@@ -87386,6 +87482,9 @@ input SnappableFilterInputWithSearch {
 
   # The organization ID of the workload.
   orgId: [UUID!]
+
+  # The state of the workload.
+  objectState: [ObjectState!]
 }
 # Snappable data with groupby info applied to it.
 type SnappableGroupBy {
@@ -87483,6 +87582,9 @@ input SnappableGroupByFilterInput {
 
   # The organization ID of the workload.
   orgId: [UUID!]
+
+  # The state of the workload.
+  objectState: [ObjectState!]
 }
 union SnappableGroupByInfo = ComplianceStatus | ProtectionStatus | ObjectType | Cluster | ClusterType | ClusterSlaDomain | TimeRangeWithUnit
 # Location of the workload.
@@ -94609,6 +94711,9 @@ enum UserAuditObjectTypeEnum {
 
   # Cloud Direct NAS Export.
   CLOUD_DIRECT_NAS_EXPORT
+
+  # Cross-account pair.
+  CROSS_ACCOUNT_PAIR
 
   # Cloud native tag rule type.
   CloudNativeTagRule

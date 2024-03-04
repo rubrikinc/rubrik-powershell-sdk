@@ -10,9 +10,9 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | [Account (9,14)](#account-domain) | [Cluster (29,12)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,18)](#oracle-domain) | [Snapshot (21,16)](#snapshot-domain) |
-| [Active Directory (5,4)](#active-directory-domain) | [Cross Account (0,3)](#cross-account-domain) | [Microsoft 365 (7,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
+| [Active Directory (5,4)](#active-directory-domain) | [Cross Account (0,4)](#cross-account-domain) | [Microsoft 365 (7,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (169,119)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (170,119)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (28,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (2,3)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (44,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
@@ -746,6 +746,7 @@ Cmdlets: `New-RscQueryCrossAccount` and `New-RscMutationCrossAccount`
 | AddCrossAccountServiceConsumer | Add service consumer to provider RSC account. | `New-RscMutationCrossAccount -Operation AddCrossAccountServiceConsumer`<BR> | [addCrossAccountServiceConsumer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateCrossAccountPair | Create cross-account pair between service-consumer and service-provider accounts. | `New-RscMutationCrossAccount -Operation CreateCrossAccountPair`<BR> | [createCrossAccountPair](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateCrossAccountRegOauthPayload | Create a payload for cross-account OAuth registration. | `New-RscMutationCrossAccount -Operation CreateCrossAccountRegOauthPayload`<BR> | [createCrossAccountRegOauthPayload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteCrossAccountPair | Delete cross-account pair. | `New-RscMutationCrossAccount -Operation DeleteCrossAccountPair`<BR> | [deleteCrossAccountPair](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Db2 domain
@@ -1554,6 +1555,7 @@ v5.2+: Searches for nodes that can bootstrap into the specified Rubrik cluster. 
 | Issue | Returns details of one issue. | `New-RscQueryMisc -Operation Issue`<BR> | [issue](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Issues | Returns all issues filtered by status. | `New-RscQueryMisc -Operation Issues`<BR> | [issues](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IssuesJobIds | List IDs of running SONAR issues jobs. | `New-RscQueryMisc -Operation IssuesJobIds`<BR> | [allIssuesJobIds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| JobInfo | Information about a job running on CDM. Note that some types of jobs cannot be queries using this field. Refer to `JobType` enum to see which jobs types are available. Only users with Admin or Owner roles are allowed to access the field. | `New-RscQueryMisc -Operation JobInfo`<BR> | [jobInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | KnowledgeBaseArticle | A knowledge base article. | `New-RscQueryMisc -Operation KnowledgeBaseArticle`<BR> | [knowledgeBaseArticle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LambdaSettings | N/A | `New-RscQueryMisc -Operation LambdaSettings`<BR> | [lambdaSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LicensedProducts | Information about the licenses at the product level. | `New-RscQueryMisc -Operation LicensedProducts`<BR> | [allLicensedProducts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

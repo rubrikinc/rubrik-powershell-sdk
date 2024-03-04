@@ -1660,6 +1660,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? DeleteCrossAccountPair
+        // GraphQL -> deleteCrossAccountPair: Void (scalar)
+        public static string DeleteCrossAccountPair_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteCrossAccountPair" + args + "\n";
+        }
+        public static string DeleteCrossAccountPair_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteCrossAccountPair((System.String)fieldSpecObj);
+        }
+        public static string DeleteCrossAccountPair(System.String fieldSpec)
+        {
+            return DeleteCrossAccountPair_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteCrossAccountPair(object fieldSpecObj)
+        {
+            return DeleteCrossAccountPair_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteCrossAccountPairFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeleteCsr
         // GraphQL -> deleteCsr: Void (scalar)
         public static string DeleteCsr_TypedFieldSpec(System.String fieldSpec)

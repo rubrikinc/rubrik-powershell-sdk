@@ -120,3 +120,4 @@ Enum representing all the possible object types which generate events.
 - JIRA_SETTINGS - Atlassian Jira settings.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
 - OAUTH_TOKEN - OAuth token.
+- POSTGRES_DB_CLUSTER - Postgres Database Cluster.
