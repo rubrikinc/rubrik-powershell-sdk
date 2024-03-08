@@ -8,7 +8,7 @@
 RootModule = 'LoadModule.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.26'
+ModuleVersion = '0.25'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20240219-20 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20240304-17 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'
