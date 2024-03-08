@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.27
+
+Fixes:
+
+New Features:
+
+Breaking Changes:
+
 ## Version 0.26
 
 Fixes:
@@ -369,3 +377,4 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
