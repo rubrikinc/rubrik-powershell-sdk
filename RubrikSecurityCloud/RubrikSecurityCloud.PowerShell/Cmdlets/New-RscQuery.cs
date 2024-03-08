@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     DefaultParameterSetName = "GqlRootField")]
 
 
-    public class New_RscQuery : RscGqlPSCmdlet
+    public abstract class New_GqlRootField : RscGqlPSCmdlet
     {
         static RscGqlPSCmdletConfig New_RscQueryConfig =
            new RscGqlPSCmdletConfig
@@ -56,59 +56,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SchemaMeta.RootFieldKind RootFieldKind { get; set; } = SchemaMeta.RootFieldKind.Query;
 
         internal string gqlRootFieldParamHelpMessage = "Name of the GraphQL query.";
-        internal string gqlRootFieldParamName = "GqlQuery";
 
-        public New_RscQuery() : base(New_RscQueryConfig)
+        public New_GqlRootField() : base(New_RscQueryConfig)
         {
-            this.AddDynParamMethod(MakeDynParam_GqlRootField);
             this.AddDynParamMethod(MakeDynParam_Operation);
-        }
-        // protected RuntimeDefinedParameter MakeDynParam_Domain()
-        // {
-        //     var attrs = new Collection<Attribute>();
-        //     attrs.Add(new ParameterAttribute
-        //     {
-        //         HelpMessage = "API Domain."
-        //     });
-        //     attrs.Add(new ValidateNotNullOrEmptyAttribute());
-        //     attrs.Add(new ParameterAttribute
-        //     {
-        //         Mandatory = true,
-        //         Position = 0,
-        //         ValueFromPipeline = true,
-        //         ValueFromPipelineByPropertyName = true
-        //     });
-        //     var param = new RuntimeDefinedParameter(
-        //         "Domain",
-        //         typeof(SchemaMeta.ApiDomainName),
-        //         attrs
-        //     );
-        //     return param;
-        // }
-
-        protected RuntimeDefinedParameter MakeDynParam_GqlRootField()
-        {
-            var attrs = new Collection<Attribute>();
-            attrs.Add(new ParameterAttribute
-            {
-                HelpMessage = gqlRootFieldParamHelpMessage
-            });
-            attrs.Add(new ParameterAttribute
-            {
-                Mandatory = false,
-                Position = 0,
-                ParameterSetName = "GqlRootField",
-                ValueFromPipeline = true,
-                ValueFromPipelineByPropertyName = true
-            });
-            var param = new RuntimeDefinedParameter(
-                gqlRootFieldParamName,
-                this.RootFieldKind == SchemaMeta.RootFieldKind.Query ?
-                    typeof(SchemaMeta.GqlQueryName) :
-                    typeof(SchemaMeta.GqlMutationName),
-                attrs
-            );
-            return param;
         }
 
         override public SchemaMeta.ApiDomainName ApiDomainName()
@@ -157,16 +108,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             // to know what cmdlet to invoke and pass it
             // all parameters passed to this cmdlet.
 
-            string gqlRootField = this.GetStringDynParam(gqlRootFieldParamName);
-            if (!string.IsNullOrEmpty(gqlRootField))
+            if (!string.IsNullOrEmpty(this.gqlRootField))
             {
                 if (!string.IsNullOrEmpty(this.GetStringDynParam("Operation")))
                 {
                     throw new Exception("Cannot specify both GraphQL field name and Operation");
                 }
-                gqlRootField = gqlRootField.Trim();
-                RscOp op = SchemaMeta.RscOpLookupByGqlRootField(gqlRootField);
-                _logger?.Debug($"Gql root field {gqlRootField} maps to {op}. cmdletName={op.CmdletName}, cmdletSwitchName={op.CmdletSwitchName}, gqlRootFieldName={op.GqlRootFieldName}, gqlReturnTypeName={op.GqlReturnTypeName}, gqlReturnTypeName={op.GqlReturnTypeName},DomainName={op.DomainName()},OpName={op.OpName()}");
+                RscOp op = SchemaMeta.RscOpLookupByGqlRootField(this.gqlRootField);
+                _logger?.Debug($"Gql root field {this.gqlRootField} maps to {op}. cmdletName={op.CmdletName}, cmdletSwitchName={op.CmdletSwitchName}, gqlRootFieldName={op.GqlRootFieldName}, gqlReturnTypeName={op.GqlReturnTypeName}, gqlReturnTypeName={op.GqlReturnTypeName},DomainName={op.DomainName()},OpName={op.OpName()}");
                 ProcessDomainOp(op.DomainName(), op.OpName());
                 return;
             }
@@ -247,13 +196,62 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     "New",
     "RscMutation",
     DefaultParameterSetName = "DomainOp")]
-    public class New_RscMutation : New_RscQuery
+    public class New_RscMutation : New_GqlRootField
     {
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "GqlMutation",
+            HelpMessage = "The root GraphQL mutation to be called",
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true)]
+        public SchemaMeta.GqlMutationName? GqlMutation
+        {
+            get {
+                if (gqlRootField == null)
+                {
+                    return null;
+                }
+                return (SchemaMeta.GqlMutationName) Enum.Parse(typeof(SchemaMeta.GqlMutationName), gqlRootField);
+            }
+            set { gqlRootField = value.ToString().Trim(); }
+        }
+
         public New_RscMutation()
         {
             this.RootFieldKind = SchemaMeta.RootFieldKind.Mutation;
             this.gqlRootFieldParamHelpMessage = "Name of the GraphQL mutation.";
-            this.gqlRootFieldParamName = "GqlMutation";
+        }
+    }
+
+    [CmdletBinding()]
+    [Cmdlet(
+    "New",
+    "RscQuery",
+    DefaultParameterSetName = "DomainOp")]
+    public class New_RscQuery : New_GqlRootField
+    {
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "GqlQuery",
+            HelpMessage = "The root GraphQL query to be called",
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true)]
+        public SchemaMeta.GqlQueryName? GqlQuery
+        {
+            get {
+                if (gqlRootField == null)
+                {
+                    return null;
+                }
+                return (SchemaMeta.GqlQueryName)Enum.Parse(typeof(SchemaMeta.GqlQueryName), gqlRootField);
+            }
+            set { gqlRootField = value.ToString().Trim(); }
+        }
+
+        public New_RscQuery()
+        {
+            this.RootFieldKind = SchemaMeta.RootFieldKind.Query;
+            this.gqlRootFieldParamHelpMessage = "Name of the GraphQL query.";
         }
     }
 }
