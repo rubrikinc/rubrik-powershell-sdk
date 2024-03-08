@@ -121,3 +121,7 @@ Enum representing all the possible object types which generate events.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
 - OAUTH_TOKEN - OAuth token.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
+- CROSS_ACCOUNT_PAIR - Cross-account pair event type.
+- SALESFORCE_ORGANIZATION - Salesforce organization.
+- SALESFORCE_OBJECT - Salesforce objects.
+- SALESFORCE_METADATA - Salesforce metadata.

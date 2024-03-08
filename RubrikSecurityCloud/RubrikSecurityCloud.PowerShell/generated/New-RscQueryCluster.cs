@@ -1227,6 +1227,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
+    /// 	eosStatus = @(
+    /// 		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
     /// 	upgradeJobStatus = @(
     /// 		$someClusterJobStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
     /// 	)
@@ -2683,6 +2687,10 @@ $query.Var.upgradeFilter = @{
 	# OPTIONAL
 	installedVersion = @(
 		$someString
+	)
+	# OPTIONAL
+	eosStatus = @(
+		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
 	)
 	# OPTIONAL
 	upgradeJobStatus = @(

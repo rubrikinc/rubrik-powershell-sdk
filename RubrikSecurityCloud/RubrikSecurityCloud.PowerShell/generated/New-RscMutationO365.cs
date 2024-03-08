@@ -1397,6 +1397,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			failedItemsInstanceId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		relicRestoreConfig = @{
+    /// 			# OPTIONAL
+    /// 			unused = $someBoolean
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
@@ -3488,6 +3493,11 @@ $query.Var.input = @{
 		failedItemsRecoveryConfig = @{
 			# REQUIRED
 			failedItemsInstanceId = $someString
+		}
+		# OPTIONAL
+		relicRestoreConfig = @{
+			# OPTIONAL
+			unused = $someBoolean
 		}
 	}
 	# REQUIRED

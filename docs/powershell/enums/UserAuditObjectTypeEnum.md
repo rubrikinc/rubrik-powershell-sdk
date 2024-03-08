@@ -86,6 +86,7 @@ User audit object type.
 - LinuxFileset - Linux fileset type.
 - VmwareMount - VMware mount type.
 - NasHost - NAS host type.
+- CROSS_ACCOUNT_PAIR - Cross-account pair.
 - FederatedAccess - Federated access type.
 - User - User type.
 - SystemPreference - System preference type.

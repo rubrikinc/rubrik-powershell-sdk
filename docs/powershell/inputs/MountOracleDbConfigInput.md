@@ -34,6 +34,8 @@ Supported in v5.0+
 - targetRacHostIds: list of System.Strings
   - Supported in v9.0+
       List of RAC host simple IDs to recover the database during the Live Mount.
+- shouldSkipDropDbInUndo: System.Boolean
+  - Indicates whether to skip dropping the databasee during an undo task if the database was partially recovered.
 - lmDbName: System.String
   - Supported in v9.0+
       The new value of the db_name parameter for a LM operation. This is used to specify the new target database name of the live mounted database.

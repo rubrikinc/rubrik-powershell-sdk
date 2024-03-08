@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? Account { get; set; }
 
         //      C# -> DateTime? ExpirationDate
-        // GraphQL -> expirationDate: DateTime! (scalar)
+        // GraphQL -> expirationDate: DateTime (scalar)
         [JsonProperty("expirationDate")]
         public DateTime? ExpirationDate { get; set; }
 
@@ -125,7 +125,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> DateTime? ExpirationDate
-        // GraphQL -> expirationDate: DateTime! (scalar)
+        // GraphQL -> expirationDate: DateTime (scalar)
         if (this.ExpirationDate != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "expirationDate\n" ;
@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.Types
             this.Account = null;
         }
         //      C# -> DateTime? ExpirationDate
-        // GraphQL -> expirationDate: DateTime! (scalar)
+        // GraphQL -> expirationDate: DateTime (scalar)
         if (ec.Includes("expirationDate",true))
         {
             if(this.ExpirationDate == null) {

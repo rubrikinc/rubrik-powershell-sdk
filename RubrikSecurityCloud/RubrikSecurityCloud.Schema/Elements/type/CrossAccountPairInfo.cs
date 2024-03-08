@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("uuid")]
         public System.String? Uuid { get; set; }
 
+        //      C# -> CrossAccountOrganization? Organization
+        // GraphQL -> organization: CrossAccountOrganization! (type)
+        [JsonProperty("organization")]
+        public CrossAccountOrganization? Organization { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         DateTime? LastSyncedAt = null,
         System.String? Name = null,
         System.String? Url = null,
-        System.String? Uuid = null
+        System.String? Uuid = null,
+        CrossAccountOrganization? Organization = null
     ) 
     {
         if ( Role != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Uuid != null ) {
             this.Uuid = Uuid;
+        }
+        if ( Organization != null ) {
+            this.Organization = Organization;
         }
         return this;
     }
@@ -149,6 +158,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "uuid\n" ;
             } else {
                 s += ind + "uuid\n" ;
+            }
+        }
+        //      C# -> CrossAccountOrganization? Organization
+        // GraphQL -> organization: CrossAccountOrganization! (type)
+        if (this.Organization != null) {
+            var fspec = this.Organization.AsFieldSpec(conf.Child("organization"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "organization {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -259,6 +280,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Uuid != null && ec.Excludes("uuid",true))
         {
             this.Uuid = null;
+        }
+        //      C# -> CrossAccountOrganization? Organization
+        // GraphQL -> organization: CrossAccountOrganization! (type)
+        if (ec.Includes("organization",false))
+        {
+            if(this.Organization == null) {
+
+                this.Organization = new CrossAccountOrganization();
+                this.Organization.ApplyExploratoryFieldSpec(ec.NewChild("organization"));
+
+            } else {
+
+                this.Organization.ApplyExploratoryFieldSpec(ec.NewChild("organization"));
+
+            }
+        }
+        else if (this.Organization != null && ec.Excludes("organization",false))
+        {
+            this.Organization = null;
         }
     }
 

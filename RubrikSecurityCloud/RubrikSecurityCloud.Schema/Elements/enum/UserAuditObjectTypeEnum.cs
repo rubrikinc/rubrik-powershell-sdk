@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
+        [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
+        CROSS_ACCOUNT_PAIR,
+
         [EnumMember(Value = "CloudNativeTagRule")]
         CLOUD_NATIVE_TAG_RULE,
 

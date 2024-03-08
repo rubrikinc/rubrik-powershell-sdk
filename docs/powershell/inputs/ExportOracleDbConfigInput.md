@@ -39,7 +39,8 @@ Supported in v5.0+
       List of PDB names to be cloned in the target database.
 - shouldSkipDropDbInUndo: System.Boolean
   - Supported in v8.1+
-      Indicates whether to skip dropping the database in undo task if the database was partially recovered.
+      v8.1-v9.1: Indicates whether to skip dropping the database in undo task if the database was partially recovered.
+      v9.2: Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
 - targetRacHostIds: list of System.Strings
   - Supported in v9.0+
       List of RAC host simple IDs to recover the database during the clone.

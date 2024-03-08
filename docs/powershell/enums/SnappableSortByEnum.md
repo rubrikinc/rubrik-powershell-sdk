@@ -31,3 +31,4 @@
 - TotalSnapshots
 - ObjectType
 - LocalOnDemandSnapshots
+- OBJECT_STATE

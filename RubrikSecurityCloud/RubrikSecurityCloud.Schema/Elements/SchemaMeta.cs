@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240226-26" ;
+        public static string GraphqlSchemaVersion = "v20240304-17" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -381,6 +381,7 @@ namespace RubrikSecurityCloud.Types
             AzureBlobConfig,
             AzureCdmVersion,
             AzureCdmVersionTag,
+            AzureCloudAccountDetailsForFeatureReply,
             AzureCloudAccountFeatureDetail,
             AzureCloudAccountPermissionConfigResponse,
             AzureCloudAccountRolePermission,
@@ -513,7 +514,11 @@ namespace RubrikSecurityCloud.Types
             BulkRegisterHostReply,
             BulkUpdateFilesetTemplateReply,
             BulkUpdateHostReply,
+            BulkUpdateMssqlAvailabilityGroupReply,
             BulkUpdateMssqlDbsReply,
+            BulkUpdateMssqlInstanceReply,
+            BulkUpdateMssqlPropertiesOnHostReply,
+            BulkUpdateMssqlPropertiesOnWindowsClusterReply,
             BulkUpdateOracleDatabasesReply,
             BulkUpdateOracleHostsReply,
             BulkUpdateOracleRacsReply,
@@ -739,6 +744,7 @@ namespace RubrikSecurityCloud.Types
             CreateVsphereAdvancedTagReply,
             CreateVsphereVcenterReply,
             CreateWebhookReply,
+            CrossAccountOrganization,
             CrossAccountPairInfo,
             CrossAccountPairInfoConnection,
             CrossAccountPairInfoEdge,
@@ -1333,8 +1339,10 @@ namespace RubrikSecurityCloud.Types
             MssqlAvailabilityGroup,
             MssqlAvailabilityGroupDescendantTypeConnection,
             MssqlAvailabilityGroupDescendantTypeEdge,
+            MssqlAvailabilityGroupDetail,
             MssqlAvailabilityGroupLogicalChildTypeConnection,
             MssqlAvailabilityGroupLogicalChildTypeEdge,
+            MssqlAvailabilityGroupSummary,
             MssqlBackup,
             MssqlConfig,
             MssqlDatabase,
@@ -1351,6 +1359,7 @@ namespace RubrikSecurityCloud.Types
             MssqlInstance,
             MssqlInstanceDescendantTypeConnection,
             MssqlInstanceDescendantTypeEdge,
+            MssqlInstanceDetail,
             MssqlInstanceLogicalChildTypeConnection,
             MssqlInstanceLogicalChildTypeEdge,
             MssqlInstanceSummary,
@@ -1541,8 +1550,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1788,6 +1797,8 @@ namespace RubrikSecurityCloud.Types
             RelativeMonthlyRecurrencePattern,
             RelativeTimeRange,
             RelativeYearlyRecurrencePattern,
+            RemovedNodeDetail,
+            RemoveNodeDetailsReply,
             RemoveVlansReply,
             ReplicatedSnapshotInfo,
             ReplicationCluster,
@@ -2643,7 +2654,11 @@ namespace RubrikSecurityCloud.Types
             BulkUpdateExchangeDagInput,
             BulkUpdateFilesetTemplateInput,
             BulkUpdateHostInput,
+            BulkUpdateMssqlAvailabilityGroupInput,
             BulkUpdateMssqlDbsInput,
+            BulkUpdateMssqlInstanceInput,
+            BulkUpdateMssqlPropertiesOnHostInput,
+            BulkUpdateMssqlPropertiesOnWindowsClusterInput,
             BulkUpdateOracleDatabasesInput,
             BulkUpdateOracleHostsInput,
             BulkUpdateOracleRacsInput,
@@ -3268,6 +3283,8 @@ namespace RubrikSecurityCloud.Types
             MountOracleDbConfigInput,
             MountSnapshotJobConfigForBatchV2Input,
             MountSnapshotJobConfigV2Input,
+            MssqlAvailabilityGroupUpdateIdInput,
+            MssqlAvailabilityGroupUpdateInput,
             MssqlBackupJobConfigInput,
             MssqlBackupSelectionInput,
             MssqlBatchBackupJobConfigInput,
@@ -3283,6 +3300,10 @@ namespace RubrikSecurityCloud.Types
             MssqlDbUpdateInput,
             MssqlDownloadFromArchiveConfigInput,
             MssqlGetRestoreFilesV1Input,
+            MssqlHostUpdateIdInput,
+            MssqlHostUpdateInput,
+            MssqlInstanceUpdateIdInput,
+            MssqlInstanceUpdateInput,
             MssqlLogShippingCreateConfigInput,
             MssqlLogShippingCreateConfigV2Input,
             MssqlLogShippingReseedConfigInput,
@@ -3297,10 +3318,13 @@ namespace RubrikSecurityCloud.Types
             MssqlSlaDomainAssignInfoInput,
             MssqlSlaPatchPropertiesInput,
             MssqlSlaRelatedPropertiesInput,
+            MssqlWindowsClusterUpdateIdInput,
+            MssqlWindowsClusterUpdateInput,
             NameSubstringFilter,
             NasApiCredentialsInput,
             NascdRestorePathPairInput,
             NasConfigInput,
+            NasShareCredentialsInput,
             NasSharePropertiesInput,
             NasSystemRegisterInput,
             NasSystemUpdateInput,
@@ -3462,10 +3486,12 @@ namespace RubrikSecurityCloud.Types
             RegisterOracleHostsInfo,
             RelativeTimeRangeInput,
             RelicFilter,
+            RelicRestoreConfig,
             RelocateMountConfigInput,
             RelocateMountConfigV2Input,
             RemoveClusterNodesInput,
             RemoveDiskInput,
+            RemovedNodeDetailsInput,
             RemoveInventoryWorkloadsInput,
             RemovePrivateEndpointConnectionInput,
             RemoveProxyConfigInput,
@@ -3538,6 +3564,7 @@ namespace RubrikSecurityCloud.Types
             ScheduledReportCreate,
             ScheduledReportFilterInput,
             SddlRequestFiltersInput,
+            SddUserCredentialsInput,
             SearchAzureAdSnapshotInput,
             SearchFilter,
             SearchKeywordFilter,
@@ -4083,6 +4110,7 @@ namespace RubrikSecurityCloud.Types
             azureAdDirectories,
             azureAdDirectory,
             azureAdObjectsByType,
+            azureCloudAccountDetailsForFeature,
             azureCloudAccountPermissionConfig,
             azureCloudAccountSubscriptionWithFeatures,
             azureCloudAccountTenant,
@@ -4520,6 +4548,7 @@ namespace RubrikSecurityCloud.Types
             rcsArchivalLocationsConsumptionStats,
             rcvAccountEntitlement,
             rdsInstanceDetailsFromAws,
+            removedNodeDetails,
             replicationIncomingStats,
             replicationNetworkThrottleBypass,
             replicationNetworkThrottleBypassById,
@@ -4763,7 +4792,11 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateExchangeDag,
             bulkUpdateFilesetTemplate,
             bulkUpdateHost,
+            bulkUpdateMssqlAvailabilityGroup,
             bulkUpdateMssqlDbs,
+            bulkUpdateMssqlInstance,
+            bulkUpdateMssqlPropertiesOnHost,
+            bulkUpdateMssqlPropertiesOnWindowsCluster,
             bulkUpdateOracleDatabases,
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
@@ -5812,6 +5845,7 @@ namespace RubrikSecurityCloud.Types
             O365ServiceAccountStatus,
             O365ServiceStatusIndication,
             ObjectPolicyStatus,
+            ObjectState,
             ObjectTypeAccessSummarySortBy,
             ObjectTypeEnum,
             OnedriveSearchKeywordType,
@@ -7975,6 +8009,7 @@ namespace RubrikSecurityCloud.Types
             azureAdDirectories,
             azureAdDirectory,
             azureAdObjectsByType,
+            azureCloudAccountDetailsForFeature,
             azureCloudAccountPermissionConfig,
             azureCloudAccountSubscriptionWithFeatures,
             azureCloudAccountTenant,
@@ -8069,7 +8104,11 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateExchangeDag,
             bulkUpdateFilesetTemplate,
             bulkUpdateHost,
+            bulkUpdateMssqlAvailabilityGroup,
             bulkUpdateMssqlDbs,
+            bulkUpdateMssqlInstance,
+            bulkUpdateMssqlPropertiesOnHost,
+            bulkUpdateMssqlPropertiesOnWindowsCluster,
             bulkUpdateOracleDatabases,
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
@@ -8803,6 +8842,7 @@ namespace RubrikSecurityCloud.Types
             removePrivateEndpointConnection,
             removeProxyConfig,
             removeVlans,
+            removedNodeDetails,
             replicationIncomingStats,
             replicationNetworkThrottleBypass,
             replicationNetworkThrottleBypassById,
@@ -10959,6 +10999,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.azureCloudAccountDetailsForFeature,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "CloudAccountDetailsForFeature",
+                        gqlRootFieldName: "azureCloudAccountDetailsForFeature"
+                    )
+                },
+                {
                     GqlRootFieldName.azureCloudAccountPermissionConfig,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
@@ -11711,11 +11759,43 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.bulkUpdateMssqlAvailabilityGroup,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BulkUpdateAvailabilityGroup",
+                        gqlRootFieldName: "bulkUpdateMssqlAvailabilityGroup"
+                    )
+                },
+                {
                     GqlRootFieldName.bulkUpdateMssqlDbs,
                     new RscOp(
                         cmdletName: "New-RscMutationMssql",
                         cmdletSwitchName: "BulkUpdateDbs",
                         gqlRootFieldName: "bulkUpdateMssqlDbs"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateMssqlInstance,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BulkUpdateInstance",
+                        gqlRootFieldName: "bulkUpdateMssqlInstance"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateMssqlPropertiesOnHost,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BulkUpdatePropertiesOnHost",
+                        gqlRootFieldName: "bulkUpdateMssqlPropertiesOnHost"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateMssqlPropertiesOnWindowsCluster,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BulkUpdatePropertiesOnWindowsCluster",
+                        gqlRootFieldName: "bulkUpdateMssqlPropertiesOnWindowsCluster"
                     )
                 },
                 {
@@ -17583,6 +17663,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.removedNodeDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "RemovedNodeDetails",
+                        gqlRootFieldName: "removedNodeDetails"
+                    )
+                },
+                {
                     GqlRootFieldName.replicationIncomingStats,
                     new RscOp(
                         cmdletName: "New-RscQueryReplication",
@@ -21710,6 +21798,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.azureAdObjectsByType
                 },
                 {
+                    "New-RscQueryAzure -Op CloudAccountDetailsForFeature",
+                    GqlRootFieldName.azureCloudAccountDetailsForFeature
+                },
+                {
                     "New-RscQueryAzure -Op CloudAccountPermissionConfig",
                     GqlRootFieldName.azureCloudAccountPermissionConfig
                 },
@@ -22086,8 +22178,24 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.bulkUpdateHost
                 },
                 {
+                    "New-RscMutationMssql -Op BulkUpdateAvailabilityGroup",
+                    GqlRootFieldName.bulkUpdateMssqlAvailabilityGroup
+                },
+                {
                     "New-RscMutationMssql -Op BulkUpdateDbs",
                     GqlRootFieldName.bulkUpdateMssqlDbs
+                },
+                {
+                    "New-RscMutationMssql -Op BulkUpdateInstance",
+                    GqlRootFieldName.bulkUpdateMssqlInstance
+                },
+                {
+                    "New-RscMutationMssql -Op BulkUpdatePropertiesOnHost",
+                    GqlRootFieldName.bulkUpdateMssqlPropertiesOnHost
+                },
+                {
+                    "New-RscMutationMssql -Op BulkUpdatePropertiesOnWindowsCluster",
+                    GqlRootFieldName.bulkUpdateMssqlPropertiesOnWindowsCluster
                 },
                 {
                     "New-RscMutationOracle -Op BulkUpdateDatabases",
@@ -25022,6 +25130,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.removeVlans
                 },
                 {
+                    "New-RscQueryMisc -Op RemovedNodeDetails",
+                    GqlRootFieldName.removedNodeDetails
+                },
+                {
                     "New-RscQueryReplication -Op IncomingStats",
                     GqlRootFieldName.replicationIncomingStats
                 },
@@ -27110,6 +27222,10 @@ namespace RubrikSecurityCloud.Types
                         "searchAzureAdSnapshot",
                     }
                 },
+                {   "AzureCloudAccountDetailsForFeatureReply", new List<string> {
+                        "azureCloudAccountDetailsForFeature",
+                    }
+                },
                 {   "AzureCloudAccountPermissionConfigResponse", new List<string> {
                         "azureCloudAccountPermissionConfig",
                     }
@@ -27418,8 +27534,24 @@ namespace RubrikSecurityCloud.Types
                         "bulkUpdateHost",
                     }
                 },
+                {   "BulkUpdateMssqlAvailabilityGroupReply", new List<string> {
+                        "bulkUpdateMssqlAvailabilityGroup",
+                    }
+                },
                 {   "BulkUpdateMssqlDbsReply", new List<string> {
                         "bulkUpdateMssqlDbs",
+                    }
+                },
+                {   "BulkUpdateMssqlInstanceReply", new List<string> {
+                        "bulkUpdateMssqlInstance",
+                    }
+                },
+                {   "BulkUpdateMssqlPropertiesOnHostReply", new List<string> {
+                        "bulkUpdateMssqlPropertiesOnHost",
+                    }
+                },
+                {   "BulkUpdateMssqlPropertiesOnWindowsClusterReply", new List<string> {
+                        "bulkUpdateMssqlPropertiesOnWindowsCluster",
                     }
                 },
                 {   "BulkUpdateOracleDatabasesReply", new List<string> {
@@ -29259,6 +29391,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "RegisterNasSystemReply", new List<string> {
                         "registerNasSystem",
+                    }
+                },
+                {   "RemoveNodeDetailsReply", new List<string> {
+                        "removedNodeDetails",
                     }
                 },
                 {   "RemoveVlansReply", new List<string> {
@@ -31465,8 +31601,24 @@ namespace RubrikSecurityCloud.Types
                         "bulkUpdateHost",
                     }
                 },
+                {   "BulkUpdateMssqlAvailabilityGroupInput", new List<string> {
+                        "bulkUpdateMssqlAvailabilityGroup",
+                    }
+                },
                 {   "BulkUpdateMssqlDbsInput", new List<string> {
                         "bulkUpdateMssqlDbs",
+                    }
+                },
+                {   "BulkUpdateMssqlInstanceInput", new List<string> {
+                        "bulkUpdateMssqlInstance",
+                    }
+                },
+                {   "BulkUpdateMssqlPropertiesOnHostInput", new List<string> {
+                        "bulkUpdateMssqlPropertiesOnHost",
+                    }
+                },
+                {   "BulkUpdateMssqlPropertiesOnWindowsClusterInput", new List<string> {
+                        "bulkUpdateMssqlPropertiesOnWindowsCluster",
                     }
                 },
                 {   "BulkUpdateOracleDatabasesInput", new List<string> {
@@ -33822,6 +33974,10 @@ namespace RubrikSecurityCloud.Types
                         "removeVlans",
                     }
                 },
+                {   "RemovedNodeDetailsInput", new List<string> {
+                        "removedNodeDetails",
+                    }
+                },
                 {   "ReplicationBandwidthIncomingInput", new List<string> {
                         "replicationIncomingStats",
                     }
@@ -34914,6 +35070,7 @@ namespace RubrikSecurityCloud.Types
                         "awsNativeRdsPointInTimeRestoreWindow",
                         "awsNativeS3Bucket",
                         "azureAdDirectory",
+                        "azureCloudAccountDetailsForFeature",
                         "azureCloudAccountSubscriptionWithFeatures",
                         "azureCloudAccountTenant",
                         "azureCloudAccountTenantWithExoConfigs",
@@ -36526,6 +36683,7 @@ namespace RubrikSecurityCloud.Types
                 { "azureAdDirectories", "AzureAdDirectoryConnection"},
                 { "azureAdObjectsByType", "AzureAdObjectConnection"},
                 { "searchAzureAdSnapshot", "AzureAdObjectConnection"},
+                { "azureCloudAccountDetailsForFeature", "AzureCloudAccountDetailsForFeatureReply"},
                 { "azureCloudAccountPermissionConfig", "AzureCloudAccountPermissionConfigResponse"},
                 { "azureCloudAccountSubscriptionWithFeatures", "AzureCloudAccountSubscriptionWithFeatures"},
                 { "azureCloudAccountTenant", "AzureCloudAccountTenant"},
@@ -36663,7 +36821,11 @@ namespace RubrikSecurityCloud.Types
                 { "bulkRegisterHost", "BulkRegisterHostReply"},
                 { "bulkUpdateFilesetTemplate", "BulkUpdateFilesetTemplateReply"},
                 { "bulkUpdateHost", "BulkUpdateHostReply"},
+                { "bulkUpdateMssqlAvailabilityGroup", "BulkUpdateMssqlAvailabilityGroupReply"},
                 { "bulkUpdateMssqlDbs", "BulkUpdateMssqlDbsReply"},
+                { "bulkUpdateMssqlInstance", "BulkUpdateMssqlInstanceReply"},
+                { "bulkUpdateMssqlPropertiesOnHost", "BulkUpdateMssqlPropertiesOnHostReply"},
+                { "bulkUpdateMssqlPropertiesOnWindowsCluster", "BulkUpdateMssqlPropertiesOnWindowsClusterReply"},
                 { "bulkUpdateOracleDatabases", "BulkUpdateOracleDatabasesReply"},
                 { "bulkUpdateOracleHosts", "BulkUpdateOracleHostsReply"},
                 { "bulkUpdateOracleRacs", "BulkUpdateOracleRacsReply"},
@@ -37201,6 +37363,7 @@ namespace RubrikSecurityCloud.Types
                 { "registerAwsFeatureArtifacts", "RegisterAwsFeatureArtifactsReply"},
                 { "registerCloudCluster", "RegisterCloudClusterReply"},
                 { "registerNasSystem", "RegisterNasSystemReply"},
+                { "removedNodeDetails", "RemoveNodeDetailsReply"},
                 { "removeVlans", "RemoveVlansReply"},
                 { "replicationNetworkThrottleBypassById", "ReplicationNetworkThrottleBypassReply"},
                 { "replicationPairs", "ReplicationPairConnection"},
@@ -38229,6 +38392,7 @@ namespace RubrikSecurityCloud.Types
                     "BackupAdDirectory",
                     "CdmVersions",
                     "CheckPersistentStorageSubscriptionCanUnmap",
+                    "CloudAccountDetailsForFeature",
                     "CloudAccountMissingPermissions",
                     "CloudAccountPermissionConfig",
                     "CloudAccountSubnetsByRegion",
@@ -38995,6 +39159,7 @@ namespace RubrikSecurityCloud.Types
                     "RemovePrivateEndpointList",
                     "RemoveProxyConfig",
                     "RemoveVlans",
+                    "RemovedNodeDetails",
                     "ReseedLogShippingSecondary",
                     "ResetAllOrgUsersPasswords",
                     "ResetUsersPasswordsWithUserIds",
@@ -39156,7 +39321,11 @@ namespace RubrikSecurityCloud.Types
                     "AvailabilityGroup",
                     "BrowseDatabaseSnapshot",
                     "BulkCreateOnDemandBackup",
+                    "BulkUpdateAvailabilityGroup",
                     "BulkUpdateDbs",
+                    "BulkUpdateInstance",
+                    "BulkUpdatePropertiesOnHost",
+                    "BulkUpdatePropertiesOnWindowsCluster",
                     "CdmLogShippingTarget",
                     "CdmLogShippingTargets",
                     "CompatibleInstances",

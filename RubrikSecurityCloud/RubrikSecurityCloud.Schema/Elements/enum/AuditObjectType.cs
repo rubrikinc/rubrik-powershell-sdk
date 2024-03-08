@@ -102,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
 
+        [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
+        CROSS_ACCOUNT_PAIR,
+
         [EnumMember(Value = "DATA_CENTER_CLOUD_ACCOUNT")]
         DATA_CENTER_CLOUD_ACCOUNT,
 
@@ -278,6 +281,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
+
+        [EnumMember(Value = "SALESFORCE_METADATA")]
+        SALESFORCE_METADATA,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT")]
+        SALESFORCE_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_ORGANIZATION")]
+        SALESFORCE_ORGANIZATION,
 
         [EnumMember(Value = "SAP_HANA_DB")]
         SAP_HANA_DB,

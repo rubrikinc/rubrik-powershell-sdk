@@ -903,6 +903,11 @@ Query datastore threshold configurations.
 
 - There is a single argument of type list of QueryDatastoreFreespaceThresholdInputs.
 - Returns QueryDatastoreFreespaceThresholdsReply.
+### removednodedetails
+Get the information for removed nodes.
+
+- There is a single argument of type RemovedNodeDetailsInput.
+- Returns RemoveNodeDetailsReply.
 ### roletemplates
 The list of available role templates.
 

@@ -85,6 +85,7 @@ The list of object types for activities.
 - LinuxFileset - Specifies that the activity object type is Linux Fileset.
 - O365Site - Specifies that the activity object type is O365 Site.
 - NasHost - Specifies that the activity object type is NAS Host.
+- CROSS_ACCOUNT_PAIR - Cross-account pair.
 - User - Specifies that the activity object type is User.
 - RubrikEbsVolume - Specifies that the activity object type is Rubrik EBS Volume.
 - VcdVapp - Specifies that the activity object type is VCD VApp.

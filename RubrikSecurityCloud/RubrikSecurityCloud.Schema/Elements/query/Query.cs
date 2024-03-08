@@ -6681,6 +6681,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AzureCloudAccountDetailsForFeatureReply? AzureCloudAccountDetailsForFeature
+        // GraphQL -> azureCloudAccountDetailsForFeature: AzureCloudAccountDetailsForFeatureReply! (type)
+        public static string AzureCloudAccountDetailsForFeature_TypedFieldSpec(AzureCloudAccountDetailsForFeatureReply fieldSpec)
+        {
+            string args = "\n(\nfeatureId: $featureId\n)";
+            return "azureCloudAccountDetailsForFeature" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AzureCloudAccountDetailsForFeature_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AzureCloudAccountDetailsForFeature((AzureCloudAccountDetailsForFeatureReply)fieldSpecObj);
+        }
+        public static string AzureCloudAccountDetailsForFeature(AzureCloudAccountDetailsForFeatureReply fieldSpec)
+        {
+            return AzureCloudAccountDetailsForFeature_TypedFieldSpec(fieldSpec);
+        }
+        public static string AzureCloudAccountDetailsForFeature(object fieldSpecObj)
+        {
+            return AzureCloudAccountDetailsForFeature_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AzureCloudAccountDetailsForFeatureFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AzureCloudAccountDetailsForFeatureReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AzureCloudAccountPermissionConfigResponse? AzureCloudAccountPermissionConfig
         // GraphQL -> azureCloudAccountPermissionConfig: AzureCloudAccountPermissionConfigResponse! (type)
         public static string AzureCloudAccountPermissionConfig_TypedFieldSpec(AzureCloudAccountPermissionConfigResponse fieldSpec)
@@ -19387,6 +19418,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RdsInstanceDetailsFromAws() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RemoveNodeDetailsReply? RemovedNodeDetails
+        // GraphQL -> removedNodeDetails: RemoveNodeDetailsReply! (type)
+        public static string RemovedNodeDetails_TypedFieldSpec(RemoveNodeDetailsReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "removedNodeDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string RemovedNodeDetails_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RemovedNodeDetails((RemoveNodeDetailsReply)fieldSpecObj);
+        }
+        public static string RemovedNodeDetails(RemoveNodeDetailsReply fieldSpec)
+        {
+            return RemovedNodeDetails_TypedFieldSpec(fieldSpec);
+        }
+        public static string RemovedNodeDetails(object fieldSpecObj)
+        {
+            return RemovedNodeDetails_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RemovedNodeDetailsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new RemoveNodeDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

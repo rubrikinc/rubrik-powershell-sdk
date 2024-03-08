@@ -105,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COMPUTE_INSTANCE")]
         COMPUTE_INSTANCE,
 
+        [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
+        CROSS_ACCOUNT_PAIR,
+
         [EnumMember(Value = "DATA_LOCATION")]
         DATA_LOCATION,
 
@@ -314,6 +317,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RUBRIK_SAAS_EC2_INSTANCE")]
         RUBRIK_SAAS_EC2_INSTANCE,
+
+        [EnumMember(Value = "SALESFORCE_METADATA")]
+        SALESFORCE_METADATA,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT")]
+        SALESFORCE_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_ORGANIZATION")]
+        SALESFORCE_ORGANIZATION,
 
         [EnumMember(Value = "SAML_SSO")]
         SAML_SSO,

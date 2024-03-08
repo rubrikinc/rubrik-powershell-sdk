@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? FailoverGroupId
+        // GraphQL -> failoverGroupId: String (scalar)
+        [JsonProperty("failoverGroupId")]
+        public System.String? FailoverGroupId { get; set; }
+
 
         #endregion
 

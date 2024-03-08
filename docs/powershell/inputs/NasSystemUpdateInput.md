@@ -17,5 +17,7 @@ Supported in v7.0+
       The updated API credentials of the NAS system.
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
   - Supported in v8.1+
+- smbCredentials: NasShareCredentialsInput
+  - Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
 - nutanixFileServerParameters: NutanixFileServerParametersInput
   - Supported in v8.1+

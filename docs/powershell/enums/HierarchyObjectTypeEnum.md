@@ -38,6 +38,7 @@ Type of hierarchy object.
 - PhysicalHost
 - ATLASSIAN_SITE - Atlassian site.
 - MONGODB_SOURCE - MongoDB Source Cluster.
+- POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - VSphereVCenter
 - HypervServer
 - O365SharePointList

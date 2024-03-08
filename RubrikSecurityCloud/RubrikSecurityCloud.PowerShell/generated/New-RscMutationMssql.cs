@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+    /// AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// </summary>
     /// <description>
     /// New-RscMutationMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 22 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+    /// one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -347,6 +347,89 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the BulkUpdateAvailabilityGroup operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: BulkUpdateAvailabilityGroup
+    /// 
+    /// $query = New-RscMutationMssql -BulkUpdateAvailabilityGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	availabilityGroupsUpdateProperties = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			availabilityGroupId = $someString
+    /// 			# REQUIRED
+    /// 			updateProperties = @{
+    /// 				# OPTIONAL
+    /// 				mssqlNonSlaProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaPatchProperties = @{
+    /// 					# OPTIONAL
+    /// 					configuredSlaDomainId = $someString
+    /// 					# OPTIONAL
+    /// 					useConfiguredDefaultLogRetention = $someBoolean
+    /// 					# OPTIONAL
+    /// 					mssqlSlaRelatedProperties = @{
+    /// 						# OPTIONAL
+    /// 						copyOnly = $someBoolean
+    /// 						# OPTIONAL
+    /// 						logBackupFrequencyInSeconds = $someInt
+    /// 						# OPTIONAL
+    /// 						logRetentionHours = $someInt
+    /// 						# OPTIONAL
+    /// 						hasLogConfigFromSla = $someBoolean
+    /// 						# OPTIONAL
+    /// 						hostLogRetention = $someInt
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				configuredSlaDomainId = $someString
+    /// 			}
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkUpdateMssqlAvailabilityGroupReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the BulkUpdateDbs operation
     /// of the 'Microsoft SQL Server' API domain.
     /// <code>
@@ -448,6 +531,193 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BulkUpdateMssqlDbsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkUpdateInstance operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: BulkUpdateInstance
+    /// 
+    /// $query = New-RscMutationMssql -BulkUpdateInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	instancesUpdateProperties = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			instanceId = $someString
+    /// 			# REQUIRED
+    /// 			updateProperties = @{
+    /// 				# OPTIONAL
+    /// 				mssqlNonSlaProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaPatchProperties = @{
+    /// 					# OPTIONAL
+    /// 					configuredSlaDomainId = $someString
+    /// 					# OPTIONAL
+    /// 					useConfiguredDefaultLogRetention = $someBoolean
+    /// 					# OPTIONAL
+    /// 					mssqlSlaRelatedProperties = @{
+    /// 						# OPTIONAL
+    /// 						copyOnly = $someBoolean
+    /// 						# OPTIONAL
+    /// 						logBackupFrequencyInSeconds = $someInt
+    /// 						# OPTIONAL
+    /// 						logRetentionHours = $someInt
+    /// 						# OPTIONAL
+    /// 						hasLogConfigFromSla = $someBoolean
+    /// 						# OPTIONAL
+    /// 						hostLogRetention = $someInt
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				configuredSlaDomainId = $someString
+    /// 			}
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkUpdateMssqlInstanceReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkUpdatePropertiesOnHost operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: BulkUpdatePropertiesOnHost
+    /// 
+    /// $query = New-RscMutationMssql -BulkUpdatePropertiesOnHost
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	hostsUpdateProperties = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			hostId = $someString
+    /// 			# REQUIRED
+    /// 			updateProperties = @{
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkUpdateMssqlPropertiesOnHostReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BulkUpdatePropertiesOnWindowsCluster operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: BulkUpdatePropertiesOnWindowsCluster
+    /// 
+    /// $query = New-RscMutationMssql -BulkUpdatePropertiesOnWindowsCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	windowsClustersUpdateProperties = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			updateProperties = @{
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
+    /// 				}
+    /// 			}
+    /// 			# REQUIRED
+    /// 			windowsClusterId = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkUpdateMssqlPropertiesOnWindowsClusterReply
     /// 
     /// 
     /// 
@@ -1071,7 +1341,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AssignSlaDomainPropertiesAsync",
                 "BrowseDatabaseSnapshot",
                 "BulkCreateOnDemandBackup",
+                "BulkUpdateAvailabilityGroup",
                 "BulkUpdateDbs",
+                "BulkUpdateInstance",
+                "BulkUpdatePropertiesOnHost",
+                "BulkUpdatePropertiesOnWindowsCluster",
                 "CreateLiveMount",
                 "CreateLogShippingConfiguration",
                 "CreateOnDemandBackup",
@@ -1112,8 +1386,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "BulkCreateOnDemandBackup":
                         this.ProcessRecord_BulkCreateOnDemandBackup();
                         break;
+                    case "BulkUpdateAvailabilityGroup":
+                        this.ProcessRecord_BulkUpdateAvailabilityGroup();
+                        break;
                     case "BulkUpdateDbs":
                         this.ProcessRecord_BulkUpdateDbs();
+                        break;
+                    case "BulkUpdateInstance":
+                        this.ProcessRecord_BulkUpdateInstance();
+                        break;
+                    case "BulkUpdatePropertiesOnHost":
+                        this.ProcessRecord_BulkUpdatePropertiesOnHost();
+                        break;
+                    case "BulkUpdatePropertiesOnWindowsCluster":
+                        this.ProcessRecord_BulkUpdatePropertiesOnWindowsCluster();
                         break;
                     case "CreateLiveMount":
                         this.ProcessRecord_CreateLiveMount();
@@ -1201,12 +1487,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // bulkUpdateMssqlAvailabilityGroup.
+        internal void ProcessRecord_BulkUpdateAvailabilityGroup()
+        {
+            this._logger.name += " -BulkUpdateAvailabilityGroup";
+            // Create new graphql operation bulkUpdateMssqlAvailabilityGroup
+            InitMutationBulkUpdateMssqlAvailabilityGroup();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // bulkUpdateMssqlDbs.
         internal void ProcessRecord_BulkUpdateDbs()
         {
             this._logger.name += " -BulkUpdateDbs";
             // Create new graphql operation bulkUpdateMssqlDbs
             InitMutationBulkUpdateMssqlDbs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkUpdateMssqlInstance.
+        internal void ProcessRecord_BulkUpdateInstance()
+        {
+            this._logger.name += " -BulkUpdateInstance";
+            // Create new graphql operation bulkUpdateMssqlInstance
+            InitMutationBulkUpdateMssqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkUpdateMssqlPropertiesOnHost.
+        internal void ProcessRecord_BulkUpdatePropertiesOnHost()
+        {
+            this._logger.name += " -BulkUpdatePropertiesOnHost";
+            // Create new graphql operation bulkUpdateMssqlPropertiesOnHost
+            InitMutationBulkUpdateMssqlPropertiesOnHost();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkUpdateMssqlPropertiesOnWindowsCluster.
+        internal void ProcessRecord_BulkUpdatePropertiesOnWindowsCluster()
+        {
+            this._logger.name += " -BulkUpdatePropertiesOnWindowsCluster";
+            // Create new graphql operation bulkUpdateMssqlPropertiesOnWindowsCluster
+            InitMutationBulkUpdateMssqlPropertiesOnWindowsCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1566,6 +1888,81 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // bulkUpdateMssqlAvailabilityGroup(input: BulkUpdateMssqlAvailabilityGroupInput!): BulkUpdateMssqlAvailabilityGroupReply!
+        internal void InitMutationBulkUpdateMssqlAvailabilityGroup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateMssqlAvailabilityGroupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateMssqlAvailabilityGroup",
+                "($input: BulkUpdateMssqlAvailabilityGroupInput!)",
+                "BulkUpdateMssqlAvailabilityGroupReply",
+                Mutation.BulkUpdateMssqlAvailabilityGroup_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlAvailabilityGroupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	availabilityGroupsUpdateProperties = @(
+		@{
+			# REQUIRED
+			availabilityGroupId = $someString
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				mssqlNonSlaProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaPatchProperties = @{
+					# OPTIONAL
+					configuredSlaDomainId = $someString
+					# OPTIONAL
+					useConfiguredDefaultLogRetention = $someBoolean
+					# OPTIONAL
+					mssqlSlaRelatedProperties = @{
+						# OPTIONAL
+						copyOnly = $someBoolean
+						# OPTIONAL
+						logBackupFrequencyInSeconds = $someInt
+						# OPTIONAL
+						logRetentionHours = $someInt
+						# OPTIONAL
+						hasLogConfigFromSla = $someBoolean
+						# OPTIONAL
+						hostLogRetention = $someInt
+					}
+				}
+				# OPTIONAL
+				configuredSlaDomainId = $someString
+			}
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // bulkUpdateMssqlDbs(input: BulkUpdateMssqlDbsInput!): BulkUpdateMssqlDbsReply!
         internal void InitMutationBulkUpdateMssqlDbs()
         {
@@ -1660,6 +2057,169 @@ $query.Var.input = @{
 					hostLogRetention = $someInt
 				}
 			}
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkUpdateMssqlInstance(input: BulkUpdateMssqlInstanceInput!): BulkUpdateMssqlInstanceReply!
+        internal void InitMutationBulkUpdateMssqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateMssqlInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateMssqlInstance",
+                "($input: BulkUpdateMssqlInstanceInput!)",
+                "BulkUpdateMssqlInstanceReply",
+                Mutation.BulkUpdateMssqlInstance_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	instancesUpdateProperties = @(
+		@{
+			# REQUIRED
+			instanceId = $someString
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				mssqlNonSlaProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaPatchProperties = @{
+					# OPTIONAL
+					configuredSlaDomainId = $someString
+					# OPTIONAL
+					useConfiguredDefaultLogRetention = $someBoolean
+					# OPTIONAL
+					mssqlSlaRelatedProperties = @{
+						# OPTIONAL
+						copyOnly = $someBoolean
+						# OPTIONAL
+						logBackupFrequencyInSeconds = $someInt
+						# OPTIONAL
+						logRetentionHours = $someInt
+						# OPTIONAL
+						hasLogConfigFromSla = $someBoolean
+						# OPTIONAL
+						hostLogRetention = $someInt
+					}
+				}
+				# OPTIONAL
+				configuredSlaDomainId = $someString
+			}
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkUpdateMssqlPropertiesOnHost(input: BulkUpdateMssqlPropertiesOnHostInput!): BulkUpdateMssqlPropertiesOnHostReply!
+        internal void InitMutationBulkUpdateMssqlPropertiesOnHost()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateMssqlPropertiesOnHostInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateMssqlPropertiesOnHost",
+                "($input: BulkUpdateMssqlPropertiesOnHostInput!)",
+                "BulkUpdateMssqlPropertiesOnHostReply",
+                Mutation.BulkUpdateMssqlPropertiesOnHost_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlPropertiesOnHostFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	hostsUpdateProperties = @(
+		@{
+			# REQUIRED
+			hostId = $someString
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
+				}
+			}
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkUpdateMssqlPropertiesOnWindowsCluster(input: BulkUpdateMssqlPropertiesOnWindowsClusterInput!): BulkUpdateMssqlPropertiesOnWindowsClusterReply!
+        internal void InitMutationBulkUpdateMssqlPropertiesOnWindowsCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateMssqlPropertiesOnWindowsClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateMssqlPropertiesOnWindowsCluster",
+                "($input: BulkUpdateMssqlPropertiesOnWindowsClusterInput!)",
+                "BulkUpdateMssqlPropertiesOnWindowsClusterReply",
+                Mutation.BulkUpdateMssqlPropertiesOnWindowsCluster_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlPropertiesOnWindowsClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	windowsClustersUpdateProperties = @(
+		@{
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
+				}
+			}
+			# REQUIRED
+			windowsClusterId = $someString
 		}
 	)
 }"

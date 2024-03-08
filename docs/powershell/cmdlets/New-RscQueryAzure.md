@@ -43,6 +43,11 @@ Checks if we can unmap the archival location from the subscription.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - unmappingValidationType - UnmappingValidationType: Unmapping validation type.
 - Returns CheckAzurePersistentStorageSubscriptionCanUnmapReply.
+### cloudaccountdetailsforfeature
+Retrieves the cloud account details from azure customer feature ID.
+
+- There is a single argument of type System.String.
+- Returns AzureCloudAccountDetailsForFeatureReply.
 ### cloudaccountmissingpermissions
 Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
 

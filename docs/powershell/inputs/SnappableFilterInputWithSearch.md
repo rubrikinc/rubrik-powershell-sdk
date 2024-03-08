@@ -20,3 +20,5 @@ Filter workload data, including search capability.
   - The SLA Domain time range applied to the workload.
 - orgId: list of System.Strings
   - The organization ID of the workload.
+- objectState: list of ObjectStates
+  - The state of the workload.

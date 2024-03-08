@@ -89,3 +89,4 @@
 - LocalOnDemandSnapshots
 - WORKLOAD_NAME - Name of the object.
 - BYTES_MODIFIED_COUNT - Count of modified bytes.
+- OBJECT_STATE

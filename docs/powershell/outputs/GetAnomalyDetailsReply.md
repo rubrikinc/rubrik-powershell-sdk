@@ -57,6 +57,8 @@ Anomaly analysis report from lambda service.
   - The FID of the previous snapshot.
 - resolutionStatus: ResolutionStatus
   - Specifies the resolution status of the anomaly.
+- potentialSnoozedDirectories: list of System.Strings
+  - The list of directories that can be snoozed from the anomaly.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly.
 - objectType: ObjectTypeEnum

@@ -229,6 +229,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isOracleHost = $someBoolean
     /// 			# OPTIONAL
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# REQUIRED
     /// 			hostname = $someString
@@ -332,6 +339,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# REQUIRED
@@ -446,6 +460,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isUpdateCertAndAgentIdEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				isRefreshPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				mssqlSddUserCredentials = @{
+    /// 					# REQUIRED
+    /// 					password = $someString
+    /// 					# REQUIRED
+    /// 					username = $someString
+    /// 				}
     /// 				# OPTIONAL
     /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
     /// 				# OPTIONAL
@@ -808,6 +829,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			isOracleHost = $someBoolean
 			# OPTIONAL
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
+			# OPTIONAL
 			orgNetworkId = $someString
 			# REQUIRED
 			hostname = $someString
@@ -903,6 +931,13 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			isOracleHost = $someBoolean
+			# OPTIONAL
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
 			# OPTIONAL
 			orgNetworkId = $someString
 			# REQUIRED
@@ -1009,6 +1044,13 @@ $query.Var.input = @{
 				isUpdateCertAndAgentIdEnabled = $someBoolean
 				# OPTIONAL
 				isRefreshPaused = $someBoolean
+				# OPTIONAL
+				mssqlSddUserCredentials = @{
+					# REQUIRED
+					password = $someString
+					# REQUIRED
+					username = $someString
+				}
 				# OPTIONAL
 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
 				# OPTIONAL

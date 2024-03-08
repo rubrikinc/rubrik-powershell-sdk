@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME")]
         NAME,
 
+        [EnumMember(Value = "ORG_NAME")]
+        ORG_NAME,
+
         [EnumMember(Value = "SORT_BY_FIELD_UNSPECIFIED")]
         SORT_BY_FIELD_UNSPECIFIED
 
