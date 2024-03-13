@@ -1,19 +1,11 @@
 # Changelog
 
-x
-
 ## Version 0.26
-
-New Features:
-
-- MsSql cmdlets
-  - Corrected the help of Start-RscManagedVolumeSnapshot
-  - Corrected the help of Stop-RscManagedVolumeSnapshot
-  - Corrected the help of New-RscMssqlSnapshot
 
 Fixes:
 
-Breaking Changes:
+- Limited the number of valid fields displayed in errors from
+  `AddField` to 10 to prevent the terminal from being flooded.
 
 ## Version 0.25
 
@@ -377,3 +369,4 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+

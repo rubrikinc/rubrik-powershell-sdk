@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("complianceStatus")]
         public ComplianceStatusEnum? ComplianceStatus { get; set; }
 
+        //      C# -> ObjectState? ObjectState
+        // GraphQL -> objectState: ObjectState! (enum)
+        [JsonProperty("objectState")]
+        public ObjectState? ObjectState { get; set; }
+
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -263,6 +268,7 @@ namespace RubrikSecurityCloud.Types
     public Snappable Set(
         ComplianceStatusEnum? ArchivalComplianceStatus = null,
         ComplianceStatusEnum? ComplianceStatus = null,
+        ObjectState? ObjectState = null,
         ObjectTypeEnum? ObjectType = null,
         ProtectionStatusEnum? ProtectionStatus = null,
         ComplianceStatusEnum? ReplicationComplianceStatus = null,
@@ -314,6 +320,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ComplianceStatus != null ) {
             this.ComplianceStatus = ComplianceStatus;
+        }
+        if ( ObjectState != null ) {
+            this.ObjectState = ObjectState;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -474,6 +483,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "complianceStatus\n" ;
             } else {
                 s += ind + "complianceStatus\n" ;
+            }
+        }
+        //      C# -> ObjectState? ObjectState
+        // GraphQL -> objectState: ObjectState! (enum)
+        if (this.ObjectState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectState\n" ;
+            } else {
+                s += ind + "objectState\n" ;
             }
         }
         //      C# -> ObjectTypeEnum? ObjectType
@@ -922,6 +940,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ComplianceStatus != null && ec.Excludes("complianceStatus",true))
         {
             this.ComplianceStatus = null;
+        }
+        //      C# -> ObjectState? ObjectState
+        // GraphQL -> objectState: ObjectState! (enum)
+        if (ec.Includes("objectState",true))
+        {
+            if(this.ObjectState == null) {
+
+                this.ObjectState = new ObjectState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectState != null && ec.Excludes("objectState",true))
+        {
+            this.ObjectState = null;
         }
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)

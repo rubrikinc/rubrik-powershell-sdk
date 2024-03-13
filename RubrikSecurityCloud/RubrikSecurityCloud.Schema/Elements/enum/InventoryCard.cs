@@ -111,6 +111,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLE_DBS_CDM")]
         ORACLE_DBS_CDM,
 
+        [EnumMember(Value = "POSTGRESQL")]
+        POSTGRESQL,
+
         [EnumMember(Value = "SAP_HANA")]
         SAP_HANA,
 

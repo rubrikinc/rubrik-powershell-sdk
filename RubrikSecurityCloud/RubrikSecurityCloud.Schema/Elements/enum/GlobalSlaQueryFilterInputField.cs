@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SHOW_ALL_RUBRIK_AND_APPLIANCE_SLAS")]
         SHOW_ALL_RUBRIK_AND_APPLIANCE_SLAS,
 
+        [EnumMember(Value = "SHOW_ASSIGNED_CLUSTER_SLAS_ONLY")]
+        SHOW_ASSIGNED_CLUSTER_SLAS_ONLY,
+
         [EnumMember(Value = "SHOW_CLUSTER_SLAS_ONLY")]
         SHOW_CLUSTER_SLAS_ONLY,
 

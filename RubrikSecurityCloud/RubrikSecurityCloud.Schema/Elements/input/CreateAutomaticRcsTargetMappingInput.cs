@@ -46,9 +46,7 @@ namespace RubrikSecurityCloud.Types
         public RcsTierEnumType? Tier { get; set; }
 
         //      C# -> System.Int64? LockDurationDays
-        // GraphQL -> lockDurationDays: Long! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> lockDurationDays: Long (scalar)
         [JsonProperty("lockDurationDays")]
         public System.Int64? LockDurationDays { get; set; }
 

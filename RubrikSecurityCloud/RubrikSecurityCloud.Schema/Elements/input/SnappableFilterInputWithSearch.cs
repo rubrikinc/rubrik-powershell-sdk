@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgId")]
         public List<System.String>? OrgId { get; set; }
 
+        //      C# -> List<ObjectState>? ObjectState
+        // GraphQL -> objectState: [ObjectState!] (enum)
+        [JsonProperty("objectState")]
+        public List<ObjectState>? ObjectState { get; set; }
+
 
         #endregion
 

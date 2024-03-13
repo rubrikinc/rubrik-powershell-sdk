@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataStoreType")]
         public System.String? DataStoreType { get; set; }
 
+        //      C# -> System.Int64? FreeSpaceInBytes
+        // GraphQL -> freeSpaceInBytes: Long (scalar)
+        [JsonProperty("freeSpaceInBytes")]
+        public System.Int64? FreeSpaceInBytes { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -63,6 +68,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Capacity = null,
         System.String? DataCenterName = null,
         System.String? DataStoreType = null,
+        System.Int64? FreeSpaceInBytes = null,
         System.String? Id = null,
         System.Boolean? IsLocal = null,
         System.String? Name = null
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DataStoreType != null ) {
             this.DataStoreType = DataStoreType;
+        }
+        if ( FreeSpaceInBytes != null ) {
+            this.FreeSpaceInBytes = FreeSpaceInBytes;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -122,6 +131,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dataStoreType\n" ;
             } else {
                 s += ind + "dataStoreType\n" ;
+            }
+        }
+        //      C# -> System.Int64? FreeSpaceInBytes
+        // GraphQL -> freeSpaceInBytes: Long (scalar)
+        if (this.FreeSpaceInBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "freeSpaceInBytes\n" ;
+            } else {
+                s += ind + "freeSpaceInBytes\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -208,6 +226,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataStoreType != null && ec.Excludes("dataStoreType",true))
         {
             this.DataStoreType = null;
+        }
+        //      C# -> System.Int64? FreeSpaceInBytes
+        // GraphQL -> freeSpaceInBytes: Long (scalar)
+        if (ec.Includes("freeSpaceInBytes",true))
+        {
+            if(this.FreeSpaceInBytes == null) {
+
+                this.FreeSpaceInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FreeSpaceInBytes != null && ec.Excludes("freeSpaceInBytes",true))
+        {
+            this.FreeSpaceInBytes = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

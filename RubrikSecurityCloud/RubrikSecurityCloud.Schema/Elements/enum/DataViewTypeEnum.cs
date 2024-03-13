@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum DataViewTypeEnum
     {
+        [EnumMember(Value = "AUDIT_LIST")]
+        AUDIT_LIST,
+
         [EnumMember(Value = "BACKUP_COMPLIANCE")]
         BACKUP_COMPLIANCE,
 

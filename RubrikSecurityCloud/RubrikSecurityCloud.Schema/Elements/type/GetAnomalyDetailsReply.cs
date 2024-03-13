@@ -120,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedId")]
         public System.String? ManagedId { get; set; }
 
+        //      C# -> List<System.String>? PotentialSnoozedDirectories
+        // GraphQL -> potentialSnoozedDirectories: [String!]! (scalar)
+        [JsonProperty("potentialSnoozedDirectories")]
+        public List<System.String>? PotentialSnoozedDirectories { get; set; }
+
         //      C# -> DateTime? PreviousSnapshotDate
         // GraphQL -> previousSnapshotDate: DateTime (scalar)
         [JsonProperty("previousSnapshotDate")]
@@ -225,6 +230,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAnomaly = null,
         System.String? Location = null,
         System.String? ManagedId = null,
+        List<System.String>? PotentialSnoozedDirectories = null,
         DateTime? PreviousSnapshotDate = null,
         System.String? PreviousSnapshotFid = null,
         System.String? PreviousSnapshotId = null,
@@ -301,6 +307,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ManagedId != null ) {
             this.ManagedId = ManagedId;
+        }
+        if ( PotentialSnoozedDirectories != null ) {
+            this.PotentialSnoozedDirectories = PotentialSnoozedDirectories;
         }
         if ( PreviousSnapshotDate != null ) {
             this.PreviousSnapshotDate = PreviousSnapshotDate;
@@ -536,6 +545,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "managedId\n" ;
             } else {
                 s += ind + "managedId\n" ;
+            }
+        }
+        //      C# -> List<System.String>? PotentialSnoozedDirectories
+        // GraphQL -> potentialSnoozedDirectories: [String!]! (scalar)
+        if (this.PotentialSnoozedDirectories != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "potentialSnoozedDirectories\n" ;
+            } else {
+                s += ind + "potentialSnoozedDirectories\n" ;
             }
         }
         //      C# -> DateTime? PreviousSnapshotDate
@@ -1034,6 +1052,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManagedId != null && ec.Excludes("managedId",true))
         {
             this.ManagedId = null;
+        }
+        //      C# -> List<System.String>? PotentialSnoozedDirectories
+        // GraphQL -> potentialSnoozedDirectories: [String!]! (scalar)
+        if (ec.Includes("potentialSnoozedDirectories",true))
+        {
+            if(this.PotentialSnoozedDirectories == null) {
+
+                this.PotentialSnoozedDirectories = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PotentialSnoozedDirectories != null && ec.Excludes("potentialSnoozedDirectories",true))
+        {
+            this.PotentialSnoozedDirectories = null;
         }
         //      C# -> DateTime? PreviousSnapshotDate
         // GraphQL -> previousSnapshotDate: DateTime (scalar)

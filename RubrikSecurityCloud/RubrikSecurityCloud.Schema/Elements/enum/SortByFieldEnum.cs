@@ -177,6 +177,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_NAME")]
         OBJECT_NAME,
 
+        [EnumMember(Value = "OBJECT_STATE")]
+        OBJECT_STATE,
+
         [EnumMember(Value = "OBJECT_TYPE")]
         OBJECT_TYPE,
 

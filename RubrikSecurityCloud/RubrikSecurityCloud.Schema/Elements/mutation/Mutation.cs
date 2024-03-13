@@ -1660,6 +1660,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? DeleteCrossAccountPair
+        // GraphQL -> deleteCrossAccountPair: Void (scalar)
+        public static string DeleteCrossAccountPair_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteCrossAccountPair" + args + "\n";
+        }
+        public static string DeleteCrossAccountPair_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteCrossAccountPair((System.String)fieldSpecObj);
+        }
+        public static string DeleteCrossAccountPair(System.String fieldSpec)
+        {
+            return DeleteCrossAccountPair_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteCrossAccountPair(object fieldSpecObj)
+        {
+            return DeleteCrossAccountPair_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteCrossAccountPairFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeleteCsr
         // GraphQL -> deleteCsr: Void (scalar)
         public static string DeleteCsr_TypedFieldSpec(System.String fieldSpec)
@@ -6746,6 +6775,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> BulkUpdateMssqlAvailabilityGroupReply? BulkUpdateMssqlAvailabilityGroup
+        // GraphQL -> bulkUpdateMssqlAvailabilityGroup: BulkUpdateMssqlAvailabilityGroupReply! (type)
+        public static string BulkUpdateMssqlAvailabilityGroup_TypedFieldSpec(BulkUpdateMssqlAvailabilityGroupReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateMssqlAvailabilityGroup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string BulkUpdateMssqlAvailabilityGroup_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlAvailabilityGroup((BulkUpdateMssqlAvailabilityGroupReply)fieldSpecObj);
+        }
+        public static string BulkUpdateMssqlAvailabilityGroup(BulkUpdateMssqlAvailabilityGroupReply fieldSpec)
+        {
+            return BulkUpdateMssqlAvailabilityGroup_TypedFieldSpec(fieldSpec);
+        }
+        public static string BulkUpdateMssqlAvailabilityGroup(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlAvailabilityGroup_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BulkUpdateMssqlAvailabilityGroupFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkUpdateMssqlAvailabilityGroupReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> BulkUpdateMssqlDbsReply? BulkUpdateMssqlDbs
         // GraphQL -> bulkUpdateMssqlDbs: BulkUpdateMssqlDbsReply! (type)
         public static string BulkUpdateMssqlDbs_TypedFieldSpec(BulkUpdateMssqlDbsReply fieldSpec)
@@ -6773,6 +6833,99 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new BulkUpdateMssqlDbsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BulkUpdateMssqlInstanceReply? BulkUpdateMssqlInstance
+        // GraphQL -> bulkUpdateMssqlInstance: BulkUpdateMssqlInstanceReply! (type)
+        public static string BulkUpdateMssqlInstance_TypedFieldSpec(BulkUpdateMssqlInstanceReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateMssqlInstance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string BulkUpdateMssqlInstance_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlInstance((BulkUpdateMssqlInstanceReply)fieldSpecObj);
+        }
+        public static string BulkUpdateMssqlInstance(BulkUpdateMssqlInstanceReply fieldSpec)
+        {
+            return BulkUpdateMssqlInstance_TypedFieldSpec(fieldSpec);
+        }
+        public static string BulkUpdateMssqlInstance(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlInstance_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BulkUpdateMssqlInstanceFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkUpdateMssqlInstanceReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BulkUpdateMssqlPropertiesOnHostReply? BulkUpdateMssqlPropertiesOnHost
+        // GraphQL -> bulkUpdateMssqlPropertiesOnHost: BulkUpdateMssqlPropertiesOnHostReply! (type)
+        public static string BulkUpdateMssqlPropertiesOnHost_TypedFieldSpec(BulkUpdateMssqlPropertiesOnHostReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateMssqlPropertiesOnHost" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string BulkUpdateMssqlPropertiesOnHost_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlPropertiesOnHost((BulkUpdateMssqlPropertiesOnHostReply)fieldSpecObj);
+        }
+        public static string BulkUpdateMssqlPropertiesOnHost(BulkUpdateMssqlPropertiesOnHostReply fieldSpec)
+        {
+            return BulkUpdateMssqlPropertiesOnHost_TypedFieldSpec(fieldSpec);
+        }
+        public static string BulkUpdateMssqlPropertiesOnHost(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlPropertiesOnHost_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BulkUpdateMssqlPropertiesOnHostFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkUpdateMssqlPropertiesOnHostReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BulkUpdateMssqlPropertiesOnWindowsClusterReply? BulkUpdateMssqlPropertiesOnWindowsCluster
+        // GraphQL -> bulkUpdateMssqlPropertiesOnWindowsCluster: BulkUpdateMssqlPropertiesOnWindowsClusterReply! (type)
+        public static string BulkUpdateMssqlPropertiesOnWindowsCluster_TypedFieldSpec(BulkUpdateMssqlPropertiesOnWindowsClusterReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateMssqlPropertiesOnWindowsCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string BulkUpdateMssqlPropertiesOnWindowsCluster_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlPropertiesOnWindowsCluster((BulkUpdateMssqlPropertiesOnWindowsClusterReply)fieldSpecObj);
+        }
+        public static string BulkUpdateMssqlPropertiesOnWindowsCluster(BulkUpdateMssqlPropertiesOnWindowsClusterReply fieldSpec)
+        {
+            return BulkUpdateMssqlPropertiesOnWindowsCluster_TypedFieldSpec(fieldSpec);
+        }
+        public static string BulkUpdateMssqlPropertiesOnWindowsCluster(object fieldSpecObj)
+        {
+            return BulkUpdateMssqlPropertiesOnWindowsCluster_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BulkUpdateMssqlPropertiesOnWindowsClusterFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkUpdateMssqlPropertiesOnWindowsClusterReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

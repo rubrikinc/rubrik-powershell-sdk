@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOracleHost")]
         public System.Boolean? IsOracleHost { get; set; }
 
+        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
+        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("mssqlSddUserCredentials")]
+        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
+
         //      C# -> System.String? OrgNetworkId
         // GraphQL -> orgNetworkId: String (scalar)
         [JsonProperty("orgNetworkId")]

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numChannels")]
         public System.Int32? NumChannels { get; set; }
 
+        //      C# -> System.Boolean? ShouldSkipDropDbInUndo
+        // GraphQL -> shouldSkipDropDbInUndo: Boolean (scalar)
+        [JsonProperty("shouldSkipDropDbInUndo")]
+        public System.Boolean? ShouldSkipDropDbInUndo { get; set; }
+
         //      C# -> OracleRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
         [Required]

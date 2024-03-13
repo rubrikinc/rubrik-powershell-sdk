@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("installedVersion")]
         public List<System.String>? InstalledVersion { get; set; }
 
+        //      C# -> List<ClusterEosStatus>? EosStatus
+        // GraphQL -> eosStatus: [ClusterEosStatus!] (enum)
+        [JsonProperty("eosStatus")]
+        public List<ClusterEosStatus>? EosStatus { get; set; }
+
         //      C# -> List<ClusterJobStatusTypeEnum>? UpgradeJobStatus
         // GraphQL -> upgradeJobStatus: [ClusterJobStatusTypeEnum!] (enum)
         [JsonProperty("upgradeJobStatus")]

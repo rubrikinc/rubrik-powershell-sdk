@@ -168,6 +168,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OracleDatabase")]
         ORACLE_DATABASE,
 
+        [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
+        POSTGRES_DB_CLUSTER,
+
         [EnumMember(Value = "RubrikEbsVolume")]
         RUBRIK_EBS_VOLUME,
 

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public CloudAccountStatus? Status { get; set; }
 
+        //      C# -> System.String? CustomerFeatureId
+        // GraphQL -> customerFeatureId: UUID! (scalar)
+        [JsonProperty("customerFeatureId")]
+        public System.String? CustomerFeatureId { get; set; }
+
         //      C# -> PersistentStorage? PersistentStorage
         // GraphQL -> persistentStorage: PersistentStorage (type)
         [JsonProperty("persistentStorage")]
@@ -73,6 +78,7 @@ namespace RubrikSecurityCloud.Types
         CloudAccountFeature? Feature = null,
         List<AzureCloudAccountRegion>? Regions = null,
         CloudAccountStatus? Status = null,
+        System.String? CustomerFeatureId = null,
         PersistentStorage? PersistentStorage = null,
         AzureResourceGroup? ResourceGroup = null,
         AzureRole? Role = null,
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( CustomerFeatureId != null ) {
+            this.CustomerFeatureId = CustomerFeatureId;
         }
         if ( PersistentStorage != null ) {
             this.PersistentStorage = PersistentStorage;
@@ -140,6 +149,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? CustomerFeatureId
+        // GraphQL -> customerFeatureId: UUID! (scalar)
+        if (this.CustomerFeatureId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "customerFeatureId\n" ;
+            } else {
+                s += ind + "customerFeatureId\n" ;
             }
         }
         //      C# -> PersistentStorage? PersistentStorage
@@ -259,6 +277,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? CustomerFeatureId
+        // GraphQL -> customerFeatureId: UUID! (scalar)
+        if (ec.Includes("customerFeatureId",true))
+        {
+            if(this.CustomerFeatureId == null) {
+
+                this.CustomerFeatureId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomerFeatureId != null && ec.Excludes("customerFeatureId",true))
+        {
+            this.CustomerFeatureId = null;
         }
         //      C# -> PersistentStorage? PersistentStorage
         // GraphQL -> persistentStorage: PersistentStorage (type)

@@ -34,6 +34,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityGroupName")]
         public System.String? SecurityGroupName { get; set; }
 
+        //      C# -> System.String? FailoverVnetName
+        // GraphQL -> failoverVnetName: String (scalar)
+        [JsonProperty("failoverVnetName")]
+        public System.String? FailoverVnetName { get; set; }
+
+        //      C# -> System.String? FailoverSubnetName
+        // GraphQL -> failoverSubnetName: String (scalar)
+        [JsonProperty("failoverSubnetName")]
+        public System.String? FailoverSubnetName { get; set; }
+
+        //      C# -> System.String? FailoverSecurityGroupName
+        // GraphQL -> failoverSecurityGroupName: String (scalar)
+        [JsonProperty("failoverSecurityGroupName")]
+        public System.String? FailoverSecurityGroupName { get; set; }
+
 
         #endregion
 

@@ -96,6 +96,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST_ROOT")]
         PHYSICAL_HOST_ROOT,
 
+        [EnumMember(Value = "POSTGRES_ROOT")]
+        POSTGRES_ROOT,
+
         [EnumMember(Value = "SALESFORCE_ROOT")]
         SALESFORCE_ROOT,
 

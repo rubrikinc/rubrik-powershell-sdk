@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("failedItemsRecoveryConfig")]
         public FailedItemsRecoveryConfig? FailedItemsRecoveryConfig { get; set; }
 
+        //      C# -> RelicRestoreConfig? RelicRestoreConfig
+        // GraphQL -> relicRestoreConfig: RelicRestoreConfig (input)
+        [JsonProperty("relicRestoreConfig")]
+        public RelicRestoreConfig? RelicRestoreConfig { get; set; }
+
 
         #endregion
 
