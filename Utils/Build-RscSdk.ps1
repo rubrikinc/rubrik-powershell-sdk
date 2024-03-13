@@ -45,16 +45,19 @@ if ($Release) {
 $ErrorActionPreference = "Stop"
 
 # Build the project
-if ($Release) {
-    dotnet build --configuration Release /p:GeneratePSDocs=true $ProjectDir
+$buildCommand = if ($Release) {
+    "dotnet build --configuration Release /p:GeneratePSDocs=true $ProjectDir"
+} elseif ($NoDocs) {
+    "dotnet build $ProjectDir"
+} else {
+    "dotnet build /p:GeneratePSDocs=true $ProjectDir"
 }
-else {
-    if ($NoDocs) {
-        dotnet build $ProjectDir
-    }
-    else {
-        dotnet build /p:GeneratePSDocs=true $ProjectDir
-    }
+
+Invoke-Expression $buildCommand
+
+if ($LASTEXITCODE -ne 0 ) {
+    Write-Error "dotnet build failed."
+    exit $LASTEXITCODE
 }
 
 # Copy the output to the output directory

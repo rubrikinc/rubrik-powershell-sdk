@@ -18,7 +18,7 @@ try {
     # To ensure that help files are loaded properly, we need to change directory to the 
     # desired platform build (i.e. net742 or net6.0)
     Set-Location -Path $moduleDir
-    $modulePath = Join-Path -Path $moduleDir -ChildPath "RubrikSecurityCloud.PowerShell.Dll"
+    $modulePath = Join-Path -Path $moduleDir -ChildPath "RubrikSecurityCloud.PowerShell.dll"
     
     Write-Output "LoadModule.psm1: Import-Module $modulePath"
     Import-Module $modulePath -ErrorAction Stop
