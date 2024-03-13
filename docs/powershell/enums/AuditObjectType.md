@@ -118,3 +118,8 @@ Represents all the object types for which we expect to see audits.
 - OAUTH_TOKEN - OAuth token.
 - EXOCOMPUTE - Exocompute.
 - CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS export.
+- DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
+- CROSS_ACCOUNT_PAIR - Cross-account pair.
+- SALESFORCE_ORGANIZATION - Salesforce organization.
+- SALESFORCE_OBJECT - Salesforce object.
+- SALESFORCE_METADATA - Salesforce metadata.

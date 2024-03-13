@@ -7,6 +7,8 @@ The cross-account pair information.
   - URL of the cross-account involved in pair.
 - uuid: System.String
   - UUID of the cross-account pair.
+- organization: CrossAccountOrganization
+  - Specifies the organization of the cross-account relationship.
 - role: CrossAccountRole
   - Role of the cross-account involved in pair.
 - status: CrossAccountStatus

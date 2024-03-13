@@ -13,3 +13,6 @@ Supported in v5.0+
   - Supported in v5.0+
 - name: System.String
   - Supported in v5.0+
+- freeSpaceInBytes: System.Int64
+  - Supported in v9.2
+  Amount of free space in the datastore.

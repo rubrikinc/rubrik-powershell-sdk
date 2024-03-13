@@ -18,3 +18,4 @@ Reasons for the SLA being ineligible for migration.
 - COMPLIANCE_RETENTION_LOCK_CONFIGURED - To upgrade to retention-locked SLA Domain in compliance mode, contact Rubrik Support to enable compliance mode. Also, make sure quorum authorization is enabled in RSC and your Rubrik cluster is running CDM version 7.0.2 or later.
 - GOVERNANCE_RETENTION_LOCK_CONFIGURED - To upgrade to a retention-locked SLA Domain in governance mode, make sure quorum authorization is enabled in RSC and your Rubrik cluster is running CDM version 9.0.1 or later.
 - GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER - The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.
+- GOVERNANCE_RETENTION_LOCK_UNSUPPORTED_CLUSTER_VERSION - To upgrade to a retention-locked SLA Domain in governance mode, make sure your Rubrik cluster is running CDM version 9.0.1 or later.

@@ -6,3 +6,4 @@ Status values for Exocompute health check.
 - UNHEALTHY - Exocompute is not healthy.
 - VERIFYING - Health check is in progress.
 - JOB_UNSUCCESSFUL - Health check job failed to determine the Exocompute health status.
+- CUSTOMER_MANAGED_CLUSTER_NOT_REGISTERED - No customer managed cluster has been registered.

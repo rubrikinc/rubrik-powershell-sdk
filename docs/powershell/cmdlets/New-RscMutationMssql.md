@@ -20,11 +20,31 @@ Take a bulk on-demand backup of a Microsoft SQL Database.
 
 - There is a single argument of type BulkCreateOnDemandMssqlBackupInput.
 - Returns AsyncRequestStatus.
+### bulkupdateavailabilitygroup
+Update multiple Microsoft SQL Availability Groups with the specified properties.
+
+- There is a single argument of type BulkUpdateMssqlAvailabilityGroupInput.
+- Returns BulkUpdateMssqlAvailabilityGroupReply.
 ### bulkupdatedbs
 Update multiple Microsoft SQL databases with the specified properties.
 
 - There is a single argument of type BulkUpdateMssqlDbsInput.
 - Returns BulkUpdateMssqlDbsReply.
+### bulkupdateinstance
+Update multiple Microsoft SQL instances with the specified properties.
+
+- There is a single argument of type BulkUpdateMssqlInstanceInput.
+- Returns BulkUpdateMssqlInstanceReply.
+### bulkupdatepropertiesonhost
+Update multiple Microsoft SQL hosts with the specified properties.
+
+- There is a single argument of type BulkUpdateMssqlPropertiesOnHostInput.
+- Returns BulkUpdateMssqlPropertiesOnHostReply.
+### bulkupdatepropertiesonwindowscluster
+Update multiple Microsoft SQL Windows Clusters with the specified properties.
+
+- There is a single argument of type BulkUpdateMssqlPropertiesOnWindowsClusterInput.
+- Returns BulkUpdateMssqlPropertiesOnWindowsClusterReply.
 ### createlivemount
 Create live mount of a Microsoft SQL Database.
 

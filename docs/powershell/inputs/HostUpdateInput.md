@@ -23,7 +23,7 @@ Supported in v5.0+
   - Supported in v5.1+
       A user-specified string that returns this host in searches.
 - hdfsConfig: HdfsConfigInput
-  - Supported in v5.2+
+  - Supported in v5.2-v9.1
 - isOracleHost: System.Boolean
   - Supported in v5.2+
       v5.2-v5.3: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
@@ -36,10 +36,15 @@ Supported in v5.0+
       v9.0+: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
 - isUpdateCertAndAgentIdEnabled: System.Boolean
   - Supported in v7.0+
-      A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
+      v7.0-v9.1: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.  
+      
+      v9.2: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.
 - isRefreshPaused: System.Boolean
   - Supported in v9.0+
       A Boolean that specifies whether the host refresh is paused or not.
+- mssqlSddUserCredentials: SddUserCredentialsInput
+  - Supported in v9.2
+      The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
 - hostVfdEnabled: HostVfdInstallConfig
   - Supported in v5.0+
 - mssqlCbtEnabled: MssqlCbtStatusType

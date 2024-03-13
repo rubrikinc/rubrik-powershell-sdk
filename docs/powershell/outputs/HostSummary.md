@@ -39,7 +39,7 @@ Supported in v5.0+
   - Supported in v5.1+
   A user-specified string that returns this host in searches.
 - hdfsBaseConfig: HdfsBaseConfig
-  - Supported in v5.2+
+  - Supported in v5.2-v9.1
 - isRefreshPaused: System.Boolean
   - Supported in v9.0+
   Specifies whether the refresh of host metadata for this host is paused.

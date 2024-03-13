@@ -627,6 +627,11 @@ Checks if Zone Redundant Storage (ZRS) is available for a given combination of a
     - region - AzureNativeRegion: The azure region.
     - subscriptionId - System.String: Subscription ID.
 - Returns ZrsAvailabilityReply.
+### jobinfo
+Information about a job running on CDM. Note that some types of jobs cannot be queries using this field. Refer to `JobType` enum to see which jobs types are available. Only users with Admin or Owner roles are allowed to access the field.
+
+- There is a single argument of type JobInfoRequest.
+- Returns JobInfo.
 ### knowledgebasearticle
 A knowledge base article.
 
@@ -898,6 +903,11 @@ Query datastore threshold configurations.
 
 - There is a single argument of type list of QueryDatastoreFreespaceThresholdInputs.
 - Returns QueryDatastoreFreespaceThresholdsReply.
+### removednodedetails
+Get the information for removed nodes.
+
+- There is a single argument of type RemovedNodeDetailsInput.
+- Returns RemoveNodeDetailsReply.
 ### roletemplates
 The list of available role templates.
 

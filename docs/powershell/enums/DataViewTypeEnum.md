@@ -34,3 +34,4 @@ All reporting table schemas.
 - QAUTH_OBJECTS - Specifies the database schema for QAuth objects.
 - QAUTH_ROLES -  Specifies the database schema for QAuth roles.
 - OBJECT_BACKUP_TASK_SUMMARY - Specifies the database schema for the object backup task summary.
+- AUDIT_LIST - Specifies the database schema for audits.

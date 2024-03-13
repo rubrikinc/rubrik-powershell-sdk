@@ -11,6 +11,8 @@ An object that can be backed-up by taking snapshots.
   - The protection status of the workload.
 - objectType: ObjectTypeEnum
   - The type of the workload.
+- objectState: ObjectState
+  - The state of the workload (Active, Relic or Archived).
 - protectedOn: DateTime
   - The date and time when the workload was last protected.
 - totalSnapshots: System.Int32

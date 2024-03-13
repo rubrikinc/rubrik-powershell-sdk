@@ -23,3 +23,5 @@ Represents the snappable contents to be restored.
   - In-place restore configuration for restore jobs.
 - failedItemsRecoveryConfig: FailedItemsRecoveryConfig
   - Configuration for failed items recovery jobs.
+- relicRestoreConfig: RelicRestoreConfig
+  - Relic restore configuration for restore jobs.

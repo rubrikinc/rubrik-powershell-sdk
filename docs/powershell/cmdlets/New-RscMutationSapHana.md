@@ -28,8 +28,7 @@ Initiates a job to take an on demand full snapshot of a specified SAP HANA datab
 Create on demand storage snapshot
 
 Supported in v9.1+
-v9.1: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/db/request/{id} endpoint can be used to monitor the progress of the job.
-v9.2: Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
+Initiates a job to take an on demand storage snapshot of a specified SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
 
 - There is a single argument of type CreateOnDemandSapHanaStorageSnapshotInput.
 - Returns AsyncRequestStatus.
@@ -78,7 +77,7 @@ v9.0+: Update the system properties for the SAP HANA system.
 ### restoresystemstorage
 Restore SAP HANA storage to a storage snapshot
 
-Supported in v9.2
+Supported in v9.1+
 Initiates a job to restore the storage of a SAP HANA system object. The GET /sap_hana/system/request/{id} endpoint can be used to monitor the progress of the job.
 
 - There is a single argument of type RestoreSapHanaSystemStorageInput.

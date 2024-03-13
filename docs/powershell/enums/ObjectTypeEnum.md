@@ -17,6 +17,7 @@
 - MONGO_COLLECTION_SET - MongoDB Database.
 - OracleDatabase
 - MONGODB_SOURCE - MongoDB Source Cluster.
+- POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - O365SharePointList
 - VmwareVirtualMachine
 - O365SharePointDrive

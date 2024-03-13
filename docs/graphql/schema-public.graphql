@@ -953,6 +953,11 @@ type Query {
   # Rubrik Cloud Vault (RCV) account entitlements with their respective order numbers.
   allRcvAccountEntitlements: AllRcvAccountEntitlements!
 
+  # Get private endpoint connection approval request.
+  allRcvPrivateEndpointConnections(
+    # Corresponds to ID of the target in Rubrik.
+    input: UUID!): [DetailedPrivateEndpointConnection!]!
+
   # Retrieves a list og all resource groups in the specified account.
   allResourceGroupsFromAzure(
     # The Rubrik ID of the cloud account.
@@ -1629,6 +1634,11 @@ type Query {
 
     # Input for the azureAdObjectsByType API.
     input: AzureAdObjectTypeInput!): AzureAdObjectConnection!
+
+  # Retrieves the cloud account details from azure customer feature ID.
+  azureCloudAccountDetailsForFeature(
+    # Azure customer feature ID.
+    featureId: UUID!): AzureCloudAccountDetailsForFeatureReply!
 
   # Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
   azureCloudAccountPermissionConfig(
@@ -3800,6 +3810,14 @@ type Query {
     # Input for InternalGetHypervVirtualMachineAsyncRequestStatus.
     input: GetHypervVirtualMachineAsyncRequestStatusInput!): AsyncRequestStatus!
 
+  # Retrieve VM-level files from snapshot
+  # 
+  # Supported in v9.1+
+  # Retrieves virtual-machine-level file details from the snapshot.
+  hypervVirtualMachineLevelFileInfo(
+    # Input for InternalGetVmLevelFilesFromSnapshot.
+    input: GetVmLevelFilesFromSnapshotInput!): HypervVirtualMachineSnapshotFileDetails!
+
   # Paginated list of HyperV Virtual Machines.
   hypervVirtualMachines(
     # Returns the first n elements from the list.
@@ -4038,6 +4056,14 @@ type Query {
     # Optional Kubernetes cluster UUID.
     k8sClusterId: UUID): K8sNamespaceConnection!
 
+  # Get a list of snapshots of a Kubernetes protection set workload
+  # 
+  # Supported in v9.1+
+  # Retrieves summary information for each of the snapshots of a specified Kubernetes protection set workload.
+  k8sProtectionSetSnapshots(
+    # Input for V1QueryK8sSnapshot.
+    input: QueryK8sSnapshotInput!): K8sSnapshotSummaryListResponse!
+
   # Kubernetes snapshot information.
   k8sSnapshotInfo(
     # The snapshot UUID.
@@ -4053,6 +4079,53 @@ type Query {
   knowledgeBaseArticle(
     # The knowledge base article ID.
     id: String!): KnowledgeBaseArticle!
+
+  # Summary of a Kubernetes Cluster.
+  kubernetesCluster(
+    # The Rubrik UUID for the object.
+    fid: UUID!): KubernetesCluster!
+
+  # Summary of all Kubernetes Clusters.
+  kubernetesClusters(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): KubernetesClusterConnection!
+
+  # Summary of a Kubernetes Protection Set.
+  kubernetesProtectionSet(
+    # The Rubrik UUID for the object.
+    fid: UUID!): KubernetesProtectionSet!
+
+  # Summary of all Kubernetes Protection Sets.
+  kubernetesProtectionSets(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Kubernetes cluster optional UUID.
+    k8sClusterOptionalId: UUID): KubernetesProtectionSetConnection!
   lambdaSettings: LambdaSettings!
 
   # Browse LDAP-authorized principals.
@@ -5885,6 +5958,11 @@ type Query {
     # The Rubrik ID for the AWS RDS database.
     rdsDatabaseRubrikId: UUID): RdsInstanceDetailsFromAws!
 
+  # Get the information for removed nodes.
+  removedNodeDetails(
+    # Input for getting the details of removed nodes.
+    input: RemovedNodeDetailsInput!): RemoveNodeDetailsReply!
+
   # Get a time series of total incoming bandwidth to the replication clusters.
   replicationIncomingStats(
     # Input for InternalReplicationBandwidthIncoming.
@@ -7548,6 +7626,16 @@ type Query {
     # Input required to validate the cluster license capacity.
     input: ValidateClusterLicenseCapacityInput!): ClusterLicenseCapacityValidations!
 
+  # Validates aws cluster create input.
+  validateCreateAwsClusterInput(
+    # CreateAwsClusterArg params for Aws.
+    input: CreateAwsClusterInput!): ValidationReply!
+
+  # Validates azure cluster create request.
+  validateCreateAzureClusterInput(
+    # CreateAzureClusterArg params for Azure.
+    input: CreateAzureClusterInput!): ValidationReply!
+
   # Checks whether the tenant org name is valid and unique.
   validateOrgName(
     # Input required for tenant org name validation.
@@ -7593,6 +7681,22 @@ type Query {
     # Include Archived SLA.
     includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
 
+  # Get missed time ranges for point in time recovery
+  # 
+  # Supported in v5.1+
+  # Gets a list of time ranges to which a CDP-enabled virtual machine cannot perform a point-in-time recovery. The time ranges are indicated by start and end timestamps listed as date-time strings.
+  vmwareMissedRecoverableRanges(
+    # Input for V1GetVmwareMissedRecoverableRanges.
+    input: VmwareMissedRecoverableRangesInput!): VmwareRecoverableRangeListResponse!
+
+  # Get available time ranges for point in time recovery
+  # 
+  # Supported in v5.1+
+  # Gets time ranges available for point-in-time recovery. The time ranges are indicated by start and end date-time strings.
+  vmwareRecoverableRanges(
+    # Input for V1GetVmwareRecoverableRanges.
+    input: VmwareRecoverableRangesInput!): VmwareRecoverableRangeListResponse!
+
   # Volume Group Live Mount Connection.
   volumeGroupMounts(
     # Returns the first n elements from the list.
@@ -7606,8 +7710,8 @@ type Query {
 
     # Sort by argument for volume group live mounts.
     sortBy: VolumeGroupLiveMountSortByInput): VolumeGroupLiveMountConnection!
-  vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse!
-  vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse!
+  vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse! @deprecated(reason: "Deprecated. Use vmwareVmMissedRecoverableRange instead.")
+  vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse! @deprecated(reason: "Deprecated. Use vmwareRecoverableRanges instead.")
   vsphereVMRecoverableRangeInBatch(
     # The batch request, which includes the ID of each CDP-enabled virtual machine for which recoverable ranges are being retrieved, and optionally the date ranges as a filter.
     requestInfo: BatchVmwareVmRecoverableRangesRequestInput!): BatchVmwareVmRecoverableRanges!
@@ -7774,6 +7878,22 @@ type Mutation {
     # Inventory workloads to add for an account.
     input: AddInventoryWorkloadsInput!): Boolean!
 
+  # Add a Kubernetes cluster
+  # 
+  # Supported in v9.0+
+  # Adds a Kubernetes cluster to the Rubrik cluster.
+  addK8sCluster(
+    # Input for V1AddK8sCluster.
+    input: AddK8sClusterInput!): K8sClusterSummary!
+
+  # Add a Kubernetes protection set
+  # 
+  # Supported in v9.1+
+  # Adds a Kubernetes protection set to the Rubrik cluster.
+  addK8sProtectionSet(
+    # Input for V1AddK8sProtectionSet.
+    input: AddK8sProtectionSetInput!): K8sProtectionSetSummary!
+
   # Create a Managed Volume
   # 
   # Supported in v7.0+
@@ -7854,6 +7974,11 @@ type Mutation {
   addVmAppConsistentSpecs(
     # Input required to add Azure native virtual machine application consistency specifications.
     input: AddVmAppConsistentSpecsInput!): AddVmAppConsistentSpecsReply!
+
+  # Approve private endpoint.
+  approveRcvPrivateEndpoint(
+    # Input for approving RCV private endpoint.
+    input: ApproveRcvPrivateEndpointInput!): ApproveRcvPrivateEndpointReply!
 
   # Archive a crawl.
   archiveCrawl(crawlId: String!): String!
@@ -8482,6 +8607,11 @@ type Mutation {
     # Input for InternalCreateDownloadSnapshotForVolumeGroup.
     input: CreateDownloadSnapshotForVolumeGroupInput!): AsyncRequestStatus!
 
+  # Create event digests for specific recipients.
+  createEventDigestBatch(
+    # Information required to create event digests.
+    input: CreateEventDigestBatchInput!): Void
+
   # Create a request to mount a Microsoft Exchange database snapshot
   # 
   # Supported in v8.0+
@@ -8530,6 +8660,14 @@ type Mutation {
     # Input for InternalCreateGuestCredential.
     input: CreateGuestCredentialInput!): CreateGuestCredentialReply!
 
+  # Attaching disks from a snapshot to an existing virtual machine
+  # 
+  # Supported in v9.1+
+  # Requests a Live Mount to attach disks to an existing virtual machine.
+  createHypervVirtualMachineSnapshotDiskMount(
+    # Input for InternalCreateMountHypervVirtualDisks.
+    input: CreateMountHypervVirtualDisksInput!): AsyncRequestStatus!
+
   # Create a live mount request
   # 
   # Supported in v5.0+
@@ -8562,6 +8700,14 @@ type Mutation {
   createK8sNamespaceSnapshots(
     # Request for snapshot of Kubernetes Namespaces.
     input: CreateK8sNamespaceSnapshotsInput!): [CreateOnDemandJobReply!]!
+
+  # Initiate an on-demand backup for Kubernetes protection set workload
+  # 
+  # Supported in v9.1+
+  # Creates an on-demand backup request for the specified Kubernetes protection set workload.
+  createK8sProtectionSetSnapshot(
+    # Input for V1CreateK8sProtectionSetBackupJob.
+    input: CreateK8sProtectionSetSnapshotInput!): AsyncRequestStatus!
   createManualTargetMapping(
     # Request for creating manual target mapping.
     input: CreateManualTargetMappingInput!): TargetMapping!
@@ -8960,6 +9106,22 @@ type Mutation {
   deleteIntegrations(
     # Delete integrations input.
     input: DeleteIntegrationsInput!): Void
+
+  # Delete a Kubernetes cluster
+  # 
+  # Supported in v9.0+
+  # Deletes a Kubernetes cluster by specifying the cluster ID.
+  deleteK8sCluster(
+    # Input for V1DeleteK8sCluster.
+    input: DeleteK8sClusterInput!): AsyncRequestStatus!
+
+  # Delete a Kubernetes protection set
+  # 
+  # Supported in v9.1+
+  # Deletes a Kubernetes protection set by specifying the protection set ID.
+  deleteK8sProtectionSet(
+    # Input for V1DeleteK8sProtectionSet.
+    input: DeleteK8sProtectionSetInput!): ResponseSuccess!
   deleteLdapPrincipals(principalIds: [String!]!): Boolean!
 
   # Delete a specified log shipping configuration.
@@ -9301,6 +9463,14 @@ type Mutation {
     # Input for DownloadHyperVSnapshotFromLocationRequest.
     input: DownloadHypervSnapshotFromLocationInput!): AsyncRequestStatus!
 
+  # Download virtual machine files from the snapshot
+  # 
+  # Supported in v9.1+
+  # Download virtual machine configuration & disk files from the snapshot.
+  downloadHypervVirtualMachineLevelFiles(
+    # Input for InternalDownloadHypervVirtualMachineVmLevelFiles.
+    input: DownloadHypervVirtualMachineVmLevelFilesInput!): AsyncRequestStatus!
+
   # Creates a download from archival request
   # 
   # Supported in v5.0+
@@ -9556,6 +9726,16 @@ type Mutation {
   exportK8sNamespace(
     # Request for exporting a Kubernetes namespace snapshot.
     input: ExportK8sNamespaceInput!): CreateOnDemandJobReply!
+
+  # v9.0: Create a job to export a Kubernetes resource set snapshot
+  # v9.1+: Create a job to export a Kubernetes protection set snapshot
+  # 
+  # Supported in v9.0+
+  # v9.0: Launches a job to export the Kubernetes resources from a resource set snapshot to a new namespace in a target Kubernetes cluster. The target namespace should not exist before the export.
+  # v9.1+: Launches a job to export the Kubernetes resources from a protection set snapshot to a new namespace in a target Kubernetes cluster. The target namespace should not exist before the export.
+  exportK8sProtectionSetSnapshot(
+    # Input for V1CreateK8sExportJob.
+    input: ExportK8sProtectionSetSnapshotInput!): AsyncRequestStatus!
 
   # Create a request to export a snapshot
   # 
@@ -9922,6 +10102,11 @@ type Mutation {
     # Input for V1ModifyActiveDirectoryLiveMount.
     input: ModifyActiveDirectoryLiveMountInput!): Void
 
+  # Modify event digests for specific recipients.
+  modifyEventDigestBatch(
+    # Information required to modify event digests.
+    input: ModifyEventDigestBatchInput!): Void
+
   # Modify IPMI settings
   # 
   # Supported in v5.0+
@@ -10130,6 +10315,14 @@ type Mutation {
   refreshK8sCluster(
     # Request for refreshing resources in a Kubernetes cluster.
     input: RefreshK8sClusterInput!): CreateOnDemandJobReply!
+
+  # Initiate an on-demand refresh for a Kubernetes cluster
+  # 
+  # Supported in v9.0+
+  # Initiates an on-demand refresh request for the specified Kubernetes cluster.
+  refreshK8sV2Cluster(
+    # Input for V1RefreshCluster.
+    input: RefreshK8sV2ClusterInput!): AsyncRequestStatus!
 
   # On-demand discovery of a list of NAS systems
   # 
@@ -10361,6 +10554,16 @@ type Mutation {
   restoreK8sNamespace(
     # Request to restore a snapshot of a Kubernetes namespace.
     input: RestoreK8sNamespaceInput!): CreateOnDemandJobReply!
+
+  # v9.0: Create a job to restore a Kubernetes resource set snapshot
+  # v9.1+: Create a job to restore a Kubernetes protection set snapshot
+  # 
+  # Supported in v9.0+
+  # v9.0: Launches a job to restore the Kubernetes resources from a resource set snapshot to its original resource set. The target namespace must exist before the restore.
+  # v9.1+: Launches a job to restore the Kubernetes resources from a protection set snapshot to its original protection set. The target namespace must exist before the restore.
+  restoreK8sProtectionSetSnapshot(
+    # Input for V1CreateK8sRestoreJob.
+    input: CreateK8sRestoreJobInput!): AsyncRequestStatus!
 
   # Create a request to restore a Microsoft SQL database.
   restoreMssqlDatabase(
@@ -11142,6 +11345,22 @@ type Mutation {
     # Update integrations input.
     input: UpdateIntegrationsInput!): Void
   updateIpWhitelist(whitelistMode: WhitelistModeEnum!, ipCidrs: [String!]!): Boolean!
+
+  # Update a Kubernetes cluster
+  # 
+  # Supported in v9.1+
+  # Updates a Kubernetes cluster with the specified properties.
+  updateK8sCluster(
+    # Input for V1UpdateK8sCluster.
+    input: UpdateK8sClusterInput!): ResponseSuccess!
+
+  # Update a Kubernetes protection set
+  # 
+  # Supported in v9.1+
+  # Updates a Kubernetes protection set with the specified properties.
+  updateK8sProtectionSet(
+    # Input for V1UpdateK8sProtectionSet.
+    input: UpdateK8sProtectionSetInput!): ResponseSuccess!
   updateLambdaSettings(
     # Probability threshold for anomaly detector.
     anomalyThreshold: Float,
@@ -12924,6 +13143,9 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is Cloud Direct NAS export.
   CLOUD_DIRECT_NAS_EXPORT
 
+  # Cross-account pair.
+  CROSS_ACCOUNT_PAIR
+
   # Specifies that the activity object type is Capacity Bundle.
   CapacityBundle
 
@@ -13654,6 +13876,9 @@ type AdVolumeExport {
   # The whitelisted IP addresses that can access Active Directory live mount.
   smbValidIps: [String!]!
 
+  # Mount Node IP address of the volume export. This IP address is preferred over floating IP address.
+  mountNodeIp: String
+
   # Fid of the volume export.
   id: UUID!
 
@@ -14092,7 +14317,7 @@ input AddCrossAccountServiceConsumerInput {
   serviceConsumerSa: CrossAccountSaInput!
 
   # Refresh cross-account pair.
-  isRefresh: Boolean!
+  isRefresh: Boolean
 }
 # Add cross-account service consumer reply.
 type AddCrossAccountServiceConsumerReply {
@@ -14149,6 +14374,17 @@ type AddGlobalCertificateReply {
 input AddInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
+}
+input AddK8sClusterInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. The Kubernetes cluster configuration.
+  config: K8sClusterAddInput!
+}
+input AddK8sProtectionSetInput {
+  # Required. The Kubernetes protection set configuration.
+  config: K8sProtectionSetAddInput!
 }
 # Additional info for `ADD_MANAGED_VOLUME` jobs.
 input AddManagedVolumeInfo {
@@ -15409,6 +15645,25 @@ type ApplicationCloudAccountToExocomputeConfig {
   # Details about the Exocompute configuration.
   exocomputeConfigs: AwsExocomputeGetConfigurationResponse
 }
+# Input for approving private endpoint.
+input ApproveRcvPrivateEndpointInput {
+  # Field for specifying Rubrik location identifier of RCV location.
+  locationId: UUID!
+
+  # Field for specifying the Azure resource identifier for a RCV private endpoint.
+  privateEndpointId: String!
+
+  # Secret message used for validating approval request.
+  requestMessage: UUID!
+}
+# Required fields for approving private endpoint.
+type ApproveRcvPrivateEndpointReply {
+  # Whether the approval succeded or not.
+  success: Boolean!
+
+  # Reason for failure.
+  errorMessage: PrivateEndpointErrors!
+}
 # Connection status for archival group.
 type ArchivalGroupConnectionStatus {
   status: ConnectionStatusType!
@@ -15657,6 +15912,17 @@ input ArchivalTieringSpecInput {
 
   # Set to tier existing snapshots for instant tiering.
   shouldTierExistingSnapshots: Boolean = false
+}
+# Restore actions for the in-place archive folder.
+enum ArchiveFolderAction {
+  # Only restore the in-place archive folder.
+  ARCHIVE_ONLY
+
+  # Skip the in-place archive folder while restoring.
+  EXCLUDE_ARCHIVE
+
+  # No action.
+  NO_ACTION
 }
 # Configuration of the Kubernetes cluster to archive.
 input ArchiveK8sClusterInput {
@@ -16005,6 +16271,9 @@ enum AuditObjectType {
   # Cluster audit object.
   CLUSTER
 
+  # Cross-account pair.
+  CROSS_ACCOUNT_PAIR
+
   # Data Center Cloud Account.
   DATA_CENTER_CLOUD_ACCOUNT
 
@@ -16181,6 +16450,15 @@ enum AuditObjectType {
 
   # Rubrik cluster replication pair.
   REPLICATION_PAIR
+
+  # Salesforce metadata.
+  SALESFORCE_METADATA
+
+  # Salesforce object.
+  SALESFORCE_OBJECT
+
+  # Salesforce organization.
+  SALESFORCE_ORGANIZATION
 
   # SAP HANA database object.
   SAP_HANA_DB
@@ -22973,6 +23251,20 @@ type AzureCdmVersionTag {
 
   # Tag value.
   value: String!
+}
+# Cloud account details for a given customer ID.
+type AzureCloudAccountDetailsForFeatureReply {
+  # Azure tenant ID.
+  tenantId: String!
+
+  # Azure tenant domain name.
+  tenantDomain: String!
+
+  # Azure cloud type.
+  azureCloudType: AzureCloudType!
+
+  # Permissions groups for azure cloud account.
+  permissionsGroups: [PermissionsGroup!]!
 }
 # Azure Cloud Account Feature details.
 type AzureCloudAccountFeatureDetail {
@@ -31659,6 +31951,29 @@ type CertificateConnection {
   # Total number of Certificate objects matching the request arguments.
   count: Int!
 }
+# Certificate information.
+type CertificateDetails {
+  # ID of the certificate.
+  certId: String!
+
+  # Name of the certificate.
+  name: String!
+
+  # Indicates whether the certificate is associated with a private key.
+  hasKey: Boolean!
+
+  # Expiration date for the certificate.
+  expiration: DateTime!
+
+  # Purpose of the certificate.
+  usedBy: String!
+
+  # Description of the certificate.
+  description: String
+
+  # Indicates whether the certificate is added to the trust store.
+  isTrusted: Boolean
+}
 # Wrapper around the Certificate object. This wrapper is used for pagination.
 type CertificateEdge {
   # String used to identify this edge.
@@ -32914,6 +33229,9 @@ type Cluster {
   # End of support status.
   eosStatus: ClusterEosStatus
 
+  # Indicates if TPR is enabled on the cluster.
+  isTprEnabled: Boolean
+
   # Human readable message explaining the systemStatus.
   systemStatusMessage: String
 
@@ -32961,6 +33279,12 @@ type Cluster {
 
   # The cluster's timezone.
   timezone: String
+
+  # IPMI information of the cluster.
+  ipmiInfo: IpmiInfo
+
+  # Web server certificate of the cluster.
+  webServerCertificate: WebServerCertificate
 
   # The cluster's global manager connectivity status.
   globalManagerConnectivityStatus: GlobalManagerConnectivity
@@ -36544,12 +36868,15 @@ input CreateCrossAccountPairInput {
   fqdn: String!
 
   # Refresh cross-account pair.
-  isRefresh: Boolean!
+  isRefresh: Boolean
 }
 # Input for cross-account OAuth registration.
 input CreateCrossAccountRegOauthPayloadInput {
   # Fully qualified domain name of service provider RSC account.
   fqdn: String!
+
+  # Refresh cross-account pair.
+  isRefresh: Boolean
 }
 # Payload for cross-account OAuth registration.
 type CreateCrossAccountRegOauthPayloadReply {
@@ -36667,6 +36994,11 @@ input CreateDomainControllerSnapshotInput {
 input CreateDownloadSnapshotForVolumeGroupInput {
   # Required. ID of snapshot.
   id: String!
+}
+# Input for creating event digests.
+input CreateEventDigestBatchInput {
+  # A list of event digests to create.
+  digests: [EventDigestInput!]!
 }
 input CreateExchangeSnapshotMountInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -36957,6 +37289,22 @@ input CreateK8sNamespaceSnapshotsInput {
   # List of namespace IDs and corresponding SLA Domains.
   snapshotInput: [K8sNamespaceSnapshot!]!
 }
+input CreateK8sProtectionSetSnapshotInput {
+  # Configuration for the on-demand backup.
+  config: BaseOnDemandSnapshotConfigInput
+
+  # Required. ID of the Kubernetes protection set workload.
+  id: String!
+}
+input CreateK8sRestoreJobInput {
+  # Required. v9.0: The ID of the resource set snapshot to be restored.
+  # v9.1+: The ID of the protection set snapshot to be restored.
+  id: String!
+
+  # Required. v9.0: Configuration for restoring Kubernetes resources from a resource set snapshot using a job.
+  # v9.1+: Configuration for restoring Kubernetes resources from a protection set snapshot using a job.
+  jobConfig: K8sRestoreParametersInput!
+}
 # Input for creating manual target mapping.
 input CreateManualTargetMappingInput {
   # Field for specifying name of the target mapping.
@@ -36967,6 +37315,14 @@ input CreateManualTargetMappingInput {
 
   # Field for specifying target and Rubrik cluster mapping.
   archivalLocationClusterMappings: [TargetToClusterMapping!] = []
+}
+# Input for initiating a Live Mount of Hyper-V virtual machine disks.
+input CreateMountHypervVirtualDisksInput {
+  # Required. Configuration for the mount request.
+  config: HypervMountDiskJobConfigInput!
+
+  # Required. ID of a snapshot.
+  id: String!
 }
 # Input for creating a SQL Server Live Mount.
 input CreateMssqlLiveMountInput {
@@ -40153,6 +40509,21 @@ input DeleteIntegrationsInput {
   # IDs of all integrations to be deleted.
   ids: [Long!]!
 }
+input DeleteK8sClusterInput {
+  # v9.0: Flag to specify whether to preserve snapshots of the Kubernetes resource sets in this cluster or to delete them. The default is to preserve the snapshots.
+  # v9.1+: Flag to specify whether to preserve snapshots of the Kubernetes protection sets in this cluster or to delete them. The default is to preserve the snapshots.
+  preserveSnapshots: Boolean
+
+  # Required. ID of the Kubernetes cluster to delete.
+  id: String!
+}
+input DeleteK8sProtectionSetInput {
+  # Flag to specify whether to preserve snapshots of the Kubernetes protection set or to delete them. The default is to preserve the snapshots.
+  preserveSnapshots: Boolean
+
+  # Required. ID of the Kubernetes protection set to delete.
+  id: String!
+}
 # Input for deleting a SQL Server log shipping target.
 input DeleteLogShippingInput {
   # Boolean value that determines whether to attempt to delete the secondary database associated with the specified log shipping configuration. The default value is false. When set to false, no attempt is made to delete the secondary database. When set to true, starts an asynchronous job to delete the secondary database.
@@ -40401,6 +40772,14 @@ enum DeltaType {
 
   # Number of files that are suspicious.
   NODES_SUSPICIOUS
+}
+# Detailed information about the private endpoint connection.
+type DetailedPrivateEndpointConnection {
+  # Storage account ID.
+  storageAccountId: String!
+
+  # Private endpoint connection.
+  privateEndpointConnection: PrivateEndpointConnection
 }
 # DevicePathToVolumeSnapshotId type to take key value input.
 type DevicePathToVolumeSnapshotId {
@@ -41319,6 +41698,14 @@ input DownloadHypervVirtualMachineSnapshotInput {
   # Required. ID of snapshot.
   id: String!
 }
+# Input for downloading Hyper-V VM-level files from snapshot.
+input DownloadHypervVirtualMachineVmLevelFilesInput {
+  # Required. Configuration for the download request.
+  config: HypervDownloadVmLevelFilesConfigInput!
+
+  # Required. ID assigned to a snapshot.
+  id: String!
+}
 # Identifier for download files.
 enum DownloadIdentifierEnum {
   # Rubrik cluster RBAC migration summary.
@@ -41742,6 +42129,14 @@ type EffectiveSlaHolder {
   # v5.2+: Indicates whether the effective SLA Domain is Retention Locked. When this value is 'true', the effective SLA domain is a Retention Lock SLA Domain.
   isEffectiveSlaDomainRetentionLocked: Boolean
 }
+# The configuration of an Elastic Kubernetes Service (EKS) cluster.
+input EksConfigInput {
+  # Required. The cloud account for the Rubrik cluster to establish a connection with the EKS cluster.
+  cloudAccountId: String!
+
+  # Required. The Amazon Resource Name (ARN) for the EKS cluster.
+  eksClusterArn: String!
+}
 # Elastic storage configuration for CCES (Cloud Cluster with Elastic Storage).
 type ElasticStorageConfig {
   # Object Store location (bucket name on S3 and container on Azure) name.
@@ -42041,6 +42436,35 @@ input EventDigestConfig {
   # Email addresses of the event digest recipients.
   emailAddresses: [String!]
 }
+# An event digest.
+input EventDigestInput {
+  # ID of the event digest.
+  digestId: Int
+
+  # Name of the event digest.
+  digestName: String!
+
+  # Frequency, in hours, with which the event digests are sent.
+  frequencyHours: Int!
+
+  # Specifies whether to send the event digest immediately.
+  isImmediate: Boolean!
+
+  # Specifies whether to include audits in the event digest.
+  includeAudits: Boolean!
+
+  # Specifies whether to include events in the event digest.
+  includeEvents: Boolean!
+
+  # Event digest configuration.
+  eventDigestConfig: EventDigestConfig!
+
+  # User IDs of the recipients.
+  recipientUserId: String!
+
+  # Specifies the cluster UUIDs that this event digest applies to.
+  clusterUuids: [UUID!]!
+}
 # Represents the Calendar event to be restored.
 input EventInfo {
   # ID of the event to be restored.
@@ -42140,6 +42564,9 @@ enum EventObjectType {
 
   # Compute instance object.
   COMPUTE_INSTANCE
+
+  # Cross-account pair event type.
+  CROSS_ACCOUNT_PAIR
 
   # Data location object.
   DATA_LOCATION
@@ -42350,6 +42777,15 @@ enum EventObjectType {
 
   # Rubrik SAAS EC2 instance.
   RUBRIK_SAAS_EC2_INSTANCE
+
+  # Salesforce metadata.
+  SALESFORCE_METADATA
+
+  # Salesforce objects.
+  SALESFORCE_OBJECT
+
+  # Salesforce organization.
+  SALESFORCE_ORGANIZATION
 
   # SAML single sign-on.
   SAML_SSO
@@ -43640,6 +44076,15 @@ input ExportK8sNamespaceInput {
 
   # Filter resources based on labels.
   labelSelector: LabelSelector
+}
+input ExportK8sProtectionSetSnapshotInput {
+  # Required. v9.0: The ID of the resource set snapshot to be exported.
+  # v9.1+: The ID of the protection set snapshot to be exported.
+  id: String!
+
+  # Required. v9.0: Configuration for the job to export Kubernetes resources from a resource set snapshot.
+  # v9.1+: Configuration for the job to export Kubernetes resources from a protection set snapshot.
+  jobConfig: K8sExportParametersInput!
 }
 # Additional info for `EXPORT_MANAGED_VOLUME_SNAPSHOT` jobs.
 input ExportManagedVolumeSnapshotInfo {
@@ -48129,6 +48574,9 @@ type GetAnomalyDetailsReply {
   # Specifies the resolution status of the anomaly.
   resolutionStatus: ResolutionStatus!
 
+  # The list of directories that can be snoozed from the anomaly.
+  potentialSnoozedDirectories: [String!]!
+
   # Severity of the anomaly.
   severity: ActivitySeverityEnum!
 
@@ -48251,6 +48699,9 @@ enum GetCrossAccountPairsFilterField {
 
   # Filter by cross-account pair name.
   NAME
+
+  # Filter by org-name.
+  ORG_NAME
 
   # Filter by status of the cross-account pair.
   STATUS
@@ -48767,6 +49218,14 @@ input GetVlanInput {
   vlan: Int
 
   # Required. ID of the Rubrik cluster or *me* for self.
+  id: String!
+}
+# Input for retrieving Hyper-V VM-level files from a snapshot.
+input GetVmLevelFilesFromSnapshotInput {
+  # Retrieve configuration file details along with disk details.
+  shouldRetrieveConfigFiles: Boolean
+
+  # Required. ID of a snapshot.
   id: String!
 }
 input GetVmwareHostInput {
@@ -50510,6 +50969,9 @@ enum HierarchyFilterField {
 
   # Filter vCD vApps by type.
   VCD_VAPP_TYPE
+
+  # Filter by vCD hostname.
+  VMWARE_VCD_HOSTNAME
 
   # Filter template type of VMware virtual machines.
   VMWARE_VM_TEMPLATE_TYPE
@@ -53432,6 +53894,17 @@ input HypervBatchOnDemandBackupJobConfigInput {
   # Array of objects containing information about Hyper-V virtual machines to be backed up.
   vms: [HypervOnDemandBackupJobConfigForBatchInput!]!
 }
+# Supported in v9.1+
+type HypervConfigurationFileInfo {
+  # Required. Supported in v9.1+
+  sizeInBytes: Long!
+
+  # Required. Supported in v9.1+
+  fileName: String!
+
+  # Required. Supported in v9.1+
+  fileType: String!
+}
 # Required. Input for deleting all snapshots of a Hyper-V virtual machine.
 input HypervDeleteAllSnapshotsInput {
   # Required. Virtual machine ID.
@@ -53448,6 +53921,16 @@ input HypervDownloadFilesJobConfigInput {
   # v5.0-v7.0: An array containing the full source path of each file and folder that is part of the download job. The array must contain at least one path. When the source is a Windows virtual machine, the paths must all be on the same disk.
   # v8.0+: Array containing the full source path of each file and folder that is part of the download job. The array must contain at least one path. When the source is a Windows virtual machine, the paths must all be on the same disk.
   paths: [String!]!
+}
+# Supported in v9.1+
+input HypervDownloadVmLevelFilesConfigInput {
+  # Required. Supported in v9.1+
+  # Extensions of virtual machine configuration files to download.
+  configFileExtensions: [String!]!
+
+  # Required. Supported in v9.1+
+  # IDs of disks to download.
+  virtualDiskIds: [String!]!
 }
 # Sort by parameters for Hyper-V virtual hard disks.
 enum HypervExcludeDiskSortByField {
@@ -53668,6 +54151,16 @@ input HypervLiveMountSortByInput {
 
   # Sorting order for Hyper-V Live Mount results.
   sortOrder: SortOrder = ASC
+}
+# Supported in v9.1+
+input HypervMountDiskJobConfigInput {
+  # Required. Supported in v9.1+
+  # ID of the target Hyper-V virtual machine used to mount the disks.
+  targetVirtualMachineId: String!
+
+  # Required. Supported in v9.1+
+  # Disk IDs to be mounted.
+  virtualDiskIds: [String!]!
 }
 # Supported in v7.0+
 input HypervMountSnapshotConfigForBatchInput {
@@ -54413,6 +54906,14 @@ enum HypervVirtualMachineMountSummaryPowerStatus {
 input HypervVirtualMachineSnapshotDownloadConfigInput {
   # ID of the SLA Domain to manage retention of the downloaded snapshot.
   slaId: String
+}
+# Supported in v9.1+
+type HypervVirtualMachineSnapshotFileDetails {
+  # Supported in v9.1+
+  configFileInfo: [HypervConfigurationFileInfo!]!
+
+  # Required. Supported in v9.1+
+  virtualDiskInfo: [HypervVirtualDiskInfo!]!
 }
 # Supported in v5.0+
 type HypervVirtualMachineSummary {
@@ -55268,6 +55769,17 @@ input IpmiAccessUpdateInput {
   # Supported in v5.0+
   iKvm: Boolean
 }
+# Cluster IPMI information.
+type IpmiInfo {
+  # Indicates whether IPMI is available on this cluster.
+  isAvailable: Boolean!
+
+  # IPMI access via HTTPS.
+  usesHttps: Boolean!
+
+  # IPMI access via iKVM.
+  usesIkvm: Boolean!
+}
 # Supported in v5.0+
 input IpmiUpdateInput {
   # Supported in v5.0+
@@ -55871,6 +56383,52 @@ type K8sCluster implements HierarchyObject , PolarisHierarchyObject {
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 }
+# Supported in v9.0+
+# Input to add a Kubernetes cluster.
+input K8sClusterAddInput {
+  # Supported in v9.1+
+  # UUID of the to be added Kubernetes cluster.
+  id: String
+
+  # Supported in v9.0+
+  # Kubeconfig is a YAML string to store Kubernetes cluster authentication information. You can get this config file directly from the cluster administrator or from a cloud platform if you are using managed Kubernetes cluster.
+  kubeconfig: String
+
+  # Supported in v9.0+
+  # Container registry URL for storing Rubrik container images.
+  registry: String
+
+  # Supported in v9.1+
+  # The name of the RSC service account.
+  serviceAccountName: String
+
+  # The configuration for adding an EKS cluster.
+  eksConfig: EksConfigInput
+
+  # Supported in v9.1+
+  # Distribution of the Kubernetes cluster to be added.
+  distribution: String
+
+  # Supported in v9.1+
+  # The client secret for the service account.
+  clientSecret: String
+
+  # Supported in v9.1+
+  # The access token for the service account.
+  accessToken: String
+
+  # Supported in v9.1+
+  # Region of the Kubernetes cluster to be added.
+  region: String
+
+  # Supported in v9.1+
+  # The client ID for the service account.
+  clientId: String
+
+  # Required. Supported in v9.0+
+  # Name of the Kubernetes cluster to be added.
+  name: String!
+}
 # Paginated list of K8sCluster objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type K8sClusterConnection {
   # List of K8sCluster objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
@@ -56023,6 +56581,37 @@ enum K8sClusterStatus {
   # Unknown connection status.
   STATUS_UNKNOWN
 }
+# Supported in v9.0+
+# Key properties of a Kubernetes cluster.
+type K8sClusterSummary {
+  # Required. Supported in v9.0+
+  # ID of the Kubernetes cluster.
+  id: String!
+
+  # Required. Supported in v9.0+
+  # Name of the Kubernetes cluster.
+  name: String!
+
+  # Supported in v9.0+
+  # Container registry URL for storing Rubrik container images.
+  registry: String
+
+  # Supported in v9.1+
+  # Distribution of the Kubernetes cluster.
+  distribution: String
+
+  # Supported in v9.0+
+  # Last refresh time of the Kubernetes cluster.
+  lastRefreshTime: DateTime
+
+  # Supported in v9.1+
+  # Region of the Kubernetes cluster.
+  region: String
+
+  # Required. Supported in v9.0+
+  # Connection status of the Kubernetes cluster.
+  status: String!
+}
 # Type of the Kubernetes cluster.
 enum K8sClusterType {
   # The cluster is hosted on AWS.
@@ -56037,6 +56626,37 @@ enum K8sClusterType {
   # The cluster is hosted on private cloud.
   ON_PREM
 }
+# Supported in v9.1+
+# Input to update a Kubernetes cluster.
+input K8sClusterUpdateConfigInput {
+  # Supported in v9.1+
+  # Kubeconfig is a YAML string to store Kubernetes cluster authentication information. You can get this config file directly from the cluster administrator or from a cloud platform if you are using managed Kubernetes cluster.
+  kubeconfig: String
+
+  # Supported in v9.1+
+  # Container registry URL for storing Rubrik container images.
+  registry: String
+
+  # Supported in v9.1+
+  # The name of the RSC service account.
+  serviceAccountName: String
+
+  # Supported in v9.1+
+  # The client secret for the service account.
+  clientSecret: String
+
+  # Supported in v9.1+
+  # The access token for the service account.
+  accessToken: String
+
+  # Supported in v9.1+
+  # The cloud account for the Rubrik cluster to establish a connection with the EKS Kubernetes cluster.
+  cloudAccountId: String
+
+  # Supported in v9.1+
+  # The client ID for the service account.
+  clientId: String
+}
 # Content type of the Kubernetes manifest information.
 enum K8sContentType {
   # Manifest contains a string in the YAML format.
@@ -56044,6 +56664,33 @@ enum K8sContentType {
 
   # Manifest contains a signed URL to download the YAML file.
   URL
+}
+# Supported in v9.0+
+# v9.0: Input to export Kubernetes resources from a resource set snapshot.
+# v9.1+: Input to export Kubernetes resources from a protection set snapshot.
+input K8sExportParametersInput {
+  # Supported in v9.0+
+  # The filter for selecting resources from the snapshot to export.
+  filter: String
+
+  # Supported in v9.1+
+  pvcNames: [String!] = []
+
+  # Supported in v9.1+
+  # Specifies whether to delete exported namespace if the export failed. By default, this value is false.
+  shouldDeleteNamespaceIfExportFailed: Boolean
+
+  # Supported in v9.0+
+  # Specifies whether to ignore errors during the export operation. By default, this value is false.
+  ignoreErrors: Boolean
+
+  # Required. Supported in v9.0+
+  # The UUID of the target Kubernetes cluster to which the resources should be exported.
+  targetClusterId: String!
+
+  # Required. Supported in v9.0+
+  # The name of the new Kubernetes namespace that will be created. The resources will be exported to the new namespace.
+  targetNamespaceName: String!
 }
 # Kubernetes namespace.
 type K8sNamespace implements HierarchyObject , HierarchySnappable , PolarisHierarchyObject , PolarisHierarchySnappable , K8sClusterDescendant {
@@ -56265,6 +56912,72 @@ input K8sNamespaceSnapshot {
   # The SLA ID of the on demand snapshot request.
   onDemandSnapshotSlaId: String
 }
+# Supported in v9.1+
+# Input to add a Kubernetes protection set.
+input K8sProtectionSetAddInput {
+  # Supported in v9.1+
+  # Kubernetes namespace to which the protection set to be added belongs.
+  kubernetesNamespace: String
+
+  # Supported in v9.1+
+  hookConfigs: [String!] = []
+
+  # Required. Supported in v9.1+
+  # Definition of the Kubernetes protection set to be added.
+  definition: String!
+
+  # Required. Supported in v9.1+
+  # ID of the Kubernetes cluster to which the protection set to be added belongs.
+  kubernetesClusterId: String!
+
+  # Required. Supported in v9.1+
+  # Name of the Kubernetes protection set to be added.
+  name: String!
+
+  # Required. Supported in v9.1+
+  # Type of the Kubernetes protection set to be added.
+  rsType: String!
+}
+# Supported in v9.1+
+# Key properties of a Kubernetes protection set.
+type K8sProtectionSetSummary {
+  # Required. Supported in v9.1+
+  # ID of the Kubernetes protection set.
+  id: String!
+
+  # Required. Supported in v9.1+
+  # Name of the Kubernetes protection set.
+  name: String!
+
+  # Required. Supported in v9.1+
+  # Type of the Kubernetes protection set.
+  rsType: String!
+
+  # Required. Supported in v9.1+
+  # Definition of the Kubernetes protection set.
+  definition: String!
+
+  # Supported in v9.1+
+  # Kubernetes namespace to which the protection set belongs.
+  kubernetesNamespace: String
+
+  # Required. Supported in v9.1+
+  # ID of the Kubernetes cluster to which the protection set belongs.
+  kubernetesClusterUuid: String!
+
+  # Supported in v9.1+
+  hookConfigs: [String!]!
+}
+# Supported in v9.1+
+# Input to update a Kubernetes protection set.
+input K8sProtectionSetUpdateConfigInput {
+  # Supported in v9.1+
+  # Definition of the Kubernetes protection set.
+  definition: String
+
+  # Supported in v9.1+
+  hookConfigs: [String!] = []
+}
 # Deprecated. Use KuprClusterPortsInfoType instead.
 type K8sRbsInfo {
   # UUID of the Kubernetes cluster.
@@ -56275,6 +56988,21 @@ type K8sRbsInfo {
 
   # The upper bound (inclusive) of a particular the port range.
   maxPort: Int!
+}
+# Supported in v9.0+
+# v9.0: Input to restore Kubernetes resources from a resource set snapshot.
+# v9.1+: Input to restore Kubernetes resources from a protection set snapshot.
+input K8sRestoreParametersInput {
+  # Supported in v9.0+
+  # The filter for selecting resources from the snapshot to restore.
+  filter: String
+
+  # Supported in v9.1+
+  pvcNames: [String!] = []
+
+  # Supported in v9.0+
+  # Specifies whether to ignore errors during the restore operation. By default, this value is false.
+  ignoreErrors: Boolean
 }
 # Response of the query that retrieves the Kubernetes snapshot information.
 type K8sSnapshotInfo {
@@ -56292,6 +57020,38 @@ type K8sSnapshotInfo {
 
   # Creation time of the snapshot.
   snapshotTime: DateTime!
+}
+# Supported in v9.0+
+# v9.0: Properties of the Kubernetes resource set workload snapshot.
+# v9.1+: Properties of the Kubernetes protection  set workload snapshot.
+type K8sSnapshotSummary {
+  k8SResourceSetName: String
+
+  # Supported in v9.1+
+  k8SSnapshotMetadata: String
+
+  # Supported in v9.1+
+  k8SProtectionSetName: String
+  baseSnapshotSummary: BaseSnapshotSummary
+}
+# Supported in v9.0+
+type K8sSnapshotSummaryListResponse {
+  # Supported in v9.0+
+  # List of matching objects.
+  data: [K8sSnapshotSummary!]!
+
+  # Supported in v9.0+
+  # Total list responses.
+  total: Int
+
+  # Supported in v9.0+
+  # v9.0: Cursor to fetch the next set of results.
+  # v9.1+: Cursor to retrieve the next set of results.
+  nextCursor: String
+
+  # Supported in v9.0+
+  # If there is more.
+  hasMore: Boolean
 }
 # GCP KMS crypto key.
 input KmsCryptoKey {
@@ -56392,6 +57152,488 @@ type KnowledgeBaseArticle {
 
   # A flattened list of nodes representing the summary section of the knowledge base article.
   summary: [ContentNode!]!
+}
+# Kubernetes cluster.
+type KubernetesCluster implements HierarchyObject , CdmHierarchyObject {
+  # ID of Kubernetes ProtectionSet on Rubrik CDM.
+  cdmId: String!
+
+  # CDM cluster UUID.
+  clusterUuid: UUID!
+
+  # CDM cluster UUID.
+  primaryClusterUuid: UUID!
+
+  # Name of Kubernetes Cluster.
+  k8sName: String!
+
+  # Connection status of the Kubernetes cluster.
+  status: String!
+
+  # Registry of Kubernetes Cluster.
+  registry: String
+
+  # Version of Kubernetes Cluster.
+  k8sVersion: String
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # List of descendants.
+  descendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. The None value represents the hierarchy of all workload types.
+    workloadHierarchy: WorkloadLevelHierarchy): KubernetesClusterDescendantConnection!
+
+  # Protection Sets belonging to the Kubernetes cluster.
+  k8sDescendantProtectionSets(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): KubernetesProtectionSetConnection!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+}
+# Paginated list of KubernetesCluster objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type KubernetesClusterConnection {
+  # List of KubernetesCluster objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [KubernetesClusterEdge!]!
+
+  # List of KubernetesCluster objects.
+  nodes: [KubernetesCluster!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of KubernetesCluster objects matching the request arguments.
+  count: Int!
+}
+# Descendants of a Kubernetes Cluster.
+interface KubernetesClusterDescendant {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of KubernetesClusterDescendant objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type KubernetesClusterDescendantConnection {
+  # List of KubernetesClusterDescendant objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [KubernetesClusterDescendantEdge!]!
+
+  # List of KubernetesClusterDescendant objects.
+  nodes: [KubernetesClusterDescendant!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of KubernetesClusterDescendant objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the KubernetesClusterDescendant object. This wrapper is used for pagination.
+type KubernetesClusterDescendantEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual KubernetesClusterDescendant object wrapped by this edge.
+  node: KubernetesClusterDescendant!
+}
+# Wrapper around the KubernetesCluster object. This wrapper is used for pagination.
+type KubernetesClusterEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual KubernetesCluster object wrapped by this edge.
+  node: KubernetesCluster!
+}
+# Kubernetes Protection Set.
+type KubernetesProtectionSet implements HierarchyObject , HierarchySnappable , CdmHierarchyObject , CdmHierarchySnappableNew , KubernetesClusterDescendant {
+  # ID of Protection Set on CDM.
+  cdmId: String!
+
+  # CDM cluster UUID.
+  clusterUuid: UUID!
+
+  # CDM cluster UUID.
+  primaryClusterUuid: UUID!
+
+  # Name of Protection Set.
+  rsName: String!
+
+  # Namespace of Protection Set.
+  namespace: String
+
+  # Type of Protection Set.
+  rsType: String!
+
+  # UUID of the Kubernetes Cluster.
+  k8sClusterUuid: UUID!
+
+  # Name of the Kubernetes Cluster.
+  k8sClusterName: String!
+
+  # Specifies whether the Protection Set is a relic.
+  isRelic: Boolean!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object ID.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # A link to view the workload on the CDM cluster. For dev use only.
+  cdmLink: String!
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput): MissedSnapshotCommonConnection
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput,
+
+    # Group snapshots by field.
+    groupBy: MissedSnapshotGroupByTime!,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0): MissedSnapshotGroupByConnection
+
+  # The list of snapshots taken for this workload.
+  snapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Sorts snapshots by field.
+    sortBy: CdmSnapshotSortByEnum = Date,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder): CdmSnapshotConnection
+
+  # GroupBy connection for the snapshots of this workload.
+  snapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupByConnection
+
+  # GroupBy connection for the snapshots of this workload.
+  snapshotGroupBySummary(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
+  # The most recent snapshot of this workload.
+  newestSnapshot: CdmSnapshot
+
+  # The oldest snapshot of this workload.
+  oldestSnapshot: CdmSnapshot
+
+  # The number of on-demand snapshots.
+  onDemandSnapshotCount: Int!
+
+  # The newest snapshot archived to AWS.
+  newestArchivedSnapshot: CdmSnapshot
+
+  # The newest snapshot replicated to a cluster.
+  newestReplicatedSnapshot: CdmSnapshot
+}
+# Paginated list of KubernetesProtectionSet objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type KubernetesProtectionSetConnection {
+  # List of KubernetesProtectionSet objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [KubernetesProtectionSetEdge!]!
+
+  # List of KubernetesProtectionSet objects.
+  nodes: [KubernetesProtectionSet!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of KubernetesProtectionSet objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the KubernetesProtectionSet object. This wrapper is used for pagination.
+type KubernetesProtectionSetEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual KubernetesProtectionSet object wrapped by this edge.
+  node: KubernetesProtectionSet!
 }
 # The type of the port range.
 enum KuprClusterPortsType {
@@ -59944,6 +61186,11 @@ input ModifyActiveDirectoryLiveMountInput {
 
   # Required. ID of the Live Mount.
   id: String!
+}
+# Input for modifying event digests.
+input ModifyEventDigestBatchInput {
+  # A list of event digests to modify.
+  digests: [EventDigestInput!]!
 }
 input ModifyIpmiInput {
   # Required. ID of the Rubrik cluster or *me* for self.
@@ -74243,10 +75490,10 @@ enum ObjectState {
   # The object is archived.
   ARCHIVED
 
-  # The object is not specified.
+  # The object state is not specified.
   NOT_SPECIFIED
 
-  # The object is relic.
+  # The object is a relic.
   RELIC
 }
 type ObjectStatus {
@@ -74935,6 +76182,9 @@ type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmH
   # The host log retention, in hours, of the Oracle Data Guard Group.
   hostLogRetentionHours: Int!
 
+  # Specifies whether the Data Guard group uses Secure Thrift as the transfer protocol.
+  useSecureThrift: Boolean!
+
   # List of descendants.
   descendantConnection(
     # Returns the first n elements from the list.
@@ -75424,6 +76674,9 @@ type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarc
 
   # The host log retention, in hours, of the Oracle database.
   hostLogRetentionHours: Int!
+
+  # Specifies whether the Oracle database uses Secure Thrift as the transfer protocol.
+  useSecureThrift: Boolean!
 
   # The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
   dataGuardGroup: OracleDataGuardGroup
@@ -79451,6 +80704,26 @@ enum PrivateEndpointConnectionStatus {
   # Not specified RCV private endpoint connection.
   UNSPECIFIED_PE_CONNECTION_STATUS
 }
+# Error message for showing failure reason.
+enum PrivateEndpointErrors {
+  # Error due to Azure Portal.
+  AZURE_ERR
+
+  # Unspecified error.
+  ERR_UNSPECIFIED
+
+  # Internal error due to Rubrik.
+  INTERNAL
+
+  # Invalid request message.
+  INVALID_REQ_MSG
+
+  # No error for success case.
+  NO_ERR
+
+  # No pending private endpoint found.
+  NO_PENDING_PE
+}
 # The number of processed Ransomware Investigation workloads.
 type ProcessedRansomwareInvestigationWorkloadCountReply {
   # The number of Ransomware Investigation workloads processed in the past 24 hours.
@@ -80027,6 +81300,10 @@ input QueryHypervHostInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
 }
+input QueryK8sSnapshotInput {
+  # Required. ID of the Kubernetes protection set workload.
+  id: String!
+}
 # Input for getting the database log report.
 input QueryLogReportInput {
   # Filter by the database name substring.
@@ -80563,6 +81840,9 @@ enum RcsRegionEnumType {
   # US west 2 or Washington.
   US_WEST_2
 
+  # US West Central or Wyoming.
+  US_WEST_CENTRAL
+
   # West US 3 or Arizona.
   WEST_US3
 }
@@ -80912,6 +82192,10 @@ input RefreshK8sClusterInput {
   # The ID of the Kubernetes cluster to refresh.
   k8sClusterId: UUID!
 }
+input RefreshK8sV2ClusterInput {
+  # Required. ID of the Kubernetes cluster.
+  id: String!
+}
 # Input to start auto-discovery jobs on multiple NAS systems.
 input RefreshNasSystemsInput {
   # Required. IDs of the NAS systems to rediscover.
@@ -81242,6 +82526,11 @@ input RemoveInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
 }
+# The details of removed nodes.
+type RemoveNodeDetailsReply {
+  # The details of removed nodes.
+  removeNodeDetails: [RemovedNodeDetail!]!
+}
 # Input for removing private endpoint connection to RCV location.
 input RemovePrivateEndpointConnectionInput {
   # Field for specifying location identifier of the target.
@@ -81269,6 +82558,28 @@ type RemoveVlansReply {
 
   # VLAN ID(s) that failed to be deleted.
   failureVlanIds: [Int!]!
+}
+# The detail of a removed nodes.
+type RemovedNodeDetail {
+  # Hostname of the Rubrik cluster node.
+  nodeName: String!
+
+  # Chassis ID of the Rubrik cluster node.
+  chassisId: String!
+
+  # Rear view position of the Rubrik cluster node.
+  position: String!
+
+  # IP address of the Rubrik cluster node.
+  ipAddress: String!
+}
+# Request parameters for getting the details of removed nodes.
+input RemovedNodeDetailsInput {
+  # Rubrik Cluster UUID.
+  clusterUuid: UUID!
+
+  # Names of the removed nodes.
+  nodeNames: [String!]!
 }
 # Information about Kubernetes Replicated Snapshots.
 type ReplicatedSnapshotInfo {
@@ -83742,6 +85053,9 @@ enum S3CompatibleSubType {
   # IbmCos subtype.
   IBMCOS
 
+  # IronCloud subtype.
+  IRONCLOUD
+
   # NetAppSG subtype.
   NETAPPSG
 
@@ -85410,8 +86724,8 @@ input SearchFilter {
   # Parameters for using Lambda filters in the query.
   lambdaFilters: LambdaPathFilters
 
-  # Determines whether to ignore in-place archive folder.
-  ignoreArchive: Boolean = false
+  # Specifies actions for the in-place archive folder.
+  archiveFolderAction: ArchiveFolderAction = NO_ACTION
 }
 # Search keyword and keyword type.
 input SearchKeywordFilter {
@@ -86688,6 +88002,9 @@ enum SlaMigrationIneligibilityReason {
   # To upgrade to a retention-locked SLA Domain in governance mode, make sure quorum authorization is enabled in RSC and your Rubrik cluster is running CDM version 9.0.1 or later.
   GOVERNANCE_RETENTION_LOCK_CONFIGURED
 
+  # To upgrade to a retention-locked SLA Domain in governance mode, make sure your Rubrik cluster is running CDM version 9.0.1 or later.
+  GOVERNANCE_RETENTION_LOCK_UNSUPPORTED_CLUSTER_VERSION
+
   # The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.
   GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER
 
@@ -86714,6 +88031,9 @@ enum SlaMigrationIneligibilityReason {
 
   # Replication targets associated with the SLA Domain are disconnected.
   REPLICATION_TARGET_DISCONNECTED
+
+  # The SLA Domain is retention-locked and has cross-account replication targets configured in it. Upgrading such SLA Domains is not supported.
+  RETENTION_LOCKED_SLA_WITH_CROSS_ACCOUNT_REPLICATION_TARGETS
 
   # The SLA Domain has retention lock configured, which is not supported in Rubrik currently.
   RETENTION_LOCK_CONFIGURED
@@ -87136,6 +88456,9 @@ type Snappable {
   # The type of the workload.
   objectType: ObjectTypeEnum!
 
+  # The state of the workload (Active, Relic or Archived).
+  objectState: ObjectState!
+
   # The date and time when the workload was last protected.
   protectedOn: DateTime
 
@@ -87200,9 +88523,6 @@ type Snappable {
   # The Rubrik cluster to which the protected objects belong.
   cluster: Cluster
   fid: UUID
-
-  # The state of the workload (Active, Relic or Archived).
-  objectState: ObjectState
 
   # The number of snapshots locally present.
   localSnapshots: Int
@@ -87356,6 +88676,9 @@ input SnappableFilterInput {
 
   # The organization ID of the workload.
   orgId: [UUID!]
+
+  # The state of the workload.
+  objectState: [ObjectState!]
 }
 # Filter workload data, including search capability.
 input SnappableFilterInputWithSearch {
@@ -87386,6 +88709,9 @@ input SnappableFilterInputWithSearch {
 
   # The organization ID of the workload.
   orgId: [UUID!]
+
+  # The state of the workload.
+  objectState: [ObjectState!]
 }
 # Snappable data with groupby info applied to it.
 type SnappableGroupBy {
@@ -87483,6 +88809,9 @@ input SnappableGroupByFilterInput {
 
   # The organization ID of the workload.
   orgId: [UUID!]
+
+  # The state of the workload.
+  objectState: [ObjectState!]
 }
 union SnappableGroupByInfo = ComplianceStatus | ProtectionStatus | ObjectType | Cluster | ClusterType | ClusterSlaDomain | TimeRangeWithUnit
 # Location of the workload.
@@ -93096,6 +94425,20 @@ input UpdateIntegrationsInput {
   # The integrations.
   integrations: [UpdateIntegrationInput!]!
 }
+input UpdateK8sClusterInput {
+  # Required. Properties of the Kubernetes cluster to update.
+  config: K8sClusterUpdateConfigInput!
+
+  # Required. ID of the Kubernetes cluster to update.
+  id: String!
+}
+input UpdateK8sProtectionSetInput {
+  # Required. Properties of the Kubernetes protection set to update.
+  config: K8sProtectionSetUpdateConfigInput!
+
+  # Required. ID of the Kubernetes protection set to update.
+  id: String!
+}
 # Specifies the input required to update the lockout config by the admin.
 input UpdateLockoutConfigInput {
   # Specifies the number of failed login attempts allowed after which the account is locked.
@@ -94610,6 +95953,9 @@ enum UserAuditObjectTypeEnum {
   # Cloud Direct NAS Export.
   CLOUD_DIRECT_NAS_EXPORT
 
+  # Cross-account pair.
+  CROSS_ACCOUNT_PAIR
+
   # Cloud native tag rule type.
   CloudNativeTagRule
 
@@ -95517,6 +96863,14 @@ type ValidateOrgNameReply {
 
   # Validity of the organization name.
   nameValidity: NameValidity!
+}
+# Result of validating cloud cluster create request.
+type ValidationReply {
+  # Detailed message generated by validation.
+  message: String!
+
+  # Boolean stating if successful.
+  isSuccessful: Boolean!
 }
 interface Value {
   serializedValue: String!
@@ -98260,6 +99614,17 @@ type VmwareHostUpdate {
   # v6.0+: ID of the SLA Domain that is configured for this ESXi hypervisor. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
   configuredSlaDomainId: String
 }
+# Input for getting missed recoverable ranges of a Virtual Machine.
+input VmwareMissedRecoverableRangesInput {
+  # Filter ranges to end after this time. The date-time string should be in ISO8601 format, such as `2018-01-01T01:23:45.678Z`.
+  afterTime: DateTime
+
+  # Filter ranges to start before this time. The date-time string should be in ISO8601 format, such as `2018-01-01T01:23:45.678Z`.
+  beforeTime: DateTime
+
+  # Required. The virtual machine ID.
+  id: String!
+}
 # VM Network configuration.
 type VmwareNetworkConfig {
   # The list of network adaptors.
@@ -98300,6 +99665,34 @@ type VmwareRecoverableRange {
 
   # Supported in v5.1+
   endTime: DateTime
+}
+# Supported in v5.1+
+type VmwareRecoverableRangeListResponse {
+  # Supported in v5.1+
+  # List of matching objects.
+  data: [VmwareRecoverableRange!]!
+
+  # Supported in v5.1+
+  # If there is more.
+  hasMore: Boolean
+
+  # Supported in v5.1+
+  # Total list responses.
+  total: Long
+
+  # Supported in Rubrik CDM version 9.0 and later. v9.0: Cursor to retrieve the next set of results. v9.1+: Cursor to retrieve the next set of results.
+  nextCursor: String
+}
+# Input for getting recoverable ranges of a Virtual Machine.
+input VmwareRecoverableRangesInput {
+  # Filter ranges to end after this time. The date-time string should be in ISO8601 format, such as `2018-01-01T01:23:45.678Z`.
+  afterTime: DateTime
+
+  # Filter ranges to start before this time. The date-time string should be in ISO8601 format, such as `2018-01-01T01:23:45.678Z`.
+  beforeTime: DateTime
+
+  # Required. The virtual machine ID.
+  id: String!
 }
 # Supported in v7.0+
 input VmwareSnapshotDownloadRequestInput {
@@ -102290,8 +103683,10 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
 
   # Is HotAdd enabled for this on-prem vCenter.
   isHotAddEnabledForOnPremVcenter: Boolean!
-  conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
+
+  # Connection status for this vCenter Server.
   connectionStatus: RefreshableObjectConnectionStatus!
+  conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
 
   # List of descendants.
   descendantConnection(
@@ -103560,6 +104955,14 @@ input WarmSearchCacheInput {
 input WebCertificateInfo {
   # ID of the certificate.
   cdmCertificateId: String = ""
+}
+# Cluster web server certificate.
+type WebServerCertificate {
+  # Specifies if the web server is configured with a CA signed certificate.
+  isConfiguredWithCaSignedCertificate: Boolean!
+
+  # Web server certificate.
+  cert: CertificateDetails!
 }
 # Supported in v5.2+
 input WebServerCertificatePayloadInput {

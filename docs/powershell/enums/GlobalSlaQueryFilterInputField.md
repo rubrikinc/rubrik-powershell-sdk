@@ -13,3 +13,4 @@ Sort Global SLA Domains by filter.
 - ORG_ID_WITH_VIEW_ACCESS_ONLY - Filter SLA Domains for the organizations that have view access.
 - OWNER_ORG_ID - Filter SLA Domains for the organizations that have ownership.
 - IS_READ_ONLY - Filter SLA Domains based on read-only status.
+- SHOW_ASSIGNED_CLUSTER_SLAS_ONLY - Filter SLA Domains created on a Rubrik cluster that are assigned to objects.

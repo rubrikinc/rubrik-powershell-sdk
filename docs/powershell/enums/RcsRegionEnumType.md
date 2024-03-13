@@ -32,4 +32,5 @@ Regions for Rubrik Cloud Storage Archival Location.
 - UK_WEST - UK West or Cardiff.
 - INDIA_SOUTH - India South or Chennai.
 - US_SOUTH_CENTRAL - US south central or Texas.
+- US_WEST_CENTRAL - US West Central or Wyoming.
 - JAPAN_EAST - Japan East or Tokyo.

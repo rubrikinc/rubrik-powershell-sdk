@@ -9,3 +9,5 @@ Resolve an anomaly.
   - The ID of the anomaly.
 - falsePositiveReport: AnomalyFalsePositiveReport
   - An optional false positive report for the anomaly resolution.
+- directoriesToSnooze: list of System.Strings
+  - An optional list of directories to snooze if a false positive is reported.

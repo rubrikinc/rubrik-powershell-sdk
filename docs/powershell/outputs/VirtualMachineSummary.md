@@ -47,7 +47,7 @@ Supported in v5.0+
 - snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate
   - 
 - templateType: VirtualMachineTemplateType
-  - 
+  - Virtual Machine Template summary.
 - agentStatus: CdmAgentStatus
   - Supported in v5.0+
   The status of the Rubrik Backup Service agent for virtual machines.
