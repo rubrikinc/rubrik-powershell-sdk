@@ -101,11 +101,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	newGroupConfig = @{
     /// 		# OPTIONAL
     /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		failoverGroupId = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	existingGroupConfig = @{
     /// 		# OPTIONAL
     /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		failoverGroupId = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	newComputeConfig = @{
@@ -115,6 +119,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		subnetName = $someString
     /// 		# OPTIONAL
     /// 		securityGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		failoverVnetName = $someString
+    /// 		# OPTIONAL
+    /// 		failoverSubnetName = $someString
+    /// 		# OPTIONAL
+    /// 		failoverSecurityGroupName = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	existingComputeConfig = @{
@@ -250,11 +260,15 @@ $query.Var.exocomputeConfig = @{
 	newGroupConfig = @{
 		# OPTIONAL
 		name = $someString
+		# OPTIONAL
+		failoverGroupId = $someString
 	}
 	# OPTIONAL
 	existingGroupConfig = @{
 		# OPTIONAL
 		name = $someString
+		# OPTIONAL
+		failoverGroupId = $someString
 	}
 	# OPTIONAL
 	newComputeConfig = @{
@@ -264,6 +278,12 @@ $query.Var.exocomputeConfig = @{
 		subnetName = $someString
 		# OPTIONAL
 		securityGroupName = $someString
+		# OPTIONAL
+		failoverVnetName = $someString
+		# OPTIONAL
+		failoverSubnetName = $someString
+		# OPTIONAL
+		failoverSecurityGroupName = $someString
 	}
 	# OPTIONAL
 	existingComputeConfig = @{

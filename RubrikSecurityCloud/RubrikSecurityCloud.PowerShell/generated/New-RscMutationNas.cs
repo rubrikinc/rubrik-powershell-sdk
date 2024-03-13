@@ -244,6 +244,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			hasSmbSupport = $someBoolean
     /// 		}
     /// 		# OPTIONAL
+    /// 		smbCredentials = @{
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 		# OPTIONAL
     /// 		nutanixFileServerParameters = @{
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
@@ -347,6 +354,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			apiToken = $someString
     /// 			# REQUIRED
     /// 			hasSmbSupport = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		smbCredentials = @{
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		nutanixFileServerParameters = @{
@@ -636,6 +650,13 @@ $query.Var.input = @{
 			hasSmbSupport = $someBoolean
 		}
 		# OPTIONAL
+		smbCredentials = @{
+			# OPTIONAL
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+		# OPTIONAL
 		nutanixFileServerParameters = @{
 			# OPTIONAL
 			apiCertificate = $someString
@@ -731,6 +752,13 @@ $query.Var.input = @{
 			apiToken = $someString
 			# REQUIRED
 			hasSmbSupport = $someBoolean
+		}
+		# OPTIONAL
+		smbCredentials = @{
+			# OPTIONAL
+			password = $someString
+			# REQUIRED
+			username = $someString
 		}
 		# OPTIONAL
 		nutanixFileServerParameters = @{

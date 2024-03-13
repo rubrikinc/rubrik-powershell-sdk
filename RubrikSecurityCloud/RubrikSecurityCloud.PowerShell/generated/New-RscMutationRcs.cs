@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	rsaKey = $someString
     /// 	# REQUIRED
     /// 	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	lockDurationDays = $someInt64
     /// 	# OPTIONAL
     /// 	clusterUuidList = @(
@@ -376,7 +376,7 @@ $query.Var.input = @{
 	rsaKey = $someString
 	# REQUIRED
 	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	lockDurationDays = $someInt64
 	# OPTIONAL
 	clusterUuidList = @(

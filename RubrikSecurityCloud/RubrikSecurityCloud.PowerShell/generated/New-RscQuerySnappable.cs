@@ -255,6 +255,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		searchRecurseFolderId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	ignoreArchive = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -424,6 +426,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	orgId = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	objectState = @(
+    /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -588,6 +594,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	orgId = @(
     /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectState = @(
+    /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
     /// 	)
     /// }
     /// 
@@ -766,6 +776,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	orgId = @(
     /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectState = @(
+    /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
     /// 	)
     /// }
     /// 
@@ -1372,6 +1386,8 @@ $query.Var.searchFilter = @{
 		# OPTIONAL
 		searchRecurseFolderId = $someString
 	}
+	# OPTIONAL
+	ignoreArchive = $someBoolean
 }"
             );
         }
@@ -1551,6 +1567,10 @@ $query.Var.filter = @{
 	orgId = @(
 		$someString
 	)
+	# OPTIONAL
+	objectState = @(
+		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle
@@ -1723,6 +1743,10 @@ $query.Var.filter = @{
 	# OPTIONAL
 	orgId = @(
 		$someString
+	)
+	# OPTIONAL
+	objectState = @(
+		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
 	)
 }"
             );
@@ -1909,6 +1933,10 @@ $query.Var.filter = @{
 	# OPTIONAL
 	orgId = @(
 		$someString
+	)
+	# OPTIONAL
+	objectState = @(
+		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
 	)
 }"
             );

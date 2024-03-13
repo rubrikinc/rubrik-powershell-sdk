@@ -634,6 +634,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		numChannels = $someInt
+    /// 		# OPTIONAL
+    /// 		shouldSkipDropDbInUndo = $someBoolean
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
@@ -701,6 +703,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			targetRacHostIds = @(
     /// 				$someString
     /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldSkipDropDbInUndo = $someBoolean
     /// 			# OPTIONAL
     /// 			lmDbName = $someString
     /// 			# OPTIONAL
@@ -1817,6 +1821,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		numChannels = $someInt
+		# OPTIONAL
+		shouldSkipDropDbInUndo = $someBoolean
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
@@ -1876,6 +1882,8 @@ $query.Var.input = @{
 			targetRacHostIds = @(
 				$someString
 			)
+			# OPTIONAL
+			shouldSkipDropDbInUndo = $someBoolean
 			# OPTIONAL
 			lmDbName = $someString
 			# OPTIONAL
