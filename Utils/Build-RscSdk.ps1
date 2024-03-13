@@ -44,22 +44,39 @@ if ($Release) {
 # Stop on error
 $ErrorActionPreference = "Stop"
 
-# Build the project
-if ($Release) {
-    dotnet build --configuration Release /p:GeneratePSDocs=true $ProjectDir
+# Make sure we have dotnet
+try {
+    $dotnetVersion = dotnet --version
+    Write-Host "dotnet version: $dotnetVersion"
+} catch {
+    Write-Error "Failed to execute 'dotnet --version'. Please ensure .NET SDK is correctly installed and accessible."
+    exit 1
 }
-else {
-    if ($NoDocs) {
-        dotnet build $ProjectDir
-    }
-    else {
-        dotnet build /p:GeneratePSDocs=true $ProjectDir
-    }
+
+# Build the project
+$buildCommand = if ($Release) {
+    "dotnet build --configuration Release /p:GeneratePSDocs=true $ProjectDir"
+} elseif ($NoDocs) {
+    "dotnet build $ProjectDir"
+} else {
+    "dotnet build /p:GeneratePSDocs=true $ProjectDir"
+}
+
+Invoke-Expression $buildCommand
+
+if ($LASTEXITCODE -ne 0 ) {
+    Write-Error "dotnet build failed."
+    exit $LASTEXITCODE
 }
 
 # Copy the output to the output directory
 Copy-Item -Recurse -Force $ProjectOutputDir $OutputDir
-Copy-Item $OutputDir\net6.0\RubrikSecurityCloud.PowerShell.dll-Help.xml $OutputDir\net472\RubrikSecurityCloud.PowerShell.dll-Help.xml
+$helpXmlPath = "$OutputDir\net6.0\RubrikSecurityCloud.PowerShell.dll-Help.xml"
+if (Test-Path $helpXmlPath) {
+    Copy-Item $helpXmlPath $OutputDir\net472\
+} else {
+    Write-Warning "Documentation XML file not found. Skipping copy."
+}
 
 if (-not $NoTests) {
     # Run the tests
