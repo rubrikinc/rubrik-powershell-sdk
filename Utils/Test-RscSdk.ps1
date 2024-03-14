@@ -70,6 +70,8 @@ if ( -not $SkipUnitTests ) {
         if ($results.FailedCount -gt 0) {
             Write-Error "Pester Core unit tests failed."
             exit 1
+        } else {
+            Write-Output "Pester Core unit tests passed."
         }
 
         # Run Core unit tests (C#)
@@ -78,7 +80,10 @@ if ( -not $SkipUnitTests ) {
         if ($LASTEXITCODE -ne 0) {
             Write-Error "C# unit tests failed."
             exit $LASTEXITCODE
+        } else {
+            Write-Output "C# unit tests passed."
         }
+
         Set-Location $PSScriptRoot\..
     }
 
@@ -89,6 +94,8 @@ if ( -not $SkipUnitTests ) {
         if ($results.FailedCount -gt 0) {
             Write-Error "Pester Toolkit unit tests failed."
             exit 1
+        } else {
+            Write-Output "Pester Toolkit unit tests passed."
         }
     }
 }
@@ -101,6 +108,8 @@ if ( -not $SkipE2ETests ) {
         if ($results.FailedCount -gt 0) {
             Write-Error "Pester Core e2e tests failed."
             exit 1
+        } else {
+            Write-Output "Pester Core e2e tests passed."
         }
     }
 
@@ -111,6 +120,8 @@ if ( -not $SkipE2ETests ) {
         if ($results.FailedCount -gt 0) {
             Write-Error "Pester Toolkit e2e tests failed."
             exit 1
+        } else {
+            Write-Output "Pester Toolkit e2e tests passed."
         }
     }
 }
