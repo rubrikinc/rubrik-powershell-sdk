@@ -5,8 +5,11 @@
 # to native line endings on checkout.
 *.cpp text
 *.c text
+*.cs text
 *.h text
 *.ps1 text
+*.psm text
+*.psd text
 *.idl text
 *.def text
 *.mc text
