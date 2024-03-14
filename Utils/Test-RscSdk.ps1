@@ -67,7 +67,7 @@ if ( -not $SkipUnitTests ) {
         # Run Core unit tests (Pester)
         Set-Location $PSScriptRoot\..
         $results = .\Toolkit\Utils\Run-PesterTests.ps1 .\Tests\unit
-        if ($results.FailedCount -gt 0) {
+        if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Core unit tests failed."
             exit 1
         } else {
@@ -91,7 +91,7 @@ if ( -not $SkipUnitTests ) {
         # Run Toolkit unit tests (Pester)
         Set-Location $PSScriptRoot\..
         $results = .\Toolkit\Utils\Run-PesterTests.ps1 .\Toolkit\Tests\unit
-        if ($results.FailedCount -gt 0) {
+        if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Toolkit unit tests failed."
             exit 1
         } else {
@@ -105,7 +105,7 @@ if ( -not $SkipE2ETests ) {
         # Run Core e2e tests (Pester)
         Set-Location $PSScriptRoot\..
         $results = .\Toolkit\Utils\Run-PesterTests.ps1 .\Tests\e2e
-        if ($results.FailedCount -gt 0) {
+        if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Core e2e tests failed."
             exit 1
         } else {
@@ -117,7 +117,7 @@ if ( -not $SkipE2ETests ) {
         # Run Toolkit e2e tests (Pester)
         Set-Location $PSScriptRoot\..
         $results = .\Toolkit\Utils\Run-PesterTests.ps1 .\Toolkit\Tests\e2e
-        if ($results.FailedCount -gt 0) {
+        if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Toolkit e2e tests failed."
             exit 1
         } else {
