@@ -40,7 +40,8 @@ param(
     [switch]$SkipUnitTests = $false,
     [switch]$SkipE2ETests = $false,
     [switch]$SkipCoreTests = $false,
-    [switch]$SkipToolkitTests = $false
+    [switch]$SkipToolkitTests = $false,
+    [switch]$CI = $false
 )
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
@@ -48,6 +49,19 @@ Set-Location $PSScriptRoot\..
 # Stop on error
 $ErrorActionPreference = "Stop"
 
+# Set up
+if ($CI) {
+    Set-Location $PSScriptRoot\..
+    .\Utils\Import-RscModuleFromLocalOutputDir.ps1
+    if ($env:RSC_SERVICE_ACCOUNT_FILE) {
+        $serviceAccountFile = $env:RSC_SERVICE_ACCOUNT_FILE
+        Set-RscServiceAccountFile -InputFilePath $serviceAccountFile -DisablePrompts -KeepOriginalClearTextFile
+    } else {
+        Write-Error "Environment variable RSC_SERVICE_ACCOUNT_FILE not set."
+    }
+}
+
+# Run tests
 if ( -not $SkipUnitTests ) {
     if ( -not $SkipCoreTests ) {
         # Run Core unit tests (Pester)
