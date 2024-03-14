@@ -58,8 +58,13 @@ catch {
 # Merge devel into main without commit
 try {
     git merge devel --no-commit --no-ff
+    if ($LASTEXITCODE -ne 0) {
+        throw
+    }
 }
 catch {
+    git reset --hard HEAD
+    git checkout devel
     throw "Failed to merge 'devel' into 'main'."
 }
 
