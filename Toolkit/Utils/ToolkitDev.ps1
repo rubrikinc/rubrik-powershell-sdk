@@ -116,7 +116,7 @@ function Copy-ToolkitToOutputDir {
         }
     }
 
-    Foreach ($file in (Get-ChildItem -Path "$($toolkitDir.FormatDir)/*.ps*")) {
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.FormatDir)/*.ps*")) {
         if (Copy-ToolkitFileToOutputDir $file) {
             $fileCount++
         }
