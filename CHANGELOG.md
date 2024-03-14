@@ -4,6 +4,10 @@
 
 Fixes:
 
+- Fixed an issue in which certain GraphQL calls responded with
+  `Unable to cast object of type 'Newtonsoft.Json.Linq.JValue'
+  to type 'Newtonsoft.Json.Linq.JObject'.`
+
 New Features:
 
 Breaking Changes:
