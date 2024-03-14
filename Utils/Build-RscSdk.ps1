@@ -22,7 +22,8 @@ param(
     [switch]$NoClean = $false,
     [switch]$Release = $false,
     [switch]$NoDocs = $false,
-    [switch]$NoTests = $false
+    [switch]$NoTests = $false,
+    [switch]$CI = $false
 )
 
 # Change to the root of the repository
@@ -80,5 +81,5 @@ if (Test-Path $helpXmlPath) {
 
 if (-not $NoTests) {
     # Run the tests
-    .\Utils\Test-RscSdk.ps1
+    .\Utils\Test-RscSdk.ps1 -CI:$CI
 }
