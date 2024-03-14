@@ -13,7 +13,7 @@ Describe -Name 'Connect to API' -Fixture {
         # API Operation: AccountSettings
         # Return type: AccountSetting, consists of 2 bools
         # Default profile selects them both for retrieval
-        $query = New-RscQueryAccount -Op Settings
+        $query = New-RscQueryAccount -Op SettingsZZZ # TESTING CI ! WILL REVERT!! 
         $query.Field.isEmailNotificationEnabled | Should -Not -BeNullOrEmpty
         $query.Field.IsEulaAccepted | Should -Not -BeNullOrEmpty
 
