@@ -14,7 +14,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
+    # Create the service account file from the secret
+    - name: Create Service Account File
+      run: |
+        echo '${{ secrets.RSC_SERVICE_ACCOUNT_JSON }}' > ${{ github.workspace }}/service_account.json
+      shell: bash
+
     # Install PowerShell
     - name: Install PowerShell
       run: |
@@ -31,4 +37,6 @@ jobs:
     
     # Run build script
     - name: Build-RscSdk.ps1
+      env:
+        RSC_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/service_account.json
       run: pwsh -File Utils/Build-RscSdk.ps1
