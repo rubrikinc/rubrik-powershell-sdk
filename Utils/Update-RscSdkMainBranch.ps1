@@ -58,8 +58,13 @@ catch {
 # Merge devel into main without commit
 try {
     git merge devel --no-commit --no-ff
+    if ($LASTEXITCODE -ne 0) {
+        throw
+    }
 }
 catch {
+    git reset --hard HEAD
+    git checkout devel
     throw "Failed to merge 'devel' into 'main'."
 }
 
@@ -132,9 +137,9 @@ RunIfNotDry {
 }
 
 # Prepare devel branch for further development
+git checkout devel
+Set-Location $PSScriptRoot\..
 RunIfNotDry {
-    git checkout devel
-    Set-Location $PSScriptRoot\..
     .\Utils\New-RscSdkChangeLogEntry.ps1 -Commit
     git push origin devel
 }

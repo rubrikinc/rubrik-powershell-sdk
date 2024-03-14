@@ -58,4 +58,7 @@ $p = Get-Item -Path $TestPath
 $displayPath = Join-Path $p.Parent.Parent.Name $p.Parent.Name $p.Name
 Write-Host "`n[$($p.Name)] Running Pester tests in $displayPath" -ForegroundColor Cyan
 
-Invoke-Pester -CI $TestPath
+# Run Pester tests and pass through the results
+$testResults = Invoke-Pester -CI $TestPath -PassThru
+$testResults
+
