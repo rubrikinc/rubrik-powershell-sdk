@@ -1,10 +1,10 @@
-name: .NET
+name: Build SDK
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "devel" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "devel" ]
 
 jobs:
   build:
@@ -22,12 +22,12 @@ jobs:
         # Install a basic PowerShell environment
         sudo apt-get install -y powershell
 
-    # Setup .NET (optional, if your script runs dotnet commands)
+    # Setup .NET
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
     
-    # Run your custom build script
-    - name: Build with Custom Script
+    # Run build script
+    - name: Build-RscSdk.ps1
       run: pwsh -File Utils/Build-RscSdk.ps1
