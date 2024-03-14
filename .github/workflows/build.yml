@@ -1,0 +1,47 @@
+name: Build SDK
+
+on:
+  push:
+    branches: [ "main", "devel" ]
+  pull_request:
+    branches: [ "main", "devel" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Ensure PowerShell config directory exists
+    - name: Ensure PowerShell config directory exists
+      run: mkdir -p /home/runner/.config/powershell
+      shell: bash
+
+    # Create the service account file from the secret
+    - name: Create Service Account File
+      run: |
+        echo '${{ secrets.RSC_SERVICE_ACCOUNT_JSON }}' > ${{ github.workspace }}/service_account.json
+      shell: bash
+
+    # Install PowerShell
+    - name: Install PowerShell
+      run: |
+        # Update the list of products
+        sudo apt-get update
+        # Install a basic PowerShell environment
+        sudo apt-get install -y powershell
+
+    # Setup .NET
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    
+    # Run build script
+    - name: Build-RscSdk.ps1
+      env:
+        RSC_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/service_account.json
+      run: pwsh -File Utils/Build-RscSdk.ps1
