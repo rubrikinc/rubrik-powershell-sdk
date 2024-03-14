@@ -44,4 +44,4 @@ jobs:
     - name: Build-RscSdk.ps1
       env:
         RSC_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/service_account.json
-      run: pwsh -Command "./Utils/Build-RscSdk.ps1 -CI"
+      run: pwsh -File Utils/Build-RscSdk.ps1 -CI
