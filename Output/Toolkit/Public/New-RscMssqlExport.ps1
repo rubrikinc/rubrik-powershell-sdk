@@ -17,18 +17,10 @@ function New-RscMssqlExport{
     .PARAMETER RscMssqlDatabase
     Database object returned from Get-RscMssqlDatabase
 
-    .PARAMETER Latest
-    Uses the latest recovery point date and time that Rubrik has for a database
-
-    .PARAMETER LastFull
-    Uses the last snapshot date and time that Rubrik has for a database
-
-    .PARAMETER RestoreTime
-    Restore time can in 1 of 3 formats
-        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
-        - Local time: 2023-11-02 08:00:000
-        - UTC: 2023-11-02 08:00:000Z
-    All values will be converted into UTC and used as the recovery point.
+    .PARAMETER RecoveryDateTime
+    While this is a date field, it is best if you use Get-RscMssqlDatabaseRecoveryPoint to ensure that the date and time is formatted properly. Also, using Get-RscMssqlDatabaseRecoveryPoint
+    will allow for a simplier use case as you can use -Latest, -LastFull, relative point in time or exact point in time. In all cases, the output will be a properly formatted date and time in UTC. 
+    Keep in mind, if you send a value that is NOT in UTC timezone, you could be doing a recovery to point in time different than when you desired. 
 
     .PARAMETER TargetMssqlInstance
     SQL Server Instance Object returned from Get-RscMssqlInstance
@@ -82,7 +74,7 @@ function New-RscMssqlExport{
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
     $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
     New-RscMssqlExport -RscMssqlDatabase $RscMssqlDatabase `
-        -Latest `
+        -RecoveryDateTime "2024-03-05T19:17:30.000Z" `
         -TargetMssqlInstance $RscMssqlInstance `
         -TargetDataPath = "c:\mnt\sqldata" `
         -TargeLogPath = "c:\mnt\sqllogs" `
@@ -115,7 +107,7 @@ function New-RscMssqlExport{
     } 
     $TargetFilePaths += $TargetLogPath
     New-RscMssqlExport -RscMssqlDatabase $RscMssqlDatabase `
-        -Latest `
+        -RecoveryDateTime "2024-03-05T19:17:30.000Z" `
         -TargetMssqlInstance $RscMssqlInstance `
         -TargetFilePaths $TargetFilePaths `
         -Overwrite `

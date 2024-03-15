@@ -119,9 +119,6 @@ function Get-RscCluster {
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         # Count clusters:
         if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
             $r = (New-RscQueryCluster -Op List -RemoveField Nodes).Invoke()

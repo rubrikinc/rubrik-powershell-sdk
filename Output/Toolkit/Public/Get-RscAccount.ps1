@@ -26,9 +26,6 @@ function Get-RscAccount {
     )
     
     Process {
-        # Re-use existing connection, or create a new one:
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         $outputObj = @{}
         
         # Add Account Id:

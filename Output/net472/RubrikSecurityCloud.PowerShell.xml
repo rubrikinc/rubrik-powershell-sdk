@@ -573,7 +573,7 @@
             Collate pages of results.
             </summary>
         </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQuery.RootFieldKind">
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_GqlRootField.RootFieldKind">
             <summary>
             The kind of root field this object is:
             a Query, a Mutation, or something unknown.
@@ -7633,11 +7633,15 @@
              	newGroupConfig = @{
              		# OPTIONAL
              		name = $someString
+             		# OPTIONAL
+             		failoverGroupId = $someString
              	}
              	# OPTIONAL
              	existingGroupConfig = @{
              		# OPTIONAL
              		name = $someString
+             		# OPTIONAL
+             		failoverGroupId = $someString
              	}
              	# OPTIONAL
              	newComputeConfig = @{
@@ -7647,6 +7651,12 @@
              		subnetName = $someString
              		# OPTIONAL
              		securityGroupName = $someString
+             		# OPTIONAL
+             		failoverVnetName = $someString
+             		# OPTIONAL
+             		failoverSubnetName = $someString
+             		# OPTIONAL
+             		failoverSecurityGroupName = $someString
              	}
              	# OPTIONAL
              	existingComputeConfig = @{
@@ -10070,9 +10080,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationCrossAccount">
              <summary>
-             Create a new RscQuery object for any of the 3
+             Create a new RscQuery object for any of the 4
              operations in the 'Cross Account' API domain:
-             AddCrossAccountServiceConsumer, CreateCrossAccountPair, or CreateCrossAccountRegOauthPayload.
+             AddCrossAccountServiceConsumer, CreateCrossAccountPair, CreateCrossAccountRegOauthPayload, or DeleteCrossAccountPair.
              </summary>
              <description>
              New-RscMutationCrossAccount creates a new
@@ -10082,11 +10092,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 3 operations
+             There are 4 operations
              in the 'Cross Account' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AddCrossAccountServiceConsumer, CreateCrossAccountPair, or CreateCrossAccountRegOauthPayload.
+             one of: AddCrossAccountServiceConsumer, CreateCrossAccountPair, CreateCrossAccountRegOauthPayload, or DeleteCrossAccountPair.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -10228,6 +10238,37 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: CreateCrossAccountRegOauthPayloadReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the DeleteCrossAccountPair operation
+             of the 'Cross Account' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    CrossAccount
+             # API Operation: DeleteCrossAccountPair
+             
+             $query = New-RscMutationCrossAccount -DeleteCrossAccountPair
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	crossAccountId = $someString
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: System.String
              
              
              
@@ -14033,6 +14074,13 @@
              			# OPTIONAL
              			isOracleHost = $someBoolean
              			# OPTIONAL
+             			mssqlSddUserCredentials = @{
+             				# REQUIRED
+             				password = $someString
+             				# REQUIRED
+             				username = $someString
+             			}
+             			# OPTIONAL
              			orgNetworkId = $someString
              			# REQUIRED
              			hostname = $someString
@@ -14136,6 +14184,13 @@
              			}
              			# OPTIONAL
              			isOracleHost = $someBoolean
+             			# OPTIONAL
+             			mssqlSddUserCredentials = @{
+             				# REQUIRED
+             				password = $someString
+             				# REQUIRED
+             				username = $someString
+             			}
              			# OPTIONAL
              			orgNetworkId = $someString
              			# REQUIRED
@@ -14250,6 +14305,13 @@
              				isUpdateCertAndAgentIdEnabled = $someBoolean
              				# OPTIONAL
              				isRefreshPaused = $someBoolean
+             				# OPTIONAL
+             				mssqlSddUserCredentials = @{
+             					# REQUIRED
+             					password = $someString
+             					# REQUIRED
+             					username = $someString
+             				}
              				# OPTIONAL
              				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
              				# OPTIONAL
@@ -19400,6 +19462,10 @@
              		# OPTIONAL
              		otherReason = $someString
              	}
+             	# OPTIONAL
+             	directoriesToSnooze = @(
+             		$someString
+             	)
              }
              
              # Execute the query
@@ -22864,9 +22930,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationMssql">
              <summary>
-             Create a new RscQuery object for any of the 18
+             Create a new RscQuery object for any of the 22
              operations in the 'Microsoft SQL Server' API domain:
-             AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+             AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
              </summary>
              <description>
              New-RscMutationMssql creates a new
@@ -22876,11 +22942,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 18 operations
+             There are 22 operations
              in the 'Microsoft SQL Server' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
+             one of: AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -23188,6 +23254,89 @@
              </example>
             
              <example>
+             Runs the BulkUpdateAvailabilityGroup operation
+             of the 'Microsoft SQL Server' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Mssql
+             # API Operation: BulkUpdateAvailabilityGroup
+             
+             $query = New-RscMutationMssql -BulkUpdateAvailabilityGroup
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	availabilityGroupsUpdateProperties = @(
+             		@{
+             			# REQUIRED
+             			availabilityGroupId = $someString
+             			# REQUIRED
+             			updateProperties = @{
+             				# OPTIONAL
+             				mssqlNonSlaProperties = @{
+             					# OPTIONAL
+             					copyOnly = $someBoolean
+             					# OPTIONAL
+             					logBackupFrequencyInSeconds = $someInt
+             					# OPTIONAL
+             					logRetentionHours = $someInt
+             				}
+             				# OPTIONAL
+             				mssqlSlaRelatedProperties = @{
+             					# OPTIONAL
+             					copyOnly = $someBoolean
+             					# OPTIONAL
+             					logBackupFrequencyInSeconds = $someInt
+             					# OPTIONAL
+             					logRetentionHours = $someInt
+             					# OPTIONAL
+             					hasLogConfigFromSla = $someBoolean
+             					# OPTIONAL
+             					hostLogRetention = $someInt
+             				}
+             				# OPTIONAL
+             				mssqlSlaPatchProperties = @{
+             					# OPTIONAL
+             					configuredSlaDomainId = $someString
+             					# OPTIONAL
+             					useConfiguredDefaultLogRetention = $someBoolean
+             					# OPTIONAL
+             					mssqlSlaRelatedProperties = @{
+             						# OPTIONAL
+             						copyOnly = $someBoolean
+             						# OPTIONAL
+             						logBackupFrequencyInSeconds = $someInt
+             						# OPTIONAL
+             						logRetentionHours = $someInt
+             						# OPTIONAL
+             						hasLogConfigFromSla = $someBoolean
+             						# OPTIONAL
+             						hostLogRetention = $someInt
+             					}
+             				}
+             				# OPTIONAL
+             				configuredSlaDomainId = $someString
+             			}
+             		}
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: BulkUpdateMssqlAvailabilityGroupReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
              Runs the BulkUpdateDbs operation
              of the 'Microsoft SQL Server' API domain.
              <code>
@@ -23289,6 +23438,193 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: BulkUpdateMssqlDbsReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the BulkUpdateInstance operation
+             of the 'Microsoft SQL Server' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Mssql
+             # API Operation: BulkUpdateInstance
+             
+             $query = New-RscMutationMssql -BulkUpdateInstance
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	instancesUpdateProperties = @(
+             		@{
+             			# REQUIRED
+             			instanceId = $someString
+             			# REQUIRED
+             			updateProperties = @{
+             				# OPTIONAL
+             				mssqlNonSlaProperties = @{
+             					# OPTIONAL
+             					copyOnly = $someBoolean
+             					# OPTIONAL
+             					logBackupFrequencyInSeconds = $someInt
+             					# OPTIONAL
+             					logRetentionHours = $someInt
+             				}
+             				# OPTIONAL
+             				mssqlSlaRelatedProperties = @{
+             					# OPTIONAL
+             					copyOnly = $someBoolean
+             					# OPTIONAL
+             					logBackupFrequencyInSeconds = $someInt
+             					# OPTIONAL
+             					logRetentionHours = $someInt
+             					# OPTIONAL
+             					hasLogConfigFromSla = $someBoolean
+             					# OPTIONAL
+             					hostLogRetention = $someInt
+             				}
+             				# OPTIONAL
+             				mssqlSlaPatchProperties = @{
+             					# OPTIONAL
+             					configuredSlaDomainId = $someString
+             					# OPTIONAL
+             					useConfiguredDefaultLogRetention = $someBoolean
+             					# OPTIONAL
+             					mssqlSlaRelatedProperties = @{
+             						# OPTIONAL
+             						copyOnly = $someBoolean
+             						# OPTIONAL
+             						logBackupFrequencyInSeconds = $someInt
+             						# OPTIONAL
+             						logRetentionHours = $someInt
+             						# OPTIONAL
+             						hasLogConfigFromSla = $someBoolean
+             						# OPTIONAL
+             						hostLogRetention = $someInt
+             					}
+             				}
+             				# OPTIONAL
+             				configuredSlaDomainId = $someString
+             			}
+             		}
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: BulkUpdateMssqlInstanceReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the BulkUpdatePropertiesOnHost operation
+             of the 'Microsoft SQL Server' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Mssql
+             # API Operation: BulkUpdatePropertiesOnHost
+             
+             $query = New-RscMutationMssql -BulkUpdatePropertiesOnHost
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	hostsUpdateProperties = @(
+             		@{
+             			# REQUIRED
+             			hostId = $someString
+             			# REQUIRED
+             			updateProperties = @{
+             				# OPTIONAL
+             				mssqlSlaRelatedProperties = @{
+             					# OPTIONAL
+             					copyOnly = $someBoolean
+             					# OPTIONAL
+             					logBackupFrequencyInSeconds = $someInt
+             					# OPTIONAL
+             					logRetentionHours = $someInt
+             					# OPTIONAL
+             					hasLogConfigFromSla = $someBoolean
+             					# OPTIONAL
+             					hostLogRetention = $someInt
+             				}
+             			}
+             		}
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: BulkUpdateMssqlPropertiesOnHostReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the BulkUpdatePropertiesOnWindowsCluster operation
+             of the 'Microsoft SQL Server' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Mssql
+             # API Operation: BulkUpdatePropertiesOnWindowsCluster
+             
+             $query = New-RscMutationMssql -BulkUpdatePropertiesOnWindowsCluster
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	windowsClustersUpdateProperties = @(
+             		@{
+             			# REQUIRED
+             			updateProperties = @{
+             				# OPTIONAL
+             				mssqlSlaRelatedProperties = @{
+             					# OPTIONAL
+             					copyOnly = $someBoolean
+             					# OPTIONAL
+             					logBackupFrequencyInSeconds = $someInt
+             					# OPTIONAL
+             					logRetentionHours = $someInt
+             					# OPTIONAL
+             					hasLogConfigFromSla = $someBoolean
+             					# OPTIONAL
+             					hostLogRetention = $someInt
+             				}
+             			}
+             			# REQUIRED
+             			windowsClusterId = $someString
+             		}
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: BulkUpdateMssqlPropertiesOnWindowsClusterReply
              
              
              
@@ -24116,6 +24452,13 @@
              			hasSmbSupport = $someBoolean
              		}
              		# OPTIONAL
+             		smbCredentials = @{
+             			# OPTIONAL
+             			password = $someString
+             			# REQUIRED
+             			username = $someString
+             		}
+             		# OPTIONAL
              		nutanixFileServerParameters = @{
              			# OPTIONAL
              			apiCertificate = $someString
@@ -24219,6 +24562,13 @@
              			apiToken = $someString
              			# REQUIRED
              			hasSmbSupport = $someBoolean
+             		}
+             		# OPTIONAL
+             		smbCredentials = @{
+             			# OPTIONAL
+             			password = $someString
+             			# REQUIRED
+             			username = $someString
              		}
              		# OPTIONAL
              		nutanixFileServerParameters = @{
@@ -26958,6 +27308,11 @@
              			# REQUIRED
              			failedItemsInstanceId = $someString
              		}
+             		# OPTIONAL
+             		relicRestoreConfig = @{
+             			# OPTIONAL
+             			unused = $someBoolean
+             		}
              	}
              	# REQUIRED
              	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
@@ -28063,6 +28418,8 @@
              	config = @{
              		# OPTIONAL
              		numChannels = $someInt
+             		# OPTIONAL
+             		shouldSkipDropDbInUndo = $someBoolean
              		# REQUIRED
              		recoveryPoint = @{
              			# OPTIONAL
@@ -28130,6 +28487,8 @@
              			targetRacHostIds = @(
              				$someString
              			)
+             			# OPTIONAL
+             			shouldSkipDropDbInUndo = $someBoolean
              			# OPTIONAL
              			lmDbName = $someString
              			# OPTIONAL
@@ -29289,7 +29648,7 @@
              	rsaKey = $someString
              	# REQUIRED
              	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
-             	# REQUIRED
+             	# OPTIONAL
              	lockDurationDays = $someInt64
              	# OPTIONAL
              	clusterUuidList = @(
@@ -29524,7 +29883,7 @@
              	region = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
              	# REQUIRED
              	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
-             	# REQUIRED
+             	# OPTIONAL
              	lockDurationDays = $someInt64
              	# OPTIONAL
              	clusterUuidList = @(
@@ -42039,9 +42398,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure">
              <summary>
-             Create a new RscQuery object for any of the 44
+             Create a new RscQuery object for any of the 45
              operations in the 'Azure' API domain:
-             AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+             AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              </summary>
              <description>
              New-RscQueryAzure creates a new
@@ -42051,11 +42410,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 44 operations
+             There are 45 operations
              in the 'Azure' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+             one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -42358,6 +42717,34 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: CheckAzurePersistentStorageSubscriptionCanUnmapReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the CloudAccountDetailsForFeature operation
+             of the 'Azure' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Azure
+             # API Operation: CloudAccountDetailsForFeature
+             
+             $query = New-RscQueryAzure -CloudAccountDetailsForFeature
+             
+             # REQUIRED
+             $query.Var.featureId = $someString
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: AzureCloudAccountDetailsForFeatureReply
              
              
              
@@ -48347,6 +48734,10 @@
              		$someString
              	)
              	# OPTIONAL
+             	eosStatus = @(
+             		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
+             	)
+             	# OPTIONAL
              	upgradeJobStatus = @(
              		$someClusterJobStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
              	)
@@ -53316,9 +53707,9 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryMisc">
              <summary>
-             Create a new RscQuery object for any of the 169
+             Create a new RscQuery object for any of the 171
              operations in the 'Miscellaneous' API domain:
-             ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
+             ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
              </summary>
              <description>
              New-RscQueryMisc creates a new
@@ -53328,11 +53719,11 @@
              connection to run. To execute the operation, either call Invoke()
              on the object returned by this cmdlet, or pass the object to
              Invoke-Rsc.
-             There are 169 operations
+             There are 171 operations
              in the 'Miscellaneous' API domain. Select the operation this
              query is for by specifying the appropriate value for the
              -Operation parameter;
-             one of: ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
+             one of: ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
              Each operation has its own set of variables that can be set with
              the -Var parameter. For more info about the variables, 
              call Info() on the object returned by this cmdlet, for example:
@@ -56836,6 +57227,341 @@
              </example>
             
              <example>
+             Runs the JobInfo operation
+             of the 'Miscellaneous' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Misc
+             # API Operation: JobInfo
+             
+             $query = New-RscQueryMisc -JobInfo
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# OPTIONAL
+             	accountName = $someString
+             	# OPTIONAL
+             	requestId = $someString
+             	# OPTIONAL
+             	clusterUuid = $someString
+             	# OPTIONAL
+             	type = $someJobType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.JobType]) for enum values.
+             	# REQUIRED
+             	additionalInfo = @{
+             		# OPTIONAL
+             		unmountInfo = @{
+             			# OPTIONAL
+             			liveMountFid = $someString
+             		}
+             		# OPTIONAL
+             		queryMountInfo = @{
+             			# OPTIONAL
+             			snapshotFid = $someString
+             		}
+             		# OPTIONAL
+             		sapHanaSystemInfo = @{
+             			# OPTIONAL
+             			sapHanaSystemFid = $someString
+             		}
+             		# OPTIONAL
+             		archivalLocationInfo = @{
+             			# OPTIONAL
+             			polarisManagedLocId = $someString
+             			# OPTIONAL
+             			locationName = $someString
+             			# OPTIONAL
+             			locationType = $someString
+             			# OPTIONAL
+             			operationType = $someArchivalLocationOperationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationOperationType]) for enum values.
+             			# OPTIONAL
+             			operationId = $someString
+             		}
+             		# OPTIONAL
+             		mosaicSourceInfo = @{
+             			# OPTIONAL
+             			sourceNames = @(
+             				$someString
+             			)
+             			# OPTIONAL
+             			refreshEffectiveSla = $someBoolean
+             			# OPTIONAL
+             			sourceType = $someMosaicSourceNosqlSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicSourceNosqlSourceType]) for enum values.
+             		}
+             		# OPTIONAL
+             		snapshotFileDownloadInfo = @{
+             			# OPTIONAL
+             			downloadId = $someInt64
+             			# OPTIONAL
+             			snappableType = $someSnapshotFileDownloadSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotFileDownloadSnappableType]) for enum values.
+             		}
+             		# OPTIONAL
+             		mosaicStorageLocationInfo = @{
+             			# OPTIONAL
+             			storageLocationName = $someString
+             		}
+             		# OPTIONAL
+             		pendingSlaInfo = @{
+             			# OPTIONAL
+             			objectFids = @(
+             				$someString
+             			)
+             		}
+             		# OPTIONAL
+             		volumeGroupUnmountInfo = @{
+             			# OPTIONAL
+             			liveMountFid = $someString
+             		}
+             		# OPTIONAL
+             		db2InstanceInfo = @{
+             			# OPTIONAL
+             			db2InstanceFid = $someString
+             		}
+             		# OPTIONAL
+             		mssqlDbInfo = @{
+             			# OPTIONAL
+             			mssqlDbFid = $someString
+             		}
+             		# OPTIONAL
+             		logShippingInfo = @{
+             			# OPTIONAL
+             			secondaryDatabaseName = $someString
+             			# OPTIONAL
+             			databaseFid = $someString
+             		}
+             		# OPTIONAL
+             		addManagedVolumeInfo = @{
+             			# OPTIONAL
+             			managedVolumeFid = $someString
+             		}
+             		# OPTIONAL
+             		takeManagedVolumeOnDemandSnapshotInfo = @{
+             			# OPTIONAL
+             			managedVolumeFid = $someString
+             		}
+             		# OPTIONAL
+             		beginManagedVolumeSnapshotInfo = @{
+             			# OPTIONAL
+             			managedVolumeFid = $someString
+             		}
+             		# OPTIONAL
+             		endManagedVolumeSnapshotInfo = @{
+             			# OPTIONAL
+             			managedVolumeFid = $someString
+             		}
+             		# OPTIONAL
+             		resizeManagedVolumeInfo = @{
+             			# OPTIONAL
+             			managedVolumeFid = $someString
+             		}
+             		# OPTIONAL
+             		exportManagedVolumeSnapshotInfo = @{
+             			# OPTIONAL
+             			snapshotFid = $someString
+             			# OPTIONAL
+             			exportId = $someString
+             		}
+             		# OPTIONAL
+             		oracleExportInfo = @{
+             			# OPTIONAL
+             			isSameHostRestore = $someBoolean
+             			# OPTIONAL
+             			targetHostOrRacFid = $someString
+             			# OPTIONAL
+             			targetDbName = $someString
+             		}
+             		# OPTIONAL
+             		sapHanaDatabaseInfo = @{
+             			# OPTIONAL
+             			sapHanaDatabaseFid = $someString
+             			# OPTIONAL
+             			syncDbLogSnapshot = $someBoolean
+             		}
+             		# OPTIONAL
+             		exportVcdVappSnapshotInfo = @{
+             			# OPTIONAL
+             			snapshotFid = $someString
+             			# OPTIONAL
+             			config = @{
+             				# OPTIONAL
+             				newVappParams = @{
+             					# REQUIRED
+             					name = $someString
+             					# REQUIRED
+             					orgVdcId = $someString
+             				}
+             				# OPTIONAL
+             				shouldPowerOnVappAfterExport = $someBoolean
+             				# OPTIONAL
+             				targetVappId = $someString
+             				# REQUIRED
+             				exportMode = $someVappExportMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappExportMode]) for enum values.
+             				# REQUIRED
+             				networksToRestore = @(
+             					@{
+             						# OPTIONAL
+             						newName = $someString
+             						# OPTIONAL
+             						vappNetworkSummary = @{
+             							# OPTIONAL
+             							parentNetworkId = $someString
+             							# REQUIRED
+             							isDeployed = $someBoolean
+             							# REQUIRED
+             							name = $someString
+             						}
+             					}
+             				)
+             				# REQUIRED
+             				vmsToExport = @(
+             					@{
+             						# OPTIONAL
+             						storagePolicyId = $someString
+             						# REQUIRED
+             						name = $someString
+             						# REQUIRED
+             						networkConnections = @(
+             							@{
+             								# OPTIONAL
+             								ipAddress = $someString
+             								# OPTIONAL
+             								macAddress = $someString
+             								# OPTIONAL
+             								vappNetworkName = $someString
+             								# OPTIONAL
+             								networkAdapterType = $someString
+             								# REQUIRED
+             								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
+             								# REQUIRED
+             								isConnected = $someBoolean
+             								# REQUIRED
+             								nicIndex = $someInt
+             							}
+             						)
+             						# REQUIRED
+             						vcdMoid = $someString
+             					}
+             				)
+             			}
+             		}
+             		# OPTIONAL
+             		liveMountRelocateInfo = @{
+             			# OPTIONAL
+             			liveMountFid = $someString
+             		}
+             		# OPTIONAL
+             		mongoSourceInfo = @{
+             			# OPTIONAL
+             			mongoSourceFid = $someString
+             		}
+             		# OPTIONAL
+             		hypervMountSnapshotInfo = @{
+             			# OPTIONAL
+             			snapshotFid = $someString
+             		}
+             		# OPTIONAL
+             		webCertificateInfo = @{
+             			# OPTIONAL
+             			cdmCertificateId = $someString
+             		}
+             		# OPTIONAL
+             		db2DatabaseInfo = @{
+             			# OPTIONAL
+             			db2DbFid = $someString
+             		}
+             		# OPTIONAL
+             		mongoCollectionsInfo = @{
+             			# OPTIONAL
+             			collectionFids = @(
+             				$someString
+             			)
+             		}
+             		# OPTIONAL
+             		vsphereFileRestoreInfo = @{
+             			# OPTIONAL
+             			vmFid = $someString
+             		}
+             		# OPTIONAL
+             		configureManagedVolumeLogExportInfo = @{
+             			# OPTIONAL
+             			managedVolumeFid = $someString
+             		}
+             		# OPTIONAL
+             		downloadSnapshotFromLocationInfo = @{
+             			# OPTIONAL
+             			snapshotId = $someString
+             			# OPTIONAL
+             			snappableType = $someDownloadSnapshotFromLocationSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DownloadSnapshotFromLocationSnappableType]) for enum values.
+             		}
+             		# OPTIONAL
+             		registeredHostInfo = @{
+             			# OPTIONAL
+             			hostFid = $someString
+             			# OPTIONAL
+             			hostRegisteredTime = $someDateTime
+             		}
+             		# OPTIONAL
+             		registerOracleHostsInfo = @{
+             			# OPTIONAL
+             			addedOracleHostFids = @(
+             				$someString
+             			)
+             			# OPTIONAL
+             			hostRegisteredTime = $someDateTime
+             		}
+             		# OPTIONAL
+             		llmInfo = @{
+             			# OPTIONAL
+             			functionType = $someLlmFunctionCallFunctionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LlmFunctionCallFunctionType]) for enum values.
+             			# OPTIONAL
+             			functionUuid = $someString
+             			# OPTIONAL
+             			subjectContexts = @(
+             				@{
+             					# OPTIONAL
+             					organizationId = $someString
+             					# OPTIONAL
+             					subjectId = $someString
+             					# OPTIONAL
+             					subjectType = $someSubjectContextType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SubjectContextType]) for enum values.
+             				}
+             			)
+             		}
+             		# OPTIONAL
+             		hostMakePrimaryInfo = @{
+             			# OPTIONAL
+             			hostFids = @(
+             				$someString
+             			)
+             		}
+             		# OPTIONAL
+             		vcenterDiagnosticRefreshInfo = @{
+             			# OPTIONAL
+             			vcenterFid = $someString
+             		}
+             		# OPTIONAL
+             		postgresDbClusterInfo = @{
+             			# OPTIONAL
+             			postgresDbClusterFid = $someString
+             		}
+             	}
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: JobInfo
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
              Runs the KnowledgeBaseArticle operation
              of the 'Miscellaneous' API domain.
              <code>
@@ -58269,6 +58995,41 @@
              $result = $query | Invoke-Rsc
              
              Write-Host $result.GetType().Name # prints: QueryDatastoreFreespaceThresholdsReply
+             
+             
+             
+             </code>
+            
+             </example>
+            
+             <example>
+             Runs the RemovedNodeDetails operation
+             of the 'Miscellaneous' API domain.
+             <code>
+             PS &gt;
+            
+             
+             # Create an RscQuery object for:
+             # API Domain:    Misc
+             # API Operation: RemovedNodeDetails
+             
+             $query = New-RscQueryMisc -RemovedNodeDetails
+             
+             # REQUIRED
+             $query.Var.input = @{
+             	# REQUIRED
+             	clusterUuid = $someString
+             	# REQUIRED
+             	nodeNames = @(
+             		$someString
+             	)
+             }
+             
+             # Execute the query
+             
+             $result = $query | Invoke-Rsc
+             
+             Write-Host $result.GetType().Name # prints: RemoveNodeDetailsReply
              
              
              
@@ -69713,6 +70474,8 @@
              		# OPTIONAL
              		searchRecurseFolderId = $someString
              	}
+             	# OPTIONAL
+             	ignoreArchive = $someBoolean
              }
              
              # Execute the query
@@ -69882,6 +70645,10 @@
              	orgId = @(
              		$someString
              	)
+             	# OPTIONAL
+             	objectState = @(
+             		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
+             	)
              }
              # OPTIONAL
              $query.Var.timezoneOffset = $someSingle
@@ -70046,6 +70813,10 @@
              	# OPTIONAL
              	orgId = @(
              		$someString
+             	)
+             	# OPTIONAL
+             	objectState = @(
+             		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
              	)
              }
              
@@ -70224,6 +70995,10 @@
              	# OPTIONAL
              	orgId = @(
              		$someString
+             	)
+             	# OPTIONAL
+             	objectState = @(
+             		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
              	)
              }
              
@@ -70639,6 +71414,8 @@
              		# OPTIONAL
              		searchRecurseFolderId = $someString
              	}
+             	# OPTIONAL
+             	ignoreArchive = $someBoolean
              }
              
              # Execute the query

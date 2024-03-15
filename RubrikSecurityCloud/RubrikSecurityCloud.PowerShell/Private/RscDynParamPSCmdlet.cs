@@ -265,8 +265,29 @@ namespace RubrikSecurityCloud.PowerShell.Private
             List<string> validValues = this.GetValidPatchSet();
             if (validValues != null)
             {
-                var attr = new ValidateSetAttribute(validValues.ToArray());
-                attrs.Add(attr);
+                string validValuesString =
+                    String.Join(",", validValues.Select(x => $"\"{x}\""));
+                const int maxValuesLen = 10;
+                string truncatedValidValuesString =
+                    string
+                        .Join(
+                            ",", validValues.Take(maxValuesLen).Select(x => $"\"{x}\"")
+                        ) + (validValues.Count > maxValuesLen ? "..." : "");
+                var script = ScriptBlock.Create($@"
+                                $givenValues = $_
+                                $validValues = @({validValuesString})
+                                $givenValues | ForEach-Object {{
+                                    if ($validValues -notcontains $_) {{
+                                        throw 'Cannot validate argument on parameter ''AddField''. The argument ' + $_ + ' does not belong to the set: {truncatedValidValuesString}'
+                                    }}
+                                }}
+                                return $true
+                            ");
+                var validationAttr = new ValidateScriptAttribute(
+                    script);
+                var autocompleteAttr = new ValidateSetAttribute(validValues.ToArray());
+                attrs.Add(validationAttr);
+                attrs.Add(autocompleteAttr);
             }
             return new RuntimeDefinedParameter(
                 "AddField", typeof(string[]), attrs);

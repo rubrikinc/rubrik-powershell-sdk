@@ -93,6 +93,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         protected RscGqlPSCmdletConfig _config; // Class configuration
 
+        protected string gqlRootField;
+
         internal RscQuery _query = null;
 
         /// <summary>
@@ -189,16 +191,26 @@ namespace RubrikSecurityCloud.PowerShell.Private
         override protected List<string>? GetValidPatchSet()
         {
             RscOp rscOp = GetOp(unknownOk: true);
+            string gqlReturnType = "";
             if (!rscOp.IsDetermined())
             {
                 _logger.Debug("Could not determine operation");
-                return null;
+                if (this.gqlRootField != null)
+                {
+                    gqlReturnType = SchemaMeta.ReturnTypeLookupByGqlRootField(this.gqlRootField);
+                } else
+                {
+                    return null;
+                }
+            } else
+            {
+                gqlReturnType = rscOp.GqlReturnTypeName;
             }
             List<string>? validValues = null;
             try
             {
                 validValues = RscPatchSet.BuildValidPatchStringsFor(
-                    rscOp.GqlReturnTypeName,
+                    gqlReturnType,
                     5,
                     new HashSet<string> { "Edges" }
                 );
