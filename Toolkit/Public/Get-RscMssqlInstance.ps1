@@ -112,18 +112,18 @@ function Get-RscMssqlInstance{
         if ( $Detail -eq $true ) {
             $fieldProfile = "DETAIL"
         }
-        Write-Debug "-Running Get-RscMssqlInstance"
+        Write-Verbose "-Running Get-RscMssqlInstance"
 
         #region Create Query
-        $PSBoundParameters.ContainsKey
-        if ($PSBoundParameters.ContainsKey('List')) {
-            Write-Debug "-  Creating List Query"
+        
+        if ($PSCmdlet.ParameterSetName -eq 'List') {
+            Write-Verbose "-  Creating List Query"
             $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
             $query.Var.typeFilter = @()
             $query.Var.typeFilter += "PhysicalHost"
             $query.Var.typeFilter += "WindowsCluster"
         }
-
+        
         if ($PSBoundParameters.ContainsKey('HostType')) {
             if ($PSBoundParameters.ContainsKey('RscHost')) {
                 Write-Verbose "-  Creating Host Query"
@@ -131,7 +131,6 @@ function Get-RscMssqlInstance{
                 $query.Var.filter = @()
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $RscHost.Name
                 $nameFilter.texts = $RscHost.Name
                 $query.Var.filter += $nameFilter
             }
@@ -147,15 +146,16 @@ function Get-RscMssqlInstance{
                 $query.Var.filter += $nameFilter
             }
         }
+        
         if ($PSBoundParameters.ContainsKey('Id')) {
-            Write-Debug "-  Creating Id Query"
+            Write-Verbose "-  Creating Id Query"
             $query = New-RscQueryMssql -Operation Instance -FieldProfile $fieldProfile
             $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
             $query.Field.PhysicalPath.SelectForRetrieval()
             $query.Var.filter = @()
             $query.Var.fid = $id
         }
-
+        
         if ($PSBoundParameters.ContainsKey('RscCluster')) {
             Write-Verbose "-  Creating Cluster Filter"
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
@@ -164,19 +164,20 @@ function Get-RscMssqlInstance{
             $query.Var.filter += $clusterFilter
         }
         #endregion
-
+        
         $results = $query.Invoke()
-        if ($PSBoundParameters.ContainsKey('List')) {
+        if ($PSCmdlet.ParameterSetName -eq 'List') {
             $results.Nodes
         }
-        if ($PSBoundParameters.ContainsKey('HostType')) {
+        
+        if ($PSCmdlet.ParameterSetName -eq 'HostType') {
             if ($PSBoundParameters.ContainsKey('RscHost')) {
-                $result = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
-                $result
+                $results = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                $results
             }
             if ($PSBoundParameters.ContainsKey('WindowsClusterName')) {
-                $result = $results.Nodes.LogicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
-                $result
+                $results = $results.Nodes.LogicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                $results
             }
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
