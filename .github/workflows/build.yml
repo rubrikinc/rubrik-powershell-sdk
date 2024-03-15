@@ -5,7 +5,14 @@ on:
     branches: [ "main", "devel" ]
   pull_request:
     branches: [ "main", "devel" ]
+  pull_request_target:
+    branches: [ "main", "devel" ]
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build'
+        required: true
+        default: 'main'
 
 jobs:
   build:
