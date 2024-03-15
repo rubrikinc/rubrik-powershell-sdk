@@ -14,6 +14,12 @@ function Get-RscMssqlInstance{
     .PARAMETER List
     Uses the latest recovery point date and time that Rubrik has for a database
 
+    .PARAMETER HostType
+    Can be either Host or FCI. 
+
+    If Host, then you will need to supply RscHost
+    If FCI, then you will need to supply WindowsClusterName
+
     .PARAMETER RscHost
     RscHost object retrieved via Get-RscHost
 
@@ -165,10 +171,12 @@ function Get-RscMssqlInstance{
         }
         if ($PSBoundParameters.ContainsKey('HostType')) {
             if ($PSBoundParameters.ContainsKey('RscHost')) {
-                $results.Nodes.PhysicalChildConnection.Nodes
+                $result = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                $result
             }
             if ($PSBoundParameters.ContainsKey('WindowsClusterName')) {
-                $results.Nodes.LogicalChildConnection.Nodes
+                $result = $results.Nodes.LogicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                $result
             }
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
