@@ -47,8 +47,12 @@ jobs:
       with:
         dotnet-version: 6.0.x
     
-    # Run build script
-    - name: Build-RscSdk.ps1
+    # Build SDK
+    - name: Build SDK
+      run: pwsh -File Utils/Build-RscSdk.ps1 -NoTests -CI
+    
+    # Test SDK
+    - name: Test SDK
       env:
         RSC_SERVICE_ACCOUNT_FILE: ${{ github.workspace }}/service_account.json
-      run: pwsh -File Utils/Build-RscSdk.ps1 -CI
+      run: pwsh -File Utils/Test-RscSdk.ps1 -CI

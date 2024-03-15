@@ -51,13 +51,21 @@ $ErrorActionPreference = "Stop"
 
 # Set up
 if ($CI) {
-    Set-Location $PSScriptRoot\..
-    .\Utils\Import-RscModuleFromLocalOutputDir.ps1
     if ($env:RSC_SERVICE_ACCOUNT_FILE) {
         $serviceAccountFile = $env:RSC_SERVICE_ACCOUNT_FILE
+        # bail out if the file doesn't exist
+        if (-not (Test-Path $serviceAccountFile)) {
+            throw "SA Unavailable (File not found: $serviceAccountFile)."
+        }
+        # bail out if the file is empty
+        if ((Get-Content $serviceAccountFile) -eq "") {
+            throw "SA Unavailable (File is empty: $serviceAccountFile)."
+        }
+        Set-Location $PSScriptRoot\..
+        .\Utils\Import-RscModuleFromLocalOutputDir.ps1
         Set-RscServiceAccountFile -InputFilePath $serviceAccountFile -DisablePrompts -KeepOriginalClearTextFile
     } else {
-        Write-Error "Environment variable RSC_SERVICE_ACCOUNT_FILE not set."
+        throw "SA Unavailable (Environment variable RSC_SERVICE_ACCOUNT_FILE not set)."
     }
 }
 
