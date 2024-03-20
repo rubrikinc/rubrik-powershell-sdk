@@ -13,12 +13,11 @@ to see what would have been done without actually doing it.
 This script will:
 1. Check out the main branch
 2. Merge the devel branch into main without committing
-3. Restore the Output directory
-4. Build the SDK and populate the Output directory (unless -SkipBuild is given)
-5. Get the latest changelog entry
-6. Commit the changes with the latest version entry as the commit message
-7. Push the changes to the main branch
-8. Create a new GitHub release
+3. Build the SDK (unless -SkipBuild is given)
+4. Get the latest changelog entry
+5. Commit the changes with the latest version entry as the commit message
+6. Push the changes to the main branch
+7. Create a new GitHub release
 
 .EXAMPLE
 .\Utils\Update-RscSdkMainBranch.ps1 -SkipBuild
@@ -27,6 +26,28 @@ param(
     [switch]$SkipBuild = $false,
     [switch]$NotDry = $false
 )
+
+function RunIfNotDry {
+    param(
+        [ScriptBlock]$CodeBlock
+    )
+
+    # Check if the global variable $NotDry is set and not false
+    if ($script:NotDry) {
+        Write-Output "Run: $($CodeBlock.ToString())"
+        try {
+            # Execute the script block
+            & $CodeBlock
+        }
+        catch {
+            throw "Failed to execute $($CodeBlock.ToString()): $_"
+        }
+    }
+    else {
+        # Print the script block without executing
+        Write-Output "Dry run: $($CodeBlock.ToString())"
+    }
+}
 
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
@@ -68,15 +89,6 @@ catch {
     throw "Failed to merge 'devel' into 'main'."
 }
 
-# Restore Output directory
-try {
-    git restore --source=HEAD --staged -- Output/
-    git restore --source=HEAD -- Output/
-}
-catch {
-    throw "Failed to restore 'Output/' directory."
-}
-
 # Build the SDK
 try {
     if (-not $SkipBuild) {
@@ -100,30 +112,7 @@ Write-Host $versionTag -ForegroundColor Cyan
 Write-Host "Latest version entry:"
 Write-Host $versionEntry -ForegroundColor Cyan
 
-function RunIfNotDry {
-    param(
-        [ScriptBlock]$CodeBlock
-    )
-
-    # Check if the global variable $NotDry is set and not false
-    if ($script:NotDry) {
-        Write-Output "Run: $($CodeBlock.ToString())"
-        try {
-            # Execute the script block
-            & $CodeBlock
-        }
-        catch {
-            throw "Failed to execute $($CodeBlock.ToString()): $_"
-        }
-    }
-    else {
-        # Print the script block without executing
-        Write-Output "Dry run: $($CodeBlock.ToString())"
-    }
-}
-
 # Commit changes with the latest version entry as the commit message
-git add -f Output/
 git commit -a -m "$versionEntry"
 
 # Push the changes to the main branch
