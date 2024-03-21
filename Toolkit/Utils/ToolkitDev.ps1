@@ -28,10 +28,10 @@ param (
 )
 
 if ( -Not $OutputDir ) {
-    $OutputDir = Join-Path $PSScriptRoot "..\..\Output"
+    $OutputDir = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Output"
     # If "Output" doesn't exist but "Output.Release" does, use that instead
     if (-not (Test-Path $OutputDir)) {
-        $OutputDir = Join-Path $PSScriptRoot "..\..\Output.Release"
+        $OutputDir = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Output.Release"
     }
 }
 # Resolve "." and ".." in the path
@@ -41,14 +41,14 @@ if (-not (Test-Path $OutputDir)) {
     return
 }
 
-$tkdir = (Get-Item $PSScriptRoot).Parent
+$tkdir = Resolve-Path "$PSScriptRoot/.."
 $Toolkit = [PSCustomObject]@{
-    SdkDir     = (Get-Item $tkdir).Parent
+    SdkDir     = Resolve-Path "$tkdir/.."
     Dir        = $tkdir
-    PublicDir  = Join-Path $tkdir "Public"
-    PrivateDir = Join-Path $tkdir "Private"
-    FormatDir  = Join-Path $tkdir "Format"
-    OutputDir  = Join-Path $OutputDir "Toolkit"
+    PublicDir  = Join-Path -Path $tkdir -ChildPath "Public"
+    PrivateDir = Join-Path -Path $tkdir -ChildPath "Private"
+    FormatDir  = Join-Path -Path $tkdir -ChildPath "Format"
+    OutputDir  = Join-Path -Path $OutputDir -ChildPath "Toolkit"
 }
 Remove-Variable -Name 'tkdir'
 
@@ -56,6 +56,7 @@ Remove-Variable -Name 'tkdir'
 $params = @{
     OutputDir = $OutputDir
 }
+Write-Debug "ToolkitDev $($Toolkit)"
 if ($Quiet) {
     $params['Quiet'] = $true
 }
@@ -76,7 +77,10 @@ function MatchingOutputFileName {
     if ($sourceDir -notin @("Public", "Private", "Format")) {
         throw "Unsupported source directory: ${sourceDir}"
     }
-    return Join-Path $Toolkit.OutputDir $sourceDir $srcInfo.Name
+    $srcPath = Join-Path -Path $Toolkit.OutputDir -ChildPath $sourceDir -Resolve -ErrorAction Stop
+    $outPath = Join-Path -Path $srcPath -ChildPath $srcInfo.Name -Resolve -ErrorAction Stop
+    Write-Debug "MatchingOutputFileName $SourceFileName --> $outPath"
+    return $outPath
 }
 
 function Copy-ToolkitFileToOutputDir {
@@ -209,8 +213,9 @@ Output directory: $tkOutputDir
     $results = @()
     $srcDirs = @($Toolkit.PublicDir, $Toolkit.PrivateDir, $Toolkit.FormatDir)
     $different = $false
+    Write-Host "Source directories: $srcDirs"
     Get-ChildItem -Path $srcDirs -Filter $Filter | ForEach-Object {
-        $sourceFile = $_
+        $sourceFile = $_.FullName
         $outputFile = MatchingOutputFileName $sourceFile
         $diff = (CompareFiles $sourceFile $outputFile) 
         $different = $different -or $diff -ne "same"
@@ -219,7 +224,7 @@ Output directory: $tkOutputDir
             $diff = $diff -Replace "FileA", "Source file" -Replace "FileB", "Output file" -Replace "same", "Output file is up to date"
     
             $results += [PSCustomObject]@{
-                Source = Join-Path $sourceFile.Directory.Name $sourceFile.Name
+                Source = Join-Path -Path $sourceFile.Directory.Name -ChildPath $sourceFile.Name
                 Status = $diff
             }
         }

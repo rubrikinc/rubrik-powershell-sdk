@@ -36,6 +36,7 @@
     .\Utils\Test-RscSdk.ps1 -SkipE2ETests -SkipCoreTests
     # Run only Toolkit unit tests.
 #>
+[CmdletBinding()] # Enable common parameters like -Verbose
 param(
     [switch]$SkipUnitTests = $false,
     [switch]$SkipE2ETests = $false,
@@ -48,6 +49,9 @@ Set-Location $PSScriptRoot\..
 
 # Stop on error
 $ErrorActionPreference = "Stop"
+
+# Uncomment this to enable Write-Debug output
+# $DebugPreference = "Continue"
 
 # Set up
 if ($CI) {
@@ -64,7 +68,8 @@ if ($CI) {
         Set-Location $PSScriptRoot\..
         .\Utils\Import-RscModuleFromLocalOutputDir.ps1
         Set-RscServiceAccountFile -InputFilePath $serviceAccountFile -DisablePrompts -KeepOriginalClearTextFile
-    } else {
+    }
+    else {
         throw "SA Unavailable (Environment variable RSC_SERVICE_ACCOUNT_FILE not set)."
     }
 }
@@ -78,7 +83,8 @@ if ( -not $SkipUnitTests ) {
         if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Core unit tests failed."
             exit 1
-        } else {
+        }
+        else {
             Write-Output "Pester Core unit tests passed."
         }
 
@@ -88,7 +94,8 @@ if ( -not $SkipUnitTests ) {
         if ($LASTEXITCODE -ne 0) {
             Write-Error "C# unit tests failed."
             exit $LASTEXITCODE
-        } else {
+        }
+        else {
             Write-Output "C# unit tests passed."
         }
 
@@ -102,7 +109,8 @@ if ( -not $SkipUnitTests ) {
         if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Toolkit unit tests failed."
             exit 1
-        } else {
+        }
+        else {
             Write-Output "Pester Toolkit unit tests passed."
         }
     }
@@ -116,7 +124,8 @@ if ( -not $SkipE2ETests ) {
         if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Core e2e tests failed."
             exit 1
-        } else {
+        }
+        else {
             Write-Output "Pester Core e2e tests passed."
         }
     }
@@ -128,7 +137,8 @@ if ( -not $SkipE2ETests ) {
         if ($results.Failed.Count -gt 0) {
             Write-Error "Pester Toolkit e2e tests failed."
             exit 1
-        } else {
+        }
+        else {
             Write-Output "Pester Toolkit e2e tests passed."
         }
     }

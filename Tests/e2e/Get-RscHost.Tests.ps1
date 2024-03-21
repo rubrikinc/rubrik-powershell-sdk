@@ -32,7 +32,7 @@ Describe -Name 'Get-RscHost' -Tag 'Public' -Fixture{
 
         It -Name 'Parameters Id and Name cannot be simultaneously used' -Test {
             { Get-RscHost -Id my-host-id-that-doesnot-exist -Name 'swagsanta' } |
-                Should -Throw "Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided."
+                Should -Throw -ErrorId 'AmbiguousParameterSet,RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost'
         }
 
         It -Name 'Parameter OsType cannot be $null' -Test{

@@ -31,8 +31,12 @@ function Write-IndentedWrappedMessage {
         [int] $Indent = 2,
 
         [Parameter(Mandatory=$false)]
-        [int] $Width = ($Host.UI -and $Host.UI.RawUI) ? $Host.UI.RawUI.BufferSize.Width : 80
+        [int] $Width =  80
     )
+
+    if ($Host.UI -and $Host.UI.RawUI) {
+        $Width = $Host.UI.RawUI.BufferSize.Width
+    }
 
     $indentString = " " * $Indent
     $width = $Width - $Indent
@@ -112,7 +116,7 @@ function Wait-ForKey {
     [Console]::TreatControlCAsInput = $true
     $key = [Console]::ReadKey($false)
     Write-Host "`r$('-' * ($Continue.Length + 1))`r"
-    if ($key.Key -eq [System.ConsoleKey]::Escape || ($key.Key -eq [System.ConsoleKey]::C -and $key.Modifiers -eq [System.ConsoleModifiers]::Control)) {
+    if ($key.Key -eq [System.ConsoleKey]::Escape -or ($key.Key -eq [System.ConsoleKey]::C -and $key.Modifiers -eq [System.ConsoleModifiers]::Control)) {
         exit
     }
 }

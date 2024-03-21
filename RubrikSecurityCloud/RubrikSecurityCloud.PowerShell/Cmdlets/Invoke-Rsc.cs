@@ -122,10 +122,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     throw new ArgumentException("No GQL query provided");
                 }
-                var _asPathString = Path.GetFullPath(sQuery);
-                if (File.Exists(_asPathString))
-                {
-                    sQuery = File.ReadAllText(_asPathString);
+                
+                // if the content of sQuery is an existing file, read it
+                try {
+                    var _asPathString = Path.GetFullPath(sQuery);
+                    if (File.Exists(_asPathString))
+                    {
+                        sQuery = File.ReadAllText(_asPathString);
+                    }
+                } catch (Exception) {
+                    // ignore
                 }
 
                 GqlQuery = sQuery;
