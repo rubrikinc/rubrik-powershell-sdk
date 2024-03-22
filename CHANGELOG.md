@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 0.28
+
+New Features:
+
+- Added pipe support for SLA Cmdlets
+  [From PR 57](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/57)
+
+Fixes:
+
+- Updated help texts
+  [From PR 53](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/53)
+- Fixed build and tests for PowerShell 5.1
+
 ## Version 0.27
 
 Fixes:
