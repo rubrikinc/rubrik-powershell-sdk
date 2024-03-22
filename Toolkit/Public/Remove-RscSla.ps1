@@ -18,6 +18,9 @@ function Remove-RscSla {
     .PARAMETER Id
     The Id of the SLA which needs to be deleted.
 
+    .PARAMETER GlobalSla
+    The Global Sla which should be removed.
+
     .PARAMETER UserNote
     The user note to be used for auditing the deletion of SLA on
     RSC.
@@ -28,9 +31,14 @@ function Remove-RscSla {
     .EXAMPLE
     Delete an SLA with the given SLA id and usernote
     Remove-RscSLA -SlaId xxx-xxx -UserNote "somestring"
+
+    .EXAMPLE
+    Use the powershell pipe to remove the Global SLA.
+    $result = Get-RscSla -Name 'Sample SLA Domain'
+    $result | Remove-RscSla
     #>
 
-    [CmdletBinding(DefaultParameterSetName = "SuspendSLAInput")]
+    [CmdletBinding(DefaultParameterSetName = "GlobalSlaInput")]
     Param(
         [Parameter(
             ParameterSetName = "RemoveSLAInput",
@@ -49,6 +57,15 @@ function Remove-RscSla {
         [String]$UserNote,
 
         [Parameter(
+            ParameterSetName = "GlobalSlaInput",
+            Mandatory = $true,
+            ValueFromPipeline = $true,
+            HelpMessage = "The object representing the 
+                Global SLA which needs to be removed"
+        )]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$GlobalSla,
+
+        [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $false,
             HelpMessage = "Return the query object instead of running the query"
@@ -57,10 +74,12 @@ function Remove-RscSla {
     )
 
     Process {
-        # Re-use existing connection, or create a new one (stop in case of error):
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         $query = (New-RscMutationSla -op "DeleteGlobal")
+
+        if ($PsCmdlet.ParameterSetName -eq "GlobalSlaInput") {
+            $SlaId = $GlobalSla.ID
+        }
+
         $query.Var.id = $SlaId
         if( $UserNote ) {
             $query.Var.userNote = $UserNote
