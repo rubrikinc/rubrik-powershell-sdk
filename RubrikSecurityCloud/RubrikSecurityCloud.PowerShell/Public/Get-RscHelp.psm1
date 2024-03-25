@@ -27,94 +27,104 @@ function Get-RscHelp {
     Param (
         [Parameter(
             ParameterSetName = 'Locations',
-            HelpMessage = 'Show File System locations the SDK uses.',
-            Position = 0
+            HelpMessage = 'Show File System locations the SDK uses.'
         )]
         [Switch]$Locations,
 
         [Parameter(
             ParameterSetName = 'Schema',
-            HelpMessage = 'Look up any symbol in the schema.',
-            Position = 0
+            HelpMessage = 'Look up any symbol in the schema.'
         )]
         [Switch]$Schema,
 
         [Parameter(
             ParameterSetName = 'Query',
-            HelpMessage = 'Look up a query by name.',
-            Position = 0
+            HelpMessage = 'Look up a query by name.'
         )]
         [Switch]$Query,
 
         [Parameter(
             ParameterSetName = 'Mutation',
-            HelpMessage = 'Look up a mutation by name.',
-            Position = 0
+            HelpMessage = 'Look up a mutation by name.'
         )]
         [Switch]$Mutation,
 
         [Parameter(
             ParameterSetName = 'Type',
-            HelpMessage = 'Look up a type by name.',
-            Position = 0
+            HelpMessage = 'Look up a type by name.'
         )]
         [Switch]$Type,
 
         [Parameter(
             ParameterSetName = 'Scalar',
-            HelpMessage = 'Look up a scalar by name.',
-            Position = 0
+            HelpMessage = 'Look up a scalar by name.'
         )]
         [Switch]$Scalar,
 
         [Parameter(
             ParameterSetName = 'Union',
-            HelpMessage = 'Look up a union by name.',
-            Position = 0
+            HelpMessage = 'Look up a union by name.'
         )]
         [Switch]$Union,
 
         [Parameter(
             ParameterSetName = 'Interface',
-            HelpMessage = 'Look up an interface by name.',
-            Position = 0
+            HelpMessage = 'Look up an interface by name.'
         )]
         [Switch]$Interface,
 
         [Parameter(
             ParameterSetName = 'Input',
-            HelpMessage = 'Look up an input by name.',
-            Position = 0
+            HelpMessage = 'Look up an input by name.'
         )]
         [Switch]$Inputs,
 
         [Parameter(
             ParameterSetName = 'Enum',
-            HelpMessage = 'Look up an enum by name.',
-            Position = 0
+            HelpMessage = 'Look up an enum by name.'
         )]
         [Switch]$Enum,
 
         [Parameter(
             ParameterSetName = 'Domain',
-            HelpMessage = 'Look up an API domain by name.',
-            Position = 0
+            HelpMessage = 'Look up an API domain by name.'
         )]
         [Switch]$Domain,
 
         [Parameter(
+            ParameterSetName = 'Cmdlet',
+            HelpMessage = 'This is equivalent to Get-Help -Name <cmdlet> -Full'
+        )]
+        [Switch]$Cmdlet,
+
+        [Parameter(
             HelpMessage = 'Regular expression to match',
-            Position = 1
+            Position = 0
         )]
         [string]$Match = ""
 
     )
     Begin {
+        Write-Debug "=> ParameterSetName: $($PSCmdlet.ParameterSetName) Match: $Match"
         function GetLocationHelp {
+            Write-Debug "Getting locations"
             Get-RscCmdlet -Locations
         }
 
+        function GetCmdletHelp {
+            Write-Debug "Getting cmdlet help for '$Match'"
+            if ($Match -eq "") {
+                $Match = "New-Rsc"
+            }
+            Get-Help -Name $Match -Full
+        }
+
         function LookupSchema {
+            Write-Debug "Looking up schema for '$Match'"
+            if ($Match -imatch "^new-") {
+                GetCmdletHelp
+                return
+            }
             $tableData = @()
             # Get all the enums within the SchemaMeta class
             $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName' -and $_.Name -ne 'RootFieldKind' }
@@ -149,6 +159,7 @@ function Get-RscHelp {
         }
 
         function LookupQuery {
+            Write-Debug "Looking up query for '$Match'"
             $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+GqlQueryName]) | Where-Object { $_ -ine 'Unknown' }
             foreach ($value in $enumValues) {
                 # if it's an exact match, print query info
@@ -387,6 +398,7 @@ function Get-RscHelp {
         }
         switch ($PSCmdlet.ParameterSetName) {
             'Locations' { GetLocationHelp }
+            'Cmdlet' { GetCmdletHelp }
             'Schema' { LookupSchema }
             'Query' { LookupQuery }
             'Mutation' { LookupMutation }
