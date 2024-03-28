@@ -14,6 +14,9 @@ if (-Not $KeepOutputDir) {
     if (Test-Path -Path .\Output.Release) {
         Remove-Item -Recurse -Force .\Output.Release
     }
+    if (Test-Path -Path .\Output.Publish) {
+        Remove-Item -Recurse -Force .\Output.Publish
+    }
 }
 Get-ChildItem -Path . -Recurse -Directory | Where-Object {
     $_.Name -ieq "obj" -or $_.Name -ieq "bin"
