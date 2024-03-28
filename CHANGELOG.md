@@ -1,13 +1,5 @@
 # Changelog
 
-## ~ Upcoming Version ~
-
-New Features:
-
-Fixes:
-
-Breaking Changes:
-
 ## Version 0.28
 
 New Features:
