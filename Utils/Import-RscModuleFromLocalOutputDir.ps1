@@ -14,8 +14,7 @@ Note2: the script can also be called with `-System`, in which case
 it'll import the one that's installed on the system.
 #>
 
-[CmdletBinding(
-)]
+[CmdletBinding()]
 param(
     [Parameter(
         Mandatory = $false,

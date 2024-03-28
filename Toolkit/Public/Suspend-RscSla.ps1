@@ -2,13 +2,13 @@
 function Suspend-RscSla {
     <#
     .SYNOPSIS
-    Resume RSC SLA (service level agreement).
+    Suspend RSC SLA (service level agreement).
     
     .DESCRIPTION
     The Suspend-RscSLA cmdlet is used to suspend a given
     SLA (service level agreement) on one or more clusters
     on which this SLA is applicable.
-    The -SLAId parameter is used for identifying the SLA, 
+    The -SlaId parameter is used for identifying the SLA, 
     this parameter is required.
     The -ClusterUuids specifies a list of cluster Uuids on 
     which this SLA needs to be suspended.
@@ -18,26 +18,34 @@ function Suspend-RscSla {
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER SlaId
-    The Id of the SLA which needs to be resumed.
+    The Id of the SLA which needs to be suspended.
 
     .PARAMETER ClusterUuids
-    The cluster IDs on which the SLA needs to be resumed.
+    The cluster IDs on which the SLA needs to be suspended.
+
+    .PARAMETER GlobalSla
+    The Global Sla which should be suspended.
 
     .PARAMETER AsQuery
     Instead of running the command, the query object is returned.
 
     .EXAMPLE
-    Resume an SLA on two clusters on which it is applied.
-    Resume-RscSLA -SlaId xxx-xxx -ClusterUuids yyy-yyy zzz-zzz
+    Suspend an SLA on two clusters on which it is applied.
+    Suspend-RscSLA -SlaId xxx-xxx -ClusterUuids @('yyy-yyy', 'zzz-zzz')
+
+    .EXAMPLE
+    Use the powershell pipe to suspend the Global SLA.
+    $result = Get-RscSla -Name 'Sample SLA Domain'
+    $result | Suspend-RscSla -ClusterUuids @('9c930153-2a3c-4b7d-8603-48145315e71f')
     #>
 
-    [CmdletBinding(DefaultParameterSetName = "SuspendSLAInput")]
+    [CmdletBinding(DefaultParameterSetName = "GlobalSlaInput")]
     Param(
         [Parameter(
             ParameterSetName = "SuspendSLAInput",
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The SLA ID which needs to be resumed"
+            HelpMessage = "The ID of the SLA which should be suspended"
         )]
         [String]$SlaId,
 
@@ -47,7 +55,21 @@ function Suspend-RscSla {
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The list of cluster UUIDs on which the SLA is applied"
         )]
+        [Parameter(
+            ParameterSetName = "GlobalSlaInput",
+            Mandatory = $true,
+            HelpMessage = "The list of cluster UUIDs on which the SLA is applied"
+        )]
         [String[]]$ClusterUuids,
+
+        [Parameter(
+            ParameterSetName = "GlobalSlaInput",
+            Mandatory = $true,
+            ValueFromPipeline = $true,
+            HelpMessage = "The object representing the 
+                Global SLA which needs to be suspended"
+        )]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$GlobalSla,
 
         [Parameter(
             Mandatory = $false,
@@ -58,10 +80,12 @@ function Suspend-RscSla {
     )
 
     Process {
-        # Re-use existing connection, or create a new one (stop in case of error):
-        Connect-Rsc -ErrorAction Stop | Out-Null
-
         $query = (New-RscMutationSla -op "Pause")
+
+        if ($PsCmdlet.ParameterSetName -eq "GlobalSlaInput") {
+            $SlaId = $GlobalSla.ID
+        }
+
         $pauseSlaInput = Get-RscType -Name "PauseSlaInput" -InitialValues @{
             "slaId" = $SlaId
             "pauseSla" = $true

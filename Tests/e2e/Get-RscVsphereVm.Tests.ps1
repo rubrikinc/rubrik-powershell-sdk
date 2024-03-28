@@ -27,7 +27,7 @@ Describe -Name 'Get-RscVSphereVM' -Tag 'Public' -Fixture{
         }
         It -Name 'Parameters Id and Name cannot be simultaneously used' -Test {
             { Get-RscVsphereVm -Id VirtualMachine:::1226ff04-6100-454f-905b-5df817b6981a-vm-1025 -Name 'swagsanta' } |
-                Should -Throw "Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided."
+                Should -Throw -ErrorId 'AmbiguousParameterSet,RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscVsphereVm'
         }
     }
 }

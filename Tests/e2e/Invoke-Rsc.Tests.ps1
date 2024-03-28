@@ -18,11 +18,17 @@ Describe -Name "Send a generic GraphQL call" -Fixture {
         $response.IsEulaAccepted | Should -Not -BeNullOrEmpty
 
         # Query file with no variables
-        $gqlFile = "$PSScriptRoot\..\..\Samples\queryAccountOwners.gql"
-        $owners = Get-Content -Path $gqlFile -Raw | Invoke-Rsc
+        $gqlFileName = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Samples\queryAccountOwners.gql" -Resolve
+        $gqlContent = Get-Content -Path $gqlFileName -Raw
+        $owners = $gqlContent | Invoke-Rsc
         $owners[0].GetType().Name | Should -BeExactly 'User'
+
         # Same but pass as parameter
-        $owners = Invoke-Rsc (Get-Item -Path $gqlFile).FullName
+        $owners = Invoke-Rsc "$gqlContent"
+        $owners[0].GetType().Name | Should -BeExactly 'User'
+
+        # Same but with a file name
+        $owners = Invoke-Rsc $gqlFileName
         $owners[0].GetType().Name | Should -BeExactly 'User'
 
         # Query file with variables embedded in top comment

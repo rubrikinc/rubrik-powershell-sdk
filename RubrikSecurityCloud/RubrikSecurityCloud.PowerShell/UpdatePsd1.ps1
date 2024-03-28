@@ -1,7 +1,7 @@
 $psdFile = "$PSScriptRoot/RubrikSecurityCloud.psd1"
 $psdContent = Get-Content -Path $psdFile -Raw
 
-$toolkitDir = Join-Path (Get-Item $PSScriptRoot).Parent.Parent.FullName "Toolkit"
+$toolkitDir = Join-Path -Path (Get-Item $PSScriptRoot).Parent.Parent.FullName -ChildPath "Toolkit"
 
 # Update list of ps1xml format files to process:
 $ps1xmlFiles = Get-ChildItem -Path "$toolkitDir/Format" -Filter "*.ps1xml"
