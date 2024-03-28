@@ -50,13 +50,16 @@ if (-Not $apiKey) {
 $sdkVersion = .\Utils\Get-RscSdkVersion.ps1
 Write-Host "Publishing version $sdkVersion to the PowerShell Gallery."
 New-Item -Path $publishDir -ItemType Directory
-$galleryDir = Join-Path $publishDir $sdkVersion
-Copy-Item -Path $releaseDir -Destination $galleryDir -Recurse
+$galleryDir = Join-Path $publishDir RubrikSecurityCloud
+New-Item -Path $galleryDir -ItemType Directory
+$targetDir = Join-Path $galleryDir $sdkVersion
+Copy-Item -Path $releaseDir -Destination $targetDir -Recurse
 
 # Publish the module
 if ($NotDry) {
     Publish-Module -Path $galleryDir -NuGetApiKey $apiKey -Verbose
 }
 else {
-    Write-Host "Dry run: Publish-Module -Path $galleryDir -NuGetApiKey $apiKey -Verbose"
+    Write-Host "Dry run:"
+    Publish-Module -Path $galleryDir -NuGetApiKey $apiKey -Verbose -WhatIf
 }
