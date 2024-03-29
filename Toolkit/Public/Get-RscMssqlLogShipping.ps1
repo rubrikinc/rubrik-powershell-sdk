@@ -2,17 +2,41 @@
 function Get-RscMssqlLogShipping {
     <#
     .SYNOPSIS
-    ___ Add synopsis here ___
+    Returns MSSQL Log Shipping relationships
 
     .DESCRIPTION
-    ___ Add description here ___
+    Returns MSSQL Log Shipping relationships
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER List
+    Used to create a list of log shipping relationships
+    
+    .PARAMETER RscMssqlDatabase
+    Database object returned from Get-RscMssqlDatabase
+
+    .PARAMETER SecondaryDatabaseName
+    Name of the secondary database 
+
+    .PARAMETER RscCluster
+    RscCluster object retrieved via Get-RscCluster
+
     .EXAMPLE
-    ___ Add example here ___
+    Returns a list of all log shipping relationships
+    Get-RscMssqlLogShipping -List
+
+    .EXAMPLE
+    Get a specific log shipping relationship
+    $GetRscMssqlLogShipping = @{
+        RscMssqlDatabase = $RscMssqlDatabase
+        SecondaryDatabaseName = "logshipping_advanced_method"
+        RscCluster = $RscCluster
+    }
+    $RscMssqlLogShipping = Get-RscMssqlLogShipping @GetRscMssqlLogShipping
+    
+
     #>
 
     [CmdletBinding(
@@ -28,70 +52,106 @@ function Get-RscMssqlLogShipping {
         
         [Parameter(
             ParameterSetName = "Query",
-            Mandatory = $false
-        )]
-        [String]$PrimaryDatabaseName,
+            Mandatory = $true
+        )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
         [Parameter(
             ParameterSetName = "Query",
             Mandatory = $false
         )]
-        [String]$SecondaryDatabaseName,
+        [String]$SecondaryDatabaseName ,
 
         [Parameter(
-            Mandatory = $false
+            Mandatory = $true
         )][RubrikSecurityCloud.Types.Cluster]$RscCluster
     )
     
     Process {
         Write-Debug "- Running Get-RscMssqlDatabase"
-        
-         #region Create Query
-         switch ( $PSCmdlet.ParameterSetName){
+
+        #region Create Query
+        switch ( $PSCmdlet.ParameterSetName){
             "List" {
-                $query = New-RscQueryMssql -Op CdmLogShippingTargets `
+                write-host "did i get here?"
+                #region RSC Query
+                # $query = New-RscQueryMssql -Op LogShippingTargets `
+                #     -AddField Data.makeupReseedLimit, `
+                #     Data.mssqlLogShippingSummary.id, `
+                #     Data.mssqlLogShippingSummary.lagtime, `
+                #     Data.MssqlLogShippingSummary.LastAppliedPoint, `
+                #     Data.MssqlLogShippingSummary.Location, `
+                #     Data.MssqlLogShippingSummary.PrimaryDatabaseName, `
+                #     Data.MssqlLogShippingSummary.SecondaryDatabaseName, `
+                #     Data.MssqlLogShippingSummary.Status.Message, `
+                #     Data.MssqlLogShippingSummary.Status.Status, `
+                #     Data.MssqlLogShippingSummary.PrimaryDatabaseLogBackupFrequency
+                # $query.var.input = New-Object -TypeName RubrikSecurityCloud.Types.QueryLogShippingConfigurationsV2Input
+                # $query.var.input.clusterUuid = $RscCluster.id
+                #endregion
+                 $query = New-RscQueryMssql -Operation CdmLogShippingTargets `
                     -AddField Nodes.LagTimeFromPrimary, `
-                    Nodes.LastAppliedPoint, `
-                    Nodes.Location 
-                    # Nodes.Cluster `
-                    # Nodes.PrimaryDatabase
-                    # Nodes.SecondaryDatabase
-                    # Nodes.SecondaryInstance
+                        Nodes.LastAppliedPoint, `
+                        Nodes.Location, `
+                        Nodes.LogFrequency, `
+                        Nodes.Cluster, `
+                        Nodes.PrimaryCluster, `
+                        Nodes.PrimaryDatabase.id, `
+                        Nodes.PrimaryDatabase.name, `
+                        Nodes.SecondaryDatabase.id, `
+                        Nodes.SecondaryDatabase.name, `
+                        Nodes.SecondaryInstance.id, `
+                        Nodes.SecondaryInstance.name
+
             }
             "Query"{
-                $query = New-RscQueryMssql -Op CdmLogShippingTargets `
-                -AddField Nodes.LagTimeFromPrimary, `
-                Nodes.LastAppliedPoint, `
-                Nodes.Location 
-                # Nodes.Cluster `
-                # Nodes.PrimaryDatabase
-                # Nodes.SecondaryDatabase
-                # Nodes.SecondaryInstance
+                #region RSC Query
+                # $query = New-RscQueryMssql -Op LogShippingTargets `
+                #     -AddField Data.makeupReseedLimit, `
+                #     Data.mssqlLogShippingSummary.id, `
+                #     Data.mssqlLogShippingSummary.lagtime, `
+                #     Data.MssqlLogShippingSummary.LastAppliedPoint, `
+                #     Data.MssqlLogShippingSummary.Location, `
+                #     Data.MssqlLogShippingSummary.PrimaryDatabaseName, `
+                #     Data.MssqlLogShippingSummary.SecondaryDatabaseName, `
+                #     Data.MssqlLogShippingSummary.Status.Message, `
+                #     Data.MssqlLogShippingSummary.Status.Status, `
+                #     Data.MssqlLogShippingSummary.PrimaryDatabaseLogBackupFrequency
 
+                # $query.var.input = New-Object -TypeName RubrikSecurityCloud.Types.QueryLogShippingConfigurationsV2Input
+                # $query.var.input.clusterUuid = $RscCluster.id
+                # $query.var.input.PrimaryDatabaseName = $RscMssqlDatabase.Name
+                # $query.var.input.SecondaryDatabaseName = $SecondaryDatabaseName
+                #endregion
+                $query = New-RscQueryMssql -Operation CdmLogShippingTargets `
+                    -AddField Nodes.LagTimeFromPrimary, `
+                        Nodes.LastAppliedPoint, `
+                        Nodes.Location, `
+                        Nodes.LogFrequency, `
+                        Nodes.Cluster, `
+                        Nodes.PrimaryDatabase.id, `
+                        Nodes.PrimaryDatabase.name, `
+                        Nodes.SecondaryDatabase.id, `
+                        Nodes.SecondaryDatabase.name, `
+                        Nodes.SecondaryInstance.id, `
+                        Nodes.SecondaryInstance.name
+                       
                 $query.Var.filters = @()
+                $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
+                $clusterFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::CLUSTER_ID
+                $clusterFilter.texts = $RscCluster.Id
+                $query.Var.filters += $clusterFilter
 
-                if ($PrimaryDatabaseName){
-                    $PrimaryDatabaseNameFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
-                    $PrimaryDatabaseNameFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::PRIMARY_NAME
-                    $PrimaryDatabaseNameFilter.texts = $PrimaryDatabaseName
-                    $query.Var.filters += $PrimaryDatabaseNameFilter
-                }
+                $secondaryNameFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
+                $secondaryNameFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::SECONDARY_NAME
+                $secondaryNameFilter.texts = $SecondaryDatabaseName
+                $query.Var.filters += $secondaryNameFilter
 
-                if ($SecondaryDatabaseName){
-                    $SecondaryDatabaseNameFilters = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
-                    $SecondaryDatabaseNameFilters.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::SECONDARY_NAME
-                    $SecondaryDatabaseNameFilters.texts = $SecondaryDatabaseName
-                    $query.Var.filters += $SecondaryDatabaseNameFilters
-                }
-
-                if ($RscCluster){
-                    $RscClusterFilters = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
-                    $RscClusterFilters.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::CLUSTER_UUID
-                    $RscClusterFilters.texts = $RscCluster.id
-                    $query.Var.filters += $RscClusterFilters
-                }
+                $primaryDBIDFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
+                $primaryDBIDFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::PRIMARY_DB_ID
+                $primaryDBIDFilter.texts = $RscMssqlDatabase.CdmId
+                $query.Var.filters += $primaryDBIDFilter
             }
-         }
+        }      
         $result = $query.Invoke()
         $result.Nodes
     } 

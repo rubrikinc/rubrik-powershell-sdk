@@ -21,6 +21,9 @@ function Get-RscMssqlDatabase {
     SQL Server Instance Object returned from Get-RscMssqlInstance
 
 
+    .PARAMETER RscMssqlAvailabilityGroup
+    SQL Server Availability Group Objeft returned from Get-RscMssqlAvailabilityGroup
+
     .PARAMETER Detail
     Changes the data profile. This can affect the fields returned
 
@@ -43,28 +46,22 @@ function Get-RscMssqlDatabase {
         DefaultParameterSetName = "List"
     )]
     Param(
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = $false
-        )]
+        [Parameter(ParameterSetName = "List", Mandatory = $false)]
         [Switch]$List,
 
-        [Parameter(
-            ParameterSetName = "Name",
-            Mandatory = $false
-        )][String]$Name,
+        [Parameter(ParameterSetName = "Name", Mandatory = $true)]
+        [String]$Name,
 
-        [Parameter(
-            ParameterSetName = "Name",
-            Mandatory = $false
-        )][RubrikSecurityCloud.Types.MssqlInstance]$RscMssqlInstance, 
+        [Parameter(ParameterSetName = "Name", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Instance", Mandatory = $true)]
+        [RubrikSecurityCloud.Types.MssqlInstance]$RscMssqlInstance, 
 
-        [Parameter(
-            ParameterSetName = "Id",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][String]$Id,
-       
+        [Parameter(ParameterSetName = "Name", Mandatory = $false)]
+        [Parameter(ParameterSetName = "AvailabilityGroup", Mandatory = $true)]
+        [RubrikSecurityCloud.Types.MssqlAvailabilityGroup]$RscMssqlAvailabilityGroup, 
+
+        [Parameter(ParameterSetName = "Id", Mandatory = $true)]
+        [String]$Id,
 
         #  Common parameter to all parameter sets:
         [Parameter(
@@ -82,27 +79,25 @@ function Get-RscMssqlDatabase {
 
         #region Create Query
         if ($PSBoundParameters.ContainsKey('List')) {
-            $query = New-RscQueryMssql -Operation Databases -FieldProfile $fieldProfile
-            $query.Field.Nodes[0].PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
-            $query.Field.Nodes[0].PhysicalPath.SelectForRetrieval()
+            $query = New-RscQueryMssql -Operation Databases -FieldProfile $fieldProfile -AddField Nodes.PhysicalPath
         }
 
         if ($PSBoundParameters.ContainsKey('Name')) {
-            $query = New-RscQueryMssql -Operation Databases -FieldProfile $fieldProfile 
-            $query.Field.Nodes[0].PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
-            $query.Field.Nodes[0].PhysicalPath.SelectForRetrieval() 
-            $query.Field.Nodes[0].CopyOnly = 1
-            $query.Field.Nodes[0].HostLogRetention = 1
-            $query.Field.Nodes[0].LogBackupFrequencyInSeconds
-            $query.Field.Nodes[0].LogBackupRetentionInHours
-            $query.Field.Nodes[0].PostBackupScript = "FETCH"
-            $query.Field.Nodes[0].PreBackupScript = "FETCH"
+            $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile `
+                -AddField Nodes.PhysicalPath, `
+                    Nodes.PostBackupScript, `
+                    Nodes.PreBackupScript, `
+                    Nodes.CopyOnly, `
+                    Nodes.HostLogRetention, `
+                    Nodes.LogBackupFrequencyInSeconds, `
+                    Nodes.LogBackupRetentionInHours    
             
             $query.Var.filter = @()
             $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
             $nameFilter.texts = $Name
             $query.Var.filter += $nameFilter
+
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
             $query = New-RscQueryMssql -Operation Database -FieldProfile $fieldProfile
@@ -110,22 +105,25 @@ function Get-RscMssqlDatabase {
             $query.Field.PhysicalPath.SelectForRetrieval() 
             $query.Var.fid = $Id
         }
-
-   
         #endregion
 
         $results = $query.Invoke()   
-        
+                
         if ($PSBoundParameters.ContainsKey('List')) {
-            $results = $results.Nodes
+            $results.Nodes
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            if ($PSBoundParameters.ContainsKey('RscMssqlInstance')) {
-                $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id}    
-            }else{
-                $results = $results.Nodes
+        if ($Id) {
+            $results
+        }
+        if ($Name) {
+            if ($RscMssqlInstance) {
+                $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
+                $results
+             }
+            if ($RscMssqlAvailabilityGroup) {
+                $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlAvailabilityGroup.id}
+                $results
             }
         }
-        $results
     } 
 }

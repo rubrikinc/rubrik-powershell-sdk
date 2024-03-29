@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="19" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-03-15" time="14:18:05">
+  <environment user="Chris.Lumnah" os-version="23.4.0" platform="Darwin" user-domain="" clr-version="8.0.1" nunit-version="2.5.8.0" machine-name="AMER-C02F54CDML7H" cwd="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="94.3775" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/AllCmdlets-GetInputs.Tests.ps1" executed="True" result="Success" success="True" time="86.9554" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/AllCmdlets-GetInputs.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AllCmdlets Sample Script" executed="True" result="Success" success="True" time="86.3085" asserts="0" description="AllCmdlets Sample Script">
+            <results>
+              <test-case description="When running the sample script, it should not throw any errors" name="AllCmdlets Sample Script.When running the sample script, it should not throw any errors" time="86.2563" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/CustomProfile.Tests.ps1" executed="True" result="Success" success="True" time="0.3402" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/CustomProfile.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test custom input profile" executed="True" result="Success" success="True" time="0.1433" asserts="0" description="Test custom input profile">
+            <results>
+              <test-case description="AccountSettings custom operation" name="Test custom input profile.AccountSettings custom operation" time="0.1323" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Fields.Tests.ps1" executed="True" result="Success" success="True" time="1.6463" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Fields.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test fields" executed="True" result="Success" success="True" time="1.5348" asserts="0" description="Test fields">
+            <results>
+              <test-case description="Test fields" name="Test fields.Test fields" time="1.5141" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Get-RscType.Tests.ps1" executed="True" result="Success" success="True" time="1.895" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Get-RscType.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-RscType" executed="True" result="Success" success="True" time="1.6359" asserts="0" description="Get-RscType">
+            <results>
+              <test-suite type="TestFixture" name="Get-RscType.When called with the -ListAvailable parameter" executed="True" result="Success" success="True" time="1.4286" asserts="0" description="Get-RscType.When called with the -ListAvailable parameter">
+                <results>
+                  <test-case description="Should return a list of valid Rsc types" name="Get-RscType.When called with the -ListAvailable parameter.Should return a list of valid Rsc types" time="1.4203" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Get-RscType.When called with the -Name parameter" executed="True" result="Success" success="True" time="1.5462" asserts="0" description="Get-RscType.When called with the -Name parameter">
+                <results>
+                  <test-case description="Should return an empty object of the specified Rsc type" name="Get-RscType.When called with the -Name parameter.Should return an empty object of the specified Rsc type" time="0.0227" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should initialize specified properties if -InitialProperties parameter is used" name="Get-RscType.When called with the -Name parameter.Should initialize specified properties if -InitialProperties parameter is used" time="0.013" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should throw an exception if the specified Rsc type is not found" name="Get-RscType.When called with the -Name parameter.Should throw an exception if the specified Rsc type is not found" time="0.0161" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Return object with specific values in fields" name="Get-RscType.When called with the -Name parameter.Return object with specific values in fields" time="0.0553" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Get-RscType.When the -InitialProperties param contains a field that is of type List" executed="True" result="Success" success="True" time="1.6255" asserts="0" description="Get-RscType.When the -InitialProperties param contains a field that is of type List">
+                <results>
+                  <test-case description="Should return a list of types for an interface list" name="Get-RscType.When the -InitialProperties param contains a field that is of type List.Should return a list of types for an interface list" time="0.0717" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Import.Tests.ps1" executed="True" result="Success" success="True" time="0.4229" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Import.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Verify correct import" executed="True" result="Success" success="True" time="0.062" asserts="0" description="Verify correct import">
+            <results>
+              <test-case description="should be version 6.0.0" name="Verify correct import.should be version 6.0.0" time="0.0211" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Connect-Rsc exists" name="Verify correct import.Connect-Rsc exists" time="0.0142" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Disconnect-Rsc exists" name="Verify correct import.Disconnect-Rsc exists" time="0.0122" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get-RscVsphereVm exists" name="Verify correct import.Get-RscVsphereVm exists" time="0.0074" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/InterfaceFieldSpec.Tests.ps1" executed="True" result="Success" success="True" time="0.1961" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/InterfaceFieldSpec.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test field specs for interface fields" executed="True" result="Success" success="True" time="0.0926" asserts="0" description="Test field specs for interface fields">
+            <results>
+              <test-case description="Field spec exploration" name="Test field specs for interface fields.Field spec exploration" time="0.0844" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Invoke-RscQueryMssql-TopLevelDescendant.Tests.ps1" executed="True" result="Success" success="True" time="0.2184" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Invoke-RscQueryMssql-TopLevelDescendant.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-RscQueryMssql -Op TopLevelDescendants" executed="True" result="Success" success="True" time="0.1196" asserts="0" description="New-RscQueryMssql -Op TopLevelDescendants">
+            <results>
+              <test-case description="PhysicalHost" name="New-RscQueryMssql -Op TopLevelDescendants.PhysicalHost" time="0.1163" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/JSONSerializer.Tests.ps1" executed="True" result="Success" success="True" time="0.2596" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/JSONSerializer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="TEST Json serialization" executed="True" result="Success" success="True" time="0.1285" asserts="0" description="TEST Json serialization">
+            <results>
+              <test-case description="List of enum values" name="TEST Json serialization.List of enum values" time="0.1239" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/New-RscQuery.Tests.ps1" executed="True" result="Success" success="True" time="0.517" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/New-RscQuery.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test New-RscQuery and New-RscMutation" executed="True" result="Success" success="True" time="0.3368" asserts="0" description="Test New-RscQuery and New-RscMutation">
+            <results>
+              <test-case description="With cluster operations" name="Test New-RscQuery and New-RscMutation.With cluster operations" time="0.3296" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Patching.Tests.ps1" executed="True" result="Success" success="True" time="1.3865" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Patching.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test patching" executed="True" result="Success" success="True" time="1.0086" asserts="0" description="Test patching">
+            <results>
+              <test-case description="With New-RscQueryCluster -Op List" name="Test patching.With New-RscQueryCluster -Op List" time="1.0046" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Variables.Tests.ps1" executed="True" result="Success" success="True" time="0.54" asserts="0" description="/Users/Chris.Lumnah/Documents/rubrik-powershell-sdk/Tests/unit/Variables.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test variables" executed="True" result="Success" success="True" time="0.4142" asserts="0" description="Test variables">
+            <results>
+              <test-case description="With New-RscQueryMssql -Op RecoverableRanges" name="Test variables.With New-RscQueryMssql -Op RecoverableRanges" time="0.4074" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
