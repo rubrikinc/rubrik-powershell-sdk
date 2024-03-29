@@ -191,7 +191,8 @@ Describe -Name "Test patching" -Fixture {
         $q1 = $qobj1.GqlRequest().Query
 
         # Patching after copy
-        $qobj2 = New-RscQuery -Copy $qobj1 -AddField Nodes.PhysicalPath
+        $qobj = New-RscQueryMSsql -Op Databases
+        $qobj2 = New-RscQuery -Copy $qobj -AddField Nodes.PhysicalPath
         $q2 = $qobj2.GqlRequest().Query
 
         # Post-patching with Get-RscType -InitialProperties
@@ -208,5 +209,35 @@ Describe -Name "Test patching" -Fixture {
         $q1 | Should -Be $q2
         $q1 | Should -Be $q3
         $q1 | Should -Be $q4
+
+        #
+        # Same as above, but with domain-less cmdlets
+        #
+
+        $rootField = $qobj1.OpInfo().GqlRootFieldName
+
+        # Patching with -AddField
+        $qobj5 = New-RscQuery -GqlQuery $rootField -AddField Nodes.PhysicalPath
+        $q5 = $qobj5.GqlRequest().Query
+
+        # Patching after copy
+        $qobj6 = New-RscQuery -Copy $qobj -AddField Nodes.PhysicalPath
+        $q6 = $qobj6.GqlRequest().Query
+
+        # Post-patching with Get-RscType -InitialProperties
+        $qobj7 = New-RscQuery -GqlQuery $rootField
+        $qobj7.Field.Nodes[0].PhysicalPath = Get-RscType -Name PathNode -InitialProperties @("Fid", "Name", "ObjectType")
+        $q7 = $qobj7.GqlRequest().Query
+
+        # Post-patching with SelectForRetrieval
+        $qobj8 = New-RscQuery -GqlQuery $rootField
+        $qobj8.Field.Nodes[0].PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
+        $qobj8.Field.Nodes[0].PhysicalPath[0].SelectForRetrieval()
+        $q8 = $qobj8.GqlRequest().Query
+
+        $q5 | Should -Be $q1
+        $q6 | Should -Be $q1
+        $q7 | Should -Be $q1
+        $q8 | Should -Be $q1
     }
 }
