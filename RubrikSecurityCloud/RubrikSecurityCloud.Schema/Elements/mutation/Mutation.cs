@@ -7453,6 +7453,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> Db2ConfigureRestoreResponse? ConfigureDb2Restore
+        // GraphQL -> configureDb2Restore: Db2ConfigureRestoreResponse! (type)
+        public static string ConfigureDb2Restore_TypedFieldSpec(Db2ConfigureRestoreResponse fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "configureDb2Restore" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ConfigureDb2Restore_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ConfigureDb2Restore((Db2ConfigureRestoreResponse)fieldSpecObj);
+        }
+        public static string ConfigureDb2Restore(Db2ConfigureRestoreResponse fieldSpec)
+        {
+            return ConfigureDb2Restore_TypedFieldSpec(fieldSpec);
+        }
+        public static string ConfigureDb2Restore(object fieldSpecObj)
+        {
+            return ConfigureDb2Restore_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ConfigureDb2RestoreFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new Db2ConfigureRestoreResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? ConfigureSapHanaRestore
         // GraphQL -> configureSapHanaRestore: AsyncRequestStatus! (type)
         public static string ConfigureSapHanaRestore_TypedFieldSpec(AsyncRequestStatus fieldSpec)

@@ -1,5 +1,5 @@
 ### CreateK8sRestoreJobInput
-
+Input for creating a Kubernetes restore job.
 
 - id: System.String
   - Required. v9.0: The ID of the resource set snapshot to be restored.

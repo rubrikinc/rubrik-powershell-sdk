@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Alias
+        // GraphQL -> alias: String (scalar)
+        [JsonProperty("alias")]
+        public System.String? Alias { get; set; }
+
         //      C# -> List<NodeIpInput>? Interfaces
         // GraphQL -> interfaces: [NodeIpInput!]! (input)
         [Required]

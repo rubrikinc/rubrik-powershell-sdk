@@ -1,5 +1,5 @@
 ### ExportK8sProtectionSetSnapshotInput
-
+Input for exporting a Kubernetes protection set snapshot.
 
 - id: System.String
   - Required. v9.0: The ID of the resource set snapshot to be exported.

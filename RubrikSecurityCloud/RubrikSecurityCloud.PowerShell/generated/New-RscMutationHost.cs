@@ -237,6 +237,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 		}
@@ -348,6 +350,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 		}
@@ -837,6 +841,8 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			orgNetworkId = $someString
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
 			# REQUIRED
 			hostname = $someString
 		}
@@ -940,6 +946,8 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			orgNetworkId = $someString
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
 			# REQUIRED
 			hostname = $someString
 		}

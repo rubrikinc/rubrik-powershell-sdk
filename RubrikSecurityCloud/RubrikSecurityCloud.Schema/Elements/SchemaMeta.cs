@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240318-20" ;
+        public static string GraphqlSchemaVersion = "v20240325-21" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -313,6 +313,7 @@ namespace RubrikSecurityCloud.Types
             AuthorizedPrincipalEdge,
             AutoEnablePolicyClusterConfigReply,
             AwsAccount,
+            AwsAccountRansomwareInvestigationEnablement,
             AwsAccountValidationResponse,
             AwsArtifactsToDelete,
             AwsAuthServerDetail,
@@ -775,6 +776,7 @@ namespace RubrikSecurityCloud.Types
             DayToDayModeStats,
             Db2AppMetadata,
             Db2Config,
+            Db2ConfigureRestoreResponse,
             Db2DataBackupFile,
             Db2Database,
             Db2DatabaseConnection,
@@ -1572,8 +1574,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2741,6 +2743,7 @@ namespace RubrikSecurityCloud.Types
             CompleteAzureAdAppSetupInput,
             CompleteAzureAdAppUpdateInput,
             CompleteAzureCloudAccountOauthInput,
+            ConfigureDb2RestoreInput,
             ConfigureManagedVolumeLogExportInfo,
             ConfigureSapHanaRestoreInput,
             ContactFolderInfo,
@@ -2846,6 +2849,7 @@ namespace RubrikSecurityCloud.Types
             DataThreatAnalyticsEnablementEntityInfo,
             DayOfWeekOptInput,
             Db2ConfigInput,
+            Db2ConfigureRestoreRequestInput,
             Db2DatabaseConfigInput,
             Db2DatabaseInfo,
             Db2DownloadRecoverableRangeRequestInput,
@@ -3901,6 +3905,7 @@ namespace RubrikSecurityCloud.Types
             VcenterConnectionConfigInput,
             VcenterDiagnosticRefreshInfo,
             VcenterPreAddConfigInput,
+            VcenterUpdateConfigInput,
             VersionInput,
             VirtualMachineFilesInput,
             VirtualMachineScriptDetailInput,
@@ -4885,6 +4890,7 @@ namespace RubrikSecurityCloud.Types
             completeAzureAdAppSetup,
             completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
+            configureDb2Restore,
             configureSapHanaRestore,
             createActiveDirectoryLiveMount,
             createActiveDirectoryUnmount,
@@ -5697,6 +5703,7 @@ namespace RubrikSecurityCloud.Types
             DayOfQuarter,
             DayOfWeek,
             DayOfYear,
+            Db2ConfigureRestoreResponseStatus,
             Db2DatabaseStatus,
             Db2DatabaseType,
             Db2InstanceSummaryStatus,
@@ -5797,6 +5804,7 @@ namespace RubrikSecurityCloud.Types
             HostFailoverClusterRoot,
             HostFilterStatus,
             HostRbsConnectionStatus,
+            HostRegisterOsType,
             HostRoot,
             HostUiFilterStatus,
             HostVfdInstallConfig,
@@ -8291,6 +8299,7 @@ namespace RubrikSecurityCloud.Types
             completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
             computeClusterStatus,
+            configureDb2Restore,
             configureSapHanaRestore,
             configuredGroupMembers,
             countOfObjectsProtectedBySlas,
@@ -12585,6 +12594,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "ComputeClusterStatus",
                         gqlRootFieldName: "computeClusterStatus"
+                    )
+                },
+                {
+                    GqlRootFieldName.configureDb2Restore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "ConfigureRestore",
+                        gqlRootFieldName: "configureDb2Restore"
                     )
                 },
                 {
@@ -22863,6 +22880,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.computeClusterStatus
                 },
                 {
+                    "New-RscMutationDb2 -Op ConfigureRestore",
+                    GqlRootFieldName.configureDb2Restore
+                },
+                {
                     "New-RscMutationSapHana -Op ConfigureRestore",
                     GqlRootFieldName.configureSapHanaRestore
                 },
@@ -28389,6 +28410,10 @@ namespace RubrikSecurityCloud.Types
                         "m365DayToDayModeStats",
                     }
                 },
+                {   "Db2ConfigureRestoreResponse", new List<string> {
+                        "configureDb2Restore",
+                    }
+                },
                 {   "Db2Database", new List<string> {
                         "db2Database",
                     }
@@ -32321,6 +32346,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CompleteAzureCloudAccountOauthInput", new List<string> {
                         "completeAzureCloudAccountOauth",
+                    }
+                },
+                {   "ConfigureDb2RestoreInput", new List<string> {
+                        "configureDb2Restore",
                     }
                 },
                 {   "ConfigureSapHanaRestoreInput", new List<string> {
@@ -37557,6 +37586,7 @@ namespace RubrikSecurityCloud.Types
                 { "certificateSigningRequests", "CsrConnection"},
                 { "m365DayToDayModeBackupStats", "DayToDayModeBackupStats"},
                 { "m365DayToDayModeStats", "DayToDayModeStats"},
+                { "configureDb2Restore", "Db2ConfigureRestoreResponse"},
                 { "db2Database", "Db2Database"},
                 { "db2Databases", "Db2DatabaseConnection"},
                 { "db2Instance", "Db2Instance"},
@@ -39309,6 +39339,7 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Db2,
                     new List<string> {
                     "AddInstance",
+                    "ConfigureRestore",
                     "CreateOnDemandBackup",
                     "Database",
                     "DatabaseJobStatus",

@@ -1,6 +1,8 @@
 ### VlanConfigInput
 Supported in v5.0+
 
+- alias: System.String
+  - Alias for the VLAN.
 - interfaces: list of NodeIpInputs
   - Required. Supported in v5.0+
       Network interfaces for each node.

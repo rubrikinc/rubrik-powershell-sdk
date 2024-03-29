@@ -115,6 +115,14 @@ type Query {
     # Sort by argument for Active Directory volume exports.
     sortBy: AdVolumeExportSortByInput): AdVolumeExportConnection!
 
+  # Get Rubrik Backup Service deployment setting
+  # 
+  # Supported in v5.0+
+  # Retrieve the global setting for automatic deployment of the Rubrik Backup Service to virtual machines.
+  agentDeploymentSetting(
+    # Input for InternalGetVmAgentDeploymentSetting.
+    input: GetVmAgentDeploymentSettingInput!): AgentDeploymentSettings!
+
   # List of account owners.
   allAccountOwners: [User!]!
   allAccountProducts(
@@ -11131,6 +11139,14 @@ type Mutation {
     # Specifies the user ID.
     userId: String!): Boolean!
 
+  # Change the Rubrik Backup Service deployment setting
+  # 
+  # Supported in v5.0+
+  # Modify the global setting for automatic deployment of the Rubrik Backup Service to virtual machines.
+  updateAgentDeploymentSetting(
+    # Input for InternalUpdateVmAgentDeploymentSetting.
+    input: UpdateVmAgentDeploymentSettingInput!): AgentDeploymentSettings!
+
   # Update the hidden status for the given auth domain users.
   updateAuthDomainUsersHiddenStatus(
     # Specifies the auth domain user and their new hidden status.
@@ -14715,6 +14731,18 @@ enum AgentConnectionStatus {
   DISCONNECTED
   SECONDARY_CLUSTER
   UNREGISTERED
+}
+# Supported in v5.0+
+type AgentDeploymentSettings {
+  # Required. Supported in v5.0+
+  # Determines whether the Rubrik cluster automatically deploys the Rubrik Backup Service to the guest OS at the first backup. Set to true to permit automatic deployment. Set to false to prevent automatic deployment.
+  isAutomatic: Boolean!
+}
+# Supported in v5.0+
+input AgentDeploymentSettingsInput {
+  # Required. Supported in v5.0+
+  # Determines whether the Rubrik cluster automatically deploys the Rubrik Backup Service to the guest OS at the first backup. Set to true to permit automatic deployment. Set to false to prevent automatic deployment.
+  isAutomatic: Boolean!
 }
 # The status of the virtual machine's agent.
 type AgentStatus {
@@ -45951,6 +45979,9 @@ enum FileStateEnumType {
   # File state is in progress.
   IN_PROGRESS
 
+  # File state is pending.
+  PENDING
+
   # File state is ready.
   READY
 }
@@ -49505,6 +49536,10 @@ input GetVlanInput {
 
   # Required. ID of the Rubrik cluster or *me* for self.
   id: String!
+}
+input GetVmAgentDeploymentSettingInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
 }
 # Input for retrieving Hyper-V VM-level files from a snapshot.
 input GetVmLevelFilesFromSnapshotInput {
@@ -96133,6 +96168,13 @@ input UpdateVcenterInput {
 # Reply Object for UpdateVcenter.
 type UpdateVcenterReply {
   output: VcenterSummary
+}
+input UpdateVmAgentDeploymentSettingInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. Modify the Rubrik Backup Service deployment setting for a specified virtual machine.
+  settings: AgentDeploymentSettingsInput!
 }
 # Input to update protection settings for volume group.
 input UpdateVolumeGroupInput {

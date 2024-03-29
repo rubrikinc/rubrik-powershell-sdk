@@ -13,6 +13,10 @@ Metrics of a Rubrik cluster.
   - Total bytes used by Live Mounts in the Rubrik cluster.
 - miscellaneousCapacity: System.Int64
   - Total miscellaneous bytes used in the Rubrik cluster.
+- pendingSnapshotCapacity: System.Int64
+  - Total number of bytes used by pending snapshots in the Rubrik cluster.
+- cdpCapacity: System.Int64
+  - Total number of bytes used by CDP in the Rubrik cluster.
 - ingestedSnapshotStorage: System.Int64
   - Ingested bytes for local snapshots.
 - physicalSnapshotStorage: System.Int64

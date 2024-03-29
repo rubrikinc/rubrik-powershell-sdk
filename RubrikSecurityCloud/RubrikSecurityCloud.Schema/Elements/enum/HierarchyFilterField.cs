@@ -237,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOMAIN_CONTROLLER_CONNECTION_STATUS")]
         DOMAIN_CONTROLLER_CONNECTION_STATUS,
 
+        [EnumMember(Value = "DOMAIN_CONTROLLER_DOMAIN_SID")]
+        DOMAIN_CONTROLLER_DOMAIN_SID,
+
         [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
         DOMAIN_CONTROLLER_FSMO_ROLE,
 
@@ -650,6 +653,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAASAPPS_NATURAL_ID")]
         SAASAPPS_NATURAL_ID,
+
+        [EnumMember(Value = "SALESFORCE_NAME_OR_LABEL")]
+        SALESFORCE_NAME_OR_LABEL,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
+        SALESFORCE_OBJECT_TYPE,
 
         [EnumMember(Value = "SAP_HANA_DATABASE_CDM_ID")]
         SAP_HANA_DATABASE_CDM_ID,

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Alias
+        // GraphQL -> alias: String (scalar)
+        [JsonProperty("alias")]
+        public System.String? Alias { get; set; }
+
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         [JsonProperty("netmask")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VlanConfig Set(
+        System.String? Alias = null,
         System.String? Netmask = null,
         System.Int32? Vlan = null,
         List<NodeIp>? Interfaces = null
     ) 
     {
+        if ( Alias != null ) {
+            this.Alias = Alias;
+        }
         if ( Netmask != null ) {
             this.Netmask = Netmask;
         }
@@ -70,6 +79,15 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? Alias
+        // GraphQL -> alias: String (scalar)
+        if (this.Alias != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "alias\n" ;
+            } else {
+                s += ind + "alias\n" ;
+            }
+        }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         if (this.Netmask != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? Alias
+        // GraphQL -> alias: String (scalar)
+        if (ec.Includes("alias",true))
+        {
+            if(this.Alias == null) {
+
+                this.Alias = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Alias != null && ec.Excludes("alias",true))
+        {
+            this.Alias = null;
+        }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         if (ec.Includes("netmask",true))

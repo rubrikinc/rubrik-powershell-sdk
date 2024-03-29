@@ -267,3 +267,6 @@
 - VMWARE_VCD_HOSTNAME - Filter by vCD hostname.
 - GCP_REGION - Filter by the regions for GCP workloads.
 - ANCESTOR_ID - Filter the managed objects based on the ancestor IDs.
+- SALESFORCE_OBJECT_TYPE - Filter by Salesforce object type.
+- SALESFORCE_NAME_OR_LABEL - Filter by Salesforce name or label.
+- DOMAIN_CONTROLLER_DOMAIN_SID - Filter domain controller by domain SID.

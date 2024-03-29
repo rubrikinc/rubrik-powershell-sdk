@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? CdmObjectId
-        // GraphQL -> cdmObjectId: UUID! (scalar)
+        // GraphQL -> cdmObjectId: String! (scalar)
         [JsonProperty("cdmObjectId")]
         public System.String? CdmObjectId { get; set; }
 
@@ -80,7 +80,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmObjectId
-        // GraphQL -> cdmObjectId: UUID! (scalar)
+        // GraphQL -> cdmObjectId: String! (scalar)
         if (this.CdmObjectId != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "cdmObjectId\n" ;
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmObjectId
-        // GraphQL -> cdmObjectId: UUID! (scalar)
+        // GraphQL -> cdmObjectId: String! (scalar)
         if (ec.Includes("cdmObjectId",true))
         {
             if(this.CdmObjectId == null) {

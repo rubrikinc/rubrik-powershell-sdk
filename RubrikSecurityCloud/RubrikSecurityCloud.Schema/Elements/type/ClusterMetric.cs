@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availableCapacity")]
         public System.Int64? AvailableCapacity { get; set; }
 
+        //      C# -> System.Int64? CdpCapacity
+        // GraphQL -> cdpCapacity: Long! (scalar)
+        [JsonProperty("cdpCapacity")]
+        public System.Int64? CdpCapacity { get; set; }
+
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
         [JsonProperty("ingestedArchivalStorage")]
@@ -49,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> miscellaneousCapacity: Long! (scalar)
         [JsonProperty("miscellaneousCapacity")]
         public System.Int64? MiscellaneousCapacity { get; set; }
+
+        //      C# -> System.Int64? PendingSnapshotCapacity
+        // GraphQL -> pendingSnapshotCapacity: Long! (scalar)
+        [JsonProperty("pendingSnapshotCapacity")]
+        public System.Int64? PendingSnapshotCapacity { get; set; }
 
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
@@ -86,11 +96,13 @@ namespace RubrikSecurityCloud.Types
 
     public ClusterMetric Set(
         System.Int64? AvailableCapacity = null,
+        System.Int64? CdpCapacity = null,
         System.Int64? IngestedArchivalStorage = null,
         System.Int64? IngestedSnapshotStorage = null,
         DateTime? LastUpdateTime = null,
         System.Int64? LiveMountCapacity = null,
         System.Int64? MiscellaneousCapacity = null,
+        System.Int64? PendingSnapshotCapacity = null,
         System.Int64? PhysicalArchivalStorage = null,
         System.Int64? PhysicalSnapshotStorage = null,
         System.Int64? SnapshotCapacity = null,
@@ -100,6 +112,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AvailableCapacity != null ) {
             this.AvailableCapacity = AvailableCapacity;
+        }
+        if ( CdpCapacity != null ) {
+            this.CdpCapacity = CdpCapacity;
         }
         if ( IngestedArchivalStorage != null ) {
             this.IngestedArchivalStorage = IngestedArchivalStorage;
@@ -115,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MiscellaneousCapacity != null ) {
             this.MiscellaneousCapacity = MiscellaneousCapacity;
+        }
+        if ( PendingSnapshotCapacity != null ) {
+            this.PendingSnapshotCapacity = PendingSnapshotCapacity;
         }
         if ( PhysicalArchivalStorage != null ) {
             this.PhysicalArchivalStorage = PhysicalArchivalStorage;
@@ -149,6 +167,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "availableCapacity\n" ;
             } else {
                 s += ind + "availableCapacity\n" ;
+            }
+        }
+        //      C# -> System.Int64? CdpCapacity
+        // GraphQL -> cdpCapacity: Long! (scalar)
+        if (this.CdpCapacity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdpCapacity\n" ;
+            } else {
+                s += ind + "cdpCapacity\n" ;
             }
         }
         //      C# -> System.Int64? IngestedArchivalStorage
@@ -194,6 +221,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "miscellaneousCapacity\n" ;
             } else {
                 s += ind + "miscellaneousCapacity\n" ;
+            }
+        }
+        //      C# -> System.Int64? PendingSnapshotCapacity
+        // GraphQL -> pendingSnapshotCapacity: Long! (scalar)
+        if (this.PendingSnapshotCapacity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingSnapshotCapacity\n" ;
+            } else {
+                s += ind + "pendingSnapshotCapacity\n" ;
             }
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
@@ -264,6 +300,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AvailableCapacity != null && ec.Excludes("availableCapacity",true))
         {
             this.AvailableCapacity = null;
+        }
+        //      C# -> System.Int64? CdpCapacity
+        // GraphQL -> cdpCapacity: Long! (scalar)
+        if (ec.Includes("cdpCapacity",true))
+        {
+            if(this.CdpCapacity == null) {
+
+                this.CdpCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdpCapacity != null && ec.Excludes("cdpCapacity",true))
+        {
+            this.CdpCapacity = null;
         }
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
@@ -349,6 +402,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MiscellaneousCapacity != null && ec.Excludes("miscellaneousCapacity",true))
         {
             this.MiscellaneousCapacity = null;
+        }
+        //      C# -> System.Int64? PendingSnapshotCapacity
+        // GraphQL -> pendingSnapshotCapacity: Long! (scalar)
+        if (ec.Includes("pendingSnapshotCapacity",true))
+        {
+            if(this.PendingSnapshotCapacity == null) {
+
+                this.PendingSnapshotCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingSnapshotCapacity != null && ec.Excludes("pendingSnapshotCapacity",true))
+        {
+            this.PendingSnapshotCapacity = null;
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)

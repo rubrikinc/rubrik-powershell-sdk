@@ -240,6 +240,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	vlanInfo = @{
+    /// 		# OPTIONAL
+    /// 		alias = $someString
     /// 		# REQUIRED
     /// 		interfaces = @(
     /// 			@{
@@ -6599,6 +6601,8 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	vlanInfo = @{
+		# OPTIONAL
+		alias = $someString
 		# REQUIRED
 		interfaces = @(
 			@{

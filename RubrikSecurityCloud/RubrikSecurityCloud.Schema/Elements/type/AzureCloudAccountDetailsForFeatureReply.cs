@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionsGroups")]
         public List<PermissionsGroup>? PermissionsGroups { get; set; }
 
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        [JsonProperty("subscriptionId")]
+        public System.String? SubscriptionId { get; set; }
+
         //      C# -> System.String? TenantDomain
         // GraphQL -> tenantDomain: String! (scalar)
         [JsonProperty("tenantDomain")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public AzureCloudAccountDetailsForFeatureReply Set(
         AzureCloudType? AzureCloudType = null,
         List<PermissionsGroup>? PermissionsGroups = null,
+        System.String? SubscriptionId = null,
         System.String? TenantDomain = null,
         System.String? TenantId = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PermissionsGroups != null ) {
             this.PermissionsGroups = PermissionsGroups;
+        }
+        if ( SubscriptionId != null ) {
+            this.SubscriptionId = SubscriptionId;
         }
         if ( TenantDomain != null ) {
             this.TenantDomain = TenantDomain;
@@ -95,6 +104,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "permissionsGroups\n" ;
             } else {
                 s += ind + "permissionsGroups\n" ;
+            }
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
             }
         }
         //      C# -> System.String? TenantDomain
@@ -155,6 +173,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PermissionsGroups != null && ec.Excludes("permissionsGroups",true))
         {
             this.PermissionsGroups = null;
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (ec.Includes("subscriptionId",true))
+        {
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
         //      C# -> System.String? TenantDomain
         // GraphQL -> tenantDomain: String! (scalar)

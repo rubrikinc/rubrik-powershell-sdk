@@ -1722,6 +1722,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	orgNetworkId = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -3663,6 +3665,8 @@ $query.Var.input = @{
                 Mutation.VsphereVmRegisterAgentFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	orgNetworkId = $someString
 	# REQUIRED
 	id = $someString
 }"

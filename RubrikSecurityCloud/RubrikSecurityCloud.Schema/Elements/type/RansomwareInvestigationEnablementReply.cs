@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts
+        // GraphQL -> awsAccounts: [AwsAccountRansomwareInvestigationEnablement!] (type)
+        [JsonProperty("awsAccounts")]
+        public List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts { get; set; }
+
         //      C# -> List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions
         // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
         [JsonProperty("azureSubscriptions")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RansomwareInvestigationEnablementReply Set(
+        List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts = null,
         List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions = null,
         List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters = null,
         List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions = null,
         List<RubrikCloudVaultRansomwareInvestigationEnablement>? RubrikCloudVaultLocations = null
     ) 
     {
+        if ( AwsAccounts != null ) {
+            this.AwsAccounts = AwsAccounts;
+        }
         if ( AzureSubscriptions != null ) {
             this.AzureSubscriptions = AzureSubscriptions;
         }
@@ -79,6 +88,18 @@ namespace RubrikSecurityCloud.Types
         conf=(conf==null)?new FieldSpecConfig():conf;
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts
+        // GraphQL -> awsAccounts: [AwsAccountRansomwareInvestigationEnablement!] (type)
+        if (this.AwsAccounts != null) {
+            var fspec = this.AwsAccounts.AsFieldSpec(conf.Child("awsAccounts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsAccounts {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions
         // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
         if (this.AzureSubscriptions != null) {
@@ -134,6 +155,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<AwsAccountRansomwareInvestigationEnablement>? AwsAccounts
+        // GraphQL -> awsAccounts: [AwsAccountRansomwareInvestigationEnablement!] (type)
+        if (ec.Includes("awsAccounts",false))
+        {
+            if(this.AwsAccounts == null) {
+
+                this.AwsAccounts = new List<AwsAccountRansomwareInvestigationEnablement>();
+                this.AwsAccounts.ApplyExploratoryFieldSpec(ec.NewChild("awsAccounts"));
+
+            } else {
+
+                this.AwsAccounts.ApplyExploratoryFieldSpec(ec.NewChild("awsAccounts"));
+
+            }
+        }
+        else if (this.AwsAccounts != null && ec.Excludes("awsAccounts",false))
+        {
+            this.AwsAccounts = null;
+        }
         //      C# -> List<AzureSubscriptionRansomwareInvestigationEnablement>? AzureSubscriptions
         // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
         if (ec.Includes("azureSubscriptions",false))

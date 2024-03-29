@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.String? Definition
+        // GraphQL -> definition: String! (scalar)
+        [JsonProperty("definition")]
+        public System.String? Definition { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -262,6 +267,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? ClusterUuid = null,
+        System.String? Definition = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         System.String? K8sClusterName = null,
@@ -329,6 +335,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
+        }
+        if ( Definition != null ) {
+            this.Definition = Definition;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -557,6 +566,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterUuid\n" ;
             } else {
                 s += ind + "clusterUuid\n" ;
+            }
+        }
+        //      C# -> System.String? Definition
+        // GraphQL -> definition: String! (scalar)
+        if (this.Definition != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "definition\n" ;
+            } else {
+                s += ind + "definition\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -1139,6 +1157,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
         {
             this.ClusterUuid = null;
+        }
+        //      C# -> System.String? Definition
+        // GraphQL -> definition: String! (scalar)
+        if (ec.Includes("definition",true))
+        {
+            if(this.Definition == null) {
+
+                this.Definition = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Definition != null && ec.Excludes("definition",true))
+        {
+            this.Definition = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

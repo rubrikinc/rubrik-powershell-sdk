@@ -11,7 +11,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | --- | --- | --- | --- | --- |
 | [Account (9,14)](#account-domain) | [Cluster (30,12)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,18)](#oracle-domain) | [Snapshot (21,16)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (0,4)](#cross-account-domain) | [Microsoft 365 (7,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
-| [Activity series (4,3)](#activity-series-domain) | [Db2 (9,11)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
+| [Activity series (4,3)](#activity-series-domain) | [Db2 (9,12)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
 | [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (174,121)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (29,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (3,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
@@ -782,6 +782,10 @@ Retrieve details about a Db2 database-related request which includes the status 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | AddInstance | Mutation to add a new Db2 instance. | `New-RscMutationDb2 -Operation AddInstance`<BR> | [addDb2Instance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ConfigureRestore | Configuring a Db2 database restore for different host  
+  
+Supported in v9.1+  
+Configures the target host for cross host recovery for a source Db2 database. | `New-RscMutationDb2 -Operation ConfigureRestore`<BR> | [configureDb2Restore](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateOnDemandBackup | Create on demand database snapshot  
   
 Supported in v8.0+  

@@ -952,6 +952,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUseSepsWallet = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldForceDisableDgDiscovery = $someBoolean
     /// 	}
     /// }
     /// 
@@ -2091,6 +2093,8 @@ $query.Var.input = @{
 		}
 		# OPTIONAL
 		shouldUseSepsWallet = $someBoolean
+		# OPTIONAL
+		shouldForceDisableDgDiscovery = $someBoolean
 	}
 }"
             );

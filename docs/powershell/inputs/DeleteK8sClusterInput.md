@@ -1,5 +1,5 @@
 ### DeleteK8sClusterInput
-
+Input for deleting a Kubernetes cluster.
 
 - preserveSnapshots: System.Boolean
   - v9.0: Flag to specify whether to preserve snapshots of the Kubernetes resource sets in this cluster or to delete them. The default is to preserve the snapshots.

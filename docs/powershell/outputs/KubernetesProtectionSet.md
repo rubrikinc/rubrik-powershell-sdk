@@ -19,6 +19,8 @@ Kubernetes Protection Set.
   - Name of the Kubernetes Cluster.
 - isRelic: System.Boolean
   - Specifies whether the Protection Set is a relic.
+- definition: System.String
+  - Definition of Protection Set.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

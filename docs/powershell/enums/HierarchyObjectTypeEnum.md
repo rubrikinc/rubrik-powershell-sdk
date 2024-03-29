@@ -44,6 +44,7 @@ Type of hierarchy object.
 - O365SharePointList
 - VmwareVirtualMachine
 - AllSubHierarchyType
+- POSTGRES_DATABASE - PostgreSQL Database.
 - ORCHESTRATED_APPLICATION_RECOVERY_PLAN - Orchestrated Application Recovery Plan.
 - O365SharePointDrive
 - ShareFileset
