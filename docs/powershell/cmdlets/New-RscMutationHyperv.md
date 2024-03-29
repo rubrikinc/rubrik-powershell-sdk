@@ -32,6 +32,14 @@ Takes on-demand backup of multiple specified Hyper-V virtual machines.
 
 - There is a single argument of type BatchOnDemandBackupHypervVmInput.
 - Returns BatchOnDemandBackupHypervVmReply.
+### createvirtualmachinesnapshotdiskmount
+Attaching disks from a snapshot to an existing virtual machine
+
+Supported in v9.1+
+Requests a Live Mount to attach disks to an existing virtual machine.
+
+- There is a single argument of type CreateMountHypervVirtualDisksInput.
+- Returns AsyncRequestStatus.
 ### createvirtualmachinesnapshotmount
 Create a live mount request
 
@@ -71,6 +79,14 @@ Supported in v7.0+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
 
 - There is a single argument of type DownloadHypervSnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
+### downloadvirtualmachinelevelfiles
+Download virtual machine files from the snapshot
+
+Supported in v9.1+
+Download virtual machine configuration & disk files from the snapshot.
+
+- There is a single argument of type DownloadHypervVirtualMachineVmLevelFilesInput.
 - Returns AsyncRequestStatus.
 ### downloadvirtualmachinesnapshot
 Creates a download from archival request

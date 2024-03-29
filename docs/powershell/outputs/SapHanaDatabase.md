@@ -29,6 +29,12 @@ SAP HANA Database details object.
   - Recoverable ranges for given SAP HANA database.
 - logSnapshotConnection: SapHanaLogSnapshotConnection
   - Log snapshots for given SAP HANA database.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot for SAP HANA database.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot for SAP HANA database.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots for SAP HANA database.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
@@ -39,6 +45,8 @@ SAP HANA Database details object.
   - Mapping from object ID to pending object deletion status.
 - replicatedObjects: list of CdmHierarchyObjects
   - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
 - latestUserNote: LatestUserNote
   - Latest user note information.
 - replicatedObjectCount: System.Int32
@@ -87,12 +95,6 @@ SAP HANA Database details object.
   - GroupBy connection for the snapshots of this workload.
 - newestIndexedSnapshot: CdmSnapshot
   - The most recent indexed snapshot of this workload.
-- newestSnapshot: CdmSnapshot
-  - The most recent snapshot of this workload.
-- oldestSnapshot: CdmSnapshot
-  - The oldest snapshot of this workload.
-- onDemandSnapshotCount: System.Int32
-  - The number of on-demand snapshots.
 - newestArchivedSnapshot: CdmSnapshot
   - The newest snapshot archived to AWS.
 - newestReplicatedSnapshot: CdmSnapshot

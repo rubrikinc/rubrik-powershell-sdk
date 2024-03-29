@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("collectionSet")]
         public MongoCollectionSet? CollectionSet { get; set; }
 
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        [JsonProperty("crossAccountReplicatedObjectInfos")]
+        public List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
+
         //      C# -> MongoDatabase? Database
         // GraphQL -> database: MongoDatabase! (type)
         [JsonProperty("database")]
@@ -216,6 +221,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         MongoCollectionSet? CollectionSet = null,
+        List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         MongoDatabase? Database = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
@@ -290,6 +296,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CollectionSet != null ) {
             this.CollectionSet = CollectionSet;
+        }
+        if ( CrossAccountReplicatedObjectInfos != null ) {
+            this.CrossAccountReplicatedObjectInfos = CrossAccountReplicatedObjectInfos;
         }
         if ( Database != null ) {
             this.Database = Database;
@@ -547,6 +556,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "collectionSet {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (this.CrossAccountReplicatedObjectInfos != null) {
+            var fspec = this.CrossAccountReplicatedObjectInfos.AsFieldSpec(conf.Child("crossAccountReplicatedObjectInfos"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crossAccountReplicatedObjectInfos {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1088,6 +1109,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.CollectionSet != null && ec.Excludes("collectionSet",false))
         {
             this.CollectionSet = null;
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (ec.Includes("crossAccountReplicatedObjectInfos",false))
+        {
+            if(this.CrossAccountReplicatedObjectInfos == null) {
+
+                this.CrossAccountReplicatedObjectInfos = new List<CrossAccountReplicatedObjectInfo>();
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            } else {
+
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            }
+        }
+        else if (this.CrossAccountReplicatedObjectInfos != null && ec.Excludes("crossAccountReplicatedObjectInfos",false))
+        {
+            this.CrossAccountReplicatedObjectInfos = null;
         }
         //      C# -> MongoDatabase? Database
         // GraphQL -> database: MongoDatabase! (type)

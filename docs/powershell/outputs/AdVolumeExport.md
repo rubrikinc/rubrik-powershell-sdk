@@ -17,6 +17,8 @@ Active Directory volume export.
   - Name of the corresponding domain controller.
 - smbValidIps: list of System.Strings
   - The whitelisted IP addresses that can access Active Directory live mount.
+- mountNodeIp: System.String
+  - Mount Node IP address of the volume export. This IP address is preferred over floating IP address.
 - id: System.String
   - Fid of the volume export.
 - sourceSnapshot: CdmSnapshot

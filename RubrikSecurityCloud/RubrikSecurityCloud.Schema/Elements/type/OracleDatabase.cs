@@ -176,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tablespaces")]
         public List<System.String>? Tablespaces { get; set; }
 
+        //      C# -> System.Boolean? UseSecureThrift
+        // GraphQL -> useSecureThrift: Boolean! (scalar)
+        [JsonProperty("useSecureThrift")]
+        public System.Boolean? UseSecureThrift { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -185,6 +190,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
+
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        [JsonProperty("crossAccountReplicatedObjectInfos")]
+        public List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
 
         //      C# -> OracleDataGuardGroup? DataGuardGroup
         // GraphQL -> dataGuardGroup: OracleDataGuardGroup (type)
@@ -342,8 +352,10 @@ namespace RubrikSecurityCloud.Types
         System.Int32? SectionSizeInGigabytes = null,
         System.Boolean? SlaPauseStatus = null,
         List<System.String>? Tablespaces = null,
+        System.Boolean? UseSecureThrift = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
+        List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         OracleDataGuardGroup? DataGuardGroup = null,
         OracleDirectoryPaths? DirectoryPaths = null,
         PathNode? EffectiveSlaSourceObject = null,
@@ -462,11 +474,17 @@ namespace RubrikSecurityCloud.Types
         if ( Tablespaces != null ) {
             this.Tablespaces = Tablespaces;
         }
+        if ( UseSecureThrift != null ) {
+            this.UseSecureThrift = UseSecureThrift;
+        }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( CrossAccountReplicatedObjectInfos != null ) {
+            this.CrossAccountReplicatedObjectInfos = CrossAccountReplicatedObjectInfos;
         }
         if ( DataGuardGroup != null ) {
             this.DataGuardGroup = DataGuardGroup;
@@ -847,6 +865,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "tablespaces\n" ;
             }
         }
+        //      C# -> System.Boolean? UseSecureThrift
+        // GraphQL -> useSecureThrift: Boolean! (scalar)
+        if (this.UseSecureThrift != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "useSecureThrift\n" ;
+            } else {
+                s += ind + "useSecureThrift\n" ;
+            }
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
@@ -868,6 +895,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (this.CrossAccountReplicatedObjectInfos != null) {
+            var fspec = this.CrossAccountReplicatedObjectInfos.AsFieldSpec(conf.Child("crossAccountReplicatedObjectInfos"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crossAccountReplicatedObjectInfos {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1711,6 +1750,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Tablespaces = null;
         }
+        //      C# -> System.Boolean? UseSecureThrift
+        // GraphQL -> useSecureThrift: Boolean! (scalar)
+        if (ec.Includes("useSecureThrift",true))
+        {
+            if(this.UseSecureThrift == null) {
+
+                this.UseSecureThrift = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UseSecureThrift != null && ec.Excludes("useSecureThrift",true))
+        {
+            this.UseSecureThrift = null;
+        }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (ec.Includes("allOrgs",false))
@@ -1748,6 +1804,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (ec.Includes("crossAccountReplicatedObjectInfos",false))
+        {
+            if(this.CrossAccountReplicatedObjectInfos == null) {
+
+                this.CrossAccountReplicatedObjectInfos = new List<CrossAccountReplicatedObjectInfo>();
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            } else {
+
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            }
+        }
+        else if (this.CrossAccountReplicatedObjectInfos != null && ec.Excludes("crossAccountReplicatedObjectInfos",false))
+        {
+            this.CrossAccountReplicatedObjectInfos = null;
         }
         //      C# -> OracleDataGuardGroup? DataGuardGroup
         // GraphQL -> dataGuardGroup: OracleDataGuardGroup (type)

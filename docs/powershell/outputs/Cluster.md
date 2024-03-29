@@ -17,6 +17,8 @@ A Rubrik CDM Cluster.
   - End of support date.
 - eosStatus: ClusterEosStatus
   - End of support status.
+- isTprEnabled: System.Boolean
+  - Indicates if TPR is enabled on the cluster.
 - systemStatusMessage: System.String
   - Human readable message explaining the systemStatus.
 - systemStatusAffectedNodes: list of ClusterNodes
@@ -49,6 +51,10 @@ A Rubrik CDM Cluster.
   - The cluster's location.
 - timezone: System.String
   - The cluster's timezone.
+- ipmiInfo: IpmiInfo
+  - IPMI information of the cluster.
+- webServerCertificate: WebServerCertificate
+  - Web server certificate of the cluster.
 - globalManagerConnectivityStatus: GlobalManagerConnectivity
   - The cluster's global manager connectivity status.
 - passesConnectivityCheck: System.Boolean

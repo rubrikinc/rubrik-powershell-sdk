@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionVersion")]
         public System.Int32? PermissionVersion { get; set; }
 
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        [JsonProperty("permissionsGroupVersions")]
+        public List<PermissionsGroupWithVersion>? PermissionsGroupVersions { get; set; }
+
+        //      C# -> List<AzureCloudAccountRolePermission>? ResourceGroupRolePermissions
+        // GraphQL -> resourceGroupRolePermissions: [AzureCloudAccountRolePermission!]! (type)
+        [JsonProperty("resourceGroupRolePermissions")]
+        public List<AzureCloudAccountRolePermission>? ResourceGroupRolePermissions { get; set; }
+
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)
         [JsonProperty("rolePermissions")]
@@ -41,11 +51,19 @@ namespace RubrikSecurityCloud.Types
 
     public AzureCloudAccountPermissionConfigResponse Set(
         System.Int32? PermissionVersion = null,
+        List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null,
+        List<AzureCloudAccountRolePermission>? ResourceGroupRolePermissions = null,
         List<AzureCloudAccountRolePermission>? RolePermissions = null
     ) 
     {
         if ( PermissionVersion != null ) {
             this.PermissionVersion = PermissionVersion;
+        }
+        if ( PermissionsGroupVersions != null ) {
+            this.PermissionsGroupVersions = PermissionsGroupVersions;
+        }
+        if ( ResourceGroupRolePermissions != null ) {
+            this.ResourceGroupRolePermissions = ResourceGroupRolePermissions;
         }
         if ( RolePermissions != null ) {
             this.RolePermissions = RolePermissions;
@@ -68,6 +86,30 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "permissionVersion\n" ;
             } else {
                 s += ind + "permissionVersion\n" ;
+            }
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (this.PermissionsGroupVersions != null) {
+            var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissionsGroupVersions {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzureCloudAccountRolePermission>? ResourceGroupRolePermissions
+        // GraphQL -> resourceGroupRolePermissions: [AzureCloudAccountRolePermission!]! (type)
+        if (this.ResourceGroupRolePermissions != null) {
+            var fspec = this.ResourceGroupRolePermissions.AsFieldSpec(conf.Child("resourceGroupRolePermissions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "resourceGroupRolePermissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
@@ -105,6 +147,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.PermissionVersion != null && ec.Excludes("permissionVersion",true))
         {
             this.PermissionVersion = null;
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (ec.Includes("permissionsGroupVersions",false))
+        {
+            if(this.PermissionsGroupVersions == null) {
+
+                this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            } else {
+
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            }
+        }
+        else if (this.PermissionsGroupVersions != null && ec.Excludes("permissionsGroupVersions",false))
+        {
+            this.PermissionsGroupVersions = null;
+        }
+        //      C# -> List<AzureCloudAccountRolePermission>? ResourceGroupRolePermissions
+        // GraphQL -> resourceGroupRolePermissions: [AzureCloudAccountRolePermission!]! (type)
+        if (ec.Includes("resourceGroupRolePermissions",false))
+        {
+            if(this.ResourceGroupRolePermissions == null) {
+
+                this.ResourceGroupRolePermissions = new List<AzureCloudAccountRolePermission>();
+                this.ResourceGroupRolePermissions.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroupRolePermissions"));
+
+            } else {
+
+                this.ResourceGroupRolePermissions.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroupRolePermissions"));
+
+            }
+        }
+        else if (this.ResourceGroupRolePermissions != null && ec.Excludes("resourceGroupRolePermissions",false))
+        {
+            this.ResourceGroupRolePermissions = null;
         }
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)

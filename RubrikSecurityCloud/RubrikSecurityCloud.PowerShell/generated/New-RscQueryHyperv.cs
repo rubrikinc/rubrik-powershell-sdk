@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 15
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Microsoft Hyper-V' API domain:
-    /// Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachines, or VmDetail.
+    /// Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachineLevelFileInfo, VirtualMachines, or VmDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryHyperv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 15 operations
+    /// There are 16 operations
     /// in the 'Microsoft Hyper-V' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachines, or VmDetail.
+    /// one of: Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachineLevelFileInfo, VirtualMachines, or VmDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -683,6 +683,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the VirtualMachineLevelFileInfo operation
+    /// of the 'Microsoft Hyper-V' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: VirtualMachineLevelFileInfo
+    /// 
+    /// $query = New-RscQueryHyperv -VirtualMachineLevelFileInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	shouldRetrieveConfigFiles = $someBoolean
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HypervVirtualMachineSnapshotFileDetails
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the VirtualMachines operation
     /// of the 'Microsoft Hyper-V' API domain.
     /// <code>
@@ -818,6 +851,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UniqueServersCount",
                 "VirtualMachine",
                 "VirtualMachineAsyncRequestStatus",
+                "VirtualMachineLevelFileInfo",
                 "VirtualMachines",
                 "VmDetail",
                 IgnoreCase = true)]
@@ -873,6 +907,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "VirtualMachineAsyncRequestStatus":
                         this.ProcessRecord_VirtualMachineAsyncRequestStatus();
+                        break;
+                    case "VirtualMachineLevelFileInfo":
+                        this.ProcessRecord_VirtualMachineLevelFileInfo();
                         break;
                     case "VirtualMachines":
                         this.ProcessRecord_VirtualMachines();
@@ -1005,6 +1042,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -VirtualMachineAsyncRequestStatus";
             // Create new graphql operation hypervVirtualMachineAsyncRequestStatus
             InitQueryHypervVirtualMachineAsyncRequestStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervVirtualMachineLevelFileInfo.
+        internal void ProcessRecord_VirtualMachineLevelFileInfo()
+        {
+            this._logger.name += " -VirtualMachineLevelFileInfo";
+            // Create new graphql operation hypervVirtualMachineLevelFileInfo
+            InitQueryHypervVirtualMachineLevelFileInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1562,6 +1608,31 @@ $query.Var.fid = $someString"
 $query.Var.input = @{
 	# REQUIRED
 	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hypervVirtualMachineLevelFileInfo(input: GetVmLevelFilesFromSnapshotInput!): HypervVirtualMachineSnapshotFileDetails!
+        internal void InitQueryHypervVirtualMachineLevelFileInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetVmLevelFilesFromSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHypervVirtualMachineLevelFileInfo",
+                "($input: GetVmLevelFilesFromSnapshotInput!)",
+                "HypervVirtualMachineSnapshotFileDetails",
+                Query.HypervVirtualMachineLevelFileInfo_ObjectFieldSpec,
+                Query.HypervVirtualMachineLevelFileInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	shouldRetrieveConfigFiles = $someBoolean
 	# REQUIRED
 	id = $someString
 }"

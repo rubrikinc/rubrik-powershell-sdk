@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        [JsonProperty("crossAccountReplicatedObjectInfos")]
+        public List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
+
         //      C# -> WindowsClusterDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: WindowsClusterDescendantTypeConnection! (type)
         [JsonProperty("descendantConnection")]
@@ -171,6 +176,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
+        List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         WindowsClusterDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PhysicalHost>? Hosts = null,
@@ -227,6 +233,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( CrossAccountReplicatedObjectInfos != null ) {
+            this.CrossAccountReplicatedObjectInfos = CrossAccountReplicatedObjectInfos;
         }
         if ( DescendantConnection != null ) {
             this.DescendantConnection = DescendantConnection;
@@ -427,6 +436,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (this.CrossAccountReplicatedObjectInfos != null) {
+            var fspec = this.CrossAccountReplicatedObjectInfos.AsFieldSpec(conf.Child("crossAccountReplicatedObjectInfos"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crossAccountReplicatedObjectInfos {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -845,6 +866,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (ec.Includes("crossAccountReplicatedObjectInfos",false))
+        {
+            if(this.CrossAccountReplicatedObjectInfos == null) {
+
+                this.CrossAccountReplicatedObjectInfos = new List<CrossAccountReplicatedObjectInfo>();
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            } else {
+
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            }
+        }
+        else if (this.CrossAccountReplicatedObjectInfos != null && ec.Excludes("crossAccountReplicatedObjectInfos",false))
+        {
+            this.CrossAccountReplicatedObjectInfos = null;
         }
         //      C# -> WindowsClusterDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: WindowsClusterDescendantTypeConnection! (type)

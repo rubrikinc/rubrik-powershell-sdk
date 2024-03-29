@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_SID")]
         ACTIVE_DIRECTORY_DOMAIN_SID,
 
+        [EnumMember(Value = "ANCESTOR_ID")]
+        ANCESTOR_ID,
+
         [EnumMember(Value = "AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS")]
         AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS,
 
@@ -363,6 +366,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_NATIVE_REGION")]
         GCP_NATIVE_REGION,
 
+        [EnumMember(Value = "GCP_REGION")]
+        GCP_REGION,
+
         [EnumMember(Value = "GUEST_OS_TYPE_FOR_FILE_RESTORE")]
         GUEST_OS_TYPE_FOR_FILE_RESTORE,
 
@@ -665,6 +671,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VCD_VAPP_TYPE")]
         VCD_VAPP_TYPE,
+
+        [EnumMember(Value = "VMWARE_VCD_HOSTNAME")]
+        VMWARE_VCD_HOSTNAME,
 
         [EnumMember(Value = "VMWARE_VM_TEMPLATE_TYPE")]
         VMWARE_VM_TEMPLATE_TYPE,

@@ -40,3 +40,6 @@ PermissionsGroup represents the collection of various permission groups that
 - SAP_HANA_SS_RECOVERY - Represents the required permissions for the recovery operation of
  SAP HANA SS. These permissions are applicable to the cloud cluster ES
  feature.
+- PRIVATE_EXO_CLUSTERS - Represents the permissions required for interacting with Rubrik-managed
+ Exocompute clusters launched in private access mode. These permissions
+ apply to the Exocompute feature.

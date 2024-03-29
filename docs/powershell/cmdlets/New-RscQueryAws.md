@@ -178,6 +178,11 @@ Retrieves the AWS trust policy that will be attached with each role (cross-accou
 
 - There is a single argument of type AwsTrustPolicyInput.
 - Returns AwsTrustPolicy.
+### validatecreateclusterinput
+Validates aws cluster create input.
+
+- There is a single argument of type CreateAwsClusterInput.
+- Returns ValidationReply.
 ### vpcs
 List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 

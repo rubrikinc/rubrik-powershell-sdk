@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CATEGORY_VIEW_DATA_SOURCE")]
         CATEGORY_VIEW_DATA_SOURCE,
 
+        [EnumMember(Value = "CHAT_WITH_CHATBOT")]
+        CHAT_WITH_CHATBOT,
+
         [EnumMember(Value = "CONFIGURE_DATA_CLASS_GLOBAL")]
         CONFIGURE_DATA_CLASS_GLOBAL,
 
@@ -191,6 +194,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_CERTIFICATE")]
         MANAGE_CERTIFICATE,
+
+        [EnumMember(Value = "MANAGE_CHATBOT")]
+        MANAGE_CHATBOT,
 
         [EnumMember(Value = "MANAGE_CLUSTER_DISKS")]
         MANAGE_CLUSTER_DISKS,
@@ -354,6 +360,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_CERTIFICATE")]
         VIEW_CERTIFICATE,
 
+        [EnumMember(Value = "VIEW_CHATBOT")]
+        VIEW_CHATBOT,
+
         [EnumMember(Value = "VIEW_CLUSTER")]
         VIEW_CLUSTER,
 
@@ -392,6 +401,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_INVENTORY")]
         VIEW_INVENTORY,
+
+        [EnumMember(Value = "VIEW_IP_ADDRESS_IN_AUDITS")]
+        VIEW_IP_ADDRESS_IN_AUDITS,
+
+        [EnumMember(Value = "VIEW_LICENSE_DASHBOARD")]
+        VIEW_LICENSE_DASHBOARD,
 
         [EnumMember(Value = "VIEW_NETWORK_THROTTLE_SETTINGS")]
         VIEW_NETWORK_THROTTLE_SETTINGS,

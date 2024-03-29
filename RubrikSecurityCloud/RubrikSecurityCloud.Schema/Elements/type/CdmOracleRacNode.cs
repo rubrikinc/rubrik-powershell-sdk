@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeName")]
         public System.String? NodeName { get; set; }
 
+        //      C# -> PhysicalHost? Host
+        // GraphQL -> host: PhysicalHost (type)
+        [JsonProperty("host")]
+        public PhysicalHost? Host { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public CdmOracleRacNode Set(
         HostConnectivityStatusEnum? Status = null,
         System.String? HostFid = null,
-        System.String? NodeName = null
+        System.String? NodeName = null,
+        PhysicalHost? Host = null
     ) 
     {
         if ( Status != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NodeName != null ) {
             this.NodeName = NodeName;
+        }
+        if ( Host != null ) {
+            this.Host = Host;
         }
         return this;
     }
@@ -95,6 +104,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nodeName\n" ;
             } else {
                 s += ind + "nodeName\n" ;
+            }
+        }
+        //      C# -> PhysicalHost? Host
+        // GraphQL -> host: PhysicalHost (type)
+        if (this.Host != null) {
+            var fspec = this.Host.AsFieldSpec(conf.Child("host"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "host {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -154,6 +175,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NodeName != null && ec.Excludes("nodeName",true))
         {
             this.NodeName = null;
+        }
+        //      C# -> PhysicalHost? Host
+        // GraphQL -> host: PhysicalHost (type)
+        if (ec.Includes("host",false))
+        {
+            if(this.Host == null) {
+
+                this.Host = new PhysicalHost();
+                this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+
+            } else {
+
+                this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+
+            }
+        }
+        else if (this.Host != null && ec.Excludes("host",false))
+        {
+            this.Host = null;
         }
     }
 

@@ -25,10 +25,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> ActiveDirectorySearchVersions? Versions
-        // GraphQL -> versions: ActiveDirectorySearchVersions! (type)
+        //      C# -> List<ActiveDirectorySearchVersions>? Versions
+        // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         [JsonProperty("versions")]
-        public ActiveDirectorySearchVersions? Versions { get; set; }
+        public List<ActiveDirectorySearchVersions>? Versions { get; set; }
 
 
         #endregion
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
 
     public ActiveDirectorySnappableSearchResponse Set(
         System.String? Name = null,
-        ActiveDirectorySearchVersions? Versions = null
+        List<ActiveDirectorySearchVersions>? Versions = null
     ) 
     {
         if ( Name != null ) {
@@ -70,8 +70,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
-        //      C# -> ActiveDirectorySearchVersions? Versions
-        // GraphQL -> versions: ActiveDirectorySearchVersions! (type)
+        //      C# -> List<ActiveDirectorySearchVersions>? Versions
+        // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         if (this.Versions != null) {
             var fspec = this.Versions.AsFieldSpec(conf.Child("versions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -106,13 +106,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
-        //      C# -> ActiveDirectorySearchVersions? Versions
-        // GraphQL -> versions: ActiveDirectorySearchVersions! (type)
+        //      C# -> List<ActiveDirectorySearchVersions>? Versions
+        // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         if (ec.Includes("versions",false))
         {
             if(this.Versions == null) {
 
-                this.Versions = new ActiveDirectorySearchVersions();
+                this.Versions = new List<ActiveDirectorySearchVersions>();
                 this.Versions.ApplyExploratoryFieldSpec(ec.NewChild("versions"));
 
             } else {

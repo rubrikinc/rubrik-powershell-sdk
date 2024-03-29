@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isHealthy")]
         public System.Boolean? IsHealthy { get; set; }
 
+        //      C# -> System.Boolean? IsTprEnabled
+        // GraphQL -> isTprEnabled: Boolean (scalar)
+        [JsonProperty("isTprEnabled")]
+        public System.Boolean? IsTprEnabled { get; set; }
+
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         [JsonProperty("lastConnectionTime")]
@@ -236,6 +241,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("globalManagerConnectivityStatus")]
         public GlobalManagerConnectivity? GlobalManagerConnectivityStatus { get; set; }
 
+        //      C# -> IpmiInfo? IpmiInfo
+        // GraphQL -> ipmiInfo: IpmiInfo (type)
+        [JsonProperty("ipmiInfo")]
+        public IpmiInfo? IpmiInfo { get; set; }
+
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         [JsonProperty("lambdaConfig")]
@@ -291,6 +301,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemStatusAffectedNodes")]
         public List<ClusterNode>? SystemStatusAffectedNodes { get; set; }
 
+        //      C# -> WebServerCertificate? WebServerCertificate
+        // GraphQL -> webServerCertificate: WebServerCertificate (type)
+        [JsonProperty("webServerCertificate")]
+        public WebServerCertificate? WebServerCertificate { get; set; }
+
 
         #endregion
 
@@ -319,6 +334,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
+        System.Boolean? IsTprEnabled = null,
         DateTime? LastConnectionTime = null,
         System.String? Name = null,
         System.Int32? NoSqlWorkloadCount = null,
@@ -344,6 +360,7 @@ namespace RubrikSecurityCloud.Types
         PreviewerClusterConfig? DatagovPreviewerConfig = null,
         GeoLocation? GeoLocation = null,
         GlobalManagerConnectivity? GlobalManagerConnectivityStatus = null,
+        IpmiInfo? IpmiInfo = null,
         GetLambdaConfigReply? LambdaConfig = null,
         LambdaFeatureHistory? LambdaFeatureHistory = null,
         JobsReply? MetadataPullScheduler = null,
@@ -354,7 +371,8 @@ namespace RubrikSecurityCloud.Types
         RubrikSyncStatus? RubrikSyncStatus = null,
         SnappableConnection? SnappableConnection = null,
         ClusterState? State = null,
-        List<ClusterNode>? SystemStatusAffectedNodes = null
+        List<ClusterNode>? SystemStatusAffectedNodes = null,
+        WebServerCertificate? WebServerCertificate = null
     ) 
     {
         if ( EosStatus != null ) {
@@ -410,6 +428,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
+        }
+        if ( IsTprEnabled != null ) {
+            this.IsTprEnabled = IsTprEnabled;
         }
         if ( LastConnectionTime != null ) {
             this.LastConnectionTime = LastConnectionTime;
@@ -486,6 +507,9 @@ namespace RubrikSecurityCloud.Types
         if ( GlobalManagerConnectivityStatus != null ) {
             this.GlobalManagerConnectivityStatus = GlobalManagerConnectivityStatus;
         }
+        if ( IpmiInfo != null ) {
+            this.IpmiInfo = IpmiInfo;
+        }
         if ( LambdaConfig != null ) {
             this.LambdaConfig = LambdaConfig;
         }
@@ -518,6 +542,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SystemStatusAffectedNodes != null ) {
             this.SystemStatusAffectedNodes = SystemStatusAffectedNodes;
+        }
+        if ( WebServerCertificate != null ) {
+            this.WebServerCertificate = WebServerCertificate;
         }
         return this;
     }
@@ -690,6 +717,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHealthy\n" ;
             } else {
                 s += ind + "isHealthy\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTprEnabled
+        // GraphQL -> isTprEnabled: Boolean (scalar)
+        if (this.IsTprEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTprEnabled\n" ;
+            } else {
+                s += ind + "isTprEnabled\n" ;
             }
         }
         //      C# -> DateTime? LastConnectionTime
@@ -965,6 +1001,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> IpmiInfo? IpmiInfo
+        // GraphQL -> ipmiInfo: IpmiInfo (type)
+        if (this.IpmiInfo != null) {
+            var fspec = this.IpmiInfo.AsFieldSpec(conf.Child("ipmiInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ipmiInfo {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         if (this.LambdaConfig != null) {
@@ -1094,6 +1142,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "systemStatusAffectedNodes {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> WebServerCertificate? WebServerCertificate
+        // GraphQL -> webServerCertificate: WebServerCertificate (type)
+        if (this.WebServerCertificate != null) {
+            var fspec = this.WebServerCertificate.AsFieldSpec(conf.Child("webServerCertificate"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "webServerCertificate {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1409,6 +1469,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHealthy != null && ec.Excludes("isHealthy",true))
         {
             this.IsHealthy = null;
+        }
+        //      C# -> System.Boolean? IsTprEnabled
+        // GraphQL -> isTprEnabled: Boolean (scalar)
+        if (ec.Includes("isTprEnabled",true))
+        {
+            if(this.IsTprEnabled == null) {
+
+                this.IsTprEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTprEnabled != null && ec.Excludes("isTprEnabled",true))
+        {
+            this.IsTprEnabled = null;
         }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
@@ -1867,6 +1944,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.GlobalManagerConnectivityStatus = null;
         }
+        //      C# -> IpmiInfo? IpmiInfo
+        // GraphQL -> ipmiInfo: IpmiInfo (type)
+        if (ec.Includes("ipmiInfo",false))
+        {
+            if(this.IpmiInfo == null) {
+
+                this.IpmiInfo = new IpmiInfo();
+                this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+
+            } else {
+
+                this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+
+            }
+        }
+        else if (this.IpmiInfo != null && ec.Excludes("ipmiInfo",false))
+        {
+            this.IpmiInfo = null;
+        }
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         if (ec.Includes("lambdaConfig",false))
@@ -2075,6 +2171,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SystemStatusAffectedNodes != null && ec.Excludes("systemStatusAffectedNodes",false))
         {
             this.SystemStatusAffectedNodes = null;
+        }
+        //      C# -> WebServerCertificate? WebServerCertificate
+        // GraphQL -> webServerCertificate: WebServerCertificate (type)
+        if (ec.Includes("webServerCertificate",false))
+        {
+            if(this.WebServerCertificate == null) {
+
+                this.WebServerCertificate = new WebServerCertificate();
+                this.WebServerCertificate.ApplyExploratoryFieldSpec(ec.NewChild("webServerCertificate"));
+
+            } else {
+
+                this.WebServerCertificate.ApplyExploratoryFieldSpec(ec.NewChild("webServerCertificate"));
+
+            }
+        }
+        else if (this.WebServerCertificate != null && ec.Excludes("webServerCertificate",false))
+        {
+            this.WebServerCertificate = null;
         }
     }
 

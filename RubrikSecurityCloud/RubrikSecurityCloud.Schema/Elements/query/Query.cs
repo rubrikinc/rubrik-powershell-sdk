@@ -5100,6 +5100,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<DetailedPrivateEndpointConnection>? AllRcvPrivateEndpointConnections
+        // GraphQL -> allRcvPrivateEndpointConnections: [DetailedPrivateEndpointConnection!]! (type)
+        public static string AllRcvPrivateEndpointConnections_TypedFieldSpec(List<DetailedPrivateEndpointConnection> fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "allRcvPrivateEndpointConnections" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllRcvPrivateEndpointConnections_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllRcvPrivateEndpointConnections((List<DetailedPrivateEndpointConnection>)fieldSpecObj);
+        }
+        public static string AllRcvPrivateEndpointConnections(List<DetailedPrivateEndpointConnection> fieldSpec)
+        {
+            return AllRcvPrivateEndpointConnections_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllRcvPrivateEndpointConnections(object fieldSpecObj)
+        {
+            return AllRcvPrivateEndpointConnections_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllRcvPrivateEndpointConnectionsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<DetailedPrivateEndpointConnection>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<AzureResourceGroup>? AllResourceGroupsFromAzure
         // GraphQL -> allResourceGroupsFromAzure: [AzureResourceGroup!]! (type)
         public static string AllResourceGroupsFromAzure_TypedFieldSpec(List<AzureResourceGroup> fieldSpec)
@@ -6716,7 +6747,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureCloudAccountPermissionConfig: AzureCloudAccountPermissionConfigResponse! (type)
         public static string AzureCloudAccountPermissionConfig_TypedFieldSpec(AzureCloudAccountPermissionConfigResponse fieldSpec)
         {
-            string args = "\n(\nfeature: $feature\n)";
+            string args = "\n(\nfeature: $feature\npermissionsGroups: $permissionsGroups\n)";
             return "azureCloudAccountPermissionConfig" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";
@@ -11362,6 +11393,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> FailuresAndWarningsStatsReply? FailuresAndWarningsStats
+        // GraphQL -> failuresAndWarningsStats: FailuresAndWarningsStatsReply! (type)
+        public static string FailuresAndWarningsStats_TypedFieldSpec(FailuresAndWarningsStatsReply fieldSpec)
+        {
+            string args = "\n(\norgId: $orgId\n)";
+            return "failuresAndWarningsStats" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string FailuresAndWarningsStats_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return FailuresAndWarningsStats((FailuresAndWarningsStatsReply)fieldSpecObj);
+        }
+        public static string FailuresAndWarningsStats(FailuresAndWarningsStatsReply fieldSpec)
+        {
+            return FailuresAndWarningsStats_TypedFieldSpec(fieldSpec);
+        }
+        public static string FailuresAndWarningsStats(object fieldSpecObj)
+        {
+            return FailuresAndWarningsStats_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object FailuresAndWarningsStatsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new FailuresAndWarningsStatsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> FederatedLoginStatus? FederatedLoginStatus
         // GraphQL -> federatedLoginStatus: FederatedLoginStatus! (type)
         public static string FederatedLoginStatus_TypedFieldSpec(FederatedLoginStatus fieldSpec)
@@ -13129,6 +13191,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> HypervVirtualMachineSnapshotFileDetails? HypervVirtualMachineLevelFileInfo
+        // GraphQL -> hypervVirtualMachineLevelFileInfo: HypervVirtualMachineSnapshotFileDetails! (type)
+        public static string HypervVirtualMachineLevelFileInfo_TypedFieldSpec(HypervVirtualMachineSnapshotFileDetails fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "hypervVirtualMachineLevelFileInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string HypervVirtualMachineLevelFileInfo_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return HypervVirtualMachineLevelFileInfo((HypervVirtualMachineSnapshotFileDetails)fieldSpecObj);
+        }
+        public static string HypervVirtualMachineLevelFileInfo(HypervVirtualMachineSnapshotFileDetails fieldSpec)
+        {
+            return HypervVirtualMachineLevelFileInfo_TypedFieldSpec(fieldSpec);
+        }
+        public static string HypervVirtualMachineLevelFileInfo(object fieldSpecObj)
+        {
+            return HypervVirtualMachineLevelFileInfo_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object HypervVirtualMachineLevelFileInfoFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new HypervVirtualMachineSnapshotFileDetails() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
         // GraphQL -> hypervVirtualMachines: HyperVVirtualMachineConnection! (type)
         public static string HypervVirtualMachines_TypedFieldSpec(HyperVvirtualMachineConnection fieldSpec)
@@ -13811,6 +13904,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> K8sSnapshotSummaryListResponse? K8sProtectionSetSnapshots
+        // GraphQL -> k8sProtectionSetSnapshots: K8sSnapshotSummaryListResponse! (type)
+        public static string K8sProtectionSetSnapshots_TypedFieldSpec(K8sSnapshotSummaryListResponse fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "k8sProtectionSetSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string K8sProtectionSetSnapshots_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return K8sProtectionSetSnapshots((K8sSnapshotSummaryListResponse)fieldSpecObj);
+        }
+        public static string K8sProtectionSetSnapshots(K8sSnapshotSummaryListResponse fieldSpec)
+        {
+            return K8sProtectionSetSnapshots_TypedFieldSpec(fieldSpec);
+        }
+        public static string K8sProtectionSetSnapshots(object fieldSpecObj)
+        {
+            return K8sProtectionSetSnapshots_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object K8sProtectionSetSnapshotsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new K8sSnapshotSummaryListResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> K8sSnapshotInfo? K8sSnapshotInfo
         // GraphQL -> k8sSnapshotInfo: K8sSnapshotInfo! (type)
         public static string K8sSnapshotInfo_TypedFieldSpec(K8sSnapshotInfo fieldSpec)
@@ -13869,6 +13993,130 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new KnowledgeBaseArticle() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> KubernetesCluster? KubernetesCluster
+        // GraphQL -> kubernetesCluster: KubernetesCluster! (type)
+        public static string KubernetesCluster_TypedFieldSpec(KubernetesCluster fieldSpec)
+        {
+            string args = "\n(\nfid: $fid\n)";
+            return "kubernetesCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string KubernetesCluster_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return KubernetesCluster((KubernetesCluster)fieldSpecObj);
+        }
+        public static string KubernetesCluster(KubernetesCluster fieldSpec)
+        {
+            return KubernetesCluster_TypedFieldSpec(fieldSpec);
+        }
+        public static string KubernetesCluster(object fieldSpecObj)
+        {
+            return KubernetesCluster_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object KubernetesClusterFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new KubernetesCluster() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> KubernetesClusterConnection? KubernetesClusters
+        // GraphQL -> kubernetesClusters: KubernetesClusterConnection! (type)
+        public static string KubernetesClusters_TypedFieldSpec(KubernetesClusterConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "kubernetesClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string KubernetesClusters_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return KubernetesClusters((KubernetesClusterConnection)fieldSpecObj);
+        }
+        public static string KubernetesClusters(KubernetesClusterConnection fieldSpec)
+        {
+            return KubernetesClusters_TypedFieldSpec(fieldSpec);
+        }
+        public static string KubernetesClusters(object fieldSpecObj)
+        {
+            return KubernetesClusters_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object KubernetesClustersFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new KubernetesClusterConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> KubernetesProtectionSet? KubernetesProtectionSet
+        // GraphQL -> kubernetesProtectionSet: KubernetesProtectionSet! (type)
+        public static string KubernetesProtectionSet_TypedFieldSpec(KubernetesProtectionSet fieldSpec)
+        {
+            string args = "\n(\nfid: $fid\n)";
+            return "kubernetesProtectionSet" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string KubernetesProtectionSet_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return KubernetesProtectionSet((KubernetesProtectionSet)fieldSpecObj);
+        }
+        public static string KubernetesProtectionSet(KubernetesProtectionSet fieldSpec)
+        {
+            return KubernetesProtectionSet_TypedFieldSpec(fieldSpec);
+        }
+        public static string KubernetesProtectionSet(object fieldSpecObj)
+        {
+            return KubernetesProtectionSet_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object KubernetesProtectionSetFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new KubernetesProtectionSet() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> KubernetesProtectionSetConnection? KubernetesProtectionSets
+        // GraphQL -> kubernetesProtectionSets: KubernetesProtectionSetConnection! (type)
+        public static string KubernetesProtectionSets_TypedFieldSpec(KubernetesProtectionSetConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterOptionalId: $k8sClusterOptionalId\n)";
+            return "kubernetesProtectionSets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string KubernetesProtectionSets_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return KubernetesProtectionSets((KubernetesProtectionSetConnection)fieldSpecObj);
+        }
+        public static string KubernetesProtectionSets(KubernetesProtectionSetConnection fieldSpec)
+        {
+            return KubernetesProtectionSets_TypedFieldSpec(fieldSpec);
+        }
+        public static string KubernetesProtectionSets(object fieldSpecObj)
+        {
+            return KubernetesProtectionSets_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object KubernetesProtectionSetsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new KubernetesProtectionSetConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -23483,6 +23731,68 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ValidationReply? ValidateCreateAwsClusterInput
+        // GraphQL -> validateCreateAwsClusterInput: ValidationReply! (type)
+        public static string ValidateCreateAwsClusterInput_TypedFieldSpec(ValidationReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "validateCreateAwsClusterInput" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ValidateCreateAwsClusterInput_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ValidateCreateAwsClusterInput((ValidationReply)fieldSpecObj);
+        }
+        public static string ValidateCreateAwsClusterInput(ValidationReply fieldSpec)
+        {
+            return ValidateCreateAwsClusterInput_TypedFieldSpec(fieldSpec);
+        }
+        public static string ValidateCreateAwsClusterInput(object fieldSpecObj)
+        {
+            return ValidateCreateAwsClusterInput_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ValidateCreateAwsClusterInputFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ValidationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ValidationReply? ValidateCreateAzureClusterInput
+        // GraphQL -> validateCreateAzureClusterInput: ValidationReply! (type)
+        public static string ValidateCreateAzureClusterInput_TypedFieldSpec(ValidationReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "validateCreateAzureClusterInput" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ValidateCreateAzureClusterInput_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ValidateCreateAzureClusterInput((ValidationReply)fieldSpecObj);
+        }
+        public static string ValidateCreateAzureClusterInput(ValidationReply fieldSpec)
+        {
+            return ValidateCreateAzureClusterInput_TypedFieldSpec(fieldSpec);
+        }
+        public static string ValidateCreateAzureClusterInput(object fieldSpecObj)
+        {
+            return ValidateCreateAzureClusterInput_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ValidateCreateAzureClusterInputFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ValidationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ValidateOrgNameReply? ValidateOrgName
         // GraphQL -> validateOrgName: ValidateOrgNameReply! (type)
         public static string ValidateOrgName_TypedFieldSpec(ValidateOrgNameReply fieldSpec)
@@ -23665,6 +23975,68 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new VerifySlaWithReplicationToClusterResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VmwareRecoverableRangeListResponse? VmwareMissedRecoverableRanges
+        // GraphQL -> vmwareMissedRecoverableRanges: VmwareRecoverableRangeListResponse! (type)
+        public static string VmwareMissedRecoverableRanges_TypedFieldSpec(VmwareRecoverableRangeListResponse fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "vmwareMissedRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string VmwareMissedRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return VmwareMissedRecoverableRanges((VmwareRecoverableRangeListResponse)fieldSpecObj);
+        }
+        public static string VmwareMissedRecoverableRanges(VmwareRecoverableRangeListResponse fieldSpec)
+        {
+            return VmwareMissedRecoverableRanges_TypedFieldSpec(fieldSpec);
+        }
+        public static string VmwareMissedRecoverableRanges(object fieldSpecObj)
+        {
+            return VmwareMissedRecoverableRanges_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object VmwareMissedRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new VmwareRecoverableRangeListResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VmwareRecoverableRangeListResponse? VmwareRecoverableRanges
+        // GraphQL -> vmwareRecoverableRanges: VmwareRecoverableRangeListResponse! (type)
+        public static string VmwareRecoverableRanges_TypedFieldSpec(VmwareRecoverableRangeListResponse fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "vmwareRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string VmwareRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return VmwareRecoverableRanges((VmwareRecoverableRangeListResponse)fieldSpecObj);
+        }
+        public static string VmwareRecoverableRanges(VmwareRecoverableRangeListResponse fieldSpec)
+        {
+            return VmwareRecoverableRanges_TypedFieldSpec(fieldSpec);
+        }
+        public static string VmwareRecoverableRanges(object fieldSpecObj)
+        {
+            return VmwareRecoverableRanges_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object VmwareRecoverableRangesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new VmwareRecoverableRangeListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

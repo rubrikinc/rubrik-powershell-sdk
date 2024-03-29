@@ -114,6 +114,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRESQL")]
         POSTGRESQL,
 
+        [EnumMember(Value = "SALESFORCE")]
+        SALESFORCE,
+
         [EnumMember(Value = "SAP_HANA")]
         SAP_HANA,
 

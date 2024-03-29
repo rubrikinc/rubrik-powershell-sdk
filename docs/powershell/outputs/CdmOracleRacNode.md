@@ -7,3 +7,5 @@ Representation of a single node in an Oracle RAC.
   - Connectivity status of the RAC node.
 - hostFid: System.String
   - FID of the physical host object of the RAC node.
+- host: PhysicalHost
+  - Physical host object of the RAC node.

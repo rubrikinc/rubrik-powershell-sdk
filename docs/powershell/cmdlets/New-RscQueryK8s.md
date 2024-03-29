@@ -33,6 +33,14 @@ Kubernetes Rubrik Backup Service manifest.
     - filter - list of Filters: The hierarchy object filter.
     - k8sClusterId - System.String: Optional Kubernetes cluster UUID.
 - Returns K8sNamespaceConnection.
+### protectionsetsnapshots
+Get a list of snapshots of a Kubernetes protection set workload
+
+Supported in v9.1+
+Retrieves summary information for each of the snapshots of a specified Kubernetes protection set workload.
+
+- There is a single argument of type QueryK8sSnapshotInput.
+- Returns K8sSnapshotSummaryListResponse.
 ### replicasnapshotinfos
 Information of all replicas for a Kubernetes snapshot.
 

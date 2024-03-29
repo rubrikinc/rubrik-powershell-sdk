@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountDir")]
         public System.String? MountDir { get; set; }
 
+        //      C# -> System.String? MountNodeIp
+        // GraphQL -> mountNodeIp: String (scalar)
+        [JsonProperty("mountNodeIp")]
+        public System.String? MountNodeIp { get; set; }
+
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
         [JsonProperty("smbValidIps")]
@@ -98,6 +103,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsActive = null,
         System.Boolean? IsUserVisible = null,
         System.String? MountDir = null,
+        System.String? MountNodeIp = null,
         List<System.String>? SmbValidIps = null,
         Cluster? Cluster = null,
         ClusterNode? Node = null,
@@ -127,6 +133,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MountDir != null ) {
             this.MountDir = MountDir;
+        }
+        if ( MountNodeIp != null ) {
+            this.MountNodeIp = MountNodeIp;
         }
         if ( SmbValidIps != null ) {
             this.SmbValidIps = SmbValidIps;
@@ -221,6 +230,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mountDir\n" ;
             } else {
                 s += ind + "mountDir\n" ;
+            }
+        }
+        //      C# -> System.String? MountNodeIp
+        // GraphQL -> mountNodeIp: String (scalar)
+        if (this.MountNodeIp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mountNodeIp\n" ;
+            } else {
+                s += ind + "mountNodeIp\n" ;
             }
         }
         //      C# -> List<System.String>? SmbValidIps
@@ -410,6 +428,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MountDir != null && ec.Excludes("mountDir",true))
         {
             this.MountDir = null;
+        }
+        //      C# -> System.String? MountNodeIp
+        // GraphQL -> mountNodeIp: String (scalar)
+        if (ec.Includes("mountNodeIp",true))
+        {
+            if(this.MountNodeIp == null) {
+
+                this.MountNodeIp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountNodeIp != null && ec.Excludes("mountNodeIp",true))
+        {
+            this.MountNodeIp = null;
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)

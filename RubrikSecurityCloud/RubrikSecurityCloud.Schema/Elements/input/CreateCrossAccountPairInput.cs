@@ -41,9 +41,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? Fqdn { get; set; }
 
         //      C# -> System.Boolean? IsRefresh
-        // GraphQL -> isRefresh: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> isRefresh: Boolean (scalar)
         [JsonProperty("isRefresh")]
         public System.Boolean? IsRefresh { get; set; }
 
