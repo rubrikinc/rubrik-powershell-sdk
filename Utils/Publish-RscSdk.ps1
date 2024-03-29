@@ -1,6 +1,22 @@
 <#
 .SYNOPSIS
-    Publish the current state of the main branch to the PowerShell Gallery.
+    ADMIN USE ONLY. Publish the current state of the main branch to the PowerShell Gallery.
+
+.DESCRIPTION
+    ADMIN USE ONLY.
+    This script publishes the current state of the main branch to the PowerShell Gallery.
+    Running it as a non-admin will not publish the module.
+    A publishing key file is required to publish the module, and it must be
+    set in the RSC_PSGalleryKeyFile environment variable.
+
+    You can safely run: .\Utils\Publish-RscSdk.ps1
+    to see what would have been done without actually doing it because
+    it runs in Dry mode by default.
+    Run with -NotDry to actually publish the module.
+
+    This script will:
+    1. Assemble the module for publishing in the Output.Publish directory;
+    2. Publish the module to the PowerShell Gallery.
 #>
 [CmdletBinding()]
 param(
