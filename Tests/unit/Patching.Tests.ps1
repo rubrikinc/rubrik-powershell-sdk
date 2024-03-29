@@ -183,4 +183,30 @@ Describe -Name "Test patching" -Fixture {
         $qe2 = New-RscQueryCluster -Op List -RemoveField Nodes, PageInfo
         $qe1.Field.AsFieldSpec() | Should -Be $qe2.Field.AsFieldSpec()
     }
+
+    It -Name "With New-RscQueryMSsql -Operation Databases" -Test {
+
+        # Patching with -AddField
+        $qobj1 = New-RscQueryMSsql -Op Databases -AddField Nodes.PhysicalPath
+        $q1 = $qobj1.GqlRequest().Query
+
+        # Patching after copy
+        $qobj2 = New-RscQuery -Copy $qobj1 -AddField Nodes.PhysicalPath
+        $q2 = $qobj2.GqlRequest().Query
+
+        # Post-patching with Get-RscType -InitialProperties
+        $qobj3 = New-RscQueryMSsql -Operation Databases
+        $qobj3.Field.Nodes[0].PhysicalPath = Get-RscType -Name PathNode -InitialProperties @("Fid", "Name", "ObjectType")
+        $q3 = $qobj3.GqlRequest().Query
+
+        # Post-patching with SelectForRetrieval
+        $qobj4 = New-RscQueryMSsql -Op Databases
+        $qobj4.Field.Nodes[0].PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
+        $qobj4.Field.Nodes[0].PhysicalPath[0].SelectForRetrieval()
+        $q4 = $qobj4.GqlRequest().Query
+
+        $q1 | Should -Be $q2
+        $q1 | Should -Be $q3
+        $q1 | Should -Be $q4
+    }
 }
