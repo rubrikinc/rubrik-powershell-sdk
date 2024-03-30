@@ -120,17 +120,14 @@ namespace RubrikSecurityCloud
                     if (current == null)
                     {
                         current = baseTypeItem;
-                        current._prev = null;
-                        current._next = null;
                     } else
                     {
-                        current._next = baseTypeItem;
-                        current._next._prev = current;
-                        current._next._next = null;
+                        current.SetNext(baseTypeItem);
                         // move to next item
-                        current = current._next;
+                        current = current.Next();
                     }
-                }
+                    current?.SetNext(null);
+            }
                 else
                 {
                     throw new ArgumentException("List item is not of BaseType or derived from BaseType", nameof(list));
@@ -154,7 +151,7 @@ namespace RubrikSecurityCloud
             while (current != null)
             {
                 list.Add(current);
-                current = current._next as BaseType;
+                current = current.Next();
             }
 
             return list;
@@ -162,14 +159,8 @@ namespace RubrikSecurityCloud
 
         public static string CompositeAsFieldSpec(BaseType composite, FieldSpecConfig conf)
         {
-            var asList = MakeListFromComposite(composite);
-            // CompositeAsFieldSpec is called from AsFieldSpec
-            // at the head of the composite chain,
-            // so to avoid infinite recursion, we hide the head temporarily
-            asList[0]._prev = asList[0]; // setting it to something not null.
-            var fs = asList.AsFieldSpec(conf);
-            asList[0]._prev = null; // restoring the head.
-            return fs;
+            var list = MakeListFromComposite(composite);
+            return list.AsFieldSpec(conf.Copy(ignoreComposition: true));
         }
     }
 }

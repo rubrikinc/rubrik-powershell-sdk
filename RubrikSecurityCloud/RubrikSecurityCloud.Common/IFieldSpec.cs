@@ -14,7 +14,12 @@ namespace RubrikSecurityCloud.Types
 
         public string Node { get; set; } = "";
 
-        public FieldSpecConfig Child(string thisNode = "", string childNode = "")
+        // IgnoreComposition does not automatically get passed down
+        // to child/copy FieldSpecConfigs. It must be set explicitly.
+        public bool IgnoreComposition { get; set; } = false;
+
+        public FieldSpecConfig Child(string thisNode = "", string childNode = "",
+            bool ignoreComposition = false)
         {
             thisNode = string.IsNullOrEmpty(thisNode) ? this.Node : thisNode;
             return new FieldSpecConfig
@@ -23,7 +28,20 @@ namespace RubrikSecurityCloud.Types
                 Indent = this.Indent + 1,
                 Prefix = this.Prefix +
                     (string.IsNullOrEmpty(thisNode) ? "" : thisNode + "."),
-                Node = childNode
+                Node = childNode,
+                IgnoreComposition = ignoreComposition
+            };
+        }
+
+        public FieldSpecConfig Copy(bool ignoreComposition = false)
+        {
+            return new FieldSpecConfig
+            {
+                Flat = this.Flat,
+                Indent = this.Indent,
+                Prefix = this.Prefix,
+                Node = this.Node,
+                IgnoreComposition = ignoreComposition
             };
         }
 

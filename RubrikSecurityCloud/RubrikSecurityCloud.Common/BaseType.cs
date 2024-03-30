@@ -9,15 +9,14 @@ namespace RubrikSecurityCloud.Types
 {
     public abstract class BaseType : IFieldSpec
     {
-        // pointer to next object and previous object in chain.
+       // Composite field spec support:
+        // _next is the pointer to next object in chain.
         // Used for building up a chain of objects
         // to represent a "composite field spec".
         internal BaseType? _next = null;
-        internal BaseType? _prev = null;
-        public bool IsComposite() { return _next != null || _prev != null; }
-        public BaseType? NextObject() { return _next; }
-        public BaseType? PreviousObject() { return _prev; }
-        public bool IsCompositeHead() { return _next != null && _prev == null; }
+        public BaseType? Next() => _next;
+        public void SetNext(BaseType? next) => _next = next;
+        public bool IsComposite() => _next != null;
 
         // IFieldSpec interface:
         public abstract string AsFieldSpec(FieldSpecConfig? conf = null);
@@ -66,13 +65,14 @@ namespace RubrikSecurityCloud.Types
             StringBuilder sb = new StringBuilder();
             foreach (BaseType item in list)
             {
+                string fs = item.AsFieldSpec(conf.Child(ignoreComposition:true));
                 if (conf.Flat)
                 {
-                    sb.Append(item.AsFieldSpec(conf.Child()));
+                    sb.Append(fs);
                 }
                 else
                 {
-                    sb.Append(ind + " ... on " + item.GetType().Name + " {\n" + item.AsFieldSpec(conf.Child()) + ind + "}\n");
+                    sb.Append(ind + " ... on " + item.GetType().Name + " {\n" + fs + ind + "}\n");
                 }
             }
             return sb.ToString();
