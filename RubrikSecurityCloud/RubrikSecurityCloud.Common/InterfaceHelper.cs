@@ -120,9 +120,14 @@ namespace RubrikSecurityCloud
                     if (current == null)
                     {
                         current = baseTypeItem;
+                        current._prev = null;
+                        current._next = null;
                     } else
                     {
                         current._next = baseTypeItem;
+                        current._next._prev = current;
+                        current._next._next = null;
+                        // move to next item
                         current = current._next;
                     }
                 }
@@ -153,6 +158,18 @@ namespace RubrikSecurityCloud
             }
 
             return list;
+        }
+
+        public static string CompositeAsFieldSpec(BaseType composite, FieldSpecConfig conf)
+        {
+            var asList = MakeListFromComposite(composite);
+            // CompositeAsFieldSpec is called from AsFieldSpec
+            // at the head of the composite chain,
+            // so to avoid infinite recursion, we hide the head temporarily
+            asList[0]._prev = asList[0]; // setting it to something not null.
+            var fs = asList.AsFieldSpec(conf);
+            asList[0]._prev = null; // restoring the head.
+            return fs;
         }
     }
 }

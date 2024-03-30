@@ -9,10 +9,15 @@ namespace RubrikSecurityCloud.Types
 {
     public abstract class BaseType : IFieldSpec
     {
-        // pointer to next object in chain.
+        // pointer to next object and previous object in chain.
         // Used for building up a chain of objects
         // to represent a "composite field spec".
         internal BaseType? _next = null;
+        internal BaseType? _prev = null;
+        public bool IsComposite() { return _next != null || _prev != null; }
+        public BaseType? NextObject() { return _next; }
+        public BaseType? PreviousObject() { return _prev; }
+        public bool IsCompositeHead() { return _next != null && _prev == null; }
 
         // IFieldSpec interface:
         public abstract string AsFieldSpec(FieldSpecConfig? conf = null);
