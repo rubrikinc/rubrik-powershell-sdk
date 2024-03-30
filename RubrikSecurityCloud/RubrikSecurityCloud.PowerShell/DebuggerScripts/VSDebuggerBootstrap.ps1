@@ -18,7 +18,7 @@ param(
 	[switch] $VerboseLogging=$false,
 	[string] $EnvName
 )
-
+Set-Location $PSScriptRoot\..
 $psd1_path = ".\bin\Debug\RubrikSecurityCloud.psd1"
 
 try{
@@ -76,7 +76,7 @@ try{
 		try{
 			#Check if the encrypted SA file exists and if not, create it.
 			if (-Not (Test-Path $sa_enc_file_full_path)){
-				Set-RscServiceAccountFile -InputFilePath $sa_file_full_path -OutputFilePath $sa_enc_file_full_path
+				Set-RscServiceAccountFile -InputFilePath $sa_file_full_path -OutputFilePath $sa_enc_file_full_path -KeepOriginalClearTextFile
 			}
 		}
 		catch{
