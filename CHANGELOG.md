@@ -4,6 +4,10 @@
 
 Fixes:
 
+- Fix for queries that return a single interface object.
+  See `Tests/unit/Sla.Tests.ps1`.
+  (implemented with _type composition_ in the C# core)
+
 ## Version 0.28
 
 New Features:
