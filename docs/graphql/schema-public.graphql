@@ -6075,7 +6075,7 @@ type Query {
     # 
     aggregations: [String!],
 
-    # Name of the column to sort result by
+    # Name of the column to sort results by.
     sortBy: String,
 
     # Sorting order for the results.
@@ -33550,6 +33550,9 @@ type Cluster {
 
   # CDM to RSC RBAC migration status for the current cluster.
   cdmRbacMigrationStatus: String
+
+  # The cluster's raw address.
+  rawAddress: String
 }
 # CDM archiving specification.
 type ClusterArchivalSpec {
@@ -51273,6 +51276,10 @@ enum HierarchyFilterField {
   # has an unindexed snapshot or it has a snapshot that is expired
   # and has an unmerged index.
   RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT
+
+  # Filter SaaS Apps organizations based on whether they only support
+  # recovery.
+  SAASAPPS_IS_RECOVERY_TARGET_ONLY
 
   # Filter according to the natural ID field of the SaaS app resource.
   SAASAPPS_NATURAL_ID
@@ -81463,6 +81470,9 @@ enum ProductName {
 
   # CloudNative.
   CLOUDNATIVE
+
+  # Cloud Unstructured.
+  CLOUD_UNSTRUCTURED
 
   # GPS.
   GPS
