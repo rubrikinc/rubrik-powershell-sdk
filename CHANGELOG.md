@@ -2,6 +2,10 @@
 
 ## Version 0.29
 
+New Features:
+
+- Toolkit: Operations (patch files) are now part of Toolkit
+
 Fixes:
 
 - Fix for queries that return a single interface object.
