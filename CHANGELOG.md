@@ -5,6 +5,10 @@
 New Features:
 
 - Toolkit: Operations (patch files) are now part of Toolkit
+- AutoFieldSpec: patch file for `QueryCdmMssqlLogShippingTargets`
+- AutoFieldSpec: patch file for `QueryMssqlDatabaseLiveMounts`
+- [README](https://github.com/rubrikinc/rubrik-powershell-sdk/blob/devel/Toolkit/Operations/README.md)
+  on how to write patch files.
 
 Fixes:
 
