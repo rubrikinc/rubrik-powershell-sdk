@@ -1,6 +1,22 @@
 <#
 .SYNOPSIS
-    Publish the current state of the main branch to the PowerShell Gallery.
+    ADMIN USE ONLY. Publish the current state of the main branch to the PowerShell Gallery.
+
+.DESCRIPTION
+    ADMIN USE ONLY.
+    This script publishes the current state of the main branch to the PowerShell Gallery.
+    Running it as a non-admin will not publish the module.
+    A publishing key file is required to publish the module, and it must be
+    set in the RSC_PSGalleryKeyFile environment variable.
+
+    You can safely run: .\Utils\Publish-RscSdk.ps1
+    to see what would have been done without actually doing it because
+    it runs in Dry mode by default.
+    Run with -NotDry to actually publish the module.
+
+    This script will:
+    1. Assemble the module for publishing in the Output.Publish directory;
+    2. Publish the module to the PowerShell Gallery.
 #>
 [CmdletBinding()]
 param(
@@ -50,13 +66,16 @@ if (-Not $apiKey) {
 $sdkVersion = .\Utils\Get-RscSdkVersion.ps1
 Write-Host "Publishing version $sdkVersion to the PowerShell Gallery."
 New-Item -Path $publishDir -ItemType Directory
-$galleryDir = Join-Path $publishDir $sdkVersion
-Copy-Item -Path $releaseDir -Destination $galleryDir -Recurse
+$galleryDir = Join-Path $publishDir RubrikSecurityCloud
+New-Item -Path $galleryDir -ItemType Directory
+$targetDir = Join-Path $galleryDir $sdkVersion
+Copy-Item -Path $releaseDir -Destination $targetDir -Recurse
 
 # Publish the module
 if ($NotDry) {
     Publish-Module -Path $galleryDir -NuGetApiKey $apiKey -Verbose
 }
 else {
-    Write-Host "Dry run: Publish-Module -Path $galleryDir -NuGetApiKey $apiKey -Verbose"
+    Write-Host "Dry run:"
+    Publish-Module -Path $galleryDir -NuGetApiKey $apiKey -Verbose -WhatIf
 }

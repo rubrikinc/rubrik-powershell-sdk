@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud
             {"^version$" , null },
             // prefix matches
             {"^has", null },
-            {"^is", null },
+            {"^is", new List<string>{ "isTprEnabled" } },
             // partial matches
             {"status", new List<string>{ "cdmRbacMigrationStatus", "eosStatus" } },
             {"state", null },

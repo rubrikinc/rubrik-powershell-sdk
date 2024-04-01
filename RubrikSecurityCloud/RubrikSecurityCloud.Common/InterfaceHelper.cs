@@ -122,10 +122,12 @@ namespace RubrikSecurityCloud
                         current = baseTypeItem;
                     } else
                     {
-                        current._next = baseTypeItem;
-                        current = current._next;
+                        current.SetNext(baseTypeItem);
+                        // move to next item
+                        current = current.Next();
                     }
-                }
+                    current?.SetNext(null);
+            }
                 else
                 {
                     throw new ArgumentException("List item is not of BaseType or derived from BaseType", nameof(list));
@@ -149,10 +151,16 @@ namespace RubrikSecurityCloud
             while (current != null)
             {
                 list.Add(current);
-                current = current._next as BaseType;
+                current = current.Next();
             }
 
             return list;
+        }
+
+        public static string CompositeAsFieldSpec(BaseType composite, FieldSpecConfig conf)
+        {
+            var list = MakeListFromComposite(composite);
+            return list.AsFieldSpec(conf.Copy(ignoreComposition: true));
         }
     }
 }

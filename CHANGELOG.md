@@ -1,5 +1,21 @@
 # Changelog
 
+## Version 0.29
+
+New Features:
+
+- Toolkit: Operations (patch files) are now part of Toolkit
+- AutoFieldSpec: patch file for `QueryCdmMssqlLogShippingTargets`
+- AutoFieldSpec: patch file for `QueryMssqlDatabaseLiveMounts`
+- [README](https://github.com/rubrikinc/rubrik-powershell-sdk/blob/devel/Toolkit/Operations/README.md)
+  on how to write patch files.
+
+Fixes:
+
+- Fix for queries that return a single interface object.
+  See `Tests/unit/Sla.Tests.ps1`.
+  (implemented with _type composition_ in the C# core)
+
 ## Version 0.28
 
 New Features:
@@ -395,5 +411,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
-

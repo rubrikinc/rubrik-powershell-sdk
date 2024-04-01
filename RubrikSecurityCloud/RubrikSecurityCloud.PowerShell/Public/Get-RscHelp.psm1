@@ -74,6 +74,12 @@ function Get-RscHelp {
         [Switch]$Interface,
 
         [Parameter(
+            ParameterSetName = 'Interface',
+            HelpMessage = 'Only show the implementing types.'
+        )]
+        [Switch]$ImplementingTypes,
+
+        [Parameter(
             ParameterSetName = 'Input',
             HelpMessage = 'Look up an input by name.'
         )]
@@ -311,6 +317,10 @@ function Get-RscHelp {
             foreach ($value in $enumValues) {
                 # if it's an exact match, print interface info
                 if ( $value -eq $Match ) {
+                    if ($ImplementingTypes) {
+                        Get-RscType -Interface $value
+                        return
+                    }
                     try {
                         Write-Output "# Types that implement interface ${value}:"
                         $info = Get-RscType -Interface $value
