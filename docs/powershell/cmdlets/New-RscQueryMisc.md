@@ -400,6 +400,11 @@ Information on Microsoft 365 restore failed items.
     - workloadFid - System.String: The FID of the workload.
     - taskchainId - System.String: Taskchain ID.
 - Returns FailedRestoreItemsInfoReply.
+### failuresandwarningsstats
+Returns the failures and warnings stats of an M365 organization.
+
+- There is a single argument of type System.String.
+- Returns FailuresAndWarningsStatsReply.
 ### federatedloginstatus
 Status of the federated login.
 
@@ -637,6 +642,22 @@ A knowledge base article.
 
 - There is a single argument of type System.String.
 - Returns KnowledgeBaseArticle.
+### kubernetesprotectionset
+Summary of a Kubernetes Protection Set.
+
+- There is a single argument of type System.String.
+- Returns KubernetesProtectionSet.
+### kubernetesprotectionsets
+Summary of all Kubernetes Protection Sets.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+    - k8sClusterOptionalId - System.String: Kubernetes cluster optional UUID.
+- Returns KubernetesProtectionSetConnection.
 ### lambdasettings
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.

@@ -190,7 +190,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
     }
 
-
+    /// <summary>
+    /// Create a new RscMutation object.
+    /// </summary>
     [CmdletBinding()]
     [Cmdlet(
     "New",
@@ -223,6 +225,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
     }
 
+    /// <summary>
+    /// Create a new RscQuery object.
+    /// </summary>
     [CmdletBinding()]
     [Cmdlet(
     "New",

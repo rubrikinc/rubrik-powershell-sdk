@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRIVATE_ENDPOINTS")]
         PRIVATE_ENDPOINTS,
 
+        [EnumMember(Value = "PRIVATE_EXO_CLUSTERS")]
+        PRIVATE_EXO_CLUSTERS,
+
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
 

@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        [JsonProperty("crossAccountReplicatedObjectInfos")]
+        public List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
+
         //      C# -> SapHanaDataPathSpecObject? DataPathSpec
         // GraphQL -> dataPathSpec: SapHanaDataPathSpecObject (type)
         [JsonProperty("dataPathSpec")]
@@ -296,6 +301,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SystemId = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
+        List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         SapHanaDataPathSpecObject? DataPathSpec = null,
         PathNode? EffectiveSlaSourceObject = null,
         SapHanaDatabaseInfoObject? Info = null,
@@ -396,6 +402,9 @@ namespace RubrikSecurityCloud.Types
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
+        if ( CrossAccountReplicatedObjectInfos != null ) {
+            this.CrossAccountReplicatedObjectInfos = CrossAccountReplicatedObjectInfos;
+        }
         if ( DataPathSpec != null ) {
             this.DataPathSpec = DataPathSpec;
         }
@@ -474,6 +483,9 @@ namespace RubrikSecurityCloud.Types
     public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
         conf=(conf==null)?new FieldSpecConfig():conf;
+        if (this.IsComposite() && ! conf.IgnoreComposition) {
+            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
+        }
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Operation>? AuthorizedOperations
@@ -506,7 +518,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(conf.Child("configuredSlaDomain"));
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.ConfiguredSlaDomain, conf.Child("configuredSlaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -519,7 +531,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(conf.Child("effectiveRetentionSlaDomain"));
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.EffectiveRetentionSlaDomain, conf.Child("effectiveRetentionSlaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -532,7 +544,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(conf.Child("effectiveSlaDomain"));
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.EffectiveSlaDomain, conf.Child("effectiveSlaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -545,7 +557,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(conf.Child("pendingSla"));
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PendingSla, conf.Child("pendingSla"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -724,6 +736,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (this.CrossAccountReplicatedObjectInfos != null) {
+            var fspec = this.CrossAccountReplicatedObjectInfos.AsFieldSpec(conf.Child("crossAccountReplicatedObjectInfos"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crossAccountReplicatedObjectInfos {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1469,6 +1493,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.Cluster = null;
         }
+        //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
+        // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
+        if (ec.Includes("crossAccountReplicatedObjectInfos",false))
+        {
+            if(this.CrossAccountReplicatedObjectInfos == null) {
+
+                this.CrossAccountReplicatedObjectInfos = new List<CrossAccountReplicatedObjectInfo>();
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            } else {
+
+                this.CrossAccountReplicatedObjectInfos.ApplyExploratoryFieldSpec(ec.NewChild("crossAccountReplicatedObjectInfos"));
+
+            }
+        }
+        else if (this.CrossAccountReplicatedObjectInfos != null && ec.Excludes("crossAccountReplicatedObjectInfos",false))
+        {
+            this.CrossAccountReplicatedObjectInfos = null;
+        }
         //      C# -> SapHanaDataPathSpecObject? DataPathSpec
         // GraphQL -> dataPathSpec: SapHanaDataPathSpecObject (type)
         if (ec.Includes("dataPathSpec",false))
@@ -1918,23 +1961,27 @@ namespace RubrikSecurityCloud.Types
     public static class ListSapHanaDatabaseExtensions
     {
         // This SDK uses the convention of defining field specs as
-        // the collection of fields that are not null in an object.
-        // When creating a field spec from an (non-list) object,
-        // all fields (including nested objects) that are not null are
-        // included in the fieldspec.
-        // When creating a fieldspec from a list of objects,
-        // we arbitrarily choose to use the fieldspec of the first item
-        // in the list. This is not a perfect solution, but it is a
-        // reasonable one.
-        // When creating a fieldspec from a list of interfaces,
-        // we include the fieldspec of each item in the list
-        // as an inline fragment (... on)
+        // the collection of properties that are not null in an object.
+        // When creating a field spec for an object, we look at whether
+        // the object is a list or not, and whether it implements an interface
+        // or not. The following are the possible combinations:
+        // S or L: single object or list object
+        // SD or II: self-defined or interface-implementing
+        // | S/L | SD/II | How fied spec is created
+        // |-----|-------|-------------------------
+        // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
+        // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
+        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
+        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        //
+        // Note that L-II means that each item in the list is II (not the list itself).
+        // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
             this List<SapHanaDatabase> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
-            return list[0].AsFieldSpec(conf.Child());
+            return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
         public static List<string> SelectedFields(this List<SapHanaDatabase> list)

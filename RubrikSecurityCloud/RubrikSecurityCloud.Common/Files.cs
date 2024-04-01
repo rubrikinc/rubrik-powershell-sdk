@@ -21,7 +21,8 @@ namespace RubrikSecurityCloud
         public static string GetSdkOperationsDir(string InputProfileName)
         {
             string assemblyDir = GetAssemblyDir();
-            return Path.Combine(assemblyDir, "..", "Operations", InputProfileName);
+            return Path.Combine(assemblyDir, "..", "Toolkit", "Operations",
+                InputProfileName);
         }
 
         // return empty string if file doesn't exist

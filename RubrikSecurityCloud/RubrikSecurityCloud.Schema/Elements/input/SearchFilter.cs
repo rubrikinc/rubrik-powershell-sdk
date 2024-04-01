@@ -49,10 +49,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lambdaFilters")]
         public LambdaPathFilters? LambdaFilters { get; set; }
 
-        //      C# -> System.Boolean? IgnoreArchive
-        // GraphQL -> ignoreArchive: Boolean (scalar)
-        [JsonProperty("ignoreArchive")]
-        public System.Boolean? IgnoreArchive { get; set; }
+        //      C# -> ArchiveFolderAction? ArchiveFolderAction
+        // GraphQL -> archiveFolderAction: ArchiveFolderAction (enum)
+        [JsonProperty("archiveFolderAction")]
+        public ArchiveFolderAction? ArchiveFolderAction { get; set; }
 
 
         #endregion

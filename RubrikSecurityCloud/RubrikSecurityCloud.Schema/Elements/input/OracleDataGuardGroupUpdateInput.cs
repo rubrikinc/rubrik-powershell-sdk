@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldUseSepsWallet")]
         public System.Boolean? ShouldUseSepsWallet { get; set; }
 
+        //      C# -> System.Boolean? ShouldForceDisableDgDiscovery
+        // GraphQL -> shouldForceDisableDgDiscovery: Boolean (scalar)
+        [JsonProperty("shouldForceDisableDgDiscovery")]
+        public System.Boolean? ShouldForceDisableDgDiscovery { get; set; }
+
 
         #endregion
 

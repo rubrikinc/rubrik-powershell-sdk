@@ -25,10 +25,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> ActiveDirectorySearchVersions? Versions
-        // GraphQL -> versions: ActiveDirectorySearchVersions! (type)
+        //      C# -> List<ActiveDirectorySearchVersions>? Versions
+        // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         [JsonProperty("versions")]
-        public ActiveDirectorySearchVersions? Versions { get; set; }
+        public List<ActiveDirectorySearchVersions>? Versions { get; set; }
 
 
         #endregion
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
 
     public ActiveDirectorySnappableSearchResponse Set(
         System.String? Name = null,
-        ActiveDirectorySearchVersions? Versions = null
+        List<ActiveDirectorySearchVersions>? Versions = null
     ) 
     {
         if ( Name != null ) {
@@ -59,6 +59,9 @@ namespace RubrikSecurityCloud.Types
     public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
         conf=(conf==null)?new FieldSpecConfig():conf;
+        if (this.IsComposite() && ! conf.IgnoreComposition) {
+            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
+        }
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Name
@@ -70,8 +73,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
-        //      C# -> ActiveDirectorySearchVersions? Versions
-        // GraphQL -> versions: ActiveDirectorySearchVersions! (type)
+        //      C# -> List<ActiveDirectorySearchVersions>? Versions
+        // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         if (this.Versions != null) {
             var fspec = this.Versions.AsFieldSpec(conf.Child("versions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -106,13 +109,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
-        //      C# -> ActiveDirectorySearchVersions? Versions
-        // GraphQL -> versions: ActiveDirectorySearchVersions! (type)
+        //      C# -> List<ActiveDirectorySearchVersions>? Versions
+        // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         if (ec.Includes("versions",false))
         {
             if(this.Versions == null) {
 
-                this.Versions = new ActiveDirectorySearchVersions();
+                this.Versions = new List<ActiveDirectorySearchVersions>();
                 this.Versions.ApplyExploratoryFieldSpec(ec.NewChild("versions"));
 
             } else {
@@ -137,23 +140,27 @@ namespace RubrikSecurityCloud.Types
     public static class ListActiveDirectorySnappableSearchResponseExtensions
     {
         // This SDK uses the convention of defining field specs as
-        // the collection of fields that are not null in an object.
-        // When creating a field spec from an (non-list) object,
-        // all fields (including nested objects) that are not null are
-        // included in the fieldspec.
-        // When creating a fieldspec from a list of objects,
-        // we arbitrarily choose to use the fieldspec of the first item
-        // in the list. This is not a perfect solution, but it is a
-        // reasonable one.
-        // When creating a fieldspec from a list of interfaces,
-        // we include the fieldspec of each item in the list
-        // as an inline fragment (... on)
+        // the collection of properties that are not null in an object.
+        // When creating a field spec for an object, we look at whether
+        // the object is a list or not, and whether it implements an interface
+        // or not. The following are the possible combinations:
+        // S or L: single object or list object
+        // SD or II: self-defined or interface-implementing
+        // | S/L | SD/II | How fied spec is created
+        // |-----|-------|-------------------------
+        // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
+        // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
+        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
+        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        //
+        // Note that L-II means that each item in the list is II (not the list itself).
+        // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
             this List<ActiveDirectorySnappableSearchResponse> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
-            return list[0].AsFieldSpec(conf.Child());
+            return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
         public static List<string> SelectedFields(this List<ActiveDirectorySnappableSearchResponse> list)

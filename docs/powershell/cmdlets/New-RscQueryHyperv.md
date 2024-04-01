@@ -97,6 +97,14 @@ Get details about a Hyper-V vm related async request.
 
 - There is a single argument of type GetHypervVirtualMachineAsyncRequestStatusInput.
 - Returns AsyncRequestStatus.
+### virtualmachinelevelfileinfo
+Retrieve VM-level files from snapshot
+
+Supported in v9.1+
+Retrieves virtual-machine-level file details from the snapshot.
+
+- There is a single argument of type GetVmLevelFilesFromSnapshotInput.
+- Returns HypervVirtualMachineSnapshotFileDetails.
 ### virtualmachines
 Paginated list of HyperV Virtual Machines.
 

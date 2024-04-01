@@ -264,3 +264,9 @@
 - AZURE_BLOB_STORAGE_ACCOUNT_ACCESS_TIER - Filter Azure storage accounts by access tier.
 - AZURE_BLOB_STORAGE_ACCOUNT_HNS_STATUS - Filter Azure storage accounts by hierarchical namespace status.
 - ACTIVE_DIRECTORY_DOMAIN_SID - Filter by the SID of the Active Directory domain.
+- VMWARE_VCD_HOSTNAME - Filter by vCD hostname.
+- GCP_REGION - Filter by the regions for GCP workloads.
+- ANCESTOR_ID - Filter the managed objects based on the ancestor IDs.
+- SALESFORCE_OBJECT_TYPE - Filter by Salesforce object type.
+- SALESFORCE_NAME_OR_LABEL - Filter by Salesforce name or label.
+- DOMAIN_CONTROLLER_DOMAIN_SID - Filter domain controller by domain SID.

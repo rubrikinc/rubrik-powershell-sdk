@@ -9,3 +9,5 @@ Cloud account details for a given customer ID.
   - Azure cloud type.
 - permissionsGroups: list of PermissionsGroups
   - Permissions groups for azure cloud account.
+- subscriptionId: System.String
+  - Azure customer subscription id for the feature.

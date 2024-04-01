@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IBMCOS")]
         IBMCOS,
 
+        [EnumMember(Value = "IRONCLOUD")]
+        IRONCLOUD,
+
         [EnumMember(Value = "NETAPPSG")]
         NETAPPSG,
 

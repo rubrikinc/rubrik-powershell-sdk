@@ -6,6 +6,43 @@ Remove-RscMssqlLogShippingSecondary - Now works and no longer references Live Mo
 **Breaking Changes**
 Get-RscMssqlInstance - No longer accepts RscHost object any more. Not it accepts a string value for HostName and WindowsClusterName. This is because, there is no value in the RscHost object for getting the MSSQL Instance object as the only option is to query by name and not by ID. Additionally, we need the ability to search for a Instance based on a Windows Cluster Name. This new approach allows for a simpler user experience, as they do not need to make an extra call to get a Host object before requesting the Instance object.
 
+## ~ Upcoming Version ~
+
+New Features:
+
+Fixes:
+
+Breaking Changes:
+
+## Version 0.29
+
+New Features:
+
+- Toolkit: Operations (patch files) are now part of Toolkit
+- AutoFieldSpec: patch file for `QueryCdmMssqlLogShippingTargets`
+- AutoFieldSpec: patch file for `QueryMssqlDatabaseLiveMounts`
+- [README](https://github.com/rubrikinc/rubrik-powershell-sdk/blob/devel/Toolkit/Operations/README.md)
+  on how to write patch files.
+
+Fixes:
+
+- Fix for queries that return a single interface object.
+  See `Tests/unit/Sla.Tests.ps1`.
+  (implemented with _type composition_ in the C# core)
+
+## Version 0.28
+
+New Features:
+
+- Added pipe support for SLA Cmdlets
+  [From PR 57](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/57)
+
+Fixes:
+
+- Updated help texts
+  [From PR 53](https://github.com/rubrikinc/rubrik-powershell-sdk/pull/53)
+- Fixed build and tests for PowerShell 5.1
+
 ## Version 0.27
 
 Fixes:

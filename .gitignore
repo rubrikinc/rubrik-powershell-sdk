@@ -375,4 +375,5 @@ GraphQL Schme Downloader/schema/.env.json
 
 # PowerShell module
 Output/
+Output.Release/
 .vscode/

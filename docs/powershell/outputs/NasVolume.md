@@ -29,6 +29,8 @@ NAS volume instance in a registered NAS system.
   - Mapping from object ID to pending object deletion status.
 - replicatedObjects: list of CdmHierarchyObjects
   - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
 - latestUserNote: LatestUserNote
   - Latest user note information.
 - replicatedObjectCount: System.Int32

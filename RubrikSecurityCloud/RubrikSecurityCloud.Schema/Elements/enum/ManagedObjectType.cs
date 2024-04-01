@@ -303,6 +303,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST")]
         PHYSICAL_HOST,
 
+        [EnumMember(Value = "POSTGRES_DATABASE")]
+        POSTGRES_DATABASE,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 

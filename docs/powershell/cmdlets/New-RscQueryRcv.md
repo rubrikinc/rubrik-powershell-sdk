@@ -10,3 +10,8 @@ Rubrik Cloud Vault (RCV) account entitlements with their respective order number
 
 - The accountentitlements subcommand takes no arguments.
 - Returns AllRcvAccountEntitlements.
+### privateendpointconnections
+Get private endpoint connection approval request.
+
+- There is a single argument of type System.String.
+- Returns list of DetailedPrivateEndpointConnections.

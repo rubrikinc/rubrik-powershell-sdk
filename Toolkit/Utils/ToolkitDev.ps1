@@ -28,10 +28,10 @@ param (
 )
 
 if ( -Not $OutputDir ) {
-    $OutputDir = Join-Path $PSScriptRoot "..\..\Output"
+    $OutputDir = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Output"
     # If "Output" doesn't exist but "Output.Release" does, use that instead
     if (-not (Test-Path $OutputDir)) {
-        $OutputDir = Join-Path $PSScriptRoot "..\..\Output.Release"
+        $OutputDir = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Output.Release"
     }
 }
 # Resolve "." and ".." in the path
@@ -41,29 +41,40 @@ if (-not (Test-Path $OutputDir)) {
     return
 }
 
-$tkdir = (Get-Item $PSScriptRoot).Parent
+$tkdir = Resolve-Path "$PSScriptRoot/.."
+$opdir = Join-Path -Path $tkdir -ChildPath "Operations" -Resolve
 $Toolkit = [PSCustomObject]@{
-    SdkDir     = (Get-Item $tkdir).Parent
+    SdkDir     = Resolve-Path "$tkdir/.."
     Dir        = $tkdir
-    PublicDir  = Join-Path $tkdir "Public"
-    PrivateDir = Join-Path $tkdir "Private"
-    FormatDir  = Join-Path $tkdir "Format"
-    OutputDir  = Join-Path $OutputDir "Toolkit"
+    PublicDir  = Join-Path -Path $tkdir -ChildPath "Public" -Resolve
+    PrivateDir = Join-Path -Path $tkdir -ChildPath "Private" -Resolve
+    FormatDir  = Join-Path -Path $tkdir -ChildPath "Format" -Resolve
+    OpDefaultDir = Join-Path -Path $opdir -ChildPath "DEFAULT" -Resolve
+    OpDetailDir  = Join-Path -Path $opdir -ChildPath "DETAIL" -Resolve
+    OutputDir  = Join-Path -Path $OutputDir -ChildPath "Toolkit"
 }
 Remove-Variable -Name 'tkdir'
+Remove-Variable -Name 'opdir'
+
+# make sure the Output directories exists
+New-Item -Path $Toolkit.OutputDir -ItemType Directory -Force | Out-Null
+New-Item -Path $Toolkit.OpDefaultDir -ItemType Directory -Force | Out-Null
+New-Item -Path $Toolkit.OpDetailDir -ItemType Directory -Force | Out-Null
 
 . "$($Toolkit.PrivateDir)\FileUtils.ps1"
-$params = @{
-    OutputDir = $OutputDir
-}
-if ($Quiet) {
-    $params['Quiet'] = $true
-}
-. "$($Toolkit.SdkDir)\Utils\Import-RscModuleFromLocalOutputDir.ps1" @params
 
+Write-Debug "ToolkitDev $($Toolkit)"
 
 if ( $Connect ) {
-    Connect-Rsc
+    $params = @{
+        ErrorAction = 'Stop'
+        OutputDir = $OutputDir
+    }
+    if ($Quiet) {
+        $params['Quiet'] = $true
+    }
+    . "$($Toolkit.SdkDir)\Utils\Import-RscModuleFromLocalOutputDir.ps1" @params    
+    Connect-Rsc -ErrorAction Stop
 }
 
 function MatchingOutputFileName {
@@ -71,12 +82,19 @@ function MatchingOutputFileName {
         [string]$SourceFileName
     )
     $srcInfo = Get-Item $SourceFileName -ErrorAction Stop
-    $sourceDir = ($srcInfo).Directory.Name
-    # We only support copying files from Public, Private, and Format
-    if ($sourceDir -notin @("Public", "Private", "Format")) {
-        throw "Unsupported source directory: ${sourceDir}"
+    # We only support copying files from the toolkit
+    if ( -not $SourceFileName.ToLower().StartsWith($Toolkit.Dir.Path.ToLower()) ) {
+        throw "File ${SourceFileName} is not under the toolkit directory $($Toolkit.Dir)."
     }
-    return Join-Path $Toolkit.OutputDir $sourceDir $srcInfo.Name
+    # Path relative to the toolkit root
+    $relativePath = $SourceFileName.Substring($Toolkit.Dir.Path.Length + 1)
+    $dirs = Split-Path -Parent $relativePath
+    $outDir = Join-Path -Path $Toolkit.OutputDir -ChildPath $dirs
+    # Make sure the output directory exists
+    New-Item -Path $outDir -ItemType Directory -Force | Out-Null
+    $outPath = Join-Path -Path $outDir -ChildPath $srcInfo.Name
+    Write-Debug "MatchingOutputFileName $SourceFileName --> $outPath"
+    return $outPath
 }
 
 function Copy-ToolkitFileToOutputDir {
@@ -104,23 +122,36 @@ function Copy-ToolkitToOutputDir {
     Param()
 
     $fileCount = 0
-    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.PublicDir)/*.ps*")) {
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.PublicDir)/*")) {
         if (Copy-ToolkitFileToOutputDir $file) {
             $fileCount++
         }
     }
 
-    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.PrivateDir)/*.ps*")) {
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.PrivateDir)/*")) {
         if (Copy-ToolkitFileToOutputDir $file) {
             $fileCount++
         }
     }
 
-    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.FormatDir)/*.ps*")) {
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.FormatDir)/*")) {
         if (Copy-ToolkitFileToOutputDir $file) {
             $fileCount++
         }
     }
+
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.OpDefaultDir)/*")) {
+        if (Copy-ToolkitFileToOutputDir $file) {
+            $fileCount++
+        }
+    }
+
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.OpDetailDir)/*")) {
+        if (Copy-ToolkitFileToOutputDir $file) {
+            $fileCount++
+        }
+    }
+    
     return $fileCount
 }
 
@@ -143,30 +174,13 @@ function Update-RscToolkit {
     Write-Output "Copied $copyCount files to Output directory."
 
     # Re-Import the module from the Output directory
-    . "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1" -OutputDir $OutputDir
+    . "$PSScriptRoot\..\..\Utils\Import-RscModuleFromLocalOutputDir.ps1" -OutputDir $OutputDir -ErrorAction Stop
     Write-Output "Imported module from Output directory."
 
     Get-RscToolkitStatus -Brief
 
     if ( ! $SkipTest ) {
         Test-RscToolkit
-    }
-}
-
-function DetermineSystemInstalledToolkitLocation {
-    # If the module is already imported, remove it first.
-    # If it's not installed, this will fail silently.
-    Remove-Module -Name RubrikSecurityCloud -ErrorAction 'SilentlyContinue'
-        
-    # Attempt to import the system-installed module
-    try {
-        Import-Module RubrikSecurityCloud -ErrorAction Stop | Out-Null
-    
-        # We assume Get-RscCluster is still a thing
-        return [System.IO.Path]::GetDirectoryName((Get-Command Get-RscCluster).ScriptBlock.File)
-    }
-    catch {
-        return $null
     }
 }
 
@@ -182,14 +196,10 @@ function Get-RscToolkitStatus {
     .PARAMETER Brief
     If set, the source and output directories are abbreviated to "<SDK root>".
 
-    .PARAMETER Filter
-    A filter to apply to the source files. Default is "*.ps*".
     #>
     [CmdletBinding()] # To allow things like -Verbose
     Param(
-        [switch]$Brief = $false,
-        [string]$Filter = "*.ps*"
-
+        [switch]$Brief = $false
     )
     $tkDir = $Toolkit.Dir
     $tkOutputDir = $Toolkit.OutputDir
@@ -207,19 +217,18 @@ Output directory: $tkOutputDir
 
     # Compare source files with destination files
     $results = @()
-    $srcDirs = @($Toolkit.PublicDir, $Toolkit.PrivateDir, $Toolkit.FormatDir)
+    $srcDirs = @($Toolkit.PublicDir, $Toolkit.PrivateDir, $Toolkit.FormatDir, $Toolkit.OpDefaultDir, $Toolkit.OpDetailDir)
     $different = $false
-    Get-ChildItem -Path $srcDirs -Filter $Filter | ForEach-Object {
-        $sourceFile = $_
+    Get-ChildItem -Path $srcDirs | ForEach-Object {
+        $sourceFile = $_.FullName
         $outputFile = MatchingOutputFileName $sourceFile
         $diff = (CompareFiles $sourceFile $outputFile) 
         $different = $different -or $diff -ne "same"
 
         if ( ! $Brief -or $diff -ne "same") {
             $diff = $diff -Replace "FileA", "Source file" -Replace "FileB", "Output file" -Replace "same", "Output file is up to date"
-    
             $results += [PSCustomObject]@{
-                Source = Join-Path $sourceFile.Directory.Name $sourceFile.Name
+                Source =  $sourceFile.Substring($Toolkit.Dir.Path.Length + 1)
                 Status = $diff
             }
         }
@@ -232,13 +241,11 @@ Output directory: $tkOutputDir
     }
 
     if ( ! $Brief ) {
-        $SystemInstalled = DetermineSystemInstalledToolkitLocation
+        $SystemInstalled = Get-Module -Name RubrikSecurityCloud -ListAvailable
         if ($SystemInstalled) {
-            Write-Output @"
-
-System-installed toolkit: $SystemInstalled
-Note: the Toolkit dev workflow does not update the system-installed toolkit.
-"@
+            Write-Output "`nSystem-installed toolkit:"
+            Get-Module -Name RubrikSecurityCloud -ListAvailable
+            Write-Output "`nNote: the Toolkit dev workflow does not update the system-installed toolkit."
         }
         else {
             Write-Output "`nNo system-installed toolkit found."

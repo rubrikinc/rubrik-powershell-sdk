@@ -39,6 +39,8 @@
   - The log retention, in hours, of the Oracle database.
 - hostLogRetentionHours: System.Int32
   - The host log retention, in hours, of the Oracle database.
+- useSecureThrift: System.Boolean
+  - Specifies whether the Oracle database uses Secure Thrift as the transfer protocol.
 - dataGuardGroup: OracleDataGuardGroup
   - The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
 - liveMounts: OracleLiveMountConnection
@@ -81,6 +83,8 @@
   - Mapping from object ID to pending object deletion status.
 - replicatedObjects: list of CdmHierarchyObjects
   - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
 - latestUserNote: LatestUserNote
   - Latest user note information.
 - replicatedObjectCount: System.Int32

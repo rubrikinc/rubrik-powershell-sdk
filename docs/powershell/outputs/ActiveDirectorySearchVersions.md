@@ -7,8 +7,7 @@ Resultant versions of the objects with requested name.
 - dnt: System.Int32
   - Required. Supported in v9.1+
   The Distinguished Name Tag (DNT) of the Active Directory object.
-- snapshotId: System.String
-  - Required. Supported in v9.1+
-  ID of the snapshot containing the Active Directory object.
 - activeDirectoryObjectType: ActiveDirectoryObjectType
   - Type of the object.
+- snapshot: CdmSnapshot
+  - Snapshot containing the Active Directory object.

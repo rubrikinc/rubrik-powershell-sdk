@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 45
+    /// Create a new RscQuery object for any of the 46
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 45 operations
+    /// There are 46 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, or ValidateCloudAccountExocomputeConfigurations.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, ResourceGroups, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -426,6 +426,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.permissionsGroups = @(
+    /// 	$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -1851,6 +1855,132 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the ValidateCreateClusterInput operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ValidateCreateClusterInput
+    /// 
+    /// $query = New-RscQueryAzure -ValidateCreateClusterInput
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	isEsType = $someBoolean
+    /// 	# OPTIONAL
+    /// 	keepClusterOnFailure = $someBoolean
+    /// 	# OPTIONAL
+    /// 	clusterConfig = @{
+    /// 		# OPTIONAL
+    /// 		userEmail = $someString
+    /// 		# OPTIONAL
+    /// 		adminPassword = $someString
+    /// 		# OPTIONAL
+    /// 		clusterName = $someString
+    /// 		# OPTIONAL
+    /// 		numNodes = $someInt
+    /// 		# OPTIONAL
+    /// 		dnsSearchDomains = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		dnsNameServers = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		ntpServers = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		azureEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			storageAccount = $someString
+    /// 			# OPTIONAL
+    /// 			resourceGroup = $someString
+    /// 			# OPTIONAL
+    /// 			storageSecret = $someString
+    /// 			# OPTIONAL
+    /// 			containerName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateContainer = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableImmutability = $someBoolean
+    /// 			# OPTIONAL
+    /// 			managedIdentity = @{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				clientId = $someString
+    /// 				# OPTIONAL
+    /// 				resourceGroup = $someString
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		awsEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateBucket = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableObjectLock = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableImmutability = $someBoolean
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vmConfig = @{
+    /// 		# OPTIONAL
+    /// 		resourceGroup = $someString
+    /// 		# OPTIONAL
+    /// 		cdmVersion = $someString
+    /// 		# OPTIONAL
+    /// 		location = $someString
+    /// 		# OPTIONAL
+    /// 		nodeSizeGb = $someInt
+    /// 		# OPTIONAL
+    /// 		networkResourceGroup = $someString
+    /// 		# OPTIONAL
+    /// 		vnetResourceGroup = $someString
+    /// 		# OPTIONAL
+    /// 		networkSecurityGroup = $someString
+    /// 		# OPTIONAL
+    /// 		networkSecurityResourceGroup = $someString
+    /// 		# OPTIONAL
+    /// 		vnet = $someString
+    /// 		# OPTIONAL
+    /// 		subnet = $someString
+    /// 		# OPTIONAL
+    /// 		tags = $someString
+    /// 		# OPTIONAL
+    /// 		vmImage = $someString
+    /// 		# OPTIONAL
+    /// 		cdmProduct = $someString
+    /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ValidationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -1912,6 +2042,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Subscriptions",
                 "VNets",
                 "ValidateCloudAccountExocomputeConfigurations",
+                "ValidateCreateClusterInput",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -2061,6 +2192,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ValidateCloudAccountExocomputeConfigurations":
                         this.ProcessRecord_ValidateCloudAccountExocomputeConfigurations();
+                        break;
+                    case "ValidateCreateClusterInput":
+                        this.ProcessRecord_ValidateCreateClusterInput();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -2477,6 +2611,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryValidateAzureCloudAccountExocomputeConfigurations();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // validateCreateAzureClusterInput.
+        internal void ProcessRecord_ValidateCreateClusterInput()
+        {
+            this._logger.name += " -ValidateCreateClusterInput";
+            // Create new graphql operation validateCreateAzureClusterInput
+            InitQueryValidateCreateAzureClusterInput();
+        }
+
 
         // Create new GraphQL Query:
         // azureAdDirectories(
@@ -2774,22 +2917,27 @@ $query.Var.cloudAccountAction = $someCloudAccountAction # Call [Enum]::GetValues
         }
 
         // Create new GraphQL Query:
-        // azureCloudAccountPermissionConfig(feature: CloudAccountFeature!): AzureCloudAccountPermissionConfigResponse!
+        // azureCloudAccountPermissionConfig(feature: CloudAccountFeature!, permissionsGroups: [PermissionsGroup!]! = []): AzureCloudAccountPermissionConfigResponse!
         internal void InitQueryAzureCloudAccountPermissionConfig()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("permissionsGroups", "[PermissionsGroup!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureCloudAccountPermissionConfig",
-                "($feature: CloudAccountFeature!)",
+                "($feature: CloudAccountFeature!,$permissionsGroups: [PermissionsGroup!]!)",
                 "AzureCloudAccountPermissionConfigResponse",
                 Query.AzureCloudAccountPermissionConfig_ObjectFieldSpec,
                 Query.AzureCloudAccountPermissionConfigFieldSpec,
                 @"# REQUIRED
-$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$query.Var.permissionsGroups = @(
+	$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+)"
             );
         }
 
@@ -4032,6 +4180,124 @@ $query.Var.input = @{
 			podOverlayNetworkCidr = $someString
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // validateCreateAzureClusterInput(input: CreateAzureClusterInput!): ValidationReply!
+        internal void InitQueryValidateCreateAzureClusterInput()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateAzureClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryValidateCreateAzureClusterInput",
+                "($input: CreateAzureClusterInput!)",
+                "ValidationReply",
+                Query.ValidateCreateAzureClusterInput_ObjectFieldSpec,
+                Query.ValidateCreateAzureClusterInputFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	isEsType = $someBoolean
+	# OPTIONAL
+	keepClusterOnFailure = $someBoolean
+	# OPTIONAL
+	clusterConfig = @{
+		# OPTIONAL
+		userEmail = $someString
+		# OPTIONAL
+		adminPassword = $someString
+		# OPTIONAL
+		clusterName = $someString
+		# OPTIONAL
+		numNodes = $someInt
+		# OPTIONAL
+		dnsSearchDomains = @(
+			$someString
+		)
+		# OPTIONAL
+		dnsNameServers = @(
+			$someString
+		)
+		# OPTIONAL
+		ntpServers = @(
+			$someString
+		)
+		# OPTIONAL
+		azureEsConfig = @{
+			# OPTIONAL
+			storageAccount = $someString
+			# OPTIONAL
+			resourceGroup = $someString
+			# OPTIONAL
+			storageSecret = $someString
+			# OPTIONAL
+			containerName = $someString
+			# OPTIONAL
+			shouldCreateContainer = $someBoolean
+			# OPTIONAL
+			enableImmutability = $someBoolean
+			# OPTIONAL
+			managedIdentity = @{
+				# OPTIONAL
+				name = $someString
+				# OPTIONAL
+				clientId = $someString
+				# OPTIONAL
+				resourceGroup = $someString
+			}
+		}
+		# OPTIONAL
+		awsEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			shouldCreateBucket = $someBoolean
+			# OPTIONAL
+			enableObjectLock = $someBoolean
+			# OPTIONAL
+			enableImmutability = $someBoolean
+		}
+	}
+	# OPTIONAL
+	vmConfig = @{
+		# OPTIONAL
+		resourceGroup = $someString
+		# OPTIONAL
+		cdmVersion = $someString
+		# OPTIONAL
+		location = $someString
+		# OPTIONAL
+		nodeSizeGb = $someInt
+		# OPTIONAL
+		networkResourceGroup = $someString
+		# OPTIONAL
+		vnetResourceGroup = $someString
+		# OPTIONAL
+		networkSecurityGroup = $someString
+		# OPTIONAL
+		networkSecurityResourceGroup = $someString
+		# OPTIONAL
+		vnet = $someString
+		# OPTIONAL
+		subnet = $someString
+		# OPTIONAL
+		tags = $someString
+		# OPTIONAL
+		vmImage = $someString
+		# OPTIONAL
+		cdmProduct = $someString
+		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+	}
 }"
             );
         }

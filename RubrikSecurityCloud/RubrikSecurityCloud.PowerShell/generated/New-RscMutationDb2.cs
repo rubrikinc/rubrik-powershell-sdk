@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Db2' API domain:
-    /// AddInstance, CreateOnDemandBackup, DeleteDatabase, DeleteInstance, DiscoverInstance, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, PatchInstance, or RefreshDatabase.
+    /// AddInstance, ConfigureRestore, CreateOnDemandBackup, DeleteDatabase, DeleteInstance, DiscoverInstance, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, PatchInstance, or RefreshDatabase.
     /// </summary>
     /// <description>
     /// New-RscMutationDb2 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Db2' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddInstance, CreateOnDemandBackup, DeleteDatabase, DeleteInstance, DiscoverInstance, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, PatchInstance, or RefreshDatabase.
+    /// one of: AddInstance, ConfigureRestore, CreateOnDemandBackup, DeleteDatabase, DeleteInstance, DiscoverInstance, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, PatchInstance, or RefreshDatabase.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -113,6 +113,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddDb2InstanceReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ConfigureRestore operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: ConfigureRestore
+    /// 
+    /// $query = New-RscMutationDb2 -ConfigureRestore
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	restoreConfig = @{
+    /// 		# OPTIONAL
+    /// 		expiryTimestamp = $someDateTime
+    /// 		# REQUIRED
+    /// 		hostIdsToAdd = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		hostIdsToRemove = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2ConfigureRestoreResponse
     /// 
     /// 
     /// 
@@ -487,6 +531,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddInstance",
+                "ConfigureRestore",
                 "CreateOnDemandBackup",
                 "DeleteDatabase",
                 "DeleteInstance",
@@ -514,6 +559,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AddInstance":
                         this.ProcessRecord_AddInstance();
+                        break;
+                    case "ConfigureRestore":
+                        this.ProcessRecord_ConfigureRestore();
                         break;
                     case "CreateOnDemandBackup":
                         this.ProcessRecord_CreateOnDemandBackup();
@@ -562,6 +610,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddInstance";
             // Create new graphql operation addDb2Instance
             InitMutationAddDb2Instance();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // configureDb2Restore.
+        internal void ProcessRecord_ConfigureRestore()
+        {
+            this._logger.name += " -ConfigureRestore";
+            // Create new graphql operation configureDb2Restore
+            InitMutationConfigureDb2Restore();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -686,6 +743,42 @@ $query.Var.input = @{
 		password = $someString
 		# REQUIRED
 		username = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // configureDb2Restore(input: ConfigureDb2RestoreInput!): Db2ConfigureRestoreResponse!
+        internal void InitMutationConfigureDb2Restore()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ConfigureDb2RestoreInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationConfigureDb2Restore",
+                "($input: ConfigureDb2RestoreInput!)",
+                "Db2ConfigureRestoreResponse",
+                Mutation.ConfigureDb2Restore_ObjectFieldSpec,
+                Mutation.ConfigureDb2RestoreFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		expiryTimestamp = $someDateTime
+		# REQUIRED
+		hostIdsToAdd = @(
+			$someString
+		)
+		# REQUIRED
+		hostIdsToRemove = @(
+			$someString
+		)
 	}
 }"
             );

@@ -9,3 +9,5 @@ Lists of entities and their Ransomware Monitoring enablement status.
   - Cloud Direct clusters on which Ransomware Monitoring can be enabled.
 - azureSubscriptions: list of AzureSubscriptionRansomwareInvestigationEnablements
   - The Azure subscriptions on which Ransomware Investigation can be enabled.
+- awsAccounts: list of AwsAccountRansomwareInvestigationEnablements
+  - The AWS accounts on which Ransomware Investigation can be enabled.
