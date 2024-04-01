@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 2
+    /// Create a new RscQuery object for any of the 4
     /// operations in the 'VMware' API domain:
-    /// CdpStateInfos, or IsManagementEnabled.
+    /// CdpStateInfos, IsManagementEnabled, MissedRecoverableRanges, or RecoverableRanges.
     /// </summary>
     /// <description>
     /// New-RscQueryVmware creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 2 operations
+    /// There are 4 operations
     /// in the 'VMware' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CdpStateInfos, or IsManagementEnabled.
+    /// one of: CdpStateInfos, IsManagementEnabled, MissedRecoverableRanges, or RecoverableRanges.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -133,6 +133,76 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the MissedRecoverableRanges operation
+    /// of the 'VMware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vmware
+    /// # API Operation: MissedRecoverableRanges
+    /// 
+    /// $query = New-RscQueryVmware -MissedRecoverableRanges
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VmwareRecoverableRangeListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RecoverableRanges operation
+    /// of the 'VMware' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vmware
+    /// # API Operation: RecoverableRanges
+    /// 
+    /// $query = New-RscQueryVmware -RecoverableRanges
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VmwareRecoverableRangeListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -151,6 +221,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "CdpStateInfos",
                 "IsManagementEnabled",
+                "MissedRecoverableRanges",
+                "RecoverableRanges",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -171,6 +243,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsManagementEnabled":
                         this.ProcessRecord_IsManagementEnabled();
+                        break;
+                    case "MissedRecoverableRanges":
+                        this.ProcessRecord_MissedRecoverableRanges();
+                        break;
+                    case "RecoverableRanges":
+                        this.ProcessRecord_RecoverableRanges();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -198,6 +276,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsManagementEnabled";
             // Create new graphql operation isVMwareManagementEnabled
             InitQueryIsVmwareManagementEnabled();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vmwareMissedRecoverableRanges.
+        internal void ProcessRecord_MissedRecoverableRanges()
+        {
+            this._logger.name += " -MissedRecoverableRanges";
+            // Create new graphql operation vmwareMissedRecoverableRanges
+            InitQueryVmwareMissedRecoverableRanges();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vmwareRecoverableRanges.
+        internal void ProcessRecord_RecoverableRanges()
+        {
+            this._logger.name += " -RecoverableRanges";
+            // Create new graphql operation vmwareRecoverableRanges
+            InitQueryVmwareRecoverableRanges();
         }
 
 
@@ -238,6 +334,60 @@ $query.Var.ids = @(
                 Query.IsVmwareManagementEnabled_ObjectFieldSpec,
                 Query.IsVmwareManagementEnabledFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vmwareMissedRecoverableRanges(input: VmwareMissedRecoverableRangesInput!): VmwareRecoverableRangeListResponse!
+        internal void InitQueryVmwareMissedRecoverableRanges()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VmwareMissedRecoverableRangesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVmwareMissedRecoverableRanges",
+                "($input: VmwareMissedRecoverableRangesInput!)",
+                "VmwareRecoverableRangeListResponse",
+                Query.VmwareMissedRecoverableRanges_ObjectFieldSpec,
+                Query.VmwareMissedRecoverableRangesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vmwareRecoverableRanges(input: VmwareRecoverableRangesInput!): VmwareRecoverableRangeListResponse!
+        internal void InitQueryVmwareRecoverableRanges()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VmwareRecoverableRangesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVmwareRecoverableRanges",
+                "($input: VmwareRecoverableRangesInput!)",
+                "VmwareRecoverableRangeListResponse",
+                Query.VmwareRecoverableRanges_ObjectFieldSpec,
+                Query.VmwareRecoverableRangesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 

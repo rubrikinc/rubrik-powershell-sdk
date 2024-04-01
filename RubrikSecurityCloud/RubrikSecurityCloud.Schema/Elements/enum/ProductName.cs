@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KUBERNETES")]
         KUBERNETES,
 
+        [EnumMember(Value = "NAS_CLOUDDIRECT")]
+        NAS_CLOUDDIRECT,
+
         [EnumMember(Value = "NOSQL")]
         NOSQL,
 

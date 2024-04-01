@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 3
+    /// Create a new RscQuery object for any of the 4
     /// operations in the 'RCV' API domain:
-    /// CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
+    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationRcv creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 3 operations
+    /// There are 4 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
+    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationRcv -CreateLocationsFromTemplate).Info().
+    /// (New-RscMutationRcv -ApprovePrivateEndpoint).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationRcv -CreateLocationsFromTemplate).Info().
+    /// (New-RscMutationRcv -ApprovePrivateEndpoint).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the ApprovePrivateEndpoint operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: ApprovePrivateEndpoint
+    /// 
+    /// $query = New-RscMutationRcv -ApprovePrivateEndpoint
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	privateEndpointId = $someString
+    /// 	# REQUIRED
+    /// 	requestMessage = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ApproveRcvPrivateEndpointReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CreateLocationsFromTemplate operation
@@ -227,6 +262,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "ApprovePrivateEndpoint",
                 "CreateLocationsFromTemplate",
                 "CreatePrivateEndpointApprovalRequest",
                 "UpdateTarget",
@@ -245,6 +281,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "ApprovePrivateEndpoint":
+                        this.ProcessRecord_ApprovePrivateEndpoint();
+                        break;
                     case "CreateLocationsFromTemplate":
                         this.ProcessRecord_CreateLocationsFromTemplate();
                         break;
@@ -262,6 +301,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // approveRcvPrivateEndpoint.
+        internal void ProcessRecord_ApprovePrivateEndpoint()
+        {
+            this._logger.name += " -ApprovePrivateEndpoint";
+            // Create new graphql operation approveRcvPrivateEndpoint
+            InitMutationApproveRcvPrivateEndpoint();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -291,6 +339,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateRcvTarget();
         }
 
+
+        // Create new GraphQL Mutation:
+        // approveRcvPrivateEndpoint(input: ApproveRcvPrivateEndpointInput!): ApproveRcvPrivateEndpointReply!
+        internal void InitMutationApproveRcvPrivateEndpoint()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ApproveRcvPrivateEndpointInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationApproveRcvPrivateEndpoint",
+                "($input: ApproveRcvPrivateEndpointInput!)",
+                "ApproveRcvPrivateEndpointReply",
+                Mutation.ApproveRcvPrivateEndpoint_ObjectFieldSpec,
+                Mutation.ApproveRcvPrivateEndpointFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	privateEndpointId = $someString
+	# REQUIRED
+	requestMessage = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // createRcvLocationsFromTemplate(input: CreateRcvLocationsFromTemplateInput!): [Target!]!

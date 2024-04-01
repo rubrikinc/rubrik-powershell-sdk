@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_SID")]
         ACTIVE_DIRECTORY_DOMAIN_SID,
 
+        [EnumMember(Value = "ANCESTOR_ID")]
+        ANCESTOR_ID,
+
         [EnumMember(Value = "AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS")]
         AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS,
 
@@ -234,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOMAIN_CONTROLLER_CONNECTION_STATUS")]
         DOMAIN_CONTROLLER_CONNECTION_STATUS,
 
+        [EnumMember(Value = "DOMAIN_CONTROLLER_DOMAIN_SID")]
+        DOMAIN_CONTROLLER_DOMAIN_SID,
+
         [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
         DOMAIN_CONTROLLER_FSMO_ROLE,
 
@@ -362,6 +368,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_NATIVE_REGION")]
         GCP_NATIVE_REGION,
+
+        [EnumMember(Value = "GCP_REGION")]
+        GCP_REGION,
 
         [EnumMember(Value = "GUEST_OS_TYPE_FOR_FILE_RESTORE")]
         GUEST_OS_TYPE_FOR_FILE_RESTORE,
@@ -645,6 +654,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAASAPPS_NATURAL_ID")]
         SAASAPPS_NATURAL_ID,
 
+        [EnumMember(Value = "SALESFORCE_NAME_OR_LABEL")]
+        SALESFORCE_NAME_OR_LABEL,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
+        SALESFORCE_OBJECT_TYPE,
+
         [EnumMember(Value = "SAP_HANA_DATABASE_CDM_ID")]
         SAP_HANA_DATABASE_CDM_ID,
 
@@ -665,6 +680,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VCD_VAPP_TYPE")]
         VCD_VAPP_TYPE,
+
+        [EnumMember(Value = "VMWARE_VCD_HOSTNAME")]
+        VMWARE_VCD_HOSTNAME,
 
         [EnumMember(Value = "VMWARE_VM_TEMPLATE_TYPE")]
         VMWARE_VM_TEMPLATE_TYPE,

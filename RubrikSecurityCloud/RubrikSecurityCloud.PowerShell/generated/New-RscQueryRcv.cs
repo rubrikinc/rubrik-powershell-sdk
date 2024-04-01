@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 2
+    /// Create a new RscQuery object for any of the 3
     /// operations in the 'RCV' API domain:
-    /// AccountEntitlement, or AccountEntitlements.
+    /// AccountEntitlement, AccountEntitlements, or PrivateEndpointConnections.
     /// </summary>
     /// <description>
     /// New-RscQueryRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 2 operations
+    /// There are 3 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AccountEntitlement, or AccountEntitlements.
+    /// one of: AccountEntitlement, AccountEntitlements, or PrivateEndpointConnections.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -130,6 +130,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the PrivateEndpointConnections operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: PrivateEndpointConnections
+    /// 
+    /// $query = New-RscQueryRcv -PrivateEndpointConnections
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;DetailedPrivateEndpointConnection&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -148,6 +176,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AccountEntitlement",
                 "AccountEntitlements",
+                "PrivateEndpointConnections",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -168,6 +197,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AccountEntitlements":
                         this.ProcessRecord_AccountEntitlements();
+                        break;
+                    case "PrivateEndpointConnections":
+                        this.ProcessRecord_PrivateEndpointConnections();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -195,6 +227,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AccountEntitlements";
             // Create new graphql operation allRcvAccountEntitlements
             InitQueryAllRcvAccountEntitlements();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allRcvPrivateEndpointConnections.
+        internal void ProcessRecord_PrivateEndpointConnections()
+        {
+            this._logger.name += " -PrivateEndpointConnections";
+            // Create new graphql operation allRcvPrivateEndpointConnections
+            InitQueryAllRcvPrivateEndpointConnections();
         }
 
 
@@ -231,6 +272,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.AllRcvAccountEntitlements_ObjectFieldSpec,
                 Query.AllRcvAccountEntitlementsFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allRcvPrivateEndpointConnections(input: UUID!): [DetailedPrivateEndpointConnection!]!
+        internal void InitQueryAllRcvPrivateEndpointConnections()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllRcvPrivateEndpointConnections",
+                "($input: UUID!)",
+                "List<DetailedPrivateEndpointConnection>",
+                Query.AllRcvPrivateEndpointConnections_ObjectFieldSpec,
+                Query.AllRcvPrivateEndpointConnectionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = $someString"
             );
         }
 

@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME")]
         NAME,
 
+        [EnumMember(Value = "ORG_NAME")]
+        ORG_NAME,
+
         [EnumMember(Value = "STATUS")]
         STATUS
 

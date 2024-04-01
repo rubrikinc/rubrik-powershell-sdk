@@ -104,7 +104,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		accessTokenUrl = $someString
     /// 	}
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	isRefresh = $someBoolean
     /// }
     /// 
@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	state = $someString
     /// 	# REQUIRED
     /// 	fqdn = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	isRefresh = $someBoolean
     /// }
     /// 
@@ -174,6 +174,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	fqdn = $someString
+    /// 	# OPTIONAL
+    /// 	isRefresh = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -343,7 +345,7 @@ $query.Var.input = @{
 		# OPTIONAL
 		accessTokenUrl = $someString
 	}
-	# REQUIRED
+	# OPTIONAL
 	isRefresh = $someBoolean
 }"
             );
@@ -372,7 +374,7 @@ $query.Var.input = @{
 	state = $someString
 	# REQUIRED
 	fqdn = $someString
-	# REQUIRED
+	# OPTIONAL
 	isRefresh = $someBoolean
 }"
             );
@@ -397,6 +399,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	fqdn = $someString
+	# OPTIONAL
+	isRefresh = $someBoolean
 }"
             );
         }

@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgNetworkId")]
         public System.String? OrgNetworkId { get; set; }
 
+        //      C# -> HostRegisterOsType? OsType
+        // GraphQL -> osType: HostRegisterOsType (enum)
+        [JsonProperty("osType")]
+        public HostRegisterOsType? OsType { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [Required]

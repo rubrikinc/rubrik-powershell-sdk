@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isHealthy")]
         public System.Boolean? IsHealthy { get; set; }
 
+        //      C# -> System.Boolean? IsTprEnabled
+        // GraphQL -> isTprEnabled: Boolean (scalar)
+        [JsonProperty("isTprEnabled")]
+        public System.Boolean? IsTprEnabled { get; set; }
+
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         [JsonProperty("lastConnectionTime")]
@@ -236,6 +241,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("globalManagerConnectivityStatus")]
         public GlobalManagerConnectivity? GlobalManagerConnectivityStatus { get; set; }
 
+        //      C# -> IpmiInfo? IpmiInfo
+        // GraphQL -> ipmiInfo: IpmiInfo (type)
+        [JsonProperty("ipmiInfo")]
+        public IpmiInfo? IpmiInfo { get; set; }
+
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         [JsonProperty("lambdaConfig")]
@@ -291,6 +301,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemStatusAffectedNodes")]
         public List<ClusterNode>? SystemStatusAffectedNodes { get; set; }
 
+        //      C# -> WebServerCertificate? WebServerCertificate
+        // GraphQL -> webServerCertificate: WebServerCertificate (type)
+        [JsonProperty("webServerCertificate")]
+        public WebServerCertificate? WebServerCertificate { get; set; }
+
 
         #endregion
 
@@ -319,6 +334,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
+        System.Boolean? IsTprEnabled = null,
         DateTime? LastConnectionTime = null,
         System.String? Name = null,
         System.Int32? NoSqlWorkloadCount = null,
@@ -344,6 +360,7 @@ namespace RubrikSecurityCloud.Types
         PreviewerClusterConfig? DatagovPreviewerConfig = null,
         GeoLocation? GeoLocation = null,
         GlobalManagerConnectivity? GlobalManagerConnectivityStatus = null,
+        IpmiInfo? IpmiInfo = null,
         GetLambdaConfigReply? LambdaConfig = null,
         LambdaFeatureHistory? LambdaFeatureHistory = null,
         JobsReply? MetadataPullScheduler = null,
@@ -354,7 +371,8 @@ namespace RubrikSecurityCloud.Types
         RubrikSyncStatus? RubrikSyncStatus = null,
         SnappableConnection? SnappableConnection = null,
         ClusterState? State = null,
-        List<ClusterNode>? SystemStatusAffectedNodes = null
+        List<ClusterNode>? SystemStatusAffectedNodes = null,
+        WebServerCertificate? WebServerCertificate = null
     ) 
     {
         if ( EosStatus != null ) {
@@ -410,6 +428,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
+        }
+        if ( IsTprEnabled != null ) {
+            this.IsTprEnabled = IsTprEnabled;
         }
         if ( LastConnectionTime != null ) {
             this.LastConnectionTime = LastConnectionTime;
@@ -486,6 +507,9 @@ namespace RubrikSecurityCloud.Types
         if ( GlobalManagerConnectivityStatus != null ) {
             this.GlobalManagerConnectivityStatus = GlobalManagerConnectivityStatus;
         }
+        if ( IpmiInfo != null ) {
+            this.IpmiInfo = IpmiInfo;
+        }
         if ( LambdaConfig != null ) {
             this.LambdaConfig = LambdaConfig;
         }
@@ -519,6 +543,9 @@ namespace RubrikSecurityCloud.Types
         if ( SystemStatusAffectedNodes != null ) {
             this.SystemStatusAffectedNodes = SystemStatusAffectedNodes;
         }
+        if ( WebServerCertificate != null ) {
+            this.WebServerCertificate = WebServerCertificate;
+        }
         return this;
     }
 
@@ -528,6 +555,9 @@ namespace RubrikSecurityCloud.Types
     public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
         conf=(conf==null)?new FieldSpecConfig():conf;
+        if (this.IsComposite() && ! conf.IgnoreComposition) {
+            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
+        }
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterEosStatus? EosStatus
@@ -690,6 +720,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHealthy\n" ;
             } else {
                 s += ind + "isHealthy\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTprEnabled
+        // GraphQL -> isTprEnabled: Boolean (scalar)
+        if (this.IsTprEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTprEnabled\n" ;
+            } else {
+                s += ind + "isTprEnabled\n" ;
             }
         }
         //      C# -> DateTime? LastConnectionTime
@@ -965,6 +1004,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> IpmiInfo? IpmiInfo
+        // GraphQL -> ipmiInfo: IpmiInfo (type)
+        if (this.IpmiInfo != null) {
+            var fspec = this.IpmiInfo.AsFieldSpec(conf.Child("ipmiInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ipmiInfo {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         if (this.LambdaConfig != null) {
@@ -1094,6 +1145,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "systemStatusAffectedNodes {\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> WebServerCertificate? WebServerCertificate
+        // GraphQL -> webServerCertificate: WebServerCertificate (type)
+        if (this.WebServerCertificate != null) {
+            var fspec = this.WebServerCertificate.AsFieldSpec(conf.Child("webServerCertificate"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "webServerCertificate {\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1409,6 +1472,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHealthy != null && ec.Excludes("isHealthy",true))
         {
             this.IsHealthy = null;
+        }
+        //      C# -> System.Boolean? IsTprEnabled
+        // GraphQL -> isTprEnabled: Boolean (scalar)
+        if (ec.Includes("isTprEnabled",true))
+        {
+            if(this.IsTprEnabled == null) {
+
+                this.IsTprEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTprEnabled != null && ec.Excludes("isTprEnabled",true))
+        {
+            this.IsTprEnabled = null;
         }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
@@ -1867,6 +1947,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.GlobalManagerConnectivityStatus = null;
         }
+        //      C# -> IpmiInfo? IpmiInfo
+        // GraphQL -> ipmiInfo: IpmiInfo (type)
+        if (ec.Includes("ipmiInfo",false))
+        {
+            if(this.IpmiInfo == null) {
+
+                this.IpmiInfo = new IpmiInfo();
+                this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+
+            } else {
+
+                this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+
+            }
+        }
+        else if (this.IpmiInfo != null && ec.Excludes("ipmiInfo",false))
+        {
+            this.IpmiInfo = null;
+        }
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         if (ec.Includes("lambdaConfig",false))
@@ -2076,6 +2175,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.SystemStatusAffectedNodes = null;
         }
+        //      C# -> WebServerCertificate? WebServerCertificate
+        // GraphQL -> webServerCertificate: WebServerCertificate (type)
+        if (ec.Includes("webServerCertificate",false))
+        {
+            if(this.WebServerCertificate == null) {
+
+                this.WebServerCertificate = new WebServerCertificate();
+                this.WebServerCertificate.ApplyExploratoryFieldSpec(ec.NewChild("webServerCertificate"));
+
+            } else {
+
+                this.WebServerCertificate.ApplyExploratoryFieldSpec(ec.NewChild("webServerCertificate"));
+
+            }
+        }
+        else if (this.WebServerCertificate != null && ec.Excludes("webServerCertificate",false))
+        {
+            this.WebServerCertificate = null;
+        }
     }
 
 
@@ -2088,23 +2206,27 @@ namespace RubrikSecurityCloud.Types
     public static class ListClusterExtensions
     {
         // This SDK uses the convention of defining field specs as
-        // the collection of fields that are not null in an object.
-        // When creating a field spec from an (non-list) object,
-        // all fields (including nested objects) that are not null are
-        // included in the fieldspec.
-        // When creating a fieldspec from a list of objects,
-        // we arbitrarily choose to use the fieldspec of the first item
-        // in the list. This is not a perfect solution, but it is a
-        // reasonable one.
-        // When creating a fieldspec from a list of interfaces,
-        // we include the fieldspec of each item in the list
-        // as an inline fragment (... on)
+        // the collection of properties that are not null in an object.
+        // When creating a field spec for an object, we look at whether
+        // the object is a list or not, and whether it implements an interface
+        // or not. The following are the possible combinations:
+        // S or L: single object or list object
+        // SD or II: self-defined or interface-implementing
+        // | S/L | SD/II | How fied spec is created
+        // |-----|-------|-------------------------
+        // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
+        // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
+        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
+        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        //
+        // Note that L-II means that each item in the list is II (not the list itself).
+        // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
             this List<Cluster> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
-            return list[0].AsFieldSpec(conf.Child());
+            return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
         public static List<string> SelectedFields(this List<Cluster> list)

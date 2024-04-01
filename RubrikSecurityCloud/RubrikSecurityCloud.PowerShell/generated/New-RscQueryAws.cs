@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 28
+    /// Create a new RscQuery object for any of the 29
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 28 operations
+    /// There are 29 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -947,6 +947,137 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ValidateCreateClusterInput operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: ValidateCreateClusterInput
+    /// 
+    /// $query = New-RscQueryAws -ValidateCreateClusterInput
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	isEsType = $someBoolean
+    /// 	# OPTIONAL
+    /// 	keepClusterOnFailure = $someBoolean
+    /// 	# OPTIONAL
+    /// 	region = $someString
+    /// 	# OPTIONAL
+    /// 	disableApiTermination = $someBoolean
+    /// 	# OPTIONAL
+    /// 	clusterConfig = @{
+    /// 		# OPTIONAL
+    /// 		userEmail = $someString
+    /// 		# OPTIONAL
+    /// 		adminPassword = $someString
+    /// 		# OPTIONAL
+    /// 		clusterName = $someString
+    /// 		# OPTIONAL
+    /// 		numNodes = $someInt
+    /// 		# OPTIONAL
+    /// 		dnsSearchDomains = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		dnsNameServers = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		ntpServers = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		azureEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			storageAccount = $someString
+    /// 			# OPTIONAL
+    /// 			resourceGroup = $someString
+    /// 			# OPTIONAL
+    /// 			storageSecret = $someString
+    /// 			# OPTIONAL
+    /// 			containerName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateContainer = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableImmutability = $someBoolean
+    /// 			# OPTIONAL
+    /// 			managedIdentity = @{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				clientId = $someString
+    /// 				# OPTIONAL
+    /// 				resourceGroup = $someString
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		awsEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateBucket = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableObjectLock = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableImmutability = $someBoolean
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vmConfig = @{
+    /// 		# OPTIONAL
+    /// 		cdmVersion = $someString
+    /// 		# OPTIONAL
+    /// 		nodeSizeGb = $someInt
+    /// 		# OPTIONAL
+    /// 		subnet = $someString
+    /// 		# OPTIONAL
+    /// 		tags = $someString
+    /// 		# OPTIONAL
+    /// 		imageId = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfileName = $someString
+    /// 		# OPTIONAL
+    /// 		cdmProduct = $someString
+    /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		securityGroups = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		networkConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ValidationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Vpcs operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1046,6 +1177,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "S3BucketsDetails",
                 "SupportedRdsDatabaseInstanceClasses",
                 "TrustPolicy",
+                "ValidateCreateClusterInput",
                 "Vpcs",
                 "VpcsByRegion",
                 IgnoreCase = true)]
@@ -1140,6 +1272,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "TrustPolicy":
                         this.ProcessRecord_TrustPolicy();
+                        break;
+                    case "ValidateCreateClusterInput":
+                        this.ProcessRecord_ValidateCreateClusterInput();
                         break;
                     case "Vpcs":
                         this.ProcessRecord_Vpcs();
@@ -1389,6 +1524,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -TrustPolicy";
             // Create new graphql operation awsTrustPolicy
             InitQueryAwsTrustPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // validateCreateAwsClusterInput.
+        internal void ProcessRecord_ValidateCreateClusterInput()
+        {
+            this._logger.name += " -ValidateCreateClusterInput";
+            // Create new graphql operation validateCreateAwsClusterInput
+            InitQueryValidateCreateAwsClusterInput();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2132,6 +2276,129 @@ $query.Var.input = @{
 			id = $someString
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // validateCreateAwsClusterInput(input: CreateAwsClusterInput!): ValidationReply!
+        internal void InitQueryValidateCreateAwsClusterInput()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateAwsClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryValidateCreateAwsClusterInput",
+                "($input: CreateAwsClusterInput!)",
+                "ValidationReply",
+                Query.ValidateCreateAwsClusterInput_ObjectFieldSpec,
+                Query.ValidateCreateAwsClusterInputFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	isEsType = $someBoolean
+	# OPTIONAL
+	keepClusterOnFailure = $someBoolean
+	# OPTIONAL
+	region = $someString
+	# OPTIONAL
+	disableApiTermination = $someBoolean
+	# OPTIONAL
+	clusterConfig = @{
+		# OPTIONAL
+		userEmail = $someString
+		# OPTIONAL
+		adminPassword = $someString
+		# OPTIONAL
+		clusterName = $someString
+		# OPTIONAL
+		numNodes = $someInt
+		# OPTIONAL
+		dnsSearchDomains = @(
+			$someString
+		)
+		# OPTIONAL
+		dnsNameServers = @(
+			$someString
+		)
+		# OPTIONAL
+		ntpServers = @(
+			$someString
+		)
+		# OPTIONAL
+		azureEsConfig = @{
+			# OPTIONAL
+			storageAccount = $someString
+			# OPTIONAL
+			resourceGroup = $someString
+			# OPTIONAL
+			storageSecret = $someString
+			# OPTIONAL
+			containerName = $someString
+			# OPTIONAL
+			shouldCreateContainer = $someBoolean
+			# OPTIONAL
+			enableImmutability = $someBoolean
+			# OPTIONAL
+			managedIdentity = @{
+				# OPTIONAL
+				name = $someString
+				# OPTIONAL
+				clientId = $someString
+				# OPTIONAL
+				resourceGroup = $someString
+			}
+		}
+		# OPTIONAL
+		awsEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			shouldCreateBucket = $someBoolean
+			# OPTIONAL
+			enableObjectLock = $someBoolean
+			# OPTIONAL
+			enableImmutability = $someBoolean
+		}
+	}
+	# OPTIONAL
+	vmConfig = @{
+		# OPTIONAL
+		cdmVersion = $someString
+		# OPTIONAL
+		nodeSizeGb = $someInt
+		# OPTIONAL
+		subnet = $someString
+		# OPTIONAL
+		tags = $someString
+		# OPTIONAL
+		imageId = $someString
+		# OPTIONAL
+		instanceProfileName = $someString
+		# OPTIONAL
+		cdmProduct = $someString
+		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		securityGroups = @(
+			$someString
+		)
+		# OPTIONAL
+		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+		# OPTIONAL
+		networkConfig = @(
+			@{
+				# OPTIONAL
+				availabilityZone = $someString
+				# OPTIONAL
+				subnet = $someString
+			}
+		)
+	}
 }"
             );
         }

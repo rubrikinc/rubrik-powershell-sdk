@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240304-17" ;
+        public static string GraphqlSchemaVersion = "v20240325-21" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -66,6 +66,7 @@ namespace RubrikSecurityCloud.Types
             HypervServerLogicalChildType,
             HypervTopLevelDescendantType,
             K8sClusterDescendant,
+            KubernetesClusterDescendant,
             ManagedVolumeDescendantType,
             ManagedVolumePhysicalChildType,
             MongoCollectionSetDescendantType,
@@ -282,6 +283,7 @@ namespace RubrikSecurityCloud.Types
             AppIdForType,
             ApplicationCloudAccountToExocomputeConfig,
             AppManifestInfo,
+            ApproveRcvPrivateEndpointReply,
             ArchivalGroupConnectionStatus,
             ArchivalLocationToClusterMapping,
             ArchivalLocationUpgradeInfo,
@@ -311,6 +313,7 @@ namespace RubrikSecurityCloud.Types
             AuthorizedPrincipalEdge,
             AutoEnablePolicyClusterConfigReply,
             AwsAccount,
+            AwsAccountRansomwareInvestigationEnablement,
             AwsAccountValidationResponse,
             AwsArtifactsToDelete,
             AwsAuthServerDetail,
@@ -607,6 +610,7 @@ namespace RubrikSecurityCloud.Types
             CertificateClusterInfo,
             CertificateClusterOperationError,
             CertificateConnection,
+            CertificateDetails,
             CertificateEdge,
             CertificateSummaryListResponse,
             CertificateUsageInfo,
@@ -748,6 +752,7 @@ namespace RubrikSecurityCloud.Types
             CrossAccountPairInfo,
             CrossAccountPairInfoConnection,
             CrossAccountPairInfoEdge,
+            CrossAccountReplicatedObjectInfo,
             CrossAccountSaType,
             Csr,
             CsrConnection,
@@ -771,6 +776,7 @@ namespace RubrikSecurityCloud.Types
             DayToDayModeStats,
             Db2AppMetadata,
             Db2Config,
+            Db2ConfigureRestoreResponse,
             Db2DataBackupFile,
             Db2Database,
             Db2DatabaseConnection,
@@ -808,6 +814,7 @@ namespace RubrikSecurityCloud.Types
             DeleteGlobalCertificateReply,
             DeleteManagedVolumeReply,
             DeleteStorageArraysReply,
+            DetailedPrivateEndpointConnection,
             DevicePathToVolumeSnapshotId,
             DevicePathToVolumeSnapshotIdMap,
             DhrcActiveRecommendation,
@@ -903,6 +910,8 @@ namespace RubrikSecurityCloud.Types
             FailoverClusterTopLevelDescendantTypeEdge,
             FailoverTable,
             Failure,
+            FailuresAndWarningsStats,
+            FailuresAndWarningsStatsReply,
             FeatureCdmVersionReply,
             FeatureDetail,
             FeatureListMinimumCdmVersionReply,
@@ -1081,6 +1090,7 @@ namespace RubrikSecurityCloud.Types
             HyperVclusterDescendantTypeEdge,
             HyperVclusterLogicalChildTypeConnection,
             HyperVclusterLogicalChildTypeEdge,
+            HypervConfigurationFileInfo,
             HypervHostSummary,
             HypervHostSummaryListResponse,
             HyperVliveMount,
@@ -1112,6 +1122,7 @@ namespace RubrikSecurityCloud.Types
             HypervVirtualMachineDetail,
             HyperVvirtualMachineEdge,
             HypervVirtualMachineMountSummary,
+            HypervVirtualMachineSnapshotFileDetails,
             HypervVirtualMachineSummary,
             HypervVirtualMachineUpdate,
             HypervVmAgentStatus,
@@ -1134,6 +1145,7 @@ namespace RubrikSecurityCloud.Types
             InventorySubHierarchyRoot,
             InvestigationCsvDownloadLinkReply,
             IpmiAccess,
+            IpmiInfo,
             IpRule,
             IsCloudNativeTagRuleNameUniqueReply,
             Issue,
@@ -1154,14 +1166,26 @@ namespace RubrikSecurityCloud.Types
             K8sClusterEdge,
             K8sClusterInfo,
             K8sClusterPortsInfo,
+            K8sClusterSummary,
             K8sNamespace,
             K8sNamespaceConnection,
             K8sNamespaceEdge,
+            K8sProtectionSetSummary,
             K8sRbsInfo,
             K8sSnapshotInfo,
+            K8sSnapshotSummary,
+            K8sSnapshotSummaryListResponse,
             KmsEncryptionKey,
             KmsSpec,
             KnowledgeBaseArticle,
+            KubernetesCluster,
+            KubernetesClusterConnection,
+            KubernetesClusterDescendantConnection,
+            KubernetesClusterDescendantEdge,
+            KubernetesClusterEdge,
+            KubernetesProtectionSet,
+            KubernetesProtectionSetConnection,
+            KubernetesProtectionSetEdge,
             Label,
             LabelRule,
             LambdaFeatureHistory,
@@ -1800,6 +1824,7 @@ namespace RubrikSecurityCloud.Types
             RemovedNodeDetail,
             RemoveNodeDetailsReply,
             RemoveVlansReply,
+            ReplicatedObjectInfo,
             ReplicatedSnapshotInfo,
             ReplicationCluster,
             ReplicationNetworkThrottleBypassReply,
@@ -2203,6 +2228,7 @@ namespace RubrikSecurityCloud.Types
             ValidateCloudNativeFileRecoveryFeasibilityReply,
             ValidateOracleAcoFileReply,
             ValidateOrgNameReply,
+            ValidationReply,
             ValidReplicationSource,
             ValidReplicationSourceConnection,
             ValidReplicationSourceEdge,
@@ -2275,6 +2301,7 @@ namespace RubrikSecurityCloud.Types
             VmwareNetworkConfig,
             VmwareNetworkDeviceInfo,
             VmwareRecoverableRange,
+            VmwareRecoverableRangeListResponse,
             VmwareSnapshotVmConfig,
             VmwareVmConfig,
             VmwareVmMountSummaryV1,
@@ -2374,6 +2401,7 @@ namespace RubrikSecurityCloud.Types
             Webhook,
             WebhookConnection,
             WebhookEdge,
+            WebServerCertificate,
             WeeklyRecurrencePattern,
             WeeklySnapshotSchedule,
             WhitelistedAnalyzer,
@@ -2393,6 +2421,7 @@ namespace RubrikSecurityCloud.Types
             WorkloadRecoveryInfo,
             WorkloadRegion,
             WorkloadTypeToBackupSetupSpecs,
+            WorkloadTypeToEventCount,
             YaraMatchDetail,
             YearlySnapshotSchedule,
             ZeusDatabaseIds,
@@ -2438,6 +2467,8 @@ namespace RubrikSecurityCloud.Types
             AddDb2InstanceInput,
             AddGlobalCertificateInput,
             AddInventoryWorkloadsInput,
+            AddK8sClusterInput,
+            AddK8sProtectionSetInput,
             AddManagedVolumeInfo,
             AddManagedVolumeInput,
             AddMongoSourceInput,
@@ -2464,6 +2495,7 @@ namespace RubrikSecurityCloud.Types
             AnomalyFalsePositiveReport,
             AnomalyResultFilterInput,
             AppFilter,
+            ApproveRcvPrivateEndpointInput,
             AppSortByParam,
             ArchivalLocationInfo,
             ArchivalLocationToClusterMappingInput,
@@ -2711,6 +2743,7 @@ namespace RubrikSecurityCloud.Types
             CompleteAzureAdAppSetupInput,
             CompleteAzureAdAppUpdateInput,
             CompleteAzureCloudAccountOauthInput,
+            ConfigureDb2RestoreInput,
             ConfigureManagedVolumeLogExportInfo,
             ConfigureSapHanaRestoreInput,
             ContactFolderInfo,
@@ -2747,6 +2780,7 @@ namespace RubrikSecurityCloud.Types
             CreateCustomReportInput,
             CreateDomainControllerSnapshotInput,
             CreateDownloadSnapshotForVolumeGroupInput,
+            CreateEventDigestBatchInput,
             CreateExchangeSnapshotMountInput,
             CreateExportOracleDbInput,
             CreateFailoverClusterAppInput,
@@ -2763,7 +2797,10 @@ namespace RubrikSecurityCloud.Types
             CreateK8sAgentManifestInput,
             CreateK8sClusterInput,
             CreateK8sNamespaceSnapshotsInput,
+            CreateK8sProtectionSetSnapshotInput,
+            CreateK8sRestoreJobInput,
             CreateManualTargetMappingInput,
+            CreateMountHypervVirtualDisksInput,
             CreateMssqlLiveMountInput,
             CreateMssqlLogShippingConfigurationInput,
             CreateNewVappParamsInput,
@@ -2812,6 +2849,7 @@ namespace RubrikSecurityCloud.Types
             DataThreatAnalyticsEnablementEntityInfo,
             DayOfWeekOptInput,
             Db2ConfigInput,
+            Db2ConfigureRestoreRequestInput,
             Db2DatabaseConfigInput,
             Db2DatabaseInfo,
             Db2DownloadRecoverableRangeRequestInput,
@@ -2849,6 +2887,8 @@ namespace RubrikSecurityCloud.Types
             DeleteHypervVirtualMachineSnapshotMountInput,
             DeleteIntegrationInput,
             DeleteIntegrationsInput,
+            DeleteK8sClusterInput,
+            DeleteK8sProtectionSetInput,
             DeleteLogShippingInput,
             DeleteManagedVolumeInput,
             DeleteManagedVolumeSnapshotExportInput,
@@ -2908,6 +2948,7 @@ namespace RubrikSecurityCloud.Types
             DownloadHypervSnapshotFromLocationInput,
             DownloadHypervVirtualMachineSnapshotFilesInput,
             DownloadHypervVirtualMachineSnapshotInput,
+            DownloadHypervVirtualMachineVmLevelFilesInput,
             DownloadManagedVolumeFilesInput,
             DownloadManagedVolumeFromLocationInput,
             DownloadManagedVolumeRequestInput,
@@ -2935,6 +2976,7 @@ namespace RubrikSecurityCloud.Types
             DownloadVsphereVirtualMachineFilesInput,
             DriveRestoreConfig,
             EffectiveSlaFilter,
+            EksConfigInput,
             EmailAddressFilter,
             EnableAutomaticFmdUploadInput,
             EnableDisableAppConsistencyInput,
@@ -2948,6 +2990,7 @@ namespace RubrikSecurityCloud.Types
             EndManagedVolumeSnapshotInput,
             EndSnapshotManagedVolumeRequestInput,
             EventDigestConfig,
+            EventDigestInput,
             EventInfo,
             ExchangeBackupJobConfigInput,
             ExchangeDagUpdateConfigInput,
@@ -2968,6 +3011,7 @@ namespace RubrikSecurityCloud.Types
             ExpireSnoozedDirectoriesInput,
             ExportHypervVirtualMachineInput,
             ExportK8sNamespaceInput,
+            ExportK8sProtectionSetSnapshotInput,
             ExportManagedVolumeSnapshotInfo,
             ExportManagedVolumeSnapshotInput,
             ExportMssqlDatabaseInput,
@@ -3107,6 +3151,7 @@ namespace RubrikSecurityCloud.Types
             GetSyslogExportRulesInput,
             GetTunnelStatusInput,
             GetVlanInput,
+            GetVmLevelFilesFromSnapshotInput,
             GetVmwareHostInput,
             GlobalCertificatesQueryInput,
             GlobalFileSearchInput,
@@ -3143,6 +3188,7 @@ namespace RubrikSecurityCloud.Types
             HypervBatchOnDemandBackupJobConfigInput,
             HypervDeleteAllSnapshotsInput,
             HypervDownloadFilesJobConfigInput,
+            HypervDownloadVmLevelFilesConfigInput,
             HypervExportSnapshotJobConfigForBatchInput,
             HypervExportSnapshotJobConfigInput,
             HypervInplaceExportJobConfigInput,
@@ -3150,6 +3196,7 @@ namespace RubrikSecurityCloud.Types
             HypervInstantRecoveryJobConfigInput,
             HypervLiveMountFilterInput,
             HypervLiveMountSortByInput,
+            HypervMountDiskJobConfigInput,
             HypervMountSnapshotConfigForBatchInput,
             HypervMountSnapshotInfo,
             HypervMountSnapshotJobConfigInput,
@@ -3185,7 +3232,13 @@ namespace RubrikSecurityCloud.Types
             JobInfoRequest,
             JobInfoRequestDetails,
             JoinSmbDomainInput,
+            K8sClusterAddInput,
+            K8sClusterUpdateConfigInput,
+            K8sExportParametersInput,
             K8sNamespaceSnapshot,
+            K8sProtectionSetAddInput,
+            K8sProtectionSetUpdateConfigInput,
+            K8sRestoreParametersInput,
             KmsCryptoKey,
             KmsSpecInput,
             LabelFilterParams,
@@ -3245,6 +3298,7 @@ namespace RubrikSecurityCloud.Types
             MigrateNutanixMountV1Input,
             MinuteSnapshotScheduleInput,
             ModifyActiveDirectoryLiveMountInput,
+            ModifyEventDigestBatchInput,
             ModifyIpmiInput,
             ModifyMosaicSourceInput,
             ModifyMosaicStoreInput,
@@ -3447,6 +3501,7 @@ namespace RubrikSecurityCloud.Types
             QueryDatastoreFreespaceThresholdInput,
             QueryGuestCredentialInput,
             QueryHypervHostInput,
+            QueryK8sSnapshotInput,
             QueryLogReportInput,
             QueryLogShippingConfigurationsV2Input,
             QueryMountInfo,
@@ -3469,6 +3524,7 @@ namespace RubrikSecurityCloud.Types
             RefreshHypervScvmmInput,
             RefreshHypervServerInput,
             RefreshK8sClusterInput,
+            RefreshK8sV2ClusterInput,
             RefreshNasSystemsInput,
             RefreshNutanixClusterInput,
             RefreshNutanixPrismCentralInput,
@@ -3766,6 +3822,8 @@ namespace RubrikSecurityCloud.Types
             UpdateInsightStateInput,
             UpdateIntegrationInput,
             UpdateIntegrationsInput,
+            UpdateK8sClusterInput,
+            UpdateK8sProtectionSetInput,
             UpdateLockoutConfigInput,
             UpdateManagedIdentitiesInput,
             UpdateManagedVolumeInput,
@@ -3847,6 +3905,7 @@ namespace RubrikSecurityCloud.Types
             VcenterConnectionConfigInput,
             VcenterDiagnosticRefreshInfo,
             VcenterPreAddConfigInput,
+            VcenterUpdateConfigInput,
             VersionInput,
             VirtualMachineFilesInput,
             VirtualMachineScriptDetailInput,
@@ -3861,8 +3920,10 @@ namespace RubrikSecurityCloud.Types
             VmwareDatastoreFreespaceThresholdInput,
             VmwareDeviceKeywithNetworkNameV2Input,
             VmwareDownloadSnapshotFromLocationInput,
+            VmwareMissedRecoverableRangesInput,
             VmwareNetworkDeviceInfoV2Input,
             VmwareNetworkInfoV2Input,
+            VmwareRecoverableRangesInput,
             VmwareSnapshotDownloadRequestInput,
             VmwareStorageIdWithDeviceKeyV2Input,
             VmwareVmConfigInput,
@@ -4053,6 +4114,7 @@ namespace RubrikSecurityCloud.Types
             allQuarantinedDetailsForSnapshots,
             allQuarantinedDetailsForWorkload,
             allRcvAccountEntitlements,
+            allRcvPrivateEndpointConnections,
             allResourceGroupsFromAzure,
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
@@ -4271,6 +4333,7 @@ namespace RubrikSecurityCloud.Types
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
+            failuresAndWarningsStats,
             federatedLoginStatus,
             filesetRequestStatus,
             filesetSnapshot,
@@ -4333,6 +4396,7 @@ namespace RubrikSecurityCloud.Types
             hypervTopLevelDescendants,
             hypervVirtualMachine,
             hypervVirtualMachineAsyncRequestStatus,
+            hypervVirtualMachineLevelFileInfo,
             hypervVirtualMachines,
             hypervVmDetail,
             installedVersionList,
@@ -4364,8 +4428,13 @@ namespace RubrikSecurityCloud.Types
             k8sClusters,
             k8sNamespace,
             k8sNamespaces,
+            k8sProtectionSetSnapshots,
             k8sSnapshotInfo,
             knowledgeBaseArticle,
+            kubernetesCluster,
+            kubernetesClusters,
+            kubernetesProtectionSet,
+            kubernetesProtectionSets,
             lambdaSettings,
             ldapAuthorizedPrincipalConnection,
             ldapIntegrationConnection,
@@ -4653,6 +4722,8 @@ namespace RubrikSecurityCloud.Types
             validateAzureNativeSqlDatabaseDbNameForExport,
             validateAzureNativeSqlManagedInstanceDbNameForExport,
             validateClusterLicenseCapacity,
+            validateCreateAwsClusterInput,
+            validateCreateAzureClusterInput,
             validateOrgName,
             vappSnapshotInstantRecoveryOptions,
             vappTemplateSnapshotExportOptions,
@@ -4665,6 +4736,8 @@ namespace RubrikSecurityCloud.Types
             vCenterNumProxiesNeeded,
             vCenterPreAddInfo,
             verifySlaWithReplicationToCluster,
+            vmwareMissedRecoverableRanges,
+            vmwareRecoverableRanges,
             volumeGroupMounts,
             vSphereComputeCluster,
             vSphereComputeClusters,
@@ -4724,6 +4797,8 @@ namespace RubrikSecurityCloud.Types
             addDb2Instance,
             addGlobalCertificate,
             addInventoryWorkloads,
+            addK8sCluster,
+            addK8sProtectionSet,
             addManagedVolume,
             addMongoSource,
             addMosaicStore,
@@ -4736,6 +4811,7 @@ namespace RubrikSecurityCloud.Types
             addSyslogExportRule,
             addVlan,
             addVmAppConsistentSpecs,
+            approveRcvPrivateEndpoint,
             archiveCrawl,
             archiveK8sCluster,
             assignMssqlSlaDomainProperties,
@@ -4814,6 +4890,7 @@ namespace RubrikSecurityCloud.Types
             completeAzureAdAppSetup,
             completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
+            configureDb2Restore,
             configureSapHanaRestore,
             createActiveDirectoryLiveMount,
             createActiveDirectoryUnmount,
@@ -4843,6 +4920,7 @@ namespace RubrikSecurityCloud.Types
             createCustomReport,
             createDomainControllerSnapshot,
             createDownloadSnapshotForVolumeGroup,
+            createEventDigestBatch,
             createExchangeMount,
             createFailoverCluster,
             createFailoverClusterApp,
@@ -4852,12 +4930,14 @@ namespace RubrikSecurityCloud.Types
             createGlacierReaderTarget,
             createGlobalSla,
             createGuestCredential,
+            createHypervVirtualMachineSnapshotDiskMount,
             createHypervVirtualMachineSnapshotMount,
             createIntegration,
             createIntegrations,
             createK8sAgentManifest,
             createK8sCluster,
             createK8sNamespaceSnapshots,
+            createK8sProtectionSetSnapshot,
             createManualTargetMapping,
             createMongodbSource,
             createMssqlLiveMount,
@@ -4931,6 +5011,8 @@ namespace RubrikSecurityCloud.Types
             deleteHypervVirtualMachineSnapshotMount,
             deleteIntegration,
             deleteIntegrations,
+            deleteK8sCluster,
+            deleteK8sProtectionSet,
             deleteLdapPrincipals,
             deleteLogShipping,
             deleteManagedVolume,
@@ -4984,6 +5066,7 @@ namespace RubrikSecurityCloud.Types
             downloadFilesetSnapshotFromLocation,
             downloadFilesNutanixSnapshot,
             downloadHypervSnapshotFromLocation,
+            downloadHypervVirtualMachineLevelFiles,
             downloadHypervVirtualMachineSnapshot,
             downloadHypervVirtualMachineSnapshotFiles,
             downloadManagedVolumeFiles,
@@ -5026,6 +5109,7 @@ namespace RubrikSecurityCloud.Types
             expireSnoozedDirectories,
             exportHypervVirtualMachine,
             exportK8sNamespace,
+            exportK8sProtectionSetSnapshot,
             exportManagedVolumeSnapshot,
             exportMssqlDatabase,
             exportNutanixSnapshot,
@@ -5082,6 +5166,7 @@ namespace RubrikSecurityCloud.Types
             markAgentSecondaryCertificate,
             migrateNutanixMountV1,
             modifyActiveDirectoryLiveMount,
+            modifyEventDigestBatch,
             modifyIpmi,
             mountDisk,
             mountNutanixSnapshotV1,
@@ -5120,6 +5205,7 @@ namespace RubrikSecurityCloud.Types
             refreshHypervScvmm,
             refreshHypervServer,
             refreshK8sCluster,
+            refreshK8sV2Cluster,
             refreshNasSystems,
             refreshNutanixCluster,
             refreshNutanixPrismCentral,
@@ -5156,6 +5242,7 @@ namespace RubrikSecurityCloud.Types
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
             restoreK8sNamespace,
+            restoreK8sProtectionSetSnapshot,
             restoreMssqlDatabase,
             restoreO365Mailbox,
             restoreO365Snappable,
@@ -5302,6 +5389,8 @@ namespace RubrikSecurityCloud.Types
             updateIntegration,
             updateIntegrations,
             updateIpWhitelist,
+            updateK8sCluster,
+            updateK8sProtectionSet,
             updateLambdaSettings,
             updateLdapIntegration,
             updateLockoutConfig,
@@ -5444,6 +5533,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalLocationQuerySortByField,
             ArchivalLocationStatus,
             ArchivalLocationUpgradeUnsupportedReason,
+            ArchiveFolderAction,
             ArmTemplateDeploymentLevel,
             AuditObjectType,
             AuditSeverity,
@@ -5613,6 +5703,7 @@ namespace RubrikSecurityCloud.Types
             DayOfQuarter,
             DayOfWeek,
             DayOfYear,
+            Db2ConfigureRestoreResponseStatus,
             Db2DatabaseStatus,
             Db2DatabaseType,
             Db2InstanceSummaryStatus,
@@ -5713,6 +5804,7 @@ namespace RubrikSecurityCloud.Types
             HostFailoverClusterRoot,
             HostFilterStatus,
             HostRbsConnectionStatus,
+            HostRegisterOsType,
             HostRoot,
             HostUiFilterStatus,
             HostVfdInstallConfig,
@@ -5876,6 +5968,7 @@ namespace RubrikSecurityCloud.Types
             PrePostScriptFailureHandlingEnum,
             PrincipalTypeEnum,
             PrivateEndpointConnectionStatus,
+            PrivateEndpointErrors,
             Product,
             ProductDocumentationType,
             ProductName,
@@ -6156,6 +6249,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsExocomputeGetConfigurationResponse",
                     new HashSet<string> {
                     "AwsCustomerManagedExocomputeConfig",
+                    "AwsExocomputeGetConfigurationResponse",
                     "AwsRscManagedExocomputeConfig",
                     }
                 },
@@ -6238,6 +6332,8 @@ namespace RubrikSecurityCloud.Types
                     "HyperVscvmm",
                     "HypervServer",
                     "HyperVvirtualMachine",
+                    "KubernetesCluster",
+                    "KubernetesProtectionSet",
                     "LinuxFileset",
                     "ManagedVolume",
                     "ManagedVolumeMount",
@@ -6294,6 +6390,7 @@ namespace RubrikSecurityCloud.Types
                     "Db2Database",
                     "ExchangeDatabase",
                     "HyperVvirtualMachine",
+                    "KubernetesProtectionSet",
                     "LinuxFileset",
                     "ManagedVolume",
                     "MongoCollectionSet",
@@ -6477,6 +6574,8 @@ namespace RubrikSecurityCloud.Types
                     "HyperVvirtualMachine",
                     "K8sCluster",
                     "K8sNamespace",
+                    "KubernetesCluster",
+                    "KubernetesProtectionSet",
                     "LinuxFileset",
                     "ManagedVolume",
                     "ManagedVolumeMount",
@@ -6546,6 +6645,7 @@ namespace RubrikSecurityCloud.Types
                     "AzureAdDirectory",
                     "ExchangeDatabase",
                     "K8sNamespace",
+                    "KubernetesProtectionSet",
                     "LinuxFileset",
                     "MssqlDatabase",
                     "NasFileset",
@@ -6651,6 +6751,13 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "K8sClusterDescendant",
                     "K8sNamespace",
+                    }
+                },
+                {
+                    "KubernetesClusterDescendant",
+                    new HashSet<string> {
+                    "KubernetesClusterDescendant",
+                    "KubernetesProtectionSet",
                     }
                 },
                 {
@@ -7817,6 +7924,8 @@ namespace RubrikSecurityCloud.Types
             addDb2Instance,
             addGlobalCertificate,
             addInventoryWorkloads,
+            addK8sCluster,
+            addK8sProtectionSet,
             addManagedVolume,
             addMongoSource,
             addMosaicStore,
@@ -7941,6 +8050,7 @@ namespace RubrikSecurityCloud.Types
             allQuarantinedDetailsForSnapshots,
             allQuarantinedDetailsForWorkload,
             allRcvAccountEntitlements,
+            allRcvPrivateEndpointConnections,
             allResourceGroupsFromAzure,
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
@@ -7971,6 +8081,7 @@ namespace RubrikSecurityCloud.Types
             anomalyResultOpt,
             anomalyResults,
             anomalyResultsGrouped,
+            approveRcvPrivateEndpoint,
             archivalStorageUsage,
             archiveCrawl,
             archiveK8sCluster,
@@ -8188,6 +8299,7 @@ namespace RubrikSecurityCloud.Types
             completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
             computeClusterStatus,
+            configureDb2Restore,
             configureSapHanaRestore,
             configuredGroupMembers,
             countOfObjectsProtectedBySlas,
@@ -8221,6 +8333,7 @@ namespace RubrikSecurityCloud.Types
             createCustomReport,
             createDomainControllerSnapshot,
             createDownloadSnapshotForVolumeGroup,
+            createEventDigestBatch,
             createExchangeMount,
             createFailoverCluster,
             createFailoverClusterApp,
@@ -8230,12 +8343,14 @@ namespace RubrikSecurityCloud.Types
             createGlacierReaderTarget,
             createGlobalSla,
             createGuestCredential,
+            createHypervVirtualMachineSnapshotDiskMount,
             createHypervVirtualMachineSnapshotMount,
             createIntegration,
             createIntegrations,
             createK8sAgentManifest,
             createK8sCluster,
             createK8sNamespaceSnapshots,
+            createK8sProtectionSetSnapshot,
             createManualTargetMapping,
             createMongodbSource,
             createMssqlLiveMount,
@@ -8330,6 +8445,8 @@ namespace RubrikSecurityCloud.Types
             deleteHypervVirtualMachineSnapshotMount,
             deleteIntegration,
             deleteIntegrations,
+            deleteK8sCluster,
+            deleteK8sProtectionSet,
             deleteLdapPrincipals,
             deleteLogShipping,
             deleteManagedVolume,
@@ -8390,6 +8507,7 @@ namespace RubrikSecurityCloud.Types
             downloadFilesetSnapshot,
             downloadFilesetSnapshotFromLocation,
             downloadHypervSnapshotFromLocation,
+            downloadHypervVirtualMachineLevelFiles,
             downloadHypervVirtualMachineSnapshot,
             downloadHypervVirtualMachineSnapshotFiles,
             downloadManagedVolumeFiles,
@@ -8443,6 +8561,7 @@ namespace RubrikSecurityCloud.Types
             expireSnoozedDirectories,
             exportHypervVirtualMachine,
             exportK8sNamespace,
+            exportK8sProtectionSetSnapshot,
             exportManagedVolumeSnapshot,
             exportMssqlDatabase,
             exportNutanixSnapshot,
@@ -8455,6 +8574,7 @@ namespace RubrikSecurityCloud.Types
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
+            failuresAndWarningsStats,
             federatedLoginStatus,
             filesetDownloadSnapshotFiles,
             filesetExportSnapshotFiles,
@@ -8549,6 +8669,7 @@ namespace RubrikSecurityCloud.Types
             hypervTopLevelDescendants,
             hypervVirtualMachine,
             hypervVirtualMachineAsyncRequestStatus,
+            hypervVirtualMachineLevelFileInfo,
             hypervVirtualMachines,
             hypervVmDetail,
             inplaceExportHypervVirtualMachine,
@@ -8587,8 +8708,12 @@ namespace RubrikSecurityCloud.Types
             k8sClusters,
             k8sNamespace,
             k8sNamespaces,
+            k8sProtectionSetSnapshots,
             k8sSnapshotInfo,
             knowledgeBaseArticle,
+            kubernetesClusters,
+            kubernetesProtectionSet,
+            kubernetesProtectionSets,
             lambdaSettings,
             ldapAuthorizedPrincipalConnection,
             ldapIntegrationConnection,
@@ -8623,6 +8748,7 @@ namespace RubrikSecurityCloud.Types
             migrateNutanixMountV1,
             minimumCdmVersionForFeatureSet,
             modifyActiveDirectoryLiveMount,
+            modifyEventDigestBatch,
             modifyIpmi,
             mongoBulkRecoverableRanges,
             mongoCollection,
@@ -8819,6 +8945,7 @@ namespace RubrikSecurityCloud.Types
             refreshHypervScvmm,
             refreshHypervServer,
             refreshK8sCluster,
+            refreshK8sV2Cluster,
             refreshNasSystems,
             refreshNutanixCluster,
             refreshNutanixPrismCentral,
@@ -8862,6 +8989,7 @@ namespace RubrikSecurityCloud.Types
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
             restoreK8sNamespace,
+            restoreK8sProtectionSetSnapshot,
             restoreMssqlDatabase,
             restoreO365Mailbox,
             restoreO365Snappable,
@@ -9088,6 +9216,8 @@ namespace RubrikSecurityCloud.Types
             updateIntegration,
             updateIntegrations,
             updateIpWhitelist,
+            updateK8sCluster,
+            updateK8sProtectionSet,
             updateLambdaSettings,
             updateLdapIntegration,
             updateLockoutConfig,
@@ -9199,6 +9329,8 @@ namespace RubrikSecurityCloud.Types
             validateAzureNativeSqlDatabaseDbNameForExport,
             validateAzureNativeSqlManagedInstanceDbNameForExport,
             validateClusterLicenseCapacity,
+            validateCreateAwsClusterInput,
+            validateCreateAzureClusterInput,
             validateOracleAcoFile,
             validateOracleDatabaseBackups,
             validateOrgName,
@@ -9208,6 +9340,8 @@ namespace RubrikSecurityCloud.Types
             vcenterAsyncRequestStatus,
             verifySlaWithReplicationToCluster,
             vmwareDownloadSnapshotFromLocation,
+            vmwareMissedRecoverableRanges,
+            vmwareRecoverableRanges,
             volumeGroupMounts,
             vsphereBulkOnDemandSnapshot,
             vsphereDeleteVcenter,
@@ -9460,6 +9594,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "AddInventoryWorkloads",
                         gqlRootFieldName: "addInventoryWorkloads"
+                    )
+                },
+                {
+                    GqlRootFieldName.addK8sCluster,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "AddCluster",
+                        gqlRootFieldName: "addK8sCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.addK8sProtectionSet,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "AddProtectionSet",
+                        gqlRootFieldName: "addK8sProtectionSet"
                     )
                 },
                 {
@@ -10455,6 +10605,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.allRcvPrivateEndpointConnections,
+                    new RscOp(
+                        cmdletName: "New-RscQueryRcv",
+                        cmdletSwitchName: "PrivateEndpointConnections",
+                        gqlRootFieldName: "allRcvPrivateEndpointConnections"
+                    )
+                },
+                {
                     GqlRootFieldName.allResourceGroupsFromAzure,
                     new RscOp(
                         cmdletName: "New-RscQueryAzure",
@@ -10692,6 +10850,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "AnomalyResultsGrouped",
                         gqlRootFieldName: "anomalyResultsGrouped"
+                    )
+                },
+                {
+                    GqlRootFieldName.approveRcvPrivateEndpoint,
+                    new RscOp(
+                        cmdletName: "New-RscMutationRcv",
+                        cmdletSwitchName: "ApprovePrivateEndpoint",
+                        gqlRootFieldName: "approveRcvPrivateEndpoint"
                     )
                 },
                 {
@@ -12431,6 +12597,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.configureDb2Restore,
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "ConfigureRestore",
+                        gqlRootFieldName: "configureDb2Restore"
+                    )
+                },
+                {
                     GqlRootFieldName.configureSapHanaRestore,
                     new RscOp(
                         cmdletName: "New-RscMutationSapHana",
@@ -12695,6 +12869,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createEventDigestBatch,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "CreateEventDigestBatch",
+                        gqlRootFieldName: "createEventDigestBatch"
+                    )
+                },
+                {
                     GqlRootFieldName.createExchangeMount,
                     new RscOp(
                         cmdletName: "New-RscMutationExchange",
@@ -12767,6 +12949,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.createHypervVirtualMachineSnapshotDiskMount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "CreateVirtualMachineSnapshotDiskMount",
+                        gqlRootFieldName: "createHypervVirtualMachineSnapshotDiskMount"
+                    )
+                },
+                {
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount,
                     new RscOp(
                         cmdletName: "New-RscMutationHyperv",
@@ -12812,6 +13002,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationK8s",
                         cmdletSwitchName: "CreateNamespaceSnapshots",
                         gqlRootFieldName: "createK8sNamespaceSnapshots"
+                    )
+                },
+                {
+                    GqlRootFieldName.createK8sProtectionSetSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "CreateProtectionSetSnapshot",
+                        gqlRootFieldName: "createK8sProtectionSetSnapshot"
                     )
                 },
                 {
@@ -13567,6 +13765,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteK8sCluster,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "DeleteCluster",
+                        gqlRootFieldName: "deleteK8sCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteK8sProtectionSet,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "DeleteProtectionSet",
+                        gqlRootFieldName: "deleteK8sProtectionSet"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteLdapPrincipals,
                     new RscOp(
                         cmdletName: "New-RscMutationLdap",
@@ -14047,6 +14261,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.downloadHypervVirtualMachineLevelFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DownloadVirtualMachineLevelFiles",
+                        gqlRootFieldName: "downloadHypervVirtualMachineLevelFiles"
+                    )
+                },
+                {
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationHyperv",
@@ -14471,6 +14693,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.exportK8sProtectionSetSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "ExportProtectionSetSnapshot",
+                        gqlRootFieldName: "exportK8sProtectionSetSnapshot"
+                    )
+                },
+                {
                     GqlRootFieldName.exportManagedVolumeSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationManagedVolume",
@@ -14564,6 +14794,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryFailoverCluster",
                         cmdletSwitchName: "TopLevelDescendants",
                         gqlRootFieldName: "failoverClusterTopLevelDescendants"
+                    )
+                },
+                {
+                    GqlRootFieldName.failuresAndWarningsStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "FailuresAndWarningsStats",
+                        gqlRootFieldName: "failuresAndWarningsStats"
                     )
                 },
                 {
@@ -15319,6 +15557,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.hypervVirtualMachineLevelFileInfo,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "VirtualMachineLevelFileInfo",
+                        gqlRootFieldName: "hypervVirtualMachineLevelFileInfo"
+                    )
+                },
+                {
                     GqlRootFieldName.hypervVirtualMachines,
                     new RscOp(
                         cmdletName: "New-RscQueryHyperv",
@@ -15623,6 +15869,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.k8sProtectionSetSnapshots,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "ProtectionSetSnapshots",
+                        gqlRootFieldName: "k8sProtectionSetSnapshots"
+                    )
+                },
+                {
                     GqlRootFieldName.k8sSnapshotInfo,
                     new RscOp(
                         cmdletName: "New-RscQueryK8s",
@@ -15636,6 +15890,30 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "KnowledgeBaseArticle",
                         gqlRootFieldName: "knowledgeBaseArticle"
+                    )
+                },
+                {
+                    GqlRootFieldName.kubernetesClusters,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Kubernetes",
+                        gqlRootFieldName: "kubernetesClusters"
+                    )
+                },
+                {
+                    GqlRootFieldName.kubernetesProtectionSet,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "KubernetesProtectionSet",
+                        gqlRootFieldName: "kubernetesProtectionSet"
+                    )
+                },
+                {
+                    GqlRootFieldName.kubernetesProtectionSets,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "KubernetesProtectionSets",
+                        gqlRootFieldName: "kubernetesProtectionSets"
                     )
                 },
                 {
@@ -15908,6 +16186,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationActiveDirectory",
                         cmdletSwitchName: "ModifyLiveMount",
                         gqlRootFieldName: "modifyActiveDirectoryLiveMount"
+                    )
+                },
+                {
+                    GqlRootFieldName.modifyEventDigestBatch,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "ModifyEventDigestBatch",
+                        gqlRootFieldName: "modifyEventDigestBatch"
                     )
                 },
                 {
@@ -17479,6 +17765,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.refreshK8sV2Cluster,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "RefreshV2Cluster",
+                        gqlRootFieldName: "refreshK8sV2Cluster"
+                    )
+                },
+                {
                     GqlRootFieldName.refreshNasSystems,
                     new RscOp(
                         cmdletName: "New-RscMutationNas",
@@ -17820,6 +18114,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationK8s",
                         cmdletSwitchName: "RestoreNamespace",
                         gqlRootFieldName: "restoreK8sNamespace"
+                    )
+                },
+                {
+                    GqlRootFieldName.restoreK8sProtectionSetSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "RestoreProtectionSetSnapshot",
+                        gqlRootFieldName: "restoreK8sProtectionSetSnapshot"
                     )
                 },
                 {
@@ -19631,6 +19933,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateK8sCluster,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "UpdateCluster",
+                        gqlRootFieldName: "updateK8sCluster"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateK8sProtectionSet,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "UpdateProtectionSet",
+                        gqlRootFieldName: "updateK8sProtectionSet"
+                    )
+                },
+                {
                     GqlRootFieldName.updateLambdaSettings,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -20519,6 +20837,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.validateCreateAwsClusterInput,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "ValidateCreateClusterInput",
+                        gqlRootFieldName: "validateCreateAwsClusterInput"
+                    )
+                },
+                {
+                    GqlRootFieldName.validateCreateAzureClusterInput,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ValidateCreateClusterInput",
+                        gqlRootFieldName: "validateCreateAzureClusterInput"
+                    )
+                },
+                {
                     GqlRootFieldName.validateOracleAcoFile,
                     new RscOp(
                         cmdletName: "New-RscMutationOracle",
@@ -20588,6 +20922,22 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationVmware",
                         cmdletSwitchName: "DownloadSnapshotFromLocation",
                         gqlRootFieldName: "vmwareDownloadSnapshotFromLocation"
+                    )
+                },
+                {
+                    GqlRootFieldName.vmwareMissedRecoverableRanges,
+                    new RscOp(
+                        cmdletName: "New-RscQueryVmware",
+                        cmdletSwitchName: "MissedRecoverableRanges",
+                        gqlRootFieldName: "vmwareMissedRecoverableRanges"
+                    )
+                },
+                {
+                    GqlRootFieldName.vmwareRecoverableRanges,
+                    new RscOp(
+                        cmdletName: "New-RscQueryVmware",
+                        cmdletSwitchName: "RecoverableRanges",
+                        gqlRootFieldName: "vmwareRecoverableRanges"
                     )
                 },
                 {
@@ -21028,6 +21378,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMisc -Op AddInventoryWorkloads",
                     GqlRootFieldName.addInventoryWorkloads
+                },
+                {
+                    "New-RscMutationK8s -Op AddCluster",
+                    GqlRootFieldName.addK8sCluster
+                },
+                {
+                    "New-RscMutationK8s -Op AddProtectionSet",
+                    GqlRootFieldName.addK8sProtectionSet
                 },
                 {
                     "New-RscMutationManagedVolume -Op Add",
@@ -21526,6 +21884,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allRcvAccountEntitlements
                 },
                 {
+                    "New-RscQueryRcv -Op PrivateEndpointConnections",
+                    GqlRootFieldName.allRcvPrivateEndpointConnections
+                },
+                {
                     "New-RscQueryAzure -Op ResourceGroups",
                     GqlRootFieldName.allResourceGroupsFromAzure
                 },
@@ -21644,6 +22006,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMisc -Op AnomalyResultsGrouped",
                     GqlRootFieldName.anomalyResultsGrouped
+                },
+                {
+                    "New-RscMutationRcv -Op ApprovePrivateEndpoint",
+                    GqlRootFieldName.approveRcvPrivateEndpoint
                 },
                 {
                     "New-RscQueryArchival -Op StorageUsage",
@@ -22514,6 +22880,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.computeClusterStatus
                 },
                 {
+                    "New-RscMutationDb2 -Op ConfigureRestore",
+                    GqlRootFieldName.configureDb2Restore
+                },
+                {
                     "New-RscMutationSapHana -Op ConfigureRestore",
                     GqlRootFieldName.configureSapHanaRestore
                 },
@@ -22646,6 +23016,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createDownloadSnapshotForVolumeGroup
                 },
                 {
+                    "New-RscMutationMisc -Op CreateEventDigestBatch",
+                    GqlRootFieldName.createEventDigestBatch
+                },
+                {
                     "New-RscMutationExchange -Op CreateMount",
                     GqlRootFieldName.createExchangeMount
                 },
@@ -22682,6 +23056,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.createGuestCredential
                 },
                 {
+                    "New-RscMutationHyperv -Op CreateVirtualMachineSnapshotDiskMount",
+                    GqlRootFieldName.createHypervVirtualMachineSnapshotDiskMount
+                },
+                {
                     "New-RscMutationHyperv -Op CreateVirtualMachineSnapshotMount",
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount
                 },
@@ -22704,6 +23082,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationK8s -Op CreateNamespaceSnapshots",
                     GqlRootFieldName.createK8sNamespaceSnapshots
+                },
+                {
+                    "New-RscMutationK8s -Op CreateProtectionSetSnapshot",
+                    GqlRootFieldName.createK8sProtectionSetSnapshot
                 },
                 {
                     "New-RscMutationArchival -Op CreateManualTargetMapping",
@@ -23082,6 +23464,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteIntegrations
                 },
                 {
+                    "New-RscMutationK8s -Op DeleteCluster",
+                    GqlRootFieldName.deleteK8sCluster
+                },
+                {
+                    "New-RscMutationK8s -Op DeleteProtectionSet",
+                    GqlRootFieldName.deleteK8sProtectionSet
+                },
+                {
                     "New-RscMutationLdap -Op DeletePrincipals",
                     GqlRootFieldName.deleteLdapPrincipals
                 },
@@ -23322,6 +23712,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadHypervSnapshotFromLocation
                 },
                 {
+                    "New-RscMutationHyperv -Op DownloadVirtualMachineLevelFiles",
+                    GqlRootFieldName.downloadHypervVirtualMachineLevelFiles
+                },
+                {
                     "New-RscMutationHyperv -Op DownloadVirtualMachineSnapshot",
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshot
                 },
@@ -23534,6 +23928,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.exportK8sNamespace
                 },
                 {
+                    "New-RscMutationK8s -Op ExportProtectionSetSnapshot",
+                    GqlRootFieldName.exportK8sProtectionSetSnapshot
+                },
+                {
                     "New-RscMutationManagedVolume -Op ExportSnapshot",
                     GqlRootFieldName.exportManagedVolumeSnapshot
                 },
@@ -23580,6 +23978,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryFailoverCluster -Op TopLevelDescendants",
                     GqlRootFieldName.failoverClusterTopLevelDescendants
+                },
+                {
+                    "New-RscQueryMisc -Op FailuresAndWarningsStats",
+                    GqlRootFieldName.failuresAndWarningsStats
                 },
                 {
                     "New-RscQueryMisc -Op FederatedLoginStatus",
@@ -23958,6 +24360,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.hypervVirtualMachineAsyncRequestStatus
                 },
                 {
+                    "New-RscQueryHyperv -Op VirtualMachineLevelFileInfo",
+                    GqlRootFieldName.hypervVirtualMachineLevelFileInfo
+                },
+                {
                     "New-RscQueryHyperv -Op VirtualMachines",
                     GqlRootFieldName.hypervVirtualMachines
                 },
@@ -24110,12 +24516,28 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.k8sNamespaces
                 },
                 {
+                    "New-RscQueryK8s -Op ProtectionSetSnapshots",
+                    GqlRootFieldName.k8sProtectionSetSnapshots
+                },
+                {
                     "New-RscQueryK8s -Op SnapshotInfo",
                     GqlRootFieldName.k8sSnapshotInfo
                 },
                 {
                     "New-RscQueryMisc -Op KnowledgeBaseArticle",
                     GqlRootFieldName.knowledgeBaseArticle
+                },
+                {
+                    "New-RscQueryCluster -Op Kubernetes",
+                    GqlRootFieldName.kubernetesClusters
+                },
+                {
+                    "New-RscQueryMisc -Op KubernetesProtectionSet",
+                    GqlRootFieldName.kubernetesProtectionSet
+                },
+                {
+                    "New-RscQueryMisc -Op KubernetesProtectionSets",
+                    GqlRootFieldName.kubernetesProtectionSets
                 },
                 {
                     "New-RscQueryMisc -Op LambdaSettings",
@@ -24252,6 +24674,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationActiveDirectory -Op ModifyLiveMount",
                     GqlRootFieldName.modifyActiveDirectoryLiveMount
+                },
+                {
+                    "New-RscMutationMisc -Op ModifyEventDigestBatch",
+                    GqlRootFieldName.modifyEventDigestBatch
                 },
                 {
                     "New-RscMutationMisc -Op ModifyIpmi",
@@ -25038,6 +25464,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.refreshK8sCluster
                 },
                 {
+                    "New-RscMutationK8s -Op RefreshV2Cluster",
+                    GqlRootFieldName.refreshK8sV2Cluster
+                },
+                {
                     "New-RscMutationNas -Op RefreshNasSystems",
                     GqlRootFieldName.refreshNasSystems
                 },
@@ -25208,6 +25638,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationK8s -Op RestoreNamespace",
                     GqlRootFieldName.restoreK8sNamespace
+                },
+                {
+                    "New-RscMutationK8s -Op RestoreProtectionSetSnapshot",
+                    GqlRootFieldName.restoreK8sProtectionSetSnapshot
                 },
                 {
                     "New-RscMutationMssql -Op RestoreDatabase",
@@ -26114,6 +26548,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateIpWhitelist
                 },
                 {
+                    "New-RscMutationK8s -Op UpdateCluster",
+                    GqlRootFieldName.updateK8sCluster
+                },
+                {
+                    "New-RscMutationK8s -Op UpdateProtectionSet",
+                    GqlRootFieldName.updateK8sProtectionSet
+                },
+                {
                     "New-RscMutationMisc -Op UpdateLambdaSettings",
                     GqlRootFieldName.updateLambdaSettings
                 },
@@ -26558,6 +27000,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.validateClusterLicenseCapacity
                 },
                 {
+                    "New-RscQueryAws -Op ValidateCreateClusterInput",
+                    GqlRootFieldName.validateCreateAwsClusterInput
+                },
+                {
+                    "New-RscQueryAzure -Op ValidateCreateClusterInput",
+                    GqlRootFieldName.validateCreateAzureClusterInput
+                },
+                {
                     "New-RscMutationOracle -Op ValidateAcoFile",
                     GqlRootFieldName.validateOracleAcoFile
                 },
@@ -26592,6 +27042,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationVmware -Op DownloadSnapshotFromLocation",
                     GqlRootFieldName.vmwareDownloadSnapshotFromLocation
+                },
+                {
+                    "New-RscQueryVmware -Op MissedRecoverableRanges",
+                    GqlRootFieldName.vmwareMissedRecoverableRanges
+                },
+                {
+                    "New-RscQueryVmware -Op RecoverableRanges",
+                    GqlRootFieldName.vmwareRecoverableRanges
                 },
                 {
                     "New-RscQueryMisc -Op VolumeGroupMounts",
@@ -26942,6 +27400,10 @@ namespace RubrikSecurityCloud.Types
                         "anomalyResultsGrouped",
                     }
                 },
+                {   "ApproveRcvPrivateEndpointReply", new List<string> {
+                        "approveRcvPrivateEndpoint",
+                    }
+                },
                 {   "ArchiveK8sClusterReply", new List<string> {
                         "archiveK8sCluster",
                     }
@@ -26990,7 +27452,9 @@ namespace RubrikSecurityCloud.Types
                         "createDownloadSnapshotForVolumeGroup",
                         "createExchangeMount",
                         "createFilesetSnapshot",
+                        "createHypervVirtualMachineSnapshotDiskMount",
                         "createHypervVirtualMachineSnapshotMount",
+                        "createK8sProtectionSetSnapshot",
                         "createMssqlLiveMount",
                         "createMssqlLogShippingConfiguration",
                         "createNutanixCluster",
@@ -27008,6 +27472,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteDb2Instance",
                         "deleteExchangeSnapshotMount",
                         "deleteHypervVirtualMachineSnapshotMount",
+                        "deleteK8sCluster",
                         "deleteLogShipping",
                         "deleteManagedVolumeSnapshotExport",
                         "deleteMongoSource",
@@ -27029,6 +27494,7 @@ namespace RubrikSecurityCloud.Types
                         "downloadFilesetSnapshotFromLocation",
                         "downloadFilesNutanixSnapshot",
                         "downloadHypervSnapshotFromLocation",
+                        "downloadHypervVirtualMachineLevelFiles",
                         "downloadHypervVirtualMachineSnapshot",
                         "downloadHypervVirtualMachineSnapshotFiles",
                         "downloadManagedVolumeFiles",
@@ -27047,6 +27513,7 @@ namespace RubrikSecurityCloud.Types
                         "expireDownloadedDb2Snapshots",
                         "expireDownloadedSapHanaSnapshots",
                         "exportHypervVirtualMachine",
+                        "exportK8sProtectionSetSnapshot",
                         "exportManagedVolumeSnapshot",
                         "exportMssqlDatabase",
                         "exportNutanixSnapshot",
@@ -27080,6 +27547,7 @@ namespace RubrikSecurityCloud.Types
                         "refreshDomain",
                         "refreshHypervScvmm",
                         "refreshHypervServer",
+                        "refreshK8sV2Cluster",
                         "refreshNutanixCluster",
                         "refreshOracleDatabase",
                         "refreshVsphereVcenter",
@@ -27090,6 +27558,7 @@ namespace RubrikSecurityCloud.Types
                         "restoreDomainControllerSnapshot",
                         "restoreFilesNutanixSnapshot",
                         "restoreHypervVirtualMachineSnapshotFiles",
+                        "restoreK8sProtectionSetSnapshot",
                         "restoreMssqlDatabase",
                         "restoreOracleLogs",
                         "restoreSapHanaSystemStorage",
@@ -27941,6 +28410,10 @@ namespace RubrikSecurityCloud.Types
                         "m365DayToDayModeStats",
                     }
                 },
+                {   "Db2ConfigureRestoreResponse", new List<string> {
+                        "configureDb2Restore",
+                    }
+                },
                 {   "Db2Database", new List<string> {
                         "db2Database",
                     }
@@ -28129,6 +28602,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "FailoverClusterTopLevelDescendantTypeConnection", new List<string> {
                         "failoverClusterTopLevelDescendants",
+                    }
+                },
+                {   "FailuresAndWarningsStatsReply", new List<string> {
+                        "failuresAndWarningsStats",
                     }
                 },
                 {   "FeatureCdmVersionReply", new List<string> {
@@ -28478,6 +28955,10 @@ namespace RubrikSecurityCloud.Types
                         "hypervVmDetail",
                     }
                 },
+                {   "HypervVirtualMachineSnapshotFileDetails", new List<string> {
+                        "hypervVirtualMachineLevelFileInfo",
+                    }
+                },
                 {   "Int", new List<string> {
                         "maxProtectedAppsCount",
                         "protectedVolumesCount",
@@ -28547,6 +29028,10 @@ namespace RubrikSecurityCloud.Types
                         "k8sClusters",
                     }
                 },
+                {   "K8sClusterSummary", new List<string> {
+                        "addK8sCluster",
+                    }
+                },
                 {   "K8sNamespace", new List<string> {
                         "k8sNamespace",
                     }
@@ -28555,12 +29040,36 @@ namespace RubrikSecurityCloud.Types
                         "k8sNamespaces",
                     }
                 },
+                {   "K8sProtectionSetSummary", new List<string> {
+                        "addK8sProtectionSet",
+                    }
+                },
                 {   "K8sSnapshotInfo", new List<string> {
                         "k8sSnapshotInfo",
                     }
                 },
+                {   "K8sSnapshotSummaryListResponse", new List<string> {
+                        "k8sProtectionSetSnapshots",
+                    }
+                },
                 {   "KnowledgeBaseArticle", new List<string> {
                         "knowledgeBaseArticle",
+                    }
+                },
+                {   "KubernetesCluster", new List<string> {
+                        "kubernetesCluster",
+                    }
+                },
+                {   "KubernetesClusterConnection", new List<string> {
+                        "kubernetesClusters",
+                    }
+                },
+                {   "KubernetesProtectionSet", new List<string> {
+                        "kubernetesProtectionSet",
+                    }
+                },
+                {   "KubernetesProtectionSetConnection", new List<string> {
+                        "kubernetesProtectionSets",
                     }
                 },
                 {   "LambdaSettings", new List<string> {
@@ -29470,6 +29979,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteFailoverCluster",
                         "deleteFailoverClusterApp",
                         "deleteFilesetSnapshots",
+                        "deleteK8sProtectionSet",
                         "deleteMssqlDbSnapshots",
                         "deleteSapHanaDbSnapshot",
                         "disableReplicationPause",
@@ -29481,6 +29991,8 @@ namespace RubrikSecurityCloud.Types
                         "resizeDisk",
                         "updateClusterNtpServers",
                         "updateDnsServersAndSearchDomains",
+                        "updateK8sCluster",
+                        "updateK8sProtectionSet",
                         "updateReplicationNetworkThrottleBypass",
                     }
                 },
@@ -30176,6 +30688,11 @@ namespace RubrikSecurityCloud.Types
                         "validateOrgName",
                     }
                 },
+                {   "ValidationReply", new List<string> {
+                        "validateCreateAwsClusterInput",
+                        "validateCreateAzureClusterInput",
+                    }
+                },
                 {   "VappInstantRecoveryOptions", new List<string> {
                         "vappSnapshotInstantRecoveryOptions",
                     }
@@ -30212,6 +30729,11 @@ namespace RubrikSecurityCloud.Types
                         "vSphereHostDetails",
                     }
                 },
+                {   "VmwareRecoverableRangeListResponse", new List<string> {
+                        "vmwareMissedRecoverableRanges",
+                        "vmwareRecoverableRanges",
+                    }
+                },
                 {   "VnetConnection", new List<string> {
                         "azureVNets",
                     }
@@ -30221,6 +30743,7 @@ namespace RubrikSecurityCloud.Types
                         "cancelThreatHunt",
                         "completeAzureAdAppUpdate",
                         "createCrossAccountPair",
+                        "createEventDigestBatch",
                         "createReplicationPair",
                         "deleteAllOracleDatabaseSnapshots",
                         "deleteAwsComputeSetting",
@@ -30252,6 +30775,7 @@ namespace RubrikSecurityCloud.Types
                         "joinSmbDomain",
                         "lockUsersByAdmin",
                         "modifyActiveDirectoryLiveMount",
+                        "modifyEventDigestBatch",
                         "promoteReaderTarget",
                         "refreshReaderTarget",
                         "removePrivateEndpointConnection",
@@ -30614,6 +31138,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[DbParameterGroup]", new List<string> {
                         "allDbParameterGroupsByRegionFromAws",
+                    }
+                },
+                {   "[DetailedPrivateEndpointConnection]", new List<string> {
+                        "allRcvPrivateEndpointConnections",
                     }
                 },
                 {   "[DhrcActiveRecommendation]", new List<string> {
@@ -30996,6 +31524,14 @@ namespace RubrikSecurityCloud.Types
                         "addInventoryWorkloads",
                     }
                 },
+                {   "AddK8sClusterInput", new List<string> {
+                        "addK8sCluster",
+                    }
+                },
+                {   "AddK8sProtectionSetInput", new List<string> {
+                        "addK8sProtectionSet",
+                    }
+                },
                 {   "AddManagedVolumeInput", new List<string> {
                         "addManagedVolume",
                     }
@@ -31072,6 +31608,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "AppSortByParam", new List<string> {
                         "listO365Apps",
+                    }
+                },
+                {   "ApproveRcvPrivateEndpointInput", new List<string> {
+                        "approveRcvPrivateEndpoint",
                     }
                 },
                 {   "ArchivalGroupQuerySortByField", new List<string> {
@@ -31808,6 +32348,10 @@ namespace RubrikSecurityCloud.Types
                         "completeAzureCloudAccountOauth",
                     }
                 },
+                {   "ConfigureDb2RestoreInput", new List<string> {
+                        "configureDb2Restore",
+                    }
+                },
                 {   "ConfigureSapHanaRestoreInput", new List<string> {
                         "configureSapHanaRestore",
                     }
@@ -31852,6 +32396,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CreateAwsClusterInput", new List<string> {
                         "createAwsCluster",
+                        "validateCreateAwsClusterInput",
                     }
                 },
                 {   "CreateAwsComputeSettingInput", new List<string> {
@@ -31876,6 +32421,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CreateAzureClusterInput", new List<string> {
                         "createAzureCluster",
+                        "validateCreateAzureClusterInput",
                     }
                 },
                 {   "CreateAzureReaderTargetInput", new List<string> {
@@ -31929,6 +32475,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CreateDownloadSnapshotForVolumeGroupInput", new List<string> {
                         "createDownloadSnapshotForVolumeGroup",
+                    }
+                },
+                {   "CreateEventDigestBatchInput", new List<string> {
+                        "createEventDigestBatch",
                     }
                 },
                 {   "CreateExchangeSnapshotMountInput", new List<string> {
@@ -31991,8 +32541,20 @@ namespace RubrikSecurityCloud.Types
                         "createK8sNamespaceSnapshots",
                     }
                 },
+                {   "CreateK8sProtectionSetSnapshotInput", new List<string> {
+                        "createK8sProtectionSetSnapshot",
+                    }
+                },
+                {   "CreateK8sRestoreJobInput", new List<string> {
+                        "restoreK8sProtectionSetSnapshot",
+                    }
+                },
                 {   "CreateManualTargetMappingInput", new List<string> {
                         "createManualTargetMapping",
+                    }
+                },
+                {   "CreateMountHypervVirtualDisksInput", new List<string> {
+                        "createHypervVirtualMachineSnapshotDiskMount",
                     }
                 },
                 {   "CreateMssqlLiveMountInput", new List<string> {
@@ -32285,6 +32847,14 @@ namespace RubrikSecurityCloud.Types
                         "deleteIntegrations",
                     }
                 },
+                {   "DeleteK8sClusterInput", new List<string> {
+                        "deleteK8sCluster",
+                    }
+                },
+                {   "DeleteK8sProtectionSetInput", new List<string> {
+                        "deleteK8sProtectionSet",
+                    }
+                },
                 {   "DeleteLogShippingInput", new List<string> {
                         "deleteLogShipping",
                     }
@@ -32506,6 +33076,10 @@ namespace RubrikSecurityCloud.Types
                         "downloadHypervVirtualMachineSnapshot",
                     }
                 },
+                {   "DownloadHypervVirtualMachineVmLevelFilesInput", new List<string> {
+                        "downloadHypervVirtualMachineLevelFiles",
+                    }
+                },
                 {   "DownloadManagedVolumeFilesInput", new List<string> {
                         "downloadManagedVolumeFiles",
                     }
@@ -32657,6 +33231,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "ExportK8sNamespaceInput", new List<string> {
                         "exportK8sNamespace",
+                    }
+                },
+                {   "ExportK8sProtectionSetSnapshotInput", new List<string> {
+                        "exportK8sProtectionSetSnapshot",
                     }
                 },
                 {   "ExportManagedVolumeSnapshotInput", new List<string> {
@@ -33016,6 +33594,10 @@ namespace RubrikSecurityCloud.Types
                         "clusterVlans",
                     }
                 },
+                {   "GetVmLevelFilesFromSnapshotInput", new List<string> {
+                        "hypervVirtualMachineLevelFileInfo",
+                    }
+                },
                 {   "GetVmwareHostInput", new List<string> {
                         "vSphereHostDetails",
                     }
@@ -33095,6 +33677,8 @@ namespace RubrikSecurityCloud.Types
                         "hypervVirtualMachines",
                         "k8sClusters",
                         "k8sNamespaces",
+                        "kubernetesClusters",
+                        "kubernetesProtectionSets",
                         "managedVolumeLiveMounts",
                         "managedVolumes",
                         "mongoCollections",
@@ -33293,6 +33877,8 @@ namespace RubrikSecurityCloud.Types
                         "issues",
                         "k8sClusters",
                         "k8sNamespaces",
+                        "kubernetesClusters",
+                        "kubernetesProtectionSets",
                         "ldapAuthorizedPrincipalConnection",
                         "ldapIntegrationConnection",
                         "ldapPrincipalConnection",
@@ -33553,6 +34139,10 @@ namespace RubrikSecurityCloud.Types
                         "modifyActiveDirectoryLiveMount",
                     }
                 },
+                {   "ModifyEventDigestBatchInput", new List<string> {
+                        "modifyEventDigestBatch",
+                    }
+                },
                 {   "ModifyIpmiInput", new List<string> {
                         "modifyIpmi",
                     }
@@ -33808,6 +34398,10 @@ namespace RubrikSecurityCloud.Types
                         "hypervServers",
                     }
                 },
+                {   "QueryK8sSnapshotInput", new List<string> {
+                        "k8sProtectionSetSnapshots",
+                    }
+                },
                 {   "QueryLogReportInput", new List<string> {
                         "databaseLogReportForCluster",
                     }
@@ -33896,6 +34490,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "RefreshK8sClusterInput", new List<string> {
                         "refreshK8sCluster",
+                    }
+                },
+                {   "RefreshK8sV2ClusterInput", new List<string> {
+                        "refreshK8sV2Cluster",
                     }
                 },
                 {   "RefreshNasSystemsInput", new List<string> {
@@ -34363,6 +34961,8 @@ namespace RubrikSecurityCloud.Types
                         "hypervVirtualMachines",
                         "k8sClusters",
                         "k8sNamespaces",
+                        "kubernetesClusters",
+                        "kubernetesProtectionSets",
                         "ldapAuthorizedPrincipalConnection",
                         "ldapIntegrationConnection",
                         "ldapPrincipalConnection",
@@ -34753,6 +35353,8 @@ namespace RubrikSecurityCloud.Types
                         "k8sClusters",
                         "k8sNamespaces",
                         "knowledgeBaseArticle",
+                        "kubernetesClusters",
+                        "kubernetesProtectionSets",
                         "ldapAuthorizedPrincipalConnection",
                         "ldapIntegrationConnection",
                         "ldapPrincipalConnection",
@@ -35042,6 +35644,7 @@ namespace RubrikSecurityCloud.Types
                         "allO365AdGroups",
                         "allOptionGroupsByRegionFromAws",
                         "allPendingActions",
+                        "allRcvPrivateEndpointConnections",
                         "allResourceGroupsFromAzure",
                         "allS3BucketsDetailsFromAws",
                         "allS3BucketsFromAws",
@@ -35149,6 +35752,7 @@ namespace RubrikSecurityCloud.Types
                         "exchangeServer",
                         "failedRestoreItemsInfo",
                         "failoverClusterApp",
+                        "failuresAndWarningsStats",
                         "filesetTemplate",
                         "gcpNativeDisk",
                         "gcpNativeGceInstance",
@@ -35178,6 +35782,9 @@ namespace RubrikSecurityCloud.Types
                         "k8sNamespace",
                         "k8sNamespaces",
                         "k8sSnapshotInfo",
+                        "kubernetesCluster",
+                        "kubernetesProtectionSet",
+                        "kubernetesProtectionSets",
                         "ldapPrincipalConnection",
                         "linuxFileset",
                         "m365DayToDayModeBackupStats",
@@ -35533,6 +36140,14 @@ namespace RubrikSecurityCloud.Types
                         "updateIntegrations",
                     }
                 },
+                {   "UpdateK8sClusterInput", new List<string> {
+                        "updateK8sCluster",
+                    }
+                },
+                {   "UpdateK8sProtectionSetInput", new List<string> {
+                        "updateK8sProtectionSet",
+                    }
+                },
                 {   "UpdateLockoutConfigInput", new List<string> {
                         "updateLockoutConfig",
                     }
@@ -35811,6 +36426,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "VmwareDownloadSnapshotFromLocationInput", new List<string> {
                         "vmwareDownloadSnapshotFromLocation",
+                    }
+                },
+                {   "VmwareMissedRecoverableRangesInput", new List<string> {
+                        "vmwareMissedRecoverableRanges",
+                    }
+                },
+                {   "VmwareRecoverableRangesInput", new List<string> {
+                        "vmwareRecoverableRanges",
                     }
                 },
                 {   "VolumeGroupLiveMountSortByInput", new List<string> {
@@ -36094,6 +36717,8 @@ namespace RubrikSecurityCloud.Types
                         "hypervVirtualMachines",
                         "k8sClusters",
                         "k8sNamespaces",
+                        "kubernetesClusters",
+                        "kubernetesProtectionSets",
                         "managedVolumeLiveMounts",
                         "managedVolumes",
                         "mongoCollections",
@@ -36231,6 +36856,10 @@ namespace RubrikSecurityCloud.Types
                         "createRole",
                         "mutateRole",
                         "updateRole",
+                    }
+                },
+                {   "[PermissionsGroup]", new List<string> {
+                        "azureCloudAccountPermissionConfig",
                     }
                 },
                 {   "[ProductName]", new List<string> {
@@ -36487,6 +37116,7 @@ namespace RubrikSecurityCloud.Types
                 { "analyzerUsages", "AnalyzerUsageConnection"},
                 { "anomalyResults", "AnomalyResultConnection"},
                 { "anomalyResultsGrouped", "AnomalyResultGroupedDataConnection"},
+                { "approveRcvPrivateEndpoint", "ApproveRcvPrivateEndpointReply"},
                 { "archiveK8sCluster", "ArchiveK8sClusterReply"},
                 { "assignMssqlSlaDomainPropertiesAsync", "AssignMssqlSlaDomainPropertiesAsyncReply"},
                 { "downloadAuditLogCsvAsync", "AsyncDownloadReply"},
@@ -36522,7 +37152,9 @@ namespace RubrikSecurityCloud.Types
                 { "createDownloadSnapshotForVolumeGroup", "AsyncRequestStatus"},
                 { "createExchangeMount", "AsyncRequestStatus"},
                 { "createFilesetSnapshot", "AsyncRequestStatus"},
+                { "createHypervVirtualMachineSnapshotDiskMount", "AsyncRequestStatus"},
                 { "createHypervVirtualMachineSnapshotMount", "AsyncRequestStatus"},
+                { "createK8sProtectionSetSnapshot", "AsyncRequestStatus"},
                 { "createMssqlLiveMount", "AsyncRequestStatus"},
                 { "createMssqlLogShippingConfiguration", "AsyncRequestStatus"},
                 { "createNutanixCluster", "AsyncRequestStatus"},
@@ -36540,6 +37172,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteDb2Instance", "AsyncRequestStatus"},
                 { "deleteExchangeSnapshotMount", "AsyncRequestStatus"},
                 { "deleteHypervVirtualMachineSnapshotMount", "AsyncRequestStatus"},
+                { "deleteK8sCluster", "AsyncRequestStatus"},
                 { "deleteLogShipping", "AsyncRequestStatus"},
                 { "deleteManagedVolumeSnapshotExport", "AsyncRequestStatus"},
                 { "deleteMongoSource", "AsyncRequestStatus"},
@@ -36561,6 +37194,7 @@ namespace RubrikSecurityCloud.Types
                 { "downloadFilesetSnapshotFromLocation", "AsyncRequestStatus"},
                 { "downloadFilesNutanixSnapshot", "AsyncRequestStatus"},
                 { "downloadHypervSnapshotFromLocation", "AsyncRequestStatus"},
+                { "downloadHypervVirtualMachineLevelFiles", "AsyncRequestStatus"},
                 { "downloadHypervVirtualMachineSnapshot", "AsyncRequestStatus"},
                 { "downloadHypervVirtualMachineSnapshotFiles", "AsyncRequestStatus"},
                 { "downloadManagedVolumeFiles", "AsyncRequestStatus"},
@@ -36579,6 +37213,7 @@ namespace RubrikSecurityCloud.Types
                 { "expireDownloadedDb2Snapshots", "AsyncRequestStatus"},
                 { "expireDownloadedSapHanaSnapshots", "AsyncRequestStatus"},
                 { "exportHypervVirtualMachine", "AsyncRequestStatus"},
+                { "exportK8sProtectionSetSnapshot", "AsyncRequestStatus"},
                 { "exportManagedVolumeSnapshot", "AsyncRequestStatus"},
                 { "exportMssqlDatabase", "AsyncRequestStatus"},
                 { "exportNutanixSnapshot", "AsyncRequestStatus"},
@@ -36612,6 +37247,7 @@ namespace RubrikSecurityCloud.Types
                 { "refreshDomain", "AsyncRequestStatus"},
                 { "refreshHypervScvmm", "AsyncRequestStatus"},
                 { "refreshHypervServer", "AsyncRequestStatus"},
+                { "refreshK8sV2Cluster", "AsyncRequestStatus"},
                 { "refreshNutanixCluster", "AsyncRequestStatus"},
                 { "refreshOracleDatabase", "AsyncRequestStatus"},
                 { "refreshVsphereVcenter", "AsyncRequestStatus"},
@@ -36622,6 +37258,7 @@ namespace RubrikSecurityCloud.Types
                 { "restoreDomainControllerSnapshot", "AsyncRequestStatus"},
                 { "restoreFilesNutanixSnapshot", "AsyncRequestStatus"},
                 { "restoreHypervVirtualMachineSnapshotFiles", "AsyncRequestStatus"},
+                { "restoreK8sProtectionSetSnapshot", "AsyncRequestStatus"},
                 { "restoreMssqlDatabase", "AsyncRequestStatus"},
                 { "restoreOracleLogs", "AsyncRequestStatus"},
                 { "restoreSapHanaSystemStorage", "AsyncRequestStatus"},
@@ -36949,6 +37586,7 @@ namespace RubrikSecurityCloud.Types
                 { "certificateSigningRequests", "CsrConnection"},
                 { "m365DayToDayModeBackupStats", "DayToDayModeBackupStats"},
                 { "m365DayToDayModeStats", "DayToDayModeStats"},
+                { "configureDb2Restore", "Db2ConfigureRestoreResponse"},
                 { "db2Database", "Db2Database"},
                 { "db2Databases", "Db2DatabaseConnection"},
                 { "db2Instance", "Db2Instance"},
@@ -37001,6 +37639,7 @@ namespace RubrikSecurityCloud.Types
                 { "failoverClusterApp", "FailoverClusterApp"},
                 { "failoverClusterApps", "FailoverClusterAppConnection"},
                 { "failoverClusterTopLevelDescendants", "FailoverClusterTopLevelDescendantTypeConnection"},
+                { "failuresAndWarningsStats", "FailuresAndWarningsStatsReply"},
                 { "cdmVersionCheck", "FeatureCdmVersionReply"},
                 { "minimumCdmVersionForFeatureSet", "FeatureListMinimumCdmVersionReply"},
                 { "federatedLoginStatus", "FederatedLoginStatus"},
@@ -37093,6 +37732,7 @@ namespace RubrikSecurityCloud.Types
                 { "hypervServersPaginated", "HypervServerConnection"},
                 { "hypervTopLevelDescendants", "HypervTopLevelDescendantTypeConnection"},
                 { "hypervVmDetail", "HypervVirtualMachineDetail"},
+                { "hypervVirtualMachineLevelFileInfo", "HypervVirtualMachineSnapshotFileDetails"},
                 { "maxProtectedAppsCount", "Int"},
                 { "protectedVolumesCount", "Int"},
                 { "uniqueHypervServersCount", "Int"},
@@ -37114,10 +37754,17 @@ namespace RubrikSecurityCloud.Types
                 { "k8sAppManifest", "K8sAppManifest"},
                 { "k8sCluster", "K8sCluster"},
                 { "k8sClusters", "K8sClusterConnection"},
+                { "addK8sCluster", "K8sClusterSummary"},
                 { "k8sNamespace", "K8sNamespace"},
                 { "k8sNamespaces", "K8sNamespaceConnection"},
+                { "addK8sProtectionSet", "K8sProtectionSetSummary"},
                 { "k8sSnapshotInfo", "K8sSnapshotInfo"},
+                { "k8sProtectionSetSnapshots", "K8sSnapshotSummaryListResponse"},
                 { "knowledgeBaseArticle", "KnowledgeBaseArticle"},
+                { "kubernetesCluster", "KubernetesCluster"},
+                { "kubernetesClusters", "KubernetesClusterConnection"},
+                { "kubernetesProtectionSet", "KubernetesProtectionSet"},
+                { "kubernetesProtectionSets", "KubernetesProtectionSetConnection"},
                 { "lambdaSettings", "LambdaSettings"},
                 { "updateLambdaSettings", "LambdaSettings"},
                 { "ldapIntegrationConnection", "LdapIntegrationConnection"},
@@ -37409,6 +38056,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteFailoverCluster", "ResponseSuccess"},
                 { "deleteFailoverClusterApp", "ResponseSuccess"},
                 { "deleteFilesetSnapshots", "ResponseSuccess"},
+                { "deleteK8sProtectionSet", "ResponseSuccess"},
                 { "deleteMssqlDbSnapshots", "ResponseSuccess"},
                 { "deleteSapHanaDbSnapshot", "ResponseSuccess"},
                 { "disableReplicationPause", "ResponseSuccess"},
@@ -37420,6 +38068,8 @@ namespace RubrikSecurityCloud.Types
                 { "resizeDisk", "ResponseSuccess"},
                 { "updateClusterNtpServers", "ResponseSuccess"},
                 { "updateDnsServersAndSearchDomains", "ResponseSuccess"},
+                { "updateK8sCluster", "ResponseSuccess"},
+                { "updateK8sProtectionSet", "ResponseSuccess"},
                 { "updateReplicationNetworkThrottleBypass", "ResponseSuccess"},
                 { "restoreAzureAdObjectsWithPasswords", "RestoreAzureAdObjectsWithPasswordsReply"},
                 { "resumeTarget", "ResumeTargetReply"},
@@ -37633,6 +38283,8 @@ namespace RubrikSecurityCloud.Types
                 { "isCloudNativeFileRecoveryFeasible", "ValidateCloudNativeFileRecoveryFeasibilityReply"},
                 { "validateOracleAcoFile", "ValidateOracleAcoFileReply"},
                 { "validateOrgName", "ValidateOrgNameReply"},
+                { "validateCreateAwsClusterInput", "ValidationReply"},
+                { "validateCreateAzureClusterInput", "ValidationReply"},
                 { "vappSnapshotInstantRecoveryOptions", "VappInstantRecoveryOptions"},
                 { "vappTemplateSnapshotExportOptions", "VappTemplateExportOptionsUnion"},
                 { "vCenterAdvancedTagPreview", "VcenterAdvancedTagPreviewReply"},
@@ -37642,11 +38294,14 @@ namespace RubrikSecurityCloud.Types
                 { "allVirtualMachineFiles", "VirtualMachineFilesReply"},
                 { "clusterVlans", "VlanConfigListResponse"},
                 { "vSphereHostDetails", "VmwareHostDetail"},
+                { "vmwareMissedRecoverableRanges", "VmwareRecoverableRangeListResponse"},
+                { "vmwareRecoverableRanges", "VmwareRecoverableRangeListResponse"},
                 { "azureVNets", "VnetConnection"},
                 { "bulkUpdateRansomwareInvestigationStatus", "Void"},
                 { "cancelThreatHunt", "Void"},
                 { "completeAzureAdAppUpdate", "Void"},
                 { "createCrossAccountPair", "Void"},
+                { "createEventDigestBatch", "Void"},
                 { "createReplicationPair", "Void"},
                 { "deleteAllOracleDatabaseSnapshots", "Void"},
                 { "deleteAwsComputeSetting", "Void"},
@@ -37678,6 +38333,7 @@ namespace RubrikSecurityCloud.Types
                 { "joinSmbDomain", "Void"},
                 { "lockUsersByAdmin", "Void"},
                 { "modifyActiveDirectoryLiveMount", "Void"},
+                { "modifyEventDigestBatch", "Void"},
                 { "promoteReaderTarget", "Void"},
                 { "refreshReaderTarget", "Void"},
                 { "removePrivateEndpointConnection", "Void"},
@@ -37800,6 +38456,7 @@ namespace RubrikSecurityCloud.Types
                 { "createK8sNamespaceSnapshots", "[CreateOnDemandJobReply]"},
                 { "allConnectedClusters", "[DataLocationSupportedCluster]"},
                 { "allDbParameterGroupsByRegionFromAws", "[DbParameterGroup]"},
+                { "allRcvPrivateEndpointConnections", "[DetailedPrivateEndpointConnection]"},
                 { "allDhrcActiveRecommendations", "[DhrcActiveRecommendation]"},
                 { "allDhrcLatestMetrics", "[DhrcCollectedMetric]"},
                 { "allDhrcScores", "[DhrcScore]"},
@@ -38343,6 +39000,7 @@ namespace RubrikSecurityCloud.Types
                     "UpgradeCloudAccountFeaturesWithoutCft",
                     "UpgradeIamUserBasedCloudAccountPermissions",
                     "ValidateAndCreateCloudAccount",
+                    "ValidateCreateClusterInput",
                     "Vpcs",
                     "VpcsByRegion",
                     }
@@ -38469,6 +39127,7 @@ namespace RubrikSecurityCloud.Types
                     "UpgradeCloudAccountPermissionsWithoutOauth",
                     "VNets",
                     "ValidateCloudAccountExocomputeConfigurations",
+                    "ValidateCreateClusterInput",
                     }
                 },
                 {
@@ -38638,6 +39297,7 @@ namespace RubrikSecurityCloud.Types
                     "Ipmi",
                     "Ipv6Mode",
                     "IsTotpAckNecessary",
+                    "Kubernetes",
                     "LicensesForClusterProductSummary",
                     "List",
                     "NetworkInterfaces",
@@ -38679,6 +39339,7 @@ namespace RubrikSecurityCloud.Types
                     ApiDomainName.Db2,
                     new List<string> {
                     "AddInstance",
+                    "ConfigureRestore",
                     "CreateOnDemandBackup",
                     "Database",
                     "DatabaseJobStatus",
@@ -38852,11 +39513,13 @@ namespace RubrikSecurityCloud.Types
                     "BatchMountVm",
                     "BatchOnDemandBackupVm",
                     "Cluster",
+                    "CreateVirtualMachineSnapshotDiskMount",
                     "CreateVirtualMachineSnapshotMount",
                     "DeleteAllSnapshots",
                     "DeleteVirtualMachineSnapshot",
                     "DeleteVirtualMachineSnapshotMount",
                     "DownloadSnapshotFromLocation",
+                    "DownloadVirtualMachineLevelFiles",
                     "DownloadVirtualMachineSnapshot",
                     "DownloadVirtualMachineSnapshotFiles",
                     "ExportVirtualMachine",
@@ -38884,6 +39547,7 @@ namespace RubrikSecurityCloud.Types
                     "UpdateVirtualMachineSnapshotMount",
                     "VirtualMachine",
                     "VirtualMachineAsyncRequestStatus",
+                    "VirtualMachineLevelFileInfo",
                     "VirtualMachines",
                     "VmDetail",
                     }
@@ -38904,6 +39568,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.K8s,
                     new List<string> {
+                    "AddCluster",
+                    "AddProtectionSet",
                     "AppManifest",
                     "ArchiveCluster",
                     "Cluster",
@@ -38911,13 +39577,22 @@ namespace RubrikSecurityCloud.Types
                     "CreateAgentManifest",
                     "CreateCluster",
                     "CreateNamespaceSnapshots",
+                    "CreateProtectionSetSnapshot",
+                    "DeleteCluster",
+                    "DeleteProtectionSet",
                     "ExportNamespace",
+                    "ExportProtectionSetSnapshot",
                     "Namespace",
                     "Namespaces",
+                    "ProtectionSetSnapshots",
                     "RefreshCluster",
+                    "RefreshV2Cluster",
                     "ReplicaSnapshotInfos",
                     "RestoreNamespace",
+                    "RestoreProtectionSetSnapshot",
                     "SnapshotInfo",
+                    "UpdateCluster",
+                    "UpdateProtectionSet",
                     }
                 },
                 {
@@ -39020,6 +39695,7 @@ namespace RubrikSecurityCloud.Types
                     "Crawl",
                     "Crawls",
                     "CreateCustomAnalyzer",
+                    "CreateEventDigestBatch",
                     "CreateGuestCredential",
                     "CreateOnDemandVolumeGroupBackup",
                     "CreateVappsInstantRecovery",
@@ -39060,6 +39736,7 @@ namespace RubrikSecurityCloud.Types
                     "ExpireSnoozedDirectories",
                     "ExternalDeploymentName",
                     "FailedRestoreItemsInfo",
+                    "FailuresAndWarningsStats",
                     "FederatedLoginStatus",
                     "FileActivities",
                     "GenerateConfigProtectionRestoreForm",
@@ -39107,6 +39784,8 @@ namespace RubrikSecurityCloud.Types
                     "IssuesJobIds",
                     "JobInfo",
                     "KnowledgeBaseArticle",
+                    "KubernetesProtectionSet",
+                    "KubernetesProtectionSets",
                     "LambdaSettings",
                     "LicensedProducts",
                     "ListCidrsForComputeSetting",
@@ -39117,6 +39796,7 @@ namespace RubrikSecurityCloud.Types
                     "MaxProtectedAppsCount",
                     "MfaSetting",
                     "MinimumCdmVersionForFeatureSet",
+                    "ModifyEventDigestBatch",
                     "ModifyIpmi",
                     "MountDisk",
                     "NetworkThrottle",
@@ -39609,8 +40289,10 @@ namespace RubrikSecurityCloud.Types
                     new List<string> {
                     "AccountEntitlement",
                     "AccountEntitlements",
+                    "ApprovePrivateEndpoint",
                     "CreateLocationsFromTemplate",
                     "CreatePrivateEndpointApprovalRequest",
+                    "PrivateEndpointConnections",
                     "UpdateTarget",
                     }
                 },
@@ -39887,6 +40569,8 @@ namespace RubrikSecurityCloud.Types
                     "CdpStateInfos",
                     "DownloadSnapshotFromLocation",
                     "IsManagementEnabled",
+                    "MissedRecoverableRanges",
+                    "RecoverableRanges",
                     }
                 },
                 {
