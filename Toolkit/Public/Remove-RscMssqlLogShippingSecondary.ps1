@@ -2,25 +2,26 @@
 function Remove-RscMssqlLogShippingSecondary {
     <#
     .SYNOPSIS
-    Removes a Live Mount of a MSSQL Database
+    Removes a log shipping secondary of a MSSQL Database
 
     .DESCRIPTION
-    Removes a Live Mount of a MSSQL Database
+    Removes a log shipping secondary of a MSSQL Database
 
-    .PARAMETER MssqlLiveMount
-    Live Mount object returned from Get-RscMssqlLiveMount
+    .PARAMETER RscMssqlLogShipping
+    Log Shipping object returned from Get-RscMssqlLogShipping
 
-    .PARAMETER Force
-    Forces the unmount of a database in the event Rubrik cannot connect to the SQL Server Instance or database. 
-
-    .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
+    .PARAMETER deleteSecondaryDatabase
+    Switch to delete the database off of the secondary host
 
     .EXAMPLE
     Removes the live mount from the SQL Server and cleans up the share and files on the Rubrik cluster
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
-    Remove-RscMssqlLiveMount -MssqlLiveMount $RscMssqlLiveMount
+    $GetRscMssqlLogShipping = @{
+        RscMssqlDatabase = $RscMssqlDatabase
+        SecondaryDatabaseName = "logshipping_advanced_method"
+        RscCluster = $RscCluster
+    }
+    $RscMssqlLogShipping = Get-RscMssqlLogShipping @GetRscMssqlLogShipping
+    $RemoveRscMssqlLogShippingSecondary = Remove-RscMssqlLogShippingSecondary -RscMssqlLogShipping $RscMssqlLogShipping -deleteSecondaryDatabase
     
     .LINK
     Schema reference:
@@ -36,24 +37,23 @@ function Remove-RscMssqlLogShippingSecondary {
             Mandatory = $false, 
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.MssqlDatabaseLiveMount]$MssqlLiveMount, 
+        [RubrikSecurityCloud.Types.MssqlLogShippingTarget]$RscMssqlLogShipping,
 
         [Parameter(
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $false
         )]
-        [Switch]$Force
+        [Switch]$deleteSecondaryDatabase
     )
     
     Process {
         Write-Debug "- Running Remove-RscMssqlLiveMount"
         
         #region Create Query
-        $query = New-RscMutationMssql -Operation DeleteLiveMount  
-        $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.DeleteMssqlLiveMountInput
-
-        $query.Var.input.id = "$($MssqlLiveMount.Fid)"
-        $query.Var.input.force = $force
+        $query = New-RscMutationMssql -Operation DeleteLogShipping  
+        $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.DeleteLogShippingInput
+        $query.Var.input.id = "$($RscMssqlLogShipping.Fid)"
+        $query.Var.input.deleteSecondaryDatabase = $deleteSecondaryDatabase
 
         #endregion
         $result = $query.Invoke()
