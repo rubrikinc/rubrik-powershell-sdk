@@ -1,5 +1,10 @@
 # New-RscMutationRcv
 ## Subcommands
+### approveprivateendpoint
+Approve private endpoint.
+
+- There is a single argument of type ApproveRcvPrivateEndpointInput.
+- Returns ApproveRcvPrivateEndpointReply.
 ### createlocationsfromtemplate
 Creates Rubrik Cloud Vault locations from given location template.
 

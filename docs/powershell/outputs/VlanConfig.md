@@ -9,3 +9,5 @@ Supported in v5.0+
   Netmask for addresses on this VLAN.
 - vlan: System.Int32
   - Required. Supported in v5.0+
+- alias: System.String
+  - Alias for the VLAN.

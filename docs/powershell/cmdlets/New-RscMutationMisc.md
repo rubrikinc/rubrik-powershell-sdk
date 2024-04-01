@@ -75,6 +75,11 @@ Create a new custom analyzer.
 
 - There is a single argument of type CreateCustomAnalyzerInput.
 - Returns Analyzer.
+### createeventdigestbatch
+Create event digests for specific recipients.
+
+- There is a single argument of type CreateEventDigestBatchInput.
+- Returns System.String.
 ### createguestcredential
 Create guest OS credentials.
 
@@ -224,6 +229,11 @@ Migrate the primary cluster with which the agent is able to perform regular oper
 
 - There is a single argument of type MakePrimaryInput.
 - Returns AsyncRequestStatus.
+### modifyeventdigestbatch
+Modify event digests for specific recipients.
+
+- There is a single argument of type ModifyEventDigestBatchInput.
+- Returns System.String.
 ### modifyipmi
 Modify IPMI settings
 

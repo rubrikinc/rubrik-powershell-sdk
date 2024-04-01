@@ -44,3 +44,4 @@ Inventory Card options that the user can select as a workload.
 - KUBERNETES_V2 - Inventory Card is Kubernetes V2.
 - AZURE_BLOB_STORAGE - Inventory Card is Azure Blob Storage.
 - POSTGRESQL - Inventory Card is PostgreSQL.
+- SALESFORCE - Inventory card is Salesforce.

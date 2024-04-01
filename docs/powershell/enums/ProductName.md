@@ -25,3 +25,4 @@ Name of product.
 - ONPREM_AD - On-premise Active Directory Protection.
 - ATLASSIAN_JIRA - Atlassian Jira protection.
 - USER_INTELLIGENCE - User Intelligence.
+- NAS_CLOUDDIRECT - NAS Cloud Direct.

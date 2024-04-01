@@ -8,5 +8,5 @@ Parameters for mail or folder search.
 - searchObjectFilter: SearchObjectFilter
 - lambdaFilters: LambdaPathFilters
   - Parameters for using Lambda filters in the query.
-- ignoreArchive: System.Boolean
-  - Determines whether to ignore in-place archive folder.
+- archiveFolderAction: ArchiveFolderAction
+  - Specifies actions for the in-place archive folder.

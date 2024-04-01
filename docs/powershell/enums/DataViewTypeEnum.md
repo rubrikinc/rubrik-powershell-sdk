@@ -35,3 +35,5 @@ All reporting table schemas.
 - QAUTH_ROLES -  Specifies the database schema for QAuth roles.
 - OBJECT_BACKUP_TASK_SUMMARY - Specifies the database schema for the object backup task summary.
 - AUDIT_LIST - Specifies the database schema for audits.
+- ANOMALY_DETECTION - Specifies the Scanned Objects report information.
+- NF_ANOMALY_DETECTION - Specifies the Unscannable Objects report information.

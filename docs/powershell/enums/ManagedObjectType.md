@@ -131,6 +131,7 @@ All supported managed objects.
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - SALESFORCE_ORGANIZATION - Salesforce organization.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
+- POSTGRES_DATABASE - Postgres Database.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.
  using 10000 to make coding and debugging easier with number in logs.

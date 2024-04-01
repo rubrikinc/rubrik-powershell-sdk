@@ -30,5 +30,8 @@ Supported in v5.0+
 - orgNetworkId: System.String
   - Supported in v8.1+
       The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
+- osType: HostRegisterOsType
+  - Supported in v9.2
+      Operating system of the specified host.
 - hostname: System.String
   - Required. Supported in v5.0+

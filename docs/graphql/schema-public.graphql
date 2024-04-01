@@ -115,6 +115,14 @@ type Query {
     # Sort by argument for Active Directory volume exports.
     sortBy: AdVolumeExportSortByInput): AdVolumeExportConnection!
 
+  # Get Rubrik Backup Service deployment setting
+  # 
+  # Supported in v5.0+
+  # Retrieve the global setting for automatic deployment of the Rubrik Backup Service to virtual machines.
+  agentDeploymentSetting(
+    # Input for InternalGetVmAgentDeploymentSetting.
+    input: GetVmAgentDeploymentSettingInput!): AgentDeploymentSettings!
+
   # List of account owners.
   allAccountOwners: [User!]!
   allAccountProducts(
@@ -1101,6 +1109,20 @@ type Query {
     # The cloud vendor type.
     cloudVendor: CloudVendor): [ManagedObjectType!]!
 
+  # All user files.
+  allUserFiles(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String): [GetCustomerFacingDownloadsReply!]!
+
   # All the users on the current account.
   allUsersOnAccount(
     # Returns the first n elements from the list.
@@ -1643,7 +1665,10 @@ type Query {
   # Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
   azureCloudAccountPermissionConfig(
     # A cloud account feature of Rubrik Security Cloud.
-    feature: CloudAccountFeature!): AzureCloudAccountPermissionConfigResponse!
+    feature: CloudAccountFeature!,
+
+    # Cloud account feature permissions groups.
+    permissionsGroups: [PermissionsGroup!]! = []): AzureCloudAccountPermissionConfigResponse!
 
   # Retrieves the details of the Azure cloud account.
   azureCloudAccountSubscriptionWithFeatures(
@@ -3108,8 +3133,8 @@ type Query {
     # The FID of the workload.
     workloadFid: UUID!,
 
-    # Taskchain ID.
-    taskchainId: String!): FailedRestoreItemsInfoReply!
+    # The instance ID corresponding to the failed restore items.
+    failedItemsInstanceId: String!): FailedRestoreItemsInfoReply!
 
   # Get details of the given failover cluster app.
   failoverClusterApp(
@@ -3158,6 +3183,11 @@ type Query {
 
     # Host failover cluster root type.
     hostFailoverClusterRoot: HostFailoverClusterRoot!): FailoverClusterTopLevelDescendantTypeConnection!
+
+  # Returns the failures and warnings stats of an M365 organization.
+  failuresAndWarningsStats(
+    # Org UUID.
+    orgId: UUID!): FailuresAndWarningsStatsReply!
 
   # Status of the federated login.
   federatedLoginStatus: FederatedLoginStatus!
@@ -6045,7 +6075,7 @@ type Query {
     # 
     aggregations: [String!],
 
-    # Name of the column to sort result by
+    # Name of the column to sort results by.
     sortBy: String,
 
     # Sorting order for the results.
@@ -8469,6 +8499,14 @@ type Mutation {
   completeAzureCloudAccountOauth(
     # Input for completing authentication of the Azure Cloud Accounts.
     input: CompleteAzureCloudAccountOauthInput!): CompleteAzureCloudAccountOauthReply!
+
+  # Configuring a Db2 database restore for different host
+  # 
+  # Supported in v9.1+
+  # Configures the target host for cross host recovery for a source Db2 database.
+  configureDb2Restore(
+    # Input for V1ConfigureDb2Restore.
+    input: ConfigureDb2RestoreInput!): Db2ConfigureRestoreResponse!
 
   # Configure the target database for system copy restore
   # 
@@ -11101,6 +11139,14 @@ type Mutation {
     # Specifies the user ID.
     userId: String!): Boolean!
 
+  # Change the Rubrik Backup Service deployment setting
+  # 
+  # Supported in v5.0+
+  # Modify the global setting for automatic deployment of the Rubrik Backup Service to virtual machines.
+  updateAgentDeploymentSetting(
+    # Input for InternalUpdateVmAgentDeploymentSetting.
+    input: UpdateVmAgentDeploymentSettingInput!): AgentDeploymentSettings!
+
   # Update the hidden status for the given auth domain users.
   updateAuthDomainUsersHiddenStatus(
     # Specifies the auth domain user and their new hidden status.
@@ -12192,6 +12238,9 @@ type ActiveDirectoryDomain implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -12309,6 +12358,9 @@ type ActiveDirectoryDomainController implements CdmHierarchyObject , HierarchyOb
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -12524,6 +12576,9 @@ interface ActiveDirectoryDomainDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -12621,6 +12676,9 @@ interface ActiveDirectoryDomainPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -12906,12 +12964,11 @@ type ActiveDirectorySearchVersions {
   # The Distinguished Name Tag (DNT) of the Active Directory object.
   dnt: Int!
 
-  # Required. Supported in v9.1+
-  # ID of the snapshot containing the Active Directory object.
-  snapshotId: String!
-
   # Type of the object.
   activeDirectoryObjectType: ActiveDirectoryObjectType!
+
+  # Snapshot containing the Active Directory object.
+  snapshot: CdmSnapshot!
 }
 # Host connectivity status.
 type ActiveDirectoryServiceStatus {
@@ -12929,7 +12986,7 @@ type ActiveDirectorySnappableSearchResponse {
 
   # Required. Supported in v9.1+
   # Resultant versions of the objects with that name.
-  versions: ActiveDirectorySearchVersions!
+  versions: [ActiveDirectorySearchVersions!]!
 }
 # Paginated list of ActiveDirectorySnappableSearchResponse objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type ActiveDirectorySnappableSearchResponseConnection {
@@ -14375,6 +14432,7 @@ input AddInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
 }
+# Input for adding a Kubernetes cluster.
 input AddK8sClusterInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
@@ -14382,6 +14440,7 @@ input AddK8sClusterInput {
   # Required. The Kubernetes cluster configuration.
   config: K8sClusterAddInput!
 }
+# Input for adding a Kubernetes protection set.
 input AddK8sProtectionSetInput {
   # Required. The Kubernetes protection set configuration.
   config: K8sProtectionSetAddInput!
@@ -14672,6 +14731,18 @@ enum AgentConnectionStatus {
   DISCONNECTED
   SECONDARY_CLUSTER
   UNREGISTERED
+}
+# Supported in v5.0+
+type AgentDeploymentSettings {
+  # Required. Supported in v5.0+
+  # Determines whether the Rubrik cluster automatically deploys the Rubrik Backup Service to the guest OS at the first backup. Set to true to permit automatic deployment. Set to false to prevent automatic deployment.
+  isAutomatic: Boolean!
+}
+# Supported in v5.0+
+input AgentDeploymentSettingsInput {
+  # Required. Supported in v5.0+
+  # Determines whether the Rubrik cluster automatically deploys the Rubrik Backup Service to the guest OS at the first backup. Set to true to permit automatic deployment. Set to false to prevent automatic deployment.
+  isAutomatic: Boolean!
 }
 # The status of the virtual machine's agent.
 type AgentStatus {
@@ -15642,8 +15713,14 @@ type ApplicationCloudAccountToExocomputeConfig {
   # Application cloud account id for which configs are applicable.
   applicationCloudAccountId: String!
 
-  # Details about the Exocompute configuration.
-  exocomputeConfigs: AwsExocomputeGetConfigurationResponse
+  # Specifies whether the cloud account is the host cloud account.
+  isHost: Boolean!
+
+  # Details about the Exocompute configurations.
+  exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]!
+
+  # Mapped Exocompute account details.
+  mappedExocomputeAccount: CloudAccountDetails
 }
 # Input for approving private endpoint.
 input ApproveRcvPrivateEndpointInput {
@@ -16445,6 +16522,9 @@ enum AuditObjectType {
   # Organization object.
   ORGANIZATION
 
+  # Postgres Database Cluster.
+  POSTGRES_DB_CLUSTER
+
   # Public cloud machine instance object.
   PUBLIC_CLOUD_MACHINE_INSTANCE
 
@@ -16815,6 +16895,20 @@ input AwsAccountFeatureArtifact {
 
   # List of RSC features being enabled.
   features: [CloudAccountFeature!]!
+}
+# AWS accounts on which Ransomware Investigation can be enabled.
+type AwsAccountRansomwareInvestigationEnablement {
+  # AWS account ID.
+  id: String!
+
+  # AWS account name.
+  accountName: String!
+
+  # Indicates whether Ransomware Monitoring is enabled.
+  enabled: Boolean!
+
+  # Indicates whether the AWS account is healthy.
+  isHealthy: Boolean!
 }
 # Status of an AWS Account.
 enum AwsAccountStatus {
@@ -23265,6 +23359,9 @@ type AzureCloudAccountDetailsForFeatureReply {
 
   # Permissions groups for azure cloud account.
   permissionsGroups: [PermissionsGroup!]!
+
+  # Azure customer subscription id for the feature.
+  subscriptionId: String!
 }
 # Azure Cloud Account Feature details.
 type AzureCloudAccountFeatureDetail {
@@ -23300,8 +23397,14 @@ type AzureCloudAccountPermissionConfigResponse {
   # Policy permission version to be used on Rubrik for adding a subscription.
   permissionVersion: Int!
 
-  # List of permissions to be applied on the role created in Azure for a subscription.
+  # List of permissions to be applied on the subscription level role created in Azure for a subscription.
   rolePermissions: [AzureCloudAccountRolePermission!]!
+
+  # List of permissions to be applied on the resource group level role created in Azure for a subscription.
+  resourceGroupRolePermissions: [AzureCloudAccountRolePermission!]!
+
+  # Policy permissions group versions to be used on Rubrik for adding a subscription.
+  permissionsGroupVersions: [PermissionsGroupWithVersion!]!
 }
 # Azure cloud account region Enum.
 enum AzureCloudAccountRegion {
@@ -27314,15 +27417,18 @@ input AzureStorageAccountsReq {
   resourceGroup: String = ""
 }
 # Storage Tier for the storage accounts/containers.
-# For more information, see https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers.
+# For more information, see https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview.
 enum AzureStorageTier {
-  # Optimized for storing data that is rarely accessed.
+  # Optimized for storing data that is rarely accessed and will be stored for at least 180 days.
   ARCHIVE
 
-  # Optimized for storing data that is accessed frequently.
+  # Optimized for storing data that is rarely accessed and will be stored for at least 90 days.
+  COLD
+
+  # Optimized for storing data that is accessed infrequently and will be stored for at least 30 days.
   COOL
 
-  # Optimized for storing data that is infrequently accessed.
+  # Optimized for storing data that is frequently accessed and modified.
   HOT
 
   # Unknown storage tier.
@@ -30145,6 +30251,9 @@ interface CdmHierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -31027,6 +31136,9 @@ type CdmOracleRacNode {
 
   # FID of the physical host object of the RAC node.
   hostFid: String
+
+  # Physical host object of the RAC node.
+  host: PhysicalHost
 }
 # The priority order used for the selection of a RAC node by Oracle backup and recovery.
 type CdmOracleRacNodeOrder {
@@ -33438,6 +33550,9 @@ type Cluster {
 
   # CDM to RSC RBAC migration status for the current cluster.
   cdmRbacMigrationStatus: String
+
+  # The cluster's raw address.
+  rawAddress: String
 }
 # CDM archiving specification.
 type ClusterArchivalSpec {
@@ -34050,6 +34165,12 @@ type ClusterMetric {
 
   # Total miscellaneous bytes used in the Rubrik cluster.
   miscellaneousCapacity: Long!
+
+  # Total number of bytes used by pending snapshots in the Rubrik cluster.
+  pendingSnapshotCapacity: Long!
+
+  # Total number of bytes used by CDP in the Rubrik cluster.
+  cdpCapacity: Long!
 
   # Ingested bytes for local snapshots.
   ingestedSnapshotStorage: Long!
@@ -36014,6 +36135,13 @@ enum ConfigurationTypes {
   # Windows and Unix hosts configuration.
   CONFIGURATION_TYPES_WIN_AND_UNIX_HOSTS
 }
+input ConfigureDb2RestoreInput {
+  # Required. ID of the source Db2 database.
+  id: String!
+
+  # Required. Object containing metadata of the target host.
+  restoreConfig: Db2ConfigureRestoreRequestInput!
+}
 # Additional info for `CONFIGURE_MANAGED_VOLUME_LOG_EXPORT` jobs.
 input ConfigureManagedVolumeLogExportInfo {
   # ID of the managed volume.
@@ -37289,6 +37417,7 @@ input CreateK8sNamespaceSnapshotsInput {
   # List of namespace IDs and corresponding SLA Domains.
   snapshotInput: [K8sNamespaceSnapshot!]!
 }
+# Input for creating a Kubernetes protection set snapshot.
 input CreateK8sProtectionSetSnapshotInput {
   # Configuration for the on-demand backup.
   config: BaseOnDemandSnapshotConfigInput
@@ -37296,6 +37425,7 @@ input CreateK8sProtectionSetSnapshotInput {
   # Required. ID of the Kubernetes protection set workload.
   id: String!
 }
+# Input for creating a Kubernetes restore job.
 input CreateK8sRestoreJobInput {
   # Required. v9.0: The ID of the resource set snapshot to be restored.
   # v9.1+: The ID of the protection set snapshot to be restored.
@@ -38118,6 +38248,17 @@ type CrossAccountPairInfoEdge {
   # The actual CrossAccountPairInfo object wrapped by this edge.
   node: CrossAccountPairInfo!
 }
+# The replicated cross-account object information.
+type CrossAccountReplicatedObjectInfo {
+  # FID of the object.
+  fid: UUID!
+
+  # List of cross-account objects.
+  replicatedObjects: [ReplicatedObjectInfo!]!
+
+  # Cross-account information.
+  crossAccountPairInfo: CrossAccountPairInfo
+}
 # Role of the cross-account pair.
 enum CrossAccountRole {
   # Unspecified sort by field.
@@ -38423,6 +38564,29 @@ input CustomReportFiltersConfig {
 
   # The date for the report.
   date: DateTime
+}
+# Customer facing file.
+type CustomerFacingFile {
+  # File external ID.
+  externalId: String!
+
+  # Timestamp when the file was created.
+  createdAt: DateTime
+
+  # Timestamp when the file will expire.
+  expiresAt: DateTime
+
+  # Creator of the file.
+  creator: String!
+
+  # Name of the file.
+  filename: String!
+
+  # File type.
+  type: FileTypeEnumType!
+
+  # File state.
+  state: FileStateEnumType!
 }
 # AWS customer created permission policy details.
 type CustomerManagedPolicy {
@@ -38863,6 +39027,9 @@ enum DataTypeEnum {
 }
 # All reporting table schemas.
 enum DataViewTypeEnum {
+  # Specifies the Scanned Objects report information.
+  ANOMALY_DETECTION
+
   # Specifies the database schema for audits.
   AUDIT_LIST
   BACKUP_COMPLIANCE
@@ -38889,6 +39056,9 @@ enum DataViewTypeEnum {
   MONITORING_RETRYABLE_FAILED
   MONITORING_SCHEDULED
   MONITORING_TASK_COUNT_TIME_SERIES
+
+  # Specifies the Unscannable Objects report information.
+  NF_ANOMALY_DETECTION
   OBJECT_AUDIT_DETAIL
   OBJECT_AUDIT_LIST
 
@@ -39109,6 +39279,36 @@ input Db2ConfigInput {
   # Frequency value for differential backup of Db2 databases.
   differentialFrequency: SlaDurationInput
 }
+# Supported in v9.1+
+input Db2ConfigureRestoreRequestInput {
+  # Supported in v9.1+
+  # Configure an expiry timestamp for the designated target hosts that require configuration. The date-time string must be in the ISO8601 format, such as \"2016-01-01T01:23:45.678\". The timezone aligns with that of the Rubrik cluster.
+  expiryTimestamp: DateTime
+
+  # Required. Supported in v9.1+
+  # Configure the list of target hosts for restoring a database on a different host.
+  hostIdsToAdd: [String!]!
+
+  # Required. Supported in v9.1+
+  # Remove the configuration for the list of target hosts for restoring a database on a different host.
+  hostIdsToRemove: [String!]!
+}
+# Supported in v9.1+
+type Db2ConfigureRestoreResponse {
+  # Supported in v9.1+
+  # Status message for any failure scenarios.
+  statusMessage: String
+
+  # Supported in v9.1+
+  # Return status for the API call.
+  status: Db2ConfigureRestoreResponseStatus!
+}
+enum Db2ConfigureRestoreResponseStatus {
+  DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_ERROR
+  DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_OK
+  DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_UNKNOWN
+  DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_WARNING
+}
 # File backed up as a part of db2 backup.
 type Db2DataBackupFile {
   # Size of the backed up file in bytes.
@@ -39224,6 +39424,9 @@ type Db2Database implements CdmHierarchyObject , CdmHierarchySnappableNew , Hier
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -39583,6 +39786,9 @@ type Db2Instance implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -39664,6 +39870,9 @@ interface Db2InstanceDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -39783,6 +39992,9 @@ interface Db2InstancePhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -40509,6 +40721,7 @@ input DeleteIntegrationsInput {
   # IDs of all integrations to be deleted.
   ids: [Long!]!
 }
+# Input for deleting a Kubernetes cluster.
 input DeleteK8sClusterInput {
   # v9.0: Flag to specify whether to preserve snapshots of the Kubernetes resource sets in this cluster or to delete them. The default is to preserve the snapshots.
   # v9.1+: Flag to specify whether to preserve snapshots of the Kubernetes protection sets in this cluster or to delete them. The default is to preserve the snapshots.
@@ -40517,6 +40730,7 @@ input DeleteK8sClusterInput {
   # Required. ID of the Kubernetes cluster to delete.
   id: String!
 }
+# Input for deleting a Kubernetes protection set.
 input DeleteK8sProtectionSetInput {
   # Flag to specify whether to preserve snapshots of the Kubernetes protection set or to delete them. The default is to preserve the snapshots.
   preserveSnapshots: Boolean
@@ -43134,6 +43348,9 @@ type ExchangeDag implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -43215,6 +43432,9 @@ interface ExchangeDagDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -43364,6 +43584,9 @@ type ExchangeDatabase implements CdmHierarchyObject , HierarchySnappable , CdmHi
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -43731,6 +43954,9 @@ type ExchangeServer implements CdmHierarchyObject , HierarchyObject , PhysicalHo
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -43812,6 +44038,9 @@ interface ExchangeServerDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -44077,6 +44306,7 @@ input ExportK8sNamespaceInput {
   # Filter resources based on labels.
   labelSelector: LabelSelector
 }
+# Input for exporting a Kubernetes protection set snapshot.
 input ExportK8sProtectionSetSnapshotInput {
   # Required. v9.0: The ID of the resource set snapshot to be exported.
   # v9.1+: The ID of the protection set snapshot to be exported.
@@ -44526,9 +44756,29 @@ input FailedItemsRecoveryConfig {
   # Represents the failed items instance id.
   failedItemsInstanceId: UUID!
 }
+# Represents a single failed item for Microsoft 365 restore performed by Rubrik.
+type FailedRestoreItemInfo {
+  # The name of the failed item.
+  itemName: String!
+
+  # The type of the failed item.
+  itemType: String!
+
+  # The absolute path of the failed item.
+  absolutePath: String!
+
+  # The error message associated with the failed item.
+  errorMsg: String!
+}
 # Represents information on Microsoft 365 restore
 # failed items performed by Rubrik.
 type FailedRestoreItemsInfoReply {
+  # A collection of up to 20 failed items.
+  failedItems: [FailedRestoreItemInfo!]!
+
+  # Total count of failed items encountered.
+  totalFailedItemCount: Int!
+
   # Click the link to download a CSV file containing
   # the Microsoft 365 failed items.
   csvDownloadLink: URL!
@@ -44621,6 +44871,9 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -44752,6 +45005,9 @@ interface FailoverClusterAppDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -44849,6 +45105,9 @@ interface FailoverClusterAppPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -45133,6 +45392,9 @@ interface FailoverClusterTopLevelDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -45339,6 +45601,25 @@ type Failure {
 
   # Details of the error that occurred when connecting to the Rubrik Backup Service.
   error: String!
+}
+# Stores the failures and warnings stats within a time range bucket.
+type FailuresAndWarningsStats {
+  # Start time of the bucket.
+  startTime: DateTime
+
+  # End time of the bucket.
+  endTime: DateTime
+
+  # Number of failures per workload type.
+  workloadTypeToFailureCount: [WorkloadTypeToEventCount!]!
+
+  # Number of warnings per workload type.
+  workloadTypeToWarningCount: [WorkloadTypeToEventCount!]!
+}
+# Stores the failures and warnings stats for all workload types.
+type FailuresAndWarningsStatsReply {
+  # Failures and warnings stats for all workload types.
+  failuresAndWarningsStats: [FailuresAndWarningsStats!]!
 }
 # Input to check feature support for CDM version.
 input FeatureCdmVersionInput {
@@ -45690,11 +45971,36 @@ input FileSnapshotInfo {
   snapshotNum: Int!
   fileSize: Long!
 }
+# File states.
+enum FileStateEnumType {
+  # File state is failed.
+  FAILED
+
+  # File state is invalid.
+  INVALID
+
+  # File state is in progress.
+  IN_PROGRESS
+
+  # File state is pending.
+  PENDING
+
+  # File state is ready.
+  READY
+}
 # Supported in v5.0+
 # The type of the file system on this Volume.
 enum FileSystemType {
   FILE_SYSTEM_TYPE_NTFS
   FILE_SYSTEM_TYPE_RE_FS
+}
+# File types.
+enum FileTypeEnumType {
+  # File type is report.
+  REPORT
+
+  # File type is unknown.
+  UNKNOWN
 }
 # Supported in v5.0+
 type FileVersion {
@@ -46214,6 +46520,9 @@ type FilesetTemplate implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -46400,6 +46709,9 @@ interface FilesetTemplateDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -46579,6 +46891,9 @@ interface FilesetTemplatePhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -48722,6 +49037,11 @@ input GetCsrInput {
   # FID of the CSR to retrieve.
   csrFid: UUID!
 }
+# Reply for request to get customer facing downloads.
+type GetCustomerFacingDownloadsReply {
+  # List of downloaded files available for the customer.
+  downloads: [CustomerFacingFile!]!
+}
 type GetDashboardSummaryReply {
   analyzerResults: [AnalyzerResult!]!
   policyResults: [AnalyzerGroupResult!]!
@@ -49219,6 +49539,10 @@ input GetVlanInput {
 
   # Required. ID of the Rubrik cluster or *me* for self.
   id: String!
+}
+input GetVmAgentDeploymentSettingInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
 }
 # Input for retrieving Hyper-V VM-level files from a snapshot.
 input GetVmLevelFilesFromSnapshotInput {
@@ -50281,6 +50605,9 @@ enum HierarchyFilterField {
   # Filter by the SID of the Active Directory domain.
   ACTIVE_DIRECTORY_DOMAIN_SID
 
+  # Filter the managed objects based on the ancestor IDs.
+  ANCESTOR_ID
+
   # Filter AWS EC2 instances based on RBS connection status.
   AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS
 
@@ -50507,6 +50834,9 @@ enum HierarchyFilterField {
   # Filter by the Active Directory domain controller connection status.
   DOMAIN_CONTROLLER_CONNECTION_STATUS
 
+  # Filter domain controller by domain SID.
+  DOMAIN_CONTROLLER_DOMAIN_SID
+
   # Filter by FSMO role of a domain controller.
   DOMAIN_CONTROLLER_FSMO_ROLE
 
@@ -50644,6 +50974,9 @@ enum HierarchyFilterField {
 
   # Filter by GCP region.
   GCP_NATIVE_REGION
+
+  # Filter by the regions for GCP workloads.
+  GCP_REGION
 
   # Filter VSphere and Hyper-V virtual machines by guest OS type for file export.
   GUEST_OS_TYPE_FOR_FILE_RESTORE
@@ -50944,8 +51277,18 @@ enum HierarchyFilterField {
   # and has an unmerged index.
   RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT
 
+  # Filter SaaS Apps organizations based on whether they only support
+  # recovery.
+  SAASAPPS_IS_RECOVERY_TARGET_ONLY
+
   # Filter according to the natural ID field of the SaaS app resource.
   SAASAPPS_NATURAL_ID
+
+  # Filter by Salesforce name or label.
+  SALESFORCE_NAME_OR_LABEL
+
+  # Filter by Salesforce object type.
+  SALESFORCE_OBJECT_TYPE
 
   # Filter by the Rubrik CDM ID of the SAP HANA database.
   SAP_HANA_DATABASE_CDM_ID
@@ -51225,6 +51568,9 @@ enum HierarchyObjectTypeEnum {
   OracleDatabase
   OracleHost
   OracleRac
+
+  # PostgreSQL Database.
+  POSTGRES_DATABASE
 
   # Postgres Database Cluster.
   POSTGRES_DB_CLUSTER
@@ -51845,6 +52191,9 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -51926,6 +52275,9 @@ interface HostFailoverClusterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -52024,6 +52376,9 @@ interface HostFailoverClusterPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -52233,8 +52588,20 @@ input HostRegisterInput {
   # The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
   orgNetworkId: String
 
+  # Supported in v9.2
+  # Operating system of the specified host.
+  osType: HostRegisterOsType
+
   # Required. Supported in v5.0+
   hostname: String!
+}
+# Host register OS type.
+enum HostRegisterOsType {
+  # Host register Linux OS type.
+  HOST_REGISTER_OS_TYPE_LINUX
+
+  # Host register Windows OS type.
+  HOST_REGISTER_OS_TYPE_WINDOWS
 }
 # Host roots.
 enum HostRoot {
@@ -52322,6 +52689,9 @@ type HostShare implements CdmHierarchyObject , HierarchyObject , PhysicalHostDes
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -52403,6 +52773,9 @@ interface HostShareDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -52501,6 +52874,9 @@ interface HostSharePhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -53010,6 +53386,9 @@ type HyperVCluster implements HierarchyObject , CdmHierarchyObject , HyperVSCVMM
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -53035,6 +53414,9 @@ interface HyperVClusterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -53125,6 +53507,9 @@ interface HyperVClusterLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -53397,6 +53782,9 @@ type HyperVSCVMM implements HierarchyObject , CdmHierarchyObject , PhysicalHostD
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -53436,6 +53824,9 @@ interface HyperVSCVMMDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -53534,6 +53925,9 @@ interface HyperVSCVMMLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -53695,6 +54089,9 @@ type HyperVVirtualMachine implements HierarchyObject , CdmHierarchyObject , CdmH
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -54488,6 +54885,9 @@ type HypervServer implements HierarchyObject , CdmHierarchyObject , PhysicalHost
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -54527,6 +54927,9 @@ interface HypervServerDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -54626,6 +55029,9 @@ interface HypervServerLogicalChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -54715,6 +55121,9 @@ interface HypervTopLevelDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -55513,6 +55922,9 @@ enum InventoryCard {
 
   # Inventory Card is PostgreSQL.
   POSTGRESQL
+
+  # Inventory card is Salesforce.
+  SALESFORCE
 
   # Inventory Card is Sap Hana.
   SAP_HANA
@@ -57276,6 +57688,9 @@ type KubernetesCluster implements HierarchyObject , CdmHierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -57312,6 +57727,9 @@ interface KubernetesClusterDescendant {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -57423,6 +57841,9 @@ type KubernetesProtectionSet implements HierarchyObject , HierarchySnappable , C
   # Specifies whether the Protection Set is a relic.
   isRelic: Boolean!
 
+  # Definition of Protection Set.
+  definition: String!
+
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
@@ -57482,6 +57903,9 @@ type KubernetesProtectionSet implements HierarchyObject , HierarchySnappable , C
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -58196,6 +58620,9 @@ type LinuxFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -59394,6 +59821,9 @@ enum ManagedObjectType {
   # Physical host.
   PHYSICAL_HOST
 
+  # Postgres Database.
+  POSTGRES_DATABASE
+
   # Postgres Database Cluster.
   POSTGRES_DB_CLUSTER
 
@@ -59714,6 +60144,9 @@ type ManagedVolume implements HierarchyObject , CdmHierarchyObject , CdmHierarch
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -59975,6 +60408,9 @@ interface ManagedVolumeDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -60249,6 +60685,9 @@ type ManagedVolumeMount implements HierarchyObject , CdmHierarchyObject , Manage
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -60433,6 +60872,9 @@ interface ManagedVolumePhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -61373,6 +61815,9 @@ type MongoCollection implements HierarchyObject , CdmHierarchyObject , MongoSour
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -61532,6 +61977,9 @@ type MongoCollectionSet implements HierarchyObject , CdmHierarchyObject , MongoS
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -61682,6 +62130,9 @@ interface MongoCollectionSetDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -61771,6 +62222,9 @@ interface MongoCollectionSetPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -61992,6 +62446,9 @@ type MongoDatabase implements HierarchyObject , CdmHierarchyObject , MongoSource
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -62031,6 +62488,9 @@ interface MongoDatabaseDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -62129,6 +62589,9 @@ interface MongoDatabasePhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -62520,6 +62983,9 @@ type MongoSource implements HierarchyObject , CdmHierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -62605,6 +63071,9 @@ interface MongoSourceDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -62742,6 +63211,9 @@ interface MongoSourcePhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -64797,6 +65269,9 @@ type MssqlAvailabilityGroup implements HierarchyObject , CdmHierarchyObject , Ms
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -64822,6 +65297,9 @@ interface MssqlAvailabilityGroupDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -64917,6 +65395,9 @@ interface MssqlAvailabilityGroupLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -65363,6 +65844,9 @@ type MssqlDatabase implements HierarchyObject , CdmHierarchyObject , HierarchySn
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -66158,6 +66642,9 @@ type MssqlInstance implements HierarchyObject , CdmHierarchyObject , MssqlTopLev
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -66183,6 +66670,9 @@ interface MssqlInstanceDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -66278,6 +66768,9 @@ interface MssqlInstanceLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -67082,6 +67575,9 @@ interface MssqlTopLevelDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -67383,6 +67879,9 @@ type NasFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hiera
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -67624,6 +68123,9 @@ type NasNamespace implements CdmHierarchyObject , HierarchyObject , NasSystemDes
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -67702,6 +68204,9 @@ interface NasNamespaceDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -67800,6 +68305,9 @@ interface NasNamespaceLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -67979,6 +68487,9 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -68051,6 +68562,9 @@ interface NasShareDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -68141,6 +68655,9 @@ interface NasShareLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -68329,6 +68846,9 @@ type NasSystem implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -68443,6 +68963,9 @@ interface NasSystemDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -68540,6 +69063,9 @@ interface NasSystemLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -68766,6 +69292,9 @@ type NasVolume implements CdmHierarchyObject , HierarchyObject , NasSystemDescen
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -68830,6 +69359,9 @@ interface NasVolumeDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -68920,6 +69452,9 @@ interface NasVolumeLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -69990,6 +70525,9 @@ type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPr
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -70063,6 +70601,9 @@ interface NutanixCategoryDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -70153,6 +70694,9 @@ interface NutanixCategoryLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -70319,6 +70863,9 @@ type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , Nuta
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -70392,6 +70939,9 @@ interface NutanixCategoryValueDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -70482,6 +71032,9 @@ interface NutanixCategoryValueLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -70649,6 +71202,9 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -70748,6 +71304,9 @@ interface NutanixClusterDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -70845,6 +71404,9 @@ interface NutanixClusterLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -71439,6 +72001,9 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -71542,6 +72107,9 @@ interface NutanixPrismCentralDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -71639,6 +72207,9 @@ interface NutanixPrismCentralLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -71790,6 +72361,9 @@ interface NutanixTopLevelDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -71928,6 +72502,9 @@ type NutanixVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -75804,6 +76381,9 @@ enum Operation {
   CATEGORY_PROTECTION
   CATEGORY_RECOVERY
   CATEGORY_VIEW_DATA_SOURCE
+
+  # Chat with chatbot.
+  CHAT_WITH_CHATBOT
   CONFIGURE_DATA_CLASS_GLOBAL
 
   # Configure the database log reporting properties for a cluster.
@@ -75863,6 +76443,9 @@ enum Operation {
 
   # Manage certificates and certificate signing requests.
   MANAGE_CERTIFICATE
+
+  # Manage chatbot configuration.
+  MANAGE_CHATBOT
 
   # Set up or remove disks on a cluster.
   MANAGE_CLUSTER_DISKS
@@ -75969,6 +76552,9 @@ enum Operation {
 
   # View certificates and certificate signing requests.
   VIEW_CERTIFICATE
+
+  # View chatbot configuration.
+  VIEW_CHATBOT
   VIEW_CLUSTER
 
   # View cluster licenses.
@@ -75998,6 +76584,12 @@ enum Operation {
   # View Guest OS credentials.
   VIEW_GUEST_OS_CREDENTIAL
   VIEW_INVENTORY
+
+  # View client IP address in audits.
+  VIEW_IP_ADDRESS_IN_AUDITS
+
+  # View license dashboard.
+  VIEW_LICENSE_DASHBOARD
 
   # View Network Throttle Settings.
   VIEW_NETWORK_THROTTLE_SETTINGS
@@ -76288,6 +76880,9 @@ type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmH
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -76437,6 +77032,9 @@ interface OracleDataGuardGroupDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -76526,6 +77124,9 @@ interface OracleDataGuardGroupLogicalChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -76613,6 +77214,9 @@ input OracleDataGuardGroupUpdateInput {
   # Supported in v9.0+
   # Boolean value specifying whether to use SEPS wallet to connect to the primary database to perform some operations during backup from the standby database.
   shouldUseSepsWallet: Boolean
+
+  # Boolean value specifying whether to forcibly disable the discovery of the Data Guard group databases. If this value is set to true, and the global configuration DisableOracleDataGuardDiscovery is set to true, the existing Data Guard group are converted to non-Data Group databases.
+  shouldForceDisableDgDiscovery: Boolean
 }
 type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , OracleTopLevelDescendantType , OracleHostDescendantType , OracleHostLogicalChildType , OracleRacDescendantType , OracleRacLogicalChildType , OracleDataGuardGroupDescendantType , OracleDataGuardGroupLogicalChildType {
   # CDM ID of the Oracle database.
@@ -76677,6 +77281,12 @@ type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarc
 
   # Specifies whether the Oracle database uses Secure Thrift as the transfer protocol.
   useSecureThrift: Boolean!
+
+  # Specifies the OS type for the Oracle host or RAC that the Oracle database is running on.
+  osType: OracleOsType!
+
+  # Specifies the OS names for the Oracle host or RAC that the Oracle database is running on.
+  osNames: [String!]!
 
   # The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
   dataGuardGroup: OracleDataGuardGroup
@@ -76751,6 +77361,9 @@ type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarc
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -77342,6 +77955,9 @@ type OracleHost implements HierarchyObject , CdmHierarchyObject , OracleTopLevel
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -77366,6 +77982,9 @@ interface OracleHostDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -77465,6 +78084,9 @@ interface OracleHostLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -77837,6 +78459,17 @@ type OracleNonSlaProperties {
   # Specifies an interval in hours. The next log snapshot job deletes archived Oracle redo log files whose 'nextTime' field specifies a time more than the specified number of hours ago. To immediately delete archived redo log files regardless of age, specify an interval of -1. To preserve all archived redo log files, specify an interval of -2.
   hostLogRetentionHours: Int
 }
+# Os type for Oracle host or RAC that the Oracle database is running on.
+enum OracleOsType {
+  # Linux OS.
+  LINUX
+
+  # Undefined.
+  UNDEFINED
+
+  # Windows OS.
+  WINDOWS
+}
 # An Oracle Pluggable Database.
 type OraclePdb {
   # The Container ID for the Oracle Pluggable Database.
@@ -78042,6 +78675,9 @@ type OracleRac implements HierarchyObject , CdmHierarchyObject , OracleTopLevelD
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -78066,6 +78702,9 @@ interface OracleRacDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -78168,6 +78807,9 @@ interface OracleRacLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -78356,6 +78998,9 @@ interface OracleTopLevelDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -79253,6 +79898,11 @@ enum PermissionsGroup {
   # endpoints. These permissions are applicable to exocompute feature.
   PRIVATE_ENDPOINTS
 
+  # Represents the permissions required for interacting with Rubrik-managed
+  # Exocompute clusters launched in private access mode. These permissions
+  # apply to the Exocompute feature.
+  PRIVATE_EXO_CLUSTERS
+
   # Represents the set of permissions required for all recovery
   # operations. These permissions are applicable to the cloud native
   # SQL DB and SQL MI features.
@@ -79416,6 +80066,9 @@ type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLeve
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -79497,6 +80150,9 @@ interface PhysicalHostDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -79594,6 +80250,9 @@ interface PhysicalHostPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -80812,11 +81471,17 @@ enum ProductName {
   # CloudNative.
   CLOUDNATIVE
 
+  # Cloud Unstructured.
+  CLOUD_UNSTRUCTURED
+
   # GPS.
   GPS
 
   # Kubernetes protection.
   KUBERNETES
+
+  # NAS Cloud Direct.
+  NAS_CLOUDDIRECT
 
   # NoSQL protection.
   NOSQL
@@ -81300,6 +81965,7 @@ input QueryHypervHostInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
 }
+# Input for querying Kubernetes snapshots.
 input QueryK8sSnapshotInput {
   # Required. ID of the Kubernetes protection set workload.
   id: String!
@@ -81452,6 +82118,9 @@ type RansomwareInvestigationEnablementReply {
 
   # The Azure subscriptions on which Ransomware Investigation can be enabled.
   azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!]
+
+  # The AWS accounts on which Ransomware Investigation can be enabled.
+  awsAccounts: [AwsAccountRansomwareInvestigationEnablement!]
 }
 # Ransomware Investigation report from lambda service.
 type RansomwareResult {
@@ -82192,6 +82861,7 @@ input RefreshK8sClusterInput {
   # The ID of the Kubernetes cluster to refresh.
   k8sClusterId: UUID!
 }
+# Input for refreshing a Kubernetes cluster.
 input RefreshK8sV2ClusterInput {
   # Required. ID of the Kubernetes cluster.
   id: String!
@@ -82580,6 +83250,20 @@ input RemovedNodeDetailsInput {
 
   # Names of the removed nodes.
   nodeNames: [String!]!
+}
+# The replicated object information.
+type ReplicatedObjectInfo {
+  # CDM ID of the object.
+  cdmObjectId: String!
+
+  # FID of the object.
+  fid: UUID!
+
+  # UUID of the Rubrik CDM cluster.
+  clusterUuid: UUID!
+
+  # Name of the Rubrik CDM cluster.
+  clusterName: String
 }
 # Information about Kubernetes Replicated Snapshots.
 type ReplicatedSnapshotInfo {
@@ -85298,6 +85982,15 @@ type SapHanaDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , 
     # Field to filter SAP HANA log snapshots.
     filter: SapHanaLogSnapshotFilterInput): SapHanaLogSnapshotConnection!
 
+  # The oldest snapshot for SAP HANA database.
+  oldestSnapshot: CdmSnapshot
+
+  # The most recent snapshot for SAP HANA database.
+  newestSnapshot: CdmSnapshot
+
+  # The number of on-demand snapshots for SAP HANA database.
+  onDemandSnapshotCount: Int!
+
   # Rubrik cluster where this object originated.
   cluster: Cluster!
 
@@ -85312,6 +86005,9 @@ type SapHanaDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , 
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -85472,15 +86168,6 @@ type SapHanaDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , 
 
   # The most recent indexed snapshot of this workload.
   newestIndexedSnapshot: CdmSnapshot
-
-  # The most recent snapshot of this workload.
-  newestSnapshot: CdmSnapshot
-
-  # The oldest snapshot of this workload.
-  oldestSnapshot: CdmSnapshot
-
-  # The number of on-demand snapshots.
-  onDemandSnapshotCount: Int!
 
   # The newest snapshot archived to AWS.
   newestArchivedSnapshot: CdmSnapshot
@@ -85965,7 +86652,7 @@ input SapHanaStorageSnapshotConfigInput {
   retention: SlaDurationInput
 }
 # SAP HANA system details object.
-type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
+type SapHanaSystem implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject {
   # UUID of cluster associated with SAP HANA system.
   clusterUuid: UUID!
 
@@ -86001,6 +86688,7 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
 
   # Additional information about the SAP HANA system.
   systemInfo: SapHanaSystemInformation
+  isRelic: Boolean!
 
   # List of descendants.
   descendantConnection(
@@ -86063,6 +86751,9 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -86113,6 +86804,130 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject {
 
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
+
+  # A link to view the workload on the CDM cluster. For dev use only.
+  cdmLink: String!
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput): MissedSnapshotCommonConnection
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput,
+
+    # Group snapshots by field.
+    groupBy: MissedSnapshotGroupByTime!,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0): MissedSnapshotGroupByConnection
+
+  # The list of snapshots taken for this workload.
+  snapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Sorts snapshots by field.
+    sortBy: CdmSnapshotSortByEnum = Date,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder): CdmSnapshotConnection
+
+  # GroupBy connection for the snapshots of this workload.
+  snapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupByConnection
+
+  # GroupBy connection for the snapshots of this workload.
+  snapshotGroupBySummary(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
+  # The most recent snapshot of this workload.
+  newestSnapshot: CdmSnapshot
+
+  # The oldest snapshot of this workload.
+  oldestSnapshot: CdmSnapshot
+
+  # The number of on-demand snapshots.
+  onDemandSnapshotCount: Int!
+
+  # The newest snapshot archived to AWS.
+  newestArchivedSnapshot: CdmSnapshot
+
+  # The newest snapshot replicated to a cluster.
+  newestReplicatedSnapshot: CdmSnapshot
 }
 # The authentication type for the SAP HANA system.
 enum SapHanaSystemAuthType {
@@ -86213,6 +87028,9 @@ interface SapHanaSystemDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -86385,6 +87203,9 @@ interface SapHanaSystemPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -86681,11 +87502,11 @@ type ScvmmInfo {
 # Supported in v9.2+.
 input SddUserCredentialsInput {
   # Required. Supported in v9.2
-  # Password to connect to the database for sensitive data discovery.
+  # Password to connect to the database for Sensitive Data Discovery.
   password: String!
 
   # Required. Supported in v9.2
-  # Username to connect to the database for sensitive data discovery.
+  # Username to connect to the database for Sensitive Data Discovery.
   username: String!
 }
 # Filters for Security Descriptor resolution.
@@ -87262,6 +88083,9 @@ type ShareFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -94425,6 +95249,7 @@ input UpdateIntegrationsInput {
   # The integrations.
   integrations: [UpdateIntegrationInput!]!
 }
+# Input for updating a Kubernetes cluster.
 input UpdateK8sClusterInput {
   # Required. Properties of the Kubernetes cluster to update.
   config: K8sClusterUpdateConfigInput!
@@ -94432,6 +95257,7 @@ input UpdateK8sClusterInput {
   # Required. ID of the Kubernetes cluster to update.
   id: String!
 }
+# Input for updating a Kubernetes protection set.
 input UpdateK8sProtectionSetInput {
   # Required. Properties of the Kubernetes protection set to update.
   config: K8sProtectionSetUpdateConfigInput!
@@ -95313,15 +96139,52 @@ input UpdateVcenterHotAddNetworkInput {
   id: String!
 }
 input UpdateVcenterInput {
+  # Object containing updated vCenter Server information.
+  updatePropertiesV50: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV51: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV52: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV53: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV60: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV70: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV80: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV81: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV90: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV91: VcenterConfigInput
+
+  # Object containing updated vCenter Server information.
+  updatePropertiesV92: VcenterUpdateConfigInput
+
   # Required. ID of the vCenter Server.
   id: String!
-
-  # Required. Object containing updated vCenter Server information.
-  updateProperties: VcenterConfigInput!
 }
 # Reply Object for UpdateVcenter.
 type UpdateVcenterReply {
   output: VcenterSummary
+}
+input UpdateVmAgentDeploymentSettingInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. Modify the Rubrik Backup Service deployment setting for a specified virtual machine.
+  settings: AgentDeploymentSettingsInput!
 }
 # Input to update protection settings for volume group.
 input UpdateVolumeGroupInput {
@@ -96132,6 +96995,9 @@ enum UserAuditObjectTypeEnum {
 
   # Oracle RAC type.
   OracleRac
+
+  # PostgreSQL Database Cluster.
+  POSTGRES_DB_CLUSTER
 
   # Public cloud machine instance type.
   PublicCloudMachineInstance
@@ -97283,6 +98149,9 @@ type Vcd implements HierarchyObject , CdmHierarchyObject , VcdTopLevelDescendant
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -97307,6 +98176,9 @@ interface VcdCatalogDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -97375,6 +98247,9 @@ interface VcdCatalogLogicalChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -97441,6 +98316,9 @@ interface VcdDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -97530,6 +98408,9 @@ interface VcdLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -97711,6 +98592,9 @@ type VcdOrg implements HierarchyObject , CdmHierarchyObject , VcdDescendantType 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -97735,6 +98619,9 @@ interface VcdOrgDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -97824,6 +98711,9 @@ interface VcdOrgLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -98005,6 +98895,9 @@ type VcdOrgVdc implements HierarchyObject , CdmHierarchyObject , VcdDescendantTy
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -98029,6 +98922,9 @@ interface VcdOrgVdcDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -98118,6 +99014,9 @@ interface VcdOrgVdcLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -98215,6 +99114,9 @@ interface VcdTopLevelDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -98370,6 +99272,9 @@ type VcdVapp implements HierarchyObject , CdmHierarchyObject , HierarchySnappabl
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -98520,6 +99425,9 @@ interface VcdVappDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -98586,6 +99494,9 @@ interface VcdVappLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -98738,6 +99649,9 @@ type VcdVimServer implements HierarchyObject , CdmHierarchyObject , VcdDescendan
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -98948,6 +99862,14 @@ type VcenterSummary {
 enum VcenterSummaryConflictResolutionAuthz {
   VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION
   VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_NO_CONFLICT_RESOLUTION
+}
+# Input for configuration containing updated vCenter Server information.
+input VcenterUpdateConfigInput {
+  # Configuration containing a part of updated vCenter Server information.
+  vcenterConfig: VcenterConfigInput
+
+  # A Boolean value that determines whether to update compute cluster visibility settings for the vCenter. When this value is `true`, 'computeVisibilityFilter' will be effective. The default value is `true`.
+  shouldUpdateComputeVisibilityFilter: Boolean
 }
 # Response verifying if the cluster is replication target in a SLA Domain.
 type VerifySlaWithReplicationToClusterResponse {
@@ -99282,9 +100204,15 @@ type VlanConfig {
 
   # Required. Supported in v5.0+
   vlan: Int!
+
+  # Alias for the VLAN.
+  alias: String
 }
 # Supported in v5.0+
 input VlanConfigInput {
+  # Alias for the VLAN.
+  alias: String
+
   # Required. Supported in v5.0+
   # Network interfaces for each node.
   interfaces: [NodeIpInput!]!
@@ -100318,6 +101246,9 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -100398,6 +101329,9 @@ interface VsphereComputeClusterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -100496,6 +101430,9 @@ interface VsphereComputeClusterPhysicalChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -100586,6 +101523,9 @@ interface VsphereContentLibraryDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -100653,6 +101593,9 @@ interface VsphereContentLibraryLibraryChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -100816,6 +101759,9 @@ type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , Vsphere
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -100882,6 +101828,9 @@ interface VsphereDatacenterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -100973,6 +101922,9 @@ interface VsphereDatacenterFolderDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -101040,6 +101992,9 @@ interface VsphereDatacenterFolderLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -101109,6 +102064,9 @@ interface VsphereDatacenterFolderPhysicalChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -101175,6 +102133,9 @@ interface VsphereDatacenterLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -101264,6 +102225,9 @@ interface VsphereDatacenterPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -101368,6 +102332,9 @@ type VsphereDatastore implements CdmHierarchyObject , HierarchyObject , VsphereC
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -101498,6 +102465,9 @@ type VsphereDatastoreCluster implements CdmHierarchyObject , HierarchyObject , V
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -101575,6 +102545,9 @@ interface VsphereDatastoreClusterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -101672,6 +102645,9 @@ interface VsphereDatastoreClusterPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -101868,6 +102844,9 @@ type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcen
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -101948,6 +102927,9 @@ interface VsphereFolderDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -102045,6 +103027,9 @@ interface VsphereFolderLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -102237,6 +103222,9 @@ type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcente
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -102317,6 +103305,9 @@ interface VsphereHostDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -102414,6 +103405,9 @@ interface VsphereHostPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -102748,6 +103742,9 @@ type VsphereNetwork implements CdmHierarchyObject , HierarchyObject , VsphereHos
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -102922,6 +103919,9 @@ type VsphereResourcePool implements CdmHierarchyObject , HierarchyObject , Vsphe
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -102988,6 +103988,9 @@ interface VsphereResourcePoolDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -103077,6 +104080,9 @@ interface VsphereResourcePoolPhysicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -103208,6 +104214,9 @@ type VsphereTag implements CdmHierarchyObject , HierarchyObject , VsphereVcenter
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -103304,6 +104313,9 @@ type VsphereTagCategory implements CdmHierarchyObject , HierarchyObject , Vspher
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -103367,6 +104379,9 @@ interface VsphereTagCategoryDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -103434,6 +104449,9 @@ interface VsphereTagCategoryTagChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -103524,6 +104542,9 @@ interface VsphereTagDescendantType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -103590,6 +104611,9 @@ interface VsphereTagTagChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -103818,6 +104842,9 @@ type VsphereVcenter implements CdmHierarchyObject , HierarchyObject {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -103898,6 +104925,9 @@ interface VsphereVcenterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -103997,6 +105027,9 @@ interface VsphereVcenterLibraryChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -104085,6 +105118,9 @@ interface VsphereVcenterLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -104175,6 +105211,9 @@ interface VsphereVcenterPhysicalChildType {
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -104263,6 +105302,9 @@ interface VsphereVcenterTagChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -104526,6 +105568,9 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -104943,6 +105988,9 @@ input VsphereVmRecoverFilesNewInput {
 }
 # Input to register Rubrik Backup Agent.
 input VsphereVmRegisterAgentInput {
+  # ID of the org network to which the virtual machine is assigned.
+  orgNetworkId: String
+
   # Required. ID assigned to a virtual machine object.
   id: String!
 }
@@ -105223,6 +106271,9 @@ type WindowsCluster implements HierarchyObject , CdmHierarchyObject , MssqlTopLe
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
 
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -105248,6 +106299,9 @@ interface WindowsClusterDescendantType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -105338,6 +106392,9 @@ interface WindowsClusterLogicalChildType {
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -105464,6 +106521,9 @@ type WindowsFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , H
 
   # Objects either replicated by this object or related to this object by replication.
   replicatedObjects: [CdmHierarchyObject!]!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
 
   # Latest user note information.
   latestUserNote: LatestUserNote
@@ -105889,6 +106949,14 @@ type WorkloadTypeToBackupSetupSpecs {
 
   # The object from where the setup specification is inherited.
   setupSourceObject: PathNode!
+}
+# Stores the event count for a workload type.
+type WorkloadTypeToEventCount {
+  # Event count for the above workload type.
+  count: Int!
+
+  # M365 workload type.
+  workloadType: M365DashboardWorkloadType!
 }
 # Supported in v6.0+
 type YARAMatchDetail {

@@ -59,7 +59,9 @@ Retrieves a list of all the missing permissions on Azure subscriptions that are 
 ### cloudaccountpermissionconfig
 Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
 
-- There is a single argument of type CloudAccountFeature.
+- There are 2 arguments.
+    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
+    - permissionsGroups - list of PermissionsGroups: Cloud account feature permissions groups.
 - Returns AzureCloudAccountPermissionConfigResponse.
 ### cloudaccountsubnetsbyregion
 Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
@@ -316,6 +318,11 @@ Validates if Azure subnets are correctly configured for running Azure Kubernetes
 
 - There is a single argument of type ValidateAzureCloudAccountExocomputeConfigurationsInput.
 - Returns ValidateAzureSubnetsForCloudAccountExocomputeReply.
+### validatecreateclusterinput
+Validates azure cluster create request.
+
+- There is a single argument of type CreateAzureClusterInput.
+- Returns ValidationReply.
 ### vnets
 Gets the VNets for the given subscription.
 

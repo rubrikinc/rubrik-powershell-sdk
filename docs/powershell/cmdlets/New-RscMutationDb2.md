@@ -5,6 +5,14 @@ Mutation to add a new Db2 instance.
 
 - There is a single argument of type AddDb2InstanceInput.
 - Returns AddDb2InstanceReply.
+### configurerestore
+Configuring a Db2 database restore for different host
+
+Supported in v9.1+
+Configures the target host for cross host recovery for a source Db2 database.
+
+- There is a single argument of type ConfigureDb2RestoreInput.
+- Returns Db2ConfigureRestoreResponse.
 ### createondemandbackup
 Create on demand database snapshot
 

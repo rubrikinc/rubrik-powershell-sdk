@@ -8,3 +8,4 @@ S3CompatibleSubType enum specifies the sub location type
 - IBMCOS - IbmCos subtype.
 - DELLECS - DellEcs subtype.
 - NETAPPSG - NetAppSG subtype.
+- IRONCLOUD - IronCloud subtype.
