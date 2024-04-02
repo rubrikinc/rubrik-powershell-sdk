@@ -1,9 +1,10 @@
 <#
 .SYNOPSIS
-ADMIN USE ONLY. Update the GitHub repo's main branch and create a new release.
+ADMIN USE ONLY. Update the GitHub repo's main branch, create a new release and publish it to the PowerShell Gallery.
 
 .DESCRIPTION
-ADMIN USE ONLY: this script updates the GitHub repo and needs to be run by an admin.
+ADMIN USE ONLY: this script updates the GitHub repo and the PowerShell
+gallery and needs to be run by an admin.
 Running it as a non-admin will not alter the repository and
 will only show what would have been done.
 
@@ -73,6 +74,13 @@ RunIfNotDry {
 # Create a new GitHub release
 RunIfNotDry {
     gh release create $versionTag -t $versionTag -n "$versionEntry"
+}
+
+# Publish the module to the PowerShell Gallery
+if ($script:NotDry) {
+    .\Utils\Publish-RscSdk.ps1 -NotDry
+} else {
+    .\Utils\Publish-RscSdk.ps1
 }
 
 # Prepare devel branch for further development

@@ -9,6 +9,7 @@ Fixes:
 - Get-RscMssqlLogShipping - Now works and no longer references Live Mount
 - Remove-RscMssqlLogShippingSecondary - Now works and no longer references Live Mount
 - Patched clusterConnection DETAIL profile.
+- More details in Get-Help Invoke-Rsc
 
 Breaking Changes:
 
