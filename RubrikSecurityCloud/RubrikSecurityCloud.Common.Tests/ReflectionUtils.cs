@@ -60,7 +60,10 @@ namespace RubrikSecurityCloud.Tests
             },
             {
                 typeof(TypeC),
-                "Baz\nB.A.Foo\nB.A.Bar\nB.Baz\nInf"
+                "Baz\nB.A.Foo\nB.A.Bar\nB.Baz\nInf.Bar\nInf.Foo\nInf.Name"
+                // Note: it's Inf.Bar, Inf.Foo, Inf.Name
+                // Because FlattenField outputs all possible fields of
+                // an interface across all classes that implement it.
             },
             };
             foreach (var testCase in testCases)
@@ -76,8 +79,7 @@ namespace RubrikSecurityCloud.Tests
                 
                 List<string> expectedOutput = testCase.Value.Split("\n").ToList();
                 expectedOutput.Sort();
-                List<string> result = ReflectionUtils.FlattenField(inputType);
-                result.Sort();
+                List<string> result = ReflectionUtils.FlattenFieldFull(inputType);
                 if (!expectedOutput.SequenceEqual(result))
                 {
                     string expectedStr = string.Join(", ", expectedOutput);

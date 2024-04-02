@@ -42,7 +42,7 @@ namespace RubrikSecurityCloud.Types
         public virtual List<string> AllFields()
         {
             return StringUtils.FlattenFieldToFieldSpecList(
-                ReflectionUtils.FlattenField(this.GetType().FullName));
+                ReflectionUtils.FlattenFieldFull(this.GetType().FullName));
         }
 
         public List<string> UnselectedFields()

@@ -49883,106 +49883,41 @@ enum GlobalSlaQueryFilterInputField {
 }
 # Metadata for rendering an SLA Domain.
 type GlobalSlaReply implements SlaDomain {
-  # SLA Domain ID.
   id: String!
-
-  # SLA Domain name.
   name: String!
-
-  # Version for the SLA Domain.
   version: String
-
-  # Description of the SLA Domain.
-  description: String!
-
-  # Workload count for the SLA Domain.
-  protectedObjectCount: Int!
-
-  # Color of the SLA Domain on the User Interface.
-  uiColor: String!
-
-  # Snapshot schedule for the SLA Domain.
-  snapshotSchedule: SnapshotSchedule
-
-  # Local retention limit.
-  localRetentionLimit: Duration
-
-  # Archiving specification for the SLA Domain.
-  archivalSpec: ArchivalSpec
-
-  # List of archival specifications for SLA Domain.
-  archivalSpecs: [ArchivalSpec!]!
-
-  # Replication specification for the SLA Domain.
-  replicationSpec: ReplicationSpec
-
-  # Replication specification for the SLA Domain.
-  replicationSpecsV2: [ReplicationSpecV2!]!
-
-  # Last update timestamp of the snapshot schedule of the SLA Domain.
-  snapshotScheduleLastUpdatedAt: DateTime
-
-  # Base frequency for the SLA Domain.
-  baseFrequency: Duration
-
-  # Specifies whether the SLA Domain is archived or not.
-  isArchived: Boolean!
-
-  # State version of the SLA Domain.
-  stateVersion: Long!
-
-  # First full backup windows.
-  firstFullBackupWindows: [BackupWindow!]!
-
-  # Backup windows for the SLA Domain.
-  backupWindows: [BackupWindow!]!
-
-  # Sync status of the clusters.
-  clusterToSyncStatusMap: [GlobalSlaSyncStatus!]!
-
-  # Log configuration of the SLA Domain.
-  logConfig: LogConfigResult
-
-  # The object-specific configurations of the SLA Domain.
   objectSpecificConfigs: ObjectSpecificConfigs
 
-  # The object-types supported by the SLA Domain.
-  objectTypes: [SlaObjectType!]!
-
-  # Rubrik cluster ID of the SLA Domain.
   clusterUuid: String!
-
-  # Specifies whether the SLA Domain is a default SLA Domain or not.
+  description: String!
+  isArchived: Boolean!
   isDefault: Boolean!
-
-  # SLA Domain upgrade information.
-  upgradeInfo: SlaUpgradeInfo
-
-  # Information about Rubrik clusters where this SLA Domain is paused.
-  pausedClustersInfo: PausedClustersInfo
-
-  # Specifies if this SLA Domain is retention-locked or not.
-  isRetentionLockedSla: Boolean!
-
-  # Specifies whether the SLA Domain is read-only.
   isReadOnly: Boolean
+  isRetentionLockedSla: Boolean!
+  stateVersion: Long!
 
-  # Specifies the retention lock mode when enabled for the SLA Domain.
+  protectedObjectCount: Int!
+  uiColor: String!
+  snapshotSchedule: SnapshotSchedule
+  localRetentionLimit: Duration
+  archivalSpec: ArchivalSpec
+  archivalSpecs: [ArchivalSpec!]!
+  replicationSpec: ReplicationSpec
+  replicationSpecsV2: [ReplicationSpecV2!]!
+  snapshotScheduleLastUpdatedAt: DateTime
+  baseFrequency: Duration
+  firstFullBackupWindows: [BackupWindow!]!
+  backupWindows: [BackupWindow!]!
+  clusterToSyncStatusMap: [GlobalSlaSyncStatus!]!
+  logConfig: LogConfigResult
+  objectTypes: [SlaObjectType!]!
+  upgradeInfo: SlaUpgradeInfo
+  pausedClustersInfo: PausedClustersInfo
   retentionLockMode: RetentionLockMode!
-
-  # This field is deprecated.
   allOrgsWithAccess: [Org!]! @deprecated(reason: "This field is deprecated and has been replaced by the allOrgsHavingAccess field, which must be used instead.")
-
-  # Specifies the list of organizations that have view access for the SLA Domain.
   allOrgsHavingAccess: [SlaAssociatedOrganization!]!
-
-  # This field is deprecated.
   ownerOrgName: String! @deprecated(reason: "This field has been deprecated in favor of ownerOrg field.")
-
-  # Specifies the owner organization of the SLA Domain.
   ownerOrg: SlaAssociatedOrganization!
-
-  # Upgrade information about the configured archival locations and cascading archival locations.
   archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!]
 }
 # Global SLA status for cluster.

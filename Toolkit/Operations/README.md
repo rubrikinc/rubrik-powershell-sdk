@@ -122,9 +122,7 @@ And since we want the same patch for the `DETAIL` profile, we can just
 copy the file over:
 
 ```powershell
->  cd .\Toolkit\Operations\
->  Copy-Item .\DEFAULT\QueryMssqlDatabaseLiveMounts.patch .\DETAIL\
-> cd ..\..
+>  Copy-Item .\Toolkit\Operations\DEFAULT\QueryMssqlDatabaseLiveMounts.patch .\Toolkit\Operations\DETAIL\
 ```
 
 and update the Output dir:

@@ -131,14 +131,22 @@ namespace RubrikSecurityCloud
         /// </summary>
         public List<string> AllFields()
         {
-            return ReflectionUtils.FlattenField(this._gqlOperation.ReturnType);
+            return ReflectionUtils.FlattenFieldPatch(this._gqlOperation.ReturnType);
         }
 
         public List<string> SelectedFields()
         {
+            // Check if Field is a single IFieldSpec
             if (this.Field != null && this.Field is IFieldSpec fieldSpec)
             {
                 return fieldSpec.SelectedFields();
+            }
+            // Check if Field is a collection (IEnumerable<IFieldSpec>) of IFieldSpec
+            else if (this.Field is IEnumerable<IFieldSpec> fieldSpecCollection)
+            {
+                // Aggregate selected fields from all IFieldSpec in the collection, removing duplicates
+                return fieldSpecCollection.SelectMany(
+                    spec => spec.SelectedFields()).Distinct().ToList();
             }
             return new List<string>();
         }

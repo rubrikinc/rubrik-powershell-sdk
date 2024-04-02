@@ -91,6 +91,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
             ValueFromPipeline = false)]
         public Exploration.Profile FieldProfile { get; set; } = Exploration.Profile.UNSET;
 
+        [Parameter(
+            Mandatory = false,
+            // No Position -> named parameter only.
+            HelpMessage = "Introspection utility: if -ValidPatchSet is given, no query object is returned, but instead, the cmdlet outputs the 'valid patch set' (that is, what field names can be given to -AddField and -RemoveField).",
+            ValueFromPipeline = false)]
+        public SwitchParameter ValidPatchSet { get; set; }
+
         protected RscGqlPSCmdletConfig _config; // Class configuration
 
         protected string gqlRootField;
@@ -210,10 +217,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             try
             {
                 validValues = RscPatchSet.BuildValidPatchStringsFor(
-                    gqlReturnType,
-                    5,
-                    new HashSet<string> { "Edges" }
-                );
+                    gqlReturnType);
                 if (validValues.Count > 0)
                 {
                     return validValues;
@@ -448,7 +452,22 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void EndProcessing()
         {
             _logger?.Debug("EndProcessing()");
-            base.EndProcessing();
+            
+            // If -ValidPatchSet is given,
+            // output the valid patch set and exit.
+            if (this.ValidPatchSet)
+            {
+                List<string>? validPatchSet = this.GetValidPatchSet();
+                if (validPatchSet != null)
+                {
+                    this.WriteObject(validPatchSet);
+                } else
+                {
+                    throw new Exception("Could not determine valid patch set"); 
+                }
+                return;
+            }
+
             if (_config.SendQueryOnExitIfAny && _query != null)
             {
                 RscGqlRequest gqlReq = _query.GqlRequest();
@@ -464,6 +483,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     this.WriteObject(_query);
                 }
             }
+
+            base.EndProcessing();
         }
     }
 }
