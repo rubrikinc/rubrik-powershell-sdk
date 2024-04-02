@@ -8,6 +8,7 @@ Fixes:
 - Get-RscMssqlAvailabilityGroup - Now works for returning back list or by name.
 - Get-RscMssqlLogShipping - Now works and no longer references Live Mount
 - Remove-RscMssqlLogShippingSecondary - Now works and no longer references Live Mount
+- Patched clusterConnection DETAIL profile.
 
 Breaking Changes:
 

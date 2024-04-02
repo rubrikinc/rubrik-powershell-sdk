@@ -129,24 +129,42 @@ namespace RubrikSecurityCloud
         /// <summary>
         /// Return a flattened list of all the fields in the Field object.
         /// </summary>
-        public List<string> AllFields()
+        public List<string> AllFields(int maxDepth=0)
         {
-            return ReflectionUtils.FlattenFieldPatch(this._gqlOperation.ReturnType);
+            if (this.Field != null)
+            {
+                // Check if Field is a single IFieldSpec
+                if (this.Field is BaseType baseType)
+                {
+                    return baseType.AllFields(maxDepth);
+                }
+                // Check if Field is a collection of IFieldSpec
+                else if (this.Field is IEnumerable<BaseType> baseTypeCollection)
+                {
+                    // Aggregate selected fields from all IFieldSpec in the collection, removing duplicates
+                    return baseTypeCollection.SelectMany(
+                        spec => spec.AllFields(maxDepth)).Distinct().ToList();
+                }
+            }
+            return new List<string>();
         }
 
         public List<string> SelectedFields()
         {
-            // Check if Field is a single IFieldSpec
-            if (this.Field != null && this.Field is IFieldSpec fieldSpec)
+            if (this.Field != null)
             {
-                return fieldSpec.SelectedFields();
-            }
-            // Check if Field is a collection (IEnumerable<IFieldSpec>) of IFieldSpec
-            else if (this.Field is IEnumerable<IFieldSpec> fieldSpecCollection)
-            {
-                // Aggregate selected fields from all IFieldSpec in the collection, removing duplicates
-                return fieldSpecCollection.SelectMany(
-                    spec => spec.SelectedFields()).Distinct().ToList();
+                // Check if Field is a single IFieldSpec
+                if (this.Field is IFieldSpec fieldSpec)
+                {
+                    return fieldSpec.SelectedFields();
+                }
+                // Check if Field is a collection of IFieldSpec
+                else if (this.Field is IEnumerable<IFieldSpec> fieldSpecCollection)
+                {
+                    // Aggregate selected fields from all IFieldSpec in the collection, removing duplicates
+                    return fieldSpecCollection.SelectMany(
+                        spec => spec.SelectedFields()).Distinct().ToList();
+                }
             }
             return new List<string>();
         }
