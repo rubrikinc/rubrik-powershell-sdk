@@ -19,37 +19,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </summary>
     /// <description>
     /// There are 2 usages of this cmdlet:
-    /// - Send a query obtained from a `New-RscQuery*` cmdlet.
-    /// - Send a raw GraphQL query.
+    /// 1) -Query : Send a query object (obtained from a `New-RscQuery*` cmdlet); or
+    /// 2) -GqlQuery : Send a text GraphQL query.
     /// </description>
     /// <example>
-    /// Send a query obtained from a `New-RscQuery*` cmdlet.
-    /// It is equivalent to calling `Invoke()` on the query object.
+    /// Send a query object.
     /// <code>
-    /// New-RscQueryGetVsphereVmList -Name "my-vm" | Invoke-Rsc
-    /// # or
-    /// $query = New-RscQueryGetVsphereVmList -Name "my-vm"
-    /// $query.Invoke()
+    /// #
+    /// # Create a query object
+    /// $q = New-RscQueryGetVsphereVmList -Name "my-vm"
+    /// 
+    /// # Send it - by piping to Invoke-Rsc:
+    /// $q | Invoke-Rsc
+    /// # - Or  - by calling Invoke() on the query object
+    /// $q.Invoke()
+    /// 
+    /// # The above 2 methods are equivalent.
     /// </code>
     /// </example>
     /// <example>
-    /// Read GraphQL query from gql file
+    /// Send a GraphQL query string.
     /// <code>
-    /// Get-Content -Path ./Samples/queryAccountOwners -Raw | Invoke-Rsc
+    /// #
+    /// # Text GraphQL query string
+    /// $gqlQuery = """
+    ///   mutation DeleteWebhookMutation(`$id: Int!) {
+    ///     deleteWebhook(input: {id: `$id})
+    ///   }
+    /// """
+    /// 
+    /// # Invoke the query - as a parameter:
+    /// Invoke-Rsc -GqlQuery $gqlQuery -Var @{id = 1}
+    /// # - Or - by piping the query to Invoke-Rsc:
+    /// $gqlQuery | Invoke-Rsc -Var @{id = 1}
+    ///
+    /// # The above 2 methods are equivalent.
     /// </code>
     /// </example>
     /// <example>
-    /// Pass GraphQL query as parameter.
+    /// Read the GraphQL query from a .gql file, and send it.
     /// <code>
-    /// Invoke-Rsc -GqlQuery "mutation DeleteWebhookMutation(`$id: Int!) { deleteWebhook(input: {id: `$id}) }" -Var @{id = 1}
+    /// #
+    /// # text GraphQL query file with variables in the header
+    /// $gqlFile = "./Samples/queryAccountOwners.gql"
+    /// $gqlQuery = Get-Content -Path $gqlFile -Raw
+    /// 
+    /// # Invoke the query - by piping to Invoke-Rsc:
+    /// $gqlQuery | Invoke-Rsc
+    /// # - Or - by giving it as a parameter:
+    /// Invoke-Rsc -GqlQuery $gqlQuery
+    /// 
+    /// # The above 2 methods are equivalent.
     /// </code>
     /// </example>
+
     [Cmdlet(
         VerbsLifecycle.Invoke,
         "Rsc",
         DefaultParameterSetName = "Query")]
     public class Invoke_Rsc : RscBasePSCmdlet
     {
+        /// <summary>
+        /// The query object to send to the RSC API.
+        /// </summary>
         [Parameter(
             ParameterSetName = "Query",
             Mandatory = true,
@@ -61,7 +93,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         // Parameter Set "NativeGQL"
         // is used when the user writes their own GQL queries
         /// <summary>
-        /// The GQL query to send to the RSC API.
+        /// The text GraphQL query string to send to the RSC API.
+        /// Variables can possibly be supplied in a header comment.
         /// </summary>
         [Parameter(
             ParameterSetName = "NativeGQL",
@@ -73,6 +106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         /// <summary>
         /// The variables to supply to the GraphQL query.
+        /// Only used when GqlQuery is set.
         /// </summary>
         [Parameter(
             ParameterSetName = "NativeGQL",
