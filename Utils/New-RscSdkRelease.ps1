@@ -51,6 +51,13 @@ function RunIfNotDry {
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
 
+# bail out if not on the devel branch
+$currentBranch = git rev-parse --abbrev-ref HEAD
+if ($currentBranch -ne 'devel') {
+    throw "You are not on the 'devel' branch. Current branch is '$currentBranch'."
+}
+
+# Get the latest changelog entry
 $changelogScriptPath = ".\Utils\Get-RscSdkLatestChangelog.ps1"
 $changelogLatest = & $changelogScriptPath
 if ( -Not $changelogLatest ) {
@@ -58,6 +65,44 @@ if ( -Not $changelogLatest ) {
 }
 $versionTag = $changelogLatest.latestVersionTag
 $versionEntry = $changelogLatest.latestVersionEntry
+
+# $versionTag must have the format "Version_<integer>.<integer>"
+if ($versionTag -notmatch "^Version_\d+\.\d+$") {
+    throw "Latest version in ./CHANGELOG.md is invalid. It must have the format 'Version_<integer>.<integer>'."
+}
+
+# extract the module version from $versionTag
+$changelogSemanticVersion = $versionTag -replace 'Version_', ''
+
+# Check if the version tag matches the module version
+$psd1SemanticVersion = (Import-PowerShellDataFile .\RubrikSecurityCloud\RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.psd1).ModuleVersion
+
+if ( $changelogSemanticVersion -ne $psd1SemanticVersion ) {
+    Write-Host @"
+
+Version mismatch between
+
+./CHANGELOG.md
+
+and
+
+./RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/RubrikSecurityCloud.psd1
+
+The latest entry in ./CHANGELOG.md must have the format "Version M.m",
+where "M.m" is the ModuleVersion field in 
+./RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/RubrikSecurityCloud.psd1 .
+
+./CHANGELOG.md shows:
+
+$changelogSemanticVersion
+
+./RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/RubrikSecurityCloud.psd1 shows:
+
+$psd1SemanticVersion
+
+"@ -ForegroundColor Yellow
+    throw "Version mismatch. CHANGELOG: $changelogSemanticVersion, psd1: $psd1SemanticVersion."
+}
 
 Write-Host "Latest version tag: " -NoNewline
 Write-Host $versionTag -ForegroundColor Cyan
