@@ -2413,6 +2413,11 @@ type Query {
 
     # Type of managed object on which tag rule will be applied.
     objectType: CloudNativeTagObjectType!): IsCloudNativeTagRuleNameUniqueReply!
+
+  # Checks whether the latest version of the Microsoft 365 Management App exists.
+  checkLatestVersionMgmtAppExists(
+    # The input for checking whether the latest version of the Microsoft 365 Management App exists.
+    input: CheckLatestVersionMgmtAppExistsInput!): CheckLatestVersionMgmtAppExistsReply!
   cloudAccount(
     # Corresponds to Cloud Account Id in Rubrik tables
     cloudAccountId: UUID!): CloudAccount!
@@ -8746,6 +8751,11 @@ type Mutation {
   createK8sProtectionSetSnapshot(
     # Input for V1CreateK8sProtectionSetBackupJob.
     input: CreateK8sProtectionSetSnapshotInput!): AsyncRequestStatus!
+
+  # Place legal hold on snapshots.
+  createLegalHold(
+    # Create legal hold request.
+    input: CreateLegalHoldInput!): CreateLegalHoldReply!
   createManualTargetMapping(
     # Request for creating manual target mapping.
     input: CreateManualTargetMappingInput!): TargetMapping!
@@ -9434,6 +9444,11 @@ type Mutation {
   discoverMongoSource(
     # Input for V1DiscoverMongoSource.
     input: DiscoverMongoSourceInput!): AsyncRequestStatus!
+
+  # Dissolve legal hold on snapshots.
+  dissolveLegalHold(
+    # Dissolve legal hold request.
+    input: DissolveLegalHoldInput!): DissolveLegalHoldReply!
 
   # Download a snapshot from a remote target
   # 
@@ -32215,6 +32230,16 @@ type CheckAzurePersistentStorageSubscriptionCanUnmapReply {
   # Whether we can unmap archival location from subscription.
   canUnmap: Boolean!
 }
+# Configuration for checking if the latest version of the Microsoft 365 Management App exists.
+input CheckLatestVersionMgmtAppExistsInput {
+  # UUID of the org.
+  o365OrgId: UUID!
+}
+# Store the response of whether the latest version of Microsoft 365 Management App exists.
+type CheckLatestVersionMgmtAppExistsReply {
+  # Boolean which specifies whether the latest version of Microsoft 365 Management App exists.
+  latestMgmtAppExist: Boolean!
+}
 enum ClassificationPolicyColor {
   COLOR_001
   COLOR_002
@@ -37435,6 +37460,22 @@ input CreateK8sRestoreJobInput {
   # v9.1+: Configuration for restoring Kubernetes resources from a protection set snapshot using a job.
   jobConfig: K8sRestoreParametersInput!
 }
+# Contains information about the snapshots to be placed on legal hold and configuration of the legal hold on which they have to be placed.
+input CreateLegalHoldInput {
+  # List of snapshot IDs.
+  snapshotIds: [String!] = []
+
+  # Configuration of the required legal hold.
+  holdConfig: HoldConfig
+
+  # Optional user note.
+  userNote: String = ""
+}
+# Contains information about the snapshots placed on legal hold.
+type CreateLegalHoldReply {
+  # List of the snapshot IDs placed on legal hold.
+  snapshotIds: [String!]!
+}
 # Input for creating manual target mapping.
 input CreateManualTargetMappingInput {
   # Field for specifying name of the target mapping.
@@ -41589,6 +41630,19 @@ type DisplayableValueString implements DisplayableValue {
   displayValue: String!
   serializedValue: String!
   reportHeader: String!
+}
+# Contains information about the snapshots to be removed from legal hold.
+input DissolveLegalHoldInput {
+  # List of snapshot IDs.
+  snapshotIds: [String!] = []
+
+  # Optional user note.
+  userNote: String = ""
+}
+# Contains information about the snapshots dissolved from legal hold.
+type DissolveLegalHoldReply {
+  # List of the snapshot IDs dissolved from legal hold.
+  snapshotIds: [String!]!
 }
 # Input for retrieving distribution list digest by ID.
 input DistributionDigestByIdInput {
@@ -49883,41 +49937,106 @@ enum GlobalSlaQueryFilterInputField {
 }
 # Metadata for rendering an SLA Domain.
 type GlobalSlaReply implements SlaDomain {
+  # SLA Domain ID.
   id: String!
-  name: String!
-  version: String
-  objectSpecificConfigs: ObjectSpecificConfigs
 
-  clusterUuid: String!
+  # SLA Domain name.
+  name: String!
+
+  # Version for the SLA Domain.
+  version: String
+
+  # Description of the SLA Domain.
   description: String!
+
+  # Workload count for the SLA Domain.
+  protectedObjectCount: Int!
+
+  # Color of the SLA Domain on the User Interface.
+  uiColor: String!
+
+  # Snapshot schedule for the SLA Domain.
+  snapshotSchedule: SnapshotSchedule
+
+  # Local retention limit.
+  localRetentionLimit: Duration
+
+  # Archiving specification for the SLA Domain.
+  archivalSpec: ArchivalSpec
+
+  # List of archival specifications for SLA Domain.
+  archivalSpecs: [ArchivalSpec!]!
+
+  # Replication specification for the SLA Domain.
+  replicationSpec: ReplicationSpec
+
+  # Replication specification for the SLA Domain.
+  replicationSpecsV2: [ReplicationSpecV2!]!
+
+  # Last update timestamp of the snapshot schedule of the SLA Domain.
+  snapshotScheduleLastUpdatedAt: DateTime
+
+  # Base frequency for the SLA Domain.
+  baseFrequency: Duration
+
+  # Specifies whether the SLA Domain is archived or not.
   isArchived: Boolean!
-  isDefault: Boolean!
-  isReadOnly: Boolean
-  isRetentionLockedSla: Boolean!
+
+  # State version of the SLA Domain.
   stateVersion: Long!
 
-  protectedObjectCount: Int!
-  uiColor: String!
-  snapshotSchedule: SnapshotSchedule
-  localRetentionLimit: Duration
-  archivalSpec: ArchivalSpec
-  archivalSpecs: [ArchivalSpec!]!
-  replicationSpec: ReplicationSpec
-  replicationSpecsV2: [ReplicationSpecV2!]!
-  snapshotScheduleLastUpdatedAt: DateTime
-  baseFrequency: Duration
+  # First full backup windows.
   firstFullBackupWindows: [BackupWindow!]!
+
+  # Backup windows for the SLA Domain.
   backupWindows: [BackupWindow!]!
+
+  # Sync status of the clusters.
   clusterToSyncStatusMap: [GlobalSlaSyncStatus!]!
+
+  # Log configuration of the SLA Domain.
   logConfig: LogConfigResult
+
+  # The object-specific configurations of the SLA Domain.
+  objectSpecificConfigs: ObjectSpecificConfigs
+
+  # The object-types supported by the SLA Domain.
   objectTypes: [SlaObjectType!]!
+
+  # Rubrik cluster ID of the SLA Domain.
+  clusterUuid: String!
+
+  # Specifies whether the SLA Domain is a default SLA Domain or not.
+  isDefault: Boolean!
+
+  # SLA Domain upgrade information.
   upgradeInfo: SlaUpgradeInfo
+
+  # Information about Rubrik clusters where this SLA Domain is paused.
   pausedClustersInfo: PausedClustersInfo
+
+  # Specifies if this SLA Domain is retention-locked or not.
+  isRetentionLockedSla: Boolean!
+
+  # Specifies whether the SLA Domain is read-only.
+  isReadOnly: Boolean
+
+  # Specifies the retention lock mode when enabled for the SLA Domain.
   retentionLockMode: RetentionLockMode!
+
+  # This field is deprecated.
   allOrgsWithAccess: [Org!]! @deprecated(reason: "This field is deprecated and has been replaced by the allOrgsHavingAccess field, which must be used instead.")
+
+  # Specifies the list of organizations that have view access for the SLA Domain.
   allOrgsHavingAccess: [SlaAssociatedOrganization!]!
+
+  # This field is deprecated.
   ownerOrgName: String! @deprecated(reason: "This field has been deprecated in favor of ownerOrg field.")
+
+  # Specifies the owner organization of the SLA Domain.
   ownerOrg: SlaAssociatedOrganization!
+
+  # Upgrade information about the configured archival locations and cascading archival locations.
   archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!]
 }
 # Global SLA status for cluster.
@@ -50000,6 +50119,9 @@ type Group {
 
   # The suborganizations in which the user group has roles.
   allOrgs: [Org!]!
+
+  # Users from the user group who are currently logged-in to the account.
+  activeUsers: [User!]!
 }
 enum GroupByFieldEnum {
   ANALYZER
@@ -51958,6 +52080,11 @@ type HitsSummary {
 
   # Summary of delta hits.
   deltaHitsSummary: TotalRiskSummary
+}
+# Contains configuration of the legal hold to be placed.
+input HoldConfig {
+  # Specifies whether a snapshot is to be held in place.
+  shouldHoldInPlace: Boolean = false
 }
 # The connection status of a host.
 type HostConnectionStatus {
@@ -88805,6 +88932,9 @@ enum SlaMigrationIneligibilityReason {
 
   # The SLA Domain has frequency configured in minutes, which is currently not supported for objects other than Managed Volumes.
   UNSUPPORTED_PROTECTED_OBJECTS_MINUTE_FREQUENCY_CONFIGURED
+
+  # The SLA Domain protecting NAS on CDM is currently not eligible for upgrade.
+  UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET
 }
 # SLA Domain migration status.
 enum SlaMigrationStatus {
