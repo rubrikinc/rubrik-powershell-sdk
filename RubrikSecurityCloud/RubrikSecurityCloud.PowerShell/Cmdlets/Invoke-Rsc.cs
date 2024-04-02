@@ -42,11 +42,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>
     /// #
     /// # Text GraphQL query string
-    /// $gqlQuery = """
-    ///   mutation DeleteWebhookMutation(`$id: Int!) {
-    ///     deleteWebhook(input: {id: `$id})
+    /// $gqlQuery = @'
+    ///   mutation DeleteWebhookMutation($id: Int!) {
+    ///     deleteWebhook(input: {id: $id})
     ///   }
-    /// """
+    /// '@
     /// 
     /// # Invoke the query - as a parameter:
     /// Invoke-Rsc -GqlQuery $gqlQuery -Var @{id = 1}
