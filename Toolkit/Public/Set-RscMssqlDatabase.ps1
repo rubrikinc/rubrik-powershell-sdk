@@ -100,148 +100,109 @@ function Set-RscMssqlDatabase {
 
     [CmdletBinding()]
     Param(
-        [Parameter(
-            Position = 0,
-            Mandatory = $true, 
-            ValueFromPipeline = $true
-        )][RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
+        [Parameter(Position = 0, Mandatory = $true)]
+        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
 
-        [Parameter(
-            Position = 1,
-            Mandatory = $true
-        )][RubrikSecurityCloud.Types.Cluster]$RscCluster,
+        [Parameter(Mandatory = $true)]
+        [RubrikSecurityCloud.Types.Cluster]$RscCluster,
 
-        [Parameter(
-            Position = 2,
-            ParameterSetName = "Do Not Protect",
-            Mandatory = $false
-        )][switch]$DoNotProtect,
+        [Parameter(ParameterSetName = "Do Not Protect", Mandatory = $true)]
+        [switch]$DoNotProtect,
 
-        [Parameter(
-            Position = 3,
-            ParameterSetName = "Do Not Protect",
-            Mandatory = $true
-        )]
+        [Parameter(ParameterSetName = "Do Not Protect", Mandatory = $true)]
         [ValidateSet("EXPIRE_IMMEDIATELY", "KEEP_FOREVER", "RETAIN_SNAPSHOTS")]
         [string]$ExistingSnapshotRetention,
 
-        [Parameter(
-            Position = 2,
-            ParameterSetName = "Clear Existing Protection",
-            Mandatory = $false
-        )][switch]$ClearExistingProtection,
+        [Parameter(ParameterSetName = "Clear Existing Protection", Mandatory = $true)]
+        [switch]$ClearExistingProtection,
 
-        [Parameter(
-            Position = 2,
-            ParameterSetName = "Apply SLA Domain",
-            Mandatory = $false
-        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain,
+        [Parameter(ParameterSetName = "Clear Existing Protection")]
+        [switch]$ShouldApplyToExistingSnapshots,
 
-        [Parameter(
-            ParameterSetName = "Apply SLA Domain",
-            Position = 3
-        )][switch]$CopyOnly,
+        [Parameter(ParameterSetName = "Clear Existing Protection")]
+        [switch]$ShouldApplyToNonPolicySnapshots,
 
-        [Parameter(
-            ParameterSetName = "Apply SLA Domain",
-            Position = 4
-        )]
-        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Apply SLA Domain", Mandatory = $true)]
+        [switch]$ApplySLADomain,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain", Mandatory = $true)]
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
+        [switch]$CopyOnly,
+
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
+        [Parameter(ParameterSetName = "Log Backups", Mandatory = $true)]
         [switch]$EnableLogBackups,
         
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 5)]
-        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
-        [Parameter(ParameterSetName = "Use SLA Log Config")]
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
+        [Parameter(ParameterSetName = "Log Backups")]
+        [Parameter(ParameterSetName = "Use SLA Log Config", Mandatory = $true)]
         [switch]$UseSLALogConfig,
 
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 6)]
-        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
-        [Parameter(ParameterSetName = "Configure Log Backup and Retention")]
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
+        [Parameter(ParameterSetName = "Log Backups")]
+        [Parameter(ParameterSetName = "Configure Log Backup and Retention", Mandatory = $true)]
         [int]$logBackupFrequencyInSeconds,
 
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 7)]
-        [Parameter(ParameterSetName = "Log Backups", Mandatory = $false)]
-        [Parameter(ParameterSetName = "Configure Log Backup and Retention")]
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
+        [Parameter(ParameterSetName = "Log Backups")]
+        [Parameter(ParameterSetName = "Configure Log Backup and Retention", Mandatory = $true)]
         [int]$logRetentionHours,
 
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 8)]
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
         [Parameter(ParameterSetName = "Log Backups")]
-        [Parameter(ParameterSetName = "Enable Host Log Retention")]
-        [Parameter(Mandatory = $false)]
+        [Parameter(ParameterSetName = "Enable Host Log Retention", Mandatory = $true)]
         [switch]$EnableHostLogRetention,
 
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 9)]
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
         [Parameter(ParameterSetName = "Log Backups")]
         [Parameter(ParameterSetName = "Enable Host Log Retention")]
-        [Parameter(ParameterSetName = "Follow System Retention Configuration")]
-        [Parameter(Mandatory = $false)]
+        [Parameter(ParameterSetName = "Follow System Retention Configuration", Mandatory = $true)]
         [switch]$FollowSystemRetentionConfig,
 
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 11)]
+        [Parameter(ParameterSetName = "Apply SLA Domain")]
         [Parameter(ParameterSetName = "Log Backups")]
         [Parameter(ParameterSetName = "Enable Host Log Retention")]
-        [Parameter(ParameterSetName = "Configure Host Log Retention")]
-        [Parameter(Mandatory = $false)]
+        [Parameter(ParameterSetName = "Configure Host Log Retention", Mandatory = $true)]
         [int]$HostLogRetentionInSeconds,
 
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 12)]
-        [Parameter(
-            ParameterSetName = "Clear Existing Protection",
-            Mandatory = $false
-        )][switch]$ShouldApplyToExistingSnapshots,
-        
-        [Parameter(ParameterSetName = "Apply SLA Domain", Position = 13)]
-        [Parameter(
-            ParameterSetName = "Clear Existing Protection",
-            Mandatory = $false
-        )][switch]$ShouldApplyToNonPolicySnapshots,
-
+        [Parameter(ParameterSetName = "Database Properties")]
         [ValidateRange(1, 8)]
-        [Parameter(
-            ParameterSetName = "Database Properties",
-            Mandatory = $false,
-            Position = 3
-        )][int]$MaxDataStreams = 2,
+        [int]$MaxDataStreams = 2,
 
-        [Parameter(
-            ParameterSetName = "Database Properties",
-            Mandatory = $false,
-            Position = 4
-        )][switch]$IsPaused,
+        [Parameter(ParameterSetName = "Database Properties")]
+        [switch]$IsPaused,
 
-        [Parameter(
-            ParameterSetName = "Database Properties",
-            Mandatory = $false,
-            Position = 5
-        )][switch]$ShouldForceFull,
+        [Parameter(ParameterSetName = "Database Properties")]
+        [switch]$ShouldForceFull,
 
-        [Parameter(ParameterSetName = "Add Pre-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Add Pre-BackupScript", Mandatory = $true)]
         [ValidateSet("SCRIPT_ERROR_ACTION_ABORT", "SCRIPT_ERROR_ACTION_CONTINUE")]
         [String]$PreBackupScriptErrorAction,
 
-        [Parameter(ParameterSetName = "Add Pre-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Add Pre-BackupScript", Mandatory = $true)]
         [String]$PreBackupScriptPath,
 
-        [Parameter(ParameterSetName = "Add Pre-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Add Pre-BackupScript", Mandatory = $true)]
         [int]$PreBackupScriptTimeoutMs,
         
-        [Parameter(ParameterSetName = "Add Post-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Add Post-BackupScript", Mandatory = $true)]
         [ValidateSet("SCRIPT_ERROR_ACTION_CONTINUE")]
         [String]$PostBackupScriptErrorAction,
 
-        [Parameter(ParameterSetName = "Add Post-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Add Post-BackupScript", Mandatory = $true)]
         [String]$PostBackupScriptPath,
 
-        [Parameter(ParameterSetName = "Add Post-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Add Post-BackupScript", Mandatory = $true)]
         [int]$PostBackupScriptTimeoutMs,
 
-        [Parameter(ParameterSetName = "Remove Pre-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Remove Pre-BackupScript", Mandatory = $true)]
         [Switch]$RemovePreBackupScript,
 
-        [Parameter(ParameterSetName = "Remove Post-BackupScript", Mandatory = $false)]
+        [Parameter(ParameterSetName = "Remove Post-BackupScript", Mandatory = $true)]
         [Switch]$RemovePostBackupScript
     )
-    
     Process {
         Write-Debug "- Running Set-RscMssqlDatabase"
         
@@ -341,20 +302,16 @@ function Set-RscMssqlDatabase {
 
                 $dbsUpdateProperties.updateProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDbUpdateInput
 
-                if ($MaxDataStreams){
+                if($PSBoundParameters.ContainsKey('MaxDataStreams')){
                     $dbsUpdateProperties.updateProperties.MaxDataStreams = $MaxDataStreams
                 }
-                if ($shouldForceFull){
-                    $dbsUpdateProperties.updateProperties.shouldForceFull = $true
-                }else {
-                    $dbsUpdateProperties.updateProperties.shouldForceFull = $false
+                if($PSBoundParameters.ContainsKey('shouldForceFull')){
+                    $dbsUpdateProperties.updateProperties.shouldForceFull = $shouldForceFull
                 }
-                if ($IsPaused){
-                    $dbsUpdateProperties.updateProperties.IsPaused = $true
+                if($PSBoundParameters.ContainsKey('IsPaused')){
+                    $dbsUpdateProperties.updateProperties.IsPaused = $IsPaused
                 }
-                else {
-                    $dbsUpdateProperties.updateProperties.IsPaused = $false
-                }
+
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Add Pre-BackupScript" {
