@@ -31,7 +31,7 @@ namespace RubrikSecurityCloud
     /// <summary>
     /// A case-insensitive dictionary of variables.
     /// </summary>
-    public class VarDict : Dictionary<string, object>
+    public class VarDict : Dictionary<string, object?>
     {
         /// <summary>
         /// Create a new empty VarDict.

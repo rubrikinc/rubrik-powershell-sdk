@@ -6,6 +6,8 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using RubrikSecurityCloud.Types;
 using System.Linq;
+using System.Management.Automation;
+using System.Text;
 
 namespace RubrikSecurityCloud
 {
@@ -33,12 +35,35 @@ namespace RubrikSecurityCloud
                 ContractResolver = new SortedCamelCasePropertyNamesContractResolver()
             };
 
+        private readonly JsonSerializerSettings _inlineVarsSettings =
+            new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Converters = new List<JsonConverter> {
+                    new Newtonsoft.Json.Converters.StringEnumConverter(),
+                    new GraphqlInlineArgsConverter()
+                    },
+                ContractResolver = new SortedCamelCasePropertyNamesContractResolver()
+            };
 
         public string AsJson(IRscLogger? logger = null)
         {
             JObject variables = processVariables(logger);
             return JsonConvert.SerializeObject(variables, _serializerSettings);
 
+        }
+
+        public string AsInlineVariables(IRscLogger? logger = null)
+        {
+            JObject variables = processVariables(logger);
+            string jsonStr = JsonConvert.SerializeObject(variables, _inlineVarsSettings);
+            string placeholder = "strPlaceholder";
+            jsonStr = jsonStr.Replace("\\\"\"", placeholder);
+            jsonStr = jsonStr.Replace("\"\\\"", placeholder);
+            jsonStr = jsonStr.Replace("\"", string.Empty);
+            jsonStr = jsonStr.Replace(placeholder, "\"");
+            jsonStr = jsonStr.Substring(1, jsonStr.Length - 2);
+            return jsonStr;
         }
 
         private JObject processVariables(IRscLogger? logger = null)
@@ -119,6 +144,14 @@ namespace RubrikSecurityCloud
                     arr.Add(processVariable(listItem));
                 }
                 return arr;
+            }
+
+            if (obj is PSObject psObject)
+            {
+                return JObject.FromObject(
+                    psObject.BaseObject,
+                    JsonSerializer.Create(_serializerSettings)
+                );
             }
 
             // default:

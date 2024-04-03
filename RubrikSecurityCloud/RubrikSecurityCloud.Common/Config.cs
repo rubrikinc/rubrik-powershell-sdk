@@ -56,6 +56,7 @@ namespace RubrikSecurityCloud
             {"^email$" , null },
             {"^endcursor$" , null },
             {"id$" , null },
+            {"^jobid$" , null },
             {"^message$", null },
             {"^name$" , null },
             {"^numworkloaddescendants$" , null },
@@ -83,7 +84,8 @@ namespace RubrikSecurityCloud
             "^items$",
             "^nodes$",
             "^pageinfo$",
-            "^asyncrequeststatus$"
+            "^asyncrequeststatus$",
+            "^jobids$",
         };
 
         /// <summary>

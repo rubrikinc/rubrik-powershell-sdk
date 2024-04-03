@@ -418,10 +418,22 @@ Now let's say you only want to retrieve the first 3 clusters, you can
 pass the `first` argument like this:
 
 ```powershell
-$query=(New-RscQueryCluster -List -GetInput)
-$query.Var["first"]=3
-New-RscQueryCluster -List -Var $query.Var
+$query=(New-RscQueryCluster -Operation List)
+$query.Var.first=3
 ```
+
+Subfields can also contain arguments. You can pass subfield
+arguments like this:
+
+```powershell
+$query=(New-RscQueryVspherevm -Operation NewList)
+$query.Field.Nodes[0].Vars.VsphereVirtualDisks.Count=3
+```
+
+The field `Nodes` contains a subfield called `VsphereVirtualDisks`.
+`VsphereVirtualDisks` contains an argument called `Count`. In the example,
+`Nodes[0].Vars` is a directory of all subfields under `Nodes` that contain
+arguments.
 
 If the field specification is not given, the SDK fills it in automatically
 with sensible defaults, but you can also specify it yourself:
