@@ -11,4 +11,20 @@ Describe -Name "TEST Json serialization" -Fixture {
         }
         { $g = $q.GqlRequest() } | Should -Not -Throw
     }
+
+    It -Name "Subfield arguments" -Test {
+        $filter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+        $filter.Texts = @("hello", "world")
+        $filter.isNegative = $true
+        $filter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::ACTIVE_DIRECTORY_DOMAIN_NAME
+        $virtualDiskFilter = New-Object -TypeName RubrikSecurityCloud.Types.VsphereVirtualDiskFilter
+        $virtualDiskFilter.FileName = "filename"
+        $vmquery = New-RscQueryVspherevm -operation NewList
+        $vmquery.Field.nodes[0].VsphereVirtualDisks = New-Object -TypeName RubrikSecurityCloud.Types.VsphereVirtualDiskConnection
+        $vmquery.Var.filter = $filter
+        $vmquery.Field.nodes[0].Vars.VsphereVirtualDisks.filter = $virtualDiskFilter
+        $vmquery.Field.Nodes[0].VsphereVirtualDisks.Count = 1
+
+        { $vmquery.GqlRequest() } | Should -Not -Throw
+    }
 }
