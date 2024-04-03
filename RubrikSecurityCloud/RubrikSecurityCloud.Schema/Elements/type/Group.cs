@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                    s += ind + "roles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "users {\n" + fspec + ind + "}\n" ;
+                    s += ind + "users" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

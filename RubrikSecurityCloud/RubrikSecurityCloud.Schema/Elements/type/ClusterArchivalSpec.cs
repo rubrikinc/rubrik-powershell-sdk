@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "archivalTieringSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

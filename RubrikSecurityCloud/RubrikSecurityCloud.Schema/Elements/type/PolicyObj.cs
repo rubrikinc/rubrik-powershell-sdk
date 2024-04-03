@@ -145,10 +145,63 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("whitelistedAnalyzerList")]
         public List<WhitelistedAnalyzer>? WhitelistedAnalyzerList { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AllAnalyzerMappings { get; set; }
+
+        public RscGqlVars FileResultConnection { get; set; }
+
+        public RscGqlVars FolderChildConnection { get; set; }
+
+        public RscGqlVars WhitelistedAnalyzerList { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] allAnalyzerMappingsArgs = {
+                    Tuple.Create("stdPath", "String!"),
+                };
+            this.AllAnalyzerMappings =
+                new RscGqlVars(null, allAnalyzerMappingsArgs, null, true);
+            Tuple<string, string>[] fileResultConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "ListFileResultFiltersInput"),
+                    Tuple.Create("sort", "FileResultSortInput"),
+                    Tuple.Create("timezone", "String!"),
+                };
+            this.FileResultConnection =
+                new RscGqlVars(null, fileResultConnectionArgs, null, true);
+            Tuple<string, string>[] folderChildConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "BrowseDirectoryFiltersInput"),
+                    Tuple.Create("sort", "FileResultSortInput"),
+                    Tuple.Create("stdPath", "String!"),
+                    Tuple.Create("timezone", "String!"),
+                };
+            this.FolderChildConnection =
+                new RscGqlVars(null, folderChildConnectionArgs, null, true);
+            Tuple<string, string>[] whitelistedAnalyzerListArgs = {
+                    Tuple.Create("stdPath", "String!"),
+                };
+            this.WhitelistedAnalyzerList =
+                new RscGqlVars(null, whitelistedAnalyzerListArgs, null, true);
+        }
+    }
+
+    public PolicyObj()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "PolicyObj";
@@ -325,7 +378,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n";
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -391,7 +444,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allAnalyzerMappings {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allAnalyzerMappings" + "\n(" + this.Vars.AllAnalyzerMappings.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -403,7 +456,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerHits {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -415,7 +468,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "deltaUserCounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "deltaUserCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -427,7 +480,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "fileResultConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "fileResultConnection" + "\n(" + this.Vars.FileResultConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -439,7 +492,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "folderChildConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "folderChildConnection" + "\n(" + this.Vars.FolderChildConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -451,7 +504,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "objectStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "objectStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -463,7 +516,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policySummaries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policySummaries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -475,7 +528,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "riskHits {\n" + fspec + ind + "}\n" ;
+                    s += ind + "riskHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -487,7 +540,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rootFileResult {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rootFileResult" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -499,7 +552,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sensitiveFiles {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sensitiveFiles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -511,7 +564,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalSensitiveHits {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalSensitiveHits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -523,7 +576,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "userCounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "userCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -535,7 +588,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "whitelistedAnalyzerList {\n" + fspec + ind + "}\n" ;
+                    s += ind + "whitelistedAnalyzerList" + "\n(" + this.Vars.WhitelistedAnalyzerList.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

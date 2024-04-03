@@ -35,10 +35,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public PolarisSnapshotGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars PolarisSnapshotConnection { get; set; }
+
+        public RscGqlVars PolarisSnapshotGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] polarisSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "PolarisSnapshotSortByEnum"),
+                };
+            this.PolarisSnapshotConnection =
+                new RscGqlVars(null, polarisSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] polarisSnapshotGroupByArgs = {
+                    Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                };
+            this.PolarisSnapshotGroupByField =
+                new RscGqlVars(null, polarisSnapshotGroupByArgs, null, true);
+        }
+    }
+
+    public PolarisSnapshotGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "PolarisSnapshotGroupBy";
@@ -81,7 +112,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "polarisSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "polarisSnapshotConnection" + "\n(" + this.Vars.PolarisSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +124,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "polarisSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "polarisSnapshotGroupBy" + "\n(" + this.Vars.PolarisSnapshotGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +136,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

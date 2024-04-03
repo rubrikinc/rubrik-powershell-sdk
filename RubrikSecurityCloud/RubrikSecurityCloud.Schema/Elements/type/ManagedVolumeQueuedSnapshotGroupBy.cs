@@ -35,10 +35,39 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ManagedVolumeQueuedSnapshotConnection { get; set; }
+
+        public RscGqlVars ManagedVolumeQueuedSnapshotGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] managedVolumeQueuedSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "ManagedVolumeQueuedSnapshotSortBy"),
+                };
+            this.ManagedVolumeQueuedSnapshotConnection =
+                new RscGqlVars(null, managedVolumeQueuedSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] managedVolumeQueuedSnapshotGroupByArgs = {
+                    Tuple.Create("groupBy", "ManagedVolumeQueuedSnapshotGroupByTime!"),
+                };
+            this.ManagedVolumeQueuedSnapshotGroupByField =
+                new RscGqlVars(null, managedVolumeQueuedSnapshotGroupByArgs, null, true);
+        }
+    }
+
+    public ManagedVolumeQueuedSnapshotGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "ManagedVolumeQueuedSnapshotGroupBy";
@@ -81,7 +110,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "managedVolumeQueuedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "managedVolumeQueuedSnapshotConnection" + "\n(" + this.Vars.ManagedVolumeQueuedSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +122,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "managedVolumeQueuedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "managedVolumeQueuedSnapshotGroupBy" + "\n(" + this.Vars.ManagedVolumeQueuedSnapshotGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +134,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

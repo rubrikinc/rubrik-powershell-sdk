@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "nasDiscoverJobStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "nasDiscoverJobStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "nasSystemSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "nasSystemSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "requestedHashDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "requestedHashDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "yaraMatchDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "yaraMatchDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

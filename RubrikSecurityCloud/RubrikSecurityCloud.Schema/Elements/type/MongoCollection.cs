@@ -191,10 +191,48 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("source")]
         public MongoSource? Source { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars MongoSnapshotConnection { get; set; }
+
+        public RscGqlVars MongoSnapshotGroupByConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] mongoSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "CdmSnapshotFilterInput"),
+                    Tuple.Create("sortBy", "CdmSnapshotSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.MongoSnapshotConnection =
+                new RscGqlVars(null, mongoSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] mongoSnapshotGroupByConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("filter", "CdmSnapshotFilterInput"),
+                    Tuple.Create("groupBy", "MongoSnapshotGroupByTime!"),
+                };
+            this.MongoSnapshotGroupByConnection =
+                new RscGqlVars(null, mongoSnapshotGroupByConnectionArgs, null, true);
+        }
+    }
+
+    public MongoCollection()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "MongoCollection";
@@ -389,7 +427,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "configuredSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -402,7 +440,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveRetentionSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -415,7 +453,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -428,7 +466,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -441,7 +479,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+                    s += ind + "replicatedObjects" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -534,7 +572,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -546,7 +584,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -558,7 +596,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "collectionSet {\n" + fspec + ind + "}\n" ;
+                    s += ind + "collectionSet" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -570,7 +608,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "crossAccountReplicatedObjectInfos {\n" + fspec + ind + "}\n" ;
+                    s += ind + "crossAccountReplicatedObjectInfos" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -582,7 +620,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "database {\n" + fspec + ind + "}\n" ;
+                    s += ind + "database" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -594,7 +632,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -606,7 +644,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                    s += ind + "latestUserNote" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -618,7 +656,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -630,7 +668,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mongoSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mongoSnapshotConnection" + "\n(" + this.Vars.MongoSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -642,7 +680,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mongoSnapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mongoSnapshotGroupByConnection" + "\n(" + this.Vars.MongoSnapshotGroupByConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -654,7 +692,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "newestSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -666,7 +704,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oldestSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oldestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -678,7 +716,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pendingObjectDeletionStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -690,7 +728,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -702,7 +740,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                    s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -714,7 +752,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -726,7 +764,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "source {\n" + fspec + ind + "}\n" ;
+                    s += ind + "source" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

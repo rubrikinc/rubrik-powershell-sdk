@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "infraPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -210,7 +210,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "slaAssignable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "devicePathToVolumeSnapshotIdMap {\n" + fspec + ind + "}\n" ;
+                    s += ind + "devicePathToVolumeSnapshotIdMap" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -244,7 +244,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "healthCheckStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -256,7 +256,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subnet1 {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subnet1" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -268,7 +268,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subnet2 {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subnet2" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

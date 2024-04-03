@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "appMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "appMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudNativeAccountId {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudNativeAccountId" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotRegion {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotRegion" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

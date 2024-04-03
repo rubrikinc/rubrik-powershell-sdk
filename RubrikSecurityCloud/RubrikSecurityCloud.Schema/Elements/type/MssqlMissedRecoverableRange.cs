@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "firstError {\n" + fspec + ind + "}\n" ;
+                    s += ind + "firstError" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lastError {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lastError" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

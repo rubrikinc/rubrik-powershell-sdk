@@ -166,10 +166,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmSla")]
         public AzureNativeResourceGroupSlaAssignment? VmSla { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AzureNativeVirtualMachines { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] azureNativeVirtualMachinesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "AzureNativeVirtualMachineSortFields"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("virtualMachineFilters", "AzureNativeVirtualMachineFilters"),
+                };
+            this.AzureNativeVirtualMachines =
+                new RscGqlVars(null, azureNativeVirtualMachinesArgs, null, true);
+        }
+    }
+
+    public AzureNativeResourceGroup()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "AzureNativeResourceGroup";
@@ -353,7 +378,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "configuredSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -366,7 +391,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveRetentionSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -379,7 +404,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -481,7 +506,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -493,7 +518,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureNativeVirtualMachines {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureNativeVirtualMachines" + "\n(" + this.Vars.AzureNativeVirtualMachines.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -505,7 +530,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "diskSla {\n" + fspec + ind + "}\n" ;
+                    s += ind + "diskSla" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -517,7 +542,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -529,7 +554,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -541,7 +566,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -553,7 +578,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "protectedObjectTypeToSla {\n" + fspec + ind + "}\n" ;
+                    s += ind + "protectedObjectTypeToSla" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -565,7 +590,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappableTypeToBackupSetupSpecs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappableTypeToBackupSetupSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -577,7 +602,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -589,7 +614,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subscription {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subscription" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -601,7 +626,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                    s += ind + "tags" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -613,7 +638,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmSla {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmSla" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

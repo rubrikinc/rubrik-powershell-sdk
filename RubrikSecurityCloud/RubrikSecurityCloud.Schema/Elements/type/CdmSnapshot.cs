@@ -488,7 +488,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -501,7 +501,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "slaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -514,7 +514,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappableNew {\n" + fspec + ind + "}\n";
+                    s += ind + "snappableNew" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -724,7 +724,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "activeDirectoryAppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "activeDirectoryAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -736,7 +736,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalLocations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "archivalLocations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -748,7 +748,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cdmWorkloadSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cdmWorkloadSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -760,7 +760,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "childSnapshots {\n" + fspec + ind + "}\n" ;
+                    s += ind + "childSnapshots" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -772,7 +772,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudNativeLocations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudNativeLocations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -784,7 +784,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -796,7 +796,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "db2AppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "db2AppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -808,7 +808,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                    s += ind + "latestUserNote" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -820,7 +820,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "legalHoldInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "legalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -832,7 +832,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "localLocations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "localLocations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -844,7 +844,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "locations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "locations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -856,7 +856,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "managedVolumeAppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "managedVolumeAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -868,7 +868,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mssqlAppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mssqlAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -880,7 +880,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSnapshotDeletion {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pendingSnapshotDeletion" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -892,7 +892,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replicationLocations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "replicationLocations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -904,7 +904,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sapHanaAppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sapHanaAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -916,7 +916,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -928,7 +928,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vappAppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vappAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -940,7 +940,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmwareAppMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmwareAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

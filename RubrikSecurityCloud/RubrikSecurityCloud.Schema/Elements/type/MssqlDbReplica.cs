@@ -234,7 +234,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "availabilityInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "availabilityInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -246,7 +246,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rootProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

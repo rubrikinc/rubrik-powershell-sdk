@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "absoluteMonthlyRecurrence {\n" + fspec + ind + "}\n" ;
+                    s += ind + "absoluteMonthlyRecurrence" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "absoluteYearlyRecurrence {\n" + fspec + ind + "}\n" ;
+                    s += ind + "absoluteYearlyRecurrence" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "dailyRecurrence {\n" + fspec + ind + "}\n" ;
+                    s += ind + "dailyRecurrence" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "endDateRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                    s += ind + "endDateRecurrenceRange" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "noEndRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                    s += ind + "noEndRecurrenceRange" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "numberedRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                    s += ind + "numberedRecurrenceRange" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "relativeMonthlyRecurrence {\n" + fspec + ind + "}\n" ;
+                    s += ind + "relativeMonthlyRecurrence" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "relativeYearlyRecurrence {\n" + fspec + ind + "}\n" ;
+                    s += ind + "relativeYearlyRecurrence" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -231,7 +231,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "weeklyRecurrence {\n" + fspec + ind + "}\n" ;
+                    s += ind + "weeklyRecurrence" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

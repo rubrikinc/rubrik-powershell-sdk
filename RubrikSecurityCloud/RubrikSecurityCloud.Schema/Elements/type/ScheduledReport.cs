@@ -297,7 +297,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                    s += ind + "creator" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lastEditor {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lastEditor" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rubrikRecipientUsers {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rubrikRecipientUsers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

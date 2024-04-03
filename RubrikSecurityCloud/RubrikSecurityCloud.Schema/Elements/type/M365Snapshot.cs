@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "backupEventStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "backupEventStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

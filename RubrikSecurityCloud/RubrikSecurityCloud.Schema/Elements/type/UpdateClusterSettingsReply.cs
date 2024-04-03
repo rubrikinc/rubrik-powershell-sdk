@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "geolocation {\n" + fspec + ind + "}\n" ;
+                    s += ind + "geolocation" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "timezone {\n" + fspec + ind + "}\n" ;
+                    s += ind + "timezone" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

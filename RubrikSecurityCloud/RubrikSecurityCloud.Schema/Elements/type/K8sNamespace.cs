@@ -176,10 +176,77 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadSnapshotConnection")]
         public GenericSnapshotConnection? WorkloadSnapshotConnection { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars SnapshotConnection { get; set; }
+
+        public RscGqlVars SnapshotGroupByConnection { get; set; }
+
+        public RscGqlVars SnapshotGroupByNewConnection { get; set; }
+
+        public RscGqlVars WorkloadSnapshotConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] snapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "PolarisSnapshotFilterInput"),
+                    Tuple.Create("sortBy", "PolarisSnapshotSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.SnapshotConnection =
+                new RscGqlVars(null, snapshotConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotGroupByConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("filter", "PolarisSnapshotFilterInput"),
+                    Tuple.Create("groupBy", "PolarisSnapshotGroupByEnum!"),
+                };
+            this.SnapshotGroupByConnection =
+                new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
+            Tuple<string, string>[] snapshotGroupByNewConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("snapshotFilter", "[PolarisSnapshotFilterNewInput!]!"),
+                    Tuple.Create("snapshotGroupBy", "SnapshotGroupByTime!"),
+                };
+            this.SnapshotGroupByNewConnection =
+                new RscGqlVars(null, snapshotGroupByNewConnectionArgs, null, true);
+            Tuple<string, string>[] workloadSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("workloadId", "String!"),
+                    Tuple.Create("snapshotFilter", "[SnapshotQueryFilterInput!]"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "SnapshotQuerySortByField"),
+                    Tuple.Create("timeRange", "TimeRangeInput"),
+                    Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
+                };
+            this.WorkloadSnapshotConnection =
+                new RscGqlVars(null, workloadSnapshotConnectionArgs, null, true);
+        }
+    }
+
+    public K8sNamespace()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "K8sNamespace";
@@ -362,7 +429,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "configuredSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -375,7 +442,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveRetentionSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -388,7 +455,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -517,7 +584,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -529,7 +596,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -541,7 +608,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -553,7 +620,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "newestIndexedSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "newestIndexedSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -565,7 +632,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "newestSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "newestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -577,7 +644,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oldestSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oldestSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -589,7 +656,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -601,7 +668,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotConnection" + "\n(" + this.Vars.SnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -613,7 +680,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -625,7 +692,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotGroupByConnection" + "\n(" + this.Vars.SnapshotGroupByConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -637,7 +704,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotGroupByNewConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotGroupByNewConnection" + "\n(" + this.Vars.SnapshotGroupByNewConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -649,7 +716,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "workloadSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "workloadSnapshotConnection" + "\n(" + this.Vars.WorkloadSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

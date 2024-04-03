@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "datagovAutoEnablePolicyConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "datagovAutoEnablePolicyConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

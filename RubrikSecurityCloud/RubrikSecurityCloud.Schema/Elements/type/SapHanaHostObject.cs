@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "host {\n" + fspec + ind + "}\n" ;
+                    s += ind + "host" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "systemHost {\n" + fspec + ind + "}\n" ;
+                    s += ind + "systemHost" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

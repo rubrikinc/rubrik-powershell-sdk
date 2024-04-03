@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "differentialFrequency {\n" + fspec + ind + "}\n" ;
+                    s += ind + "differentialFrequency" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "incrementalFrequency {\n" + fspec + ind + "}\n" ;
+                    s += ind + "incrementalFrequency" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logRetention" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "storageSnapshotConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "storageSnapshotConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -35,10 +35,42 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public AnomalyResultGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AnomalyResultGroupedDataField { get; set; }
+
+        public RscGqlVars AnomalyResults { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] anomalyResultGroupedDataArgs = {
+                    Tuple.Create("groupBy", "AnomalyResultGroupBy!"),
+                };
+            this.AnomalyResultGroupedDataField =
+                new RscGqlVars(null, anomalyResultGroupedDataArgs, null, true);
+            Tuple<string, string>[] anomalyResultsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "AnomalyResultSortBy"),
+                    Tuple.Create("filter", "AnomalyResultFilterInput"),
+                };
+            this.AnomalyResults =
+                new RscGqlVars(null, anomalyResultsArgs, null, true);
+        }
+    }
+
+    public AnomalyResultGroupedData()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "AnomalyResultGroupedData";
@@ -81,7 +113,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "anomalyResultGroupedData {\n" + fspec + ind + "}\n" ;
+                    s += ind + "anomalyResultGroupedData" + "\n(" + this.Vars.AnomalyResultGroupedDataField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +125,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "anomalyResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "anomalyResults" + "\n(" + this.Vars.AnomalyResults.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +137,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

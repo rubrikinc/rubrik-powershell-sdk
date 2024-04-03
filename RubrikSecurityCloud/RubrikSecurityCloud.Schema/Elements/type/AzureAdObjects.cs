@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureAdGroup {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureAdGroup" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureAdUser {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureAdUser" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
