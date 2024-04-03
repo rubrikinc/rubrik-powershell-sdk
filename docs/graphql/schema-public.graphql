@@ -2413,6 +2413,11 @@ type Query {
 
     # Type of managed object on which tag rule will be applied.
     objectType: CloudNativeTagObjectType!): IsCloudNativeTagRuleNameUniqueReply!
+
+  # Checks whether the latest version of the Microsoft 365 Management App exists.
+  checkLatestVersionMgmtAppExists(
+    # The input for checking whether the latest version of the Microsoft 365 Management App exists.
+    input: CheckLatestVersionMgmtAppExistsInput!): CheckLatestVersionMgmtAppExistsReply!
   cloudAccount(
     # Corresponds to Cloud Account Id in Rubrik tables
     cloudAccountId: UUID!): CloudAccount!
@@ -8746,6 +8751,11 @@ type Mutation {
   createK8sProtectionSetSnapshot(
     # Input for V1CreateK8sProtectionSetBackupJob.
     input: CreateK8sProtectionSetSnapshotInput!): AsyncRequestStatus!
+
+  # Place legal hold on snapshots.
+  createLegalHold(
+    # Create legal hold request.
+    input: CreateLegalHoldInput!): CreateLegalHoldReply!
   createManualTargetMapping(
     # Request for creating manual target mapping.
     input: CreateManualTargetMappingInput!): TargetMapping!
@@ -9434,6 +9444,11 @@ type Mutation {
   discoverMongoSource(
     # Input for V1DiscoverMongoSource.
     input: DiscoverMongoSourceInput!): AsyncRequestStatus!
+
+  # Dissolve legal hold on snapshots.
+  dissolveLegalHold(
+    # Dissolve legal hold request.
+    input: DissolveLegalHoldInput!): DissolveLegalHoldReply!
 
   # Download a snapshot from a remote target
   # 
@@ -32215,6 +32230,16 @@ type CheckAzurePersistentStorageSubscriptionCanUnmapReply {
   # Whether we can unmap archival location from subscription.
   canUnmap: Boolean!
 }
+# Configuration for checking if the latest version of the Microsoft 365 Management App exists.
+input CheckLatestVersionMgmtAppExistsInput {
+  # UUID of the org.
+  o365OrgId: UUID!
+}
+# Store the response of whether the latest version of Microsoft 365 Management App exists.
+type CheckLatestVersionMgmtAppExistsReply {
+  # Boolean which specifies whether the latest version of Microsoft 365 Management App exists.
+  latestMgmtAppExist: Boolean!
+}
 enum ClassificationPolicyColor {
   COLOR_001
   COLOR_002
@@ -37435,6 +37460,22 @@ input CreateK8sRestoreJobInput {
   # v9.1+: Configuration for restoring Kubernetes resources from a protection set snapshot using a job.
   jobConfig: K8sRestoreParametersInput!
 }
+# Contains information about the snapshots to be placed on legal hold and configuration of the legal hold on which they have to be placed.
+input CreateLegalHoldInput {
+  # List of snapshot IDs.
+  snapshotIds: [String!] = []
+
+  # Configuration of the required legal hold.
+  holdConfig: HoldConfig
+
+  # Optional user note.
+  userNote: String = ""
+}
+# Contains information about the snapshots placed on legal hold.
+type CreateLegalHoldReply {
+  # List of the snapshot IDs placed on legal hold.
+  snapshotIds: [String!]!
+}
 # Input for creating manual target mapping.
 input CreateManualTargetMappingInput {
   # Field for specifying name of the target mapping.
@@ -41589,6 +41630,19 @@ type DisplayableValueString implements DisplayableValue {
   displayValue: String!
   serializedValue: String!
   reportHeader: String!
+}
+# Contains information about the snapshots to be removed from legal hold.
+input DissolveLegalHoldInput {
+  # List of snapshot IDs.
+  snapshotIds: [String!] = []
+
+  # Optional user note.
+  userNote: String = ""
+}
+# Contains information about the snapshots dissolved from legal hold.
+type DissolveLegalHoldReply {
+  # List of the snapshot IDs dissolved from legal hold.
+  snapshotIds: [String!]!
 }
 # Input for retrieving distribution list digest by ID.
 input DistributionDigestByIdInput {
@@ -50000,6 +50054,9 @@ type Group {
 
   # The suborganizations in which the user group has roles.
   allOrgs: [Org!]!
+
+  # Users from the user group who are currently logged-in to the account.
+  activeUsers: [User!]!
 }
 enum GroupByFieldEnum {
   ANALYZER
@@ -51958,6 +52015,11 @@ type HitsSummary {
 
   # Summary of delta hits.
   deltaHitsSummary: TotalRiskSummary
+}
+# Contains configuration of the legal hold to be placed.
+input HoldConfig {
+  # Specifies whether a snapshot is to be held in place.
+  shouldHoldInPlace: Boolean = false
 }
 # The connection status of a host.
 type HostConnectionStatus {
@@ -88805,6 +88867,9 @@ enum SlaMigrationIneligibilityReason {
 
   # The SLA Domain has frequency configured in minutes, which is currently not supported for objects other than Managed Volumes.
   UNSUPPORTED_PROTECTED_OBJECTS_MINUTE_FREQUENCY_CONFIGURED
+
+  # The SLA Domain protecting NAS on CDM is currently not eligible for upgrade.
+  UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET
 }
 # SLA Domain migration status.
 enum SlaMigrationStatus {
