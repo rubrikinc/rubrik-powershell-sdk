@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "links {\n" + fspec + ind + "}\n" ;
+                    s += ind + "links" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -417,7 +417,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mainExport {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mainExport" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -429,7 +429,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pendingSlaDomain" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaManagedVolumeDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "slaManagedVolumeDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -453,7 +453,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -35,10 +35,45 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public ClusterGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ClusterConnection { get; set; }
+
+        public RscGqlVars ClusterGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] clusterConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "ClusterSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.ClusterConnection =
+                new RscGqlVars(null, clusterConnectionArgs, null, true);
+            Tuple<string, string>[] clusterGroupByArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("groupBy", "ClusterGroupByEnum!"),
+                };
+            this.ClusterGroupByField =
+                new RscGqlVars(null, clusterGroupByArgs, null, true);
+        }
+    }
+
+    public ClusterGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "ClusterGroupBy";
@@ -81,7 +116,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "clusterConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "clusterConnection" + "\n(" + this.Vars.ClusterConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +128,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "clusterGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "clusterGroupBy" + "\n(" + this.Vars.ClusterGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +140,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

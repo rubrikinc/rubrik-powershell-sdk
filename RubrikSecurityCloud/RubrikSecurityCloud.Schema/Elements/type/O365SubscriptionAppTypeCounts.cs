@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "exchangeAppCounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "exchangeAppCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "onedriveAppCounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "onedriveAppCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sharepointAppCounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sharepointAppCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "teamsAppCounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "teamsAppCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -55,10 +55,31 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("virtualDiskInfo")]
         public List<HypervVirtualDiskInfo>? VirtualDiskInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars VirtualDiskInfo { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] virtualDiskInfoArgs = {
+                    Tuple.Create("diskNameFilter", "String"),
+                    Tuple.Create("sortBy", "HypervExcludeDiskSortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.VirtualDiskInfo =
+                new RscGqlVars(null, virtualDiskInfoArgs, null, true);
+        }
+    }
+
+    public HypervVirtualMachineDetail()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "HypervVirtualMachineDetail";
@@ -153,7 +174,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hypervVirtualMachineSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hypervVirtualMachineSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -165,7 +186,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hypervVirtualMachineUpdate {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hypervVirtualMachineUpdate" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -177,7 +198,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "virtualDiskInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "virtualDiskInfo" + "\n(" + this.Vars.VirtualDiskInfo.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

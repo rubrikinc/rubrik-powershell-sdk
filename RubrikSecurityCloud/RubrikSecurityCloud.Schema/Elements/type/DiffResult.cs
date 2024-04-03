@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "data {\n" + fspec + ind + "}\n" ;
+                    s += ind + "data" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "paginationMarker {\n" + fspec + ind + "}\n" ;
+                    s += ind + "paginationMarker" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

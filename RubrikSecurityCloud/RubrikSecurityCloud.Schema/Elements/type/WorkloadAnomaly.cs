@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "anomalousChildren {\n" + fspec + ind + "}\n" ;
+                    s += ind + "anomalousChildren" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -453,7 +453,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "anomalyInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -465,7 +465,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -477,7 +477,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "previousPolicyObj {\n" + fspec + ind + "}\n" ;
+                    s += ind + "previousPolicyObj" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -489,7 +489,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "location {\n" + fspec + ind + "}\n" ;
+                    s += ind + "location" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

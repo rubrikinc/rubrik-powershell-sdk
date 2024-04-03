@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hardwareHealth {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hardwareHealth" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -300,7 +300,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "interfaceCidrs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "interfaceCidrs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -180,10 +180,32 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("organizations")]
         public List<Org>? Organizations { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ActivityConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] activityConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.ActivityConnection =
+                new RscGqlVars(null, activityConnectionArgs, null, true);
+        }
+    }
+
+    public ActivitySeries()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "ActivitySeries";
@@ -603,7 +625,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "activityConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "activityConnection" + "\n(" + this.Vars.ActivityConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -615,7 +637,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -627,7 +649,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "organizations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "organizations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

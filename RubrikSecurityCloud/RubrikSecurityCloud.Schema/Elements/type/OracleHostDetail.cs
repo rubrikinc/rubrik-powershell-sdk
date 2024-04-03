@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oracleHostSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oracleHostSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oracleNonSlaProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "quarantineInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

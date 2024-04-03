@@ -73,7 +73,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n";
+                    s += ind + "exocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "configs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

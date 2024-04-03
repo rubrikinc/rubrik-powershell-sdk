@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sslOptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

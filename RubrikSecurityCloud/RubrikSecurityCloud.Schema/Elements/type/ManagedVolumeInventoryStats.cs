@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "alwaysMounted {\n" + fspec + ind + "}\n" ;
+                    s += ind + "alwaysMounted" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaBased {\n" + fspec + ind + "}\n" ;
+                    s += ind + "slaBased" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

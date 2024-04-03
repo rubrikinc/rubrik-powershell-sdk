@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "healthCheckStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

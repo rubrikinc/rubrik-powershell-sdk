@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureAdObjects {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureAdObjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "relationships {\n" + fspec + ind + "}\n" ;
+                    s += ind + "relationships" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "reverseRelationships {\n" + fspec + ind + "}\n" ;
+                    s += ind + "reverseRelationships" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

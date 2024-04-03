@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "dbSnapshotSummaries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "dbSnapshotSummaries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "connectionStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pendingSlaDomain" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "refreshJobAsyncReqStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "refreshJobAsyncReqStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "slaAssignable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "connectionStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "nutanixClusterSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "nutanixClusterSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

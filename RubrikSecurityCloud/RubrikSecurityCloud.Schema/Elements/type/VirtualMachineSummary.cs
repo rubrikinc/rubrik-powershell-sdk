@@ -423,7 +423,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "advancedSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "advancedSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -435,7 +435,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "agentStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "agentStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -447,7 +447,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudInstantiationSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -459,7 +459,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "folderPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "folderPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -471,7 +471,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "infraPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -483,7 +483,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "parentAppInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "parentAppInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -495,7 +495,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

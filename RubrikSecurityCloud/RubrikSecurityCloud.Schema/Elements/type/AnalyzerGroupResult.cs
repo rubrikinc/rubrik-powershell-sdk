@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerGroup {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerGroup" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hits" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

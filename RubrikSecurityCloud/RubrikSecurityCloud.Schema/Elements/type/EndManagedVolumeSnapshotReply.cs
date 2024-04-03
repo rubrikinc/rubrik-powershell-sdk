@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "asyncRequestStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "managedVolumeSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "managedVolumeSnapshotSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

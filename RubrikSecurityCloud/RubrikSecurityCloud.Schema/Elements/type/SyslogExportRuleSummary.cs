@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "syslogCertificateInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "syslogCertificateInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "syslogExportRuleFull {\n" + fspec + ind + "}\n" ;
+                    s += ind + "syslogExportRuleFull" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

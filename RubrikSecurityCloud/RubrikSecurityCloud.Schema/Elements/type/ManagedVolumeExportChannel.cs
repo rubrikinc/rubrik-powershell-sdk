@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "channelStats {\n" + fspec + ind + "}\n" ;
+                    s += ind + "channelStats" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mountSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mountSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

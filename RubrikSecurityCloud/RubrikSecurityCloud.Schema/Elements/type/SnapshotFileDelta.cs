@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "childrenDeltas {\n" + fspec + ind + "}\n" ;
+                    s += ind + "childrenDeltas" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "file {\n" + fspec + ind + "}\n" ;
+                    s += ind + "file" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "previousSnapshotQuarantineInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "previousSnapshotQuarantineInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "selfDeltas {\n" + fspec + ind + "}\n" ;
+                    s += ind + "selfDeltas" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "targetCluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

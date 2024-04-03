@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+                    s += ind + "cloudAccount" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "bucketTags {\n" + fspec + ind + "}\n" ;
+                    s += ind + "bucketTags" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -260,7 +260,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "computeSettings {\n" + fspec + ind + "}\n" ;
+                    s += ind + "computeSettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -272,7 +272,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "proxySettings {\n" + fspec + ind + "}\n" ;
+                    s += ind + "proxySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

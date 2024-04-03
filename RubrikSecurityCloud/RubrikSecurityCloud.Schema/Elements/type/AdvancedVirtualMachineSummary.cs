@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "postBackupScript {\n" + fspec + ind + "}\n" ;
+                    s += ind + "postBackupScript" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "postSnapScript {\n" + fspec + ind + "}\n" ;
+                    s += ind + "postSnapScript" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "preBackupScript {\n" + fspec + ind + "}\n" ;
+                    s += ind + "preBackupScript" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

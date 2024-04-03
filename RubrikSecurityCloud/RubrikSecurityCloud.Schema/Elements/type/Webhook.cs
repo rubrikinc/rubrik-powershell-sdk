@@ -297,7 +297,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lastFailedErrorInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lastFailedErrorInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subscriptionSeverity {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subscriptionSeverity" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subscriptionType {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subscriptionType" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

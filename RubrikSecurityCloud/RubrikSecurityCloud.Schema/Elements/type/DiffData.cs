@@ -297,7 +297,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "anomalyInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

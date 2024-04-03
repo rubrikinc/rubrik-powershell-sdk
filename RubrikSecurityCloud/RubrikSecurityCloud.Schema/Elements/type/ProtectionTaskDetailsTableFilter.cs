@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster_location {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster_location" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster_type {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster_type" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "object_type {\n" + fspec + ind + "}\n" ;
+                    s += ind + "object_type" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replication_source {\n" + fspec + ind + "}\n" ;
+                    s += ind + "replication_source" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                    s += ind + "status" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "task_category {\n" + fspec + ind + "}\n" ;
+                    s += ind + "task_category" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "task_type {\n" + fspec + ind + "}\n" ;
+                    s += ind + "task_type" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

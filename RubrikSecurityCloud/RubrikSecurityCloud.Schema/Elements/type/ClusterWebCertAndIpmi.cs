@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "certInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "certInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ipmiInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ipmiInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

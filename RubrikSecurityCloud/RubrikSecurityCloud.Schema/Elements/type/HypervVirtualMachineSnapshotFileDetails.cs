@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configFileInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "configFileInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "virtualDiskInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "virtualDiskInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

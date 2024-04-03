@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "objects {\n" + fspec + ind + "}\n";
+                    s += ind + "objects" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -202,7 +202,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "fileScanCriteria {\n" + fspec + ind + "}\n" ;
+                    s += ind + "fileScanCriteria" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "indicatorsOfCompromise {\n" + fspec + ind + "}\n" ;
+                    s += ind + "indicatorsOfCompromise" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "requestedMatchDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "requestedMatchDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotScanLimit {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotScanLimit" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -115,10 +115,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("user")]
         public User? User { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars CrawlObj { get; set; }
+
+        public RscGqlVars FileResultConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] crawlObjArgs = {
+                    Tuple.Create("snappableFid", "String!"),
+                };
+            this.CrawlObj =
+                new RscGqlVars(null, crawlObjArgs, null, true);
+            Tuple<string, string>[] fileResultConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "ListFileResultFiltersInput"),
+                    Tuple.Create("sort", "FileResultSortInput"),
+                };
+            this.FileResultConnection =
+                new RscGqlVars(null, fileResultConnectionArgs, null, true);
+        }
+    }
+
+    public Crawl()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "Crawl";
@@ -333,7 +364,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerGroupResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerGroupResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -345,7 +376,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -357,7 +388,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "crawlObj {\n" + fspec + ind + "}\n" ;
+                    s += ind + "crawlObj" + "\n(" + this.Vars.CrawlObj.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -369,7 +400,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "crawlObjConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "crawlObjConnection" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -381,7 +412,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "fileResultConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "fileResultConnection" + "\n(" + this.Vars.FileResultConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -393,7 +424,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappableTypeSummaries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappableTypeSummaries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -405,7 +436,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "user {\n" + fspec + ind + "}\n" ;
+                    s += ind + "user" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

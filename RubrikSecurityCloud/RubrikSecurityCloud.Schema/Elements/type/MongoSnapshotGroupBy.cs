@@ -35,10 +35,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public MongoSnapshotGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars MongoSnapshotConnection { get; set; }
+
+        public RscGqlVars MongoSnapshotGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] mongoSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "CdmSnapshotSortByEnum"),
+                };
+            this.MongoSnapshotConnection =
+                new RscGqlVars(null, mongoSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] mongoSnapshotGroupByArgs = {
+                    Tuple.Create("groupBy", "MongoSnapshotGroupByTime!"),
+                };
+            this.MongoSnapshotGroupByField =
+                new RscGqlVars(null, mongoSnapshotGroupByArgs, null, true);
+        }
+    }
+
+    public MongoSnapshotGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "MongoSnapshotGroupBy";
@@ -81,7 +112,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mongoSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mongoSnapshotConnection" + "\n(" + this.Vars.MongoSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +124,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mongoSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mongoSnapshotGroupBy" + "\n(" + this.Vars.MongoSnapshotGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +136,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

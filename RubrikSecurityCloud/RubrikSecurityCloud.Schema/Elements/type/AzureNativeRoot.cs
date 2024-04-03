@@ -25,10 +25,34 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectTypeDescendantConnection")]
         public AzureNativeHierarchyObjectTypeConnection? ObjectTypeDescendantConnection { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ObjectTypeDescendantConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] objectTypeDescendantConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("objectTypeFilter", "HierarchyObjectTypeEnum!"),
+                    Tuple.Create("filter", "[Filter!]"),
+                };
+            this.ObjectTypeDescendantConnection =
+                new RscGqlVars(null, objectTypeDescendantConnectionArgs, null, true);
+        }
+    }
+
+    public AzureNativeRoot()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "AzureNativeRoot";
@@ -63,7 +87,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "objectTypeDescendantConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "objectTypeDescendantConnection" + "\n(" + this.Vars.ObjectTypeDescendantConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
