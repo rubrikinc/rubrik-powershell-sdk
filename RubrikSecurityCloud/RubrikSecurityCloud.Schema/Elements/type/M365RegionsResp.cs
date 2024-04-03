@@ -63,7 +63,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "regions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "regions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

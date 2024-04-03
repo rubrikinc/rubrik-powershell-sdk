@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "associatedCdm {\n" + fspec + ind + "}\n" ;
+                    s += ind + "associatedCdm" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

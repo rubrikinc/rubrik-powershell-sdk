@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "datacenter {\n" + fspec + ind + "}\n" ;
+                    s += ind + "datacenter" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "datastores {\n" + fspec + ind + "}\n" ;
+                    s += ind + "datastores" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+                    s += ind + "virtualMachines" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmwareHostSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmwareHostSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmwareHostUpdate {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmwareHostUpdate" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

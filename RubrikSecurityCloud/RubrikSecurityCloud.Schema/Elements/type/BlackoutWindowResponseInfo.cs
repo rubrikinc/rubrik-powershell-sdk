@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "blackoutWindowStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "blackoutWindowStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "blackoutWindows {\n" + fspec + ind + "}\n" ;
+                    s += ind + "blackoutWindows" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

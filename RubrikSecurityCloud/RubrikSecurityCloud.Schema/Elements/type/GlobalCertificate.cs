@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cdmUsages {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cdmUsages" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -390,7 +390,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "clusters {\n" + fspec + ind + "}\n" ;
+                    s += ind + "clusters" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -402,7 +402,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "org {\n" + fspec + ind + "}\n" ;
+                    s += ind + "org" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "usages {\n" + fspec + ind + "}\n" ;
+                    s += ind + "usages" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

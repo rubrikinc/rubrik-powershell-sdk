@@ -360,7 +360,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allClusterCapacityQuotas {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allClusterCapacityQuotas" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -372,7 +372,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "orgAdminRole {\n" + fspec + ind + "}\n" ;
+                    s += ind + "orgAdminRole" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -384,7 +384,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "permissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -396,7 +396,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "selfServicePermissions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "selfServicePermissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -408,7 +408,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ssoGroups {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ssoGroups" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -420,7 +420,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "users {\n" + fspec + ind + "}\n" ;
+                    s += ind + "users" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

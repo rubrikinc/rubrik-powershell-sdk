@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "globalAdministrator {\n" + fspec + ind + "}\n" ;
+                    s += ind + "globalAdministrator" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subscriptionOwner {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subscriptionOwner" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

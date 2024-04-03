@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -255,7 +255,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "primaryCluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "primaryCluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "primaryDatabase {\n" + fspec + ind + "}\n" ;
+                    s += ind + "primaryDatabase" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -279,7 +279,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "secondaryDatabase {\n" + fspec + ind + "}\n" ;
+                    s += ind + "secondaryDatabase" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "secondaryInstance {\n" + fspec + ind + "}\n" ;
+                    s += ind + "secondaryInstance" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

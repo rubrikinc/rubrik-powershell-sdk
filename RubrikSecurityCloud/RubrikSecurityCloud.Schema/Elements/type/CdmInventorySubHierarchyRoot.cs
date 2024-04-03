@@ -40,10 +40,60 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("topLevelDescendantConnection")]
         public CdmHierarchyObjectConnection? TopLevelDescendantConnection { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ChildConnection { get; set; }
+
+        public RscGqlVars DescendantConnection { get; set; }
+
+        public RscGqlVars TopLevelDescendantConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] childConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                };
+            this.ChildConnection =
+                new RscGqlVars(null, childConnectionArgs, null, true);
+            Tuple<string, string>[] descendantConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                };
+            this.DescendantConnection =
+                new RscGqlVars(null, descendantConnectionArgs, null, true);
+            Tuple<string, string>[] topLevelDescendantConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                };
+            this.TopLevelDescendantConnection =
+                new RscGqlVars(null, topLevelDescendantConnectionArgs, null, true);
+        }
+    }
+
+    public CdmInventorySubHierarchyRoot()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "CdmInventorySubHierarchyRoot";
@@ -99,7 +149,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "childConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "childConnection" + "\n(" + this.Vars.ChildConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -111,7 +161,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "descendantConnection" + "\n(" + this.Vars.DescendantConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -123,7 +173,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "topLevelDescendantConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "topLevelDescendantConnection" + "\n(" + this.Vars.TopLevelDescendantConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

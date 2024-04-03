@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mssqlNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mssqlNonSlaProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mssqlSlaRelatedProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mssqlSlaRelatedProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

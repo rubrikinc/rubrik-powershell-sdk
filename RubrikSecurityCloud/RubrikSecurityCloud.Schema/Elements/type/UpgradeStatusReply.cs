@@ -306,7 +306,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ruInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ruInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -318,7 +318,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "upgradeStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "upgradeStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsAccounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsAccounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureSubscriptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureSubscriptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudDirectClusters {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudDirectClusters" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "microsoft365Subscriptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "microsoft365Subscriptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rubrikCloudVaultLocations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rubrikCloudVaultLocations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

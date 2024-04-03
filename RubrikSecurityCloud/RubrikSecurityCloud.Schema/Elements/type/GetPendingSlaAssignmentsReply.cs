@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "objectsWithNoOp {\n" + fspec + ind + "}\n" ;
+                    s += ind + "objectsWithNoOp" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "objectsWithPendingOp {\n" + fspec + ind + "}\n" ;
+                    s += ind + "objectsWithPendingOp" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

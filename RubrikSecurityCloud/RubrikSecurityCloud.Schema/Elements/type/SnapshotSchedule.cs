@@ -117,7 +117,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "daily {\n" + fspec + ind + "}\n" ;
+                    s += ind + "daily" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hourly {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hourly" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "minute {\n" + fspec + ind + "}\n" ;
+                    s += ind + "minute" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "monthly {\n" + fspec + ind + "}\n" ;
+                    s += ind + "monthly" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "quarterly {\n" + fspec + ind + "}\n" ;
+                    s += ind + "quarterly" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "weekly {\n" + fspec + ind + "}\n" ;
+                    s += ind + "weekly" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "yearly {\n" + fspec + ind + "}\n" ;
+                    s += ind + "yearly" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

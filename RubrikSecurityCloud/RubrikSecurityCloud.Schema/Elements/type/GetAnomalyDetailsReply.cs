@@ -657,7 +657,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "anomalyInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -669,7 +669,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -681,7 +681,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "previousSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "previousSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -693,7 +693,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ransomwareResult {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ransomwareResult" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -705,7 +705,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

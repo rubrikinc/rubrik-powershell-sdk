@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "crossAccountPairInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "crossAccountPairInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replicatedObjects {\n" + fspec + ind + "}\n" ;
+                    s += ind + "replicatedObjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

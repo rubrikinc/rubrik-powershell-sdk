@@ -684,7 +684,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "currentBackupTaskInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "currentBackupTaskInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -696,7 +696,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pendingSlaDomain" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -708,7 +708,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replicas {\n" + fspec + ind + "}\n" ;
+                    s += ind + "replicas" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -720,7 +720,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rootProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -732,7 +732,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -744,7 +744,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "unprotectableReasonsV50 {\n" + fspec + ind + "}\n" ;
+                    s += ind + "unprotectableReasonsV50" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "eligibility {\n" + fspec + ind + "}\n" ;
+                    s += ind + "eligibility" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "latestUpgrade {\n" + fspec + ind + "}\n" ;
+                    s += ind + "latestUpgrade" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

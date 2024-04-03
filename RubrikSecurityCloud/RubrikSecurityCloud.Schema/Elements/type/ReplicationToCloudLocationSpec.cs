@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "retentionDuration {\n" + fspec + ind + "}\n" ;
+                    s += ind + "retentionDuration" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+                    s += ind + "targetMapping" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "db2Instance {\n" + fspec + ind + "}\n" ;
+                    s += ind + "db2Instance" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectivePermissions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectivePermissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRbacPermissions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveRbacPermissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "explicitlyAssignedPermissions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "explicitlyAssignedPermissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "permissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

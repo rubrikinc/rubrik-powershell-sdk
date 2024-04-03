@@ -35,10 +35,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public RansomwareResultGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars RansomwareResultGroupedDataField { get; set; }
+
+        public RscGqlVars RansomwareResults { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] ransomwareResultGroupedDataArgs = {
+                    Tuple.Create("groupBy", "RansomwareResultGroupBy!"),
+                };
+            this.RansomwareResultGroupedDataField =
+                new RscGqlVars(null, ransomwareResultGroupedDataArgs, null, true);
+            Tuple<string, string>[] ransomwareResultsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "RansomwareResultSortBy"),
+                };
+            this.RansomwareResults =
+                new RscGqlVars(null, ransomwareResultsArgs, null, true);
+        }
+    }
+
+    public RansomwareResultGroupedData()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "RansomwareResultGroupedData";
@@ -81,7 +111,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ransomwareResultGroupedData {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ransomwareResultGroupedData" + "\n(" + this.Vars.RansomwareResultGroupedDataField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +123,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ransomwareResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ransomwareResults" + "\n(" + this.Vars.RansomwareResults.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

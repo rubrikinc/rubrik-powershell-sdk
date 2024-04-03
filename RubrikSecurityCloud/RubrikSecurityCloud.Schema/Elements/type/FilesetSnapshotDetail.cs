@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "filesetSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "filesetSnapshotSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "verbose {\n" + fspec + ind + "}\n" ;
+                    s += ind + "verbose" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsTarget {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsTarget" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureTarget {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureTarget" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cascadingArchivalSpecs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cascadingArchivalSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "replicationLocalRetentionDuration {\n" + fspec + ind + "}\n" ;
+                    s += ind + "replicationLocalRetentionDuration" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "retentionDuration {\n" + fspec + ind + "}\n" ;
+                    s += ind + "retentionDuration" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+                    s += ind + "targetMapping" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

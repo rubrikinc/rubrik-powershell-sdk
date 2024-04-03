@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ProtectionTaskDetailsTable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ProtectionTaskDetailsTable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "RecoveryTaskDetailsTable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "RecoveryTaskDetailsTable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -747,7 +747,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "taskOrg {\n" + fspec + ind + "}\n" ;
+                    s += ind + "taskOrg" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

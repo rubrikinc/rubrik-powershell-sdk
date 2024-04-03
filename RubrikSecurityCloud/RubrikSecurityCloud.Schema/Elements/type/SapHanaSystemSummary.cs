@@ -270,7 +270,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hosts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -282,7 +282,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "slaAssignable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sslInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sslInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -306,7 +306,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "systemInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "systemInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

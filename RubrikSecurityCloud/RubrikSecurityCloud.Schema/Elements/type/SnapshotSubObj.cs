@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmwareVmSubObj {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmwareVmSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "volumeGroupSubObj {\n" + fspec + ind + "}\n" ;
+                    s += ind + "volumeGroupSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

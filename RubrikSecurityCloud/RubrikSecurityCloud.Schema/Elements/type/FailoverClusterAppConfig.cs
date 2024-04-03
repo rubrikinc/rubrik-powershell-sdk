@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "failoverClusterAppSource {\n" + fspec + ind + "}\n" ;
+                    s += ind + "failoverClusterAppSource" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
