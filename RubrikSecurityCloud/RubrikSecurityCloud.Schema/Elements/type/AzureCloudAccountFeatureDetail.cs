@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "persistentStorage {\n" + fspec + ind + "}\n" ;
+                    s += ind + "persistentStorage" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+                    s += ind + "resourceGroup" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "role {\n" + fspec + ind + "}\n" ;
+                    s += ind + "role" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                    s += ind + "roles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "userAssignedManagedIdentity {\n" + fspec + ind + "}\n" ;
+                    s += ind + "userAssignedManagedIdentity" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

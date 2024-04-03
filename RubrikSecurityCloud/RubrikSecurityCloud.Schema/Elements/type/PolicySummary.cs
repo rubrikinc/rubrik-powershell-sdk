@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "highRiskFiles {\n" + fspec + ind + "}\n" ;
+                    s += ind + "highRiskFiles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lowRiskFiles {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lowRiskFiles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "summary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "summary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

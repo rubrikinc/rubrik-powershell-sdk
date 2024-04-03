@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "filesetSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "filesetSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -255,7 +255,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "filesetUpdate {\n" + fspec + ind + "}\n" ;
+                    s += ind + "filesetUpdate" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshots" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

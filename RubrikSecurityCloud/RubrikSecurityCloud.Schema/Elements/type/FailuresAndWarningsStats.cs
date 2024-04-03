@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "workloadTypeToFailureCount {\n" + fspec + ind + "}\n" ;
+                    s += ind + "workloadTypeToFailureCount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "workloadTypeToWarningCount {\n" + fspec + ind + "}\n" ;
+                    s += ind + "workloadTypeToWarningCount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

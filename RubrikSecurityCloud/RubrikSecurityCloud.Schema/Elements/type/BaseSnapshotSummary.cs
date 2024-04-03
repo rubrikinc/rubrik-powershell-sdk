@@ -378,7 +378,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudStorageTiers {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudStorageTiers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -390,7 +390,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

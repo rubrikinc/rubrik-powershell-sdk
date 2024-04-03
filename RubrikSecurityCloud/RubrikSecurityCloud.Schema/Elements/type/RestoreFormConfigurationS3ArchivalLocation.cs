@@ -180,7 +180,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalProxyConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "archivalProxyConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "computeProxyConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "computeProxyConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

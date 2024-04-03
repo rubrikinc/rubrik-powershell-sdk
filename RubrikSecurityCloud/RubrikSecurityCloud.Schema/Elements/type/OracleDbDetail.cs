@@ -657,7 +657,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "blackoutWindowResponseInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -669,7 +669,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hostsInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hostsInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -681,7 +681,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lastValidationResult {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lastValidationResult" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -693,7 +693,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oracleDbSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oracleDbSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -705,7 +705,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oracleNonSlaProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -717,7 +717,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pdbDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pdbDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -729,7 +729,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                    s += ind + "pendingSlaDomain" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

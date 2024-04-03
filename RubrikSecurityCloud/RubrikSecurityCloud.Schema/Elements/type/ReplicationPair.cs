@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "configDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "connectionDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "connectionDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "networkThrottle {\n" + fspec + ind + "}\n" ;
+                    s += ind + "networkThrottle" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sourceCluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sourceCluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -237,7 +237,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "targetCluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

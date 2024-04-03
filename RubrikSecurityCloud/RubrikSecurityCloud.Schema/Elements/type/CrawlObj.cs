@@ -110,10 +110,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fileResultConnection")]
         public FileResultConnection? FileResultConnection { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars FileResultConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] fileResultConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("filter", "BrowseDirectoryFiltersInput"),
+                    Tuple.Create("sort", "FileResultSortInput"),
+                    Tuple.Create("stdPath", "String!"),
+                };
+            this.FileResultConnection =
+                new RscGqlVars(null, fileResultConnectionArgs, null, true);
+        }
+    }
+
+    public CrawlObj()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "CrawlObj";
@@ -226,7 +251,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n";
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -346,7 +371,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerGroupResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerGroupResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -358,7 +383,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzerResults" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -370,7 +395,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -382,7 +407,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "fileResultConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "fileResultConnection" + "\n(" + this.Vars.FileResultConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

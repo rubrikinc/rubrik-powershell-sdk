@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "latestSnapshotResult {\n" + fspec + ind + "}\n" ;
+                    s += ind + "latestSnapshotResult" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policyStatuses {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policyStatuses" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

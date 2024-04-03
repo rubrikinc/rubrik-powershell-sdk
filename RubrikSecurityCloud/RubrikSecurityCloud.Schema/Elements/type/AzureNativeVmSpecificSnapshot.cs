@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "dataDiskSnapshots {\n" + fspec + ind + "}\n" ;
+                    s += ind + "dataDiskSnapshots" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "osDiskSnapshot {\n" + fspec + ind + "}\n" ;
+                    s += ind + "osDiskSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

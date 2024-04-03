@@ -35,10 +35,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public TaskDetailGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars TaskDetailConnection { get; set; }
+
+        public RscGqlVars TaskDetailGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] taskDetailConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "TaskDetailSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.TaskDetailConnection =
+                new RscGqlVars(null, taskDetailConnectionArgs, null, true);
+            Tuple<string, string>[] taskDetailGroupByArgs = {
+                    Tuple.Create("groupBy", "TaskDetailGroupByEnum!"),
+                };
+            this.TaskDetailGroupByField =
+                new RscGqlVars(null, taskDetailGroupByArgs, null, true);
+        }
+    }
+
+    public TaskDetailGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "TaskDetailGroupBy";
@@ -81,7 +112,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "taskDetailConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "taskDetailConnection" + "\n(" + this.Vars.TaskDetailConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +124,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "taskDetailGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "taskDetailGroupBy" + "\n(" + this.Vars.TaskDetailGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +136,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

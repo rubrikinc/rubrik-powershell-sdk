@@ -136,10 +136,46 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars DescendantConnection { get; set; }
+
+        public RscGqlVars K8sDescendantNamespaces { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] descendantConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                };
+            this.DescendantConnection =
+                new RscGqlVars(null, descendantConnectionArgs, null, true);
+            Tuple<string, string>[] k8sDescendantNamespacesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("filter", "[Filter!]"),
+                };
+            this.K8sDescendantNamespaces =
+                new RscGqlVars(null, k8sDescendantNamespacesArgs, null, true);
+        }
+    }
+
+    public K8sCluster()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "K8sCluster";
@@ -299,7 +335,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "configuredSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -312,7 +348,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveRetentionSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -325,7 +361,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -391,7 +427,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -403,7 +439,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "clusterInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "clusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -415,7 +451,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "clusterPortRanges {\n" + fspec + ind + "}\n" ;
+                    s += ind + "clusterPortRanges" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -427,7 +463,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "descendantConnection" + "\n(" + this.Vars.DescendantConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -439,7 +475,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -451,7 +487,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "k8sDescendantNamespaces {\n" + fspec + ind + "}\n" ;
+                    s += ind + "k8sDescendantNamespaces" + "\n(" + this.Vars.K8sDescendantNamespaces.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -463,7 +499,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -475,7 +511,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -487,7 +523,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rbsPortRanges {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rbsPortRanges" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -499,7 +535,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

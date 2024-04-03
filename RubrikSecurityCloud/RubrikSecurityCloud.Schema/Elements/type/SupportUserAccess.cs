@@ -180,7 +180,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "accessProviderUser {\n" + fspec + ind + "}\n" ;
+                    s += ind + "accessProviderUser" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "impersonatedUser {\n" + fspec + ind + "}\n" ;
+                    s += ind + "impersonatedUser" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

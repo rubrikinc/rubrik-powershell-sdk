@@ -110,10 +110,47 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("whitelists")]
         public List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AssignmentResources { get; set; }
+
+        public RscGqlVars HierarchyObjectConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] assignmentResourcesArgs = {
+                    Tuple.Create("searchObjectName", "String"),
+                    Tuple.Create("workloadTypes", "[DataGovObjectType!]"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("directResourceAssignmentSortBy", "DirectResourceAssignmentSortBy"),
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.AssignmentResources =
+                new RscGqlVars(null, assignmentResourcesArgs, null, true);
+            Tuple<string, string>[] hierarchyObjectConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                };
+            this.HierarchyObjectConnection =
+                new RscGqlVars(null, hierarchyObjectConnectionArgs, null, true);
+        }
+    }
+
+    public ClassificationPolicyDetail()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "ClassificationPolicyDetail";
@@ -235,7 +272,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hierarchyObjects {\n" + fspec + ind + "}\n";
+                    s += ind + "hierarchyObjects" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -328,7 +365,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "analyzers {\n" + fspec + ind + "}\n" ;
+                    s += ind + "analyzers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -340,7 +377,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "assignmentResources {\n" + fspec + ind + "}\n" ;
+                    s += ind + "assignmentResources" + "\n(" + this.Vars.AssignmentResources.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -352,7 +389,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                    s += ind + "creator" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -364,7 +401,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hierarchyObjectConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hierarchyObjectConnection" + "\n(" + this.Vars.HierarchyObjectConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -376,7 +413,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "objectStatuses {\n" + fspec + ind + "}\n" ;
+                    s += ind + "objectStatuses" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -388,7 +425,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "whitelists {\n" + fspec + ind + "}\n" ;
+                    s += ind + "whitelists" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

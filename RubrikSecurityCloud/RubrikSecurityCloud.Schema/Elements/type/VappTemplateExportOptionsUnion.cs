@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "advancedExportOptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "advancedExportOptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "defaultCatalogExportOptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "defaultCatalogExportOptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "originalVdcExportOptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "originalVdcExportOptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

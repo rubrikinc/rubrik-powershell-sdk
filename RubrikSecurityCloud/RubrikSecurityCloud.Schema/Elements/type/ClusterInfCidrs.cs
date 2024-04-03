@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "interfaceCidr {\n" + fspec + ind + "}\n" ;
+                    s += ind + "interfaceCidr" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

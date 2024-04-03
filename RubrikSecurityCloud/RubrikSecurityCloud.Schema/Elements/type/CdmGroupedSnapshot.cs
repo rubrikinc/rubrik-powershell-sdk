@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cdmSnapshots {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cdmSnapshots" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

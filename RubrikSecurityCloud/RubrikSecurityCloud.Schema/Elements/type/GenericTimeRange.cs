@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "absoluteTimeRange {\n" + fspec + ind + "}\n" ;
+                    s += ind + "absoluteTimeRange" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "relativeTimeRange {\n" + fspec + ind + "}\n" ;
+                    s += ind + "relativeTimeRange" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

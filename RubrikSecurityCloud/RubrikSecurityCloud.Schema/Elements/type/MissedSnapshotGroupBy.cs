@@ -35,10 +35,39 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public MissedSnapshotGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars MissedSnapshotConnection { get; set; }
+
+        public RscGqlVars MissedSnapshotGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] missedSnapshotConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "MissedSnapshotSortByEnum"),
+                };
+            this.MissedSnapshotConnection =
+                new RscGqlVars(null, missedSnapshotConnectionArgs, null, true);
+            Tuple<string, string>[] missedSnapshotGroupByArgs = {
+                    Tuple.Create("groupBy", "MissedSnapshotGroupByTime!"),
+                };
+            this.MissedSnapshotGroupByField =
+                new RscGqlVars(null, missedSnapshotGroupByArgs, null, true);
+        }
+    }
+
+    public MissedSnapshotGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "MissedSnapshotGroupBy";
@@ -81,7 +110,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "missedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "missedSnapshotConnection" + "\n(" + this.Vars.MissedSnapshotConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +122,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "missedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "missedSnapshotGroupBy" + "\n(" + this.Vars.MissedSnapshotGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +134,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

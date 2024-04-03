@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "authorizedOperations {\n" + fspec + ind + "}\n" ;
+                    s += ind + "authorizedOperations" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -453,7 +453,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cdmClusterNodeDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cdmClusterNodeDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -465,7 +465,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "clusterStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "clusterStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -477,7 +477,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lastUpgradeDuration {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lastUpgradeDuration" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -489,7 +489,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "upgradeRecommendationInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "upgradeRecommendationInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

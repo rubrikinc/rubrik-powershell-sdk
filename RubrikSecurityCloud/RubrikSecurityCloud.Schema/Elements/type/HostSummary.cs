@@ -360,7 +360,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hdfsBaseConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hdfsBaseConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -372,7 +372,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "nasBaseConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "nasBaseConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

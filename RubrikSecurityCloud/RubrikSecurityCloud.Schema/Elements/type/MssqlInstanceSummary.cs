@@ -648,7 +648,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mssqlNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mssqlNonSlaProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -660,7 +660,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mssqlSlaRelatedProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mssqlSlaRelatedProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -672,7 +672,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                    s += ind + "rootProperties" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -684,7 +684,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "unprotectableReasonsV50 {\n" + fspec + ind + "}\n" ;
+                    s += ind + "unprotectableReasonsV50" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

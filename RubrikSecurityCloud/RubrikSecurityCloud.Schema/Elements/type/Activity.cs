@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "activitySeries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "activitySeries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "proxyNetworkInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "proxyNetworkInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

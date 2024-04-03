@@ -161,10 +161,61 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AwsNativeEbsVolumes { get; set; }
+
+        public RscGqlVars AwsNativeEc2Instances { get; set; }
+
+        public RscGqlVars AwsNativeRdsInstances { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] awsNativeEbsVolumesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "AwsNativeEbsVolumeSortFields"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("ebsVolumeFilters", "AwsNativeEbsVolumeFilters"),
+                };
+            this.AwsNativeEbsVolumes =
+                new RscGqlVars(null, awsNativeEbsVolumesArgs, null, true);
+            Tuple<string, string>[] awsNativeEc2InstancesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "AwsNativeEc2InstanceSortFields"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("ec2InstanceFilters", "AwsNativeEc2InstanceFilters"),
+                };
+            this.AwsNativeEc2Instances =
+                new RscGqlVars(null, awsNativeEc2InstancesArgs, null, true);
+            Tuple<string, string>[] awsNativeRdsInstancesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortBy", "AwsNativeRdsInstanceSortFields"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("rdsInstanceFilters", "AwsNativeRdsInstanceFilters"),
+                };
+            this.AwsNativeRdsInstances =
+                new RscGqlVars(null, awsNativeRdsInstancesArgs, null, true);
+        }
+    }
+
+    public AwsNativeAccount()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "AwsNativeAccount";
@@ -362,7 +413,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "configuredSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -375,7 +426,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveRetentionSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -388,7 +439,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -481,7 +532,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -493,7 +544,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "applicationCloudAccountExoConfigs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "applicationCloudAccountExoConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -505,7 +556,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsNativeEbsVolumes {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsNativeEbsVolumes" + "\n(" + this.Vars.AwsNativeEbsVolumes.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -517,7 +568,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsNativeEc2Instances {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsNativeEc2Instances" + "\n(" + this.Vars.AwsNativeEc2Instances.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -529,7 +580,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsNativeRdsInstances {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsNativeRdsInstances" + "\n(" + this.Vars.AwsNativeRdsInstances.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -541,7 +592,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -553,7 +604,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -565,7 +616,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -577,7 +628,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "regionSpecs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "regionSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -589,7 +640,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

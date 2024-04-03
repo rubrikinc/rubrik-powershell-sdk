@@ -35,10 +35,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public MosaicSnapshotGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars AllSnapshotGroupBys { get; set; }
+
+        public RscGqlVars Snapshots { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] allSnapshotGroupBysArgs = {
+                    Tuple.Create("groupBy", "MosaicSnapshotGroupBy!"),
+                };
+            this.AllSnapshotGroupBys =
+                new RscGqlVars(null, allSnapshotGroupBysArgs, null, true);
+            Tuple<string, string>[] snapshotsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "MosaicSnapshotSortBy"),
+                };
+            this.Snapshots =
+                new RscGqlVars(null, snapshotsArgs, null, true);
+        }
+    }
+
+    public MosaicSnapshotGroupByType()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "MosaicSnapshotGroupByType";
@@ -81,7 +112,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "allSnapshotGroupBys {\n" + fspec + ind + "}\n" ;
+                    s += ind + "allSnapshotGroupBys" + "\n(" + this.Vars.AllSnapshotGroupBys.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +124,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshots" + "\n(" + this.Vars.Snapshots.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +136,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

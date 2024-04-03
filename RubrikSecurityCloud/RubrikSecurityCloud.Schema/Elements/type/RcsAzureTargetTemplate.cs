@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "immutabilitySettings {\n" + fspec + ind + "}\n" ;
+                    s += ind + "immutabilitySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

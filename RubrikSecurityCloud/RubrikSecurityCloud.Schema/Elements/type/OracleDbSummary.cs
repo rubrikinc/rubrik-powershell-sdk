@@ -567,7 +567,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "currentBackupTaskInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "currentBackupTaskInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -579,7 +579,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "dataGuardGroupMembers {\n" + fspec + ind + "}\n" ;
+                    s += ind + "dataGuardGroupMembers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -591,7 +591,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                    s += ind + "infraPath" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -603,7 +603,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "instances {\n" + fspec + ind + "}\n" ;
+                    s += ind + "instances" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -615,7 +615,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
