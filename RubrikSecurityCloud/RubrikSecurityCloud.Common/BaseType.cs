@@ -39,10 +39,19 @@ namespace RubrikSecurityCloud.Types
                     
         }
 
-        public virtual List<string> AllFields()
+        public virtual List<string> AllFields(int maxDepth = 0)
         {
-            return StringUtils.FlattenFieldToFieldSpecList(
-                ReflectionUtils.FlattenField(this.GetType().FullName));
+            var fields = StringUtils.FlattenFieldToFieldSpecList(
+                ReflectionUtils.FlattenFieldFull(this.GetType().FullName));
+            if (maxDepth <= 0)
+            {
+                return fields;
+            }
+            else
+            {
+                return fields.Select(f => 
+                    f.Split('.').Take(maxDepth).Aggregate((a, b) => a + "." + b)).Distinct().ToList();
+            }
         }
 
         public List<string> UnselectedFields()

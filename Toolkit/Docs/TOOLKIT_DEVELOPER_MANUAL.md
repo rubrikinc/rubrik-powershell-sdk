@@ -47,6 +47,10 @@ functions that are not ready for public consumption.
 
 Please see: [Private Functions](../Private/README.md)
 
+### 1.4 Operation Files
+
+Please see: [Operation Files](../Operations/README.md)
+
 ## 2 Developer Workflow
 
 All work is done on the repo's `devel` branch.

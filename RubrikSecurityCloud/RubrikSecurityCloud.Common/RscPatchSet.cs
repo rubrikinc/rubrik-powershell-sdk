@@ -16,13 +16,9 @@ namespace RubrikSecurityCloud
     public class RscPatchSet
     {
         public static List<string> BuildValidPatchStringsFor(
-            string gqlReturnTypeName,
-            int maxDepth = 10,
-            HashSet<string>? skip = null)
+            string gqlReturnTypeName)
         {
-            var patches = ReflectionUtils.FlattenField(
-                gqlReturnTypeName,
-                ReflectionUtils.FlattenFieldContext.PatchContext());
+            var patches = ReflectionUtils.FlattenFieldPatch(gqlReturnTypeName);
             return patches;
         }
 

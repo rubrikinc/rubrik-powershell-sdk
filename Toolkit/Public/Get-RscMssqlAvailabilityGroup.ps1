@@ -46,42 +46,23 @@ function Get-RscMssqlAvailabilityGroup {
     .EXAMPLE
     Returns information about a specific Availability Group based on the name of the AG and the name of the Rubrik Cluster
     Get-RscMssqlAvailabilityGroup -Name AG_Accounting -clusterID hja87-ajb43-v4avna-hnjag
-
-    .EXAMPLE
-    Return back all fields, including the fields that are null
-    
-    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -IncludeNullProperties
-
-    .EXAMPLE
-    Return back just the query that will be run instead of running the query and returning the results
-
-    Get-RscMssqlAvailabilityGroup -Name AG_Accounting -AsQuery   
     #>
 
     [CmdletBinding(
         DefaultParameterSetName = "List"
     )]
     Param(
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = $false
-        )][Switch]$List,
+        [Parameter(ParameterSetName = "List", Mandatory = $false)]
+        [Switch]$List,
         
-        [Parameter(
-            ParameterSetName = "Id",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][String]$Id,
+        [Parameter(ParameterSetName = "Id",Mandatory = $true)]
+        [String]$Id,
 
-        [Parameter(
-            ParameterSetName = "AvailabilityGroupName",
-            Mandatory = $false, 
-            ValueFromPipeline = $false
-        )][String]$AvailabilityGroupName,
+        [Parameter(ParameterSetName = "AvailabilityGroupName",Mandatory = $true)]
+        [String]$AvailabilityGroupName,
         
-        [Parameter(
-            Mandatory = $false
-        )][RubrikSecurityCloud.Types.Cluster]$RscCluster,
+        [Parameter(Mandatory = $false)]
+        [RubrikSecurityCloud.Types.Cluster]$RscCluster,
 
         #  Common parameter to all parameter sets:
         [Parameter(
@@ -102,7 +83,6 @@ function Get-RscMssqlAvailabilityGroup {
          switch ( $PSCmdlet.ParameterSetName ){
             "List" {
                 $query = New-RscQueryMssql -Operation TopLevelDescendants -FieldProfile $fieldProfile
-                $query.Var.filter = @()
                 $query.Var.typeFilter = "MssqlAvailabilityGroup"
             }
             "Id"  {
@@ -122,7 +102,7 @@ function Get-RscMssqlAvailabilityGroup {
         #endregion
 
         #region filters
-        if($PSBoundParameters.ContainsKey('clusterId')) {
+        if($PSBoundParameters.ContainsKey('RscCluster')) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
             $clusterFilter.texts = $RscCluster.Id

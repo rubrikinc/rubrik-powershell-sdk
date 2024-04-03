@@ -32,7 +32,10 @@ Describe -Name "Test fields" -Fixture {
         $q2 = New-RscQueryVsphere -Op TopLevelDescendantsList -Field $q1.Field
 
         # SelectedFields(), AllFields() and UnselectedFields()
-        $q3 = New-RscQueryAccount -op Products -FieldProfile FULL
+        $q3 = New-RscQueryAccount -op Products -FieldProfile FULL  -Var @{
+            nameFilter=[RubrikSecurityCloud.Types.ProductName]::UNSPECIFIED_NAME;
+            typeFilter=[RubrikSecurityCloud.Types.ProductType]::UNSPECIFIED_TYPE;
+            stateFilter=[RubrikSecurityCloud.Types.ProductState]::UNSPECIFIED_STATE}
         $q3.Field.SelectedFields() | Should -Be $q3.Field.AllFields()
         $q3.Field.UnselectedFields() | Should -Be $null
 

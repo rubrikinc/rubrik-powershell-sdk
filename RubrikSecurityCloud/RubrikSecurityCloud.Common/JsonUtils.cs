@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud
         /// - Hashtables and Enumerable types are recursively processed.
         /// - Defaults to ToString() on unrecognized types.
         /// </summary>
-        public static System.Object JsonReady(System.Object obj)
+        public static System.Object? JsonReady(System.Object obj)
         {
             // basic types
             if (
@@ -30,6 +30,7 @@ namespace RubrikSecurityCloud
                 obj is string ||
                 obj is int ||
                 obj is bool ||
+                obj is long ||
                 obj is Enum
             )
             {
@@ -58,7 +59,7 @@ namespace RubrikSecurityCloud
             if (obj is VarDict varDict)
             {
                 var vd = new VarDict();
-                foreach (KeyValuePair<string, object> entry in varDict)
+                foreach (KeyValuePair<string, object?> entry in varDict)
                 {
                     if (entry.Value != null)
                     {
@@ -73,7 +74,7 @@ namespace RubrikSecurityCloud
             // Enumerable (array, list, etc.)
             if (obj is IEnumerable enumerable)
             {
-                var l = new List<object>();
+                var l = new List<object?>();
                 foreach (var item in enumerable)
                 {
                     l.Add(JsonUtils.JsonReady(item));
