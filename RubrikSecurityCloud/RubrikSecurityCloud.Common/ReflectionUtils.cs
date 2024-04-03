@@ -256,8 +256,36 @@ namespace RubrikSecurityCloud
 
         public static List<string> FlattenField(string typeName, FlattenFieldContext ctx)
         {
+            List<string>? fields;
+            Type? type = GetStrippedType(typeName);
+            if (type == null)
+            {
+                throw new Exception($"FlattenField: {typeName} is null.");
+            }
+
+            // Reset cache
             _FlattenFieldCache = new Dictionary<string, List<string>>();
-            List<string>? fields = _FlattenField(typeName, ctx, 0);
+
+            // If the type is an interface, we need to expand all types that implement it
+            if (type.IsInterface)
+            {
+                fields = new List<string>();
+                var infImpls = GetTypesImplementingInterface(type.Name);
+                infImpls.ForEach(impl =>
+                {
+                    var f = _FlattenField(impl, ctx, 0);
+                    if (f != null && f.Any())
+                    {
+                        fields.AddRange(f);
+                    }
+                });
+            }
+            else // Otherwise, just expand the type
+            {
+                fields = _FlattenField(typeName, ctx, 0);
+            }
+
+            // Reset cache
             _FlattenFieldCache = new Dictionary<string, List<string>>();
 
             if (fields==null)
