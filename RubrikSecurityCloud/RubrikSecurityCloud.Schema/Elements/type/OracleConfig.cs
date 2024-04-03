@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "frequency {\n" + fspec + ind + "}\n" ;
+                    s += ind + "frequency" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hostLogRetention {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hostLogRetention" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logRetention" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

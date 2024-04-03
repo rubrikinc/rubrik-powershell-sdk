@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "bidirectionalSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "bidirectionalSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudLocationSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudLocationSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cloudRegionSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cloudRegionSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "unidirectionalSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "unidirectionalSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

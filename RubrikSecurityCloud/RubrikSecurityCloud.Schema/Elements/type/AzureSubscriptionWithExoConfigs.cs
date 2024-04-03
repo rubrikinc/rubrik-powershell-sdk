@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "exocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                    s += ind + "featureDetail" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mappedCloudAccounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mappedCloudAccounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mappedExocomputeConfigs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mappedExocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mappedExocomputeSubscription {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mappedExocomputeSubscription" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

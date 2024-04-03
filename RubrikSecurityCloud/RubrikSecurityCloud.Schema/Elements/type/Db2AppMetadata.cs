@@ -270,7 +270,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "db2SnapshotMetadata {\n" + fspec + ind + "}\n" ;
+                    s += ind + "db2SnapshotMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -282,7 +282,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "files {\n" + fspec + ind + "}\n" ;
+                    s += ind + "files" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "computeClusterSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "computeClusterSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hosts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+                    s += ind + "virtualMachines" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

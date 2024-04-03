@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hypervVirtualMachineSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hypervVirtualMachineSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hypervVirtualMachineUpdate {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hypervVirtualMachineUpdate" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "virtualDiskInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "virtualDiskInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

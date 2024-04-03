@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalLocation {\n" + fspec + ind + "}\n";
+                    s += ind + "archivalLocation" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalThreshold {\n" + fspec + ind + "}\n" ;
+                    s += ind + "archivalThreshold" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -124,7 +124,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+                    s += ind + "archivalTieringSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

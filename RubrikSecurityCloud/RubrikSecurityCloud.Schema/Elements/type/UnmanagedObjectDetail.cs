@@ -271,7 +271,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -284,7 +284,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -422,7 +422,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -434,7 +434,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalLocation {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalLocation" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -446,7 +446,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "recoveryInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "recoveryInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -458,7 +458,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "region {\n" + fspec + ind + "}\n" ;
+                    s += ind + "region" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

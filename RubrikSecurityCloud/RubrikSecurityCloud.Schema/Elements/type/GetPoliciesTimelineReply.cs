@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "highRiskObjects {\n" + fspec + ind + "}\n" ;
+                    s += ind + "highRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -237,7 +237,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "initialAnalysisStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "initialAnalysisStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lowRiskObjects {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lowRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mediumRiskObjects {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mediumRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -273,7 +273,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "noRiskObjects {\n" + fspec + ind + "}\n" ;
+                    s += ind + "noRiskObjects" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "outOfDateStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "outOfDateStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -297,7 +297,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policyFilesHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policyFilesHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policyHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policyHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policyOaFilesHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policyOaFilesHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -333,7 +333,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policyStaleFilesHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policyStaleFilesHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -345,7 +345,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "policySummaries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "policySummaries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -357,7 +357,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalFilesHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalFilesHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -369,7 +369,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -381,7 +381,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalOaFilesEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalOaFilesEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalOaFilesHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalOaFilesHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalOaFoldersEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalOaFoldersEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -417,7 +417,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalStaleFilesHitsEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalStaleFilesHitsEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -429,7 +429,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totalStaleOaFilesEntries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totalStaleOaFilesEntries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "upToDateStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "upToDateStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

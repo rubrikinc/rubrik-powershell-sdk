@@ -533,7 +533,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                    s += ind + "slaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -887,7 +887,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -899,7 +899,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "workloadOrg {\n" + fspec + ind + "}\n" ;
+                    s += ind + "workloadOrg" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

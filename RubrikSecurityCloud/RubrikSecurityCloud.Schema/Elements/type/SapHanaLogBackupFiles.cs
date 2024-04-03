@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logPositionInterval {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logPositionInterval" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

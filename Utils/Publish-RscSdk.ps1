@@ -32,12 +32,17 @@ $ErrorActionPreference = "Stop"
 # Change to the root of the repository
 Set-Location $PSScriptRoot\..
 
+# bail out if not on the main branch
+$currentBranch = git rev-parse --abbrev-ref HEAD
+if ($currentBranch -ne 'main') {
+    throw "You are not on the 'main' branch. Current branch is '$currentBranch'."
+}
+
 $publishDir = ".\Output.Publish"
 # bail out if already there
 if (Test-Path $publishDir) {
     throw "$publishDir already exists. Remove it first."
 }
-
 
 $releaseDir= ".\Output.Release"
 # bail out if Output.Release is missing

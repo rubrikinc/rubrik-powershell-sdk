@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "emailConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "emailConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lockoutStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lockoutStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                    s += ind + "roles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "totpStatus {\n" + fspec + ind + "}\n" ;
+                    s += ind + "totpStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

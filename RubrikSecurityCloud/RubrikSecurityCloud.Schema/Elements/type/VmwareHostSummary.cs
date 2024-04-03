@@ -279,7 +279,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "datastores {\n" + fspec + ind + "}\n" ;
+                    s += ind + "datastores" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+                    s += ind + "effectiveSlaHolder" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                    s += ind + "slaAssignable" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

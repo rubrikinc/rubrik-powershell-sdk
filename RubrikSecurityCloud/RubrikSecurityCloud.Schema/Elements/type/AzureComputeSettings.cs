@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "computeProxySettings {\n" + fspec + ind + "}\n" ;
+                    s += ind + "computeProxySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

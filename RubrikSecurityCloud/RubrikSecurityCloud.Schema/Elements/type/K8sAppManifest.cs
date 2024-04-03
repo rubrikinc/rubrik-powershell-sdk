@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "toApply {\n" + fspec + ind + "}\n" ;
+                    s += ind + "toApply" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "toDelete {\n" + fspec + ind + "}\n" ;
+                    s += ind + "toDelete" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

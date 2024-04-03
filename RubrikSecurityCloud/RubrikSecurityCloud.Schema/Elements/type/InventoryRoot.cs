@@ -25,10 +25,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("descendantConnection")]
         public HierarchyObjectConnection? DescendantConnection { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars DescendantConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] descendantConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                };
+            this.DescendantConnection =
+                new RscGqlVars(null, descendantConnectionArgs, null, true);
+        }
+    }
+
+    public InventoryRoot()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "InventoryRoot";
@@ -63,7 +88,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "descendantConnection" + "\n(" + this.Vars.DescendantConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

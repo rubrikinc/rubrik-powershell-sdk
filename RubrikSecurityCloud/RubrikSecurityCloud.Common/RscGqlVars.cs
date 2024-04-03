@@ -1,13 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Management.Automation;
-using System.Reflection;
-using Newtonsoft.Json.Linq;
-using RubrikSecurityCloud.Types;
-using RubrikSecurityCloud.PowerShell.Private;
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -36,7 +30,7 @@ namespace RubrikSecurityCloud
 
         // an example of how the variables can
         // be initialized
-        internal string _example;
+        internal string? _example;
 
         /// <summary>
         /// Create a new RscGqlVars object.
@@ -50,11 +44,11 @@ namespace RubrikSecurityCloud
         /// Create a new RscGqlVars object.
         /// </summary>
         public RscGqlVars(
-            System.Object obj,
-            Tuple<String, String>[] varDefs = null,
-            GetOverrideValueForVarDelegate getOverrideValueForVar = null,
+            System.Object? obj,
+            Tuple<String, String>[]? varDefs = null,
+            GetOverrideValueForVarDelegate? getOverrideValueForVar = null,
             bool ignoreRequired = false,
-            string example = null)
+            string? example = null)
                 : this()
         {
             Set(
@@ -97,11 +91,11 @@ namespace RubrikSecurityCloud
         /// </param>
         /// <exception cref="ArgumentException"></exception>
         public void Set(
-            System.Object obj,
-            Tuple<String, String>[] varDefs = null,
-            GetOverrideValueForVarDelegate getOverrideValueForVar = null,
+            System.Object? obj,
+            Tuple<String, String>[]? varDefs = null,
+            GetOverrideValueForVarDelegate? getOverrideValueForVar = null,
             bool ignoreRequired = false,
-            string example = null)
+            string? example = null)
         {
             if (RubrikSecurityCloud.Config.IgnoreMissingRequiredVariables)
             {
@@ -109,7 +103,9 @@ namespace RubrikSecurityCloud
             }
 
             _example = example;
-            _varDefs.AddFromTuple(varDefs);
+            if (varDefs != null) {
+                _varDefs.AddFromTuple(varDefs);
+            }
 
             // if obj is null, treat it as an empty hashtable
             if (obj == null)
@@ -162,7 +158,7 @@ namespace RubrikSecurityCloud
             }
 
             // Passed argument must be a hashtable
-            if (obj is not VarDict)
+            if (!(obj is VarDict))
             {
                 throw new ArgumentException($"Invalid argument {obj}. Expected a hashtable.");
             }
@@ -180,7 +176,7 @@ namespace RubrikSecurityCloud
             // read obj, coalescing keys with the same name,
             // removing null values,
             // and converting values to JSON-serializable types
-            foreach (KeyValuePair<string, object> entry in (VarDict)obj)
+            foreach (KeyValuePair<string, object?> entry in (VarDict)obj)
             {
                 if (entry.Value != null)
                 {
@@ -214,8 +210,12 @@ namespace RubrikSecurityCloud
         public List<VarInfo> Info()
         {
             var info = new List<VarInfo>();
-            foreach (KeyValuePair<string, object> varDef in _varDefs)
+            foreach (KeyValuePair<string, object?> varDef in _varDefs)
             {
+                if (varDef.Value is null)
+                {
+                    continue;
+                }
                 string varName = (string)varDef.Key;
                 string varGqlType = (string)varDef.Value;
                 string VarDescr = StringUtils.DocLinkForGqlType(varGqlType);
@@ -231,7 +231,7 @@ namespace RubrikSecurityCloud
         /// <summary>
         /// Return an example of how the variables can be initialized.
         /// </summary>
-        public string Example()
+        public string? Example()
         {
             return _example;
         }
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud
         /// - for basic types, convert the value to the correct type
         /// </summary>
         internal void conformToVarDefs(
-            GetOverrideValueForVarDelegate getOverrideValueForVar = null,
+            GetOverrideValueForVarDelegate? getOverrideValueForVar = null,
             bool ignoreRequired = false)
         {
             if (RubrikSecurityCloud.Config.IgnoreMissingRequiredVariables)
@@ -251,8 +251,12 @@ namespace RubrikSecurityCloud
                 ignoreRequired = true;
             }
 
-            foreach (KeyValuePair<string, object> varDef in _varDefs)
+            foreach (KeyValuePair<string, object?> varDef in _varDefs)
             {
+                if (varDef.Value is null)
+                {
+                    continue;
+                }
                 string varName = (string)varDef.Key;
                 string varTypeExpr = (string)varDef.Value;
                 bool isRequired = varTypeExpr[varTypeExpr.Length - 1] == '!';
@@ -326,7 +330,7 @@ namespace RubrikSecurityCloud
         /// - check for missing required variables
         /// - make sure all variables are JSON-serializable.
         /// </summary>
-        public VarDict Finalize()
+        public VarDict? Finalize()
         {
             // run again in case user has modified the hashtable
             // directly (with Add() for example) without calling Set()
@@ -334,13 +338,20 @@ namespace RubrikSecurityCloud
             return JsonUtils.JsonReady(this) as VarDict;
         }
 
+        public string ToInlineArguments()
+        {
+            OperationVariableSet gqlVars = new OperationVariableSet();
+            gqlVars.Variables = this!;
+            return gqlVars.AsInlineVariables();
+        }
+
         /// <summary>
         /// String representation of the variables.
         /// </summary>
         public override string ToString()
         {
-            List<string> vars = new();
-            foreach (KeyValuePair<string, object> entry in this)
+            List<string> vars = new List<string>();
+            foreach (KeyValuePair<string, object?> entry in this)
             {
                 string key = (string)entry.Key;
                 if (_varDefs.ContainsKey(key))

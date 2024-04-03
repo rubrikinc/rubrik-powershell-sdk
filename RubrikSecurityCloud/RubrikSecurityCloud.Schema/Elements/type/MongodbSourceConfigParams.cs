@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "ignoreSecondaries {\n" + fspec + ind + "}\n" ;
+                    s += ind + "ignoreSecondaries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mongodbHosts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mongodbHosts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sslOptions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

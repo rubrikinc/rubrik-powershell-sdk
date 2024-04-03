@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "physicalLocation {\n" + fspec + ind + "}\n" ;
+                    s += ind + "physicalLocation" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snapshotDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

@@ -1,16 +1,32 @@
 # Changelog
+
 ## ~ Upcoming Version ~
 
 New Features:
 
 Fixes:
-Get-RscMssqlAvailabilityGroup - Now works for returning back list or by name
-Get-RscMssqlLogShipping - Now works and no longer references Live Mount
-Remove-RscMssqlLogShippingSecondary - Now works and no longer references Live Mount
 
 Breaking Changes:
-Get-RscMssqlInstance - No longer accepts RscHost object any more. Not it accepts a string value for HostName and WindowsClusterName. This is because, there is no value in the RscHost object for getting the MSSQL Instance object as the only option is to query by name and not by ID. Additionally, we need the ability to search for a Instance based on a Windows Cluster Name. This new approach allows for a simpler user experience, as they do not need to make an extra call to get a Host object before requesting the Instance object.
 
+## Version 0.30
+
+New Features:
+
+- Added support for subfield arguments
+
+Fixes:
+
+- `-AddField` and `-RemoveField` now expand interfaces.
+- Get-RscMssqlAvailabilityGroup - Now works for returning back list or by name.
+- Get-RscMssqlLogShipping - Now works and no longer references Live Mount
+- Remove-RscMssqlLogShippingSecondary - Now works and no longer references Live Mount
+- Patched clusterConnection DETAIL profile.
+- More details in Get-Help Invoke-Rsc
+
+Breaking Changes:
+
+- Get-RscMssqlInstance - No longer accepts RscHost object any more. Not it accepts a string value for HostName and WindowsClusterName. This is because, there is no value in the RscHost object for getting the MSSQL Instance object as the only option is to query by name and not by ID. Additionally, we need the ability to search for a Instance based on a Windows Cluster Name. This new approach allows for a simpler user experience, as they do not need to make an extra call to get a Host object before requesting the Instance object.
+- Added support for fields of type `Long`
 
 ## Version 0.29
 
@@ -423,4 +439,5 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 

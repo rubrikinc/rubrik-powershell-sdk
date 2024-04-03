@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "statusInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "statusInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

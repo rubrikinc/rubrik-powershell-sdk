@@ -35,10 +35,41 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupByInfo")]
         public SnappableGroupByInfo? GroupByInfo { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars SnappableConnection { get; set; }
+
+        public RscGqlVars SnappableGroupByField { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] snappableConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("sortBy", "SnappableSortByEnum"),
+                };
+            this.SnappableConnection =
+                new RscGqlVars(null, snappableConnectionArgs, null, true);
+            Tuple<string, string>[] snappableGroupByArgs = {
+                    Tuple.Create("groupBy", "SnappableGroupByEnum!"),
+                };
+            this.SnappableGroupByField =
+                new RscGqlVars(null, snappableGroupByArgs, null, true);
+        }
+    }
+
+    public SnappableGroupBy()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "SnappableGroupBy";
@@ -81,7 +112,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappableConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappableConnection" + "\n(" + this.Vars.SnappableConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +124,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "snappableGroupBy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "snappableGroupBy" + "\n(" + this.Vars.SnappableGroupByField.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +136,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

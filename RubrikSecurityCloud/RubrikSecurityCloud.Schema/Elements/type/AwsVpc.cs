@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "securityGroups {\n" + fspec + ind + "}\n" ;
+                    s += ind + "securityGroups" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "subnets {\n" + fspec + ind + "}\n" ;
+                    s += ind + "subnets" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

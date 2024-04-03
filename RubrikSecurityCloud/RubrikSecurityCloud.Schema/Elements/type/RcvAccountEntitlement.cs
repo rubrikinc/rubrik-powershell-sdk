@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "archiveEntitlement {\n" + fspec + ind + "}\n" ;
+                    s += ind + "archiveEntitlement" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "backupEntitlement {\n" + fspec + ind + "}\n" ;
+                    s += ind + "backupEntitlement" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "entitlements {\n" + fspec + ind + "}\n" ;
+                    s += ind + "entitlements" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

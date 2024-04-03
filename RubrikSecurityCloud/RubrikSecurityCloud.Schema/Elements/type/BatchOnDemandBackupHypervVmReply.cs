@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "failedRequests {\n" + fspec + ind + "}\n" ;
+                    s += ind + "failedRequests" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "successfulRequests {\n" + fspec + ind + "}\n" ;
+                    s += ind + "successfulRequests" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

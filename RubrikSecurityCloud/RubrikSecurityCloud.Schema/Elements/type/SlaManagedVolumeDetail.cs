@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "backupScriptDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "backupScriptDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "hostDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "hostDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "logExportSummary {\n" + fspec + ind + "}\n" ;
+                    s += ind + "logExportSummary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "postBackupScriptOnBackupFailureDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "postBackupScriptOnBackupFailureDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -210,7 +210,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "postBackupScriptOnBackupSuccessDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "postBackupScriptOnBackupSuccessDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -222,7 +222,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "preBackupScriptDetails {\n" + fspec + ind + "}\n" ;
+                    s += ind + "preBackupScriptDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

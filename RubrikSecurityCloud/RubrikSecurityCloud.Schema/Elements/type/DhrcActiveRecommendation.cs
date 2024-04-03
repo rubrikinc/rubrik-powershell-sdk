@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "translationArgs {\n" + fspec + ind + "}\n" ;
+                    s += ind + "translationArgs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

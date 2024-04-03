@@ -100,10 +100,32 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tables")]
         public List<ReportTableType>? Tables { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars ScheduledReportConnection { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] scheduledReportConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.ScheduledReportConnection =
+                new RscGqlVars(null, scheduledReportConnectionArgs, null, true);
+        }
+    }
+
+    public CreateCustomReportReply()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "CreateCustomReportReply";
@@ -297,7 +319,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "filters {\n" + fspec + ind + "}\n" ;
+                    s += ind + "filters" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -309,7 +331,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "owner {\n" + fspec + ind + "}\n" ;
+                    s += ind + "owner" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -321,7 +343,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "scheduledReportConnection {\n" + fspec + ind + "}\n" ;
+                    s += ind + "scheduledReportConnection" + "\n(" + this.Vars.ScheduledReportConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -333,7 +355,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "charts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "charts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -345,7 +367,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "tables {\n" + fspec + ind + "}\n" ;
+                    s += ind + "tables" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

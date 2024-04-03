@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sampleAffectedFilesInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sampleAffectedFilesInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sampleRansomwareNoteFilesInfo {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sampleRansomwareNoteFilesInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

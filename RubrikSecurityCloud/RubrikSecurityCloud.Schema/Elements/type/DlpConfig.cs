@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "genericNas {\n" + fspec + ind + "}\n" ;
+                    s += ind + "genericNas" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                    s += ind + "status" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmwareVm {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmwareVm" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

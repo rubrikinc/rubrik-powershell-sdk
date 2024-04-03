@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsNativeS3SlaConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsNativeS3SlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "awsRdsConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "awsRdsConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureBlobConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureBlobConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureSqlDatabaseDbConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureSqlDatabaseDbConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "azureSqlManagedInstanceDbConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "azureSqlManagedInstanceDbConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -231,7 +231,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "db2Config {\n" + fspec + ind + "}\n" ;
+                    s += ind + "db2Config" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -243,7 +243,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "managedVolumeSlaConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "managedVolumeSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -255,7 +255,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mongoConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mongoConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "mssqlConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "mssqlConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -279,7 +279,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "oracleConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "oracleConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -291,7 +291,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "postgresDbClusterSlaConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "postgresDbClusterSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "sapHanaConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "sapHanaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -315,7 +315,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vmwareVmConfig {\n" + fspec + ind + "}\n" ;
+                    s += ind + "vmwareVmConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

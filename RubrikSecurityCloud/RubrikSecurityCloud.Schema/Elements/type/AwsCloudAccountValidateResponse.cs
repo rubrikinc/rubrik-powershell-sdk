@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "invalidAwsAccounts {\n" + fspec + ind + "}\n" ;
+                    s += ind + "invalidAwsAccounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "invalidAwsAdminAccount {\n" + fspec + ind + "}\n" ;
+                    s += ind + "invalidAwsAdminAccount" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

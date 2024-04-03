@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "leakedDetectionPolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "leakedDetectionPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lengthPolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lengthPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "lowercasePolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "lowercasePolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "numericPolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "numericPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "passwordExpirationPolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "passwordExpirationPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "passwordReusePolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "passwordReusePolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "specialCharsPolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "specialCharsPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -210,7 +210,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "uppercasePolicy {\n" + fspec + ind + "}\n" ;
+                    s += ind + "uppercasePolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
