@@ -11,8 +11,8 @@ function Set-RscMssqlInstance{
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    .PARAMETER RscMssqlInstance
+    Database object returned from Get-RscMssqlInstance
 
     .PARAMETER DoNotProtect
     Sets the protection property on the database to DO NOT PROTECT
