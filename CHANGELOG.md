@@ -6,6 +6,9 @@ New Features:
 
 Fixes:
 
+ - Get-RscSla using -Id parameter workaround. Now returns Name and Id.
+ - Get-RscSla now properly populates the protected object count.
+
 Breaking Changes:
 
 ## Version 0.30
