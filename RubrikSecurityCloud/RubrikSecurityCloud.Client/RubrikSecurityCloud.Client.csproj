@@ -10,7 +10,6 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="7.2.2" />
     <PackageReference Include="GraphQL.Client" Version="5.1.0" />
     <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="6.0.0" />
     <PackageReference Include="GraphQL.Query.Builder" Version="2.0.1" />

@@ -55,23 +55,27 @@ function Get-RscSla {
         }
 
         if ($Id) {
-            $query = New-RscQuerySla -Operation Domain -FieldProfile $fieldProfile
-            $query.Var.id = $Id
-            $query.field.BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
-            $query.field.BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
-            $query.field.BaseFrequency.DurationField = 1
-            $query.field.ProtectedObjectCount = 1
-            $query.field.ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
-            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
-            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
-            $query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
-            $query.field.ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
-            $query.field.ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
-            $query.field.ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $query = New-RscQuery -GqlQuery slaDomain -FieldProfile $fieldProfile
+            $query.var.id = $Id
+            # TODO: SDK currently treating as a clusterSlaDomain, so we can't get globalSlaReply fields.
+            #$query.field.BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
+            #$query.field.BaseFrequency.Unit = New-Object -TypeName RubrikSecurityCloud.Types.RetentionUnit
+            #$query.field.BaseFrequency.DurationField = 1
+            #$query.field.ProtectedObjectCount = 1
+            #$query.field.ArchivalSpecs = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalSpec
+            #$query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalLocationToClusterMapping
+            #$query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location = New-Object -TypeName RubrikSecurityCloud.Types.DlsArchivalLocation
+            #$query.field.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0].Location.Name = "Foo"
+            #$query.field.ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
+            #$query.field.ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
+            #$query.field.ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $result = $query.Invoke()
+            $result
         } 
         else {
-            $query = (New-RscQuerySla -Operation Domains -FieldProfile $fieldProfile)
-            $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput
+            $query = New-RscQuery -GqlQuery slaDomains -FieldProfile $fieldProfile
+            $query.var.shouldShowProtectedObjectCount = $true
+            $query.var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput
             $query.var.filter.Field = [RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]::NAME
             $query.var.filter.Text = $Name
             $query.field.nodes[1].BaseFrequency = New-Object -TypeName RubrikSecurityCloud.Types.Duration
@@ -85,9 +89,8 @@ function Get-RscSla {
             $query.field.nodes[1].ReplicationSpecsV2 = New-Object RubrikSecurityCloud.Types.ReplicationSpecV2
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster = New-Object RubrikSecurityCloud.Types.SlaReplicationCluster
             $query.field.nodes[1].ReplicationSpecsV2[0].Cluster.Name = "This is just here as a placeholder string to indicate that the field should be fetched"
+            $result = $query.Invoke()
+            $result.Nodes
         }
-
-        $result = $query.Invoke()
-        $result.Nodes
     } 
 }

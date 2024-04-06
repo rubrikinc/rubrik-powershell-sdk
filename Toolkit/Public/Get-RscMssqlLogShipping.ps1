@@ -62,6 +62,7 @@ function Get-RscMssqlLogShipping {
         [String]$SecondaryDatabaseName ,
 
         [Parameter(
+            ParameterSetName = "Query",
             Mandatory = $true
         )][RubrikSecurityCloud.Types.Cluster]$RscCluster
     )
