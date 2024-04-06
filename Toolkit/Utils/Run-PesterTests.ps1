@@ -82,10 +82,12 @@ function InstallOrUpdatePesterIfNeeded {
 
         # Upgrade Pester to the latest version
         Install-Module @installParams
+        # Re-import the Pester module to ensure the updated version is used
+        Import-Module -Name Pester -Force
     }
-
-    # Re-import the Pester module to ensure the updated version is used
-    Import-Module -Name Pester -Force
+    else {
+        Import-Module -Name Pester -Version $pesterInstalled.Version -Force
+    }
 }
 
 # Call the function to ensure Pester is installed and >= 5.0.0
