@@ -1,18 +1,18 @@
 #Requires -Version 3
-function Set-RscMssqlInstance{
+function Set-RscMssqlAvailabilityGroup{
     <#
     .SYNOPSIS
-    Sets properties of a MSSQL Instance in RSC
+    Sets properties of a MSSQL Availability Group in RSC
 
     .DESCRIPTION
-    Sets properties of a MSSQL Instance in RSC
+    Sets properties of a MSSQL Availability Group in RSC
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    .PARAMETER RscMssqlInstance
-    Database object returned from Get-RscMssqlInstance
+    .PARAMETER RscMssqlAvailabilityGroup
+    Database object returned from Get-RscMssqlAvailabilityGroup
 
     .PARAMETER DoNotProtect
     Sets the protection property on the database to DO NOT PROTECT
@@ -53,12 +53,12 @@ function Set-RscMssqlInstance{
     When setting the above SLA related properties, this defines what should happen to existing snapshots that are NOT SLA Domain based
 
     .EXAMPLE
-    Set-RscMssqlInstance -RscMssqlInstance $RscMssqlInstance -RscSlaDomain $RscSlaDomain
+    Set-RscMssqlAvailabilityGroup -RscMssqlAvailabilityGroup $RscMssqlAvailabilityGroup -RscSlaDomain $RscSlaDomain
     #>
     Param(
         [Parameter(
             Mandatory = $false
-        )][RubrikSecurityCloud.Types.MssqlInstance]$RscMssqlInstance, 
+        )][RubrikSecurityCloud.Types.MssqlAvailabilityGroup]$RscMssqlAvailabilityGroup, 
 
         [Parameter(
             Position = 2,
@@ -150,7 +150,7 @@ function Set-RscMssqlInstance{
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
                 $query.Var.input.updateinfo.ids = @()
-                $query.Var.input.updateinfo.ids += $RscMssqlInstance.id
+                $query.Var.input.updateinfo.ids += $RscMssqlAvailabilityGroup.id
                 switch ($ExistingSnapshotRetention) {
                     "EXPIRE_IMMEDIATELY" {
                         $query.Var.input.updateinfo.ExistingSnapshotRetention = "EXISTING_SNAPSHOT_RETENTION_EXPIRE_IMMEDIATELY"
@@ -173,7 +173,7 @@ function Set-RscMssqlInstance{
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
                 $query.Var.input.updateinfo.ids = @()
-                $query.Var.input.updateinfo.ids += $RscMssqlInstance.id
+                $query.Var.input.updateinfo.ids += $RscMssqlAvailabilityGroup.id
                 $query.Var.input.updateinfo.shouldApplyToExistingSnapshots = $ShouldApplyToExistingSnapshots
                 $query.Var.input.updateinfo.shouldApplyToNonPolicySnapshots = $ShouldApplyToNonPolicySnapshots
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaPatchPropertiesInput

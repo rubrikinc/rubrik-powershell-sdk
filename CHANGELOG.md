@@ -3,8 +3,12 @@
 ## Version 1.0
 
 New Features:
+Set-RscMssqlAvailabilityGroup - Allows for assigning an SLA to an AG
 
 Fixes:
+Set-RscMssqlDatabase - Fixed issue when setting values for database properties. 
+Get-RscMssqlLogShipping - Fixed issue where RscCluster was always required. Now it is only required when supplying other values. 
+Set-RscMssqlInstance - Fixed help text
 
 - Fixed input variables in Windows PowerShell.
 - Get-RscSla using -Id parameter workaround. Now returns Name and Id.
