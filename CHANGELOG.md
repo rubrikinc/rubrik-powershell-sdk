@@ -6,7 +6,9 @@ New Features:
 
 Fixes:
 
-- Fixed input variables in Windows PowerShell
+- Fixed input variables in Windows PowerShell.
+- Get-RscSla using -Id parameter workaround. Now returns Name and Id.
+- Get-RscSla now properly populates the protected object count.
 
 ## Version 0.30
 
