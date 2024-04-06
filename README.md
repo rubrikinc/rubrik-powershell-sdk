@@ -2,11 +2,6 @@
 
 Thank you for using the Rubrik Security Cloud PowerShell SDK.
 
-:warning:
-> Please note this is a Beta release of the SDK,
-> and it is not supported at this time.
-> Come back soon for the GA release !
-
 We rely on
 [your feedback](https://github.com/rubrikinc/rubrik-powershell-sdk/discussions)
 to improve the SDK !
