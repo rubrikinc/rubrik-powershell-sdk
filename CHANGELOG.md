@@ -1,12 +1,12 @@
 # Changelog
 
-## ~ Upcoming Version ~
+## Version 1.0
 
 New Features:
 
 Fixes:
 
-Breaking Changes:
+- Fixed input variables in Windows PowerShell
 
 ## Version 0.30
 
