@@ -480,6 +480,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             {
                 if (_query != null)
                 {
+                    //InterfaceHelper.ConvertListsToRscLists(_query.Field);
                     this.WriteObject(_query);
                 }
             }

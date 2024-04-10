@@ -9,7 +9,7 @@ namespace RubrikSecurityCloud.Types
 {
     public abstract class BaseType : IFieldSpec
     {
-       // Composite field spec support:
+        // Composite field spec support:
         // _next is the pointer to next object in chain.
         // Used for building up a chain of objects
         // to represent a "composite field spec".
@@ -28,6 +28,29 @@ namespace RubrikSecurityCloud.Types
             }
             return len;
         }
+
+        /// <summary>
+        /// Convert the composite object to a list of objects.
+        /// If the object is not composite, return a list with a single item.
+        /// Objects are not copied: modifiying the list elements
+        /// will modify the original object.
+        /// </summary>
+        public RscList<BaseType> AsList()
+        {
+            RscList<BaseType> list = new RscList<BaseType>();
+            BaseType? next = this;
+            while (next != null)
+            {
+                list.Add(next);
+                next = next._next;
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Filter the composite object by type.
+        /// </summary>
+        public RscList<BaseType> WhereType(Type type) => this.AsList().WhereType(type);
 
         // IFieldSpec interface:
         public abstract string AsFieldSpec(FieldSpecConfig? conf = null);
@@ -138,5 +161,45 @@ namespace RubrikSecurityCloud.Types
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
+    }
+
+    public class RscList<T>: List<T>
+    {
+        public RscList(): base() { }
+        public RscList(IEnumerable<T> collection): base(collection) { }
+
+        // This would be great but PowerShell doesn't directly support
+        // calling generic methods with type parameters, so you'd have to do:
+        // $lType = $list.GetType()
+        // $whereTypeMethodGeneric = $lType.GetMethod("WhereType").MakeGenericMethod([RubrikSecurityCloud.Types.GlobalSlaReply])
+        // $result = $whereTypeMethodGeneric.Invoke($l, @())
+        // which is pretty ugly.
+        // public RscList<S> WhereType<S>()
+        // {
+        //     var filteredItems = this.Where(item => item is S).Cast<S>();
+        //     return new RscList<S>(filteredItems);
+        // }
+
+        /// <summary>
+        /// Filter the list by type.
+        /// </summary>
+        public RscList<T> WhereType(Type type) =>
+            new RscList<T>(
+                this.Where(item => item != null && item.GetType() == type));
+
+        /// <summary>
+        /// Filter the list by type.
+        /// </summary>
+        public RscList<T> WhereType(string typeName) =>
+            new RscList<T>(
+                this.Where(item => item != null && item.GetType().Name.ToLower() == typeName.ToLower()));
+
+
+        /// <summary>
+        /// Return the set of unique types in the list.
+        /// </summary>
+        public HashSet<Type> DistinctTypes() =>
+            new HashSet<Type>(
+                this.Select(item => item?.GetType()).Where(type => type != null).Cast<Type>());
     }
 }

@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -161,6 +162,67 @@ namespace RubrikSecurityCloud
         {
             var list = MakeListFromComposite(composite);
             return list.AsFieldSpec(conf.Copy(ignoreComposition: true));
+        }
+
+        public static void ConvertListsToRscLists(object obj)
+        {
+            if (obj == null) return;
+
+            Type objType = obj.GetType();
+
+            // Check if the object itself is a List<T>
+            if (objType.IsGenericType && objType.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                // This case handles when the object itself is a List<T>
+                // Note: You would need to replace the object in its parent, which may be complex
+                // depending on the context. This example does not cover that scenario directly.
+            }
+            else
+            {
+                // Recursively convert List<T> properties to RscList<T>
+                PropertyInfo[] properties = objType.GetProperties();
+                foreach (var property in properties)
+                {
+                    Type propertyType = property.PropertyType;
+
+                    // Check if the property is of type List<T>
+                    if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
+                    {
+                        Type itemType = propertyType.GetGenericArguments()[0]; // Get the <T> in List<T>
+                        Type rscListType = typeof(RscList<>).MakeGenericType(itemType); // Create RscList<T>
+                        IList originalList = (IList)property.GetValue(obj);
+                        IList rscList = (IList)Activator.CreateInstance(rscListType);
+
+                        if (originalList != null)
+                        {
+                            foreach (var item in originalList)
+                            {
+                                rscList.Add(item); // Populate RscList<T> with items from the original List<T>
+                            }
+                            property.SetValue(obj, rscList); // Replace the original List<T> with RscList<T>
+                        }
+                    }
+                    else
+                    {
+                        // Skip recursion for nullable primitives
+                        Type underlyingType = Nullable.GetUnderlyingType(propertyType);
+                        if (underlyingType != null && underlyingType.IsPrimitive)
+                        {
+                            continue; // Skip recursion for nullable primitives
+                        }
+
+                        if (!propertyType.IsPrimitive && propertyType != typeof(string))
+                        {
+                            // If the property is not a list but could contain lists, recursively convert its lists
+                            var propertyValue = property.GetValue(obj);
+                            if (propertyValue != null)
+                            {
+                                ConvertListsToRscLists(propertyValue); // Recursive call
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
