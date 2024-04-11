@@ -1,12 +1,16 @@
 # Changelog
 
-## ~ Upcoming Version ~
+## Version 1.1
 
 New Features:
 
 Fixes:
 
 Breaking Changes:
+
+- Type object's Next() method was renamed GetNext() to follow
+  PowerShell naming convention (and to make it clear that
+  `$obj.Next() = $x` can't work (but `$obj.SetNext($x)` does.)).
 
 ## Version 1.0
 

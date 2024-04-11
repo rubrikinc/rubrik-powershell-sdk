@@ -14,7 +14,7 @@ namespace RubrikSecurityCloud.Types
         // Used for building up a chain of objects
         // to represent a "composite field spec".
         internal BaseType? _next = null;
-        public BaseType? Next() => _next;
+        public BaseType? GetNext() => _next;
         public void SetNext(BaseType? next) => _next = next;
         public bool IsComposite() => _next != null;
         public int CompositeLength()

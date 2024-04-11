@@ -124,7 +124,7 @@ namespace RubrikSecurityCloud
                     {
                         current.SetNext(baseTypeItem);
                         // move to next item
-                        current = current.Next();
+                        current = current.GetNext();
                     }
                     current?.SetNext(null);
             }
@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud
             while (current != null)
             {
                 list.Add(current);
-                current = current.Next();
+                current = current.GetNext();
             }
 
             return list;

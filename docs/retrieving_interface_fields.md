@@ -391,17 +391,17 @@ for `ClusterSlaDomain` and one for `GlobalSlaReply`:
 ```powershell
 PS > $q5.Field.IsComposite()
 True
-PS > $q5.Field.Next().GetType().FullName
+PS > $q5.Field.GetNext().GetType().FullName
 RubrikSecurityCloud.Types.GlobalSlaReply
 ```
 
-The `Next` method returns the next object in the composite object.
+The `GetNext()` method returns the next object in the composite object.
 It is an internal linked list of objects, terminated by a `$null`.
 Here we see that the next object is of type `GlobalSlaReply`,
-and if we call `Next` on that object, it will return `$null`.
+and if we call `GetNext()` on that object, it will return `$null`.
 
 ```powershell
-PS > $q5.Field.Next().Next() -eq $null
+PS > $q5.Field.GetNext().GetNext() -eq $null
 True
 ```
 
@@ -490,7 +490,7 @@ query QuerySlaDomain($id: UUID!,$shouldShowSyncStatus: Boolean,$shouldShowUpgrad
 
 We just saw how to add fields with `-AddField` to composite objects, but
 you can also add fields to the individual objects in the composite object -
-although it is a bit more complex. You need to use the `Next` method to
+although it is a bit more complex. You need to use the `GetNext()` method to
 navigate the composite object and set the field on the object you want:
 
 ```powershell
@@ -500,7 +500,7 @@ PS > while ($current -ne $null) {
 >>   if ($current.GetType().Name -eq "GlobalSlaReply") {
 >>     $current.UiColor = "FETCH"
 >>   }
->>   $current = $current.Next()
+>>   $current = $current.GetNext()
 >> }
 PS > $q7.GqlRequest().Query
 query QuerySlaDomain($id: UUID!,$shouldShowSyncStatus: Boolean,$shouldShowUpgradeInfo: Boolean,$shouldShowPausedClusters: Boolean)
