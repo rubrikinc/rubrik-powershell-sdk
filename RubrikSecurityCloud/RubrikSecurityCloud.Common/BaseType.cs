@@ -92,7 +92,15 @@ namespace RubrikSecurityCloud.Types
                 }
                 else
                 {
-                    sb.Append(ind + " ... on " + item.GetType().Name + " {\n" + fs + ind + "}\n");
+                    var fragment = " ... on " + item.GetType().Name;
+                    if (fs.Length > 0)
+                    {
+                        sb.Append(ind + fragment + " {\n" + fs + ind + "}\n");
+                    }
+                    else
+                    {
+                        sb.Append(ind + "#" + fragment + " {}\n");
+                    }
                 }
             }
             return sb.ToString();
