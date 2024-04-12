@@ -5,6 +5,11 @@
 New Features:
 
 Fixes:
+- Fix to Get-RscMssqlInstance to address Issue #79
+- Fix to Get-RscMssqlInstance to address Issue #73
+- Fix to Get-RscMssqlDatabase to address Issue #75
+- Fix to Get-RscMssqlDatabase to address Issue #77
+- Fix to Get-RscMssqlAvailabilityGroup to address Issue #74
 
 Breaking Changes:
 
