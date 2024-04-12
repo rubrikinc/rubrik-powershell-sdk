@@ -77,24 +77,15 @@ function Get-RscMssqlInstance{
         [String]$Id,
        
         [Parameter(Mandatory = $false)]
-        [RubrikSecurityCloud.Types.Cluster]$RscCluster,
-
-        # Common parameter to all parameter sets:
-        [Parameter(Mandatory = $false, ValueFromPipeline = $false)]
-        [Switch]$Detail
+        [RubrikSecurityCloud.Types.Cluster]$RscCluster
     )
     Process {
-        # Determine field profile:
-        $fieldProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $fieldProfile = "DETAIL"
-        }
         Write-Verbose "-Running Get-RscMssqlInstance"
         #region Create Query
         switch($PSCmdlet.ParameterSetName){
             "List"{
                 Write-Verbose "-  Creating List Query"
-                $query = New-RscQueryMssql -Op TopLevelDescendants -FieldProfile $fieldProfile
+                $query = New-RscQueryMssql -Op TopLevelDescendants 
                 $query.Var.typeFilter = @()
                 $query.Var.typeFilter += "PhysicalHost"
                 $query.Var.typeFilter += "WindowsCluster"
@@ -103,7 +94,7 @@ function Get-RscMssqlInstance{
                 $Name = ""
                 if($HostName){$Name = $HostName}
                 if($WindowsClusterName){$Name = $WindowsClusterName}
-                $query = New-RscQueryMssql -Operation TopLevelDescendants -FieldProfile $fieldProfile 
+                $query = New-RscQueryMssql -Operation TopLevelDescendants 
                 $query.Var.filter = @()
                 $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
                 $query.Field.Nodes[3].PhysicalChildConnection.Nodes[5].Cluster.SelectForRetrieval()
@@ -122,7 +113,7 @@ function Get-RscMssqlInstance{
             }
             "Id"{
                 Write-Verbose "-  Creating Id Query"
-                $query = New-RscQueryMssql -Operation Instance -FieldProfile $fieldProfile
+                $query = New-RscQueryMssql -Operation Instance 
                 $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
                 $query.Field.PhysicalPath.SelectForRetrieval()
                 $query.Var.filter = @()
@@ -140,7 +131,7 @@ function Get-RscMssqlInstance{
         #endregion
         
         $results = $query.Invoke()
-
+        
         switch($PSCmdlet.ParameterSetName){
             "List"{
                 $results.Nodes
@@ -149,12 +140,13 @@ function Get-RscMssqlInstance{
                 switch($results.nodes.objectType){
                     "PHYSICAL_HOST"{
                         $results = $results.Nodes.PhysicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                        $results
                     }
                     "WINDOWS_CLUSTER"{
                         $results = $results.Nodes.LogicalChildConnection.Nodes | Where-Object {$_.Name -eq $InstanceName}
+                        $results
                     }
                 }
-                [RubrikSecurityCloud.Types.MssqlInstance]$results
             }
             "Id"{
                 $results
