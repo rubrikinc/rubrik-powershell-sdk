@@ -109,10 +109,11 @@ function Get-RscMssqlDatabase {
             if ($RscMssqlInstance) {
                 $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
                 $results
-             }
-            if ($RscMssqlAvailabilityGroup) {
+            }elseif ($RscMssqlAvailabilityGroup) {
                 $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlAvailabilityGroup.id}
-                $results
+                $results                
+            }else{
+                $results.nodes
             }
         }
     } 
