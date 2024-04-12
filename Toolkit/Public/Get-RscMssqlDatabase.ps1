@@ -61,29 +61,19 @@ function Get-RscMssqlDatabase {
         [RubrikSecurityCloud.Types.MssqlAvailabilityGroup]$RscMssqlAvailabilityGroup, 
 
         [Parameter(ParameterSetName = "Id", Mandatory = $true)]
-        [String]$Id,
-
-        #  Common parameter to all parameter sets:
-        [Parameter(
-            Mandatory = $false
-        )][Switch]$Detail
+        [String]$Id
     )
     
     Process {
-        # Determine field profile:
-        $fieldProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $fieldProfile = "DETAIL"
-        }
         Write-Debug "- Running Get-RscMssqlDatabase"
 
         #region Create Query
         if ($PSBoundParameters.ContainsKey('List')) {
-            $query = New-RscQueryMssql -Operation Databases -FieldProfile $fieldProfile -AddField Nodes.PhysicalPath
+            $query = New-RscQueryMssql -Operation Databases -AddField Nodes.PhysicalPath
         }
 
         if ($PSBoundParameters.ContainsKey('Name')) {
-            $query = New-RscQueryMssql -Op Databases -FieldProfile $fieldProfile `
+            $query = New-RscQueryMssql -Op Databases `
                 -AddField Nodes.PhysicalPath, `
                     Nodes.PostBackupScript, `
                     Nodes.PreBackupScript, `
@@ -100,7 +90,7 @@ function Get-RscMssqlDatabase {
 
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
-            $query = New-RscQueryMssql -Operation Database -FieldProfile $fieldProfile
+            $query = New-RscQueryMssql -Operation Database 
             $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
             $query.Field.PhysicalPath.SelectForRetrieval() 
             $query.Var.fid = $Id
