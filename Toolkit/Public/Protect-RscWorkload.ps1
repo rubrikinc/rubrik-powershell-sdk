@@ -1,12 +1,12 @@
 #Requires -Version 3
-function Protect-RscSnappable
+function Protect-RscWorkload
 {
   <#
     .SYNOPSIS
-    Assigns a Rubrik Security Cloud Snappable (an object that can be snapshotted) to an SLA.
+    Assigns a Rubrik Security Cloud Workload (an object that can be snapshotted) to an SLA.
 
     .DESCRIPTION
-    Protecting workloads is a fundemental capability of Rubrik Security Cloud. This cmdlet accepts any RSC 'snappable' object and assigns it to an SLA.
+    Protecting workloads is a fundemental capability of Rubrik Security Cloud. This cmdlet accepts any RSC 'Workload' object and assigns it to an SLA.
 
     .LINK
     Schema reference:
@@ -15,27 +15,27 @@ function Protect-RscSnappable
     .EXAMPLE
     Assign a VM named "foo" to the Gold SLA
     
-    Get-RscVmwareVm -Name "Foo" | Protect-RscSnappable -Sla (Get-RscSla -Name "Gold")
+    Get-RscVmwareVm -Name "Foo" | Protect-RscWorkload -Sla (Get-RscSla -Name "Gold")
 
     .EXAMPLE
     Bulk SLA assignment will pass all objects in with the same API call, greatly increasing performance.
     
-    Protect-RscSnappable -InputObject (Get-RscVmwareVm) -Sla (Get-RscSla -Name "Gold")
+    Protect-RscWorkload -InputObject (Get-RscVmwareVm) -Sla (Get-RscSla -Name "Gold")
 
     .EXAMPLE
     Set VM to DO NOT PROTECT
     
-    Get-RscVmwareVm -Name "Foo" | Protect-RscSnappable -AssignmentType doNotProtect
+    Get-RscVmwareVm -Name "Foo" | Protect-RscWorkload -AssignmentType doNotProtect
 
     .EXAMPLE
     Remove SLA Assignment from a VM
     
-    Get-RscVmwareVm -Name "Foo" | Protect-RscSnappable -AssignmentType noAssignment
+    Get-RscVmwareVm -Name "Foo" | Protect-RscWorkload -AssignmentType noAssignment
   #>
 
   [CmdletBinding()]
   Param(
-    # Id of a snappable to be assigned
+    # Id of a Workload to be assigned
     [Parameter(ValueFromPipelineByPropertyName=$true)]
     [String]$Id,
 
