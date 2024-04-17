@@ -110,7 +110,9 @@ function Get-RscMssqlAvailabilityGroup {
         }
         #endregion
         $result = $query.Invoke()
-        
-        $result.Nodes
+        switch ( $PSCmdlet.ParameterSetName ){
+            "Id" {$result}
+            default {$result.nodes}
+        }
     } 
 }
