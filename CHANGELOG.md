@@ -16,6 +16,8 @@ Breaking Changes:
 - Type object's Next() method was renamed GetNext() to follow
   PowerShell naming convention (and to make it clear that
   `$obj.Next() = $x` can't work (but `$obj.SetNext($x)` does.)).
+- Protect-RscSnappable renamed to Protect-RscWorkload to conform to marketing language
+- Removed Backup-RscSlaDomain.ps1 (Backup-SlaDomain) as it did not conform to PowerShell naming standards. Please use Protect-RscWorkload to assign an SLA.
 
 ## Version 1.0
 
