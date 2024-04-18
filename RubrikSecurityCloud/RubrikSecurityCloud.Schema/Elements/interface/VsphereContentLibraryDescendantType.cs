@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<VsphereContentLibraryDescendantType>(
-                        ref list, 
+                        list, 
                         instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (VsphereContentLibraryDescendantType item in list) {

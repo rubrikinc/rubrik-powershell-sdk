@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<HypervServerLogicalChildType>(
-                        ref list, 
+                        list, 
                         instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (HypervServerLogicalChildType item in list) {

@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<VsphereComputeClusterDescendantType>(
-                        ref list, 
+                        list, 
                         instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (VsphereComputeClusterDescendantType item in list) {

@@ -94,7 +94,7 @@ namespace RubrikSecurityCloud.Types
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<TargetTemplate>(
-                        ref list, 
+                        list, 
                         instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (TargetTemplate item in list) {

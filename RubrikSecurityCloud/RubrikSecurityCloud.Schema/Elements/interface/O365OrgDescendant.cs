@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<O365OrgDescendant>(
-                        ref list, 
+                        list, 
                         instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (O365OrgDescendant item in list) {

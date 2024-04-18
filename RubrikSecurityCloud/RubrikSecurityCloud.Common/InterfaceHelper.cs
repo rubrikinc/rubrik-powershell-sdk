@@ -65,7 +65,7 @@ namespace RubrikSecurityCloud
         }
 
         public static void AddInstancesOfImplementingTypes<T>(
-            ref List<T> list, 
+            List<T> list, 
             Action<T>? initializeInstance = null) where T : class
         {
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema")

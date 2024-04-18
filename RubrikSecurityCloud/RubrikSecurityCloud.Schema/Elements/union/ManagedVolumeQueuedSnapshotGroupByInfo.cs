@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<ManagedVolumeQueuedSnapshotGroupByInfo>(
-                        ref list, 
+                        list, 
                         instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (ManagedVolumeQueuedSnapshotGroupByInfo item in list) {
