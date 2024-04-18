@@ -59,4 +59,3 @@ function New-RscNasShare {
         $result
     }
 }
-Toolkit/Public/New-RscNasShare.ps1
