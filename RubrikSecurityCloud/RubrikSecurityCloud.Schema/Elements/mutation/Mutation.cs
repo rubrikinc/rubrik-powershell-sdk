@@ -8600,6 +8600,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CreateLegalHoldReply? CreateLegalHold
+        // GraphQL -> createLegalHold: CreateLegalHoldReply! (type)
+        public static string CreateLegalHold_TypedFieldSpec(CreateLegalHoldReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "createLegalHold" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CreateLegalHold_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CreateLegalHold((CreateLegalHoldReply)fieldSpecObj);
+        }
+        public static string CreateLegalHold(CreateLegalHoldReply fieldSpec)
+        {
+            return CreateLegalHold_TypedFieldSpec(fieldSpec);
+        }
+        public static string CreateLegalHold(object fieldSpecObj)
+        {
+            return CreateLegalHold_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CreateLegalHoldFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CreateLegalHoldReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> TargetMapping? CreateManualTargetMapping
         // GraphQL -> createManualTargetMapping: TargetMapping! (type)
         public static string CreateManualTargetMapping_TypedFieldSpec(TargetMapping fieldSpec)
@@ -10646,6 +10677,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> RequestSuccess? DeleteSnapshotsOfUnmanagedObjects
+        // GraphQL -> deleteSnapshotsOfUnmanagedObjects: RequestSuccess! (type)
+        public static string DeleteSnapshotsOfUnmanagedObjects_TypedFieldSpec(RequestSuccess fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteSnapshotsOfUnmanagedObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DeleteSnapshotsOfUnmanagedObjects_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteSnapshotsOfUnmanagedObjects((RequestSuccess)fieldSpecObj);
+        }
+        public static string DeleteSnapshotsOfUnmanagedObjects(RequestSuccess fieldSpec)
+        {
+            return DeleteSnapshotsOfUnmanagedObjects_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteSnapshotsOfUnmanagedObjects(object fieldSpecObj)
+        {
+            return DeleteSnapshotsOfUnmanagedObjects_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteSnapshotsOfUnmanagedObjectsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new RequestSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> DeleteStorageArraysReply? DeleteStorageArrays
         // GraphQL -> deleteStorageArrays: DeleteStorageArraysReply! (type)
         public static string DeleteStorageArrays_TypedFieldSpec(DeleteStorageArraysReply fieldSpec)
@@ -10673,6 +10735,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new DeleteStorageArraysReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RequestSuccess? DeleteUnmanagedSnapshots
+        // GraphQL -> deleteUnmanagedSnapshots: RequestSuccess! (type)
+        public static string DeleteUnmanagedSnapshots_TypedFieldSpec(RequestSuccess fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteUnmanagedSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DeleteUnmanagedSnapshots_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteUnmanagedSnapshots((RequestSuccess)fieldSpecObj);
+        }
+        public static string DeleteUnmanagedSnapshots(RequestSuccess fieldSpec)
+        {
+            return DeleteUnmanagedSnapshots_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteUnmanagedSnapshots(object fieldSpecObj)
+        {
+            return DeleteUnmanagedSnapshots_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteUnmanagedSnapshotsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new RequestSuccess() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10890,6 +10983,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DissolveLegalHoldReply? DissolveLegalHold
+        // GraphQL -> dissolveLegalHold: DissolveLegalHoldReply! (type)
+        public static string DissolveLegalHold_TypedFieldSpec(DissolveLegalHoldReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "dissolveLegalHold" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DissolveLegalHold_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DissolveLegalHold((DissolveLegalHoldReply)fieldSpecObj);
+        }
+        public static string DissolveLegalHold(DissolveLegalHoldReply fieldSpec)
+        {
+            return DissolveLegalHold_TypedFieldSpec(fieldSpec);
+        }
+        public static string DissolveLegalHold(object fieldSpecObj)
+        {
+            return DissolveLegalHold_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DissolveLegalHoldFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new DissolveLegalHoldReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -18241,6 +18365,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AgentDeploymentSettings? UpdateAgentDeploymentSetting
+        // GraphQL -> updateAgentDeploymentSetting: AgentDeploymentSettings! (type)
+        public static string UpdateAgentDeploymentSetting_TypedFieldSpec(AgentDeploymentSettings fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateAgentDeploymentSetting" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateAgentDeploymentSetting_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateAgentDeploymentSetting((AgentDeploymentSettings)fieldSpecObj);
+        }
+        public static string UpdateAgentDeploymentSetting(AgentDeploymentSettings fieldSpec)
+        {
+            return UpdateAgentDeploymentSetting_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateAgentDeploymentSetting(object fieldSpecObj)
+        {
+            return UpdateAgentDeploymentSetting_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateAgentDeploymentSettingFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AgentDeploymentSettings() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> UpdateAutoEnablePolicyClusterConfigReply? UpdateAutoEnablePolicyClusterConfig
         // GraphQL -> updateAutoEnablePolicyClusterConfig: UpdateAutoEnablePolicyClusterConfigReply! (type)
         public static string UpdateAutoEnablePolicyClusterConfig_TypedFieldSpec(UpdateAutoEnablePolicyClusterConfigReply fieldSpec)
@@ -18764,6 +18919,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new ResponseSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateClusterPauseStatusReply? UpdateClusterPauseStatus
+        // GraphQL -> updateClusterPauseStatus: UpdateClusterPauseStatusReply! (type)
+        public static string UpdateClusterPauseStatus_TypedFieldSpec(UpdateClusterPauseStatusReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateClusterPauseStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateClusterPauseStatus_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateClusterPauseStatus((UpdateClusterPauseStatusReply)fieldSpecObj);
+        }
+        public static string UpdateClusterPauseStatus(UpdateClusterPauseStatusReply fieldSpec)
+        {
+            return UpdateClusterPauseStatus_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateClusterPauseStatus(object fieldSpecObj)
+        {
+            return UpdateClusterPauseStatus_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateClusterPauseStatusFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpdateClusterPauseStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -20593,6 +20779,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new RequestSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpgradeSlasReply? UpgradeSlas
+        // GraphQL -> upgradeSlas: UpgradeSlasReply! (type)
+        public static string UpgradeSlas_TypedFieldSpec(UpgradeSlasReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "upgradeSlas" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpgradeSlas_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpgradeSlas((UpgradeSlasReply)fieldSpecObj);
+        }
+        public static string UpgradeSlas(UpgradeSlasReply fieldSpec)
+        {
+            return UpgradeSlas_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpgradeSlas(object fieldSpecObj)
+        {
+            return UpgradeSlas_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpgradeSlasFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new UpgradeSlasReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

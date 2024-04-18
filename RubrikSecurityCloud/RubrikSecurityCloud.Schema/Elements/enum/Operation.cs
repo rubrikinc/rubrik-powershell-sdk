@@ -291,6 +291,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PROVISION_ON_INFRASTRUCTURE")]
         PROVISION_ON_INFRASTRUCTURE,
 
+        [EnumMember(Value = "RECOVER_CLUSTER")]
+        RECOVER_CLUSTER,
+
         [EnumMember(Value = "RECOVER_FROM_QUARANTINE")]
         RECOVER_FROM_QUARANTINE,
 

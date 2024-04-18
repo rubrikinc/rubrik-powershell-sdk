@@ -45,6 +45,16 @@ Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 ### deletefilesetsnapshots
 - There is a single argument of type DeleteFilesetSnapshotsInput.
 - Returns ResponseSuccess.
+### deletesofunmanagedobjects
+Deletes all the snapshots of the unmanaged objects in the request.
+
+- There is a single argument of type DeleteSnapshotsOfUnmanagedObjectsInput.
+- Returns RequestSuccess.
+### deleteunmanageds
+Deletes the snapshots of an unmanaged object using the object IDs.
+
+- There is a single argument of type DeleteUnmanagedSnapshotsInput.
+- Returns RequestSuccess.
 ### filesetdownloadfiles
 Download files from a fileset backup
 

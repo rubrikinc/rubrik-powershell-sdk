@@ -651,6 +651,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT")]
         RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT,
 
+        [EnumMember(Value = "SAASAPPS_IS_RECOVERY_TARGET_ONLY")]
+        SAASAPPS_IS_RECOVERY_TARGET_ONLY,
+
         [EnumMember(Value = "SAASAPPS_NATURAL_ID")]
         SAASAPPS_NATURAL_ID,
 

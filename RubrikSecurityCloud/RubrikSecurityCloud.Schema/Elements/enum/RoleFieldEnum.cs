@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RoleFieldEnum
     {
+        [EnumMember(Value = "ASSIGNMENT")]
+        ASSIGNMENT,
+
         [EnumMember(Value = "Name")]
         NAME
 

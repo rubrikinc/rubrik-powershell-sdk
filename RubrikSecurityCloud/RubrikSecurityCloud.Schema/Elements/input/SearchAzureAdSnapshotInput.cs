@@ -26,13 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
-        //      C# -> System.String? AzureAdSearchKeyword
-        // GraphQL -> azureAdSearchKeyword: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("azureAdSearchKeyword")]
-        public System.String? AzureAdSearchKeyword { get; set; }
-
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: UUID! (scalar)
         [Required]
@@ -53,13 +46,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("azureAdObjectType")]
         public AzureAdObjectType? AzureAdObjectType { get; set; }
-
-        //      C# -> AzureAdObjectSearchType? AzureAdSearchKeywordType
-        // GraphQL -> azureAdSearchKeywordType: AzureAdObjectSearchType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("azureAdSearchKeywordType")]
-        public AzureAdObjectSearchType? AzureAdSearchKeywordType { get; set; }
 
 
         #endregion

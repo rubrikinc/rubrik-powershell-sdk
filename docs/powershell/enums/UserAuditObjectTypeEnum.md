@@ -31,6 +31,7 @@ User audit object type.
 - ATLASSIAN_SITE - Atlassian site.
 - EXOCOMPUTE - Exocompute.
 - MONGODB_SOURCE - MongoDB source type.
+- POSTGRES_DB_CLUSTER - PostgreSQL Database Cluster.
 - HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.
 - Vcenter - A vCenter type.

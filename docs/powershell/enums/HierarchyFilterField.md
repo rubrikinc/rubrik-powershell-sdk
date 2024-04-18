@@ -270,3 +270,5 @@
 - SALESFORCE_OBJECT_TYPE - Filter by Salesforce object type.
 - SALESFORCE_NAME_OR_LABEL - Filter by Salesforce name or label.
 - DOMAIN_CONTROLLER_DOMAIN_SID - Filter domain controller by domain SID.
+- SAASAPPS_IS_RECOVERY_TARGET_ONLY - Filter SaaS Apps organizations based on whether they only support
+ recovery.

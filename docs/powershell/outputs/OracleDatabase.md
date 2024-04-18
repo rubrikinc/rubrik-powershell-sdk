@@ -41,6 +41,10 @@
   - The host log retention, in hours, of the Oracle database.
 - useSecureThrift: System.Boolean
   - Specifies whether the Oracle database uses Secure Thrift as the transfer protocol.
+- osType: OracleOsType
+  - Specifies the OS type for the Oracle host or RAC that the Oracle database is running on.
+- osNames: list of System.Strings
+  - Specifies the OS names for the Oracle host or RAC that the Oracle database is running on.
 - dataGuardGroup: OracleDataGuardGroup
   - The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
 - liveMounts: OracleLiveMountConnection

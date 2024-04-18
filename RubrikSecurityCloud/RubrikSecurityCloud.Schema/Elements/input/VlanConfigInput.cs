@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        [JsonProperty("gateway")]
+        public System.String? Gateway { get; set; }
+
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)
         [JsonProperty("alias")]

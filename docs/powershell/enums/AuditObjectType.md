@@ -123,3 +123,4 @@ Represents all the object types for which we expect to see audits.
 - SALESFORCE_ORGANIZATION - Salesforce organization.
 - SALESFORCE_OBJECT - Salesforce object.
 - SALESFORCE_METADATA - Salesforce metadata.
+- POSTGRES_DB_CLUSTER - Postgres Database Cluster.

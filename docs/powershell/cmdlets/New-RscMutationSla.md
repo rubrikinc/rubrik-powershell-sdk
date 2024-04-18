@@ -76,3 +76,8 @@ Update SLA Domain.
 
 - There is a single argument of type UpdateGlobalSlaInput.
 - Returns GlobalSlaReply.
+### upgrades
+Upgrade SLA Domains from the Rubrik clusters.
+
+- There is a single argument of type UpgradeSlasInput.
+- Returns UpgradeSlasReply.

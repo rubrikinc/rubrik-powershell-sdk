@@ -26,3 +26,4 @@ Name of product.
 - ATLASSIAN_JIRA - Atlassian Jira protection.
 - USER_INTELLIGENCE - User Intelligence.
 - NAS_CLOUDDIRECT - NAS Cloud Direct.
+- CLOUD_UNSTRUCTURED - Cloud Unstructured.

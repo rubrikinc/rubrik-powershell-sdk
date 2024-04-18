@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectState")]
         public List<ObjectState>? ObjectState { get; set; }
 
+        //      C# -> System.Boolean? IsLocal
+        // GraphQL -> isLocal: Boolean (scalar)
+        [JsonProperty("isLocal")]
+        public System.Boolean? IsLocal { get; set; }
+
 
         #endregion
 

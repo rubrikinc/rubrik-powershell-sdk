@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupName")]
         public System.String? GroupName { get; set; }
 
+        //      C# -> List<User>? ActiveUsers
+        // GraphQL -> activeUsers: [User!]! (type)
+        [JsonProperty("activeUsers")]
+        public List<User>? ActiveUsers { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public Group Set(
         System.String? GroupId = null,
         System.String? GroupName = null,
+        List<User>? ActiveUsers = null,
         List<Org>? AllOrgs = null,
         List<Role>? Roles = null,
         List<User>? Users = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GroupName != null ) {
             this.GroupName = GroupName;
+        }
+        if ( ActiveUsers != null ) {
+            this.ActiveUsers = ActiveUsers;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -107,6 +116,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "groupName\n" ;
             } else {
                 s += ind + "groupName\n" ;
+            }
+        }
+        //      C# -> List<User>? ActiveUsers
+        // GraphQL -> activeUsers: [User!]! (type)
+        if (this.ActiveUsers != null) {
+            var fspec = this.ActiveUsers.AsFieldSpec(conf.Child("activeUsers"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "activeUsers" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -185,6 +206,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GroupName != null && ec.Excludes("groupName",true))
         {
             this.GroupName = null;
+        }
+        //      C# -> List<User>? ActiveUsers
+        // GraphQL -> activeUsers: [User!]! (type)
+        if (ec.Includes("activeUsers",false))
+        {
+            if(this.ActiveUsers == null) {
+
+                this.ActiveUsers = new List<User>();
+                this.ActiveUsers.ApplyExploratoryFieldSpec(ec.NewChild("activeUsers"));
+
+            } else {
+
+                this.ActiveUsers.ApplyExploratoryFieldSpec(ec.NewChild("activeUsers"));
+
+            }
+        }
+        else if (this.ActiveUsers != null && ec.Excludes("activeUsers",false))
+        {
+            this.ActiveUsers = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

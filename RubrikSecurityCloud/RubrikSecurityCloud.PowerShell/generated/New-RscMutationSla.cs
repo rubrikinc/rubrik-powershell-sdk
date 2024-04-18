@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'SLA' API domain:
-    /// Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, or UpdateGlobal.
+    /// Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, UpdateGlobal, or Upgrades.
     /// </summary>
     /// <description>
     /// New-RscMutationSla creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 11 operations
     /// in the 'SLA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, or UpdateGlobal.
+    /// one of: Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, UpdateGlobal, or Upgrades.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -575,6 +575,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 			# OPTIONAL
+    /// 			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		mssqlConfigInput = @{
@@ -1296,6 +1298,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 			# OPTIONAL
+    /// 			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		mssqlConfigInput = @{
@@ -1519,6 +1523,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the Upgrades operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: Upgrades
+    /// 
+    /// $query = New-RscMutationSla -Upgrades
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	slaIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpgradeSlasReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -1545,6 +1582,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetPendingAssignments",
                 "Pause",
                 "UpdateGlobal",
+                "Upgrades",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -1589,6 +1627,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateGlobal":
                         this.ProcessRecord_UpdateGlobal();
+                        break;
+                    case "Upgrades":
+                        this.ProcessRecord_Upgrades();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -1688,6 +1729,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateGlobal";
             // Create new graphql operation updateGlobalSla
             InitMutationUpdateGlobalSla();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // upgradeSlas.
+        internal void ProcessRecord_Upgrades()
+        {
+            this._logger.name += " -Upgrades";
+            // Create new graphql operation upgradeSlas
+            InitMutationUpgradeSlas();
         }
 
 
@@ -2196,6 +2246,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+			# OPTIONAL
+			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
 		}
 		# OPTIONAL
 		mssqlConfigInput = @{
@@ -2878,6 +2930,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+			# OPTIONAL
+			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
 		}
 		# OPTIONAL
 		mssqlConfigInput = @{
@@ -3087,6 +3141,31 @@ $query.Var.input = @{
 	isRetentionLockedSla = $someBoolean
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // upgradeSlas(input: UpgradeSlasInput!): UpgradeSlasReply!
+        internal void InitMutationUpgradeSlas()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpgradeSlasInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpgradeSlas",
+                "($input: UpgradeSlasInput!)",
+                "UpgradeSlasReply",
+                Mutation.UpgradeSlas_ObjectFieldSpec,
+                Mutation.UpgradeSlasFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	slaIds = @(
+		$someString
+	)
 }"
             );
         }

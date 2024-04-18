@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVE")]
         ARCHIVE,
 
+        [EnumMember(Value = "COLD")]
+        COLD,
+
         [EnumMember(Value = "COOL")]
         COOL,
 

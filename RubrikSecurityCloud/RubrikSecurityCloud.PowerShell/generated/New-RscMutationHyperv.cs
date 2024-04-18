@@ -707,8 +707,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		hostId = $someString
     /// 		# OPTIONAL
-    /// 		shouldKeepHypervSnapshotAfterRecovery = $someBoolean
-    /// 		# OPTIONAL
     /// 		shouldKeepHypervVmCopyAfterRecovery = $someBoolean
     /// 	}
     /// 	# REQUIRED
@@ -2035,8 +2033,6 @@ $query.Var.input = @{
 		exportVmPath = $someString
 		# OPTIONAL
 		hostId = $someString
-		# OPTIONAL
-		shouldKeepHypervSnapshotAfterRecovery = $someBoolean
 		# OPTIONAL
 		shouldKeepHypervVmCopyAfterRecovery = $someBoolean
 	}

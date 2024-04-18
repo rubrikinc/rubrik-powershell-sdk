@@ -29,11 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostId")]
         public System.String? HostId { get; set; }
 
-        //      C# -> System.Boolean? ShouldKeepHypervSnapshotAfterRecovery
-        // GraphQL -> shouldKeepHypervSnapshotAfterRecovery: Boolean (scalar)
-        [JsonProperty("shouldKeepHypervSnapshotAfterRecovery")]
-        public System.Boolean? ShouldKeepHypervSnapshotAfterRecovery { get; set; }
-
         //      C# -> System.Boolean? ShouldKeepHypervVmCopyAfterRecovery
         // GraphQL -> shouldKeepHypervVmCopyAfterRecovery: Boolean (scalar)
         [JsonProperty("shouldKeepHypervVmCopyAfterRecovery")]

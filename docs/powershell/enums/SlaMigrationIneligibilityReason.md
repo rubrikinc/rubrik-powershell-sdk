@@ -20,3 +20,4 @@ Reasons for the SLA being ineligible for migration.
 - GOV_CLOUD_ARCHIVAL_LOCATION_REGISTERED_ON_CLUSTER - The commercial instance of RSC doesn't support archival to GovCloud regions. Contact the Rubrik Support team for more information.
 - GOVERNANCE_RETENTION_LOCK_UNSUPPORTED_CLUSTER_VERSION - To upgrade to a retention-locked SLA Domain in governance mode, make sure your Rubrik cluster is running CDM version 9.0.1 or later.
 - RETENTION_LOCKED_SLA_WITH_CROSS_ACCOUNT_REPLICATION_TARGETS - The SLA Domain is retention-locked and has cross-account replication targets configured in it. Upgrading such SLA Domains is not supported.
+- UNSUPPORTED_PROTECTED_OBJECTS_SHARE_FILESET - The SLA Domain protecting NAS on CDM is currently not eligible for upgrade.

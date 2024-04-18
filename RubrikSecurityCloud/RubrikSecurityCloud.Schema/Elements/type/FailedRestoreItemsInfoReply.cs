@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("csvDownloadLink")]
         public System.String? CsvDownloadLink { get; set; }
 
+        //      C# -> System.Int32? TotalFailedItemCount
+        // GraphQL -> totalFailedItemCount: Int! (scalar)
+        [JsonProperty("totalFailedItemCount")]
+        public System.Int32? TotalFailedItemCount { get; set; }
+
+        //      C# -> List<FailedRestoreItemInfo>? FailedItems
+        // GraphQL -> failedItems: [FailedRestoreItemInfo!]! (type)
+        [JsonProperty("failedItems")]
+        public List<FailedRestoreItemInfo>? FailedItems { get; set; }
+
 
         #endregion
 
@@ -35,11 +45,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FailedRestoreItemsInfoReply Set(
-        System.String? CsvDownloadLink = null
+        System.String? CsvDownloadLink = null,
+        System.Int32? TotalFailedItemCount = null,
+        List<FailedRestoreItemInfo>? FailedItems = null
     ) 
     {
         if ( CsvDownloadLink != null ) {
             this.CsvDownloadLink = CsvDownloadLink;
+        }
+        if ( TotalFailedItemCount != null ) {
+            this.TotalFailedItemCount = TotalFailedItemCount;
+        }
+        if ( FailedItems != null ) {
+            this.FailedItems = FailedItems;
         }
         return this;
     }
@@ -62,6 +80,27 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "csvDownloadLink\n" ;
             } else {
                 s += ind + "csvDownloadLink\n" ;
+            }
+        }
+        //      C# -> System.Int32? TotalFailedItemCount
+        // GraphQL -> totalFailedItemCount: Int! (scalar)
+        if (this.TotalFailedItemCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalFailedItemCount\n" ;
+            } else {
+                s += ind + "totalFailedItemCount\n" ;
+            }
+        }
+        //      C# -> List<FailedRestoreItemInfo>? FailedItems
+        // GraphQL -> failedItems: [FailedRestoreItemInfo!]! (type)
+        if (this.FailedItems != null) {
+            var fspec = this.FailedItems.AsFieldSpec(conf.Child("failedItems"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "failedItems" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -87,6 +126,42 @@ namespace RubrikSecurityCloud.Types
         else if (this.CsvDownloadLink != null && ec.Excludes("csvDownloadLink",true))
         {
             this.CsvDownloadLink = null;
+        }
+        //      C# -> System.Int32? TotalFailedItemCount
+        // GraphQL -> totalFailedItemCount: Int! (scalar)
+        if (ec.Includes("totalFailedItemCount",true))
+        {
+            if(this.TotalFailedItemCount == null) {
+
+                this.TotalFailedItemCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalFailedItemCount != null && ec.Excludes("totalFailedItemCount",true))
+        {
+            this.TotalFailedItemCount = null;
+        }
+        //      C# -> List<FailedRestoreItemInfo>? FailedItems
+        // GraphQL -> failedItems: [FailedRestoreItemInfo!]! (type)
+        if (ec.Includes("failedItems",false))
+        {
+            if(this.FailedItems == null) {
+
+                this.FailedItems = new List<FailedRestoreItemInfo>();
+                this.FailedItems.ApplyExploratoryFieldSpec(ec.NewChild("failedItems"));
+
+            } else {
+
+                this.FailedItems.ApplyExploratoryFieldSpec(ec.NewChild("failedItems"));
+
+            }
+        }
+        else if (this.FailedItems != null && ec.Excludes("failedItems",false))
+        {
+            this.FailedItems = null;
         }
     }
 

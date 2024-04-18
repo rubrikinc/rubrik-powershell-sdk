@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? Attributes
+        // GraphQL -> attributes: [String!] (scalar)
+        [JsonProperty("attributes")]
+        public List<System.String>? Attributes { get; set; }
+
         //      C# -> ActiveDirectoryObjectType? ObjectType
         // GraphQL -> objectType: ActiveDirectoryObjectType (enum)
         [JsonProperty("objectType")]

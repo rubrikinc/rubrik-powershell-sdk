@@ -11,3 +11,5 @@ User group details.
   - User group roles in the context organization.
 - allOrgs: list of Orgs
   - The suborganizations in which the user group has roles.
+- activeUsers: list of Users
+  - Users from the user group who are currently logged-in to the account.

@@ -115,3 +115,5 @@ A Rubrik CDM Cluster.
   - The Rubrik cluster's registered mode.
 - cdmRbacMigrationStatus: System.String
   - CDM to RSC RBAC migration status for the current cluster.
+- rawAddress: System.String
+  - The cluster's raw address.

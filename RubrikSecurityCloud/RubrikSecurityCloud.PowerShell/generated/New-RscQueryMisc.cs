@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 174
+    /// Create a new RscQuery object for any of the 177
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FailuresAndWarningsStats, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
+    /// ActiveCustomAnalyzers, AdVolumeExports, AgentDeploymentSetting, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FailuresAndWarningsStats, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 174 operations
+    /// There are 177 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, AdVolumeExports, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FailuresAndWarningsStats, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
+    /// one of: ActiveCustomAnalyzers, AdVolumeExports, AgentDeploymentSetting, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AwsComputeSettings, AzureResourceGroups, AzureSubnets, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTeamsChannels, BrowseTeamsDrive, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, CloudDirectNasExport, CloudDirectShares, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, Crawl, Crawls, CrossAccountPairs, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DashboardSummary, DatagovSecDesc, DecryptExportUrl, DeploymentIpAddresses, DeploymentVersion, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DummyFieldWithAdminOnlyTag, EdgeWindowsToolLink, EffectiveRbacPermissions, EventDigests, ExternalDeploymentName, FailedRestoreItemsInfo, FailuresAndWarningsStats, FederatedLoginStatus, FileActivities, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetPermissions, GetRolesByIds, GetUserDownloads, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IpWhitelist, IsLoggedIntoRubrikSupportPortal, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, KubernetesProtectionSet, KubernetesProtectionSets, LambdaSettings, LicensedProducts, LockoutConfig, MaxProtectedAppsCount, MfaSetting, MinimumCdmVersionForFeatureSet, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NosqlStorageLocations, OauthCodesForEdgeReg, ObjectFiles, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PolicyDetails, PolicyObj, PolicyObjs, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrivateContainerRegistry, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, RemovedNodeDetails, RoleTemplates, SearchFileByPrefix, SnoozedDirectories, SupportBundle, SupportUserAccesses, TableFilters, Targets, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TotpConfigStatus, TprStatusForNodeRemoval, TunnelStatus, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradeStatus, UserActivities, UserAnalyzerAccess, UserAuditList, UserDetail, UserFiles, UserGroups, UserNotifications, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, ValidateOrgName, VcdVappVms, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkloadAlertSetting, or WorkloadAnomalies.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -144,6 +144,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AdVolumeExportConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AgentDeploymentSetting operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: AgentDeploymentSetting
+    /// 
+    /// $query = New-RscQueryMisc -AgentDeploymentSetting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AgentDeploymentSettings
     /// 
     /// 
     /// 
@@ -1238,6 +1269,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CheckLatestVersionMgmtAppExists operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CheckLatestVersionMgmtAppExists
+    /// 
+    /// $query = New-RscQueryMisc -CheckLatestVersionMgmtAppExists
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	o365OrgId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CheckLatestVersionMgmtAppExistsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CloudDirectNasExport operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -2199,7 +2261,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.workloadFid = $someString
     /// # REQUIRED
-    /// $query.Var.taskchainId = $someString
+    /// $query.Var.failedItemsInstanceId = $someString
     /// 
     /// # Execute the query
     /// 
@@ -2374,6 +2436,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.sortBy = $someRoleFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RoleFieldEnum]) for enum values.
     /// # OPTIONAL
     /// $query.Var.nameFilter = $someString
+    /// # OPTIONAL
+    /// $query.Var.assignedRoleIds = @(
+    /// 	$someString
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -6549,6 +6615,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UserFiles operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UserFiles
+    /// 
+    /// $query = New-RscQueryMisc -UserFiles
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;GetCustomerFacingDownloadsReply&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UserGroups operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -7132,6 +7232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "ActiveCustomAnalyzers",
                 "AdVolumeExports",
+                "AgentDeploymentSetting",
                 "AllowedOrgAdminOperations",
                 "AnalyzerGroups",
                 "AnalyzerUsages",
@@ -7157,6 +7258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CdmVersionCheck",
                 "CdpVmsInfos",
                 "CheckCloudComputeConnectivityJobProgress",
+                "CheckLatestVersionMgmtAppExists",
                 "CloudDirectNasExport",
                 "CloudDirectShares",
                 "CloudDirectSites",
@@ -7291,6 +7393,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UserAnalyzerAccess",
                 "UserAuditList",
                 "UserDetail",
+                "UserFiles",
                 "UserGroups",
                 "UserNotifications",
                 "UserSessionManagementConfig",
@@ -7324,6 +7427,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AdVolumeExports":
                         this.ProcessRecord_AdVolumeExports();
+                        break;
+                    case "AgentDeploymentSetting":
+                        this.ProcessRecord_AgentDeploymentSetting();
                         break;
                     case "AllowedOrgAdminOperations":
                         this.ProcessRecord_AllowedOrgAdminOperations();
@@ -7399,6 +7505,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CheckCloudComputeConnectivityJobProgress":
                         this.ProcessRecord_CheckCloudComputeConnectivityJobProgress();
+                        break;
+                    case "CheckLatestVersionMgmtAppExists":
+                        this.ProcessRecord_CheckLatestVersionMgmtAppExists();
                         break;
                     case "CloudDirectNasExport":
                         this.ProcessRecord_CloudDirectNasExport();
@@ -7802,6 +7911,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UserDetail":
                         this.ProcessRecord_UserDetail();
                         break;
+                    case "UserFiles":
+                        this.ProcessRecord_UserFiles();
+                        break;
                     case "UserGroups":
                         this.ProcessRecord_UserGroups();
                         break;
@@ -7867,6 +7979,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AdVolumeExports";
             // Create new graphql operation adVolumeExports
             InitQueryAdVolumeExports();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // agentDeploymentSetting.
+        internal void ProcessRecord_AgentDeploymentSetting()
+        {
+            this._logger.name += " -AgentDeploymentSetting";
+            // Create new graphql operation agentDeploymentSetting
+            InitQueryAgentDeploymentSetting();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -8092,6 +8213,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CheckCloudComputeConnectivityJobProgress";
             // Create new graphql operation checkCloudComputeConnectivityJobProgress
             InitQueryCheckCloudComputeConnectivityJobProgress();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // checkLatestVersionMgmtAppExists.
+        internal void ProcessRecord_CheckLatestVersionMgmtAppExists()
+        {
+            this._logger.name += " -CheckLatestVersionMgmtAppExists";
+            // Create new graphql operation checkLatestVersionMgmtAppExists
+            InitQueryCheckLatestVersionMgmtAppExists();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -9301,6 +9431,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allUserFiles.
+        internal void ProcessRecord_UserFiles()
+        {
+            this._logger.name += " -UserFiles";
+            // Create new graphql operation allUserFiles
+            InitQueryAllUserFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // userGroups.
         internal void ProcessRecord_UserGroups()
         {
@@ -9480,6 +9619,29 @@ $query.Var.sortBy = @{
 	field = $someAdVolumeExportSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AdVolumeExportSortByField]) for enum values.
 	# OPTIONAL
 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // agentDeploymentSetting(input: GetVmAgentDeploymentSettingInput!): AgentDeploymentSettings!
+        internal void InitQueryAgentDeploymentSetting()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetVmAgentDeploymentSettingInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAgentDeploymentSetting",
+                "($input: GetVmAgentDeploymentSettingInput!)",
+                "AgentDeploymentSettings",
+                Query.AgentDeploymentSetting_ObjectFieldSpec,
+                Query.AgentDeploymentSettingFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -10507,6 +10669,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // checkLatestVersionMgmtAppExists(input: CheckLatestVersionMgmtAppExistsInput!): CheckLatestVersionMgmtAppExistsReply!
+        internal void InitQueryCheckLatestVersionMgmtAppExists()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CheckLatestVersionMgmtAppExistsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCheckLatestVersionMgmtAppExists",
+                "($input: CheckLatestVersionMgmtAppExistsInput!)",
+                "CheckLatestVersionMgmtAppExistsReply",
+                Query.CheckLatestVersionMgmtAppExists_ObjectFieldSpec,
+                Query.CheckLatestVersionMgmtAppExistsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	o365OrgId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // cloudDirectNasExport(fid: UUID!): CloudDirectNasExport!
         internal void InitQueryCloudDirectNasExport()
         {
@@ -11252,25 +11437,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // failedRestoreItemsInfo(workloadFid: UUID!, taskchainId: String!): FailedRestoreItemsInfoReply!
+        // failedRestoreItemsInfo(workloadFid: UUID!, failedItemsInstanceId: String!): FailedRestoreItemsInfoReply!
         internal void InitQueryFailedRestoreItemsInfo()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("workloadFid", "UUID!"),
-                Tuple.Create("taskchainId", "String!"),
+                Tuple.Create("failedItemsInstanceId", "String!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryFailedRestoreItemsInfo",
-                "($workloadFid: UUID!,$taskchainId: String!)",
+                "($workloadFid: UUID!,$failedItemsInstanceId: String!)",
                 "FailedRestoreItemsInfoReply",
                 Query.FailedRestoreItemsInfo_ObjectFieldSpec,
                 Query.FailedRestoreItemsInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadFid = $someString
 # REQUIRED
-$query.Var.taskchainId = $someString"
+$query.Var.failedItemsInstanceId = $someString"
             );
         }
 
@@ -11395,6 +11580,7 @@ $query.Var.before = $someString"
         //     sortOrder: SortOrder
         //     sortBy: RoleFieldEnum = Name
         //     nameFilter: String
+        //     assignedRoleIds: [UUID!]
         //   ): RoleConnection!
         internal void InitQueryGetAllRolesInOrgConnection()
         {
@@ -11406,12 +11592,13 @@ $query.Var.before = $someString"
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "RoleFieldEnum"),
                 Tuple.Create("nameFilter", "String"),
+                Tuple.Create("assignedRoleIds", "[UUID!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryGetAllRolesInOrgConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: RoleFieldEnum,$nameFilter: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: RoleFieldEnum,$nameFilter: String,$assignedRoleIds: [UUID!])",
                 "RoleConnection",
                 Query.GetAllRolesInOrgConnection_ObjectFieldSpec,
                 Query.GetAllRolesInOrgConnectionFieldSpec,
@@ -11428,7 +11615,11 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 # OPTIONAL
 $query.Var.sortBy = $someRoleFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RoleFieldEnum]) for enum values.
 # OPTIONAL
-$query.Var.nameFilter = $someString"
+$query.Var.nameFilter = $someString
+# OPTIONAL
+$query.Var.assignedRoleIds = @(
+	$someString
+)"
             );
         }
 
@@ -15218,6 +15409,40 @@ $query.Var.userId = $someString
 $query.Var.startDay = $someString
 # REQUIRED
 $query.Var.timezone = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allUserFiles(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //   ): [GetCustomerFacingDownloadsReply!]!
+        internal void InitQueryAllUserFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllUserFiles",
+                "($first: Int,$after: String,$last: Int,$before: String)",
+                "List<GetCustomerFacingDownloadsReply>",
+                Query.AllUserFiles_ObjectFieldSpec,
+                Query.AllUserFilesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString"
             );
         }
 

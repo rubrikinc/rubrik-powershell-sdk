@@ -430,6 +430,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectState = @(
     /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isLocal = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -599,6 +601,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectState = @(
     /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isLocal = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -781,6 +785,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectState = @(
     /// 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isLocal = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1571,6 +1577,8 @@ $query.Var.filter = @{
 	objectState = @(
 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
 	)
+	# OPTIONAL
+	isLocal = $someBoolean
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle
@@ -1748,6 +1756,8 @@ $query.Var.filter = @{
 	objectState = @(
 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
 	)
+	# OPTIONAL
+	isLocal = $someBoolean
 }"
             );
         }
@@ -1938,6 +1948,8 @@ $query.Var.filter = @{
 	objectState = @(
 		$someObjectState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectState]) for enum values.
 	)
+	# OPTIONAL
+	isLocal = $someBoolean
 }"
             );
         }

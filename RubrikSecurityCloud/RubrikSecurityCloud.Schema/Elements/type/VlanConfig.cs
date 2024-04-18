@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("alias")]
         public System.String? Alias { get; set; }
 
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        [JsonProperty("gateway")]
+        public System.String? Gateway { get; set; }
+
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         [JsonProperty("netmask")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public VlanConfig Set(
         System.String? Alias = null,
+        System.String? Gateway = null,
         System.String? Netmask = null,
         System.Int32? Vlan = null,
         List<NodeIp>? Interfaces = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Alias != null ) {
             this.Alias = Alias;
+        }
+        if ( Gateway != null ) {
+            this.Gateway = Gateway;
         }
         if ( Netmask != null ) {
             this.Netmask = Netmask;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "alias\n" ;
             } else {
                 s += ind + "alias\n" ;
+            }
+        }
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        if (this.Gateway != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "gateway\n" ;
+            } else {
+                s += ind + "gateway\n" ;
             }
         }
         //      C# -> System.String? Netmask
@@ -144,6 +162,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Alias != null && ec.Excludes("alias",true))
         {
             this.Alias = null;
+        }
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        if (ec.Includes("gateway",true))
+        {
+            if(this.Gateway == null) {
+
+                this.Gateway = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Gateway != null && ec.Excludes("gateway",true))
+        {
+            this.Gateway = null;
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)

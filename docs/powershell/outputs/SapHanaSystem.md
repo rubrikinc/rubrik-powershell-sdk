@@ -25,6 +25,7 @@ SAP HANA system details object.
   - Information required to connect to SAP HANA database over SSL.
 - systemInfo: SapHanaSystemInformation
   - Additional information about the SAP HANA system.
+- isRelic: System.Boolean
 - descendantConnection: SapHanaSystemDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: SapHanaSystemPhysicalChildTypeConnection
@@ -75,3 +76,27 @@ SAP HANA system details object.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.

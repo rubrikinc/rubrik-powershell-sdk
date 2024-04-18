@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recipientUserId")]
         public System.String? RecipientUserId { get; set; }
 
+        //      C# -> EventDigestConfigInfo? EventDigestConfig
+        // GraphQL -> eventDigestConfig: EventDigestConfigInfo! (type)
+        [JsonProperty("eventDigestConfig")]
+        public EventDigestConfigInfo? EventDigestConfig { get; set; }
+
 
         #endregion
 
@@ -95,7 +100,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IncludeAudits = null,
         System.Boolean? IncludeEvents = null,
         System.Boolean? IsImmediate = null,
-        System.String? RecipientUserId = null
+        System.String? RecipientUserId = null,
+        EventDigestConfigInfo? EventDigestConfig = null
     ) 
     {
         if ( Account != null ) {
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RecipientUserId != null ) {
             this.RecipientUserId = RecipientUserId;
+        }
+        if ( EventDigestConfig != null ) {
+            this.EventDigestConfig = EventDigestConfig;
         }
         return this;
     }
@@ -242,6 +251,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "recipientUserId\n" ;
             } else {
                 s += ind + "recipientUserId\n" ;
+            }
+        }
+        //      C# -> EventDigestConfigInfo? EventDigestConfig
+        // GraphQL -> eventDigestConfig: EventDigestConfigInfo! (type)
+        if (this.EventDigestConfig != null) {
+            var fspec = this.EventDigestConfig.AsFieldSpec(conf.Child("eventDigestConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "eventDigestConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -437,6 +458,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RecipientUserId != null && ec.Excludes("recipientUserId",true))
         {
             this.RecipientUserId = null;
+        }
+        //      C# -> EventDigestConfigInfo? EventDigestConfig
+        // GraphQL -> eventDigestConfig: EventDigestConfigInfo! (type)
+        if (ec.Includes("eventDigestConfig",false))
+        {
+            if(this.EventDigestConfig == null) {
+
+                this.EventDigestConfig = new EventDigestConfigInfo();
+                this.EventDigestConfig.ApplyExploratoryFieldSpec(ec.NewChild("eventDigestConfig"));
+
+            } else {
+
+                this.EventDigestConfig.ApplyExploratoryFieldSpec(ec.NewChild("eventDigestConfig"));
+
+            }
+        }
+        else if (this.EventDigestConfig != null && ec.Excludes("eventDigestConfig",false))
+        {
+            this.EventDigestConfig = null;
         }
     }
 

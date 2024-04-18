@@ -16,6 +16,14 @@ Delete a NAS system by specifying the NAS system ID.
 
 - There is a single argument of type DeleteNasSystemInput.
 - Returns AsyncRequestStatus.
+### hiderevealnasshares
+Hide or reveal NAS shares
+
+Supported in v7.0+
+Hide individually selected NAS shares by setting the "action" field to "Hide". Reveal selected NAS shares by setting the "action" field to "Reveal".
+
+- There is a single argument of type HideRevealNasSharesInput.
+- Returns ResponseSuccess.
 ### refreshnassystems
 On-demand discovery of a list of NAS systems
 
@@ -32,6 +40,14 @@ Register a NAS system such as a NetApp or an Isilon cluster to be protected.
 
 - There is a single argument of type RegisterNasSystemInput.
 - Returns RegisterNasSystemReply.
+### updatenasshares
+Bulk update multiple NAS shares
+
+Supported in v7.0+
+Updates fields like changelist of multiple NAS shares.
+
+- There is a single argument of type UpdateNasSharesInput.
+- Returns System.String.
 ### updatenassystem
 Modify the information for a registered NAS system
 

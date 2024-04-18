@@ -68,6 +68,13 @@ Retrieves a list of SLA Domains.
     - showRemoteSlas - System.Boolean: Specifies whether to retrieve the remote SLA Domains from Rubrik CDM. By default, remote SLA Domains are not retrieved.
     - shouldShowPausedClusters - System.Boolean: Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
 - Returns SlaDomainConnection.
+### downloadwithreplicationcsv
+Download a CSV file containing a list of SLA Domains that replicate snapshots to the specified Rubrik cluster. Find the CSV file for download from the File Preparation Centre.
+
+- There are 2 arguments.
+    - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
+    - includeArchived - System.Boolean: Include archived SLA Domain.
+- Returns DownloadSlaWithReplicationCsvReply.
 ### globalfilterlist
 Retrieves a list of SLA Domains.
 
@@ -128,5 +135,5 @@ Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 
 - There are 2 arguments.
     - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
-    - includeArchived - System.Boolean: Include Archived SLA.
+    - includeArchived - System.Boolean: Include archived SLA Domain.
 - Returns VerifySlaWithReplicationToClusterResponse.

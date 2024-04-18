@@ -1,6 +1,8 @@
 ### UpdateEventDigestInput
 Information required to save an event digest.
 
+- digestId: System.Int32
+  - ID of the event digest.
 - digestName: System.String
   - Name of the event digest.
 - frequencyHours: System.Int32

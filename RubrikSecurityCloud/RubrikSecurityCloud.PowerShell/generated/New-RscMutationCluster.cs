@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
+    /// Create a new RscQuery object for any of the 13
     /// operations in the 'Cluster' API domain:
-    /// AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
+    /// There are 13 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -620,6 +620,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateClusterPauseStatus operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: UpdateClusterPauseStatus
+    /// 
+    /// $query = New-RscMutationCluster -UpdateClusterPauseStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterUuids = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	togglePauseStatus = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateClusterPauseStatusReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateClusterSettings operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -728,6 +763,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateClusterDefaultAddress",
                 "UpdateClusterLocation",
                 "UpdateClusterNtpServers",
+                "UpdateClusterPauseStatus",
                 "UpdateClusterSettings",
                 "UpdatePreviewerClusterConfig",
                 IgnoreCase = true)]
@@ -774,6 +810,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateClusterNtpServers":
                         this.ProcessRecord_UpdateClusterNtpServers();
+                        break;
+                    case "UpdateClusterPauseStatus":
+                        this.ProcessRecord_UpdateClusterPauseStatus();
                         break;
                     case "UpdateClusterSettings":
                         this.ProcessRecord_UpdateClusterSettings();
@@ -879,6 +918,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateClusterNtpServers";
             // Create new graphql operation updateClusterNtpServers
             InitMutationUpdateClusterNtpServers();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateClusterPauseStatus.
+        internal void ProcessRecord_UpdateClusterPauseStatus()
+        {
+            this._logger.name += " -UpdateClusterPauseStatus";
+            // Create new graphql operation updateClusterPauseStatus
+            InitMutationUpdateClusterPauseStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1362,6 +1410,33 @@ $query.Var.input = @{
 			server = $someString
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateClusterPauseStatus(input: UpdateClusterPauseStatusInput!): UpdateClusterPauseStatusReply!
+        internal void InitMutationUpdateClusterPauseStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateClusterPauseStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateClusterPauseStatus",
+                "($input: UpdateClusterPauseStatusInput!)",
+                "UpdateClusterPauseStatusReply",
+                Mutation.UpdateClusterPauseStatus_ObjectFieldSpec,
+                Mutation.UpdateClusterPauseStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterUuids = @(
+		$someString
+	)
+	# OPTIONAL
+	togglePauseStatus = $someBoolean
 }"
             );
         }

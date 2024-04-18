@@ -152,6 +152,11 @@ type Query {
     # List of mapped Exocompute account IDs.
     exocomputeAccountIdsFilter: [UUID!]! = []): [CloudAccountWithExocomputeMapping!]!
 
+  # Get all agent deployment settings.
+  allAgentDeploymentSettings(
+    # List of cluster IDs.
+    clusterUuids: [UUID!]!): [AgentDeploymentSettingsInfo!]!
+
   # Returns privileges that are allowed to be asssigned to org admin roles.
   allAllowedOrgAdminOperations: [Operation!]!
 
@@ -3044,6 +3049,14 @@ type Query {
   downloadPackageStatus(
     # Specifies the cluster UUID.
     clusterUuid: UUID!): DownloadPackageStatusReply!
+
+  # Download a CSV file containing a list of SLA Domains that replicate snapshots to the specified Rubrik cluster. Find the CSV file for download from the File Preparation Centre.
+  downloadSlaWithReplicationCsv(
+    # UUID of the Rubrik cluster.
+    cdmClusterUUID: UUID!,
+
+    # Include archived SLA Domain.
+    includeArchived: Boolean!): DownloadSlaWithReplicationCsvReply!
   downloadedVersionList: [GroupCount!]!
   dummyFieldWithAdminOnlyTag: Boolean!
 
@@ -3354,7 +3367,10 @@ type Query {
     sortOrder: SortOrder, sortBy: RoleFieldEnum = Name,
 
     # Name to filter the results.
-    nameFilter: String): RoleConnection!
+    nameFilter: String,
+
+    # List of role IDs that have already been assigned to a set of users. This list will be used to sort the set of all roles.
+    assignedRoleIds: [UUID!]): RoleConnection!
 
   # Get CDM release details from support portal for a given list of clusters.
   getCdmReleaseDetailsForClusterFromSupportPortal(
@@ -3969,8 +3985,16 @@ type Query {
     # List of snapshot IDs.
     snapshotIds: [UUID!]!): ValidateCloudNativeFileRecoveryFeasibilityReply!
 
+  # Check if IPMI is enabled on the cluster.
+  isIpmiEnabled(
+    # Input for determining if IPMI is enabled on the cluster.
+    input: IsIpmiEnabledInput!): Boolean!
+
   # Is Logged into Rubrik support portal.
   isLoggedIntoRubrikSupportPortal: SupportPortalStatusReply!
+
+  # Returns whether the service accounts of the organization are not enabled.
+  isOrgServiceAccountDisabled: Boolean!
 
   # Is Rubrik Suppport Portal reachable from this deployment.
   isSfdcReachable(
@@ -4365,7 +4389,7 @@ type Query {
     filter: [Filter!]): ManagedVolumeConnection!
 
   # Maximum number of protected apps that can be added per account.
-  maxProtectedAppsCount: Int!
+  maxProtectedAppsCount: Int! @deprecated(reason: "This is deprecated as we don't use protected apps anymore")
 
   # Get multifactor authentication (MFA) settings for an account.
   mfaSetting: GetMfaSettingReply!
@@ -5008,6 +5032,11 @@ type Query {
   o365Calendar(
     # The fid for the workload.
     snappableFid: UUID!): O365Calendar!
+
+  # Display license consumption for M365 workloads.
+  o365Consumption(
+    # Input for the o365Consumption query.
+    input: O365ConsumptionInput!): O365Consumption!
 
   # List of O365 Groups in the O365Org.
   o365Groups(
@@ -7356,6 +7385,20 @@ type Query {
     # Input for V1GetHotAddNetwork.
     input: GetHotAddNetworkInput!): HotAddNetworkConfigWithName!
 
+  # Retrieve HotAdd proxy virtual machines.
+  vCenterHotAddProxyVmsV2(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filter for vCenter hotadd proxy virtual machine.
+    filter: [VcenterProxyVmsFilterInput!],
+
+    # List of cluster IDs.
+    clusterUuids: [UUID!]!): VsphereProxyVmInfoConnection!
+
   # Get the user-configured networks in the vCenter
   # 
   # Supported in v5.3+
@@ -7713,7 +7756,7 @@ type Query {
     # UUID of the Rubrik cluster.
     cdmClusterUUID: UUID!,
 
-    # Include Archived SLA.
+    # Include archived SLA Domain.
     includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
 
   # Get missed time ranges for point in time recovery
@@ -8252,6 +8295,14 @@ type Mutation {
   browseMssqlDatabaseSnapshot(
     # Input for V1BrowseMssqlBackupFiles.
     input: BrowseMssqlDatabaseSnapshotInput!): BrowseMssqlDatabaseSnapshotReply!
+
+  # Add multiple NAS shares to a NAS System
+  # 
+  # Supported in v8.1+
+  # This operation adds NAS shares that were not discovered automatically. If the input contains SMB credentials for any share, they are stored but not validated.
+  bulkAddNasShares(
+    # Input for V1BulkAddNasShares.
+    input: BulkAddNasSharesInput!): BulkAddNasSharesReply!
   bulkCreateFilesetTemplates(
     # Input for InternalBulkCreateFilesetTemplate.
     input: BulkCreateFilesetTemplatesInput!): BulkCreateFilesetTemplatesReply!
@@ -8323,6 +8374,14 @@ type Mutation {
   bulkDeleteMongodbSources(
     # Input for V2BulkDeleteMosaicSources.
     input: BulkDeleteMosaicSourcesInput!): MosaicAsyncResponse!
+
+  # Delete multiple NAS shares
+  # 
+  # Supported in v8.1+
+  # Initiates the delete operation for the specified NAS shares.
+  bulkDeleteNasShares(
+    # Input for V1BulkDeleteNasShares.
+    input: BulkDeleteNasSharesInput!): Void
 
   # Delete multiple NAS systems
   # 
@@ -8412,6 +8471,14 @@ type Mutation {
   bulkUpdateMssqlPropertiesOnWindowsCluster(
     # Input for V1BulkUpdateMssqlPropertiesOnWindowsCluster.
     input: BulkUpdateMssqlPropertiesOnWindowsClusterInput!): BulkUpdateMssqlPropertiesOnWindowsClusterReply!
+
+  # Update properties of NAS shares
+  # 
+  # Supported in v8.1+
+  # Update the properties of the specified NAS shares.
+  bulkUpdateNasShares(
+    # Input for V1BulkUpdateNasShares.
+    input: BulkUpdateNasSharesInput!): BulkUpdateNasSharesReply!
 
   # Update Oracle Databases
   # 
@@ -9344,6 +9411,11 @@ type Mutation {
     # Input for InternalDeleteSmbDomain.
     input: DeleteSmbDomainInput!): Void
 
+  # Deletes all the snapshots of the unmanaged objects in the request.
+  deleteSnapshotsOfUnmanagedObjects(
+    # Input to delete snapshots of unmanaged objects.
+    input: DeleteSnapshotsOfUnmanagedObjectsInput!): RequestSuccess!
+
   # Delete storage arrays from Rubrik clusters.
   deleteStorageArrays(
     # List of Storage arrays to delete.
@@ -9376,6 +9448,11 @@ type Mutation {
   deleteTotpConfigs(
     # Input required for resetting TOTP for users in batch.
     input: DeleteTotpConfigsInput!): Boolean!
+
+  # Deletes the snapshots of an unmanaged object using the object IDs.
+  deleteUnmanagedSnapshots(
+    # Input to delete unmanaged snapshots.
+    input: DeleteUnmanagedSnapshotsInput!): RequestSuccess!
   deleteUsersFromAccount(
     # List of IDs.
     ids: [String!]!): Boolean!
@@ -11278,6 +11355,11 @@ type Mutation {
     # Input for InternalSetClusterNtpServers.
     input: UpdateClusterNtpServersInput!): ResponseSuccess!
 
+  # Pauses or resumes protection on the Rubrik clusters using the cluster UUIDs.
+  updateClusterPauseStatus(
+    # Request to pause or resume protection on Rubrik clusters.
+    input: UpdateClusterPauseStatusInput!): UpdateClusterPauseStatusReply!
+
   # Update Rubrik CDM cluster settings.
   updateClusterSettings(
     # Input for update cluster.
@@ -11786,6 +11868,11 @@ type Mutation {
   upgradeIoFilter(
     # Input for V1UpgradeIoFilter.
     input: UpgradeIoFilterInput!): RequestSuccess!
+
+  # Upgrade SLA Domains from the Rubrik clusters.
+  upgradeSlas(
+    # Upgrade SLA Domain request.
+    input: UpgradeSlasInput!): UpgradeSlasReply!
 
   # Converts a GPS account to an RSC account.
   upgradeToRsc: Void
@@ -12945,6 +13032,9 @@ input ActiveDirectoryRecoveryLdapCredsInput {
 }
 # Supported in v9.0+
 input ActiveDirectoryRecoveryObjectInput {
+  # Selected attributes that would be restored for the object.
+  attributes: [String!] = []
+
   # Supported in v9.0+
   # Type of the object.
   objectType: ActiveDirectoryObjectType
@@ -13286,6 +13376,9 @@ enum ActivityObjectTypeEnum {
 
   # Specifies that the activity object type is Hyperv Virtual Machine.
   HypervVm
+
+  # Specifies that the activity object type is Intel feed.
+  INTEL_FEED
 
   # Specifies that the activity object type is Jira project.
   JIRA_PROJECT
@@ -14752,6 +14845,14 @@ type AgentDeploymentSettings {
   # Required. Supported in v5.0+
   # Determines whether the Rubrik cluster automatically deploys the Rubrik Backup Service to the guest OS at the first backup. Set to true to permit automatic deployment. Set to false to prevent automatic deployment.
   isAutomatic: Boolean!
+}
+# Rubrik Backup Service deployment settings information.
+type AgentDeploymentSettingsInfo {
+  # Rubrik Backup Service deployment settings.
+  agentDeploymentSettings: AgentDeploymentSettings!
+
+  # Details of a cluster.
+  cluster: Cluster!
 }
 # Supported in v5.0+
 input AgentDeploymentSettingsInput {
@@ -16426,6 +16527,9 @@ enum AuditObjectType {
   # HyperV virtual machine audit object.
   HYPERV_VM
 
+  # Threat intel.
+  INTEL_FEED
+
   # IP Whitelist audit object.
   IP_WHITELIST
 
@@ -16752,6 +16856,9 @@ enum AuditType {
 
   # Sync audit.
   SYNC
+
+  # Threat feed audit object.
+  THREAT_FEED
 
   # Threat hunt audit.
   THREAT_HUNT
@@ -23161,9 +23268,6 @@ enum AzureAdRegion {
   # Azure region is East Asia.
   EASTASIA
 
-  # Azure region is East US (deprecated).
-  EASTUS
-
   # Azure region is East US 2.
   EASTUS2
 
@@ -23194,9 +23298,6 @@ enum AzureAdRegion {
   # Azure region is South Africa North.
   SOUTHAFRICANORTH
 
-  # Azure region is South Central US (deprecated).
-  SOUTHCENTRALUS
-
   # Azure region is South East Asia.
   SOUTHEASTASIA
 
@@ -23215,9 +23316,6 @@ enum AzureAdRegion {
   # AzureAd region is Unknown.
   UNKNOWN_AZURE_AD_REGION
 
-  # Azure region is US Gov Virginia (deprecated).
-  USGOVVIRGINIA
-
   # Azure region is West Europe.
   WESTEUROPE
 
@@ -23226,6 +23324,9 @@ enum AzureAdRegion {
 }
 # Reverse Relationships of an Azure Active Directory object.
 type AzureAdReverseRelationship {
+  # List of related objects in the Azure AD reverse relationship.
+  relatedObjects: [RelatedObjectsType!]!
+
   # Type of the reverse relationship.
   type: AzureAdReverseRelationshipType!
 
@@ -27700,6 +27801,9 @@ input AzureVmConfig {
   # Name of CDM product.
   cdmProduct: String = ""
 
+  # Availability zone for CDM node placement.
+  availabilityZone: String = ""
+
   # Standard or dense node.
   vmType: VmType
 
@@ -28395,6 +28499,37 @@ type BrowseResponseListResponse {
   # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
 }
+# Input for adding multiple NAS shares to the Rubrik cluster.
+input BulkAddNasSharesInput {
+  # Required. The details of the share used to add NAS shares to the Rubrik cluster.
+  bulkAddNasShareInput: BulkAddNasSharesRequestInput!
+}
+# Supported in v8.1+
+# Response for operation to manually add multiple NAS shares.
+type BulkAddNasSharesReply {
+  # Required. Supported in v8.1+
+  # The asynchronous request status of the job that checks NAS Share connectivity.
+  refreshNasSharesStatus: AsyncRequestStatus
+
+  # Required. Supported in v8.1+
+  # The managed ID of the NAS associated with the share.
+  nasSourceId: String!
+
+  # Required. Supported in v8.1+
+  # Details of added NAS shares.
+  nasShareDetails: [NasShareDetail!]!
+}
+# Supported in v8.1+
+# Input to add multiple NAS shares.
+input BulkAddNasSharesRequestInput {
+  # Required. Supported in v8.1+
+  # Parameters for NAS share to be added.
+  nasShares: [CreateNasShareInput!]!
+
+  # Required. Supported in v8.1+
+  # Managed ID of the NAS System where shares will be added.
+  nasSourceId: String!
+}
 # Input for getting web certificate and IPMI information for multiple clusters.
 input BulkClusterWebCertAndIpmiInput {
   # List of cluster UUIDs.
@@ -28548,6 +28683,18 @@ input BulkDeleteMosaicSourcesInput {
 
   # Required. List of names of sources to be deleted.
   sourceData: BulkDeleteSourceRequestInput!
+}
+# Input for deleting multiple NAS shares from the Rubrik cluster.
+input BulkDeleteNasSharesInput {
+  # Required. NAS share IDs to delete.
+  bulkDeleteNasShareRequest: BulkDeleteNasSharesRequestInput!
+}
+# Supported in v8.1+
+# Input to trigger delete of multiple NAS shares.
+input BulkDeleteNasSharesRequestInput {
+  # Required. Supported in v8.1+
+  # NAS share IDs.
+  ids: [String!]!
 }
 # Supported in v7.0+
 # v7.0-v8.0:
@@ -28743,6 +28890,29 @@ input BulkUpdateMssqlPropertiesOnWindowsClusterInput {
 type BulkUpdateMssqlPropertiesOnWindowsClusterReply {
   # Input for updating multiple Microsoft SQL Server instances in bulk.
   items: [MssqlInstanceDetail!]!
+}
+# Input for updating multiple NAS shares.
+input BulkUpdateNasSharesInput {
+  # Required. Update the properties of the NAS shares.
+  bulkUpdateNasShareInput: BulkUpdateNasSharesRequestInput!
+}
+# Supported in v8.1+
+# Result of update performed on multiple NAS shares.
+type BulkUpdateNasSharesReply {
+  # Required. Supported in v8.1+
+  # The asynchronous request statuses of the jobs that check NAS Share connectivity for each of the updated shares.
+  refreshNasSharesStatuses: [AsyncRequestStatus!]!
+
+  # Required. Supported in v8.1+
+  # Details of updated NAS shares.
+  shareDetails: [NasShareDetail!]!
+}
+# Supported in v8.1+
+# Input to update multiple NAS shares.
+input BulkUpdateNasSharesRequestInput {
+  # Required. Supported in v8.1+
+  # Parameters for NAS share to be updated.
+  nasShares: [UpdateNasShareInput!]!
 }
 input BulkUpdateOracleDatabasesInput {
   # Required. Properties to use for the update of Oracle Database objects.
@@ -32480,15 +32650,6 @@ enum CloudAccountFeature {
   # Cloud account feature is Cloud Native S3 Protection.
   CLOUD_NATIVE_S3_PROTECTION
 
-  # Cloud account feature is Data Center Archival Consolidation.
-  DATA_CENTER_CONSOLIDATION
-
-  # Cloud account feature is Data Center Archival Immutability.
-  DATA_CENTER_IMMUTABILITY
-
-  # Cloud account feature is Data Center Archival KMS.
-  DATA_CENTER_KMS
-
   # Cloud account feature is Data Center Role Based Archival.
   DATA_CENTER_ROLE_BASED_ARCHIVAL
 
@@ -34506,6 +34667,14 @@ enum ClusterPauseStatus {
 
   # Unknown Status.
   UNKNOWN
+}
+# Object containing the pause or resume status for a Rubrik cluster.
+type ClusterPauseStatusResult {
+  # Cluster UUID.
+  clusterUuid: String!
+
+  # Specifies whether the pause or resume action was successful. True indicates success, and false indicates failure.
+  success: Boolean!
 }
 # Product type of the registered cluster.
 enum ClusterProductEnum {
@@ -37514,6 +37683,29 @@ input CreateMssqlLogShippingConfigurationInput {
   # Required. ID of the primary database object.
   id: String!
 }
+# Supported in v8.1+
+# Input to add a NAS share manually.
+input CreateNasShareInput {
+  # Supported in v8.1+
+  # Optional credentials to access the NAS share.
+  credentials: NasShareCredentialsInput
+
+  # Required. Supported in v8.1+
+  # The type of NAS share.
+  shareType: CreateNasShareInputShareType!
+
+  # Required. Supported in v8.1+
+  # The NFS export point or SMB share name for the NAS share.
+  exportPoint: String!
+}
+# Type of the NAS share being added.
+enum CreateNasShareInputShareType {
+  # NFS share type.
+  CREATE_NAS_SHARE_INPUT_SHARE_TYPE_NFS
+
+  # SMB share type.
+  CREATE_NAS_SHARE_INPUT_SHARE_TYPE_SMB
+}
 # Supported in v5.0+
 input CreateNewVappParamsInput {
   # Required. Supported in v5.0+
@@ -37892,9 +38084,6 @@ input CreateReplicationPairInput {
 
   # Network interface for communication between the source and target clusters.
   targetNetworkInterface: NetworkInterfaceDetails
-
-  # Deprecated: The field is set automatically according to the Rubrik CDM cluster involved in replication pairing.
-  isCrossAccount: Boolean = false
 
   # Source Rubrik cluster UUID.
   sourceClusterUuid: UUID!
@@ -39308,6 +39497,9 @@ type Db2Config {
 
   # Frequency value for differential backup of Db2 databases.
   differentialFrequency: Duration
+
+  # Configure the log archival method for Db2 database log backups.
+  logArchivalMethod: LogArchivalMethod!
 }
 # Input to configure the SLA Domain for Db2 database.
 input Db2ConfigInput {
@@ -39319,6 +39511,9 @@ input Db2ConfigInput {
 
   # Frequency value for differential backup of Db2 databases.
   differentialFrequency: SlaDurationInput
+
+  # Configure the log archival method for Db2 database log backups.
+  logArchivalMethod: LogArchivalMethod = LOGARCHMETH1
 }
 # Supported in v9.1+
 input Db2ConfigureRestoreRequestInput {
@@ -39349,6 +39544,22 @@ enum Db2ConfigureRestoreResponseStatus {
   DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_OK
   DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_UNKNOWN
   DB2_CONFIGURE_RESTORE_RESPONSE_STATUS_WARNING
+}
+# Details of a target host configured for Db2 cross host recovery.
+type Db2CrossHostRecoveryInfo {
+  # Cluster UUID of the host.
+  clusterUuid: UUID!
+
+  # Expiry timestamp for Db2 cross host recovery configuration for  a target host.
+  expiryTimestamp: DateTime
+
+  # Details of the target host for Db2 cross host recovery.
+  host: PhysicalHost!
+}
+# Cross host recovery enabled target hosts for a Db2 database.
+type Db2CrossHostRecoveryMetadata {
+  # Specifies the details of target hosts for which cross host recovery is enabled for Db2 database.
+  hostInfoList: [Db2CrossHostRecoveryInfo!]!
 }
 # File backed up as a part of db2 backup.
 type Db2DataBackupFile {
@@ -39450,6 +39661,9 @@ type Db2Database implements CdmHierarchyObject , CdmHierarchySnappableNew , Hier
 
     # Field to filter Db2 log snapshots.
     filter: Db2LogSnapshotFilterInput): Db2LogSnapshotConnection!
+
+  # Db2 cross host recovery enabled target hosts.
+  crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -40923,6 +41137,11 @@ input DeleteSmbDomainInput {
   # Required. ID of the SMB Domain to delete.
   domainName: String!
 }
+# Input to delete snapshots of unmanaged objects.
+input DeleteSnapshotsOfUnmanagedObjectsInput {
+  # List of UUIDs of objects whose snapshots you want to delete.
+  objectIds: [UUID!]!
+}
 # Delete Storage arrays.
 input DeleteStorageArraysInput {
   # Required. List of Storage arrays to delete.
@@ -40955,6 +41174,11 @@ input DeleteTargetMappingInput {
 input DeleteTotpConfigsInput {
   # Users for whom TOTP is reset.
   userIds: [String!] = []
+}
+# Input to delete snapshots of unmanaged objects.
+input DeleteUnmanagedSnapshotsInput {
+  # List of UUIDs to delete snapshots.
+  snapshotIds: [UUID!]!
 }
 # Enum for delete VMware snapshot location.
 enum DeleteVmwareSnapshotRequestLocation {
@@ -42197,6 +42421,14 @@ input DownloadSapHanaSnapshotsForPointInTimeRecoveryInput {
   # Required. ID of the SAP HANA database.
   id: String!
 }
+# Response indicating whether SLA Domains with the specified cluster UUID exist and whether the CSV file download containing those SLA Domains is successful.
+type DownloadSlaWithReplicationCsvReply {
+  # True if an SLA Domain that replicates snapshots to the specified cluster exists.
+  doesSlaExists: Boolean!
+
+  # True if the download has been initiated and the CSV file will be available in the File Preparation Center.
+  isDownloadSuccessful: Boolean!
+}
 # Additional info for `DOWNLOAD_SNAPSHOT_FROM_LOCATION`
 # and `ACTIVE_DIRECTORY_DOWNLOAD_SNAPSHOT_FROM_LOCATION` jobs.
 input DownloadSnapshotFromLocationInfo {
@@ -42663,7 +42895,7 @@ type EventDigest {
   # Specifies whether to send the event digest immediately.
   isImmediate: Boolean!
 
-  # Event digest configuration.
+  # Deprecated. Use eventDigestConfig.
   eventDigestConfigJson: String!
 
   # User ID of the recipient.
@@ -42677,6 +42909,9 @@ type EventDigest {
 
   # Email address of the creator of this digest.
   creatorEmailAddress: String!
+
+  # The configuration of the event digest.
+  eventDigestConfig: EventDigestConfigInfo!
 
   # Specifies the cluster UUIDs that this event digest applies to.
   clusterUuids: [UUID!]!
@@ -42692,7 +42927,30 @@ input EventDigestConfig {
   # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
   activityType: [String!]
 
-  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
+  auditType: [UserAuditTypeEnum!]
+
+  # Activity severities to include in event digest.
+  activitySeverity: [ActivitySeverityEnum!]
+
+  # Clusters to include in event digest.
+  clusters: [String!]
+
+  # Email addresses of the event digest recipients.
+  emailAddresses: [String!]
+}
+# An event digest configuration.
+type EventDigestConfigInfo {
+  # Object type to include in event digest.
+  objectType: [ActivityObjectTypeEnum!]
+
+  # Activity statuses to include in event digest.
+  activityStatus: [ActivityStatusEnum!]
+
+  # Activity types included in event digest. Valid types are: Storage, THREAT_MONITORING, Tpr, Classification, LegalHold, HypervScvmm, THREAT_FEED, Hdfs, SCHEDULE_RECOVERY, RadarAnalysis, VolumeGroup, LockSnapshot, Instantiate, BULK_RECOVERY, LOG_BACKUP, HypervServer, ISOLATED_RECOVERY, Configuration, Upgrade, ENCRYPTION_MANAGEMENT_OPERATION, CloudNativeVm, StorageArray, Connection, Conversion, AuthDomain, UnknownEventType, CloudNativeVirtualMachine, Discovery, Replication, Maintenance, Support, Fileset, LocalRecovery, System, Failover, OWNERSHIP, StormResource, Diagnostic, Vcd, Anomaly, Archive, CloudNativeSource, HostEvent, AwsEvent, ResourceOperations, Backup, Sync, Hardware, TestFailover, Recovery, Download, EmbeddedEvent, TENANT_OVERLAP, NutanixCluster, VCenter, Index, ThreatHunt, and OTHER_FILTER_ITEM.
+  activityType: [String!]
+
+  # Audit types included in event digest. Valid types are: Audit, Classification, SlaModification, LegalHold, THREAT_FEED, BULK_RECOVERY, THREAT_HUNT, ISOLATED_RECOVERY, Configuration, ENCRYPTION_MANAGEMENT_OPERATION, RECOVERY_SCHEDULE, QUARANTINE, Login, LOCAL_RECOVERY, Failover, Diagnostic, RUBY_AI, UnknownUserAuditType, SlaAssignment, AccessManagement, Search, Backup, Sync, ANOMALY, Recovery, Download, FILE_DOWNLOAD, and Index.
   auditType: [UserAuditTypeEnum!]
 
   # Activity severities to include in event digest.
@@ -42877,6 +43135,9 @@ enum EventObjectType {
 
   # HyperV virtual machine object.
   HYPERV_VM
+
+  # Orion threat feed.
+  INTEL_FEED
 
   # Atlassian Jira project.
   JIRA_PROJECT
@@ -44521,8 +44782,8 @@ input ExportOracleDbConfigInput {
   pdbsToClone: [String!] = []
 
   # Supported in v8.1+
-  # v8.1-v9.1: Indicates whether to skip dropping the database in undo task if the database was partially recovered.
-  # v9.2: Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
+  # v8.1-v9.0: Indicates whether to skip dropping the database in undo task if the database was partially recovered.
+  # v9.1+: Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
 
   # Supported in v9.0+
@@ -45825,13 +46086,28 @@ enum FileActivitiesSortBy {
   NUM_ACTIVITIES
   USER_NAME
 }
+# File count type.
 enum FileCountType {
+  # Any file count type.
   ANY
+
+  # Files with hits count type.
   HITS
+
+  # Open access files count type.
   OPEN_ACCESS
+
+  # Open access files with hits count type.
   OPEN_ACCESS_HITS
+
+  # Stale files count type.
   STALE
+
+  # Stale files with hits count type.
   STALE_HITS
+
+  # Unused files with hits count type.
+  UNUSED_HITS
 }
 # Details of a particular file.
 type FileDetails {
@@ -50312,6 +50588,9 @@ type GuestOsCredential {
   # Domain name of the Guest OS credential.
   domain: String!
 
+  # Description of the Guest OS credential.
+  description: String!
+
   # Cluster of the Guest OS credential.
   cluster: Cluster!
 }
@@ -51274,6 +51553,9 @@ enum HierarchyFilterField {
   # Filter objects by Microsoft Office 365 organization ID.
   O365_ORGANIZATION_ID
 
+  # Filter by the name or URL of the SharePoint site in Microsoft 365.
+  O365_SITE_NAME_OR_URL
+
   # O365 specific type: O365_SHARED_USER, O365_SHARED_MAILBOX...This filter is
   # introduced to support api-server since it is not convenient to add object-specific
   # subtype knowledge there. To query for shared users, we can either:
@@ -51313,6 +51595,14 @@ enum HierarchyFilterField {
   # tag_filter_params field.
   # Filter by the ID of a Physical Host.
   PHYSICAL_HOST_ID
+
+  # Filter the Postgres Database Cluster based on its host
+  # connection status.
+  POSTGRES_DB_CLUSTER_HOST_CONNECTION_STATUS
+
+  # Filter the Postgres Databases based on its Database Cluster
+  # Id.
+  POSTGRES_DB_CLUSTER_ID
 
   # Filter by recovery plan name.
   RECOVERY_PLAN_NAME
@@ -52650,7 +52940,7 @@ input HostRegisterInput {
   # The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
   orgNetworkId: String
 
-  # Supported in v9.2
+  # Supported in v8.1+
   # Operating system of the specified host.
   osType: HostRegisterOsType
 
@@ -53082,6 +53372,10 @@ type HostSummary {
 
   # Supported in v5.0+
   nasBaseConfig: NasBaseConfig
+
+  # Supported in v9.2
+  # Volume Group info for the host if applicable.
+  volumeGroupInfo: VolumeGroupDetailInfo
 }
 # Supported in v5.1+
 # Status of Rubrik Io Filter on ESX Host.
@@ -53318,6 +53612,26 @@ type HotAddProxyVmInfoListResponse {
   # v9.0: Cursor to fetch the next set of results.
   # v9.1+: Cursor to retrieve the next set of results.
   nextCursor: String
+}
+# HotAdd proxy virtual machine status.
+enum HotAddProxyVmStatus {
+  # HotAdd proxy virtual machine is in EXPIRED status.
+  EXPIRED
+
+  # HotAdd proxy virtual machine is in FAILED status.
+  FAILED
+
+  # HotAdd proxy virtual machine is in MAINTAINING status.
+  MAINTAINING
+
+  # HotAdd proxy virtual machine is in RUNNING status.
+  RUNNING
+
+  # HotAdd proxy virtual machine is in TO_BE_ACTIVATED status.
+  TO_BE_ACTIVATED
+
+  # HotAdd proxy virtual machine is in UNKNOWN status.
+  UNKNOWN
 }
 # Supported in v5.3+
 # The type of the HotAdd proxy virtual machine.
@@ -54512,7 +54826,7 @@ type HypervHostSummaryListResponse {
 }
 # Supported in v9.1+
 input HypervInplaceExportJobConfigInput {
-  # Supported in v9.2
+  # Supported in v9.1+
   # Location to save the Hyper-V Virtual Machine copy on the target host.
   exportVmPath: String
 
@@ -54520,11 +54834,7 @@ input HypervInplaceExportJobConfigInput {
   # ID of the in-place recovery target host.
   hostId: String
 
-  # Supported in v9.1
-  # Indicates whether to retain the Hyper-V offline snapshot on the target server after completing the in-place recovery. Use `true` to keep the snapshot after in-place recovery. Use `false` to delete the snapshot after in-place recovery.
-  shouldKeepHypervSnapshotAfterRecovery: Boolean
-
-  # Supported in v9.2
+  # Supported in v9.1+
   # Indicates whether to retain the Hyper-V exported copy on the target server after completing the in-place recovery. Use `true` to keep the snapshot after in-place recovery. Use `false` to delete the snapshot after in-place recovery.
   shouldKeepHypervVmCopyAfterRecovery: Boolean
 }
@@ -55657,6 +55967,9 @@ input InsertCustomerO365AppInput {
 
   # Private key for a SharePoint-typed app.
   base64AppPrivateKey: String
+
+  # Specifies whether the application exists in RSC. If so, you can update the application credentials.
+  updateAppCredentials: Boolean
 }
 input InstallIoFilterInput {
   # Required. 
@@ -56267,6 +56580,11 @@ input IpmiUpdateInput {
 type IsCloudNativeTagRuleNameUniqueReply {
   # Indicates whether the rule name is unique or not.
   isUnique: Boolean!
+}
+# Request parameters for determining if IPMI is enabled on the cluster.
+input IsIpmiEnabledInput {
+  # Rubrik cluster UUID.
+  id: UUID!
 }
 # Specifies whether the volume snapshot is restorable.
 type IsVolumeSnapshotRestorableReply {
@@ -58579,6 +58897,14 @@ type License {
   # The end date of the support term.
   termEndDate: DateTime
 }
+# Stores license consumption statistics.
+type LicenseConsumptionType {
+  # Total number of licensed users protected.
+  usersProtected: Int!
+
+  # Total amount of frontend storage consumed in bytes.
+  fetbConsumed: Int!
+}
 # Represents a single licensed product.
 type LicensedClusterProduct {
   # The name of the product.
@@ -59133,6 +59459,14 @@ enum LockoutStateFilter {
 
   # Select only the users that are not locked-out.
   NOT_LOCKED
+}
+# Log archival method for the Db2 database.
+enum LogArchivalMethod {
+  # Log archival method 1 for the Db2 database.
+  LOGARCHMETH1
+
+  # Log archival method 2 for the Db2 database.
+  LOGARCHMETH2
 }
 # Input to configure the log settings for databases in an SLA Domain.
 input LogConfig {
@@ -65068,6 +65402,7 @@ input MountOracleDbConfigInput {
   # List of RAC host simple IDs to recover the database during the Live Mount.
   targetRacHostIds: [String!] = []
 
+  # Supported in v9.1+
   # Indicates whether to skip dropping the databasee during an undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
 
@@ -67739,6 +68074,14 @@ input MssqlWindowsClusterUpdateInput {
   # Supported in Rubrik cluster versions 9.0 and later. Non-SLA-Domain properties of a SQL Server Windows Cluster.
   mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput
 }
+# Stores per-tenant (RSC) consumption statsistics.
+type MultiTenancyConsumptionType {
+  # UUID of a multi-tenancy org.
+  mspOrgId: String!
+
+  # Consumption statistics of a multitenancy tenant.
+  consumption: LicenseConsumptionType
+}
 # Name collision resolution rule.
 enum NameCollisionRule {
   # Append suffix to the item name in case of name collision.
@@ -68600,12 +68943,15 @@ type NasShare implements CdmHierarchyObject , HierarchyObject , NasSystemDescend
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 }
+# Supported in v8.1+
 # Credentials to add or update for NAS shares, NAS namespaces, or NAS systems.
 input NasShareCredentialsInput {
+  # Supported in v8.1+
   # Password associated with the NAS user account.
   password: String
 
-  # Required. Username to access the NAS server and share. If the username is empty, the credentials will be removed from the underlying NAS share, NAS namespace, or NAS system object.
+  # Required. Supported in v8.1+
+  # Username to access the NAS server and share. If the username is empty, the credentials will be removed from the underlying NAS share, NAS namespace, or NAS system object.
   username: String!
 }
 # NAS share descendant type.
@@ -68700,6 +69046,27 @@ type NasShareDescendantTypeEdge {
 
   # The actual NasShareDescendantType object wrapped by this edge.
   node: NasShareDescendantType!
+}
+# Supported in v8.1+
+type NasShareDetail {
+  # Required. Supported in v8.1+
+  # The unique ID of the NAS Share.
+  id: String!
+
+  # Required. Supported in v8.1+
+  # The NFS export point or SMB share name for the NAS share.
+  exportPoint: String!
+
+  # Type of the NAS share.
+  shareType: NasShareDetailShareType!
+}
+# Specifies the type of the NAS share.
+enum NasShareDetailShareType {
+  # NFS share type.
+  NAS_SHARE_DETAIL_SHARE_TYPE_NFS
+
+  # SMB share type.
+  NAS_SHARE_DETAIL_SHARE_TYPE_SMB
 }
 # NAS share logical child type.
 interface NasShareLogicalChildType {
@@ -69219,6 +69586,7 @@ input NasSystemRegisterInput {
   # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
+  # Supported in v8.1+
   # Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
   smbCredentials: NasShareCredentialsInput
 
@@ -69254,6 +69622,7 @@ input NasSystemUpdateInput {
   # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
+  # Supported in v8.1+
   # Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
   smbCredentials: NasShareCredentialsInput
 
@@ -72368,6 +72737,9 @@ input NutanixPrismCentralPatchInput {
   # Username for the Nutanix Prism Central used for all the cluster connections.
   username: String
 
+  # Specifies whether Nutanix DR support is enabled for the the Prism Central object.
+  isDrEnabled: Boolean
+
   # Supported in v9.1+
   # The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.
   nutanixClusters: [NutanixClustersListElementInput!] = []
@@ -72384,7 +72756,7 @@ input NutanixRestoreFileConfigInput {
 }
 # Supported in v5.0+
 input NutanixRestoreFilesConfigInput {
-  # Supported in v9.1+
+  # Supported in v9.0+
   # Workload ID of the target AHV virtual machine, which is the destination for the recovered data.
   targetVirtualMachineId: String
 
@@ -73439,6 +73811,25 @@ type O365ConfiguredGroupSpec {
 
   # The wildcard pattern for the group.
   wildcard: String!
+}
+# Stores the consumption of Microsoft 365 license.
+type O365Consumption {
+  # Overall Rubrik M365 license consumption statistics.
+  consumption: LicenseConsumptionType
+
+  # List of licenses consumed for all multitenant organizations of an account.
+  consumptionPerMspOrg: [MultiTenancyConsumptionType!]!
+
+  # Consumption statistics per workload type.
+  consumptionPerWorkloadType: [PerWorkloadConsumptionType!]!
+}
+# Configuration for retrieving O365 consumption.
+input O365ConsumptionInput {
+  # UUID of a multitenancy org.
+  mspOrgId: UUID
+
+  # UUID of O365 organization.
+  o365OrgId: UUID
 }
 # An O365 contact object.
 type O365Contact implements O365ExchangeObject {
@@ -76419,6 +76810,8 @@ enum OpenAccessType {
 }
 # Operations defined in the RBAC system.
 enum Operation {
+  # Access Rubrik clusters via federated access.
+  ACCESS_CDM_CLUSTER
   ADD_AWS_CLOUD_ACCOUNT
   ADD_AZURE_CLOUD_ACCOUNT
 
@@ -76579,6 +76972,9 @@ enum Operation {
   MODIFY_SLA
   MOUNT
   PROVISION_ON_INFRASTRUCTURE
+
+  # Recover Cloud Cluster from object store data.
+  RECOVER_CLUSTER
   RECOVER_FROM_QUARANTINE
   REFRESH_DATA_SOURCE
   REMOVE_CLUSTER
@@ -76778,7 +77174,7 @@ input OracleConfigInput {
   # The duration for which the archived redo logs will be retained.
   hostLogRetention: SlaDurationInput
 }
-type OracleDataGuardGroup implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , OracleTopLevelDescendantType {
+type OracleDataGuardGroup implements HierarchyObject , HierarchySnappable , CdmHierarchyObject , CdmHierarchySnappableNew , OracleTopLevelDescendantType {
   # CDM ID of the Oracle Data Guard Group.
   cdmId: String!
 
@@ -77280,7 +77676,7 @@ input OracleDataGuardGroupUpdateInput {
   # Boolean value specifying whether to forcibly disable the discovery of the Data Guard group databases. If this value is set to true, and the global configuration DisableOracleDataGuardDiscovery is set to true, the existing Data Guard group are converted to non-Data Group databases.
   shouldForceDisableDgDiscovery: Boolean
 }
-type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , OracleTopLevelDescendantType , OracleHostDescendantType , OracleHostLogicalChildType , OracleRacDescendantType , OracleRacLogicalChildType , OracleDataGuardGroupDescendantType , OracleDataGuardGroupLogicalChildType {
+type OracleDatabase implements HierarchyObject , CdmHierarchyObject , HierarchySnappable , CdmHierarchySnappableNew , OracleTopLevelDescendantType , OracleHostDescendantType , OracleHostLogicalChildType , OracleRacDescendantType , OracleRacLogicalChildType , OracleDataGuardGroupDescendantType , OracleDataGuardGroupLogicalChildType {
   # CDM ID of the Oracle database.
   cdmId: String!
 
@@ -79895,6 +80291,14 @@ type PerLocationCloudStorageTier {
   locationId: String!
   cloudStorageTier: SnapshotCloudStorageTier!
 }
+# Stores per-workload consumption statistics.
+type PerWorkloadConsumptionType {
+  # Consumption statistics for a Microsoft 365 workload type.
+  consumption: LicenseConsumptionType
+
+  # M365 workload type.
+  workloadType: M365DashboardWorkloadType!
+}
 # Specifies permissions.
 type Permission {
   # The operations granted to the org on newly added.
@@ -79938,6 +80342,24 @@ enum PermissionsGroup {
   # protection feature.
   CLOUD_CLUSTER_ES
 
+  # Represents the set of permissions required to enabled the Consolidation
+  # feature for data center archival location.
+  # These permission are applicable to the Data Center Role-based archival
+  # feature.
+  DATA_CENTER_CONSOLIDATION
+
+  # Represents the set of permission required to enable the Immutability feature
+  # for data center archival location.
+  # These permission are applicable to the Data Center Role-based archival
+  # feature.
+  DATA_CENTER_IMMUTABILITY
+
+  # Represents the set of permissions required to use AWS KMS feature for
+  # data center archival location.
+  # These permission are applicable to the Data Center Role-based archival
+  # feature.
+  DATA_CENTER_KMS
+
   # Represents the set of permissions required for encryption
   # operation. These permissions are applicable to the cloud native archival
   # encryption feature.
@@ -79959,11 +80381,6 @@ enum PermissionsGroup {
   # Represents the set of permissions required for usage of private
   # endpoints. These permissions are applicable to exocompute feature.
   PRIVATE_ENDPOINTS
-
-  # Represents the permissions required for interacting with Rubrik-managed
-  # Exocompute clusters launched in private access mode. These permissions
-  # apply to the Exocompute feature.
-  PRIVATE_EXO_CLUSTERS
 
   # Represents the set of permissions required for all recovery
   # operations. These permissions are applicable to the cloud native
@@ -81014,6 +81431,12 @@ type PolicyObj {
 
   # Specifies whether the object has insights or not.
   hasInsights: Boolean!
+
+  # Unused sensitive file count for various risk levels.
+  unusedSensitiveFiles: SensitiveFiles
+
+  # Specifies whether the user activity for the object is enabled.
+  isUserActivityEnabled: Boolean!
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -81770,6 +82193,9 @@ type ProtectionTaskDetailsTableFilter {
 enum ProviderType {
   # A generic endpoint receives the webhook.
   CUSTOM
+
+  # A CrowdStrike Falcon LogScale endpoint receives the webhook.
+  LOGSCALE
 
   # A Microsoft Sentinel endpoint receives the webhook.
   MICROSOFT_SENTINEL
@@ -82606,6 +83032,9 @@ type RcvEntitlement {
 
   # Rubrik Cloud Vault (RCV) Entitlement tier.
   tier: RcvTier!
+
+  # Rubrik Cloud Vault (RCV) redundancy level.
+  redundancy: RcvRedundancy!
 }
 # Rubrik Cloud Vault (RCV) entitlement with expiration date.
 type RcvEntitlementWithExpirationDate {
@@ -82620,6 +83049,9 @@ type RcvEntitlementWithExpirationDate {
 
   # Rubrik Cloud Vault (RCV) entitlement tier.
   tier: RcvTier!
+
+  # Rubrik Cloud Vault (RCV) redundancy level.
+  redundancy: RcvRedundancy!
 }
 # Rubrik Cloud Vault (RCV) entitlement with order number.
 type RcvEntitlementWithOrderNumber {
@@ -82636,6 +83068,20 @@ type RcvEntitlementsUsageDetails {
 
   # Rubrik Cloud Vault (RCV) entitlement usage.
   usedCapacity: Float!
+}
+# Rubrik Cloud Vault (RCV) Azure redundancy.
+enum RcvRedundancy {
+  # Rubrik Cloud Vault (RCV) Azure Geo Redundant Storage.
+  AZURE_GRS
+
+  # Rubrik Cloud Vault (RCV) Azure Locally Redundant Storage.
+  AZURE_LRS
+
+  # Rubrik Cloud Vault (RCV) Azure Zone Redundant Storage.
+  AZURE_ZRS
+
+  # Rubrik Cloud Vault (RCV) Azure redundancy unknown.
+  UNKNOWN_AZURE_REDUNDANCY
 }
 # Rubrik Cloud Vault (RCV) region bundle.
 enum RcvRegionBundle {
@@ -82851,6 +83297,7 @@ input RecoverOracleDbConfigInput {
   # v6.0+: Number of channels used during instant recovery.
   numChannels: Int
 
+  # Supported in v9.1+
   # Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
 
@@ -83156,6 +83603,14 @@ type RelatedContent {
 type RelatedObjectIdsType {
   # IDs of the object related to the Azure AD object.
   ids: [String!]!
+}
+# Related object type in the Azure AD reverse relationship.
+type RelatedObjectsType {
+  # ID of the parent object.
+  id: String!
+
+  # Name of the parent object.
+  name: String!
 }
 # An relative monthly recurrence pattern (e.g. Second Thursday or Friday of every other month).
 type RelativeMonthlyRecurrencePattern {
@@ -84857,7 +85312,12 @@ type RoleEdge {
   # The actual Role object wrapped by this edge.
   node: Role!
 }
+# Fields in a role.
 enum RoleFieldEnum {
+  # Assignment of the role.
+  ASSIGNMENT
+
+  # Name of the role.
   Name
 }
 type RoleStatus {
@@ -87581,9 +88041,6 @@ input SearchAzureAdSnapshotInput {
   # Snapshot ID to retrieve Azure AD objects.
   snapshotId: UUID!
 
-  # Keyword used to search [Deprecated - Use keywordSearchFilters instead].
-  azureAdSearchKeyword: String!
-
   # Workload FID of the Azure AD directory.
   workloadFid: UUID!
 
@@ -87592,9 +88049,6 @@ input SearchAzureAdSnapshotInput {
 
   # Azure AD object type.
   azureAdObjectType: AzureAdObjectType!
-
-  # Type of the keyword [Deprecated - Use keywordSearchFilters instead].
-  azureAdSearchKeywordType: AzureAdObjectSearchType!
 }
 # Parameters for mail or folder search.
 input SearchFilter {
@@ -89115,6 +89569,17 @@ enum SlaSyncStatus {
   # Sync successful.
   SUCCEEDED
 }
+# SLA Domain taskchain information for upgrade.
+type SlaTaskchainInfo {
+  # SLA Domain ID.
+  slaId: String!
+
+  # Taskchain ID.
+  taskchainId: String!
+
+  # Error message when the taskchain cannot be scheduled.
+  errMsg: String!
+}
 # Supported in v5.0+
 # Units for frequency and retention. Accepted values are Minute, Hourly, Daily, Weekly, Monthly, Quarterly, and Yearly.
 enum SlaTimeUnit {
@@ -89568,6 +90033,12 @@ input SnappableFilterInput {
 
   # The state of the workload.
   objectState: [ObjectState!]
+
+  # True if the workload is local; false if the workload is remote.
+  isLocal: Boolean
+
+  # The FID of the workload.
+  objectFid: [UUID!]
 }
 # Filter workload data, including search capability.
 input SnappableFilterInputWithSearch {
@@ -89601,6 +90072,12 @@ input SnappableFilterInputWithSearch {
 
   # The state of the workload.
   objectState: [ObjectState!]
+
+  # True if the workload is local; false if the workload is remote.
+  isLocal: Boolean
+
+  # The FID of the workload.
+  objectFid: [UUID!]
 }
 # Snappable data with groupby info applied to it.
 type SnappableGroupBy {
@@ -89701,6 +90178,12 @@ input SnappableGroupByFilterInput {
 
   # The state of the workload.
   objectState: [ObjectState!]
+
+  # True if the workload is local; false if the workload is remote.
+  isLocal: Boolean
+
+  # The FID of the workload.
+  objectFid: [UUID!]
 }
 union SnappableGroupByInfo = ComplianceStatus | ProtectionStatus | ObjectType | Cluster | ClusterType | ClusterSlaDomain | TimeRangeWithUnit
 # Location of the workload.
@@ -94812,6 +95295,19 @@ input UpdateClusterNtpServersInput {
   # Required. List of NTP servers.
   ntpServerConfigs: [NtpServerConfigurationInput!]!
 }
+# Input to pause or resume a list of Rubrik clusters.
+input UpdateClusterPauseStatusInput {
+  # List of cluster UUIDs.
+  clusterUuids: [String!] = []
+
+  # Specifies whether to pause or resume the clusters.
+  togglePauseStatus: Boolean = false
+}
+# Response containing a list of objects with the pause or resume status for the Rubrik clusters.
+type UpdateClusterPauseStatusReply {
+  # List of objects with the pause or resume status for the Rubrik clusters.
+  pauseStatuses: [ClusterPauseStatusResult!]
+}
 # Input for updating cluster settings.
 input UpdateClusterSettingsInput {
   # Contains the changed information for the Rubrik cluster object.
@@ -94962,6 +95458,9 @@ input UpdateDatabaseLogReportingPropertiesForClusterInput {
 }
 # Information required to save a distribution list digest.
 input UpdateDistributionListDigestInput {
+  # ID of the distribution list digest.
+  digestId: Int
+
   # Name of the distribution list digest.
   digestName: String
 
@@ -95004,6 +95503,9 @@ input UpdateDnsServersAndSearchDomainsInput {
 }
 # Information required to save an event digest.
 input UpdateEventDigestInput {
+  # ID of the event digest.
+  digestId: Int
+
   # Name of the event digest.
   digestName: String
 
@@ -95581,6 +96083,29 @@ type UpdateMssqlLogShippingConfigurationReply {
   # Updated detail of the log shipping configuration object.
   mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2
 }
+# Supported in v8.1+
+# Input to update a manually added NAS share.
+input UpdateNasShareInput {
+  # Supported in v8.1+
+  # Specifies whether the Isilon changelist is enabled for the share.
+  isIsilonChangelistEnabled: Boolean
+
+  # Supported in v8.1+
+  # The NFS export point or SMB share name for the NAS share.
+  exportPoint: String
+
+  # Supported in v8.1+
+  # Optional credentials to access the NAS share.
+  credentials: NasShareCredentialsInput
+
+  # Supported in v8.1+
+  # Managed ID of the NAS system or NAS namespace where shares will be updated.
+  nasSourceId: String
+
+  # Required. Supported in v8.1+
+  # ID of the NAS share that will be updated.
+  id: String!
+}
 # Input to update a NAS system share.
 input UpdateNasSharesInput {
   # Required. NAS share update request object.
@@ -95719,6 +96244,9 @@ type UpdateNutanixPrismCentralReply {
   # Required. Supported in v9.0+
   # Username for the Nutanix Prism Central that we use for all the cluster connections.
   username: String!
+
+  # Specifies whether Nutanix DR support is enabled for the the Prism Central object.
+  isDrEnabled: Boolean
 
   # Supported in v9.0+
   # Describes any pending SLA Domain assignment on this object.
@@ -95931,9 +96459,6 @@ input UpdateReplicationTargetInput {
 
   # Network interface for communication between the source and target clusters.
   targetNetworkInterface: NetworkInterfaceDetails
-
-  # Specifies whether the replication pair is cross-account.
-  isCrossAccount: Boolean = false
 
   # Source Rubrik cluster UUID.
   sourceClusterUuid: UUID!
@@ -96285,6 +96810,9 @@ type UpdateVolumeGroupReply {
 
   # Blackout window information.
   blackoutWindowResponseInfo: BlackoutWindowResponseInfo
+
+  # Configuration details for the volumes in the Volume Group.
+  excludedVolumes: [HostVolumeSummary!]!
 }
 input UpdateVsphereAdvancedTagInput {
   # Required. ID of the multi-tag filter.
@@ -96492,6 +97020,16 @@ type UpgradeRecommendationInfo {
 
   # Latest upgradable version from the next release.
   nextReleaseRecommendation: String!
+}
+# Input to upgrade Rubrik SLA Domains.
+input UpgradeSlasInput {
+  # List of Rubrik SLA Domain IDs to upgrade.
+  slaIds: [UUID!]!
+}
+# Response containing taskchain information for the upgrade of SLA Domains.
+type UpgradeSlasReply {
+  # List of objects containing SLA Domain taskchain information.
+  slasTaskchainInfo: [SlaTaskchainInfo!]!
 }
 # UpgradeStatus is upgrade status of archival location to RSC-managed location.
 enum UpgradeStatus {
@@ -96716,6 +97254,9 @@ type UserAudit {
 
   # The organization name of this user audit.
   orgName: String
+
+  # The IP address of the user who triggered this audit.
+  ipAddress: String
 
   # The ID of the user audit.
   id: ID!
@@ -96949,6 +97490,9 @@ enum UserAuditObjectTypeEnum {
 
   # Hyper-V virtual machine type.
   HypervVm
+
+  # Intel feed.
+  INTEL_FEED
 
   # IP whitelist type.
   IpWhitelist
@@ -97240,6 +97784,9 @@ enum UserAuditTypeEnum {
   SlaAssignment
   SlaModification
   Sync
+
+  # Audit type for Intel feed.
+  THREAT_FEED
 
   # Audit type for threat hunt use cases.
   THREAT_HUNT
@@ -99876,6 +100423,22 @@ type VcenterPreAddInfo {
   # List of compute clusters present in the vCenter, including the host groups each cluster contains.
   clusterHostGroupInfo: [ClusterHostGroupInfo!]!
 }
+# Filter for HotAdd proxy virtual machine results.
+enum VcenterProxyVmsFilterField {
+  # A filter what not specified.
+  FIELD_UNSPECIFIED
+
+  # Include total count filter for HotAdd proxy virtual machine results.
+  INCLUDE_COUNT
+}
+# Filter for vcenter hotadd proxy virtual machine results.
+input VcenterProxyVmsFilterInput {
+  # Type of filter.
+  field: VcenterProxyVmsFilterField = FIELD_UNSPECIFIED
+
+  # Values for the filter type.
+  texts: [String!] = []
+}
 # Supported in v5.0+
 type VcenterSummary {
   # Supported in v5.0+
@@ -100270,11 +100833,17 @@ type VlanConfig {
   # Required. Supported in v5.0+
   vlan: Int!
 
+  # Gateway for the VLAN.
+  gateway: String
+
   # Alias for the VLAN.
   alias: String
 }
 # Supported in v5.0+
 input VlanConfigInput {
+  # Gateway for the VLAN.
+  gateway: String
+
   # Alias for the VLAN.
   alias: String
 
@@ -100865,6 +101434,28 @@ type VnetEdge {
 }
 # No value is returned.
 scalar Void
+# Supported in v9.2
+type VolumeGroupDetailInfo {
+  # Required. Supported in v9.2
+  # The unique ID of the Volume Group.
+  id: String!
+
+  # Required. Supported in v9.2
+  # Indicates whether backup, archival, and replication are paused for this Volume Group.
+  isPaused: Boolean!
+
+  # Required. Supported in v9.2
+  # The ID of the SLA Domain policy to assign to the Volume Group.
+  configuredSlaDomainId: String!
+
+  # Supported in v9.2
+  # Describes any pending SLA Domain assignment on this object.
+  pendingSlaDomain: ManagedObjectPendingSlaInfo
+
+  # Required. Supported in v9.2
+  # Configuration details for the volumes in the Volume Group.
+  volumes: [HostVolumeSummary!]!
+}
 # Supported in v5.0+
 input VolumeGroupDownloadFilesJobConfigInput {
   # Supported in v5.2+
@@ -103868,6 +104459,76 @@ input VsphereOnDemandSnapshotInput {
 
   # Required. User note to associate with audits.
   userNote: String
+}
+# HotAdd proxy virtual machine information.
+type VsphereProxyVmInfo {
+  # Name of the compute cluster.
+  computeClusterName: String!
+
+  # ID of the HotAdd proxy virtual machine.
+  id: String!
+
+  # Name of the HotAdd proxy virtual machine.
+  name: String!
+
+  # Name of the Vcenter.
+  vcenterName: String!
+
+  # Port number in use for the HotAdd proxy virtual machine.
+  usedPortCount: Int!
+
+  # Status of the HotAdd proxy virtual machine.
+  status: HotAddProxyVmStatus!
+
+  # Cluster UUID of the HotAdd proxy virtual machine.
+  clusterUuid: UUID!
+
+  # The network configuration of the HotAdd proxy virtual machine.
+  networkInfo: VsphereProxyVmNetworkInfo
+}
+# Paginated list of VsphereProxyVmInfo objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type VsphereProxyVmInfoConnection {
+  # List of VsphereProxyVmInfo objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [VsphereProxyVmInfoEdge!]!
+
+  # List of VsphereProxyVmInfo objects.
+  nodes: [VsphereProxyVmInfo!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of VsphereProxyVmInfo objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the VsphereProxyVmInfo object. This wrapper is used for pagination.
+type VsphereProxyVmInfoEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual VsphereProxyVmInfo object wrapped by this edge.
+  node: VsphereProxyVmInfo!
+}
+# Network information for the HotAdd proxy virtual machine.
+type VsphereProxyVmNetworkInfo {
+  # The name of the HotAdd proxy virtual machine network.
+  networkName: String!
+
+  # Static IP information for the HotAdd proxy virtual machine.
+  staticIpInfo: VsphereProxyVmStaticIpInfo
+}
+# Information about static IP configuration.
+type VsphereProxyVmStaticIpInfo {
+  # DNS Servers for the specified IP addresses.
+  dnsServers: [String!]!
+
+  # Gateway for the specified IP addresses.
+  gateway: String!
+
+  # IP addresses and ranges, separated by commas.
+  ipAddresses: [String!]!
+
+  # Subnet mask for the specified IP addresses.
+  subnetMask: String!
 }
 # Contains error information for a CDM response.
 type VsphereRequestErrorInfo {
