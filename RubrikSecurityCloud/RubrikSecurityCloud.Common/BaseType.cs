@@ -36,9 +36,9 @@ namespace RubrikSecurityCloud.Types
         /// Objects are not copied: modifiying the list elements
         /// will modify the original object.
         /// </summary>
-        public RscList<BaseType> AsList()
+        public RscInterface<BaseType> AsList()
         {
-            RscList<BaseType> list = new RscList<BaseType>();
+            RscInterface<BaseType> list = new RscInterface<BaseType>();
             BaseType? next = this;
             while (next != null)
             {
@@ -51,12 +51,12 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// Filter the composite object by type.
         /// </summary>
-        public RscList<BaseType> WhereType(Type type) => this.AsList().WhereType(type);
+        public RscInterface<BaseType> WhereType(Type type) => this.AsList().WhereType(type);
 
         /// <summary>
         /// Filter the composite object by type.
         /// </summary>
-        public RscList<BaseType> WhereType(string typeName) => this.AsList().WhereType(typeName);
+        public RscInterface<BaseType> WhereType(string typeName) => this.AsList().WhereType(typeName);
 
         /// <summary>
         /// Return the set of unique types in the list.
@@ -196,10 +196,10 @@ namespace RubrikSecurityCloud.Types
         }
     }
 
-    public class RscList<T>: List<T>
+    public class RscInterface<T>: List<T>
     {
-        public RscList(): base() { }
-        public RscList(IEnumerable<T> collection): base(collection) { }
+        public RscInterface(): base() { }
+        public RscInterface(IEnumerable<T> collection): base(collection) { }
 
         // This would be great but PowerShell doesn't directly support
         // calling generic methods with type parameters, so you'd have to do:
@@ -207,24 +207,24 @@ namespace RubrikSecurityCloud.Types
         // $whereTypeMethodGeneric = $lType.GetMethod("WhereType").MakeGenericMethod([RubrikSecurityCloud.Types.GlobalSlaReply])
         // $result = $whereTypeMethodGeneric.Invoke($l, @())
         // which is pretty ugly.
-        // public RscList<S> WhereType<S>()
+        // public RscInterface<S> WhereType<S>()
         // {
         //     var filteredItems = this.Where(item => item is S).Cast<S>();
-        //     return new RscList<S>(filteredItems);
+        //     return new RscInterface<S>(filteredItems);
         // }
 
         /// <summary>
         /// Filter the list by type.
         /// </summary>
-        public RscList<T> WhereType(Type type) =>
-            new RscList<T>(
+        public RscInterface<T> WhereType(Type type) =>
+            new RscInterface<T>(
                 this.Where(item => item != null && item.GetType() == type));
 
         /// <summary>
         /// Filter the list by type.
         /// </summary>
-        public RscList<T> WhereType(string typeName) =>
-            new RscList<T>(
+        public RscInterface<T> WhereType(string typeName) =>
+            new RscInterface<T>(
                 this.Where(item => item != null && item.GetType().Name.ToLower() == typeName.ToLower()));
 
         /// <summary>
@@ -233,5 +233,14 @@ namespace RubrikSecurityCloud.Types
         public HashSet<Type> DistinctTypes() =>
             new HashSet<Type>(
                 this.Select(item => item?.GetType()).Where(type => type != null).Cast<Type>());
+        
+        public T this[string typeName]
+        {
+            get
+            {
+                var filteredList = this.WhereType(typeName);
+                return filteredList.FirstOrDefault();
+            }
+        }
     }
 }

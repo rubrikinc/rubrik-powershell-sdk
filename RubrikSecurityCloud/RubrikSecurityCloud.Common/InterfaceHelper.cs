@@ -177,11 +177,11 @@ namespace RubrikSecurityCloud
                 // This case needs to be handled in the parent,
                 // since this method replaces properties in place
                 // in the input object.
-                throw new Exception("Root object is a List<> : cannot convert to RscList<> in place.");
+                throw new Exception("Root object is a List<> : cannot convert to RscInterface<> in place.");
             }
             else
             {
-                // Recursively convert List<T> properties to RscList<T>
+                // Recursively convert List<T> properties to RscInterface<T>
                 PropertyInfo[] properties = objType.GetProperties();
                 foreach (var property in properties)
                 {
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud
                     if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
                     {
                         Type itemType = propertyType.GetGenericArguments()[0]; // Get the <T> in List<T>
-                        Type rscListType = typeof(RscList<>).MakeGenericType(itemType); // Create RscList<T>
+                        Type rscListType = typeof(RscInterface<>).MakeGenericType(itemType); // Create RscInterface<T>
                         IList originalList = (IList)property.GetValue(obj);
                         IList rscList = (IList)Activator.CreateInstance(rscListType);
 
@@ -199,9 +199,9 @@ namespace RubrikSecurityCloud
                         {
                             foreach (var item in originalList)
                             {
-                                rscList.Add(item); // Populate RscList<T> with items from the original List<T>
+                                rscList.Add(item); // Populate RscInterface<T> with items from the original List<T>
                             }
-                            property.SetValue(obj, rscList); // Replace the original List<T> with RscList<T>
+                            property.SetValue(obj, rscList); // Replace the original List<T> with RscInterface<T>
                         }
                     }
                     else
