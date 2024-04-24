@@ -277,7 +277,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<CloudAccount>();
+            var fieldSpecObj = new RscList<CloudAccount>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<SlaDomain>();
+            var fieldSpecObj = new RscList<SlaDomain>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<Target>();
+            var fieldSpecObj = new RscList<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<CdmHierarchySnappableNew>();
+            var fieldSpecObj = new RscList<CdmHierarchySnappableNew>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -541,7 +541,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<HierarchyObject>();
+            var fieldSpecObj = new RscList<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -572,7 +572,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<HierarchyObject>();
+            var fieldSpecObj = new RscList<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

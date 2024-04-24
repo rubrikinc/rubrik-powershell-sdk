@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new List<O365OnedriveObject>();
+                this.Nodes = new RscList<O365OnedriveObject>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new List<MssqlTopLevelDescendantType>();
+                this.Nodes = new RscList<MssqlTopLevelDescendantType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

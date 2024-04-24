@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<OracleDataGuardGroupLogicalChildType>();
+                var impls = new RscList<OracleDataGuardGroupLogicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (OracleDataGuardGroupLogicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new List<HostShareDescendantType>();
+                this.Nodes = new RscList<HostShareDescendantType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

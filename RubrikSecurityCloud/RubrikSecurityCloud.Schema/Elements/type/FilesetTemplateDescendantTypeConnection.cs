@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new List<FilesetTemplateDescendantType>();
+                this.Nodes = new RscList<FilesetTemplateDescendantType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

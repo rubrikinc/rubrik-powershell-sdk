@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<MongoDatabasePhysicalChildType>();
+                var impls = new RscList<MongoDatabasePhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (MongoDatabasePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

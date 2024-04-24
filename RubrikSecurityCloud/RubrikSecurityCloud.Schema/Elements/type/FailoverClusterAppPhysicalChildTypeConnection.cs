@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new List<FailoverClusterAppPhysicalChildType>();
+                this.Nodes = new RscList<FailoverClusterAppPhysicalChildType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

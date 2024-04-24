@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<O365FullSpObject>();
+                var impls = new RscList<O365FullSpObject>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (O365FullSpObject)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -102,7 +102,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.HierarchyObject == null) {
 
-                var impls = new List<HierarchyObject>();
+                var impls = new RscList<HierarchyObject>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
                 this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
 

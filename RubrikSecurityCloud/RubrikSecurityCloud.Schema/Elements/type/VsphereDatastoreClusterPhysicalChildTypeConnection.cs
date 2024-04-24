@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new List<VsphereDatastoreClusterPhysicalChildType>();
+                this.Nodes = new RscList<VsphereDatastoreClusterPhysicalChildType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

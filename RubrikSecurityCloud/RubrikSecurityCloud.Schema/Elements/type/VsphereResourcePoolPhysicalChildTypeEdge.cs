@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<VsphereResourcePoolPhysicalChildType>();
+                var impls = new RscList<VsphereResourcePoolPhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (VsphereResourcePoolPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

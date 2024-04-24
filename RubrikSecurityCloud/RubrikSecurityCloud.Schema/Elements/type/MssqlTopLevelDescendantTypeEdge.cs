@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<MssqlTopLevelDescendantType>();
+                var impls = new RscList<MssqlTopLevelDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (MssqlTopLevelDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

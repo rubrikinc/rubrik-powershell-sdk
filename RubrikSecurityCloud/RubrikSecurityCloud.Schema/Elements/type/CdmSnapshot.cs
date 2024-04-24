@@ -991,7 +991,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PendingSla == null) {
 
-                var impls = new List<SlaDomain>();
+                var impls = new RscList<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
                 this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -1015,7 +1015,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                var impls = new List<SlaDomain>();
+                var impls = new RscList<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
                 this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -1039,7 +1039,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SnappableNew == null) {
 
-                var impls = new List<CdmHierarchySnappableNew>();
+                var impls = new RscList<CdmHierarchySnappableNew>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("snappableNew"));
                 this.SnappableNew = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
 

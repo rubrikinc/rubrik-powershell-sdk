@@ -37,7 +37,7 @@ Describe -Name 'SLAs' -Fixture {
         # => so in PowerShell, it is a list of objects that
         #    implement the SlaDomain interface
         $type = $q1.field.nodes.gettype()
-        $isList = $type.IsGenericType -and $type.GetGenericTypeDefinition() -eq [System.Collections.Generic.List`1]
+        $isList = $type.IsGenericType -and $type.GetGenericTypeDefinition() -eq [RubrikSecurityCloud.Types.RscList`1]
         $isList | Should -Be $true
         $genericArguments = $type.GetGenericArguments()
         $isSlaDomainList = $genericArguments[0].FullName -eq 'RubrikSecurityCloud.Types.SlaDomain'

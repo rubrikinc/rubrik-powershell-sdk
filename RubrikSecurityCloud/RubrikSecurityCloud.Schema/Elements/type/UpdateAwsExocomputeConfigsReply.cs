@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ExocomputeConfigs == null) {
 
-                this.ExocomputeConfigs = new List<AwsExocomputeGetConfigurationResponse>();
+                this.ExocomputeConfigs = new RscList<AwsExocomputeGetConfigurationResponse>();
                 this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
 
             } else {

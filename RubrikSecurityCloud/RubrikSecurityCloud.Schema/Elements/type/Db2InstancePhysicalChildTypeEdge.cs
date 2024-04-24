@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<Db2InstancePhysicalChildType>();
+                var impls = new RscList<Db2InstancePhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (Db2InstancePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

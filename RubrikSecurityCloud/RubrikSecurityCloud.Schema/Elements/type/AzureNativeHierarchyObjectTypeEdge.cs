@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<AzureNativeHierarchyObjectType>();
+                var impls = new RscList<AzureNativeHierarchyObjectType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (AzureNativeHierarchyObjectType)InterfaceHelper.MakeCompositeFromList(impls);
 

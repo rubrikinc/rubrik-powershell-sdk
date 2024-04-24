@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new List<AnomalyResultGroupByInfo>();
+                var impls = new RscList<AnomalyResultGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (AnomalyResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

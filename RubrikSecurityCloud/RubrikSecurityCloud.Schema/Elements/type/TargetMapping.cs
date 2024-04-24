@@ -265,7 +265,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.TargetTemplate == null) {
 
-                var impls = new List<TargetTemplate>();
+                var impls = new RscList<TargetTemplate>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
                 this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -289,7 +289,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Targets == null) {
 
-                this.Targets = new List<Target>();
+                this.Targets = new RscList<Target>();
                 this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
 
             } else {

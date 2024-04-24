@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<GcpNativeProjectLogicalChildType>();
+                var impls = new RscList<GcpNativeProjectLogicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (GcpNativeProjectLogicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

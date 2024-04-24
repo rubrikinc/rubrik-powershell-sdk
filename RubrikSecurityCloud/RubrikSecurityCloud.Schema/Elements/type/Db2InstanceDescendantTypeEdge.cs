@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<Db2InstanceDescendantType>();
+                var impls = new RscList<Db2InstanceDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (Db2InstanceDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

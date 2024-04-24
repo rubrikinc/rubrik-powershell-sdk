@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<NasVolumeDescendantType>();
+                var impls = new RscList<NasVolumeDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (NasVolumeDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

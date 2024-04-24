@@ -849,7 +849,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.CloudAccount == null) {
 
-                var impls = new List<CloudAccount>();
+                var impls = new RscList<CloudAccount>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
                 this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
 

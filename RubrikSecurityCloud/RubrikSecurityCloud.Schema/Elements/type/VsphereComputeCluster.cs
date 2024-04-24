@@ -777,7 +777,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ConfiguredSlaDomain == null) {
 
-                var impls = new List<SlaDomain>();
+                var impls = new RscList<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
                 this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -801,7 +801,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveRetentionSlaDomain == null) {
 
-                var impls = new List<SlaDomain>();
+                var impls = new RscList<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
                 this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -825,7 +825,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveSlaDomain == null) {
 
-                var impls = new List<SlaDomain>();
+                var impls = new RscList<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
                 this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -849,7 +849,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PendingSla == null) {
 
-                var impls = new List<SlaDomain>();
+                var impls = new RscList<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
                 this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -873,7 +873,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new List<CdmHierarchyObject>();
+                this.ReplicatedObjects = new RscList<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {

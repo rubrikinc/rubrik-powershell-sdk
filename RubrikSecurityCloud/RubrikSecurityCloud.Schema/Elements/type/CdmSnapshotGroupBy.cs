@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new List<CdmSnapshotGroupByInfo>();
+                var impls = new RscList<CdmSnapshotGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (CdmSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

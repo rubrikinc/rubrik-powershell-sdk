@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
@@ -52,6 +53,16 @@ namespace RubrikSecurityCloud.Types
         /// </summary>
         public RscList<BaseType> WhereType(Type type) => this.AsList().WhereType(type);
 
+        /// <summary>
+        /// Filter the composite object by type.
+        /// </summary>
+        public RscList<BaseType> WhereType(string typeName) => this.AsList().WhereType(typeName);
+
+        /// <summary>
+        /// Return the set of unique types in the list.
+        /// </summary>
+        public HashSet<Type> DistinctTypes() => this.AsList().DistinctTypes();
+
         // IFieldSpec interface:
         public abstract string AsFieldSpec(FieldSpecConfig? conf = null);
 
@@ -85,10 +96,32 @@ namespace RubrikSecurityCloud.Types
 
 
         public abstract void ApplyExploratoryFieldSpec(ExplorationContext ec);
+        
+        // Note: "SelectForRetrieval" could take for parmeter a HashSet<string>
+        // to pass in what fields are to be selected for retrieval,
+        // and if the hashset is empty or null, then AutoFieldSpec is used
+        // instead.
         public void SelectForRetrieval()
         {
+            // Note: this method will need to be overridden when
+            // we implement native simple types with Rsc Types.
+            // e.g. for RscString: this = "FETCH"
             this.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
+
+        public void UnselectFromRetrieval()
+        {
+            // Note: this method will need to be overridden when
+            // we implement native simple types with Rsc Types.
+            // e.g. for RscString: this = UnselectedStringSingleton ;
+
+            PropertyInfo[] properties = this.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                property.SetValue(this, null);
+            }
+        }
+
         // Returns the name of the type as it would appear in a GraphQL schema.
         // Should be overridden if the GraphQL type name is different from 
         // the C# class name.
@@ -193,7 +226,6 @@ namespace RubrikSecurityCloud.Types
         public RscList<T> WhereType(string typeName) =>
             new RscList<T>(
                 this.Where(item => item != null && item.GetType().Name.ToLower() == typeName.ToLower()));
-
 
         /// <summary>
         /// Return the set of unique types in the list.

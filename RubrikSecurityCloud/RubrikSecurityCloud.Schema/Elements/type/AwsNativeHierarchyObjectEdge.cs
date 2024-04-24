@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<AwsNativeHierarchyObject>();
+                var impls = new RscList<AwsNativeHierarchyObject>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (AwsNativeHierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
 

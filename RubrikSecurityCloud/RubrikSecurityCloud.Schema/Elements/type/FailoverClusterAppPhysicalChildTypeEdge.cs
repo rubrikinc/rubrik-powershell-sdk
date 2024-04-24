@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<FailoverClusterAppPhysicalChildType>();
+                var impls = new RscList<FailoverClusterAppPhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (FailoverClusterAppPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

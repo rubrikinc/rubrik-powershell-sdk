@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<PhysicalHostPhysicalChildType>();
+                var impls = new RscList<PhysicalHostPhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (PhysicalHostPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

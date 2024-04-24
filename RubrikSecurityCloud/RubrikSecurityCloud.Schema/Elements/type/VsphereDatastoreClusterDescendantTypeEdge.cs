@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<VsphereDatastoreClusterDescendantType>();
+                var impls = new RscList<VsphereDatastoreClusterDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (VsphereDatastoreClusterDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

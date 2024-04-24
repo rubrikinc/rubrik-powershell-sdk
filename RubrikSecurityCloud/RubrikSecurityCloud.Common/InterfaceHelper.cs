@@ -173,9 +173,11 @@ namespace RubrikSecurityCloud
             // Check if the object itself is a List<T>
             if (objType.IsGenericType && objType.GetGenericTypeDefinition() == typeof(List<>))
             {
-                // This case handles when the object itself is a List<T>
-                // Note: You would need to replace the object in its parent, which may be complex
-                // depending on the context. This example does not cover that scenario directly.
+                // root object itself is a List<T>
+                // This case needs to be handled in the parent,
+                // since this method replaces properties in place
+                // in the input object.
+                throw new Exception("Root object is a List<> : cannot convert to RscList<> in place.");
             }
             else
             {

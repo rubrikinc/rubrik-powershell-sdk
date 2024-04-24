@@ -9,7 +9,7 @@ Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
         $query.Field.GetType().Name | Should -Be 'MssqlTopLevelDescendantTypeConnection'
 
         # which has a Nodes field,
-        $query.Field.Nodes.GetType().Name | Should -Be 'List`1'
+        $query.Field.Nodes.GetType().Name | Should -Be 'RscList`1'
 
         # which is a list of interfaces of type MssqlTopLevelDescendantType
         # https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqltopleveldescendanttype.doc.html
@@ -31,7 +31,7 @@ Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
 
         # PhysicalChildConnection.Nodes is a list of interfaces
         $nodes = $node.PhysicalChildConnection.Nodes
-        $nodes.GetType().Name | Should -Be 'List`1'
+        $nodes.GetType().Name | Should -Be 'RscList`1'
         $nodes.GetType().GenericTypeArguments[0].Name | Should -Be 'PhysicalHostPhysicalChildType'
 
         # Auto exploration fills this list with all the possible implementations of PhysicalHostPhysicalChildType

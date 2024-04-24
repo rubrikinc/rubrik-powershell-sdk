@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.TimeInfo == null) {
 
-                var impls = new List<ClusterMetricGroupByInfo>();
+                var impls = new RscList<ClusterMetricGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
                 this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

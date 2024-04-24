@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<CassandraKeyspaceDescendantType>();
+                var impls = new RscList<CassandraKeyspaceDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (CassandraKeyspaceDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

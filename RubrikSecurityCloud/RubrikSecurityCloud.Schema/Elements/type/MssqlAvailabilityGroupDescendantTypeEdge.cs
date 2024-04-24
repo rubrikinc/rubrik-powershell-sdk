@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new List<MssqlAvailabilityGroupDescendantType>();
+                var impls = new RscList<MssqlAvailabilityGroupDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (MssqlAvailabilityGroupDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

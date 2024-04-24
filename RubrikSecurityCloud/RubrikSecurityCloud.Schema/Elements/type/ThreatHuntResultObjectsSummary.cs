@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Object == null) {
 
-                var impls = new List<CdmHierarchySnappableNew>();
+                var impls = new RscList<CdmHierarchySnappableNew>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
                 this.Object = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
 

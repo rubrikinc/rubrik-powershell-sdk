@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new List<ManagedVolumeQueuedSnapshotGroupByInfo>();
+                var impls = new RscList<ManagedVolumeQueuedSnapshotGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 
