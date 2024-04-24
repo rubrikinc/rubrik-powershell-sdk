@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscList<ExchangeDagDescendantType>();
+                var impls = new RscInterface<ExchangeDagDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (ExchangeDagDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -784,7 +784,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ConfiguredSlaDomain == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
                 this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -808,7 +808,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveRetentionSlaDomain == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
                 this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -832,7 +832,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveSlaDomain == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
                 this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -116,7 +116,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Values == null) {
 
-                this.Values = new RscList<Value>();
+                this.Values = new RscInterface<Value>();
                 this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
 
             } else {

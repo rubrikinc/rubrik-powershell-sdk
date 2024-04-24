@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscList<HostFailoverClusterPhysicalChildType>();
+                var impls = new RscInterface<HostFailoverClusterPhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (HostFailoverClusterPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -164,7 +164,7 @@ namespace RubrikSecurityCloud
             return list.AsFieldSpec(conf.Copy(ignoreComposition: true));
         }
 
-        public static void ConvertListsToRscLists(object obj)
+        public static void ConvertListsToRscInterfaces(object obj)
         {
             if (obj == null) return;
 
@@ -219,7 +219,7 @@ namespace RubrikSecurityCloud
                             var propertyValue = property.GetValue(obj);
                             if (propertyValue != null)
                             {
-                                ConvertListsToRscLists(propertyValue); // Recursive call
+                                ConvertListsToRscInterfaces(propertyValue); // Recursive call
                             }
                         }
                     }

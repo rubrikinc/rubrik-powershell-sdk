@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Snappable == null) {
 
-                var impls = new RscList<HierarchyObject>();
+                var impls = new RscInterface<HierarchyObject>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
                 this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
 

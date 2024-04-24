@@ -874,7 +874,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ConfiguredSlaDomain == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
                 this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -898,7 +898,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.DuplicateObjects == null) {
 
-                this.DuplicateObjects = new RscList<CdmHierarchyObject>();
+                this.DuplicateObjects = new RscInterface<CdmHierarchyObject>();
                 this.DuplicateObjects.ApplyExploratoryFieldSpec(ec.NewChild("duplicateObjects"));
 
             } else {
@@ -917,7 +917,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveRetentionSlaDomain == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
                 this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -941,7 +941,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveSlaDomain == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
                 this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -965,7 +965,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PendingSla == null) {
 
-                var impls = new RscList<SlaDomain>();
+                var impls = new RscInterface<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
                 this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -989,7 +989,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new RscList<CdmHierarchyObject>();
+                this.ReplicatedObjects = new RscInterface<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {

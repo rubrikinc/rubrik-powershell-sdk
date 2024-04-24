@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscList<FilesetTemplatePhysicalChildType>();
+                var impls = new RscInterface<FilesetTemplatePhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (FilesetTemplatePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

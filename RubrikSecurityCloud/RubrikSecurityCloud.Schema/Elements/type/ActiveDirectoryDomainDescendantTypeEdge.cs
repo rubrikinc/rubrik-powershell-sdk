@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscList<ActiveDirectoryDomainDescendantType>();
+                var impls = new RscInterface<ActiveDirectoryDomainDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (ActiveDirectoryDomainDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

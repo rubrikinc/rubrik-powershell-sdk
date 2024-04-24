@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscList<SapHanaSystemPhysicalChildType>();
+                var impls = new RscInterface<SapHanaSystemPhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (SapHanaSystemPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 
