@@ -17,7 +17,7 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (46,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
 | [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,22)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (10,6)](#vmware-vsphere-vcenter-domain) |
-| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,7)](#nas-domain) | [Service Account (1,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
+| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,7)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (18,25)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
@@ -2861,6 +2861,7 @@ Cmdlets: `New-RscQueryServiceAccount` and `New-RscMutationServiceAccount`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| IsOrgDisabled | Returns whether the service accounts of the organization are not enabled. | `New-RscQueryServiceAccount -Operation IsOrgDisabled`<BR> | [isOrgServiceAccountDisabled](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ServiceAccount | Browse service accounts. | `New-RscQueryServiceAccount -Operation ServiceAccount`<BR> | [serviceAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)

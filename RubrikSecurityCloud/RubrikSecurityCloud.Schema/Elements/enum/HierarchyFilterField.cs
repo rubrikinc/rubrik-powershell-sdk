@@ -600,6 +600,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_ORGANIZATION_ID")]
         O365_ORGANIZATION_ID,
 
+        [EnumMember(Value = "O365_SITE_NAME_OR_URL")]
+        O365_SITE_NAME_OR_URL,
+
         [EnumMember(Value = "O365_SPECIFIC_TYPE")]
         O365_SPECIFIC_TYPE,
 

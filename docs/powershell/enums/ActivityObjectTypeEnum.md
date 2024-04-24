@@ -27,6 +27,7 @@ The list of object types for activities.
 - ObjectProtection - Specifies that the activity object type is Object Protection.
 - NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
+- INTEL_FEED - Specifies that the activity object type is Intel feed.
 - ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
 - MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
 - POSTGRES_DB_CLUSTER - Specifies that the activity object type is Postgres Database Cluster.

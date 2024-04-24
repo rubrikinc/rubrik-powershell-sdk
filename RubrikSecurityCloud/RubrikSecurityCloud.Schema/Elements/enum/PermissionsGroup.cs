@@ -24,6 +24,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_CLUSTER_ES")]
         CLOUD_CLUSTER_ES,
 
+        [EnumMember(Value = "DATA_CENTER_CONSOLIDATION")]
+        DATA_CENTER_CONSOLIDATION,
+
+        [EnumMember(Value = "DATA_CENTER_IMMUTABILITY")]
+        DATA_CENTER_IMMUTABILITY,
+
+        [EnumMember(Value = "DATA_CENTER_KMS")]
+        DATA_CENTER_KMS,
+
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 

@@ -37,6 +37,10 @@
   - Change in the user count for various risk levels.
 - hasInsights: System.Boolean
   - Specifies whether the object has insights or not.
+- unusedSensitiveFiles: SensitiveFiles
+  - Unused sensitive file count for various risk levels.
+- isUserActivityEnabled: System.Boolean
+  - Specifies whether the user activity for the object is enabled.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

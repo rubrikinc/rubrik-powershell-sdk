@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("relatedObjectIds")]
         public List<System.String>? RelatedObjectIds { get; set; }
 
+        //      C# -> List<RelatedObjectsType>? RelatedObjects
+        // GraphQL -> relatedObjects: [RelatedObjectsType!]! (type)
+        [JsonProperty("relatedObjects")]
+        public List<RelatedObjectsType>? RelatedObjects { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public AzureAdReverseRelationship Set(
         AzureAdReverseRelationshipType? Type = null,
-        List<System.String>? RelatedObjectIds = null
+        List<System.String>? RelatedObjectIds = null,
+        List<RelatedObjectsType>? RelatedObjects = null
     ) 
     {
         if ( Type != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RelatedObjectIds != null ) {
             this.RelatedObjectIds = RelatedObjectIds;
+        }
+        if ( RelatedObjects != null ) {
+            this.RelatedObjects = RelatedObjects;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "relatedObjectIds\n" ;
             } else {
                 s += ind + "relatedObjectIds\n" ;
+            }
+        }
+        //      C# -> List<RelatedObjectsType>? RelatedObjects
+        // GraphQL -> relatedObjects: [RelatedObjectsType!]! (type)
+        if (this.RelatedObjects != null) {
+            var fspec = this.RelatedObjects.AsFieldSpec(conf.Child("relatedObjects"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "relatedObjects" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RelatedObjectIds != null && ec.Excludes("relatedObjectIds",true))
         {
             this.RelatedObjectIds = null;
+        }
+        //      C# -> List<RelatedObjectsType>? RelatedObjects
+        // GraphQL -> relatedObjects: [RelatedObjectsType!]! (type)
+        if (ec.Includes("relatedObjects",false))
+        {
+            if(this.RelatedObjects == null) {
+
+                this.RelatedObjects = new List<RelatedObjectsType>();
+                this.RelatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("relatedObjects"));
+
+            } else {
+
+                this.RelatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("relatedObjects"));
+
+            }
+        }
+        else if (this.RelatedObjects != null && ec.Excludes("relatedObjects",false))
+        {
+            this.RelatedObjects = null;
         }
     }
 

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region OracleDataGuardGroup
  
-    public class OracleDataGuardGroup: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, OracleTopLevelDescendantType
+    public class OracleDataGuardGroup: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, OracleTopLevelDescendantType
     {
         #region members
 

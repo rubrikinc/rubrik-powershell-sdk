@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isUserAccessEnabledObject")]
         public System.Boolean? IsUserAccessEnabledObject { get; set; }
 
+        //      C# -> System.Boolean? IsUserActivityEnabled
+        // GraphQL -> isUserActivityEnabled: Boolean! (scalar)
+        [JsonProperty("isUserActivityEnabled")]
+        public System.Boolean? IsUserActivityEnabled { get; set; }
+
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         [JsonProperty("snapshotFid")]
@@ -134,6 +139,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalSensitiveHits: SummaryHits (type)
         [JsonProperty("totalSensitiveHits")]
         public SummaryHits? TotalSensitiveHits { get; set; }
+
+        //      C# -> SensitiveFiles? UnusedSensitiveFiles
+        // GraphQL -> unusedSensitiveFiles: SensitiveFiles (type)
+        [JsonProperty("unusedSensitiveFiles")]
+        public SensitiveFiles? UnusedSensitiveFiles { get; set; }
 
         //      C# -> PrincipalCounts? UserCounts
         // GraphQL -> userCounts: PrincipalCounts (type)
@@ -217,6 +227,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasInsights = null,
         System.String? Id = null,
         System.Boolean? IsUserAccessEnabledObject = null,
+        System.Boolean? IsUserActivityEnabled = null,
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTimestamp = null,
         System.String? TimeContext = null,
@@ -231,6 +242,7 @@ namespace RubrikSecurityCloud.Types
         FileResult? RootFileResult = null,
         SensitiveFiles? SensitiveFiles = null,
         SummaryHits? TotalSensitiveHits = null,
+        SensitiveFiles? UnusedSensitiveFiles = null,
         PrincipalCounts? UserCounts = null,
         List<WhitelistedAnalyzer>? WhitelistedAnalyzerList = null
     ) 
@@ -261,6 +273,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsUserAccessEnabledObject != null ) {
             this.IsUserAccessEnabledObject = IsUserAccessEnabledObject;
+        }
+        if ( IsUserActivityEnabled != null ) {
+            this.IsUserActivityEnabled = IsUserActivityEnabled;
         }
         if ( SnapshotFid != null ) {
             this.SnapshotFid = SnapshotFid;
@@ -303,6 +318,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalSensitiveHits != null ) {
             this.TotalSensitiveHits = TotalSensitiveHits;
+        }
+        if ( UnusedSensitiveFiles != null ) {
+            this.UnusedSensitiveFiles = UnusedSensitiveFiles;
         }
         if ( UserCounts != null ) {
             this.UserCounts = UserCounts;
@@ -407,6 +425,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isUserAccessEnabledObject\n" ;
             } else {
                 s += ind + "isUserAccessEnabledObject\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsUserActivityEnabled
+        // GraphQL -> isUserActivityEnabled: Boolean! (scalar)
+        if (this.IsUserActivityEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isUserActivityEnabled\n" ;
+            } else {
+                s += ind + "isUserActivityEnabled\n" ;
             }
         }
         //      C# -> System.String? SnapshotFid
@@ -565,6 +592,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "totalSensitiveHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SensitiveFiles? UnusedSensitiveFiles
+        // GraphQL -> unusedSensitiveFiles: SensitiveFiles (type)
+        if (this.UnusedSensitiveFiles != null) {
+            var fspec = this.UnusedSensitiveFiles.AsFieldSpec(conf.Child("unusedSensitiveFiles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "unusedSensitiveFiles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -758,6 +797,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsUserAccessEnabledObject != null && ec.Excludes("isUserAccessEnabledObject",true))
         {
             this.IsUserAccessEnabledObject = null;
+        }
+        //      C# -> System.Boolean? IsUserActivityEnabled
+        // GraphQL -> isUserActivityEnabled: Boolean! (scalar)
+        if (ec.Includes("isUserActivityEnabled",true))
+        {
+            if(this.IsUserActivityEnabled == null) {
+
+                this.IsUserActivityEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUserActivityEnabled != null && ec.Excludes("isUserActivityEnabled",true))
+        {
+            this.IsUserActivityEnabled = null;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
@@ -1018,6 +1074,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalSensitiveHits != null && ec.Excludes("totalSensitiveHits",false))
         {
             this.TotalSensitiveHits = null;
+        }
+        //      C# -> SensitiveFiles? UnusedSensitiveFiles
+        // GraphQL -> unusedSensitiveFiles: SensitiveFiles (type)
+        if (ec.Includes("unusedSensitiveFiles",false))
+        {
+            if(this.UnusedSensitiveFiles == null) {
+
+                this.UnusedSensitiveFiles = new SensitiveFiles();
+                this.UnusedSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("unusedSensitiveFiles"));
+
+            } else {
+
+                this.UnusedSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("unusedSensitiveFiles"));
+
+            }
+        }
+        else if (this.UnusedSensitiveFiles != null && ec.Excludes("unusedSensitiveFiles",false))
+        {
+            this.UnusedSensitiveFiles = null;
         }
         //      C# -> PrincipalCounts? UserCounts
         // GraphQL -> userCounts: PrincipalCounts (type)

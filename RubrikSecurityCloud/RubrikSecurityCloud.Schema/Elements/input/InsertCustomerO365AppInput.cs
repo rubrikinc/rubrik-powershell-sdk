@@ -57,6 +57,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("base64AppPrivateKey")]
         public System.String? Base64AppPrivateKey { get; set; }
 
+        //      C# -> System.Boolean? UpdateAppCredentials
+        // GraphQL -> updateAppCredentials: Boolean (scalar)
+        [JsonProperty("updateAppCredentials")]
+        public System.Boolean? UpdateAppCredentials { get; set; }
+
 
         #endregion
 

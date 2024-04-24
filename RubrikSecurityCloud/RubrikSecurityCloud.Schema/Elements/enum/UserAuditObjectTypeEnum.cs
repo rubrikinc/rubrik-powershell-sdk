@@ -162,6 +162,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HypervVm")]
         HYPERV_VM,
 
+        [EnumMember(Value = "INTEL_FEED")]
+        INTEL_FEED,
+
         [EnumMember(Value = "IpWhitelist")]
         IP_WHITELIST,
 

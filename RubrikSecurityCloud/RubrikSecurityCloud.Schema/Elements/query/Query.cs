@@ -1836,6 +1836,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.Boolean? IsOrgServiceAccountDisabled
+        // GraphQL -> isOrgServiceAccountDisabled: Boolean! (scalar)
+        public static string IsOrgServiceAccountDisabled_TypedFieldSpec(System.Boolean fieldSpec)
+        {
+            string args = "";
+            return "isOrgServiceAccountDisabled" + args + "\n";
+        }
+        public static string IsOrgServiceAccountDisabled_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return IsOrgServiceAccountDisabled((System.Boolean)fieldSpecObj);
+        }
+        public static string IsOrgServiceAccountDisabled(System.Boolean fieldSpec)
+        {
+            return IsOrgServiceAccountDisabled_TypedFieldSpec(fieldSpec);
+        }
+        public static string IsOrgServiceAccountDisabled(object fieldSpecObj)
+        {
+            return IsOrgServiceAccountDisabled_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object IsOrgServiceAccountDisabledFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return true ;
+        }
+
         //      C# -> System.Boolean? IsSfdcReachable
         // GraphQL -> isSfdcReachable: Boolean! (scalar)
         public static string IsSfdcReachable_TypedFieldSpec(System.Boolean fieldSpec)

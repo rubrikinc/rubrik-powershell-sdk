@@ -17,8 +17,5 @@ Cloud account features.
 - CLOUD_NATIVE_BLOB_PROTECTION - Cloud account feature is Cloud Native Blob Protection.
 - KUBERNETES_PROTECTION - Cloud account feature is Kubernetes Protection.
 - DATA_CENTER_ROLE_BASED_ARCHIVAL - Cloud account feature is Data Center Role Based Archival.
-- DATA_CENTER_KMS - Cloud account feature is Data Center Archival KMS.
-- DATA_CENTER_CONSOLIDATION - Cloud account feature is Data Center Archival Consolidation.
-- DATA_CENTER_IMMUTABILITY - Cloud account feature is Data Center Archival Immutability.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

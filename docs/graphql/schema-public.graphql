@@ -600,6 +600,29 @@ type Query {
     # Specification to filter cluster based on type.
     clusterFilterArg: ClusterTypeEnum): [DataLocationSupportedCluster!]!
 
+  # List all cross-account clusters.
+  allCrossAccountClusters(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Specification on how to filter a list of cross-account clusters.
+    filter: [GetCrossAccountClustersFilter!],
+
+    # Specifies the field by which the list of cross-account clusters will be sorted.
+    sortBy: GetCrossAccountClustersSortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder): CrossAccountClusterConnection!
+
   # Current permissions are the set of permissions the client has given to Rubrik. This will retrieve permissions for all the features currently active in the account. If these permissions are older than the latest set of permissions we require, the account will go in Update Permissions state
   allCurrentFeaturePermissionsForCloudAccounts(
     # Vendor of the cloud account.
@@ -2698,6 +2721,11 @@ type Query {
 
     # Returns the elements in the list that come before the specified cursor.
     before: String): ReportMigrationStatusConnection!
+
+  # Rubrik cluster routes information.
+  clusterRoutes(
+    # The Rubrik cluster ID.
+    clusterUuid: UUID!): ClusterRoutesReply!
 
   # Returns paginated list of SLA domains that were created on Rubrik CDM.
   clusterSlaDomains(
@@ -7873,6 +7901,14 @@ type Query {
 
     # Filter by anomaly resolution.
     resolutionStatusFilter: [ResolutionStatus!]): WorkloadAnomalyConnection!
+
+  # Returns the RSC forever ID of a workload.
+  workloadForeverId(
+    # The Rubrik cluster ID.
+    clusterUuid: UUID!,
+
+    # Workload managed ID.
+    managedId: String!): UUID!
 }
 type Mutation {
   # Add AD Groups to O365 hierarchy.
@@ -8052,6 +8088,11 @@ type Mutation {
   addVmAppConsistentSpecs(
     # Input required to add Azure native virtual machine application consistency specifications.
     input: AddVmAppConsistentSpecsInput!): AddVmAppConsistentSpecsReply!
+
+  # Update the air-gap status of the Rubrik cluster.
+  airGapStatus(
+    # Input for updating the air-gap status of the Rubrik cluster.
+    input: AirGapStatusInput!): Void
 
   # Approve private endpoint.
   approveRcvPrivateEndpoint(
@@ -11345,7 +11386,7 @@ type Mutation {
     input: UpdateClusterDefaultAddressInput!): UpdateClusterDefaultAddressReply!
   updateClusterLocation(
     # The Rubrik cluster ID.
-    clusterUuid: UUID!, clusterLocation: ClusterLocationEdit!): Cluster!
+    clusterUuid: UUID!, clusterLocation: ClusterLocationEdit!): Cluster! @deprecated(reason: "Deprecated. Use updateClusterSettings instead.")
 
   # Assign NTP servers to Rubrik cluster
   # 
@@ -11798,6 +11839,14 @@ type Mutation {
   updateVcenterHotAddNetwork(
     # Input for V1SetHotAddNetwork.
     input: UpdateVcenterHotAddNetworkInput!): RequestSuccess!
+
+  # Update a VLAN interface on the Rubrik cluster
+  # 
+  # Supported in v8.0+
+  # Update the configuration of an existing VLAN on the Rubrik cluster. VLAN netmask and IP addresses can be changed.
+  updateVlan(
+    # Input for InternalUpdateVlan.
+    input: UpdateVlanInput!): Void
 
   # Update Volume Group properties
   # 
@@ -13515,6 +13564,15 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is Rubrik EC2 Instance.
   RubrikEc2Instance
 
+  # Specifies that the activity object type is Salesforce metadata.
+  SALESFORCE_METADATA
+
+  # Specifies that the activity object type is a Salesforce object.
+  SALESFORCE_OBJECT
+
+  # Specifies that the activity object type is a Salesforce organization.
+  SALESFORCE_ORGANIZATION
+
   # Specifies that the activity object type is Saml SSO.
   SamlSso
 
@@ -14881,6 +14939,14 @@ type AggregatedValues {
 
   # The total number of workload anomalies.
   total: Long!
+}
+# Request parameters for updating the air-gap status of the Rubrik cluster.
+input AirGapStatusInput {
+  # Air-gap status of the Rubrik cluster.
+  isAirGapped: Boolean = false
+
+  # Rubrik cluster UUID.
+  clusterUuid: UUID!
 }
 # Input for recovering Cloud Direct path.
 input AllCloudDirectSharesInput {
@@ -17595,6 +17661,9 @@ input AwsExocomputeClusterConnectInput {
 type AwsExocomputeClusterConnectReply {
   # The command is to be run at the remote k8s cluster to establish a secure connection with RSC.
   connectionCommand: String!
+
+  # This field contains the Kubernetes configuration YAML, detailing the specifications for the resources that must be created in the customer managed Kubernetes cluster to establish a tunnel connection with  RSC.
+  clusterSetupYaml: String!
 
   # The unique id generated for the k8s cluster that was connected to RSC.
   clusterUuid: UUID!
@@ -23376,6 +23445,20 @@ enum AzureAppPermission {
   # connecting to an Azure Storage.
   AZURE_STORAGE_IMPERSONATION
 }
+# Details about an Exocompute configuration.
+type AzureApplicationCloudAccountToExocomputeConfig {
+  # Application cloud account ID for which configurations are applicable.
+  applicationCloudAccountId: String!
+
+  # Specifies whether the cloud account is the host cloud account.
+  isHost: Boolean!
+
+  # Details about the Exocompute configurations.
+  exocomputeConfigs: [AzureExocomputeGetConfigResponse!]!
+
+  # Mapped Exocompute account details.
+  mappedExocomputeAccount: CloudAccountDetails
+}
 # Custom role ARM template corresponding to the feature.
 type AzureArmTemplateByFeature {
   # Cloud native protections features.
@@ -25389,6 +25472,9 @@ type AzureNativeSubscription implements PolarisHierarchyObject , HierarchyObject
 
   # The authorized operations on the object.
   authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]!
+
+  # List of Exocompute configurations for the Azure subscription.
+  applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig!
 
   # Paginated list of all Azure Resource Groups in the subscription.
   azureNativeResourceGroups(
@@ -34772,6 +34858,11 @@ enum ClusterReportMigrationStatus {
   # Unspecified.
   UNSPECIFIED
 }
+# Represents the response of a request to retrieve cluster routes information from a Rubrik cluster.
+type ClusterRoutesReply {
+  # Rubrik cluster network routes.
+  clusterRoutes: [RouteConfig!]!
+}
 # Metadata for rendering a Rubrik cluster SLA Domain.
 type ClusterSlaDomain implements SlaDomain {
   # Rubrik Cluster SLA Domain name.
@@ -38424,6 +38515,45 @@ enum CrossAccountCapability {
 
   # Replication as a service capability.
   REPLICATION_AS_A_SERVICE
+}
+# Cross-account cluster-specific information.
+type CrossAccountCluster {
+  # Name of the cross-account cluster.
+  name: String!
+
+  # UUID of the cross-account cluster.
+  uuid: String!
+
+  # Version of the cross-account cluster.
+  version: String!
+
+  # The account name of cross-account the cluster is associated with.
+  accountName: String!
+
+  # API version of the cross-account cluster.
+  apiVersion: String!
+}
+# Paginated list of CrossAccountCluster objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type CrossAccountClusterConnection {
+  # List of CrossAccountCluster objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [CrossAccountClusterEdge!]!
+
+  # List of CrossAccountCluster objects.
+  nodes: [CrossAccountCluster!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of CrossAccountCluster objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the CrossAccountCluster object. This wrapper is used for pagination.
+type CrossAccountClusterEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual CrossAccountCluster object wrapped by this edge.
+  node: CrossAccountCluster!
 }
 # Details of an organization associated with an cross-account pair.
 type CrossAccountOrganization {
@@ -49328,6 +49458,33 @@ input GetComputeClusterInput {
 input GetContainersInput {
   # Required. ID of the Nutanix cluster.
   id: String!
+}
+# Filter for cross-account clusters request.
+input GetCrossAccountClustersFilter {
+  # Field from which query should be filtered.
+  field: GetCrossAccountClustersFilterField = FILTER_FIELD_UNSPECIFIED
+
+  # Value of the field.
+  text: String = ""
+}
+# Filter for querying cross-account clusters.
+enum GetCrossAccountClustersFilterField {
+  # Filter by cross-account cluster name.
+  CLUSTER_NAME
+
+  # Unspecified filter field.
+  FILTER_FIELD_UNSPECIFIED
+
+  # Filter by organization.
+  ORG_ID
+}
+# Field to sort by for cross-account clusters.
+enum GetCrossAccountClustersSortByField {
+  # Cross-account cluster name.
+  CLUSTER_NAME
+
+  # Unspecified sort by field.
+  SORT_BY_FIELD_UNSPECIFIED
 }
 # Filter for cross-account pairs request.
 input GetCrossAccountPairsFilter {
@@ -85025,6 +85182,12 @@ input RestoreO365TeamsConversationsInput {
   #  Specifies whether a new destination channel needs to be created in Teams.
   shouldCreateDestChannel: Boolean!
 
+  # Recovery action type for the restore job.
+  actionType: O365RestoreActionType
+
+  # In-place restore configuration for the restore job.
+  inplaceRestoreConfig: InplaceRestoreConfig
+
   #  Information about the destination channel conversation.
   channelInfoForFullRestore: O365TeamConvChannelInput
 
@@ -85066,8 +85229,11 @@ input RestoreO365TeamsFilesInput {
   # Specifies whether destination channel should be created.
   shouldCreateDestChannel: Boolean!
 
-  # Recovery action type for the job.
+  # Recovery action type for the restore job.
   actionType: O365RestoreActionType!
+
+  # In-place restore configuration for the restore job.
+  inplaceRestoreConfig: InplaceRestoreConfig
 
   # Indicates whether the channel being restored is STANDARD or PRIVATE.
   channelRecoveryType: ChannelMembershipType!
@@ -86504,14 +86670,17 @@ type SapHanaDatabase implements CdmHierarchyObject , CdmHierarchySnappableNew , 
     # Field to filter SAP HANA log snapshots.
     filter: SapHanaLogSnapshotFilterInput): SapHanaLogSnapshotConnection!
 
-  # The oldest snapshot for SAP HANA database.
+  # The oldest snapshot for SAP HANA workload.
   oldestSnapshot: CdmSnapshot
 
-  # The most recent snapshot for SAP HANA database.
+  # The most recent snapshot for SAP HANA workload.
   newestSnapshot: CdmSnapshot
 
-  # The number of on-demand snapshots for SAP HANA database.
+  # The number of on-demand snapshots for SAP HANA workloads.
   onDemandSnapshotCount: Int!
+
+  # The total number of snapshots for SAP HANA workloads.
+  totalSnapshotCount: Int!
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!
@@ -96768,6 +96937,13 @@ input UpdateVcenterInput {
 # Reply Object for UpdateVcenter.
 type UpdateVcenterReply {
   output: VcenterSummary
+}
+input UpdateVlanInput {
+  # Required. ID of the Rubrik cluster, or *me* for self.
+  id: String!
+
+  # Required. VLAN Configuration.
+  vlanInfo: VlanConfigInput!
 }
 input UpdateVmAgentDeploymentSettingInput {
   # Required. UUID used to identify the cluster the request goes to.

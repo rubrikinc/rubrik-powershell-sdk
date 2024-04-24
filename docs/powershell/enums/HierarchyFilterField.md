@@ -272,3 +272,4 @@
 - DOMAIN_CONTROLLER_DOMAIN_SID - Filter domain controller by domain SID.
 - SAASAPPS_IS_RECOVERY_TARGET_ONLY - Filter SaaS Apps organizations based on whether they only support
  recovery.
+- O365_SITE_NAME_OR_URL - Filter by the name or URL of the SharePoint site in Microsoft 365.

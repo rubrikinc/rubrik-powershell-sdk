@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SYNC")]
         SYNC,
 
+        [EnumMember(Value = "THREAT_FEED")]
+        THREAT_FEED,
+
         [EnumMember(Value = "THREAT_HUNT")]
         THREAT_HUNT,
 

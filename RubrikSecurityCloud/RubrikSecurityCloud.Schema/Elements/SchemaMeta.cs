@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240408-25" ;
+        public static string GraphqlSchemaVersion = "v20240415-10" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1584,8 +1584,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -1828,6 +1828,7 @@ namespace RubrikSecurityCloud.Types
             RegisterNasSystemReply,
             RelatedContent,
             RelatedObjectIdsType,
+            RelatedObjectsType,
             RelativeMonthlyRecurrencePattern,
             RelativeTimeRange,
             RelativeYearlyRecurrencePattern,
@@ -2325,6 +2326,7 @@ namespace RubrikSecurityCloud.Types
             Vnet,
             VnetConnection,
             VnetEdge,
+            VolumeGroupDetailInfo,
             VolumeGroupLiveMount,
             VolumeGroupLiveMountConnection,
             VolumeGroupLiveMountEdge,
@@ -4453,6 +4455,7 @@ namespace RubrikSecurityCloud.Types
             isAzureStorageAccountNameAvailable,
             isCloudNativeFileRecoveryFeasible,
             isLoggedIntoRubrikSupportPortal,
+            isOrgServiceAccountDisabled,
             isSfdcReachable,
             issue,
             issues,
@@ -6711,6 +6714,8 @@ namespace RubrikSecurityCloud.Types
                     "O365SharepointList",
                     "O365Site",
                     "O365Teams",
+                    "OracleDatabase",
+                    "OracleDataGuardGroup",
                     "ShareFileset",
                     "VcdVapp",
                     "VsphereVm",
@@ -8754,6 +8759,7 @@ namespace RubrikSecurityCloud.Types
             isAzureStorageAccountNameAvailable,
             isCloudNativeFileRecoveryFeasible,
             isLoggedIntoRubrikSupportPortal,
+            isOrgServiceAccountDisabled,
             isSfdcReachable,
             isTotpAckNecessaryForCluster,
             isTotpMandatoryInTargetVersion,
@@ -15867,6 +15873,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "IsLoggedIntoRubrikSupportPortal",
                         gqlRootFieldName: "isLoggedIntoRubrikSupportPortal"
+                    )
+                },
+                {
+                    GqlRootFieldName.isOrgServiceAccountDisabled,
+                    new RscOp(
+                        cmdletName: "New-RscQueryServiceAccount",
+                        cmdletSwitchName: "IsOrgDisabled",
+                        gqlRootFieldName: "isOrgServiceAccountDisabled"
                     )
                 },
                 {
@@ -24637,6 +24651,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.isLoggedIntoRubrikSupportPortal
                 },
                 {
+                    "New-RscQueryServiceAccount -Op IsOrgDisabled",
+                    GqlRootFieldName.isOrgServiceAccountDisabled
+                },
+                {
                     "New-RscQueryMisc -Op IsSfdcReachable",
                     GqlRootFieldName.isSfdcReachable
                 },
@@ -28126,6 +28144,7 @@ namespace RubrikSecurityCloud.Types
                         "isAzureNativeManagedDiskSnapshotRestorable",
                         "isAzureNativeSqlDatabaseSnapshotPersistent",
                         "isAzureStorageAccountNameAvailable",
+                        "isOrgServiceAccountDisabled",
                         "isSfdcReachable",
                         "isTotpAckNecessaryForCluster",
                         "isTotpMandatoryInTargetVersion",
@@ -37695,6 +37714,7 @@ namespace RubrikSecurityCloud.Types
                 { "isAzureNativeManagedDiskSnapshotRestorable", "Boolean"},
                 { "isAzureNativeSqlDatabaseSnapshotPersistent", "Boolean"},
                 { "isAzureStorageAccountNameAvailable", "Boolean"},
+                { "isOrgServiceAccountDisabled", "Boolean"},
                 { "isSfdcReachable", "Boolean"},
                 { "isTotpAckNecessaryForCluster", "Boolean"},
                 { "isTotpMandatoryInTargetVersion", "Boolean"},
@@ -40660,6 +40680,7 @@ namespace RubrikSecurityCloud.Types
                     new List<string> {
                     "Create",
                     "Delete",
+                    "IsOrgDisabled",
                     "Rotate",
                     "ServiceAccount",
                     "Update",

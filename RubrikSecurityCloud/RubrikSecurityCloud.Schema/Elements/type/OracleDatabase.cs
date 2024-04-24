@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region OracleDatabase
  
-    public class OracleDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, OracleDataGuardGroupDescendantType, OracleDataGuardGroupLogicalChildType, OracleHostDescendantType, OracleHostLogicalChildType, OracleRacDescendantType, OracleRacLogicalChildType, OracleTopLevelDescendantType
+    public class OracleDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, OracleDataGuardGroupDescendantType, OracleDataGuardGroupLogicalChildType, OracleHostDescendantType, OracleHostLogicalChildType, OracleRacDescendantType, OracleRacLogicalChildType, OracleTopLevelDescendantType
     {
         #region members
 
