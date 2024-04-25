@@ -1065,7 +1065,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryMssqlAvailabilityGroup",
                 "($fid: UUID!)",
                 "MssqlAvailabilityGroup",
-                Query.MssqlAvailabilityGroup_ObjectFieldSpec,
+                Query.MssqlAvailabilityGroup,
                 Query.MssqlAvailabilityGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1085,7 +1085,7 @@ $query.Var.fid = $someString"
                 "QueryCdmMssqlLogShippingTarget",
                 "($fid: UUID!)",
                 "MssqlLogShippingTarget",
-                Query.CdmMssqlLogShippingTarget_ObjectFieldSpec,
+                Query.CdmMssqlLogShippingTarget,
                 Query.CdmMssqlLogShippingTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1113,7 +1113,7 @@ $query.Var.fid = $someString"
                 "QueryCdmMssqlLogShippingTargets",
                 "($first: Int,$after: String,$sortBy: MssqlLogShippingTargetSortByInput,$filters: [MssqlLogShippingTargetFilterInput!])",
                 "MssqlLogShippingTargetConnection",
-                Query.CdmMssqlLogShippingTargets_ObjectFieldSpec,
+                Query.CdmMssqlLogShippingTargets,
                 Query.CdmMssqlLogShippingTargetsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1163,7 +1163,7 @@ $query.Var.filters = @(
                 "QueryMssqlCompatibleInstances",
                 "($first: Int,$after: String,$input: GetCompatibleMssqlInstancesV1Input!,$sortBy: MssqlCompatibleInstancesSortByInput,$filters: [MssqlCompatibleInstancesFilterInput!])",
                 "MssqlInstanceSummaryListResponse",
-                Query.MssqlCompatibleInstances_ObjectFieldSpec,
+                Query.MssqlCompatibleInstances,
                 Query.MssqlCompatibleInstancesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1212,7 +1212,7 @@ $query.Var.filters = @(
                 "QueryMssqlDatabase",
                 "($fid: UUID!)",
                 "MssqlDatabase",
-                Query.MssqlDatabase_ObjectFieldSpec,
+                Query.MssqlDatabase,
                 Query.MssqlDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1240,7 +1240,7 @@ $query.Var.fid = $someString"
                 "QueryMssqlDatabaseLiveMounts",
                 "($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])",
                 "MssqlDatabaseLiveMountConnection",
-                Query.MssqlDatabaseLiveMounts_ObjectFieldSpec,
+                Query.MssqlDatabaseLiveMounts,
                 Query.MssqlDatabaseLiveMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1280,7 +1280,7 @@ $query.Var.filters = @(
                 "QueryMssqlDatabaseMissedRecoverableRanges",
                 "($input: GetMssqlDbMissedRecoverableRangesInput!)",
                 "MssqlMissedRecoverableRangeListResponse",
-                Query.MssqlDatabaseMissedRecoverableRanges_ObjectFieldSpec,
+                Query.MssqlDatabaseMissedRecoverableRanges,
                 Query.MssqlDatabaseMissedRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1307,7 +1307,7 @@ $query.Var.input = @{
                 "QueryMssqlDatabaseMissedSnapshots",
                 "($input: GetMissedMssqlDbSnapshotsInput!)",
                 "MissedSnapshotListResponse",
-                Query.MssqlDatabaseMissedSnapshots_ObjectFieldSpec,
+                Query.MssqlDatabaseMissedSnapshots,
                 Query.MssqlDatabaseMissedSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1334,7 +1334,7 @@ $query.Var.input = @{
                 "QueryMssqlDatabaseRestoreEstimate",
                 "($input: MssqlRestoreEstimateV1Input!)",
                 "MssqlRestoreEstimateResult",
-                Query.MssqlDatabaseRestoreEstimate_ObjectFieldSpec,
+                Query.MssqlDatabaseRestoreEstimate,
                 Query.MssqlDatabaseRestoreEstimateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1363,7 +1363,7 @@ $query.Var.input = @{
                 "QueryAllMssqlDatabaseRestoreFiles",
                 "($input: MssqlGetRestoreFilesV1Input!)",
                 "V1MssqlGetRestoreFilesV1Response",
-                Query.AllMssqlDatabaseRestoreFiles_ObjectFieldSpec,
+                Query.AllMssqlDatabaseRestoreFiles,
                 Query.AllMssqlDatabaseRestoreFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1402,7 +1402,7 @@ $query.Var.input = @{
                 "QueryMssqlDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MssqlDatabaseConnection",
-                Query.MssqlDatabases_ObjectFieldSpec,
+                Query.MssqlDatabases,
                 Query.MssqlDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1470,7 +1470,7 @@ $query.Var.filter = @(
                 "QueryMssqlDefaultProperties",
                 "($input: GetDefaultDbPropertiesV1Input!)",
                 "UpdateMssqlDefaultPropertiesReply",
-                Query.MssqlDefaultProperties_ObjectFieldSpec,
+                Query.MssqlDefaultProperties,
                 Query.MssqlDefaultPropertiesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1493,7 +1493,7 @@ $query.Var.input = @{
                 "QueryMssqlDefaultPropertiesOnCluster",
                 "($input: ClusterUuidWithMssqlObjectIdInput!)",
                 "MssqlDefaultPropertiesOnClusterReply",
-                Query.MssqlDefaultPropertiesOnCluster_ObjectFieldSpec,
+                Query.MssqlDefaultPropertiesOnCluster,
                 Query.MssqlDefaultPropertiesOnClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1518,7 +1518,7 @@ $query.Var.input = @{
                 "QueryMssqlInstance",
                 "($fid: UUID!)",
                 "MssqlInstance",
-                Query.MssqlInstance_ObjectFieldSpec,
+                Query.MssqlInstance,
                 Query.MssqlInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1538,7 +1538,7 @@ $query.Var.fid = $someString"
                 "QueryMssqlLogShippingTargets",
                 "($input: QueryLogShippingConfigurationsV2Input!)",
                 "MssqlLogShippingSummaryV2ListResponse",
-                Query.MssqlLogShippingTargets_ObjectFieldSpec,
+                Query.MssqlLogShippingTargets,
                 Query.MssqlLogShippingTargetsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1579,7 +1579,7 @@ $query.Var.input = @{
                 "QueryMssqlRecoverableRanges",
                 "($input: GetMssqlDbRecoverableRangesInput!)",
                 "MssqlRecoverableRangeListResponse",
-                Query.MssqlRecoverableRanges_ObjectFieldSpec,
+                Query.MssqlRecoverableRanges,
                 Query.MssqlRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1618,7 +1618,7 @@ $query.Var.input = @{
                 "QueryMssqlTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "MssqlTopLevelDescendantTypeConnection",
-                Query.MssqlTopLevelDescendants_ObjectFieldSpec,
+                Query.MssqlTopLevelDescendants,
                 Query.MssqlTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

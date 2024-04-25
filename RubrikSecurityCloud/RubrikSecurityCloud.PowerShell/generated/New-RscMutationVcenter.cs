@@ -767,7 +767,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateVsphereVcenter",
                 "($input: CreateVsphereVcenterInput!)",
                 "CreateVsphereVcenterReply",
-                Mutation.CreateVsphereVcenter_ObjectFieldSpec,
+                Mutation.CreateVsphereVcenter,
                 Mutation.CreateVsphereVcenterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -820,7 +820,7 @@ $query.Var.input = @{
                 "MutationVsphereDeleteVcenter",
                 "($input: VsphereDeleteVcenterInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereDeleteVcenter_ObjectFieldSpec,
+                Mutation.VsphereDeleteVcenter,
                 Mutation.VsphereDeleteVcenterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -843,7 +843,7 @@ $query.Var.input = @{
                 "MutationRefreshVsphereVcenter",
                 "($input: RefreshVsphereVcenterInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshVsphereVcenter_ObjectFieldSpec,
+                Mutation.RefreshVsphereVcenter,
                 Mutation.RefreshVsphereVcenterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -868,7 +868,7 @@ $query.Var.input = @{
                 "MutationUpdateVcenter",
                 "($input: UpdateVcenterInput!)",
                 "UpdateVcenterReply",
-                Mutation.UpdateVcenter_ObjectFieldSpec,
+                Mutation.UpdateVcenter,
                 Mutation.UpdateVcenterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1204,7 +1204,7 @@ $query.Var.input = @{
                 "MutationUpdateVcenterHotAddBandwidth",
                 "($input: UpdateVcenterHotAddBandwidthInput!)",
                 "RequestSuccess",
-                Mutation.UpdateVcenterHotAddBandwidth_ObjectFieldSpec,
+                Mutation.UpdateVcenterHotAddBandwidth,
                 Mutation.UpdateVcenterHotAddBandwidthFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1234,7 +1234,7 @@ $query.Var.input = @{
                 "MutationUpdateVcenterHotAddNetwork",
                 "($input: UpdateVcenterHotAddNetworkInput!)",
                 "RequestSuccess",
-                Mutation.UpdateVcenterHotAddNetwork_ObjectFieldSpec,
+                Mutation.UpdateVcenterHotAddNetwork,
                 Mutation.UpdateVcenterHotAddNetworkFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

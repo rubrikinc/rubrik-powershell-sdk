@@ -444,7 +444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryActiveDirectoryDomain",
                 "($fid: UUID!)",
                 "ActiveDirectoryDomain",
-                Query.ActiveDirectoryDomain_ObjectFieldSpec,
+                Query.ActiveDirectoryDomain,
                 Query.ActiveDirectoryDomainFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -464,7 +464,7 @@ $query.Var.fid = $someString"
                 "QueryActiveDirectoryDomainController",
                 "($fid: UUID!)",
                 "ActiveDirectoryDomainController",
-                Query.ActiveDirectoryDomainController_ObjectFieldSpec,
+                Query.ActiveDirectoryDomainController,
                 Query.ActiveDirectoryDomainControllerFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -494,7 +494,7 @@ $query.Var.fid = $someString"
                 "QueryActiveDirectoryDomainControllers",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ActiveDirectoryDomainControllerConnection",
-                Query.ActiveDirectoryDomainControllers_ObjectFieldSpec,
+                Query.ActiveDirectoryDomainControllers,
                 Query.ActiveDirectoryDomainControllersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -572,7 +572,7 @@ $query.Var.filter = @(
                 "QueryActiveDirectoryDomains",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ActiveDirectoryDomainConnection",
-                Query.ActiveDirectoryDomains_ObjectFieldSpec,
+                Query.ActiveDirectoryDomains,
                 Query.ActiveDirectoryDomainsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -654,7 +654,7 @@ $query.Var.filter = @(
                 "QueryActiveDirectorySearchSnapshots",
                 "($first: Int,$after: String,$id: String!,$snapshotAfterDate: DateTime,$snapshotBeforeDate: DateTime,$name: String!,$activeDirectoryObjectType: ActiveDirectoryObjectType)",
                 "ActiveDirectorySnappableSearchResponseConnection",
-                Query.ActiveDirectorySearchSnapshots_ObjectFieldSpec,
+                Query.ActiveDirectorySearchSnapshots,
                 Query.ActiveDirectorySearchSnapshotsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

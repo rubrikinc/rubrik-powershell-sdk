@@ -542,7 +542,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationExcludeAwsNativeEbsVolumesFromSnapshot",
                 "($input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!)",
                 "System.String",
-                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot_ObjectFieldSpec,
+                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot,
                 Mutation.ExcludeAwsNativeEbsVolumesFromSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -574,7 +574,7 @@ $query.Var.input = @{
                 "MutationStartAwsNativeAccountDisableJob",
                 "($input: StartAwsNativeAccountDisableJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartAwsNativeAccountDisableJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeAccountDisableJob,
                 Mutation.StartAwsNativeAccountDisableJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -601,7 +601,7 @@ $query.Var.input = @{
                 "MutationStartCreateAwsNativeEbsVolumeSnapshotsJob",
                 "($input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob,
                 Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -628,7 +628,7 @@ $query.Var.input = @{
                 "MutationStartAwsNativeEc2InstanceSnapshotsJob",
                 "($input: StartAwsNativeEc2InstanceSnapshotsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartAwsNativeEc2InstanceSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeEc2InstanceSnapshotsJob,
                 Mutation.StartAwsNativeEc2InstanceSnapshotsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -655,7 +655,7 @@ $query.Var.input = @{
                 "MutationStartExportAwsNativeEbsVolumeSnapshotJob",
                 "($input: StartExportAwsNativeEbsVolumeSnapshotJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartExportAwsNativeEbsVolumeSnapshotJob_ObjectFieldSpec,
+                Mutation.StartExportAwsNativeEbsVolumeSnapshotJob,
                 Mutation.StartExportAwsNativeEbsVolumeSnapshotJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -700,7 +700,7 @@ $query.Var.input = @{
                 "MutationStartAwsNativeRdsInstanceSnapshotsJob",
                 "($input: StartAwsNativeRdsInstanceSnapshotsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartAwsNativeRdsInstanceSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeRdsInstanceSnapshotsJob,
                 Mutation.StartAwsNativeRdsInstanceSnapshotsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -727,7 +727,7 @@ $query.Var.input = @{
                 "MutationStartRefreshAwsNativeAccountsJob",
                 "($input: StartRefreshAwsNativeAccountsJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartRefreshAwsNativeAccountsJob_ObjectFieldSpec,
+                Mutation.StartRefreshAwsNativeAccountsJob,
                 Mutation.StartRefreshAwsNativeAccountsJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -756,7 +756,7 @@ $query.Var.input = @{
                 "MutationStartRestoreAwsNativeEc2InstanceSnapshotJob",
                 "($input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob_ObjectFieldSpec,
+                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob,
                 Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

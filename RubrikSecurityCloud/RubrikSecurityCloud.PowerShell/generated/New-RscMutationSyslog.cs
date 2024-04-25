@@ -851,7 +851,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddSyslogExportRule",
                 "($input: AddSyslogExportRuleInput!)",
                 "AddSyslogExportRuleReply",
-                Mutation.AddSyslogExportRule_ObjectFieldSpec,
+                Mutation.AddSyslogExportRule,
                 Mutation.AddSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1054,7 +1054,7 @@ $query.Var.input = @{
                 "MutationDeleteSyslogExportRule",
                 "($input: DeleteSyslogExportRuleInput!)",
                 "System.String",
-                Mutation.DeleteSyslogExportRule_ObjectFieldSpec,
+                Mutation.DeleteSyslogExportRule,
                 Mutation.DeleteSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1079,7 +1079,7 @@ $query.Var.input = @{
                 "MutationTestSyslogExportRule",
                 "($input: TestSyslogExportRuleInput!)",
                 "TestSyslogExportRuleReply",
-                Mutation.TestSyslogExportRule_ObjectFieldSpec,
+                Mutation.TestSyslogExportRule,
                 Mutation.TestSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1282,7 +1282,7 @@ $query.Var.input = @{
                 "MutationUpdateSyslogExportRule",
                 "($input: UpdateSyslogExportRuleInput!)",
                 "UpdateSyslogExportRuleReply",
-                Mutation.UpdateSyslogExportRule_ObjectFieldSpec,
+                Mutation.UpdateSyslogExportRule,
                 Mutation.UpdateSyslogExportRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

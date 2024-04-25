@@ -389,7 +389,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryManagedVolumeInventoryStats",
                 "",
                 "ManagedVolumeInventoryStats",
-                Query.ManagedVolumeInventoryStats_ObjectFieldSpec,
+                Query.ManagedVolumeInventoryStats,
                 Query.ManagedVolumeInventoryStatsFieldSpec,
                 @""
             );
@@ -418,7 +418,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryManagedVolumeLiveMounts",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ManagedVolumeMountConnection",
-                Query.ManagedVolumeLiveMounts_ObjectFieldSpec,
+                Query.ManagedVolumeLiveMounts,
                 Query.ManagedVolumeLiveMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -486,7 +486,7 @@ $query.Var.filter = @(
                 "QueryManagedVolume",
                 "($fid: UUID!)",
                 "ManagedVolume",
-                Query.ManagedVolume_ObjectFieldSpec,
+                Query.ManagedVolume,
                 Query.ManagedVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -516,7 +516,7 @@ $query.Var.fid = $someString"
                 "QueryManagedVolumes",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ManagedVolumeConnection",
-                Query.ManagedVolumes_ObjectFieldSpec,
+                Query.ManagedVolumes,
                 Query.ManagedVolumesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

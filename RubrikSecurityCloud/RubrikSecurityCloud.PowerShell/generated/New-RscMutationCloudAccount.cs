@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationMapCloudAccountExocomputeAccount",
                 "($input: MapCloudAccountExocomputeAccountInput!)",
                 "MapCloudAccountExocomputeAccountReply",
-                Mutation.MapCloudAccountExocomputeAccount_ObjectFieldSpec,
+                Mutation.MapCloudAccountExocomputeAccount,
                 Mutation.MapCloudAccountExocomputeAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -258,7 +258,7 @@ $query.Var.input = @{
                 "MutationUnmapCloudAccountExocomputeAccount",
                 "($input: UnmapCloudAccountExocomputeAccountInput!)",
                 "UnmapCloudAccountExocomputeAccountReply",
-                Mutation.UnmapCloudAccountExocomputeAccount_ObjectFieldSpec,
+                Mutation.UnmapCloudAccountExocomputeAccount,
                 Mutation.UnmapCloudAccountExocomputeAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

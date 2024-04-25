@@ -647,7 +647,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAzureO365CheckNsgOutboundRules",
                 "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!)",
                 "AzureNetworkSecurityGroupResp",
-                Query.AzureO365CheckNsgOutboundRules_ObjectFieldSpec,
+                Query.AzureO365CheckNsgOutboundRules,
                 Query.AzureO365CheckNsgOutboundRulesFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -687,7 +687,7 @@ $query.Var.subnet_name = $someString"
                 "QueryAzureO365CheckNetworkSubnet",
                 "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)",
                 "AzureNetworkSubnetResp",
-                Query.AzureO365CheckNetworkSubnet_ObjectFieldSpec,
+                Query.AzureO365CheckNetworkSubnet,
                 Query.AzureO365CheckNetworkSubnetFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -719,7 +719,7 @@ $query.Var.strict_addr_check = $someBoolean"
                 "QueryAzureO365CheckResourceGroupName",
                 "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!)",
                 "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckResourceGroupName_ObjectFieldSpec,
+                Query.AzureO365CheckResourceGroupName,
                 Query.AzureO365CheckResourceGroupNameFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -751,7 +751,7 @@ $query.Var.groupName = $someString"
                 "QueryAzureO365CheckStorageAccountAccessibility",
                 "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!,$groupName: String!)",
                 "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckStorageAccountAccessibility_ObjectFieldSpec,
+                Query.AzureO365CheckStorageAccountAccessibility,
                 Query.AzureO365CheckStorageAccountAccessibilityFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -779,7 +779,7 @@ $query.Var.groupName = $someString"
                 "QueryAzureO365CheckStorageAccountName",
                 "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!)",
                 "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckStorageAccountName_ObjectFieldSpec,
+                Query.AzureO365CheckStorageAccountName,
                 Query.AzureO365CheckStorageAccountNameFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -805,7 +805,7 @@ $query.Var.storage_account_name = $someString"
                 "QueryAzureO365CheckSubscriptionQuota",
                 "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
                 "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckSubscriptionQuota_ObjectFieldSpec,
+                Query.AzureO365CheckSubscriptionQuota,
                 Query.AzureO365CheckSubscriptionQuotaFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -837,7 +837,7 @@ $query.Var.regionName = $someString"
                 "QueryAzureO365CheckVirtualNetworkName",
                 "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!,$vnet_name: String!)",
                 "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckVirtualNetworkName_ObjectFieldSpec,
+                Query.AzureO365CheckVirtualNetworkName,
                 Query.AzureO365CheckVirtualNetworkNameFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -864,7 +864,7 @@ $query.Var.vnet_name = $someString"
                 "QueryAzureO365Exocompute",
                 "($orgId: UUID!,$exocomputeClusterId: String!)",
                 "GetAzureO365ExocomputeResp",
-                Query.AzureO365Exocompute_ObjectFieldSpec,
+                Query.AzureO365Exocompute,
                 Query.AzureO365ExocomputeFieldSpec,
                 @"# REQUIRED
 $query.Var.orgId = $someString
@@ -885,7 +885,7 @@ $query.Var.exocomputeClusterId = $someString"
                 "QueryAzureO365GetAzureHostType",
                 "",
                 "GetAzureHostTypeResp",
-                Query.AzureO365GetAzureHostType_ObjectFieldSpec,
+                Query.AzureO365GetAzureHostType,
                 Query.AzureO365GetAzureHostTypeFieldSpec,
                 @""
             );
@@ -916,7 +916,7 @@ $query.Var.exocomputeClusterId = $someString"
                 "QueryAzureO365GetNetworkSubnetUnusedAddr",
                 "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)",
                 "AzureNetworkSubnetUnusedAddrResp",
-                Query.AzureO365GetNetworkSubnetUnusedAddr_ObjectFieldSpec,
+                Query.AzureO365GetNetworkSubnetUnusedAddr,
                 Query.AzureO365GetNetworkSubnetUnusedAddrFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString
@@ -947,7 +947,7 @@ $query.Var.strict_addr_check = $someBoolean"
                 "QueryAzureO365ValidateUserRoles",
                 "($tenantId: String!,$subscriptionId: UUID!)",
                 "AzureUserRoleResp",
-                Query.AzureO365ValidateUserRoles_ObjectFieldSpec,
+                Query.AzureO365ValidateUserRoles,
                 Query.AzureO365ValidateUserRolesFieldSpec,
                 @"# REQUIRED
 $query.Var.tenantId = $someString

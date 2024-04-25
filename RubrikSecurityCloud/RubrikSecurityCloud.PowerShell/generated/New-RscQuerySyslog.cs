@@ -175,7 +175,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuerySyslogExportRules",
                 "($input: GetSyslogExportRulesInput!)",
                 "SyslogExportRuleSummaryListResponse",
-                Query.SyslogExportRules_ObjectFieldSpec,
+                Query.SyslogExportRules,
                 Query.SyslogExportRulesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

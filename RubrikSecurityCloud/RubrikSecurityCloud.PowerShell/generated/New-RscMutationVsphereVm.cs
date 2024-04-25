@@ -2206,7 +2206,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationVsphereVmBatchExport",
                 "($input: VsphereVmBatchExportInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.VsphereVmBatchExport_ObjectFieldSpec,
+                Mutation.VsphereVmBatchExport,
                 Mutation.VsphereVmBatchExportFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2309,7 +2309,7 @@ $query.Var.input = @{
                 "MutationVsphereVmBatchExportV3",
                 "($input: VsphereVmBatchExportV3Input!)",
                 "BatchAsyncRequestStatus",
-                Mutation.VsphereVmBatchExportV3_ObjectFieldSpec,
+                Mutation.VsphereVmBatchExportV3,
                 Mutation.VsphereVmBatchExportV3FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2421,7 +2421,7 @@ $query.Var.input = @{
                 "MutationVsphereVmBatchInPlaceRecovery",
                 "($input: VsphereVmBatchInPlaceRecoveryInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.VsphereVmBatchInPlaceRecovery_ObjectFieldSpec,
+                Mutation.VsphereVmBatchInPlaceRecovery,
                 Mutation.VsphereVmBatchInPlaceRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2472,7 +2472,7 @@ $query.Var.input = @{
                 "MutationVsphereVmDeleteSnapshot",
                 "($input: VsphereVmDeleteSnapshotInput!)",
                 "System.String",
-                Mutation.VsphereVmDeleteSnapshot_ObjectFieldSpec,
+                Mutation.VsphereVmDeleteSnapshot,
                 Mutation.VsphereVmDeleteSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2497,7 +2497,7 @@ $query.Var.input = @{
                 "MutationVsphereVmDownloadSnapshot",
                 "($input: VsphereVmDownloadSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmDownloadSnapshot_ObjectFieldSpec,
+                Mutation.VsphereVmDownloadSnapshot,
                 Mutation.VsphereVmDownloadSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2520,7 +2520,7 @@ $query.Var.input = @{
                 "MutationVsphereVmDownloadSnapshotFiles",
                 "($input: VsphereVmDownloadSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmDownloadSnapshotFiles_ObjectFieldSpec,
+                Mutation.VsphereVmDownloadSnapshotFiles,
                 Mutation.VsphereVmDownloadSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2559,7 +2559,7 @@ $query.Var.input = @{
                 "MutationVsphereExcludeVmDisks",
                 "($input: [VsphereExcludeVmDisksInput!]!)",
                 "RequestSuccess",
-                Mutation.VsphereExcludeVmDisks_ObjectFieldSpec,
+                Mutation.VsphereExcludeVmDisks,
                 Mutation.VsphereExcludeVmDisksFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @(
@@ -2586,7 +2586,7 @@ $query.Var.input = @(
                 "MutationVsphereVmExportSnapshotV2",
                 "($input: VsphereVmExportSnapshotV2Input!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmExportSnapshotV2_ObjectFieldSpec,
+                Mutation.VsphereVmExportSnapshotV2,
                 Mutation.VsphereVmExportSnapshotV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2671,7 +2671,7 @@ $query.Var.input = @{
                 "MutationVsphereVmExportSnapshotV3",
                 "($input: VsphereVmExportSnapshotV3Input!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmExportSnapshotV3_ObjectFieldSpec,
+                Mutation.VsphereVmExportSnapshotV3,
                 Mutation.VsphereVmExportSnapshotV3FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2765,7 +2765,7 @@ $query.Var.input = @{
                 "MutationVsphereVmExportSnapshotWithDownloadFromCloud",
                 "($input: VsphereVmExportSnapshotWithDownloadFromCloudInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmExportSnapshotWithDownloadFromCloud_ObjectFieldSpec,
+                Mutation.VsphereVmExportSnapshotWithDownloadFromCloud,
                 Mutation.VsphereVmExportSnapshotWithDownloadFromCloudFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2850,7 +2850,7 @@ $query.Var.input = @{
                 "MutationVsphereVmInitiateBatchInstantRecovery",
                 "($input: VsphereVmInitiateBatchInstantRecoveryInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.VsphereVmInitiateBatchInstantRecovery_ObjectFieldSpec,
+                Mutation.VsphereVmInitiateBatchInstantRecovery,
                 Mutation.VsphereVmInitiateBatchInstantRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2974,7 +2974,7 @@ $query.Var.input = @{
                 "MutationVsphereVmInitiateBatchLiveMountV2",
                 "($input: VsphereVmInitiateBatchLiveMountV2Input!)",
                 "BatchAsyncRequestStatus",
-                Mutation.VsphereVmInitiateBatchLiveMountV2_ObjectFieldSpec,
+                Mutation.VsphereVmInitiateBatchLiveMountV2,
                 Mutation.VsphereVmInitiateBatchLiveMountV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3104,7 +3104,7 @@ $query.Var.input = @{
                 "MutationVsphereVmInitiateDiskMount",
                 "($input: VsphereVmInitiateDiskMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmInitiateDiskMount_ObjectFieldSpec,
+                Mutation.VsphereVmInitiateDiskMount,
                 Mutation.VsphereVmInitiateDiskMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3138,7 +3138,7 @@ $query.Var.input = @{
                 "MutationVsphereVmInitiateInPlaceRecovery",
                 "($input: VsphereVmInitiateInPlaceRecoveryInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmInitiateInPlaceRecovery_ObjectFieldSpec,
+                Mutation.VsphereVmInitiateInPlaceRecovery,
                 Mutation.VsphereVmInitiateInPlaceRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3173,7 +3173,7 @@ $query.Var.input = @{
                 "MutationVsphereVmInitiateInstantRecoveryV2",
                 "($input: VsphereVmInitiateInstantRecoveryV2Input!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmInitiateInstantRecoveryV2_ObjectFieldSpec,
+                Mutation.VsphereVmInitiateInstantRecoveryV2,
                 Mutation.VsphereVmInitiateInstantRecoveryV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3281,7 +3281,7 @@ $query.Var.input = @{
                 "MutationVsphereVmInitiateLiveMountV2",
                 "($input: VsphereVmInitiateLiveMountV2Input!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmInitiateLiveMountV2_ObjectFieldSpec,
+                Mutation.VsphereVmInitiateLiveMountV2,
                 Mutation.VsphereVmInitiateLiveMountV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3393,7 +3393,7 @@ $query.Var.input = @{
                 "MutationVsphereVmListEsxiDatastores",
                 "($input: VsphereVmListEsxiDatastoresInput!)",
                 "VsphereVmListEsxiDatastoresReply",
-                Mutation.VsphereVmListEsxiDatastores_ObjectFieldSpec,
+                Mutation.VsphereVmListEsxiDatastores,
                 Mutation.VsphereVmListEsxiDatastoresFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3425,7 +3425,7 @@ $query.Var.input = @{
                 "MutationVsphereVmMountRelocate",
                 "($input: VsphereVmMountRelocateInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmMountRelocate_ObjectFieldSpec,
+                Mutation.VsphereVmMountRelocate,
                 Mutation.VsphereVmMountRelocateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3453,7 +3453,7 @@ $query.Var.input = @{
                 "MutationVsphereVmMountRelocateV2",
                 "($input: VsphereVmMountRelocateV2Input!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmMountRelocateV2_ObjectFieldSpec,
+                Mutation.VsphereVmMountRelocateV2,
                 Mutation.VsphereVmMountRelocateV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3505,7 +3505,7 @@ $query.Var.input = @{
                 "MutationVsphereVmPowerOnOffLiveMount",
                 "($input: VsphereVmPowerOnOffLiveMountInput!)",
                 "VsphereVmPowerOnOffLiveMountReply",
-                Mutation.VsphereVmPowerOnOffLiveMount_ObjectFieldSpec,
+                Mutation.VsphereVmPowerOnOffLiveMount,
                 Mutation.VsphereVmPowerOnOffLiveMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3535,7 +3535,7 @@ $query.Var.input = @{
                 "MutationVsphereVmRecoverFiles",
                 "($input: VsphereVmRecoverFilesInput!)",
                 "VsphereAsyncRequestStatus",
-                Mutation.VsphereVmRecoverFiles_ObjectFieldSpec,
+                Mutation.VsphereVmRecoverFiles,
                 Mutation.VsphereVmRecoverFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3590,7 +3590,7 @@ $query.Var.input = @{
                 "MutationVsphereVmRecoverFilesNew",
                 "($input: VsphereVmRecoverFilesNewInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereVmRecoverFilesNew_ObjectFieldSpec,
+                Mutation.VsphereVmRecoverFilesNew,
                 Mutation.VsphereVmRecoverFilesNewFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3661,7 +3661,7 @@ $query.Var.input = @{
                 "MutationVsphereVmRegisterAgent",
                 "($input: VsphereVmRegisterAgentInput!)",
                 "RequestSuccess",
-                Mutation.VsphereVmRegisterAgent_ObjectFieldSpec,
+                Mutation.VsphereVmRegisterAgent,
                 Mutation.VsphereVmRegisterAgentFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -3686,7 +3686,7 @@ $query.Var.input = @{
                 "MutationUpdateVsphereVm",
                 "($input: UpdateVsphereVmInput!)",
                 "RequestSuccess",
-                Mutation.UpdateVsphereVm_ObjectFieldSpec,
+                Mutation.UpdateVsphereVm,
                 Mutation.UpdateVsphereVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

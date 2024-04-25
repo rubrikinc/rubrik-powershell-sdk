@@ -1462,7 +1462,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryVsphereComputeCluster",
                 "($fid: UUID!)",
                 "VsphereComputeCluster",
-                Query.VsphereComputeCluster_ObjectFieldSpec,
+                Query.VsphereComputeCluster,
                 Query.VsphereComputeClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1492,7 +1492,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereComputeClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereComputeClusterConnection",
-                Query.VsphereComputeClusters_ObjectFieldSpec,
+                Query.VsphereComputeClusters,
                 Query.VsphereComputeClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1560,7 +1560,7 @@ $query.Var.filter = @(
                 "QueryVsphereDatacenter",
                 "($fid: UUID!)",
                 "VsphereDatacenter",
-                Query.VsphereDatacenter_ObjectFieldSpec,
+                Query.VsphereDatacenter,
                 Query.VsphereDatacenterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1580,7 +1580,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereDatastore",
                 "($fid: UUID!)",
                 "VsphereDatastore",
-                Query.VsphereDatastore_ObjectFieldSpec,
+                Query.VsphereDatastore,
                 Query.VsphereDatastoreFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1600,7 +1600,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereDatastoreCluster",
                 "($fid: UUID!)",
                 "VsphereDatastoreCluster",
-                Query.VsphereDatastoreCluster_ObjectFieldSpec,
+                Query.VsphereDatastoreCluster,
                 Query.VsphereDatastoreClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1630,7 +1630,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereDatastoreClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereDatastoreClusterConnection",
-                Query.VsphereDatastoreClusters_ObjectFieldSpec,
+                Query.VsphereDatastoreClusters,
                 Query.VsphereDatastoreClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1708,7 +1708,7 @@ $query.Var.filter = @(
                 "QueryVsphereDatastoreConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereDatastoreConnection",
-                Query.VsphereDatastoreConnection_ObjectFieldSpec,
+                Query.VsphereDatastoreConnection,
                 Query.VsphereDatastoreConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1776,7 +1776,7 @@ $query.Var.filter = @(
                 "QueryVsphereFolder",
                 "($fid: UUID!)",
                 "VsphereFolder",
-                Query.VsphereFolder_ObjectFieldSpec,
+                Query.VsphereFolder,
                 Query.VsphereFolderFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1806,7 +1806,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereFolders",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereFolderConnection",
-                Query.VsphereFolders_ObjectFieldSpec,
+                Query.VsphereFolders,
                 Query.VsphereFoldersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1874,7 +1874,7 @@ $query.Var.filter = @(
                 "QueryVsphereHost",
                 "($fid: UUID!)",
                 "VsphereHost",
-                Query.VsphereHost_ObjectFieldSpec,
+                Query.VsphereHost,
                 Query.VsphereHostFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1894,7 +1894,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereHostDetails",
                 "($input: GetVmwareHostInput!)",
                 "VmwareHostDetail",
-                Query.VsphereHostDetails_ObjectFieldSpec,
+                Query.VsphereHostDetails,
                 Query.VsphereHostDetailsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1927,7 +1927,7 @@ $query.Var.input = @{
                 "QueryVsphereHostConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereHostConnection",
-                Query.VsphereHostConnection_ObjectFieldSpec,
+                Query.VsphereHostConnection,
                 Query.VsphereHostConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1995,7 +1995,7 @@ $query.Var.filter = @(
                 "QueryVsphereHostsByFids",
                 "($fids: [UUID!]!)",
                 "List<VsphereHost>",
-                Query.VsphereHostsByFids_ObjectFieldSpec,
+                Query.VsphereHostsByFids,
                 Query.VsphereHostsByFidsFieldSpec,
                 @"# REQUIRED
 $query.Var.fids = @(
@@ -2025,7 +2025,7 @@ $query.Var.fids = @(
                 "QueryVsphereLiveMounts",
                 "($first: Int,$after: String,$filter: [VsphereLiveMountFilterInput!],$sortBy: VsphereLiveMountSortBy)",
                 "VsphereLiveMountConnection",
-                Query.VsphereLiveMounts_ObjectFieldSpec,
+                Query.VsphereLiveMounts,
                 Query.VsphereLiveMountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2065,7 +2065,7 @@ $query.Var.sortBy = @{
                 "QueryVsphereMount",
                 "($fid: UUID!)",
                 "VsphereMount",
-                Query.VsphereMount_ObjectFieldSpec,
+                Query.VsphereMount,
                 Query.VsphereMountFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2095,7 +2095,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereMountConnection",
                 "($first: Int,$after: String,$filter: VSphereMountFilter,$sortBy: VsphereMountSortBy,$sortOrder: SortOrder)",
                 "VsphereMountConnection",
-                Query.VsphereMountConnection_ObjectFieldSpec,
+                Query.VsphereMountConnection,
                 Query.VsphereMountConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2136,7 +2136,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 "QueryVsphereNetwork",
                 "($fid: UUID!)",
                 "VsphereNetwork",
-                Query.VsphereNetwork_ObjectFieldSpec,
+                Query.VsphereNetwork,
                 Query.VsphereNetworkFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2156,7 +2156,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereResourcePool",
                 "($fid: UUID!)",
                 "VsphereResourcePool",
-                Query.VsphereResourcePool_ObjectFieldSpec,
+                Query.VsphereResourcePool,
                 Query.VsphereResourcePoolFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2186,7 +2186,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereRootRecoveryHierarchy",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "CdmHierarchyObjectConnection",
-                Query.VsphereRootRecoveryHierarchy_ObjectFieldSpec,
+                Query.VsphereRootRecoveryHierarchy,
                 Query.VsphereRootRecoveryHierarchyFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2254,7 +2254,7 @@ $query.Var.filter = @(
                 "QueryVsphereTag",
                 "($fid: UUID!)",
                 "VsphereTag",
-                Query.VsphereTag_ObjectFieldSpec,
+                Query.VsphereTag,
                 Query.VsphereTagFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2274,7 +2274,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereTagCategory",
                 "($fid: UUID!)",
                 "VsphereTagCategory",
-                Query.VsphereTagCategory_ObjectFieldSpec,
+                Query.VsphereTagCategory,
                 Query.VsphereTagCategoryFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -2306,7 +2306,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereTopLevelDescendantsConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "CdmHierarchyObjectConnection",
-                Query.VsphereTopLevelDescendantsConnection_ObjectFieldSpec,
+                Query.VsphereTopLevelDescendantsConnection,
                 Query.VsphereTopLevelDescendantsConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2378,7 +2378,7 @@ $query.Var.filter = @(
                 "QueryVsphereVmwareCdpLiveInfo",
                 "($ids: [String!]!)",
                 "BatchVmwareCdpLiveInfo",
-                Query.VsphereVmwareCdpLiveInfo_ObjectFieldSpec,
+                Query.VsphereVmwareCdpLiveInfo,
                 Query.VsphereVmwareCdpLiveInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.ids = @(

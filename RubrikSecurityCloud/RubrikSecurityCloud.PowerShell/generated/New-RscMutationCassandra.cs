@@ -553,7 +553,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkDeleteCassandraSources",
                 "($input: BulkDeleteMosaicSourcesInput!)",
                 "MosaicAsyncResponse",
-                Mutation.BulkDeleteCassandraSources_ObjectFieldSpec,
+                Mutation.BulkDeleteCassandraSources,
                 Mutation.BulkDeleteCassandraSourcesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -587,7 +587,7 @@ $query.Var.input = @{
                 "MutationCreateCassandraSource",
                 "($input: AddMosaicSourceInput!)",
                 "MosaicAsyncResponse",
-                Mutation.CreateCassandraSource_ObjectFieldSpec,
+                Mutation.CreateCassandraSource,
                 Mutation.CreateCassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -675,7 +675,7 @@ $query.Var.input = @{
                 "MutationDeleteCassandraSource",
                 "($input: DeleteMosaicSourceInput!)",
                 "MosaicAsyncResponse",
-                Mutation.DeleteCassandraSource_ObjectFieldSpec,
+                Mutation.DeleteCassandraSource,
                 Mutation.DeleteCassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -702,7 +702,7 @@ $query.Var.input = @{
                 "MutationRecoverCassandraSource",
                 "($input: MosaicRestoreDataInput!)",
                 "MosaicAsyncResponse",
-                Mutation.RecoverCassandraSource_ObjectFieldSpec,
+                Mutation.RecoverCassandraSource,
                 Mutation.RecoverCassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -782,7 +782,7 @@ $query.Var.input = @{
                 "MutationUpdateCassandraSource",
                 "($input: ModifyMosaicSourceInput!)",
                 "MosaicAsyncResponse",
-                Mutation.UpdateCassandraSource_ObjectFieldSpec,
+                Mutation.UpdateCassandraSource,
                 Mutation.UpdateCassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

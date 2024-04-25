@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationApproveRcvPrivateEndpoint",
                 "($input: ApproveRcvPrivateEndpointInput!)",
                 "ApproveRcvPrivateEndpointReply",
-                Mutation.ApproveRcvPrivateEndpoint_ObjectFieldSpec,
+                Mutation.ApproveRcvPrivateEndpoint,
                 Mutation.ApproveRcvPrivateEndpointFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -380,7 +380,7 @@ $query.Var.input = @{
                 "MutationCreateRcvLocationsFromTemplate",
                 "($input: CreateRcvLocationsFromTemplateInput!)",
                 "List<Target>",
-                Mutation.CreateRcvLocationsFromTemplate_ObjectFieldSpec,
+                Mutation.CreateRcvLocationsFromTemplate,
                 Mutation.CreateRcvLocationsFromTemplateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -428,7 +428,7 @@ $query.Var.input = @{
                 "MutationCreateRcvPrivateEndpointApprovalRequest",
                 "($input: CreateRcvPrivateEndpointApprovalRequestInput!)",
                 "CreateRcvPrivateEndpointApprovalRequestReply",
-                Mutation.CreateRcvPrivateEndpointApprovalRequest_ObjectFieldSpec,
+                Mutation.CreateRcvPrivateEndpointApprovalRequest,
                 Mutation.CreateRcvPrivateEndpointApprovalRequestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -453,7 +453,7 @@ $query.Var.input = @{
                 "MutationUpdateRcvTarget",
                 "($input: UpdateRcvTargetInput!)",
                 "Target",
-                Mutation.UpdateRcvTarget_ObjectFieldSpec,
+                Mutation.UpdateRcvTarget,
                 Mutation.UpdateRcvTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

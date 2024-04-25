@@ -1387,7 +1387,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllAzureNativeAvailabilitySetsByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$resourceGroupName: String!,$region: AzureNativeRegion!)",
                 "List<AzureNativeAvailabilitySet>",
-                Query.AllAzureNativeAvailabilitySetsByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeAvailabilitySetsByRegionFromAzure,
                 Query.AllAzureNativeAvailabilitySetsByRegionFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -1419,7 +1419,7 @@ $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecur
                 "QueryDoesAzureNativeResourceGroupExist",
                 "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$resourceGroupName: String!,$feature: CloudAccountFeature!)",
                 "System.Boolean",
-                Query.DoesAzureNativeResourceGroupExist_ObjectFieldSpec,
+                Query.DoesAzureNativeResourceGroupExist,
                 Query.DoesAzureNativeResourceGroupExistFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -1446,7 +1446,7 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
                 "QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
                 "List<AzureNativeExportCompatibleDiskTypes>",
-                Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
                 Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -1470,7 +1470,7 @@ $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecur
                 "QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!,$vmSnapshotId: UUID!)",
                 "List<AzureNativeExportCompatibleVmSizes>",
-                Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure,
                 Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -1495,7 +1495,7 @@ $query.Var.vmSnapshotId = $someString"
                 "QueryIsAzureNativeManagedDiskSnapshotRestorable",
                 "($azureSubscriptionRubrikId: UUID!,$diskSnapshotId: UUID!)",
                 "System.Boolean",
-                Query.IsAzureNativeManagedDiskSnapshotRestorable_ObjectFieldSpec,
+                Query.IsAzureNativeManagedDiskSnapshotRestorable,
                 Query.IsAzureNativeManagedDiskSnapshotRestorableFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -1517,7 +1517,7 @@ $query.Var.diskSnapshotId = $someString"
                 "QueryIsAzureNativeSqlDatabaseSnapshotPersistent",
                 "($snapshotId: UUID!)",
                 "System.Boolean",
-                Query.IsAzureNativeSqlDatabaseSnapshotPersistent_ObjectFieldSpec,
+                Query.IsAzureNativeSqlDatabaseSnapshotPersistent,
                 Query.IsAzureNativeSqlDatabaseSnapshotPersistentFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString"
@@ -1537,7 +1537,7 @@ $query.Var.snapshotId = $someString"
                 "QueryAzureNativeManagedDisk",
                 "($azureManagedDiskRubrikId: UUID!)",
                 "AzureNativeManagedDisk",
-                Query.AzureNativeManagedDisk_ObjectFieldSpec,
+                Query.AzureNativeManagedDisk,
                 Query.AzureNativeManagedDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.azureManagedDiskRubrikId = $someString"
@@ -1571,7 +1571,7 @@ $query.Var.azureManagedDiskRubrikId = $someString"
                 "QueryAzureNativeManagedDisks",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: AzureNativeDiskFilters)",
                 "AzureNativeManagedDiskConnection",
-                Query.AzureNativeManagedDisks_ObjectFieldSpec,
+                Query.AzureNativeManagedDisks,
                 Query.AzureNativeManagedDisksFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1682,7 +1682,7 @@ $query.Var.diskFilters = @{
                 "QueryAzureNativeResourceGroup",
                 "($resourceGroupId: UUID!)",
                 "AzureNativeResourceGroup",
-                Query.AzureNativeResourceGroup_ObjectFieldSpec,
+                Query.AzureNativeResourceGroup,
                 Query.AzureNativeResourceGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.resourceGroupId = $someString"
@@ -1720,7 +1720,7 @@ $query.Var.resourceGroupId = $someString"
                 "QueryAzureNativeResourceGroups",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeCommonResourceGroupSortFields,$sortOrder: SortOrder,$commonResourceGroupFilters: AzureNativeCommonResourceGroupFilters,$protectedObjectTypes: [WorkloadLevelHierarchy!],$azureNativeProtectionFeatures: [AzureNativeProtectionFeature!])",
                 "AzureNativeResourceGroupConnection",
-                Query.AzureNativeResourceGroups_ObjectFieldSpec,
+                Query.AzureNativeResourceGroups,
                 Query.AzureNativeResourceGroupsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1787,7 +1787,7 @@ $query.Var.azureNativeProtectionFeatures = @(
                 "QueryAllAzureNativeResourceGroupsInfoIfExist",
                 "($input: AzureGetResourceGroupsInfoIfExistInput!)",
                 "List<AzureResourceGroupInfo>",
-                Query.AllAzureNativeResourceGroupsInfoIfExist_ObjectFieldSpec,
+                Query.AllAzureNativeResourceGroupsInfoIfExist,
                 Query.AllAzureNativeResourceGroupsInfoIfExistFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1818,7 +1818,7 @@ $query.Var.input = @{
                 "QueryAzureNativeRoot",
                 "",
                 "AzureNativeRoot",
-                Query.AzureNativeRoot_ObjectFieldSpec,
+                Query.AzureNativeRoot,
                 Query.AzureNativeRootFieldSpec,
                 @""
             );
@@ -1838,7 +1838,7 @@ $query.Var.input = @{
                 "QueryAllAzureNativeSecurityGroupsByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
                 "List<AzureNativeSecurityGroup>",
-                Query.AllAzureNativeSecurityGroupsByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeSecurityGroupsByRegionFromAzure,
                 Query.AllAzureNativeSecurityGroupsByRegionFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -1860,7 +1860,7 @@ $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecur
                 "QueryAllAzureNativeStorageAccountsFromAzure",
                 "($azureSubscriptionRubrikId: UUID!)",
                 "List<AzureNativeStorageAccount>",
-                Query.AllAzureNativeStorageAccountsFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeStorageAccountsFromAzure,
                 Query.AllAzureNativeStorageAccountsFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString"
@@ -1881,7 +1881,7 @@ $query.Var.azureSubscriptionRubrikId = $someString"
                 "QueryAllAzureNativeSubnetsByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
                 "List<AzureNativeSubnet>",
-                Query.AllAzureNativeSubnetsByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeSubnetsByRegionFromAzure,
                 Query.AllAzureNativeSubnetsByRegionFromAzureFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
@@ -1903,7 +1903,7 @@ $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecur
                 "QueryAzureNativeSubscription",
                 "($azureSubscriptionRubrikId: UUID!)",
                 "AzureNativeSubscription",
-                Query.AzureNativeSubscription_ObjectFieldSpec,
+                Query.AzureNativeSubscription,
                 Query.AzureNativeSubscriptionFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString"
@@ -1943,7 +1943,7 @@ $query.Var.azureSubscriptionRubrikId = $someString"
                 "QueryAzureNativeSubscriptions",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeSubscriptionSortFields,$sortOrder: SortOrder,$subscriptionFilters: AzureNativeSubscriptionFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$azureNativeProtectionFeature: AzureNativeProtectionFeature)",
                 "AzureNativeSubscriptionConnection",
-                Query.AzureNativeSubscriptions_ObjectFieldSpec,
+                Query.AzureNativeSubscriptions,
                 Query.AzureNativeSubscriptionsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1995,7 +1995,7 @@ $query.Var.azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Ca
                 "QueryValidateAzureNativeSqlDatabaseDbNameForExport",
                 "($azureSqlDatabaseName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
                 "ValidateAzureNativeSqlDatabaseDbNameForExportReply",
-                Query.ValidateAzureNativeSqlDatabaseDbNameForExport_ObjectFieldSpec,
+                Query.ValidateAzureNativeSqlDatabaseDbNameForExport,
                 Query.ValidateAzureNativeSqlDatabaseDbNameForExportFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSqlDatabaseName = $someString
@@ -2018,7 +2018,7 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
                 "QueryValidateAzureNativeSqlManagedInstanceDbNameForExport",
                 "($azureSqlDatabaseName: String!,$azureSqlManagedInstanceServerRubrikId: UUID!)",
                 "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply",
-                Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport_ObjectFieldSpec,
+                Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport,
                 Query.ValidateAzureNativeSqlManagedInstanceDbNameForExportFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSqlDatabaseName = $someString
@@ -2040,7 +2040,7 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
                 "QueryAzureNativeVirtualMachine",
                 "($azureVirtualMachineRubrikId: UUID!)",
                 "AzureNativeVirtualMachine",
-                Query.AzureNativeVirtualMachine_ObjectFieldSpec,
+                Query.AzureNativeVirtualMachine,
                 Query.AzureNativeVirtualMachineFieldSpec,
                 @"# REQUIRED
 $query.Var.azureVirtualMachineRubrikId = $someString"
@@ -2060,7 +2060,7 @@ $query.Var.azureVirtualMachineRubrikId = $someString"
                 "QueryAllAzureNativeVirtualMachineSizes",
                 "($azureSubscriptionRubrikId: UUID)",
                 "List<System.String>",
-                Query.AllAzureNativeVirtualMachineSizes_ObjectFieldSpec,
+                Query.AllAzureNativeVirtualMachineSizes,
                 Query.AllAzureNativeVirtualMachineSizesFieldSpec,
                 @"# OPTIONAL
 $query.Var.azureSubscriptionRubrikId = $someString"
@@ -2096,7 +2096,7 @@ $query.Var.azureSubscriptionRubrikId = $someString"
                 "QueryAzureNativeVirtualMachines",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeVirtualMachineSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$virtualMachineFilters: AzureNativeVirtualMachineFilters)",
                 "AzureNativeVirtualMachineConnection",
-                Query.AzureNativeVirtualMachines_ObjectFieldSpec,
+                Query.AzureNativeVirtualMachines,
                 Query.AzureNativeVirtualMachinesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -2221,7 +2221,7 @@ $query.Var.virtualMachineFilters = @{
                 "QueryAllAzureNativeVirtualNetworks",
                 "($azureSubscriptionRubrikId: UUID)",
                 "List<AzureNativeVirtualNetwork>",
-                Query.AllAzureNativeVirtualNetworks_ObjectFieldSpec,
+                Query.AllAzureNativeVirtualNetworks,
                 Query.AllAzureNativeVirtualNetworksFieldSpec,
                 @"# OPTIONAL
 $query.Var.azureSubscriptionRubrikId = $someString"

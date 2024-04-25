@@ -346,7 +346,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkUpdateExchangeDag",
                 "($input: BulkUpdateExchangeDagInput!)",
                 "V1BulkUpdateExchangeDagResponse",
-                Mutation.BulkUpdateExchangeDag_ObjectFieldSpec,
+                Mutation.BulkUpdateExchangeDag,
                 Mutation.BulkUpdateExchangeDagFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -381,7 +381,7 @@ $query.Var.input = @{
                 "MutationCreateExchangeMount",
                 "($input: CreateExchangeSnapshotMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateExchangeMount_ObjectFieldSpec,
+                Mutation.CreateExchangeMount,
                 Mutation.CreateExchangeMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -419,7 +419,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandExchangeBackup",
                 "($input: CreateOnDemandExchangeDatabaseBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandExchangeBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandExchangeBackup,
                 Mutation.CreateOnDemandExchangeBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -452,7 +452,7 @@ $query.Var.input = @{
                 "MutationDeleteExchangeSnapshotMount",
                 "($input: DeleteExchangeSnapshotMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteExchangeSnapshotMount_ObjectFieldSpec,
+                Mutation.DeleteExchangeSnapshotMount,
                 Mutation.DeleteExchangeSnapshotMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

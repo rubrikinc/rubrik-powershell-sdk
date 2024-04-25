@@ -603,7 +603,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryGcpNativeDisk",
                 "($fid: UUID!)",
                 "GcpNativeDisk",
-                Query.GcpNativeDisk_ObjectFieldSpec,
+                Query.GcpNativeDisk,
                 Query.GcpNativeDiskFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -637,7 +637,7 @@ $query.Var.fid = $someString"
                 "QueryGcpNativeDisks",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GcpNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: GcpNativeDiskFilters)",
                 "GcpNativeDiskConnection",
-                Query.GcpNativeDisks_ObjectFieldSpec,
+                Query.GcpNativeDisks,
                 Query.GcpNativeDisksFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -729,7 +729,7 @@ $query.Var.diskFilters = @{
                 "QueryGcpNativeGceInstance",
                 "($fid: UUID!)",
                 "GcpNativeGceInstance",
-                Query.GcpNativeGceInstance_ObjectFieldSpec,
+                Query.GcpNativeGceInstance,
                 Query.GcpNativeGceInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -763,7 +763,7 @@ $query.Var.fid = $someString"
                 "QueryGcpNativeGceInstances",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GcpNativeGceInstanceSortFields,$sortOrder: SortOrder,$gceInstanceFilters: GcpNativeGceInstanceFilters)",
                 "GcpNativeGceInstanceConnection",
-                Query.GcpNativeGceInstances_ObjectFieldSpec,
+                Query.GcpNativeGceInstances,
                 Query.GcpNativeGceInstancesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -862,7 +862,7 @@ $query.Var.gceInstanceFilters = @{
                 "QueryGcpNativeProject",
                 "($fid: UUID!)",
                 "GcpNativeProject",
-                Query.GcpNativeProject_ObjectFieldSpec,
+                Query.GcpNativeProject,
                 Query.GcpNativeProjectFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -900,7 +900,7 @@ $query.Var.fid = $someString"
                 "QueryGcpNativeProjects",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GcpNativeProjectSortFields,$sortOrder: SortOrder,$projectFilters: GcpNativeProjectFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy)",
                 "GcpNativeProjectConnection",
-                Query.GcpNativeProjects_ObjectFieldSpec,
+                Query.GcpNativeProjects,
                 Query.GcpNativeProjectsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -954,7 +954,7 @@ $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetVal
                 "QueryGcpNativeStoredDiskLocations",
                 "($projectId: UUID)",
                 "ListStoredDiskLocationsReply",
-                Query.GcpNativeStoredDiskLocations_ObjectFieldSpec,
+                Query.GcpNativeStoredDiskLocations,
                 Query.GcpNativeStoredDiskLocationsFieldSpec,
                 @"# OPTIONAL
 $query.Var.projectId = $someString"

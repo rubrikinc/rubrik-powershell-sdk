@@ -641,7 +641,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryMongodbBulkRecoverableRange",
                 "($input: MosaicBulkRecoveryRangeInput!)",
                 "MosaicRecoveryRangeResponse",
-                Query.MongodbBulkRecoverableRange_ObjectFieldSpec,
+                Query.MongodbBulkRecoverableRange,
                 Query.MongodbBulkRecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -685,7 +685,7 @@ $query.Var.input = @{
                 "QueryMongodbCollection",
                 "($fid: UUID!)",
                 "MongodbCollection",
-                Query.MongodbCollection_ObjectFieldSpec,
+                Query.MongodbCollection,
                 Query.MongodbCollectionFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -705,7 +705,7 @@ $query.Var.fid = $someString"
                 "QueryMongodbCollectionRecoverableRange",
                 "($input: GetMosaicRecoverableRangeInput!)",
                 "GetMosaicRecoverableRangeResponse",
-                Query.MongodbCollectionRecoverableRange_ObjectFieldSpec,
+                Query.MongodbCollectionRecoverableRange,
                 Query.MongodbCollectionRecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -749,7 +749,7 @@ $query.Var.input = @{
                 "QueryMongodbCollections",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MongodbCollectionConnection",
-                Query.MongodbCollections_ObjectFieldSpec,
+                Query.MongodbCollections,
                 Query.MongodbCollectionsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -817,7 +817,7 @@ $query.Var.filter = @(
                 "QueryMongodbDatabase",
                 "($fid: UUID!)",
                 "MongodbDatabase",
-                Query.MongodbDatabase_ObjectFieldSpec,
+                Query.MongodbDatabase,
                 Query.MongodbDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -847,7 +847,7 @@ $query.Var.fid = $someString"
                 "QueryMongodbDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MongodbDatabaseConnection",
-                Query.MongodbDatabases_ObjectFieldSpec,
+                Query.MongodbDatabases,
                 Query.MongodbDatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -915,7 +915,7 @@ $query.Var.filter = @(
                 "QueryMongodbSource",
                 "($fid: UUID!)",
                 "MongodbSource",
-                Query.MongodbSource_ObjectFieldSpec,
+                Query.MongodbSource,
                 Query.MongodbSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -945,7 +945,7 @@ $query.Var.fid = $someString"
                 "QueryMongodbSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MongodbSourceConnection",
-                Query.MongodbSources_ObjectFieldSpec,
+                Query.MongodbSources,
                 Query.MongodbSourcesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

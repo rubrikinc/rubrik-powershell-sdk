@@ -1136,7 +1136,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBatchQuarantineSnapshot",
                 "($input: BatchQuarantineSnapshotInput!)",
                 "BatchQuarantineSnapshotReply",
-                Mutation.BatchQuarantineSnapshot_ObjectFieldSpec,
+                Mutation.BatchQuarantineSnapshot,
                 Mutation.BatchQuarantineSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1171,7 +1171,7 @@ $query.Var.input = @{
                 "MutationBatchReleaseFromQuarantineSnapshot",
                 "($input: BatchReleaseFromQuarantineSnapshotInput!)",
                 "BatchReleaseFromQuarantineSnapshotReply",
-                Mutation.BatchReleaseFromQuarantineSnapshot_ObjectFieldSpec,
+                Mutation.BatchReleaseFromQuarantineSnapshot,
                 Mutation.BatchReleaseFromQuarantineSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1206,7 +1206,7 @@ $query.Var.input = @{
                 "MutationBulkTierExistingSnapshots",
                 "($input: BulkTierExistingSnapshotsInput!)",
                 "AsyncRequestStatus",
-                Mutation.BulkTierExistingSnapshots_ObjectFieldSpec,
+                Mutation.BulkTierExistingSnapshots,
                 Mutation.BulkTierExistingSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1238,7 +1238,7 @@ $query.Var.input = @{
                 "MutationCreateDomainControllerSnapshot",
                 "($input: CreateDomainControllerSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateDomainControllerSnapshot_ObjectFieldSpec,
+                Mutation.CreateDomainControllerSnapshot,
                 Mutation.CreateDomainControllerSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1268,7 +1268,7 @@ $query.Var.input = @{
                 "MutationCreateDownloadSnapshotForVolumeGroup",
                 "($input: CreateDownloadSnapshotForVolumeGroupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateDownloadSnapshotForVolumeGroup_ObjectFieldSpec,
+                Mutation.CreateDownloadSnapshotForVolumeGroup,
                 Mutation.CreateDownloadSnapshotForVolumeGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1291,7 +1291,7 @@ $query.Var.input = @{
                 "MutationCreateFilesetSnapshot",
                 "($input: CreateFilesetSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateFilesetSnapshot_ObjectFieldSpec,
+                Mutation.CreateFilesetSnapshot,
                 Mutation.CreateFilesetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1321,7 +1321,7 @@ $query.Var.input = @{
                 "MutationDeleteCloudWorkloadSnapshot",
                 "($input: DeleteCloudWorkloadSnapshotInput!)",
                 "System.Boolean",
-                Mutation.DeleteCloudWorkloadSnapshot_ObjectFieldSpec,
+                Mutation.DeleteCloudWorkloadSnapshot,
                 Mutation.DeleteCloudWorkloadSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1344,7 +1344,7 @@ $query.Var.input = @{
                 "MutationDeleteFilesetSnapshots",
                 "($input: DeleteFilesetSnapshotsInput!)",
                 "ResponseSuccess",
-                Mutation.DeleteFilesetSnapshots_ObjectFieldSpec,
+                Mutation.DeleteFilesetSnapshots,
                 Mutation.DeleteFilesetSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1369,7 +1369,7 @@ $query.Var.input = @{
                 "MutationDeleteUnmanagedSnapshots",
                 "($input: DeleteUnmanagedSnapshotsInput!)",
                 "RequestSuccess",
-                Mutation.DeleteUnmanagedSnapshots_ObjectFieldSpec,
+                Mutation.DeleteUnmanagedSnapshots,
                 Mutation.DeleteUnmanagedSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1394,7 +1394,7 @@ $query.Var.input = @{
                 "MutationDeleteSnapshotsOfUnmanagedObjects",
                 "($input: DeleteSnapshotsOfUnmanagedObjectsInput!)",
                 "RequestSuccess",
-                Mutation.DeleteSnapshotsOfUnmanagedObjects_ObjectFieldSpec,
+                Mutation.DeleteSnapshotsOfUnmanagedObjects,
                 Mutation.DeleteSnapshotsOfUnmanagedObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1419,7 +1419,7 @@ $query.Var.input = @{
                 "MutationFilesetDownloadSnapshotFiles",
                 "($input: FilesetDownloadSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.FilesetDownloadSnapshotFiles_ObjectFieldSpec,
+                Mutation.FilesetDownloadSnapshotFiles,
                 Mutation.FilesetDownloadSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1466,7 +1466,7 @@ $query.Var.input = @{
                 "MutationFilesetExportSnapshotFiles",
                 "($input: FilesetExportSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.FilesetExportSnapshotFiles_ObjectFieldSpec,
+                Mutation.FilesetExportSnapshotFiles,
                 Mutation.FilesetExportSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1522,7 +1522,7 @@ $query.Var.input = @{
                 "MutationRestoreDomainControllerSnapshot",
                 "($input: RestoreDomainControllerSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreDomainControllerSnapshot_ObjectFieldSpec,
+                Mutation.RestoreDomainControllerSnapshot,
                 Mutation.RestoreDomainControllerSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1561,7 +1561,7 @@ $query.Var.input = @{
                 "MutationRestoreVolumeGroupSnapshotFiles",
                 "($input: RestoreVolumeGroupSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreVolumeGroupSnapshotFiles_ObjectFieldSpec,
+                Mutation.RestoreVolumeGroupSnapshotFiles,
                 Mutation.RestoreVolumeGroupSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1604,7 +1604,7 @@ $query.Var.input = @{
                 "MutationStartEc2InstanceSnapshotExportJob",
                 "($input: StartEc2InstanceSnapshotExportJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartEc2InstanceSnapshotExportJob_ObjectFieldSpec,
+                Mutation.StartEc2InstanceSnapshotExportJob,
                 Mutation.StartEc2InstanceSnapshotExportJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1655,7 +1655,7 @@ $query.Var.input = @{
                 "MutationStartRecoverS3SnapshotJob",
                 "($input: StartRecoverS3SnapshotJobInput!)",
                 "AsyncJobStatus",
-                Mutation.StartRecoverS3SnapshotJob_ObjectFieldSpec,
+                Mutation.StartRecoverS3SnapshotJob,
                 Mutation.StartRecoverS3SnapshotJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1692,7 +1692,7 @@ $query.Var.input = @{
                 "MutationTakeOnDemandSnapshot",
                 "($input: TakeOnDemandSnapshotInput!)",
                 "TakeOnDemandSnapshotReply",
-                Mutation.TakeOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.TakeOnDemandSnapshot,
                 Mutation.TakeOnDemandSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1719,7 +1719,7 @@ $query.Var.input = @{
                 "MutationUploadDatabaseSnapshotToBlobstore",
                 "($input: UploadDatabaseSnapshotToBlobstoreInput!)",
                 "AsyncJobStatus",
-                Mutation.UploadDatabaseSnapshotToBlobstore_ObjectFieldSpec,
+                Mutation.UploadDatabaseSnapshotToBlobstore,
                 Mutation.UploadDatabaseSnapshotToBlobstoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

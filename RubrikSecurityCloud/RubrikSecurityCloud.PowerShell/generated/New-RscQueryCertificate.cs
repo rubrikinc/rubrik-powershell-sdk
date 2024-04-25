@@ -708,7 +708,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAssignableGlobalCertificates",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: GlobalCertificateSortBy,$input: GlobalCertificatesQueryInput!)",
                 "GlobalCertificateConnection",
-                Query.AssignableGlobalCertificates_ObjectFieldSpec,
+                Query.AssignableGlobalCertificates,
                 Query.AssignableGlobalCertificatesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -771,7 +771,7 @@ $query.Var.input = @{
                 "QueryCertificates",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: CertMgmtSortBy,$searchTerm: String)",
                 "CertificateConnection",
-                Query.Certificates_ObjectFieldSpec,
+                Query.Certificates,
                 Query.CertificatesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -802,7 +802,7 @@ $query.Var.searchTerm = $someString"
                 "QueryCertificatesWithKey",
                 "",
                 "CertificateConnection",
-                Query.CertificatesWithKey_ObjectFieldSpec,
+                Query.CertificatesWithKey,
                 Query.CertificatesWithKeyFieldSpec,
                 @""
             );
@@ -821,7 +821,7 @@ $query.Var.searchTerm = $someString"
                 "QueryClusterCertificates",
                 "($input: QueryCertificatesInput!)",
                 "CertificateSummaryListResponse",
-                Query.ClusterCertificates_ObjectFieldSpec,
+                Query.ClusterCertificates,
                 Query.ClusterCertificatesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -860,7 +860,7 @@ $query.Var.input = @{
                 "QueryClusterCsr",
                 "($input: GetClusterCsrInput!)",
                 "ClusterCsr",
-                Query.ClusterCsr_ObjectFieldSpec,
+                Query.ClusterCsr,
                 Query.ClusterCsrFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -883,7 +883,7 @@ $query.Var.input = @{
                 "QueryClusterWebSignedCertificate",
                 "($input: ClusterWebSignedCertificateInput!)",
                 "ClusterWebSignedCertificateReply",
-                Query.ClusterWebSignedCertificate_ObjectFieldSpec,
+                Query.ClusterWebSignedCertificate,
                 Query.ClusterWebSignedCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -906,7 +906,7 @@ $query.Var.input = @{
                 "QueryGlobalCertificate",
                 "($certificateId: String!)",
                 "GlobalCertificate",
-                Query.GlobalCertificate_ObjectFieldSpec,
+                Query.GlobalCertificate,
                 Query.GlobalCertificateFieldSpec,
                 @"# REQUIRED
 $query.Var.certificateId = $someString"
@@ -940,7 +940,7 @@ $query.Var.certificateId = $someString"
                 "QueryGlobalCertificates",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: GlobalCertificateSortBy,$input: GlobalCertificatesQueryInput!)",
                 "GlobalCertificateConnection",
-                Query.GlobalCertificates_ObjectFieldSpec,
+                Query.GlobalCertificates,
                 Query.GlobalCertificatesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -989,7 +989,7 @@ $query.Var.input = @{
                 "QueryCertificateInfo",
                 "($input: GetCertificateInfoInput!)",
                 "GetCertificateInfoReply",
-                Query.CertificateInfo_ObjectFieldSpec,
+                Query.CertificateInfo,
                 Query.CertificateInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1012,7 +1012,7 @@ $query.Var.input = @{
                 "QueryCertificateSigningRequest",
                 "($input: GetCsrInput!)",
                 "Csr",
-                Query.CertificateSigningRequest_ObjectFieldSpec,
+                Query.CertificateSigningRequest,
                 Query.CertificateSigningRequestFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1049,7 +1049,7 @@ $query.Var.input = @{
                 "QueryCertificateSigningRequests",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: CertMgmtSortBy,$searchTerm: String)",
                 "CsrConnection",
-                Query.CertificateSigningRequests_ObjectFieldSpec,
+                Query.CertificateSigningRequests,
                 Query.CertificateSigningRequestsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

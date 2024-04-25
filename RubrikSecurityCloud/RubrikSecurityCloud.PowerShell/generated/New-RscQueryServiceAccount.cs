@@ -227,7 +227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryIsOrgServiceAccountDisabled",
                 "",
                 "System.Boolean",
-                Query.IsOrgServiceAccountDisabled_ObjectFieldSpec,
+                Query.IsOrgServiceAccountDisabled,
                 Query.IsOrgServiceAccountDisabledFieldSpec,
                 @""
             );
@@ -262,7 +262,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryServiceAccounts",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ServiceAccountSortBy,$searchText: String,$roleIds: [UUID!])",
                 "ServiceAccountConnection",
-                Query.ServiceAccounts_ObjectFieldSpec,
+                Query.ServiceAccounts,
                 Query.ServiceAccountsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

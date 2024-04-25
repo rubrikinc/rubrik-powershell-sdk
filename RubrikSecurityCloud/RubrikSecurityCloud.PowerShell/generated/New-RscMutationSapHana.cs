@@ -726,7 +726,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddSapHanaSystem",
                 "($input: AddSapHanaSystemInput!)",
                 "AddSapHanaSystemReply",
-                Mutation.AddSapHanaSystem_ObjectFieldSpec,
+                Mutation.AddSapHanaSystem,
                 Mutation.AddSapHanaSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -793,7 +793,7 @@ $query.Var.input = @{
                 "MutationConfigureSapHanaRestore",
                 "($input: ConfigureSapHanaRestoreInput!)",
                 "AsyncRequestStatus",
-                Mutation.ConfigureSapHanaRestore_ObjectFieldSpec,
+                Mutation.ConfigureSapHanaRestore,
                 Mutation.ConfigureSapHanaRestoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -821,7 +821,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandSapHanaBackup",
                 "($input: CreateOnDemandSapHanaBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandSapHanaBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandSapHanaBackup,
                 Mutation.CreateOnDemandSapHanaBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -849,7 +849,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandSapHanaStorageSnapshot",
                 "($input: CreateOnDemandSapHanaStorageSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandSapHanaStorageSnapshot_ObjectFieldSpec,
+                Mutation.CreateOnDemandSapHanaStorageSnapshot,
                 Mutation.CreateOnDemandSapHanaStorageSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -877,7 +877,7 @@ $query.Var.input = @{
                 "MutationCreateSapHanaSystemRefresh",
                 "($input: CreateSapHanaSystemRefreshInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateSapHanaSystemRefresh_ObjectFieldSpec,
+                Mutation.CreateSapHanaSystemRefresh,
                 Mutation.CreateSapHanaSystemRefreshFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -900,7 +900,7 @@ $query.Var.input = @{
                 "MutationDeleteSapHanaDbSnapshot",
                 "($input: DeleteSapHanaDbSnapshotInput!)",
                 "ResponseSuccess",
-                Mutation.DeleteSapHanaDbSnapshot_ObjectFieldSpec,
+                Mutation.DeleteSapHanaDbSnapshot,
                 Mutation.DeleteSapHanaDbSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -923,7 +923,7 @@ $query.Var.input = @{
                 "MutationDeleteSapHanaSystem",
                 "($input: DeleteSapHanaSystemInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteSapHanaSystem_ObjectFieldSpec,
+                Mutation.DeleteSapHanaSystem,
                 Mutation.DeleteSapHanaSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -946,7 +946,7 @@ $query.Var.input = @{
                 "MutationExpireDownloadedSapHanaSnapshots",
                 "($input: ExpireDownloadedSapHanaSnapshotsInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExpireDownloadedSapHanaSnapshots_ObjectFieldSpec,
+                Mutation.ExpireDownloadedSapHanaSnapshots,
                 Mutation.ExpireDownloadedSapHanaSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -975,7 +975,7 @@ $query.Var.input = @{
                 "MutationPatchSapHanaSystem",
                 "($input: PatchSapHanaSystemInput!)",
                 "PatchSapHanaSystemReply",
-                Mutation.PatchSapHanaSystem_ObjectFieldSpec,
+                Mutation.PatchSapHanaSystem,
                 Mutation.PatchSapHanaSystemFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1039,7 +1039,7 @@ $query.Var.input = @{
                 "MutationRestoreSapHanaSystemStorage",
                 "($input: RestoreSapHanaSystemStorageInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreSapHanaSystemStorage_ObjectFieldSpec,
+                Mutation.RestoreSapHanaSystemStorage,
                 Mutation.RestoreSapHanaSystemStorageFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1067,7 +1067,7 @@ $query.Var.input = @{
                 "MutationUnconfigureSapHanaRestore",
                 "($input: UnconfigureSapHanaRestoreInput!)",
                 "AsyncRequestStatus",
-                Mutation.UnconfigureSapHanaRestore_ObjectFieldSpec,
+                Mutation.UnconfigureSapHanaRestore,
                 Mutation.UnconfigureSapHanaRestoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

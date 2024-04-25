@@ -310,7 +310,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllVmwareCdpStateInfos",
                 "($ids: [String!]!)",
                 "List<VmwareCdpStateInfo>",
-                Query.AllVmwareCdpStateInfos_ObjectFieldSpec,
+                Query.AllVmwareCdpStateInfos,
                 Query.AllVmwareCdpStateInfosFieldSpec,
                 @"# REQUIRED
 $query.Var.ids = @(
@@ -331,7 +331,7 @@ $query.Var.ids = @(
                 "QueryIsVmwareManagementEnabled",
                 "",
                 "System.Boolean",
-                Query.IsVmwareManagementEnabled_ObjectFieldSpec,
+                Query.IsVmwareManagementEnabled,
                 Query.IsVmwareManagementEnabledFieldSpec,
                 @""
             );
@@ -350,7 +350,7 @@ $query.Var.ids = @(
                 "QueryVmwareMissedRecoverableRanges",
                 "($input: VmwareMissedRecoverableRangesInput!)",
                 "VmwareRecoverableRangeListResponse",
-                Query.VmwareMissedRecoverableRanges_ObjectFieldSpec,
+                Query.VmwareMissedRecoverableRanges,
                 Query.VmwareMissedRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -377,7 +377,7 @@ $query.Var.input = @{
                 "QueryVmwareRecoverableRanges",
                 "($input: VmwareRecoverableRangesInput!)",
                 "VmwareRecoverableRangeListResponse",
-                Query.VmwareRecoverableRanges_ObjectFieldSpec,
+                Query.VmwareRecoverableRanges,
                 Query.VmwareRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

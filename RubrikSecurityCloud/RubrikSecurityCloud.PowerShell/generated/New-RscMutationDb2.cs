@@ -725,7 +725,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddDb2Instance",
                 "($input: AddDb2InstanceInput!)",
                 "AddDb2InstanceReply",
-                Mutation.AddDb2Instance_ObjectFieldSpec,
+                Mutation.AddDb2Instance,
                 Mutation.AddDb2InstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -761,7 +761,7 @@ $query.Var.input = @{
                 "MutationConfigureDb2Restore",
                 "($input: ConfigureDb2RestoreInput!)",
                 "Db2ConfigureRestoreResponse",
-                Mutation.ConfigureDb2Restore_ObjectFieldSpec,
+                Mutation.ConfigureDb2Restore,
                 Mutation.ConfigureDb2RestoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -797,7 +797,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandDb2Backup",
                 "($input: CreateOnDemandDb2BackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandDb2Backup_ObjectFieldSpec,
+                Mutation.CreateOnDemandDb2Backup,
                 Mutation.CreateOnDemandDb2BackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -825,7 +825,7 @@ $query.Var.input = @{
                 "MutationDeleteDb2Database",
                 "($input: DeleteDb2DatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteDb2Database_ObjectFieldSpec,
+                Mutation.DeleteDb2Database,
                 Mutation.DeleteDb2DatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -848,7 +848,7 @@ $query.Var.input = @{
                 "MutationDeleteDb2Instance",
                 "($input: DeleteDb2InstanceInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteDb2Instance_ObjectFieldSpec,
+                Mutation.DeleteDb2Instance,
                 Mutation.DeleteDb2InstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -871,7 +871,7 @@ $query.Var.input = @{
                 "MutationDiscoverDb2Instance",
                 "($input: DiscoverDb2InstanceInput!)",
                 "AsyncRequestStatus",
-                Mutation.DiscoverDb2Instance_ObjectFieldSpec,
+                Mutation.DiscoverDb2Instance,
                 Mutation.DiscoverDb2InstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -894,7 +894,7 @@ $query.Var.input = @{
                 "MutationDownloadDb2Snapshot",
                 "($input: DownloadDb2SnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadDb2Snapshot_ObjectFieldSpec,
+                Mutation.DownloadDb2Snapshot,
                 Mutation.DownloadDb2SnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -919,7 +919,7 @@ $query.Var.input = @{
                 "MutationDownloadDb2SnapshotsForPointInTimeRecovery",
                 "($input: DownloadDb2SnapshotsForPointInTimeRecoveryInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadDb2SnapshotsForPointInTimeRecovery_ObjectFieldSpec,
+                Mutation.DownloadDb2SnapshotsForPointInTimeRecovery,
                 Mutation.DownloadDb2SnapshotsForPointInTimeRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -949,7 +949,7 @@ $query.Var.input = @{
                 "MutationExpireDownloadedDb2Snapshots",
                 "($input: ExpireDownloadedDb2SnapshotsInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExpireDownloadedDb2Snapshots_ObjectFieldSpec,
+                Mutation.ExpireDownloadedDb2Snapshots,
                 Mutation.ExpireDownloadedDb2SnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -978,7 +978,7 @@ $query.Var.input = @{
                 "MutationPatchDb2Database",
                 "($input: PatchDb2DatabaseInput!)",
                 "PatchDb2DatabaseReply",
-                Mutation.PatchDb2Database_ObjectFieldSpec,
+                Mutation.PatchDb2Database,
                 Mutation.PatchDb2DatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1008,7 +1008,7 @@ $query.Var.input = @{
                 "MutationPatchDb2Instance",
                 "($input: PatchDb2InstanceInput!)",
                 "PatchDb2InstanceReply",
-                Mutation.PatchDb2Instance_ObjectFieldSpec,
+                Mutation.PatchDb2Instance,
                 Mutation.PatchDb2InstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1044,7 +1044,7 @@ $query.Var.input = @{
                 "MutationRefreshDb2Database",
                 "($input: RefreshDb2DatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshDb2Database_ObjectFieldSpec,
+                Mutation.RefreshDb2Database,
                 Mutation.RefreshDb2DatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

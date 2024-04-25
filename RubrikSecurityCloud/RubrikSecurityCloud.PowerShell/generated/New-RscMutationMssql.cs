@@ -1662,7 +1662,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAssignMssqlSlaDomainProperties",
                 "($input: AssignMssqlSlaDomainPropertiesInput!)",
                 "ResponseSuccess",
-                Mutation.AssignMssqlSlaDomainProperties_ObjectFieldSpec,
+                Mutation.AssignMssqlSlaDomainProperties,
                 Mutation.AssignMssqlSlaDomainPropertiesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1716,7 +1716,7 @@ $query.Var.input = @{
                 "MutationAssignMssqlSlaDomainPropertiesAsync",
                 "($input: AssignMssqlSlaDomainPropertiesAsyncInput!)",
                 "AssignMssqlSlaDomainPropertiesAsyncReply",
-                Mutation.AssignMssqlSlaDomainPropertiesAsync_ObjectFieldSpec,
+                Mutation.AssignMssqlSlaDomainPropertiesAsync,
                 Mutation.AssignMssqlSlaDomainPropertiesAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1772,7 +1772,7 @@ $query.Var.input = @{
                 "MutationBrowseMssqlDatabaseSnapshot",
                 "($input: BrowseMssqlDatabaseSnapshotInput!)",
                 "BrowseMssqlDatabaseSnapshotReply",
-                Mutation.BrowseMssqlDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.BrowseMssqlDatabaseSnapshot,
                 Mutation.BrowseMssqlDatabaseSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1847,7 +1847,7 @@ $query.Var.input = @{
                 "MutationBulkCreateOnDemandMssqlBackup",
                 "($input: BulkCreateOnDemandMssqlBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.BulkCreateOnDemandMssqlBackup_ObjectFieldSpec,
+                Mutation.BulkCreateOnDemandMssqlBackup,
                 Mutation.BulkCreateOnDemandMssqlBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1900,7 +1900,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateMssqlAvailabilityGroup",
                 "($input: BulkUpdateMssqlAvailabilityGroupInput!)",
                 "BulkUpdateMssqlAvailabilityGroupReply",
-                Mutation.BulkUpdateMssqlAvailabilityGroup_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlAvailabilityGroup,
                 Mutation.BulkUpdateMssqlAvailabilityGroupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1975,7 +1975,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateMssqlDbs",
                 "($input: BulkUpdateMssqlDbsInput!)",
                 "BulkUpdateMssqlDbsReply",
-                Mutation.BulkUpdateMssqlDbs_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlDbs,
                 Mutation.BulkUpdateMssqlDbsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2076,7 +2076,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateMssqlInstance",
                 "($input: BulkUpdateMssqlInstanceInput!)",
                 "BulkUpdateMssqlInstanceReply",
-                Mutation.BulkUpdateMssqlInstance_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlInstance,
                 Mutation.BulkUpdateMssqlInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2151,7 +2151,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateMssqlPropertiesOnHost",
                 "($input: BulkUpdateMssqlPropertiesOnHostInput!)",
                 "BulkUpdateMssqlPropertiesOnHostReply",
-                Mutation.BulkUpdateMssqlPropertiesOnHost_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlPropertiesOnHost,
                 Mutation.BulkUpdateMssqlPropertiesOnHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2195,7 +2195,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateMssqlPropertiesOnWindowsCluster",
                 "($input: BulkUpdateMssqlPropertiesOnWindowsClusterInput!)",
                 "BulkUpdateMssqlPropertiesOnWindowsClusterReply",
-                Mutation.BulkUpdateMssqlPropertiesOnWindowsCluster_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlPropertiesOnWindowsCluster,
                 Mutation.BulkUpdateMssqlPropertiesOnWindowsClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2239,7 +2239,7 @@ $query.Var.input = @{
                 "MutationCreateMssqlLiveMount",
                 "($input: CreateMssqlLiveMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateMssqlLiveMount_ObjectFieldSpec,
+                Mutation.CreateMssqlLiveMount,
                 Mutation.CreateMssqlLiveMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2285,7 +2285,7 @@ $query.Var.input = @{
                 "MutationCreateMssqlLogShippingConfiguration",
                 "($input: CreateMssqlLogShippingConfigurationInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateMssqlLogShippingConfiguration_ObjectFieldSpec,
+                Mutation.CreateMssqlLogShippingConfiguration,
                 Mutation.CreateMssqlLogShippingConfigurationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2348,7 +2348,7 @@ $query.Var.input = @{
                 "MutationCreateOnDemandMssqlBackup",
                 "($input: CreateOnDemandMssqlBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateOnDemandMssqlBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandMssqlBackup,
                 Mutation.CreateOnDemandMssqlBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2383,7 +2383,7 @@ $query.Var.input = @{
                 "MutationDeleteMssqlDbSnapshots",
                 "($input: DeleteMssqlDbSnapshotsInput!)",
                 "ResponseSuccess",
-                Mutation.DeleteMssqlDbSnapshots_ObjectFieldSpec,
+                Mutation.DeleteMssqlDbSnapshots,
                 Mutation.DeleteMssqlDbSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2406,7 +2406,7 @@ $query.Var.input = @{
                 "MutationDeleteMssqlLiveMount",
                 "($input: DeleteMssqlLiveMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteMssqlLiveMount_ObjectFieldSpec,
+                Mutation.DeleteMssqlLiveMount,
                 Mutation.DeleteMssqlLiveMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2431,7 +2431,7 @@ $query.Var.input = @{
                 "MutationDeleteLogShipping",
                 "($input: DeleteLogShippingInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteLogShipping_ObjectFieldSpec,
+                Mutation.DeleteLogShipping,
                 Mutation.DeleteLogShippingFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2456,7 +2456,7 @@ $query.Var.input = @{
                 "MutationDownloadMssqlDatabaseBackupFiles",
                 "($input: DownloadMssqlDatabaseBackupFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadMssqlDatabaseBackupFiles_ObjectFieldSpec,
+                Mutation.DownloadMssqlDatabaseBackupFiles,
                 Mutation.DownloadMssqlDatabaseBackupFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2493,7 +2493,7 @@ $query.Var.input = @{
                 "MutationDownloadMssqlDatabaseFilesFromArchivalLocation",
                 "($input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation_ObjectFieldSpec,
+                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation,
                 Mutation.DownloadMssqlDatabaseFilesFromArchivalLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2533,7 +2533,7 @@ $query.Var.input = @{
                 "MutationExportMssqlDatabase",
                 "($input: ExportMssqlDatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportMssqlDatabase_ObjectFieldSpec,
+                Mutation.ExportMssqlDatabase,
                 Mutation.ExportMssqlDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2600,7 +2600,7 @@ $query.Var.input = @{
                 "MutationRestoreMssqlDatabase",
                 "($input: RestoreMssqlDatabaseInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreMssqlDatabase_ObjectFieldSpec,
+                Mutation.RestoreMssqlDatabase,
                 Mutation.RestoreMssqlDatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2644,7 +2644,7 @@ $query.Var.input = @{
                 "MutationTakeMssqlLogBackup",
                 "($input: TakeMssqlLogBackupInput!)",
                 "AsyncRequestStatus",
-                Mutation.TakeMssqlLogBackup_ObjectFieldSpec,
+                Mutation.TakeMssqlLogBackup,
                 Mutation.TakeMssqlLogBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2667,7 +2667,7 @@ $query.Var.input = @{
                 "MutationUpdateMssqlDefaultProperties",
                 "($input: UpdateMssqlDefaultPropertiesInput!)",
                 "UpdateMssqlDefaultPropertiesReply",
-                Mutation.UpdateMssqlDefaultProperties_ObjectFieldSpec,
+                Mutation.UpdateMssqlDefaultProperties,
                 Mutation.UpdateMssqlDefaultPropertiesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2701,7 +2701,7 @@ $query.Var.input = @{
                 "MutationUpdateMssqlLogShippingConfiguration",
                 "($input: UpdateMssqlLogShippingConfigurationInput!)",
                 "UpdateMssqlLogShippingConfigurationReply",
-                Mutation.UpdateMssqlLogShippingConfiguration_ObjectFieldSpec,
+                Mutation.UpdateMssqlLogShippingConfiguration,
                 Mutation.UpdateMssqlLogShippingConfigurationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

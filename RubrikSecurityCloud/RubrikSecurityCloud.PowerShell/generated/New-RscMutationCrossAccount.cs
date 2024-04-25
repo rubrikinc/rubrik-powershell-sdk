@@ -328,7 +328,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddCrossAccountServiceConsumer",
                 "($input: AddCrossAccountServiceConsumerInput!)",
                 "AddCrossAccountServiceConsumerReply",
-                Mutation.AddCrossAccountServiceConsumer_ObjectFieldSpec,
+                Mutation.AddCrossAccountServiceConsumer,
                 Mutation.AddCrossAccountServiceConsumerFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -364,7 +364,7 @@ $query.Var.input = @{
                 "MutationCreateCrossAccountPair",
                 "($input: CreateCrossAccountPairInput!)",
                 "System.String",
-                Mutation.CreateCrossAccountPair_ObjectFieldSpec,
+                Mutation.CreateCrossAccountPair,
                 Mutation.CreateCrossAccountPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -393,7 +393,7 @@ $query.Var.input = @{
                 "MutationCreateCrossAccountRegOauthPayload",
                 "($input: CreateCrossAccountRegOauthPayloadInput!)",
                 "CreateCrossAccountRegOauthPayloadReply",
-                Mutation.CreateCrossAccountRegOauthPayload_ObjectFieldSpec,
+                Mutation.CreateCrossAccountRegOauthPayload,
                 Mutation.CreateCrossAccountRegOauthPayloadFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -418,7 +418,7 @@ $query.Var.input = @{
                 "MutationDeleteCrossAccountPair",
                 "($input: DeleteCrossAccountPairInput!)",
                 "System.String",
-                Mutation.DeleteCrossAccountPair_ObjectFieldSpec,
+                Mutation.DeleteCrossAccountPair,
                 Mutation.DeleteCrossAccountPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

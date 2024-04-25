@@ -583,7 +583,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateIntegration",
                 "($input: CreateIntegrationInput!)",
                 "CreateIntegrationReply",
-                Mutation.CreateIntegration_ObjectFieldSpec,
+                Mutation.CreateIntegration,
                 Mutation.CreateIntegrationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -649,7 +649,7 @@ $query.Var.input = @{
                 "MutationCreateIntegrations",
                 "($input: CreateIntegrationsInput!)",
                 "CreateIntegrationsReply",
-                Mutation.CreateIntegrations_ObjectFieldSpec,
+                Mutation.CreateIntegrations,
                 Mutation.CreateIntegrationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -720,7 +720,7 @@ $query.Var.input = @{
                 "MutationDeleteIntegration",
                 "($input: DeleteIntegrationInput!)",
                 "System.String",
-                Mutation.DeleteIntegration_ObjectFieldSpec,
+                Mutation.DeleteIntegration,
                 Mutation.DeleteIntegrationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -743,7 +743,7 @@ $query.Var.input = @{
                 "MutationDeleteIntegrations",
                 "($input: DeleteIntegrationsInput!)",
                 "System.String",
-                Mutation.DeleteIntegrations_ObjectFieldSpec,
+                Mutation.DeleteIntegrations,
                 Mutation.DeleteIntegrationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -768,7 +768,7 @@ $query.Var.input = @{
                 "MutationUpdateIntegration",
                 "($input: UpdateIntegrationInput!)",
                 "System.String",
-                Mutation.UpdateIntegration_ObjectFieldSpec,
+                Mutation.UpdateIntegration,
                 Mutation.UpdateIntegrationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -836,7 +836,7 @@ $query.Var.input = @{
                 "MutationUpdateIntegrations",
                 "($input: UpdateIntegrationsInput!)",
                 "System.String",
-                Mutation.UpdateIntegrations_ObjectFieldSpec,
+                Mutation.UpdateIntegrations,
                 Mutation.UpdateIntegrationsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

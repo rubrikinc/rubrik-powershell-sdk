@@ -889,7 +889,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddCloudNativeSqlServerBackupCredentials",
                 "($input: AddCloudNativeSqlServerBackupCredentialsInput!)",
                 "AddCloudNativeSqlServerBackupCredentialsReply",
-                Mutation.AddCloudNativeSqlServerBackupCredentials_ObjectFieldSpec,
+                Mutation.AddCloudNativeSqlServerBackupCredentials,
                 Mutation.AddCloudNativeSqlServerBackupCredentialsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -923,7 +923,7 @@ $query.Var.input = @{
                 "MutationCloudNativeCheckRbaConnectivity",
                 "($input: CloudNativeCheckRbaConnectivityInput!)",
                 "CloudNativeCheckRbaConnectivityReply",
-                Mutation.CloudNativeCheckRbaConnectivity_ObjectFieldSpec,
+                Mutation.CloudNativeCheckRbaConnectivity,
                 Mutation.CloudNativeCheckRbaConnectivityFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -948,7 +948,7 @@ $query.Var.input = @{
                 "MutationClearCloudNativeSqlServerBackupCredentials",
                 "($input: ClearCloudNativeSqlServerBackupCredentialsInput!)",
                 "ClearCloudNativeSqlServerBackupCredentialsReply",
-                Mutation.ClearCloudNativeSqlServerBackupCredentials_ObjectFieldSpec,
+                Mutation.ClearCloudNativeSqlServerBackupCredentials,
                 Mutation.ClearCloudNativeSqlServerBackupCredentialsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -975,7 +975,7 @@ $query.Var.input = @{
                 "MutationCreateCloudNativeLabelRule",
                 "($input: CreateCloudNativeLabelRuleInput!)",
                 "CreateCloudNativeLabelRuleReply",
-                Mutation.CreateCloudNativeLabelRule_ObjectFieldSpec,
+                Mutation.CreateCloudNativeLabelRule,
                 Mutation.CreateCloudNativeLabelRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1030,7 +1030,7 @@ $query.Var.input = @{
                 "MutationCreateCloudNativeTagRule",
                 "($input: CreateCloudNativeTagRuleInput!)",
                 "CreateCloudNativeTagRuleReply",
-                Mutation.CreateCloudNativeTagRule_ObjectFieldSpec,
+                Mutation.CreateCloudNativeTagRule,
                 Mutation.CreateCloudNativeTagRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1085,7 +1085,7 @@ $query.Var.input = @{
                 "MutationDeleteCloudNativeLabelRule",
                 "($input: DeleteCloudNativeLabelRuleInput!)",
                 "System.String",
-                Mutation.DeleteCloudNativeLabelRule_ObjectFieldSpec,
+                Mutation.DeleteCloudNativeLabelRule,
                 Mutation.DeleteCloudNativeLabelRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1108,7 +1108,7 @@ $query.Var.input = @{
                 "MutationDeleteCloudNativeTagRule",
                 "($input: DeleteCloudNativeTagRuleInput!)",
                 "System.String",
-                Mutation.DeleteCloudNativeTagRule_ObjectFieldSpec,
+                Mutation.DeleteCloudNativeTagRule,
                 Mutation.DeleteCloudNativeTagRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1131,7 +1131,7 @@ $query.Var.input = @{
                 "MutationCloudNativeDownloadFiles",
                 "($input: CloudNativeDownloadFilesInput!)",
                 "DownloadFilesReply",
-                Mutation.CloudNativeDownloadFiles_ObjectFieldSpec,
+                Mutation.CloudNativeDownloadFiles,
                 Mutation.CloudNativeDownloadFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1194,7 +1194,7 @@ $query.Var.input = @{
                 "MutationSetupCloudNativeSqlServerBackup",
                 "($input: SetupCloudNativeSqlServerBackupInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.SetupCloudNativeSqlServerBackup_ObjectFieldSpec,
+                Mutation.SetupCloudNativeSqlServerBackup,
                 Mutation.SetupCloudNativeSqlServerBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1230,7 +1230,7 @@ $query.Var.input = @{
                 "MutationStartCloudNativeSnapshotsIndexJob",
                 "($input: StartCloudNativeSnapshotsIndexJobInput!)",
                 "BatchAsyncJobStatus",
-                Mutation.StartCloudNativeSnapshotsIndexJob_ObjectFieldSpec,
+                Mutation.StartCloudNativeSnapshotsIndexJob,
                 Mutation.StartCloudNativeSnapshotsIndexJobFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1255,7 +1255,7 @@ $query.Var.input = @{
                 "MutationUpdateCloudNativeIndexingStatus",
                 "($input: UpdateCloudNativeIndexingStatusInput!)",
                 "UpdateCloudNativeIndexingStatusReply",
-                Mutation.UpdateCloudNativeIndexingStatus_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeIndexingStatus,
                 Mutation.UpdateCloudNativeIndexingStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1282,7 +1282,7 @@ $query.Var.input = @{
                 "MutationUpdateCloudNativeLabelRule",
                 "($input: UpdateCloudNativeLabelRuleInput!)",
                 "System.String",
-                Mutation.UpdateCloudNativeLabelRule_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeLabelRule,
                 Mutation.UpdateCloudNativeLabelRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1328,7 +1328,7 @@ $query.Var.input = @{
                 "MutationUpdateCloudNativeTagRule",
                 "($input: UpdateCloudNativeTagRuleInput!)",
                 "System.String",
-                Mutation.UpdateCloudNativeTagRule_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeTagRule,
                 Mutation.UpdateCloudNativeTagRuleFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

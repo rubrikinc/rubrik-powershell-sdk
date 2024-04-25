@@ -1012,7 +1012,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QuerySlaAuditDetail",
                 "($first: Int,$after: String,$last: Int,$before: String,$SlaId: UUID!,$filter: [SLAAuditDetailFilterInput!],$timezone: String)",
                 "List<SlaAuditDetail>",
-                Query.SlaAuditDetail_ObjectFieldSpec,
+                Query.SlaAuditDetail,
                 Query.SlaAuditDetailFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1059,7 +1059,7 @@ $query.Var.timezone = $someString"
                 "QueryClusterSlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String)",
                 "ClusterSlaDomainConnection",
-                Query.ClusterSlaDomains_ObjectFieldSpec,
+                Query.ClusterSlaDomains,
                 Query.ClusterSlaDomainsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1085,7 +1085,7 @@ $query.Var.before = $someString"
                 "QueryAllClusterGlobalSlas",
                 "($cdmClusterUUID: UUID!)",
                 "List<SlaInfo>",
-                Query.AllClusterGlobalSlas_ObjectFieldSpec,
+                Query.AllClusterGlobalSlas,
                 Query.AllClusterGlobalSlasFieldSpec,
                 @"# REQUIRED
 $query.Var.cdmClusterUUID = $someString"
@@ -1105,7 +1105,7 @@ $query.Var.cdmClusterUUID = $someString"
                 "QuerySlaConflictObjects",
                 "($fids: [UUID!]!)",
                 "List<HierarchyObject>",
-                Query.SlaConflictObjects_ObjectFieldSpec,
+                Query.SlaConflictObjects,
                 Query.SlaConflictObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.fids = @(
@@ -1135,7 +1135,7 @@ $query.Var.fids = @(
                 "QueryCountOfObjectsProtectedBySlas",
                 "($rootOptionalFid: UUID,$slaIds: [UUID!]!,$filter: [Filter!],$typeFilter: [HierarchyObjectTypeEnum!])",
                 "CountOfObjectsProtectedBySlAsResult",
-                Query.CountOfObjectsProtectedBySlas_ObjectFieldSpec,
+                Query.CountOfObjectsProtectedBySlas,
                 Query.CountOfObjectsProtectedBySlasFieldSpec,
                 @"# OPTIONAL
 $query.Var.rootOptionalFid = $someString
@@ -1213,7 +1213,7 @@ $query.Var.typeFilter = @(
                 "QuerySlaDomain",
                 "($id: UUID!,$shouldShowSyncStatus: Boolean,$shouldShowUpgradeInfo: Boolean,$shouldShowPausedClusters: Boolean)",
                 "SlaDomain",
-                Query.SlaDomain_ObjectFieldSpec,
+                Query.SlaDomain,
                 Query.SlaDomainFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString
@@ -1267,7 +1267,7 @@ $query.Var.shouldShowPausedClusters = $someBoolean"
                 "QuerySlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$contextFilterInput: [ContextFilterInputField!],$shouldShowSyncStatus: Boolean,$shouldShowProtectedObjectCount: Boolean,$shouldShowUpgradeInfo: Boolean,$showRemoteSlas: Boolean,$shouldShowPausedClusters: Boolean)",
                 "SlaDomainConnection",
-                Query.SlaDomains_ObjectFieldSpec,
+                Query.SlaDomains,
                 Query.SlaDomainsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1336,7 +1336,7 @@ $query.Var.shouldShowPausedClusters = $someBoolean"
                 "QueryDownloadSlaWithReplicationCsv",
                 "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
                 "DownloadSlaWithReplicationCsvReply",
-                Query.DownloadSlaWithReplicationCsv_ObjectFieldSpec,
+                Query.DownloadSlaWithReplicationCsv,
                 Query.DownloadSlaWithReplicationCsvFieldSpec,
                 @"# REQUIRED
 $query.Var.cdmClusterUUID = $someString
@@ -1386,7 +1386,7 @@ $query.Var.includeArchived = $someBoolean"
                 "QueryGlobalSlaFilterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$contextFilterInput: [ContextFilterInputField!],$shouldShowSyncStatus: Boolean,$shouldShowProtectedObjectCount: Boolean,$shouldShowUpgradeInfo: Boolean,$showRemoteSlas: Boolean,$shouldShowPausedClusters: Boolean)",
                 "GlobalSlaForFilterConnection",
-                Query.GlobalSlaFilterConnection_ObjectFieldSpec,
+                Query.GlobalSlaFilterConnection,
                 Query.GlobalSlaFilterConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1466,7 +1466,7 @@ $query.Var.shouldShowPausedClusters = $someBoolean"
                 "QueryGlobalSlaStatuses",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: [SlaStatusFilterInput!],$SlaId: UUID!)",
                 "GlobalSlaStatusConnection",
-                Query.GlobalSlaStatuses_ObjectFieldSpec,
+                Query.GlobalSlaStatuses,
                 Query.GlobalSlaStatusesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1503,7 +1503,7 @@ $query.Var.SlaId = $someString"
                 "QuerySlaManagedVolume",
                 "($fid: UUID!)",
                 "ManagedVolume",
-                Query.SlaManagedVolume_ObjectFieldSpec,
+                Query.SlaManagedVolume,
                 Query.SlaManagedVolumeFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -1533,7 +1533,7 @@ $query.Var.fid = $someString"
                 "QuerySlaManagedVolumes",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ManagedVolumeConnection",
-                Query.SlaManagedVolumes_ObjectFieldSpec,
+                Query.SlaManagedVolumes,
                 Query.SlaManagedVolumesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -1601,7 +1601,7 @@ $query.Var.filter = @(
                 "QueryAllNcdSlaComplianceData",
                 "($clusters: [UUID!]!)",
                 "List<NcdSlaComplianceData>",
-                Query.AllNcdSlaComplianceData_ObjectFieldSpec,
+                Query.AllNcdSlaComplianceData,
                 Query.AllNcdSlaComplianceDataFieldSpec,
                 @"# REQUIRED
 $query.Var.clusters = @(
@@ -1623,7 +1623,7 @@ $query.Var.clusters = @(
                 "QueryAllSlaSummariesByIds",
                 "($slaIds: [UUID!]!)",
                 "List<SlaDomain>",
-                Query.AllSlaSummariesByIds_ObjectFieldSpec,
+                Query.AllSlaSummariesByIds,
                 Query.AllSlaSummariesByIdsFieldSpec,
                 @"# REQUIRED
 $query.Var.slaIds = @(
@@ -1646,7 +1646,7 @@ $query.Var.slaIds = @(
                 "QueryVerifySlaWithReplicationToCluster",
                 "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
                 "VerifySlaWithReplicationToClusterResponse",
-                Query.VerifySlaWithReplicationToCluster_ObjectFieldSpec,
+                Query.VerifySlaWithReplicationToCluster,
                 Query.VerifySlaWithReplicationToClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.cdmClusterUUID = $someString

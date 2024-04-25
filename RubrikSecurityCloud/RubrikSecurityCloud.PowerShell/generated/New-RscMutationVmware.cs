@@ -182,7 +182,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationVmwareDownloadSnapshotFromLocation",
                 "($input: VmwareDownloadSnapshotFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.VmwareDownloadSnapshotFromLocation_ObjectFieldSpec,
+                Mutation.VmwareDownloadSnapshotFromLocation,
                 Mutation.VmwareDownloadSnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -604,7 +604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAssignSlaToMongoDbCollection",
                 "($input: AssignSlaToMongoDbCollectionInput!)",
                 "AsyncRequestStatus",
-                Mutation.AssignSlaToMongoDbCollection_ObjectFieldSpec,
+                Mutation.AssignSlaToMongoDbCollection,
                 Mutation.AssignSlaToMongoDbCollectionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -634,7 +634,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteMongodbSources",
                 "($input: BulkDeleteMosaicSourcesInput!)",
                 "MosaicAsyncResponse",
-                Mutation.BulkDeleteMongodbSources_ObjectFieldSpec,
+                Mutation.BulkDeleteMongodbSources,
                 Mutation.BulkDeleteMongodbSourcesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -668,7 +668,7 @@ $query.Var.input = @{
                 "MutationCreateMongodbSource",
                 "($input: AddMosaicSourceInput!)",
                 "MosaicAsyncResponse",
-                Mutation.CreateMongodbSource_ObjectFieldSpec,
+                Mutation.CreateMongodbSource,
                 Mutation.CreateMongodbSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -756,7 +756,7 @@ $query.Var.input = @{
                 "MutationDeleteMongodbSource",
                 "($input: DeleteMosaicSourceInput!)",
                 "MosaicAsyncResponse",
-                Mutation.DeleteMongodbSource_ObjectFieldSpec,
+                Mutation.DeleteMongodbSource,
                 Mutation.DeleteMongodbSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -783,7 +783,7 @@ $query.Var.input = @{
                 "MutationRecoverMongodbSource",
                 "($input: MosaicRestoreDataInput!)",
                 "MosaicAsyncResponse",
-                Mutation.RecoverMongodbSource_ObjectFieldSpec,
+                Mutation.RecoverMongodbSource,
                 Mutation.RecoverMongodbSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -863,7 +863,7 @@ $query.Var.input = @{
                 "MutationUpdateMongodbSource",
                 "($input: ModifyMosaicSourceInput!)",
                 "MosaicAsyncResponse",
-                Mutation.UpdateMongodbSource_ObjectFieldSpec,
+                Mutation.UpdateMongodbSource,
                 Mutation.UpdateMongodbSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

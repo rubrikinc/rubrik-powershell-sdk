@@ -354,7 +354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCancelThreatHunt",
                 "($input: CancelThreatHuntInput!)",
                 "System.String",
-                Mutation.CancelThreatHunt_ObjectFieldSpec,
+                Mutation.CancelThreatHunt,
                 Mutation.CancelThreatHuntFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -377,7 +377,7 @@ $query.Var.input = @{
                 "MutationEnableThreatMonitoring",
                 "($input: EnableThreatMonitoringInput!)",
                 "System.String",
-                Mutation.EnableThreatMonitoring_ObjectFieldSpec,
+                Mutation.EnableThreatMonitoring,
                 Mutation.EnableThreatMonitoringFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -407,7 +407,7 @@ $query.Var.input = @{
                 "MutationStartThreatHunt",
                 "($input: StartThreatHuntInput!)",
                 "StartThreatHuntReply",
-                Mutation.StartThreatHunt_ObjectFieldSpec,
+                Mutation.StartThreatHunt,
                 Mutation.StartThreatHuntFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

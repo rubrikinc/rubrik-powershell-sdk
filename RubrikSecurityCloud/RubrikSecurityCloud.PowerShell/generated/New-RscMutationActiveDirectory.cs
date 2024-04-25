@@ -392,7 +392,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateActiveDirectoryLiveMount",
                 "($input: CreateActiveDirectoryLiveMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateActiveDirectoryLiveMount_ObjectFieldSpec,
+                Mutation.CreateActiveDirectoryLiveMount,
                 Mutation.CreateActiveDirectoryLiveMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -432,7 +432,7 @@ $query.Var.input = @{
                 "MutationCreateActiveDirectoryUnmount",
                 "($input: CreateActiveDirectoryUnmountInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateActiveDirectoryUnmount_ObjectFieldSpec,
+                Mutation.CreateActiveDirectoryUnmount,
                 Mutation.CreateActiveDirectoryUnmountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -455,7 +455,7 @@ $query.Var.input = @{
                 "MutationModifyActiveDirectoryLiveMount",
                 "($input: ModifyActiveDirectoryLiveMountInput!)",
                 "System.String",
-                Mutation.ModifyActiveDirectoryLiveMount_ObjectFieldSpec,
+                Mutation.ModifyActiveDirectoryLiveMount,
                 Mutation.ModifyActiveDirectoryLiveMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -489,7 +489,7 @@ $query.Var.input = @{
                 "MutationRestoreActiveDirectoryObjects",
                 "($input: RestoreActiveDirectoryObjectsInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreActiveDirectoryObjects_ObjectFieldSpec,
+                Mutation.RestoreActiveDirectoryObjects,
                 Mutation.RestoreActiveDirectoryObjectsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

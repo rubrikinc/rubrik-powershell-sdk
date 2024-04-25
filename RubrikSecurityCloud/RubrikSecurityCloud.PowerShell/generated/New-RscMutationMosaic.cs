@@ -295,7 +295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddMosaicStore",
                 "($input: AddMosaicStoreInput!)",
                 "MosaicAsyncResponse",
-                Mutation.AddMosaicStore_ObjectFieldSpec,
+                Mutation.AddMosaicStore,
                 Mutation.AddMosaicStoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -337,7 +337,7 @@ $query.Var.input = @{
                 "MutationDeleteMosaicStore",
                 "($input: DeleteMosaicStoreInput!)",
                 "MosaicAsyncResponse",
-                Mutation.DeleteMosaicStore_ObjectFieldSpec,
+                Mutation.DeleteMosaicStore,
                 Mutation.DeleteMosaicStoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -362,7 +362,7 @@ $query.Var.input = @{
                 "MutationUpdateMosaicStore",
                 "($input: ModifyMosaicStoreInput!)",
                 "MosaicAsyncResponse",
-                Mutation.UpdateMosaicStore_ObjectFieldSpec,
+                Mutation.UpdateMosaicStore,
                 Mutation.UpdateMosaicStoreFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

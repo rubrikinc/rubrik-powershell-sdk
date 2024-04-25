@@ -556,7 +556,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationVsphereBulkOnDemandSnapshot",
                 "($input: VsphereBulkOnDemandSnapshotInput!)",
                 "BatchAsyncRequestStatus",
-                Mutation.VsphereBulkOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.VsphereBulkOnDemandSnapshot,
                 Mutation.VsphereBulkOnDemandSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -588,7 +588,7 @@ $query.Var.input = @{
                 "MutationCreateVsphereAdvancedTag",
                 "($input: CreateVsphereAdvancedTagInput!)",
                 "CreateVsphereAdvancedTagReply",
-                Mutation.CreateVsphereAdvancedTag_ObjectFieldSpec,
+                Mutation.CreateVsphereAdvancedTag,
                 Mutation.CreateVsphereAdvancedTagFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -620,7 +620,7 @@ $query.Var.input = @{
                 "MutationDeleteVsphereAdvancedTag",
                 "($input: DeleteVsphereAdvancedTagInput!)",
                 "RequestSuccess",
-                Mutation.DeleteVsphereAdvancedTag_ObjectFieldSpec,
+                Mutation.DeleteVsphereAdvancedTag,
                 Mutation.DeleteVsphereAdvancedTagFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -645,7 +645,7 @@ $query.Var.input = @{
                 "MutationDeleteVsphereLiveMount",
                 "($input: DeleteVsphereLiveMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteVsphereLiveMount_ObjectFieldSpec,
+                Mutation.DeleteVsphereLiveMount,
                 Mutation.DeleteVsphereLiveMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -670,7 +670,7 @@ $query.Var.input = @{
                 "MutationDownloadVsphereVirtualMachineFiles",
                 "($input: DownloadVsphereVirtualMachineFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadVsphereVirtualMachineFiles_ObjectFieldSpec,
+                Mutation.DownloadVsphereVirtualMachineFiles,
                 Mutation.DownloadVsphereVirtualMachineFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -702,7 +702,7 @@ $query.Var.input = @{
                 "MutationVsphereExportSnapshotToStandaloneHostV2",
                 "($input: VsphereExportSnapshotToStandaloneHostV2Input!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereExportSnapshotToStandaloneHostV2_ObjectFieldSpec,
+                Mutation.VsphereExportSnapshotToStandaloneHostV2,
                 Mutation.VsphereExportSnapshotToStandaloneHostV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -749,7 +749,7 @@ $query.Var.input = @{
                 "MutationVsphereOnDemandSnapshot",
                 "($input: VsphereOnDemandSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.VsphereOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.VsphereOnDemandSnapshot,
                 Mutation.VsphereOnDemandSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -779,7 +779,7 @@ $query.Var.input = @{
                 "MutationUpdateVsphereAdvancedTag",
                 "($input: UpdateVsphereAdvancedTagInput!)",
                 "UpdateVsphereAdvancedTagReply",
-                Mutation.UpdateVsphereAdvancedTag_ObjectFieldSpec,
+                Mutation.UpdateVsphereAdvancedTag,
                 Mutation.UpdateVsphereAdvancedTagFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -234,7 +234,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkUpdateRansomwareInvestigationStatus",
                 "($input: BulkUpdateRansomwareInvestigationEnabledInput!)",
                 "System.String",
-                Mutation.BulkUpdateRansomwareInvestigationStatus_ObjectFieldSpec,
+                Mutation.BulkUpdateRansomwareInvestigationStatus,
                 Mutation.BulkUpdateRansomwareInvestigationStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -266,7 +266,7 @@ $query.Var.input = @{
                 "MutationTriggerRansomwareDetection",
                 "($input: TriggerRansomwareDetectionInput!)",
                 "TriggerRansomwareDetectionReply",
-                Mutation.TriggerRansomwareDetection_ObjectFieldSpec,
+                Mutation.TriggerRansomwareDetection,
                 Mutation.TriggerRansomwareDetectionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

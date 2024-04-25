@@ -804,7 +804,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAllGcpCloudAccountMissingPermissionsForAddition",
                 "($sessionId: String!,$projectIds: [String!]!)",
                 "List<GcpCloudAccountMissingPermissionsForAddition>",
-                Query.AllGcpCloudAccountMissingPermissionsForAddition_ObjectFieldSpec,
+                Query.AllGcpCloudAccountMissingPermissionsForAddition,
                 Query.AllGcpCloudAccountMissingPermissionsForAdditionFieldSpec,
                 @"# REQUIRED
 $query.Var.sessionId = $someString
@@ -830,7 +830,7 @@ $query.Var.projectIds = @(
                 "QueryAllGcpCloudAccountProjectsByFeature",
                 "($feature: CloudAccountFeature!,$projectStatusFilters: [CloudAccountStatus!]!,$projectSearchText: String!)",
                 "List<GcpCloudAccountProjectDetail>",
-                Query.AllGcpCloudAccountProjectsByFeature_ObjectFieldSpec,
+                Query.AllGcpCloudAccountProjectsByFeature,
                 Query.AllGcpCloudAccountProjectsByFeatureFieldSpec,
                 @"# REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -858,7 +858,7 @@ $query.Var.projectSearchText = $someString"
                 "QueryAllGcpCloudAccountProjectsForOauth",
                 "($sessionId: String!,$features: [CloudAccountFeature!]!,$checkPermissions: Boolean!)",
                 "List<GcpCloudAccountProjectForOauth>",
-                Query.AllGcpCloudAccountProjectsForOauth_ObjectFieldSpec,
+                Query.AllGcpCloudAccountProjectsForOauth,
                 Query.AllGcpCloudAccountProjectsForOauthFieldSpec,
                 @"# REQUIRED
 $query.Var.sessionId = $someString
@@ -884,7 +884,7 @@ $query.Var.checkPermissions = $someBoolean"
                 "QueryAllFeaturePermissionsForGcpCloudAccount",
                 "($feature: CloudAccountFeature!)",
                 "List<GcpPermission>",
-                Query.AllFeaturePermissionsForGcpCloudAccount_ObjectFieldSpec,
+                Query.AllFeaturePermissionsForGcpCloudAccount,
                 Query.AllFeaturePermissionsForGcpCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
@@ -903,7 +903,7 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
                 "QueryGcpGetDefaultCredentialsServiceAccount",
                 "",
                 "System.String",
-                Query.GcpGetDefaultCredentialsServiceAccount_ObjectFieldSpec,
+                Query.GcpGetDefaultCredentialsServiceAccount,
                 Query.GcpGetDefaultCredentialsServiceAccountFieldSpec,
                 @""
             );
@@ -923,7 +923,7 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
                 "QueryAllGcpNativeAvailableKmsCryptoKeys",
                 "($projectId: UUID!,$regionName: String!)",
                 "List<GcpNativeKmsCryptoKey>",
-                Query.AllGcpNativeAvailableKmsCryptoKeys_ObjectFieldSpec,
+                Query.AllGcpNativeAvailableKmsCryptoKeys,
                 Query.AllGcpNativeAvailableKmsCryptoKeysFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString
@@ -946,7 +946,7 @@ $query.Var.regionName = $someString"
                 "QueryAllGcpNativeCompatibleMachineTypes",
                 "($targetZone: String!,$snapshotId: UUID!)",
                 "List<System.String>",
-                Query.AllGcpNativeCompatibleMachineTypes_ObjectFieldSpec,
+                Query.AllGcpNativeCompatibleMachineTypes,
                 Query.AllGcpNativeCompatibleMachineTypesFieldSpec,
                 @"# REQUIRED
 $query.Var.targetZone = $someString
@@ -968,7 +968,7 @@ $query.Var.snapshotId = $someString"
                 "QueryAllGcpNativeNetworks",
                 "($projectId: UUID!)",
                 "List<GcpNativeNetwork>",
-                Query.AllGcpNativeNetworks_ObjectFieldSpec,
+                Query.AllGcpNativeNetworks,
                 Query.AllGcpNativeNetworksFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString"
@@ -988,7 +988,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeProjectsWithAccessibleNetworks",
                 "($projectId: UUID!)",
                 "List<NetworkHostProject>",
-                Query.AllGcpNativeProjectsWithAccessibleNetworks_ObjectFieldSpec,
+                Query.AllGcpNativeProjectsWithAccessibleNetworks,
                 Query.AllGcpNativeProjectsWithAccessibleNetworksFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString"
@@ -1008,7 +1008,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeRegions",
                 "($projectId: UUID!)",
                 "List<GcpNativeRegion>",
-                Query.AllGcpNativeRegions_ObjectFieldSpec,
+                Query.AllGcpNativeRegions,
                 Query.AllGcpNativeRegionsFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString"
@@ -1027,7 +1027,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeStoredMachineTypes",
                 "",
                 "List<System.String>",
-                Query.AllGcpNativeStoredMachineTypes_ObjectFieldSpec,
+                Query.AllGcpNativeStoredMachineTypes,
                 Query.AllGcpNativeStoredMachineTypesFieldSpec,
                 @""
             );
@@ -1046,7 +1046,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeStoredMachineTypesInProject",
                 "($projectId: UUID!)",
                 "List<System.String>",
-                Query.AllGcpNativeStoredMachineTypesInProject_ObjectFieldSpec,
+                Query.AllGcpNativeStoredMachineTypesInProject,
                 Query.AllGcpNativeStoredMachineTypesInProjectFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString"
@@ -1065,7 +1065,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeStoredNetworkNames",
                 "",
                 "List<System.String>",
-                Query.AllGcpNativeStoredNetworkNames_ObjectFieldSpec,
+                Query.AllGcpNativeStoredNetworkNames,
                 Query.AllGcpNativeStoredNetworkNamesFieldSpec,
                 @""
             );
@@ -1084,7 +1084,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeStoredNetworkNamesInProject",
                 "($projectId: UUID!)",
                 "List<System.String>",
-                Query.AllGcpNativeStoredNetworkNamesInProject_ObjectFieldSpec,
+                Query.AllGcpNativeStoredNetworkNamesInProject,
                 Query.AllGcpNativeStoredNetworkNamesInProjectFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString"
@@ -1103,7 +1103,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeStoredRegions",
                 "",
                 "List<System.String>",
-                Query.AllGcpNativeStoredRegions_ObjectFieldSpec,
+                Query.AllGcpNativeStoredRegions,
                 Query.AllGcpNativeStoredRegionsFieldSpec,
                 @""
             );
@@ -1122,7 +1122,7 @@ $query.Var.projectId = $someString"
                 "QueryAllGcpNativeStoredRegionsInProject",
                 "($projectId: UUID!)",
                 "List<System.String>",
-                Query.AllGcpNativeStoredRegionsInProject_ObjectFieldSpec,
+                Query.AllGcpNativeStoredRegionsInProject,
                 Query.AllGcpNativeStoredRegionsInProjectFieldSpec,
                 @"# REQUIRED
 $query.Var.projectId = $someString"

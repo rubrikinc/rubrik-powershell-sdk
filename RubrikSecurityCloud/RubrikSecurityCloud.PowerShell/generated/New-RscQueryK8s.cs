@@ -584,7 +584,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryK8sAppManifest",
                 "($app: String!,$version: String!,$retrieveLatestVersion: Boolean!,$targetVersion: String,$k8sClusterId: UUID)",
                 "K8sAppManifest",
-                Query.K8sAppManifest_ObjectFieldSpec,
+                Query.K8sAppManifest,
                 Query.K8sAppManifestFieldSpec,
                 @"# REQUIRED
 $query.Var.app = $someString
@@ -612,7 +612,7 @@ $query.Var.k8sClusterId = $someString"
                 "QueryK8sCluster",
                 "($fid: UUID!)",
                 "K8sCluster",
-                Query.K8sCluster_ObjectFieldSpec,
+                Query.K8sCluster,
                 Query.K8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -642,7 +642,7 @@ $query.Var.fid = $someString"
                 "QueryK8sClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "K8sClusterConnection",
-                Query.K8sClusters_ObjectFieldSpec,
+                Query.K8sClusters,
                 Query.K8sClustersFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -710,7 +710,7 @@ $query.Var.filter = @(
                 "QueryK8sNamespace",
                 "($fid: UUID!)",
                 "K8sNamespace",
-                Query.K8sNamespace_ObjectFieldSpec,
+                Query.K8sNamespace,
                 Query.K8sNamespaceFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -742,7 +742,7 @@ $query.Var.fid = $someString"
                 "QueryK8sNamespaces",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$k8sClusterId: UUID)",
                 "K8sNamespaceConnection",
-                Query.K8sNamespaces_ObjectFieldSpec,
+                Query.K8sNamespaces,
                 Query.K8sNamespacesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -812,7 +812,7 @@ $query.Var.k8sClusterId = $someString"
                 "QueryK8sProtectionSetSnapshots",
                 "($input: QueryK8sSnapshotInput!)",
                 "K8sSnapshotSummaryListResponse",
-                Query.K8sProtectionSetSnapshots_ObjectFieldSpec,
+                Query.K8sProtectionSetSnapshots,
                 Query.K8sProtectionSetSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -836,7 +836,7 @@ $query.Var.input = @{
                 "QueryAllK8sReplicaSnapshotInfos",
                 "($snapshotId: String!,$snappableId: UUID!)",
                 "List<ReplicatedSnapshotInfo>",
-                Query.AllK8sReplicaSnapshotInfos_ObjectFieldSpec,
+                Query.AllK8sReplicaSnapshotInfos,
                 Query.AllK8sReplicaSnapshotInfosFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString
@@ -860,7 +860,7 @@ $query.Var.snappableId = $someString"
                 "QueryK8sSnapshotInfo",
                 "($snapshotId: UUID!,$namespaceId: UUID!,$isReplica: Boolean!)",
                 "K8sSnapshotInfo",
-                Query.K8sSnapshotInfo_ObjectFieldSpec,
+                Query.K8sSnapshotInfo,
                 Query.K8sSnapshotInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotId = $someString

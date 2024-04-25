@@ -363,7 +363,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationAddStorageArrays",
                 "($input: AddStorageArraysInput!)",
                 "AddStorageArraysReply",
-                Mutation.AddStorageArrays_ObjectFieldSpec,
+                Mutation.AddStorageArrays,
                 Mutation.AddStorageArraysFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -406,7 +406,7 @@ $query.Var.input = @{
                 "MutationDeleteStorageArrays",
                 "($input: DeleteStorageArraysInput!)",
                 "DeleteStorageArraysReply",
-                Mutation.DeleteStorageArrays_ObjectFieldSpec,
+                Mutation.DeleteStorageArrays,
                 Mutation.DeleteStorageArraysFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -436,7 +436,7 @@ $query.Var.input = @{
                 "MutationRefreshStorageArrays",
                 "($input: RefreshStorageArraysInput!)",
                 "RefreshStorageArraysReply",
-                Mutation.RefreshStorageArrays_ObjectFieldSpec,
+                Mutation.RefreshStorageArrays,
                 Mutation.RefreshStorageArraysFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -466,7 +466,7 @@ $query.Var.input = @{
                 "MutationUpdateStorageArrays",
                 "($input: UpdateStorageArraysInput!)",
                 "UpdateStorageArraysReply",
-                Mutation.UpdateStorageArrays_ObjectFieldSpec,
+                Mutation.UpdateStorageArrays,
                 Mutation.UpdateStorageArraysFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -1526,7 +1526,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBatchExportHypervVm",
                 "($input: BatchExportHypervVmInput!)",
                 "BatchExportHypervVmReply",
-                Mutation.BatchExportHypervVm_ObjectFieldSpec,
+                Mutation.BatchExportHypervVm,
                 Mutation.BatchExportHypervVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1582,7 +1582,7 @@ $query.Var.input = @{
                 "MutationBatchInstantRecoverHypervVm",
                 "($input: BatchInstantRecoverHypervVmInput!)",
                 "BatchInstantRecoverHypervVmReply",
-                Mutation.BatchInstantRecoverHypervVm_ObjectFieldSpec,
+                Mutation.BatchInstantRecoverHypervVm,
                 Mutation.BatchInstantRecoverHypervVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1628,7 +1628,7 @@ $query.Var.input = @{
                 "MutationBatchMountHypervVm",
                 "($input: BatchMountHypervVmInput!)",
                 "BatchMountHypervVmReply",
-                Mutation.BatchMountHypervVm_ObjectFieldSpec,
+                Mutation.BatchMountHypervVm,
                 Mutation.BatchMountHypervVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1682,7 +1682,7 @@ $query.Var.input = @{
                 "MutationBatchOnDemandBackupHypervVm",
                 "($input: BatchOnDemandBackupHypervVmInput!)",
                 "BatchOnDemandBackupHypervVmReply",
-                Mutation.BatchOnDemandBackupHypervVm_ObjectFieldSpec,
+                Mutation.BatchOnDemandBackupHypervVm,
                 Mutation.BatchOnDemandBackupHypervVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1720,7 +1720,7 @@ $query.Var.input = @{
                 "MutationCreateHypervVirtualMachineSnapshotDiskMount",
                 "($input: CreateMountHypervVirtualDisksInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateHypervVirtualMachineSnapshotDiskMount_ObjectFieldSpec,
+                Mutation.CreateHypervVirtualMachineSnapshotDiskMount,
                 Mutation.CreateHypervVirtualMachineSnapshotDiskMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1752,7 +1752,7 @@ $query.Var.input = @{
                 "MutationCreateHypervVirtualMachineSnapshotMount",
                 "($input: CreateHypervVirtualMachineSnapshotMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.CreateHypervVirtualMachineSnapshotMount_ObjectFieldSpec,
+                Mutation.CreateHypervVirtualMachineSnapshotMount,
                 Mutation.CreateHypervVirtualMachineSnapshotMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1788,7 +1788,7 @@ $query.Var.input = @{
                 "MutationHypervDeleteAllSnapshots",
                 "($input: HypervDeleteAllSnapshotsInput!)",
                 "RequestSuccess",
-                Mutation.HypervDeleteAllSnapshots_ObjectFieldSpec,
+                Mutation.HypervDeleteAllSnapshots,
                 Mutation.HypervDeleteAllSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1811,7 +1811,7 @@ $query.Var.input = @{
                 "MutationDeleteHypervVirtualMachineSnapshot",
                 "($input: DeleteHypervVirtualMachineSnapshotInput!)",
                 "RequestSuccess",
-                Mutation.DeleteHypervVirtualMachineSnapshot_ObjectFieldSpec,
+                Mutation.DeleteHypervVirtualMachineSnapshot,
                 Mutation.DeleteHypervVirtualMachineSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1836,7 +1836,7 @@ $query.Var.input = @{
                 "MutationDeleteHypervVirtualMachineSnapshotMount",
                 "($input: DeleteHypervVirtualMachineSnapshotMountInput!)",
                 "AsyncRequestStatus",
-                Mutation.DeleteHypervVirtualMachineSnapshotMount_ObjectFieldSpec,
+                Mutation.DeleteHypervVirtualMachineSnapshotMount,
                 Mutation.DeleteHypervVirtualMachineSnapshotMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1861,7 +1861,7 @@ $query.Var.input = @{
                 "MutationDownloadHypervSnapshotFromLocation",
                 "($input: DownloadHypervSnapshotFromLocationInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadHypervSnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadHypervSnapshotFromLocation,
                 Mutation.DownloadHypervSnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1891,7 +1891,7 @@ $query.Var.input = @{
                 "MutationDownloadHypervVirtualMachineLevelFiles",
                 "($input: DownloadHypervVirtualMachineVmLevelFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadHypervVirtualMachineLevelFiles_ObjectFieldSpec,
+                Mutation.DownloadHypervVirtualMachineLevelFiles,
                 Mutation.DownloadHypervVirtualMachineLevelFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1925,7 +1925,7 @@ $query.Var.input = @{
                 "MutationDownloadHypervVirtualMachineSnapshot",
                 "($input: DownloadHypervVirtualMachineSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadHypervVirtualMachineSnapshot_ObjectFieldSpec,
+                Mutation.DownloadHypervVirtualMachineSnapshot,
                 Mutation.DownloadHypervVirtualMachineSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1948,7 +1948,7 @@ $query.Var.input = @{
                 "MutationDownloadHypervVirtualMachineSnapshotFiles",
                 "($input: DownloadHypervVirtualMachineSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.DownloadHypervVirtualMachineSnapshotFiles_ObjectFieldSpec,
+                Mutation.DownloadHypervVirtualMachineSnapshotFiles,
                 Mutation.DownloadHypervVirtualMachineSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1985,7 +1985,7 @@ $query.Var.input = @{
                 "MutationExportHypervVirtualMachine",
                 "($input: ExportHypervVirtualMachineInput!)",
                 "AsyncRequestStatus",
-                Mutation.ExportHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.ExportHypervVirtualMachine,
                 Mutation.ExportHypervVirtualMachineFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2023,7 +2023,7 @@ $query.Var.input = @{
                 "MutationInplaceExportHypervVirtualMachine",
                 "($input: InplaceExportHypervVirtualMachineInput!)",
                 "AsyncRequestStatus",
-                Mutation.InplaceExportHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.InplaceExportHypervVirtualMachine,
                 Mutation.InplaceExportHypervVirtualMachineFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2055,7 +2055,7 @@ $query.Var.input = @{
                 "MutationInstantRecoverHypervVirtualMachineSnapshot",
                 "($input: InstantRecoverHypervVirtualMachineSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.InstantRecoverHypervVirtualMachineSnapshot_ObjectFieldSpec,
+                Mutation.InstantRecoverHypervVirtualMachineSnapshot,
                 Mutation.InstantRecoverHypervVirtualMachineSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2085,7 +2085,7 @@ $query.Var.input = @{
                 "MutationHypervOnDemandSnapshot",
                 "($input: HypervOnDemandSnapshotInput!)",
                 "AsyncRequestStatus",
-                Mutation.HypervOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.HypervOnDemandSnapshot,
                 Mutation.HypervOnDemandSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2115,7 +2115,7 @@ $query.Var.input = @{
                 "MutationRefreshHypervScvmm",
                 "($input: RefreshHypervScvmmInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshHypervScvmm_ObjectFieldSpec,
+                Mutation.RefreshHypervScvmm,
                 Mutation.RefreshHypervScvmmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2138,7 +2138,7 @@ $query.Var.input = @{
                 "MutationRefreshHypervServer",
                 "($input: RefreshHypervServerInput!)",
                 "AsyncRequestStatus",
-                Mutation.RefreshHypervServer_ObjectFieldSpec,
+                Mutation.RefreshHypervServer,
                 Mutation.RefreshHypervServerFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2161,7 +2161,7 @@ $query.Var.input = @{
                 "MutationRegisterAgentHypervVirtualMachine",
                 "($input: RegisterAgentHypervVirtualMachineInput!)",
                 "RequestSuccess",
-                Mutation.RegisterAgentHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.RegisterAgentHypervVirtualMachine,
                 Mutation.RegisterAgentHypervVirtualMachineFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2184,7 +2184,7 @@ $query.Var.input = @{
                 "MutationRegisterHypervScvmm",
                 "($input: RegisterHypervScvmmInput!)",
                 "AsyncRequestStatus",
-                Mutation.RegisterHypervScvmm_ObjectFieldSpec,
+                Mutation.RegisterHypervScvmm,
                 Mutation.RegisterHypervScvmmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2216,7 +2216,7 @@ $query.Var.input = @{
                 "MutationRestoreHypervVirtualMachineSnapshotFiles",
                 "($input: RestoreHypervVirtualMachineSnapshotFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.RestoreHypervVirtualMachineSnapshotFiles_ObjectFieldSpec,
+                Mutation.RestoreHypervVirtualMachineSnapshotFiles,
                 Mutation.RestoreHypervVirtualMachineSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2253,7 +2253,7 @@ $query.Var.input = @{
                 "MutationHypervScvmmDelete",
                 "($input: HypervScvmmDeleteInput!)",
                 "ResponseSuccess",
-                Mutation.HypervScvmmDelete_ObjectFieldSpec,
+                Mutation.HypervScvmmDelete,
                 Mutation.HypervScvmmDeleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2276,7 +2276,7 @@ $query.Var.input = @{
                 "MutationHypervScvmmUpdate",
                 "($input: HypervScvmmUpdateInput!)",
                 "HypervScvmmUpdateReply",
-                Mutation.HypervScvmmUpdate_ObjectFieldSpec,
+                Mutation.HypervScvmmUpdate,
                 Mutation.HypervScvmmUpdateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2310,7 +2310,7 @@ $query.Var.input = @{
                 "MutationUpdateHypervVirtualMachine",
                 "($input: UpdateHypervVirtualMachineInput!)",
                 "UpdateHypervVirtualMachineReply",
-                Mutation.UpdateHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.UpdateHypervVirtualMachine,
                 Mutation.UpdateHypervVirtualMachineFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2347,7 +2347,7 @@ $query.Var.input = @{
                 "MutationUpdateHypervVirtualMachineSnapshotMount",
                 "($input: UpdateHypervVirtualMachineSnapshotMountInput!)",
                 "UpdateHypervVirtualMachineSnapshotMountReply",
-                Mutation.UpdateHypervVirtualMachineSnapshotMount_ObjectFieldSpec,
+                Mutation.UpdateHypervVirtualMachineSnapshotMount,
                 Mutation.UpdateHypervVirtualMachineSnapshotMountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{

@@ -445,7 +445,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryVsphereVmAsyncRequestStatus",
                 "($clusterUuid: UUID!,$id: String!)",
                 "AsyncRequestStatus",
-                Query.VsphereVmAsyncRequestStatus_ObjectFieldSpec,
+                Query.VsphereVmAsyncRequestStatus,
                 Query.VsphereVmAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString
@@ -469,7 +469,7 @@ $query.Var.id = $someString"
                 "QueryVsphereVmMissedRecoverableRange",
                 "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
                 "RecoverableRangeResponse",
-                Query.VsphereVmMissedRecoverableRange_ObjectFieldSpec,
+                Query.VsphereVmMissedRecoverableRange,
                 Query.VsphereVmMissedRecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -493,7 +493,7 @@ $query.Var.afterTime = $someDateTime"
                 "QueryVsphereVmNew",
                 "($fid: UUID!)",
                 "VsphereVm",
-                Query.VsphereVmNew_ObjectFieldSpec,
+                Query.VsphereVmNew,
                 Query.VsphereVmNewFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -523,7 +523,7 @@ $query.Var.fid = $someString"
                 "QueryVsphereVmNewConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereVmConnection",
-                Query.VsphereVmNewConnection_ObjectFieldSpec,
+                Query.VsphereVmNewConnection,
                 Query.VsphereVmNewConnectionFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -593,7 +593,7 @@ $query.Var.filter = @(
                 "QueryVsphereVmRecoverableRange",
                 "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
                 "RecoverableRangeResponse",
-                Query.VsphereVmRecoverableRange_ObjectFieldSpec,
+                Query.VsphereVmRecoverableRange,
                 Query.VsphereVmRecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString
@@ -617,7 +617,7 @@ $query.Var.afterTime = $someDateTime"
                 "QueryVsphereVmRecoverableRangeInBatch",
                 "($requestInfo: BatchVmwareVmRecoverableRangesRequestInput!)",
                 "BatchVmwareVmRecoverableRanges",
-                Query.VsphereVmRecoverableRangeInBatch_ObjectFieldSpec,
+                Query.VsphereVmRecoverableRangeInBatch,
                 Query.VsphereVmRecoverableRangeInBatchFieldSpec,
                 @"# REQUIRED
 $query.Var.requestInfo = @{

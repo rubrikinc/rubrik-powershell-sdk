@@ -655,7 +655,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryDb2Database",
                 "($fid: UUID!)",
                 "Db2Database",
-                Query.Db2Database_ObjectFieldSpec,
+                Query.Db2Database,
                 Query.Db2DatabaseFieldSpec,
                 @"# REQUIRED
 $query.Var.fid = $someString"
@@ -675,7 +675,7 @@ $query.Var.fid = $someString"
                 "QueryDb2DatabaseJobStatus",
                 "($input: GetDb2DatabaseAsyncRequestStatusInput!)",
                 "AsyncRequestStatus",
-                Query.Db2DatabaseJobStatus_ObjectFieldSpec,
+                Query.Db2DatabaseJobStatus,
                 Query.Db2DatabaseJobStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -710,7 +710,7 @@ $query.Var.input = @{
                 "QueryDb2Databases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "Db2DatabaseConnection",
-                Query.Db2Databases_ObjectFieldSpec,
+                Query.Db2Databases,
                 Query.Db2DatabasesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -778,7 +778,7 @@ $query.Var.filter = @(
                 "QueryDb2Instance",
                 "($id: UUID!)",
                 "Db2Instance",
-                Query.Db2Instance_ObjectFieldSpec,
+                Query.Db2Instance,
                 Query.Db2InstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
@@ -808,7 +808,7 @@ $query.Var.id = $someString"
                 "QueryDb2Instances",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "Db2InstanceConnection",
-                Query.Db2Instances_ObjectFieldSpec,
+                Query.Db2Instances,
                 Query.Db2InstancesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -876,7 +876,7 @@ $query.Var.filter = @(
                 "QueryDb2LogSnapshot",
                 "($db2LogSnapshotFid: UUID!)",
                 "Db2LogSnapshot",
-                Query.Db2LogSnapshot_ObjectFieldSpec,
+                Query.Db2LogSnapshot,
                 Query.Db2LogSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.db2LogSnapshotFid = $someString"
@@ -910,7 +910,7 @@ $query.Var.db2LogSnapshotFid = $someString"
                 "QueryDb2LogSnapshots",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2LogSnapshotSortBy,$filter: Db2LogSnapshotFilterInput)",
                 "Db2LogSnapshotConnection",
-                Query.Db2LogSnapshots_ObjectFieldSpec,
+                Query.Db2LogSnapshots,
                 Query.Db2LogSnapshotsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
@@ -957,7 +957,7 @@ $query.Var.filter = @{
                 "QueryDb2RecoverableRange",
                 "($db2RecoverableRangeFid: UUID!)",
                 "Db2RecoverableRange",
-                Query.Db2RecoverableRange_ObjectFieldSpec,
+                Query.Db2RecoverableRange,
                 Query.Db2RecoverableRangeFieldSpec,
                 @"# REQUIRED
 $query.Var.db2RecoverableRangeFid = $someString"
@@ -991,7 +991,7 @@ $query.Var.db2RecoverableRangeFid = $someString"
                 "QueryDb2RecoverableRanges",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2RecoverableRangeSortBy,$filter: Db2RecoverableRangeFilterInput)",
                 "Db2RecoverableRangeConnection",
-                Query.Db2RecoverableRanges_ObjectFieldSpec,
+                Query.Db2RecoverableRanges,
                 Query.Db2RecoverableRangesFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt

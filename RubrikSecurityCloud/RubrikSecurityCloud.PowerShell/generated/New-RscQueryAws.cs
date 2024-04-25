@@ -1567,7 +1567,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "QueryAwsArtifactsToDelete",
                 "($input: AwsArtifactsToDeleteInput!)",
                 "AwsArtifactsToDelete",
-                Query.AwsArtifactsToDelete_ObjectFieldSpec,
+                Query.AwsArtifactsToDelete,
                 Query.AwsArtifactsToDeleteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1595,7 +1595,7 @@ $query.Var.input = @{
                 "QueryAllAvailabilityZonesByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
                 "List<System.String>",
-                Query.AllAvailabilityZonesByRegionFromAws_ObjectFieldSpec,
+                Query.AllAvailabilityZonesByRegionFromAws,
                 Query.AllAvailabilityZonesByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -1617,7 +1617,7 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
                 "QueryAllAwsCdmVersions",
                 "($input: AwsCdmVersionRequest!)",
                 "List<AwsCdmVersion>",
-                Query.AllAwsCdmVersions_ObjectFieldSpec,
+                Query.AllAwsCdmVersions,
                 Query.AllAwsCdmVersionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1642,7 +1642,7 @@ $query.Var.input = @{
                 "QueryAllAwsCloudAccountConfigs",
                 "($awsCloudAccountsArg: AwsCloudAccountConfigsInput!)",
                 "List<AwsFeatureConfig>",
-                Query.AllAwsCloudAccountConfigs_ObjectFieldSpec,
+                Query.AllAwsCloudAccountConfigs,
                 Query.AllAwsCloudAccountConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsCloudAccountsArg = @{
@@ -1681,7 +1681,7 @@ $query.Var.awsCloudAccountsArg = @{
                 "QueryAwsCloudAccountListSecurityGroups",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
                 "AwsCloudAccountListSecurityGroupsResponse",
-                Query.AwsCloudAccountListSecurityGroups_ObjectFieldSpec,
+                Query.AwsCloudAccountListSecurityGroups,
                 Query.AwsCloudAccountListSecurityGroupsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountUuid = $someString
@@ -1715,7 +1715,7 @@ $query.Var.vpcID = $someString"
                 "QueryAwsCloudAccountListSubnets",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
                 "AwsCloudAccountListSubnetsResponse",
-                Query.AwsCloudAccountListSubnets_ObjectFieldSpec,
+                Query.AwsCloudAccountListSubnets,
                 Query.AwsCloudAccountListSubnetsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountUuid = $someString
@@ -1743,7 +1743,7 @@ $query.Var.vpcID = $someString"
                 "QueryAwsCloudAccountListVpcs",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
                 "AwsCloudAccountListVpcResponse",
-                Query.AwsCloudAccountListVpcs_ObjectFieldSpec,
+                Query.AwsCloudAccountListVpcs,
                 Query.AwsCloudAccountListVpcsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountUuid = $someString
@@ -1768,7 +1768,7 @@ $query.Var.region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud
                 "QueryAwsCloudAccountWithFeatures",
                 "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)",
                 "AwsCloudAccountWithFeatures",
-                Query.AwsCloudAccountWithFeatures_ObjectFieldSpec,
+                Query.AwsCloudAccountWithFeatures,
                 Query.AwsCloudAccountWithFeaturesFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -1795,7 +1795,7 @@ $query.Var.awsCloudAccountArg = @{
                 "QueryAllAwsCloudAccountsWithFeatures",
                 "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)",
                 "List<AwsCloudAccountWithFeatures>",
-                Query.AllAwsCloudAccountsWithFeatures_ObjectFieldSpec,
+                Query.AllAwsCloudAccountsWithFeatures,
                 Query.AllAwsCloudAccountsWithFeaturesFieldSpec,
                 @"# REQUIRED
 $query.Var.awsCloudAccountsArg = @{
@@ -1826,7 +1826,7 @@ $query.Var.awsCloudAccountsArg = @{
                 "QueryAwsComputeSettings",
                 "($computeSettingId: UUID!)",
                 "AwsComputeSettings",
-                Query.AwsComputeSettings_ObjectFieldSpec,
+                Query.AwsComputeSettings,
                 Query.AwsComputeSettingsFieldSpec,
                 @"# REQUIRED
 $query.Var.computeSettingId = $someString"
@@ -1856,7 +1856,7 @@ $query.Var.computeSettingId = $someString"
                 "QueryAllDbParameterGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$rdsType: AwsNativeRdsType)",
                 "List<DbParameterGroup>",
-                Query.AllDbParameterGroupsByRegionFromAws_ObjectFieldSpec,
+                Query.AllDbParameterGroupsByRegionFromAws,
                 Query.AllDbParameterGroupsByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -1885,7 +1885,7 @@ $query.Var.rdsType = $someAwsNativeRdsType # Call [Enum]::GetValues([RubrikSecur
                 "QueryAllDbSubnetGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
                 "List<SubnetGroup>",
-                Query.AllDbSubnetGroupsByRegionFromAws_ObjectFieldSpec,
+                Query.AllDbSubnetGroupsByRegionFromAws,
                 Query.AllDbSubnetGroupsByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -1908,7 +1908,7 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
                 "QueryAllEc2KeyPairsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
                 "List<System.String>",
-                Query.AllEc2KeyPairsByRegionFromAws_ObjectFieldSpec,
+                Query.AllEc2KeyPairsByRegionFromAws,
                 Query.AllEc2KeyPairsByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -1930,7 +1930,7 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
                 "QueryAllAwsExocomputeConfigs",
                 "($awsNativeAccountIdOrNamePrefix: String!)",
                 "List<AwsExocomputeConfig>",
-                Query.AllAwsExocomputeConfigs_ObjectFieldSpec,
+                Query.AllAwsExocomputeConfigs,
                 Query.AllAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsNativeAccountIdOrNamePrefix = $someString"
@@ -1951,7 +1951,7 @@ $query.Var.awsNativeAccountIdOrNamePrefix = $someString"
                 "QueryAllAwsInstanceProfileNames",
                 "($cloudAccountId: String!,$region: String!)",
                 "List<System.String>",
-                Query.AllAwsInstanceProfileNames_ObjectFieldSpec,
+                Query.AllAwsInstanceProfileNames,
                 Query.AllAwsInstanceProfileNamesFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString
@@ -1974,7 +1974,7 @@ $query.Var.region = $someString"
                 "QueryIsAwsS3BucketNameAvailable",
                 "($bucketName: String!,$awsAccountRubrikId: UUID!)",
                 "System.Boolean",
-                Query.IsAwsS3BucketNameAvailable_ObjectFieldSpec,
+                Query.IsAwsS3BucketNameAvailable,
                 Query.IsAwsS3BucketNameAvailableFieldSpec,
                 @"# REQUIRED
 $query.Var.bucketName = $someString
@@ -1997,7 +1997,7 @@ $query.Var.awsAccountRubrikId = $someString"
                 "QueryAllKmsEncryptionKeysByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
                 "List<KmsEncryptionKey>",
-                Query.AllKmsEncryptionKeysByRegionFromAws_ObjectFieldSpec,
+                Query.AllKmsEncryptionKeysByRegionFromAws,
                 Query.AllKmsEncryptionKeysByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2029,7 +2029,7 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
                 "QueryAllOptionGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$majorEngineVersion: String!)",
                 "List<OptionGroup>",
-                Query.AllOptionGroupsByRegionFromAws_ObjectFieldSpec,
+                Query.AllOptionGroupsByRegionFromAws,
                 Query.AllOptionGroupsByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2057,7 +2057,7 @@ $query.Var.majorEngineVersion = $someString"
                 "QueryAllAwsPermissionPolicies",
                 "($input: AwsGetPermissionPoliciesInput!)",
                 "List<PermissionPolicy>",
-                Query.AllAwsPermissionPolicies_ObjectFieldSpec,
+                Query.AllAwsPermissionPolicies,
                 Query.AllAwsPermissionPoliciesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2108,7 +2108,7 @@ $query.Var.input = @{
                 "QueryRdsInstanceDetailsFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
                 "RdsInstanceDetailsFromAws",
-                Query.RdsInstanceDetailsFromAws_ObjectFieldSpec,
+                Query.RdsInstanceDetailsFromAws,
                 Query.RdsInstanceDetailsFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2134,7 +2134,7 @@ $query.Var.rdsDatabaseRubrikId = $someString"
                 "QueryAllAwsRegions",
                 "($cloudAccountId: String!)",
                 "List<AwsCloudAccountRegion>",
-                Query.AllAwsRegions_ObjectFieldSpec,
+                Query.AllAwsRegions,
                 Query.AllAwsRegionsFieldSpec,
                 @"# REQUIRED
 $query.Var.cloudAccountId = $someString"
@@ -2156,7 +2156,7 @@ $query.Var.cloudAccountId = $someString"
                 "QueryS3BucketStateForRecovery",
                 "($bucketName: String!,$awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
                 "GetS3BucketStateForRecoveryReply",
-                Query.S3BucketStateForRecovery_ObjectFieldSpec,
+                Query.S3BucketStateForRecovery,
                 Query.S3BucketStateForRecoveryFieldSpec,
                 @"# REQUIRED
 $query.Var.bucketName = $someString
@@ -2180,7 +2180,7 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
                 "QueryAllS3BucketsFromAws",
                 "($awsAccountRubrikId: UUID!)",
                 "List<System.String>",
-                Query.AllS3BucketsFromAws_ObjectFieldSpec,
+                Query.AllS3BucketsFromAws,
                 Query.AllS3BucketsFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString"
@@ -2201,7 +2201,7 @@ $query.Var.awsAccountRubrikId = $someString"
                 "QueryAllS3BucketsDetailsFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion)",
                 "List<S3BucketDetails>",
-                Query.AllS3BucketsDetailsFromAws_ObjectFieldSpec,
+                Query.AllS3BucketsDetailsFromAws,
                 Query.AllS3BucketsDetailsFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2231,7 +2231,7 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
                 "QueryAllSupportedAwsRdsDatabaseInstanceClasses",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String)",
                 "List<System.String>",
-                Query.AllSupportedAwsRdsDatabaseInstanceClasses_ObjectFieldSpec,
+                Query.AllSupportedAwsRdsDatabaseInstanceClasses,
                 Query.AllSupportedAwsRdsDatabaseInstanceClassesFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
@@ -2257,7 +2257,7 @@ $query.Var.dbEngineVersion = $someString"
                 "QueryAwsTrustPolicy",
                 "($input: AwsTrustPolicyInput!)",
                 "AwsTrustPolicy",
-                Query.AwsTrustPolicy_ObjectFieldSpec,
+                Query.AwsTrustPolicy,
                 Query.AwsTrustPolicyFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2293,7 +2293,7 @@ $query.Var.input = @{
                 "QueryValidateCreateAwsClusterInput",
                 "($input: CreateAwsClusterInput!)",
                 "ValidationReply",
-                Query.ValidateCreateAwsClusterInput_ObjectFieldSpec,
+                Query.ValidateCreateAwsClusterInput,
                 Query.ValidateCreateAwsClusterInputFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -2416,7 +2416,7 @@ $query.Var.input = @{
                 "QueryAllVpcsFromAws",
                 "($awsAccountRubrikId: UUID)",
                 "List<AwsVpc>",
-                Query.AllVpcsFromAws_ObjectFieldSpec,
+                Query.AllVpcsFromAws,
                 Query.AllVpcsFromAwsFieldSpec,
                 @"# OPTIONAL
 $query.Var.awsAccountRubrikId = $someString"
@@ -2437,7 +2437,7 @@ $query.Var.awsAccountRubrikId = $someString"
                 "QueryAllVpcsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
                 "List<AwsVpc>",
-                Query.AllVpcsByRegionFromAws_ObjectFieldSpec,
+                Query.AllVpcsByRegionFromAws,
                 Query.AllVpcsByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString

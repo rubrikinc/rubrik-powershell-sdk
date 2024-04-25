@@ -993,7 +993,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationCreateOrg",
                 "($input: CreateOrgInput!)",
                 "CreateOrgReply",
-                Mutation.CreateOrg_ObjectFieldSpec,
+                Mutation.CreateOrg,
                 Mutation.CreateOrgFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1109,7 +1109,7 @@ $query.Var.input = @{
                 "MutationCreateOrgSwitchSession",
                 "($input: CreateOrgSwitchSessionInput!)",
                 "CreateOrgSwitchSessionReply",
-                Mutation.CreateOrgSwitchSession_ObjectFieldSpec,
+                Mutation.CreateOrgSwitchSession,
                 Mutation.CreateOrgSwitchSessionFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1134,7 +1134,7 @@ $query.Var.input = @{
                 "MutationCreateRole",
                 "($name: String!,$description: String!,$permissions: [PermissionInput!]!)",
                 "System.String",
-                Mutation.CreateRole_ObjectFieldSpec,
+                Mutation.CreateRole,
                 Mutation.CreateRoleFieldSpec,
                 @"# REQUIRED
 $query.Var.name = $someString
@@ -1175,7 +1175,7 @@ $query.Var.permissions = @(
                 "MutationCreateUser",
                 "($email: String!,$roleIds: [String!]!)",
                 "System.String",
-                Mutation.CreateUser_ObjectFieldSpec,
+                Mutation.CreateUser,
                 Mutation.CreateUserFieldSpec,
                 @"# REQUIRED
 $query.Var.email = $someString
@@ -1199,7 +1199,7 @@ $query.Var.roleIds = @(
                 "MutationCreateUserWithPassword",
                 "($input: CreateUserWithPasswordInput!)",
                 "System.String",
-                Mutation.CreateUserWithPassword_ObjectFieldSpec,
+                Mutation.CreateUserWithPassword,
                 Mutation.CreateUserWithPasswordFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1228,7 +1228,7 @@ $query.Var.input = @{
                 "MutationDeleteOrg",
                 "($input: DeleteOrgInput!)",
                 "System.Boolean",
-                Mutation.DeleteOrg_ObjectFieldSpec,
+                Mutation.DeleteOrg,
                 Mutation.DeleteOrgFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1251,7 +1251,7 @@ $query.Var.input = @{
                 "MutationDeleteRole",
                 "($roleId: String!)",
                 "System.Boolean",
-                Mutation.DeleteRole_ObjectFieldSpec,
+                Mutation.DeleteRole,
                 Mutation.DeleteRoleFieldSpec,
                 @"# REQUIRED
 $query.Var.roleId = $someString"
@@ -1271,7 +1271,7 @@ $query.Var.roleId = $someString"
                 "MutationDeleteTotpConfig",
                 "($userId: String!)",
                 "System.Boolean",
-                Mutation.DeleteTotpConfig_ObjectFieldSpec,
+                Mutation.DeleteTotpConfig,
                 Mutation.DeleteTotpConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString"
@@ -1291,7 +1291,7 @@ $query.Var.userId = $someString"
                 "MutationDeleteTotpConfigs",
                 "($input: DeleteTotpConfigsInput!)",
                 "System.Boolean",
-                Mutation.DeleteTotpConfigs_ObjectFieldSpec,
+                Mutation.DeleteTotpConfigs,
                 Mutation.DeleteTotpConfigsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1316,7 +1316,7 @@ $query.Var.input = @{
                 "MutationDeleteUsersFromAccount",
                 "($ids: [String!]!)",
                 "System.Boolean",
-                Mutation.DeleteUsersFromAccount_ObjectFieldSpec,
+                Mutation.DeleteUsersFromAccount,
                 Mutation.DeleteUsersFromAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.ids = @(
@@ -1338,7 +1338,7 @@ $query.Var.ids = @(
                 "MutationGenerateTotpSecret",
                 "($userId: String!)",
                 "GenerateTotpSecretReply",
-                Mutation.GenerateTotpSecret_ObjectFieldSpec,
+                Mutation.GenerateTotpSecret,
                 Mutation.GenerateTotpSecretFieldSpec,
                 @"# REQUIRED
 $query.Var.userId = $someString"
@@ -1368,7 +1368,7 @@ $query.Var.userId = $someString"
                 "MutationMutateRole",
                 "($roleId: String,$name: String!,$description: String!,$permissions: [PermissionInput!]!,$protectableClusters: [String!]!)",
                 "System.String",
-                Mutation.MutateRole_ObjectFieldSpec,
+                Mutation.MutateRole,
                 Mutation.MutateRoleFieldSpec,
                 @"# OPTIONAL
 $query.Var.roleId = $someString
@@ -1414,7 +1414,7 @@ $query.Var.protectableClusters = @(
                 "MutationUpdateOrg",
                 "($input: UpdateOrgInput!)",
                 "UpdateOrgReply",
-                Mutation.UpdateOrg_ObjectFieldSpec,
+                Mutation.UpdateOrg,
                 Mutation.UpdateOrgFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -1540,7 +1540,7 @@ $query.Var.input = @{
                 "MutationUpdateRole",
                 "($roleId: String!,$name: String!,$description: String!,$permissions: [PermissionInput!]!)",
                 "System.Boolean",
-                Mutation.UpdateRole_ObjectFieldSpec,
+                Mutation.UpdateRole,
                 Mutation.UpdateRoleFieldSpec,
                 @"# REQUIRED
 $query.Var.roleId = $someString

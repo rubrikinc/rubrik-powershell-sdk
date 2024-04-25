@@ -563,7 +563,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MutationBulkCreateFilesets",
                 "($input: BulkCreateFilesetsInput!)",
                 "BulkCreateFilesetsReply",
-                Mutation.BulkCreateFilesets_ObjectFieldSpec,
+                Mutation.BulkCreateFilesets,
                 Mutation.BulkCreateFilesetsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -618,7 +618,7 @@ $query.Var.input = @{
                 "MutationBulkCreateFilesetTemplates",
                 "($input: BulkCreateFilesetTemplatesInput!)",
                 "BulkCreateFilesetTemplatesReply",
-                Mutation.BulkCreateFilesetTemplates_ObjectFieldSpec,
+                Mutation.BulkCreateFilesetTemplates,
                 Mutation.BulkCreateFilesetTemplatesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -687,7 +687,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteFileset",
                 "($input: BulkDeleteFilesetInput!)",
                 "ResponseSuccess",
-                Mutation.BulkDeleteFileset_ObjectFieldSpec,
+                Mutation.BulkDeleteFileset,
                 Mutation.BulkDeleteFilesetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -714,7 +714,7 @@ $query.Var.input = @{
                 "MutationBulkDeleteFilesetTemplate",
                 "($input: BulkDeleteFilesetTemplateInput!)",
                 "ResponseSuccess",
-                Mutation.BulkDeleteFilesetTemplate_ObjectFieldSpec,
+                Mutation.BulkDeleteFilesetTemplate,
                 Mutation.BulkDeleteFilesetTemplateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -741,7 +741,7 @@ $query.Var.input = @{
                 "MutationBulkUpdateFilesetTemplate",
                 "($input: BulkUpdateFilesetTemplateInput!)",
                 "BulkUpdateFilesetTemplateReply",
-                Mutation.BulkUpdateFilesetTemplate_ObjectFieldSpec,
+                Mutation.BulkUpdateFilesetTemplate,
                 Mutation.BulkUpdateFilesetTemplateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
@@ -808,7 +808,7 @@ $query.Var.input = @{
                 "MutationFilesetRecoverFiles",
                 "($input: FilesetRecoverFilesInput!)",
                 "AsyncRequestStatus",
-                Mutation.FilesetRecoverFiles_ObjectFieldSpec,
+                Mutation.FilesetRecoverFiles,
                 Mutation.FilesetRecoverFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
