@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalInfos: [CdmSnapshotLocationRetentionInfo!] (type)
         if (this.ArchivalInfos != null) {
             var fspec = this.ArchivalInfos.AsFieldSpec(conf.Child("archivalInfos"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> localInfo: CdmSnapshotLocationRetentionInfo (type)
         if (this.LocalInfo != null) {
             var fspec = this.LocalInfo.AsFieldSpec(conf.Child("localInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationInfos: [CdmSnapshotLocationRetentionInfo!] (type)
         if (this.ReplicationInfos != null) {
             var fspec = this.ReplicationInfos.AsFieldSpec(conf.Child("replicationInfos"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

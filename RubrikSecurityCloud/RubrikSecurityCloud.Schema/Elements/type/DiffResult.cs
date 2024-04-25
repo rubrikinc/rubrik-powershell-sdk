@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> data: [DiffData!]! (type)
         if (this.Data != null) {
             var fspec = this.Data.AsFieldSpec(conf.Child("data"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> paginationMarker: PaginationMarker (type)
         if (this.PaginationMarker != null) {
             var fspec = this.PaginationMarker.AsFieldSpec(conf.Child("paginationMarker"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

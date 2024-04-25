@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> params: [CertificateUsageParameter!]! (type)
         if (this.Params != null) {
             var fspec = this.Params.AsFieldSpec(conf.Child("params"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

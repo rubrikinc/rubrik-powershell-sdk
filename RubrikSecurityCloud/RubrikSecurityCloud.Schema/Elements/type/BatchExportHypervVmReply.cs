@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failedRequests: [HypervAsyncRequestFailureSummary!]! (type)
         if (this.FailedRequests != null) {
             var fspec = this.FailedRequests.AsFieldSpec(conf.Child("failedRequests"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> successfulRequests: [HypervAsyncRequestSuccessSummary!]! (type)
         if (this.SuccessfulRequests != null) {
             var fspec = this.SuccessfulRequests.AsFieldSpec(conf.Child("successfulRequests"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

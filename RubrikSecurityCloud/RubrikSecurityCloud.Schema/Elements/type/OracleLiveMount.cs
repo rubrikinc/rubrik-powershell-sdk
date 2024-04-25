@@ -275,7 +275,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -287,7 +288,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountedDatabase: OracleDatabase (type)
         if (this.MountedDatabase != null) {
             var fspec = this.MountedDatabase.AsFieldSpec(conf.Child("mountedDatabase"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -299,7 +301,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> owner: User! (type)
         if (this.Owner != null) {
             var fspec = this.Owner.AsFieldSpec(conf.Child("owner"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -311,7 +314,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceDatabase: OracleDatabase (type)
         if (this.SourceDatabase != null) {
             var fspec = this.SourceDatabase.AsFieldSpec(conf.Child("sourceDatabase"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -323,7 +327,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
         if (this.SourceSnapshot != null) {
             var fspec = this.SourceSnapshot.AsFieldSpec(conf.Child("sourceSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -335,7 +340,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetOracleHost: OracleHost (type)
         if (this.TargetOracleHost != null) {
             var fspec = this.TargetOracleHost.AsFieldSpec(conf.Child("targetOracleHost"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -347,7 +353,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetOracleRac: OracleRac (type)
         if (this.TargetOracleRac != null) {
             var fspec = this.TargetOracleRac.AsFieldSpec(conf.Child("targetOracleRac"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

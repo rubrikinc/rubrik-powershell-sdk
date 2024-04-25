@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> db2BackupFile: Db2WorkloadDataBackupFile! (type)
         if (this.Db2BackupFile != null) {
             var fspec = this.Db2BackupFile.AsFieldSpec(conf.Child("db2BackupFile"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

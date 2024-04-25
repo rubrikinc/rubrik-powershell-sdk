@@ -114,7 +114,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> immutabilitySettings: RcsImmutabilitySettings! (type)
         if (this.ImmutabilitySettings != null) {
             var fspec = this.ImmutabilitySettings.AsFieldSpec(conf.Child("immutabilitySettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

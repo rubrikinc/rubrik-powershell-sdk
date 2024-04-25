@@ -680,7 +680,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
         if (this.CurrentBackupTaskInfo != null) {
             var fspec = this.CurrentBackupTaskInfo.AsFieldSpec(conf.Child("currentBackupTaskInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -692,7 +693,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
             var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -704,7 +706,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicas: [MssqlDbReplica!]! (type)
         if (this.Replicas != null) {
             var fspec = this.Replicas.AsFieldSpec(conf.Child("replicas"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -716,7 +719,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
             var fspec = this.RootProperties.AsFieldSpec(conf.Child("rootProperties"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -728,7 +732,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
             var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -740,7 +745,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
         if (this.UnprotectableReasonsV50 != null) {
             var fspec = this.UnprotectableReasonsV50.AsFieldSpec(conf.Child("unprotectableReasonsV50"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

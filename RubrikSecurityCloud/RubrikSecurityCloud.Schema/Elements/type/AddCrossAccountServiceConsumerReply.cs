@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> serviceProviderSa: CrossAccountSaType (type)
         if (this.ServiceProviderSa != null) {
             var fspec = this.ServiceProviderSa.AsFieldSpec(conf.Child("serviceProviderSa"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

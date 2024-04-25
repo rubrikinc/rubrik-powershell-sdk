@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> data: MosaicRecoveryRangeObject (type)
         if (this.Data != null) {
             var fspec = this.Data.AsFieldSpec(conf.Child("data"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

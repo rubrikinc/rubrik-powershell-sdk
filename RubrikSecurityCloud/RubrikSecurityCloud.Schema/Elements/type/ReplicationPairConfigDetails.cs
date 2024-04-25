@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceGateway: GatewayInfo (type)
         if (this.SourceGateway != null) {
             var fspec = this.SourceGateway.AsFieldSpec(conf.Child("sourceGateway"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetGateway: GatewayInfo (type)
         if (this.TargetGateway != null) {
             var fspec = this.TargetGateway.AsFieldSpec(conf.Child("targetGateway"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

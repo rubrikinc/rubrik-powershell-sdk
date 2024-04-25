@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> computeClusterSummary: ComputeClusterSummary (type)
         if (this.ComputeClusterSummary != null) {
             var fspec = this.ComputeClusterSummary.AsFieldSpec(conf.Child("computeClusterSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hosts: [VmwareHostSummary!]! (type)
         if (this.Hosts != null) {
             var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
         if (this.VirtualMachines != null) {
             var fspec = this.VirtualMachines.AsFieldSpec(conf.Child("virtualMachines"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

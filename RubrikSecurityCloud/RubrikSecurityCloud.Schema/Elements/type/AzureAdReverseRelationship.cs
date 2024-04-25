@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> relatedObjects: [RelatedObjectsType!]! (type)
         if (this.RelatedObjects != null) {
             var fspec = this.RelatedObjects.AsFieldSpec(conf.Child("relatedObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> columns: [CassandraColumnObject!]! (type)
         if (this.Columns != null) {
             var fspec = this.Columns.AsFieldSpec(conf.Child("columns"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

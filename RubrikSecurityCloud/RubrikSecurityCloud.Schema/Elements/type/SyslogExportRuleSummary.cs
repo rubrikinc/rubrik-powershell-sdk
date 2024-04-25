@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> syslogCertificateInfo: SyslogCertificateInfo (type)
         if (this.SyslogCertificateInfo != null) {
             var fspec = this.SyslogCertificateInfo.AsFieldSpec(conf.Child("syslogCertificateInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> syslogExportRuleFull: SyslogExportRuleFull (type)
         if (this.SyslogExportRuleFull != null) {
             var fspec = this.SyslogExportRuleFull.AsFieldSpec(conf.Child("syslogExportRuleFull"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

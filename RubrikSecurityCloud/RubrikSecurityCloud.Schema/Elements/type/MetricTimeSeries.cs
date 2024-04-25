@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> ClusterMetricGroupByInfo? TimeInfo
         // GraphQL -> timeInfo: ClusterMetricGroupByInfo! (union)
         [JsonProperty("timeInfo")]
-        public ClusterMetricGroupByInfo? TimeInfo { get; set; }
+        public RscInterface<ClusterMetricGroupByInfo> TimeInfo { get; set; }
 
 
         #endregion
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
 
     public MetricTimeSeries Set(
         ClusterMetric? Metric = null,
-        ClusterMetricGroupByInfo? TimeInfo = null
+        RscInterface<ClusterMetricGroupByInfo> TimeInfo = null
     ) 
     {
         if ( Metric != null ) {
@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> metric: ClusterMetric! (type)
         if (this.Metric != null) {
             var fspec = this.Metric.AsFieldSpec(conf.Child("metric"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,11 +81,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> timeInfo: ClusterMetricGroupByInfo! (union)
         if (this.TimeInfo != null) {
             var fspec = this.TimeInfo.AsFieldSpec(conf.Child("timeInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "timeInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "timeInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -120,17 +122,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.TimeInfo == null) {
 
-                var impls = new RscInterface<ClusterMetricGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
-                this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.TimeInfo = new RscInterface<ClusterMetricGroupByInfo>();
+                this.TimeInfo.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<ClusterMetricGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
-                this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.TimeInfo.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
 
             }
         }

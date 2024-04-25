@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> genericNas: DlpConfigGenericNas (type)
         if (this.GenericNas != null) {
             var fspec = this.GenericNas.AsFieldSpec(conf.Child("genericNas"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -161,7 +162,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> status: DlpStatus! (type)
         if (this.Status != null) {
             var fspec = this.Status.AsFieldSpec(conf.Child("status"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -173,7 +175,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareVm: DlpConfigVmwareVm (type)
         if (this.VmwareVm != null) {
             var fspec = this.VmwareVm.AsFieldSpec(conf.Child("vmwareVm"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

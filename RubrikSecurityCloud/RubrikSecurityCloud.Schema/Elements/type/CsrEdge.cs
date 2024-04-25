@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> node: Csr! (type)
         if (this.Node != null) {
             var fspec = this.Node.AsFieldSpec(conf.Child("node"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesDetails: [FileDetails!]! (type)
         if (this.FilesDetails != null) {
             var fspec = this.FilesDetails.AsFieldSpec(conf.Child("filesDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

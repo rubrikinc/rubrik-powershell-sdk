@@ -19,51 +19,42 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [JsonProperty("id")]
-        System.String? Id { get; set; }
-
-        //      C# -> System.String? ParentFolderId
-        // GraphQL -> parentFolderId: String (scalar)
-        [JsonProperty("parentFolderId")]
-        System.String? ParentFolderId { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String (scalar)
-        [JsonProperty("name")]
-        System.String? Name { get; set; }
-
-        //      C# -> System.Int64? Size
-        // GraphQL -> size: Long (scalar)
-        [JsonProperty("size")]
-        System.Int64? Size { get; set; }
-
-        //      C# -> DateTime? CreateTime
-        // GraphQL -> createTime: DateTime (scalar)
-        [JsonProperty("createTime")]
-        DateTime? CreateTime { get; set; }
-
-        //      C# -> DateTime? ModifiedTime
-        // GraphQL -> modifiedTime: DateTime (scalar)
-        [JsonProperty("modifiedTime")]
-        DateTime? ModifiedTime { get; set; }
-
-        //      C# -> System.String? ChannelName
-        // GraphQL -> channelName: String (scalar)
-        [JsonProperty("channelName")]
-        System.String? ChannelName { get; set; }
-
-        //      C# -> System.String? ChannelFolderName
-        // GraphQL -> channelFolderName: String (scalar)
-        [JsonProperty("channelFolderName")]
-        System.String? ChannelFolderName { get; set; }
-
         //      C# -> ChannelMembershipType? ChannelMembershipType
         // GraphQL -> channelMembershipType: ChannelMembershipType (enum)
         [JsonProperty("channelMembershipType")]
         ChannelMembershipType? ChannelMembershipType { get; set; }
-
+        //      C# -> System.String? ChannelFolderName
+        // GraphQL -> channelFolderName: String (scalar)
+        [JsonProperty("channelFolderName")]
+        System.String? ChannelFolderName { get; set; }
+        //      C# -> System.String? ChannelName
+        // GraphQL -> channelName: String (scalar)
+        [JsonProperty("channelName")]
+        System.String? ChannelName { get; set; }
+        //      C# -> DateTime? CreateTime
+        // GraphQL -> createTime: DateTime (scalar)
+        [JsonProperty("createTime")]
+        DateTime? CreateTime { get; set; }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [JsonProperty("id")]
+        System.String? Id { get; set; }
+        //      C# -> DateTime? ModifiedTime
+        // GraphQL -> modifiedTime: DateTime (scalar)
+        [JsonProperty("modifiedTime")]
+        DateTime? ModifiedTime { get; set; }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        [JsonProperty("name")]
+        System.String? Name { get; set; }
+        //      C# -> System.String? ParentFolderId
+        // GraphQL -> parentFolderId: String (scalar)
+        [JsonProperty("parentFolderId")]
+        System.String? ParentFolderId { get; set; }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long (scalar)
+        [JsonProperty("size")]
+        System.Int64? Size { get; set; }
 
         #endregion
 

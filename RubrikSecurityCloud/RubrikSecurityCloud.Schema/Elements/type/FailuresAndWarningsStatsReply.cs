@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failuresAndWarningsStats: [FailuresAndWarningsStats!]! (type)
         if (this.FailuresAndWarningsStats != null) {
             var fspec = this.FailuresAndWarningsStats.AsFieldSpec(conf.Child("failuresAndWarningsStats"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

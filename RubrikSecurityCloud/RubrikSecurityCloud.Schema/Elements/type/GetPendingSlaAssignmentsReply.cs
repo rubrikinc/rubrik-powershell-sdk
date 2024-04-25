@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectsWithNoOp: [ManagedObjectSlaInfo!]! (type)
         if (this.ObjectsWithNoOp != null) {
             var fspec = this.ObjectsWithNoOp.AsFieldSpec(conf.Child("objectsWithNoOp"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectsWithPendingOp: [ManagedObjectPendingSlaInfo!]! (type)
         if (this.ObjectsWithPendingOp != null) {
             var fspec = this.ObjectsWithPendingOp.AsFieldSpec(conf.Child("objectsWithPendingOp"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

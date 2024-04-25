@@ -19,26 +19,22 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String (scalar)
-        [JsonProperty("id")]
-        System.String? Id { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String (scalar)
-        [JsonProperty("name")]
-        System.String? Name { get; set; }
-
-        //      C# -> System.String? FolderName
-        // GraphQL -> folderName: String (scalar)
-        [JsonProperty("folderName")]
-        System.String? FolderName { get; set; }
-
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
         [JsonProperty("folderId")]
         System.String? FolderId { get; set; }
-
+        //      C# -> System.String? FolderName
+        // GraphQL -> folderName: String (scalar)
+        [JsonProperty("folderName")]
+        System.String? FolderName { get; set; }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String (scalar)
+        [JsonProperty("id")]
+        System.String? Id { get; set; }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        [JsonProperty("name")]
+        System.String? Name { get; set; }
 
         #endregion
 

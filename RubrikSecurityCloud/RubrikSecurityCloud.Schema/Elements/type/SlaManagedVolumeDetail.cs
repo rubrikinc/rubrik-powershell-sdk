@@ -158,7 +158,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupScriptDetails: SlaManagedVolumeScriptSummary (type)
         if (this.BackupScriptDetails != null) {
             var fspec = this.BackupScriptDetails.AsFieldSpec(conf.Child("backupScriptDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -170,7 +171,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hostDetails: SlaManagedVolumeHostSummary (type)
         if (this.HostDetails != null) {
             var fspec = this.HostDetails.AsFieldSpec(conf.Child("hostDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -182,7 +184,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
         if (this.LogExportSummary != null) {
             var fspec = this.LogExportSummary.AsFieldSpec(conf.Child("logExportSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -194,7 +197,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PostBackupScriptOnBackupFailureDetails != null) {
             var fspec = this.PostBackupScriptOnBackupFailureDetails.AsFieldSpec(conf.Child("postBackupScriptOnBackupFailureDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -206,7 +210,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> postBackupScriptOnBackupSuccessDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PostBackupScriptOnBackupSuccessDetails != null) {
             var fspec = this.PostBackupScriptOnBackupSuccessDetails.AsFieldSpec(conf.Child("postBackupScriptOnBackupSuccessDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -218,7 +223,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> preBackupScriptDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PreBackupScriptDetails != null) {
             var fspec = this.PreBackupScriptDetails.AsFieldSpec(conf.Child("preBackupScriptDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

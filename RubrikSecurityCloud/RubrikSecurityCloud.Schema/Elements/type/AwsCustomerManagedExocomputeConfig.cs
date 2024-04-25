@@ -168,7 +168,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         if (this.HealthCheckStatus != null) {
             var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

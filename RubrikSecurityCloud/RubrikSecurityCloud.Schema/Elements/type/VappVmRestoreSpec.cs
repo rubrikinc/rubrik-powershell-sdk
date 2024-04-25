@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> networkConnections: [VappVmNetworkConnection!]! (type)
         if (this.NetworkConnections != null) {
             var fspec = this.NetworkConnections.AsFieldSpec(conf.Child("networkConnections"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

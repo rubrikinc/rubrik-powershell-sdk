@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
         if (this.ClusterInterfaceCidrs != null) {
             var fspec = this.ClusterInterfaceCidrs.AsFieldSpec(conf.Child("clusterInterfaceCidrs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

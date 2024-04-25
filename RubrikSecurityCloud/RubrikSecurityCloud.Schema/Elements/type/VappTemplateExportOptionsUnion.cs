@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
         if (this.AdvancedExportOptions != null) {
             var fspec = this.AdvancedExportOptions.AsFieldSpec(conf.Child("advancedExportOptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -89,7 +90,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
         if (this.DefaultCatalogExportOptions != null) {
             var fspec = this.DefaultCatalogExportOptions.AsFieldSpec(conf.Child("defaultCatalogExportOptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -101,7 +103,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
         if (this.OriginalVdcExportOptions != null) {
             var fspec = this.OriginalVdcExportOptions.AsFieldSpec(conf.Child("originalVdcExportOptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

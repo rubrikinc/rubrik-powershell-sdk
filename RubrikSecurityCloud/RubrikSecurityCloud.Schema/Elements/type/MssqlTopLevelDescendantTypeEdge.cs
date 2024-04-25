@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> MssqlTopLevelDescendantType? Node
         // GraphQL -> node: MssqlTopLevelDescendantType! (interface)
         [JsonProperty("node")]
-        public MssqlTopLevelDescendantType? Node { get; set; }
+        public RscInterface<MssqlTopLevelDescendantType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MssqlTopLevelDescendantTypeEdge Set(
-        MssqlTopLevelDescendantType? Node = null,
+        RscInterface<MssqlTopLevelDescendantType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> MssqlTopLevelDescendantType? Node
         // GraphQL -> node: MssqlTopLevelDescendantType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<MssqlTopLevelDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (MssqlTopLevelDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<MssqlTopLevelDescendantType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<MssqlTopLevelDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (MssqlTopLevelDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

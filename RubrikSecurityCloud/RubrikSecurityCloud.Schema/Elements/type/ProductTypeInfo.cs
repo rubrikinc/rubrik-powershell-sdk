@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> licenses: [License!]! (type)
         if (this.Licenses != null) {
             var fspec = this.Licenses.AsFieldSpec(conf.Child("licenses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

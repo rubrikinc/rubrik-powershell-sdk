@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectsCount: ActiveDirectoryObjectsCount (type)
         if (this.ObjectsCount != null) {
             var fspec = this.ObjectsCount.AsFieldSpec(conf.Child("objectsCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsAccounts: [AwsAccountRansomwareInvestigationEnablement!] (type)
         if (this.AwsAccounts != null) {
             var fspec = this.AwsAccounts.AsFieldSpec(conf.Child("awsAccounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureSubscriptions: [AzureSubscriptionRansomwareInvestigationEnablement!] (type)
         if (this.AzureSubscriptions != null) {
             var fspec = this.AzureSubscriptions.AsFieldSpec(conf.Child("azureSubscriptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!] (type)
         if (this.CloudDirectClusters != null) {
             var fspec = this.CloudDirectClusters.AsFieldSpec(conf.Child("cloudDirectClusters"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -131,7 +134,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> microsoft365Subscriptions: [Microsoft365RansomwareInvestigationEnablement!] (type)
         if (this.Microsoft365Subscriptions != null) {
             var fspec = this.Microsoft365Subscriptions.AsFieldSpec(conf.Child("microsoft365Subscriptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +147,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rubrikCloudVaultLocations: [RubrikCloudVaultRansomwareInvestigationEnablement!] (type)
         if (this.RubrikCloudVaultLocations != null) {
             var fspec = this.RubrikCloudVaultLocations.AsFieldSpec(conf.Child("rubrikCloudVaultLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

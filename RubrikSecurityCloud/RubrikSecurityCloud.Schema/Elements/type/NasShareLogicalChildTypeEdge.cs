@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> NasShareLogicalChildType? Node
         // GraphQL -> node: NasShareLogicalChildType! (interface)
         [JsonProperty("node")]
-        public NasShareLogicalChildType? Node { get; set; }
+        public RscInterface<NasShareLogicalChildType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public NasShareLogicalChildTypeEdge Set(
-        NasShareLogicalChildType? Node = null,
+        RscInterface<NasShareLogicalChildType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> NasShareLogicalChildType? Node
         // GraphQL -> node: NasShareLogicalChildType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<NasShareLogicalChildType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (NasShareLogicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<NasShareLogicalChildType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<NasShareLogicalChildType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (NasShareLogicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

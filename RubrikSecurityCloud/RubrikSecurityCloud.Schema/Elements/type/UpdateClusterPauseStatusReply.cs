@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pauseStatuses: [ClusterPauseStatusResult!] (type)
         if (this.PauseStatuses != null) {
             var fspec = this.PauseStatuses.AsFieldSpec(conf.Child("pauseStatuses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

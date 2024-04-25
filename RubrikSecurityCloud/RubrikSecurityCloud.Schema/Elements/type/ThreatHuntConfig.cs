@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<CdmHierarchySnappableNew>? Objects
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
         [JsonProperty("objects")]
-        public List<CdmHierarchySnappableNew>? Objects { get; set; }
+        public RscInterface<CdmHierarchySnappableNew> Objects { get; set; }
 
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
@@ -80,7 +80,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatHuntConfig Set(
-        List<CdmHierarchySnappableNew>? Objects = null,
+        RscInterface<CdmHierarchySnappableNew> Objects = null,
         System.String? ClusterUuid = null,
         System.Int32? MaxMatchesPerSnapshot = null,
         System.String? Name = null,
@@ -139,7 +139,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<CdmHierarchySnappableNew>? Objects
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
         if (this.Objects != null) {
-                var fspec = this.Objects.AsFieldSpec(conf.Child("objects"));
+            var fspec = this.Objects.AsFieldSpec(conf.Child("objects"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -198,7 +198,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileScanCriteria: MalwareScanFileCriteria (type)
         if (this.FileScanCriteria != null) {
             var fspec = this.FileScanCriteria.AsFieldSpec(conf.Child("fileScanCriteria"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -210,7 +211,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> indicatorsOfCompromise: [IndicatorOfCompromise!]! (type)
         if (this.IndicatorsOfCompromise != null) {
             var fspec = this.IndicatorsOfCompromise.AsFieldSpec(conf.Child("indicatorsOfCompromise"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -222,7 +224,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> requestedMatchDetails: RequestedMatchDetails (type)
         if (this.RequestedMatchDetails != null) {
             var fspec = this.RequestedMatchDetails.AsFieldSpec(conf.Child("requestedMatchDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -234,7 +237,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotScanLimit: MalwareScanSnapshotLimit (type)
         if (this.SnapshotScanLimit != null) {
             var fspec = this.SnapshotScanLimit.AsFieldSpec(conf.Child("snapshotScanLimit"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

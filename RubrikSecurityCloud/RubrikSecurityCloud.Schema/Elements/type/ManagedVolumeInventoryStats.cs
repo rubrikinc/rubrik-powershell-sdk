@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> alwaysMounted: ManagedVolumeStats! (type)
         if (this.AlwaysMounted != null) {
             var fspec = this.AlwaysMounted.AsFieldSpec(conf.Child("alwaysMounted"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaBased: ManagedVolumeStats! (type)
         if (this.SlaBased != null) {
             var fspec = this.SlaBased.AsFieldSpec(conf.Child("slaBased"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -34,17 +34,17 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         [JsonProperty("pendingSla")]
-        public SlaDomain? PendingSla { get; set; }
+        public RscInterface<SlaDomain> PendingSla { get; set; }
 
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         [JsonProperty("slaDomain")]
-        public SlaDomain? SlaDomain { get; set; }
+        public RscInterface<SlaDomain> SlaDomain { get; set; }
 
         //      C# -> CdmHierarchySnappableNew? SnappableNew
         // GraphQL -> snappableNew: CdmHierarchySnappableNew! (interface)
         [JsonProperty("snappableNew")]
-        public CdmHierarchySnappableNew? SnappableNew { get; set; }
+        public RscInterface<CdmHierarchySnappableNew> SnappableNew { get; set; }
 
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -263,9 +263,9 @@ namespace RubrikSecurityCloud.Types
     public CdmSnapshot Set(
         SnapshotCloudState? CloudState = null,
         ConsistencyLevelEnum? ConsistencyLevel = null,
-        SlaDomain? PendingSla = null,
-        SlaDomain? SlaDomain = null,
-        CdmHierarchySnappableNew? SnappableNew = null,
+        RscInterface<SlaDomain> PendingSla = null,
+        RscInterface<SlaDomain> SlaDomain = null,
+        RscInterface<CdmHierarchySnappableNew> SnappableNew = null,
         System.String? CdmId = null,
         System.String? CdmVersion = null,
         DateTime? Date = null,
@@ -482,7 +482,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PendingSla, conf.Child("pendingSla"));
+            var fspec = this.PendingSla.AsFieldSpec(conf.Child("pendingSla"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -495,7 +495,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.SlaDomain, conf.Child("slaDomain"));
+            var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -508,7 +508,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> CdmHierarchySnappableNew? SnappableNew
         // GraphQL -> snappableNew: CdmHierarchySnappableNew! (interface)
         if (this.SnappableNew != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.SnappableNew, conf.Child("snappableNew"));
+            var fspec = this.SnappableNew.AsFieldSpec(conf.Child("snappableNew"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -720,7 +720,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
         if (this.ActiveDirectoryAppMetadata != null) {
             var fspec = this.ActiveDirectoryAppMetadata.AsFieldSpec(conf.Child("activeDirectoryAppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -732,7 +733,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalLocations: [DataLocation!] (type)
         if (this.ArchivalLocations != null) {
             var fspec = this.ArchivalLocations.AsFieldSpec(conf.Child("archivalLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -744,7 +746,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmWorkloadSnapshot: CdmWorkloadSnapshot (type)
         if (this.CdmWorkloadSnapshot != null) {
             var fspec = this.CdmWorkloadSnapshot.AsFieldSpec(conf.Child("cdmWorkloadSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -756,7 +759,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> childSnapshots: [CdmSnapshot!]! (type)
         if (this.ChildSnapshots != null) {
             var fspec = this.ChildSnapshots.AsFieldSpec(conf.Child("childSnapshots"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -768,7 +772,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudNativeLocations: [DataLocation!] (type)
         if (this.CloudNativeLocations != null) {
             var fspec = this.CloudNativeLocations.AsFieldSpec(conf.Child("cloudNativeLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -780,7 +785,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -792,7 +798,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> db2AppMetadata: Db2AppMetadata (type)
         if (this.Db2AppMetadata != null) {
             var fspec = this.Db2AppMetadata.AsFieldSpec(conf.Child("db2AppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -804,7 +811,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
             var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -816,7 +824,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
         if (this.LegalHoldInfo != null) {
             var fspec = this.LegalHoldInfo.AsFieldSpec(conf.Child("legalHoldInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -828,7 +837,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> localLocations: [DataLocation!] (type)
         if (this.LocalLocations != null) {
             var fspec = this.LocalLocations.AsFieldSpec(conf.Child("localLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -840,7 +850,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> locations: [DataLocation!] (type)
         if (this.Locations != null) {
             var fspec = this.Locations.AsFieldSpec(conf.Child("locations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -852,7 +863,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> managedVolumeAppMetadata: ManagedVolumeAppMetadata (type)
         if (this.ManagedVolumeAppMetadata != null) {
             var fspec = this.ManagedVolumeAppMetadata.AsFieldSpec(conf.Child("managedVolumeAppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -864,7 +876,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlAppMetadata: MssqlAppMetadata (type)
         if (this.MssqlAppMetadata != null) {
             var fspec = this.MssqlAppMetadata.AsFieldSpec(conf.Child("mssqlAppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -876,7 +889,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)
         if (this.PendingSnapshotDeletion != null) {
             var fspec = this.PendingSnapshotDeletion.AsFieldSpec(conf.Child("pendingSnapshotDeletion"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -888,7 +902,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (this.ReplicationLocations != null) {
             var fspec = this.ReplicationLocations.AsFieldSpec(conf.Child("replicationLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -900,7 +915,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sapHanaAppMetadata: SapHanaAppMetadata (type)
         if (this.SapHanaAppMetadata != null) {
             var fspec = this.SapHanaAppMetadata.AsFieldSpec(conf.Child("sapHanaAppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -912,7 +928,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
             var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -924,7 +941,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vappAppMetadata: [VappAppMetadata!] (type)
         if (this.VappAppMetadata != null) {
             var fspec = this.VappAppMetadata.AsFieldSpec(conf.Child("vappAppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -936,7 +954,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareAppMetadata: VmwareAppMetadata (type)
         if (this.VmwareAppMetadata != null) {
             var fspec = this.VmwareAppMetadata.AsFieldSpec(conf.Child("vmwareAppMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -991,17 +1010,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PendingSla == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
-                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PendingSla = new RscInterface<SlaDomain>();
+                this.PendingSla.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
-                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PendingSla.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
 
             }
         }
@@ -1015,17 +1029,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain = new RscInterface<SlaDomain>();
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             }
         }
@@ -1039,17 +1048,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SnappableNew == null) {
 
-                var impls = new RscInterface<CdmHierarchySnappableNew>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappableNew"));
-                this.SnappableNew = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SnappableNew = new RscInterface<CdmHierarchySnappableNew>();
+                this.SnappableNew.ApplyExploratoryFieldSpec(ec.NewChild("snappableNew"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<CdmHierarchySnappableNew>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappableNew"));
-                this.SnappableNew = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SnappableNew.ApplyExploratoryFieldSpec(ec.NewChild("snappableNew"));
 
             }
         }

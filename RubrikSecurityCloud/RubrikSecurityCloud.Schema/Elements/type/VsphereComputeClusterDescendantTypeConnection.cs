@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<VsphereComputeClusterDescendantType>? Nodes
         // GraphQL -> nodes: [VsphereComputeClusterDescendantType!]! (interface)
         [JsonProperty("nodes")]
-        public List<VsphereComputeClusterDescendantType>? Nodes { get; set; }
+        public RscInterface<VsphereComputeClusterDescendantType> Nodes { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VsphereComputeClusterDescendantTypeConnection Set(
-        List<VsphereComputeClusterDescendantType>? Nodes = null,
+        RscInterface<VsphereComputeClusterDescendantType> Nodes = null,
         System.Int32? Count = null,
         List<VsphereComputeClusterDescendantTypeEdge>? Edges = null,
         PageInfo? PageInfo = null
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<VsphereComputeClusterDescendantType>? Nodes
         // GraphQL -> nodes: [VsphereComputeClusterDescendantType!]! (interface)
         if (this.Nodes != null) {
-                var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
+            var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -108,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> edges: [VsphereComputeClusterDescendantTypeEdge!]! (type)
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

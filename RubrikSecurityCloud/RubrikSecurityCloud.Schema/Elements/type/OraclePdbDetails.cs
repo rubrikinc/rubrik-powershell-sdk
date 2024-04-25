@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> applicationContainers: [OraclePdbApplicationContainer!]! (type)
         if (this.ApplicationContainers != null) {
             var fspec = this.ApplicationContainers.AsFieldSpec(conf.Child("applicationContainers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

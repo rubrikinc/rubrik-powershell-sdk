@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> attributes: [ContentNodeAttribute!]! (type)
         if (this.Attributes != null) {
             var fspec = this.Attributes.AsFieldSpec(conf.Child("attributes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

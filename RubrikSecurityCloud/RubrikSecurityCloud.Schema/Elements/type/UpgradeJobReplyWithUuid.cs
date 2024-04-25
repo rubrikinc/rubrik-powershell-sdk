@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeJobReply: UpgradeJobReply! (type)
         if (this.UpgradeJobReply != null) {
             var fspec = this.UpgradeJobReply.AsFieldSpec(conf.Child("upgradeJobReply"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

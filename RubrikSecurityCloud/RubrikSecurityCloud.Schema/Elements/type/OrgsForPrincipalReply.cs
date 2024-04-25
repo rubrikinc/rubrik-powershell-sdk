@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
             var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

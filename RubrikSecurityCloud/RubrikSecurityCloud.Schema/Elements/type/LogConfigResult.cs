@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaLogFrequencyConfig: SlaLogFrequencyConfigResult (type)
         if (this.SlaLogFrequencyConfig != null) {
             var fspec = this.SlaLogFrequencyConfig.AsFieldSpec(conf.Child("slaLogFrequencyConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

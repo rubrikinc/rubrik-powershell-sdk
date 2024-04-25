@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
         if (this.VolumeGroupSnapshotVolumeSummary != null) {
             var fspec = this.VolumeGroupSnapshotVolumeSummary.AsFieldSpec(conf.Child("volumeGroupSnapshotVolumeSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

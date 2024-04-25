@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> artifactsToDelete: [ExternalArtifactMapReply!]! (type)
         if (this.ArtifactsToDeleteField != null) {
             var fspec = this.ArtifactsToDeleteField.AsFieldSpec(conf.Child("artifactsToDelete"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subscriptions: [AzureCloudAccountSubscription!]! (type)
         if (this.Subscriptions != null) {
             var fspec = this.Subscriptions.AsFieldSpec(conf.Child("subscriptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

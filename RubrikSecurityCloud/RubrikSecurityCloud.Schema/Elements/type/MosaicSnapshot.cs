@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         [JsonProperty("slaDomain")]
-        public SlaDomain? SlaDomain { get; set; }
+        public RscInterface<SlaDomain> SlaDomain { get; set; }
 
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
@@ -81,7 +81,7 @@ namespace RubrikSecurityCloud.Types
 
     public MosaicSnapshot Set(
         MosaicSnapshotType? SnapshotType = null,
-        SlaDomain? SlaDomain = null,
+        RscInterface<SlaDomain> SlaDomain = null,
         System.String? ClusterUuid = null,
         System.String? DbInfo = null,
         DateTime? ExpirationTime = null,
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.SlaDomain, conf.Child("slaDomain"));
+            var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -260,17 +260,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain = new RscInterface<SlaDomain>();
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             }
         }

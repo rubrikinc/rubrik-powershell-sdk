@@ -5,10 +5,12 @@
 
 #nullable enable
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
@@ -43,12 +45,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<CloudAccount>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (CloudAccount)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create CloudAccount composite object");
-            }
+            var fieldSpecObj = new RscInterface<CloudAccount>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -78,12 +76,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -113,12 +107,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -148,12 +138,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<CloudAccount>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (CloudAccount)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create CloudAccount composite object");
-            }
+            var fieldSpecObj = new RscInterface<CloudAccount>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -183,12 +169,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -218,12 +200,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -253,12 +231,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -288,12 +262,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -323,12 +293,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -358,12 +324,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -393,12 +355,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -428,12 +386,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -463,12 +417,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -498,7 +448,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<Target>();
+            var fieldSpecObj = new RscInterface<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -529,12 +479,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -564,12 +510,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -599,12 +541,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -634,12 +572,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -669,12 +603,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<CloudAccount>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (CloudAccount)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create CloudAccount composite object");
-            }
+            var fieldSpecObj = new RscInterface<CloudAccount>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -704,12 +634,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -739,12 +665,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<CloudAccount>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (CloudAccount)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create CloudAccount composite object");
-            }
+            var fieldSpecObj = new RscInterface<CloudAccount>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -774,12 +696,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -809,12 +727,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -844,12 +758,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -879,12 +789,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -914,12 +820,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -949,12 +851,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -984,12 +882,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 

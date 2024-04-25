@@ -203,7 +203,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)
         if (this.AnalyzerRiskInstance != null) {
             var fspec = this.AnalyzerRiskInstance.AsFieldSpec(conf.Child("analyzerRiskInstance"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

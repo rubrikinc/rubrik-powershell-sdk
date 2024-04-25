@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzer: Analyzer! (type)
         if (this.Analyzer != null) {
             var fspec = this.Analyzer.AsFieldSpec(conf.Child("analyzer"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hits: Hits! (type)
         if (this.Hits != null) {
             var fspec = this.Hits.AsFieldSpec(conf.Child("hits"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -93,12 +93,12 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
         [JsonProperty("charts")]
-        public List<ReportChartType>? Charts { get; set; }
+        public RscInterface<ReportChartType> Charts { get; set; }
 
         //      C# -> List<ReportTableType>? Tables
         // GraphQL -> tables: [ReportTableType!]! (union)
         [JsonProperty("tables")]
-        public List<ReportTableType>? Tables { get; set; }
+        public RscInterface<ReportTableType> Tables { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -146,8 +146,8 @@ namespace RubrikSecurityCloud.Types
         CustomReportFilters? Filters = null,
         User? Owner = null,
         ScheduledReportConnection? ScheduledReportConnection = null,
-        List<ReportChartType>? Charts = null,
-        List<ReportTableType>? Tables = null
+        RscInterface<ReportChartType> Charts = null,
+        RscInterface<ReportTableType> Tables = null
     ) 
     {
         if ( Focus != null ) {
@@ -315,7 +315,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filters: CustomReportFilters! (type)
         if (this.Filters != null) {
             var fspec = this.Filters.AsFieldSpec(conf.Child("filters"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -327,7 +328,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> owner: User! (type)
         if (this.Owner != null) {
             var fspec = this.Owner.AsFieldSpec(conf.Child("owner"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -339,7 +341,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
         if (this.ScheduledReportConnection != null) {
             var fspec = this.ScheduledReportConnection.AsFieldSpec(conf.Child("scheduledReportConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -351,11 +354,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> charts: [ReportChartType!]! (union)
         if (this.Charts != null) {
             var fspec = this.Charts.AsFieldSpec(conf.Child("charts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "charts" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "charts" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -363,11 +367,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> tables: [ReportTableType!]! (union)
         if (this.Tables != null) {
             var fspec = this.Tables.AsFieldSpec(conf.Child("tables"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "tables" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "tables" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }

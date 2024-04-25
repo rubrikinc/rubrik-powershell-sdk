@@ -360,7 +360,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
         if (this.AnalyzerGroupResults != null) {
             var fspec = this.AnalyzerGroupResults.AsFieldSpec(conf.Child("analyzerGroupResults"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -372,7 +373,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
             var fspec = this.AnalyzerResults.AsFieldSpec(conf.Child("analyzerResults"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -384,7 +386,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> crawlObj: CrawlObj! (type)
         if (this.CrawlObj != null) {
             var fspec = this.CrawlObj.AsFieldSpec(conf.Child("crawlObj"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -396,7 +399,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> crawlObjConnection: CrawlObjConnection! (type)
         if (this.CrawlObjConnection != null) {
             var fspec = this.CrawlObjConnection.AsFieldSpec(conf.Child("crawlObjConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -408,7 +412,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         if (this.FileResultConnection != null) {
             var fspec = this.FileResultConnection.AsFieldSpec(conf.Child("fileResultConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -420,7 +425,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappableTypeSummaries: [SnappableTypeSummary!]! (type)
         if (this.SnappableTypeSummaries != null) {
             var fspec = this.SnappableTypeSummaries.AsFieldSpec(conf.Child("snappableTypeSummaries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -432,7 +438,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> user: User (type)
         if (this.User != null) {
             var fspec = this.User.AsFieldSpec(conf.Child("user"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

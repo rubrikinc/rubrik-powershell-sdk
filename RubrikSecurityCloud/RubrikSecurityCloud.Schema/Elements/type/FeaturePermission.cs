@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
         if (this.PermissionsGroupVersions != null) {
             var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

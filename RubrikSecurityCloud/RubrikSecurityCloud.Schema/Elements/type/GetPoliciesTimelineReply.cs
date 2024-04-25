@@ -221,7 +221,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
         if (this.HighRiskObjects != null) {
             var fspec = this.HighRiskObjects.AsFieldSpec(conf.Child("highRiskObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -233,7 +234,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
         if (this.InitialAnalysisStatus != null) {
             var fspec = this.InitialAnalysisStatus.AsFieldSpec(conf.Child("initialAnalysisStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -245,7 +247,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lowRiskObjects: [TimelineEntry!]! (type)
         if (this.LowRiskObjects != null) {
             var fspec = this.LowRiskObjects.AsFieldSpec(conf.Child("lowRiskObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -257,7 +260,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
         if (this.MediumRiskObjects != null) {
             var fspec = this.MediumRiskObjects.AsFieldSpec(conf.Child("mediumRiskObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -269,7 +273,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
         if (this.NoRiskObjects != null) {
             var fspec = this.NoRiskObjects.AsFieldSpec(conf.Child("noRiskObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -281,7 +286,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)
         if (this.OutOfDateStatus != null) {
             var fspec = this.OutOfDateStatus.AsFieldSpec(conf.Child("outOfDateStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -293,7 +299,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.PolicyFilesHitsEntries != null) {
             var fspec = this.PolicyFilesHitsEntries.AsFieldSpec(conf.Child("policyFilesHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -305,7 +312,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyHitsEntries: [TimelineEntry!]! (type)
         if (this.PolicyHitsEntries != null) {
             var fspec = this.PolicyHitsEntries.AsFieldSpec(conf.Child("policyHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -317,7 +325,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyOaFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.PolicyOaFilesHitsEntries != null) {
             var fspec = this.PolicyOaFilesHitsEntries.AsFieldSpec(conf.Child("policyOaFilesHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -329,7 +338,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyStaleFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.PolicyStaleFilesHitsEntries != null) {
             var fspec = this.PolicyStaleFilesHitsEntries.AsFieldSpec(conf.Child("policyStaleFilesHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -341,7 +351,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
         if (this.PolicySummaries != null) {
             var fspec = this.PolicySummaries.AsFieldSpec(conf.Child("policySummaries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -353,7 +364,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.TotalFilesHitsEntries != null) {
             var fspec = this.TotalFilesHitsEntries.AsFieldSpec(conf.Child("totalFilesHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -365,7 +377,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalHitsEntries: [TimelineEntry!]! (type)
         if (this.TotalHitsEntries != null) {
             var fspec = this.TotalHitsEntries.AsFieldSpec(conf.Child("totalHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -377,7 +390,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalOaFilesEntries: [TimelineEntry!]! (type)
         if (this.TotalOaFilesEntries != null) {
             var fspec = this.TotalOaFilesEntries.AsFieldSpec(conf.Child("totalOaFilesEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -389,7 +403,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalOaFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.TotalOaFilesHitsEntries != null) {
             var fspec = this.TotalOaFilesHitsEntries.AsFieldSpec(conf.Child("totalOaFilesHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -401,7 +416,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalOaFoldersEntries: [TimelineEntry!]! (type)
         if (this.TotalOaFoldersEntries != null) {
             var fspec = this.TotalOaFoldersEntries.AsFieldSpec(conf.Child("totalOaFoldersEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -413,7 +429,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
         if (this.TotalStaleFilesHitsEntries != null) {
             var fspec = this.TotalStaleFilesHitsEntries.AsFieldSpec(conf.Child("totalStaleFilesHitsEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -425,7 +442,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalStaleOaFilesEntries: [TimelineEntry!]! (type)
         if (this.TotalStaleOaFilesEntries != null) {
             var fspec = this.TotalStaleOaFilesEntries.AsFieldSpec(conf.Child("totalStaleOaFilesEntries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -437,7 +455,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upToDateStatus: [TimelineCountEntry!]! (type)
         if (this.UpToDateStatus != null) {
             var fspec = this.UpToDateStatus.AsFieldSpec(conf.Child("upToDateStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

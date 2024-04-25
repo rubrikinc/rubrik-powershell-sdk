@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ipRules: [IpRule!]! (type)
         if (this.IpRules != null) {
             var fspec = this.IpRules.AsFieldSpec(conf.Child("ipRules"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

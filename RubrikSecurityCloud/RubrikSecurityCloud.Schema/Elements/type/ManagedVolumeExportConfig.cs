@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfig (type)
         if (this.ManagedVolumePatchConfig != null) {
             var fspec = this.ManagedVolumePatchConfig.AsFieldSpec(conf.Child("managedVolumePatchConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

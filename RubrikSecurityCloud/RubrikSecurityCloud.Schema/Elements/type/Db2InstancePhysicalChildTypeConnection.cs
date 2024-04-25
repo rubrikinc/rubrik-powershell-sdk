@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<Db2InstancePhysicalChildType>? Nodes
         // GraphQL -> nodes: [Db2InstancePhysicalChildType!]! (interface)
         [JsonProperty("nodes")]
-        public List<Db2InstancePhysicalChildType>? Nodes { get; set; }
+        public RscInterface<Db2InstancePhysicalChildType> Nodes { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Db2InstancePhysicalChildTypeConnection Set(
-        List<Db2InstancePhysicalChildType>? Nodes = null,
+        RscInterface<Db2InstancePhysicalChildType> Nodes = null,
         System.Int32? Count = null,
         List<Db2InstancePhysicalChildTypeEdge>? Edges = null,
         PageInfo? PageInfo = null
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<Db2InstancePhysicalChildType>? Nodes
         // GraphQL -> nodes: [Db2InstancePhysicalChildType!]! (interface)
         if (this.Nodes != null) {
-                var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
+            var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -108,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> edges: [Db2InstancePhysicalChildTypeEdge!]! (type)
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

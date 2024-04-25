@@ -19,31 +19,26 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [JsonProperty("id")]
-        System.String? Id { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [JsonProperty("name")]
-        System.String? Name { get; set; }
-
-        //      C# -> System.Boolean? IsArchived
-        // GraphQL -> isArchived: Boolean! (scalar)
-        [JsonProperty("isArchived")]
-        System.Boolean? IsArchived { get; set; }
-
-        //      C# -> System.String? EffectiveSlaOpt
-        // GraphQL -> effectiveSlaOpt: String (scalar)
-        [JsonProperty("effectiveSlaOpt")]
-        System.String? EffectiveSlaOpt { get; set; }
-
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType (enum)
         [JsonProperty("objectType")]
         ManagedObjectType? ObjectType { get; set; }
-
+        //      C# -> System.String? EffectiveSlaOpt
+        // GraphQL -> effectiveSlaOpt: String (scalar)
+        [JsonProperty("effectiveSlaOpt")]
+        System.String? EffectiveSlaOpt { get; set; }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [JsonProperty("id")]
+        System.String? Id { get; set; }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        [JsonProperty("isArchived")]
+        System.Boolean? IsArchived { get; set; }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        System.String? Name { get; set; }
 
         #endregion
 

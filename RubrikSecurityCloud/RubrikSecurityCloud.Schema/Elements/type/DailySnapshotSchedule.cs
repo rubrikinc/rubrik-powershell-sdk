@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
         if (this.BasicSchedule != null) {
             var fspec = this.BasicSchedule.AsFieldSpec(conf.Child("basicSchedule"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -375,7 +375,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalLocationsUpgradeInfo: [ArchivalLocationUpgradeInfo!] (type)
         if (this.ArchivalLocationsUpgradeInfo != null) {
             var fspec = this.ArchivalLocationsUpgradeInfo.AsFieldSpec(conf.Child("archivalLocationsUpgradeInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -387,7 +388,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalSpec: ClusterArchivalSpec (type)
         if (this.ArchivalSpec != null) {
             var fspec = this.ArchivalSpec.AsFieldSpec(conf.Child("archivalSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -399,7 +401,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalSpecs: [ClusterArchivalSpec!]! (type)
         if (this.ArchivalSpecs != null) {
             var fspec = this.ArchivalSpecs.AsFieldSpec(conf.Child("archivalSpecs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -411,7 +414,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupWindows: [BackupWindow!]! (type)
         if (this.BackupWindows != null) {
             var fspec = this.BackupWindows.AsFieldSpec(conf.Child("backupWindows"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -423,7 +427,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> baseFrequency: Duration (type)
         if (this.BaseFrequency != null) {
             var fspec = this.BaseFrequency.AsFieldSpec(conf.Child("baseFrequency"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -435,7 +440,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -447,7 +453,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> firstFullBackupWindows: [BackupWindow!]! (type)
         if (this.FirstFullBackupWindows != null) {
             var fspec = this.FirstFullBackupWindows.AsFieldSpec(conf.Child("firstFullBackupWindows"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -459,7 +466,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> localRetentionLimit: Duration (type)
         if (this.LocalRetentionLimit != null) {
             var fspec = this.LocalRetentionLimit.AsFieldSpec(conf.Child("localRetentionLimit"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -471,7 +479,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectSpecificConfigs: ObjectSpecificConfigs (type)
         if (this.ObjectSpecificConfigs != null) {
             var fspec = this.ObjectSpecificConfigs.AsFieldSpec(conf.Child("objectSpecificConfigs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -483,7 +492,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ownerOrg: SlaAssociatedOrganization! (type)
         if (this.OwnerOrg != null) {
             var fspec = this.OwnerOrg.AsFieldSpec(conf.Child("ownerOrg"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -495,7 +505,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationSpec: ReplicationSpec (type)
         if (this.ReplicationSpec != null) {
             var fspec = this.ReplicationSpec.AsFieldSpec(conf.Child("replicationSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -507,7 +518,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationSpecsV2: [ReplicationSpecV2!]! (type)
         if (this.ReplicationSpecsV2 != null) {
             var fspec = this.ReplicationSpecsV2.AsFieldSpec(conf.Child("replicationSpecsV2"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -519,7 +531,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotSchedule: SnapshotSchedule (type)
         if (this.SnapshotSchedule != null) {
             var fspec = this.SnapshotSchedule.AsFieldSpec(conf.Child("snapshotSchedule"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -531,7 +544,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeInfo: SlaUpgradeInfo (type)
         if (this.UpgradeInfo != null) {
             var fspec = this.UpgradeInfo.AsFieldSpec(conf.Child("upgradeInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> physicalDataSizeTimeSeries: [O365PhysicalDataSizeTimeStamp!]! (type)
         if (this.PhysicalDataSizeTimeSeries != null) {
             var fspec = this.PhysicalDataSizeTimeSeries.AsFieldSpec(conf.Child("physicalDataSizeTimeSeries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

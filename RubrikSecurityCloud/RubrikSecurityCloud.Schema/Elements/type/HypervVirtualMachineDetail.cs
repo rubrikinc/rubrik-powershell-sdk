@@ -170,7 +170,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervVirtualMachineSummary: HypervVirtualMachineSummary (type)
         if (this.HypervVirtualMachineSummary != null) {
             var fspec = this.HypervVirtualMachineSummary.AsFieldSpec(conf.Child("hypervVirtualMachineSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -182,7 +183,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervVirtualMachineUpdate: HypervVirtualMachineUpdate (type)
         if (this.HypervVirtualMachineUpdate != null) {
             var fspec = this.HypervVirtualMachineUpdate.AsFieldSpec(conf.Child("hypervVirtualMachineUpdate"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -194,7 +196,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> virtualDiskInfo: [HypervVirtualDiskInfo!]! (type)
         if (this.VirtualDiskInfo != null) {
             var fspec = this.VirtualDiskInfo.AsFieldSpec(conf.Child("virtualDiskInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

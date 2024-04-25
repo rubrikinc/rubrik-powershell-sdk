@@ -653,7 +653,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
         if (this.BlackoutWindowResponseInfo != null) {
             var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -665,7 +666,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hostsInfo: [HostInfo!]! (type)
         if (this.HostsInfo != null) {
             var fspec = this.HostsInfo.AsFieldSpec(conf.Child("hostsInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -677,7 +679,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
         if (this.LastValidationResult != null) {
             var fspec = this.LastValidationResult.AsFieldSpec(conf.Child("lastValidationResult"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -689,7 +692,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oracleDbSummary: OracleDbSummary (type)
         if (this.OracleDbSummary != null) {
             var fspec = this.OracleDbSummary.AsFieldSpec(conf.Child("oracleDbSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -701,7 +705,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
         if (this.OracleNonSlaProperties != null) {
             var fspec = this.OracleNonSlaProperties.AsFieldSpec(conf.Child("oracleNonSlaProperties"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -713,7 +718,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pdbDetails: OraclePdbDetails (type)
         if (this.PdbDetails != null) {
             var fspec = this.PdbDetails.AsFieldSpec(conf.Child("pdbDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -725,7 +731,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
             var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

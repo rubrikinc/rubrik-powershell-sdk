@@ -29,12 +29,12 @@ namespace RubrikSecurityCloud.Types
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
         [JsonProperty("polarisSpecificSnapshot")]
-        public PolarisSpecificSnapshot? PolarisSpecificSnapshot { get; set; }
+        public RscInterface<PolarisSpecificSnapshot> PolarisSpecificSnapshot { get; set; }
 
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         [JsonProperty("slaDomain")]
-        public SlaDomain? SlaDomain { get; set; }
+        public RscInterface<SlaDomain> SlaDomain { get; set; }
 
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -182,8 +182,8 @@ namespace RubrikSecurityCloud.Types
 
     public PolarisSnapshot Set(
         SnapshotConsistencyLevel? ConsistencyLevel = null,
-        PolarisSpecificSnapshot? PolarisSpecificSnapshot = null,
-        SlaDomain? SlaDomain = null,
+        RscInterface<PolarisSpecificSnapshot> PolarisSpecificSnapshot = null,
+        RscInterface<SlaDomain> SlaDomain = null,
         DateTime? Date = null,
         DateTime? ExpirationDate = null,
         System.Boolean? ExpiryHint = null,
@@ -329,7 +329,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
         if (this.PolarisSpecificSnapshot != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PolarisSpecificSnapshot, conf.Child("polarisSpecificSnapshot"));
+            var fspec = this.PolarisSpecificSnapshot.AsFieldSpec(conf.Child("polarisSpecificSnapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -342,7 +342,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.SlaDomain, conf.Child("slaDomain"));
+            var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -581,7 +581,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
             var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -593,7 +594,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (this.ReplicationLocations != null) {
             var fspec = this.ReplicationLocations.AsFieldSpec(conf.Child("replicationLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -631,17 +633,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PolarisSpecificSnapshot == null) {
 
-                var impls = new RscInterface<PolarisSpecificSnapshot>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
-                this.PolarisSpecificSnapshot = (PolarisSpecificSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PolarisSpecificSnapshot = new RscInterface<PolarisSpecificSnapshot>();
+                this.PolarisSpecificSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<PolarisSpecificSnapshot>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
-                this.PolarisSpecificSnapshot = (PolarisSpecificSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PolarisSpecificSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
 
             }
         }
@@ -655,17 +652,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain = new RscInterface<SlaDomain>();
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             }
         }

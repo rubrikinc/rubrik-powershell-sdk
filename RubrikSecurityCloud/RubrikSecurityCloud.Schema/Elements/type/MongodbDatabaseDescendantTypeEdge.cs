@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> MongodbDatabaseDescendantType? Node
         // GraphQL -> node: MongodbDatabaseDescendantType! (interface)
         [JsonProperty("node")]
-        public MongodbDatabaseDescendantType? Node { get; set; }
+        public RscInterface<MongodbDatabaseDescendantType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MongodbDatabaseDescendantTypeEdge Set(
-        MongodbDatabaseDescendantType? Node = null,
+        RscInterface<MongodbDatabaseDescendantType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> MongodbDatabaseDescendantType? Node
         // GraphQL -> node: MongodbDatabaseDescendantType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<MongodbDatabaseDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (MongodbDatabaseDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<MongodbDatabaseDescendantType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<MongodbDatabaseDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (MongodbDatabaseDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

@@ -239,7 +239,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -251,7 +252,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> primaryCluster: Cluster (type)
         if (this.PrimaryCluster != null) {
             var fspec = this.PrimaryCluster.AsFieldSpec(conf.Child("primaryCluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -263,7 +265,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> primaryDatabase: MssqlDatabase (type)
         if (this.PrimaryDatabase != null) {
             var fspec = this.PrimaryDatabase.AsFieldSpec(conf.Child("primaryDatabase"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -275,7 +278,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> secondaryDatabase: MssqlDatabase (type)
         if (this.SecondaryDatabase != null) {
             var fspec = this.SecondaryDatabase.AsFieldSpec(conf.Child("secondaryDatabase"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -287,7 +291,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> secondaryInstance: MssqlInstance (type)
         if (this.SecondaryInstance != null) {
             var fspec = this.SecondaryInstance.AsFieldSpec(conf.Child("secondaryInstance"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

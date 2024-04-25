@@ -275,7 +275,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hostSummary: HostSummary (type)
         if (this.HostSummary != null) {
             var fspec = this.HostSummary.AsFieldSpec(conf.Child("hostSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

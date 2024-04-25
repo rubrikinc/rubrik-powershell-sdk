@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlAvailabilityGroupSummary: MssqlAvailabilityGroupSummary (type)
         if (this.MssqlAvailabilityGroupSummary != null) {
             var fspec = this.MssqlAvailabilityGroupSummary.AsFieldSpec(conf.Child("mssqlAvailabilityGroupSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

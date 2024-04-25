@@ -185,7 +185,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
         if (this.FeatureVersions != null) {
             var fspec = this.FeatureVersions.AsFieldSpec(conf.Child("featureVersions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

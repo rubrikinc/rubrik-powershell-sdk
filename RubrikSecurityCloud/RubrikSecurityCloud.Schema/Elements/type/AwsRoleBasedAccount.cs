@@ -150,7 +150,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsSpecificInfo: AwsCloudAccountWithFeatures! (type)
         if (this.AwsSpecificInfo != null) {
             var fspec = this.AwsSpecificInfo.AsFieldSpec(conf.Child("awsSpecificInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

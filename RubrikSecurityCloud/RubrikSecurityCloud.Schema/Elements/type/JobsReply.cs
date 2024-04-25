@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> jobs: [JobReply!]! (type)
         if (this.Jobs != null) {
             var fspec = this.Jobs.AsFieldSpec(conf.Child("jobs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

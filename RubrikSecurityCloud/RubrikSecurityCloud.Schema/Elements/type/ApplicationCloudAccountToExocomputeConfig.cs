@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
         [JsonProperty("exocomputeConfigs")]
-        public List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs { get; set; }
+        public RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs { get; set; }
 
         //      C# -> System.String? ApplicationCloudAccountId
         // GraphQL -> applicationCloudAccountId: String! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ApplicationCloudAccountToExocomputeConfig Set(
-        List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs = null,
+        RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs = null,
         System.String? ApplicationCloudAccountId = null,
         System.Boolean? IsHost = null,
         CloudAccountDetails? MappedExocomputeAccount = null
@@ -85,7 +85,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
         if (this.ExocomputeConfigs != null) {
-                var fspec = this.ExocomputeConfigs.AsFieldSpec(conf.Child("exocomputeConfigs"));
+            var fspec = this.ExocomputeConfigs.AsFieldSpec(conf.Child("exocomputeConfigs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -117,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mappedExocomputeAccount: CloudAccountDetails (type)
         if (this.MappedExocomputeAccount != null) {
             var fspec = this.MappedExocomputeAccount.AsFieldSpec(conf.Child("mappedExocomputeAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

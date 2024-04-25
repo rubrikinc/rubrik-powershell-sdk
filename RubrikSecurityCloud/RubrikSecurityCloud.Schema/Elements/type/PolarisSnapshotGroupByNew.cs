@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> PolarisSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: PolarisSnapshotGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public PolarisSnapshotGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<PolarisSnapshotGroupByInfo> GroupByInfo { get; set; }
 
 
         #endregion
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
 
     public PolarisSnapshotGroupByNew Set(
         PolarisSnapshotConnection? PolarisSnapshotConnection = null,
-        PolarisSnapshotGroupByInfo? GroupByInfo = null
+        RscInterface<PolarisSnapshotGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( PolarisSnapshotConnection != null ) {
@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> polarisSnapshotConnection: PolarisSnapshotConnection! (type)
         if (this.PolarisSnapshotConnection != null) {
             var fspec = this.PolarisSnapshotConnection.AsFieldSpec(conf.Child("polarisSnapshotConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,11 +81,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: PolarisSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -120,17 +122,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<PolarisSnapshotGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (PolarisSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<PolarisSnapshotGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<PolarisSnapshotGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (PolarisSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

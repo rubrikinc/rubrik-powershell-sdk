@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> config: IntegrationConfig! (type)
         if (this.Config != null) {
             var fspec = this.Config.AsFieldSpec(conf.Child("config"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

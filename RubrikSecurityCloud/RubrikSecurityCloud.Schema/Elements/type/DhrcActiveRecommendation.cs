@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> translationArgs: [DhrcKeyValue!]! (type)
         if (this.TranslationArgs != null) {
             var fspec = this.TranslationArgs.AsFieldSpec(conf.Child("translationArgs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

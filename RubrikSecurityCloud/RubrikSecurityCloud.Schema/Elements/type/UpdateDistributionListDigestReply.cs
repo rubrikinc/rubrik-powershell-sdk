@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> eventDigests: [EventDigest!]! (type)
         if (this.EventDigests != null) {
             var fspec = this.EventDigests.AsFieldSpec(conf.Child("eventDigests"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

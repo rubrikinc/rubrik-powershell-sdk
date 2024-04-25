@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> PcrImagePullDetails? ImagePullDetails
         // GraphQL -> imagePullDetails: PcrImagePullDetails (union)
         [JsonProperty("imagePullDetails")]
-        public PcrImagePullDetails? ImagePullDetails { get; set; }
+        public RscInterface<PcrImagePullDetails> ImagePullDetails { get; set; }
 
 
         #endregion
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
 
     public PrivateContainerRegistryDetailsType Set(
         System.String? RegistryUrl = null,
-        PcrImagePullDetails? ImagePullDetails = null
+        RscInterface<PcrImagePullDetails> ImagePullDetails = null
     ) 
     {
         if ( RegistryUrl != null ) {
@@ -77,11 +77,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> imagePullDetails: PcrImagePullDetails (union)
         if (this.ImagePullDetails != null) {
             var fspec = this.ImagePullDetails.AsFieldSpec(conf.Child("imagePullDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "imagePullDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "imagePullDetails" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -115,17 +116,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ImagePullDetails == null) {
 
-                var impls = new RscInterface<PcrImagePullDetails>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("imagePullDetails"));
-                this.ImagePullDetails = (PcrImagePullDetails)InterfaceHelper.MakeCompositeFromList(impls);
+                this.ImagePullDetails = new RscInterface<PcrImagePullDetails>();
+                this.ImagePullDetails.ApplyExploratoryFieldSpec(ec.NewChild("imagePullDetails"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<PcrImagePullDetails>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("imagePullDetails"));
-                this.ImagePullDetails = (PcrImagePullDetails)InterfaceHelper.MakeCompositeFromList(impls);
+                this.ImagePullDetails.ApplyExploratoryFieldSpec(ec.NewChild("imagePullDetails"));
 
             }
         }

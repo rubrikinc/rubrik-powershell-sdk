@@ -266,7 +266,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
         if (this.ComputeVisibilityFilter != null) {
             var fspec = this.ComputeVisibilityFilter.AsFieldSpec(conf.Child("computeVisibilityFilter"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -278,7 +279,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
         if (this.ConnectionStatus != null) {
             var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -290,7 +292,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
             var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -302,7 +305,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vcenterPatch: VcenterPatch (type)
         if (this.VcenterPatch != null) {
             var fspec = this.VcenterPatch.AsFieldSpec(conf.Child("vcenterPatch"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

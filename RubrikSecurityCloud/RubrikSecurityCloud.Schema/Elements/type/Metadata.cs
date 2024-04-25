@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
         [JsonProperty("value")]
-        public Value? Value { get; set; }
+        public RscInterface<Value> Value { get; set; }
 
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Metadata Set(
-        Value? Value = null,
+        RscInterface<Value> Value = null,
         System.String? Key = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
         if (this.Value != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Value, conf.Child("value"));
+            var fspec = this.Value.AsFieldSpec(conf.Child("value"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Value == null) {
 
-                var impls = new RscInterface<Value>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
-                this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Value = new RscInterface<Value>();
+                this.Value.ApplyExploratoryFieldSpec(ec.NewChild("value"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<Value>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
-                this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Value.ApplyExploratoryFieldSpec(ec.NewChild("value"));
 
             }
         }

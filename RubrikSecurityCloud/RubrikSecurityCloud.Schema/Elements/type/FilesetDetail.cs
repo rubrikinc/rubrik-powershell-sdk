@@ -239,7 +239,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetSummary: FilesetSummary (type)
         if (this.FilesetSummary != null) {
             var fspec = this.FilesetSummary.AsFieldSpec(conf.Child("filesetSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -251,7 +252,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetUpdate: FilesetUpdate (type)
         if (this.FilesetUpdate != null) {
             var fspec = this.FilesetUpdate.AsFieldSpec(conf.Child("filesetUpdate"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -263,7 +265,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
         if (this.Snapshots != null) {
             var fspec = this.Snapshots.AsFieldSpec(conf.Child("snapshots"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

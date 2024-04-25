@@ -194,7 +194,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> guestOsCredentials: [RestoreFormConfigurationGuestOs!]! (type)
         if (this.GuestOsCredentials != null) {
             var fspec = this.GuestOsCredentials.AsFieldSpec(conf.Child("guestOsCredentials"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -206,7 +207,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> kmipServers: [RestoreFormConfigurationKmipServer!]! (type)
         if (this.KmipServers != null) {
             var fspec = this.KmipServers.AsFieldSpec(conf.Child("kmipServers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -218,7 +220,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ldapServers: [RestoreFormConfigurationLdapServer!]! (type)
         if (this.LdapServers != null) {
             var fspec = this.LdapServers.AsFieldSpec(conf.Child("ldapServers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -230,7 +233,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nasHosts: [RestoreFormConfigurationNasHost!]! (type)
         if (this.NasHosts != null) {
             var fspec = this.NasHosts.AsFieldSpec(conf.Child("nasHosts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -242,7 +246,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectStoreArchivalLocations: [RestoreFormConfigurationObjectStoreArchivalLocation!]! (type)
         if (this.ObjectStoreArchivalLocations != null) {
             var fspec = this.ObjectStoreArchivalLocations.AsFieldSpec(conf.Child("objectStoreArchivalLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -254,7 +259,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> organizations: [RestoreFormConfigurationOrganization!]! (type)
         if (this.Organizations != null) {
             var fspec = this.Organizations.AsFieldSpec(conf.Child("organizations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -266,7 +272,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationTargets: [RestoreFormConfigurationReplicationTarget!]! (type)
         if (this.ReplicationTargets != null) {
             var fspec = this.ReplicationTargets.AsFieldSpec(conf.Child("replicationTargets"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -278,7 +285,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> reports: [RestoreFormConfigurationReport!]! (type)
         if (this.Reports != null) {
             var fspec = this.Reports.AsFieldSpec(conf.Child("reports"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -290,7 +298,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> roles: [RestoreFormConfigurationRole!]! (type)
         if (this.Roles != null) {
             var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -302,7 +311,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> s3ArchivalLocations: [RestoreFormConfigurationS3ArchivalLocation!]! (type)
         if (this.S3ArchivalLocations != null) {
             var fspec = this.S3ArchivalLocations.AsFieldSpec(conf.Child("s3ArchivalLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -314,7 +324,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaDomains: [RestoreFormConfigurationSlaDomain!]! (type)
         if (this.SlaDomains != null) {
             var fspec = this.SlaDomains.AsFieldSpec(conf.Child("slaDomains"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -326,7 +337,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> smtpSettings: [RestoreFormConfigurationSmtp!]! (type)
         if (this.SmtpSettings != null) {
             var fspec = this.SmtpSettings.AsFieldSpec(conf.Child("smtpSettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -338,7 +350,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snmpSettings: [RestoreFormConfigurationSnmp!]! (type)
         if (this.SnmpSettings != null) {
             var fspec = this.SnmpSettings.AsFieldSpec(conf.Child("snmpSettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -350,7 +363,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> users: [RestoreFormConfigurationUser!]! (type)
         if (this.Users != null) {
             var fspec = this.Users.AsFieldSpec(conf.Child("users"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -362,7 +376,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vcenterServers: [RestoreFormConfigurationVcenterServer!]! (type)
         if (this.VcenterServers != null) {
             var fspec = this.VcenterServers.AsFieldSpec(conf.Child("vcenterServers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -374,7 +389,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> winAndUnixHosts: [RestoreFormConfigurationWinAndUnixHost!]! (type)
         if (this.WinAndUnixHosts != null) {
             var fspec = this.WinAndUnixHosts.AsFieldSpec(conf.Child("winAndUnixHosts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

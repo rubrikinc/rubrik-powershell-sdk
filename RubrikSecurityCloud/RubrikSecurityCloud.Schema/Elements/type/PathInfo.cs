@@ -140,7 +140,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> requestedHashDetails: [HashDetail!]! (type)
         if (this.RequestedHashDetails != null) {
             var fspec = this.RequestedHashDetails.AsFieldSpec(conf.Child("requestedHashDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -152,7 +153,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> yaraMatchDetails: [YARAMatchDetail!]! (type)
         if (this.YaraMatchDetails != null) {
             var fspec = this.YaraMatchDetails.AsFieldSpec(conf.Child("yaraMatchDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

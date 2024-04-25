@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> networkConfig: VmwareNetworkConfig! (type)
         if (this.NetworkConfig != null) {
             var fspec = this.NetworkConfig.AsFieldSpec(conf.Child("networkConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

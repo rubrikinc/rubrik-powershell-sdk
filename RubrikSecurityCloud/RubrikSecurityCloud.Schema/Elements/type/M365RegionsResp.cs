@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> regions: [M365Region!]! (type)
         if (this.Regions != null) {
             var fspec = this.Regions.AsFieldSpec(conf.Child("regions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

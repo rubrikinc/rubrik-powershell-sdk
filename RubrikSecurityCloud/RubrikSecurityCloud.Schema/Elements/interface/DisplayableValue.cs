@@ -23,17 +23,14 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> displayValue: String! (scalar)
         [JsonProperty("displayValue")]
         System.String? DisplayValue { get; set; }
-
-        //      C# -> System.String? SerializedValue
-        // GraphQL -> serializedValue: String! (scalar)
-        [JsonProperty("serializedValue")]
-        System.String? SerializedValue { get; set; }
-
         //      C# -> System.String? ReportHeader
         // GraphQL -> reportHeader: String! (scalar)
         [JsonProperty("reportHeader")]
         System.String? ReportHeader { get; set; }
-
+        //      C# -> System.String? SerializedValue
+        // GraphQL -> serializedValue: String! (scalar)
+        [JsonProperty("serializedValue")]
+        System.String? SerializedValue { get; set; }
 
         #endregion
 

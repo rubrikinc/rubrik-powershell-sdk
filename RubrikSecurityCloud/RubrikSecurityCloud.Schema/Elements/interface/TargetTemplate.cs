@@ -24,7 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetType")]
         TargetType? TargetType { get; set; }
 
-
         #endregion
 
     } // interface TargetTemplate

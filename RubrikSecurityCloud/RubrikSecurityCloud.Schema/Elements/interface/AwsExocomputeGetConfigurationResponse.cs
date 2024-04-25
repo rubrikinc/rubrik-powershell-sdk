@@ -19,36 +19,30 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ConfigUuid
-        // GraphQL -> configUuid: UUID! (scalar)
-        [JsonProperty("configUuid")]
-        System.String? ConfigUuid { get; set; }
-
-        //      C# -> System.String? Message
-        // GraphQL -> message: String! (scalar)
-        [JsonProperty("message")]
-        System.String? Message { get; set; }
-
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         [JsonProperty("region")]
         AwsCloudAccountRegion? Region { get; set; }
-
-        //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
-        // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
-        [JsonProperty("healthCheckStatus")]
-        ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
-
+        //      C# -> System.String? ConfigUuid
+        // GraphQL -> configUuid: UUID! (scalar)
+        [JsonProperty("configUuid")]
+        System.String? ConfigUuid { get; set; }
         //      C# -> System.Boolean? HasPcr
         // GraphQL -> hasPcr: Boolean! (scalar)
         [JsonProperty("hasPcr")]
         System.Boolean? HasPcr { get; set; }
-
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        [JsonProperty("message")]
+        System.String? Message { get; set; }
         //      C# -> System.String? PcrUrl
         // GraphQL -> pcrUrl: String (scalar)
         [JsonProperty("pcrUrl")]
         System.String? PcrUrl { get; set; }
-
+        //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
+        // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
+        [JsonProperty("healthCheckStatus")]
+        ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
 
         #endregion
 

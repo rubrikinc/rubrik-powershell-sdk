@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
         if (this.MissedSnapshotTimeUnits != null) {
             var fspec = this.MissedSnapshotTimeUnits.AsFieldSpec(conf.Child("missedSnapshotTimeUnits"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

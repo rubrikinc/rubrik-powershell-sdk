@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupList: [GroupCount!]! (type)
         if (this.GroupList != null) {
             var fspec = this.GroupList.AsFieldSpec(conf.Child("groupList"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -266,7 +266,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> db2SnapshotMetadata: Db2WorkloadDataSnapshotMetadata (type)
         if (this.Db2SnapshotMetadata != null) {
             var fspec = this.Db2SnapshotMetadata.AsFieldSpec(conf.Child("db2SnapshotMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -278,7 +279,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> files: [Db2DataBackupFile!]! (type)
         if (this.Files != null) {
             var fspec = this.Files.AsFieldSpec(conf.Child("files"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

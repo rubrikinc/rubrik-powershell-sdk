@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startTimeAttributes: StartTimeAttributes (type)
         if (this.StartTimeAttributes != null) {
             var fspec = this.StartTimeAttributes.AsFieldSpec(conf.Child("startTimeAttributes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

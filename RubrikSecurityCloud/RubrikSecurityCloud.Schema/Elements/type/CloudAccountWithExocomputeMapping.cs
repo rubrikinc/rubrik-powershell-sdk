@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> applicationAccount: CloudAccountDetails! (type)
         if (this.ApplicationAccount != null) {
             var fspec = this.ApplicationAccount.AsFieldSpec(conf.Child("applicationAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exocomputeAccount: CloudAccountDetails (type)
         if (this.ExocomputeAccount != null) {
             var fspec = this.ExocomputeAccount.AsFieldSpec(conf.Child("exocomputeAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

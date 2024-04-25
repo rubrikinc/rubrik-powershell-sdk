@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotFileRecoveryFeasibility: [CloudNativeFileRecoveryFeasibility!]! (type)
         if (this.SnapshotFileRecoveryFeasibility != null) {
             var fspec = this.SnapshotFileRecoveryFeasibility.AsFieldSpec(conf.Child("snapshotFileRecoveryFeasibility"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

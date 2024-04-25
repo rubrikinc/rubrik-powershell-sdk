@@ -122,7 +122,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
         if (this.ExplicitlyAssignedPermissions != null) {
             var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(conf.Child("explicitlyAssignedPermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -134,7 +135,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
             var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

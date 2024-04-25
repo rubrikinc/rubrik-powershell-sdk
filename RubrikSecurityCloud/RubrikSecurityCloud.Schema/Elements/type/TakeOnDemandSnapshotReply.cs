@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> errors: [TakeOnDemandSnapshotError!]! (type)
         if (this.Errors != null) {
             var fspec = this.Errors.AsFieldSpec(conf.Child("errors"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> taskchainUuids: [TakeOnDemandSnapshotTaskchainUuid!]! (type)
         if (this.TaskchainUuids != null) {
             var fspec = this.TaskchainUuids.AsFieldSpec(conf.Child("taskchainUuids"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

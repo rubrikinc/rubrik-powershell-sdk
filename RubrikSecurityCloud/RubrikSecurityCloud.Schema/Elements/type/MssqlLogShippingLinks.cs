@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> primaryDatabase: Link (type)
         if (this.PrimaryDatabase != null) {
             var fspec = this.PrimaryDatabase.AsFieldSpec(conf.Child("primaryDatabase"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> secondaryDatabase: Link (type)
         if (this.SecondaryDatabase != null) {
             var fspec = this.SecondaryDatabase.AsFieldSpec(conf.Child("secondaryDatabase"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -110,7 +112,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> secondaryInstance: Link (type)
         if (this.SecondaryInstance != null) {
             var fspec = this.SecondaryInstance.AsFieldSpec(conf.Child("secondaryInstance"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +125,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> seedRequest: Link (type)
         if (this.SeedRequest != null) {
             var fspec = this.SeedRequest.AsFieldSpec(conf.Child("seedRequest"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

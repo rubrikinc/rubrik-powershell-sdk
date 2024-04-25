@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterHostGroupInfo: [ClusterHostGroupInfo!]! (type)
         if (this.ClusterHostGroupInfo != null) {
             var fspec = this.ClusterHostGroupInfo.AsFieldSpec(conf.Child("clusterHostGroupInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

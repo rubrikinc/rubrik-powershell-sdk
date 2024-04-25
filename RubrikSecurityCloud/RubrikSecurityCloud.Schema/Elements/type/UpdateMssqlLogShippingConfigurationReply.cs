@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> links: MssqlLogShippingLinks (type)
         if (this.Links != null) {
             var fspec = this.Links.AsFieldSpec(conf.Child("links"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
         if (this.MssqlLogShippingSummaryV2 != null) {
             var fspec = this.MssqlLogShippingSummaryV2.AsFieldSpec(conf.Child("mssqlLogShippingSummaryV2"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

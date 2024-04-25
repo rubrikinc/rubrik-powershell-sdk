@@ -370,12 +370,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<CdmHierarchySnappableNew>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create CdmHierarchySnappableNew composite object");
-            }
+            var fieldSpecObj = new RscInterface<CdmHierarchySnappableNew>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -436,12 +432,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<CloudAccount>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (CloudAccount)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create CloudAccount composite object");
-            }
+            var fieldSpecObj = new RscInterface<CloudAccount>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -471,12 +463,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<HierarchyObject>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create HierarchyObject composite object");
-            }
+            var fieldSpecObj = new RscInterface<HierarchyObject>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -506,12 +494,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<HierarchyObject>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create HierarchyObject composite object");
-            }
+            var fieldSpecObj = new RscInterface<HierarchyObject>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -603,12 +587,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<SlaDomain>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (SlaDomain)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create SlaDomain composite object");
-            }
+            var fieldSpecObj = new RscInterface<SlaDomain>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 
@@ -638,12 +618,8 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var list = new List<Target>();
-            list.ApplyExploratoryFieldSpec(ec);
-            var fieldSpecObj = (Target)InterfaceHelper.MakeCompositeFromList(list);
-            if (fieldSpecObj == null) {
-                throw new InvalidOperationException("Could not create Target composite object");
-            }
+            var fieldSpecObj = new RscInterface<Target>();
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
 

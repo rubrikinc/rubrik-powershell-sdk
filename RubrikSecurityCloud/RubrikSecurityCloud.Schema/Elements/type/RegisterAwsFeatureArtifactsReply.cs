@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allAwsNativeIdtoRscIdMappings: [AwsRscAccountDetails!]! (type)
         if (this.AllAwsNativeIdtoRscIdMappings != null) {
             var fspec = this.AllAwsNativeIdtoRscIdMappings.AsFieldSpec(conf.Child("allAwsNativeIdtoRscIdMappings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
         if (this.FeatureDetails != null) {
             var fspec = this.FeatureDetails.AsFieldSpec(conf.Child("featureDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

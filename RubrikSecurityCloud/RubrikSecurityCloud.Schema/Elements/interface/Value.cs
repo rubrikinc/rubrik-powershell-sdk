@@ -24,7 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serializedValue")]
         System.String? SerializedValue { get; set; }
 
-
         #endregion
 
     } // interface Value

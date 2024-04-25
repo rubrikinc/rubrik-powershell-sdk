@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> dataLossPrevention: DlpConfig (type)
         if (this.DataLossPrevention != null) {
             var fspec = this.DataLossPrevention.AsFieldSpec(conf.Child("dataLossPrevention"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

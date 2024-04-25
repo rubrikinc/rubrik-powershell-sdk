@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsChildAccounts: [AwsCloudAccount!]! (type)
         if (this.AwsChildAccounts != null) {
             var fspec = this.AwsChildAccounts.AsFieldSpec(conf.Child("awsChildAccounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

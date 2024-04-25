@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backups: [SapHanaLogBackup!] (type)
         if (this.Backups != null) {
             var fspec = this.Backups.AsFieldSpec(conf.Child("backups"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -194,7 +194,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> networkRuleSet: NetworkRuleSet (type)
         if (this.NetworkRuleSet != null) {
             var fspec = this.NetworkRuleSet.AsFieldSpec(conf.Child("networkRuleSet"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -206,7 +207,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resourceGroup: ResourceGroup (type)
         if (this.ResourceGroup != null) {
             var fspec = this.ResourceGroup.AsFieldSpec(conf.Child("resourceGroup"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

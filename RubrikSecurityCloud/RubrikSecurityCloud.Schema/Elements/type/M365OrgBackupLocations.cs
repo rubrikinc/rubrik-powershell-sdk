@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> primaryLocation: M365Region (type)
         if (this.PrimaryLocation != null) {
             var fspec = this.PrimaryLocation.AsFieldSpec(conf.Child("primaryLocation"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> secondaryLocations: [M365Region!]! (type)
         if (this.SecondaryLocations != null) {
             var fspec = this.SecondaryLocations.AsFieldSpec(conf.Child("secondaryLocations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

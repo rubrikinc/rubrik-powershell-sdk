@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> persistentStorage: PersistentStorage (type)
         if (this.PersistentStorage != null) {
             var fspec = this.PersistentStorage.AsFieldSpec(conf.Child("persistentStorage"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +180,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resourceGroup: AzureResourceGroup! (type)
         if (this.ResourceGroup != null) {
             var fspec = this.ResourceGroup.AsFieldSpec(conf.Child("resourceGroup"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -191,7 +193,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> role: AzureRole! (type)
         if (this.Role != null) {
             var fspec = this.Role.AsFieldSpec(conf.Child("role"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -203,7 +206,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> roles: [AzureRole!]! (type)
         if (this.Roles != null) {
             var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -215,7 +219,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)
         if (this.UserAssignedManagedIdentity != null) {
             var fspec = this.UserAssignedManagedIdentity.AsFieldSpec(conf.Child("userAssignedManagedIdentity"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

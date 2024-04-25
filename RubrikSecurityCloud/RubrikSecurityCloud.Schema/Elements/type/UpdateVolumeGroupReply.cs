@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
         if (this.BlackoutWindowResponseInfo != null) {
             var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +144,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludedVolumes: [HostVolumeSummary!]! (type)
         if (this.ExcludedVolumes != null) {
             var fspec = this.ExcludedVolumes.AsFieldSpec(conf.Child("excludedVolumes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -155,7 +157,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
             var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -167,7 +170,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> volumeGroupSummary: VolumeGroupSummary (type)
         if (this.VolumeGroupSummary != null) {
             var fspec = this.VolumeGroupSummary.AsFieldSpec(conf.Child("volumeGroupSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +183,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> volumes: [HostVolumeSummary!]! (type)
         if (this.Volumes != null) {
             var fspec = this.Volumes.AsFieldSpec(conf.Child("volumes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

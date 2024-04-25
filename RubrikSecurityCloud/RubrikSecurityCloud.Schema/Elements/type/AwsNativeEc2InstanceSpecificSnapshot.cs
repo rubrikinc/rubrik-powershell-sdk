@@ -222,7 +222,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> devicePathToVolumeSnapshotIdMap: DevicePathToVolumeSnapshotIdMap! (type)
         if (this.DevicePathToVolumeSnapshotIdMap != null) {
             var fspec = this.DevicePathToVolumeSnapshotIdMap.AsFieldSpec(conf.Child("devicePathToVolumeSnapshotIdMap"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

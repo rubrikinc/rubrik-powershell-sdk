@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> customerManagedPolicies: [CustomerManagedPolicy!]! (type)
         if (this.CustomerManagedPolicies != null) {
             var fspec = this.CustomerManagedPolicies.AsFieldSpec(conf.Child("customerManagedPolicies"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

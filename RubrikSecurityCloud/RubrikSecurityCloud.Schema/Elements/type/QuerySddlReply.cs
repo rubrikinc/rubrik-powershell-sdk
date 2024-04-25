@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> secInfo: [PathSecInfo!]! (type)
         if (this.SecInfo != null) {
             var fspec = this.SecInfo.AsFieldSpec(conf.Child("secInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

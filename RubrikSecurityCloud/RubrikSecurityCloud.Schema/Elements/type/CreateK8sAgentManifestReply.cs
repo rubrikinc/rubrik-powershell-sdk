@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> info: K8sAgentManifestInfo! (type)
         if (this.Info != null) {
             var fspec = this.Info.AsFieldSpec(conf.Child("info"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exchangeAppCounts: AuthCounts! (type)
         if (this.ExchangeAppCounts != null) {
             var fspec = this.ExchangeAppCounts.AsFieldSpec(conf.Child("exchangeAppCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> onedriveAppCounts: AuthCounts! (type)
         if (this.OnedriveAppCounts != null) {
             var fspec = this.OnedriveAppCounts.AsFieldSpec(conf.Child("onedriveAppCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -128,7 +130,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sharepointAppCounts: AuthCounts! (type)
         if (this.SharepointAppCounts != null) {
             var fspec = this.SharepointAppCounts.AsFieldSpec(conf.Child("sharepointAppCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -140,7 +143,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> teamsAppCounts: AuthCounts! (type)
         if (this.TeamsAppCounts != null) {
             var fspec = this.TeamsAppCounts.AsFieldSpec(conf.Child("teamsAppCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsAccount: AwsCloudAccount (type)
         if (this.AwsAccount != null) {
             var fspec = this.AwsAccount.AsFieldSpec(conf.Child("awsAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

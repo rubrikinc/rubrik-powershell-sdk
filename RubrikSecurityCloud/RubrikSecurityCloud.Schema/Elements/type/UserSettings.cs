@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> settings: [UserSetting!]! (type)
         if (this.Settings != null) {
             var fspec = this.Settings.AsFieldSpec(conf.Child("settings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> result: [CloudAccountVpc!]! (type)
         if (this.Result != null) {
             var fspec = this.Result.AsFieldSpec(conf.Child("result"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -122,7 +122,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
         if (this.CloudNativeAccountId != null) {
             var fspec = this.CloudNativeAccountId.AsFieldSpec(conf.Child("cloudNativeAccountId"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -134,7 +135,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotRegion: CloudNativeRegion! (type)
         if (this.SnapshotRegion != null) {
             var fspec = this.SnapshotRegion.AsFieldSpec(conf.Child("snapshotRegion"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

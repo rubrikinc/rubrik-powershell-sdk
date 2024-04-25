@@ -140,7 +140,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
         if (this.FirstError != null) {
             var fspec = this.FirstError.AsFieldSpec(conf.Child("firstError"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -152,7 +153,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
         if (this.LastError != null) {
             var fspec = this.LastError.AsFieldSpec(conf.Child("lastError"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failedItems: [FailedRestoreItemInfo!]! (type)
         if (this.FailedItems != null) {
             var fspec = this.FailedItems.AsFieldSpec(conf.Child("failedItems"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

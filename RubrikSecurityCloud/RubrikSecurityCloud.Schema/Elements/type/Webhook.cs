@@ -293,7 +293,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastFailedErrorInfo: ErrorInfo (type)
         if (this.LastFailedErrorInfo != null) {
             var fspec = this.LastFailedErrorInfo.AsFieldSpec(conf.Child("lastFailedErrorInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -305,7 +306,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subscriptionSeverity: SubscriptionSeverity! (type)
         if (this.SubscriptionSeverity != null) {
             var fspec = this.SubscriptionSeverity.AsFieldSpec(conf.Child("subscriptionSeverity"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -317,7 +319,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subscriptionType: SubscriptionType! (type)
         if (this.SubscriptionType != null) {
             var fspec = this.SubscriptionType.AsFieldSpec(conf.Child("subscriptionType"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

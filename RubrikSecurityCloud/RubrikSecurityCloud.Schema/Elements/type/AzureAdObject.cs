@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureAdObjects: AzureAdObjects! (type)
         if (this.AzureAdObjects != null) {
             var fspec = this.AzureAdObjects.AsFieldSpec(conf.Child("azureAdObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +144,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> relationships: Map! (type)
         if (this.Relationships != null) {
             var fspec = this.Relationships.AsFieldSpec(conf.Child("relationships"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -155,7 +157,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> reverseRelationships: [AzureAdReverseRelationship!]! (type)
         if (this.ReverseRelationships != null) {
             var fspec = this.ReverseRelationships.AsFieldSpec(conf.Child("reverseRelationships"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

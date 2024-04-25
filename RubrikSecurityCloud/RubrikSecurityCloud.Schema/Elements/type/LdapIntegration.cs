@@ -275,7 +275,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ldapServers: [LdapServer!]! (type)
         if (this.LdapServers != null) {
             var fspec = this.LdapServers.AsFieldSpec(conf.Child("ldapServers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

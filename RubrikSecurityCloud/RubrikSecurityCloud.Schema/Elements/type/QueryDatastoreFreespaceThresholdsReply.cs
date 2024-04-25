@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> thresholds: [DatastoreFreespaceThresholdType!]! (type)
         if (this.Thresholds != null) {
             var fspec = this.Thresholds.AsFieldSpec(conf.Child("thresholds"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

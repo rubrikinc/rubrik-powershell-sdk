@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> responses: [AsyncRequestStatus!]! (type)
         if (this.Responses != null) {
             var fspec = this.Responses.AsFieldSpec(conf.Child("responses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

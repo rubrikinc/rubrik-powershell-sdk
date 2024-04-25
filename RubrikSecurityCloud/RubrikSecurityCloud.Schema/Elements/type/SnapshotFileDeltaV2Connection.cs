@@ -23,12 +23,12 @@ namespace RubrikSecurityCloud.Types
         //      C# -> GenericSnapshot? CurrentSnapshot
         // GraphQL -> currentSnapshot: GenericSnapshot! (interface)
         [JsonProperty("currentSnapshot")]
-        public GenericSnapshot? CurrentSnapshot { get; set; }
+        public RscInterface<GenericSnapshot> CurrentSnapshot { get; set; }
 
         //      C# -> GenericSnapshot? PreviousSnapshot
         // GraphQL -> previousSnapshot: GenericSnapshot (interface)
         [JsonProperty("previousSnapshot")]
-        public GenericSnapshot? PreviousSnapshot { get; set; }
+        public RscInterface<GenericSnapshot> PreviousSnapshot { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -60,8 +60,8 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotFileDeltaV2Connection Set(
-        GenericSnapshot? CurrentSnapshot = null,
-        GenericSnapshot? PreviousSnapshot = null,
+        RscInterface<GenericSnapshot> CurrentSnapshot = null,
+        RscInterface<GenericSnapshot> PreviousSnapshot = null,
         System.Int32? Count = null,
         List<SnapshotFileDeltaV2Edge>? Edges = null,
         List<SnapshotFileDeltaV2>? Nodes = null,
@@ -103,7 +103,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> GenericSnapshot? CurrentSnapshot
         // GraphQL -> currentSnapshot: GenericSnapshot! (interface)
         if (this.CurrentSnapshot != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.CurrentSnapshot, conf.Child("currentSnapshot"));
+            var fspec = this.CurrentSnapshot.AsFieldSpec(conf.Child("currentSnapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -116,7 +116,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> GenericSnapshot? PreviousSnapshot
         // GraphQL -> previousSnapshot: GenericSnapshot (interface)
         if (this.PreviousSnapshot != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PreviousSnapshot, conf.Child("previousSnapshot"));
+            var fspec = this.PreviousSnapshot.AsFieldSpec(conf.Child("previousSnapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -139,7 +139,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -151,7 +152,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nodes: [SnapshotFileDeltaV2!]! (type)
         if (this.Nodes != null) {
             var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -163,7 +165,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -184,17 +187,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.CurrentSnapshot == null) {
 
-                var impls = new RscInterface<GenericSnapshot>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSnapshot"));
-                this.CurrentSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+                this.CurrentSnapshot = new RscInterface<GenericSnapshot>();
+                this.CurrentSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("currentSnapshot"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<GenericSnapshot>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSnapshot"));
-                this.CurrentSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+                this.CurrentSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("currentSnapshot"));
 
             }
         }
@@ -208,17 +206,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PreviousSnapshot == null) {
 
-                var impls = new RscInterface<GenericSnapshot>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshot"));
-                this.PreviousSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PreviousSnapshot = new RscInterface<GenericSnapshot>();
+                this.PreviousSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshot"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<GenericSnapshot>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshot"));
-                this.PreviousSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PreviousSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshot"));
 
             }
         }

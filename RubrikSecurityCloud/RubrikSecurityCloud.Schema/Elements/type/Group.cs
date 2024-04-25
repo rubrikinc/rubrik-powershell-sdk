@@ -122,7 +122,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> activeUsers: [User!]! (type)
         if (this.ActiveUsers != null) {
             var fspec = this.ActiveUsers.AsFieldSpec(conf.Child("activeUsers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -134,7 +135,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
             var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -146,7 +148,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
             var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,7 +161,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> users: [User!]! (type)
         if (this.Users != null) {
             var fspec = this.Users.AsFieldSpec(conf.Child("users"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

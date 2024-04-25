@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> user: User! (type)
         if (this.User != null) {
             var fspec = this.User.AsFieldSpec(conf.Child("user"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

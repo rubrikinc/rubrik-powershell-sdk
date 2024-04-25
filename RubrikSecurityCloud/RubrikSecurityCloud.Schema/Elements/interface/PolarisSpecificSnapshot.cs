@@ -24,7 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         System.String? SnapshotId { get; set; }
 
-
         #endregion
 
     } // interface PolarisSpecificSnapshot

@@ -293,7 +293,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
         if (this.AnomalyInfo != null) {
             var fspec = this.AnomalyInfo.AsFieldSpec(conf.Child("anomalyInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

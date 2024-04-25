@@ -203,7 +203,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sslOptions: CassandraSslOptions (type)
         if (this.SslOptions != null) {
             var fspec = this.SslOptions.AsFieldSpec(conf.Child("sslOptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

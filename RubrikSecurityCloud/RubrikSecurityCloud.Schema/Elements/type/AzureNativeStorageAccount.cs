@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> tags: [AzureTag!]! (type)
         if (this.Tags != null) {
             var fspec = this.Tags.AsFieldSpec(conf.Child("tags"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

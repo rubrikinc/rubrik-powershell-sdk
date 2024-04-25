@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpProjectUpgradeStatuses: [GcpCloudAccountProjectUpgradeStatus!]! (type)
         if (this.GcpProjectUpgradeStatuses != null) {
             var fspec = this.GcpProjectUpgradeStatuses.AsFieldSpec(conf.Child("gcpProjectUpgradeStatuses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

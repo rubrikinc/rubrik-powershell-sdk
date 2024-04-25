@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
         if (this.StatusInfo != null) {
             var fspec = this.StatusInfo.AsFieldSpec(conf.Child("statusInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

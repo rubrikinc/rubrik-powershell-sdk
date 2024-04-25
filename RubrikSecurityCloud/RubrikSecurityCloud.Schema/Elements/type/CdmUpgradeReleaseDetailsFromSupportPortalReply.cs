@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> releaseDetails: [CdmUpgradeReleaseDetail!]! (type)
         if (this.ReleaseDetails != null) {
             var fspec = this.ReleaseDetails.AsFieldSpec(conf.Child("releaseDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

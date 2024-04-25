@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failures: [Failure!]! (type)
         if (this.Failures != null) {
             var fspec = this.Failures.AsFieldSpec(conf.Child("failures"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> successes: [Success!]! (type)
         if (this.Successes != null) {
             var fspec = this.Successes.AsFieldSpec(conf.Child("successes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

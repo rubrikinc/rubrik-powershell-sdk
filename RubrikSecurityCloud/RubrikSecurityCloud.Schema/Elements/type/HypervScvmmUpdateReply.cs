@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervScvmmSummary: HypervScvmmSummary (type)
         if (this.HypervScvmmSummary != null) {
             var fspec = this.HypervScvmmSummary.AsFieldSpec(conf.Child("hypervScvmmSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervScvmmUpdate: HypervScvmmUpdate (type)
         if (this.HypervScvmmUpdate != null) {
             var fspec = this.HypervScvmmUpdate.AsFieldSpec(conf.Child("hypervScvmmUpdate"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

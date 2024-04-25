@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> toApply: AppManifestInfo (type)
         if (this.ToApply != null) {
             var fspec = this.ToApply.AsFieldSpec(conf.Child("toApply"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> toDelete: AppManifestInfo (type)
         if (this.ToDelete != null) {
             var fspec = this.ToDelete.AsFieldSpec(conf.Child("toDelete"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

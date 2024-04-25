@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oauthPayload: OauthRequestPayload (type)
         if (this.OauthPayload != null) {
             var fspec = this.OauthPayload.AsFieldSpec(conf.Child("oauthPayload"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

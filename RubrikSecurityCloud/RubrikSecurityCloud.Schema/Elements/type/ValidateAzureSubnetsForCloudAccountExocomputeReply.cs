@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> validationInfo: [AzureExocomputeConfigValidationInfo!]! (type)
         if (this.ValidationInfo != null) {
             var fspec = this.ValidationInfo.AsFieldSpec(conf.Child("validationInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

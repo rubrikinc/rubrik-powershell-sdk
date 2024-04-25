@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> metadata: JobMetadata (type)
         if (this.Metadata != null) {
             var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
         if (this.PdlAndWorkload != null) {
             var fspec = this.PdlAndWorkload.AsFieldSpec(conf.Child("pdlAndWorkload"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

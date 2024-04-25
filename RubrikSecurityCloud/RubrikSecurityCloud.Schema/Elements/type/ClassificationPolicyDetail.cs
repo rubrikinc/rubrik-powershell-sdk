@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
         [JsonProperty("hierarchyObjects")]
-        public List<HierarchyObject>? HierarchyObjects { get; set; }
+        public RscInterface<HierarchyObject> HierarchyObjects { get; set; }
 
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
     public ClassificationPolicyDetail Set(
         ClassificationPolicyColor? ColorEnum = null,
         ClassificationPolicyMode? Mode = null,
-        List<HierarchyObject>? HierarchyObjects = null,
+        RscInterface<HierarchyObject> HierarchyObjects = null,
         System.Int64? CreatedTime = null,
         System.Boolean? Deletable = null,
         System.String? Description = null,
@@ -266,7 +266,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
         if (this.HierarchyObjects != null) {
-                var fspec = this.HierarchyObjects.AsFieldSpec(conf.Child("hierarchyObjects"));
+            var fspec = this.HierarchyObjects.AsFieldSpec(conf.Child("hierarchyObjects"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -361,7 +361,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzers: [Analyzer!]! (type)
         if (this.Analyzers != null) {
             var fspec = this.Analyzers.AsFieldSpec(conf.Child("analyzers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -373,7 +374,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
         if (this.AssignmentResources != null) {
             var fspec = this.AssignmentResources.AsFieldSpec(conf.Child("assignmentResources"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -385,7 +387,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> creator: User (type)
         if (this.Creator != null) {
             var fspec = this.Creator.AsFieldSpec(conf.Child("creator"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -397,7 +400,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
         if (this.HierarchyObjectConnection != null) {
             var fspec = this.HierarchyObjectConnection.AsFieldSpec(conf.Child("hierarchyObjectConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -409,7 +413,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
         if (this.ObjectStatuses != null) {
             var fspec = this.ObjectStatuses.AsFieldSpec(conf.Child("objectStatuses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -421,7 +426,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
         if (this.Whitelists != null) {
             var fspec = this.Whitelists.AsFieldSpec(conf.Child("whitelists"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

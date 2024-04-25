@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> storeMetadata: StoreMetadata (type)
         if (this.StoreMetadata != null) {
             var fspec = this.StoreMetadata.AsFieldSpec(conf.Child("storeMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

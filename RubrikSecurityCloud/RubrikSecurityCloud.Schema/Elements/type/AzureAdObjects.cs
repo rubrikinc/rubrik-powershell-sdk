@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (this.AzureAdGroup != null) {
             var fspec = this.AzureAdGroup.AsFieldSpec(conf.Child("azureAdGroup"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureAdUser: AzureAdUser (type)
         if (this.AzureAdUser != null) {
             var fspec = this.AzureAdUser.AsFieldSpec(conf.Child("azureAdUser"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

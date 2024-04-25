@@ -437,7 +437,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
         if (this.AuthorizedOperations != null) {
             var fspec = this.AuthorizedOperations.AsFieldSpec(conf.Child("authorizedOperations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -449,7 +450,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
         if (this.CdmClusterNodeDetails != null) {
             var fspec = this.CdmClusterNodeDetails.AsFieldSpec(conf.Child("cdmClusterNodeDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -461,7 +463,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterStatus: CdmClusterStatus (type)
         if (this.ClusterStatus != null) {
             var fspec = this.ClusterStatus.AsFieldSpec(conf.Child("clusterStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -473,7 +476,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
         if (this.LastUpgradeDuration != null) {
             var fspec = this.LastUpgradeDuration.AsFieldSpec(conf.Child("lastUpgradeDuration"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -485,7 +489,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
         if (this.UpgradeRecommendationInfo != null) {
             var fspec = this.UpgradeRecommendationInfo.AsFieldSpec(conf.Child("upgradeRecommendationInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

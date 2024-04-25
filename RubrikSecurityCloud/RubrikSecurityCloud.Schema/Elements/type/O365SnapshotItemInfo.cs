@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)
         if (this.O365ReplyFields != null) {
             var fspec = this.O365ReplyFields.AsFieldSpec(conf.Child("o365ReplyFields"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

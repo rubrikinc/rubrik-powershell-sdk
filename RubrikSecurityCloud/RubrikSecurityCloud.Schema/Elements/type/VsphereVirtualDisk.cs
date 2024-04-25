@@ -239,7 +239,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> datastore: VsphereDatastore (type)
         if (this.Datastore != null) {
             var fspec = this.Datastore.AsFieldSpec(conf.Child("datastore"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> symmetricKey: NtpSymmKeyConfiguration (type)
         if (this.SymmetricKey != null) {
             var fspec = this.SymmetricKey.AsFieldSpec(conf.Child("symmetricKey"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

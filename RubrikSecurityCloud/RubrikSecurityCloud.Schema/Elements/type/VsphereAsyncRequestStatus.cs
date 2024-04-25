@@ -176,7 +176,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> error: VsphereRequestErrorInfo (type)
         if (this.Error != null) {
             var fspec = this.Error.AsFieldSpec(conf.Child("error"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -188,7 +189,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> links: [VsphereLink!]! (type)
         if (this.Links != null) {
             var fspec = this.Links.AsFieldSpec(conf.Child("links"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

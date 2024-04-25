@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> db2Instance: Db2Instance! (type)
         if (this.Db2Instance != null) {
             var fspec = this.Db2Instance.AsFieldSpec(conf.Child("db2Instance"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
         if (this.OracleNonSlaProperties != null) {
             var fspec = this.OracleNonSlaProperties.AsFieldSpec(conf.Child("oracleNonSlaProperties"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oracleRacSummary: OracleRacSummary (type)
         if (this.OracleRacSummary != null) {
             var fspec = this.OracleRacSummary.AsFieldSpec(conf.Child("oracleRacSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

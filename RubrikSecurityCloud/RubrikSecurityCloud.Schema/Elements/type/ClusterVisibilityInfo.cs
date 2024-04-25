@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterVisibilityConfig: ClusterVisibilityConfig (type)
         if (this.ClusterVisibilityConfig != null) {
             var fspec = this.ClusterVisibilityConfig.AsFieldSpec(conf.Child("clusterVisibilityConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

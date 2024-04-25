@@ -78,7 +78,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupEventStatus: BackupEventStatus (type)
         if (this.BackupEventStatus != null) {
             var fspec = this.BackupEventStatus.AsFieldSpec(conf.Child("backupEventStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

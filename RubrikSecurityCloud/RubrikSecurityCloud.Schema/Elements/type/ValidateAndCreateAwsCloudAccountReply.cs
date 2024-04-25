@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
         if (this.InitiateResponse != null) {
             var fspec = this.InitiateResponse.AsFieldSpec(conf.Child("initiateResponse"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
         if (this.ValidateResponse != null) {
             var fspec = this.ValidateResponse.AsFieldSpec(conf.Child("validateResponse"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

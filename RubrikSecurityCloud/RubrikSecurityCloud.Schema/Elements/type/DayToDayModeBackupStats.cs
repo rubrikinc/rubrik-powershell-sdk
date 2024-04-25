@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupStatsBuckets: [BackupStatsBucket!]! (type)
         if (this.BackupStatsBuckets != null) {
             var fspec = this.BackupStatsBuckets.AsFieldSpec(conf.Child("backupStatsBuckets"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

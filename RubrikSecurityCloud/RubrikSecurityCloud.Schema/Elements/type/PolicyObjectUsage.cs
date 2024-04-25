@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? HierarchyObject
         // GraphQL -> hierarchyObject: HierarchyObject! (interface)
         [JsonProperty("hierarchyObject")]
-        public HierarchyObject? HierarchyObject { get; set; }
+        public RscInterface<HierarchyObject> HierarchyObject { get; set; }
 
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PolicyObjectUsage Set(
-        HierarchyObject? HierarchyObject = null,
+        RscInterface<HierarchyObject> HierarchyObject = null,
         List<ClassificationPolicySummary>? Policies = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? HierarchyObject
         // GraphQL -> hierarchyObject: HierarchyObject! (interface)
         if (this.HierarchyObject != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.HierarchyObject, conf.Child("hierarchyObject"));
+            var fspec = this.HierarchyObject.AsFieldSpec(conf.Child("hierarchyObject"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -81,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
         if (this.Policies != null) {
             var fspec = this.Policies.AsFieldSpec(conf.Child("policies"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -102,17 +103,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.HierarchyObject == null) {
 
-                var impls = new RscInterface<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
-                this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.HierarchyObject = new RscInterface<HierarchyObject>();
+                this.HierarchyObject.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
-                this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.HierarchyObject.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
 
             }
         }

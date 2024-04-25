@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
         if (this.AvailableVappNetworks != null) {
             var fspec = this.AvailableVappNetworks.AsFieldSpec(conf.Child("availableVappNetworks"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
         if (this.RestorableVms != null) {
             var fspec = this.RestorableVms.AsFieldSpec(conf.Child("restorableVms"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

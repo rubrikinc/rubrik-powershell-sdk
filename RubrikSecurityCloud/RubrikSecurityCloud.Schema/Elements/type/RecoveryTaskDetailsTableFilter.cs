@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster_location: [FilterOption!]! (type)
         if (this.ClusterLocation != null) {
             var fspec = this.ClusterLocation.AsFieldSpec(conf.Child("cluster_location"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -125,7 +126,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster_type: [FilterOption!]! (type)
         if (this.ClusterType != null) {
             var fspec = this.ClusterType.AsFieldSpec(conf.Child("cluster_type"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -137,7 +139,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> object_type: [FilterOption!]! (type)
         if (this.ObjectType != null) {
             var fspec = this.ObjectType.AsFieldSpec(conf.Child("object_type"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -149,7 +152,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replication_source: [FilterOption!]! (type)
         if (this.ReplicationSource != null) {
             var fspec = this.ReplicationSource.AsFieldSpec(conf.Child("replication_source"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -161,7 +165,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> status: [FilterOption!]! (type)
         if (this.Status != null) {
             var fspec = this.Status.AsFieldSpec(conf.Child("status"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -173,7 +178,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> task_category: [FilterOption!]! (type)
         if (this.TaskCategory != null) {
             var fspec = this.TaskCategory.AsFieldSpec(conf.Child("task_category"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -185,7 +191,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> task_type: [FilterOption!]! (type)
         if (this.TaskType != null) {
             var fspec = this.TaskType.AsFieldSpec(conf.Child("task_type"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

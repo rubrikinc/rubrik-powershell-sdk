@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nutanixVmMountSummary: NutanixVmMountSummary (type)
         if (this.NutanixVmMountSummary != null) {
             var fspec = this.NutanixVmMountSummary.AsFieldSpec(conf.Child("nutanixVmMountSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

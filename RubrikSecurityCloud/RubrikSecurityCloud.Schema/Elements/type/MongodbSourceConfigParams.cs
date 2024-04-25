@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ignoreSecondaries: [MongodbHost!]! (type)
         if (this.IgnoreSecondaries != null) {
             var fspec = this.IgnoreSecondaries.AsFieldSpec(conf.Child("ignoreSecondaries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +144,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mongodbHosts: [MongodbHost!]! (type)
         if (this.MongodbHosts != null) {
             var fspec = this.MongodbHosts.AsFieldSpec(conf.Child("mongodbHosts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -155,7 +157,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sslOptions: MongodbSslOptions (type)
         if (this.SslOptions != null) {
             var fspec = this.SslOptions.AsFieldSpec(conf.Child("sslOptions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

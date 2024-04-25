@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)
         if (this.HuntDetails != null) {
             var fspec = this.HuntDetails.AsFieldSpec(conf.Child("huntDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> stats: ThreatHuntStats (type)
         if (this.Stats != null) {
             var fspec = this.Stats.AsFieldSpec(conf.Child("stats"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

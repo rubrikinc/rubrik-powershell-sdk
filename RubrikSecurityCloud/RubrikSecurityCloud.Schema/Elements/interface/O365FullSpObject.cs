@@ -19,51 +19,42 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? SharepointId
-        // GraphQL -> sharepointId: String! (scalar)
-        [JsonProperty("sharepointId")]
-        System.String? SharepointId { get; set; }
-
-        //      C# -> System.String? Fid
-        // GraphQL -> fid: String! (scalar)
-        [JsonProperty("fid")]
-        System.String? Fid { get; set; }
-
-        //      C# -> System.String? ParentId
-        // GraphQL -> parentId: String (scalar)
-        [JsonProperty("parentId")]
-        System.String? ParentId { get; set; }
-
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType! (enum)
         [JsonProperty("objectType")]
         SharePointDescendantType? ObjectType { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String (scalar)
-        [JsonProperty("name")]
-        System.String? Name { get; set; }
-
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
         [JsonProperty("createTime")]
         DateTime? CreateTime { get; set; }
-
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        [JsonProperty("fid")]
+        System.String? Fid { get; set; }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
         [JsonProperty("modifiedTime")]
         DateTime? ModifiedTime { get; set; }
-
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        [JsonProperty("name")]
+        System.String? Name { get; set; }
+        //      C# -> System.String? ParentId
+        // GraphQL -> parentId: String (scalar)
+        [JsonProperty("parentId")]
+        System.String? ParentId { get; set; }
+        //      C# -> System.String? SharepointId
+        // GraphQL -> sharepointId: String! (scalar)
+        [JsonProperty("sharepointId")]
+        System.String? SharepointId { get; set; }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
         [JsonProperty("snapshotId")]
         System.String? SnapshotId { get; set; }
-
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
         [JsonProperty("snapshotNum")]
         System.Int32? SnapshotNum { get; set; }
-
 
         #endregion
 

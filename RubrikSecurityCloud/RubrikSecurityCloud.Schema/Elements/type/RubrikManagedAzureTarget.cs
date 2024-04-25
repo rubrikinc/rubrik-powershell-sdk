@@ -74,7 +74,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
         [JsonProperty("cloudAccount")]
-        public CloudAccount? CloudAccount { get; set; }
+        public RscInterface<CloudAccount> CloudAccount { get; set; }
 
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String (scalar)
@@ -206,7 +206,7 @@ namespace RubrikSecurityCloud.Types
         TargetSyncStatus? SyncStatus = null,
         TargetType? TargetType = null,
         UpgradeStatus? UpgradeStatus = null,
-        CloudAccount? CloudAccount = null,
+        RscInterface<CloudAccount> CloudAccount = null,
         System.String? AccessKey = null,
         System.Boolean? BypassProxy = null,
         System.String? ClusterName = null,
@@ -437,7 +437,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
         if (this.CloudAccount != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.CloudAccount, conf.Child("cloudAccount"));
+            var fspec = this.CloudAccount.AsFieldSpec(conf.Child("cloudAccount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -586,7 +586,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)
         if (this.CloudNativeCompanion != null) {
             var fspec = this.CloudNativeCompanion.AsFieldSpec(conf.Child("cloudNativeCompanion"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -598,7 +599,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -610,7 +612,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> computeSettings: AzureComputeSettings (type)
         if (this.ComputeSettings != null) {
             var fspec = this.ComputeSettings.AsFieldSpec(conf.Child("computeSettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -622,7 +625,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> immutabilitySettings: AzureImmutabilitySettingsType (type)
         if (this.ImmutabilitySettings != null) {
             var fspec = this.ImmutabilitySettings.AsFieldSpec(conf.Child("immutabilitySettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -634,7 +638,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> proxySettings: ProxySettings (type)
         if (this.ProxySettings != null) {
             var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -646,7 +651,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         if (this.TargetMapping != null) {
             var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -658,7 +664,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
         if (this.TargetMappingBasic != null) {
             var fspec = this.TargetMappingBasic.AsFieldSpec(conf.Child("targetMappingBasic"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -849,17 +856,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.CloudAccount == null) {
 
-                var impls = new RscInterface<CloudAccount>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
-                this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+                this.CloudAccount = new RscInterface<CloudAccount>();
+                this.CloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<CloudAccount>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
-                this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+                this.CloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
 
             }
         }

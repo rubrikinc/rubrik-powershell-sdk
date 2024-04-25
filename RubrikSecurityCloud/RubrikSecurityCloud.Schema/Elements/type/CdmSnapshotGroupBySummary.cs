@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmSnapshots: CdmSnapshotConnection! (type)
         if (this.CdmSnapshots != null) {
             var fspec = this.CdmSnapshots.AsFieldSpec(conf.Child("cdmSnapshots"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: TimeRangeWithUnit! (type)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

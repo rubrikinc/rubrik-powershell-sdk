@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> staticIpConfig: StaticIpInfo (type)
         if (this.StaticIpConfig != null) {
             var fspec = this.StaticIpConfig.AsFieldSpec(conf.Child("staticIpConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

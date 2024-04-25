@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> versions: [ActiveDirectorySearchVersions!]! (type)
         if (this.Versions != null) {
             var fspec = this.Versions.AsFieldSpec(conf.Child("versions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

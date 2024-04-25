@@ -212,7 +212,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> geolocation: ClusterGeolocation (type)
         if (this.Geolocation != null) {
             var fspec = this.Geolocation.AsFieldSpec(conf.Child("geolocation"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -224,7 +225,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> timezone: ClusterTimezone (type)
         if (this.Timezone != null) {
             var fspec = this.Timezone.AsFieldSpec(conf.Child("timezone"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

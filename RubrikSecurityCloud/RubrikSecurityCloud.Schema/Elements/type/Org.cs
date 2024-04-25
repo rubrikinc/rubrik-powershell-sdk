@@ -356,7 +356,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allClusterCapacityQuotas: [ClusterCapacityQuota!]! (type)
         if (this.AllClusterCapacityQuotas != null) {
             var fspec = this.AllClusterCapacityQuotas.AsFieldSpec(conf.Child("allClusterCapacityQuotas"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -368,7 +369,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> orgAdminRole: Role! (type)
         if (this.OrgAdminRole != null) {
             var fspec = this.OrgAdminRole.AsFieldSpec(conf.Child("orgAdminRole"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -380,7 +382,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
             var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -392,7 +395,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> selfServicePermissions: [SelfServicePermission!]! (type)
         if (this.SelfServicePermissions != null) {
             var fspec = this.SelfServicePermissions.AsFieldSpec(conf.Child("selfServicePermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -404,7 +408,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ssoGroups: [SsoGroup!]! (type)
         if (this.SsoGroups != null) {
             var fspec = this.SsoGroups.AsFieldSpec(conf.Child("ssoGroups"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -416,7 +421,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> users: [ExistingUser!]! (type)
         if (this.Users != null) {
             var fspec = this.Users.AsFieldSpec(conf.Child("users"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

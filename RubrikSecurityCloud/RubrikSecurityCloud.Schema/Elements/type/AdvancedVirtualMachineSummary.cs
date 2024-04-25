@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> postBackupScript: VirtualMachineScriptDetail (type)
         if (this.PostBackupScript != null) {
             var fspec = this.PostBackupScript.AsFieldSpec(conf.Child("postBackupScript"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> postSnapScript: VirtualMachineScriptDetail (type)
         if (this.PostSnapScript != null) {
             var fspec = this.PostSnapScript.AsFieldSpec(conf.Child("postSnapScript"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> preBackupScript: VirtualMachineScriptDetail (type)
         if (this.PreBackupScript != null) {
             var fspec = this.PreBackupScript.AsFieldSpec(conf.Child("preBackupScript"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

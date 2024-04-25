@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> AnomalyResultGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: AnomalyResultGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public AnomalyResultGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<AnomalyResultGroupByInfo> GroupByInfo { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.Types
     public AnomalyResultGroupedData Set(
         List<AnomalyResultGroupedData>? AnomalyResultGroupedDataField = null,
         AnomalyResultConnection? AnomalyResults = null,
-        AnomalyResultGroupByInfo? GroupByInfo = null
+        RscInterface<AnomalyResultGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( AnomalyResultGroupedDataField != null ) {
@@ -109,7 +109,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> anomalyResultGroupedData: [AnomalyResultGroupedData!]! (type)
         if (this.AnomalyResultGroupedDataField != null) {
             var fspec = this.AnomalyResultGroupedDataField.AsFieldSpec(conf.Child("anomalyResultGroupedData"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -121,7 +122,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> anomalyResults: AnomalyResultConnection! (type)
         if (this.AnomalyResults != null) {
             var fspec = this.AnomalyResults.AsFieldSpec(conf.Child("anomalyResults"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -133,11 +135,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: AnomalyResultGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -192,17 +195,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<AnomalyResultGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (AnomalyResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<AnomalyResultGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<AnomalyResultGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (AnomalyResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

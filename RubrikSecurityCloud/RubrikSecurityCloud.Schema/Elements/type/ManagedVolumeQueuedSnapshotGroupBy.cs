@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ManagedVolumeQueuedSnapshotGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<ManagedVolumeQueuedSnapshotGroupByInfo> GroupByInfo { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -76,7 +76,7 @@ namespace RubrikSecurityCloud.Types
     public ManagedVolumeQueuedSnapshotGroupBy Set(
         ManagedVolumeQueuedSnapshotConnection? ManagedVolumeQueuedSnapshotConnection = null,
         List<ManagedVolumeQueuedSnapshotGroupBy>? ManagedVolumeQueuedSnapshotGroupByField = null,
-        ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo = null
+        RscInterface<ManagedVolumeQueuedSnapshotGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( ManagedVolumeQueuedSnapshotConnection != null ) {
@@ -106,7 +106,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> managedVolumeQueuedSnapshotConnection: ManagedVolumeQueuedSnapshotConnection! (type)
         if (this.ManagedVolumeQueuedSnapshotConnection != null) {
             var fspec = this.ManagedVolumeQueuedSnapshotConnection.AsFieldSpec(conf.Child("managedVolumeQueuedSnapshotConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +119,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> managedVolumeQueuedSnapshotGroupBy: [ManagedVolumeQueuedSnapshotGroupBy!]! (type)
         if (this.ManagedVolumeQueuedSnapshotGroupByField != null) {
             var fspec = this.ManagedVolumeQueuedSnapshotGroupByField.AsFieldSpec(conf.Child("managedVolumeQueuedSnapshotGroupBy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -130,11 +132,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: ManagedVolumeQueuedSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -189,17 +192,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<ManagedVolumeQueuedSnapshotGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<ManagedVolumeQueuedSnapshotGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<ManagedVolumeQueuedSnapshotGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

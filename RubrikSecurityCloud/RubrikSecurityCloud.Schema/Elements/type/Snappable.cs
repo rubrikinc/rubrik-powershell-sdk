@@ -54,7 +54,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         [JsonProperty("slaDomain")]
-        public SlaDomain? SlaDomain { get; set; }
+        public RscInterface<SlaDomain> SlaDomain { get; set; }
 
         //      C# -> System.Int32? ArchivalSnapshotLag
         // GraphQL -> archivalSnapshotLag: Int (scalar)
@@ -272,7 +272,7 @@ namespace RubrikSecurityCloud.Types
         ObjectTypeEnum? ObjectType = null,
         ProtectionStatusEnum? ProtectionStatus = null,
         ComplianceStatusEnum? ReplicationComplianceStatus = null,
-        SlaDomain? SlaDomain = null,
+        RscInterface<SlaDomain> SlaDomain = null,
         System.Int32? ArchivalSnapshotLag = null,
         System.Int32? ArchiveSnapshots = null,
         System.Int64? ArchiveStorage = null,
@@ -527,7 +527,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.SlaDomain, conf.Child("slaDomain"));
+            var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -883,7 +883,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -895,7 +896,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> workloadOrg: WorkloadOrganization (type)
         if (this.WorkloadOrg != null) {
             var fspec = this.WorkloadOrg.AsFieldSpec(conf.Child("workloadOrg"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -1018,17 +1020,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain = new RscInterface<SlaDomain>();
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             }
         }

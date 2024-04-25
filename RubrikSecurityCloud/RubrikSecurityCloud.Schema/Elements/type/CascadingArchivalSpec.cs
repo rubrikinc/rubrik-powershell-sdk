@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> Target? ArchivalLocation
         // GraphQL -> archivalLocation: Target (interface)
         [JsonProperty("archivalLocation")]
-        public Target? ArchivalLocation { get; set; }
+        public RscInterface<Target> ArchivalLocation { get; set; }
 
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
@@ -51,7 +51,7 @@ namespace RubrikSecurityCloud.Types
 
     public CascadingArchivalSpec Set(
         List<RetentionUnit>? Frequency = null,
-        Target? ArchivalLocation = null,
+        RscInterface<Target> ArchivalLocation = null,
         Duration? ArchivalThreshold = null,
         ArchivalTieringSpec? ArchivalTieringSpec = null
     ) 
@@ -94,7 +94,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> Target? ArchivalLocation
         // GraphQL -> archivalLocation: Target (interface)
         if (this.ArchivalLocation != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.ArchivalLocation, conf.Child("archivalLocation"));
+            var fspec = this.ArchivalLocation.AsFieldSpec(conf.Child("archivalLocation"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -108,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalThreshold: Duration (type)
         if (this.ArchivalThreshold != null) {
             var fspec = this.ArchivalThreshold.AsFieldSpec(conf.Child("archivalThreshold"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
         if (this.ArchivalTieringSpec != null) {
             var fspec = this.ArchivalTieringSpec.AsFieldSpec(conf.Child("archivalTieringSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,17 +160,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ArchivalLocation == null) {
 
-                var impls = new RscInterface<Target>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
-                this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
+                this.ArchivalLocation = new RscInterface<Target>();
+                this.ArchivalLocation.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<Target>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
-                this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
+                this.ArchivalLocation.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
 
             }
         }

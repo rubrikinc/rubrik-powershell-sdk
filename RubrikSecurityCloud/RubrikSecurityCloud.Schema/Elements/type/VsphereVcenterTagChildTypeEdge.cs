@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VsphereVcenterTagChildType? Node
         // GraphQL -> node: VsphereVcenterTagChildType! (interface)
         [JsonProperty("node")]
-        public VsphereVcenterTagChildType? Node { get; set; }
+        public RscInterface<VsphereVcenterTagChildType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VsphereVcenterTagChildTypeEdge Set(
-        VsphereVcenterTagChildType? Node = null,
+        RscInterface<VsphereVcenterTagChildType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VsphereVcenterTagChildType? Node
         // GraphQL -> node: VsphereVcenterTagChildType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<VsphereVcenterTagChildType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VsphereVcenterTagChildType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<VsphereVcenterTagChildType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<VsphereVcenterTagChildType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VsphereVcenterTagChildType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

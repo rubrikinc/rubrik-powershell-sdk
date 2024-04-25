@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> files: NcdFilesObjectProtectionStatusData (type)
         if (this.Files != null) {
             var fspec = this.Files.AsFieldSpec(conf.Child("files"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shares: NcdSharesObjectProtectionStatusData (type)
         if (this.Shares != null) {
             var fspec = this.Shares.AsFieldSpec(conf.Child("shares"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

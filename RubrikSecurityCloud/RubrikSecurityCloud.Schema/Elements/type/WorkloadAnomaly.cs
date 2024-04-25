@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SnappableLocationType? Location
         // GraphQL -> location: SnappableLocationType! (union)
         [JsonProperty("location")]
-        public SnappableLocationType? Location { get; set; }
+        public RscInterface<SnappableLocationType> Location { get; set; }
 
 
         #endregion
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
         AnomalyInfo? AnomalyInfo = null,
         Cluster? Cluster = null,
         PolicyObj? PreviousPolicyObj = null,
-        SnappableLocationType? Location = null
+        RscInterface<SnappableLocationType> Location = null
     ) 
     {
         if ( AnomalyType != null ) {
@@ -437,7 +437,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> anomalousChildren: [WorkloadAnomaly!]! (type)
         if (this.AnomalousChildren != null) {
             var fspec = this.AnomalousChildren.AsFieldSpec(conf.Child("anomalousChildren"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -449,7 +450,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
         if (this.AnomalyInfo != null) {
             var fspec = this.AnomalyInfo.AsFieldSpec(conf.Child("anomalyInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -461,7 +463,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -473,7 +476,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> previousPolicyObj: PolicyObj (type)
         if (this.PreviousPolicyObj != null) {
             var fspec = this.PreviousPolicyObj.AsFieldSpec(conf.Child("previousPolicyObj"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -485,11 +489,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> location: SnappableLocationType! (union)
         if (this.Location != null) {
             var fspec = this.Location.AsFieldSpec(conf.Child("location"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "location" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "location" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -905,17 +910,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Location == null) {
 
-                var impls = new RscInterface<SnappableLocationType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("location"));
-                this.Location = (SnappableLocationType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Location = new RscInterface<SnappableLocationType>();
+                this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SnappableLocationType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("location"));
-                this.Location = (SnappableLocationType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
 
             }
         }

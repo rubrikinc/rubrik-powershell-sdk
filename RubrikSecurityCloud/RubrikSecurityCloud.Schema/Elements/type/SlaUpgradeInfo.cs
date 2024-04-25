@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> eligibility: SlaUpgradeEligibility (type)
         if (this.Eligibility != null) {
             var fspec = this.Eligibility.AsFieldSpec(conf.Child("eligibility"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestUpgrade: SlaUpgrade (type)
         if (this.LatestUpgrade != null) {
             var fspec = this.LatestUpgrade.AsFieldSpec(conf.Child("latestUpgrade"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

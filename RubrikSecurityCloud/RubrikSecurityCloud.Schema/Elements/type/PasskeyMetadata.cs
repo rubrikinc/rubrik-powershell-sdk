@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> credentialsMetadata: [PasskeyCredentialMetadata!]! (type)
         if (this.CredentialsMetadata != null) {
             var fspec = this.CredentialsMetadata.AsFieldSpec(conf.Child("credentialsMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -158,7 +158,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cmkInfo: [AzureCmk!]! (type)
         if (this.CmkInfo != null) {
             var fspec = this.CmkInfo.AsFieldSpec(conf.Child("cmkInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -170,7 +171,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> storageAccountTags: [TagObject!]! (type)
         if (this.StorageAccountTags != null) {
             var fspec = this.StorageAccountTags.AsFieldSpec(conf.Child("storageAccountTags"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

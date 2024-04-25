@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
         if (this.FeatureDetail != null) {
             var fspec = this.FeatureDetail.AsFieldSpec(conf.Child("featureDetail"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> project: GcpCloudAccountProject (type)
         if (this.Project != null) {
             var fspec = this.Project.AsFieldSpec(conf.Child("project"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

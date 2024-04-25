@@ -194,7 +194,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
         if (this.InfraPath != null) {
             var fspec = this.InfraPath.AsFieldSpec(conf.Child("infraPath"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -206,7 +207,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
             var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

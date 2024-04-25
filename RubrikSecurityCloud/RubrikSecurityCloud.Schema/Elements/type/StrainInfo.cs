@@ -158,7 +158,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
         if (this.SampleAffectedFilesInfo != null) {
             var fspec = this.SampleAffectedFilesInfo.AsFieldSpec(conf.Child("sampleAffectedFilesInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -170,7 +171,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
         if (this.SampleRansomwareNoteFilesInfo != null) {
             var fspec = this.SampleRansomwareNoteFilesInfo.AsFieldSpec(conf.Child("sampleRansomwareNoteFilesInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

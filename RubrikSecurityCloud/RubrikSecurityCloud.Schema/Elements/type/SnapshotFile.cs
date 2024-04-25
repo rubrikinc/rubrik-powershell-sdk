@@ -212,7 +212,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
         if (this.QuarantineInfo != null) {
             var fspec = this.QuarantineInfo.AsFieldSpec(conf.Child("quarantineInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -224,7 +225,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> workloadFields: WorkloadFields (type)
         if (this.WorkloadFields != null) {
             var fspec = this.WorkloadFields.AsFieldSpec(conf.Child("workloadFields"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

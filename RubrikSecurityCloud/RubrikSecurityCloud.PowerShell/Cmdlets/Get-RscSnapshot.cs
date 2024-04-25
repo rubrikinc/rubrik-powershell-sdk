@@ -164,7 +164,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
             //build a top-level query object for the snapshots query
             GenericSnapshotConnection queryObj = new GenericSnapshotConnection();
-            queryObj.Nodes = new List<GenericSnapshot>();
+            queryObj.Nodes = new RscInterface<GenericSnapshot>();
 
             // Include one of each implementing types to build the
             // query fragments with "... on "
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             // Request the SLA Domain infomraiton
             ClusterSlaDomain tmpSlaDomain = new ClusterSlaDomain();
             tmpSlaDomain.InitializeToDefaultValues(0);
-            cdmSnapshot.SlaDomain = tmpSlaDomain;
+            cdmSnapshot.SlaDomain.Add(tmpSlaDomain);
 
             polarisSnapshot.InitializeToDefaultValues(0);
 

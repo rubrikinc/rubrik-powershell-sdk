@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
         if (this.BlackoutWindowStatus != null) {
             var fspec = this.BlackoutWindowStatus.AsFieldSpec(conf.Child("blackoutWindowStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> blackoutWindows: BlackoutWindows (type)
         if (this.BlackoutWindows != null) {
             var fspec = this.BlackoutWindows.AsFieldSpec(conf.Child("blackoutWindows"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

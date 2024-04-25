@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archiveEntitlement: RcvEntitlement (type)
         if (this.ArchiveEntitlement != null) {
             var fspec = this.ArchiveEntitlement.AsFieldSpec(conf.Child("archiveEntitlement"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -89,7 +90,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupEntitlement: RcvEntitlement (type)
         if (this.BackupEntitlement != null) {
             var fspec = this.BackupEntitlement.AsFieldSpec(conf.Child("backupEntitlement"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -101,7 +103,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> entitlements: [RcvEntitlementsUsageDetails!]! (type)
         if (this.Entitlements != null) {
             var fspec = this.Entitlements.AsFieldSpec(conf.Child("entitlements"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

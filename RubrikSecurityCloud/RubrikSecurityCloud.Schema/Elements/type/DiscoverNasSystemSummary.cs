@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)
         if (this.NasDiscoverJobStatus != null) {
             var fspec = this.NasDiscoverJobStatus.AsFieldSpec(conf.Child("nasDiscoverJobStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

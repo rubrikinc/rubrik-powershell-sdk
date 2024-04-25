@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> counts: [ReportMigrationStatusCountItem!]! (type)
         if (this.Counts != null) {
             var fspec = this.Counts.AsFieldSpec(conf.Child("counts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsTarget: AwsReplicationTarget! (type)
         if (this.AwsTarget != null) {
             var fspec = this.AwsTarget.AsFieldSpec(conf.Child("awsTarget"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -161,7 +162,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureTarget: AzureReplicationTarget! (type)
         if (this.AzureTarget != null) {
             var fspec = this.AzureTarget.AsFieldSpec(conf.Child("azureTarget"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -173,7 +175,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cascadingArchivalSpecs: [CascadingArchivalSpec!]! (type)
         if (this.CascadingArchivalSpecs != null) {
             var fspec = this.CascadingArchivalSpecs.AsFieldSpec(conf.Child("cascadingArchivalSpecs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -185,7 +188,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: SlaReplicationCluster (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -197,7 +201,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicationLocalRetentionDuration: Duration (type)
         if (this.ReplicationLocalRetentionDuration != null) {
             var fspec = this.ReplicationLocalRetentionDuration.AsFieldSpec(conf.Child("replicationLocalRetentionDuration"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -209,7 +214,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> retentionDuration: Duration (type)
         if (this.RetentionDuration != null) {
             var fspec = this.RetentionDuration.AsFieldSpec(conf.Child("retentionDuration"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -221,7 +227,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMapping: TargetMapping (type)
         if (this.TargetMapping != null) {
             var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

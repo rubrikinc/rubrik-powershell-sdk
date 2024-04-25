@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> highRiskFileCount: SummaryCount (type)
         if (this.HighRiskFileCount != null) {
             var fspec = this.HighRiskFileCount.AsFieldSpec(conf.Child("highRiskFileCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lowRiskFileCount: SummaryCount (type)
         if (this.LowRiskFileCount != null) {
             var fspec = this.LowRiskFileCount.AsFieldSpec(conf.Child("lowRiskFileCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -110,7 +112,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mediumRiskFileCount: SummaryCount (type)
         if (this.MediumRiskFileCount != null) {
             var fspec = this.MediumRiskFileCount.AsFieldSpec(conf.Child("mediumRiskFileCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +125,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalFileCount: SummaryCount (type)
         if (this.TotalFileCount != null) {
             var fspec = this.TotalFileCount.AsFieldSpec(conf.Child("totalFileCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
         [JsonProperty("snappable")]
-        public HierarchyObject? Snappable { get; set; }
+        public RscInterface<HierarchyObject> Snappable { get; set; }
 
         //      C# -> System.String? CrawlId
         // GraphQL -> crawlId: String! (scalar)
@@ -146,7 +146,7 @@ namespace RubrikSecurityCloud.Types
 
     public CrawlObj Set(
         SnappableCrawlStatus? Status = null,
-        HierarchyObject? Snappable = null,
+        RscInterface<HierarchyObject> Snappable = null,
         System.String? CrawlId = null,
         System.Int64? EndTime = null,
         System.String? Error = null,
@@ -245,7 +245,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
         if (this.Snappable != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Snappable, conf.Child("snappable"));
+            var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -367,7 +367,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
         if (this.AnalyzerGroupResults != null) {
             var fspec = this.AnalyzerGroupResults.AsFieldSpec(conf.Child("analyzerGroupResults"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -379,7 +380,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
             var fspec = this.AnalyzerResults.AsFieldSpec(conf.Child("analyzerResults"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -391,7 +393,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -403,7 +406,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         if (this.FileResultConnection != null) {
             var fspec = this.FileResultConnection.AsFieldSpec(conf.Child("fileResultConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -441,17 +445,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Snappable == null) {
 
-                var impls = new RscInterface<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Snappable = new RscInterface<HierarchyObject>();
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
 
             }
         }

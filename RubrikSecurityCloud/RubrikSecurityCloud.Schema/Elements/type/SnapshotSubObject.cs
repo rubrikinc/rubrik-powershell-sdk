@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subObj: SnapshotSubObj! (type)
         if (this.SubObj != null) {
             var fspec = this.SubObj.AsFieldSpec(conf.Child("subObj"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

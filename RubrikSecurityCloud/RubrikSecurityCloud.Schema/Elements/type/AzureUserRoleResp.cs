@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> globalAdministrator: RoleStatus (type)
         if (this.GlobalAdministrator != null) {
             var fspec = this.GlobalAdministrator.AsFieldSpec(conf.Child("globalAdministrator"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subscriptionOwner: RoleStatus (type)
         if (this.SubscriptionOwner != null) {
             var fspec = this.SubscriptionOwner.AsFieldSpec(conf.Child("subscriptionOwner"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hostGroups: [HostGroupInfo!]! (type)
         if (this.HostGroups != null) {
             var fspec = this.HostGroups.AsFieldSpec(conf.Child("hostGroups"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

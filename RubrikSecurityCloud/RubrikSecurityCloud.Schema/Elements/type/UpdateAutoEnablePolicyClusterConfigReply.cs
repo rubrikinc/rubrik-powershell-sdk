@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply! (type)
         if (this.DatagovAutoEnablePolicyConfig != null) {
             var fspec = this.DatagovAutoEnablePolicyConfig.AsFieldSpec(conf.Child("datagovAutoEnablePolicyConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

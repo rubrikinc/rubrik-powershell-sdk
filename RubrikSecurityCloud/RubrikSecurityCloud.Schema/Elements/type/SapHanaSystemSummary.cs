@@ -266,7 +266,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hosts: [SapHanaHost!]! (type)
         if (this.Hosts != null) {
             var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -278,7 +279,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
             var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -290,7 +292,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sslInfo: SapHanaSslInfo (type)
         if (this.SslInfo != null) {
             var fspec = this.SslInfo.AsFieldSpec(conf.Child("sslInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -302,7 +305,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> systemInfo: SapHanaSystemInfo (type)
         if (this.SystemInfo != null) {
             var fspec = this.SystemInfo.AsFieldSpec(conf.Child("systemInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

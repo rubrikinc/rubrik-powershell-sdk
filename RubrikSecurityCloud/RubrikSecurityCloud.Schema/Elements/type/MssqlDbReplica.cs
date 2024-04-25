@@ -230,7 +230,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> availabilityInfo: MssqlDbReplicaAvailabilityInfo (type)
         if (this.AvailabilityInfo != null) {
             var fspec = this.AvailabilityInfo.AsFieldSpec(conf.Child("availabilityInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -242,7 +243,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
             var fspec = this.RootProperties.AsFieldSpec(conf.Child("rootProperties"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

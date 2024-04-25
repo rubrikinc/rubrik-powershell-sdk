@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
         [JsonProperty("snappable")]
-        public HierarchyObject? Snappable { get; set; }
+        public RscInterface<HierarchyObject> Snappable { get; set; }
 
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
@@ -55,7 +55,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClassificationPolicyWhitelistDetailedEntry Set(
-        HierarchyObject? Snappable = null,
+        RscInterface<HierarchyObject> Snappable = null,
         System.String? NativePath = null,
         System.String? StdPath = null,
         System.Int64? UpdateTs = null,
@@ -94,7 +94,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
         if (this.Snappable != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Snappable, conf.Child("snappable"));
+            var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -153,17 +153,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Snappable == null) {
 
-                var impls = new RscInterface<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Snappable = new RscInterface<HierarchyObject>();
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
 
             }
         }

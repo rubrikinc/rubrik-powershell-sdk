@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> interfaces: [NodeIp!]! (type)
         if (this.Interfaces != null) {
             var fspec = this.Interfaces.AsFieldSpec(conf.Child("interfaces"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

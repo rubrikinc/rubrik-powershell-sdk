@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> currentStateInfo: CurrentStateInfo (type)
         if (this.CurrentStateInfo != null) {
             var fspec = this.CurrentStateInfo.AsFieldSpec(conf.Child("currentStateInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

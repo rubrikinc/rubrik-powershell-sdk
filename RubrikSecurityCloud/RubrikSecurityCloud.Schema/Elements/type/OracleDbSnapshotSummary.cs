@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         if (this.BaseSnapshotSummary != null) {
             var fspec = this.BaseSnapshotSummary.AsFieldSpec(conf.Child("baseSnapshotSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

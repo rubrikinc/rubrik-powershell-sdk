@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> spDriveItem: O365SharePointDrive (type)
         if (this.SpDriveItem != null) {
             var fspec = this.SpDriveItem.AsFieldSpec(conf.Child("spDriveItem"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

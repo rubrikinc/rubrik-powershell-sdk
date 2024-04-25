@@ -185,7 +185,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
         if (this.ConfigDetails != null) {
             var fspec = this.ConfigDetails.AsFieldSpec(conf.Child("configDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -197,7 +198,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
         if (this.ConnectionDetails != null) {
             var fspec = this.ConnectionDetails.AsFieldSpec(conf.Child("connectionDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -209,7 +211,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> networkThrottle: NetworkThrottle (type)
         if (this.NetworkThrottle != null) {
             var fspec = this.NetworkThrottle.AsFieldSpec(conf.Child("networkThrottle"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -221,7 +224,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceCluster: ReplicationCluster! (type)
         if (this.SourceCluster != null) {
             var fspec = this.SourceCluster.AsFieldSpec(conf.Child("sourceCluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -233,7 +237,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetCluster: ReplicationCluster! (type)
         if (this.TargetCluster != null) {
             var fspec = this.TargetCluster.AsFieldSpec(conf.Child("targetCluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

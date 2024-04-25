@@ -240,7 +240,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         if (this.HealthCheckStatus != null) {
             var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -252,7 +253,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
         if (this.Subnet1 != null) {
             var fspec = this.Subnet1.AsFieldSpec(conf.Child("subnet1"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -264,7 +266,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnet2: AwsExocomputeSubnetType! (type)
         if (this.Subnet2 != null) {
             var fspec = this.Subnet2.AsFieldSpec(conf.Child("subnet2"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

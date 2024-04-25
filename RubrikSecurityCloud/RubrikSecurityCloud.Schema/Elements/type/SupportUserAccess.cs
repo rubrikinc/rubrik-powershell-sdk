@@ -176,7 +176,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> accessProviderUser: User (type)
         if (this.AccessProviderUser != null) {
             var fspec = this.AccessProviderUser.AsFieldSpec(conf.Child("accessProviderUser"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -188,7 +189,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> impersonatedUser: User (type)
         if (this.ImpersonatedUser != null) {
             var fspec = this.ImpersonatedUser.AsFieldSpec(conf.Child("impersonatedUser"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

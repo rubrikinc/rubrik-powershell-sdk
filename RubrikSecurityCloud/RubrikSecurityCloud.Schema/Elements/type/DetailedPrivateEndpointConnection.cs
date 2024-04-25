@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> privateEndpointConnection: PrivateEndpointConnection (type)
         if (this.PrivateEndpointConnection != null) {
             var fspec = this.PrivateEndpointConnection.AsFieldSpec(conf.Child("privateEndpointConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

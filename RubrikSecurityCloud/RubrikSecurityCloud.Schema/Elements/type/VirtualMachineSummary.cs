@@ -419,7 +419,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> advancedSummary: AdvancedVirtualMachineSummary (type)
         if (this.AdvancedSummary != null) {
             var fspec = this.AdvancedSummary.AsFieldSpec(conf.Child("advancedSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -431,7 +432,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> agentStatus: CdmAgentStatus (type)
         if (this.AgentStatus != null) {
             var fspec = this.AgentStatus.AsFieldSpec(conf.Child("agentStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -443,7 +445,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
         if (this.CloudInstantiationSpec != null) {
             var fspec = this.CloudInstantiationSpec.AsFieldSpec(conf.Child("cloudInstantiationSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -455,7 +458,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> folderPath: [VmPathPoint!]! (type)
         if (this.FolderPath != null) {
             var fspec = this.FolderPath.AsFieldSpec(conf.Child("folderPath"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -467,7 +471,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> infraPath: [VmPathPoint!]! (type)
         if (this.InfraPath != null) {
             var fspec = this.InfraPath.AsFieldSpec(conf.Child("infraPath"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -479,7 +484,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> parentAppInfo: ParentAppInfo (type)
         if (this.ParentAppInfo != null) {
             var fspec = this.ParentAppInfo.AsFieldSpec(conf.Child("parentAppInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -491,7 +497,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
             var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

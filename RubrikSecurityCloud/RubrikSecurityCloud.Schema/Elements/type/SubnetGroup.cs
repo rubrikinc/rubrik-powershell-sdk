@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnets: [AwsNativeSubnet!]! (type)
         if (this.Subnets != null) {
             var fspec = this.Subnets.AsFieldSpec(conf.Child("subnets"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

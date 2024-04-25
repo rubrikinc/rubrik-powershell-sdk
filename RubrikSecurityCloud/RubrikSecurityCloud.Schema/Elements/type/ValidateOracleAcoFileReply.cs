@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> acoMap: [OracleAcoParameterDetail!]! (type)
         if (this.AcoMap != null) {
             var fspec = this.AcoMap.AsFieldSpec(conf.Child("acoMap"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> acoValueValidationErrors: [OracleAcoValueErrorDetail!]! (type)
         if (this.AcoValueValidationErrors != null) {
             var fspec = this.AcoValueValidationErrors.AsFieldSpec(conf.Child("acoValueValidationErrors"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

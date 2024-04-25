@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureCloudAccount: AzureCloudAccountSubscriptionDetail! (type)
         if (this.AzureCloudAccount != null) {
             var fspec = this.AzureCloudAccount.AsFieldSpec(conf.Child("azureCloudAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configs: [AzureExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
             var fspec = this.Configs.AsFieldSpec(conf.Child("configs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featureDetails: AzureCloudAccountFeatureDetail! (type)
         if (this.FeatureDetails != null) {
             var fspec = this.FeatureDetails.AsFieldSpec(conf.Child("featureDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

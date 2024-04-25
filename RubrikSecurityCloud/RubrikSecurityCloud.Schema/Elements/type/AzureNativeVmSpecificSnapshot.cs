@@ -87,7 +87,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> dataDiskSnapshots: [AzureNativeAttachedDiskSpecificSnapshot!]! (type)
         if (this.DataDiskSnapshots != null) {
             var fspec = this.DataDiskSnapshots.AsFieldSpec(conf.Child("dataDiskSnapshots"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -99,7 +100,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> osDiskSnapshot: AzureNativeAttachedDiskSpecificSnapshot (type)
         if (this.OsDiskSnapshot != null) {
             var fspec = this.OsDiskSnapshot.AsFieldSpec(conf.Child("osDiskSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -293,7 +293,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> creator: User! (type)
         if (this.Creator != null) {
             var fspec = this.Creator.AsFieldSpec(conf.Child("creator"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -305,7 +306,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastEditor: User! (type)
         if (this.LastEditor != null) {
             var fspec = this.LastEditor.AsFieldSpec(conf.Child("lastEditor"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -317,7 +319,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rubrikRecipientUsers: [User!]! (type)
         if (this.RubrikRecipientUsers != null) {
             var fspec = this.RubrikRecipientUsers.AsFieldSpec(conf.Child("rubrikRecipientUsers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

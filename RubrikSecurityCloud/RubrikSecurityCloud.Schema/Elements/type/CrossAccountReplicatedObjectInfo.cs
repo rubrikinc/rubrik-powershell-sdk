@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> crossAccountPairInfo: CrossAccountPairInfo (type)
         if (this.CrossAccountPairInfo != null) {
             var fspec = this.CrossAccountPairInfo.AsFieldSpec(conf.Child("crossAccountPairInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicatedObjects: [ReplicatedObjectInfo!]! (type)
         if (this.ReplicatedObjects != null) {
             var fspec = this.ReplicatedObjects.AsFieldSpec(conf.Child("replicatedObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

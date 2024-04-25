@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestSnapshotResult: SnapshotResult (type)
         if (this.LatestSnapshotResult != null) {
             var fspec = this.LatestSnapshotResult.AsFieldSpec(conf.Child("latestSnapshotResult"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policyStatuses: [PolicyStatus!]! (type)
         if (this.PolicyStatuses != null) {
             var fspec = this.PolicyStatuses.AsFieldSpec(conf.Child("policyStatuses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

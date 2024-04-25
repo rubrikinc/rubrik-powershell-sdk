@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaObjectCounts: [SLAIdToObjectCount!]! (type)
         if (this.SlaObjectCounts != null) {
             var fspec = this.SlaObjectCounts.AsFieldSpec(conf.Child("slaObjectCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

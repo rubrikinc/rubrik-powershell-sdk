@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> absoluteTimeRange: TimeRange (type)
         if (this.AbsoluteTimeRange != null) {
             var fspec = this.AbsoluteTimeRange.AsFieldSpec(conf.Child("absoluteTimeRange"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> relativeTimeRange: RelativeTimeRange (type)
         if (this.RelativeTimeRange != null) {
             var fspec = this.RelativeTimeRange.AsFieldSpec(conf.Child("relativeTimeRange"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludedObjects: [FullSpObjectExclusion!]! (type)
         if (this.ExcludedObjects != null) {
             var fspec = this.ExcludedObjects.AsFieldSpec(conf.Child("excludedObjects"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

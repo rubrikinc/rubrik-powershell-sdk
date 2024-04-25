@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> TaskDetailGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: TaskDetailGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public TaskDetailGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<TaskDetailGroupByInfo> GroupByInfo { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
     public TaskDetailGroupBy Set(
         TaskDetailConnection? TaskDetailConnection = null,
         List<TaskDetailGroupBy>? TaskDetailGroupByField = null,
-        TaskDetailGroupByInfo? GroupByInfo = null
+        RscInterface<TaskDetailGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( TaskDetailConnection != null ) {
@@ -108,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> taskDetailConnection: TaskDetailConnection! (type)
         if (this.TaskDetailConnection != null) {
             var fspec = this.TaskDetailConnection.AsFieldSpec(conf.Child("taskDetailConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> taskDetailGroupBy: [TaskDetailGroupBy!]! (type)
         if (this.TaskDetailGroupByField != null) {
             var fspec = this.TaskDetailGroupByField.AsFieldSpec(conf.Child("taskDetailGroupBy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -132,11 +134,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: TaskDetailGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -191,17 +194,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<TaskDetailGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (TaskDetailGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<TaskDetailGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<TaskDetailGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (TaskDetailGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

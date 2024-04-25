@@ -158,7 +158,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> contents: [ContentNode!]! (type)
         if (this.Contents != null) {
             var fspec = this.Contents.AsFieldSpec(conf.Child("contents"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -170,7 +171,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> related: [RelatedContent!]! (type)
         if (this.Related != null) {
             var fspec = this.Related.AsFieldSpec(conf.Child("related"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

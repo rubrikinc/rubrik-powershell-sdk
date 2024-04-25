@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> activityResults: [ActivityResult!]! (type)
         if (this.ActivityResults != null) {
             var fspec = this.ActivityResults.AsFieldSpec(conf.Child("activityResults"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> topFiles: [FileAccessResult!]! (type)
         if (this.TopFiles != null) {
             var fspec = this.TopFiles.AsFieldSpec(conf.Child("topFiles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

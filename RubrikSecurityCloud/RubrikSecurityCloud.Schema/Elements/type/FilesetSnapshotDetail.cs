@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetSnapshotSummary: FilesetSnapshotSummary (type)
         if (this.FilesetSnapshotSummary != null) {
             var fspec = this.FilesetSnapshotSummary.AsFieldSpec(conf.Child("filesetSnapshotSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> verbose: FilesetSnapshotVerbose (type)
         if (this.Verbose != null) {
             var fspec = this.Verbose.AsFieldSpec(conf.Child("verbose"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

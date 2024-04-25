@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> certInfo: ClusterWebSignedCertificateReply (type)
         if (this.CertInfo != null) {
             var fspec = this.CertInfo.AsFieldSpec(conf.Child("certInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ipmiInfo: ModifyIpmiReply (type)
         if (this.IpmiInfo != null) {
             var fspec = this.IpmiInfo.AsFieldSpec(conf.Child("ipmiInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

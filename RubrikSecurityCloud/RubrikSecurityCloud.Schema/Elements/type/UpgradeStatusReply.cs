@@ -302,7 +302,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ruInfo: RollingUpgradeInfo (type)
         if (this.RuInfo != null) {
             var fspec = this.RuInfo.AsFieldSpec(conf.Child("ruInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -314,7 +315,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeStatus: StatusResponse (type)
         if (this.UpgradeStatus != null) {
             var fspec = this.UpgradeStatus.AsFieldSpec(conf.Child("upgradeStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

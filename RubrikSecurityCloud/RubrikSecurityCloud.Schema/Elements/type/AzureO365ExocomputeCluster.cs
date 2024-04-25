@@ -536,7 +536,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> databaseIds: ZeusDatabaseIds (type)
         if (this.DatabaseIds != null) {
             var fspec = this.DatabaseIds.AsFieldSpec(conf.Child("databaseIds"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -548,7 +549,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> kmsSpec: KmsSpec (type)
         if (this.KmsSpec != null) {
             var fspec = this.KmsSpec.AsFieldSpec(conf.Child("kmsSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -560,7 +562,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> scaleRuntime: ScaleRuntime (type)
         if (this.ScaleRuntime != null) {
             var fspec = this.ScaleRuntime.AsFieldSpec(conf.Child("scaleRuntime"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -572,7 +575,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> storageIds: ExocomputeStorageAccountIds (type)
         if (this.StorageIds != null) {
             var fspec = this.StorageIds.AsFieldSpec(conf.Child("storageIds"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

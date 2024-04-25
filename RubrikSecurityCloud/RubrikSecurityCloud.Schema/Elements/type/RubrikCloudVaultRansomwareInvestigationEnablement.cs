@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> location: RubrikCloudVaultLocation! (type)
         if (this.Location != null) {
             var fspec = this.Location.AsFieldSpec(conf.Child("location"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> interfaceCidr: [InterfaceCidr!]! (type)
         if (this.InterfaceCidr != null) {
             var fspec = this.InterfaceCidr.AsFieldSpec(conf.Child("interfaceCidr"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -185,7 +185,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> agentStatus: CdmAgentStatus (type)
         if (this.AgentStatus != null) {
             var fspec = this.AgentStatus.AsFieldSpec(conf.Child("agentStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -197,7 +198,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
         if (this.CloudInstantiationSpec != null) {
             var fspec = this.CloudInstantiationSpec.AsFieldSpec(conf.Child("cloudInstantiationSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -209,7 +211,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
         if (this.InfraPath != null) {
             var fspec = this.InfraPath.AsFieldSpec(conf.Child("infraPath"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -221,7 +224,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
             var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -233,7 +237,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
             var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

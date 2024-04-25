@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ProtectionTaskDetailsTable: ProtectionTaskDetailsTableFilter! (type)
         if (this.ProtectionTaskDetailsTable != null) {
             var fspec = this.ProtectionTaskDetailsTable.AsFieldSpec(conf.Child("ProtectionTaskDetailsTable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> RecoveryTaskDetailsTable: RecoveryTaskDetailsTableFilter! (type)
         if (this.RecoveryTaskDetailsTable != null) {
             var fspec = this.RecoveryTaskDetailsTable.AsFieldSpec(conf.Child("RecoveryTaskDetailsTable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

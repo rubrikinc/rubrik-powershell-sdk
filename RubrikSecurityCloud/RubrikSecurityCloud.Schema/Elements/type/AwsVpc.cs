@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> securityGroups: [AwsSecurityGroup!]! (type)
         if (this.SecurityGroups != null) {
             var fspec = this.SecurityGroups.AsFieldSpec(conf.Child("securityGroups"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnets: [AwsSubnet!]! (type)
         if (this.Subnets != null) {
             var fspec = this.Subnets.AsFieldSpec(conf.Child("subnets"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

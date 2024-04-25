@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> absoluteMonthlyRecurrence: AbsoluteMonthlyRecurrencePattern (type)
         if (this.AbsoluteMonthlyRecurrence != null) {
             var fspec = this.AbsoluteMonthlyRecurrence.AsFieldSpec(conf.Child("absoluteMonthlyRecurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +144,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> absoluteYearlyRecurrence: AbsoluteYearlyRecurrencePattern (type)
         if (this.AbsoluteYearlyRecurrence != null) {
             var fspec = this.AbsoluteYearlyRecurrence.AsFieldSpec(conf.Child("absoluteYearlyRecurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -155,7 +157,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> dailyRecurrence: DailyRecurrencePattern (type)
         if (this.DailyRecurrence != null) {
             var fspec = this.DailyRecurrence.AsFieldSpec(conf.Child("dailyRecurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -167,7 +170,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> endDateRecurrenceRange: EndDateRecurrenceRange (type)
         if (this.EndDateRecurrenceRange != null) {
             var fspec = this.EndDateRecurrenceRange.AsFieldSpec(conf.Child("endDateRecurrenceRange"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +183,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> noEndRecurrenceRange: NoEndRecurrenceRange (type)
         if (this.NoEndRecurrenceRange != null) {
             var fspec = this.NoEndRecurrenceRange.AsFieldSpec(conf.Child("noEndRecurrenceRange"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -191,7 +196,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numberedRecurrenceRange: NumberedRecurrenceRange (type)
         if (this.NumberedRecurrenceRange != null) {
             var fspec = this.NumberedRecurrenceRange.AsFieldSpec(conf.Child("numberedRecurrenceRange"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -203,7 +209,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> relativeMonthlyRecurrence: RelativeMonthlyRecurrencePattern (type)
         if (this.RelativeMonthlyRecurrence != null) {
             var fspec = this.RelativeMonthlyRecurrence.AsFieldSpec(conf.Child("relativeMonthlyRecurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -215,7 +222,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> relativeYearlyRecurrence: RelativeYearlyRecurrencePattern (type)
         if (this.RelativeYearlyRecurrence != null) {
             var fspec = this.RelativeYearlyRecurrence.AsFieldSpec(conf.Child("relativeYearlyRecurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -227,7 +235,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> weeklyRecurrence: WeeklyRecurrencePattern (type)
         if (this.WeeklyRecurrence != null) {
             var fspec = this.WeeklyRecurrence.AsFieldSpec(conf.Child("weeklyRecurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

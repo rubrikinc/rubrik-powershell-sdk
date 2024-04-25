@@ -293,7 +293,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
             var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -305,7 +306,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> emailConfig: [EventDigest!]! (type)
         if (this.EmailConfig != null) {
             var fspec = this.EmailConfig.AsFieldSpec(conf.Child("emailConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -317,7 +319,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> eulaState: EulaState! (type)
         if (this.EulaState != null) {
             var fspec = this.EulaState.AsFieldSpec(conf.Child("eulaState"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -329,7 +332,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lockoutState: LockoutState! (type)
         if (this.LockoutState != null) {
             var fspec = this.LockoutState.AsFieldSpec(conf.Child("lockoutState"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -341,7 +345,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> passkeyMetadata: PasskeyMetadata! (type)
         if (this.PasskeyMetadata != null) {
             var fspec = this.PasskeyMetadata.AsFieldSpec(conf.Child("passkeyMetadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -353,7 +358,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
             var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -365,7 +371,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totpStatus: TotpStatus! (type)
         if (this.TotpStatus != null) {
             var fspec = this.TotpStatus.AsFieldSpec(conf.Child("totpStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

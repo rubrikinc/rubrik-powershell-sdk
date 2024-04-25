@@ -284,7 +284,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
         if (this.HardwareHealth != null) {
             var fspec = this.HardwareHealth.AsFieldSpec(conf.Child("hardwareHealth"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -296,7 +297,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
         if (this.InterfaceCidrs != null) {
             var fspec = this.InterfaceCidrs.AsFieldSpec(conf.Child("interfaceCidrs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

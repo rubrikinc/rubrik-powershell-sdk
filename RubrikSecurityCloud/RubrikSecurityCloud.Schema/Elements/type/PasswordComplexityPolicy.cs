@@ -122,7 +122,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> leakedDetectionPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LeakedDetectionPolicy != null) {
             var fspec = this.LeakedDetectionPolicy.AsFieldSpec(conf.Child("leakedDetectionPolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -134,7 +135,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LengthPolicy != null) {
             var fspec = this.LengthPolicy.AsFieldSpec(conf.Child("lengthPolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -146,7 +148,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lowercasePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LowercasePolicy != null) {
             var fspec = this.LowercasePolicy.AsFieldSpec(conf.Child("lowercasePolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,7 +161,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numericPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.NumericPolicy != null) {
             var fspec = this.NumericPolicy.AsFieldSpec(conf.Child("numericPolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -170,7 +174,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> passwordExpirationPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.PasswordExpirationPolicy != null) {
             var fspec = this.PasswordExpirationPolicy.AsFieldSpec(conf.Child("passwordExpirationPolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -182,7 +187,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> passwordReusePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.PasswordReusePolicy != null) {
             var fspec = this.PasswordReusePolicy.AsFieldSpec(conf.Child("passwordReusePolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -194,7 +200,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> specialCharsPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.SpecialCharsPolicy != null) {
             var fspec = this.SpecialCharsPolicy.AsFieldSpec(conf.Child("specialCharsPolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -206,7 +213,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> uppercasePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.UppercasePolicy != null) {
             var fspec = this.UppercasePolicy.AsFieldSpec(conf.Child("uppercasePolicy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -84,7 +84,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> descendantConnection: HierarchyObjectConnection! (type)
         if (this.DescendantConnection != null) {
             var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

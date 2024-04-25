@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
         if (this.FailoverClusterSummary != null) {
             var fspec = this.FailoverClusterSummary.AsFieldSpec(conf.Child("failoverClusterSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

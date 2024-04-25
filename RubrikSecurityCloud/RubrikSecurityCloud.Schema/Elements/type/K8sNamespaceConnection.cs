@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> edges: [K8sNamespaceEdge!]! (type)
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +144,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nodes: [K8sNamespace!]! (type)
         if (this.Nodes != null) {
             var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -155,7 +157,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

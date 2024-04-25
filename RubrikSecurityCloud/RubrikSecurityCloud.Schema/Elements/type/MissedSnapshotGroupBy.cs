@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public MissedSnapshotGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<MissedSnapshotGroupByInfo> GroupByInfo { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -76,7 +76,7 @@ namespace RubrikSecurityCloud.Types
     public MissedSnapshotGroupBy Set(
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField = null,
-        MissedSnapshotGroupByInfo? GroupByInfo = null
+        RscInterface<MissedSnapshotGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( MissedSnapshotConnection != null ) {
@@ -106,7 +106,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
         if (this.MissedSnapshotConnection != null) {
             var fspec = this.MissedSnapshotConnection.AsFieldSpec(conf.Child("missedSnapshotConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +119,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
         if (this.MissedSnapshotGroupByField != null) {
             var fspec = this.MissedSnapshotGroupByField.AsFieldSpec(conf.Child("missedSnapshotGroupBy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -130,11 +132,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -189,17 +192,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<MissedSnapshotGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<MissedSnapshotGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<MissedSnapshotGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

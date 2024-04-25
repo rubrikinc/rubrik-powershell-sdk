@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hosts: [HdfsHost!]! (type)
         if (this.Hosts != null) {
             var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

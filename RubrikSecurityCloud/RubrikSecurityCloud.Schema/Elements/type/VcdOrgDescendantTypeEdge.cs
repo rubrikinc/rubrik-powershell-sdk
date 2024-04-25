@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VcdOrgDescendantType? Node
         // GraphQL -> node: VcdOrgDescendantType! (interface)
         [JsonProperty("node")]
-        public VcdOrgDescendantType? Node { get; set; }
+        public RscInterface<VcdOrgDescendantType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VcdOrgDescendantTypeEdge Set(
-        VcdOrgDescendantType? Node = null,
+        RscInterface<VcdOrgDescendantType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VcdOrgDescendantType? Node
         // GraphQL -> node: VcdOrgDescendantType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<VcdOrgDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VcdOrgDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<VcdOrgDescendantType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<VcdOrgDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VcdOrgDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

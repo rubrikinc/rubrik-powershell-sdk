@@ -212,7 +212,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectivePermissions: [Permission!]! (type)
         if (this.EffectivePermissions != null) {
             var fspec = this.EffectivePermissions.AsFieldSpec(conf.Child("effectivePermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -224,7 +225,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
         if (this.EffectiveRbacPermissions != null) {
             var fspec = this.EffectiveRbacPermissions.AsFieldSpec(conf.Child("effectiveRbacPermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -236,7 +238,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
         if (this.ExplicitlyAssignedPermissions != null) {
             var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(conf.Child("explicitlyAssignedPermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -248,7 +251,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
             var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

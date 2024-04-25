@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> urls: [GlobalManagerUrl!]! (type)
         if (this.Urls != null) {
             var fspec = this.Urls.AsFieldSpec(conf.Child("urls"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

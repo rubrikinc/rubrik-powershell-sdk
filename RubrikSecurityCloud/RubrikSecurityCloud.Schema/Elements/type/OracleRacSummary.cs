@@ -221,7 +221,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nodeOrder: [OracleNodeOrder!]! (type)
         if (this.NodeOrder != null) {
             var fspec = this.NodeOrder.AsFieldSpec(conf.Child("nodeOrder"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -233,7 +234,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nodes: [OracleNodeProperties!]! (type)
         if (this.Nodes != null) {
             var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -245,7 +247,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
             var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

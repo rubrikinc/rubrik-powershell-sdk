@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> instancesInfoList: [Db2HadrInstanceInfo!]! (type)
         if (this.InstancesInfoList != null) {
             var fspec = this.InstancesInfoList.AsFieldSpec(conf.Child("instancesInfoList"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> invalidAwsAccounts: [AwsAccountValidationResponse!]! (type)
         if (this.InvalidAwsAccounts != null) {
             var fspec = this.InvalidAwsAccounts.AsFieldSpec(conf.Child("invalidAwsAccounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> invalidAwsAdminAccount: AwsAccountValidationResponse (type)
         if (this.InvalidAwsAdminAccount != null) {
             var fspec = this.InvalidAwsAdminAccount.AsFieldSpec(conf.Child("invalidAwsAdminAccount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

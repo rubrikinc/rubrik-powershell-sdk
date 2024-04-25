@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> workloadTypeToFailureCount: [WorkloadTypeToEventCount!]! (type)
         if (this.WorkloadTypeToFailureCount != null) {
             var fspec = this.WorkloadTypeToFailureCount.AsFieldSpec(conf.Child("workloadTypeToFailureCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> workloadTypeToWarningCount: [WorkloadTypeToEventCount!]! (type)
         if (this.WorkloadTypeToWarningCount != null) {
             var fspec = this.WorkloadTypeToWarningCount.AsFieldSpec(conf.Child("workloadTypeToWarningCount"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

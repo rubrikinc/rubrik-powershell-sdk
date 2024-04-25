@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VcdOrgVdcDescendantType? Node
         // GraphQL -> node: VcdOrgVdcDescendantType! (interface)
         [JsonProperty("node")]
-        public VcdOrgVdcDescendantType? Node { get; set; }
+        public RscInterface<VcdOrgVdcDescendantType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VcdOrgVdcDescendantTypeEdge Set(
-        VcdOrgVdcDescendantType? Node = null,
+        RscInterface<VcdOrgVdcDescendantType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VcdOrgVdcDescendantType? Node
         // GraphQL -> node: VcdOrgVdcDescendantType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<VcdOrgVdcDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VcdOrgVdcDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<VcdOrgVdcDescendantType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<VcdOrgVdcDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VcdOrgVdcDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

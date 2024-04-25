@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudNativeAccounts: [CloudNativeAccountIdWithName!]! (type)
         if (this.CloudNativeAccounts != null) {
             var fspec = this.CloudNativeAccounts.AsFieldSpec(conf.Child("cloudNativeAccounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +180,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSla: TagRuleEffectiveSla (type)
         if (this.EffectiveSla != null) {
             var fspec = this.EffectiveSla.AsFieldSpec(conf.Child("effectiveSla"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -191,7 +193,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> tag: TagRuleTag (type)
         if (this.Tag != null) {
             var fspec = this.Tag.AsFieldSpec(conf.Child("tag"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

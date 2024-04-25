@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rbacObject: RbacObject! (type)
         if (this.RbacObject != null) {
             var fspec = this.RbacObject.AsFieldSpec(conf.Child("rbacObject"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

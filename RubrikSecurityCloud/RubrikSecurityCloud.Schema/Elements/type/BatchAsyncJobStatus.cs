@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> errors: [AsyncJobStatusJobError!]! (type)
         if (this.Errors != null) {
             var fspec = this.Errors.AsFieldSpec(conf.Child("errors"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> jobIds: [AsyncJobStatusJobId!]! (type)
         if (this.JobIds != null) {
             var fspec = this.JobIds.AsFieldSpec(conf.Child("jobIds"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

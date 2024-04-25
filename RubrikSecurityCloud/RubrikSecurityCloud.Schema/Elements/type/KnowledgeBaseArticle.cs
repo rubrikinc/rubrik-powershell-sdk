@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cause: [ContentNode!]! (type)
         if (this.Cause != null) {
             var fspec = this.Cause.AsFieldSpec(conf.Child("cause"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +180,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> environment: [ContentNode!]! (type)
         if (this.Environment != null) {
             var fspec = this.Environment.AsFieldSpec(conf.Child("environment"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -191,7 +193,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> notes: [ContentNode!]! (type)
         if (this.Notes != null) {
             var fspec = this.Notes.AsFieldSpec(conf.Child("notes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -203,7 +206,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resolution: [ContentNode!]! (type)
         if (this.Resolution != null) {
             var fspec = this.Resolution.AsFieldSpec(conf.Child("resolution"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -215,7 +219,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> summary: [ContentNode!]! (type)
         if (this.Summary != null) {
             var fspec = this.Summary.AsFieldSpec(conf.Child("summary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

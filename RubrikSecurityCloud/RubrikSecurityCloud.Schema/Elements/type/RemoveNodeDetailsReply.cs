@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeNodeDetails: [RemovedNodeDetail!]! (type)
         if (this.RemoveNodeDetails != null) {
             var fspec = this.RemoveNodeDetails.AsFieldSpec(conf.Child("removeNodeDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

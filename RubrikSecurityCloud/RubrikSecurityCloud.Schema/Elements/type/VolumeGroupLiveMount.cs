@@ -347,7 +347,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
         if (this.AuthorizedOperations != null) {
             var fspec = this.AuthorizedOperations.AsFieldSpec(conf.Child("authorizedOperations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -359,7 +360,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -371,7 +373,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
         if (this.MountedVolumes != null) {
             var fspec = this.MountedVolumes.AsFieldSpec(conf.Child("mountedVolumes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -383,7 +386,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceHost: PhysicalHost! (type)
         if (this.SourceHost != null) {
             var fspec = this.SourceHost.AsFieldSpec(conf.Child("sourceHost"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -395,7 +399,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
         if (this.SourceSnapshot != null) {
             var fspec = this.SourceSnapshot.AsFieldSpec(conf.Child("sourceSnapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

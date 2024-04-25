@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nics: [VmwareNetworkDeviceInfo!]! (type)
         if (this.Nics != null) {
             var fspec = this.Nics.AsFieldSpec(conf.Child("nics"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

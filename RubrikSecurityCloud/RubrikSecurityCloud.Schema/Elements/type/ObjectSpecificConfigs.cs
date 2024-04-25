@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
         if (this.AwsNativeS3SlaConfig != null) {
             var fspec = this.AwsNativeS3SlaConfig.AsFieldSpec(conf.Child("awsNativeS3SlaConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +180,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsRdsConfig: AwsRdsConfig (type)
         if (this.AwsRdsConfig != null) {
             var fspec = this.AwsRdsConfig.AsFieldSpec(conf.Child("awsRdsConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -191,7 +193,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureBlobConfig: AzureBlobConfig (type)
         if (this.AzureBlobConfig != null) {
             var fspec = this.AzureBlobConfig.AsFieldSpec(conf.Child("azureBlobConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -203,7 +206,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig (type)
         if (this.AzureSqlDatabaseDbConfig != null) {
             var fspec = this.AzureSqlDatabaseDbConfig.AsFieldSpec(conf.Child("azureSqlDatabaseDbConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -215,7 +219,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureSqlManagedInstanceDbConfig: AzureSqlManagedInstanceDbConfig (type)
         if (this.AzureSqlManagedInstanceDbConfig != null) {
             var fspec = this.AzureSqlManagedInstanceDbConfig.AsFieldSpec(conf.Child("azureSqlManagedInstanceDbConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -227,7 +232,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> db2Config: Db2Config (type)
         if (this.Db2Config != null) {
             var fspec = this.Db2Config.AsFieldSpec(conf.Child("db2Config"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -239,7 +245,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
         if (this.ManagedVolumeSlaConfig != null) {
             var fspec = this.ManagedVolumeSlaConfig.AsFieldSpec(conf.Child("managedVolumeSlaConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -251,7 +258,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mongoConfig: MongoConfig (type)
         if (this.MongoConfig != null) {
             var fspec = this.MongoConfig.AsFieldSpec(conf.Child("mongoConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -263,7 +271,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlConfig: MssqlConfig (type)
         if (this.MssqlConfig != null) {
             var fspec = this.MssqlConfig.AsFieldSpec(conf.Child("mssqlConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -275,7 +284,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oracleConfig: OracleConfig (type)
         if (this.OracleConfig != null) {
             var fspec = this.OracleConfig.AsFieldSpec(conf.Child("oracleConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -287,7 +297,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> postgresDbClusterSlaConfig: PostgresDbClusterSlaConfig (type)
         if (this.PostgresDbClusterSlaConfig != null) {
             var fspec = this.PostgresDbClusterSlaConfig.AsFieldSpec(conf.Child("postgresDbClusterSlaConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -299,7 +310,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sapHanaConfig: SapHanaConfig (type)
         if (this.SapHanaConfig != null) {
             var fspec = this.SapHanaConfig.AsFieldSpec(conf.Child("sapHanaConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -311,7 +323,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareVmConfig: VmwareVmConfig (type)
         if (this.VmwareVmConfig != null) {
             var fspec = this.VmwareVmConfig.AsFieldSpec(conf.Child("vmwareVmConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

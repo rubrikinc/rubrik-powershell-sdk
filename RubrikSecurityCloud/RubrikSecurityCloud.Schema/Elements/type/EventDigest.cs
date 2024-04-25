@@ -257,7 +257,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> eventDigestConfig: EventDigestConfigInfo! (type)
         if (this.EventDigestConfig != null) {
             var fspec = this.EventDigestConfig.AsFieldSpec(conf.Child("eventDigestConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

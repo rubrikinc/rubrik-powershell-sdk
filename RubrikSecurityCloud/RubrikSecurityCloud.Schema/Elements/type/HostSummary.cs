@@ -365,7 +365,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hdfsBaseConfig: HdfsBaseConfig (type)
         if (this.HdfsBaseConfig != null) {
             var fspec = this.HdfsBaseConfig.AsFieldSpec(conf.Child("hdfsBaseConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -377,7 +378,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nasBaseConfig: NasBaseConfig (type)
         if (this.NasBaseConfig != null) {
             var fspec = this.NasBaseConfig.AsFieldSpec(conf.Child("nasBaseConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -389,7 +391,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> volumeGroupInfo: VolumeGroupDetailInfo (type)
         if (this.VolumeGroupInfo != null) {
             var fspec = this.VolumeGroupInfo.AsFieldSpec(conf.Child("volumeGroupInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> Db2InstancePhysicalChildType? Node
         // GraphQL -> node: Db2InstancePhysicalChildType! (interface)
         [JsonProperty("node")]
-        public Db2InstancePhysicalChildType? Node { get; set; }
+        public RscInterface<Db2InstancePhysicalChildType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Db2InstancePhysicalChildTypeEdge Set(
-        Db2InstancePhysicalChildType? Node = null,
+        RscInterface<Db2InstancePhysicalChildType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> Db2InstancePhysicalChildType? Node
         // GraphQL -> node: Db2InstancePhysicalChildType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<Db2InstancePhysicalChildType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (Db2InstancePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<Db2InstancePhysicalChildType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<Db2InstancePhysicalChildType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (Db2InstancePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

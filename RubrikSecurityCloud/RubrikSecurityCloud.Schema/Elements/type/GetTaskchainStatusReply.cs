@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> taskchain: Taskchain (type)
         if (this.Taskchain != null) {
             var fspec = this.Taskchain.AsFieldSpec(conf.Child("taskchain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

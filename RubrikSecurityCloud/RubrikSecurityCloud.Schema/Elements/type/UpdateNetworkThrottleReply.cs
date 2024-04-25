@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
         if (this.ScheduledThrottles != null) {
             var fspec = this.ScheduledThrottles.AsFieldSpec(conf.Child("scheduledThrottles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

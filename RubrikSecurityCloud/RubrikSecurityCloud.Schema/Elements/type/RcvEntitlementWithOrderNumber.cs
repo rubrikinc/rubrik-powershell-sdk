@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> entitlement: RcvEntitlementWithExpirationDate (type)
         if (this.Entitlement != null) {
             var fspec = this.Entitlement.AsFieldSpec(conf.Child("entitlement"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

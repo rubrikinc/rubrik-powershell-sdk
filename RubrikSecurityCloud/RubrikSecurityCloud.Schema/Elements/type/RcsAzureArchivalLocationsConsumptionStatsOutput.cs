@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rcsAzureConsumptionStats: [RcsArchivalLocationConsumptionStats!]! (type)
         if (this.RcsAzureConsumptionStats != null) {
             var fspec = this.RcsAzureConsumptionStats.AsFieldSpec(conf.Child("rcsAzureConsumptionStats"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -149,7 +149,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
         if (this.DownloadJobInfo != null) {
             var fspec = this.DownloadJobInfo.AsFieldSpec(conf.Child("downloadJobInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

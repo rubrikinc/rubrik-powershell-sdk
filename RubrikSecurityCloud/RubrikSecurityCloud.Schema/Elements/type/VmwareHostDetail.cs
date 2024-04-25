@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> datacenter: DataCenterSummary (type)
         if (this.Datacenter != null) {
             var fspec = this.Datacenter.AsFieldSpec(conf.Child("datacenter"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +144,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
         if (this.Datastores != null) {
             var fspec = this.Datastores.AsFieldSpec(conf.Child("datastores"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -155,7 +157,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
         if (this.VirtualMachines != null) {
             var fspec = this.VirtualMachines.AsFieldSpec(conf.Child("virtualMachines"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -167,7 +170,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
         if (this.VmwareHostSummary != null) {
             var fspec = this.VmwareHostSummary.AsFieldSpec(conf.Child("vmwareHostSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +183,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
         if (this.VmwareHostUpdate != null) {
             var fspec = this.VmwareHostUpdate.AsFieldSpec(conf.Child("vmwareHostUpdate"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

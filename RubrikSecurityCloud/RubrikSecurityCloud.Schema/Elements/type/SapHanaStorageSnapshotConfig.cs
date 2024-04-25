@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> frequency: Duration (type)
         if (this.Frequency != null) {
             var fspec = this.Frequency.AsFieldSpec(conf.Child("frequency"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> retention: Duration (type)
         if (this.Retention != null) {
             var fspec = this.Retention.AsFieldSpec(conf.Child("retention"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

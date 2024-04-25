@@ -258,7 +258,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recurrence: O365CalendarEventRecurrence (type)
         if (this.Recurrence != null) {
             var fspec = this.Recurrence.AsFieldSpec(conf.Child("recurrence"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

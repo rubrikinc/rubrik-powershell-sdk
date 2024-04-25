@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pcrDetails: PrivateContainerRegistryDetailsType (type)
         if (this.PcrDetails != null) {
             var fspec = this.PcrDetails.AsFieldSpec(conf.Child("pcrDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failoverClusterAppSource: FailoverClusterAppSource (type)
         if (this.FailoverClusterAppSource != null) {
             var fspec = this.FailoverClusterAppSource.AsFieldSpec(conf.Child("failoverClusterAppSource"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

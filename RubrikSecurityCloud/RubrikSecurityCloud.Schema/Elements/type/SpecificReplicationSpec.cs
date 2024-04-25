@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bidirectionalSpec: BidirectionalReplicationSpec (type)
         if (this.BidirectionalSpec != null) {
             var fspec = this.BidirectionalSpec.AsFieldSpec(conf.Child("bidirectionalSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudLocationSpec: ReplicationToCloudLocationSpec (type)
         if (this.CloudLocationSpec != null) {
             var fspec = this.CloudLocationSpec.AsFieldSpec(conf.Child("cloudLocationSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -110,7 +112,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudRegionSpec: ReplicationToCloudRegionSpec (type)
         if (this.CloudRegionSpec != null) {
             var fspec = this.CloudRegionSpec.AsFieldSpec(conf.Child("cloudRegionSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +125,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unidirectionalSpec: UnidirectionalReplicationSpec (type)
         if (this.UnidirectionalSpec != null) {
             var fspec = this.UnidirectionalSpec.AsFieldSpec(conf.Child("unidirectionalSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> securityGroup: SecurityGroup (type)
         if (this.SecurityGroup != null) {
             var fspec = this.SecurityGroup.AsFieldSpec(conf.Child("securityGroup"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
         if (this.PermissionsGroupVersions != null) {
             var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resourceGroupRolePermissions: [AzureCloudAccountRolePermission!]! (type)
         if (this.ResourceGroupRolePermissions != null) {
             var fspec = this.ResourceGroupRolePermissions.AsFieldSpec(conf.Child("resourceGroupRolePermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)
         if (this.RolePermissions != null) {
             var fspec = this.RolePermissions.AsFieldSpec(conf.Child("rolePermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

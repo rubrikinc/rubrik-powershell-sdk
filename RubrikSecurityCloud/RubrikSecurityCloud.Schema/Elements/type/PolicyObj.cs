@@ -48,7 +48,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject (interface)
         [JsonProperty("snappable")]
-        public HierarchyObject? Snappable { get; set; }
+        public RscInterface<HierarchyObject> Snappable { get; set; }
 
         //      C# -> System.Boolean? HasInsights
         // GraphQL -> hasInsights: Boolean! (scalar)
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.Types
         DataGovOsType? OsType = null,
         RiskLevelType? RiskLevel = null,
         DataGovShareType? ShareType = null,
-        HierarchyObject? Snappable = null,
+        RscInterface<HierarchyObject> Snappable = null,
         System.Boolean? HasInsights = null,
         System.String? Id = null,
         System.Boolean? IsUserAccessEnabledObject = null,
@@ -390,7 +390,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject (interface)
         if (this.Snappable != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Snappable, conf.Child("snappable"));
+            var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -467,7 +467,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
         if (this.AllAnalyzerMappings != null) {
             var fspec = this.AllAnalyzerMappings.AsFieldSpec(conf.Child("allAnalyzerMappings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -479,7 +480,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzerHits: AnalyzerHits (type)
         if (this.AnalyzerHits != null) {
             var fspec = this.AnalyzerHits.AsFieldSpec(conf.Child("analyzerHits"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -491,7 +493,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deltaUserCounts: PrincipalCounts (type)
         if (this.DeltaUserCounts != null) {
             var fspec = this.DeltaUserCounts.AsFieldSpec(conf.Child("deltaUserCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -503,7 +506,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         if (this.FileResultConnection != null) {
             var fspec = this.FileResultConnection.AsFieldSpec(conf.Child("fileResultConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -515,7 +519,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> folderChildConnection: FileResultConnection! (type)
         if (this.FolderChildConnection != null) {
             var fspec = this.FolderChildConnection.AsFieldSpec(conf.Child("folderChildConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -527,7 +532,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectStatus: ObjectStatus! (type)
         if (this.ObjectStatus != null) {
             var fspec = this.ObjectStatus.AsFieldSpec(conf.Child("objectStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -539,7 +545,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
         if (this.PolicySummaries != null) {
             var fspec = this.PolicySummaries.AsFieldSpec(conf.Child("policySummaries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -551,7 +558,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> riskHits: SensitiveHits (type)
         if (this.RiskHits != null) {
             var fspec = this.RiskHits.AsFieldSpec(conf.Child("riskHits"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -563,7 +571,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rootFileResult: FileResult! (type)
         if (this.RootFileResult != null) {
             var fspec = this.RootFileResult.AsFieldSpec(conf.Child("rootFileResult"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -575,7 +584,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
         if (this.SensitiveFiles != null) {
             var fspec = this.SensitiveFiles.AsFieldSpec(conf.Child("sensitiveFiles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -587,7 +597,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalSensitiveHits: SummaryHits (type)
         if (this.TotalSensitiveHits != null) {
             var fspec = this.TotalSensitiveHits.AsFieldSpec(conf.Child("totalSensitiveHits"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -599,7 +610,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unusedSensitiveFiles: SensitiveFiles (type)
         if (this.UnusedSensitiveFiles != null) {
             var fspec = this.UnusedSensitiveFiles.AsFieldSpec(conf.Child("unusedSensitiveFiles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -611,7 +623,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> userCounts: PrincipalCounts (type)
         if (this.UserCounts != null) {
             var fspec = this.UserCounts.AsFieldSpec(conf.Child("userCounts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -623,7 +636,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
         if (this.WhitelistedAnalyzerList != null) {
             var fspec = this.WhitelistedAnalyzerList.AsFieldSpec(conf.Child("whitelistedAnalyzerList"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -729,17 +743,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Snappable == null) {
 
-                var impls = new RscInterface<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Snappable = new RscInterface<HierarchyObject>();
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<HierarchyObject>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
 
             }
         }

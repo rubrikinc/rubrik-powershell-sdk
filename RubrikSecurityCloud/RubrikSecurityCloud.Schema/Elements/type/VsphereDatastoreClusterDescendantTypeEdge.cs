@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VsphereDatastoreClusterDescendantType? Node
         // GraphQL -> node: VsphereDatastoreClusterDescendantType! (interface)
         [JsonProperty("node")]
-        public VsphereDatastoreClusterDescendantType? Node { get; set; }
+        public RscInterface<VsphereDatastoreClusterDescendantType> Node { get; set; }
 
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VsphereDatastoreClusterDescendantTypeEdge Set(
-        VsphereDatastoreClusterDescendantType? Node = null,
+        RscInterface<VsphereDatastoreClusterDescendantType> Node = null,
         System.String? Cursor = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> VsphereDatastoreClusterDescendantType? Node
         // GraphQL -> node: VsphereDatastoreClusterDescendantType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Node, conf.Child("node"));
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -99,17 +99,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<VsphereDatastoreClusterDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VsphereDatastoreClusterDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node = new RscInterface<VsphereDatastoreClusterDescendantType>();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<VsphereDatastoreClusterDescendantType>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-                this.Node = (VsphereDatastoreClusterDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }

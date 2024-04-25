@@ -465,7 +465,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalProxySettings: ProxySettings (type)
         if (this.ArchivalProxySettings != null) {
             var fspec = this.ArchivalProxySettings.AsFieldSpec(conf.Child("archivalProxySettings"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -477,7 +478,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -489,7 +491,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         if (this.TargetMapping != null) {
             var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -501,7 +504,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
         if (this.TargetMappingBasic != null) {
             var fspec = this.TargetMappingBasic.AsFieldSpec(conf.Child("targetMappingBasic"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

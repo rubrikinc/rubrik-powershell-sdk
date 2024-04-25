@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> daily: DailySnapshotSchedule (type)
         if (this.Daily != null) {
             var fspec = this.Daily.AsFieldSpec(conf.Child("daily"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -125,7 +126,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hourly: HourlySnapshotSchedule (type)
         if (this.Hourly != null) {
             var fspec = this.Hourly.AsFieldSpec(conf.Child("hourly"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -137,7 +139,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> minute: MinuteSnapshotSchedule (type)
         if (this.Minute != null) {
             var fspec = this.Minute.AsFieldSpec(conf.Child("minute"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -149,7 +152,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> monthly: MonthlySnapshotSchedule (type)
         if (this.Monthly != null) {
             var fspec = this.Monthly.AsFieldSpec(conf.Child("monthly"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -161,7 +165,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
         if (this.Quarterly != null) {
             var fspec = this.Quarterly.AsFieldSpec(conf.Child("quarterly"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -173,7 +178,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> weekly: WeeklySnapshotSchedule (type)
         if (this.Weekly != null) {
             var fspec = this.Weekly.AsFieldSpec(conf.Child("weekly"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -185,7 +191,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> yearly: YearlySnapshotSchedule (type)
         if (this.Yearly != null) {
             var fspec = this.Yearly.AsFieldSpec(conf.Child("yearly"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

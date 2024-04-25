@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> testError: ErrorInfo (type)
         if (this.TestError != null) {
             var fspec = this.TestError.AsFieldSpec(conf.Child("testError"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> webhook: Webhook! (type)
         if (this.Webhook != null) {
             var fspec = this.Webhook.AsFieldSpec(conf.Child("webhook"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

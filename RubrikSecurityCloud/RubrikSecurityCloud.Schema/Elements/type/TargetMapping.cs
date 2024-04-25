@@ -38,12 +38,12 @@ namespace RubrikSecurityCloud.Types
         //      C# -> TargetTemplate? TargetTemplate
         // GraphQL -> targetTemplate: TargetTemplate (interface)
         [JsonProperty("targetTemplate")]
-        public TargetTemplate? TargetTemplate { get; set; }
+        public RscInterface<TargetTemplate> TargetTemplate { get; set; }
 
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
         [JsonProperty("targets")]
-        public List<Target>? Targets { get; set; }
+        public RscInterface<Target> Targets { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -73,8 +73,8 @@ namespace RubrikSecurityCloud.Types
         ArchivalGroupType? GroupType = null,
         TargetType? TargetType = null,
         List<ArchivalGroupTieringStatus>? TieringStatus = null,
-        TargetTemplate? TargetTemplate = null,
-        List<Target>? Targets = null,
+        RscInterface<TargetTemplate> TargetTemplate = null,
+        RscInterface<Target> Targets = null,
         System.String? Id = null,
         System.String? Name = null,
         ArchivalGroupConnectionStatus? ConnectionStatus = null
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> TargetTemplate? TargetTemplate
         // GraphQL -> targetTemplate: TargetTemplate (interface)
         if (this.TargetTemplate != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.TargetTemplate, conf.Child("targetTemplate"));
+            var fspec = this.TargetTemplate.AsFieldSpec(conf.Child("targetTemplate"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -161,7 +161,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
         if (this.Targets != null) {
-                var fspec = this.Targets.AsFieldSpec(conf.Child("targets"));
+            var fspec = this.Targets.AsFieldSpec(conf.Child("targets"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -193,7 +193,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> connectionStatus: ArchivalGroupConnectionStatus (type)
         if (this.ConnectionStatus != null) {
             var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -265,17 +266,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.TargetTemplate == null) {
 
-                var impls = new RscInterface<TargetTemplate>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
-                this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
+                this.TargetTemplate = new RscInterface<TargetTemplate>();
+                this.TargetTemplate.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<TargetTemplate>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
-                this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
+                this.TargetTemplate.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
 
             }
         }

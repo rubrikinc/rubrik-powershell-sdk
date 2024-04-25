@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> details: [GcpCloudAccountAddProjectDetail!]! (type)
         if (this.Details != null) {
             var fspec = this.Details.AsFieldSpec(conf.Child("details"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

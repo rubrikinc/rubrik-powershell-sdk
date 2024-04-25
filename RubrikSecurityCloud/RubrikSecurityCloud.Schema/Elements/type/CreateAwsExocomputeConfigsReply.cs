@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
         [JsonProperty("exocomputeConfigs")]
-        public List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs { get; set; }
+        public RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs { get; set; }
 
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CreateAwsExocomputeConfigsReply Set(
-        List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs = null,
+        RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null
     ) 
     {
@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
         if (this.ExocomputeConfigs != null) {
-                var fspec = this.ExocomputeConfigs.AsFieldSpec(conf.Child("exocomputeConfigs"));
+            var fspec = this.ExocomputeConfigs.AsFieldSpec(conf.Child("exocomputeConfigs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -81,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
             var fspec = this.Configs.AsFieldSpec(conf.Child("configs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

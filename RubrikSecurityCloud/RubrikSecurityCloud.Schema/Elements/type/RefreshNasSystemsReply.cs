@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> discoverNasSystemSummaries: [DiscoverNasSystemSummary!]! (type)
         if (this.DiscoverNasSystemSummaries != null) {
             var fspec = this.DiscoverNasSystemSummaries.AsFieldSpec(conf.Child("discoverNasSystemSummaries"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

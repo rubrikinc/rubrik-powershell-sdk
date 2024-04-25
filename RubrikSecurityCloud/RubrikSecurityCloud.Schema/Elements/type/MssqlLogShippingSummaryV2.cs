@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlLogShippingSummary: MssqlLogShippingSummary (type)
         if (this.MssqlLogShippingSummary != null) {
             var fspec = this.MssqlLogShippingSummary.AsFieldSpec(conf.Child("mssqlLogShippingSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

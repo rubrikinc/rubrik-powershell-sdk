@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> access: IpmiAccess (type)
         if (this.Access != null) {
             var fspec = this.Access.AsFieldSpec(conf.Child("access"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

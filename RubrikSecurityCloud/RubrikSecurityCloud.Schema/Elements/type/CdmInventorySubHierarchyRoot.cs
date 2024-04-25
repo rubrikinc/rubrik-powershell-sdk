@@ -145,7 +145,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> childConnection: CdmHierarchyObjectConnection! (type)
         if (this.ChildConnection != null) {
             var fspec = this.ChildConnection.AsFieldSpec(conf.Child("childConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -157,7 +158,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> descendantConnection: CdmHierarchyObjectConnection! (type)
         if (this.DescendantConnection != null) {
             var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -169,7 +171,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> topLevelDescendantConnection: CdmHierarchyObjectConnection! (type)
         if (this.TopLevelDescendantConnection != null) {
             var fspec = this.TopLevelDescendantConnection.AsFieldSpec(conf.Child("topLevelDescendantConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

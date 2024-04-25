@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> DisplayableValue? DisplayableValue
         // GraphQL -> displayableValue: DisplayableValue (interface)
         [JsonProperty("displayableValue")]
-        public DisplayableValue? DisplayableValue { get; set; }
+        public RscInterface<DisplayableValue> DisplayableValue { get; set; }
 
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
@@ -45,7 +45,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CellData Set(
-        DisplayableValue? DisplayableValue = null,
+        RscInterface<DisplayableValue> DisplayableValue = null,
         List<Metadata>? Metadata = null,
         List<MetadataV2>? MetadataV2 = null
     ) 
@@ -76,7 +76,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> DisplayableValue? DisplayableValue
         // GraphQL -> displayableValue: DisplayableValue (interface)
         if (this.DisplayableValue != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.DisplayableValue, conf.Child("displayableValue"));
+            var fspec = this.DisplayableValue.AsFieldSpec(conf.Child("displayableValue"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -90,7 +90,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> metadata: [Metadata!]! (type)
         if (this.Metadata != null) {
             var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -102,7 +103,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> metadataV2: [MetadataV2!]! (type)
         if (this.MetadataV2 != null) {
             var fspec = this.MetadataV2.AsFieldSpec(conf.Child("metadataV2"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -123,17 +125,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.DisplayableValue == null) {
 
-                var impls = new RscInterface<DisplayableValue>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("displayableValue"));
-                this.DisplayableValue = (DisplayableValue)InterfaceHelper.MakeCompositeFromList(impls);
+                this.DisplayableValue = new RscInterface<DisplayableValue>();
+                this.DisplayableValue.ApplyExploratoryFieldSpec(ec.NewChild("displayableValue"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<DisplayableValue>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("displayableValue"));
-                this.DisplayableValue = (DisplayableValue)InterfaceHelper.MakeCompositeFromList(impls);
+                this.DisplayableValue.ApplyExploratoryFieldSpec(ec.NewChild("displayableValue"));
 
             }
         }

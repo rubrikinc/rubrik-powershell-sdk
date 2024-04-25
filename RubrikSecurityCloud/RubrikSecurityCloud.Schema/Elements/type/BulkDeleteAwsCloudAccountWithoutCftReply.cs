@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAwsCloudAccountWithoutCftResp: [DeleteAwsCloudAccountWithoutCftResp!]! (type)
         if (this.DeleteAwsCloudAccountWithoutCftResp != null) {
             var fspec = this.DeleteAwsCloudAccountWithoutCftResp.AsFieldSpec(conf.Child("deleteAwsCloudAccountWithoutCftResp"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervVirtualMachineMountSummary: HypervVirtualMachineMountSummary (type)
         if (this.HypervVirtualMachineMountSummary != null) {
             var fspec = this.HypervVirtualMachineMountSummary.AsFieldSpec(conf.Child("hypervVirtualMachineMountSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> items: [NodePolicyCheckResult!]! (type)
         if (this.Items != null) {
             var fspec = this.Items.AsFieldSpec(conf.Child("items"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

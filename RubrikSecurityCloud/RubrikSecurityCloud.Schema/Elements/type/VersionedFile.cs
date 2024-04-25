@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileVersions: [HierarchySnappableFileVersion!]! (type)
         if (this.FileVersions != null) {
             var fspec = this.FileVersions.AsFieldSpec(conf.Child("fileVersions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

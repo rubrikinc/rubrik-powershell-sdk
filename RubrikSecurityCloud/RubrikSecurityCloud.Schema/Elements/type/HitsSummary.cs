@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deltaHitsSummary: TotalRiskSummary (type)
         if (this.DeltaHitsSummary != null) {
             var fspec = this.DeltaHitsSummary.AsFieldSpec(conf.Child("deltaHitsSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> totalHitsSummary: TotalRiskSummary (type)
         if (this.TotalHitsSummary != null) {
             var fspec = this.TotalHitsSummary.AsFieldSpec(conf.Child("totalHitsSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

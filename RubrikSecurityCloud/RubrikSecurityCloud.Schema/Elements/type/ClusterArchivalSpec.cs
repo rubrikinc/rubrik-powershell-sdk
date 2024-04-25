@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
         if (this.ArchivalTieringSpec != null) {
             var fspec = this.ArchivalTieringSpec.AsFieldSpec(conf.Child("archivalTieringSpec"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

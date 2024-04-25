@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hits: Hits (type)
         if (this.Hits != null) {
             var fspec = this.Hits.AsFieldSpec(conf.Child("hits"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

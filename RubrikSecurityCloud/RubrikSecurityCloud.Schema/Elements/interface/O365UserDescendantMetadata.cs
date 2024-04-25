@@ -23,22 +23,18 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         System.String? Id { get; set; }
-
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         System.String? Name { get; set; }
-
-        //      C# -> System.String? UserPrincipalName
-        // GraphQL -> userPrincipalName: String! (scalar)
-        [JsonProperty("userPrincipalName")]
-        System.String? UserPrincipalName { get; set; }
-
         //      C# -> System.String? PreferredDataLocation
         // GraphQL -> preferredDataLocation: String! (scalar)
         [JsonProperty("preferredDataLocation")]
         System.String? PreferredDataLocation { get; set; }
-
+        //      C# -> System.String? UserPrincipalName
+        // GraphQL -> userPrincipalName: String! (scalar)
+        [JsonProperty("userPrincipalName")]
+        System.String? UserPrincipalName { get; set; }
 
         #endregion
 

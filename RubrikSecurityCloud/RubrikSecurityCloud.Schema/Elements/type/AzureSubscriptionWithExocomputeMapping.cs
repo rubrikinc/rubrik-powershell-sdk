@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)
         if (this.MappedExocomputeSubscription != null) {
             var fspec = this.MappedExocomputeSubscription.AsFieldSpec(conf.Child("mappedExocomputeSubscription"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

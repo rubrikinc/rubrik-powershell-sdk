@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configFileInfo: [HypervConfigurationFileInfo!]! (type)
         if (this.ConfigFileInfo != null) {
             var fspec = this.ConfigFileInfo.AsFieldSpec(conf.Child("configFileInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> virtualDiskInfo: [HypervVirtualDiskInfo!]! (type)
         if (this.VirtualDiskInfo != null) {
             var fspec = this.VirtualDiskInfo.AsFieldSpec(conf.Child("virtualDiskInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

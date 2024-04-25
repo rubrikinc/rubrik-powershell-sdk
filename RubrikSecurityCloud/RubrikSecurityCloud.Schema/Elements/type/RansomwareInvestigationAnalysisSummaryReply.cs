@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analysisDetails: [DailyAnalysisDetails!]! (type)
         if (this.AnalysisDetails != null) {
             var fspec = this.AnalysisDetails.AsFieldSpec(conf.Child("analysisDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

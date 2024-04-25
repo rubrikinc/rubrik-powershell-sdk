@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> highRiskFiles: TimelineEntry (type)
         if (this.HighRiskFiles != null) {
             var fspec = this.HighRiskFiles.AsFieldSpec(conf.Child("highRiskFiles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -89,7 +90,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lowRiskFiles: TimelineEntry (type)
         if (this.LowRiskFiles != null) {
             var fspec = this.LowRiskFiles.AsFieldSpec(conf.Child("lowRiskFiles"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -101,7 +103,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> summary: ClassificationPolicySummary (type)
         if (this.Summary != null) {
             var fspec = this.Summary.AsFieldSpec(conf.Child("summary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

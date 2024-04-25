@@ -23,12 +23,12 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
         [JsonProperty("currentSlaSummary")]
-        public SlaDomain? CurrentSlaSummary { get; set; }
+        public RscInterface<SlaDomain> CurrentSlaSummary { get; set; }
 
         //      C# -> SlaDomain? PreviousSlaSummary
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
         [JsonProperty("previousSlaSummary")]
-        public SlaDomain? PreviousSlaSummary { get; set; }
+        public RscInterface<SlaDomain> PreviousSlaSummary { get; set; }
 
         //      C# -> System.Boolean? ApplyToExistingSnapshots
         // GraphQL -> applyToExistingSnapshots: Boolean! (scalar)
@@ -70,8 +70,8 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SlaAuditDetail Set(
-        SlaDomain? CurrentSlaSummary = null,
-        SlaDomain? PreviousSlaSummary = null,
+        RscInterface<SlaDomain> CurrentSlaSummary = null,
+        RscInterface<SlaDomain> PreviousSlaSummary = null,
         System.Boolean? ApplyToExistingSnapshots = null,
         System.Boolean? ApplyToOndemandAndDownloadedSnapshots = null,
         DateTime? Timestamp = null,
@@ -121,7 +121,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
         if (this.CurrentSlaSummary != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.CurrentSlaSummary, conf.Child("currentSlaSummary"));
+            var fspec = this.CurrentSlaSummary.AsFieldSpec(conf.Child("currentSlaSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SlaDomain? PreviousSlaSummary
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
         if (this.PreviousSlaSummary != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PreviousSlaSummary, conf.Child("previousSlaSummary"));
+            var fspec = this.PreviousSlaSummary.AsFieldSpec(conf.Child("previousSlaSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -193,7 +193,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -214,17 +215,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.CurrentSlaSummary == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
-                this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.CurrentSlaSummary = new RscInterface<SlaDomain>();
+                this.CurrentSlaSummary.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
-                this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.CurrentSlaSummary.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
 
             }
         }
@@ -238,17 +234,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PreviousSlaSummary == null) {
 
-                var impls = new RscInterface<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
-                this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PreviousSlaSummary = new RscInterface<SlaDomain>();
+                this.PreviousSlaSummary.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SlaDomain>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
-                this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+                this.PreviousSlaSummary.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
 
             }
         }

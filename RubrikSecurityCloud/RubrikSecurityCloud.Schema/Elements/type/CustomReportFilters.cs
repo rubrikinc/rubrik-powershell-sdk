@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
         [JsonProperty("slaDomain")]
-        public List<SlaDomain>? SlaDomain { get; set; }
+        public RscInterface<SlaDomain> SlaDomain { get; set; }
 
         //      C# -> List<System.String>? ClusterLocation
         // GraphQL -> clusterLocation: [String!] (scalar)
@@ -199,7 +199,7 @@ namespace RubrikSecurityCloud.Types
         List<UserAuditObjectTypeEnum>? UserAuditObjectType = null,
         List<UserAuditStatusEnum>? UserAuditStatus = null,
         List<UserAuditTypeEnum>? UserAuditType = null,
-        List<SlaDomain>? SlaDomain = null,
+        RscInterface<SlaDomain> SlaDomain = null,
         List<System.String>? ClusterLocation = null,
         DateTime? Date = null,
         System.Boolean? IsAnomaly = null,
@@ -454,7 +454,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
         if (this.SlaDomain != null) {
-                var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
+            var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -594,7 +594,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: [Cluster!] (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -606,7 +607,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> timeRange: GenericTimeRange (type)
         if (this.TimeRange != null) {
             var fspec = this.TimeRange.AsFieldSpec(conf.Child("timeRange"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

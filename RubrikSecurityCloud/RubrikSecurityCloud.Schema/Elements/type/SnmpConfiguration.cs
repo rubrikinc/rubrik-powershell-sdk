@@ -131,7 +131,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> trapReceiverConfigs: [SnmpTrapReceiverConfig!]! (type)
         if (this.TrapReceiverConfigs != null) {
             var fspec = this.TrapReceiverConfigs.AsFieldSpec(conf.Child("trapReceiverConfigs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

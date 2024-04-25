@@ -176,7 +176,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> events: [IssueEvent!]! (type)
         if (this.Events != null) {
             var fspec = this.Events.AsFieldSpec(conf.Child("events"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -188,7 +189,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileResult: FileResult! (type)
         if (this.FileResult != null) {
             var fspec = this.FileResult.AsFieldSpec(conf.Child("fileResult"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -200,7 +202,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestPolicyObj: PolicyObj! (type)
         if (this.LatestPolicyObj != null) {
             var fspec = this.LatestPolicyObj.AsFieldSpec(conf.Child("latestPolicyObj"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -212,7 +215,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
         if (this.Policies != null) {
             var fspec = this.Policies.AsFieldSpec(conf.Child("policies"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

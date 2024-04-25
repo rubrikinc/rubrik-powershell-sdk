@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
         if (this.SlaAssignment != null) {
             var fspec = this.SlaAssignment.AsFieldSpec(conf.Child("slaAssignment"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

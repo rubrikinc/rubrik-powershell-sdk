@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         if (this.ChildrenDeltas != null) {
             var fspec = this.ChildrenDeltas.AsFieldSpec(conf.Child("childrenDeltas"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> file: SnapshotFile! (type)
         if (this.File != null) {
             var fspec = this.File.AsFieldSpec(conf.Child("file"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -110,7 +112,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
         if (this.PreviousSnapshotQuarantineInfo != null) {
             var fspec = this.PreviousSnapshotQuarantineInfo.AsFieldSpec(conf.Child("previousSnapshotQuarantineInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +125,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
         if (this.SelfDeltas != null) {
             var fspec = this.SelfDeltas.AsFieldSpec(conf.Child("selfDeltas"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

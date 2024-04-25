@@ -176,7 +176,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalProxyConfig: RestoreFormArchivalProxyConfig (type)
         if (this.ArchivalProxyConfig != null) {
             var fspec = this.ArchivalProxyConfig.AsFieldSpec(conf.Child("archivalProxyConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -188,7 +189,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> computeProxyConfig: RestoreFormComputeProxyConfig (type)
         if (this.ComputeProxyConfig != null) {
             var fspec = this.ComputeProxyConfig.AsFieldSpec(conf.Child("computeProxyConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

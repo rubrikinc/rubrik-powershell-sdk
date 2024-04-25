@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> analyzers: [Analyzer!]! (type)
         if (this.Analyzers != null) {
             var fspec = this.Analyzers.AsFieldSpec(conf.Child("analyzers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> SnappableGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: SnappableGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public SnappableGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<SnappableGroupByInfo> GroupByInfo { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
     public SnappableGroupBy Set(
         SnappableConnection? SnappableConnection = null,
         List<SnappableGroupBy>? SnappableGroupByField = null,
-        SnappableGroupByInfo? GroupByInfo = null
+        RscInterface<SnappableGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( SnappableConnection != null ) {
@@ -108,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappableConnection: SnappableConnection! (type)
         if (this.SnappableConnection != null) {
             var fspec = this.SnappableConnection.AsFieldSpec(conf.Child("snappableConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snappableGroupBy: [SnappableGroupBy!]! (type)
         if (this.SnappableGroupByField != null) {
             var fspec = this.SnappableGroupByField.AsFieldSpec(conf.Child("snappableGroupBy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -132,11 +134,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: SnappableGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -191,17 +194,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<SnappableGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (SnappableGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<SnappableGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<SnappableGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (SnappableGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

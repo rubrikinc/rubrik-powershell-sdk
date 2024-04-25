@@ -167,7 +167,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetTemplateCreate: FilesetTemplateCreate (type)
         if (this.FilesetTemplateCreate != null) {
             var fspec = this.FilesetTemplateCreate.AsFieldSpec(conf.Child("filesetTemplateCreate"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

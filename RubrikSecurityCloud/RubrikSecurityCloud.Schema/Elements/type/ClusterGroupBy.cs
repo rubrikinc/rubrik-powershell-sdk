@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> ClusterGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ClusterGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
-        public ClusterGroupByInfo? GroupByInfo { get; set; }
+        public RscInterface<ClusterGroupByInfo> GroupByInfo { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
     public ClusterGroupBy Set(
         ClusterConnection? ClusterConnection = null,
         List<ClusterGroupBy>? ClusterGroupByField = null,
-        ClusterGroupByInfo? GroupByInfo = null
+        RscInterface<ClusterGroupByInfo> GroupByInfo = null
     ) 
     {
         if ( ClusterConnection != null ) {
@@ -112,7 +112,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterConnection: ClusterConnection! (type)
         if (this.ClusterConnection != null) {
             var fspec = this.ClusterConnection.AsFieldSpec(conf.Child("clusterConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -124,7 +125,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterGroupBy: [ClusterGroupBy!]! (type)
         if (this.ClusterGroupByField != null) {
             var fspec = this.ClusterGroupByField.AsFieldSpec(conf.Child("clusterGroupBy"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -136,11 +138,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> groupByInfo: ClusterGroupByInfo! (union)
         if (this.GroupByInfo != null) {
             var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "groupByInfo" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -195,17 +198,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<ClusterGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo = new RscInterface<ClusterGroupByInfo>();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<ClusterGroupByInfo>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-                this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
 
             }
         }

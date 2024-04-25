@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
         if (this.VmwareVmSubObj != null) {
             var fspec = this.VmwareVmSubObj.AsFieldSpec(conf.Child("vmwareVmSubObj"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> volumeGroupSubObj: VolumeGroupSubObject (type)
         if (this.VolumeGroupSubObj != null) {
             var fspec = this.VolumeGroupSubObj.AsFieldSpec(conf.Child("volumeGroupSubObj"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

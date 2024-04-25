@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resourceGroup: ResourceGroup (type)
         if (this.ResourceGroup != null) {
             var fspec = this.ResourceGroup.AsFieldSpec(conf.Child("resourceGroup"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

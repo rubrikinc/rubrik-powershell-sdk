@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setupSourceObject: PathNode! (type)
         if (this.SetupSourceObject != null) {
             var fspec = this.SetupSourceObject.AsFieldSpec(conf.Child("setupSourceObject"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

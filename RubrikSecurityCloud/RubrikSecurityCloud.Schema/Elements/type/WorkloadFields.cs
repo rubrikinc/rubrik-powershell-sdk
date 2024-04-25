@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365Item: O365SnapshotItemInfo (type)
         if (this.O365Item != null) {
             var fspec = this.O365Item.AsFieldSpec(conf.Child("o365Item"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> metadata: [Metadata!]! (type)
         if (this.Metadata != null) {
             var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> values: [CellData!]! (type)
         if (this.Values != null) {
             var fspec = this.Values.AsFieldSpec(conf.Child("values"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

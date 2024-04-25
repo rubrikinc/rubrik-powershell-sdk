@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmConfig: VmwareSnapshotVmConfig (type)
         if (this.VmConfig != null) {
             var fspec = this.VmConfig.AsFieldSpec(conf.Child("vmConfig"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

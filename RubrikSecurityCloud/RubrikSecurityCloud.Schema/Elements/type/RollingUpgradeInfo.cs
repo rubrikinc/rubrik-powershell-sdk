@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ruNodeInfoList: [RollingUpgradeNodeInfoEntry!]! (type)
         if (this.RuNodeInfoList != null) {
             var fspec = this.RuNodeInfoList.AsFieldSpec(conf.Child("ruNodeInfoList"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

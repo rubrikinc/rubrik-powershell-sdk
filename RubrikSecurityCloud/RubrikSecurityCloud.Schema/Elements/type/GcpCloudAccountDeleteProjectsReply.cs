@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpProjectDeleteStatuses: [GcpCloudAccountProjectDeleteStatus!]! (type)
         if (this.GcpProjectDeleteStatuses != null) {
             var fspec = this.GcpProjectDeleteStatuses.AsFieldSpec(conf.Child("gcpProjectDeleteStatuses"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

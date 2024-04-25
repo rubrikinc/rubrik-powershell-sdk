@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> strainAnalysisInfo: [StrainInfo!]! (type)
         if (this.StrainAnalysisInfo != null) {
             var fspec = this.StrainAnalysisInfo.AsFieldSpec(conf.Child("strainAnalysisInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

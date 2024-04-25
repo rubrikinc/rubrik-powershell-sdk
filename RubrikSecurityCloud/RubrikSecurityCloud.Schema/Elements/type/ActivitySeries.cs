@@ -621,7 +621,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> activityConnection: ActivityConnection! (type)
         if (this.ActivityConnection != null) {
             var fspec = this.ActivityConnection.AsFieldSpec(conf.Child("activityConnection"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -633,7 +634,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -645,7 +647,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> organizations: [Org!]! (type)
         if (this.Organizations != null) {
             var fspec = this.Organizations.AsFieldSpec(conf.Child("organizations"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

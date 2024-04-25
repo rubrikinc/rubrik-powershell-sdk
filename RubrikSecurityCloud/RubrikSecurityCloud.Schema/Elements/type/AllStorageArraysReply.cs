@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterStorageArrays: [ClusterStorageArrays!]! (type)
         if (this.ClusterStorageArrays != null) {
             var fspec = this.ClusterStorageArrays.AsFieldSpec(conf.Child("clusterStorageArrays"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

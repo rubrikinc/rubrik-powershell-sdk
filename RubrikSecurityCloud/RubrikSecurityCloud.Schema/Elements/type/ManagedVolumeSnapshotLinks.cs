@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportLink: Link (type)
         if (this.ExportLink != null) {
             var fspec = this.ExportLink.AsFieldSpec(conf.Child("exportLink"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> self: Link (type)
         if (this.Self != null) {
             var fspec = this.Self.AsFieldSpec(conf.Child("self"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

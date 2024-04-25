@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> artifacts: [ArtifactPolicy!]! (type)
         if (this.Artifacts != null) {
             var fspec = this.Artifacts.AsFieldSpec(conf.Child("artifacts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

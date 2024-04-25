@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusterProducts: [LicensedClusterProduct!]! (type)
         if (this.ClusterProducts != null) {
             var fspec = this.ClusterProducts.AsFieldSpec(conf.Child("clusterProducts"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

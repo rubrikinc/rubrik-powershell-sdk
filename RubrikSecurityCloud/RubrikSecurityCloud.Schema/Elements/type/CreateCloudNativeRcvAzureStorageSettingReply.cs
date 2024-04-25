@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMapping: TargetMapping! (type)
         if (this.TargetMapping != null) {
             var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

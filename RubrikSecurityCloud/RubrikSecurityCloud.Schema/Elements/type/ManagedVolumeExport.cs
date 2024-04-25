@@ -86,7 +86,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> channels: [ManagedVolumeChannelConfig!]! (type)
         if (this.Channels != null) {
             var fspec = this.Channels.AsFieldSpec(conf.Child("channels"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -98,7 +99,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> config: ManagedVolumeExportConfig (type)
         if (this.Config != null) {
             var fspec = this.Config.AsFieldSpec(conf.Child("config"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

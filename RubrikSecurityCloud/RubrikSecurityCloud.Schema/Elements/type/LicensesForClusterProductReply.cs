@@ -68,7 +68,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> infos: [ProductTypeInfo!]! (type)
         if (this.Infos != null) {
             var fspec = this.Infos.AsFieldSpec(conf.Child("infos"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -80,7 +81,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> overview: LicensedClusterProduct (type)
         if (this.Overview != null) {
             var fspec = this.Overview.AsFieldSpec(conf.Child("overview"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

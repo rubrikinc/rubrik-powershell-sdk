@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
         if (this.ObjectsForHierarchyTypes != null) {
             var fspec = this.ObjectsForHierarchyTypes.AsFieldSpec(conf.Child("objectsForHierarchyTypes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -383,7 +383,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
             var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -395,7 +396,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaDomain: SlaConfig (type)
         if (this.SlaDomain != null) {
             var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -407,7 +409,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subObjs: [SnapshotSubObject!]! (type)
         if (this.SubObjs != null) {
             var fspec = this.SubObjs.AsFieldSpec(conf.Child("subObjs"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

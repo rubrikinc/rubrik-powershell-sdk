@@ -59,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nutanixVmSnapshotSummary: NutanixVmSnapshotSummary (type)
         if (this.NutanixVmSnapshotSummary != null) {
             var fspec = this.NutanixVmSnapshotSummary.AsFieldSpec(conf.Child("nutanixVmSnapshotSummary"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> differentialFrequency: Duration (type)
         if (this.DifferentialFrequency != null) {
             var fspec = this.DifferentialFrequency.AsFieldSpec(conf.Child("differentialFrequency"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -107,7 +108,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> incrementalFrequency: Duration (type)
         if (this.IncrementalFrequency != null) {
             var fspec = this.IncrementalFrequency.AsFieldSpec(conf.Child("incrementalFrequency"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -119,7 +121,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
             var fspec = this.LogRetention.AsFieldSpec(conf.Child("logRetention"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> appClientIdsPerType: [AppIdForType!]! (type)
         if (this.AppClientIdsPerType != null) {
             var fspec = this.AppClientIdsPerType.AsFieldSpec(conf.Child("appClientIdsPerType"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

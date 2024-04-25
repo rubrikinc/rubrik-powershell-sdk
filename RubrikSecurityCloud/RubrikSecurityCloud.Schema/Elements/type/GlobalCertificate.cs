@@ -374,7 +374,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)
         if (this.CdmUsages != null) {
             var fspec = this.CdmUsages.AsFieldSpec(conf.Child("cdmUsages"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -386,7 +387,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clusters: [CertificateClusterInfo!] (type)
         if (this.Clusters != null) {
             var fspec = this.Clusters.AsFieldSpec(conf.Child("clusters"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -398,7 +400,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> org: Org (type)
         if (this.Org != null) {
             var fspec = this.Org.AsFieldSpec(conf.Child("org"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -410,7 +413,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)
         if (this.Usages != null) {
             var fspec = this.Usages.AsFieldSpec(conf.Child("usages"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

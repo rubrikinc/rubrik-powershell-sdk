@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> errorInfo: ErrorInfo (type)
         if (this.ErrorInfo != null) {
             var fspec = this.ErrorInfo.AsFieldSpec(conf.Child("errorInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

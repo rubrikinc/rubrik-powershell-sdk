@@ -95,7 +95,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> complianceStatus: ComplianceState (type)
         if (this.ComplianceStatus != null) {
             var fspec = this.ComplianceStatus.AsFieldSpec(conf.Child("complianceStatus"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

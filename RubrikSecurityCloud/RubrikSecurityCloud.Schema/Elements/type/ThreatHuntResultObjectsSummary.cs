@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         [JsonProperty("object")]
-        public CdmHierarchySnappableNew? Object { get; set; }
+        public RscInterface<CdmHierarchySnappableNew> Object { get; set; }
 
         //      C# -> DateTime? EarliestMatchedSnapshotDate
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)
@@ -80,7 +80,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatHuntResultObjectsSummary Set(
-        CdmHierarchySnappableNew? Object = null,
+        RscInterface<CdmHierarchySnappableNew> Object = null,
         DateTime? EarliestMatchedSnapshotDate = null,
         DateTime? LatestMatchedSnapshotDate = null,
         DateTime? LatestSnapshotWithoutMatchDate = null,
@@ -139,7 +139,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         if (this.Object != null) {
-                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.Object, conf.Child("object"));
+            var fspec = this.Object.AsFieldSpec(conf.Child("object"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
             if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
                 if (conf.Flat) {
@@ -216,7 +216,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
         if (this.MatchTypes != null) {
             var fspec = this.MatchTypes.AsFieldSpec(conf.Child("matchTypes"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -228,7 +229,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotsStats: [ThreatHuntResultSnapshotStats!]! (type)
         if (this.SnapshotsStats != null) {
             var fspec = this.SnapshotsStats.AsFieldSpec(conf.Child("snapshotsStats"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -249,17 +251,12 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Object == null) {
 
-                var impls = new RscInterface<CdmHierarchySnappableNew>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
-                this.Object = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Object = new RscInterface<CdmHierarchySnappableNew>();
+                this.Object.ApplyExploratoryFieldSpec(ec.NewChild("object"));
 
             } else {
 
-                // NOT IMPLEMENTED: 
-                // adding on to an existing composite object
-                var impls = new List<CdmHierarchySnappableNew>();
-                impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
-                this.Object = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+                this.Object.ApplyExploratoryFieldSpec(ec.NewChild("object"));
 
             }
         }

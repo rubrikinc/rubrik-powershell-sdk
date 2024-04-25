@@ -77,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featurePermissions: [FeaturePermission!]! (type)
         if (this.FeaturePermissions != null) {
             var fspec = this.FeaturePermissions.AsFieldSpec(conf.Child("featurePermissions"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

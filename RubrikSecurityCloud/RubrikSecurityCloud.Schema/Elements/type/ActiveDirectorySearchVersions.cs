@@ -113,7 +113,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshot: CdmSnapshot! (type)
         if (this.Snapshot != null) {
             var fspec = this.Snapshot.AsFieldSpec(conf.Child("snapshot"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

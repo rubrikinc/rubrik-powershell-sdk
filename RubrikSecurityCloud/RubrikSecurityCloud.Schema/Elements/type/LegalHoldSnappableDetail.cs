@@ -140,7 +140,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> physicalLocation: [LocationPathPoint!]! (type)
         if (this.PhysicalLocation != null) {
             var fspec = this.PhysicalLocation.AsFieldSpec(conf.Child("physicalLocation"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -152,7 +153,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotDetails: [LegalHoldSnapshotDetail!]! (type)
         if (this.SnapshotDetails != null) {
             var fspec = this.SnapshotDetails.AsFieldSpec(conf.Child("snapshotDetails"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -104,7 +104,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> firewallRules: [GcpNativeFirewallRule!]! (type)
         if (this.FirewallRules != null) {
             var fspec = this.FirewallRules.AsFieldSpec(conf.Child("firewallRules"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -116,7 +117,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnetworks: [GcpNativeSubnetwork!]! (type)
         if (this.Subnetworks != null) {
             var fspec = this.Subnetworks.AsFieldSpec(conf.Child("subnetworks"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -374,7 +374,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
         if (this.CloudStorageTiers != null) {
             var fspec = this.CloudStorageTiers.AsFieldSpec(conf.Child("cloudStorageTiers"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -386,7 +387,8 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
             var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 ) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
