@@ -116,7 +116,8 @@ namespace RubrikSecurityCloud.Tests
                 {
                     Name = "FETCH",
                     Id = "FETCH",
-                    EffectiveSlaDomain = new ClusterSlaDomain { Id = "FETCH", Name = "FETCH" }
+                    EffectiveSlaDomain = new RscInterface<SlaDomain> {
+                        new ClusterSlaDomain { Id = "FETCH", Name = "FETCH" } }
                 };
             var ind = new string(' ', 2);
 

@@ -196,7 +196,7 @@ namespace RubrikSecurityCloud.Types
         }
     }
 
-    public class RscInterface<T>: List<T>
+    public class RscInterface<T>: List<T>, IFieldSpec where T: IFieldSpec
     {
         public RscInterface(): base() { }
         public RscInterface(IEnumerable<T> collection): base(collection) { }
@@ -241,6 +241,50 @@ namespace RubrikSecurityCloud.Types
                 var filteredList = this.WhereType(typeName);
                 return filteredList.FirstOrDefault();
             }
+        }
+
+        public string AsFieldSpec(FieldSpecConfig? conf = null)
+        {
+            conf = (conf == null) ? new FieldSpecConfig() : conf;
+            string ind = conf.IndentStr();
+            StringBuilder sb = new StringBuilder();
+            foreach (IFieldSpec item in this)
+            {
+                string fs = item.AsFieldSpec(conf.Child(ignoreComposition: true));
+                if (conf.Flat)
+                {
+                    sb.Append(fs);
+                }
+                else
+                {
+                    var fragment = " ... on " + item.GetType().Name;
+                    if (fs.Length > 0)
+                    {
+                        sb.Append(ind + fragment + " {\n" + fs + ind + "}\n");
+                    }
+                    else
+                    {
+                        sb.Append(ind + "#" + fragment + " {}\n");
+                    }
+                }
+            }
+            return sb.ToString();
+        }
+        public List<string> SelectedFields()
+        {
+            return StringUtils.FieldSpecStringToList(
+                this.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+        public void ApplyExploratoryFieldSpec(ExplorationContext ec)
+        {
+            foreach (IFieldSpec item in this)
+            {
+                item.ApplyExploratoryFieldSpec(ec);
+            }
+        }
+        public void SelectForRetrieval()
+        {
+            this.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 }

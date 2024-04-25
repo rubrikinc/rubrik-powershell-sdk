@@ -278,7 +278,11 @@ namespace RubrikSecurityCloud.Types
         }
         public static string CreateGlacierReaderTarget_ObjectFieldSpec(object fieldSpecObj)
         {
-            return CreateGlacierReaderTarget((Target)fieldSpecObj);
+            var fieldSpec = (IFieldSpec)fieldSpecObj;
+            string args = "\n(\ninput: $input\n)";
+            return "createGlacierReaderTarget" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
         }
         public static string CreateGlacierReaderTarget(Target fieldSpec)
         {
