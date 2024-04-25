@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud
 
             if (PatchSet.Includes(nodeName))
             {
-                return true;
+                return true; // even for Profile.EMPTY
             }
             if (PatchSet.Excludes(nodeName))
             {
@@ -152,7 +152,7 @@ namespace RubrikSecurityCloud
             }
             if (PatchSet.Includes(parent) && isLeaf)
             {
-                return true;
+                return true; // even for Profile.EMPTY
             }
             if (!isLeaf)
             {
@@ -160,7 +160,7 @@ namespace RubrikSecurityCloud
                 // nodeName + ".", then we want to include this node
                 if (PatchSet.IncludesBranch(nodeName))
                 {
-                    return true;
+                    return true; // even for Profile.EMPTY
                 }
             }
 
