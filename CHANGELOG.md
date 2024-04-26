@@ -4,6 +4,8 @@
 
 New Features:
 
+- New-RscNasShare cmdlet (and its companion New-RscNasShareInput cmdlet to build the input arguments).
+
 Fixes:
 - Fix to Get-RscMssqlInstance to address Issue #79
 - Fix to Get-RscMssqlInstance to address Issue #73
