@@ -5,6 +5,7 @@ User audit type.
 - Classification
 - SlaModification
 - LegalHold
+- THREAT_FEED - Audit type for Intel feed.
 - BULK_RECOVERY - Audit type for bulk recovery use cases.
 - THREAT_HUNT - Audit type for threat hunt use cases.
 - ISOLATED_RECOVERY

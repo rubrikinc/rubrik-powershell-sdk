@@ -7,5 +7,7 @@ Guest OS Credential.
   - Username of the Guest OS credential.
 - domain: System.String
   - Domain name of the Guest OS credential.
+- description: System.String
+  - Description of the Guest OS credential.
 - cluster: Cluster
   - Cluster of the Guest OS credential.

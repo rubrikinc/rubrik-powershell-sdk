@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region OracleDataGuardGroup
  
-    public class OracleDataGuardGroup: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, OracleTopLevelDescendantType
+    public class OracleDataGuardGroup: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, OracleTopLevelDescendantType
     {
         #region members
 
@@ -1441,7 +1441,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new List<CdmHierarchyObject>();
+                this.ReplicatedObjects = new RscInterface<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {

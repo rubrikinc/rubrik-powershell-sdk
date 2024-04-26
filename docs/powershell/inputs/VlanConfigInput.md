@@ -1,6 +1,8 @@
 ### VlanConfigInput
 Supported in v5.0+
 
+- gateway: System.String
+  - Gateway for the VLAN.
 - alias: System.String
   - Alias for the VLAN.
 - interfaces: list of NodeIpInputs

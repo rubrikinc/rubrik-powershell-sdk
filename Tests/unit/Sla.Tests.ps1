@@ -37,7 +37,7 @@ Describe -Name 'SLAs' -Fixture {
         # => so in PowerShell, it is a list of objects that
         #    implement the SlaDomain interface
         $type = $q1.field.nodes.gettype()
-        $isList = $type.IsGenericType -and $type.GetGenericTypeDefinition() -eq [System.Collections.Generic.List`1]
+        $isList = $type.IsGenericType -and $type.GetGenericTypeDefinition() -eq [RubrikSecurityCloud.Types.RscInterface`1]
         $isList | Should -Be $true
         $genericArguments = $type.GetGenericArguments()
         $isSlaDomainList = $genericArguments[0].FullName -eq 'RubrikSecurityCloud.Types.SlaDomain'
@@ -59,7 +59,7 @@ Describe -Name 'SLAs' -Fixture {
             # a single object that implements an interface.
             $_.IsComposite() | Should -Be $false
             # Which is the same thing as:
-            $_.Next() | Should -Be $null
+            $_.GetNext() | Should -Be $null
         }
 
         $q1.GqlRequest().operationName | Should -Be "QuerySlaDomains"
@@ -111,7 +111,7 @@ Describe -Name 'SLAs' -Fixture {
         # Internally, the RSC Types implement this as a linked
         # list of objects, where each object implements the interface
         # and has a reference to the next object in the list.
-        $q2.Field.Next() | Should -Not -Be $null
+        $q2.Field.GetNext() | Should -Not -Be $null
 
         # Check that all composite objects implement the SlaDomain interface
         $f = $q2.Field
@@ -119,7 +119,7 @@ Describe -Name 'SLAs' -Fixture {
         while ($f -ne $null) {
             $f | Should -BeOfType RubrikSecurityCloud.Types.SlaDomain
             $implementingTypes | Should -Contain $f.GetType().Name
-            $f = $f.Next()
+            $f = $f.GetNext()
         }
 
         # We can verify that the composite object is expanded into

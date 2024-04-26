@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 1
+    /// Create a new RscQuery object for any of the 2
     /// operations in the 'Service Account' API domain:
-    /// ['ServiceAccount'].
+    /// IsOrgDisabled, or ServiceAccount.
     /// </summary>
     /// <description>
     /// New-RscQueryServiceAccount creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 1 operations
+    /// There are 2 operations
     /// in the 'Service Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ['ServiceAccount'].
+    /// one of: IsOrgDisabled, or ServiceAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryServiceAccount -ServiceAccount).Info().
+    /// (New-RscQueryServiceAccount -IsOrgDisabled).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryServiceAccount -ServiceAccount).Info().
+    /// (New-RscQueryServiceAccount -IsOrgDisabled).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the IsOrgDisabled operation
+    /// of the 'Service Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ServiceAccount
+    /// # API Operation: IsOrgDisabled
+    /// 
+    /// $query = New-RscQueryServiceAccount -IsOrgDisabled
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the ServiceAccount operation
@@ -136,6 +163,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "IsOrgDisabled",
                 "ServiceAccount",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -152,6 +180,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "IsOrgDisabled":
+                        this.ProcessRecord_IsOrgDisabled();
+                        break;
                     case "ServiceAccount":
                         this.ProcessRecord_ServiceAccount();
                         break;
@@ -166,6 +197,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // isOrgServiceAccountDisabled.
+        internal void ProcessRecord_IsOrgDisabled()
+        {
+            this._logger.name += " -IsOrgDisabled";
+            // Create new graphql operation isOrgServiceAccountDisabled
+            InitQueryIsOrgServiceAccountDisabled();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // serviceAccounts.
         internal void ProcessRecord_ServiceAccount()
         {
@@ -174,6 +214,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryServiceAccounts();
         }
 
+
+        // Create new GraphQL Query:
+        // isOrgServiceAccountDisabled: Boolean!
+        internal void InitQueryIsOrgServiceAccountDisabled()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsOrgServiceAccountDisabled",
+                "",
+                "System.Boolean",
+                Query.IsOrgServiceAccountDisabled_ObjectFieldSpec,
+                Query.IsOrgServiceAccountDisabledFieldSpec,
+                @""
+            );
+        }
 
         // Create new GraphQL Query:
         // serviceAccounts(

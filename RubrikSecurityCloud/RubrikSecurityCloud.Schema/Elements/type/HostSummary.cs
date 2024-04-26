@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nasBaseConfig")]
         public NasBaseConfig? NasBaseConfig { get; set; }
 
+        //      C# -> VolumeGroupDetailInfo? VolumeGroupInfo
+        // GraphQL -> volumeGroupInfo: VolumeGroupDetailInfo (type)
+        [JsonProperty("volumeGroupInfo")]
+        public VolumeGroupDetailInfo? VolumeGroupInfo { get; set; }
+
 
         #endregion
 
@@ -137,7 +142,8 @@ namespace RubrikSecurityCloud.Types
         System.String? PrimaryClusterId = null,
         System.String? Status = null,
         HdfsBaseConfig? HdfsBaseConfig = null,
-        NasBaseConfig? NasBaseConfig = null
+        NasBaseConfig? NasBaseConfig = null,
+        VolumeGroupDetailInfo? VolumeGroupInfo = null
     ) 
     {
         if ( MssqlCbtEffectiveStatus != null ) {
@@ -193,6 +199,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NasBaseConfig != null ) {
             this.NasBaseConfig = NasBaseConfig;
+        }
+        if ( VolumeGroupInfo != null ) {
+            this.VolumeGroupInfo = VolumeGroupInfo;
         }
         return this;
     }
@@ -373,6 +382,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "nasBaseConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VolumeGroupDetailInfo? VolumeGroupInfo
+        // GraphQL -> volumeGroupInfo: VolumeGroupDetailInfo (type)
+        if (this.VolumeGroupInfo != null) {
+            var fspec = this.VolumeGroupInfo.AsFieldSpec(conf.Child("volumeGroupInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "volumeGroupInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -692,6 +713,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NasBaseConfig != null && ec.Excludes("nasBaseConfig",false))
         {
             this.NasBaseConfig = null;
+        }
+        //      C# -> VolumeGroupDetailInfo? VolumeGroupInfo
+        // GraphQL -> volumeGroupInfo: VolumeGroupDetailInfo (type)
+        if (ec.Includes("volumeGroupInfo",false))
+        {
+            if(this.VolumeGroupInfo == null) {
+
+                this.VolumeGroupInfo = new VolumeGroupDetailInfo();
+                this.VolumeGroupInfo.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupInfo"));
+
+            } else {
+
+                this.VolumeGroupInfo.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupInfo"));
+
+            }
+        }
+        else if (this.VolumeGroupInfo != null && ec.Excludes("volumeGroupInfo",false))
+        {
+            this.VolumeGroupInfo = null;
         }
     }
 

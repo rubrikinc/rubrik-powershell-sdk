@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("passesConnectivityCheck")]
         public System.Boolean? PassesConnectivityCheck { get; set; }
 
+        //      C# -> System.String? RawAddress
+        // GraphQL -> rawAddress: String (scalar)
+        [JsonProperty("rawAddress")]
+        public System.String? RawAddress { get; set; }
+
         //      C# -> DateTime? RegistrationTime
         // GraphQL -> registrationTime: DateTime! (scalar)
         [JsonProperty("registrationTime")]
@@ -412,6 +417,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? NoSqlWorkloadCount = null,
         System.Boolean? PassesConnectivityCheck = null,
+        System.String? RawAddress = null,
         DateTime? RegistrationTime = null,
         System.Int64? SnapshotCount = null,
         System.String? SystemStatusMessage = null,
@@ -516,6 +522,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PassesConnectivityCheck != null ) {
             this.PassesConnectivityCheck = PassesConnectivityCheck;
+        }
+        if ( RawAddress != null ) {
+            this.RawAddress = RawAddress;
         }
         if ( RegistrationTime != null ) {
             this.RegistrationTime = RegistrationTime;
@@ -838,6 +847,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "passesConnectivityCheck\n" ;
             } else {
                 s += ind + "passesConnectivityCheck\n" ;
+            }
+        }
+        //      C# -> System.String? RawAddress
+        // GraphQL -> rawAddress: String (scalar)
+        if (this.RawAddress != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rawAddress\n" ;
+            } else {
+                s += ind + "rawAddress\n" ;
             }
         }
         //      C# -> DateTime? RegistrationTime
@@ -1630,6 +1648,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PassesConnectivityCheck != null && ec.Excludes("passesConnectivityCheck",true))
         {
             this.PassesConnectivityCheck = null;
+        }
+        //      C# -> System.String? RawAddress
+        // GraphQL -> rawAddress: String (scalar)
+        if (ec.Includes("rawAddress",true))
+        {
+            if(this.RawAddress == null) {
+
+                this.RawAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RawAddress != null && ec.Excludes("rawAddress",true))
+        {
+            this.RawAddress = null;
         }
         //      C# -> DateTime? RegistrationTime
         // GraphQL -> registrationTime: DateTime! (scalar)

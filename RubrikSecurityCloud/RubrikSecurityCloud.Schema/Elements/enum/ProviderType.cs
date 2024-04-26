@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CUSTOM")]
         CUSTOM,
 
+        [EnumMember(Value = "LOGSCALE")]
+        LOGSCALE,
+
         [EnumMember(Value = "MICROSOFT_SENTINEL")]
         MICROSOFT_SENTINEL,
 

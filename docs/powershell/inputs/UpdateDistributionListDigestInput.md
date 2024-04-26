@@ -1,6 +1,8 @@
 ### UpdateDistributionListDigestInput
 Information required to save a distribution list digest.
 
+- digestId: System.Int32
+  - ID of the distribution list digest.
 - digestName: System.String
   - Name of the distribution list digest.
 - frequencyHours: System.Int32

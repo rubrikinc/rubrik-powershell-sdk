@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -64,7 +65,7 @@ namespace RubrikSecurityCloud
         }
 
         public static void AddInstancesOfImplementingTypes<T>(
-            ref List<T> list, 
+            List<T> list, 
             Action<T>? initializeInstance = null) where T : class
         {
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema")
@@ -124,7 +125,7 @@ namespace RubrikSecurityCloud
                     {
                         current.SetNext(baseTypeItem);
                         // move to next item
-                        current = current.Next();
+                        current = current.GetNext();
                     }
                     current?.SetNext(null);
             }
@@ -151,7 +152,7 @@ namespace RubrikSecurityCloud
             while (current != null)
             {
                 list.Add(current);
-                current = current.Next();
+                current = current.GetNext();
             }
 
             return list;
@@ -161,6 +162,69 @@ namespace RubrikSecurityCloud
         {
             var list = MakeListFromComposite(composite);
             return list.AsFieldSpec(conf.Copy(ignoreComposition: true));
+        }
+
+        public static void ConvertListsToRscInterfaces(object obj)
+        {
+            if (obj == null) return;
+
+            Type objType = obj.GetType();
+
+            // Check if the object itself is a List<T>
+            if (objType.IsGenericType && objType.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                // root object itself is a List<T>
+                // This case needs to be handled in the parent,
+                // since this method replaces properties in place
+                // in the input object.
+                throw new Exception("Root object is a List<> : cannot convert to RscInterface<> in place.");
+            }
+            else
+            {
+                // Recursively convert List<T> properties to RscInterface<T>
+                PropertyInfo[] properties = objType.GetProperties();
+                foreach (var property in properties)
+                {
+                    Type propertyType = property.PropertyType;
+
+                    // Check if the property is of type List<T>
+                    if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
+                    {
+                        Type itemType = propertyType.GetGenericArguments()[0]; // Get the <T> in List<T>
+                        Type rscListType = typeof(RscInterface<>).MakeGenericType(itemType); // Create RscInterface<T>
+                        IList originalList = (IList)property.GetValue(obj);
+                        IList rscList = (IList)Activator.CreateInstance(rscListType);
+
+                        if (originalList != null)
+                        {
+                            foreach (var item in originalList)
+                            {
+                                rscList.Add(item); // Populate RscInterface<T> with items from the original List<T>
+                            }
+                            property.SetValue(obj, rscList); // Replace the original List<T> with RscInterface<T>
+                        }
+                    }
+                    else
+                    {
+                        // Skip recursion for nullable primitives
+                        Type underlyingType = Nullable.GetUnderlyingType(propertyType);
+                        if (underlyingType != null && underlyingType.IsPrimitive)
+                        {
+                            continue; // Skip recursion for nullable primitives
+                        }
+
+                        if (!propertyType.IsPrimitive && propertyType != typeof(string))
+                        {
+                            // If the property is not a list but could contain lists, recursively convert its lists
+                            var propertyValue = property.GetValue(obj);
+                            if (propertyValue != null)
+                            {
+                                ConvertListsToRscInterfaces(propertyValue); // Recursive call
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

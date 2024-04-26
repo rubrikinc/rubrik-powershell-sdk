@@ -1,5 +1,10 @@
 # New-RscQueryServiceAccount
 ## Subcommands
+### isorgdisabled
+Returns whether the service accounts of the organization are not enabled.
+
+- The isorgdisabled subcommand takes no arguments.
+- Returns System.Boolean.
 ### serviceaccount
 Browse service accounts.
 

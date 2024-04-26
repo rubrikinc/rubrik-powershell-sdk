@@ -600,6 +600,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_ORGANIZATION_ID")]
         O365_ORGANIZATION_ID,
 
+        [EnumMember(Value = "O365_SITE_NAME_OR_URL")]
+        O365_SITE_NAME_OR_URL,
+
         [EnumMember(Value = "O365_SPECIFIC_TYPE")]
         O365_SPECIFIC_TYPE,
 
@@ -650,6 +653,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT")]
         RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT,
+
+        [EnumMember(Value = "SAASAPPS_IS_RECOVERY_TARGET_ONLY")]
+        SAASAPPS_IS_RECOVERY_TARGET_ONLY,
 
         [EnumMember(Value = "SAASAPPS_NATURAL_ID")]
         SAASAPPS_NATURAL_ID,

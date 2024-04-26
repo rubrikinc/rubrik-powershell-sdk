@@ -1,5 +1,27 @@
 # Changelog
 
+## Version 1.1
+
+New Features:
+
+- New-RscNasShare cmdlet (and its companion New-RscNasShareInput cmdlet to build the input arguments).
+
+Fixes:
+- Fix to Get-RscMssqlInstance to address Issue #79
+- Fix to Get-RscMssqlInstance to address Issue #73
+- Fix to Get-RscMssqlDatabase to address Issue #75
+- Fix to Get-RscMssqlDatabase to address Issue #77
+- Fix to Get-RscMssqlAvailabilityGroup to address Issue #74
+- Fix to Get-RscSnapshot (SnapshotListQuery)
+
+Breaking Changes:
+
+- Type object's Next() method was renamed GetNext() to follow
+  PowerShell naming convention (and to make it clear that
+  `$obj.Next() = $x` can't work (but `$obj.SetNext($x)` does.)).
+- Protect-RscSnappable renamed to Protect-RscWorkload to conform to marketing language
+- Removed Backup-RscSlaDomain.ps1 (Backup-SlaDomain) as it did not conform to PowerShell naming standards. Please use Protect-RscWorkload to assign an SLA.
+
 ## Version 1.0
 
 New Features:
@@ -444,5 +466,6 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 
 

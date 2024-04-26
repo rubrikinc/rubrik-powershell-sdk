@@ -7,3 +7,5 @@ Input to configure the SLA Domain for Db2 database.
   - Specifies the duration for which the Db2 database logs will be retained.
 - differentialFrequency: SlaDurationInput
   - Frequency value for differential backup of Db2 databases.
+- logArchivalMethod: LogArchivalMethod
+  - Configure the log archival method for Db2 database log backups.

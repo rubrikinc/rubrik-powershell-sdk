@@ -255,7 +255,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Objects == null) {
 
-                this.Objects = new List<CdmHierarchySnappableNew>();
+                this.Objects = new RscInterface<CdmHierarchySnappableNew>();
                 this.Objects.ApplyExploratoryFieldSpec(ec.NewChild("objects"));
 
             } else {

@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("differentialFrequency")]
         public SlaDurationInput? DifferentialFrequency { get; set; }
 
+        //      C# -> LogArchivalMethod? LogArchivalMethod
+        // GraphQL -> logArchivalMethod: LogArchivalMethod (enum)
+        [JsonProperty("logArchivalMethod")]
+        public LogArchivalMethod? LogArchivalMethod { get; set; }
+
 
         #endregion
 

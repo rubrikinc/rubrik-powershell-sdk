@@ -33,9 +33,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EASTASIA")]
         EASTASIA,
 
-        [EnumMember(Value = "EASTUS")]
-        EASTUS,
-
         [EnumMember(Value = "EASTUS2")]
         EASTU_S2,
 
@@ -66,9 +63,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SOUTHAFRICANORTH")]
         SOUTHAFRICANORTH,
 
-        [EnumMember(Value = "SOUTHCENTRALUS")]
-        SOUTHCENTRALUS,
-
         [EnumMember(Value = "SOUTHEASTASIA")]
         SOUTHEASTASIA,
 
@@ -86,9 +80,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "UNKNOWN_AZURE_AD_REGION")]
         UNKNOWN_AZURE_AD_REGION,
-
-        [EnumMember(Value = "USGOVVIRGINIA")]
-        USGOVVIRGINIA,
 
         [EnumMember(Value = "WESTEUROPE")]
         WESTEUROPE,

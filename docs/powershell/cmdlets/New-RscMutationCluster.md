@@ -54,6 +54,11 @@ Assign NTP servers to Rubrik cluster.
 
 - There is a single argument of type UpdateClusterNtpServersInput.
 - Returns ResponseSuccess.
+### updateclusterpausestatus
+Pauses or resumes protection on the Rubrik clusters using the cluster UUIDs.
+
+- There is a single argument of type UpdateClusterPauseStatusInput.
+- Returns UpdateClusterPauseStatusReply.
 ### updateclustersettings
 Update Rubrik CDM cluster settings.
 

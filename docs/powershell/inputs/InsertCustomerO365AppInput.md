@@ -13,3 +13,5 @@ Details of the customer-owned O365 app to insert.
   - Certificate for a SharePoint-typed app.
 - base64AppPrivateKey: System.String
   - Private key for a SharePoint-typed app.
+- updateAppCredentials: System.Boolean
+  - Specifies whether the application exists in RSC. If so, you can update the application credentials.

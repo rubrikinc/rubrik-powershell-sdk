@@ -48,15 +48,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_S3_PROTECTION")]
         CLOUD_NATIVE_S3_PROTECTION,
 
-        [EnumMember(Value = "DATA_CENTER_CONSOLIDATION")]
-        DATA_CENTER_CONSOLIDATION,
-
-        [EnumMember(Value = "DATA_CENTER_IMMUTABILITY")]
-        DATA_CENTER_IMMUTABILITY,
-
-        [EnumMember(Value = "DATA_CENTER_KMS")]
-        DATA_CENTER_KMS,
-
         [EnumMember(Value = "DATA_CENTER_ROLE_BASED_ARCHIVAL")]
         DATA_CENTER_ROLE_BASED_ARCHIVAL,
 

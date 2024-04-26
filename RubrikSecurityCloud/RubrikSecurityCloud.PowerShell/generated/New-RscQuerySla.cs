@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'SLA' API domain:
-    /// AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
+    /// AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, DownloadWithReplicationCsv, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
     /// </summary>
     /// <description>
     /// New-RscQuerySla creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 15 operations
     /// in the 'SLA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
+    /// one of: AuditDetail, ClusterDomains, ClusterGlobals, ConflictObjects, CountOfObjectsProtected, Domain, Domains, DownloadWithReplicationCsv, GlobalFilterList, GlobalStatuses, ManagedVolume, ManagedVolumes, NcdComplianceData, SummariesByIds, or VerifyWithReplicationToCluster.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -404,6 +404,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DownloadWithReplicationCsv operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: DownloadWithReplicationCsv
+    /// 
+    /// $query = New-RscQuerySla -DownloadWithReplicationCsv
+    /// 
+    /// # REQUIRED
+    /// $query.Var.cdmClusterUUID = $someString
+    /// # REQUIRED
+    /// $query.Var.includeArchived = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadSlaWithReplicationCsvReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the GlobalFilterList operation
     /// of the 'SLA' API domain.
     /// <code>
@@ -741,6 +771,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CountOfObjectsProtected",
                 "Domain",
                 "Domains",
+                "DownloadWithReplicationCsv",
                 "GlobalFilterList",
                 "GlobalStatuses",
                 "ManagedVolume",
@@ -783,6 +814,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Domains":
                         this.ProcessRecord_Domains();
+                        break;
+                    case "DownloadWithReplicationCsv":
+                        this.ProcessRecord_DownloadWithReplicationCsv();
                         break;
                     case "GlobalFilterList":
                         this.ProcessRecord_GlobalFilterList();
@@ -876,6 +910,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Domains";
             // Create new graphql operation slaDomains
             InitQuerySlaDomains();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadSlaWithReplicationCsv.
+        internal void ProcessRecord_DownloadWithReplicationCsv()
+        {
+            this._logger.name += " -DownloadWithReplicationCsv";
+            // Create new graphql operation downloadSlaWithReplicationCsv
+            InitQueryDownloadSlaWithReplicationCsv();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1276,6 +1319,29 @@ $query.Var.shouldShowUpgradeInfo = $someBoolean
 $query.Var.showRemoteSlas = $someBoolean
 # OPTIONAL
 $query.Var.shouldShowPausedClusters = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // downloadSlaWithReplicationCsv(cdmClusterUUID: UUID!, includeArchived: Boolean!): DownloadSlaWithReplicationCsvReply!
+        internal void InitQueryDownloadSlaWithReplicationCsv()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cdmClusterUUID", "UUID!"),
+                Tuple.Create("includeArchived", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDownloadSlaWithReplicationCsv",
+                "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
+                "DownloadSlaWithReplicationCsvReply",
+                Query.DownloadSlaWithReplicationCsv_ObjectFieldSpec,
+                Query.DownloadSlaWithReplicationCsvFieldSpec,
+                @"# REQUIRED
+$query.Var.cdmClusterUUID = $someString
+# REQUIRED
+$query.Var.includeArchived = $someBoolean"
             );
         }
 

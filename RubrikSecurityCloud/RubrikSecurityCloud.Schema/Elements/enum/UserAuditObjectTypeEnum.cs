@@ -162,6 +162,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HypervVm")]
         HYPERV_VM,
 
+        [EnumMember(Value = "INTEL_FEED")]
+        INTEL_FEED,
+
         [EnumMember(Value = "IpWhitelist")]
         IP_WHITELIST,
 
@@ -272,6 +275,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OracleRac")]
         ORACLE_RAC,
+
+        [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
+        POSTGRES_DB_CLUSTER,
 
         [EnumMember(Value = "PublicCloudMachineInstance")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,

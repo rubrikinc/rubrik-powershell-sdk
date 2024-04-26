@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'NAS' API domain:
-    /// BulkDeleteNasSystems, DeleteNasSystem, RefreshNasSystems, RegisterNasSystem, or UpdateNasSystem.
+    /// BulkDeleteNasSystems, DeleteNasSystem, HideRevealNasShares, RefreshNasSystems, RegisterNasSystem, UpdateNasShares, or UpdateNasSystem.
     /// </summary>
     /// <description>
     /// New-RscMutationNas creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 7 operations
     /// in the 'NAS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkDeleteNasSystems, DeleteNasSystem, RefreshNasSystems, RegisterNasSystem, or UpdateNasSystem.
+    /// one of: BulkDeleteNasSystems, DeleteNasSystem, HideRevealNasShares, RefreshNasSystems, RegisterNasSystem, UpdateNasShares, or UpdateNasSystem.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -136,6 +136,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HideRevealNasShares operation
+    /// of the 'NAS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nas
+    /// # API Operation: HideRevealNasShares
+    /// 
+    /// $query = New-RscMutationNas -HideRevealNasShares
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	hideNasSharesRequest = @{
+    /// 		# REQUIRED
+    /// 		action = $someHideRevealAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HideRevealAction]) for enum values.
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
     /// 
     /// 
     /// 
@@ -290,6 +328,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateNasShares operation
+    /// of the 'NAS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nas
+    /// # API Operation: UpdateNasShares
+    /// 
+    /// $query = New-RscMutationNas -UpdateNasShares
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	updateNasSharesRequest = @{
+    /// 		# REQUIRED
+    /// 		nasShareProperties = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				isIsilonChangelistEnabled = $someBoolean
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateNasSystem operation
     /// of the 'NAS' API domain.
     /// <code>
@@ -415,8 +494,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "BulkDeleteNasSystems",
                 "DeleteNasSystem",
+                "HideRevealNasShares",
                 "RefreshNasSystems",
                 "RegisterNasSystem",
+                "UpdateNasShares",
                 "UpdateNasSystem",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -439,11 +520,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteNasSystem":
                         this.ProcessRecord_DeleteNasSystem();
                         break;
+                    case "HideRevealNasShares":
+                        this.ProcessRecord_HideRevealNasShares();
+                        break;
                     case "RefreshNasSystems":
                         this.ProcessRecord_RefreshNasSystems();
                         break;
                     case "RegisterNasSystem":
                         this.ProcessRecord_RegisterNasSystem();
+                        break;
+                    case "UpdateNasShares":
+                        this.ProcessRecord_UpdateNasShares();
                         break;
                     case "UpdateNasSystem":
                         this.ProcessRecord_UpdateNasSystem();
@@ -477,6 +564,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // hideRevealNasShares.
+        internal void ProcessRecord_HideRevealNasShares()
+        {
+            this._logger.name += " -HideRevealNasShares";
+            // Create new graphql operation hideRevealNasShares
+            InitMutationHideRevealNasShares();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // refreshNasSystems.
         internal void ProcessRecord_RefreshNasSystems()
         {
@@ -492,6 +588,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RegisterNasSystem";
             // Create new graphql operation registerNasSystem
             InitMutationRegisterNasSystem();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateNasShares.
+        internal void ProcessRecord_UpdateNasShares()
+        {
+            this._logger.name += " -UpdateNasShares";
+            // Create new graphql operation updateNasShares
+            InitMutationUpdateNasShares();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -551,6 +656,36 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // hideRevealNasShares(input: HideRevealNasSharesInput!): ResponseSuccess!
+        internal void InitMutationHideRevealNasShares()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "HideRevealNasSharesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationHideRevealNasShares",
+                "($input: HideRevealNasSharesInput!)",
+                "ResponseSuccess",
+                Mutation.HideRevealNasShares_ObjectFieldSpec,
+                Mutation.HideRevealNasSharesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	hideNasSharesRequest = @{
+		# REQUIRED
+		action = $someHideRevealAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HideRevealAction]) for enum values.
+		# REQUIRED
+		ids = @(
+			$someString
+		)
+	}
 }"
             );
         }
@@ -680,6 +815,39 @@ $query.Var.input = @{
 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
 		# REQUIRED
 		hostname = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateNasShares(input: UpdateNasSharesInput!): Void
+        internal void InitMutationUpdateNasShares()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateNasSharesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateNasShares",
+                "($input: UpdateNasSharesInput!)",
+                "System.String",
+                Mutation.UpdateNasShares_ObjectFieldSpec,
+                Mutation.UpdateNasSharesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	updateNasSharesRequest = @{
+		# REQUIRED
+		nasShareProperties = @(
+			@{
+				# OPTIONAL
+				isIsilonChangelistEnabled = $someBoolean
+				# REQUIRED
+				id = $someString
+			}
+		)
 	}
 }"
             );

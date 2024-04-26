@@ -28,9 +28,11 @@ User audit object type.
 - O365Group - Office 365 Group type.
 - NutanixVm - Nutanix virtual machine type.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
+- INTEL_FEED - Intel feed.
 - ATLASSIAN_SITE - Atlassian site.
 - EXOCOMPUTE - Exocompute.
 - MONGODB_SOURCE - MongoDB source type.
+- POSTGRES_DB_CLUSTER - PostgreSQL Database Cluster.
 - HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.
 - Vcenter - A vCenter type.

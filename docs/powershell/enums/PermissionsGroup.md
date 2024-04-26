@@ -40,6 +40,15 @@ PermissionsGroup represents the collection of various permission groups that
 - SAP_HANA_SS_RECOVERY - Represents the required permissions for the recovery operation of
  SAP HANA SS. These permissions are applicable to the cloud cluster ES
  feature.
-- PRIVATE_EXO_CLUSTERS - Represents the permissions required for interacting with Rubrik-managed
- Exocompute clusters launched in private access mode. These permissions
- apply to the Exocompute feature.
+- DATA_CENTER_KMS - Represents the set of permissions required to use AWS KMS feature for
+ data center archival location.
+ These permission are applicable to the Data Center Role-based archival
+ feature.
+- DATA_CENTER_CONSOLIDATION - Represents the set of permissions required to enabled the Consolidation
+ feature for data center archival location.
+ These permission are applicable to the Data Center Role-based archival
+ feature.
+- DATA_CENTER_IMMUTABILITY - Represents the set of permission required to enable the Immutability feature
+ for data center archival location.
+ These permission are applicable to the Data Center Role-based archival
+ feature.

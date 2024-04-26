@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostname")]
         public System.String? Hostname { get; set; }
 
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean (scalar)
+        [JsonProperty("isDrEnabled")]
+        public System.Boolean? IsDrEnabled { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
@@ -61,6 +66,7 @@ namespace RubrikSecurityCloud.Types
 
     public UpdateNutanixPrismCentralReply Set(
         System.String? Hostname = null,
+        System.Boolean? IsDrEnabled = null,
         System.String? Username = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Hostname != null ) {
             this.Hostname = Hostname;
+        }
+        if ( IsDrEnabled != null ) {
+            this.IsDrEnabled = IsDrEnabled;
         }
         if ( Username != null ) {
             this.Username = Username;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hostname\n" ;
             } else {
                 s += ind + "hostname\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean (scalar)
+        if (this.IsDrEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDrEnabled\n" ;
+            } else {
+                s += ind + "isDrEnabled\n" ;
             }
         }
         //      C# -> System.String? Username
@@ -189,6 +207,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Hostname != null && ec.Excludes("hostname",true))
         {
             this.Hostname = null;
+        }
+        //      C# -> System.Boolean? IsDrEnabled
+        // GraphQL -> isDrEnabled: Boolean (scalar)
+        if (ec.Includes("isDrEnabled",true))
+        {
+            if(this.IsDrEnabled == null) {
+
+                this.IsDrEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDrEnabled != null && ec.Excludes("isDrEnabled",true))
+        {
+            this.IsDrEnabled = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

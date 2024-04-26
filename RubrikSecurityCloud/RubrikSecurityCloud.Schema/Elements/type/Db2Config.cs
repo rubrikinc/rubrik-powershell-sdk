@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> LogArchivalMethod? LogArchivalMethod
+        // GraphQL -> logArchivalMethod: LogArchivalMethod! (enum)
+        [JsonProperty("logArchivalMethod")]
+        public LogArchivalMethod? LogArchivalMethod { get; set; }
+
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
         [JsonProperty("differentialFrequency")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Db2Config Set(
+        LogArchivalMethod? LogArchivalMethod = null,
         Duration? DifferentialFrequency = null,
         Duration? IncrementalFrequency = null,
         Duration? LogRetention = null
     ) 
     {
+        if ( LogArchivalMethod != null ) {
+            this.LogArchivalMethod = LogArchivalMethod;
+        }
         if ( DifferentialFrequency != null ) {
             this.DifferentialFrequency = DifferentialFrequency;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> LogArchivalMethod? LogArchivalMethod
+        // GraphQL -> logArchivalMethod: LogArchivalMethod! (enum)
+        if (this.LogArchivalMethod != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logArchivalMethod\n" ;
+            } else {
+                s += ind + "logArchivalMethod\n" ;
+            }
+        }
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
         if (this.DifferentialFrequency != null) {
@@ -116,6 +134,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> LogArchivalMethod? LogArchivalMethod
+        // GraphQL -> logArchivalMethod: LogArchivalMethod! (enum)
+        if (ec.Includes("logArchivalMethod",true))
+        {
+            if(this.LogArchivalMethod == null) {
+
+                this.LogArchivalMethod = new LogArchivalMethod();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogArchivalMethod != null && ec.Excludes("logArchivalMethod",true))
+        {
+            this.LogArchivalMethod = null;
+        }
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
         if (ec.Includes("differentialFrequency",false))

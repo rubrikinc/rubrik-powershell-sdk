@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? DigestId
+        // GraphQL -> digestId: Int (scalar)
+        [JsonProperty("digestId")]
+        public System.Int32? DigestId { get; set; }
+
         //      C# -> System.String? DigestName
         // GraphQL -> digestName: String (scalar)
         [JsonProperty("digestName")]

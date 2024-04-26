@@ -12,6 +12,14 @@ Active Directory volume export connection.
     - filters - list of AdVolumeExportFilters: Filter for Active Directory volume exports.
     - sortBy - AdVolumeExportSortByInput: Sort by argument for Active Directory volume exports.
 - Returns AdVolumeExportConnection.
+### agentdeploymentsetting
+Get Rubrik Backup Service deployment setting
+
+Supported in v5.0+
+Retrieve the global setting for automatic deployment of the Rubrik Backup Service to virtual machines.
+
+- There is a single argument of type GetVmAgentDeploymentSettingInput.
+- Returns AgentDeploymentSettings.
 ### allowedorgadminoperations
 Returns privileges that are allowed to be asssigned to org admin roles.
 
@@ -206,6 +214,11 @@ Gets the details of the request that was triggered to check the cloud compute co
 
 - There is a single argument of type GetCloudComputeConnectivityCheckRequestStatusInput.
 - Returns AsyncRequestStatus.
+### checklatestversionmgmtappexists
+Checks whether the latest version of the Microsoft 365 Management App exists.
+
+- There is a single argument of type CheckLatestVersionMgmtAppExistsInput.
+- Returns CheckLatestVersionMgmtAppExistsReply.
 ### clouddirectnasexport
 A Cloud Direct NAS export object.
 
@@ -398,7 +411,7 @@ Information on Microsoft 365 restore failed items.
 
 - There are 2 arguments.
     - workloadFid - System.String: The FID of the workload.
-    - taskchainId - System.String: Taskchain ID.
+    - failedItemsInstanceId - System.String: The instance ID corresponding to the failed restore items.
 - Returns FailedRestoreItemsInfoReply.
 ### failuresandwarningsstats
 Returns the failures and warnings stats of an M365 organization.
@@ -425,7 +438,7 @@ List user activity for a specific file on a specific snapshot.
 - The geolocationlist subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getallrolesinorglist
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -433,6 +446,7 @@ List user activity for a specific file on a specific snapshot.
     - sortOrder - SortOrder: Sorting order for the results.
     - sortBy - RoleFieldEnum
     - nameFilter - System.String: Name to filter the results.
+    - assignedRoleIds - list of System.Strings: List of role IDs that have already been assigned to a set of users. This list will be used to sort the set of all roles.
 - Returns RoleConnection.
 ### getcdmreleasedetailsforversionfromsupportportal
 Get CDM release details from support portal for a given list of clusters specific to a target version.
@@ -1105,6 +1119,15 @@ Gets the status for completed/running upgrade process.
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
     - timezone - System.String
 - Returns GetUserDetailReply.
+### userfiles
+All user files.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+- Returns list of GetCustomerFacingDownloadsReplys.
 ### usergroups
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.

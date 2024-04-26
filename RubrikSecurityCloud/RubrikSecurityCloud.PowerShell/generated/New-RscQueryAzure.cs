@@ -1026,8 +1026,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	snapshotId = $someString
     /// 	# REQUIRED
-    /// 	azureAdSearchKeyword = $someString
-    /// 	# REQUIRED
     /// 	workloadFid = $someString
     /// 	# REQUIRED
     /// 	keywordSearchFilters = @(
@@ -1040,8 +1038,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-    /// 	# REQUIRED
-    /// 	azureAdSearchKeywordType = $someAzureAdObjectSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -3422,8 +3418,6 @@ $query.Var.input = @{
 	# REQUIRED
 	snapshotId = $someString
 	# REQUIRED
-	azureAdSearchKeyword = $someString
-	# REQUIRED
 	workloadFid = $someString
 	# REQUIRED
 	keywordSearchFilters = @(
@@ -3436,8 +3430,6 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-	# REQUIRED
-	azureAdSearchKeywordType = $someAzureAdObjectSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
 }"
             );
         }

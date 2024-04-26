@@ -57,3 +57,6 @@ Supported in v5.0+
   - 
 - nasBaseConfig: NasBaseConfig
   - Supported in v5.0+
+- volumeGroupInfo: VolumeGroupDetailInfo
+  - Supported in v9.2
+  Volume Group info for the host if applicable.

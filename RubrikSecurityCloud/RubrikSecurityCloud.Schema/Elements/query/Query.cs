@@ -277,7 +277,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<CloudAccount>();
+            var fieldSpecObj = new RscInterface<CloudAccount>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<SlaDomain>();
+            var fieldSpecObj = new RscInterface<SlaDomain>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<Target>();
+            var fieldSpecObj = new RscInterface<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<CdmHierarchySnappableNew>();
+            var fieldSpecObj = new RscInterface<CdmHierarchySnappableNew>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -541,7 +541,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<HierarchyObject>();
+            var fieldSpecObj = new RscInterface<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -572,7 +572,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<HierarchyObject>();
+            var fieldSpecObj = new RscInterface<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -1836,6 +1836,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.Boolean? IsOrgServiceAccountDisabled
+        // GraphQL -> isOrgServiceAccountDisabled: Boolean! (scalar)
+        public static string IsOrgServiceAccountDisabled_TypedFieldSpec(System.Boolean fieldSpec)
+        {
+            string args = "";
+            return "isOrgServiceAccountDisabled" + args + "\n";
+        }
+        public static string IsOrgServiceAccountDisabled_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return IsOrgServiceAccountDisabled((System.Boolean)fieldSpecObj);
+        }
+        public static string IsOrgServiceAccountDisabled(System.Boolean fieldSpec)
+        {
+            return IsOrgServiceAccountDisabled_TypedFieldSpec(fieldSpec);
+        }
+        public static string IsOrgServiceAccountDisabled(object fieldSpecObj)
+        {
+            return IsOrgServiceAccountDisabled_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object IsOrgServiceAccountDisabledFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return true ;
+        }
+
         //      C# -> System.Boolean? IsSfdcReachable
         // GraphQL -> isSfdcReachable: Boolean! (scalar)
         public static string IsSfdcReachable_TypedFieldSpec(System.Boolean fieldSpec)
@@ -2461,6 +2490,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new AdVolumeExportConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AgentDeploymentSettings? AgentDeploymentSetting
+        // GraphQL -> agentDeploymentSetting: AgentDeploymentSettings! (type)
+        public static string AgentDeploymentSetting_TypedFieldSpec(AgentDeploymentSettings fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "agentDeploymentSetting" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AgentDeploymentSetting_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AgentDeploymentSetting((AgentDeploymentSettings)fieldSpecObj);
+        }
+        public static string AgentDeploymentSetting(AgentDeploymentSettings fieldSpec)
+        {
+            return AgentDeploymentSetting_TypedFieldSpec(fieldSpec);
+        }
+        public static string AgentDeploymentSetting(object fieldSpecObj)
+        {
+            return AgentDeploymentSetting_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AgentDeploymentSettingFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AgentDeploymentSettings() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -5375,6 +5435,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new List<PolicySummary>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> List<GetCustomerFacingDownloadsReply>? AllUserFiles
+        // GraphQL -> allUserFiles: [GetCustomerFacingDownloadsReply!]! (type)
+        public static string AllUserFiles_TypedFieldSpec(List<GetCustomerFacingDownloadsReply> fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            return "allUserFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllUserFiles_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllUserFiles((List<GetCustomerFacingDownloadsReply>)fieldSpecObj);
+        }
+        public static string AllUserFiles(List<GetCustomerFacingDownloadsReply> fieldSpec)
+        {
+            return AllUserFiles_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllUserFiles(object fieldSpecObj)
+        {
+            return AllUserFiles_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllUserFilesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<GetCustomerFacingDownloadsReply>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8944,6 +9035,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CheckLatestVersionMgmtAppExistsReply? CheckLatestVersionMgmtAppExists
+        // GraphQL -> checkLatestVersionMgmtAppExists: CheckLatestVersionMgmtAppExistsReply! (type)
+        public static string CheckLatestVersionMgmtAppExists_TypedFieldSpec(CheckLatestVersionMgmtAppExistsReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "checkLatestVersionMgmtAppExists" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string CheckLatestVersionMgmtAppExists_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CheckLatestVersionMgmtAppExists((CheckLatestVersionMgmtAppExistsReply)fieldSpecObj);
+        }
+        public static string CheckLatestVersionMgmtAppExists(CheckLatestVersionMgmtAppExistsReply fieldSpec)
+        {
+            return CheckLatestVersionMgmtAppExists_TypedFieldSpec(fieldSpec);
+        }
+        public static string CheckLatestVersionMgmtAppExists(object fieldSpecObj)
+        {
+            return CheckLatestVersionMgmtAppExists_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CheckLatestVersionMgmtAppExistsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CheckLatestVersionMgmtAppExistsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudDirectNasExport? CloudDirectNasExport
         // GraphQL -> cloudDirectNasExport: CloudDirectNasExport! (type)
         public static string CloudDirectNasExport_TypedFieldSpec(CloudDirectNasExport fieldSpec)
@@ -10990,6 +11112,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadSlaWithReplicationCsvReply? DownloadSlaWithReplicationCsv
+        // GraphQL -> downloadSlaWithReplicationCsv: DownloadSlaWithReplicationCsvReply! (type)
+        public static string DownloadSlaWithReplicationCsv_TypedFieldSpec(DownloadSlaWithReplicationCsvReply fieldSpec)
+        {
+            string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\nincludeArchived: $includeArchived\n)";
+            return "downloadSlaWithReplicationCsv" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string DownloadSlaWithReplicationCsv_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DownloadSlaWithReplicationCsv((DownloadSlaWithReplicationCsvReply)fieldSpecObj);
+        }
+        public static string DownloadSlaWithReplicationCsv(DownloadSlaWithReplicationCsvReply fieldSpec)
+        {
+            return DownloadSlaWithReplicationCsv_TypedFieldSpec(fieldSpec);
+        }
+        public static string DownloadSlaWithReplicationCsv(object fieldSpecObj)
+        {
+            return DownloadSlaWithReplicationCsv_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DownloadSlaWithReplicationCsvFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new DownloadSlaWithReplicationCsvReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<GroupCount>? DownloadedVersionList
         // GraphQL -> downloadedVersionList: [GroupCount!]! (type)
         public static string DownloadedVersionList_TypedFieldSpec(List<GroupCount> fieldSpec)
@@ -11273,7 +11426,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> failedRestoreItemsInfo: FailedRestoreItemsInfoReply! (type)
         public static string FailedRestoreItemsInfo_TypedFieldSpec(FailedRestoreItemsInfoReply fieldSpec)
         {
-            string args = "\n(\nworkloadFid: $workloadFid\ntaskchainId: $taskchainId\n)";
+            string args = "\n(\nworkloadFid: $workloadFid\nfailedItemsInstanceId: $failedItemsInstanceId\n)";
             return "failedRestoreItemsInfo" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";
@@ -11862,7 +12015,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> getAllRolesInOrgConnection: RoleConnection! (type)
         public static string GetAllRolesInOrgConnection_TypedFieldSpec(RoleConnection fieldSpec)
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nassignedRoleIds: $assignedRoleIds\n)";
             return "getAllRolesInOrgConnection" + args + "\n{\n" +
                     fieldSpec.AsFieldSpec() +
                     "}\n";

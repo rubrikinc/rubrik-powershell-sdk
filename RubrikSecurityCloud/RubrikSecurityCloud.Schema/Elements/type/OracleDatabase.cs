@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region OracleDatabase
  
-    public class OracleDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, OracleDataGuardGroupDescendantType, OracleDataGuardGroupLogicalChildType, OracleHostDescendantType, OracleHostLogicalChildType, OracleRacDescendantType, OracleRacLogicalChildType, OracleTopLevelDescendantType
+    public class OracleDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, OracleDataGuardGroupDescendantType, OracleDataGuardGroupLogicalChildType, OracleHostDescendantType, OracleHostLogicalChildType, OracleRacDescendantType, OracleRacLogicalChildType, OracleTopLevelDescendantType
     {
         #region members
 
@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
+
+        //      C# -> OracleOsType? OsType
+        // GraphQL -> osType: OracleOsType! (enum)
+        [JsonProperty("osType")]
+        public OracleOsType? OsType { get; set; }
 
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
@@ -155,6 +160,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         [JsonProperty("onDemandSnapshotCount")]
         public System.Int32? OnDemandSnapshotCount { get; set; }
+
+        //      C# -> List<System.String>? OsNames
+        // GraphQL -> osNames: [String!]! (scalar)
+        [JsonProperty("osNames")]
+        public List<System.String>? OsNames { get; set; }
 
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
@@ -407,6 +417,7 @@ namespace RubrikSecurityCloud.Types
         List<Operation>? AuthorizedOperations = null,
         DataGuardType? DataGuardType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        OracleOsType? OsType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
@@ -431,6 +442,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumTablespaces = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
+        List<System.String>? OsNames = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Int32? SectionSizeInGigabytes = null,
         System.Boolean? SlaPauseStatus = null,
@@ -472,6 +484,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( OsType != null ) {
+            this.OsType = OsType;
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
@@ -544,6 +559,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OnDemandSnapshotCount != null ) {
             this.OnDemandSnapshotCount = OnDemandSnapshotCount;
+        }
+        if ( OsNames != null ) {
+            this.OsNames = OsNames;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -677,6 +695,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> OracleOsType? OsType
+        // GraphQL -> osType: OracleOsType! (enum)
+        if (this.OsType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "osType\n" ;
+            } else {
+                s += ind + "osType\n" ;
             }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
@@ -913,6 +940,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "onDemandSnapshotCount\n" ;
             } else {
                 s += ind + "onDemandSnapshotCount\n" ;
+            }
+        }
+        //      C# -> List<System.String>? OsNames
+        // GraphQL -> osNames: [String!]! (scalar)
+        if (this.OsNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "osNames\n" ;
+            } else {
+                s += ind + "osNames\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1330,6 +1366,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ObjectType = null;
         }
+        //      C# -> OracleOsType? OsType
+        // GraphQL -> osType: OracleOsType! (enum)
+        if (ec.Includes("osType",true))
+        {
+            if(this.OsType == null) {
+
+                this.OsType = new OracleOsType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OsType != null && ec.Excludes("osType",true))
+        {
+            this.OsType = null;
+        }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (ec.Includes("slaAssignment",true))
@@ -1449,7 +1502,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new List<CdmHierarchyObject>();
+                this.ReplicatedObjects = new RscInterface<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {
@@ -1767,6 +1820,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
         {
             this.OnDemandSnapshotCount = null;
+        }
+        //      C# -> List<System.String>? OsNames
+        // GraphQL -> osNames: [String!]! (scalar)
+        if (ec.Includes("osNames",true))
+        {
+            if(this.OsNames == null) {
+
+                this.OsNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OsNames != null && ec.Excludes("osNames",true))
+        {
+            this.OsNames = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

@@ -20,3 +20,5 @@ Filter snappable data in group by.
   - The organization ID of the workload.
 - objectState: list of ObjectStates
   - The state of the workload.
+- isLocal: System.Boolean
+  - True if the workload is local; false if the workload is remote.

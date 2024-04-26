@@ -47,7 +47,7 @@ Retrieve details of the Rubrik clusters' reports migration.
            sum, avg for integer columns
            count(*)
         
-    - sortBy - System.String: Name of the column to sort result by
+    - sortBy - System.String: Name of the column to sort results by.
     - sortOrder - SortOrder: Sorting order for the results.
     - timezone - System.String: The timezone to be used in the results.
 - Returns RowConnection.

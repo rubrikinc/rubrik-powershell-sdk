@@ -20,3 +20,5 @@ Supported in v5.0+
   Describes any pending SLA Domain assignment on this object.
 - blackoutWindowResponseInfo: BlackoutWindowResponseInfo
   - Blackout window information.
+- excludedVolumes: list of HostVolumeSummarys
+  - Configuration details for the volumes in the Volume Group.

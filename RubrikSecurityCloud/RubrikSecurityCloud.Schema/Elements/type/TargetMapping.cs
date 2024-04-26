@@ -289,7 +289,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Targets == null) {
 
-                this.Targets = new List<Target>();
+                this.Targets = new RscInterface<Target>();
                 this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
 
             } else {

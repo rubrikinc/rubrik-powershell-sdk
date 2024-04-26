@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("blackoutWindowResponseInfo")]
         public BlackoutWindowResponseInfo? BlackoutWindowResponseInfo { get; set; }
 
+        //      C# -> List<HostVolumeSummary>? ExcludedVolumes
+        // GraphQL -> excludedVolumes: [HostVolumeSummary!]! (type)
+        [JsonProperty("excludedVolumes")]
+        public List<HostVolumeSummary>? ExcludedVolumes { get; set; }
+
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         [JsonProperty("pendingSlaDomain")]
@@ -63,6 +68,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ConfiguredSlaDomainId = null,
         System.Boolean? IsPaused = null,
         BlackoutWindowResponseInfo? BlackoutWindowResponseInfo = null,
+        List<HostVolumeSummary>? ExcludedVolumes = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
         VolumeGroupSummary? VolumeGroupSummary = null,
         List<HostVolumeSummary>? Volumes = null
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BlackoutWindowResponseInfo != null ) {
             this.BlackoutWindowResponseInfo = BlackoutWindowResponseInfo;
+        }
+        if ( ExcludedVolumes != null ) {
+            this.ExcludedVolumes = ExcludedVolumes;
         }
         if ( PendingSlaDomain != null ) {
             this.PendingSlaDomain = PendingSlaDomain;
@@ -127,6 +136,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "blackoutWindowResponseInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<HostVolumeSummary>? ExcludedVolumes
+        // GraphQL -> excludedVolumes: [HostVolumeSummary!]! (type)
+        if (this.ExcludedVolumes != null) {
+            var fspec = this.ExcludedVolumes.AsFieldSpec(conf.Child("excludedVolumes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "excludedVolumes" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -225,6 +246,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.BlackoutWindowResponseInfo != null && ec.Excludes("blackoutWindowResponseInfo",false))
         {
             this.BlackoutWindowResponseInfo = null;
+        }
+        //      C# -> List<HostVolumeSummary>? ExcludedVolumes
+        // GraphQL -> excludedVolumes: [HostVolumeSummary!]! (type)
+        if (ec.Includes("excludedVolumes",false))
+        {
+            if(this.ExcludedVolumes == null) {
+
+                this.ExcludedVolumes = new List<HostVolumeSummary>();
+                this.ExcludedVolumes.ApplyExploratoryFieldSpec(ec.NewChild("excludedVolumes"));
+
+            } else {
+
+                this.ExcludedVolumes.ApplyExploratoryFieldSpec(ec.NewChild("excludedVolumes"));
+
+            }
+        }
+        else if (this.ExcludedVolumes != null && ec.Excludes("excludedVolumes",false))
+        {
+            this.ExcludedVolumes = null;
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)

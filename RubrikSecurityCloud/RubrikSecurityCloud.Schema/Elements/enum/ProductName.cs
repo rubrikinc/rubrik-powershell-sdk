@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUDNATIVE")]
         CLOUDNATIVE,
 
+        [EnumMember(Value = "CLOUD_UNSTRUCTURED")]
+        CLOUD_UNSTRUCTURED,
+
         [EnumMember(Value = "GPS")]
         GPS,
 

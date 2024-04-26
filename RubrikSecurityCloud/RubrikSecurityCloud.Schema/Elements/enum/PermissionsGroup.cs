@@ -24,6 +24,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_CLUSTER_ES")]
         CLOUD_CLUSTER_ES,
 
+        [EnumMember(Value = "DATA_CENTER_CONSOLIDATION")]
+        DATA_CENTER_CONSOLIDATION,
+
+        [EnumMember(Value = "DATA_CENTER_IMMUTABILITY")]
+        DATA_CENTER_IMMUTABILITY,
+
+        [EnumMember(Value = "DATA_CENTER_KMS")]
+        DATA_CENTER_KMS,
+
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 
@@ -38,9 +47,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRIVATE_ENDPOINTS")]
         PRIVATE_ENDPOINTS,
-
-        [EnumMember(Value = "PRIVATE_EXO_CLUSTERS")]
-        PRIVATE_EXO_CLUSTERS,
 
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,

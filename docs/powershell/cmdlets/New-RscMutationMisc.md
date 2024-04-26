@@ -85,6 +85,11 @@ Create guest OS credentials.
 
 - There is a single argument of type CreateGuestCredentialInput.
 - Returns CreateGuestCredentialReply.
+### createlegalhold
+Place legal hold on snapshots.
+
+- There is a single argument of type CreateLegalHoldInput.
+- Returns CreateLegalHoldReply.
 ### createondemandvolumegroupbackup
 Create on-demand snapshot for the Volume Group
 
@@ -136,6 +141,11 @@ Disables a Rubrik Support representative's access to the customer's account.
 
 - There is a single argument of type DisableSupportUserAccessInput.
 - Returns System.String.
+### dissolvelegalhold
+Dissolve legal hold on snapshots.
+
+- There is a single argument of type DissolveLegalHoldInput.
+- Returns DissolveLegalHoldReply.
 ### enableautomaticfmdupload
 Enable/disable auto fmd upload on given cluster.
 
@@ -185,14 +195,6 @@ Hide individually selected NAS namespaces by setting the "action" field to "Hide
 
 - There is a single argument of type HideRevealNasNamespacesInput.
 - Returns System.String.
-### hiderevealnasshares
-Hide or reveal NAS shares
-
-Supported in v7.0+
-Hide individually selected NAS shares by setting the "action" field to "Hide". Reveal selected NAS shares by setting the "action" field to "Reveal".
-
-- There is a single argument of type HideRevealNasSharesInput.
-- Returns ResponseSuccess.
 ### installiofilter
 Install the Rubrik ioFilter to the VMware cluster with a specific ID
 
@@ -521,6 +523,14 @@ Unmount selected disks.
 ### updateaccountowner
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### updateagentdeploymentsetting
+Change the Rubrik Backup Service deployment setting
+
+Supported in v5.0+
+Modify the global setting for automatic deployment of the Rubrik Backup Service to virtual machines.
+
+- There is a single argument of type UpdateVmAgentDeploymentSettingInput.
+- Returns AgentDeploymentSettings.
 ### updateauthdomainusershiddenstatus
 Update the hidden status for the given auth domain users.
 
@@ -600,14 +610,6 @@ Transition to Managed Identities.
 
 - There is a single argument of type UpdateManagedIdentitiesInput.
 - Returns UpdateManagedIdentitiesReply.
-### updatenasshares
-Bulk update multiple NAS shares
-
-Supported in v7.0+
-Updates fields like changelist of multiple NAS shares.
-
-- There is a single argument of type UpdateNasSharesInput.
-- Returns System.String.
 ### updatenetworkthrottle
 - There is a single argument of type UpdateNetworkThrottleInput.
 - Returns UpdateNetworkThrottleReply.

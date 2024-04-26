@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             queryText += queryFragment;
             queryText += "\n}";
 
-            request.OperationName = "SnapshotListQuery";
+            request.OperationName = "SnapshotOfAsnappableConnection";
             request.Query = queryText;
 
             return request;

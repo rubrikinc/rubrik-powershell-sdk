@@ -259,6 +259,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		domainControllerRecoveryObjects = @(
     /// 			@{
     /// 				# OPTIONAL
+    /// 				attributes = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
     /// 				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
     /// 				# REQUIRED
     /// 				dnt = $someInt64
@@ -535,6 +539,10 @@ $query.Var.input = @{
 		# REQUIRED
 		domainControllerRecoveryObjects = @(
 			@{
+				# OPTIONAL
+				attributes = @(
+					$someString
+				)
 				# OPTIONAL
 				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
 				# REQUIRED
