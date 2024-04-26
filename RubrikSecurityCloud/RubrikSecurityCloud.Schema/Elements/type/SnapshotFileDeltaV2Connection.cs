@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.CurrentSnapshot == null) {
 
-                var impls = new RscInterface<GenericSnapshot>();
+                var impls = new List<GenericSnapshot>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSnapshot"));
                 this.CurrentSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -208,7 +208,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PreviousSnapshot == null) {
 
-                var impls = new RscInterface<GenericSnapshot>();
+                var impls = new List<GenericSnapshot>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshot"));
                 this.PreviousSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
 

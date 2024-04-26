@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<MissedSnapshotGroupByInfo>();
+                var impls = new List<MissedSnapshotGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

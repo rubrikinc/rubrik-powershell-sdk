@@ -905,7 +905,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Location == null) {
 
-                var impls = new RscInterface<SnappableLocationType>();
+                var impls = new List<SnappableLocationType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("location"));
                 this.Location = (SnappableLocationType)InterfaceHelper.MakeCompositeFromList(impls);
 

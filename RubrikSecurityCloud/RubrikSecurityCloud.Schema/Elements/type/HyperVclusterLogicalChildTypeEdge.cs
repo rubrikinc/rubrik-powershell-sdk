@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<HyperVclusterLogicalChildType>();
+                var impls = new List<HyperVclusterLogicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (HyperVclusterLogicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

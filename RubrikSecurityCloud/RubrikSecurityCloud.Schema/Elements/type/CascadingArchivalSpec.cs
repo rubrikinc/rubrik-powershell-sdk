@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ArchivalLocation == null) {
 
-                var impls = new RscInterface<Target>();
+                var impls = new List<Target>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
                 this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
 

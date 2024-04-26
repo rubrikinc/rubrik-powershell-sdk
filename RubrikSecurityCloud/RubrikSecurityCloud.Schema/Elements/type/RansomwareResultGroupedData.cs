@@ -190,7 +190,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<RansomwareResultGroupByInfo>();
+                var impls = new List<RansomwareResultGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (RansomwareResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -265,7 +265,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.TargetTemplate == null) {
 
-                var impls = new RscInterface<TargetTemplate>();
+                var impls = new List<TargetTemplate>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
                 this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
 

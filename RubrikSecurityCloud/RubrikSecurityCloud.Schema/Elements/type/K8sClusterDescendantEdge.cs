@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<K8sClusterDescendant>();
+                var impls = new List<K8sClusterDescendant>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (K8sClusterDescendant)InterfaceHelper.MakeCompositeFromList(impls);
 

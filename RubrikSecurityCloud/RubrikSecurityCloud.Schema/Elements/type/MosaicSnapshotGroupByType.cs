@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<MosaicSnapshotGroupByInfo>();
+                var impls = new List<MosaicSnapshotGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (MosaicSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

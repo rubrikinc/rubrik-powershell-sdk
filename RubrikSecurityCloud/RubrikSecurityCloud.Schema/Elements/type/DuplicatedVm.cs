@@ -218,7 +218,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.EffectiveSlaDomain == null) {
 
-                var impls = new RscInterface<SlaDomain>();
+                var impls = new List<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
                 this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 

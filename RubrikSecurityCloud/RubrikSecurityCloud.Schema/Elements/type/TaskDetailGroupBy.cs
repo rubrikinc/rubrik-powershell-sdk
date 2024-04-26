@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<TaskDetailGroupByInfo>();
+                var impls = new List<TaskDetailGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (TaskDetailGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

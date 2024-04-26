@@ -195,7 +195,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<ClusterGroupByInfo>();
+                var impls = new List<ClusterGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

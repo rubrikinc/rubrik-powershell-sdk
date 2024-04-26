@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.CurrentSlaSummary == null) {
 
-                var impls = new RscInterface<SlaDomain>();
+                var impls = new List<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
                 this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PreviousSlaSummary == null) {
 
-                var impls = new RscInterface<SlaDomain>();
+                var impls = new List<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
                 this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 

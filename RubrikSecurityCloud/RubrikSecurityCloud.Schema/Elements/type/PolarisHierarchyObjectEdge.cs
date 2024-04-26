@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<PolarisHierarchyObject>();
+                var impls = new List<PolarisHierarchyObject>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (PolarisHierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<CassandraKeyspacePhysicalChildType>();
+                var impls = new List<CassandraKeyspacePhysicalChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (CassandraKeyspacePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

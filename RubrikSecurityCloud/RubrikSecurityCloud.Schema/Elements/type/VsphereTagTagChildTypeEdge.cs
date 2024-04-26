@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<VsphereTagTagChildType>();
+                var impls = new List<VsphereTagTagChildType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (VsphereTagTagChildType)InterfaceHelper.MakeCompositeFromList(impls);
 

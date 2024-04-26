@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.DisplayableValue == null) {
 
-                var impls = new RscInterface<DisplayableValue>();
+                var impls = new List<DisplayableValue>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("displayableValue"));
                 this.DisplayableValue = (DisplayableValue)InterfaceHelper.MakeCompositeFromList(impls);
 

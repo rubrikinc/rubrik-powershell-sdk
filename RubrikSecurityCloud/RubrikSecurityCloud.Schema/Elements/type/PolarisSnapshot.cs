@@ -631,7 +631,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.PolarisSpecificSnapshot == null) {
 
-                var impls = new RscInterface<PolarisSpecificSnapshot>();
+                var impls = new List<PolarisSpecificSnapshot>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
                 this.PolarisSpecificSnapshot = (PolarisSpecificSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
 
@@ -655,7 +655,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                var impls = new RscInterface<SlaDomain>();
+                var impls = new List<SlaDomain>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
                 this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
 

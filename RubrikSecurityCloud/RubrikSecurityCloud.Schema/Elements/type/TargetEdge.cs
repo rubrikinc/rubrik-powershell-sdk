@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<Target>();
+                var impls = new List<Target>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (Target)InterfaceHelper.MakeCompositeFromList(impls);
 

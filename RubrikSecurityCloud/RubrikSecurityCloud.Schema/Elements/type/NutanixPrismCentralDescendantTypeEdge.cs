@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<NutanixPrismCentralDescendantType>();
+                var impls = new List<NutanixPrismCentralDescendantType>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (NutanixPrismCentralDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.GroupByInfo == null) {
 
-                var impls = new RscInterface<NfAnomalyResultGroupByInfo>();
+                var impls = new List<NfAnomalyResultGroupByInfo>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
                 this.GroupByInfo = (NfAnomalyResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
 

@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ImagePullDetails == null) {
 
-                var impls = new RscInterface<PcrImagePullDetails>();
+                var impls = new List<PcrImagePullDetails>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("imagePullDetails"));
                 this.ImagePullDetails = (PcrImagePullDetails)InterfaceHelper.MakeCompositeFromList(impls);
 

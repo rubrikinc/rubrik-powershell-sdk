@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Node == null) {
 
-                var impls = new RscInterface<CdmHierarchyObject>();
+                var impls = new List<CdmHierarchyObject>();
                 impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
                 this.Node = (CdmHierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
 

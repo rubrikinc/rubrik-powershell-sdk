@@ -5,10 +5,12 @@
 
 #nullable enable
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
@@ -498,7 +500,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new List<Target>();
+            var fieldSpecObj = new RscInterface<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
