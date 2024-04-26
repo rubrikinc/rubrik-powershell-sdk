@@ -12,6 +12,7 @@ Fixes:
 - Fix to Get-RscMssqlDatabase to address Issue #75
 - Fix to Get-RscMssqlDatabase to address Issue #77
 - Fix to Get-RscMssqlAvailabilityGroup to address Issue #74
+- Fix to Get-RscSnapshot (SnapshotListQuery)
 
 Breaking Changes:
 
