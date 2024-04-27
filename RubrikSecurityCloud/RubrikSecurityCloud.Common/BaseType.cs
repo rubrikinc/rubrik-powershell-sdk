@@ -287,4 +287,10 @@ namespace RubrikSecurityCloud.Types
             this.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
+
+    public class RscInterfaceList<T>: RscInterface<T> where T: IFieldSpec
+    {
+        public RscInterfaceList(): base() { }
+        public RscInterfaceList(IEnumerable<T> collection): base(collection) { }
+    }
 }
