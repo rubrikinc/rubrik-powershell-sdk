@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HardwareHealth != null) {
             var fspec = this.HardwareHealth.AsFieldSpec(conf.Child("hardwareHealth"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -298,7 +298,7 @@ namespace RubrikSecurityCloud.Types
         if (this.InterfaceCidrs != null) {
             var fspec = this.InterfaceCidrs.AsFieldSpec(conf.Child("interfaceCidrs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

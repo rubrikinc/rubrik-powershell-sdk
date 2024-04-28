@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.UpgradeJobReply != null) {
             var fspec = this.UpgradeJobReply.AsFieldSpec(conf.Child("upgradeJobReply"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

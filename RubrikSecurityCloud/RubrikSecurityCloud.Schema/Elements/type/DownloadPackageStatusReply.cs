@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DownloadJobInfo != null) {
             var fspec = this.DownloadJobInfo.AsFieldSpec(conf.Child("downloadJobInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

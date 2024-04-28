@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cert != null) {
             var fspec = this.Cert.AsFieldSpec(conf.Child("cert"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NumActivitiesBreakdown != null) {
             var fspec = this.NumActivitiesBreakdown.AsFieldSpec(conf.Child("numActivitiesBreakdown"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.User != null) {
             var fspec = this.User.AsFieldSpec(conf.Child("user"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

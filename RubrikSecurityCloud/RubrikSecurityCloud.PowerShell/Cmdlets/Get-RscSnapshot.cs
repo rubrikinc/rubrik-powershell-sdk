@@ -164,7 +164,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
             //build a top-level query object for the snapshots query
             GenericSnapshotConnection queryObj = new GenericSnapshotConnection();
-            queryObj.Nodes = new RscInterface<GenericSnapshot>();
+            queryObj.Nodes = new RscInterfaceList<GenericSnapshot>();
 
             // Include one of each implementing types to build the
             // query fragments with "... on "

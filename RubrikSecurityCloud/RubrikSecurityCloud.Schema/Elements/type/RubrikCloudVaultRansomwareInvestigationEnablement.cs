@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Location != null) {
             var fspec = this.Location.AsFieldSpec(conf.Child("location"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

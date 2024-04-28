@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AllAwsNativeIdtoRscIdMappings != null) {
             var fspec = this.AllAwsNativeIdtoRscIdMappings.AsFieldSpec(conf.Child("allAwsNativeIdtoRscIdMappings"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

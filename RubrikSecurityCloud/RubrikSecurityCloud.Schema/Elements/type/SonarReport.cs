@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TimeSeriesResults != null) {
             var fspec = this.TimeSeriesResults.AsFieldSpec(conf.Child("timeSeriesResults"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

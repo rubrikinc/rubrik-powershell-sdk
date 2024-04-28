@@ -33,6 +33,8 @@ Db2 Database details object.
   - Connection of recoverable ranges for given Db2 database.
 - logSnapshots: Db2LogSnapshotConnection
   - Connection of log snapshots for given Db2 database.
+- crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata
+  - Db2 cross host recovery enabled target hosts.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

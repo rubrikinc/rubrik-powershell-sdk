@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DeltaHitsSummary != null) {
             var fspec = this.DeltaHitsSummary.AsFieldSpec(conf.Child("deltaHitsSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TotalHitsSummary != null) {
             var fspec = this.TotalHitsSummary.AsFieldSpec(conf.Child("totalHitsSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

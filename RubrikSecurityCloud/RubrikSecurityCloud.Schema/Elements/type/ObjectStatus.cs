@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LatestSnapshotResult != null) {
             var fspec = this.LatestSnapshotResult.AsFieldSpec(conf.Child("latestSnapshotResult"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PolicyStatuses != null) {
             var fspec = this.PolicyStatuses.AsFieldSpec(conf.Child("policyStatuses"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

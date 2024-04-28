@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HighRiskCount != null) {
             var fspec = this.HighRiskCount.AsFieldSpec(conf.Child("highRiskCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LowRiskCount != null) {
             var fspec = this.LowRiskCount.AsFieldSpec(conf.Child("lowRiskCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MediumRiskCount != null) {
             var fspec = this.MediumRiskCount.AsFieldSpec(conf.Child("mediumRiskCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TotalCount != null) {
             var fspec = this.TotalCount.AsFieldSpec(conf.Child("totalCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

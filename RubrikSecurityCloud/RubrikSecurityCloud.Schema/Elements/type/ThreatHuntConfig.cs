@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<CdmHierarchySnappableNew>? Objects
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
         [JsonProperty("objects")]
-        public RscInterface<CdmHierarchySnappableNew> Objects { get; set; }
+        public RscInterfaceList<CdmHierarchySnappableNew> Objects { get; set; }
 
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
@@ -80,7 +80,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatHuntConfig Set(
-        RscInterface<CdmHierarchySnappableNew> Objects = null,
+        RscInterfaceList<CdmHierarchySnappableNew> Objects = null,
         System.String? ClusterUuid = null,
         System.Int32? MaxMatchesPerSnapshot = null,
         System.String? Name = null,
@@ -199,7 +199,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FileScanCriteria != null) {
             var fspec = this.FileScanCriteria.AsFieldSpec(conf.Child("fileScanCriteria"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -212,7 +212,7 @@ namespace RubrikSecurityCloud.Types
         if (this.IndicatorsOfCompromise != null) {
             var fspec = this.IndicatorsOfCompromise.AsFieldSpec(conf.Child("indicatorsOfCompromise"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -225,7 +225,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RequestedMatchDetails != null) {
             var fspec = this.RequestedMatchDetails.AsFieldSpec(conf.Child("requestedMatchDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -238,7 +238,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotScanLimit != null) {
             var fspec = this.SnapshotScanLimit.AsFieldSpec(conf.Child("snapshotScanLimit"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Objects == null) {
 
-                this.Objects = new RscInterface<CdmHierarchySnappableNew>();
+                this.Objects = new RscInterfaceList<CdmHierarchySnappableNew>();
                 this.Objects.ApplyExploratoryFieldSpec(ec.NewChild("objects"));
 
             } else {

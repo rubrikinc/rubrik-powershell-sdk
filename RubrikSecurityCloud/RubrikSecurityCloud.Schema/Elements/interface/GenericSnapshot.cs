@@ -23,46 +23,57 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
         DateTime? Date { get; set; }
+
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
         [JsonProperty("expirationDate")]
         DateTime? ExpirationDate { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         System.String? Id { get; set; }
+
         //      C# -> System.Int64? IndexingAttempts
         // GraphQL -> indexingAttempts: Long! (scalar)
         [JsonProperty("indexingAttempts")]
         System.Int64? IndexingAttempts { get; set; }
+
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         [JsonProperty("isCorrupted")]
         System.Boolean? IsCorrupted { get; set; }
+
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
         [JsonProperty("isExpired")]
         System.Boolean? IsExpired { get; set; }
+
         //      C# -> System.Boolean? IsIndexed
         // GraphQL -> isIndexed: Boolean! (scalar)
         [JsonProperty("isIndexed")]
         System.Boolean? IsIndexed { get; set; }
+
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
         [JsonProperty("isOnDemandSnapshot")]
         System.Boolean? IsOnDemandSnapshot { get; set; }
+
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         [JsonProperty("isQuarantined")]
         System.Boolean? IsQuarantined { get; set; }
+
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
         [JsonProperty("isUnindexable")]
         System.Boolean? IsUnindexable { get; set; }
+
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         [JsonProperty("snappableId")]
         System.String? SnappableId { get; set; }
+
 
         #endregion
 

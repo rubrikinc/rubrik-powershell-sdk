@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SyslogCertificateInfo != null) {
             var fspec = this.SyslogCertificateInfo.AsFieldSpec(conf.Child("syslogCertificateInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SyslogExportRuleFull != null) {
             var fspec = this.SyslogExportRuleFull.AsFieldSpec(conf.Child("syslogExportRuleFull"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

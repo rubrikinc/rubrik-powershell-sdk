@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.GlobalAdministrator != null) {
             var fspec = this.GlobalAdministrator.AsFieldSpec(conf.Child("globalAdministrator"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SubscriptionOwner != null) {
             var fspec = this.SubscriptionOwner.AsFieldSpec(conf.Child("subscriptionOwner"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

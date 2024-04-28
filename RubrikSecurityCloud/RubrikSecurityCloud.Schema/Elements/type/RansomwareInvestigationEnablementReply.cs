@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsAccounts != null) {
             var fspec = this.AwsAccounts.AsFieldSpec(conf.Child("awsAccounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureSubscriptions != null) {
             var fspec = this.AzureSubscriptions.AsFieldSpec(conf.Child("azureSubscriptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CloudDirectClusters != null) {
             var fspec = this.CloudDirectClusters.AsFieldSpec(conf.Child("cloudDirectClusters"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -135,7 +135,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Microsoft365Subscriptions != null) {
             var fspec = this.Microsoft365Subscriptions.AsFieldSpec(conf.Child("microsoft365Subscriptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -148,7 +148,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RubrikCloudVaultLocations != null) {
             var fspec = this.RubrikCloudVaultLocations.AsFieldSpec(conf.Child("rubrikCloudVaultLocations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

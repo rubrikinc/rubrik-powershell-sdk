@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<VsphereVcenterPhysicalChildType>? Nodes
         // GraphQL -> nodes: [VsphereVcenterPhysicalChildType!]! (interface)
         [JsonProperty("nodes")]
-        public RscInterface<VsphereVcenterPhysicalChildType> Nodes { get; set; }
+        public RscInterfaceList<VsphereVcenterPhysicalChildType> Nodes { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VsphereVcenterPhysicalChildTypeConnection Set(
-        RscInterface<VsphereVcenterPhysicalChildType> Nodes = null,
+        RscInterfaceList<VsphereVcenterPhysicalChildType> Nodes = null,
         System.Int32? Count = null,
         List<VsphereVcenterPhysicalChildTypeEdge>? Edges = null,
         PageInfo? PageInfo = null
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new RscInterface<VsphereVcenterPhysicalChildType>();
+                this.Nodes = new RscInterfaceList<VsphereVcenterPhysicalChildType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

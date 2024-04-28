@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AlwaysMounted != null) {
             var fspec = this.AlwaysMounted.AsFieldSpec(conf.Child("alwaysMounted"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaBased != null) {
             var fspec = this.SlaBased.AsFieldSpec(conf.Child("slaBased"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

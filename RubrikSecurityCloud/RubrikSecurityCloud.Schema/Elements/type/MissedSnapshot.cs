@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MissedSnapshotTimeUnits != null) {
             var fspec = this.MissedSnapshotTimeUnits.AsFieldSpec(conf.Child("missedSnapshotTimeUnits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

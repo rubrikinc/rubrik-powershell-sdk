@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.WorkloadTypeToFailureCount != null) {
             var fspec = this.WorkloadTypeToFailureCount.AsFieldSpec(conf.Child("workloadTypeToFailureCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.WorkloadTypeToWarningCount != null) {
             var fspec = this.WorkloadTypeToWarningCount.AsFieldSpec(conf.Child("workloadTypeToWarningCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

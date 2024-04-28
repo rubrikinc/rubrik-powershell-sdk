@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Certificate != null) {
             var fspec = this.Certificate.AsFieldSpec(conf.Child("certificate"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ClusterErrors != null) {
             var fspec = this.ClusterErrors.AsFieldSpec(conf.Child("clusterErrors"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

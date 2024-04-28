@@ -23,70 +23,87 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("locationConnectionStatus")]
         ConnectionStatusType? LocationConnectionStatus { get; set; }
+
         //      C# -> LocationScope? LocationScope
         // GraphQL -> locationScope: LocationScope! (enum)
         [JsonProperty("locationScope")]
         LocationScope? LocationScope { get; set; }
+
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)
         [JsonProperty("readerRetrievalMethod")]
         ReaderRetrievalMethod? ReaderRetrievalMethod { get; set; }
+
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
         [JsonProperty("status")]
         ArchivalLocationStatus? Status { get; set; }
+
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
         [JsonProperty("targetType")]
         TargetType? TargetType { get; set; }
+
         //      C# -> UpgradeStatus? UpgradeStatus
         // GraphQL -> upgradeStatus: UpgradeStatus! (enum)
         [JsonProperty("upgradeStatus")]
         UpgradeStatus? UpgradeStatus { get; set; }
+
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
         [JsonProperty("clusterName")]
         System.String? ClusterName { get; set; }
+
         //      C# -> System.Int64? ConsumedBytes
         // GraphQL -> consumedBytes: Long (scalar)
         [JsonProperty("consumedBytes")]
         System.Int64? ConsumedBytes { get; set; }
+
         //      C# -> System.Int32? FailedTasks
         // GraphQL -> failedTasks: Int (scalar)
         [JsonProperty("failedTasks")]
         System.Int32? FailedTasks { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         System.String? Id { get; set; }
+
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
         [JsonProperty("isActive")]
         System.Boolean? IsActive { get; set; }
+
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         [JsonProperty("isArchived")]
         System.Boolean? IsArchived { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         System.String? Name { get; set; }
+
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
         [JsonProperty("runningTasks")]
         System.Int32? RunningTasks { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         Cluster? Cluster { get; set; }
+
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         [JsonProperty("targetMapping")]
         TargetMappingBasic? TargetMapping { get; set; }
+
         //      C# -> List<TargetMappingBasic>? TargetMappingBasic
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
         [JsonProperty("targetMappingBasic")]
         List<TargetMappingBasic>? TargetMappingBasic { get; set; }
+
 
         #endregion
 

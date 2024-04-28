@@ -108,7 +108,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RansomwareResultGroupedDataField != null) {
             var fspec = this.RansomwareResultGroupedDataField.AsFieldSpec(conf.Child("ransomwareResultGroupedData"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -121,7 +121,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RansomwareResults != null) {
             var fspec = this.RansomwareResults.AsFieldSpec(conf.Child("ransomwareResults"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

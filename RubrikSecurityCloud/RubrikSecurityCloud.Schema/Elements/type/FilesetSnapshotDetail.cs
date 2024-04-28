@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FilesetSnapshotSummary != null) {
             var fspec = this.FilesetSnapshotSummary.AsFieldSpec(conf.Child("filesetSnapshotSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Verbose != null) {
             var fspec = this.Verbose.AsFieldSpec(conf.Child("verbose"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

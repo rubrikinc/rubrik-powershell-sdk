@@ -169,7 +169,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HealthCheckStatus != null) {
             var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        [JsonProperty("ipAddress")]
+        public System.String? IpAddress { get; set; }
+
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         [JsonProperty("message")]
@@ -105,6 +110,7 @@ namespace RubrikSecurityCloud.Types
         UserAuditSeverityEnum? Severity = null,
         UserAuditStatusEnum? Status = null,
         System.String? Id = null,
+        System.String? IpAddress = null,
         System.String? Message = null,
         System.String? ObjectId = null,
         System.String? ObjectName = null,
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IpAddress != null ) {
+            this.IpAddress = IpAddress;
         }
         if ( Message != null ) {
             this.Message = Message;
@@ -217,6 +226,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        if (this.IpAddress != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddress\n" ;
+            } else {
+                s += ind + "ipAddress\n" ;
+            }
+        }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
@@ -294,7 +312,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -393,6 +411,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        if (ec.Includes("ipAddress",true))
+        {
+            if(this.IpAddress == null) {
+
+                this.IpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
+        {
+            this.IpAddress = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)

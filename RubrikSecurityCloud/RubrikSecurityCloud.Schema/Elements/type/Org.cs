@@ -357,7 +357,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AllClusterCapacityQuotas != null) {
             var fspec = this.AllClusterCapacityQuotas.AsFieldSpec(conf.Child("allClusterCapacityQuotas"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -370,7 +370,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OrgAdminRole != null) {
             var fspec = this.OrgAdminRole.AsFieldSpec(conf.Child("orgAdminRole"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -383,7 +383,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Permissions != null) {
             var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -396,7 +396,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SelfServicePermissions != null) {
             var fspec = this.SelfServicePermissions.AsFieldSpec(conf.Child("selfServicePermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -409,7 +409,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SsoGroups != null) {
             var fspec = this.SsoGroups.AsFieldSpec(conf.Child("ssoGroups"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -422,7 +422,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Users != null) {
             var fspec = this.Users.AsFieldSpec(conf.Child("users"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

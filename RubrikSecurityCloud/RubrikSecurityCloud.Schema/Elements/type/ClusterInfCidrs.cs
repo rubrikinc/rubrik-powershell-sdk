@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.InterfaceCidr != null) {
             var fspec = this.InterfaceCidr.AsFieldSpec(conf.Child("interfaceCidr"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

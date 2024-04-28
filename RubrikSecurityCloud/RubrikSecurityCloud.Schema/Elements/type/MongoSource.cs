@@ -74,7 +74,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         [JsonProperty("replicatedObjects")]
-        public RscInterface<CdmHierarchyObject> ReplicatedObjects { get; set; }
+        public RscInterfaceList<CdmHierarchyObject> ReplicatedObjects { get; set; }
 
         //      C# -> System.Int32? ActiveCollectionCount
         // GraphQL -> activeCollectionCount: Int! (scalar)
@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.Types
         RscInterface<SlaDomain> EffectiveRetentionSlaDomain = null,
         RscInterface<SlaDomain> EffectiveSlaDomain = null,
         RscInterface<SlaDomain> PendingSla = null,
-        RscInterface<CdmHierarchyObject> ReplicatedObjects = null,
+        RscInterfaceList<CdmHierarchyObject> ReplicatedObjects = null,
         System.Int32? ActiveCollectionCount = null,
         System.String? CdmId = null,
         System.String? ClusterUuid = null,
@@ -695,7 +695,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AllOrgs != null) {
             var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -708,7 +708,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -721,7 +721,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CrossAccountReplicatedObjectInfos != null) {
             var fspec = this.CrossAccountReplicatedObjectInfos.AsFieldSpec(conf.Child("crossAccountReplicatedObjectInfos"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -734,7 +734,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DataHosts != null) {
             var fspec = this.DataHosts.AsFieldSpec(conf.Child("dataHosts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -747,7 +747,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DescendantConnection != null) {
             var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -760,7 +760,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EffectiveSlaSourceObject != null) {
             var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(conf.Child("effectiveSlaSourceObject"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -773,7 +773,7 @@ namespace RubrikSecurityCloud.Types
         if (this.IgnoreSecondaryNodes != null) {
             var fspec = this.IgnoreSecondaryNodes.AsFieldSpec(conf.Child("ignoreSecondaryNodes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -786,7 +786,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LatestUserNote != null) {
             var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -799,7 +799,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LogicalPath != null) {
             var fspec = this.LogicalPath.AsFieldSpec(conf.Child("logicalPath"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -812,7 +812,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PendingObjectDeletionStatus != null) {
             var fspec = this.PendingObjectDeletionStatus.AsFieldSpec(conf.Child("pendingObjectDeletionStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -825,7 +825,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PhysicalChildConnection != null) {
             var fspec = this.PhysicalChildConnection.AsFieldSpec(conf.Child("physicalChildConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -838,7 +838,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PhysicalPath != null) {
             var fspec = this.PhysicalPath.AsFieldSpec(conf.Child("physicalPath"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -851,7 +851,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PrimaryClusterLocation != null) {
             var fspec = this.PrimaryClusterLocation.AsFieldSpec(conf.Child("primaryClusterLocation"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -864,7 +864,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotDistribution != null) {
             var fspec = this.SnapshotDistribution.AsFieldSpec(conf.Child("snapshotDistribution"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -877,7 +877,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SourceNodes != null) {
             var fspec = this.SourceNodes.AsFieldSpec(conf.Child("sourceNodes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -890,7 +890,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SslParams != null) {
             var fspec = this.SslParams.AsFieldSpec(conf.Child("sslParams"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -1089,7 +1089,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new RscInterface<CdmHierarchyObject>();
+                this.ReplicatedObjects = new RscInterfaceList<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {

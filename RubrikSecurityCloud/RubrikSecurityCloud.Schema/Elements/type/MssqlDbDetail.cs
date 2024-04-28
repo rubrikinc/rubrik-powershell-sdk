@@ -807,7 +807,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BlackoutWindowResponseInfo != null) {
             var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -820,7 +820,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlDbSummary != null) {
             var fspec = this.MssqlDbSummary.AsFieldSpec(conf.Child("mssqlDbSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -833,7 +833,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PostBackupScript != null) {
             var fspec = this.PostBackupScript.AsFieldSpec(conf.Child("postBackupScript"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -846,7 +846,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PreBackupScript != null) {
             var fspec = this.PreBackupScript.AsFieldSpec(conf.Child("preBackupScript"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

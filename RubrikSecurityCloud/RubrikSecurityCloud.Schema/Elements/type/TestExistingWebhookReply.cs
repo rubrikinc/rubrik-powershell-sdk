@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ErrorInfo != null) {
             var fspec = this.ErrorInfo.AsFieldSpec(conf.Child("errorInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DiskStatus != null) {
             var fspec = this.DiskStatus.AsFieldSpec(conf.Child("diskStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

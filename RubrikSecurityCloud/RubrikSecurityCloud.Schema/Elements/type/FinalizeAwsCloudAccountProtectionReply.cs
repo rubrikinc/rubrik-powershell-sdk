@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsChildAccounts != null) {
             var fspec = this.AwsChildAccounts.AsFieldSpec(conf.Child("awsChildAccounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

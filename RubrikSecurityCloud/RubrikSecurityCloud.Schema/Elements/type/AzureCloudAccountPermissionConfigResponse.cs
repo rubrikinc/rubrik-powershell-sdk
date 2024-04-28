@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PermissionsGroupVersions != null) {
             var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ResourceGroupRolePermissions != null) {
             var fspec = this.ResourceGroupRolePermissions.AsFieldSpec(conf.Child("resourceGroupRolePermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RolePermissions != null) {
             var fspec = this.RolePermissions.AsFieldSpec(conf.Child("rolePermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

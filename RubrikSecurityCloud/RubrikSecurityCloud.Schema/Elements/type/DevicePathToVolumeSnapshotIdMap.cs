@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DevicePathToVolumeSnapshotIdList != null) {
             var fspec = this.DevicePathToVolumeSnapshotIdList.AsFieldSpec(conf.Child("devicePathToVolumeSnapshotIdList"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FirstError != null) {
             var fspec = this.FirstError.AsFieldSpec(conf.Child("firstError"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -154,7 +154,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LastError != null) {
             var fspec = this.LastError.AsFieldSpec(conf.Child("lastError"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

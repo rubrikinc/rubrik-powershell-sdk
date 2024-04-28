@@ -744,7 +744,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TaskOrg != null) {
             var fspec = this.TaskOrg.AsFieldSpec(conf.Child("taskOrg"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

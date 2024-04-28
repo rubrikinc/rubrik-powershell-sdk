@@ -23,22 +23,27 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectId: String! (scalar)
         [JsonProperty("objectId")]
         System.String? ObjectId { get; set; }
+
         //      C# -> System.String? ParentId
         // GraphQL -> parentId: String! (scalar)
         [JsonProperty("parentId")]
         System.String? ParentId { get; set; }
+
         //      C# -> System.String? PreferredDataLocation
         // GraphQL -> preferredDataLocation: String! (scalar)
         [JsonProperty("preferredDataLocation")]
         System.String? PreferredDataLocation { get; set; }
+
         //      C# -> System.String? SiteChildId
         // GraphQL -> siteChildId: String! (scalar)
         [JsonProperty("siteChildId")]
         System.String? SiteChildId { get; set; }
+
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         [JsonProperty("title")]
         System.String? Title { get; set; }
+
 
         #endregion
 

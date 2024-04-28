@@ -376,7 +376,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ArchivalLocationsUpgradeInfo != null) {
             var fspec = this.ArchivalLocationsUpgradeInfo.AsFieldSpec(conf.Child("archivalLocationsUpgradeInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -389,7 +389,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ArchivalSpec != null) {
             var fspec = this.ArchivalSpec.AsFieldSpec(conf.Child("archivalSpec"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -402,7 +402,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ArchivalSpecs != null) {
             var fspec = this.ArchivalSpecs.AsFieldSpec(conf.Child("archivalSpecs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -415,7 +415,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BackupWindows != null) {
             var fspec = this.BackupWindows.AsFieldSpec(conf.Child("backupWindows"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -428,7 +428,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BaseFrequency != null) {
             var fspec = this.BaseFrequency.AsFieldSpec(conf.Child("baseFrequency"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -441,7 +441,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -454,7 +454,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FirstFullBackupWindows != null) {
             var fspec = this.FirstFullBackupWindows.AsFieldSpec(conf.Child("firstFullBackupWindows"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -467,7 +467,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LocalRetentionLimit != null) {
             var fspec = this.LocalRetentionLimit.AsFieldSpec(conf.Child("localRetentionLimit"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -480,7 +480,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ObjectSpecificConfigs != null) {
             var fspec = this.ObjectSpecificConfigs.AsFieldSpec(conf.Child("objectSpecificConfigs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -493,7 +493,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OwnerOrg != null) {
             var fspec = this.OwnerOrg.AsFieldSpec(conf.Child("ownerOrg"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -506,7 +506,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ReplicationSpec != null) {
             var fspec = this.ReplicationSpec.AsFieldSpec(conf.Child("replicationSpec"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -519,7 +519,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ReplicationSpecsV2 != null) {
             var fspec = this.ReplicationSpecsV2.AsFieldSpec(conf.Child("replicationSpecsV2"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -532,7 +532,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotSchedule != null) {
             var fspec = this.SnapshotSchedule.AsFieldSpec(conf.Child("snapshotSchedule"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -545,7 +545,7 @@ namespace RubrikSecurityCloud.Types
         if (this.UpgradeInfo != null) {
             var fspec = this.UpgradeInfo.AsFieldSpec(conf.Child("upgradeInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

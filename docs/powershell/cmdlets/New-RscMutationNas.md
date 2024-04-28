@@ -1,5 +1,21 @@
 # New-RscMutationNas
 ## Subcommands
+### bulkaddnasshares
+Add multiple NAS shares to a NAS System
+
+Supported in v8.1+
+This operation adds NAS shares that were not discovered automatically. If the input contains SMB credentials for any share, they are stored but not validated.
+
+- There is a single argument of type BulkAddNasSharesInput.
+- Returns BulkAddNasSharesReply.
+### bulkdeletenasshares
+Delete multiple NAS shares
+
+Supported in v8.1+
+Initiates the delete operation for the specified NAS shares.
+
+- There is a single argument of type BulkDeleteNasSharesInput.
+- Returns System.String.
 ### bulkdeletenassystems
 Delete multiple NAS systems
 
@@ -8,6 +24,14 @@ Triggers a delete of the specified NAS systems. Returns an asynchronous request 
 
 - There is a single argument of type BulkDeleteNasSystemsInput.
 - Returns BatchAsyncRequestStatus.
+### bulkupdatenasshares
+Update properties of NAS shares
+
+Supported in v8.1+
+Update the properties of the specified NAS shares.
+
+- There is a single argument of type BulkUpdateNasSharesInput.
+- Returns BulkUpdateNasSharesReply.
 ### deletenassystem
 Delete a registered NAS system
 

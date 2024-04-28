@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Interfaces != null) {
             var fspec = this.Interfaces.AsFieldSpec(conf.Child("interfaces"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

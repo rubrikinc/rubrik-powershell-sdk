@@ -323,6 +323,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
+    /// 		availabilityZone = $someString
+    /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
     /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
@@ -1172,6 +1174,8 @@ $query.Var.input = @{
 		vmImage = $someString
 		# OPTIONAL
 		cdmProduct = $someString
+		# OPTIONAL
+		availabilityZone = $someString
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL

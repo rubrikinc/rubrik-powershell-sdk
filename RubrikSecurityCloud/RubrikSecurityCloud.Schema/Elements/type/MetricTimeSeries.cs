@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Metric != null) {
             var fspec = this.Metric.AsFieldSpec(conf.Child("metric"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

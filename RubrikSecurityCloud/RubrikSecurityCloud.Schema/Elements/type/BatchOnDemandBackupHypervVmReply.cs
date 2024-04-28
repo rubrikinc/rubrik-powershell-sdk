@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FailedRequests != null) {
             var fspec = this.FailedRequests.AsFieldSpec(conf.Child("failedRequests"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SuccessfulRequests != null) {
             var fspec = this.SuccessfulRequests.AsFieldSpec(conf.Child("successfulRequests"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

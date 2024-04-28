@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
         [JsonProperty("exocomputeConfigs")]
-        public RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs { get; set; }
+        public RscInterfaceList<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs { get; set; }
 
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
@@ -66,7 +66,7 @@ namespace RubrikSecurityCloud.Types
 
     public AwsExocomputeConfig Set(
         List<AwsCloudAccountRegion>? ExocomputeEligibleRegions = null,
-        RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs = null,
+        RscInterfaceList<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs = null,
         List<System.String>? MappedCloudAccountIds = null,
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null,
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsCloudAccount != null) {
             var fspec = this.AwsCloudAccount.AsFieldSpec(conf.Child("awsCloudAccount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Configs != null) {
             var fspec = this.Configs.AsFieldSpec(conf.Child("configs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FeatureDetail != null) {
             var fspec = this.FeatureDetail.AsFieldSpec(conf.Child("featureDetail"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MappedCloudAccounts != null) {
             var fspec = this.MappedCloudAccounts.AsFieldSpec(conf.Child("mappedCloudAccounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -222,7 +222,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ExocomputeConfigs == null) {
 
-                this.ExocomputeConfigs = new RscInterface<AwsExocomputeGetConfigurationResponse>();
+                this.ExocomputeConfigs = new RscInterfaceList<AwsExocomputeGetConfigurationResponse>();
                 this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
 
             } else {

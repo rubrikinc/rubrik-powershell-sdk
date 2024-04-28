@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FeatureRegionMap != null) {
             var fspec = this.FeatureRegionMap.AsFieldSpec(conf.Child("featureRegionMap"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

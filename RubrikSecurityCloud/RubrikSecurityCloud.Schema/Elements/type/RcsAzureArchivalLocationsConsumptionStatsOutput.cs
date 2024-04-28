@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RcsAzureConsumptionStats != null) {
             var fspec = this.RcsAzureConsumptionStats.AsFieldSpec(conf.Child("rcsAzureConsumptionStats"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

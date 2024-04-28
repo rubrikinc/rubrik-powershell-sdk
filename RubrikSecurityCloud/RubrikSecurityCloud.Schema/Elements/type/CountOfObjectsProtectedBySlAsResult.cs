@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaObjectCounts != null) {
             var fspec = this.SlaObjectCounts.AsFieldSpec(conf.Child("slaObjectCounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

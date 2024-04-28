@@ -721,7 +721,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ActiveDirectoryAppMetadata != null) {
             var fspec = this.ActiveDirectoryAppMetadata.AsFieldSpec(conf.Child("activeDirectoryAppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -734,7 +734,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ArchivalLocations != null) {
             var fspec = this.ArchivalLocations.AsFieldSpec(conf.Child("archivalLocations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -747,7 +747,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CdmWorkloadSnapshot != null) {
             var fspec = this.CdmWorkloadSnapshot.AsFieldSpec(conf.Child("cdmWorkloadSnapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -760,7 +760,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ChildSnapshots != null) {
             var fspec = this.ChildSnapshots.AsFieldSpec(conf.Child("childSnapshots"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -773,7 +773,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CloudNativeLocations != null) {
             var fspec = this.CloudNativeLocations.AsFieldSpec(conf.Child("cloudNativeLocations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -786,7 +786,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -799,7 +799,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Db2AppMetadata != null) {
             var fspec = this.Db2AppMetadata.AsFieldSpec(conf.Child("db2AppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -812,7 +812,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LatestUserNote != null) {
             var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -825,7 +825,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LegalHoldInfo != null) {
             var fspec = this.LegalHoldInfo.AsFieldSpec(conf.Child("legalHoldInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -838,7 +838,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LocalLocations != null) {
             var fspec = this.LocalLocations.AsFieldSpec(conf.Child("localLocations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -851,7 +851,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Locations != null) {
             var fspec = this.Locations.AsFieldSpec(conf.Child("locations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -864,7 +864,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ManagedVolumeAppMetadata != null) {
             var fspec = this.ManagedVolumeAppMetadata.AsFieldSpec(conf.Child("managedVolumeAppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -877,7 +877,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlAppMetadata != null) {
             var fspec = this.MssqlAppMetadata.AsFieldSpec(conf.Child("mssqlAppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -890,7 +890,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PendingSnapshotDeletion != null) {
             var fspec = this.PendingSnapshotDeletion.AsFieldSpec(conf.Child("pendingSnapshotDeletion"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -903,7 +903,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ReplicationLocations != null) {
             var fspec = this.ReplicationLocations.AsFieldSpec(conf.Child("replicationLocations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -916,7 +916,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SapHanaAppMetadata != null) {
             var fspec = this.SapHanaAppMetadata.AsFieldSpec(conf.Child("sapHanaAppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -929,7 +929,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotRetentionInfo != null) {
             var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -942,7 +942,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VappAppMetadata != null) {
             var fspec = this.VappAppMetadata.AsFieldSpec(conf.Child("vappAppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -955,7 +955,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VmwareAppMetadata != null) {
             var fspec = this.VmwareAppMetadata.AsFieldSpec(conf.Child("vmwareAppMetadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

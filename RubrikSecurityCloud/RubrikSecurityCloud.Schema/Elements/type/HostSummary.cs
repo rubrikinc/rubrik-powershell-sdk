@@ -366,7 +366,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HdfsBaseConfig != null) {
             var fspec = this.HdfsBaseConfig.AsFieldSpec(conf.Child("hdfsBaseConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -379,7 +379,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NasBaseConfig != null) {
             var fspec = this.NasBaseConfig.AsFieldSpec(conf.Child("nasBaseConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -392,7 +392,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VolumeGroupInfo != null) {
             var fspec = this.VolumeGroupInfo.AsFieldSpec(conf.Child("volumeGroupInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

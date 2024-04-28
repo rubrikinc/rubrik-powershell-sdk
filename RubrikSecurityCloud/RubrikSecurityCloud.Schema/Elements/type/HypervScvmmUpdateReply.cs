@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HypervScvmmSummary != null) {
             var fspec = this.HypervScvmmSummary.AsFieldSpec(conf.Child("hypervScvmmSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HypervScvmmUpdate != null) {
             var fspec = this.HypervScvmmUpdate.AsFieldSpec(conf.Child("hypervScvmmUpdate"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -438,7 +438,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AnomalousChildren != null) {
             var fspec = this.AnomalousChildren.AsFieldSpec(conf.Child("anomalousChildren"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -451,7 +451,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AnomalyInfo != null) {
             var fspec = this.AnomalyInfo.AsFieldSpec(conf.Child("anomalyInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -464,7 +464,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -477,7 +477,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PreviousPolicyObj != null) {
             var fspec = this.PreviousPolicyObj.AsFieldSpec(conf.Child("previousPolicyObj"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
         if (this.QuarantineInfo != null) {
             var fspec = this.QuarantineInfo.AsFieldSpec(conf.Child("quarantineInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
         if (this.WorkloadFields != null) {
             var fspec = this.WorkloadFields.AsFieldSpec(conf.Child("workloadFields"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

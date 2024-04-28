@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VirtualMachineSummary != null) {
             var fspec = this.VirtualMachineSummary.AsFieldSpec(conf.Child("virtualMachineSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

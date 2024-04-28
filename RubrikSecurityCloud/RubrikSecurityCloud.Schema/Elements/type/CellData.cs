@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Metadata != null) {
             var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -104,7 +104,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MetadataV2 != null) {
             var fspec = this.MetadataV2.AsFieldSpec(conf.Child("metadataV2"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

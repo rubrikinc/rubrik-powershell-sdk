@@ -88,7 +88,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DataDiskSnapshots != null) {
             var fspec = this.DataDiskSnapshots.AsFieldSpec(conf.Child("dataDiskSnapshots"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -101,7 +101,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OsDiskSnapshot != null) {
             var fspec = this.OsDiskSnapshot.AsFieldSpec(conf.Child("osDiskSnapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

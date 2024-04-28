@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HostGroups != null) {
             var fspec = this.HostGroups.AsFieldSpec(conf.Child("hostGroups"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CloudNativeCompanion != null) {
             var fspec = this.CloudNativeCompanion.AsFieldSpec(conf.Child("cloudNativeCompanion"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ComputeSettings != null) {
             var fspec = this.ComputeSettings.AsFieldSpec(conf.Child("computeSettings"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -217,7 +217,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ProxySettings != null) {
             var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

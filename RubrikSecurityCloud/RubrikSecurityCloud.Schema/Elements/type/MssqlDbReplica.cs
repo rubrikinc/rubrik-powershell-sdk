@@ -231,7 +231,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AvailabilityInfo != null) {
             var fspec = this.AvailabilityInfo.AsFieldSpec(conf.Child("availabilityInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -244,7 +244,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RootProperties != null) {
             var fspec = this.RootProperties.AsFieldSpec(conf.Child("rootProperties"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

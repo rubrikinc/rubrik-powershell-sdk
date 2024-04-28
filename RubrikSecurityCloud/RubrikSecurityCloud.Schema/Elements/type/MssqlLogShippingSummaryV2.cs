@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlLogShippingSummary != null) {
             var fspec = this.MssqlLogShippingSummary.AsFieldSpec(conf.Child("mssqlLogShippingSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

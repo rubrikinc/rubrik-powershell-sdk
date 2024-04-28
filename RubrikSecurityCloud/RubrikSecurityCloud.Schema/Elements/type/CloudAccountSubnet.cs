@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CidrBlock != null) {
             var fspec = this.CidrBlock.AsFieldSpec(conf.Child("cidrBlock"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

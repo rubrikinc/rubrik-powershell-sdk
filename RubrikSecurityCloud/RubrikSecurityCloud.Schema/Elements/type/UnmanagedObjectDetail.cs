@@ -419,7 +419,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -432,7 +432,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PhysicalLocation != null) {
             var fspec = this.PhysicalLocation.AsFieldSpec(conf.Child("physicalLocation"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -445,7 +445,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RecoveryInfo != null) {
             var fspec = this.RecoveryInfo.AsFieldSpec(conf.Child("recoveryInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -458,7 +458,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Region != null) {
             var fspec = this.Region.AsFieldSpec(conf.Child("region"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SourceGateway != null) {
             var fspec = this.SourceGateway.AsFieldSpec(conf.Child("sourceGateway"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TargetGateway != null) {
             var fspec = this.TargetGateway.AsFieldSpec(conf.Child("targetGateway"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DbSnapshotSummaries != null) {
             var fspec = this.DbSnapshotSummaries.AsFieldSpec(conf.Child("dbSnapshotSummaries"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

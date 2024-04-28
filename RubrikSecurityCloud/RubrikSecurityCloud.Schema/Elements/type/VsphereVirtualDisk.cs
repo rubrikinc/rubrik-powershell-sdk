@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Datastore != null) {
             var fspec = this.Datastore.AsFieldSpec(conf.Child("datastore"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

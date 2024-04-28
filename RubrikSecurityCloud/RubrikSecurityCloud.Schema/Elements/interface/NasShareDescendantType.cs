@@ -23,94 +23,117 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]
         List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
         HierarchyObjectTypeEnum? ObjectType { get; set; }
+
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
         SlaAssignmentTypeEnum? SlaAssignment { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         RscInterface<SlaDomain> ConfiguredSlaDomain { get; set; }
+
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         [JsonProperty("effectiveRetentionSlaDomain")]
         RscInterface<SlaDomain> EffectiveRetentionSlaDomain { get; set; }
+
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         [JsonProperty("effectiveSlaDomain")]
         RscInterface<SlaDomain> EffectiveSlaDomain { get; set; }
+
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         [JsonProperty("pendingSla")]
         RscInterface<SlaDomain> PendingSla { get; set; }
+
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         [JsonProperty("replicatedObjects")]
-        RscInterface<CdmHierarchyObject> ReplicatedObjects { get; set; }
+        RscInterfaceList<CdmHierarchyObject> ReplicatedObjects { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         System.String? Id { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         System.String? Name { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         System.Int32? NumWorkloadDescendants { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
         System.Int32? ReplicatedObjectCount { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         System.Boolean? SlaPauseStatus { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         Cluster? Cluster { get; set; }
+
         //      C# -> List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos
         // GraphQL -> crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!] (type)
         [JsonProperty("crossAccountReplicatedObjectInfos")]
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         PathNode? EffectiveSlaSourceObject { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
         LatestUserNote? LatestUserNote { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
         List<PathNode>? LogicalPath { get; set; }
+
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         [JsonProperty("pendingObjectDeletionStatus")]
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus { get; set; }
+
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         [JsonProperty("physicalPath")]
         List<PathNode>? PhysicalPath { get; set; }
+
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
         [JsonProperty("primaryClusterLocation")]
         DataLocation? PrimaryClusterLocation { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
         SnapshotDistribution? SnapshotDistribution { get; set; }
+
 
         #endregion
 

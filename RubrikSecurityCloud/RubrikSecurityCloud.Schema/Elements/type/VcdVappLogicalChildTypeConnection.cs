@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<VcdVappLogicalChildType>? Nodes
         // GraphQL -> nodes: [VcdVappLogicalChildType!]! (interface)
         [JsonProperty("nodes")]
-        public RscInterface<VcdVappLogicalChildType> Nodes { get; set; }
+        public RscInterfaceList<VcdVappLogicalChildType> Nodes { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VcdVappLogicalChildTypeConnection Set(
-        RscInterface<VcdVappLogicalChildType> Nodes = null,
+        RscInterfaceList<VcdVappLogicalChildType> Nodes = null,
         System.Int32? Count = null,
         List<VcdVappLogicalChildTypeEdge>? Edges = null,
         PageInfo? PageInfo = null
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new RscInterface<VcdVappLogicalChildType>();
+                this.Nodes = new RscInterfaceList<VcdVappLogicalChildType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

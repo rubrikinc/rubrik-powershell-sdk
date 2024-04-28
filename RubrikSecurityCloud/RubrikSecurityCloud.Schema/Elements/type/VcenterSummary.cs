@@ -267,7 +267,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ComputeVisibilityFilter != null) {
             var fspec = this.ComputeVisibilityFilter.AsFieldSpec(conf.Child("computeVisibilityFilter"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -280,7 +280,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ConnectionStatus != null) {
             var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaAssignable != null) {
             var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -306,7 +306,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VcenterPatch != null) {
             var fspec = this.VcenterPatch.AsFieldSpec(conf.Child("vcenterPatch"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AuthorizedOperations != null) {
             var fspec = this.AuthorizedOperations.AsFieldSpec(conf.Child("authorizedOperations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -334,7 +334,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -347,7 +347,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Host != null) {
             var fspec = this.Host.AsFieldSpec(conf.Child("host"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -360,7 +360,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NewVm != null) {
             var fspec = this.NewVm.AsFieldSpec(conf.Child("newVm"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -373,7 +373,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SourceSnapshot != null) {
             var fspec = this.SourceSnapshot.AsFieldSpec(conf.Child("sourceSnapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -386,7 +386,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SourceVm != null) {
             var fspec = this.SourceVm.AsFieldSpec(conf.Child("sourceVm"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AccessProviderUser != null) {
             var fspec = this.AccessProviderUser.AsFieldSpec(conf.Child("accessProviderUser"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -190,7 +190,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ImpersonatedUser != null) {
             var fspec = this.ImpersonatedUser.AsFieldSpec(conf.Child("impersonatedUser"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

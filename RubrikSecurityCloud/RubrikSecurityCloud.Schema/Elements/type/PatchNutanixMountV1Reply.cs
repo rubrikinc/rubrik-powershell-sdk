@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NutanixVmMountSummary != null) {
             var fspec = this.NutanixVmMountSummary.AsFieldSpec(conf.Child("nutanixVmMountSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

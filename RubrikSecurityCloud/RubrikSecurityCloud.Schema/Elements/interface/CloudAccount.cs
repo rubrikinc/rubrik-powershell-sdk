@@ -23,22 +23,27 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudProvider: CloudAccountType! (enum)
         [JsonProperty("cloudProvider")]
         CloudAccountType? CloudProvider { get; set; }
+
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("connectionStatus")]
         ConnectionStatusType? ConnectionStatus { get; set; }
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
         [JsonProperty("cloudAccountId")]
         System.String? CloudAccountId { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         [JsonProperty("description")]
         System.String? Description { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         System.String? Name { get; set; }
+
 
         #endregion
 

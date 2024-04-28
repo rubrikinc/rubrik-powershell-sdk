@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ExportLink != null) {
             var fspec = this.ExportLink.AsFieldSpec(conf.Child("exportLink"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Self != null) {
             var fspec = this.Self.AsFieldSpec(conf.Child("self"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

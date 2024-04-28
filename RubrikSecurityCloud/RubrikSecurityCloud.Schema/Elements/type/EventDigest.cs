@@ -258,7 +258,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EventDigestConfig != null) {
             var fspec = this.EventDigestConfig.AsFieldSpec(conf.Child("eventDigestConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

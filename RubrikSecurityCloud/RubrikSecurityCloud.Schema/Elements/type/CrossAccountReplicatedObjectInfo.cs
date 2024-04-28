@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CrossAccountPairInfo != null) {
             var fspec = this.CrossAccountPairInfo.AsFieldSpec(conf.Child("crossAccountPairInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ReplicatedObjects != null) {
             var fspec = this.ReplicatedObjects.AsFieldSpec(conf.Child("replicatedObjects"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

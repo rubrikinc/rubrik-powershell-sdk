@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VmwareVmSubObj != null) {
             var fspec = this.VmwareVmSubObj.AsFieldSpec(conf.Child("vmwareVmSubObj"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VolumeGroupSubObj != null) {
             var fspec = this.VolumeGroupSubObj.AsFieldSpec(conf.Child("volumeGroupSubObj"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

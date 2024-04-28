@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PhysicalDataSizeTimeSeries != null) {
             var fspec = this.PhysicalDataSizeTimeSeries.AsFieldSpec(conf.Child("physicalDataSizeTimeSeries"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

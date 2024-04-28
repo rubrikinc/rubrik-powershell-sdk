@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Vnet != null) {
             var fspec = this.Vnet.AsFieldSpec(conf.Child("vnet"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

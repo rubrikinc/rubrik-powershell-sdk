@@ -23,18 +23,22 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         System.String? Id { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         System.String? Name { get; set; }
+
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         [JsonProperty("version")]
         System.String? Version { get; set; }
+
         //      C# -> ObjectSpecificConfigs? ObjectSpecificConfigs
         // GraphQL -> objectSpecificConfigs: ObjectSpecificConfigs (type)
         [JsonProperty("objectSpecificConfigs")]
         ObjectSpecificConfigs? ObjectSpecificConfigs { get; set; }
+
 
         #endregion
 

@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TaskDetailConnection != null) {
             var fspec = this.TaskDetailConnection.AsFieldSpec(conf.Child("taskDetailConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TaskDetailGroupByField != null) {
             var fspec = this.TaskDetailGroupByField.AsFieldSpec(conf.Child("taskDetailGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OauthPayload != null) {
             var fspec = this.OauthPayload.AsFieldSpec(conf.Child("oauthPayload"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ScheduledThrottles != null) {
             var fspec = this.ScheduledThrottles.AsFieldSpec(conf.Child("scheduledThrottles"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

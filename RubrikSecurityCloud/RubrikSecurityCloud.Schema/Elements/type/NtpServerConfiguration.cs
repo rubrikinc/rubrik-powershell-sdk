@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SymmetricKey != null) {
             var fspec = this.SymmetricKey.AsFieldSpec(conf.Child("symmetricKey"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

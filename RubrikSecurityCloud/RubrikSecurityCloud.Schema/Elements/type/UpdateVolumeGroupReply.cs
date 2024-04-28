@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BlackoutWindowResponseInfo != null) {
             var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ExcludedVolumes != null) {
             var fspec = this.ExcludedVolumes.AsFieldSpec(conf.Child("excludedVolumes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PendingSlaDomain != null) {
             var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VolumeGroupSummary != null) {
             var fspec = this.VolumeGroupSummary.AsFieldSpec(conf.Child("volumeGroupSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Volumes != null) {
             var fspec = this.Volumes.AsFieldSpec(conf.Child("volumes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -294,7 +294,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AnomalyInfo != null) {
             var fspec = this.AnomalyInfo.AsFieldSpec(conf.Child("anomalyInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

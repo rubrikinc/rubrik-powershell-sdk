@@ -114,8 +114,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
     /// 	}
-    /// 	# OPTIONAL
-    /// 	isCrossAccount = $someBoolean
     /// 	# REQUIRED
     /// 	sourceClusterUuid = $someString
     /// 	# REQUIRED
@@ -327,8 +325,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
     /// 	}
-    /// 	# OPTIONAL
-    /// 	isCrossAccount = $someBoolean
     /// 	# REQUIRED
     /// 	sourceClusterUuid = $someString
     /// 	# REQUIRED
@@ -509,8 +505,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
 	}
-	# OPTIONAL
-	isCrossAccount = $someBoolean
 	# REQUIRED
 	sourceClusterUuid = $someString
 	# REQUIRED
@@ -682,8 +676,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		type = $someReplicationInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationInterfaceType]) for enum values.
 	}
-	# OPTIONAL
-	isCrossAccount = $someBoolean
 	# REQUIRED
 	sourceClusterUuid = $someString
 	# REQUIRED

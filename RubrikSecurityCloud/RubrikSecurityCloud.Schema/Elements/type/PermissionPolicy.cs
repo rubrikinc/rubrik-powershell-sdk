@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CustomerManagedPolicies != null) {
             var fspec = this.CustomerManagedPolicies.AsFieldSpec(conf.Child("customerManagedPolicies"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

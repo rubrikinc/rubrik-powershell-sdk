@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FilesetSummary != null) {
             var fspec = this.FilesetSummary.AsFieldSpec(conf.Child("filesetSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FilesetUpdate != null) {
             var fspec = this.FilesetUpdate.AsFieldSpec(conf.Child("filesetUpdate"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -266,7 +266,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Snapshots != null) {
             var fspec = this.Snapshots.AsFieldSpec(conf.Child("snapshots"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ChildrenDeltas != null) {
             var fspec = this.ChildrenDeltas.AsFieldSpec(conf.Child("childrenDeltas"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.File != null) {
             var fspec = this.File.AsFieldSpec(conf.Child("file"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PreviousSnapshotQuarantineInfo != null) {
             var fspec = this.PreviousSnapshotQuarantineInfo.AsFieldSpec(conf.Child("previousSnapshotQuarantineInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SelfDeltas != null) {
             var fspec = this.SelfDeltas.AsFieldSpec(conf.Child("selfDeltas"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

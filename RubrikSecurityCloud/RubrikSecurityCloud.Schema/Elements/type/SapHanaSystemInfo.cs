@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AuthTypeSpec != null) {
             var fspec = this.AuthTypeSpec.AsFieldSpec(conf.Child("authTypeSpec"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

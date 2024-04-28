@@ -303,7 +303,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RuInfo != null) {
             var fspec = this.RuInfo.AsFieldSpec(conf.Child("ruInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -316,7 +316,7 @@ namespace RubrikSecurityCloud.Types
         if (this.UpgradeStatus != null) {
             var fspec = this.UpgradeStatus.AsFieldSpec(conf.Child("upgradeStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

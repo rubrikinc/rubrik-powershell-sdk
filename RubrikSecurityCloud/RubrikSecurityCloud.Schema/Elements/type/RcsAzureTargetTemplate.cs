@@ -115,7 +115,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ImmutabilitySettings != null) {
             var fspec = this.ImmutabilitySettings.AsFieldSpec(conf.Child("immutabilitySettings"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

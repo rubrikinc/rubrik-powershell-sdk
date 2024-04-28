@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SecurityGroups != null) {
             var fspec = this.SecurityGroups.AsFieldSpec(conf.Child("securityGroups"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Subnets != null) {
             var fspec = this.Subnets.AsFieldSpec(conf.Child("subnets"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

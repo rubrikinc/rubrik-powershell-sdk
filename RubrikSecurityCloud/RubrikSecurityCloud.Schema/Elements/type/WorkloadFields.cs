@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.O365Item != null) {
             var fspec = this.O365Item.AsFieldSpec(conf.Child("o365Item"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

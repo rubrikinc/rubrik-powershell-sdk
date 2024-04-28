@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsCloudAccount != null) {
             var fspec = this.AwsCloudAccount.AsFieldSpec(conf.Child("awsCloudAccount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FeatureDetails != null) {
             var fspec = this.FeatureDetails.AsFieldSpec(conf.Child("featureDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

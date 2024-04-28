@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NodeOrders != null) {
             var fspec = this.NodeOrders.AsFieldSpec(conf.Child("nodeOrders"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

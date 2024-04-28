@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
         [JsonProperty("slaDomain")]
-        public RscInterface<SlaDomain> SlaDomain { get; set; }
+        public RscInterfaceList<SlaDomain> SlaDomain { get; set; }
 
         //      C# -> List<System.String>? ClusterLocation
         // GraphQL -> clusterLocation: [String!] (scalar)
@@ -199,7 +199,7 @@ namespace RubrikSecurityCloud.Types
         List<UserAuditObjectTypeEnum>? UserAuditObjectType = null,
         List<UserAuditStatusEnum>? UserAuditStatus = null,
         List<UserAuditTypeEnum>? UserAuditType = null,
-        RscInterface<SlaDomain> SlaDomain = null,
+        RscInterfaceList<SlaDomain> SlaDomain = null,
         List<System.String>? ClusterLocation = null,
         DateTime? Date = null,
         System.Boolean? IsAnomaly = null,
@@ -595,7 +595,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -608,7 +608,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TimeRange != null) {
             var fspec = this.TimeRange.AsFieldSpec(conf.Child("timeRange"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -867,7 +867,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                this.SlaDomain = new RscInterface<SlaDomain>();
+                this.SlaDomain = new RscInterfaceList<SlaDomain>();
                 this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             } else {

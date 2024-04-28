@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ValidationInfo != null) {
             var fspec = this.ValidationInfo.AsFieldSpec(conf.Child("validationInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

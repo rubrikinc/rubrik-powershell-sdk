@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.IgnoreSecondaries != null) {
             var fspec = this.IgnoreSecondaries.AsFieldSpec(conf.Child("ignoreSecondaries"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MongodbHosts != null) {
             var fspec = this.MongodbHosts.AsFieldSpec(conf.Child("mongodbHosts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SslOptions != null) {
             var fspec = this.SslOptions.AsFieldSpec(conf.Child("sslOptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

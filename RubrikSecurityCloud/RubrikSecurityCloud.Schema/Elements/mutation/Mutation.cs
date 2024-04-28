@@ -266,7 +266,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<Target>();
+            var fieldSpecObj = new RscInterfaceList<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -611,6 +611,24 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return true ;
+        }
+
+        //      C# -> System.String? BulkDeleteNasShares
+        // GraphQL -> bulkDeleteNasShares: Void (scalar)
+        public static string BulkDeleteNasShares(object fsObj)
+        {
+            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            string args = "\n(\ninput: $input\n)";
+            return "bulkDeleteNasShares" + args + "\n";
+        }
+        public static object BulkDeleteNasSharesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
         }
 
         //      C# -> System.String? BulkUpdateRansomwareInvestigationStatus
@@ -2521,6 +2539,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? UpdateVlan
+        // GraphQL -> updateVlan: Void (scalar)
+        public static string UpdateVlan(object fsObj)
+        {
+            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            string args = "\n(\ninput: $input\n)";
+            return "updateVlan" + args + "\n";
+        }
+        public static object UpdateVlanFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? UpdateWhitelistedAnalyzers
         // GraphQL -> updateWhitelistedAnalyzers: String! (scalar)
         public static string UpdateWhitelistedAnalyzers(object fsObj)
@@ -3727,6 +3763,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> BulkAddNasSharesReply? BulkAddNasShares
+        // GraphQL -> bulkAddNasShares: BulkAddNasSharesReply! (type)
+        public static string BulkAddNasShares(object fsObj)
+        {
+            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            string args = "\n(\ninput: $input\n)";
+            return "bulkAddNasShares" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BulkAddNasSharesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkAddNasSharesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> BulkCreateFilesetTemplatesReply? BulkCreateFilesetTemplates
         // GraphQL -> bulkCreateFilesetTemplates: BulkCreateFilesetTemplatesReply! (type)
         public static string BulkCreateFilesetTemplates(object fsObj)
@@ -4191,6 +4245,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new BulkUpdateMssqlPropertiesOnWindowsClusterReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BulkUpdateNasSharesReply? BulkUpdateNasShares
+        // GraphQL -> bulkUpdateNasShares: BulkUpdateNasSharesReply! (type)
+        public static string BulkUpdateNasShares(object fsObj)
+        {
+            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateNasShares" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BulkUpdateNasSharesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new BulkUpdateNasSharesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

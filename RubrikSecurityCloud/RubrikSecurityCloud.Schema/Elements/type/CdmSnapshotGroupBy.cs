@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CdmSnapshotGroupByField != null) {
             var fspec = this.CdmSnapshotGroupByField.AsFieldSpec(conf.Child("cdmSnapshotGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotConnection != null) {
             var fspec = this.SnapshotConnection.AsFieldSpec(conf.Child("snapshotConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

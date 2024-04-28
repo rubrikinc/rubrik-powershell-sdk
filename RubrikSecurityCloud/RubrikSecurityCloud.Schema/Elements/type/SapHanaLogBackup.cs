@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Files != null) {
             var fspec = this.Files.AsFieldSpec(conf.Child("files"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

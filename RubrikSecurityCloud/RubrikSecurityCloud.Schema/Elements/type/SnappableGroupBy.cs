@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnappableConnection != null) {
             var fspec = this.SnappableConnection.AsFieldSpec(conf.Child("snappableConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnappableGroupByField != null) {
             var fspec = this.SnappableGroupByField.AsFieldSpec(conf.Child("snappableGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ExchangeAppCounts != null) {
             var fspec = this.ExchangeAppCounts.AsFieldSpec(conf.Child("exchangeAppCounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OnedriveAppCounts != null) {
             var fspec = this.OnedriveAppCounts.AsFieldSpec(conf.Child("onedriveAppCounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -131,7 +131,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SharepointAppCounts != null) {
             var fspec = this.SharepointAppCounts.AsFieldSpec(conf.Child("sharepointAppCounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TeamsAppCounts != null) {
             var fspec = this.TeamsAppCounts.AsFieldSpec(conf.Child("teamsAppCounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

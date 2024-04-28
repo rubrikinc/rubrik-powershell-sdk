@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
         if (this.QuarantineInfo != null) {
             var fspec = this.QuarantineInfo.AsFieldSpec(conf.Child("quarantineInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Snapshot != null) {
             var fspec = this.Snapshot.AsFieldSpec(conf.Child("snapshot"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

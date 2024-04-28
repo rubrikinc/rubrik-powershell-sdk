@@ -23,10 +23,12 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         System.String? Id { get; set; }
+
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
         [JsonProperty("parentFolderId")]
         System.String? ParentFolderId { get; set; }
+
 
         #endregion
 

@@ -537,7 +537,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DatabaseIds != null) {
             var fspec = this.DatabaseIds.AsFieldSpec(conf.Child("databaseIds"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -550,7 +550,7 @@ namespace RubrikSecurityCloud.Types
         if (this.KmsSpec != null) {
             var fspec = this.KmsSpec.AsFieldSpec(conf.Child("kmsSpec"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -563,7 +563,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ScaleRuntime != null) {
             var fspec = this.ScaleRuntime.AsFieldSpec(conf.Child("scaleRuntime"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -576,7 +576,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StorageIds != null) {
             var fspec = this.StorageIds.AsFieldSpec(conf.Child("storageIds"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Analyzers != null) {
             var fspec = this.Analyzers.AsFieldSpec(conf.Child("analyzers"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

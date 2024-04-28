@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TranslationArgs != null) {
             var fspec = this.TranslationArgs.AsFieldSpec(conf.Child("translationArgs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DataLossPrevention != null) {
             var fspec = this.DataLossPrevention.AsFieldSpec(conf.Child("dataLossPrevention"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

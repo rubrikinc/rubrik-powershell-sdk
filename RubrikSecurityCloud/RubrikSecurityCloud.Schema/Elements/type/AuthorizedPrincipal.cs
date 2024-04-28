@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EmailConfig != null) {
             var fspec = this.EmailConfig.AsFieldSpec(conf.Child("emailConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LockoutStatus != null) {
             var fspec = this.LockoutStatus.AsFieldSpec(conf.Child("lockoutStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -239,7 +239,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Roles != null) {
             var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TotpStatus != null) {
             var fspec = this.TotpStatus.AsFieldSpec(conf.Child("totpStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

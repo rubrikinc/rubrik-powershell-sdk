@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<CdmHierarchyObject>? Nodes
         // GraphQL -> nodes: [CdmHierarchyObject!]! (interface)
         [JsonProperty("nodes")]
-        public RscInterface<CdmHierarchyObject> Nodes { get; set; }
+        public RscInterfaceList<CdmHierarchyObject> Nodes { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CdmHierarchyObjectConnection Set(
-        RscInterface<CdmHierarchyObject> Nodes = null,
+        RscInterfaceList<CdmHierarchyObject> Nodes = null,
         System.Int32? Count = null,
         List<CdmHierarchyObjectEdge>? Edges = null,
         PageInfo? PageInfo = null
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new RscInterface<CdmHierarchyObject>();
+                this.Nodes = new RscInterfaceList<CdmHierarchyObject>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

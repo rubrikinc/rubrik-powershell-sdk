@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ComputeClusterSummary != null) {
             var fspec = this.ComputeClusterSummary.AsFieldSpec(conf.Child("computeClusterSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Hosts != null) {
             var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VirtualMachines != null) {
             var fspec = this.VirtualMachines.AsFieldSpec(conf.Child("virtualMachines"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

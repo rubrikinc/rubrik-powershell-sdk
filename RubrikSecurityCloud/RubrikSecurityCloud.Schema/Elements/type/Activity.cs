@@ -258,7 +258,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ActivitySeries != null) {
             var fspec = this.ActivitySeries.AsFieldSpec(conf.Child("activitySeries"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

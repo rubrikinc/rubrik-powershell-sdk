@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EffectivePermissions != null) {
             var fspec = this.EffectivePermissions.AsFieldSpec(conf.Child("effectivePermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EffectiveRbacPermissions != null) {
             var fspec = this.EffectiveRbacPermissions.AsFieldSpec(conf.Child("effectiveRbacPermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -239,7 +239,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ExplicitlyAssignedPermissions != null) {
             var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(conf.Child("explicitlyAssignedPermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -252,7 +252,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Permissions != null) {
             var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

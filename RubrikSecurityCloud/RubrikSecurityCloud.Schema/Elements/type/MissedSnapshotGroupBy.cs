@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MissedSnapshotConnection != null) {
             var fspec = this.MissedSnapshotConnection.AsFieldSpec(conf.Child("missedSnapshotConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MissedSnapshotGroupByField != null) {
             var fspec = this.MissedSnapshotGroupByField.AsFieldSpec(conf.Child("missedSnapshotGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

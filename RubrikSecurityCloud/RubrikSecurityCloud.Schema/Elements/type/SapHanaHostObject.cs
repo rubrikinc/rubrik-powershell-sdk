@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Host != null) {
             var fspec = this.Host.AsFieldSpec(conf.Child("host"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SystemHost != null) {
             var fspec = this.SystemHost.AsFieldSpec(conf.Child("systemHost"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

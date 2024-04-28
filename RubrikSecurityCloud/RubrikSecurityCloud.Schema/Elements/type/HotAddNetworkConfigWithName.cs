@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StaticIpConfig != null) {
             var fspec = this.StaticIpConfig.AsFieldSpec(conf.Child("staticIpConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

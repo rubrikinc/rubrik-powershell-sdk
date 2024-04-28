@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PhysicalLocation != null) {
             var fspec = this.PhysicalLocation.AsFieldSpec(conf.Child("physicalLocation"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -154,7 +154,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotDetails != null) {
             var fspec = this.SnapshotDetails.AsFieldSpec(conf.Child("snapshotDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

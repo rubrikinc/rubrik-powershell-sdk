@@ -375,7 +375,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CloudStorageTiers != null) {
             var fspec = this.CloudStorageTiers.AsFieldSpec(conf.Child("cloudStorageTiers"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotRetentionInfo != null) {
             var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

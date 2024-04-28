@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LeakedDetectionPolicy != null) {
             var fspec = this.LeakedDetectionPolicy.AsFieldSpec(conf.Child("leakedDetectionPolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -136,7 +136,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LengthPolicy != null) {
             var fspec = this.LengthPolicy.AsFieldSpec(conf.Child("lengthPolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LowercasePolicy != null) {
             var fspec = this.LowercasePolicy.AsFieldSpec(conf.Child("lowercasePolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NumericPolicy != null) {
             var fspec = this.NumericPolicy.AsFieldSpec(conf.Child("numericPolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -175,7 +175,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PasswordExpirationPolicy != null) {
             var fspec = this.PasswordExpirationPolicy.AsFieldSpec(conf.Child("passwordExpirationPolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PasswordReusePolicy != null) {
             var fspec = this.PasswordReusePolicy.AsFieldSpec(conf.Child("passwordReusePolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -201,7 +201,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SpecialCharsPolicy != null) {
             var fspec = this.SpecialCharsPolicy.AsFieldSpec(conf.Child("specialCharsPolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -214,7 +214,7 @@ namespace RubrikSecurityCloud.Types
         if (this.UppercasePolicy != null) {
             var fspec = this.UppercasePolicy.AsFieldSpec(conf.Child("uppercasePolicy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

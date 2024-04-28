@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Links != null) {
             var fspec = this.Links.AsFieldSpec(conf.Child("links"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlLogShippingSummaryV2 != null) {
             var fspec = this.MssqlLogShippingSummaryV2.AsFieldSpec(conf.Child("mssqlLogShippingSummaryV2"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

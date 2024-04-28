@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BasicSchedule != null) {
             var fspec = this.BasicSchedule.AsFieldSpec(conf.Child("basicSchedule"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

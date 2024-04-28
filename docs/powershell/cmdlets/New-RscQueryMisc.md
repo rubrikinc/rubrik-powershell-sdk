@@ -20,6 +20,11 @@ Retrieve the global setting for automatic deployment of the Rubrik Backup Servic
 
 - There is a single argument of type GetVmAgentDeploymentSettingInput.
 - Returns AgentDeploymentSettings.
+### agentdeploymentsettings
+Get all agent deployment settings.
+
+- There is a single argument of type list of System.Strings.
+- Returns list of AgentDeploymentSettingsInfos.
 ### allowedorgadminoperations
 Returns privileges that are allowed to be asssigned to org admin roles.
 
@@ -596,6 +601,11 @@ Link to downloadable investigation results in CSV format.
 ### ipwhitelist
 - The ipwhitelist subcommand takes no arguments.
 - Returns GetWhitelistReply.
+### isipmienabled
+Check if IPMI is enabled on the cluster.
+
+- There is a single argument of type IsIpmiEnabledInput.
+- Returns System.Boolean.
 ### isloggedintorubriksupportportal
 Is Logged into Rubrik support portal.
 
@@ -1245,3 +1255,10 @@ Specifies workloads that have an anomalous snapshot.
     - locationsFilter - list of System.Strings: Filter results by their location.
     - resolutionStatusFilter - list of ResolutionStatuss: Filter by anomaly resolution.
 - Returns WorkloadAnomalyConnection.
+### workloadforeverid
+Returns the RSC forever ID of a workload.
+
+- There are 2 arguments.
+    - clusterUuid - System.String: The Rubrik cluster ID.
+    - managedId - System.String: Workload managed ID.
+- Returns System.String.

@@ -22,11 +22,13 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<CdmHierarchyObject>? DuplicateObjects
         // GraphQL -> duplicateObjects: [CdmHierarchyObject!]! (interface)
         [JsonProperty("duplicateObjects")]
-        RscInterface<CdmHierarchyObject> DuplicateObjects { get; set; }
+        RscInterfaceList<CdmHierarchyObject> DuplicateObjects { get; set; }
+
         //      C# -> System.Int32? DuplicateObjectsAbsoluteCount
         // GraphQL -> duplicateObjectsAbsoluteCount: Int! (scalar)
         [JsonProperty("duplicateObjectsAbsoluteCount")]
         System.Int32? DuplicateObjectsAbsoluteCount { get; set; }
+
 
         #endregion
 

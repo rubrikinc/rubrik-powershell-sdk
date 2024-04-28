@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HealthCheckStatus != null) {
             var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Subnet1 != null) {
             var fspec = this.Subnet1.AsFieldSpec(conf.Child("subnet1"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -266,7 +266,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Subnet2 != null) {
             var fspec = this.Subnet2.AsFieldSpec(conf.Child("subnet2"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

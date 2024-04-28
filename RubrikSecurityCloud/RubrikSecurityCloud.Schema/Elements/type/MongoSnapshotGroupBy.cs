@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MongoSnapshotConnection != null) {
             var fspec = this.MongoSnapshotConnection.AsFieldSpec(conf.Child("mongoSnapshotConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MongoSnapshotGroupByField != null) {
             var fspec = this.MongoSnapshotGroupByField.AsFieldSpec(conf.Child("mongoSnapshotGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

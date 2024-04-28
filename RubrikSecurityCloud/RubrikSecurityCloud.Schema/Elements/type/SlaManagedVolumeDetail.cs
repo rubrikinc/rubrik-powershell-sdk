@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BackupScriptDetails != null) {
             var fspec = this.BackupScriptDetails.AsFieldSpec(conf.Child("backupScriptDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HostDetails != null) {
             var fspec = this.HostDetails.AsFieldSpec(conf.Child("hostDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LogExportSummary != null) {
             var fspec = this.LogExportSummary.AsFieldSpec(conf.Child("logExportSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -198,7 +198,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PostBackupScriptOnBackupFailureDetails != null) {
             var fspec = this.PostBackupScriptOnBackupFailureDetails.AsFieldSpec(conf.Child("postBackupScriptOnBackupFailureDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -211,7 +211,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PostBackupScriptOnBackupSuccessDetails != null) {
             var fspec = this.PostBackupScriptOnBackupSuccessDetails.AsFieldSpec(conf.Child("postBackupScriptOnBackupSuccessDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -224,7 +224,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PreBackupScriptDetails != null) {
             var fspec = this.PreBackupScriptDetails.AsFieldSpec(conf.Child("preBackupScriptDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

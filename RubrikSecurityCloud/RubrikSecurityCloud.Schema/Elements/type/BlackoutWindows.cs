@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.GlobalBlackoutWindows != null) {
             var fspec = this.GlobalBlackoutWindows.AsFieldSpec(conf.Child("globalBlackoutWindows"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnappableBlackoutWindows != null) {
             var fspec = this.SnappableBlackoutWindows.AsFieldSpec(conf.Child("snappableBlackoutWindows"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

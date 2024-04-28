@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Recurrence != null) {
             var fspec = this.Recurrence.AsFieldSpec(conf.Child("recurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

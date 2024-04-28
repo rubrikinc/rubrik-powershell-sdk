@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PdlAndWorkload != null) {
             var fspec = this.PdlAndWorkload.AsFieldSpec(conf.Child("pdlAndWorkload"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

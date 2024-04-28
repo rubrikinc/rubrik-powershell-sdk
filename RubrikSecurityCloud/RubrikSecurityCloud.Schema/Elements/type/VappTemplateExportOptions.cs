@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AvailableStoragePolicies != null) {
             var fspec = this.AvailableStoragePolicies.AsFieldSpec(conf.Child("availableStoragePolicies"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

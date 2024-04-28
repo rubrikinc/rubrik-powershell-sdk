@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Geolocation != null) {
             var fspec = this.Geolocation.AsFieldSpec(conf.Child("geolocation"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Timezone != null) {
             var fspec = this.Timezone.AsFieldSpec(conf.Child("timezone"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

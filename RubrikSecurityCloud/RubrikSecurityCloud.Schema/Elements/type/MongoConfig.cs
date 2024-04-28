@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LogFrequency != null) {
             var fspec = this.LogFrequency.AsFieldSpec(conf.Child("logFrequency"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LogRetention != null) {
             var fspec = this.LogRetention.AsFieldSpec(conf.Child("logRetention"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

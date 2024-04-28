@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HighRiskHits != null) {
             var fspec = this.HighRiskHits.AsFieldSpec(conf.Child("highRiskHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LowRiskHits != null) {
             var fspec = this.LowRiskHits.AsFieldSpec(conf.Child("lowRiskHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -104,7 +104,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MediumRiskHits != null) {
             var fspec = this.MediumRiskHits.AsFieldSpec(conf.Child("mediumRiskHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

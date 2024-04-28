@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AdvancedExportOptions != null) {
             var fspec = this.AdvancedExportOptions.AsFieldSpec(conf.Child("advancedExportOptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DefaultCatalogExportOptions != null) {
             var fspec = this.DefaultCatalogExportOptions.AsFieldSpec(conf.Child("defaultCatalogExportOptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -104,7 +104,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OriginalVdcExportOptions != null) {
             var fspec = this.OriginalVdcExportOptions.AsFieldSpec(conf.Child("originalVdcExportOptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

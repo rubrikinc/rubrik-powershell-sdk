@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<Value>? Values
         // GraphQL -> values: [Value!]! (interface)
         [JsonProperty("values")]
-        public RscInterface<Value> Values { get; set; }
+        public RscInterfaceList<Value> Values { get; set; }
 
 
         #endregion
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
 
     public MetadataV2 Set(
         MetadataKey? Key = null,
-        RscInterface<Value> Values = null
+        RscInterfaceList<Value> Values = null
     ) 
     {
         if ( Key != null ) {
@@ -116,7 +116,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Values == null) {
 
-                this.Values = new RscInterface<Value>();
+                this.Values = new RscInterfaceList<Value>();
                 this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
 
             } else {

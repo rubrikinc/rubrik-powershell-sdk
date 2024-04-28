@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DayOfWeek != null) {
             var fspec = this.DayOfWeek.AsFieldSpec(conf.Child("dayOfWeek"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

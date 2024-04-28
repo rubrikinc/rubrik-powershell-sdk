@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ClusterConnection != null) {
             var fspec = this.ClusterConnection.AsFieldSpec(conf.Child("clusterConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ClusterGroupByField != null) {
             var fspec = this.ClusterGroupByField.AsFieldSpec(conf.Child("clusterGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

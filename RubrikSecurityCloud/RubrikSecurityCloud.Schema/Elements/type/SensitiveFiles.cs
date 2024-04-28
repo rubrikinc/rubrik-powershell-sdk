@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HighRiskFileCount != null) {
             var fspec = this.HighRiskFileCount.AsFieldSpec(conf.Child("highRiskFileCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LowRiskFileCount != null) {
             var fspec = this.LowRiskFileCount.AsFieldSpec(conf.Child("lowRiskFileCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MediumRiskFileCount != null) {
             var fspec = this.MediumRiskFileCount.AsFieldSpec(conf.Child("mediumRiskFileCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TotalFileCount != null) {
             var fspec = this.TotalFileCount.AsFieldSpec(conf.Child("totalFileCount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

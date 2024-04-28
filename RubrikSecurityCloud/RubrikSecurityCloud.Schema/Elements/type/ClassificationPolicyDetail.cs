@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
         [JsonProperty("hierarchyObjects")]
-        public RscInterface<HierarchyObject> HierarchyObjects { get; set; }
+        public RscInterfaceList<HierarchyObject> HierarchyObjects { get; set; }
 
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
     public ClassificationPolicyDetail Set(
         ClassificationPolicyColor? ColorEnum = null,
         ClassificationPolicyMode? Mode = null,
-        RscInterface<HierarchyObject> HierarchyObjects = null,
+        RscInterfaceList<HierarchyObject> HierarchyObjects = null,
         System.Int64? CreatedTime = null,
         System.Boolean? Deletable = null,
         System.String? Description = null,
@@ -362,7 +362,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Analyzers != null) {
             var fspec = this.Analyzers.AsFieldSpec(conf.Child("analyzers"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -375,7 +375,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AssignmentResources != null) {
             var fspec = this.AssignmentResources.AsFieldSpec(conf.Child("assignmentResources"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -388,7 +388,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Creator != null) {
             var fspec = this.Creator.AsFieldSpec(conf.Child("creator"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -401,7 +401,7 @@ namespace RubrikSecurityCloud.Types
         if (this.HierarchyObjectConnection != null) {
             var fspec = this.HierarchyObjectConnection.AsFieldSpec(conf.Child("hierarchyObjectConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -414,7 +414,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ObjectStatuses != null) {
             var fspec = this.ObjectStatuses.AsFieldSpec(conf.Child("objectStatuses"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -427,7 +427,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Whitelists != null) {
             var fspec = this.Whitelists.AsFieldSpec(conf.Child("whitelists"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -482,7 +482,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.HierarchyObjects == null) {
 
-                this.HierarchyObjects = new RscInterface<HierarchyObject>();
+                this.HierarchyObjects = new RscInterfaceList<HierarchyObject>();
                 this.HierarchyObjects.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjects"));
 
             } else {

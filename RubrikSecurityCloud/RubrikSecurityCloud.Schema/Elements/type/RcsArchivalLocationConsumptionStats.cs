@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BlobCapacityStats != null) {
             var fspec = this.BlobCapacityStats.AsFieldSpec(conf.Child("blobCapacityStats"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EgressStats != null) {
             var fspec = this.EgressStats.AsFieldSpec(conf.Child("egressStats"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -131,7 +131,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ForecastedBlobCapacityStats != null) {
             var fspec = this.ForecastedBlobCapacityStats.AsFieldSpec(conf.Child("forecastedBlobCapacityStats"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -144,7 +144,7 @@ namespace RubrikSecurityCloud.Types
         if (this.IngressStats != null) {
             var fspec = this.IngressStats.AsFieldSpec(conf.Child("ingressStats"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

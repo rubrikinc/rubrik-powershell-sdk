@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SupportTunnel != null) {
             var fspec = this.SupportTunnel.AsFieldSpec(conf.Child("supportTunnel"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

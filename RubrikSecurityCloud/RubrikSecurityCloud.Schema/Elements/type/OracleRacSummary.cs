@@ -222,7 +222,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NodeOrder != null) {
             var fspec = this.NodeOrder.AsFieldSpec(conf.Child("nodeOrder"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -235,7 +235,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Nodes != null) {
             var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -248,7 +248,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaAssignable != null) {
             var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

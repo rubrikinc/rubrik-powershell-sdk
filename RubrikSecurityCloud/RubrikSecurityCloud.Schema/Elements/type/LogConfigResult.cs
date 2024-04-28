@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaLogFrequencyConfig != null) {
             var fspec = this.SlaLogFrequencyConfig.AsFieldSpec(conf.Child("slaLogFrequencyConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

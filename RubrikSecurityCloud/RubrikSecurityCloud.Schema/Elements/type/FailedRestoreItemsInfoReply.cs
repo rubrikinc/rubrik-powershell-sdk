@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FailedItems != null) {
             var fspec = this.FailedItems.AsFieldSpec(conf.Child("failedItems"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AbsoluteMonthlyRecurrence != null) {
             var fspec = this.AbsoluteMonthlyRecurrence.AsFieldSpec(conf.Child("absoluteMonthlyRecurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -145,7 +145,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AbsoluteYearlyRecurrence != null) {
             var fspec = this.AbsoluteYearlyRecurrence.AsFieldSpec(conf.Child("absoluteYearlyRecurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DailyRecurrence != null) {
             var fspec = this.DailyRecurrence.AsFieldSpec(conf.Child("dailyRecurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EndDateRecurrenceRange != null) {
             var fspec = this.EndDateRecurrenceRange.AsFieldSpec(conf.Child("endDateRecurrenceRange"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -184,7 +184,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NoEndRecurrenceRange != null) {
             var fspec = this.NoEndRecurrenceRange.AsFieldSpec(conf.Child("noEndRecurrenceRange"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NumberedRecurrenceRange != null) {
             var fspec = this.NumberedRecurrenceRange.AsFieldSpec(conf.Child("numberedRecurrenceRange"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -210,7 +210,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RelativeMonthlyRecurrence != null) {
             var fspec = this.RelativeMonthlyRecurrence.AsFieldSpec(conf.Child("relativeMonthlyRecurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RelativeYearlyRecurrence != null) {
             var fspec = this.RelativeYearlyRecurrence.AsFieldSpec(conf.Child("relativeYearlyRecurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -236,7 +236,7 @@ namespace RubrikSecurityCloud.Types
         if (this.WeeklyRecurrence != null) {
             var fspec = this.WeeklyRecurrence.AsFieldSpec(conf.Child("weeklyRecurrence"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

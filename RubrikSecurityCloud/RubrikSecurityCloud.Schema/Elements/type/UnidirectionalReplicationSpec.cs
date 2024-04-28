@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TargetCluster != null) {
             var fspec = this.TargetCluster.AsFieldSpec(conf.Child("targetCluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

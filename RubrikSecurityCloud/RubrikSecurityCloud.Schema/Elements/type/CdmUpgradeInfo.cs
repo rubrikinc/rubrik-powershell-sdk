@@ -438,7 +438,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AuthorizedOperations != null) {
             var fspec = this.AuthorizedOperations.AsFieldSpec(conf.Child("authorizedOperations"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -451,7 +451,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CdmClusterNodeDetails != null) {
             var fspec = this.CdmClusterNodeDetails.AsFieldSpec(conf.Child("cdmClusterNodeDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -464,7 +464,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ClusterStatus != null) {
             var fspec = this.ClusterStatus.AsFieldSpec(conf.Child("clusterStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -477,7 +477,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LastUpgradeDuration != null) {
             var fspec = this.LastUpgradeDuration.AsFieldSpec(conf.Child("lastUpgradeDuration"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -490,7 +490,7 @@ namespace RubrikSecurityCloud.Types
         if (this.UpgradeRecommendationInfo != null) {
             var fspec = this.UpgradeRecommendationInfo.AsFieldSpec(conf.Child("upgradeRecommendationInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

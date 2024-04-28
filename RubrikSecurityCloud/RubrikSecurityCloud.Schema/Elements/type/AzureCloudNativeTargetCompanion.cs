@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CmkInfo != null) {
             var fspec = this.CmkInfo.AsFieldSpec(conf.Child("cmkInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StorageAccountTags != null) {
             var fspec = this.StorageAccountTags.AsFieldSpec(conf.Child("storageAccountTags"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

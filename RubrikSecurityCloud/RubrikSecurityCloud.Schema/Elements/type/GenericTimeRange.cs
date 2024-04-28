@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AbsoluteTimeRange != null) {
             var fspec = this.AbsoluteTimeRange.AsFieldSpec(conf.Child("absoluteTimeRange"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RelativeTimeRange != null) {
             var fspec = this.RelativeTimeRange.AsFieldSpec(conf.Child("relativeTimeRange"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

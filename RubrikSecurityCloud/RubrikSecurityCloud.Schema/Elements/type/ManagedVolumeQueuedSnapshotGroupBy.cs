@@ -107,7 +107,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ManagedVolumeQueuedSnapshotConnection != null) {
             var fspec = this.ManagedVolumeQueuedSnapshotConnection.AsFieldSpec(conf.Child("managedVolumeQueuedSnapshotConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -120,7 +120,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ManagedVolumeQueuedSnapshotGroupByField != null) {
             var fspec = this.ManagedVolumeQueuedSnapshotGroupByField.AsFieldSpec(conf.Child("managedVolumeQueuedSnapshotGroupBy"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

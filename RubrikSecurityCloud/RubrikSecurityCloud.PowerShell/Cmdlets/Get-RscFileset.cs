@@ -194,7 +194,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         "Id","Name", "PhysicalChildConnection"
                             });
 
-                        nodeObj.PhysicalChildConnection.Nodes = new RscInterface<PhysicalHostPhysicalChildType>();
+                        nodeObj.PhysicalChildConnection.Nodes = new RscInterfaceList<PhysicalHostPhysicalChildType>();
 
                         string hostOsType = this.GetHostOsTypeFromHostId();
                         switch (hostOsType)
@@ -299,7 +299,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         requestFields.PhysicalChildConnection =
                             new PhysicalHostPhysicalChildTypeConnection();
                         requestFields.PhysicalChildConnection.Nodes =
-                            new RscInterface<PhysicalHostPhysicalChildType>();
+                            new RscInterfaceList<PhysicalHostPhysicalChildType>();
 
                         switch (filesetType)
                         {

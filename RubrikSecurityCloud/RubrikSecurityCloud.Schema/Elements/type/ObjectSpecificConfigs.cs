@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsNativeS3SlaConfig != null) {
             var fspec = this.AwsNativeS3SlaConfig.AsFieldSpec(conf.Child("awsNativeS3SlaConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsRdsConfig != null) {
             var fspec = this.AwsRdsConfig.AsFieldSpec(conf.Child("awsRdsConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -194,7 +194,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureBlobConfig != null) {
             var fspec = this.AzureBlobConfig.AsFieldSpec(conf.Child("azureBlobConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -207,7 +207,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureSqlDatabaseDbConfig != null) {
             var fspec = this.AzureSqlDatabaseDbConfig.AsFieldSpec(conf.Child("azureSqlDatabaseDbConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -220,7 +220,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureSqlManagedInstanceDbConfig != null) {
             var fspec = this.AzureSqlManagedInstanceDbConfig.AsFieldSpec(conf.Child("azureSqlManagedInstanceDbConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Db2Config != null) {
             var fspec = this.Db2Config.AsFieldSpec(conf.Child("db2Config"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -246,7 +246,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ManagedVolumeSlaConfig != null) {
             var fspec = this.ManagedVolumeSlaConfig.AsFieldSpec(conf.Child("managedVolumeSlaConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -259,7 +259,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MongoConfig != null) {
             var fspec = this.MongoConfig.AsFieldSpec(conf.Child("mongoConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -272,7 +272,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlConfig != null) {
             var fspec = this.MssqlConfig.AsFieldSpec(conf.Child("mssqlConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OracleConfig != null) {
             var fspec = this.OracleConfig.AsFieldSpec(conf.Child("oracleConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -298,7 +298,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PostgresDbClusterSlaConfig != null) {
             var fspec = this.PostgresDbClusterSlaConfig.AsFieldSpec(conf.Child("postgresDbClusterSlaConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -311,7 +311,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SapHanaConfig != null) {
             var fspec = this.SapHanaConfig.AsFieldSpec(conf.Child("sapHanaConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -324,7 +324,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VmwareVmConfig != null) {
             var fspec = this.VmwareVmConfig.AsFieldSpec(conf.Child("vmwareVmConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -739,7 +739,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AnalyzerGroupResults != null) {
             var fspec = this.AnalyzerGroupResults.AsFieldSpec(conf.Child("analyzerGroupResults"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -752,7 +752,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AnalyzerResults != null) {
             var fspec = this.AnalyzerResults.AsFieldSpec(conf.Child("analyzerResults"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -765,7 +765,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AnalyzerRiskHits != null) {
             var fspec = this.AnalyzerRiskHits.AsFieldSpec(conf.Child("analyzerRiskHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -778,7 +778,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FilesWithHits != null) {
             var fspec = this.FilesWithHits.AsFieldSpec(conf.Child("filesWithHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -791,7 +791,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Hits != null) {
             var fspec = this.Hits.AsFieldSpec(conf.Child("hits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -804,7 +804,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NumActivitiesBreakdown != null) {
             var fspec = this.NumActivitiesBreakdown.AsFieldSpec(conf.Child("numActivitiesBreakdown"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -817,7 +817,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OpenAccessFiles != null) {
             var fspec = this.OpenAccessFiles.AsFieldSpec(conf.Child("openAccessFiles"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -830,7 +830,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OpenAccessFilesWithHits != null) {
             var fspec = this.OpenAccessFilesWithHits.AsFieldSpec(conf.Child("openAccessFilesWithHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -843,7 +843,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OpenAccessFolders != null) {
             var fspec = this.OpenAccessFolders.AsFieldSpec(conf.Child("openAccessFolders"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -856,7 +856,7 @@ namespace RubrikSecurityCloud.Types
         if (this.OpenAccessStaleFiles != null) {
             var fspec = this.OpenAccessStaleFiles.AsFieldSpec(conf.Child("openAccessStaleFiles"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -869,7 +869,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PrincipalAccessInfo != null) {
             var fspec = this.PrincipalAccessInfo.AsFieldSpec(conf.Child("principalAccessInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -882,7 +882,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SensitiveFiles != null) {
             var fspec = this.SensitiveFiles.AsFieldSpec(conf.Child("sensitiveFiles"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -895,7 +895,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StaleFiles != null) {
             var fspec = this.StaleFiles.AsFieldSpec(conf.Child("staleFiles"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -908,7 +908,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StaleFilesWithHits != null) {
             var fspec = this.StaleFilesWithHits.AsFieldSpec(conf.Child("staleFilesWithHits"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

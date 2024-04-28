@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AwsTarget != null) {
             var fspec = this.AwsTarget.AsFieldSpec(conf.Child("awsTarget"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -163,7 +163,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureTarget != null) {
             var fspec = this.AzureTarget.AsFieldSpec(conf.Child("azureTarget"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CascadingArchivalSpecs != null) {
             var fspec = this.CascadingArchivalSpecs.AsFieldSpec(conf.Child("cascadingArchivalSpecs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -202,7 +202,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ReplicationLocalRetentionDuration != null) {
             var fspec = this.ReplicationLocalRetentionDuration.AsFieldSpec(conf.Child("replicationLocalRetentionDuration"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -215,7 +215,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RetentionDuration != null) {
             var fspec = this.RetentionDuration.AsFieldSpec(conf.Child("retentionDuration"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -228,7 +228,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TargetMapping != null) {
             var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

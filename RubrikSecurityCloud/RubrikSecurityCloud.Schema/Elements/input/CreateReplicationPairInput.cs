@@ -34,11 +34,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetNetworkInterface")]
         public NetworkInterfaceDetails? TargetNetworkInterface { get; set; }
 
-        //      C# -> System.Boolean? IsCrossAccount
-        // GraphQL -> isCrossAccount: Boolean (scalar)
-        [JsonProperty("isCrossAccount")]
-        public System.Boolean? IsCrossAccount { get; set; }
-
         //      C# -> System.String? SourceClusterUuid
         // GraphQL -> sourceClusterUuid: UUID! (scalar)
         [Required]

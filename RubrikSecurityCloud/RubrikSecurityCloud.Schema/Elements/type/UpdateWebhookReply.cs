@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TestError != null) {
             var fspec = this.TestError.AsFieldSpec(conf.Child("testError"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Webhook != null) {
             var fspec = this.Webhook.AsFieldSpec(conf.Child("webhook"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

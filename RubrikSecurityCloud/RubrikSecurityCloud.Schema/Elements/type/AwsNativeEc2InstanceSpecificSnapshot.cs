@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.Types
         if (this.DevicePathToVolumeSnapshotIdMap != null) {
             var fspec = this.DevicePathToVolumeSnapshotIdMap.AsFieldSpec(conf.Child("devicePathToVolumeSnapshotIdMap"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

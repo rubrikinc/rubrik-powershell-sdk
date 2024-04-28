@@ -93,12 +93,12 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
         [JsonProperty("charts")]
-        public RscInterface<ReportChartType> Charts { get; set; }
+        public RscInterfaceList<ReportChartType> Charts { get; set; }
 
         //      C# -> List<ReportTableType>? Tables
         // GraphQL -> tables: [ReportTableType!]! (union)
         [JsonProperty("tables")]
-        public RscInterface<ReportTableType> Tables { get; set; }
+        public RscInterfaceList<ReportTableType> Tables { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -146,8 +146,8 @@ namespace RubrikSecurityCloud.Types
         CustomReportFilters? Filters = null,
         User? Owner = null,
         ScheduledReportConnection? ScheduledReportConnection = null,
-        RscInterface<ReportChartType> Charts = null,
-        RscInterface<ReportTableType> Tables = null
+        RscInterfaceList<ReportChartType> Charts = null,
+        RscInterfaceList<ReportTableType> Tables = null
     ) 
     {
         if ( Focus != null ) {
@@ -316,7 +316,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Filters != null) {
             var fspec = this.Filters.AsFieldSpec(conf.Child("filters"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -329,7 +329,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Owner != null) {
             var fspec = this.Owner.AsFieldSpec(conf.Child("owner"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -342,7 +342,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ScheduledReportConnection != null) {
             var fspec = this.ScheduledReportConnection.AsFieldSpec(conf.Child("scheduledReportConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -633,7 +633,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Charts == null) {
 
-                this.Charts = new RscInterface<ReportChartType>();
+                this.Charts = new RscInterfaceList<ReportChartType>();
                 this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
 
             } else {
@@ -652,7 +652,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Tables == null) {
 
-                this.Tables = new RscInterface<ReportTableType>();
+                this.Tables = new RscInterfaceList<ReportTableType>();
                 this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
 
             } else {

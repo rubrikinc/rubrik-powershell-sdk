@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ClusterStorageArrays != null) {
             var fspec = this.ClusterStorageArrays.AsFieldSpec(conf.Child("clusterStorageArrays"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

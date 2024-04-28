@@ -159,7 +159,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SampleAffectedFilesInfo != null) {
             var fspec = this.SampleAffectedFilesInfo.AsFieldSpec(conf.Child("sampleAffectedFilesInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SampleRansomwareNoteFilesInfo != null) {
             var fspec = this.SampleRansomwareNoteFilesInfo.AsFieldSpec(conf.Child("sampleRansomwareNoteFilesInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PvcList != null) {
             var fspec = this.PvcList.AsFieldSpec(conf.Child("pvcList"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

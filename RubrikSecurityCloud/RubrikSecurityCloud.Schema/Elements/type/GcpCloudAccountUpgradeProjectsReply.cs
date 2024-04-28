@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.GcpProjectUpgradeStatuses != null) {
             var fspec = this.GcpProjectUpgradeStatuses.AsFieldSpec(conf.Child("gcpProjectUpgradeStatuses"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

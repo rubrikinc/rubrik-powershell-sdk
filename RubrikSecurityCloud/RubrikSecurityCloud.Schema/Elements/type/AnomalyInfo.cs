@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StrainAnalysisInfo != null) {
             var fspec = this.StrainAnalysisInfo.AsFieldSpec(conf.Child("strainAnalysisInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

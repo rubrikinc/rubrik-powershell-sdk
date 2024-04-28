@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 37
+    /// Create a new RscQuery object for any of the 38
     /// operations in the 'Office 365' API domain:
-    /// AdGroups, BrowseTeamConvChannels, Calendar, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
     /// </summary>
     /// <description>
     /// New-RscQueryO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 37 operations
+    /// There are 38 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -169,6 +169,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: O365Calendar
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Consumption operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: Consumption
+    /// 
+    /// $query = New-RscQueryO365 -Consumption
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	mspOrgId = $someString
+    /// 	# OPTIONAL
+    /// 	o365OrgId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: O365Consumption
     /// 
     /// 
     /// 
@@ -1797,6 +1830,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AdGroups",
                 "BrowseTeamConvChannels",
                 "Calendar",
+                "Consumption",
                 "Groups",
                 "License",
                 "ListApps",
@@ -1854,6 +1888,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Calendar":
                         this.ProcessRecord_Calendar();
+                        break;
+                    case "Consumption":
+                        this.ProcessRecord_Consumption();
                         break;
                     case "Groups":
                         this.ProcessRecord_Groups();
@@ -1992,6 +2029,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Calendar";
             // Create new graphql operation o365Calendar
             InitQueryO365Calendar();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // o365Consumption.
+        internal void ProcessRecord_Consumption()
+        {
+            this._logger.name += " -Consumption";
+            // Create new graphql operation o365Consumption
+            InitQueryO365Consumption();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2391,6 +2437,31 @@ $query.Var.nameFilter = $someString"
                 Query.O365CalendarFieldSpec,
                 @"# REQUIRED
 $query.Var.snappableFid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // o365Consumption(input: O365ConsumptionInput!): O365Consumption!
+        internal void InitQueryO365Consumption()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "O365ConsumptionInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryO365Consumption",
+                "($input: O365ConsumptionInput!)",
+                "O365Consumption",
+                Query.O365Consumption,
+                Query.O365ConsumptionFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	mspOrgId = $someString
+	# OPTIONAL
+	o365OrgId = $someString
+}"
             );
         }
 

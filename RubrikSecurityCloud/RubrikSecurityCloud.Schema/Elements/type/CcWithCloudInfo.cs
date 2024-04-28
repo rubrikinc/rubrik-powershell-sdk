@@ -240,7 +240,7 @@ namespace RubrikSecurityCloud.Types
         if (this.StorageConfig != null) {
             var fspec = this.StorageConfig.AsFieldSpec(conf.Child("storageConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

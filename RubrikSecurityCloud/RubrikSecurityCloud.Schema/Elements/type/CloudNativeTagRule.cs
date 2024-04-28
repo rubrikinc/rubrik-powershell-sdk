@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CloudNativeAccounts != null) {
             var fspec = this.CloudNativeAccounts.AsFieldSpec(conf.Child("cloudNativeAccounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
         if (this.EffectiveSla != null) {
             var fspec = this.EffectiveSla.AsFieldSpec(conf.Child("effectiveSla"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -194,7 +194,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Tag != null) {
             var fspec = this.Tag.AsFieldSpec(conf.Child("tag"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

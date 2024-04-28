@@ -294,7 +294,7 @@ namespace RubrikSecurityCloud.Types
         if (this.LastFailedErrorInfo != null) {
             var fspec = this.LastFailedErrorInfo.AsFieldSpec(conf.Child("lastFailedErrorInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -307,7 +307,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SubscriptionSeverity != null) {
             var fspec = this.SubscriptionSeverity.AsFieldSpec(conf.Child("subscriptionSeverity"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -320,7 +320,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SubscriptionType != null) {
             var fspec = this.SubscriptionType.AsFieldSpec(conf.Child("subscriptionType"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

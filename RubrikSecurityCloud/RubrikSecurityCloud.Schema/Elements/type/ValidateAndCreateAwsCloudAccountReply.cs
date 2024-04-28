@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.InitiateResponse != null) {
             var fspec = this.InitiateResponse.AsFieldSpec(conf.Child("initiateResponse"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ValidateResponse != null) {
             var fspec = this.ValidateResponse.AsFieldSpec(conf.Child("validateResponse"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

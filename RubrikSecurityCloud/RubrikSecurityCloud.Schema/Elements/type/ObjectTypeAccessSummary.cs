@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PolicySummaryDetails != null) {
             var fspec = this.PolicySummaryDetails.AsFieldSpec(conf.Child("policySummaryDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

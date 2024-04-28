@@ -110,7 +110,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NfAnomalyResultGroupedDataField != null) {
             var fspec = this.NfAnomalyResultGroupedDataField.AsFieldSpec(conf.Child("nfAnomalyResultGroupedData"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NfAnomalyResults != null) {
             var fspec = this.NfAnomalyResults.AsFieldSpec(conf.Child("nfAnomalyResults"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

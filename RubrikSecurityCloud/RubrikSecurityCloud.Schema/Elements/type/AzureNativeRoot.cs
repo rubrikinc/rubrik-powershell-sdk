@@ -84,7 +84,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ObjectTypeDescendantConnection != null) {
             var fspec = this.ObjectTypeDescendantConnection.AsFieldSpec(conf.Child("objectTypeDescendantConnection"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

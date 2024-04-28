@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<HypervTopLevelDescendantType>? Nodes
         // GraphQL -> nodes: [HypervTopLevelDescendantType!]! (interface)
         [JsonProperty("nodes")]
-        public RscInterface<HypervTopLevelDescendantType> Nodes { get; set; }
+        public RscInterfaceList<HypervTopLevelDescendantType> Nodes { get; set; }
 
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -50,7 +50,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervTopLevelDescendantTypeConnection Set(
-        RscInterface<HypervTopLevelDescendantType> Nodes = null,
+        RscInterfaceList<HypervTopLevelDescendantType> Nodes = null,
         System.Int32? Count = null,
         List<HypervTopLevelDescendantTypeEdge>? Edges = null,
         PageInfo? PageInfo = null
@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Edges != null) {
             var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.PageInfo != null) {
             var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Nodes == null) {
 
-                this.Nodes = new RscInterface<HypervTopLevelDescendantType>();
+                this.Nodes = new RscInterfaceList<HypervTopLevelDescendantType>();
                 this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
 
             } else {

@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Retention != null) {
             var fspec = this.Retention.AsFieldSpec(conf.Child("retention"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

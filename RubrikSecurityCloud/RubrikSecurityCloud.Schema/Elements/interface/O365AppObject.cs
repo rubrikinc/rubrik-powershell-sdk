@@ -23,38 +23,47 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
         [JsonProperty("appAuthStatus")]
         AppAuthStatus? AppAuthStatus { get; set; }
+
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)
         [JsonProperty("addedAt")]
         DateTime? AddedAt { get; set; }
+
         //      C# -> System.Int32? AppAuthVersion
         // GraphQL -> appAuthVersion: Int! (scalar)
         [JsonProperty("appAuthVersion")]
         System.Int32? AppAuthVersion { get; set; }
+
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         [JsonProperty("appId")]
         System.String? AppId { get; set; }
+
         //      C# -> System.String? AppOwner
         // GraphQL -> appOwner: String! (scalar)
         [JsonProperty("appOwner")]
         System.String? AppOwner { get; set; }
+
         //      C# -> System.String? AppType
         // GraphQL -> appType: String! (scalar)
         [JsonProperty("appType")]
         System.String? AppType { get; set; }
+
         //      C# -> System.Boolean? IsAuthenticated
         // GraphQL -> isAuthenticated: Boolean! (scalar)
         [JsonProperty("isAuthenticated")]
         System.Boolean? IsAuthenticated { get; set; }
+
         //      C# -> System.String? Subscription
         // GraphQL -> subscription: String! (scalar)
         [JsonProperty("subscription")]
         System.String? Subscription { get; set; }
+
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         [JsonProperty("subscriptionId")]
         System.String? SubscriptionId { get; set; }
+
 
         #endregion
 

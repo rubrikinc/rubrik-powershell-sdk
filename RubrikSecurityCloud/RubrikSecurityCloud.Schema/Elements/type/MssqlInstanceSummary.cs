@@ -645,7 +645,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlNonSlaProperties != null) {
             var fspec = this.MssqlNonSlaProperties.AsFieldSpec(conf.Child("mssqlNonSlaProperties"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -658,7 +658,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlSlaRelatedProperties != null) {
             var fspec = this.MssqlSlaRelatedProperties.AsFieldSpec(conf.Child("mssqlSlaRelatedProperties"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -671,7 +671,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RootProperties != null) {
             var fspec = this.RootProperties.AsFieldSpec(conf.Child("rootProperties"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -684,7 +684,7 @@ namespace RubrikSecurityCloud.Types
         if (this.UnprotectableReasonsV50 != null) {
             var fspec = this.UnprotectableReasonsV50.AsFieldSpec(conf.Child("unprotectableReasonsV50"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

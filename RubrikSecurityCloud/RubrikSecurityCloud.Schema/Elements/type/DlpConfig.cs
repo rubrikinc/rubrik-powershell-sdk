@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.GenericNas != null) {
             var fspec = this.GenericNas.AsFieldSpec(conf.Child("genericNas"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -163,7 +163,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Status != null) {
             var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.Types
         if (this.VmwareVm != null) {
             var fspec = this.VmwareVm.AsFieldSpec(conf.Child("vmwareVm"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

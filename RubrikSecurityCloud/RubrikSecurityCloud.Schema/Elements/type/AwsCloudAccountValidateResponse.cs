@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.InvalidAwsAccounts != null) {
             var fspec = this.InvalidAwsAccounts.AsFieldSpec(conf.Child("invalidAwsAccounts"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.InvalidAwsAdminAccount != null) {
             var fspec = this.InvalidAwsAdminAccount.AsFieldSpec(conf.Child("invalidAwsAdminAccount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

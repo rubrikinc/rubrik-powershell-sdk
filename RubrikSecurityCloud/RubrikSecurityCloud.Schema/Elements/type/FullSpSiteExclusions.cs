@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ExcludedObjects != null) {
             var fspec = this.ExcludedObjects.AsFieldSpec(conf.Child("excludedObjects"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

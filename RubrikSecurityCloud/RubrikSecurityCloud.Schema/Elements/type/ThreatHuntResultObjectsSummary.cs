@@ -217,7 +217,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MatchTypes != null) {
             var fspec = this.MatchTypes.AsFieldSpec(conf.Child("matchTypes"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -230,7 +230,7 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotsStats != null) {
             var fspec = this.SnapshotsStats.AsFieldSpec(conf.Child("snapshotsStats"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

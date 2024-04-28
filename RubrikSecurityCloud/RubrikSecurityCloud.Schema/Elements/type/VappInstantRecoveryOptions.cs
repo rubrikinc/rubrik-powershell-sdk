@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AvailableVappNetworks != null) {
             var fspec = this.AvailableVappNetworks.AsFieldSpec(conf.Child("availableVappNetworks"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RestorableVms != null) {
             var fspec = this.RestorableVms.AsFieldSpec(conf.Child("restorableVms"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FilesetTemplateCreate != null) {
             var fspec = this.FilesetTemplateCreate.AsFieldSpec(conf.Child("filesetTemplateCreate"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

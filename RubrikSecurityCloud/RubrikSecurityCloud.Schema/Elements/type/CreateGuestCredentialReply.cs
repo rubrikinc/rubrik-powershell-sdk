@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BaseGuestCredentialDetail != null) {
             var fspec = this.BaseGuestCredentialDetail.AsFieldSpec(conf.Child("baseGuestCredentialDetail"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

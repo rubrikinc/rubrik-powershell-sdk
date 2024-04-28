@@ -294,7 +294,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FilesetOptions != null) {
             var fspec = this.FilesetOptions.AsFieldSpec(conf.Child("filesetOptions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

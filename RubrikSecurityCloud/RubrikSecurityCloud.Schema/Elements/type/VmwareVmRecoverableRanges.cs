@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RecoverableRanges != null) {
             var fspec = this.RecoverableRanges.AsFieldSpec(conf.Child("recoverableRanges"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

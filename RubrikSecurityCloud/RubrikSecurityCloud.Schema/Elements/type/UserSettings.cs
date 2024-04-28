@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Settings != null) {
             var fspec = this.Settings.AsFieldSpec(conf.Child("settings"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
         if (this.O365ReplyFields != null) {
             var fspec = this.O365ReplyFields.AsFieldSpec(conf.Child("o365ReplyFields"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

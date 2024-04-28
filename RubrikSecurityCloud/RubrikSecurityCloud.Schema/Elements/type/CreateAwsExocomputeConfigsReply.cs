@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]! (interface)
         [JsonProperty("exocomputeConfigs")]
-        public RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs { get; set; }
+        public RscInterfaceList<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs { get; set; }
 
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CreateAwsExocomputeConfigsReply Set(
-        RscInterface<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs = null,
+        RscInterfaceList<AwsExocomputeGetConfigurationResponse> ExocomputeConfigs = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null
     ) 
     {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Configs != null) {
             var fspec = this.Configs.AsFieldSpec(conf.Child("configs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -103,7 +103,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ExocomputeConfigs == null) {
 
-                this.ExocomputeConfigs = new RscInterface<AwsExocomputeGetConfigurationResponse>();
+                this.ExocomputeConfigs = new RscInterfaceList<AwsExocomputeGetConfigurationResponse>();
                 this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
 
             } else {

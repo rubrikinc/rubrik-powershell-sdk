@@ -114,7 +114,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Daily != null) {
             var fspec = this.Daily.AsFieldSpec(conf.Child("daily"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Hourly != null) {
             var fspec = this.Hourly.AsFieldSpec(conf.Child("hourly"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -140,7 +140,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Minute != null) {
             var fspec = this.Minute.AsFieldSpec(conf.Child("minute"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Monthly != null) {
             var fspec = this.Monthly.AsFieldSpec(conf.Child("monthly"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -166,7 +166,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Quarterly != null) {
             var fspec = this.Quarterly.AsFieldSpec(conf.Child("quarterly"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -179,7 +179,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Weekly != null) {
             var fspec = this.Weekly.AsFieldSpec(conf.Child("weekly"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -192,7 +192,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Yearly != null) {
             var fspec = this.Yearly.AsFieldSpec(conf.Child("yearly"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

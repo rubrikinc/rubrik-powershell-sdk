@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AllSnapshotGroupBys != null) {
             var fspec = this.AllSnapshotGroupBys.AsFieldSpec(conf.Child("allSnapshotGroupBys"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Snapshots != null) {
             var fspec = this.Snapshots.AsFieldSpec(conf.Child("snapshots"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

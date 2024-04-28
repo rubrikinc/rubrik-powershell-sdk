@@ -177,7 +177,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ArchivalProxyConfig != null) {
             var fspec = this.ArchivalProxyConfig.AsFieldSpec(conf.Child("archivalProxyConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -190,7 +190,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ComputeProxyConfig != null) {
             var fspec = this.ComputeProxyConfig.AsFieldSpec(conf.Child("computeProxyConfig"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

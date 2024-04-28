@@ -141,7 +141,7 @@ namespace RubrikSecurityCloud.Types
         if (this.RequestedHashDetails != null) {
             var fspec = this.RequestedHashDetails.AsFieldSpec(conf.Child("requestedHashDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -154,7 +154,7 @@ namespace RubrikSecurityCloud.Types
         if (this.YaraMatchDetails != null) {
             var fspec = this.YaraMatchDetails.AsFieldSpec(conf.Child("yaraMatchDetails"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

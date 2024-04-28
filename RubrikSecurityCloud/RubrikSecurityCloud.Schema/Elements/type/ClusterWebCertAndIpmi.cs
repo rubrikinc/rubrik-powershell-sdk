@@ -105,7 +105,7 @@ namespace RubrikSecurityCloud.Types
         if (this.CertInfo != null) {
             var fspec = this.CertInfo.AsFieldSpec(conf.Child("certInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -118,7 +118,7 @@ namespace RubrikSecurityCloud.Types
         if (this.IpmiInfo != null) {
             var fspec = this.IpmiInfo.AsFieldSpec(conf.Child("ipmiInfo"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

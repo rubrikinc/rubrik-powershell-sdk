@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FailoverClusterSummary != null) {
             var fspec = this.FailoverClusterSummary.AsFieldSpec(conf.Child("failoverClusterSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

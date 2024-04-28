@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Taskchain != null) {
             var fspec = this.Taskchain.AsFieldSpec(conf.Child("taskchain"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

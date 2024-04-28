@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.Types
         if (this.GcpRegion != null) {
             var fspec = this.GcpRegion.AsFieldSpec(conf.Child("gcpRegion"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

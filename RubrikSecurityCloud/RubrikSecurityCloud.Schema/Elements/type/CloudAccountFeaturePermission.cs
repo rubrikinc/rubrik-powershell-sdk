@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.FeaturePermissions != null) {
             var fspec = this.FeaturePermissions.AsFieldSpec(conf.Child("featurePermissions"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

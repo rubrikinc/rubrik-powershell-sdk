@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         if (this.TrapReceiverConfigs != null) {
             var fspec = this.TrapReceiverConfigs.AsFieldSpec(conf.Child("trapReceiverConfigs"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

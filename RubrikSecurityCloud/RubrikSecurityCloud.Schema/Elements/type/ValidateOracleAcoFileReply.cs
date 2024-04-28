@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AcoMap != null) {
             var fspec = this.AcoMap.AsFieldSpec(conf.Child("acoMap"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -100,7 +100,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AcoValueValidationErrors != null) {
             var fspec = this.AcoValueValidationErrors.AsFieldSpec(conf.Child("acoValueValidationErrors"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

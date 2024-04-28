@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.NetworkInterfaces != null) {
             var fspec = this.NetworkInterfaces.AsFieldSpec(conf.Child("networkInterfaces"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

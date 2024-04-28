@@ -43,7 +43,7 @@ namespace RubrikSecurityCloud.Types
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
         [JsonProperty("targets")]
-        public RscInterface<Target> Targets { get; set; }
+        public RscInterfaceList<Target> Targets { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -74,7 +74,7 @@ namespace RubrikSecurityCloud.Types
         TargetType? TargetType = null,
         List<ArchivalGroupTieringStatus>? TieringStatus = null,
         RscInterface<TargetTemplate> TargetTemplate = null,
-        RscInterface<Target> Targets = null,
+        RscInterfaceList<Target> Targets = null,
         System.String? Id = null,
         System.String? Name = null,
         ArchivalGroupConnectionStatus? ConnectionStatus = null
@@ -194,7 +194,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ConnectionStatus != null) {
             var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -285,7 +285,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Targets == null) {
 
-                this.Targets = new RscInterface<Target>();
+                this.Targets = new RscInterfaceList<Target>();
                 this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
 
             } else {

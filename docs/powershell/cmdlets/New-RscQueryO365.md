@@ -25,6 +25,11 @@ Details of the Exchange calendar pertaining to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365Calendar.
+### consumption
+Display license consumption for M365 workloads.
+
+- There is a single argument of type O365ConsumptionInput.
+- Returns O365Consumption.
 ### groups
 List of O365 Groups in the O365Org.
 

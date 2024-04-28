@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ArchiveEntitlement != null) {
             var fspec = this.ArchiveEntitlement.AsFieldSpec(conf.Child("archiveEntitlement"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
         if (this.BackupEntitlement != null) {
             var fspec = this.BackupEntitlement.AsFieldSpec(conf.Child("backupEntitlement"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -104,7 +104,7 @@ namespace RubrikSecurityCloud.Types
         if (this.Entitlements != null) {
             var fspec = this.Entitlements.AsFieldSpec(conf.Child("entitlements"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

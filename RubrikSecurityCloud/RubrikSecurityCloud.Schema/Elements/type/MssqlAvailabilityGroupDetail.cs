@@ -60,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         if (this.MssqlAvailabilityGroupSummary != null) {
             var fspec = this.MssqlAvailabilityGroupSummary.AsFieldSpec(conf.Child("mssqlAvailabilityGroupSummary"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

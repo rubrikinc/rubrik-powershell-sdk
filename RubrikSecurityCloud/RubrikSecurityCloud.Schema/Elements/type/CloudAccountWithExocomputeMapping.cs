@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ApplicationAccount != null) {
             var fspec = this.ApplicationAccount.AsFieldSpec(conf.Child("applicationAccount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.ExocomputeAccount != null) {
             var fspec = this.ExocomputeAccount.AsFieldSpec(conf.Child("exocomputeAccount"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {

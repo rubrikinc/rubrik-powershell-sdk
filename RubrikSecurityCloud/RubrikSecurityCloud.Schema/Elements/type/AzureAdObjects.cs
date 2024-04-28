@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureAdGroup != null) {
             var fspec = this.AzureAdGroup.AsFieldSpec(conf.Child("azureAdGroup"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
@@ -82,7 +82,7 @@ namespace RubrikSecurityCloud.Types
         if (this.AzureAdUser != null) {
             var fspec = this.AzureAdUser.AsFieldSpec(conf.Child("azureAdUser"));
             string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
-            if(trimmedFspec.Length > 0 ) {
+            if(trimmedFspec.Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
