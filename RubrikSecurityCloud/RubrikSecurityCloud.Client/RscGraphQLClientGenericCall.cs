@@ -8,6 +8,7 @@ using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.Client;
 using RubrikSecurityCloud.Client.Models;
 using System.Reflection;
@@ -237,24 +238,20 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 queryName += queryStr[i];
             }
             queryName = queryName.Trim();
-            // converting to pascal case
+
+            // queryName at this point is the GraphQL root field name
+            string gqlReplyTypeStr = StringUtils.GqlTypeToType(
+                SchemaMeta.ReturnTypeLookupByGqlRootField(queryName),
+                convertListToScalar: false);
+            
+            // Convert GraphQL field name to .NET field name
             queryName = StringUtils.StrictPascalCase(queryName);
 
-            string gqlReplyTypeStr="";
-            MethodInfo methodInfo = queryType.GetMethod(queryName+ "_TypedFieldSpec");
-            if ( methodInfo != null )
+            if ( string.IsNullOrEmpty(gqlReplyTypeStr) )
             {
-                ParameterInfo gqlReplyType = methodInfo.GetParameters()[0];
-                gqlReplyTypeStr = gqlReplyType.ParameterType.ToString();
-            } else {
-                logger?.Debug("Root field " + queryName + " not found in " + queryType.ToString() + ". Will not cast server response to a specific type.");
+                logger?.Warning("Root field " + queryName + " not found in " + queryType.ToString() + ". Will not cast server response to a specific type.");
             }
 
-            // removing the & at the end of the type
-            if (gqlReplyTypeStr.EndsWith("&")|| gqlReplyTypeStr.EndsWith("?"))
-            {
-                gqlReplyTypeStr = gqlReplyTypeStr.Remove(gqlReplyTypeStr.Length - 1);
-            }
             if (!gqlReplyTypeStr.StartsWith("System"))
             {
                 gqlReplyTypeStr = gqlReplyTypeStr.Split('.').Last();

@@ -201,13 +201,24 @@ namespace RubrikSecurityCloud
             return result.ToString();
         }
 
-        public static string GqlTypeToType(string gqlType)
+        public static string GqlTypeToType(string gqlType, bool convertListToScalar = true)
         {
             if (string.IsNullOrEmpty(gqlType))
             {
                 return "";
             }
-            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "");
+            var t = gqlType.Replace("!", "");
+            if (convertListToScalar)
+            {
+                t.Replace("[", "").Replace("]", "");
+            }
+            else
+            {
+                if (t.StartsWith("["))
+                {
+                    t = "List<" + t.Substring(1, t.Length - 2) + ">";
+                }
+            }
             return t;
         }
 
