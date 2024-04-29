@@ -1,12 +1,10 @@
 # Changelog
 
-## ~ Upcoming Version ~
-
-New Features:
+## Version 1.2
 
 Fixes:
-
-Breaking Changes:
+- Get-RscSnapshot - Fixed permissions issue.
+- New-RscMutationVsphere -Operation CreateAdvancedTag - Select fields by default.
 
 ## Version 1.1
 
