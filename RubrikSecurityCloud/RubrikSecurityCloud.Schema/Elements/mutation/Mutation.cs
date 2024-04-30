@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAwsAccount: CloudAccount! (interface)
         public static string CreateAwsAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAwsAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAwsReaderTarget: Target! (interface)
         public static string CreateAwsReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAwsReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -59,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAwsTarget: Target! (interface)
         public static string CreateAwsTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAwsTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -77,7 +77,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAzureAccount: CloudAccount! (interface)
         public static string CreateAzureAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAzureAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -95,7 +95,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAzureReaderTarget: Target! (interface)
         public static string CreateAzureReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAzureReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAzureTarget: Target! (interface)
         public static string CreateAzureTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAzureTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -131,7 +131,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createGcpReaderTarget: Target! (interface)
         public static string CreateGcpReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createGcpReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createGcpTarget: Target! (interface)
         public static string CreateGcpTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createGcpTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createGlacierReaderTarget: Target! (interface)
         public static string CreateGlacierReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createGlacierReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createNfsReaderTarget: Target! (interface)
         public static string CreateNfsReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createNfsReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -203,7 +203,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createNfsTarget: Target! (interface)
         public static string CreateNfsTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createNfsTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -221,7 +221,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createRcsReaderTarget: Target! (interface)
         public static string CreateRcsReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createRcsReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -239,7 +239,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createRcsTarget: Target! (interface)
         public static string CreateRcsTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createRcsTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -257,7 +257,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createRcvLocationsFromTemplate: [Target!]! (interface)
         public static string CreateRcvLocationsFromTemplate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createRcvLocationsFromTemplate" + args + "\n{\n" + fs + "}\n";
         }
@@ -275,7 +275,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createS3CompatibleReaderTarget: Target! (interface)
         public static string CreateS3CompatibleReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createS3CompatibleReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createS3CompatibleTarget: Target! (interface)
         public static string CreateS3CompatibleTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createS3CompatibleTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -311,7 +311,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createTapeReaderTarget: Target! (interface)
         public static string CreateTapeReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createTapeReaderTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -329,7 +329,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createTapeTarget: Target! (interface)
         public static string CreateTapeTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createTapeTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -347,7 +347,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAwsAccount: CloudAccount! (interface)
         public static string UpdateAwsAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAwsAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -365,7 +365,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAwsTarget: Target! (interface)
         public static string UpdateAwsTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAwsTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -383,7 +383,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAzureAccount: CloudAccount! (interface)
         public static string UpdateAzureAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAzureAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -401,7 +401,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAzureTarget: Target! (interface)
         public static string UpdateAzureTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAzureTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -419,7 +419,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateGcpTarget: Target! (interface)
         public static string UpdateGcpTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateGcpTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -437,7 +437,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateGlacierTarget: Target! (interface)
         public static string UpdateGlacierTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateGlacierTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -455,7 +455,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNfsTarget: Target! (interface)
         public static string UpdateNfsTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNfsTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -473,7 +473,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateRcvTarget: Target! (interface)
         public static string UpdateRcvTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateRcvTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -491,7 +491,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateS3CompatibleTarget: Target! (interface)
         public static string UpdateS3CompatibleTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateS3CompatibleTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -509,7 +509,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateTapeTarget: Target! (interface)
         public static string UpdateTapeTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateTapeTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -527,7 +527,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addInventoryWorkloads: Boolean! (scalar)
         public static string AddInventoryWorkloads(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addInventoryWorkloads" + args + "\n";
         }
@@ -545,7 +545,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addPolicyObjects: String! (scalar)
         public static string AddPolicyObjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\npolicyIds: $policyIds\nobjectIds: $objectIds\nobjectRootIds: $objectRootIds\nclusterIds: $clusterIds\n)";
             return "addPolicyObjects" + args + "\n";
         }
@@ -563,7 +563,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addRoleAssignments: Boolean! (scalar)
         public static string AddRoleAssignments(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nuserIds: $userIds\ngroupIds: $groupIds\nroleIds: $roleIds\n)";
             return "addRoleAssignments" + args + "\n";
         }
@@ -581,7 +581,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archiveCrawl: String! (scalar)
         public static string ArchiveCrawl(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ncrawlId: $crawlId\n)";
             return "archiveCrawl" + args + "\n";
         }
@@ -599,7 +599,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchDeassignRoleFromUserGroups: Boolean! (scalar)
         public static string BatchDeassignRoleFromUserGroups(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nuserGroupToRoles: $userGroupToRoles\n)";
             return "batchDeassignRoleFromUserGroups" + args + "\n";
         }
@@ -617,7 +617,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteNasShares: Void (scalar)
         public static string BulkDeleteNasShares(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteNasShares" + args + "\n";
         }
@@ -635,7 +635,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateRansomwareInvestigationStatus: Void (scalar)
         public static string BulkUpdateRansomwareInvestigationStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateRansomwareInvestigationStatus" + args + "\n";
         }
@@ -653,7 +653,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cancelActivitySeries: Boolean! (scalar)
         public static string CancelActivitySeries(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "cancelActivitySeries" + args + "\n";
         }
@@ -671,7 +671,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cancelThreatHunt: Void (scalar)
         public static string CancelThreatHunt(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "cancelThreatHunt" + args + "\n";
         }
@@ -689,7 +689,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> changePassword: Boolean! (scalar)
         public static string ChangePassword(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "changePassword" + args + "\n";
         }
@@ -707,7 +707,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> completeAzureAdAppUpdate: Void (scalar)
         public static string CompleteAzureAdAppUpdate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "completeAzureAdAppUpdate" + args + "\n";
         }
@@ -725,7 +725,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCrossAccountPair: Void (scalar)
         public static string CreateCrossAccountPair(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCrossAccountPair" + args + "\n";
         }
@@ -743,7 +743,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createEventDigestBatch: Void (scalar)
         public static string CreateEventDigestBatch(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createEventDigestBatch" + args + "\n";
         }
@@ -761,7 +761,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createReplicationPair: Void (scalar)
         public static string CreateReplicationPair(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createReplicationPair" + args + "\n";
         }
@@ -779,7 +779,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createRole: UUID! (scalar)
         public static string CreateRole(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nname: $name\ndescription: $description\npermissions: $permissions\n)";
             return "createRole" + args + "\n";
         }
@@ -797,7 +797,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createUser: String! (scalar)
         public static string CreateUser(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nemail: $email\nroleIds: $roleIds\n)";
             return "createUser" + args + "\n";
         }
@@ -815,7 +815,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createUserWithPassword: String! (scalar)
         public static string CreateUserWithPassword(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createUserWithPassword" + args + "\n";
         }
@@ -833,7 +833,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deactivateCustomAnalyzer: String! (scalar)
         public static string DeactivateCustomAnalyzer(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nanalyzerId: $analyzerId\n)";
             return "deactivateCustomAnalyzer" + args + "\n";
         }
@@ -851,7 +851,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deactivatePolicy: [String!]! (scalar)
         public static string DeactivatePolicy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\npolicyId: $policyId\nrunAsync: $runAsync\n)";
             return "deactivatePolicy" + args + "\n";
         }
@@ -869,7 +869,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAllOracleDatabaseSnapshots: Void (scalar)
         public static string DeleteAllOracleDatabaseSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAllOracleDatabaseSnapshots" + args + "\n";
         }
@@ -887,7 +887,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAwsComputeSetting: Void (scalar)
         public static string DeleteAwsComputeSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAwsComputeSetting" + args + "\n";
         }
@@ -905,7 +905,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCertificate: Boolean! (scalar)
         public static string DeleteCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ncertificateId: $certificateId\n)";
             return "deleteCertificate" + args + "\n";
         }
@@ -923,7 +923,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCloudNativeLabelRule: Void (scalar)
         public static string DeleteCloudNativeLabelRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCloudNativeLabelRule" + args + "\n";
         }
@@ -941,7 +941,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCloudNativeTagRule: Void (scalar)
         public static string DeleteCloudNativeTagRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCloudNativeTagRule" + args + "\n";
         }
@@ -959,7 +959,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCloudWorkloadSnapshot: Boolean! (scalar)
         public static string DeleteCloudWorkloadSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCloudWorkloadSnapshot" + args + "\n";
         }
@@ -977,7 +977,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCrossAccountPair: Void (scalar)
         public static string DeleteCrossAccountPair(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCrossAccountPair" + args + "\n";
         }
@@ -995,7 +995,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCsr: Void (scalar)
         public static string DeleteCsr(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCsr" + args + "\n";
         }
@@ -1013,7 +1013,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCustomReport: Void (scalar)
         public static string DeleteCustomReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCustomReport" + args + "\n";
         }
@@ -1031,7 +1031,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteDistributionListDigestBatch: Void (scalar)
         public static string DeleteDistributionListDigestBatch(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteDistributionListDigestBatch" + args + "\n";
         }
@@ -1049,7 +1049,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteEventDigest: Void (scalar)
         public static string DeleteEventDigest(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteEventDigest" + args + "\n";
         }
@@ -1067,7 +1067,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteGuestCredentialById: Boolean! (scalar)
         public static string DeleteGuestCredentialById(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteGuestCredentialById" + args + "\n";
         }
@@ -1085,7 +1085,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteIntegration: Void (scalar)
         public static string DeleteIntegration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteIntegration" + args + "\n";
         }
@@ -1103,7 +1103,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteIntegrations: Void (scalar)
         public static string DeleteIntegrations(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteIntegrations" + args + "\n";
         }
@@ -1121,7 +1121,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteLdapPrincipals: Boolean! (scalar)
         public static string DeleteLdapPrincipals(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nprincipalIds: $principalIds\n)";
             return "deleteLdapPrincipals" + args + "\n";
         }
@@ -1139,7 +1139,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteOrg: Boolean! (scalar)
         public static string DeleteOrg(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteOrg" + args + "\n";
         }
@@ -1157,7 +1157,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteReplicationPair: Void (scalar)
         public static string DeleteReplicationPair(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteReplicationPair" + args + "\n";
         }
@@ -1175,7 +1175,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteRole: Boolean! (scalar)
         public static string DeleteRole(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nroleId: $roleId\n)";
             return "deleteRole" + args + "\n";
         }
@@ -1193,7 +1193,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteScheduledReport: Void (scalar)
         public static string DeleteScheduledReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteScheduledReport" + args + "\n";
         }
@@ -1211,7 +1211,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteServiceAccountsFromAccount: Boolean! (scalar)
         public static string DeleteServiceAccountsFromAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteServiceAccountsFromAccount" + args + "\n";
         }
@@ -1229,7 +1229,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteSmbDomain: Void (scalar)
         public static string DeleteSmbDomain(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteSmbDomain" + args + "\n";
         }
@@ -1247,7 +1247,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteSyslogExportRule: Void (scalar)
         public static string DeleteSyslogExportRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteSyslogExportRule" + args + "\n";
         }
@@ -1265,7 +1265,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteTarget: Void (scalar)
         public static string DeleteTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteTarget" + args + "\n";
         }
@@ -1283,7 +1283,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteTargetMapping: Void (scalar)
         public static string DeleteTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteTargetMapping" + args + "\n";
         }
@@ -1301,7 +1301,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteTotpConfig: Boolean! (scalar)
         public static string DeleteTotpConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nuserId: $userId\n)";
             return "deleteTotpConfig" + args + "\n";
         }
@@ -1319,7 +1319,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteTotpConfigs: Boolean! (scalar)
         public static string DeleteTotpConfigs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteTotpConfigs" + args + "\n";
         }
@@ -1337,7 +1337,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteUsersFromAccount: Boolean! (scalar)
         public static string DeleteUsersFromAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nids: $ids\n)";
             return "deleteUsersFromAccount" + args + "\n";
         }
@@ -1355,7 +1355,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteWebhook: Void (scalar)
         public static string DeleteWebhook(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteWebhook" + args + "\n";
         }
@@ -1373,7 +1373,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> disableSupportUserAccess: Void (scalar)
         public static string DisableSupportUserAccess(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "disableSupportUserAccess" + args + "\n";
         }
@@ -1391,7 +1391,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> disconnectAwsExocomputeCluster: Void (scalar)
         public static string DisconnectAwsExocomputeCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "disconnectAwsExocomputeCluster" + args + "\n";
         }
@@ -1409,7 +1409,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableSupportUserAccess: Void (scalar)
         public static string EnableSupportUserAccess(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableSupportUserAccess" + args + "\n";
         }
@@ -1427,7 +1427,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableThreatMonitoring: Void (scalar)
         public static string EnableThreatMonitoring(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableThreatMonitoring" + args + "\n";
         }
@@ -1445,7 +1445,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludeAwsNativeEbsVolumesFromSnapshot: Void (scalar)
         public static string ExcludeAwsNativeEbsVolumesFromSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "excludeAwsNativeEbsVolumesFromSnapshot" + args + "\n";
         }
@@ -1463,7 +1463,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludeAzureNativeManagedDisksFromSnapshot: Void (scalar)
         public static string ExcludeAzureNativeManagedDisksFromSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "excludeAzureNativeManagedDisksFromSnapshot" + args + "\n";
         }
@@ -1481,7 +1481,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludeSharepointObjectsFromProtection: Void (scalar)
         public static string ExcludeSharepointObjectsFromProtection(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "excludeSharepointObjectsFromProtection" + args + "\n";
         }
@@ -1499,7 +1499,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpCloudAccountAddManualAuthProject: Boolean! (scalar)
         public static string GcpCloudAccountAddManualAuthProject(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpCloudAccountAddManualAuthProject" + args + "\n";
         }
@@ -1517,7 +1517,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeExcludeDisksFromInstanceSnapshot: Void (scalar)
         public static string GcpNativeExcludeDisksFromInstanceSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpNativeExcludeDisksFromInstanceSnapshot" + args + "\n";
         }
@@ -1535,7 +1535,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpSetDefaultServiceAccountJwtConfig: Boolean! (scalar)
         public static string GcpSetDefaultServiceAccountJwtConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpSetDefaultServiceAccountJwtConfig" + args + "\n";
         }
@@ -1553,7 +1553,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hideRevealNasNamespaces: Void (scalar)
         public static string HideRevealNasNamespaces(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "hideRevealNasNamespaces" + args + "\n";
         }
@@ -1571,7 +1571,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> inviteSsoGroup: Boolean! (scalar)
         public static string InviteSsoGroup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "inviteSsoGroup" + args + "\n";
         }
@@ -1589,7 +1589,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> joinSmbDomain: Void (scalar)
         public static string JoinSmbDomain(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "joinSmbDomain" + args + "\n";
         }
@@ -1607,7 +1607,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lockUsersByAdmin: Void (scalar)
         public static string LockUsersByAdmin(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "lockUsersByAdmin" + args + "\n";
         }
@@ -1625,7 +1625,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> modifyActiveDirectoryLiveMount: Void (scalar)
         public static string ModifyActiveDirectoryLiveMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "modifyActiveDirectoryLiveMount" + args + "\n";
         }
@@ -1643,7 +1643,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> modifyEventDigestBatch: Void (scalar)
         public static string ModifyEventDigestBatch(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "modifyEventDigestBatch" + args + "\n";
         }
@@ -1661,7 +1661,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mutateRole: UUID! (scalar)
         public static string MutateRole(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nroleId: $roleId\nname: $name\ndescription: $description\npermissions: $permissions\nprotectableClusters: $protectableClusters\n)";
             return "mutateRole" + args + "\n";
         }
@@ -1679,7 +1679,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchAwsAuthenticationServerBasedCloudAccount: Boolean! (scalar)
         public static string PatchAwsAuthenticationServerBasedCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchAwsAuthenticationServerBasedCloudAccount" + args + "\n";
         }
@@ -1697,7 +1697,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchAwsIamUserBasedCloudAccount: Boolean! (scalar)
         public static string PatchAwsIamUserBasedCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchAwsIamUserBasedCloudAccount" + args + "\n";
         }
@@ -1715,7 +1715,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> promoteReaderTarget: Void (scalar)
         public static string PromoteReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "promoteReaderTarget" + args + "\n";
         }
@@ -1733,7 +1733,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshReaderTarget: Void (scalar)
         public static string RefreshReaderTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshReaderTarget" + args + "\n";
         }
@@ -1751,7 +1751,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeCdmCluster: Boolean! (scalar)
         public static string RemoveCdmCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUUID: $clusterUUID\nisForce: $isForce\nexpireInDays: $expireInDays\n)";
             return "removeCdmCluster" + args + "\n";
         }
@@ -1769,7 +1769,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeInventoryWorkloads: Boolean! (scalar)
         public static string RemoveInventoryWorkloads(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "removeInventoryWorkloads" + args + "\n";
         }
@@ -1787,7 +1787,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeLdapIntegration: Boolean! (scalar)
         public static string RemoveLdapIntegration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nid: $id\n)";
             return "removeLdapIntegration" + args + "\n";
         }
@@ -1805,7 +1805,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removePolicyObjects: [String!]! (scalar)
         public static string RemovePolicyObjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\npolicyIds: $policyIds\nobjectIds: $objectIds\nobjectRootIds: $objectRootIds\nclusterIds: $clusterIds\nrunAsync: $runAsync\n)";
             return "removePolicyObjects" + args + "\n";
         }
@@ -1823,7 +1823,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removePrivateEndpointConnection: Void (scalar)
         public static string RemovePrivateEndpointConnection(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "removePrivateEndpointConnection" + args + "\n";
         }
@@ -1841,7 +1841,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resetAllOrgUsersPasswords: Void (scalar)
         public static string ResetAllOrgUsersPasswords(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "resetAllOrgUsersPasswords" + args + "\n";
         }
@@ -1859,7 +1859,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resetUsersPasswordsWithUserIds: Void (scalar)
         public static string ResetUsersPasswordsWithUserIds(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "resetUsersPasswordsWithUserIds" + args + "\n";
         }
@@ -1877,7 +1877,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resolveAnomaly: Void (scalar)
         public static string ResolveAnomaly(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "resolveAnomaly" + args + "\n";
         }
@@ -1895,7 +1895,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> revokeAllOrgRoles: Void (scalar)
         public static string RevokeAllOrgRoles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "revokeAllOrgRoles" + args + "\n";
         }
@@ -1913,7 +1913,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setAzureCloudAccountCustomerAppCredentials: Boolean! (scalar)
         public static string SetAzureCloudAccountCustomerAppCredentials(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setAzureCloudAccountCustomerAppCredentials" + args + "\n";
         }
@@ -1931,7 +1931,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setBundleApprovalStatus: Void (scalar)
         public static string SetBundleApprovalStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setBundleApprovalStatus" + args + "\n";
         }
@@ -1949,7 +1949,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setCustomerTags: Void (scalar)
         public static string SetCustomerTags(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setCustomerTags" + args + "\n";
         }
@@ -1967,7 +1967,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setIpWhitelistEnabled: Boolean! (scalar)
         public static string SetIpWhitelistEnabled(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nenabled: $enabled\n)";
             return "setIpWhitelistEnabled" + args + "\n";
         }
@@ -1985,7 +1985,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setLdapMfaSetting: Boolean! (scalar)
         public static string SetLdapMfaSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setLdapMfaSetting" + args + "\n";
         }
@@ -2003,7 +2003,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setMfaSetting: Boolean! (scalar)
         public static string SetMfaSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setMfaSetting" + args + "\n";
         }
@@ -2021,7 +2021,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setPasswordComplexityPolicy: Void (scalar)
         public static string SetPasswordComplexityPolicy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setPasswordComplexityPolicy" + args + "\n";
         }
@@ -2039,7 +2039,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setPrivateContainerRegistry: Void (scalar)
         public static string SetPrivateContainerRegistry(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setPrivateContainerRegistry" + args + "\n";
         }
@@ -2057,7 +2057,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setSsoCertificate: Void (scalar)
         public static string SetSsoCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setSsoCertificate" + args + "\n";
         }
@@ -2075,7 +2075,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setTotpConfig: Boolean! (scalar)
         public static string SetTotpConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setTotpConfig" + args + "\n";
         }
@@ -2093,7 +2093,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setUserLevelTotpEnforcement: Boolean! (scalar)
         public static string SetUserLevelTotpEnforcement(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setUserLevelTotpEnforcement" + args + "\n";
         }
@@ -2111,7 +2111,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> stopJobInstanceFromEventSeries: Void (scalar)
         public static string StopJobInstanceFromEventSeries(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "stopJobInstanceFromEventSeries" + args + "\n";
         }
@@ -2129,7 +2129,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unlockUsersByAdmin: Void (scalar)
         public static string UnlockUsersByAdmin(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "unlockUsersByAdmin" + args + "\n";
         }
@@ -2147,7 +2147,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unmapAzurePersistentStorageSubscription: Void (scalar)
         public static string UnmapAzurePersistentStorageSubscription(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "unmapAzurePersistentStorageSubscription" + args + "\n";
         }
@@ -2165,7 +2165,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unmountDisk: Void (scalar)
         public static string UnmountDisk(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "unmountDisk" + args + "\n";
         }
@@ -2183,7 +2183,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAccountOwner: Boolean! (scalar)
         public static string UpdateAccountOwner(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nuserId: $userId\n)";
             return "updateAccountOwner" + args + "\n";
         }
@@ -2201,7 +2201,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAuthDomainUsersHiddenStatus: Void (scalar)
         public static string UpdateAuthDomainUsersHiddenStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAuthDomainUsersHiddenStatus" + args + "\n";
         }
@@ -2219,7 +2219,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAwsCloudAccount: Void (scalar)
         public static string UpdateAwsCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAwsCloudAccount" + args + "\n";
         }
@@ -2237,7 +2237,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCertificate: Boolean! (scalar)
         public static string UpdateCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ncertificateId: $certificateId\nname: $name\ndescription: $description\ncertificate: $certificate\n)";
             return "updateCertificate" + args + "\n";
         }
@@ -2255,7 +2255,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCloudNativeLabelRule: Void (scalar)
         public static string UpdateCloudNativeLabelRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCloudNativeLabelRule" + args + "\n";
         }
@@ -2273,7 +2273,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCloudNativeTagRule: Void (scalar)
         public static string UpdateCloudNativeTagRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCloudNativeTagRule" + args + "\n";
         }
@@ -2291,7 +2291,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateConfiguredGroup: Void (scalar)
         public static string UpdateConfiguredGroup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateConfiguredGroup" + args + "\n";
         }
@@ -2309,7 +2309,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCustomerAppPermissionForAzureSql: Void (scalar)
         public static string UpdateCustomerAppPermissionForAzureSql(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "updateCustomerAppPermissionForAzureSql" + args + "\n";
         }
@@ -2327,7 +2327,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateIntegration: Void (scalar)
         public static string UpdateIntegration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateIntegration" + args + "\n";
         }
@@ -2345,7 +2345,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateIntegrations: Void (scalar)
         public static string UpdateIntegrations(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateIntegrations" + args + "\n";
         }
@@ -2363,7 +2363,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateIpWhitelist: Boolean! (scalar)
         public static string UpdateIpWhitelist(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nwhitelistMode: $whitelistMode\nipCidrs: $ipCidrs\n)";
             return "updateIpWhitelist" + args + "\n";
         }
@@ -2381,7 +2381,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateLdapIntegration: String! (scalar)
         public static string UpdateLdapIntegration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nid: $id\nname: $name\nbindUserName: $bindUserName\nbindUserPassword: $bindUserPassword\nbaseDn: $baseDn\ntrustedCerts: $trustedCerts\ndynamicDnsName: $dynamicDnsName\nldapServers: $ldapServers\nuserSearchFilter: $userSearchFilter\nuserNameAttr: $userNameAttr\ngroupMembershipAttr: $groupMembershipAttr\ngroupSearchFilter: $groupSearchFilter\ngroupMemberAttr: $groupMemberAttr\n)";
             return "updateLdapIntegration" + args + "\n";
         }
@@ -2399,7 +2399,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNasShares: Void (scalar)
         public static string UpdateNasShares(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNasShares" + args + "\n";
         }
@@ -2417,7 +2417,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNutanixVm: Void (scalar)
         public static string UpdateNutanixVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNutanixVm" + args + "\n";
         }
@@ -2435,7 +2435,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateO365AppPermissions: Void (scalar)
         public static string UpdateO365AppPermissions(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateO365AppPermissions" + args + "\n";
         }
@@ -2453,7 +2453,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateOrgSecurityPolicy: Void (scalar)
         public static string UpdateOrgSecurityPolicy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateOrgSecurityPolicy" + args + "\n";
         }
@@ -2471,7 +2471,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateReplicationTarget: Void (scalar)
         public static string UpdateReplicationTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateReplicationTarget" + args + "\n";
         }
@@ -2489,7 +2489,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateRole: Boolean! (scalar)
         public static string UpdateRole(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nroleId: $roleId\nname: $name\ndescription: $description\npermissions: $permissions\n)";
             return "updateRole" + args + "\n";
         }
@@ -2507,7 +2507,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateRoleAssignments: Boolean! (scalar)
         public static string UpdateRoleAssignments(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nuserIds: $userIds\ngroupIds: $groupIds\nroleIds: $roleIds\n)";
             return "updateRoleAssignments" + args + "\n";
         }
@@ -2525,7 +2525,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateSupportUserAccess: Void (scalar)
         public static string UpdateSupportUserAccess(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateSupportUserAccess" + args + "\n";
         }
@@ -2543,7 +2543,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVlan: Void (scalar)
         public static string UpdateVlan(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVlan" + args + "\n";
         }
@@ -2561,7 +2561,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateWhitelistedAnalyzers: String! (scalar)
         public static string UpdateWhitelistedAnalyzers(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nstdPath: $stdPath\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nanalyzerIds: $analyzerIds\nrunAsync: $runAsync\n)";
             return "updateWhitelistedAnalyzers" + args + "\n";
         }
@@ -2579,7 +2579,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeAwsCloudAccountFeaturesWithoutCft: Boolean! (scalar)
         public static string UpgradeAwsCloudAccountFeaturesWithoutCft(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeAwsCloudAccountFeaturesWithoutCft" + args + "\n";
         }
@@ -2597,7 +2597,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeAwsIamUserBasedCloudAccountPermissions: Boolean! (scalar)
         public static string UpgradeAwsIamUserBasedCloudAccountPermissions(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeAwsIamUserBasedCloudAccountPermissions" + args + "\n";
         }
@@ -2615,7 +2615,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeCdmManagedTarget: Void (scalar)
         public static string UpgradeCdmManagedTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeCdmManagedTarget" + args + "\n";
         }
@@ -2633,7 +2633,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeToRsc: Void (scalar)
         public static string UpgradeToRsc(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "upgradeToRsc" + args + "\n";
         }
@@ -2651,7 +2651,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmDeleteSnapshot: Void (scalar)
         public static string VsphereVmDeleteSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmDeleteSnapshot" + args + "\n";
         }
@@ -2669,7 +2669,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> warmSearchCache: Boolean! (scalar)
         public static string WarmSearchCache(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "warmSearchCache" + args + "\n";
         }
@@ -2687,7 +2687,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAdGroupsToHierarchy: RequestStatus! (type)
         public static string AddAdGroupsToHierarchy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAdGroupsToHierarchy" + args + "\n{\n" + fs + "}\n";
         }
@@ -2705,7 +2705,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAndJoinSmbDomain: AddAndJoinSmbDomainReply! (type)
         public static string AddAndJoinSmbDomain(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAndJoinSmbDomain" + args + "\n{\n" + fs + "}\n";
         }
@@ -2723,7 +2723,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAwsAuthenticationServerBasedCloudAccount: AddAwsAuthenticationServerBasedCloudAccountReply! (type)
         public static string AddAwsAuthenticationServerBasedCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAwsAuthenticationServerBasedCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -2741,7 +2741,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAwsIamUserBasedCloudAccount: AddAwsIamUserBasedCloudAccountReply! (type)
         public static string AddAwsIamUserBasedCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAwsIamUserBasedCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -2759,7 +2759,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAzureCloudAccount: AddAzureCloudAccountReply! (type)
         public static string AddAzureCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAzureCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -2777,7 +2777,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAzureCloudAccountExocomputeConfigurations: AddAzureCloudAccountExocomputeConfigurationsReply! (type)
         public static string AddAzureCloudAccountExocomputeConfigurations(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" + fs + "}\n";
         }
@@ -2795,7 +2795,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addAzureCloudAccountWithoutOauth: AddAzureCloudAccountWithoutOauthReply! (type)
         public static string AddAzureCloudAccountWithoutOauth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addAzureCloudAccountWithoutOauth" + args + "\n{\n" + fs + "}\n";
         }
@@ -2813,7 +2813,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addCloudNativeSqlServerBackupCredentials: AddCloudNativeSqlServerBackupCredentialsReply! (type)
         public static string AddCloudNativeSqlServerBackupCredentials(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addCloudNativeSqlServerBackupCredentials" + args + "\n{\n" + fs + "}\n";
         }
@@ -2831,7 +2831,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addClusterCertificate: AddClusterCertificateReply! (type)
         public static string AddClusterCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addClusterCertificate" + args + "\n{\n" + fs + "}\n";
         }
@@ -2849,7 +2849,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addClusterNodes: AddClusterNodesReply! (type)
         public static string AddClusterNodes(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nAddClusterNodesInput: $AddClusterNodesInput\n)";
             return "addClusterNodes" + args + "\n{\n" + fs + "}\n";
         }
@@ -2867,7 +2867,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addConfiguredGroupToHierarchy: AddConfiguredGroupToHierarchyReply! (type)
         public static string AddConfiguredGroupToHierarchy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addConfiguredGroupToHierarchy" + args + "\n{\n" + fs + "}\n";
         }
@@ -2885,7 +2885,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addCrossAccountServiceConsumer: AddCrossAccountServiceConsumerReply! (type)
         public static string AddCrossAccountServiceConsumer(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addCrossAccountServiceConsumer" + args + "\n{\n" + fs + "}\n";
         }
@@ -2903,7 +2903,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addDb2Instance: AddDb2InstanceReply! (type)
         public static string AddDb2Instance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addDb2Instance" + args + "\n{\n" + fs + "}\n";
         }
@@ -2921,7 +2921,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addGlobalCertificate: AddGlobalCertificateReply! (type)
         public static string AddGlobalCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addGlobalCertificate" + args + "\n{\n" + fs + "}\n";
         }
@@ -2939,7 +2939,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addK8sCluster: K8sClusterSummary! (type)
         public static string AddK8sCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addK8sCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -2957,7 +2957,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addK8sProtectionSet: K8sProtectionSetSummary! (type)
         public static string AddK8sProtectionSet(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addK8sProtectionSet" + args + "\n{\n" + fs + "}\n";
         }
@@ -2975,7 +2975,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addManagedVolume: AddManagedVolumeReply! (type)
         public static string AddManagedVolume(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addManagedVolume" + args + "\n{\n" + fs + "}\n";
         }
@@ -2993,7 +2993,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addMongoSource: AddMongoSourceReply! (type)
         public static string AddMongoSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addMongoSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -3011,7 +3011,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addMosaicStore: MosaicAsyncResponse! (type)
         public static string AddMosaicStore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addMosaicStore" + args + "\n{\n" + fs + "}\n";
         }
@@ -3029,7 +3029,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addNodesToCloudCluster: CcProvisionJobReply! (type)
         public static string AddNodesToCloudCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addNodesToCloudCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -3047,7 +3047,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addO365Org: AddO365OrgResponse! (type)
         public static string AddO365Org(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addO365Org" + args + "\n{\n" + fs + "}\n";
         }
@@ -3065,7 +3065,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addSapHanaSystem: AddSapHanaSystemReply! (type)
         public static string AddSapHanaSystem(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addSapHanaSystem" + args + "\n{\n" + fs + "}\n";
         }
@@ -3083,7 +3083,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addStorageArrays: AddStorageArraysReply! (type)
         public static string AddStorageArrays(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addStorageArrays" + args + "\n{\n" + fs + "}\n";
         }
@@ -3101,7 +3101,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addSyslogExportRule: AddSyslogExportRuleReply! (type)
         public static string AddSyslogExportRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addSyslogExportRule" + args + "\n{\n" + fs + "}\n";
         }
@@ -3119,7 +3119,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addVlan: ResponseSuccess! (type)
         public static string AddVlan(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addVlan" + args + "\n{\n" + fs + "}\n";
         }
@@ -3137,7 +3137,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> addVmAppConsistentSpecs: AddVmAppConsistentSpecsReply! (type)
         public static string AddVmAppConsistentSpecs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "addVmAppConsistentSpecs" + args + "\n{\n" + fs + "}\n";
         }
@@ -3155,7 +3155,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> approveRcvPrivateEndpoint: ApproveRcvPrivateEndpointReply! (type)
         public static string ApproveRcvPrivateEndpoint(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "approveRcvPrivateEndpoint" + args + "\n{\n" + fs + "}\n";
         }
@@ -3173,7 +3173,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archiveK8sCluster: ArchiveK8sClusterReply! (type)
         public static string ArchiveK8sCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "archiveK8sCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -3191,7 +3191,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignMssqlSlaDomainProperties: ResponseSuccess! (type)
         public static string AssignMssqlSlaDomainProperties(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "assignMssqlSlaDomainProperties" + args + "\n{\n" + fs + "}\n";
         }
@@ -3209,7 +3209,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignMssqlSlaDomainPropertiesAsync: AssignMssqlSlaDomainPropertiesAsyncReply! (type)
         public static string AssignMssqlSlaDomainPropertiesAsync(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "assignMssqlSlaDomainPropertiesAsync" + args + "\n{\n" + fs + "}\n";
         }
@@ -3227,7 +3227,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignProtection: SlaAssignResult! (type)
         public static string AssignProtection(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "assignProtection" + args + "\n{\n" + fs + "}\n";
         }
@@ -3245,7 +3245,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignRetentionSLAToSnappables: SlaAssignResult! (type)
         public static string AssignRetentionSlaToSnappables(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nglobalSlaOptionalFid: $globalSlaOptionalFid\nglobalSlaAssignType: $globalSlaAssignType\nobjectIds: $objectIds\napplicableSnappableType: $applicableSnappableType\nshouldApplyToNonPolicySnapshots: $shouldApplyToNonPolicySnapshots\nuserNote: $userNote\n)";
             return "assignRetentionSLAToSnappables" + args + "\n{\n" + fs + "}\n";
         }
@@ -3263,7 +3263,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignRetentionSLAToSnapshots: SlaAssignResult! (type)
         public static string AssignRetentionSlaToSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nglobalSlaOptionalFid: $globalSlaOptionalFid\nglobalSlaAssignType: $globalSlaAssignType\nsnapshotFids: $snapshotFids\nuserNote: $userNote\n)";
             return "assignRetentionSLAToSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -3281,7 +3281,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignSla: SlaAssignResult! (type)
         public static string AssignSla(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "assignSla" + args + "\n{\n" + fs + "}\n";
         }
@@ -3299,7 +3299,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignSlaToMongoDbCollection: AsyncRequestStatus! (type)
         public static string AssignSlaToMongoDbCollection(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "assignSlaToMongoDbCollection" + args + "\n{\n" + fs + "}\n";
         }
@@ -3317,7 +3317,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> assignSlasForSnappableHierarchies: [SlaAssignResult!]! (type)
         public static string AssignSlasForSnappableHierarchies(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nglobalSlaOptionalFid: $globalSlaOptionalFid\nglobalSlaAssignType: $globalSlaAssignType\nobjectIds: $objectIds\napplicableSnappableTypes: $applicableSnappableTypes\nshouldApplyToExistingSnapshots: $shouldApplyToExistingSnapshots\nshouldApplyToNonPolicySnapshots: $shouldApplyToNonPolicySnapshots\nglobalExistingSnapshotRetention: $globalExistingSnapshotRetention\nuserNote: $userNote\n)";
             return "assignSlasForSnappableHierarchies" + args + "\n{\n" + fs + "}\n";
         }
@@ -3335,7 +3335,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsExocomputeClusterConnect: AwsExocomputeClusterConnectReply! (type)
         public static string AwsExocomputeClusterConnect(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "awsExocomputeClusterConnect" + args + "\n{\n" + fs + "}\n";
         }
@@ -3353,7 +3353,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureOauthConsentComplete: RequestStatus! (type)
         public static string AzureOauthConsentComplete(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "azureOauthConsentComplete" + args + "\n{\n" + fs + "}\n";
         }
@@ -3371,7 +3371,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureOauthConsentKickoff: AzureOauthConsentKickoffReply! (type)
         public static string AzureOauthConsentKickoff(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "azureOauthConsentKickoff" + args + "\n{\n" + fs + "}\n";
         }
@@ -3389,7 +3389,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupAzureAdDirectory: [CreateOnDemandJobReply!]! (type)
         public static string BackupAzureAdDirectory(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupAzureAdDirectory" + args + "\n{\n" + fs + "}\n";
         }
@@ -3407,7 +3407,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupM365Mailbox: [CreateOnDemandJobReply!]! (type)
         public static string BackupM365Mailbox(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupM365Mailbox" + args + "\n{\n" + fs + "}\n";
         }
@@ -3425,7 +3425,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupM365Onedrive: [CreateOnDemandJobReply!]! (type)
         public static string BackupM365Onedrive(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupM365Onedrive" + args + "\n{\n" + fs + "}\n";
         }
@@ -3443,7 +3443,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupM365SharepointDrive: [CreateOnDemandJobReply!]! (type)
         public static string BackupM365SharepointDrive(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupM365SharepointDrive" + args + "\n{\n" + fs + "}\n";
         }
@@ -3461,7 +3461,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupM365Team: [CreateOnDemandJobReply!]! (type)
         public static string BackupM365Team(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupM365Team" + args + "\n{\n" + fs + "}\n";
         }
@@ -3479,7 +3479,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupO365Mailbox: BatchAsyncJobStatus! (type)
         public static string BackupO365Mailbox(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nmailboxIds: $mailboxIds\n)";
             return "backupO365Mailbox" + args + "\n{\n" + fs + "}\n";
         }
@@ -3497,7 +3497,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupO365Onedrive: BatchAsyncJobStatus! (type)
         public static string BackupO365Onedrive(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupO365Onedrive" + args + "\n{\n" + fs + "}\n";
         }
@@ -3515,7 +3515,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupO365SharePointSite: CreateOnDemandJobReply! (type)
         public static string BackupO365SharePointSite(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupO365SharePointSite" + args + "\n{\n" + fs + "}\n";
         }
@@ -3533,7 +3533,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupO365SharepointDrive: BatchAsyncJobStatus! (type)
         public static string BackupO365SharepointDrive(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupO365SharepointDrive" + args + "\n{\n" + fs + "}\n";
         }
@@ -3551,7 +3551,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupO365SharepointList: CreateOnDemandJobReply! (type)
         public static string BackupO365SharepointList(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupO365SharepointList" + args + "\n{\n" + fs + "}\n";
         }
@@ -3569,7 +3569,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupO365Team: BatchAsyncJobStatus! (type)
         public static string BackupO365Team(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "backupO365Team" + args + "\n{\n" + fs + "}\n";
         }
@@ -3587,7 +3587,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchExportHypervVm: BatchExportHypervVmReply! (type)
         public static string BatchExportHypervVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchExportHypervVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -3605,7 +3605,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchExportNutanixVm: BatchExportNutanixVmReply! (type)
         public static string BatchExportNutanixVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchExportNutanixVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -3623,7 +3623,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchInstantRecoverHypervVm: BatchInstantRecoverHypervVmReply! (type)
         public static string BatchInstantRecoverHypervVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchInstantRecoverHypervVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -3641,7 +3641,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchMountHypervVm: BatchMountHypervVmReply! (type)
         public static string BatchMountHypervVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchMountHypervVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -3659,7 +3659,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchMountNutanixVm: BatchMountNutanixVmReply! (type)
         public static string BatchMountNutanixVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchMountNutanixVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -3677,7 +3677,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchOnDemandBackupHypervVm: BatchOnDemandBackupHypervVmReply! (type)
         public static string BatchOnDemandBackupHypervVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchOnDemandBackupHypervVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -3695,7 +3695,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchQuarantineSnapshot: BatchQuarantineSnapshotReply! (type)
         public static string BatchQuarantineSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchQuarantineSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -3713,7 +3713,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> batchReleaseFromQuarantineSnapshot: BatchReleaseFromQuarantineSnapshotReply! (type)
         public static string BatchReleaseFromQuarantineSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "batchReleaseFromQuarantineSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -3731,7 +3731,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> beginManagedVolumeSnapshot: BeginManagedVolumeSnapshotReply! (type)
         public static string BeginManagedVolumeSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "beginManagedVolumeSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -3749,7 +3749,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> browseMssqlDatabaseSnapshot: BrowseMssqlDatabaseSnapshotReply! (type)
         public static string BrowseMssqlDatabaseSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "browseMssqlDatabaseSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -3767,7 +3767,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkAddNasShares: BulkAddNasSharesReply! (type)
         public static string BulkAddNasShares(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkAddNasShares" + args + "\n{\n" + fs + "}\n";
         }
@@ -3785,7 +3785,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkCreateFilesetTemplates: BulkCreateFilesetTemplatesReply! (type)
         public static string BulkCreateFilesetTemplates(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkCreateFilesetTemplates" + args + "\n{\n" + fs + "}\n";
         }
@@ -3803,7 +3803,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkCreateFilesets: BulkCreateFilesetsReply! (type)
         public static string BulkCreateFilesets(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkCreateFilesets" + args + "\n{\n" + fs + "}\n";
         }
@@ -3821,7 +3821,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkCreateNasFilesets: BulkCreateNasFilesetsReply! (type)
         public static string BulkCreateNasFilesets(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkCreateNasFilesets" + args + "\n{\n" + fs + "}\n";
         }
@@ -3839,7 +3839,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkCreateOnDemandMssqlBackup: AsyncRequestStatus! (type)
         public static string BulkCreateOnDemandMssqlBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkCreateOnDemandMssqlBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -3857,7 +3857,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteAwsCloudAccountWithoutCft: BulkDeleteAwsCloudAccountWithoutCftReply! (type)
         public static string BulkDeleteAwsCloudAccountWithoutCft(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteAwsCloudAccountWithoutCft" + args + "\n{\n" + fs + "}\n";
         }
@@ -3875,7 +3875,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteCassandraSources: MosaicAsyncResponse! (type)
         public static string BulkDeleteCassandraSources(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteCassandraSources" + args + "\n{\n" + fs + "}\n";
         }
@@ -3893,7 +3893,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteFailoverCluster: ResponseSuccess! (type)
         public static string BulkDeleteFailoverCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteFailoverCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -3911,7 +3911,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteFailoverClusterApp: ResponseSuccess! (type)
         public static string BulkDeleteFailoverClusterApp(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteFailoverClusterApp" + args + "\n{\n" + fs + "}\n";
         }
@@ -3929,7 +3929,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteFileset: ResponseSuccess! (type)
         public static string BulkDeleteFileset(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteFileset" + args + "\n{\n" + fs + "}\n";
         }
@@ -3947,7 +3947,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteFilesetTemplate: ResponseSuccess! (type)
         public static string BulkDeleteFilesetTemplate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteFilesetTemplate" + args + "\n{\n" + fs + "}\n";
         }
@@ -3965,7 +3965,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteHost: ResponseSuccess! (type)
         public static string BulkDeleteHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -3983,7 +3983,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteMongodbSources: MosaicAsyncResponse! (type)
         public static string BulkDeleteMongodbSources(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteMongodbSources" + args + "\n{\n" + fs + "}\n";
         }
@@ -4001,7 +4001,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkDeleteNasSystems: BatchAsyncRequestStatus! (type)
         public static string BulkDeleteNasSystems(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkDeleteNasSystems" + args + "\n{\n" + fs + "}\n";
         }
@@ -4019,7 +4019,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkOnDemandSnapshotNutanixVm: BulkOnDemandSnapshotNutanixVmReply! (type)
         public static string BulkOnDemandSnapshotNutanixVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkOnDemandSnapshotNutanixVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -4037,7 +4037,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkRefreshHosts: BulkRefreshHostsReply! (type)
         public static string BulkRefreshHosts(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkRefreshHosts" + args + "\n{\n" + fs + "}\n";
         }
@@ -4055,7 +4055,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkRegisterHost: BulkRegisterHostReply! (type)
         public static string BulkRegisterHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkRegisterHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -4073,7 +4073,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkRegisterHostAsync: BulkRegisterHostAsyncReply! (type)
         public static string BulkRegisterHostAsync(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkRegisterHostAsync" + args + "\n{\n" + fs + "}\n";
         }
@@ -4091,7 +4091,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkTierExistingSnapshots: AsyncRequestStatus! (type)
         public static string BulkTierExistingSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkTierExistingSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -4109,7 +4109,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateExchangeDag: V1BulkUpdateExchangeDagResponse! (type)
         public static string BulkUpdateExchangeDag(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateExchangeDag" + args + "\n{\n" + fs + "}\n";
         }
@@ -4127,7 +4127,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateFilesetTemplate: BulkUpdateFilesetTemplateReply! (type)
         public static string BulkUpdateFilesetTemplate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateFilesetTemplate" + args + "\n{\n" + fs + "}\n";
         }
@@ -4145,7 +4145,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateHost: BulkUpdateHostReply! (type)
         public static string BulkUpdateHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -4163,7 +4163,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateMssqlAvailabilityGroup: BulkUpdateMssqlAvailabilityGroupReply! (type)
         public static string BulkUpdateMssqlAvailabilityGroup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateMssqlAvailabilityGroup" + args + "\n{\n" + fs + "}\n";
         }
@@ -4181,7 +4181,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateMssqlDbs: BulkUpdateMssqlDbsReply! (type)
         public static string BulkUpdateMssqlDbs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateMssqlDbs" + args + "\n{\n" + fs + "}\n";
         }
@@ -4199,7 +4199,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateMssqlInstance: BulkUpdateMssqlInstanceReply! (type)
         public static string BulkUpdateMssqlInstance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateMssqlInstance" + args + "\n{\n" + fs + "}\n";
         }
@@ -4217,7 +4217,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateMssqlPropertiesOnHost: BulkUpdateMssqlPropertiesOnHostReply! (type)
         public static string BulkUpdateMssqlPropertiesOnHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateMssqlPropertiesOnHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -4235,7 +4235,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateMssqlPropertiesOnWindowsCluster: BulkUpdateMssqlPropertiesOnWindowsClusterReply! (type)
         public static string BulkUpdateMssqlPropertiesOnWindowsCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateMssqlPropertiesOnWindowsCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -4253,7 +4253,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateNasShares: BulkUpdateNasSharesReply! (type)
         public static string BulkUpdateNasShares(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateNasShares" + args + "\n{\n" + fs + "}\n";
         }
@@ -4271,7 +4271,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateOracleDatabases: BulkUpdateOracleDatabasesReply! (type)
         public static string BulkUpdateOracleDatabases(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateOracleDatabases" + args + "\n{\n" + fs + "}\n";
         }
@@ -4289,7 +4289,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateOracleHosts: BulkUpdateOracleHostsReply! (type)
         public static string BulkUpdateOracleHosts(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateOracleHosts" + args + "\n{\n" + fs + "}\n";
         }
@@ -4307,7 +4307,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bulkUpdateOracleRacs: BulkUpdateOracleRacsReply! (type)
         public static string BulkUpdateOracleRacs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "bulkUpdateOracleRacs" + args + "\n{\n" + fs + "}\n";
         }
@@ -4325,7 +4325,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cancelDownloadPackage: CancelJobReply! (type)
         public static string CancelDownloadPackage(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "cancelDownloadPackage" + args + "\n{\n" + fs + "}\n";
         }
@@ -4343,7 +4343,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cancelScheduledUpgrade: CancelJobReply! (type)
         public static string CancelScheduledUpgrade(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "cancelScheduledUpgrade" + args + "\n{\n" + fs + "}\n";
         }
@@ -4361,7 +4361,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cancelTaskchain: RequestStatus! (type)
         public static string CancelTaskchain(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ntaskchainId: $taskchainId\n)";
             return "cancelTaskchain" + args + "\n{\n" + fs + "}\n";
         }
@@ -4379,7 +4379,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> changeVfdOnHost: ChangeVfdOnHostReply! (type)
         public static string ChangeVfdOnHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "changeVfdOnHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -4397,7 +4397,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clearCloudNativeSqlServerBackupCredentials: ClearCloudNativeSqlServerBackupCredentialsReply! (type)
         public static string ClearCloudNativeSqlServerBackupCredentials(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "clearCloudNativeSqlServerBackupCredentials" + args + "\n{\n" + fs + "}\n";
         }
@@ -4415,7 +4415,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudNativeCheckRbaConnectivity: CloudNativeCheckRbaConnectivityReply! (type)
         public static string CloudNativeCheckRbaConnectivity(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "cloudNativeCheckRbaConnectivity" + args + "\n{\n" + fs + "}\n";
         }
@@ -4433,7 +4433,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudNativeDownloadFiles: DownloadFilesReply! (type)
         public static string CloudNativeDownloadFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "cloudNativeDownloadFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -4451,7 +4451,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> completeAzureAdAppSetup: CompleteAzureAdAppSetupReply! (type)
         public static string CompleteAzureAdAppSetup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "completeAzureAdAppSetup" + args + "\n{\n" + fs + "}\n";
         }
@@ -4469,7 +4469,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> completeAzureCloudAccountOauth: CompleteAzureCloudAccountOauthReply! (type)
         public static string CompleteAzureCloudAccountOauth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "completeAzureCloudAccountOauth" + args + "\n{\n" + fs + "}\n";
         }
@@ -4487,7 +4487,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configureDb2Restore: Db2ConfigureRestoreResponse! (type)
         public static string ConfigureDb2Restore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "configureDb2Restore" + args + "\n{\n" + fs + "}\n";
         }
@@ -4505,7 +4505,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configureSapHanaRestore: AsyncRequestStatus! (type)
         public static string ConfigureSapHanaRestore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "configureSapHanaRestore" + args + "\n{\n" + fs + "}\n";
         }
@@ -4523,7 +4523,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createActiveDirectoryLiveMount: AsyncRequestStatus! (type)
         public static string CreateActiveDirectoryLiveMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createActiveDirectoryLiveMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -4541,7 +4541,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createActiveDirectoryUnmount: AsyncRequestStatus! (type)
         public static string CreateActiveDirectoryUnmount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createActiveDirectoryUnmount" + args + "\n{\n" + fs + "}\n";
         }
@@ -4559,7 +4559,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAutomaticAwsTargetMapping: TargetMapping! (type)
         public static string CreateAutomaticAwsTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAutomaticAwsTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -4577,7 +4577,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAutomaticAzureTargetMapping: TargetMapping! (type)
         public static string CreateAutomaticAzureTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAutomaticAzureTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -4595,7 +4595,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAutomaticRcsTargetMapping: TargetMapping! (type)
         public static string CreateAutomaticRcsTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAutomaticRcsTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -4613,7 +4613,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAwsCluster: CcProvisionJobReply! (type)
         public static string CreateAwsCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAwsCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -4631,7 +4631,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAwsComputeSetting: AwsComputeSettings! (type)
         public static string CreateAwsComputeSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAwsComputeSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -4649,7 +4649,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAwsExocomputeConfigs: CreateAwsExocomputeConfigsReply! (type)
         public static string CreateAwsExocomputeConfigs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAwsExocomputeConfigs" + args + "\n{\n" + fs + "}\n";
         }
@@ -4667,7 +4667,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAzureCluster: CcProvisionJobReply! (type)
         public static string CreateAzureCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createAzureCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -4685,7 +4685,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createAzureSaasAppAad: CreateAzureSaasAppAadReply! (type)
         public static string CreateAzureSaasAppAad(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "createAzureSaasAppAad" + args + "\n{\n" + fs + "}\n";
         }
@@ -4703,7 +4703,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCassandraSource: MosaicAsyncResponse! (type)
         public static string CreateCassandraSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCassandraSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -4721,7 +4721,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCloudNativeAwsStorageSetting: CreateCloudNativeAwsStorageSettingReply! (type)
         public static string CreateCloudNativeAwsStorageSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCloudNativeAwsStorageSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -4739,7 +4739,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCloudNativeAzureStorageSetting: CreateCloudNativeAzureStorageSettingReply! (type)
         public static string CreateCloudNativeAzureStorageSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCloudNativeAzureStorageSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -4757,7 +4757,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCloudNativeLabelRule: CreateCloudNativeLabelRuleReply! (type)
         public static string CreateCloudNativeLabelRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCloudNativeLabelRule" + args + "\n{\n" + fs + "}\n";
         }
@@ -4775,7 +4775,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCloudNativeRcvAzureStorageSetting: CreateCloudNativeRcvAzureStorageSettingReply! (type)
         public static string CreateCloudNativeRcvAzureStorageSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCloudNativeRcvAzureStorageSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -4793,7 +4793,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCloudNativeTagRule: CreateCloudNativeTagRuleReply! (type)
         public static string CreateCloudNativeTagRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCloudNativeTagRule" + args + "\n{\n" + fs + "}\n";
         }
@@ -4811,7 +4811,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCrossAccountRegOauthPayload: CreateCrossAccountRegOauthPayloadReply! (type)
         public static string CreateCrossAccountRegOauthPayload(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCrossAccountRegOauthPayload" + args + "\n{\n" + fs + "}\n";
         }
@@ -4829,7 +4829,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCustomAnalyzer: Analyzer! (type)
         public static string CreateCustomAnalyzer(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createCustomAnalyzer" + args + "\n{\n" + fs + "}\n";
         }
@@ -4847,7 +4847,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createCustomReport: CreateCustomReportReply! (type)
         public static string CreateCustomReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\nreportRoom: $reportRoom\n)";
             return "createCustomReport" + args + "\n{\n" + fs + "}\n";
         }
@@ -4865,7 +4865,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createDomainControllerSnapshot: AsyncRequestStatus! (type)
         public static string CreateDomainControllerSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createDomainControllerSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -4883,7 +4883,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createDownloadSnapshotForVolumeGroup: AsyncRequestStatus! (type)
         public static string CreateDownloadSnapshotForVolumeGroup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createDownloadSnapshotForVolumeGroup" + args + "\n{\n" + fs + "}\n";
         }
@@ -4901,7 +4901,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createExchangeMount: AsyncRequestStatus! (type)
         public static string CreateExchangeMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createExchangeMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -4919,7 +4919,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createFailoverCluster: CreateFailoverClusterReply! (type)
         public static string CreateFailoverCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createFailoverCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -4937,7 +4937,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createFailoverClusterApp: CreateFailoverClusterAppReply! (type)
         public static string CreateFailoverClusterApp(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createFailoverClusterApp" + args + "\n{\n" + fs + "}\n";
         }
@@ -4955,7 +4955,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createFilesetSnapshot: AsyncRequestStatus! (type)
         public static string CreateFilesetSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createFilesetSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -4973,7 +4973,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createGlobalSla: GlobalSlaReply! (type)
         public static string CreateGlobalSla(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createGlobalSla" + args + "\n{\n" + fs + "}\n";
         }
@@ -4991,7 +4991,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createGuestCredential: CreateGuestCredentialReply! (type)
         public static string CreateGuestCredential(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createGuestCredential" + args + "\n{\n" + fs + "}\n";
         }
@@ -5009,7 +5009,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createHypervVirtualMachineSnapshotDiskMount: AsyncRequestStatus! (type)
         public static string CreateHypervVirtualMachineSnapshotDiskMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createHypervVirtualMachineSnapshotDiskMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5027,7 +5027,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createHypervVirtualMachineSnapshotMount: AsyncRequestStatus! (type)
         public static string CreateHypervVirtualMachineSnapshotMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createHypervVirtualMachineSnapshotMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5045,7 +5045,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createIntegration: CreateIntegrationReply! (type)
         public static string CreateIntegration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createIntegration" + args + "\n{\n" + fs + "}\n";
         }
@@ -5063,7 +5063,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createIntegrations: CreateIntegrationsReply! (type)
         public static string CreateIntegrations(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createIntegrations" + args + "\n{\n" + fs + "}\n";
         }
@@ -5081,7 +5081,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createK8sAgentManifest: CreateK8sAgentManifestReply! (type)
         public static string CreateK8sAgentManifest(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createK8sAgentManifest" + args + "\n{\n" + fs + "}\n";
         }
@@ -5099,7 +5099,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createK8sCluster: CreateK8sClusterReply! (type)
         public static string CreateK8sCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createK8sCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -5117,7 +5117,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createK8sNamespaceSnapshots: [CreateOnDemandJobReply!]! (type)
         public static string CreateK8sNamespaceSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createK8sNamespaceSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -5135,7 +5135,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createK8sProtectionSetSnapshot: AsyncRequestStatus! (type)
         public static string CreateK8sProtectionSetSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createK8sProtectionSetSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -5153,7 +5153,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createLegalHold: CreateLegalHoldReply! (type)
         public static string CreateLegalHold(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createLegalHold" + args + "\n{\n" + fs + "}\n";
         }
@@ -5171,7 +5171,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createManualTargetMapping: TargetMapping! (type)
         public static string CreateManualTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createManualTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -5189,7 +5189,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createMongodbSource: MosaicAsyncResponse! (type)
         public static string CreateMongodbSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createMongodbSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -5207,7 +5207,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createMssqlLiveMount: AsyncRequestStatus! (type)
         public static string CreateMssqlLiveMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createMssqlLiveMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5225,7 +5225,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createMssqlLogShippingConfiguration: AsyncRequestStatus! (type)
         public static string CreateMssqlLogShippingConfiguration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createMssqlLogShippingConfiguration" + args + "\n{\n" + fs + "}\n";
         }
@@ -5243,7 +5243,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createNutanixCluster: AsyncRequestStatus! (type)
         public static string CreateNutanixCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createNutanixCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -5261,7 +5261,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createNutanixPrismCentral: BatchAsyncRequestStatus! (type)
         public static string CreateNutanixPrismCentral(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createNutanixPrismCentral" + args + "\n{\n" + fs + "}\n";
         }
@@ -5279,7 +5279,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createO365AppComplete: RequestStatus! (type)
         public static string CreateO365AppComplete(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createO365AppComplete" + args + "\n{\n" + fs + "}\n";
         }
@@ -5297,7 +5297,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createO365AppKickoff: CreateO365AppKickoffResp! (type)
         public static string CreateO365AppKickoff(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createO365AppKickoff" + args + "\n{\n" + fs + "}\n";
         }
@@ -5315,7 +5315,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandDb2Backup: AsyncRequestStatus! (type)
         public static string CreateOnDemandDb2Backup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandDb2Backup" + args + "\n{\n" + fs + "}\n";
         }
@@ -5333,7 +5333,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandExchangeBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandExchangeBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandExchangeBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -5351,7 +5351,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandMssqlBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandMssqlBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandMssqlBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -5369,7 +5369,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandNutanixBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandNutanixBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandNutanixBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -5387,7 +5387,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandSapHanaBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandSapHanaBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandSapHanaBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -5405,7 +5405,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandSapHanaStorageSnapshot: AsyncRequestStatus! (type)
         public static string CreateOnDemandSapHanaStorageSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandSapHanaStorageSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -5423,7 +5423,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOnDemandVolumeGroupBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandVolumeGroupBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOnDemandVolumeGroupBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -5441,7 +5441,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOraclePdbRestore: AsyncRequestStatus! (type)
         public static string CreateOraclePdbRestore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOraclePdbRestore" + args + "\n{\n" + fs + "}\n";
         }
@@ -5459,7 +5459,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOrg: CreateOrgReply! (type)
         public static string CreateOrg(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOrg" + args + "\n{\n" + fs + "}\n";
         }
@@ -5477,7 +5477,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createOrgSwitchSession: CreateOrgSwitchSessionReply! (type)
         public static string CreateOrgSwitchSession(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createOrgSwitchSession" + args + "\n{\n" + fs + "}\n";
         }
@@ -5495,7 +5495,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createPolicy: ClassificationPolicyDetail! (type)
         public static string CreatePolicy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createPolicy" + args + "\n{\n" + fs + "}\n";
         }
@@ -5513,7 +5513,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createRcvPrivateEndpointApprovalRequest: CreateRcvPrivateEndpointApprovalRequestReply! (type)
         public static string CreateRcvPrivateEndpointApprovalRequest(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createRcvPrivateEndpointApprovalRequest" + args + "\n{\n" + fs + "}\n";
         }
@@ -5531,7 +5531,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createSapHanaSystemRefresh: AsyncRequestStatus! (type)
         public static string CreateSapHanaSystemRefresh(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createSapHanaSystemRefresh" + args + "\n{\n" + fs + "}\n";
         }
@@ -5549,7 +5549,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createScheduledReport: CreateScheduledReportReply! (type)
         public static string CreateScheduledReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createScheduledReport" + args + "\n{\n" + fs + "}\n";
         }
@@ -5567,7 +5567,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createServiceAccount: CreateServiceAccountReply! (type)
         public static string CreateServiceAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createServiceAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5585,7 +5585,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createVappsInstantRecovery: CreateVappsInstantRecoveryReply! (type)
         public static string CreateVappsInstantRecovery(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createVappsInstantRecovery" + args + "\n{\n" + fs + "}\n";
         }
@@ -5603,7 +5603,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createVsphereAdvancedTag: CreateVsphereAdvancedTagReply! (type)
         public static string CreateVsphereAdvancedTag(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createVsphereAdvancedTag" + args + "\n{\n" + fs + "}\n";
         }
@@ -5621,7 +5621,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createVsphereVcenter: CreateVsphereVcenterReply! (type)
         public static string CreateVsphereVcenter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createVsphereVcenter" + args + "\n{\n" + fs + "}\n";
         }
@@ -5639,7 +5639,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createWebhook: CreateWebhookReply! (type)
         public static string CreateWebhook(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "createWebhook" + args + "\n{\n" + fs + "}\n";
         }
@@ -5657,7 +5657,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAdGroupsFromHierarchy: RequestStatus! (type)
         public static string DeleteAdGroupsFromHierarchy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAdGroupsFromHierarchy" + args + "\n{\n" + fs + "}\n";
         }
@@ -5675,7 +5675,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAwsExocomputeConfigs: DeleteAwsExocomputeConfigsReply! (type)
         public static string DeleteAwsExocomputeConfigs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAwsExocomputeConfigs" + args + "\n{\n" + fs + "}\n";
         }
@@ -5693,7 +5693,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAzureAdDirectory: CreateOnDemandJobReply! (type)
         public static string DeleteAzureAdDirectory(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAzureAdDirectory" + args + "\n{\n" + fs + "}\n";
         }
@@ -5711,7 +5711,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAzureCloudAccount: DeleteAzureCloudAccountReply! (type)
         public static string DeleteAzureCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAzureCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5729,7 +5729,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAzureCloudAccountExocomputeConfigurations: DeleteAzureCloudAccountExocomputeConfigurationsReply! (type)
         public static string DeleteAzureCloudAccountExocomputeConfigurations(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" + fs + "}\n";
         }
@@ -5747,7 +5747,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteAzureCloudAccountWithoutOauth: DeleteAzureCloudAccountWithoutOauthReply! (type)
         public static string DeleteAzureCloudAccountWithoutOauth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteAzureCloudAccountWithoutOauth" + args + "\n{\n" + fs + "}\n";
         }
@@ -5765,7 +5765,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteCassandraSource: MosaicAsyncResponse! (type)
         public static string DeleteCassandraSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteCassandraSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -5783,7 +5783,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteDb2Database: AsyncRequestStatus! (type)
         public static string DeleteDb2Database(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteDb2Database" + args + "\n{\n" + fs + "}\n";
         }
@@ -5801,7 +5801,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteDb2Instance: AsyncRequestStatus! (type)
         public static string DeleteDb2Instance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteDb2Instance" + args + "\n{\n" + fs + "}\n";
         }
@@ -5819,7 +5819,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteExchangeSnapshotMount: AsyncRequestStatus! (type)
         public static string DeleteExchangeSnapshotMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteExchangeSnapshotMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5837,7 +5837,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteFailoverCluster: ResponseSuccess! (type)
         public static string DeleteFailoverCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteFailoverCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -5855,7 +5855,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteFailoverClusterApp: ResponseSuccess! (type)
         public static string DeleteFailoverClusterApp(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteFailoverClusterApp" + args + "\n{\n" + fs + "}\n";
         }
@@ -5873,7 +5873,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteFilesetSnapshots: ResponseSuccess! (type)
         public static string DeleteFilesetSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteFilesetSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -5891,7 +5891,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteGlobalCertificate: DeleteGlobalCertificateReply! (type)
         public static string DeleteGlobalCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteGlobalCertificate" + args + "\n{\n" + fs + "}\n";
         }
@@ -5909,7 +5909,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteGlobalSla: SlaResult! (type)
         public static string DeleteGlobalSla(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nid: $id\nuserNote: $userNote\n)";
             return "deleteGlobalSla" + args + "\n{\n" + fs + "}\n";
         }
@@ -5927,7 +5927,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteHypervVirtualMachineSnapshot: RequestSuccess! (type)
         public static string DeleteHypervVirtualMachineSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteHypervVirtualMachineSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -5945,7 +5945,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteHypervVirtualMachineSnapshotMount: AsyncRequestStatus! (type)
         public static string DeleteHypervVirtualMachineSnapshotMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteHypervVirtualMachineSnapshotMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -5963,7 +5963,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteK8sCluster: AsyncRequestStatus! (type)
         public static string DeleteK8sCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteK8sCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -5981,7 +5981,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteK8sProtectionSet: ResponseSuccess! (type)
         public static string DeleteK8sProtectionSet(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteK8sProtectionSet" + args + "\n{\n" + fs + "}\n";
         }
@@ -5999,7 +5999,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteLogShipping: AsyncRequestStatus! (type)
         public static string DeleteLogShipping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteLogShipping" + args + "\n{\n" + fs + "}\n";
         }
@@ -6017,7 +6017,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteManagedVolume: DeleteManagedVolumeReply! (type)
         public static string DeleteManagedVolume(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteManagedVolume" + args + "\n{\n" + fs + "}\n";
         }
@@ -6035,7 +6035,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteManagedVolumeSnapshotExport: AsyncRequestStatus! (type)
         public static string DeleteManagedVolumeSnapshotExport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteManagedVolumeSnapshotExport" + args + "\n{\n" + fs + "}\n";
         }
@@ -6053,7 +6053,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteMongoSource: AsyncRequestStatus! (type)
         public static string DeleteMongoSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteMongoSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -6071,7 +6071,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteMongodbSource: MosaicAsyncResponse! (type)
         public static string DeleteMongodbSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteMongodbSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -6089,7 +6089,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteMosaicStore: MosaicAsyncResponse! (type)
         public static string DeleteMosaicStore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteMosaicStore" + args + "\n{\n" + fs + "}\n";
         }
@@ -6107,7 +6107,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteMssqlDbSnapshots: ResponseSuccess! (type)
         public static string DeleteMssqlDbSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteMssqlDbSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -6125,7 +6125,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteMssqlLiveMount: AsyncRequestStatus! (type)
         public static string DeleteMssqlLiveMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteMssqlLiveMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -6143,7 +6143,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteNasSystem: AsyncRequestStatus! (type)
         public static string DeleteNasSystem(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteNasSystem" + args + "\n{\n" + fs + "}\n";
         }
@@ -6161,7 +6161,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteNutanixCluster: AsyncRequestStatus! (type)
         public static string DeleteNutanixCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteNutanixCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -6179,7 +6179,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteNutanixMountV1: AsyncRequestStatus! (type)
         public static string DeleteNutanixMountV1(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteNutanixMountV1" + args + "\n{\n" + fs + "}\n";
         }
@@ -6197,7 +6197,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteNutanixPrismCentral: BatchAsyncRequestStatus! (type)
         public static string DeleteNutanixPrismCentral(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteNutanixPrismCentral" + args + "\n{\n" + fs + "}\n";
         }
@@ -6215,7 +6215,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteNutanixSnapshot: RequestSuccess! (type)
         public static string DeleteNutanixSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteNutanixSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6233,7 +6233,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteNutanixSnapshots: RequestSuccess! (type)
         public static string DeleteNutanixSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteNutanixSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -6251,7 +6251,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteO365AzureApp: RequestStatus! (type)
         public static string DeleteO365AzureApp(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\no365AppClientId: $o365AppClientId\no365AppType: $o365AppType\n)";
             return "deleteO365AzureApp" + args + "\n{\n" + fs + "}\n";
         }
@@ -6269,7 +6269,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteO365Org: CreateOnDemandJobReply! (type)
         public static string DeleteO365Org(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\norgId: $orgId\n)";
             return "deleteO365Org" + args + "\n{\n" + fs + "}\n";
         }
@@ -6287,7 +6287,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteO365ServiceAccount: RequestStatus! (type)
         public static string DeleteO365ServiceAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\norgId: $orgId\n)";
             return "deleteO365ServiceAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -6305,7 +6305,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteOracleMount: AsyncRequestStatus! (type)
         public static string DeleteOracleMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteOracleMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -6323,7 +6323,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteSapHanaDbSnapshot: ResponseSuccess! (type)
         public static string DeleteSapHanaDbSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteSapHanaDbSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6341,7 +6341,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteSapHanaSystem: AsyncRequestStatus! (type)
         public static string DeleteSapHanaSystem(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteSapHanaSystem" + args + "\n{\n" + fs + "}\n";
         }
@@ -6359,7 +6359,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteSnapshotsOfUnmanagedObjects: RequestSuccess! (type)
         public static string DeleteSnapshotsOfUnmanagedObjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteSnapshotsOfUnmanagedObjects" + args + "\n{\n" + fs + "}\n";
         }
@@ -6377,7 +6377,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteStorageArrays: DeleteStorageArraysReply! (type)
         public static string DeleteStorageArrays(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteStorageArrays" + args + "\n{\n" + fs + "}\n";
         }
@@ -6395,7 +6395,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteUnmanagedSnapshots: RequestSuccess! (type)
         public static string DeleteUnmanagedSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteUnmanagedSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -6413,7 +6413,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteVolumeGroupMount: AsyncRequestStatus! (type)
         public static string DeleteVolumeGroupMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteVolumeGroupMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -6431,7 +6431,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteVsphereAdvancedTag: RequestSuccess! (type)
         public static string DeleteVsphereAdvancedTag(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteVsphereAdvancedTag" + args + "\n{\n" + fs + "}\n";
         }
@@ -6449,7 +6449,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deleteVsphereLiveMount: AsyncRequestStatus! (type)
         public static string DeleteVsphereLiveMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "deleteVsphereLiveMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -6467,7 +6467,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> disableReplicationPause: ResponseSuccess! (type)
         public static string DisableReplicationPause(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "disableReplicationPause" + args + "\n{\n" + fs + "}\n";
         }
@@ -6485,7 +6485,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> disableTarget: DisableTargetReply! (type)
         public static string DisableTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "disableTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -6503,7 +6503,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> discoverDb2Instance: AsyncRequestStatus! (type)
         public static string DiscoverDb2Instance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "discoverDb2Instance" + args + "\n{\n" + fs + "}\n";
         }
@@ -6521,7 +6521,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> discoverMongoSource: AsyncRequestStatus! (type)
         public static string DiscoverMongoSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "discoverMongoSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -6539,7 +6539,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> dissolveLegalHold: DissolveLegalHoldReply! (type)
         public static string DissolveLegalHold(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "dissolveLegalHold" + args + "\n{\n" + fs + "}\n";
         }
@@ -6557,7 +6557,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadActiveDirectorySnapshotFromLocation: AsyncRequestStatus! (type)
         public static string DownloadActiveDirectorySnapshotFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadActiveDirectorySnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -6575,7 +6575,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadAuditLogCsvAsync: AsyncDownloadReply! (type)
         public static string DownloadAuditLogCsvAsync(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadAuditLogCsvAsync" + args + "\n{\n" + fs + "}\n";
         }
@@ -6593,7 +6593,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadDb2Snapshot: AsyncRequestStatus! (type)
         public static string DownloadDb2Snapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadDb2Snapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6611,7 +6611,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadDb2SnapshotsForPointInTimeRecovery: AsyncRequestStatus! (type)
         public static string DownloadDb2SnapshotsForPointInTimeRecovery(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadDb2SnapshotsForPointInTimeRecovery" + args + "\n{\n" + fs + "}\n";
         }
@@ -6629,7 +6629,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadExchangeSnapshot: AsyncRequestStatus! (type)
         public static string DownloadExchangeSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadExchangeSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6647,7 +6647,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadFilesNutanixSnapshot: AsyncRequestStatus! (type)
         public static string DownloadFilesNutanixSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadFilesNutanixSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6665,7 +6665,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadFilesetSnapshot: AsyncRequestStatus! (type)
         public static string DownloadFilesetSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadFilesetSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6683,7 +6683,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadFilesetSnapshotFromLocation: AsyncRequestStatus! (type)
         public static string DownloadFilesetSnapshotFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadFilesetSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -6701,7 +6701,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadHypervSnapshotFromLocation: AsyncRequestStatus! (type)
         public static string DownloadHypervSnapshotFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadHypervSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -6719,7 +6719,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadHypervVirtualMachineLevelFiles: AsyncRequestStatus! (type)
         public static string DownloadHypervVirtualMachineLevelFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadHypervVirtualMachineLevelFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -6737,7 +6737,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadHypervVirtualMachineSnapshot: AsyncRequestStatus! (type)
         public static string DownloadHypervVirtualMachineSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadHypervVirtualMachineSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6755,7 +6755,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadHypervVirtualMachineSnapshotFiles: AsyncRequestStatus! (type)
         public static string DownloadHypervVirtualMachineSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadHypervVirtualMachineSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -6773,7 +6773,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadManagedVolumeFiles: AsyncRequestStatus! (type)
         public static string DownloadManagedVolumeFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadManagedVolumeFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -6791,7 +6791,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadManagedVolumeFromLocation: AsyncRequestStatus! (type)
         public static string DownloadManagedVolumeFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadManagedVolumeFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -6809,7 +6809,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadMssqlDatabaseBackupFiles: AsyncRequestStatus! (type)
         public static string DownloadMssqlDatabaseBackupFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadMssqlDatabaseBackupFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -6827,7 +6827,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadMssqlDatabaseFilesFromArchivalLocation: AsyncRequestStatus! (type)
         public static string DownloadMssqlDatabaseFilesFromArchivalLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadMssqlDatabaseFilesFromArchivalLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -6845,7 +6845,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadNutanixSnapshot: AsyncRequestStatus! (type)
         public static string DownloadNutanixSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadNutanixSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6863,7 +6863,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadNutanixVmFromLocation: AsyncRequestStatus! (type)
         public static string DownloadNutanixVmFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadNutanixVmFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -6881,7 +6881,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadObjectFilesCsv: DownloadCsvReply! (type)
         public static string DownloadObjectFilesCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadObjectFilesCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -6899,7 +6899,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadObjectsListCsv: DownloadCsvReply! (type)
         public static string DownloadObjectsListCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadObjectsListCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -6917,7 +6917,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadOracleDatabaseSnapshot: AsyncRequestStatus! (type)
         public static string DownloadOracleDatabaseSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadOracleDatabaseSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -6935,7 +6935,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadReportCsvAsync: AsyncDownloadReply! (type)
         public static string DownloadReportCsvAsync(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadReportCsvAsync" + args + "\n{\n" + fs + "}\n";
         }
@@ -6953,7 +6953,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadReportPdfAsync: AsyncDownloadReply! (type)
         public static string DownloadReportPdfAsync(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadReportPdfAsync" + args + "\n{\n" + fs + "}\n";
         }
@@ -6971,7 +6971,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadResultsCsv: DownloadResultsCsvReply! (type)
         public static string DownloadResultsCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ncrawlId: $crawlId\ndownloadFilter: $downloadFilter\n)";
             return "downloadResultsCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -6989,7 +6989,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadSapHanaSnapshot: AsyncRequestStatus! (type)
         public static string DownloadSapHanaSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadSapHanaSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -7007,7 +7007,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadSapHanaSnapshotFromLocation: AsyncRequestStatus! (type)
         public static string DownloadSapHanaSnapshotFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadSapHanaSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -7025,7 +7025,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadSapHanaSnapshotsForPointInTimeRecovery: AsyncRequestStatus! (type)
         public static string DownloadSapHanaSnapshotsForPointInTimeRecovery(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadSapHanaSnapshotsForPointInTimeRecovery" + args + "\n{\n" + fs + "}\n";
         }
@@ -7043,7 +7043,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadSnapshotResultsCsv: DownloadCsvReply! (type)
         public static string DownloadSnapshotResultsCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\ndownloadFilter: $downloadFilter\n)";
             return "downloadSnapshotResultsCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -7061,7 +7061,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadThreatHuntCsv: DownloadThreatHuntCsvReply! (type)
         public static string DownloadThreatHuntCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadThreatHuntCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -7079,7 +7079,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadUserActivityCsv: DownloadCsvReply! (type)
         public static string DownloadUserActivityCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadUserActivityCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -7097,7 +7097,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadUserFileActivityCsv: DownloadCsvReply! (type)
         public static string DownloadUserFileActivityCsv(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadUserFileActivityCsv" + args + "\n{\n" + fs + "}\n";
         }
@@ -7115,7 +7115,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadVolumeGroupSnapshotFiles: AsyncRequestStatus! (type)
         public static string DownloadVolumeGroupSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadVolumeGroupSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -7133,7 +7133,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadVolumeGroupSnapshotFromLocation: AsyncRequestStatus! (type)
         public static string DownloadVolumeGroupSnapshotFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadVolumeGroupSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -7151,7 +7151,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> downloadVsphereVirtualMachineFiles: AsyncRequestStatus! (type)
         public static string DownloadVsphereVirtualMachineFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "downloadVsphereVirtualMachineFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -7169,7 +7169,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableAutomaticFmdUpload: EnableAutomaticFmdUploadReply! (type)
         public static string EnableAutomaticFmdUpload(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableAutomaticFmdUpload" + args + "\n{\n" + fs + "}\n";
         }
@@ -7187,7 +7187,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableDisableAppConsistency: EnableDisableAppConsistencyReply! (type)
         public static string EnableDisableAppConsistency(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableDisableAppConsistency" + args + "\n{\n" + fs + "}\n";
         }
@@ -7205,7 +7205,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableO365SharePoint: RequestStatus! (type)
         public static string EnableO365SharePoint(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableO365SharePoint" + args + "\n{\n" + fs + "}\n";
         }
@@ -7223,7 +7223,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableO365Teams: RequestStatus! (type)
         public static string EnableO365Teams(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nexocomputeClusterId: $exocomputeClusterId\n)";
             return "enableO365Teams" + args + "\n{\n" + fs + "}\n";
         }
@@ -7241,7 +7241,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableReplicationPause: ResponseSuccess! (type)
         public static string EnableReplicationPause(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableReplicationPause" + args + "\n{\n" + fs + "}\n";
         }
@@ -7259,7 +7259,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableTarget: EnableTargetReply! (type)
         public static string EnableTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "enableTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -7277,7 +7277,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> endManagedVolumeSnapshot: EndManagedVolumeSnapshotReply! (type)
         public static string EndManagedVolumeSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "endManagedVolumeSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -7295,7 +7295,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludeVmDisks: RequestSuccess! (type)
         public static string ExcludeVmDisks(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "excludeVmDisks" + args + "\n{\n" + fs + "}\n";
         }
@@ -7313,7 +7313,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> expireDownloadedDb2Snapshots: AsyncRequestStatus! (type)
         public static string ExpireDownloadedDb2Snapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "expireDownloadedDb2Snapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -7331,7 +7331,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> expireDownloadedSapHanaSnapshots: AsyncRequestStatus! (type)
         public static string ExpireDownloadedSapHanaSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "expireDownloadedSapHanaSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -7349,7 +7349,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> expireSnoozedDirectories: ExpireSnoozedDirectoriesReply! (type)
         public static string ExpireSnoozedDirectories(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "expireSnoozedDirectories" + args + "\n{\n" + fs + "}\n";
         }
@@ -7367,7 +7367,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportHypervVirtualMachine: AsyncRequestStatus! (type)
         public static string ExportHypervVirtualMachine(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportHypervVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
@@ -7385,7 +7385,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportK8sNamespace: CreateOnDemandJobReply! (type)
         public static string ExportK8sNamespace(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportK8sNamespace" + args + "\n{\n" + fs + "}\n";
         }
@@ -7403,7 +7403,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportK8sProtectionSetSnapshot: AsyncRequestStatus! (type)
         public static string ExportK8sProtectionSetSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportK8sProtectionSetSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -7421,7 +7421,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportManagedVolumeSnapshot: AsyncRequestStatus! (type)
         public static string ExportManagedVolumeSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportManagedVolumeSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -7439,7 +7439,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportMssqlDatabase: AsyncRequestStatus! (type)
         public static string ExportMssqlDatabase(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportMssqlDatabase" + args + "\n{\n" + fs + "}\n";
         }
@@ -7457,7 +7457,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportNutanixSnapshot: AsyncRequestStatus! (type)
         public static string ExportNutanixSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportNutanixSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -7475,7 +7475,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportO365Mailbox: CreateOnDemandJobReply! (type)
         public static string ExportO365Mailbox(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nexportConfig: $exportConfig\n)";
             return "exportO365Mailbox" + args + "\n{\n" + fs + "}\n";
         }
@@ -7493,7 +7493,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportOracleDatabase: AsyncRequestStatus! (type)
         public static string ExportOracleDatabase(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportOracleDatabase" + args + "\n{\n" + fs + "}\n";
         }
@@ -7511,7 +7511,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportOracleTablespace: AsyncRequestStatus! (type)
         public static string ExportOracleTablespace(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportOracleTablespace" + args + "\n{\n" + fs + "}\n";
         }
@@ -7529,7 +7529,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exportSlaManagedVolumeSnapshot: AsyncRequestStatus! (type)
         public static string ExportSlaManagedVolumeSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "exportSlaManagedVolumeSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -7547,7 +7547,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetDownloadSnapshotFiles: AsyncRequestStatus! (type)
         public static string FilesetDownloadSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "filesetDownloadSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -7565,7 +7565,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetExportSnapshotFiles: AsyncRequestStatus! (type)
         public static string FilesetExportSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "filesetExportSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -7583,7 +7583,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filesetRecoverFiles: AsyncRequestStatus! (type)
         public static string FilesetRecoverFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "filesetRecoverFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -7601,7 +7601,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> finalizeAwsCloudAccountDeletion: FinalizeAwsCloudAccountDeletionReply! (type)
         public static string FinalizeAwsCloudAccountDeletion(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "finalizeAwsCloudAccountDeletion" + args + "\n{\n" + fs + "}\n";
         }
@@ -7619,7 +7619,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> finalizeAwsCloudAccountProtection: FinalizeAwsCloudAccountProtectionReply! (type)
         public static string FinalizeAwsCloudAccountProtection(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "finalizeAwsCloudAccountProtection" + args + "\n{\n" + fs + "}\n";
         }
@@ -7637,7 +7637,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpCloudAccountAddProjects: GcpCloudAccountAddProjectsReply! (type)
         public static string GcpCloudAccountAddProjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpCloudAccountAddProjects" + args + "\n{\n" + fs + "}\n";
         }
@@ -7655,7 +7655,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpCloudAccountDeleteProjects: GcpCloudAccountDeleteProjectsReply! (type)
         public static string GcpCloudAccountDeleteProjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpCloudAccountDeleteProjects" + args + "\n{\n" + fs + "}\n";
         }
@@ -7673,7 +7673,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpCloudAccountOauthComplete: GcpCloudAccountOauthCompleteReply! (type)
         public static string GcpCloudAccountOauthComplete(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpCloudAccountOauthComplete" + args + "\n{\n" + fs + "}\n";
         }
@@ -7691,7 +7691,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpCloudAccountOauthInitiate: GcpCloudAccountOauthInitiateReply! (type)
         public static string GcpCloudAccountOauthInitiate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpCloudAccountOauthInitiate" + args + "\n{\n" + fs + "}\n";
         }
@@ -7709,7 +7709,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpCloudAccountUpgradeProjects: GcpCloudAccountUpgradeProjectsReply! (type)
         public static string GcpCloudAccountUpgradeProjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpCloudAccountUpgradeProjects" + args + "\n{\n" + fs + "}\n";
         }
@@ -7727,7 +7727,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeDisableProject: AsyncJobStatus! (type)
         public static string GcpNativeDisableProject(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpNativeDisableProject" + args + "\n{\n" + fs + "}\n";
         }
@@ -7745,7 +7745,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeExportDisk: AsyncJobStatus! (type)
         public static string GcpNativeExportDisk(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpNativeExportDisk" + args + "\n{\n" + fs + "}\n";
         }
@@ -7763,7 +7763,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeExportGceInstance: AsyncJobStatus! (type)
         public static string GcpNativeExportGceInstance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpNativeExportGceInstance" + args + "\n{\n" + fs + "}\n";
         }
@@ -7781,7 +7781,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeRefreshProjects: BatchAsyncJobStatus! (type)
         public static string GcpNativeRefreshProjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpNativeRefreshProjects" + args + "\n{\n" + fs + "}\n";
         }
@@ -7799,7 +7799,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeRestoreGceInstance: AsyncJobStatus! (type)
         public static string GcpNativeRestoreGceInstance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "gcpNativeRestoreGceInstance" + args + "\n{\n" + fs + "}\n";
         }
@@ -7817,7 +7817,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> generateClusterRegistrationToken: ClusterRegistrationToken! (type)
         public static string GenerateClusterRegistrationToken(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "generateClusterRegistrationToken" + args + "\n{\n" + fs + "}\n";
         }
@@ -7835,7 +7835,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> generateConfigProtectionRestoreForm: GenerateConfigProtectionRestoreFormReply! (type)
         public static string GenerateConfigProtectionRestoreForm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "generateConfigProtectionRestoreForm" + args + "\n{\n" + fs + "}\n";
         }
@@ -7853,7 +7853,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> generateCsr: Csr! (type)
         public static string GenerateCsr(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nname: $name\nhostnames: $hostnames\norganization: $organization\norganizationUnit: $organizationUnit\ncountry: $country\nstate: $state\ncity: $city\nemail: $email\nsurname: $surname\nuserId: $userId\n)";
             return "generateCsr" + args + "\n{\n" + fs + "}\n";
         }
@@ -7871,7 +7871,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> generateSupportBundle: AsyncRequestStatus! (type)
         public static string GenerateSupportBundle(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "generateSupportBundle" + args + "\n{\n" + fs + "}\n";
         }
@@ -7889,7 +7889,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> generateTotpSecret: GenerateTotpSecretReply! (type)
         public static string GenerateTotpSecret(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nuserId: $userId\n)";
             return "generateTotpSecret" + args + "\n{\n" + fs + "}\n";
         }
@@ -7907,7 +7907,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> getDownloadUrl: UserDownloadUrl! (type)
         public static string GetDownloadUrl(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ndownloadId: $downloadId\n)";
             return "getDownloadUrl" + args + "\n{\n" + fs + "}\n";
         }
@@ -7925,7 +7925,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> getHealthMonitorPolicyStatus: GetHealthMonitorPolicyStatusReply! (type)
         public static string GetHealthMonitorPolicyStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "getHealthMonitorPolicyStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -7943,7 +7943,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> getPendingSlaAssignments: GetPendingSlaAssignmentsReply! (type)
         public static string GetPendingSlaAssignments(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "getPendingSlaAssignments" + args + "\n{\n" + fs + "}\n";
         }
@@ -7961,7 +7961,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hideRevealNasShares: ResponseSuccess! (type)
         public static string HideRevealNasShares(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "hideRevealNasShares" + args + "\n{\n" + fs + "}\n";
         }
@@ -7979,7 +7979,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervDeleteAllSnapshots: RequestSuccess! (type)
         public static string HypervDeleteAllSnapshots(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "hypervDeleteAllSnapshots" + args + "\n{\n" + fs + "}\n";
         }
@@ -7997,7 +7997,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervOnDemandSnapshot: AsyncRequestStatus! (type)
         public static string HypervOnDemandSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "hypervOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -8015,7 +8015,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervScvmmDelete: ResponseSuccess! (type)
         public static string HypervScvmmDelete(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "hypervScvmmDelete" + args + "\n{\n" + fs + "}\n";
         }
@@ -8033,7 +8033,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hypervScvmmUpdate: HypervScvmmUpdateReply! (type)
         public static string HypervScvmmUpdate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "hypervScvmmUpdate" + args + "\n{\n" + fs + "}\n";
         }
@@ -8051,7 +8051,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> inplaceExportHypervVirtualMachine: AsyncRequestStatus! (type)
         public static string InplaceExportHypervVirtualMachine(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "inplaceExportHypervVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
@@ -8069,7 +8069,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> insertCustomerO365App: RequestStatus! (type)
         public static string InsertCustomerO365App(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "insertCustomerO365App" + args + "\n{\n" + fs + "}\n";
         }
@@ -8087,7 +8087,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> installIoFilter: RequestSuccess! (type)
         public static string InstallIoFilter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "installIoFilter" + args + "\n{\n" + fs + "}\n";
         }
@@ -8105,7 +8105,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> instantRecoverHypervVirtualMachineSnapshot: AsyncRequestStatus! (type)
         public static string InstantRecoverHypervVirtualMachineSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "instantRecoverHypervVirtualMachineSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -8123,7 +8123,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> instantRecoverOracleSnapshot: AsyncRequestStatus! (type)
         public static string InstantRecoverOracleSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "instantRecoverOracleSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -8141,7 +8141,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> listCidrsForComputeSetting: ListCidrsForComputeSettingReply! (type)
         public static string ListCidrsForComputeSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "listCidrsForComputeSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -8159,7 +8159,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> logoutFromRubrikSupportPortal: SupportPortalLogoutReply! (type)
         public static string LogoutFromRubrikSupportPortal(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "logoutFromRubrikSupportPortal" + args + "\n{\n" + fs + "}\n";
         }
@@ -8177,7 +8177,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> makePrimary: AsyncRequestStatus! (type)
         public static string MakePrimary(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "makePrimary" + args + "\n{\n" + fs + "}\n";
         }
@@ -8195,7 +8195,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mapAzureCloudAccountExocomputeSubscription: MapAzureCloudAccountExocomputeSubscriptionReply! (type)
         public static string MapAzureCloudAccountExocomputeSubscription(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "mapAzureCloudAccountExocomputeSubscription" + args + "\n{\n" + fs + "}\n";
         }
@@ -8213,7 +8213,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mapAzureCloudAccountToPersistentStorageLocation: MapAzureCloudAccountToPersistentStorageLocationReply! (type)
         public static string MapAzureCloudAccountToPersistentStorageLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "mapAzureCloudAccountToPersistentStorageLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -8231,7 +8231,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mapCloudAccountExocomputeAccount: MapCloudAccountExocomputeAccountReply! (type)
         public static string MapCloudAccountExocomputeAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "mapCloudAccountExocomputeAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -8249,7 +8249,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> markAgentSecondaryCertificate: MarkAgentSecondaryCertificateReply! (type)
         public static string MarkAgentSecondaryCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "markAgentSecondaryCertificate" + args + "\n{\n" + fs + "}\n";
         }
@@ -8267,7 +8267,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> migrateNutanixMountV1: AsyncRequestStatus! (type)
         public static string MigrateNutanixMountV1(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "migrateNutanixMountV1" + args + "\n{\n" + fs + "}\n";
         }
@@ -8285,7 +8285,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> modifyIpmi: ModifyIpmiReply! (type)
         public static string ModifyIpmi(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "modifyIpmi" + args + "\n{\n" + fs + "}\n";
         }
@@ -8303,7 +8303,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountDisk: MountDiskReply! (type)
         public static string MountDisk(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "mountDisk" + args + "\n{\n" + fs + "}\n";
         }
@@ -8321,7 +8321,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountNutanixSnapshotV1: AsyncRequestStatus! (type)
         public static string MountNutanixSnapshotV1(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "mountNutanixSnapshotV1" + args + "\n{\n" + fs + "}\n";
         }
@@ -8339,7 +8339,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountOracleDatabase: AsyncRequestStatus! (type)
         public static string MountOracleDatabase(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "mountOracleDatabase" + args + "\n{\n" + fs + "}\n";
         }
@@ -8357,7 +8357,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> notificationForGetLicense: NotificationForGetLicenseReply! (type)
         public static string NotificationForGetLicense(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "notificationForGetLicense" + args + "\n{\n" + fs + "}\n";
         }
@@ -8375,7 +8375,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365OauthConsentComplete: O365OauthConsentCompleteReply! (type)
         public static string O365OauthConsentComplete(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "o365OauthConsentComplete" + args + "\n{\n" + fs + "}\n";
         }
@@ -8393,7 +8393,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365OauthConsentKickoff: O365OauthConsentKickoffReply! (type)
         public static string O365OauthConsentKickoff(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "o365OauthConsentKickoff" + args + "\n{\n" + fs + "}\n";
         }
@@ -8411,7 +8411,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365PdlGroups: O365PdlGroupsReply! (type)
         public static string O365PdlGroups(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "o365PdlGroups" + args + "\n{\n" + fs + "}\n";
         }
@@ -8429,7 +8429,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365SaaSSetupKickoff: O365SaasSetupKickoffReply! (type)
         public static string O365SaaSsetupKickoff(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "o365SaaSSetupKickoff" + args + "\n{\n" + fs + "}\n";
         }
@@ -8447,7 +8447,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365SaasSetupComplete: AddO365OrgResponse! (type)
         public static string O365SaasSetupComplete(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "o365SaasSetupComplete" + args + "\n{\n" + fs + "}\n";
         }
@@ -8465,7 +8465,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> o365SetupKickoff: O365SetupKickoffResp! (type)
         public static string O365SetupKickoff(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "o365SetupKickoff" + args + "\n{\n" + fs + "}\n";
         }
@@ -8483,7 +8483,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchDb2Database: PatchDb2DatabaseReply! (type)
         public static string PatchDb2Database(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchDb2Database" + args + "\n{\n" + fs + "}\n";
         }
@@ -8501,7 +8501,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchDb2Instance: PatchDb2InstanceReply! (type)
         public static string PatchDb2Instance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchDb2Instance" + args + "\n{\n" + fs + "}\n";
         }
@@ -8519,7 +8519,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchMongoSource: AsyncRequestStatus! (type)
         public static string PatchMongoSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchMongoSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -8537,7 +8537,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchNutanixMountV1: PatchNutanixMountV1Reply! (type)
         public static string PatchNutanixMountV1(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchNutanixMountV1" + args + "\n{\n" + fs + "}\n";
         }
@@ -8555,7 +8555,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> patchSapHanaSystem: PatchSapHanaSystemReply! (type)
         public static string PatchSapHanaSystem(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "patchSapHanaSystem" + args + "\n{\n" + fs + "}\n";
         }
@@ -8573,7 +8573,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pauseSla: PauseSlaReply! (type)
         public static string PauseSla(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "pauseSla" + args + "\n{\n" + fs + "}\n";
         }
@@ -8591,7 +8591,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pauseTarget: PauseTargetReply! (type)
         public static string PauseTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "pauseTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -8609,7 +8609,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> prepareAwsCloudAccountDeletion: PrepareAwsCloudAccountDeletionReply! (type)
         public static string PrepareAwsCloudAccountDeletion(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "prepareAwsCloudAccountDeletion" + args + "\n{\n" + fs + "}\n";
         }
@@ -8627,7 +8627,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> prepareFeatureUpdateForAwsCloudAccount: PrepareFeatureUpdateForAwsCloudAccountReply! (type)
         public static string PrepareFeatureUpdateForAwsCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "prepareFeatureUpdateForAwsCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -8645,7 +8645,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> putSmbConfiguration: PutSmbConfigurationReply! (type)
         public static string PutSmbConfiguration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "putSmbConfiguration" + args + "\n{\n" + fs + "}\n";
         }
@@ -8663,7 +8663,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoverCassandraSource: MosaicAsyncResponse! (type)
         public static string RecoverCassandraSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "recoverCassandraSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -8681,7 +8681,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoverCloudCluster: CcProvisionJobReply! (type)
         public static string RecoverCloudCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "recoverCloudCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -8699,7 +8699,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoverCloudDirectMultiPaths: AsyncRequestStatus! (type)
         public static string RecoverCloudDirectMultiPaths(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "recoverCloudDirectMultiPaths" + args + "\n{\n" + fs + "}\n";
         }
@@ -8717,7 +8717,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoverCloudDirectPath: AsyncRequestStatus! (type)
         public static string RecoverCloudDirectPath(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "recoverCloudDirectPath" + args + "\n{\n" + fs + "}\n";
         }
@@ -8735,7 +8735,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoverMongoSource: AsyncRequestStatus! (type)
         public static string RecoverMongoSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "recoverMongoSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -8753,7 +8753,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoverMongodbSource: MosaicAsyncResponse! (type)
         public static string RecoverMongodbSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "recoverMongodbSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -8771,7 +8771,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshDb2Database: AsyncRequestStatus! (type)
         public static string RefreshDb2Database(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshDb2Database" + args + "\n{\n" + fs + "}\n";
         }
@@ -8789,7 +8789,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshDomain: AsyncRequestStatus! (type)
         public static string RefreshDomain(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshDomain" + args + "\n{\n" + fs + "}\n";
         }
@@ -8807,7 +8807,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshGlobalManagerConnectivityStatus: GlobalManagerConnectivity! (type)
         public static string RefreshGlobalManagerConnectivityStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "refreshGlobalManagerConnectivityStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -8825,7 +8825,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshHost: RefreshHostReply! (type)
         public static string RefreshHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -8843,7 +8843,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshHypervScvmm: AsyncRequestStatus! (type)
         public static string RefreshHypervScvmm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshHypervScvmm" + args + "\n{\n" + fs + "}\n";
         }
@@ -8861,7 +8861,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshHypervServer: AsyncRequestStatus! (type)
         public static string RefreshHypervServer(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshHypervServer" + args + "\n{\n" + fs + "}\n";
         }
@@ -8879,7 +8879,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshK8sCluster: CreateOnDemandJobReply! (type)
         public static string RefreshK8sCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshK8sCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -8897,7 +8897,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshK8sV2Cluster: AsyncRequestStatus! (type)
         public static string RefreshK8sV2Cluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshK8sV2Cluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -8915,7 +8915,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshNasSystems: RefreshNasSystemsReply! (type)
         public static string RefreshNasSystems(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshNasSystems" + args + "\n{\n" + fs + "}\n";
         }
@@ -8933,7 +8933,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshNutanixCluster: AsyncRequestStatus! (type)
         public static string RefreshNutanixCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshNutanixCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -8951,7 +8951,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshNutanixPrismCentral: BatchAsyncRequestStatus! (type)
         public static string RefreshNutanixPrismCentral(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshNutanixPrismCentral" + args + "\n{\n" + fs + "}\n";
         }
@@ -8969,7 +8969,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshO365Org: CreateOnDemandJobReply! (type)
         public static string RefreshO365Org(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\norgId: $orgId\n)";
             return "refreshO365Org" + args + "\n{\n" + fs + "}\n";
         }
@@ -8987,7 +8987,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshOracleDatabase: AsyncRequestStatus! (type)
         public static string RefreshOracleDatabase(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshOracleDatabase" + args + "\n{\n" + fs + "}\n";
         }
@@ -9005,7 +9005,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshStorageArrays: RefreshStorageArraysReply! (type)
         public static string RefreshStorageArrays(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshStorageArrays" + args + "\n{\n" + fs + "}\n";
         }
@@ -9023,7 +9023,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> refreshVsphereVcenter: AsyncRequestStatus! (type)
         public static string RefreshVsphereVcenter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "refreshVsphereVcenter" + args + "\n{\n" + fs + "}\n";
         }
@@ -9041,7 +9041,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> registerAgentHypervVirtualMachine: RequestSuccess! (type)
         public static string RegisterAgentHypervVirtualMachine(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "registerAgentHypervVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
@@ -9059,7 +9059,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> registerAgentNutanixVm: RequestSuccess! (type)
         public static string RegisterAgentNutanixVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "registerAgentNutanixVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -9077,7 +9077,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> registerAwsFeatureArtifacts: RegisterAwsFeatureArtifactsReply! (type)
         public static string RegisterAwsFeatureArtifacts(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "registerAwsFeatureArtifacts" + args + "\n{\n" + fs + "}\n";
         }
@@ -9095,7 +9095,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> registerCloudCluster: RegisterCloudClusterReply! (type)
         public static string RegisterCloudCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "registerCloudCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -9113,7 +9113,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> registerHypervScvmm: AsyncRequestStatus! (type)
         public static string RegisterHypervScvmm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "registerHypervScvmm" + args + "\n{\n" + fs + "}\n";
         }
@@ -9131,7 +9131,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> registerNasSystem: RegisterNasSystemReply! (type)
         public static string RegisterNasSystem(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "registerNasSystem" + args + "\n{\n" + fs + "}\n";
         }
@@ -9149,7 +9149,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeClusterNodes: CcProvisionJobReply! (type)
         public static string RemoveClusterNodes(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "removeClusterNodes" + args + "\n{\n" + fs + "}\n";
         }
@@ -9167,7 +9167,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeDisk: ResponseSuccess! (type)
         public static string RemoveDisk(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "removeDisk" + args + "\n{\n" + fs + "}\n";
         }
@@ -9185,7 +9185,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeProxyConfig: ResponseSuccess! (type)
         public static string RemoveProxyConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "removeProxyConfig" + args + "\n{\n" + fs + "}\n";
         }
@@ -9203,7 +9203,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> removeVlans: RemoveVlansReply! (type)
         public static string RemoveVlans(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "removeVlans" + args + "\n{\n" + fs + "}\n";
         }
@@ -9221,7 +9221,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> reseedLogShippingSecondary: AsyncRequestStatus! (type)
         public static string ReseedLogShippingSecondary(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "reseedLogShippingSecondary" + args + "\n{\n" + fs + "}\n";
         }
@@ -9239,7 +9239,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resizeDisk: ResponseSuccess! (type)
         public static string ResizeDisk(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "resizeDisk" + args + "\n{\n" + fs + "}\n";
         }
@@ -9257,7 +9257,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resizeManagedVolume: AsyncRequestStatus! (type)
         public static string ResizeManagedVolume(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "resizeManagedVolume" + args + "\n{\n" + fs + "}\n";
         }
@@ -9275,7 +9275,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resolveVolumeGroupsConflict: RequestSuccess! (type)
         public static string ResolveVolumeGroupsConflict(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "resolveVolumeGroupsConflict" + args + "\n{\n" + fs + "}\n";
         }
@@ -9293,7 +9293,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreActiveDirectoryObjects: AsyncRequestStatus! (type)
         public static string RestoreActiveDirectoryObjects(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreActiveDirectoryObjects" + args + "\n{\n" + fs + "}\n";
         }
@@ -9311,7 +9311,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreAzureAdObjectsWithPasswords: RestoreAzureAdObjectsWithPasswordsReply! (type)
         public static string RestoreAzureAdObjectsWithPasswords(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreAzureAdObjectsWithPasswords" + args + "\n{\n" + fs + "}\n";
         }
@@ -9329,7 +9329,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreDomainControllerSnapshot: AsyncRequestStatus! (type)
         public static string RestoreDomainControllerSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreDomainControllerSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -9347,7 +9347,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreFilesNutanixSnapshot: AsyncRequestStatus! (type)
         public static string RestoreFilesNutanixSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreFilesNutanixSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -9365,7 +9365,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreHypervVirtualMachineSnapshotFiles: AsyncRequestStatus! (type)
         public static string RestoreHypervVirtualMachineSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreHypervVirtualMachineSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -9383,7 +9383,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreK8sNamespace: CreateOnDemandJobReply! (type)
         public static string RestoreK8sNamespace(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreK8sNamespace" + args + "\n{\n" + fs + "}\n";
         }
@@ -9401,7 +9401,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreK8sProtectionSetSnapshot: AsyncRequestStatus! (type)
         public static string RestoreK8sProtectionSetSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreK8sProtectionSetSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -9419,7 +9419,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreMssqlDatabase: AsyncRequestStatus! (type)
         public static string RestoreMssqlDatabase(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreMssqlDatabase" + args + "\n{\n" + fs + "}\n";
         }
@@ -9437,7 +9437,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreO365Mailbox: CreateOnDemandJobReply! (type)
         public static string RestoreO365Mailbox(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nrestoreConfig: $restoreConfig\n)";
             return "restoreO365Mailbox" + args + "\n{\n" + fs + "}\n";
         }
@@ -9455,7 +9455,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreO365Snappable: CreateOnDemandJobReply! (type)
         public static string RestoreO365Snappable(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreO365Snappable" + args + "\n{\n" + fs + "}\n";
         }
@@ -9473,7 +9473,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreO365TeamsConversations: CreateOnDemandJobReply! (type)
         public static string RestoreO365TeamsConversations(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreO365TeamsConversations" + args + "\n{\n" + fs + "}\n";
         }
@@ -9491,7 +9491,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreO365TeamsFiles: CreateOnDemandJobReply! (type)
         public static string RestoreO365TeamsFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreO365TeamsFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -9509,7 +9509,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreOracleLogs: AsyncRequestStatus! (type)
         public static string RestoreOracleLogs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreOracleLogs" + args + "\n{\n" + fs + "}\n";
         }
@@ -9527,7 +9527,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreSapHanaSystemStorage: AsyncRequestStatus! (type)
         public static string RestoreSapHanaSystemStorage(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreSapHanaSystemStorage" + args + "\n{\n" + fs + "}\n";
         }
@@ -9545,7 +9545,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreVolumeGroupSnapshotFiles: AsyncRequestStatus! (type)
         public static string RestoreVolumeGroupSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "restoreVolumeGroupSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -9563,7 +9563,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resumeTarget: ResumeTargetReply! (type)
         public static string ResumeTarget(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "resumeTarget" + args + "\n{\n" + fs + "}\n";
         }
@@ -9581,7 +9581,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> retryAddMongoSource: AsyncRequestStatus! (type)
         public static string RetryAddMongoSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "retryAddMongoSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -9599,7 +9599,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> retryBackup: RetryBackupResp! (type)
         public static string RetryBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nbackupObjects: $backupObjects\nbackupRunConfig: $backupRunConfig\n)";
             return "retryBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -9617,7 +9617,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> retryDownloadPackageJob: DownloadPackageReply! (type)
         public static string RetryDownloadPackageJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "retryDownloadPackageJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -9635,7 +9635,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rotateServiceAccountSecret: RotateServiceAccountSecretReply! (type)
         public static string RotateServiceAccountSecret(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "rotateServiceAccountSecret" + args + "\n{\n" + fs + "}\n";
         }
@@ -9653,7 +9653,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> runCustomAnalyzer: RunCustomAnalyzerReply! (type)
         public static string RunCustomAnalyzer(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "runCustomAnalyzer" + args + "\n{\n" + fs + "}\n";
         }
@@ -9671,7 +9671,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> scheduleUpgradeBatchJob: [UpgradeJobReplyWithUuid!]! (type)
         public static string ScheduleUpgradeBatchJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nlistClusterUuid: $listClusterUuid\nmode: $mode\naction: $action\nversion: $version\nscheduleAt: $scheduleAt\ncontext_tag: $context_tag\n)";
             return "scheduleUpgradeBatchJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -9689,7 +9689,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> seedEnabledPolicies: SeedEnabledPoliciesReply! (type)
         public static string SeedEnabledPolicies(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "seedEnabledPolicies" + args + "\n{\n" + fs + "}\n";
         }
@@ -9707,7 +9707,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> seedInitialPolicies: SeedInitialPoliciesReply! (type)
         public static string SeedInitialPolicies(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "seedInitialPolicies" + args + "\n{\n" + fs + "}\n";
         }
@@ -9725,7 +9725,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sendPdfReport: SendPdfReportReply! (type)
         public static string SendPdfReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "sendPdfReport" + args + "\n{\n" + fs + "}\n";
         }
@@ -9743,7 +9743,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sendScheduledReportAsync: AsyncDownloadReply! (type)
         public static string SendScheduledReportAsync(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "sendScheduledReportAsync" + args + "\n{\n" + fs + "}\n";
         }
@@ -9761,7 +9761,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setAnalyzerRisks: SetAnalyzerRisksReply! (type)
         public static string SetAnalyzerRisks(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setAnalyzerRisks" + args + "\n{\n" + fs + "}\n";
         }
@@ -9779,7 +9779,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setDatastoreFreespaceThresholds: SetDatastoreFreespaceThresholdsReply! (type)
         public static string SetDatastoreFreespaceThresholds(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setDatastoreFreespaceThresholds" + args + "\n{\n" + fs + "}\n";
         }
@@ -9797,7 +9797,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setO365ServiceAccount: RequestStatus! (type)
         public static string SetO365ServiceAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nusername: $username\nappPassword: $appPassword\norgId: $orgId\n)";
             return "setO365ServiceAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -9815,7 +9815,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setUpgradeType: SetUpgradeTypeReply! (type)
         public static string SetUpgradeType(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setUpgradeType" + args + "\n{\n" + fs + "}\n";
         }
@@ -9833,7 +9833,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setWebSignedCertificate: AsyncRequestStatus! (type)
         public static string SetWebSignedCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setWebSignedCertificate" + args + "\n{\n" + fs + "}\n";
         }
@@ -9851,7 +9851,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setWorkloadAlertSetting: SetWorkloadAlertSettingReply! (type)
         public static string SetWorkloadAlertSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setWorkloadAlertSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -9869,7 +9869,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setupAzureO365Exocompute: SetupAzureO365ExocomputeResp! (type)
         public static string SetupAzureO365Exocompute(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nexocomputeConfig: $exocomputeConfig\n)";
             return "setupAzureO365Exocompute" + args + "\n{\n" + fs + "}\n";
         }
@@ -9887,7 +9887,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setupCloudNativeSqlServerBackup: BatchAsyncJobStatus! (type)
         public static string SetupCloudNativeSqlServerBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setupCloudNativeSqlServerBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -9905,7 +9905,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> setupDisk: DiskInfo! (type)
         public static string SetupDisk(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "setupDisk" + args + "\n{\n" + fs + "}\n";
         }
@@ -9923,7 +9923,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAwsExocomputeDisableJob: AsyncJobStatus! (type)
         public static string StartAwsExocomputeDisableJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAwsExocomputeDisableJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -9941,7 +9941,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAwsNativeAccountDisableJob: AsyncJobStatus! (type)
         public static string StartAwsNativeAccountDisableJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAwsNativeAccountDisableJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -9959,7 +9959,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAwsNativeEc2InstanceSnapshotsJob: BatchAsyncJobStatus! (type)
         public static string StartAwsNativeEc2InstanceSnapshotsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAwsNativeEc2InstanceSnapshotsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -9977,7 +9977,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAwsNativeRdsInstanceSnapshotsJob: BatchAsyncJobStatus! (type)
         public static string StartAwsNativeRdsInstanceSnapshotsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAwsNativeRdsInstanceSnapshotsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -9995,7 +9995,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAzureAdAppSetup: StartAzureAdAppSetupReply! (type)
         public static string StartAzureAdAppSetup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAzureAdAppSetup" + args + "\n{\n" + fs + "}\n";
         }
@@ -10013,7 +10013,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAzureAdAppUpdate: StartAzureAdAppUpdateReply! (type)
         public static string StartAzureAdAppUpdate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAzureAdAppUpdate" + args + "\n{\n" + fs + "}\n";
         }
@@ -10031,7 +10031,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startAzureCloudAccountOauth: StartAzureCloudAccountOauthReply! (type)
         public static string StartAzureCloudAccountOauth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startAzureCloudAccountOauth" + args + "\n{\n" + fs + "}\n";
         }
@@ -10049,7 +10049,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startCloudNativeSnapshotsIndexJob: BatchAsyncJobStatus! (type)
         public static string StartCloudNativeSnapshotsIndexJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startCloudNativeSnapshotsIndexJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10067,7 +10067,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startClusterReportMigrationJob: StartClusterReportMigrationJobReply! (type)
         public static string StartClusterReportMigrationJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startClusterReportMigrationJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10085,7 +10085,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startCrawl: StartCrawlReply! (type)
         public static string StartCrawl(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nname: $name\nresources: $resources\nanalyzerGroups: $analyzerGroups\nextWhiteList: $extWhiteList\n)";
             return "startCrawl" + args + "\n{\n" + fs + "}\n";
         }
@@ -10103,7 +10103,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startCreateAwsNativeEbsVolumeSnapshotsJob: BatchAsyncJobStatus! (type)
         public static string StartCreateAwsNativeEbsVolumeSnapshotsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startCreateAwsNativeEbsVolumeSnapshotsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10121,7 +10121,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startCreateAzureNativeManagedDiskSnapshotsJob: BatchAsyncJobStatus! (type)
         public static string StartCreateAzureNativeManagedDiskSnapshotsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startCreateAzureNativeManagedDiskSnapshotsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10139,7 +10139,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startCreateAzureNativeVirtualMachineSnapshotsJob: BatchAsyncJobStatus! (type)
         public static string StartCreateAzureNativeVirtualMachineSnapshotsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startCreateAzureNativeVirtualMachineSnapshotsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10157,7 +10157,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startDisableAzureCloudAccountJob: BatchAsyncJobStatus! (type)
         public static string StartDisableAzureCloudAccountJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startDisableAzureCloudAccountJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10175,7 +10175,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startDisableAzureNativeSubscriptionProtectionJob: AsyncJobStatus! (type)
         public static string StartDisableAzureNativeSubscriptionProtectionJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startDisableAzureNativeSubscriptionProtectionJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10193,7 +10193,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startDownloadPackageBatchJob: [DownloadPackageReplyWithUuid!]! (type)
         public static string StartDownloadPackageBatchJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nlistClusterUuid: $listClusterUuid\ndownloadVersion: $downloadVersion\npackageUrl: $packageUrl\nmd5checksum: $md5checksum\nsize: $size\n)";
             return "startDownloadPackageBatchJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10211,7 +10211,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startEc2InstanceSnapshotExportJob: AsyncJobStatus! (type)
         public static string StartEc2InstanceSnapshotExportJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startEc2InstanceSnapshotExportJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10229,7 +10229,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startExportAwsNativeEbsVolumeSnapshotJob: AsyncJobStatus! (type)
         public static string StartExportAwsNativeEbsVolumeSnapshotJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startExportAwsNativeEbsVolumeSnapshotJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10247,7 +10247,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startExportAzureNativeManagedDiskJob: AsyncJobStatus! (type)
         public static string StartExportAzureNativeManagedDiskJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startExportAzureNativeManagedDiskJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10265,7 +10265,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startExportAzureNativeVirtualMachineJob: AsyncJobStatus! (type)
         public static string StartExportAzureNativeVirtualMachineJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startExportAzureNativeVirtualMachineJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10283,7 +10283,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startExportAzureSqlDatabaseDbJob: AsyncJobStatus! (type)
         public static string StartExportAzureSqlDatabaseDbJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startExportAzureSqlDatabaseDbJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10301,7 +10301,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startExportAzureSqlManagedInstanceDbJob: AsyncJobStatus! (type)
         public static string StartExportAzureSqlManagedInstanceDbJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startExportAzureSqlManagedInstanceDbJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10319,7 +10319,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startExportRdsInstanceJob: AsyncJobStatus! (type)
         public static string StartExportRdsInstanceJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startExportRdsInstanceJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10337,7 +10337,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startPeriodicUpgradePrechecksOnDemandJob: PrechecksJobReply! (type)
         public static string StartPeriodicUpgradePrechecksOnDemandJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "startPeriodicUpgradePrechecksOnDemandJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10355,7 +10355,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startRecoverS3SnapshotJob: AsyncJobStatus! (type)
         public static string StartRecoverS3SnapshotJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startRecoverS3SnapshotJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10373,7 +10373,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startRefreshAwsNativeAccountsJob: BatchAsyncJobStatus! (type)
         public static string StartRefreshAwsNativeAccountsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startRefreshAwsNativeAccountsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10391,7 +10391,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startRefreshAzureNativeSubscriptionsJob: BatchAsyncJobStatus! (type)
         public static string StartRefreshAzureNativeSubscriptionsJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startRefreshAzureNativeSubscriptionsJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10409,7 +10409,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startRestoreAwsNativeEc2InstanceSnapshotJob: AsyncJobStatus! (type)
         public static string StartRestoreAwsNativeEc2InstanceSnapshotJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startRestoreAwsNativeEc2InstanceSnapshotJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10427,7 +10427,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startRestoreAzureNativeVirtualMachineJob: AsyncJobStatus! (type)
         public static string StartRestoreAzureNativeVirtualMachineJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startRestoreAzureNativeVirtualMachineJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10445,7 +10445,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startThreatHunt: StartThreatHuntReply! (type)
         public static string StartThreatHunt(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startThreatHunt" + args + "\n{\n" + fs + "}\n";
         }
@@ -10463,7 +10463,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startUpgradeBatchJob: [UpgradeJobReplyWithUuid!]! (type)
         public static string StartUpgradeBatchJob(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nlistClusterUuid: $listClusterUuid\nmode: $mode\naction: $action\nversion: $version\ncontext_tag: $context_tag\n)";
             return "startUpgradeBatchJob" + args + "\n{\n" + fs + "}\n";
         }
@@ -10481,7 +10481,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startVolumeGroupMount: AsyncRequestStatus! (type)
         public static string StartVolumeGroupMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "startVolumeGroupMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -10499,7 +10499,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> stopJobInstance: StopJobInstanceReply! (type)
         public static string StopJobInstance(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "stopJobInstance" + args + "\n{\n" + fs + "}\n";
         }
@@ -10517,7 +10517,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> supportPortalLogin: SupportPortalLoginReply! (type)
         public static string SupportPortalLogin(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "supportPortalLogin" + args + "\n{\n" + fs + "}\n";
         }
@@ -10535,7 +10535,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> switchProductToOnboardingMode: SwitchProductToOnboardingModeReply! (type)
         public static string SwitchProductToOnboardingMode(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "switchProductToOnboardingMode" + args + "\n{\n" + fs + "}\n";
         }
@@ -10553,7 +10553,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> takeManagedVolumeOnDemandSnapshot: AsyncRequestStatus! (type)
         public static string TakeManagedVolumeOnDemandSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "takeManagedVolumeOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -10571,7 +10571,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> takeMssqlLogBackup: AsyncRequestStatus! (type)
         public static string TakeMssqlLogBackup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "takeMssqlLogBackup" + args + "\n{\n" + fs + "}\n";
         }
@@ -10589,7 +10589,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> takeOnDemandOracleDatabaseSnapshot: AsyncRequestStatus! (type)
         public static string TakeOnDemandOracleDatabaseSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "takeOnDemandOracleDatabaseSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -10607,7 +10607,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> takeOnDemandOracleLogSnapshot: AsyncRequestStatus! (type)
         public static string TakeOnDemandOracleLogSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "takeOnDemandOracleLogSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -10625,7 +10625,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> takeOnDemandSnapshot: TakeOnDemandSnapshotReply! (type)
         public static string TakeOnDemandSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "takeOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -10643,7 +10643,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> testExistingWebhook: TestExistingWebhookReply! (type)
         public static string TestExistingWebhook(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "testExistingWebhook" + args + "\n{\n" + fs + "}\n";
         }
@@ -10661,7 +10661,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> testSyslogExportRule: TestSyslogExportRuleReply! (type)
         public static string TestSyslogExportRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "testSyslogExportRule" + args + "\n{\n" + fs + "}\n";
         }
@@ -10679,7 +10679,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> testWebhook: TestWebhookReply! (type)
         public static string TestWebhook(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "testWebhook" + args + "\n{\n" + fs + "}\n";
         }
@@ -10697,7 +10697,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> triggerCloudComputeConnectivityCheck: AsyncRequestStatus! (type)
         public static string TriggerCloudComputeConnectivityCheck(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "triggerCloudComputeConnectivityCheck" + args + "\n{\n" + fs + "}\n";
         }
@@ -10715,7 +10715,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> triggerExocomputeHealthCheck: TriggerExocomputeHealthCheckReply! (type)
         public static string TriggerExocomputeHealthCheck(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "triggerExocomputeHealthCheck" + args + "\n{\n" + fs + "}\n";
         }
@@ -10733,7 +10733,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> triggerRansomwareDetection: TriggerRansomwareDetectionReply! (type)
         public static string TriggerRansomwareDetection(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "triggerRansomwareDetection" + args + "\n{\n" + fs + "}\n";
         }
@@ -10751,7 +10751,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unconfigureSapHanaRestore: AsyncRequestStatus! (type)
         public static string UnconfigureSapHanaRestore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "unconfigureSapHanaRestore" + args + "\n{\n" + fs + "}\n";
         }
@@ -10769,7 +10769,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> uninstallIoFilter: RequestSuccess! (type)
         public static string UninstallIoFilter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "uninstallIoFilter" + args + "\n{\n" + fs + "}\n";
         }
@@ -10787,7 +10787,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unmapAzureCloudAccountExocomputeSubscription: UnmapAzureCloudAccountExocomputeSubscriptionReply! (type)
         public static string UnmapAzureCloudAccountExocomputeSubscription(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "unmapAzureCloudAccountExocomputeSubscription" + args + "\n{\n" + fs + "}\n";
         }
@@ -10805,7 +10805,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unmapCloudAccountExocomputeAccount: UnmapCloudAccountExocomputeAccountReply! (type)
         public static string UnmapCloudAccountExocomputeAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "unmapCloudAccountExocomputeAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -10823,7 +10823,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAgentDeploymentSetting: AgentDeploymentSettings! (type)
         public static string UpdateAgentDeploymentSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAgentDeploymentSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -10841,7 +10841,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAutoEnablePolicyClusterConfig: UpdateAutoEnablePolicyClusterConfigReply! (type)
         public static string UpdateAutoEnablePolicyClusterConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAutoEnablePolicyClusterConfig" + args + "\n{\n" + fs + "}\n";
         }
@@ -10859,7 +10859,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAutomaticAwsTargetMapping: TargetMapping! (type)
         public static string UpdateAutomaticAwsTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAutomaticAwsTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -10877,7 +10877,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAutomaticAzureTargetMapping: TargetMapping! (type)
         public static string UpdateAutomaticAzureTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAutomaticAzureTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -10895,7 +10895,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAwsCloudAccountFeature: UpdateAwsCloudAccountFeatureReply! (type)
         public static string UpdateAwsCloudAccountFeature(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAwsCloudAccountFeature" + args + "\n{\n" + fs + "}\n";
         }
@@ -10913,7 +10913,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAwsComputeSetting: AwsComputeSettings! (type)
         public static string UpdateAwsComputeSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAwsComputeSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -10931,7 +10931,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAwsExocomputeConfigs: UpdateAwsExocomputeConfigsReply! (type)
         public static string UpdateAwsExocomputeConfigs(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAwsExocomputeConfigs" + args + "\n{\n" + fs + "}\n";
         }
@@ -10949,7 +10949,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAzureCloudAccount: UpdateAzureCloudAccountReply! (type)
         public static string UpdateAzureCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateAzureCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -10967,7 +10967,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateBadDiskLedStatus: UpdateBadDiskLedStatusReply! (type)
         public static string UpdateBadDiskLedStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateBadDiskLedStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -10985,7 +10985,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCassandraSource: MosaicAsyncResponse! (type)
         public static string UpdateCassandraSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCassandraSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -11003,7 +11003,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCertificateHost: UpdateCertificateHostReply! (type)
         public static string UpdateCertificateHost(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCertificateHost" + args + "\n{\n" + fs + "}\n";
         }
@@ -11021,7 +11021,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCloudNativeAwsStorageSetting: UpdateCloudNativeAwsStorageSettingReply! (type)
         public static string UpdateCloudNativeAwsStorageSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCloudNativeAwsStorageSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -11039,7 +11039,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCloudNativeAzureStorageSetting: UpdateCloudNativeAzureStorageSettingReply! (type)
         public static string UpdateCloudNativeAzureStorageSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCloudNativeAzureStorageSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -11057,7 +11057,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCloudNativeIndexingStatus: UpdateCloudNativeIndexingStatusReply! (type)
         public static string UpdateCloudNativeIndexingStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCloudNativeIndexingStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -11075,7 +11075,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCloudNativeRcvAzureStorageSetting: UpdateCloudNativeRcvAzureStorageSettingReply! (type)
         public static string UpdateCloudNativeRcvAzureStorageSetting(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCloudNativeRcvAzureStorageSetting" + args + "\n{\n" + fs + "}\n";
         }
@@ -11093,7 +11093,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateClusterDefaultAddress: UpdateClusterDefaultAddressReply! (type)
         public static string UpdateClusterDefaultAddress(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateClusterDefaultAddress" + args + "\n{\n" + fs + "}\n";
         }
@@ -11111,7 +11111,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateClusterLocation: Cluster! (type)
         public static string UpdateClusterLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nclusterUuid: $clusterUuid\nclusterLocation: $clusterLocation\n)";
             return "updateClusterLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -11129,7 +11129,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateClusterNtpServers: ResponseSuccess! (type)
         public static string UpdateClusterNtpServers(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateClusterNtpServers" + args + "\n{\n" + fs + "}\n";
         }
@@ -11147,7 +11147,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateClusterPauseStatus: UpdateClusterPauseStatusReply! (type)
         public static string UpdateClusterPauseStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateClusterPauseStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -11165,7 +11165,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateClusterSettings: UpdateClusterSettingsReply! (type)
         public static string UpdateClusterSettings(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateClusterSettings" + args + "\n{\n" + fs + "}\n";
         }
@@ -11183,7 +11183,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCustomAnalyzer: Analyzer! (type)
         public static string UpdateCustomAnalyzer(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCustomAnalyzer" + args + "\n{\n" + fs + "}\n";
         }
@@ -11201,7 +11201,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCustomReport: UpdateCustomReportReply! (type)
         public static string UpdateCustomReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCustomReport" + args + "\n{\n" + fs + "}\n";
         }
@@ -11219,7 +11219,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateCustomerAppPermissions: UpdateCustomerAppPermissionsReply! (type)
         public static string UpdateCustomerAppPermissions(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateCustomerAppPermissions" + args + "\n{\n" + fs + "}\n";
         }
@@ -11237,7 +11237,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateDatabaseLogReportingPropertiesForCluster: DbLogReportProperties! (type)
         public static string UpdateDatabaseLogReportingPropertiesForCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateDatabaseLogReportingPropertiesForCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -11255,7 +11255,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateDistributionListDigest: UpdateDistributionListDigestReply! (type)
         public static string UpdateDistributionListDigest(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateDistributionListDigest" + args + "\n{\n" + fs + "}\n";
         }
@@ -11273,7 +11273,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateDnsServersAndSearchDomains: ResponseSuccess! (type)
         public static string UpdateDnsServersAndSearchDomains(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateDnsServersAndSearchDomains" + args + "\n{\n" + fs + "}\n";
         }
@@ -11291,7 +11291,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateEventDigest: UpdateEventDigestReply! (type)
         public static string UpdateEventDigest(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateEventDigest" + args + "\n{\n" + fs + "}\n";
         }
@@ -11309,7 +11309,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateFailoverCluster: UpdateFailoverClusterReply! (type)
         public static string UpdateFailoverCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateFailoverCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -11327,7 +11327,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateFailoverClusterApp: UpdateFailoverClusterAppReply! (type)
         public static string UpdateFailoverClusterApp(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateFailoverClusterApp" + args + "\n{\n" + fs + "}\n";
         }
@@ -11345,7 +11345,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateFloatingIps: UpdateFloatingIpsReply! (type)
         public static string UpdateFloatingIps(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateFloatingIps" + args + "\n{\n" + fs + "}\n";
         }
@@ -11363,7 +11363,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateGlobalCertificate: UpdateGlobalCertificateReply! (type)
         public static string UpdateGlobalCertificate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateGlobalCertificate" + args + "\n{\n" + fs + "}\n";
         }
@@ -11381,7 +11381,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateGlobalSla: GlobalSlaReply! (type)
         public static string UpdateGlobalSla(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateGlobalSla" + args + "\n{\n" + fs + "}\n";
         }
@@ -11399,7 +11399,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateGuestCredential: UpdateGuestCredentialReply! (type)
         public static string UpdateGuestCredential(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateGuestCredential" + args + "\n{\n" + fs + "}\n";
         }
@@ -11417,7 +11417,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateHealthMonitorPolicyStatus: UpdateHealthMonitorPolicyStatusReply! (type)
         public static string UpdateHealthMonitorPolicyStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateHealthMonitorPolicyStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -11435,7 +11435,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateHypervVirtualMachine: UpdateHypervVirtualMachineReply! (type)
         public static string UpdateHypervVirtualMachine(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateHypervVirtualMachine" + args + "\n{\n" + fs + "}\n";
         }
@@ -11453,7 +11453,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateHypervVirtualMachineSnapshotMount: UpdateHypervVirtualMachineSnapshotMountReply! (type)
         public static string UpdateHypervVirtualMachineSnapshotMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateHypervVirtualMachineSnapshotMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -11471,7 +11471,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateInsightState: UpdateInsightStateReply! (type)
         public static string UpdateInsightState(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateInsightState" + args + "\n{\n" + fs + "}\n";
         }
@@ -11489,7 +11489,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateK8sCluster: ResponseSuccess! (type)
         public static string UpdateK8sCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateK8sCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -11507,7 +11507,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateK8sProtectionSet: ResponseSuccess! (type)
         public static string UpdateK8sProtectionSet(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateK8sProtectionSet" + args + "\n{\n" + fs + "}\n";
         }
@@ -11525,7 +11525,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateLambdaSettings: LambdaSettings! (type)
         public static string UpdateLambdaSettings(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\nanomalyThreshold: $anomalyThreshold\nransomwareThreshold: $ransomwareThreshold\nisAnomalyAlertEnabled: $isAnomalyAlertEnabled\n)";
             return "updateLambdaSettings" + args + "\n{\n" + fs + "}\n";
         }
@@ -11543,7 +11543,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateLockoutConfig: UpdateLockoutConfigReply! (type)
         public static string UpdateLockoutConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateLockoutConfig" + args + "\n{\n" + fs + "}\n";
         }
@@ -11561,7 +11561,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateManagedIdentities: UpdateManagedIdentitiesReply! (type)
         public static string UpdateManagedIdentities(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateManagedIdentities" + args + "\n{\n" + fs + "}\n";
         }
@@ -11579,7 +11579,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateManagedVolume: UpdateManagedVolumeReply! (type)
         public static string UpdateManagedVolume(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateManagedVolume" + args + "\n{\n" + fs + "}\n";
         }
@@ -11597,7 +11597,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateManualTargetMapping: TargetMapping! (type)
         public static string UpdateManualTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateManualTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -11615,7 +11615,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateMongodbSource: MosaicAsyncResponse! (type)
         public static string UpdateMongodbSource(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateMongodbSource" + args + "\n{\n" + fs + "}\n";
         }
@@ -11633,7 +11633,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateMosaicStore: MosaicAsyncResponse! (type)
         public static string UpdateMosaicStore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateMosaicStore" + args + "\n{\n" + fs + "}\n";
         }
@@ -11651,7 +11651,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateMssqlDefaultProperties: UpdateMssqlDefaultPropertiesReply! (type)
         public static string UpdateMssqlDefaultProperties(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateMssqlDefaultProperties" + args + "\n{\n" + fs + "}\n";
         }
@@ -11669,7 +11669,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateMssqlLogShippingConfiguration: UpdateMssqlLogShippingConfigurationReply! (type)
         public static string UpdateMssqlLogShippingConfiguration(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateMssqlLogShippingConfiguration" + args + "\n{\n" + fs + "}\n";
         }
@@ -11687,7 +11687,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNasSystem: UpdateNasSystemReply! (type)
         public static string UpdateNasSystem(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNasSystem" + args + "\n{\n" + fs + "}\n";
         }
@@ -11705,7 +11705,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNetworkThrottle: UpdateNetworkThrottleReply! (type)
         public static string UpdateNetworkThrottle(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNetworkThrottle" + args + "\n{\n" + fs + "}\n";
         }
@@ -11723,7 +11723,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNutanixCluster: UpdateNutanixClusterReply! (type)
         public static string UpdateNutanixCluster(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNutanixCluster" + args + "\n{\n" + fs + "}\n";
         }
@@ -11741,7 +11741,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateNutanixPrismCentral: UpdateNutanixPrismCentralReply! (type)
         public static string UpdateNutanixPrismCentral(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateNutanixPrismCentral" + args + "\n{\n" + fs + "}\n";
         }
@@ -11759,7 +11759,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateO365AppAuthStatus: UpdateO365AppAuthStatusReply! (type)
         public static string UpdateO365AppAuthStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateO365AppAuthStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -11777,7 +11777,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateO365OrgCustomName: UpdateO365OrgCustomNameReply! (type)
         public static string UpdateO365OrgCustomName(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateO365OrgCustomName" + args + "\n{\n" + fs + "}\n";
         }
@@ -11795,7 +11795,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateOracleDataGuardGroup: OracleDbDetail! (type)
         public static string UpdateOracleDataGuardGroup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateOracleDataGuardGroup" + args + "\n{\n" + fs + "}\n";
         }
@@ -11813,7 +11813,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateOrg: UpdateOrgReply! (type)
         public static string UpdateOrg(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateOrg" + args + "\n{\n" + fs + "}\n";
         }
@@ -11831,7 +11831,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updatePolicy: ClassificationPolicyDetail! (type)
         public static string UpdatePolicy(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updatePolicy" + args + "\n{\n" + fs + "}\n";
         }
@@ -11849,7 +11849,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updatePreviewerClusterConfig: Cluster! (type)
         public static string UpdatePreviewerClusterConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\npreviewerClusterConfig: $previewerClusterConfig\n)";
             return "updatePreviewerClusterConfig" + args + "\n{\n" + fs + "}\n";
         }
@@ -11867,7 +11867,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateProxyConfig: UpdateProxyConfigReply! (type)
         public static string UpdateProxyConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateProxyConfig" + args + "\n{\n" + fs + "}\n";
         }
@@ -11885,7 +11885,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateRcsAutomaticTargetMapping: TargetMapping! (type)
         public static string UpdateRcsAutomaticTargetMapping(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateRcsAutomaticTargetMapping" + args + "\n{\n" + fs + "}\n";
         }
@@ -11903,7 +11903,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateReplicationNetworkThrottleBypass: ResponseSuccess! (type)
         public static string UpdateReplicationNetworkThrottleBypass(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateReplicationNetworkThrottleBypass" + args + "\n{\n" + fs + "}\n";
         }
@@ -11921,7 +11921,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateScheduledReport: UpdateScheduledReportReply! (type)
         public static string UpdateScheduledReport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateScheduledReport" + args + "\n{\n" + fs + "}\n";
         }
@@ -11939,7 +11939,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateServiceAccount: UpdateServiceAccountReply! (type)
         public static string UpdateServiceAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateServiceAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -11957,7 +11957,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateSnmpConfig: UpdateSnmpConfigReply! (type)
         public static string UpdateSnmpConfig(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateSnmpConfig" + args + "\n{\n" + fs + "}\n";
         }
@@ -11975,7 +11975,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateStorageArrays: UpdateStorageArraysReply! (type)
         public static string UpdateStorageArrays(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateStorageArrays" + args + "\n{\n" + fs + "}\n";
         }
@@ -11993,7 +11993,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateSyslogExportRule: UpdateSyslogExportRuleReply! (type)
         public static string UpdateSyslogExportRule(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateSyslogExportRule" + args + "\n{\n" + fs + "}\n";
         }
@@ -12011,7 +12011,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateTunnelStatus: UpdateTunnelStatusReply! (type)
         public static string UpdateTunnelStatus(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateTunnelStatus" + args + "\n{\n" + fs + "}\n";
         }
@@ -12029,7 +12029,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVcenter: UpdateVcenterReply! (type)
         public static string UpdateVcenter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVcenter" + args + "\n{\n" + fs + "}\n";
         }
@@ -12047,7 +12047,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVcenterHotAddBandwidth: RequestSuccess! (type)
         public static string UpdateVcenterHotAddBandwidth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVcenterHotAddBandwidth" + args + "\n{\n" + fs + "}\n";
         }
@@ -12065,7 +12065,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVcenterHotAddNetwork: RequestSuccess! (type)
         public static string UpdateVcenterHotAddNetwork(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVcenterHotAddNetwork" + args + "\n{\n" + fs + "}\n";
         }
@@ -12083,7 +12083,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVolumeGroup: UpdateVolumeGroupReply! (type)
         public static string UpdateVolumeGroup(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVolumeGroup" + args + "\n{\n" + fs + "}\n";
         }
@@ -12101,7 +12101,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVsphereAdvancedTag: UpdateVsphereAdvancedTagReply! (type)
         public static string UpdateVsphereAdvancedTag(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVsphereAdvancedTag" + args + "\n{\n" + fs + "}\n";
         }
@@ -12119,7 +12119,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateVsphereVm: RequestSuccess! (type)
         public static string UpdateVsphereVm(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateVsphereVm" + args + "\n{\n" + fs + "}\n";
         }
@@ -12137,7 +12137,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateWebhook: UpdateWebhookReply! (type)
         public static string UpdateWebhook(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "updateWebhook" + args + "\n{\n" + fs + "}\n";
         }
@@ -12155,7 +12155,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeAzureCloudAccount: UpgradeAzureCloudAccountReply! (type)
         public static string UpgradeAzureCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeAzureCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -12173,7 +12173,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeAzureCloudAccountPermissionsWithoutOauth: UpgradeAzureCloudAccountPermissionsWithoutOauthReply! (type)
         public static string UpgradeAzureCloudAccountPermissionsWithoutOauth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeAzureCloudAccountPermissionsWithoutOauth" + args + "\n{\n" + fs + "}\n";
         }
@@ -12191,7 +12191,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeGcpCloudAccountPermissionsWithoutOauth: UpgradeGcpCloudAccountPermissionsWithoutOauthReply! (type)
         public static string UpgradeGcpCloudAccountPermissionsWithoutOauth(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeGcpCloudAccountPermissionsWithoutOauth" + args + "\n{\n" + fs + "}\n";
         }
@@ -12209,7 +12209,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeIoFilter: RequestSuccess! (type)
         public static string UpgradeIoFilter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeIoFilter" + args + "\n{\n" + fs + "}\n";
         }
@@ -12227,7 +12227,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upgradeSlas: UpgradeSlasReply! (type)
         public static string UpgradeSlas(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "upgradeSlas" + args + "\n{\n" + fs + "}\n";
         }
@@ -12245,7 +12245,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> uploadDatabaseSnapshotToBlobstore: AsyncJobStatus! (type)
         public static string UploadDatabaseSnapshotToBlobstore(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "uploadDatabaseSnapshotToBlobstore" + args + "\n{\n" + fs + "}\n";
         }
@@ -12263,7 +12263,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> validateAndCreateAwsCloudAccount: ValidateAndCreateAwsCloudAccountReply! (type)
         public static string ValidateAndCreateAwsCloudAccount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "validateAndCreateAwsCloudAccount" + args + "\n{\n" + fs + "}\n";
         }
@@ -12281,7 +12281,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> validateAndSaveCustomerKmsInfo: ValidateAndSaveCustomerKmsInfoReply! (type)
         public static string ValidateAndSaveCustomerKmsInfo(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "validateAndSaveCustomerKmsInfo" + args + "\n{\n" + fs + "}\n";
         }
@@ -12299,7 +12299,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> validateOracleAcoFile: ValidateOracleAcoFileReply! (type)
         public static string ValidateOracleAcoFile(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "validateOracleAcoFile" + args + "\n{\n" + fs + "}\n";
         }
@@ -12317,7 +12317,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> validateOracleDatabaseBackups: AsyncRequestStatus! (type)
         public static string ValidateOracleDatabaseBackups(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "validateOracleDatabaseBackups" + args + "\n{\n" + fs + "}\n";
         }
@@ -12335,7 +12335,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareDownloadSnapshotFromLocation: AsyncRequestStatus! (type)
         public static string VmwareDownloadSnapshotFromLocation(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vmwareDownloadSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
         }
@@ -12353,7 +12353,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereBulkOnDemandSnapshot: BatchAsyncRequestStatus! (type)
         public static string VsphereBulkOnDemandSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereBulkOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -12371,7 +12371,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereDeleteVcenter: AsyncRequestStatus! (type)
         public static string VsphereDeleteVcenter(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereDeleteVcenter" + args + "\n{\n" + fs + "}\n";
         }
@@ -12389,7 +12389,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereExcludeVmDisks: RequestSuccess! (type)
         public static string VsphereExcludeVmDisks(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereExcludeVmDisks" + args + "\n{\n" + fs + "}\n";
         }
@@ -12407,7 +12407,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereExportSnapshotToStandaloneHostV2: AsyncRequestStatus! (type)
         public static string VsphereExportSnapshotToStandaloneHostV2(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereExportSnapshotToStandaloneHostV2" + args + "\n{\n" + fs + "}\n";
         }
@@ -12425,7 +12425,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereOnDemandSnapshot: AsyncRequestStatus! (type)
         public static string VsphereOnDemandSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -12443,7 +12443,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmBatchExport: BatchAsyncRequestStatus! (type)
         public static string VsphereVmBatchExport(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmBatchExport" + args + "\n{\n" + fs + "}\n";
         }
@@ -12461,7 +12461,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmBatchExportV3: BatchAsyncRequestStatus! (type)
         public static string VsphereVmBatchExportV3(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmBatchExportV3" + args + "\n{\n" + fs + "}\n";
         }
@@ -12479,7 +12479,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmBatchInPlaceRecovery: BatchAsyncRequestStatus! (type)
         public static string VsphereVmBatchInPlaceRecovery(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmBatchInPlaceRecovery" + args + "\n{\n" + fs + "}\n";
         }
@@ -12497,7 +12497,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmDownloadSnapshot: AsyncRequestStatus! (type)
         public static string VsphereVmDownloadSnapshot(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmDownloadSnapshot" + args + "\n{\n" + fs + "}\n";
         }
@@ -12515,7 +12515,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmDownloadSnapshotFiles: AsyncRequestStatus! (type)
         public static string VsphereVmDownloadSnapshotFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmDownloadSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -12533,7 +12533,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmExportSnapshotV2: AsyncRequestStatus! (type)
         public static string VsphereVmExportSnapshotV2(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmExportSnapshotV2" + args + "\n{\n" + fs + "}\n";
         }
@@ -12551,7 +12551,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmExportSnapshotV3: AsyncRequestStatus! (type)
         public static string VsphereVmExportSnapshotV3(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmExportSnapshotV3" + args + "\n{\n" + fs + "}\n";
         }
@@ -12569,7 +12569,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmExportSnapshotWithDownloadFromCloud: AsyncRequestStatus! (type)
         public static string VsphereVmExportSnapshotWithDownloadFromCloud(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmExportSnapshotWithDownloadFromCloud" + args + "\n{\n" + fs + "}\n";
         }
@@ -12587,7 +12587,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmInitiateBatchInstantRecovery: BatchAsyncRequestStatus! (type)
         public static string VsphereVmInitiateBatchInstantRecovery(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmInitiateBatchInstantRecovery" + args + "\n{\n" + fs + "}\n";
         }
@@ -12605,7 +12605,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmInitiateBatchLiveMountV2: BatchAsyncRequestStatus! (type)
         public static string VsphereVmInitiateBatchLiveMountV2(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmInitiateBatchLiveMountV2" + args + "\n{\n" + fs + "}\n";
         }
@@ -12623,7 +12623,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmInitiateDiskMount: AsyncRequestStatus! (type)
         public static string VsphereVmInitiateDiskMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmInitiateDiskMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -12641,7 +12641,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmInitiateInPlaceRecovery: AsyncRequestStatus! (type)
         public static string VsphereVmInitiateInPlaceRecovery(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmInitiateInPlaceRecovery" + args + "\n{\n" + fs + "}\n";
         }
@@ -12659,7 +12659,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmInitiateInstantRecoveryV2: AsyncRequestStatus! (type)
         public static string VsphereVmInitiateInstantRecoveryV2(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmInitiateInstantRecoveryV2" + args + "\n{\n" + fs + "}\n";
         }
@@ -12677,7 +12677,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmInitiateLiveMountV2: AsyncRequestStatus! (type)
         public static string VsphereVmInitiateLiveMountV2(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmInitiateLiveMountV2" + args + "\n{\n" + fs + "}\n";
         }
@@ -12695,7 +12695,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmListEsxiDatastores: VsphereVmListEsxiDatastoresReply! (type)
         public static string VsphereVmListEsxiDatastores(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmListEsxiDatastores" + args + "\n{\n" + fs + "}\n";
         }
@@ -12713,7 +12713,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmMountRelocate: AsyncRequestStatus! (type)
         public static string VsphereVmMountRelocate(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmMountRelocate" + args + "\n{\n" + fs + "}\n";
         }
@@ -12731,7 +12731,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmMountRelocateV2: AsyncRequestStatus! (type)
         public static string VsphereVmMountRelocateV2(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmMountRelocateV2" + args + "\n{\n" + fs + "}\n";
         }
@@ -12749,7 +12749,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmPowerOnOffLiveMount: VsphereVmPowerOnOffLiveMountReply! (type)
         public static string VsphereVmPowerOnOffLiveMount(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmPowerOnOffLiveMount" + args + "\n{\n" + fs + "}\n";
         }
@@ -12767,7 +12767,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmRecoverFiles: VsphereAsyncRequestStatus! (type)
         public static string VsphereVmRecoverFiles(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmRecoverFiles" + args + "\n{\n" + fs + "}\n";
         }
@@ -12785,7 +12785,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmRecoverFilesNew: AsyncRequestStatus! (type)
         public static string VsphereVmRecoverFilesNew(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmRecoverFilesNew" + args + "\n{\n" + fs + "}\n";
         }
@@ -12803,7 +12803,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vsphereVmRegisterAgent: RequestSuccess! (type)
         public static string VsphereVmRegisterAgent(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "\n(\ninput: $input\n)";
             return "vsphereVmRegisterAgent" + args + "\n{\n" + fs + "}\n";
         }
