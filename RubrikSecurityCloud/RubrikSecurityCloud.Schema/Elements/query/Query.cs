@@ -1571,7 +1571,7 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allAccountOwners: [User!]! (type)
         public static string AllAccountOwners(object fsObj)
         {
-            var fs = fsObj is IFieldSpec f ? f.AsFieldSpec() : fsObj.ToString();
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
             string args = "";
             return "allAccountOwners" + args + "\n{\n" + fs + "}\n";
         }

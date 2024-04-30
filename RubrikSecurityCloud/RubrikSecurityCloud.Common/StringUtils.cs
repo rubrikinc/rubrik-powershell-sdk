@@ -210,7 +210,7 @@ namespace RubrikSecurityCloud
             var t = gqlType.Replace("!", "");
             if (convertListToScalar)
             {
-                t.Replace("[", "").Replace("]", "");
+                t = t.Replace("[", "").Replace("]", "");
             }
             else
             {

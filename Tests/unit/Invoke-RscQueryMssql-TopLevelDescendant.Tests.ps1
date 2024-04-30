@@ -9,7 +9,7 @@ Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
         $query.Field.GetType().Name | Should -Be 'MssqlTopLevelDescendantTypeConnection'
 
         # which has a Nodes field,
-        $query.Field.Nodes.GetType().Name | Should -Be 'RscInterface`1'
+        $query.Field.Nodes.GetType().Name | Should -Be 'RscInterfaceList`1'
 
         # which is a list of interfaces of type MssqlTopLevelDescendantType
         # https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqltopleveldescendanttype.doc.html
