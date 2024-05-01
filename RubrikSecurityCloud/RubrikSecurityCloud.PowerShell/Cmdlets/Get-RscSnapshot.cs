@@ -203,6 +203,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             cdmSnapshot.ConsistencyLevel = null;
             polarisSnapshot.ConsistencyLevel = null;
 
+            // IsTprEnabled and CdmRbacMigrationStatus are not supported.
+            cdmSnapshot.Cluster.IsTprEnabled = null;
+            cdmSnapshot.Cluster.CdmRbacMigrationStatus = null;
+
             // Add the snapshot types to the query object
             queryObj.Nodes.Add(cdmSnapshot);
             queryObj.Nodes.Add(polarisSnapshot);
@@ -229,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             queryText += queryFragment;
             queryText += "\n}";
 
-            request.OperationName = "SnapshotOfAsnappableConnection";
+            request.OperationName = "SnapshotListQuery";
             request.Query = queryText;
 
             return request;
