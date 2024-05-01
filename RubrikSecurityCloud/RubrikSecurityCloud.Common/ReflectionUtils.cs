@@ -59,20 +59,43 @@ namespace RubrikSecurityCloud
             var innerTypeName = StripList(typeName);
             if (innerTypeName != typeName)
             {
-                var innerType = ReflectionUtils.GetType(innerTypeName);
+                var innerType = _GetType(innerTypeName);
                 if (innerType == null)
                 {
                     return null;
                 }
 
+                // If the type is an interface, we map it to RscInterfaceList<type>
+                if (innerType.IsInterface)
+                {
+                    return typeof(RscInterfaceList<>).MakeGenericType(innerType);
+                }
+
                 return typeof(List<>).MakeGenericType(innerType);
             }
 
+            var type = _GetType(typeName);
+            if (type == null)
+            {
+                return null;
+            }
+
+            // If the type is an interface, we map it to RscInterface<type>
+            if (type.IsInterface)
+            {
+                return typeof(RscInterface<>).MakeGenericType(type);
+            }
+            return type;
+        }
+
+        private static Type? _GetType(string typeName)
+        {
             var type = Type.GetType(typeName);
             if (type != null)
             {
                 return type;
             }
+
             type = Type.GetType("RubrikSecurityCloud.Types." + typeName
                 + ", RubrikSecurityCloud.Schema");
             if (type != null)

@@ -96,7 +96,7 @@ Describe -Name 'SLAs' -Fixture {
         # In PowerShell, we represent the field as an RscInterface
         # object.
         $type = $q2.field.gettype()
-        $type.Name | Should -Be "RscInterface`1"
+        $type.Name | Should -Be 'RscInterface`1'
         $type.IsGenericType | Should -Be $true
         $genericArguments = $type.GetGenericArguments()
         $genericArguments[0].Name | Should -Be "SlaDomain"

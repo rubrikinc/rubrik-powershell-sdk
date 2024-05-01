@@ -18,17 +18,7 @@ namespace RubrikSecurityCloud.Types
         public BaseType? GetNext() => _next;
         public void SetNext(BaseType? next) => _next = next;
         public bool IsComposite() => _next != null;
-        public int CompositeLength()
-        {
-            int len = 1;
-            BaseType? next = _next;
-            while (next != null)
-            {
-                len++;
-                next = next._next;
-            }
-            return len;
-        }
+        
 
         /// <summary>
         /// Convert the composite object to a list of objects.

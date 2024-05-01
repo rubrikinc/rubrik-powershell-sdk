@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Linq;
 
 namespace RubrikSecurityCloud.Types
@@ -30,11 +31,16 @@ namespace RubrikSecurityCloud.Types
                 this.Where(item => item != null && item.GetType() == type));
 
         /// <summary>
-        /// Filter the list by type.
+        /// Filter the list by type name using a regex pattern.
         /// </summary>
-        public RscInterface<T> WhereType(string typeName) =>
-            new RscInterface<T>(
-                this.Where(item => item != null && item.GetType().Name.ToLower() == typeName.ToLower()));
+        /// <param name="typeNamePattern">The regex pattern to match type names.</param>
+        /// <returns>A new RscInterface<T> containing only elements of the type matching the regex pattern.</returns>
+        public RscInterface<T> WhereType(string typeNamePattern)
+        {
+            Regex regex = new Regex(typeNamePattern, RegexOptions.IgnoreCase);
+            return new RscInterface<T>(
+                this.Where(item => item != null && regex.IsMatch(item.GetType().Name)));
+        }
 
         /// <summary>
         /// Return the set of unique types in the list.

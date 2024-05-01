@@ -88,62 +88,6 @@ namespace RubrikSecurityCloud
             }
         }
 
-        // This doesn't work because there's no conversion
-        // from List<SomeSchemaType> to List<BaseType>
-        // hence version with List<IEnumerable> below
-        // public static BaseType? MakeCompositeFromList(List<BaseType> list)
-        // {
-        //     if (list == null || list.Count == 0)
-        //     {
-        //         return null;
-        //     }
-
-        //     for (int i = 0; i < list.Count - 1; i++)
-        //     {
-        //         list[i]._next = list[i + 1];
-        //     }
-
-        //     return list[0];
-        // }
-
-        public static BaseType MakeCompositeFromList(IEnumerable<object> list)
-        {
-            if (list == null || !list.Any())
-            {
-                throw new ArgumentException("List cannot be null or empty", nameof(list));
-            }
-
-            BaseType? current = null;
-            foreach (var item in list)
-            {
-                if (item is BaseType baseTypeItem)
-                {
-                    if (current == null)
-                    {
-                        current = baseTypeItem;
-                    } else
-                    {
-                        current.SetNext(baseTypeItem);
-                        // move to next item
-                        current = current.GetNext();
-                    }
-                    current?.SetNext(null);
-            }
-                else
-                {
-                    throw new ArgumentException("List item is not of BaseType or derived from BaseType", nameof(list));
-                }
-            }
-
-            if (list.First() is BaseType firstBaseTypeItem)
-            {
-                return firstBaseTypeItem;
-            }
-
-            // this should never be reached due to check above
-            throw new InvalidOperationException("First item in list is not of BaseType or derived from BaseType");
-        }
-
         public static List<BaseType> MakeListFromComposite(BaseType composite)
         {
             var list = new List<BaseType>();
