@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.2
+
+Fixes:
+- Get-RscSnapshot - Fixed permissions issue.
+- New-RscMutationVsphere -Operation CreateAdvancedTag - Select fields by default.
+
 ## Version 1.1
 
 New Features:
@@ -466,6 +472,7 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 
 
 
