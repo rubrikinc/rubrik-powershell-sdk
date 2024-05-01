@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace RubrikSecurityCloud.Types
 {
-    public class RscInterface<T>: List<T>, IFieldSpec where T: IFieldSpec
+    public class RscInterface<T>: List<T>, IFieldSpec where T: class, IFieldSpec
     {
         public RscInterface(): base() { }
         public RscInterface(IEnumerable<T> collection): base(collection) { }
@@ -66,7 +66,15 @@ namespace RubrikSecurityCloud.Types
                 }
                 else
                 {
-                    var fragment = " ... on " + item.GetType().Name;
+                    var fragment = " ... on ";
+                    if ( item is BaseType bt)
+                    {
+                        fragment += bt.GetGqlTypeName();
+                    }
+                    else
+                    {
+                        fragment += item.GetType().Name;
+                    }
                     if (fs.Length > 0)
                     {
                         sb.Append(ind + fragment + " {\n" + fs + ind + "}\n");
@@ -86,9 +94,19 @@ namespace RubrikSecurityCloud.Types
         }
         public void ApplyExploratoryFieldSpec(ExplorationContext ec)
         {
-            foreach (IFieldSpec item in this)
+            if (this.Count == 0)
             {
-                item.ApplyExploratoryFieldSpec(ec);
+                InterfaceHelper
+                    .AddInstancesOfImplementingTypes<T>(
+                        this,
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
+            }
+            else
+            {
+                foreach (IFieldSpec item in this)
+                {
+                    item.ApplyExploratoryFieldSpec(ec);
+                }
             }
         }
         public void SelectForRetrieval()

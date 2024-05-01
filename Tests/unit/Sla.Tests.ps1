@@ -37,6 +37,7 @@ Describe -Name 'SLAs' -Fixture {
         # => so in PowerShell, it is a list of objects that
         #    implement the SlaDomain interface
         $type = $q1.field.nodes.gettype()
+        $type.Name | Should -Be 'RscInterfaceList`1'
         $isList = $type.IsGenericType -and $type.GetGenericTypeDefinition() -eq [RubrikSecurityCloud.Types.RscInterfaceList`1]
         $isList | Should -Be $true
         $genericArguments = $type.GetGenericArguments()
@@ -92,35 +93,17 @@ Describe -Name 'SLAs' -Fixture {
 
         # In GraphQL, this query returns a single object that implements
         # the SlaDomain interface.
-        # In PowerShell, it is matched to a single object, and not a list:
+        # In PowerShell, we represent the field as an RscInterface
+        # object.
         $type = $q2.field.gettype()
-        $type.IsGenericType | Should -Be $false
-
-        # Instead, the object is of a type that implements
-        # the SlaDomain interface
-        $type.Name | Should -Not -Be "SlaDomain"
-        $type.Name | Should -BeIn $implementingTypes
-
-        # If there are more than 1 implementing types, since
-        # the schema specifies a single object, and it maps
-        # to a single object in PowerShell, composition is used.
-        $q2.Field.IsComposite() | Should -Be $true
-
-        # Composition is used when the GraphQL schema specifies
-        # a single object that implements an interface.
-        # Internally, the RSC Types implement this as a linked
-        # list of objects, where each object implements the interface
-        # and has a reference to the next object in the list.
-        $q2.Field.GetNext() | Should -Not -Be $null
-
-        # Check that all composite objects implement the SlaDomain interface
-        $f = $q2.Field
-        # $f.CompositeLength() | Should -Be $implementingTypes.Count
-        while ($f -ne $null) {
-            $f | Should -BeOfType RubrikSecurityCloud.Types.SlaDomain
-            $implementingTypes | Should -Contain $f.GetType().Name
-            $f = $f.GetNext()
+        $type.Name | Should -Be "RscInterface`1"
+        $type.IsGenericType | Should -Be $true
+        $genericArguments = $type.GetGenericArguments()
+        $genericArguments[0].Name | Should -Be "SlaDomain"
+        $q2.Field | ForEach-Object {
+            $implementingTypes | Should -Contain $_.GetType().Name
         }
+        $q2.Field.Count | Should -Be $implementingTypes.Count
 
         # We can verify that the composite object is expanded into
         # the query by checking the GQL query string

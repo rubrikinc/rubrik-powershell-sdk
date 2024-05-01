@@ -31,7 +31,7 @@ Describe -Name 'New-RscQueryMssql -Op TopLevelDescendants' -Fixture {
 
         # PhysicalChildConnection.Nodes is a list of interfaces
         $nodes = $node.PhysicalChildConnection.Nodes
-        $nodes.GetType().Name | Should -Be 'RscInterface`1'
+        $nodes.GetType().Name | Should -Be 'RscInterfaceList`1'
         $nodes.GetType().GenericTypeArguments[0].Name | Should -Be 'PhysicalHostPhysicalChildType'
 
         # Auto exploration fills this list with all the possible implementations of PhysicalHostPhysicalChildType
