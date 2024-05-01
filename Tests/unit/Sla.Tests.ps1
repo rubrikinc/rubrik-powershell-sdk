@@ -114,18 +114,11 @@ Describe -Name 'SLAs' -Fixture {
         # Alternatively to AutoFieldSpec, we can build a composite
         # object manually:
         $q3 = New-RscQuery -Copy $q2
-        $q3.Field = $null
-        $f = $null
+        $q3.Field.Clear()
         $implementingTypes | ForEach-Object {
             $t = Get-RscType -Name $_
             $t.SelectForRetrieval()
-            if ($q3.Field -eq $null) {
-                $q3.Field = $t
-                $f = $t
-            } else {
-                $f.SetNext($t)
-                $f = $t
-            }
+            $q3.Field.Add($t)
         }
         $q3.GqlRequest().Query | Should -Be $q2.GqlRequest().Query
 

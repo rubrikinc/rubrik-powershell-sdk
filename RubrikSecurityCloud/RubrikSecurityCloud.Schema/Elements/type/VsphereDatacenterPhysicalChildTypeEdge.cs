@@ -59,9 +59,6 @@ namespace RubrikSecurityCloud.Types
     public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
         conf=(conf==null)?new FieldSpecConfig():conf;
-        if (this.IsComposite() && ! conf.IgnoreComposition) {
-            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
-        }
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> VsphereDatacenterPhysicalChildType? Node
@@ -151,8 +148,8 @@ namespace RubrikSecurityCloud.Types
         // |-----|-------|-------------------------
         // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
         // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
-        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
-        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        // | S   | II    | RscInterface<> : the field spec of each item in the list is included as an inline fragment (... on)
+        // | L   | II    | RscInterfaceList<> : the field spec of each item in the list is included as an inline fragment (... on)
         //
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
