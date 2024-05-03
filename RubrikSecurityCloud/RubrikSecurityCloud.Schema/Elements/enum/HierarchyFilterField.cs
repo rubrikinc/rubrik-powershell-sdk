@@ -636,6 +636,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST_ID")]
         PHYSICAL_HOST_ID,
 
+        [EnumMember(Value = "POSTGRES_DB_CLUSTER_HOST_CONNECTION_STATUS")]
+        POSTGRES_DB_CLUSTER_HOST_CONNECTION_STATUS,
+
+        [EnumMember(Value = "POSTGRES_DB_CLUSTER_ID")]
+        POSTGRES_DB_CLUSTER_ID,
+
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.3
+
+Schema Update
+
 ## Version 1.2
 
 Fixes:
@@ -472,6 +476,7 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 
 
 

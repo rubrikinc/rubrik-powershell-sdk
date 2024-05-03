@@ -776,7 +776,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.DuplicateObjects == null) {
 
-                this.DuplicateObjects = new RscInterface<CdmHierarchyObject>();
+                this.DuplicateObjects = new List<CdmHierarchyObject>();
                 this.DuplicateObjects.ApplyExploratoryFieldSpec(ec.NewChild("duplicateObjects"));
 
             } else {
@@ -867,7 +867,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new RscInterface<CdmHierarchyObject>();
+                this.ReplicatedObjects = new List<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {

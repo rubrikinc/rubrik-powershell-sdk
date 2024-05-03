@@ -391,6 +391,11 @@ type Query {
     # Cloud account ID.
     cloudAccountId: String!): [AzureCloudAccountRegion!]!
 
+  # Retrieve all available regions for Azure with availability zone details.
+  allAzureRegionsWithAzDetails(
+    # Cloud account ID.
+    cloudAccountId: String!): [AzureLocationDetailType!]!
+
   # Get resource groups for a service principal in Azure.
   allAzureResourceGroups(
     # Cloud account ID.
@@ -3229,11 +3234,6 @@ type Query {
 
     # Host failover cluster root type.
     hostFailoverClusterRoot: HostFailoverClusterRoot!): FailoverClusterTopLevelDescendantTypeConnection!
-
-  # Returns the failures and warnings stats of an M365 organization.
-  failuresAndWarningsStats(
-    # Org UUID.
-    orgId: UUID!): FailuresAndWarningsStatsReply!
 
   # Status of the federated login.
   federatedLoginStatus: FederatedLoginStatus!
@@ -11683,7 +11683,7 @@ type Mutation {
   # v8.1+: Patch virtual machine with specified properties.
   updateNutanixVm(
     # Input for InternalPatchNutanixVm.
-    input: UpdateNutanixVmInput!): Void
+    input: UpdateNutanixVmInput!): NutanixVmDetail!
 
   # Update O365 App authentication status to applicable app version.
   updateO365AppAuthStatus(
@@ -13228,6 +13228,9 @@ type Activity {
 
   # Additional information pertaining to this activity.
   activityInfo: String
+
+  # Information about the Rubrik error associated with this activity.
+  errorInfo: String
 
   # The ID of the activity.
   id: ID!
@@ -14891,6 +14894,14 @@ type AdvancedVirtualMachineSummary {
   # Supported in v7.0+
   # Script to execute before backup.
   preBackupScript: VirtualMachineScriptDetail
+}
+# Supported in v5.0+
+# The agent connection status.
+enum AgentConnectStatus {
+  AGENT_CONNECT_STATUS_CONNECTED
+  AGENT_CONNECT_STATUS_DISCONNECTED
+  AGENT_CONNECT_STATUS_SECONDARY_CLUSTER
+  AGENT_CONNECT_STATUS_UNREGISTERED
 }
 enum AgentConnectionStatus {
   CONNECTED
@@ -24267,6 +24278,14 @@ input AzureKeyVaultsInput {
   # The Principal ID of the user assigned managed identity.
   userAssignedManagedIdentityPrincipalId: UUID
 }
+# Azure region detail, including name and availability zones.
+type AzureLocationDetailType {
+  # Name of the azure location.
+  location: AzureCloudAccountRegion!
+
+  # Available availability zones in the region.
+  logicalAvailabilityZones: [String!]!
+}
 # AzureManagedIdentitiesRequest input for the Azure account.
 input AzureManagedIdentitiesRequest {
   # User cloud account UUID.
@@ -29037,6 +29056,11 @@ input BulkUpdateRansomwareInvestigationEnabledInput {
 
   # The new Ransomware Investigation status.
   isRansomwareMonitoringEnabled: Boolean!
+}
+# Metadata associated with an Exocompute container image bundle.
+input BundleMetadataInput {
+  # EKS version for this bundle version. This is not required if you are using Bring Your Own Kubernetes (BYOK).
+  eksVersion: String
 }
 # Email address input for organizer and/or attendee.
 input CalendarEmailAddressFilter {
@@ -39387,8 +39411,8 @@ enum DataTypeEnum {
 }
 # All reporting table schemas.
 enum DataViewTypeEnum {
-  # Specifies the Scanned Objects report information.
-  ANOMALY_DETECTION
+  # Specifies the Readable Snapshots report information.
+  ANOMALIES
 
   # Specifies the database schema for audits.
   AUDIT_LIST
@@ -39417,8 +39441,8 @@ enum DataViewTypeEnum {
   MONITORING_SCHEDULED
   MONITORING_TASK_COUNT_TIME_SERIES
 
-  # Specifies the Unscannable Objects report information.
-  NF_ANOMALY_DETECTION
+  # Specifies the Unreadable Objects report information.
+  NF_ANOMALIES
   OBJECT_AUDIT_DETAIL
   OBJECT_AUDIT_LIST
 
@@ -46047,25 +46071,6 @@ type Failure {
   # Details of the error that occurred when connecting to the Rubrik Backup Service.
   error: String!
 }
-# Stores the failures and warnings stats within a time range bucket.
-type FailuresAndWarningsStats {
-  # Start time of the bucket.
-  startTime: DateTime
-
-  # End time of the bucket.
-  endTime: DateTime
-
-  # Number of failures per workload type.
-  workloadTypeToFailureCount: [WorkloadTypeToEventCount!]!
-
-  # Number of warnings per workload type.
-  workloadTypeToWarningCount: [WorkloadTypeToEventCount!]!
-}
-# Stores the failures and warnings stats for all workload types.
-type FailuresAndWarningsStatsReply {
-  # Failures and warnings stats for all workload types.
-  failuresAndWarningsStats: [FailuresAndWarningsStats!]!
-}
 # Input to check feature support for CDM version.
 input FeatureCdmVersionInput {
   # Required. Cluster to check for feature.
@@ -49669,7 +49674,7 @@ type GetMfaSettingReply {
   isTotpGlobalEnforceLocked: Boolean!
 
   # Specifies the date when TOTP enforcement becomes mandatory.
-  mandatoryTotpEnforcementDate: DateTime
+  mandatoryTotpEnforcementDate: DateTime @deprecated(reason: "Deprecated. Query MandatoryTotpGracePeriod instead.")
 
   # Specifies whether TOTP is mandatory.
   isTotpMandatory: Boolean!
@@ -53610,6 +53615,11 @@ type HostVolumeSummary {
   volumeGroupId: String
   volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary
 }
+# Additional information for `HOST_BULK_REGISTER_ASYNC` jobs.
+input HostsInfo {
+  # ID of registered hosts.
+  hostFids: [String!] = []
+}
 # Supported in v5.3+
 type HotAddBandwidthInfo {
   # Required. Supported in v5.3+
@@ -55831,7 +55841,7 @@ type HypervVirtualMachineUpdate {
   cloudInstantiationSpec: CloudInstantiationSpec
 
   # Supported in v5.0+
-  # v5.0-v5.1: Assign this VM to the given SLA domain.
+  # v5.0-v5.1: Assign the specified SLA Domain to this virtual machine.
   # v5.2+: Assign this VM to the given SLA domain. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
   configuredSlaDomainId: String
 
@@ -56870,6 +56880,9 @@ input JobInfoRequestDetails {
 
   # Populate for `POSTGRES_DB_CLUSTER` jobs.
   postgresDbClusterInfo: PostgresDbClusterInfo
+
+  # Populate for `HOST_BULK_REGISTER_ASYNC` jobs.
+  hostsInfo: HostsInfo
 }
 type JobMetadata {
   id: Long!
@@ -57001,6 +57014,9 @@ enum JobType {
   # Export of VCD VApp snapshot.
   EXPORT_VCD_VAPP_SNAPSHOT
 
+  # Register host async.
+  HOST_BULK_REGISTER_ASYNC
+
   # Make host primary.
   HOST_MAKE_PRIMARY_POLLER
 
@@ -57051,6 +57067,9 @@ enum JobType {
 
   # Microsoft SQL Server restore.
   MSSQL_RESTORE
+
+  # Microsoft SQL Server database snapshot.
+  MSSQL_SNAPSHOT
 
   # Unmount of a Microsoft SQL Server.
   MSSQL_UNMOUNT
@@ -61903,6 +61922,9 @@ type Metadata {
 }
 # The types of metadata key.
 enum MetadataKey {
+  # Flag to determine if a row is expandable.
+  CAN_TABLE_ROW_EXPAND
+
   # Cluster ID used to generate cluster hyperlink.
   CLUSTER_LINK_ID
 
@@ -61923,6 +61945,12 @@ enum MetadataKey {
 
   # Table cell dot color.
   TABLE_CELL_DOT_COLOR
+
+  # Row hover color.
+  TABLE_ROW_HOVER_COLOR
+
+  # Name of the table row.
+  TABLE_ROW_NAME
 }
 # The generic Metadata with a list of key-values pairs.
 type MetadataV2 {
@@ -67951,7 +67979,7 @@ type MssqlScriptDetail {
   scriptPath: String!
 
   # Required. Supported in v5.0+
-  # Time (in ms) after which the script will be terminated if it has not completed.
+  # Maximum time, in milliseconds, for a script to complete. If the script fails to complete within the specified time, it will be terminated automatically.
   timeoutMs: Long!
   scriptErrorAction: ScriptErrorAction!
 }
@@ -72945,6 +72973,44 @@ interface NutanixTopLevelDescendantType {
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 }
+# Supported in v5.2+
+type NutanixVirtualDiskSummary {
+  # Supported in v5.2+
+  # Type of virtual disk.
+  deviceType: String
+
+  # Supported in v5.2+
+  # Size of the virtual disk in bytes.
+  sizeInBytes: Long
+
+  # Supported in v5.2-v5.3
+  # UUID of the disk
+  uuid: String
+
+  # Supported in v6.0+
+  # Specifies whether a disk snapshot can be created on the Nutanix device. The value is true if a snapshot can be created.
+  isSnapshottable: Boolean
+
+  # Supported in v6.0+
+  # Label of the disk assigned by Nutanix.
+  label: String
+
+  # Supported in v6.0+
+  # UUID of the virtual machine disk.
+  vmDiskUuid: String
+}
+# Supported in v6.0+
+type NutanixVirtualMachineScriptDetail {
+  # Required. Supported in v6.0+
+  # v6.0-v8.0: The command you are required to run in the virtual machine guest OS.
+  # v8.1+: The command you are required to run in the virtual machine guest OS.
+  scriptPath: String!
+
+  # Required. Supported in v6.0+
+  # Maximum time, in milliseconds, for a script to complete. If the script fails to complete within the specified time, it will be terminated automatically.
+  timeoutMs: Long!
+  failureHandling: NutanixVirtualMachineScriptDetailFailureHandling!
+}
 enum NutanixVirtualMachineScriptDetailFailureHandling {
   NUTANIX_VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_ABORT
   NUTANIX_VIRTUAL_MACHINE_SCRIPT_DETAIL_FAILURE_HANDLING_CONTINUE
@@ -73247,6 +73313,27 @@ type NutanixVmConnection {
   # Total number of NutanixVm objects matching the request arguments.
   count: Int!
 }
+# Supported in v5.0+
+type NutanixVmDetail {
+  # Required. Supported in v5.0+
+  # A list of virtual disk IDs to exclude from the backup for this virtual machine.
+  excludedDiskIds: [String!]!
+
+  # Required. Supported in v5.0+
+  # Returns whether the Rubrik connector is installed and service is registered.
+  isAgentRegistered: Boolean!
+
+  # Required. Supported in v5.0+
+  # Specifies whether the backup, archival, or replication process is paused for this System Volume.
+  isPaused: Boolean!
+
+  # Supported in v5.2+
+  # Information about all the virtual disks associated with this virtual machine.
+  virtualDisks: [NutanixVirtualDiskSummary!]!
+  nutanixVmPatch: NutanixVmPatch
+  nutanixVmSummary: NutanixVmSummary
+  blackoutWindowResponseInfo: BlackoutWindowResponseInfo
+}
 # Nutanix Virtual Machine disk details.
 type NutanixVmDisk {
   # Disk UUID.
@@ -73432,6 +73519,34 @@ type NutanixVmMountSummary {
   mountStatus: NutanixVmMountStatus
 }
 # Supported in v5.0+
+type NutanixVmPatch {
+  # Supported in v5.0+
+  # v5.0-v5.1: Assign the specified SLA Domain to this virtual machine.
+  # v5.2-v8.0: Assign the specified SLA Domain to this virtual machine. Existing snapshots will be retained with the specified SLA Domain configuration.
+  # v8.1+: Assign the specified SLA Domain to this virtual machine. Existing snapshots will be retained with the specified SLA Domain configuration.
+  configuredSlaDomainId: String
+
+  # Supported in v5.0+
+  # A list of virtual disks IDs to exclude from the backup for this virtual machine.
+  excludedDiskIds: [String!]!
+
+  # Supported in v5.0+
+  # v5.0-v5.3: Specifies whether the backup, archival, or replication process is paused for this virtual machine.
+  # v6.0-v8.0: Specifies whether the backup, archival, or replication process is paused for this virtual machine.
+  # v8.1+: Specifies whether the backup, archival, or replication process is paused for this virtual machine.
+  isPaused: Boolean
+
+  # Supported in v6.0+
+  postBackupScript: NutanixVirtualMachineScriptDetail
+
+  # Supported in v6.0+
+  postSnapScript: NutanixVirtualMachineScriptDetail
+
+  # Supported in v6.0+
+  preBackupScript: NutanixVirtualMachineScriptDetail
+  snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
+}
+# Supported in v5.0+
 input NutanixVmPatchInput {
   # Assigns this virtual machine to the given SLA domain. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
   configuredSlaDomainId: String
@@ -73494,6 +73609,44 @@ type NutanixVmSnapshotSummary {
 
   # This field contains the base information of a snapshot which are common across other workloads.
   baseSnapshotSummary: BaseSnapshotSummary
+}
+# Supported in v5.0+
+type NutanixVmSummary {
+  # Required. Supported in v5.0+
+  id: String!
+
+  # Required. Supported in v5.0+
+  # v5.0-v5.3: Specifies whether this Nutanix virtual machine is currently present on the Nutanix cluster.
+  # v6.0-v8.0: Specifies whether this Nutanix virtual machine is currently present on the Nutanix cluster.
+  # v8.1+: Specifies whether this Nutanix virtual machine is currently present on the Nutanix cluster.
+  isRelic: Boolean!
+
+  # Required. Supported in v5.0+
+  name: String!
+
+  # Supported in v5.0+
+  # v5.0-v5.3: The ID of the Nutanix cluster to which this virtual machine belongs.
+  # v6.0-v8.0: The ID of the Nutanix cluster to which this virtual machine belongs.
+  # v8.1+: The ID of the Nutanix cluster to which this virtual machine belongs.
+  nutanixClusterId: String
+
+  # Supported in v5.0+
+  # v5.0-v5.3: The name of the Nutanix cluster to which this virtual machine belongs.
+  # v6.0-v8.0: The name of the Nutanix cluster to which this virtual machine belongs.
+  # v8.1+: The name of the Nutanix cluster to which this virtual machine belongs.
+  nutanixClusterName: String
+  snappable: CdmWorkload
+  agentConnectStatus: AgentConnectStatus
+  operatingSystemType: OperatingSystemType
+  snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate!
+
+  # Supported in v5.0+
+  # The status of the Rubrik Backup Service agent for Nutanix virtual machines.
+  agentStatus: CdmAgentStatus
+
+  # Supported in v5.3+
+  # Describes any pending SLA Domain assignment on this object.
+  pendingSlaDomain: ManagedObjectPendingSlaInfo
 }
 type O365App implements O365AppObject {
   # The ID of the O365 app.
@@ -76904,6 +77057,16 @@ enum OpenAccessType {
   NOT_OPEN
   UNKNOWN_ACCESS
 }
+# Supported in v5.0+
+# Operating system of a specified machine.
+enum OperatingSystemType {
+  OPERATING_SYSTEM_TYPE_AIX
+  OPERATING_SYSTEM_TYPE_HPUX
+  OPERATING_SYSTEM_TYPE_LINUX
+  OPERATING_SYSTEM_TYPE_SUN_OS
+  OPERATING_SYSTEM_TYPE_UNKNOWN
+  OPERATING_SYSTEM_TYPE_WINDOWS
+}
 # Operations defined in the RBAC system.
 enum Operation {
   # Access Rubrik clusters via federated access.
@@ -77094,6 +77257,9 @@ enum Operation {
   # Use the Rubrik cluster as a replication target.
   USE_AS_REPLICATION_TARGET
   VIEW_ACCESS
+
+  # View anomaly detection results.
+  VIEW_ANOMALY_DETECTION_RESULTS
 
   # View archival location.
   VIEW_ARCHIVAL_LOCATION
@@ -85522,6 +85688,9 @@ type RouteConfig {
 type Row {
   values: [CellData!]!
   metadata: [Metadata!]!
+
+  # New version of metadata object.
+  metadataV2: [MetadataV2!]!
 }
 # Paginated list of Row objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type RowConnection {
@@ -88487,6 +88656,9 @@ input SetBundleApprovalStatusInput {
 
   # The desired status of the bundle.
   approvalStatus: ExoBundleApprovalStatus!
+
+  # Metadata associated with an Exocompute container image bundle.
+  bundleMetadata: BundleMetadataInput
 }
 # Input to set customer-specified tags for a particular cloud type.
 input SetCustomerTagsInput {
@@ -100749,11 +100921,11 @@ type VirtualMachineFilesReply {
 # Supported in v5.0+
 type VirtualMachineScriptDetail {
   # Required. Supported in v5.0+
-  # The command to be run in VM guest OS.
+  # The command you are required to run in the virtual machine guest OS.
   scriptPath: String!
 
   # Required. Supported in v5.0+
-  # Time (in ms) after which the script will be terminated if it has not completed.
+  # Maximum time, in milliseconds, for a script to complete. If the script fails to complete within the specified time, it will be terminated automatically.
   timeoutMs: Long!
   failureHandling: VirtualMachineScriptDetailFailureHandling!
 }
@@ -107790,14 +107962,6 @@ type WorkloadTypeToBackupSetupSpecs {
 
   # The object from where the setup specification is inherited.
   setupSourceObject: PathNode!
-}
-# Stores the event count for a workload type.
-type WorkloadTypeToEventCount {
-  # Event count for the above workload type.
-  count: Int!
-
-  # M365 workload type.
-  workloadType: M365DashboardWorkloadType!
 }
 # Supported in v6.0+
 type YARAMatchDetail {

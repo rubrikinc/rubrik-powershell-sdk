@@ -628,7 +628,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Charts == null) {
 
-                this.Charts = new RscInterface<ReportChartType>();
+                this.Charts = new List<ReportChartType>();
                 this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
 
             } else {
@@ -647,7 +647,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.Tables == null) {
 
-                this.Tables = new RscInterface<ReportTableType>();
+                this.Tables = new List<ReportTableType>();
                 this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
 
             } else {

@@ -22,3 +22,5 @@ Filter snappable data in group by.
   - The state of the workload.
 - isLocal: System.Boolean
   - True if the workload is local; false if the workload is remote.
+- objectFid: list of System.Strings
+  - The FID of the workload.

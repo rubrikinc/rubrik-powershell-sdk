@@ -27,6 +27,8 @@ Azure Virtual Machine configuration parameters.
   - Name of the Virtual Machine image to deploy.
 - cdmProduct: System.String
   - Name of CDM product.
+- availabilityZone: System.String
+  - Availability zone for CDM node placement.
 - vmType: VmType
   - Standard or dense node.
 - instanceType: AzureInstanceType

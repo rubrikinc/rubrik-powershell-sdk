@@ -7,3 +7,5 @@ Rubrik Cloud Vault (RCV) entitlement tier wise details.
   - Rubrik Cloud Vault (RCV) region bundle.
 - tier: RcvTier
   - Rubrik Cloud Vault (RCV) Entitlement tier.
+- redundancy: RcvRedundancy
+  - Rubrik Cloud Vault (RCV) redundancy level.

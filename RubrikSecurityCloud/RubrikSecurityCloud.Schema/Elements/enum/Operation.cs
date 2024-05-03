@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum Operation
     {
+        [EnumMember(Value = "ACCESS_CDM_CLUSTER")]
+        ACCESS_CDM_CLUSTER,
+
         [EnumMember(Value = "ADD_AWS_CLOUD_ACCOUNT")]
         ADD_AWS_CLOUD_ACCOUNT,
 
