@@ -1,12 +1,8 @@
 # Changelog
 
-## ~ Upcoming Version ~
+## Version 1.3
 
-New Features:
-
-Fixes:
-
-Breaking Changes:
+Schema Update
 
 ## Version 1.2
 
