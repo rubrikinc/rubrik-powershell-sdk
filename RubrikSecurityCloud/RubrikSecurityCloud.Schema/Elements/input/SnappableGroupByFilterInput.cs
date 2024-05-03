@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isLocal")]
         public System.Boolean? IsLocal { get; set; }
 
+        //      C# -> List<System.String>? ObjectFid
+        // GraphQL -> objectFid: [UUID!] (scalar)
+        [JsonProperty("objectFid")]
+        public List<System.String>? ObjectFid { get; set; }
+
 
         #endregion
 

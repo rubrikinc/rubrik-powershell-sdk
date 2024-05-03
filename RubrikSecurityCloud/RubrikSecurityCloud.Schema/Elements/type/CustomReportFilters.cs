@@ -865,7 +865,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.SlaDomain == null) {
 
-                this.SlaDomain = new RscInterface<SlaDomain>();
+                this.SlaDomain = new List<SlaDomain>();
                 this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
 
             } else {

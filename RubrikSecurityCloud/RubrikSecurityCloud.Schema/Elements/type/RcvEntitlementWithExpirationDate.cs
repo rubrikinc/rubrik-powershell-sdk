@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bundle")]
         public RcvRegionBundle? Bundle { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
         [JsonProperty("tier")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public RcvEntitlementWithExpirationDate Set(
         RcvRegionBundle? Bundle = null,
+        RcvRedundancy? Redundancy = null,
         RcvTier? Tier = null,
         System.Single? Capacity = null,
         DateTime? ExpirationDate = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Bundle != null ) {
             this.Bundle = Bundle;
+        }
+        if ( Redundancy != null ) {
+            this.Redundancy = Redundancy;
         }
         if ( Tier != null ) {
             this.Tier = Tier;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "bundle\n" ;
             } else {
                 s += ind + "bundle\n" ;
+            }
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (this.Redundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancy\n" ;
+            } else {
+                s += ind + "redundancy\n" ;
             }
         }
         //      C# -> RcvTier? Tier
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Bundle != null && ec.Excludes("bundle",true))
         {
             this.Bundle = null;
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (ec.Includes("redundancy",true))
+        {
+            if(this.Redundancy == null) {
+
+                this.Redundancy = new RcvRedundancy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Redundancy != null && ec.Excludes("redundancy",true))
+        {
+            this.Redundancy = null;
         }
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)

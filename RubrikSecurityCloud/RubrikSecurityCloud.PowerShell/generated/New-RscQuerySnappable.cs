@@ -432,6 +432,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isLocal = $someBoolean
+    /// 	# OPTIONAL
+    /// 	objectFid = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -603,6 +607,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isLocal = $someBoolean
+    /// 	# OPTIONAL
+    /// 	objectFid = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -787,6 +795,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isLocal = $someBoolean
+    /// 	# OPTIONAL
+    /// 	objectFid = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1579,6 +1591,10 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isLocal = $someBoolean
+	# OPTIONAL
+	objectFid = @(
+		$someString
+	)
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle
@@ -1758,6 +1774,10 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isLocal = $someBoolean
+	# OPTIONAL
+	objectFid = @(
+		$someString
+	)
 }"
             );
         }
@@ -1950,6 +1970,10 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isLocal = $someBoolean
+	# OPTIONAL
+	objectFid = @(
+		$someString
+	)
 }"
             );
         }

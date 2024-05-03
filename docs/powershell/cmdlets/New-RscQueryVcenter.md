@@ -37,6 +37,15 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of VcenterHotAddProxyVmInfos.
+### hotaddproxyvmsv2
+Retrieve HotAdd proxy virtual machines.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - filter - list of VcenterProxyVmsFilterInputs: Filter for vCenter hotadd proxy virtual machine.
+    - clusterUuids - list of System.Strings: List of cluster IDs.
+- Returns VsphereProxyVmInfoConnection.
 ### list
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.

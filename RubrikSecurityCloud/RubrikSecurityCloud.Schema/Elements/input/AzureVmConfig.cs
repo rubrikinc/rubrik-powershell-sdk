@@ -84,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmProduct")]
         public System.String? CdmProduct { get; set; }
 
+        //      C# -> System.String? AvailabilityZone
+        // GraphQL -> availabilityZone: String (scalar)
+        [JsonProperty("availabilityZone")]
+        public System.String? AvailabilityZone { get; set; }
+
         //      C# -> VmType? VmType
         // GraphQL -> vmType: VmType (enum)
         [JsonProperty("vmType")]

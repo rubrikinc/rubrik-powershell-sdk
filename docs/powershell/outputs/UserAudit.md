@@ -25,6 +25,8 @@ An audit triggered by a user.
   - The organization ID of this user audit.
 - orgName: System.String
   - The organization name of this user audit.
+- ipAddress: System.String
+  - The IP address of the user who triggered this audit.
 - id: System.String
   - The ID of the user audit.
 - cluster: Cluster

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'VMware vSphere vCenter' API domain:
-    /// AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
+    /// AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, HotAddProxyVmsV2, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// </summary>
     /// <description>
     /// New-RscQueryVcenter creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 11 operations
     /// in the 'VMware vSphere vCenter' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
+    /// one of: AdvancedTagPreview, AsyncRequestStatus, HotAddBandwidth, HotAddNetwork, HotAddProxy, HotAddProxyVmsV2, List, Networks, NumProxiesNeeded, PreAddInfo, or Vcenter.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -231,6 +231,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;VcenterHotAddProxyVmInfo&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HotAddProxyVmsV2 operation
+    /// of the 'VMware vSphere vCenter' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Vcenter
+    /// # API Operation: HotAddProxyVmsV2
+    /// 
+    /// $query = New-RscQueryVcenter -HotAddProxyVmsV2
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someVcenterProxyVmsFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterProxyVmsFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # REQUIRED
+    /// $query.Var.clusterUuids = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: VsphereProxyVmInfoConnection
     /// 
     /// 
     /// 
@@ -472,6 +517,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "HotAddBandwidth",
                 "HotAddNetwork",
                 "HotAddProxy",
+                "HotAddProxyVmsV2",
                 "List",
                 "Networks",
                 "NumProxiesNeeded",
@@ -506,6 +552,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "HotAddProxy":
                         this.ProcessRecord_HotAddProxy();
+                        break;
+                    case "HotAddProxyVmsV2":
+                        this.ProcessRecord_HotAddProxyVmsV2();
                         break;
                     case "List":
                         this.ProcessRecord_List();
@@ -575,6 +624,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -HotAddProxy";
             // Create new graphql operation allVcenterHotAddProxyVms
             InitQueryAllVcenterHotAddProxyVms();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vCenterHotAddProxyVmsV2.
+        internal void ProcessRecord_HotAddProxyVmsV2()
+        {
+            this._logger.name += " -HotAddProxyVmsV2";
+            // Create new graphql operation vCenterHotAddProxyVmsV2
+            InitQueryVcenterHotAddProxyVmsV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -739,6 +797,51 @@ $query.Var.input = @{
                 Query.AllVcenterHotAddProxyVms_ObjectFieldSpec,
                 Query.AllVcenterHotAddProxyVmsFieldSpec,
                 @"# REQUIRED
+$query.Var.clusterUuids = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // vCenterHotAddProxyVmsV2(
+        //     first: Int
+        //     after: String
+        //     filter: [VcenterProxyVmsFilterInput!]
+        //     clusterUuids: [UUID!]!
+        //   ): VsphereProxyVmInfoConnection!
+        internal void InitQueryVcenterHotAddProxyVmsV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("filter", "[VcenterProxyVmsFilterInput!]"),
+                Tuple.Create("clusterUuids", "[UUID!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVcenterHotAddProxyVmsV2",
+                "($first: Int,$after: String,$filter: [VcenterProxyVmsFilterInput!],$clusterUuids: [UUID!]!)",
+                "VsphereProxyVmInfoConnection",
+                Query.VcenterHotAddProxyVmsV2_ObjectFieldSpec,
+                Query.VcenterHotAddProxyVmsV2FieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someVcenterProxyVmsFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterProxyVmsFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+}
+)
+# REQUIRED
 $query.Var.clusterUuids = @(
 	$someString
 )"

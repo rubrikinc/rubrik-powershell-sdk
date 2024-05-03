@@ -12,16 +12,16 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 | [Account (9,14)](#account-domain) | [Cluster (30,13)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (17,18)](#oracle-domain) | [Snapshot (21,18)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (0,4)](#cross-account-domain) | [Microsoft 365 (7,4)](#microsoft-365-domain) | [Policy (6,12)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (4,3)](#activity-series-domain) | [Db2 (9,12)](#db2-domain) | [Managed Volume (4,11)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (177,122)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (8,16)](#archival-domain) | [Report Download (3,17)](#report-download-domain) | [Miscellaneous (180,123)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (29,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (8,6)](#mongo-domain) | [RCV (3,4)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (19,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (46,42)](#azure-domain) | [Fileset (6,6)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (11,10)](#report-domain) | [Threat (4,3)](#threat-domain) |
-| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,22)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (10,6)](#vmware-vsphere-vcenter-domain) |
-| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,7)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
+| [Azure Native (23,8)](#azure-native-domain) | [Google Cloud Platform (16,11)](#google-cloud-platform-domain) | [Microsoft SQL Server (17,22)](#microsoft-sql-server-domain) | [SAP HANA (8,11)](#sap-hana-domain) | [VMware vSphere vCenter (11,6)](#vmware-vsphere-vcenter-domain) |
+| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (7,6)](#google-cloud-platform-native-domain) | [NAS (8,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (6,7)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (23,8)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (6,24)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (6,2)](#cloud-account-domain) | [Integration (2,6)](#integration-domain) | [Nutanix (18,25)](#nutanix-domain) | [SMB (2,4)](#smb-domain) | [Webhook (1,5)](#webhook-domain) |
-| [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (8,17)](#kubernetes-domain) | [Office 365 (37,31)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
+| [Cloud Native (19,13)](#cloud-native-domain) | [Kubernetes (8,17)](#kubernetes-domain) | [Office 365 (38,31)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
 
@@ -1525,6 +1525,7 @@ Cmdlets: `New-RscQueryMisc` and `New-RscMutationMisc`
   
 Supported in v5.0+  
 Retrieve the global setting for automatic deployment of the Rubrik Backup Service to virtual machines. | `New-RscQueryMisc -Operation AgentDeploymentSetting`<BR> | [agentDeploymentSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AgentDeploymentSettings | Get all agent deployment settings. | `New-RscQueryMisc -Operation AgentDeploymentSettings`<BR> | [allAgentDeploymentSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AllowedOrgAdminOperations | Returns privileges that are allowed to be asssigned to org admin roles. | `New-RscQueryMisc -Operation AllowedOrgAdminOperations`<BR> | [allAllowedOrgAdminOperations](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AnalyzerGroups | N/A | `New-RscQueryMisc -Operation AnalyzerGroups`<BR> | [analyzerGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AnalyzerUsages | Returns which policies are using each analyzer. | `New-RscQueryMisc -Operation AnalyzerUsages`<BR> | [analyzerUsages](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1622,6 +1623,7 @@ v5.2+: Searches for nodes that can bootstrap into the specified Rubrik cluster. 
 | InventoryWorkloads | All account level inventory workloads. | `New-RscQueryMisc -Operation InventoryWorkloads`<BR> | [allInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | InvestigationCsvDownloadLink | Link to downloadable investigation results in CSV format. | `New-RscQueryMisc -Operation InvestigationCsvDownloadLink`<BR> | [investigationCsvDownloadLink](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IpWhitelist | N/A | `New-RscQueryMisc -Operation IpWhitelist`<BR> | [ipWhitelist](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| IsIpmiEnabled | Check if IPMI is enabled on the cluster. | `New-RscQueryMisc -Operation IsIpmiEnabled`<BR> | [isIpmiEnabled](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsLoggedIntoRubrikSupportPortal | Is Logged into Rubrik support portal. | `New-RscQueryMisc -Operation IsLoggedIntoRubrikSupportPortal`<BR> | [isLoggedIntoRubrikSupportPortal](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsSfdcReachable | Is Rubrik Suppport Portal reachable from this deployment. | `New-RscQueryMisc -Operation IsSfdcReachable`<BR> | [isSfdcReachable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsUpgradeAvailable | Is upgrade available for a particular cluster. | `New-RscQueryMisc -Operation IsUpgradeAvailable`<BR> | [isUpgradeAvailable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1716,6 +1718,7 @@ Returns all virtual machine files, such as .vmdk, .vmx, and .nvram files, for th
 | VolumeGroupMounts | Volume Group Live Mount Connection. | `New-RscQueryMisc -Operation VolumeGroupMounts`<BR> | [volumeGroupMounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | WorkloadAlertSetting | Get whether alerts for a given workload are enabled. | `New-RscQueryMisc -Operation WorkloadAlertSetting`<BR> | [workloadAlertSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | WorkloadAnomalies | Specifies workloads that have an anomalous snapshot. | `New-RscQueryMisc -Operation WorkloadAnomalies`<BR> | [workloadAnomalies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| WorkloadForeverId | Returns the RSC forever ID of a workload. | `New-RscQueryMisc -Operation WorkloadForeverId`<BR> | [workloadForeverId](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations
@@ -1889,6 +1892,10 @@ Update proxy config. | `New-RscMutationMisc -Operation UpdateProxyConfig`<BR> | 
   
 Supported in v5.0+  
 To be used by Admin to open or close a SSH tunnel for support. When enabling the support tunnel, the node 'id' must be *me* or the current node's 'id', because remote open is not supported. When disabling a support tunnel, the node 'id' can be that of any node in the cluster. | `New-RscMutationMisc -Operation UpdateTunnelStatus`<BR> | [updateTunnelStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateVlan | Update a VLAN interface on the Rubrik cluster  
+  
+Supported in v8.0+  
+Update the configuration of an existing VLAN on the Rubrik cluster. VLAN netmask and IP addresses can be changed. | `New-RscMutationMisc -Operation UpdateVlan`<BR> | [updateVlan](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateVolumeGroup | Update Volume Group properties  
   
 Supported in v5.3+  
@@ -2116,10 +2123,22 @@ Cmdlets: `New-RscQueryNas` and `New-RscMutationNas`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| BulkAddNasShares | Add multiple NAS shares to a NAS System  
+  
+Supported in v8.1+  
+This operation adds NAS shares that were not discovered automatically. If the input contains SMB credentials for any share, they are stored but not validated. | `New-RscMutationNas -Operation BulkAddNasShares`<BR> | [bulkAddNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkDeleteNasShares | Delete multiple NAS shares  
+  
+Supported in v8.1+  
+Initiates the delete operation for the specified NAS shares. | `New-RscMutationNas -Operation BulkDeleteNasShares`<BR> | [bulkDeleteNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | BulkDeleteNasSystems | Delete multiple NAS systems  
   
 Supported in v7.0+  
 Triggers a delete of the specified NAS systems. Returns an asynchronous request to check their delete status. | `New-RscMutationNas -Operation BulkDeleteNasSystems`<BR> | [bulkDeleteNasSystems](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkUpdateNasShares | Update properties of NAS shares  
+  
+Supported in v8.1+  
+Update the properties of the specified NAS shares. | `New-RscMutationNas -Operation BulkUpdateNasShares`<BR> | [bulkUpdateNasShares](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteNasSystem | Delete a registered NAS system  
   
 Supported in v7.0+  
@@ -2385,6 +2404,7 @@ Cmdlets: `New-RscQueryO365` and `New-RscMutationO365`
 | AdGroups | All AD Groups belonging to the O365 organization. | `New-RscQueryO365 -Operation AdGroups`<BR> | [allO365AdGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | BrowseTeamConvChannels | Browse channels in a Teams conversations snapshot. | `New-RscQueryO365 -Operation BrowseTeamConvChannels`<BR> | [browseO365TeamConvChannels](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Calendar | Details of the Exchange calendar pertaining to the snappable ID. | `New-RscQueryO365 -Operation Calendar`<BR> | [o365Calendar](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| Consumption | Display license consumption for M365 workloads. | `New-RscQueryO365 -Operation Consumption`<BR> | [o365Consumption](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Groups | List of O365 Groups in the O365Org. | `New-RscQueryO365 -Operation Groups`<BR> | [o365Groups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | License | Retrieve o365 licence details. | `New-RscQueryO365 -Operation License`<BR> | [o365License](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ListApps | Lists the O365 apps. | `New-RscQueryO365 -Operation ListApps`<BR> | [listO365Apps](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3286,6 +3306,7 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
   
 Supported in v5.3+  
 Retrieve summary information for all HotAdd proxy virtual machines. | `New-RscQueryVcenter -Operation HotAddProxy`<BR> | [allVcenterHotAddProxyVms](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| HotAddProxyVmsV2 | Retrieve HotAdd proxy virtual machines. | `New-RscQueryVcenter -Operation HotAddProxyVmsV2`<BR> | [vCenterHotAddProxyVmsV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | List | N/A | `New-RscQueryVcenter -Operation List`<BR> | [vSphereVCenterConnection](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Networks | Get the user-configured networks in the vCenter  
   

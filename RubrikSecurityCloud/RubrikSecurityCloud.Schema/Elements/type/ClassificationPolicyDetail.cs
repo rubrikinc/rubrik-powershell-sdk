@@ -476,7 +476,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.HierarchyObjects == null) {
 
-                this.HierarchyObjects = new RscInterface<HierarchyObject>();
+                this.HierarchyObjects = new List<HierarchyObject>();
                 this.HierarchyObjects.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjects"));
 
             } else {

@@ -277,7 +277,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<CloudAccount>();
+            var fieldSpecObj = new List<CloudAccount>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<SlaDomain>();
+            var fieldSpecObj = new List<SlaDomain>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -339,7 +339,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<Target>();
+            var fieldSpecObj = new List<Target>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -405,7 +405,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<CdmHierarchySnappableNew>();
+            var fieldSpecObj = new List<CdmHierarchySnappableNew>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -541,7 +541,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<HierarchyObject>();
+            var fieldSpecObj = new List<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -572,7 +572,7 @@ namespace RubrikSecurityCloud.Types
             if(ec==null) {
                 ec = new ExplorationContext();
             }
-            var fieldSpecObj = new RscInterface<HierarchyObject>();
+            var fieldSpecObj = new List<HierarchyObject>();
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -1836,6 +1836,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.Boolean? IsIpmiEnabled
+        // GraphQL -> isIpmiEnabled: Boolean! (scalar)
+        public static string IsIpmiEnabled_TypedFieldSpec(System.Boolean fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "isIpmiEnabled" + args + "\n";
+        }
+        public static string IsIpmiEnabled_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return IsIpmiEnabled((System.Boolean)fieldSpecObj);
+        }
+        public static string IsIpmiEnabled(System.Boolean fieldSpec)
+        {
+            return IsIpmiEnabled_TypedFieldSpec(fieldSpec);
+        }
+        public static string IsIpmiEnabled(object fieldSpecObj)
+        {
+            return IsIpmiEnabled_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object IsIpmiEnabledFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return true ;
+        }
+
         //      C# -> System.Boolean? IsOrgServiceAccountDisabled
         // GraphQL -> isOrgServiceAccountDisabled: Boolean! (scalar)
         public static string IsOrgServiceAccountDisabled_TypedFieldSpec(System.Boolean fieldSpec)
@@ -2182,6 +2211,35 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return Int32.MinValue ;
+        }
+
+        //      C# -> System.String? WorkloadForeverId
+        // GraphQL -> workloadForeverId: UUID! (scalar)
+        public static string WorkloadForeverId_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\n)";
+            return "workloadForeverId" + args + "\n";
+        }
+        public static string WorkloadForeverId_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return WorkloadForeverId((System.String)fieldSpecObj);
+        }
+        public static string WorkloadForeverId(System.String fieldSpec)
+        {
+            return WorkloadForeverId_TypedFieldSpec(fieldSpec);
+        }
+        public static string WorkloadForeverId(object fieldSpecObj)
+        {
+            return WorkloadForeverId_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object WorkloadForeverIdFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
         }
 
         //      C# -> AccountSetting? AccountSettings
@@ -2614,6 +2672,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new List<CloudAccountWithExocomputeMapping>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> List<AgentDeploymentSettingsInfo>? AllAgentDeploymentSettings
+        // GraphQL -> allAgentDeploymentSettings: [AgentDeploymentSettingsInfo!]! (type)
+        public static string AllAgentDeploymentSettings_TypedFieldSpec(List<AgentDeploymentSettingsInfo> fieldSpec)
+        {
+            string args = "\n(\nclusterUuids: $clusterUuids\n)";
+            return "allAgentDeploymentSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllAgentDeploymentSettings_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllAgentDeploymentSettings((List<AgentDeploymentSettingsInfo>)fieldSpecObj);
+        }
+        public static string AllAgentDeploymentSettings(List<AgentDeploymentSettingsInfo> fieldSpec)
+        {
+            return AllAgentDeploymentSettings_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllAgentDeploymentSettings(object fieldSpecObj)
+        {
+            return AllAgentDeploymentSettings_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllAgentDeploymentSettingsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<AgentDeploymentSettingsInfo>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17126,6 +17215,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> O365Consumption? O365Consumption
+        // GraphQL -> o365Consumption: O365Consumption! (type)
+        public static string O365Consumption_TypedFieldSpec(O365Consumption fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "o365Consumption" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string O365Consumption_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return O365Consumption((O365Consumption)fieldSpecObj);
+        }
+        public static string O365Consumption(O365Consumption fieldSpec)
+        {
+            return O365Consumption_TypedFieldSpec(fieldSpec);
+        }
+        public static string O365Consumption(object fieldSpecObj)
+        {
+            return O365Consumption_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object O365ConsumptionFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new O365Consumption() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> O365GroupConnection? O365Groups
         // GraphQL -> o365Groups: O365GroupConnection! (type)
         public static string O365Groups_TypedFieldSpec(O365GroupConnection fieldSpec)
@@ -22795,6 +22915,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new HotAddNetworkConfigWithName() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VsphereProxyVmInfoConnection? VcenterHotAddProxyVmsV2
+        // GraphQL -> vCenterHotAddProxyVmsV2: VsphereProxyVmInfoConnection! (type)
+        public static string VcenterHotAddProxyVmsV2_TypedFieldSpec(VsphereProxyVmInfoConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nclusterUuids: $clusterUuids\n)";
+            return "vCenterHotAddProxyVmsV2" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string VcenterHotAddProxyVmsV2_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return VcenterHotAddProxyVmsV2((VsphereProxyVmInfoConnection)fieldSpecObj);
+        }
+        public static string VcenterHotAddProxyVmsV2(VsphereProxyVmInfoConnection fieldSpec)
+        {
+            return VcenterHotAddProxyVmsV2_TypedFieldSpec(fieldSpec);
+        }
+        public static string VcenterHotAddProxyVmsV2(object fieldSpecObj)
+        {
+            return VcenterHotAddProxyVmsV2_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object VcenterHotAddProxyVmsV2FieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new VsphereProxyVmInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

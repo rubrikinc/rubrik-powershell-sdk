@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crossAccountReplicatedObjectInfos")]
         public List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
 
+        //      C# -> Db2CrossHostRecoveryMetadata? CrossHostRecoveryMetadata
+        // GraphQL -> crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata (type)
+        [JsonProperty("crossHostRecoveryMetadata")]
+        public Db2CrossHostRecoveryMetadata? CrossHostRecoveryMetadata { get; set; }
+
         //      C# -> Db2HadrMetadata? Db2HadrMetadata
         // GraphQL -> db2HadrMetadata: Db2HadrMetadata (type)
         [JsonProperty("db2HadrMetadata")]
@@ -414,6 +419,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
+        Db2CrossHostRecoveryMetadata? CrossHostRecoveryMetadata = null,
         Db2HadrMetadata? Db2HadrMetadata = null,
         Db2Instance? Db2Instance = null,
         PathNode? EffectiveSlaSourceObject = null,
@@ -524,6 +530,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CrossAccountReplicatedObjectInfos != null ) {
             this.CrossAccountReplicatedObjectInfos = CrossAccountReplicatedObjectInfos;
+        }
+        if ( CrossHostRecoveryMetadata != null ) {
+            this.CrossHostRecoveryMetadata = CrossHostRecoveryMetadata;
         }
         if ( Db2HadrMetadata != null ) {
             this.Db2HadrMetadata = Db2HadrMetadata;
@@ -892,6 +901,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "crossAccountReplicatedObjectInfos" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> Db2CrossHostRecoveryMetadata? CrossHostRecoveryMetadata
+        // GraphQL -> crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata (type)
+        if (this.CrossHostRecoveryMetadata != null) {
+            var fspec = this.CrossHostRecoveryMetadata.AsFieldSpec(conf.Child("crossHostRecoveryMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crossHostRecoveryMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1353,7 +1374,7 @@ namespace RubrikSecurityCloud.Types
         {
             if(this.ReplicatedObjects == null) {
 
-                this.ReplicatedObjects = new RscInterface<CdmHierarchyObject>();
+                this.ReplicatedObjects = new List<CdmHierarchyObject>();
                 this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
 
             } else {
@@ -1694,6 +1715,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.CrossAccountReplicatedObjectInfos != null && ec.Excludes("crossAccountReplicatedObjectInfos",false))
         {
             this.CrossAccountReplicatedObjectInfos = null;
+        }
+        //      C# -> Db2CrossHostRecoveryMetadata? CrossHostRecoveryMetadata
+        // GraphQL -> crossHostRecoveryMetadata: Db2CrossHostRecoveryMetadata (type)
+        if (ec.Includes("crossHostRecoveryMetadata",false))
+        {
+            if(this.CrossHostRecoveryMetadata == null) {
+
+                this.CrossHostRecoveryMetadata = new Db2CrossHostRecoveryMetadata();
+                this.CrossHostRecoveryMetadata.ApplyExploratoryFieldSpec(ec.NewChild("crossHostRecoveryMetadata"));
+
+            } else {
+
+                this.CrossHostRecoveryMetadata.ApplyExploratoryFieldSpec(ec.NewChild("crossHostRecoveryMetadata"));
+
+            }
+        }
+        else if (this.CrossHostRecoveryMetadata != null && ec.Excludes("crossHostRecoveryMetadata",false))
+        {
+            this.CrossHostRecoveryMetadata = null;
         }
         //      C# -> Db2HadrMetadata? Db2HadrMetadata
         // GraphQL -> db2HadrMetadata: Db2HadrMetadata (type)
