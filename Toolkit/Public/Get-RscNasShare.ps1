@@ -12,22 +12,23 @@ function Get-RscNasShare {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    .PARAMETER NasShareId
+    .PARAMETER Id
     The Rubrik UUID of the Nas Share object.
 
-    .PARAMETER NasSystemId
-    The Rubrik UUID of the Nas System object.
+    .PARAMETER NasSystem
+    The object representing the NAS system.
 
     .PARAMETER AsQuery
     Instead of running the command, the query object is returned.
 
     .EXAMPLE
     Get details of the NAS share with specified ID.
-    Get-RscNasShare -NasShareId "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb"
+    Get-RscNasShare -Id "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb"
 
     .EXAMPLE
     Get details of all the Nas shares for a given Nas System.
-    Get-RscNasShare -NasSystemId "4322ac6a-8be6-59cb-82e4-fa163fb426e3"
+    Get-RscNasSystem "72859a28-6276-555a-9a66-d93fe99d2751" | Get-RscNasShare
+ 
     #>
 
     [CmdletBinding(
@@ -37,19 +38,20 @@ function Get-RscNasShare {
         # The Rubrik UUID of the Nas Share object.
         [Parameter(
             Mandatory = $true,
-            position = 0,
+            Position = 0,
             ParameterSetName = "Share"
         )]
         [ValidateNotNullOrEmpty()]
-        [String]$NasShareId,
+        [String]$Id,
 
-        # The Rubrik UUID of the Nas System object.
+        # The object representing the NAS system.
         [Parameter(
             Mandatory = $true,
-            ParameterSetName = "NasSystem"
+            ParameterSetName = "NasSystem",
+            ValueFromPipeline = $true
         )]
         [ValidateNotNullOrEmpty()]
-        [String]$NasSystemId,
+        [RubrikSecurityCloud.Types.NasSystem]$NasSystem,
 
         # Should Cmdlet return the query object instead of running it
         [Parameter(Mandatory = $false)]
@@ -68,7 +70,7 @@ function Get-RscNasShare {
                     PrimaryFileset
 
                 # Set query variables.
-                $query.Var.Fid = $NasShareId
+                $query.Var.Fid = $Id
 
                 # Specify additional fields not in default field profile.
                 $query.Field.NasSystem = New-Object -TypeName RubrikSecurityCloud.Types.NasSystem
@@ -105,11 +107,10 @@ function Get-RscNasShare {
                     -AddField ShareCount, `
                     OsVersion, `
                     VendorType, `
-                    VolumeCount `
-
+                    VolumeCount
 
                 # Set query variables.
-                $query.Var.Fid = $NasSystemId
+                $query.Var.Fid = $NasSystem.Id
 
                 # Specify additional fields not in default field profile.
                 $query.Field.DescendantConnection = New-Object -TypeName `
@@ -155,6 +156,11 @@ function Get-RscNasShare {
         }
 
         $result = Invoke-Rsc -Query $query
+
+        if ($PSCmdlet.ParameterSetName -eq "NasSystem") {
+            $result = $result.DescendantConnection.Nodes
+        }
+
         $result | Remove-NullProperties
     }
 }
