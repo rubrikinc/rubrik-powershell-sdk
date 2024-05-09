@@ -12,7 +12,7 @@ function New-RscNasShare {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    .PARAMETER NasSourceId
+    .PARAMETER NasSystemId
     The ID of the NAS system where shares will be added.
 
     .PARAMETER NasShares
@@ -23,14 +23,14 @@ function New-RscNasShare {
 
     .EXAMPLE
     $createNasShare = New-RscNasShareInput -ShareType NFS -ExportPoint "/test_mounts/100_mb"
-    New-RscNasShare -NasSourceId "b951f770-4519-5820-a451-5b2ff4a50f26" -NasShares @($createNasShare)
+    New-RscNasShare -NasSystemId "b951f770-4519-5820-a451-5b2ff4a50f26" -NasShares @($createNasShare)
      #>
     [CmdletBinding()]
     Param(
         # The ID of the NAS system.
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [String]$NasSourceId,
+        [String]$NasSystemId,
 
         # The list of NAS shares to be added.
         [Parameter(Mandatory = $true)]
@@ -43,12 +43,13 @@ function New-RscNasShare {
     )
 
     Process {
-        $mutation = New-RscMutationNas -Operation BulkAddNasShares
+        $mutation = New-RscMutationNas -Operation BulkAddNasShares `
+            -AddField RefreshNasSharesStatus
         $mutation.Var.Input =
             New-Object -TypeName RubrikSecurityCloud.Types.BulkAddNasSharesInput
         $mutation.Var.Input.BulkAddNasShareInput =
             New-Object -TypeName RubrikSecurityCloud.Types.BulkAddNasSharesRequestInput
-        $mutation.Var.Input.BulkAddNasShareInput.NasSourceId = $NasSourceId
+        $mutation.Var.Input.BulkAddNasShareInput.NasSourceId = $NasSystemId
         $mutation.Var.Input.BulkAddNasShareInput.NasShares = $NasShares
 
         if ($AsQuery) {
