@@ -68,12 +68,12 @@ function Get-RscMssqlDatabase {
         Write-Debug "- Running Get-RscMssqlDatabase"
 
         #region Create Query
-        if ($PSBoundParameters.ContainsKey('List')) {
-            $query = New-RscQueryMssql -Operation Databases -AddField Nodes.PhysicalPath
-        }
-
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $query = New-RscQueryMssql -Op Databases `
+        switch($PSCmdlet.ParameterSetName){
+            "List"{
+                $query = New-RscQueryMssql -Operation Databases -AddField Nodes.PhysicalPath
+            }
+            "Name"{
+                $query = New-RscQueryMssql -Op Databases `
                 -AddField Nodes.PhysicalPath, `
                     Nodes.PostBackupScript, `
                     Nodes.PreBackupScript, `
@@ -82,38 +82,41 @@ function Get-RscMssqlDatabase {
                     Nodes.LogBackupFrequencyInSeconds, `
                     Nodes.LogBackupRetentionInHours    
             
-            $query.Var.filter = @()
-            $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-            $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-            $nameFilter.texts = $Name
-            $query.Var.filter += $nameFilter
-
-        }
-        if ($PSBoundParameters.ContainsKey('Id')) {
-            $query = New-RscQueryMssql -Operation Database 
-            $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
-            $query.Field.PhysicalPath.SelectForRetrieval() 
-            $query.Var.fid = $Id
+                $query.Var.filter = @()
+                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+                $nameFilter.texts = $Name
+                $query.Var.filter += $nameFilter
+            }
+            "Id"{
+                $query = New-RscQueryMssql -Operation Database 
+                $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
+                $query.Field.PhysicalPath.SelectForRetrieval() 
+                $query.Var.fid = $Id
+            }
         }
         #endregion
 
         $results = $query.Invoke()   
                 
-        if ($PSBoundParameters.ContainsKey('List')) {
-            $results.Nodes
-        }
-        if ($Id) {
-            $results
-        }
-        if ($Name) {
-            if ($RscMssqlInstance) {
-                $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
+        switch($PSCmdlet.ParameterSetName){
+            "List"{
+                Write-host "did i get here?"
+                $results.Nodes
+            }
+            "Id"{
                 $results
-            }elseif ($RscMssqlAvailabilityGroup) {
-                $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlAvailabilityGroup.id}
-                $results                
-            }else{
-                $results.nodes
+            }
+            "Name"{
+                if ($RscMssqlInstance) {
+                    $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
+                    $results
+                }elseif ($RscMssqlAvailabilityGroup) {
+                    $results = $results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlAvailabilityGroup.id}
+                    $results                
+                }else{
+                    $results.nodes
+                }
             }
         }
     } 
