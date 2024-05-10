@@ -5,6 +5,8 @@
 New Features:
 
 Fixes:
+- Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)
+- Issue [#96](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/96)
 
 Breaking Changes:
 
