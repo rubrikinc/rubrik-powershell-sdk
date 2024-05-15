@@ -73,7 +73,6 @@ function Get-RscMssqlLogShipping {
         #region Create Query
         switch ( $PSCmdlet.ParameterSetName){
             "List" {
-                write-host "did i get here?"
                 #region RSC Query
                 # $query = New-RscQueryMssql -Op LogShippingTargets `
                 #     -AddField Data.makeupReseedLimit, `

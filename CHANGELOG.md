@@ -9,6 +9,8 @@ New Features:
 - New-RscNasSystem for registering a new NAS system with RSC.
 
 Fixes:
+- Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)
+- Issue [#96](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/96)
 
 Breaking Changes:
 - Get-RscNasShare - NasShareId parameter has been renamed to Id.
