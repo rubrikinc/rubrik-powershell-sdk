@@ -101,7 +101,6 @@ function Get-RscMssqlDatabase {
                 
         switch($PSCmdlet.ParameterSetName){
             "List"{
-                Write-host "did i get here?"
                 $results.Nodes
             }
             "Id"{

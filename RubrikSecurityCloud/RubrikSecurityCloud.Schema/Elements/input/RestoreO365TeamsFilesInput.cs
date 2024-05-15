@@ -52,6 +52,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("actionType")]
         public O365RestoreActionType? ActionType { get; set; }
 
+        //      C# -> InplaceRestoreConfig? InplaceRestoreConfig
+        // GraphQL -> inplaceRestoreConfig: InplaceRestoreConfig (input)
+        [JsonProperty("inplaceRestoreConfig")]
+        public InplaceRestoreConfig? InplaceRestoreConfig { get; set; }
+
         //      C# -> ChannelMembershipType? ChannelRecoveryType
         // GraphQL -> channelRecoveryType: ChannelMembershipType! (enum)
         [Required]

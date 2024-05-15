@@ -76,3 +76,5 @@ Additional information needed to fetch the status of the job. At most one field 
   - Populate for `VCENTER_DIAGNOSTIC_REFRESH` jobs.
 - postgresDbClusterInfo: PostgresDbClusterInfo
   - Populate for `POSTGRES_DB_CLUSTER` jobs.
+- hostsInfo: HostsInfo
+  - Populate for `HOST_BULK_REGISTER_ASYNC` jobs.

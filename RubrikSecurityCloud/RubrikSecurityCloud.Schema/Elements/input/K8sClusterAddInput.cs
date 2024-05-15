@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("distribution")]
         public System.String? Distribution { get; set; }
 
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        [JsonProperty("transport")]
+        public System.String? Transport { get; set; }
+
         //      C# -> System.String? ClientSecret
         // GraphQL -> clientSecret: String (scalar)
         [JsonProperty("clientSecret")]

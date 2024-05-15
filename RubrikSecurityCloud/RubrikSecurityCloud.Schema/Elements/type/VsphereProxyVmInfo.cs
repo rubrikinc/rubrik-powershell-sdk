@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vcenterName")]
         public System.String? VcenterName { get; set; }
 
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        [JsonProperty("cluster")]
+        public Cluster? Cluster { get; set; }
+
         //      C# -> VsphereProxyVmNetworkInfo? NetworkInfo
         // GraphQL -> networkInfo: VsphereProxyVmNetworkInfo (type)
         [JsonProperty("networkInfo")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? UsedPortCount = null,
         System.String? VcenterName = null,
+        Cluster? Cluster = null,
         VsphereProxyVmNetworkInfo? NetworkInfo = null
     ) 
     {
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( VcenterName != null ) {
             this.VcenterName = VcenterName;
+        }
+        if ( Cluster != null ) {
+            this.Cluster = Cluster;
         }
         if ( NetworkInfo != null ) {
             this.NetworkInfo = NetworkInfo;
@@ -179,6 +188,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "vcenterName\n" ;
             } else {
                 s += ind + "vcenterName\n" ;
+            }
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VsphereProxyVmNetworkInfo? NetworkInfo
@@ -318,6 +339,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.VcenterName != null && ec.Excludes("vcenterName",true))
         {
             this.VcenterName = null;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (ec.Includes("cluster",false))
+        {
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> VsphereProxyVmNetworkInfo? NetworkInfo
         // GraphQL -> networkInfo: VsphereProxyVmNetworkInfo (type)

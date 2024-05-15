@@ -99,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXPORT_VCD_VAPP_SNAPSHOT")]
         EXPORT_VCD_VAPP_SNAPSHOT,
 
+        [EnumMember(Value = "HOST_BULK_REGISTER_ASYNC")]
+        HOST_BULK_REGISTER_ASYNC,
+
         [EnumMember(Value = "HOST_MAKE_PRIMARY_POLLER")]
         HOST_MAKE_PRIMARY_POLLER,
 
@@ -149,6 +152,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MSSQL_RESTORE")]
         MSSQL_RESTORE,
+
+        [EnumMember(Value = "MSSQL_SNAPSHOT")]
+        MSSQL_SNAPSHOT,
 
         [EnumMember(Value = "MSSQL_UNMOUNT")]
         MSSQL_UNMOUNT,

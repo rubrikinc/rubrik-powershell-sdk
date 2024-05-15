@@ -7,6 +7,10 @@ Input for restoring O365 Teams channel conversations.
   -  Information about the destination Teams channel.
 - shouldCreateDestChannel: System.Boolean
   -  Specifies whether a new destination channel needs to be created in Teams.
+- actionType: O365RestoreActionType
+  - Recovery action type for the restore job.
+- inplaceRestoreConfig: InplaceRestoreConfig
+  - In-place restore configuration for the restore job.
 - channelInfoForFullRestore: O365TeamConvChannelInput
   -  Information about the destination channel conversation.
 - shouldRestoreFileAttachments: System.Boolean

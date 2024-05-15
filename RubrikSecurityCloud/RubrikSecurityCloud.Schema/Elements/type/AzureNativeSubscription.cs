@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig! (type)
+        [JsonProperty("applicationCloudAccountExoConfigs")]
+        public AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs { get; set; }
+
         //      C# -> AzureNativeResourceGroupConnection? AzureNativeResourceGroups
         // GraphQL -> azureNativeResourceGroups: AzureNativeResourceGroupConnection! (type)
         [JsonProperty("azureNativeResourceGroups")]
@@ -228,6 +233,7 @@ namespace RubrikSecurityCloud.Types
         System.String? TenantId = null,
         System.Int32? VmsCount = null,
         List<Org>? AllOrgs = null,
+        AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs = null,
         AzureNativeResourceGroupConnection? AzureNativeResourceGroups = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<AzureNativeSubscriptionEnabledFeature>? EnabledFeatures = null,
@@ -303,6 +309,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( ApplicationCloudAccountExoConfigs != null ) {
+            this.ApplicationCloudAccountExoConfigs = ApplicationCloudAccountExoConfigs;
         }
         if ( AzureNativeResourceGroups != null ) {
             this.AzureNativeResourceGroups = AzureNativeResourceGroups;
@@ -552,6 +561,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig! (type)
+        if (this.ApplicationCloudAccountExoConfigs != null) {
+            var fspec = this.ApplicationCloudAccountExoConfigs.AsFieldSpec(conf.Child("applicationCloudAccountExoConfigs"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "applicationCloudAccountExoConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1054,6 +1075,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> AzureApplicationCloudAccountToExocomputeConfig? ApplicationCloudAccountExoConfigs
+        // GraphQL -> applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig! (type)
+        if (ec.Includes("applicationCloudAccountExoConfigs",false))
+        {
+            if(this.ApplicationCloudAccountExoConfigs == null) {
+
+                this.ApplicationCloudAccountExoConfigs = new AzureApplicationCloudAccountToExocomputeConfig();
+                this.ApplicationCloudAccountExoConfigs.ApplyExploratoryFieldSpec(ec.NewChild("applicationCloudAccountExoConfigs"));
+
+            } else {
+
+                this.ApplicationCloudAccountExoConfigs.ApplyExploratoryFieldSpec(ec.NewChild("applicationCloudAccountExoConfigs"));
+
+            }
+        }
+        else if (this.ApplicationCloudAccountExoConfigs != null && ec.Excludes("applicationCloudAccountExoConfigs",false))
+        {
+            this.ApplicationCloudAccountExoConfigs = null;
         }
         //      C# -> AzureNativeResourceGroupConnection? AzureNativeResourceGroups
         // GraphQL -> azureNativeResourceGroups: AzureNativeResourceGroupConnection! (type)

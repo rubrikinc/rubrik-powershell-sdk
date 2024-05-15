@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemId")]
         public System.String? SystemId { get; set; }
 
+        //      C# -> System.Int32? TotalSnapshotCount
+        // GraphQL -> totalSnapshotCount: Int! (scalar)
+        [JsonProperty("totalSnapshotCount")]
+        public System.Int32? TotalSnapshotCount { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -398,6 +403,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
+        System.Int32? TotalSnapshotCount = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
@@ -494,6 +500,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SystemId != null ) {
             this.SystemId = SystemId;
+        }
+        if ( TotalSnapshotCount != null ) {
+            this.TotalSnapshotCount = TotalSnapshotCount;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -812,6 +821,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "systemId\n" ;
             } else {
                 s += ind + "systemId\n" ;
+            }
+        }
+        //      C# -> System.Int32? TotalSnapshotCount
+        // GraphQL -> totalSnapshotCount: Int! (scalar)
+        if (this.TotalSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSnapshotCount\n" ;
+            } else {
+                s += ind + "totalSnapshotCount\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1553,6 +1571,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SystemId != null && ec.Excludes("systemId",true))
         {
             this.SystemId = null;
+        }
+        //      C# -> System.Int32? TotalSnapshotCount
+        // GraphQL -> totalSnapshotCount: Int! (scalar)
+        if (ec.Includes("totalSnapshotCount",true))
+        {
+            if(this.TotalSnapshotCount == null) {
+
+                this.TotalSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSnapshotCount != null && ec.Excludes("totalSnapshotCount",true))
+        {
+            this.TotalSnapshotCount = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

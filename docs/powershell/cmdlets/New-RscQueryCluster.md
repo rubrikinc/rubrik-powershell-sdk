@@ -163,6 +163,11 @@ All replication targets for a cluster.
 
 - There is a single argument of type System.String.
 - Returns list of ClusterReplicationTargets.
+### routes
+Rubrik cluster routes information.
+
+- There is a single argument of type System.String.
+- Returns ClusterRoutesReply.
 ### totpackstatus
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 
