@@ -14,6 +14,8 @@ Supported in v9.0+
 - distribution: System.String
   - Supported in v9.1+
   Distribution of the Kubernetes cluster.
+- transport: System.String
+  - The transport type used for communication with the Kubernetes cluster.
 - lastRefreshTime: DateTime
   - Supported in v9.0+
   Last refresh time of the Kubernetes cluster.

@@ -555,6 +555,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			certificateId = $someString
     /// 		}
     /// 		# OPTIONAL
+    /// 		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
+    /// 		# OPTIONAL
     /// 		nasFlashBladeApiCredentials = @{
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
@@ -1194,6 +1196,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			certificateId = $someString
 		}
+		# OPTIONAL
+		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
 		# OPTIONAL
 		nasFlashBladeApiCredentials = @{
 			# OPTIONAL

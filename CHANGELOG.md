@@ -1,12 +1,13 @@
 # Changelog
 
-## ~ Upcoming Version ~
+## Version 1.4
 
 New Features:
 - Set-RscNasShare and Set-RscNasSystem for updating NAS shares and systems.
 - Remove-RscNasShare and Remove-RscNasSystem for removing NAS shares and systems.
 - Get-RscNasSystem for getting details of NAS systems.
 - New-RscNasSystem for registering a new NAS system with RSC.
+- Schema Update
 
 Fixes:
 - Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)

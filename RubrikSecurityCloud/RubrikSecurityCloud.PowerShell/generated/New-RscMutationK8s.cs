@@ -113,6 +113,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		distribution = $someString
     /// 		# OPTIONAL
+    /// 		transport = $someString
+    /// 		# OPTIONAL
     /// 		clientSecret = $someString
     /// 		# OPTIONAL
     /// 		accessToken = $someString
@@ -726,6 +728,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		serviceAccountName = $someString
     /// 		# OPTIONAL
+    /// 		transport = $someString
+    /// 		# OPTIONAL
     /// 		clientSecret = $someString
     /// 		# OPTIONAL
     /// 		accessToken = $someString
@@ -1091,6 +1095,8 @@ $query.Var.input = @{
 		}
 		# OPTIONAL
 		distribution = $someString
+		# OPTIONAL
+		transport = $someString
 		# OPTIONAL
 		clientSecret = $someString
 		# OPTIONAL
@@ -1584,6 +1590,8 @@ $query.Var.input = @{
 		registry = $someString
 		# OPTIONAL
 		serviceAccountName = $someString
+		# OPTIONAL
+		transport = $someString
 		# OPTIONAL
 		clientSecret = $someString
 		# OPTIONAL

@@ -199,6 +199,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("postgresDbClusterInfo")]
         public PostgresDbClusterInfo? PostgresDbClusterInfo { get; set; }
 
+        //      C# -> HostsInfo? HostsInfo
+        // GraphQL -> hostsInfo: HostsInfo (input)
+        [JsonProperty("hostsInfo")]
+        public HostsInfo? HostsInfo { get; set; }
+
 
         #endregion
 

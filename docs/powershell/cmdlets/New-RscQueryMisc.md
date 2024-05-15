@@ -418,11 +418,6 @@ Information on Microsoft 365 restore failed items.
     - workloadFid - System.String: The FID of the workload.
     - failedItemsInstanceId - System.String: The instance ID corresponding to the failed restore items.
 - Returns FailedRestoreItemsInfoReply.
-### failuresandwarningsstats
-Returns the failures and warnings stats of an M365 organization.
-
-- There is a single argument of type System.String.
-- Returns FailuresAndWarningsStatsReply.
 ### federatedloginstatus
 Status of the federated login.
 

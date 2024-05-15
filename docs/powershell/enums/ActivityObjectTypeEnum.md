@@ -4,6 +4,7 @@ The list of object types for activities.
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
 - KuprNamespace - Specifies that the activity object type is Kubernetes Namespace.
+- SALESFORCE_OBJECT - Specifies that the activity object type is a Salesforce object.
 - OracleRac - Specifies that the activity object type is Oracle RAC.
 - AzureSqlManagedInstanceDatabase - Specifies that the activity object type is Azure SQL Managed Instance Database.
 - HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
@@ -74,6 +75,7 @@ The list of object types for activities.
 - O365Calendar - Specifies that the activity object type is O365 Calendar.
 - K8S_PROTECTION_SET - Specifies that the activity object type is Kubernetes Protection Set.
 - MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
+- SALESFORCE_METADATA - Specifies that the activity object type is Salesforce metadata.
 - AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
 - CASSANDRA_COLUMN_FAMILY - Specifies that the activity object type is Cassandra column family.
@@ -88,6 +90,7 @@ The list of object types for activities.
 - NasHost - Specifies that the activity object type is NAS Host.
 - CROSS_ACCOUNT_PAIR - Cross-account pair.
 - User - Specifies that the activity object type is User.
+- SALESFORCE_ORGANIZATION - Specifies that the activity object type is a Salesforce organization.
 - RubrikEbsVolume - Specifies that the activity object type is Rubrik EBS Volume.
 - VcdVapp - Specifies that the activity object type is VCD VApp.
 - WindowsHost - Specifies that the activity object type is Windows Host.

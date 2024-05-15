@@ -1,4 +1,4 @@
-// WorkloadTypeToEventCount.cs
+// CrossAccountClusterEdge.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,20 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region WorkloadTypeToEventCount
-    public class WorkloadTypeToEventCount: BaseType
+    #region CrossAccountClusterEdge
+    public class CrossAccountClusterEdge: BaseType
     {
         #region members
 
-        //      C# -> M365DashboardWorkloadType? WorkloadType
-        // GraphQL -> workloadType: M365DashboardWorkloadType! (enum)
-        [JsonProperty("workloadType")]
-        public M365DashboardWorkloadType? WorkloadType { get; set; }
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        [JsonProperty("cursor")]
+        public System.String? Cursor { get; set; }
 
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
-        [JsonProperty("count")]
-        public System.Int32? Count { get; set; }
+        //      C# -> CrossAccountCluster? Node
+        // GraphQL -> node: CrossAccountCluster! (type)
+        [JsonProperty("node")]
+        public CrossAccountCluster? Node { get; set; }
 
 
         #endregion
@@ -36,19 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "WorkloadTypeToEventCount";
+        return "CrossAccountClusterEdge";
     }
 
-    public WorkloadTypeToEventCount Set(
-        M365DashboardWorkloadType? WorkloadType = null,
-        System.Int32? Count = null
+    public CrossAccountClusterEdge Set(
+        System.String? Cursor = null,
+        CrossAccountCluster? Node = null
     ) 
     {
-        if ( WorkloadType != null ) {
-            this.WorkloadType = WorkloadType;
+        if ( Cursor != null ) {
+            this.Cursor = Cursor;
         }
-        if ( Count != null ) {
-            this.Count = Count;
+        if ( Node != null ) {
+            this.Node = Node;
         }
         return this;
     }
@@ -64,22 +64,25 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> M365DashboardWorkloadType? WorkloadType
-        // GraphQL -> workloadType: M365DashboardWorkloadType! (enum)
-        if (this.WorkloadType != null) {
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        if (this.Cursor != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "workloadType\n" ;
+                s += conf.Prefix + "cursor\n" ;
             } else {
-                s += ind + "workloadType\n" ;
+                s += ind + "cursor\n" ;
             }
         }
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
-        if (this.Count != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "count\n" ;
-            } else {
-                s += ind + "count\n" ;
+        //      C# -> CrossAccountCluster? Node
+        // GraphQL -> node: CrossAccountCluster! (type)
+        if (this.Node != null) {
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "node" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -89,50 +92,52 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> M365DashboardWorkloadType? WorkloadType
-        // GraphQL -> workloadType: M365DashboardWorkloadType! (enum)
-        if (ec.Includes("workloadType",true))
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        if (ec.Includes("cursor",true))
         {
-            if(this.WorkloadType == null) {
+            if(this.Cursor == null) {
 
-                this.WorkloadType = new M365DashboardWorkloadType();
+                this.Cursor = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.WorkloadType != null && ec.Excludes("workloadType",true))
+        else if (this.Cursor != null && ec.Excludes("cursor",true))
         {
-            this.WorkloadType = null;
+            this.Cursor = null;
         }
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
-        if (ec.Includes("count",true))
+        //      C# -> CrossAccountCluster? Node
+        // GraphQL -> node: CrossAccountCluster! (type)
+        if (ec.Includes("node",false))
         {
-            if(this.Count == null) {
+            if(this.Node == null) {
 
-                this.Count = Int32.MinValue;
+                this.Node = new CrossAccountCluster();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             } else {
 
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
 
             }
         }
-        else if (this.Count != null && ec.Excludes("count",true))
+        else if (this.Node != null && ec.Excludes("node",false))
         {
-            this.Count = null;
+            this.Node = null;
         }
     }
 
 
     #endregion
 
-    } // class WorkloadTypeToEventCount
+    } // class CrossAccountClusterEdge
     
     #endregion
 
-    public static class ListWorkloadTypeToEventCountExtensions
+    public static class ListCrossAccountClusterEdgeExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -151,14 +156,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<WorkloadTypeToEventCount> list,
+            this List<CrossAccountClusterEdge> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<WorkloadTypeToEventCount> list)
+        public static List<string> SelectedFields(this List<CrossAccountClusterEdge> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -167,16 +172,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<WorkloadTypeToEventCount> list, 
+            this List<CrossAccountClusterEdge> list, 
             ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new WorkloadTypeToEventCount());
+                list.Add(new CrossAccountClusterEdge());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<WorkloadTypeToEventCount> list)
+        public static void SelectForRetrieval(this List<CrossAccountClusterEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

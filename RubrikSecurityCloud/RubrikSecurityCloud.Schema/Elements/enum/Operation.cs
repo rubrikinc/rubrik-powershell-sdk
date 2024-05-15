@@ -342,6 +342,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
 
+        [EnumMember(Value = "VIEW_ANOMALY_DETECTION_RESULTS")]
+        VIEW_ANOMALY_DETECTION_RESULTS,
+
         [EnumMember(Value = "VIEW_ARCHIVAL_LOCATION")]
         VIEW_ARCHIVAL_LOCATION,
 

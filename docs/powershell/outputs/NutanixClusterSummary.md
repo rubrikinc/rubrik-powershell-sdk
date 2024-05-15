@@ -13,13 +13,17 @@ Supported in v5.0+
 - slaAssignable: SlaAssignable
   - 
 - prismCentralName: System.String
-  - The name of the Nutanix Prism Central to which this Nutanix cluster belongs.
+  - Supported in v9.1+
+  The name of the Nutanix Prism Central to which this Nutanix cluster belongs.
 - version: System.String
-  - Nutanix Operating System version of the Nutanix cluster.
+  - Supported in v9.1+
+  Nutanix Operating System version of the Nutanix cluster.
 - prismCentralId: System.String
-  - The ID of the Nutanix Prism Central to which this Nutanix cluster belongs.
+  - Supported in v9.1+
+  The ID of the Nutanix Prism Central to which this Nutanix cluster belongs.
 - lastRefreshTime: DateTime
-  - Last refresh time of the Nutanix cluster.
+  - Supported in v9.1+
+  Last refresh time of the Nutanix cluster.
 - snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
   - 
 - pendingSlaDomain: ManagedObjectPendingSlaInfo

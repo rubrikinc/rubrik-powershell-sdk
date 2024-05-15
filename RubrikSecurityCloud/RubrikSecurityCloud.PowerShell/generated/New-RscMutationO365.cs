@@ -1456,6 +1456,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	shouldCreateDestChannel = $someBoolean
     /// 	# OPTIONAL
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
     /// 	channelInfoForFullRestore = @{
     /// 		# REQUIRED
     /// 		naturalId = $someString
@@ -1632,6 +1639,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldCreateDestChannel = $someBoolean
     /// 	# REQUIRED
     /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	inplaceRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+    /// 	}
     /// 	# REQUIRED
     /// 	channelRecoveryType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
     /// 	# REQUIRED
@@ -3547,6 +3559,13 @@ $query.Var.input = @{
 	# REQUIRED
 	shouldCreateDestChannel = $someBoolean
 	# OPTIONAL
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
+	# OPTIONAL
 	channelInfoForFullRestore = @{
 		# REQUIRED
 		naturalId = $someString
@@ -3715,6 +3734,11 @@ $query.Var.input = @{
 	shouldCreateDestChannel = $someBoolean
 	# REQUIRED
 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# OPTIONAL
+	inplaceRestoreConfig = @{
+		# REQUIRED
+		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
+	}
 	# REQUIRED
 	channelRecoveryType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
 	# REQUIRED

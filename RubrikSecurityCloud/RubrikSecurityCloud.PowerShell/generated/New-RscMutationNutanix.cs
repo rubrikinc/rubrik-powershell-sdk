@@ -1137,7 +1137,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $result = $query | Invoke-Rsc
     /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
+    /// Write-Host $result.GetType().Name # prints: NutanixVmDetail
     /// 
     /// 
     /// 
@@ -2319,7 +2319,7 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateNutanixVm(input: UpdateNutanixVmInput!): Void
+        // updateNutanixVm(input: UpdateNutanixVmInput!): NutanixVmDetail!
         internal void InitMutationUpdateNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
@@ -2330,7 +2330,7 @@ $query.Var.input = @{
                 "mutation",
                 "MutationUpdateNutanixVm",
                 "($input: UpdateNutanixVmInput!)",
-                "System.String",
+                "NutanixVmDetail",
                 Mutation.UpdateNutanixVm_ObjectFieldSpec,
                 Mutation.UpdateNutanixVmFieldSpec,
                 @"# REQUIRED

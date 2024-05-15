@@ -169,6 +169,11 @@ Gets the Azure regions for the given subscription.
     - tenantId - System.String
     - subscriptionId - System.String
 - Returns RegionConnection.
+### regionswithazdetails
+Retrieve all available regions for Azure with availability zone details.
+
+- There is a single argument of type System.String.
+- Returns list of AzureLocationDetailTypes.
 ### resourcegroups
 Retrieves a list og all resource groups in the specified account.
 

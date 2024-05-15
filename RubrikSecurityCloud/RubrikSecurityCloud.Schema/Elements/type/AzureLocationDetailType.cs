@@ -1,4 +1,4 @@
-// FailuresAndWarningsStatsReply.cs
+// AzureLocationDetailType.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,15 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region FailuresAndWarningsStatsReply
-    public class FailuresAndWarningsStatsReply: BaseType
+    #region AzureLocationDetailType
+    public class AzureLocationDetailType: BaseType
     {
         #region members
 
-        //      C# -> List<FailuresAndWarningsStats>? FailuresAndWarningsStats
-        // GraphQL -> failuresAndWarningsStats: [FailuresAndWarningsStats!]! (type)
-        [JsonProperty("failuresAndWarningsStats")]
-        public List<FailuresAndWarningsStats>? FailuresAndWarningsStats { get; set; }
+        //      C# -> AzureCloudAccountRegion? Location
+        // GraphQL -> location: AzureCloudAccountRegion! (enum)
+        [JsonProperty("location")]
+        public AzureCloudAccountRegion? Location { get; set; }
+
+        //      C# -> List<System.String>? LogicalAvailabilityZones
+        // GraphQL -> logicalAvailabilityZones: [String!]! (scalar)
+        [JsonProperty("logicalAvailabilityZones")]
+        public List<System.String>? LogicalAvailabilityZones { get; set; }
 
 
         #endregion
@@ -31,15 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "FailuresAndWarningsStatsReply";
+        return "AzureLocationDetailType";
     }
 
-    public FailuresAndWarningsStatsReply Set(
-        List<FailuresAndWarningsStats>? FailuresAndWarningsStats = null
+    public AzureLocationDetailType Set(
+        AzureCloudAccountRegion? Location = null,
+        List<System.String>? LogicalAvailabilityZones = null
     ) 
     {
-        if ( FailuresAndWarningsStats != null ) {
-            this.FailuresAndWarningsStats = FailuresAndWarningsStats;
+        if ( Location != null ) {
+            this.Location = Location;
+        }
+        if ( LogicalAvailabilityZones != null ) {
+            this.LogicalAvailabilityZones = LogicalAvailabilityZones;
         }
         return this;
     }
@@ -55,16 +64,22 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> List<FailuresAndWarningsStats>? FailuresAndWarningsStats
-        // GraphQL -> failuresAndWarningsStats: [FailuresAndWarningsStats!]! (type)
-        if (this.FailuresAndWarningsStats != null) {
-            var fspec = this.FailuresAndWarningsStats.AsFieldSpec(conf.Child("failuresAndWarningsStats"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                if (conf.Flat) {
-                    s += conf.Prefix + fspec;
-                } else {
-                    s += ind + "failuresAndWarningsStats" + " " + "{\n" + fspec + ind + "}\n" ;
-                }
+        //      C# -> AzureCloudAccountRegion? Location
+        // GraphQL -> location: AzureCloudAccountRegion! (enum)
+        if (this.Location != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
+        }
+        //      C# -> List<System.String>? LogicalAvailabilityZones
+        // GraphQL -> logicalAvailabilityZones: [String!]! (scalar)
+        if (this.LogicalAvailabilityZones != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logicalAvailabilityZones\n" ;
+            } else {
+                s += ind + "logicalAvailabilityZones\n" ;
             }
         }
         return s;
@@ -74,35 +89,50 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> List<FailuresAndWarningsStats>? FailuresAndWarningsStats
-        // GraphQL -> failuresAndWarningsStats: [FailuresAndWarningsStats!]! (type)
-        if (ec.Includes("failuresAndWarningsStats",false))
+        //      C# -> AzureCloudAccountRegion? Location
+        // GraphQL -> location: AzureCloudAccountRegion! (enum)
+        if (ec.Includes("location",true))
         {
-            if(this.FailuresAndWarningsStats == null) {
+            if(this.Location == null) {
 
-                this.FailuresAndWarningsStats = new List<FailuresAndWarningsStats>();
-                this.FailuresAndWarningsStats.ApplyExploratoryFieldSpec(ec.NewChild("failuresAndWarningsStats"));
+                this.Location = new AzureCloudAccountRegion();
 
             } else {
 
-                this.FailuresAndWarningsStats.ApplyExploratoryFieldSpec(ec.NewChild("failuresAndWarningsStats"));
 
             }
         }
-        else if (this.FailuresAndWarningsStats != null && ec.Excludes("failuresAndWarningsStats",false))
+        else if (this.Location != null && ec.Excludes("location",true))
         {
-            this.FailuresAndWarningsStats = null;
+            this.Location = null;
+        }
+        //      C# -> List<System.String>? LogicalAvailabilityZones
+        // GraphQL -> logicalAvailabilityZones: [String!]! (scalar)
+        if (ec.Includes("logicalAvailabilityZones",true))
+        {
+            if(this.LogicalAvailabilityZones == null) {
+
+                this.LogicalAvailabilityZones = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogicalAvailabilityZones != null && ec.Excludes("logicalAvailabilityZones",true))
+        {
+            this.LogicalAvailabilityZones = null;
         }
     }
 
 
     #endregion
 
-    } // class FailuresAndWarningsStatsReply
+    } // class AzureLocationDetailType
     
     #endregion
 
-    public static class ListFailuresAndWarningsStatsReplyExtensions
+    public static class ListAzureLocationDetailTypeExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -121,14 +151,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<FailuresAndWarningsStatsReply> list,
+            this List<AzureLocationDetailType> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<FailuresAndWarningsStatsReply> list)
+        public static List<string> SelectedFields(this List<AzureLocationDetailType> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -137,16 +167,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<FailuresAndWarningsStatsReply> list, 
+            this List<AzureLocationDetailType> list, 
             ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new FailuresAndWarningsStatsReply());
+                list.Add(new AzureLocationDetailType());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<FailuresAndWarningsStatsReply> list)
+        public static void SelectForRetrieval(this List<AzureLocationDetailType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

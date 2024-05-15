@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public System.String? Status { get; set; }
 
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        [JsonProperty("transport")]
+        public System.String? Transport { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? Region = null,
         System.String? Registry = null,
-        System.String? Status = null
+        System.String? Status = null,
+        System.String? Transport = null
     ) 
     {
         if ( Distribution != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( Transport != null ) {
+            this.Transport = Transport;
         }
         return this;
     }
@@ -170,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        if (this.Transport != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "transport\n" ;
+            } else {
+                s += ind + "transport\n" ;
             }
         }
         return s;
@@ -297,6 +315,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        if (ec.Includes("transport",true))
+        {
+            if(this.Transport == null) {
+
+                this.Transport = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Transport != null && ec.Excludes("transport",true))
+        {
+            this.Transport = null;
         }
     }
 

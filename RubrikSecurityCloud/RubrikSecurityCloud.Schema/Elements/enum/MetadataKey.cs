@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum MetadataKey
     {
+        [EnumMember(Value = "CAN_TABLE_ROW_EXPAND")]
+        CAN_TABLE_ROW_EXPAND,
+
         [EnumMember(Value = "CLUSTER_LINK_ID")]
         CLUSTER_LINK_ID,
 
@@ -34,7 +37,13 @@ namespace RubrikSecurityCloud.Types
         SLA_DOMAIN_LINK_ID,
 
         [EnumMember(Value = "TABLE_CELL_DOT_COLOR")]
-        TABLE_CELL_DOT_COLOR
+        TABLE_CELL_DOT_COLOR,
+
+        [EnumMember(Value = "TABLE_ROW_HOVER_COLOR")]
+        TABLE_ROW_HOVER_COLOR,
+
+        [EnumMember(Value = "TABLE_ROW_NAME")]
+        TABLE_ROW_NAME
 
 
     } // enum MetadataKey

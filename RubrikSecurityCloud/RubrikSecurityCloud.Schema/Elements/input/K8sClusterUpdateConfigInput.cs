@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountName")]
         public System.String? ServiceAccountName { get; set; }
 
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String (scalar)
+        [JsonProperty("transport")]
+        public System.String? Transport { get; set; }
+
         //      C# -> System.String? ClientSecret
         // GraphQL -> clientSecret: String (scalar)
         [JsonProperty("clientSecret")]
