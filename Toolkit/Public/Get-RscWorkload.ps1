@@ -40,7 +40,7 @@ function Get-RscWorkload {
     Get-RscWorkload -CdmId "MssqlDatabase:::76CEDF7F-A65E-4264-9DE2-B918CA3CE15D" -Cluster (Get-RscCluster -Name "MyCluster")
 
     #>
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = "Name")]
     Param(
         [Parameter(
             Mandatory = $false,
