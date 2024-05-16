@@ -17,6 +17,8 @@ New Features:
 - New-RscNasSystem for registering a new NAS system with RSC.
 - Schema Update
 
+ - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
+
 Fixes:
 - Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)
 - Issue [#96](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/96)
