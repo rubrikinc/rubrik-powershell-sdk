@@ -66,9 +66,7 @@ function Get-RscMssqlDatabase {
     
     Process {
         Write-Debug "- Running Get-RscMssqlDatabase"
-
         #region Create Query
-        write-host PSCmdlet.ParameterSetName
         switch($PSCmdlet.ParameterSetName){
             "List"{
                 $query = New-RscQueryMssql -Operation Databases -AddField Nodes.PhysicalPath
