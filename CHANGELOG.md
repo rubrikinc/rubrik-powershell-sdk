@@ -1,13 +1,24 @@
 # Changelog
 
+<<<<<<< HEAD
 ## ~ Upcoming Version ~
 
 New Features:
+=======
+## Upcoming Release
+
+New Features:
+  - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
+>>>>>>> c69ad7d1 (changelog update)
 
 Fixes:
 
 Breaking Changes:
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c69ad7d1 (changelog update)
 ## Version 1.4
 
 New Features:
@@ -16,8 +27,6 @@ New Features:
 - Get-RscNasSystem for getting details of NAS systems.
 - New-RscNasSystem for registering a new NAS system with RSC.
 - Schema Update
-
- - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
 
 Fixes:
 - Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)
