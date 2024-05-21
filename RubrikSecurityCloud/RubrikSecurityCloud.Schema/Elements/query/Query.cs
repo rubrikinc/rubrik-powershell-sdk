@@ -3513,6 +3513,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<AzureLocationDetailType>? AllAzureRegionsWithAzDetails
+        // GraphQL -> allAzureRegionsWithAzDetails: [AzureLocationDetailType!]! (type)
+        public static string AllAzureRegionsWithAzDetails_TypedFieldSpec(List<AzureLocationDetailType> fieldSpec)
+        {
+            string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
+            return "allAzureRegionsWithAzDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllAzureRegionsWithAzDetails_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllAzureRegionsWithAzDetails((List<AzureLocationDetailType>)fieldSpecObj);
+        }
+        public static string AllAzureRegionsWithAzDetails(List<AzureLocationDetailType> fieldSpec)
+        {
+            return AllAzureRegionsWithAzDetails_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllAzureRegionsWithAzDetails(object fieldSpecObj)
+        {
+            return AllAzureRegionsWithAzDetails_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllAzureRegionsWithAzDetailsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<AzureLocationDetailType>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<AzureSqlDatabaseServerElasticPool>? AllAzureSqlDatabaseServerElasticPools
         // GraphQL -> allAzureSqlDatabaseServerElasticPools: [AzureSqlDatabaseServerElasticPool!]! (type)
         public static string AllAzureSqlDatabaseServerElasticPools_TypedFieldSpec(List<AzureSqlDatabaseServerElasticPool> fieldSpec)
@@ -3943,6 +3974,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new List<DataLocationSupportedCluster>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CrossAccountClusterConnection? AllCrossAccountClusters
+        // GraphQL -> allCrossAccountClusters: CrossAccountClusterConnection! (type)
+        public static string AllCrossAccountClusters_TypedFieldSpec(CrossAccountClusterConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            return "allCrossAccountClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string AllCrossAccountClusters_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AllCrossAccountClusters((CrossAccountClusterConnection)fieldSpecObj);
+        }
+        public static string AllCrossAccountClusters(CrossAccountClusterConnection fieldSpec)
+        {
+            return AllCrossAccountClusters_TypedFieldSpec(fieldSpec);
+        }
+        public static string AllCrossAccountClusters(object fieldSpecObj)
+        {
+            return AllCrossAccountClusters_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AllCrossAccountClustersFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CrossAccountClusterConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10116,6 +10178,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ClusterRoutesReply? ClusterRoutes
+        // GraphQL -> clusterRoutes: ClusterRoutesReply! (type)
+        public static string ClusterRoutes_TypedFieldSpec(ClusterRoutesReply fieldSpec)
+        {
+            string args = "\n(\nclusterUuid: $clusterUuid\n)";
+            return "clusterRoutes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string ClusterRoutes_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return ClusterRoutes((ClusterRoutesReply)fieldSpecObj);
+        }
+        public static string ClusterRoutes(ClusterRoutesReply fieldSpec)
+        {
+            return ClusterRoutes_TypedFieldSpec(fieldSpec);
+        }
+        public static string ClusterRoutes(object fieldSpecObj)
+        {
+            return ClusterRoutes_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object ClusterRoutesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new ClusterRoutesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ClusterSlaDomainConnection? ClusterSlaDomains
         // GraphQL -> clusterSlaDomains: ClusterSlaDomainConnection! (type)
         public static string ClusterSlaDomains_TypedFieldSpec(ClusterSlaDomainConnection fieldSpec)
@@ -11631,37 +11724,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new FailoverClusterTopLevelDescendantTypeConnection() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> FailuresAndWarningsStatsReply? FailuresAndWarningsStats
-        // GraphQL -> failuresAndWarningsStats: FailuresAndWarningsStatsReply! (type)
-        public static string FailuresAndWarningsStats_TypedFieldSpec(FailuresAndWarningsStatsReply fieldSpec)
-        {
-            string args = "\n(\norgId: $orgId\n)";
-            return "failuresAndWarningsStats" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec() +
-                    "}\n";
-        }
-        public static string FailuresAndWarningsStats_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return FailuresAndWarningsStats((FailuresAndWarningsStatsReply)fieldSpecObj);
-        }
-        public static string FailuresAndWarningsStats(FailuresAndWarningsStatsReply fieldSpec)
-        {
-            return FailuresAndWarningsStats_TypedFieldSpec(fieldSpec);
-        }
-        public static string FailuresAndWarningsStats(object fieldSpecObj)
-        {
-            return FailuresAndWarningsStats_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object FailuresAndWarningsStatsFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            var fieldSpecObj = new FailuresAndWarningsStatsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

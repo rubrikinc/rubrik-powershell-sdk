@@ -31,6 +31,11 @@ Add Vm App consistent specs info
 
 - There is a single argument of type AddVmAppConsistentSpecsInput.
 - Returns AddVmAppConsistentSpecsReply.
+### airgapstatus
+Update the air-gap status of the Rubrik cluster.
+
+- There is a single argument of type AirGapStatusInput.
+- Returns System.String.
 ### archivecrawl
 Archive a crawl.
 

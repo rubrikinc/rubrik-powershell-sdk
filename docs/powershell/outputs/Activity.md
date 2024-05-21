@@ -19,6 +19,8 @@ An activity that occurred on RSC or a Rubrik cluster.
   - The current progress of this activity.
 - activityInfo: System.String
   - Additional information pertaining to this activity.
+- errorInfo: System.String
+  - Information about the Rubrik error associated with this activity.
 - id: System.String
   - The ID of the activity.
 - activitySeries: ActivitySeries

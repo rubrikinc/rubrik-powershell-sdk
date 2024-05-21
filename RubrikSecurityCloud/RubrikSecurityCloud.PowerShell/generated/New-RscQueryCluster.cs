@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 30
+    /// Create a new RscQuery object for any of the 31
     /// operations in the 'Cluster' API domain:
-    /// Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 30 operations
+    /// There are 31 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: Cluster, ComputeClusterStatus, Connected, DefaultGateway, Dns, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsTotpAckNecessary, Kubernetes, LicensesForClusterProductSummary, List, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1049,6 +1049,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Routes operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: Routes
+    /// 
+    /// $query = New-RscQueryCluster -Routes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ClusterRoutesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TotpAckStatus operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -1389,6 +1417,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RadarClusterList",
                 "RegistrationProductInfo",
                 "ReplicationTargets",
+                "Routes",
                 "TotpAckStatus",
                 "TypeList",
                 "ValidateClusterLicenseCapacity",
@@ -1479,6 +1508,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ReplicationTargets":
                         this.ProcessRecord_ReplicationTargets();
+                        break;
+                    case "Routes":
+                        this.ProcessRecord_Routes();
                         break;
                     case "TotpAckStatus":
                         this.ProcessRecord_TotpAckStatus();
@@ -1716,6 +1748,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ReplicationTargets";
             // Create new graphql operation allClusterReplicationTargets
             InitQueryAllClusterReplicationTargets();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterRoutes.
+        internal void ProcessRecord_Routes()
+        {
+            this._logger.name += " -Routes";
+            // Create new graphql operation clusterRoutes
+            InitQueryClusterRoutes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2629,6 +2670,26 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 "List<ClusterReplicationTarget>",
                 Query.AllClusterReplicationTargets_ObjectFieldSpec,
                 Query.AllClusterReplicationTargetsFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // clusterRoutes(clusterUuid: UUID!): ClusterRoutesReply!
+        internal void InitQueryClusterRoutes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryClusterRoutes",
+                "($clusterUuid: UUID!)",
+                "ClusterRoutesReply",
+                Query.ClusterRoutes_ObjectFieldSpec,
+                Query.ClusterRoutesFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
             );

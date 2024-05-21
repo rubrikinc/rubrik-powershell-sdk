@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("approvalStatus")]
         public ExoBundleApprovalStatus? ApprovalStatus { get; set; }
 
+        //      C# -> BundleMetadataInput? BundleMetadata
+        // GraphQL -> bundleMetadata: BundleMetadataInput (input)
+        [JsonProperty("bundleMetadata")]
+        public BundleMetadataInput? BundleMetadata { get; set; }
+
 
         #endregion
 

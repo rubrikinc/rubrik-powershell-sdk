@@ -17,3 +17,5 @@ HotAdd proxy virtual machine information.
   - Cluster UUID of the HotAdd proxy virtual machine.
 - networkInfo: VsphereProxyVmNetworkInfo
   - The network configuration of the HotAdd proxy virtual machine.
+- cluster: Cluster
+  - Cluster for the HotAdd proxy virtual machine.

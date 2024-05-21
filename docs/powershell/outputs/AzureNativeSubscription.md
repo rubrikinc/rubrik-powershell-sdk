@@ -31,6 +31,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Cloud account ID associated with the subscription.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
+- applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig
+  - List of Exocompute configurations for the Azure subscription.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
 - id: System.String

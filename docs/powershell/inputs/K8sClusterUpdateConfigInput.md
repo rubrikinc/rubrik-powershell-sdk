@@ -11,6 +11,8 @@ Supported in v9.1+
 - serviceAccountName: System.String
   - Supported in v9.1+
       The name of the RSC service account.
+- transport: System.String
+  - The transport type used for communication with the Kubernetes cluster.
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.

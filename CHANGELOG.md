@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 1.4
+
+New Features:
+- Set-RscNasShare and Set-RscNasSystem for updating NAS shares and systems.
+- Remove-RscNasShare and Remove-RscNasSystem for removing NAS shares and systems.
+- Get-RscNasSystem for getting details of NAS systems.
+- New-RscNasSystem for registering a new NAS system with RSC.
+- Schema Update
+
+Fixes:
+- Issue [#86](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/86)
+- Issue [#96](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/96)
+
+Breaking Changes:
+- Get-RscNasShare - NasShareId parameter has been renamed to Id.
+- Get-RscNasShare no longer accepts NasSystemId. Pass a NAS system type obtained from Get-RscNasSystem to retrieve details of all NAS shares on a NAS system.
+- New-RscNasShare - NasSourceId parameter has been renamed to NasSystemId.
+
 ## Version 1.3
 
 Schema Update
@@ -476,6 +494,7 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
 
 
 

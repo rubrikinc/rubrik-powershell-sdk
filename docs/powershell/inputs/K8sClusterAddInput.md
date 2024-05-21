@@ -19,6 +19,8 @@ Supported in v9.0+
 - distribution: System.String
   - Supported in v9.1+
       Distribution of the Kubernetes cluster to be added.
+- transport: System.String
+  - The transport type used for communication with the Kubernetes cluster.
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.

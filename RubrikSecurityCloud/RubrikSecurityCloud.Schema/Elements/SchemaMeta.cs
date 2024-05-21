@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20240422-15" ;
+        public static string GraphqlSchemaVersion = "v20240506-29" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -382,6 +382,7 @@ namespace RubrikSecurityCloud.Types
             AzureAdObjects,
             AzureAdReverseRelationship,
             AzureAdUser,
+            AzureApplicationCloudAccountToExocomputeConfig,
             AzureArmTemplateByFeature,
             AzureBlobConfig,
             AzureCdmVersion,
@@ -406,6 +407,7 @@ namespace RubrikSecurityCloud.Types
             AzureExocomputeRegionConfig,
             AzureImmutabilitySettingsType,
             AzureKeyVault,
+            AzureLocationDetailType,
             AzureManagedIdentity,
             AzureMappedExocomputeSubscription,
             AzureNativeAttachedDiskSpecificSnapshot,
@@ -697,6 +699,7 @@ namespace RubrikSecurityCloud.Types
             ClusterRegistrationToken,
             ClusterReplicationTarget,
             ClusterReportMigrationJobStatus,
+            ClusterRoutesReply,
             ClusterSlaDomain,
             ClusterSlaDomainConnection,
             ClusterSlaDomainEdge,
@@ -755,6 +758,9 @@ namespace RubrikSecurityCloud.Types
             CreateVsphereAdvancedTagReply,
             CreateVsphereVcenterReply,
             CreateWebhookReply,
+            CrossAccountCluster,
+            CrossAccountClusterConnection,
+            CrossAccountClusterEdge,
             CrossAccountOrganization,
             CrossAccountPairInfo,
             CrossAccountPairInfoConnection,
@@ -924,8 +930,6 @@ namespace RubrikSecurityCloud.Types
             FailoverClusterTopLevelDescendantTypeEdge,
             FailoverTable,
             Failure,
-            FailuresAndWarningsStats,
-            FailuresAndWarningsStatsReply,
             FeatureCdmVersionReply,
             FeatureDetail,
             FeatureListMinimumCdmVersionReply,
@@ -1531,14 +1535,19 @@ namespace RubrikSecurityCloud.Types
             NutanixPrismCentralEdge,
             NutanixPrismCentralLogicalChildTypeConnection,
             NutanixPrismCentralLogicalChildTypeEdge,
+            NutanixVirtualDiskSummary,
+            NutanixVirtualMachineScriptDetail,
             NutanixVm,
             NutanixVmAgentStatus,
             NutanixVmConnection,
+            NutanixVmDetail,
             NutanixVmDisk,
             NutanixVmEdge,
             NutanixVmMountSummary,
+            NutanixVmPatch,
             NutanixVmSnapshotDetail,
             NutanixVmSnapshotSummary,
+            NutanixVmSummary,
             O365App,
             O365AppConnection,
             O365AppEdge,
@@ -1593,8 +1602,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2451,7 +2460,6 @@ namespace RubrikSecurityCloud.Types
             WorkloadRecoveryInfo,
             WorkloadRegion,
             WorkloadTypeToBackupSetupSpecs,
-            WorkloadTypeToEventCount,
             YaraMatchDetail,
             YearlySnapshotSchedule,
             ZeusDatabaseIds,
@@ -2517,6 +2525,7 @@ namespace RubrikSecurityCloud.Types
             AdVolumeExportFilter,
             AdVolumeExportSortByInput,
             AgentDeploymentSettingsInput,
+            AirGapStatusInput,
             AllCloudDirectSharesInput,
             AllEventDigestsInput,
             AllVmRecoveryJobsInfoInput,
@@ -2733,6 +2742,7 @@ namespace RubrikSecurityCloud.Types
             BulkUpdateOracleHostsInput,
             BulkUpdateOracleRacsInput,
             BulkUpdateRansomwareInvestigationEnabledInput,
+            BundleMetadataInput,
             CalendarEmailAddressFilter,
             CalendarGroupInfo,
             CalendarInfo,
@@ -3159,6 +3169,7 @@ namespace RubrikSecurityCloud.Types
             GetCompatibleMssqlInstancesV1Input,
             GetComputeClusterInput,
             GetContainersInput,
+            GetCrossAccountClustersFilter,
             GetCrossAccountPairsFilter,
             GetCsrInput,
             GetDb2DatabaseAsyncRequestStatusInput,
@@ -3226,6 +3237,7 @@ namespace RubrikSecurityCloud.Types
             HostMakePrimaryInfo,
             HostMakePrimaryRequestInput,
             HostRegisterInput,
+            HostsInfo,
             HostUpdateIdInput,
             HostUpdateInput,
             HostVfdInstallRequestInput,
@@ -4103,6 +4115,7 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeVirtualNetworks,
             allAzureNsgs,
             allAzureRegions,
+            allAzureRegionsWithAzDetails,
             allAzureResourceGroups,
             allAzureSqlDatabaseServerElasticPools,
             allAzureStorageAccounts,
@@ -4128,6 +4141,7 @@ namespace RubrikSecurityCloud.Types
             allClustersTotpAckStatus,
             allClusterWebCertsAndIpmis,
             allConnectedClusters,
+            allCrossAccountClusters,
             allCurrentFeaturePermissionsForCloudAccounts,
             allCurrentOrgIdentityProviders,
             allDbParameterGroupsByRegionFromAws,
@@ -4348,6 +4362,7 @@ namespace RubrikSecurityCloud.Types
             clusterReportMigrationCount,
             clusterReportMigrationJobStatus,
             clusterReportMigrationStatus,
+            clusterRoutes,
             clusterSlaDomains,
             clusterTypeList,
             clusterVlans,
@@ -4403,7 +4418,6 @@ namespace RubrikSecurityCloud.Types
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
-            failuresAndWarningsStats,
             federatedLoginStatus,
             filesetRequestStatus,
             filesetSnapshot,
@@ -4886,6 +4900,7 @@ namespace RubrikSecurityCloud.Types
             addSyslogExportRule,
             addVlan,
             addVmAppConsistentSpecs,
+            airGapStatus,
             approveRcvPrivateEndpoint,
             archiveCrawl,
             archiveK8sCluster,
@@ -5599,6 +5614,7 @@ namespace RubrikSecurityCloud.Types
             AdVolumeExportFilterField,
             AdVolumeExportSortByField,
             AgentConnectionStatus,
+            AgentConnectStatus,
             AmiType,
             AnalysisStatus,
             AnalyzerErrorCode,
@@ -5870,6 +5886,8 @@ namespace RubrikSecurityCloud.Types
             GcpNativeProjectStatus,
             GcpRegion,
             GcpStorageClass,
+            GetCrossAccountClustersFilterField,
+            GetCrossAccountClustersSortByField,
             GetCrossAccountPairsFilterField,
             GetCrossAccountPairsSortByField,
             GlobalCertificateSortBy,
@@ -6037,6 +6055,7 @@ namespace RubrikSecurityCloud.Types
             OnedriveSearchKeywordType,
             OnedriveSearchObjectType,
             OpenAccessType,
+            OperatingSystemType,
             Operation,
             OracleLiveMountFilterField,
             OracleLiveMountSortByField,
@@ -8039,6 +8058,7 @@ namespace RubrikSecurityCloud.Types
             addVlan,
             addVmAppConsistentSpecs,
             agentDeploymentSetting,
+            airGapStatus,
             allAccountOwners,
             allAccountProducts,
             allAccountsWithExocomputeMappings,
@@ -8077,6 +8097,7 @@ namespace RubrikSecurityCloud.Types
             allAzureNativeVirtualMachineSizes,
             allAzureNativeVirtualNetworks,
             allAzureNsgs,
+            allAzureRegionsWithAzDetails,
             allAzureResourceGroups,
             allAzureSqlDatabaseServerElasticPools,
             allAzureStorageAccountsByRegion,
@@ -8099,6 +8120,7 @@ namespace RubrikSecurityCloud.Types
             allClusterWebCertsAndIpmis,
             allClustersTotpAckStatus,
             allConnectedClusters,
+            allCrossAccountClusters,
             allCurrentFeaturePermissionsForCloudAccounts,
             allCurrentOrgIdentityProviders,
             allDbParameterGroupsByRegionFromAws,
@@ -8397,6 +8419,7 @@ namespace RubrikSecurityCloud.Types
             clusterReportMigrationCount,
             clusterReportMigrationJobStatus,
             clusterReportMigrationStatus,
+            clusterRoutes,
             clusterSlaDomains,
             clusterTypeList,
             clusterVlans,
@@ -8686,7 +8709,6 @@ namespace RubrikSecurityCloud.Types
             failoverClusterApp,
             failoverClusterApps,
             failoverClusterTopLevelDescendants,
-            failuresAndWarningsStats,
             federatedLoginStatus,
             filesetDownloadSnapshotFiles,
             filesetExportSnapshotFiles,
@@ -9838,6 +9860,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.airGapStatus,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "AirGapStatus",
+                        gqlRootFieldName: "airGapStatus"
+                    )
+                },
+                {
                     GqlRootFieldName.allAccountOwners,
                     new RscOp(
                         cmdletName: "New-RscQueryAccount",
@@ -10142,6 +10172,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.allAzureRegionsWithAzDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "RegionsWithAzDetails",
+                        gqlRootFieldName: "allAzureRegionsWithAzDetails"
+                    )
+                },
+                {
                     GqlRootFieldName.allAzureResourceGroups,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
@@ -10315,6 +10353,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCluster",
                         cmdletSwitchName: "Connected",
                         gqlRootFieldName: "allConnectedClusters"
+                    )
+                },
+                {
+                    GqlRootFieldName.allCrossAccountClusters,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCrossAccount",
+                        cmdletSwitchName: "CrossAccountClusters",
+                        gqlRootFieldName: "allCrossAccountClusters"
                     )
                 },
                 {
@@ -12702,6 +12748,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.clusterRoutes,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Routes",
+                        gqlRootFieldName: "clusterRoutes"
+                    )
+                },
+                {
                     GqlRootFieldName.clusterSlaDomains,
                     new RscOp(
                         cmdletName: "New-RscQuerySla",
@@ -15011,14 +15065,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryFailoverCluster",
                         cmdletSwitchName: "TopLevelDescendants",
                         gqlRootFieldName: "failoverClusterTopLevelDescendants"
-                    )
-                },
-                {
-                    GqlRootFieldName.failuresAndWarningsStats,
-                    new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "FailuresAndWarningsStats",
-                        gqlRootFieldName: "failuresAndWarningsStats"
                     )
                 },
                 {
@@ -21729,6 +21775,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.agentDeploymentSetting
                 },
                 {
+                    "New-RscMutationMisc -Op AirGapStatus",
+                    GqlRootFieldName.airGapStatus
+                },
+                {
                     "New-RscQueryAccount -Op Owners",
                     GqlRootFieldName.allAccountOwners
                 },
@@ -21881,6 +21931,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAzureNsgs
                 },
                 {
+                    "New-RscQueryAzure -Op RegionsWithAzDetails",
+                    GqlRootFieldName.allAzureRegionsWithAzDetails
+                },
+                {
                     "New-RscQueryMisc -Op AzureResourceGroups",
                     GqlRootFieldName.allAzureResourceGroups
                 },
@@ -21967,6 +22021,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryCluster -Op Connected",
                     GqlRootFieldName.allConnectedClusters
+                },
+                {
+                    "New-RscQueryCrossAccount -Op CrossAccountClusters",
+                    GqlRootFieldName.allCrossAccountClusters
                 },
                 {
                     "New-RscQueryCloudAccount -Op CurrentFeaturePermissions",
@@ -23161,6 +23219,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.clusterReportMigrationStatus
                 },
                 {
+                    "New-RscQueryCluster -Op Routes",
+                    GqlRootFieldName.clusterRoutes
+                },
+                {
                     "New-RscQuerySla -Op ClusterDomains",
                     GqlRootFieldName.clusterSlaDomains
                 },
@@ -24315,10 +24377,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryFailoverCluster -Op TopLevelDescendants",
                     GqlRootFieldName.failoverClusterTopLevelDescendants
-                },
-                {
-                    "New-RscQueryMisc -Op FailuresAndWarningsStats",
-                    GqlRootFieldName.failuresAndWarningsStats
                 },
                 {
                     "New-RscQueryMisc -Op FederatedLoginStatus",
@@ -28629,6 +28687,10 @@ namespace RubrikSecurityCloud.Types
                         "clusterReportMigrationJobStatus",
                     }
                 },
+                {   "ClusterRoutesReply", new List<string> {
+                        "clusterRoutes",
+                    }
+                },
                 {   "ClusterSlaDomainConnection", new List<string> {
                         "clusterSlaDomains",
                     }
@@ -28783,6 +28845,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CreateWebhookReply", new List<string> {
                         "createWebhook",
+                    }
+                },
+                {   "CrossAccountClusterConnection", new List<string> {
+                        "allCrossAccountClusters",
                     }
                 },
                 {   "CrossAccountPairInfoConnection", new List<string> {
@@ -29006,10 +29072,6 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "FailoverClusterTopLevelDescendantTypeConnection", new List<string> {
                         "failoverClusterTopLevelDescendants",
-                    }
-                },
-                {   "FailuresAndWarningsStatsReply", new List<string> {
-                        "failuresAndWarningsStats",
                     }
                 },
                 {   "FeatureCdmVersionReply", new List<string> {
@@ -29852,6 +29914,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "NutanixVmConnection", new List<string> {
                         "nutanixVms",
+                    }
+                },
+                {   "NutanixVmDetail", new List<string> {
+                        "updateNutanixVm",
                     }
                 },
                 {   "NutanixVmSnapshotDetail", new List<string> {
@@ -31158,6 +31224,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "Void", new List<string> {
+                        "airGapStatus",
                         "bulkDeleteNasShares",
                         "bulkUpdateRansomwareInvestigationStatus",
                         "cancelThreatHunt",
@@ -31221,7 +31288,6 @@ namespace RubrikSecurityCloud.Types
                         "updateIntegration",
                         "updateIntegrations",
                         "updateNasShares",
-                        "updateNutanixVm",
                         "updateO365AppPermissions",
                         "updateOrgSecurityPolicy",
                         "updateReplicationTarget",
@@ -31436,6 +31502,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "[AzureKeyVault]", new List<string> {
                         "allAzureKeyVaultsByRegion",
+                    }
+                },
+                {   "[AzureLocationDetailType]", new List<string> {
+                        "allAzureRegionsWithAzDetails",
                     }
                 },
                 {   "[AzureManagedIdentity]", new List<string> {
@@ -32008,6 +32078,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "AddVmAppConsistentSpecsInput", new List<string> {
                         "addVmAppConsistentSpecs",
+                    }
+                },
+                {   "AirGapStatusInput", new List<string> {
+                        "airGapStatus",
                     }
                 },
                 {   "AllCloudDirectSharesInput", new List<string> {
@@ -33902,6 +33976,10 @@ namespace RubrikSecurityCloud.Types
                         "nutanixClusterContainers",
                     }
                 },
+                {   "GetCrossAccountClustersSortByField", new List<string> {
+                        "allCrossAccountClusters",
+                    }
+                },
                 {   "GetCrossAccountPairsSortByField", new List<string> {
                         "crossAccountPairs",
                     }
@@ -34260,6 +34338,7 @@ namespace RubrikSecurityCloud.Types
                         "allCloudNativeTagKeys",
                         "allCloudNativeTagValues",
                         "allClusterConnection",
+                        "allCrossAccountClusters",
                         "allFileActivities",
                         "allTopRiskPolicySummaries",
                         "allUserFiles",
@@ -35377,6 +35456,7 @@ namespace RubrikSecurityCloud.Types
                         "allAwsComputeSettings",
                         "allCloudAccounts",
                         "allClusterConnection",
+                        "allCrossAccountClusters",
                         "allNosqlStorageLocations",
                         "allPendingActions",
                         "allTargetMappings",
@@ -35651,6 +35731,7 @@ namespace RubrikSecurityCloud.Types
                         "allAzureExocomputeConfigsInAccount",
                         "allAzureNativeAvailabilitySetsByRegionFromAzure",
                         "allAzureRegions",
+                        "allAzureRegionsWithAzDetails",
                         "allAzureResourceGroups",
                         "allAzureSqlDatabaseServerElasticPools",
                         "allCdpVmsInfos",
@@ -35659,6 +35740,7 @@ namespace RubrikSecurityCloud.Types
                         "allCloudNativeTagKeys",
                         "allCloudNativeTagValues",
                         "allClusterConnection",
+                        "allCrossAccountClusters",
                         "allDbParameterGroupsByRegionFromAws",
                         "allEffectiveRbacPermissions",
                         "allFileActivities",
@@ -36217,6 +36299,7 @@ namespace RubrikSecurityCloud.Types
                         "clusterReportMigrationCount",
                         "clusterReportMigrationJobStatus",
                         "clusterReportMigrationStatus",
+                        "clusterRoutes",
                         "configuredGroupMembers",
                         "countOfObjectsProtectedBySlas",
                         "db2Database",
@@ -36236,7 +36319,6 @@ namespace RubrikSecurityCloud.Types
                         "exchangeServer",
                         "failedRestoreItemsInfo",
                         "failoverClusterApp",
-                        "failuresAndWarningsStats",
                         "filesetTemplate",
                         "gcpNativeDisk",
                         "gcpNativeGceInstance",
@@ -37271,6 +37353,10 @@ namespace RubrikSecurityCloud.Types
                         "vSphereVmNewConnection",
                     }
                 },
+                {   "[GetCrossAccountClustersFilter]", new List<string> {
+                        "allCrossAccountClusters",
+                    }
+                },
                 {   "[GetCrossAccountPairsFilter]", new List<string> {
                         "crossAccountPairs",
                     }
@@ -38048,6 +38134,7 @@ namespace RubrikSecurityCloud.Types
                 { "clusterRegistrationProductInfo", "ClusterRegistrationProductInfoType"},
                 { "generateClusterRegistrationToken", "ClusterRegistrationToken"},
                 { "clusterReportMigrationJobStatus", "ClusterReportMigrationJobStatus"},
+                { "clusterRoutes", "ClusterRoutesReply"},
                 { "clusterSlaDomains", "ClusterSlaDomainConnection"},
                 { "clusterWebSignedCertificate", "ClusterWebSignedCertificateReply"},
                 { "completeAzureAdAppSetup", "CompleteAzureAdAppSetupReply"},
@@ -38096,6 +38183,7 @@ namespace RubrikSecurityCloud.Types
                 { "createVsphereAdvancedTag", "CreateVsphereAdvancedTagReply"},
                 { "createVsphereVcenter", "CreateVsphereVcenterReply"},
                 { "createWebhook", "CreateWebhookReply"},
+                { "allCrossAccountClusters", "CrossAccountClusterConnection"},
                 { "crossAccountPairs", "CrossAccountPairInfoConnection"},
                 { "certificateSigningRequest", "Csr"},
                 { "generateCsr", "Csr"},
@@ -38157,7 +38245,6 @@ namespace RubrikSecurityCloud.Types
                 { "failoverClusterApp", "FailoverClusterApp"},
                 { "failoverClusterApps", "FailoverClusterAppConnection"},
                 { "failoverClusterTopLevelDescendants", "FailoverClusterTopLevelDescendantTypeConnection"},
-                { "failuresAndWarningsStats", "FailuresAndWarningsStatsReply"},
                 { "cdmVersionCheck", "FeatureCdmVersionReply"},
                 { "minimumCdmVersionForFeatureSet", "FeatureListMinimumCdmVersionReply"},
                 { "federatedLoginStatus", "FederatedLoginStatus"},
@@ -38394,6 +38481,7 @@ namespace RubrikSecurityCloud.Types
                 { "nutanixPrismCentrals", "NutanixPrismCentralConnection"},
                 { "nutanixVm", "NutanixVm"},
                 { "nutanixVms", "NutanixVmConnection"},
+                { "updateNutanixVm", "NutanixVmDetail"},
                 { "nutanixSnapshotDetail", "NutanixVmSnapshotDetail"},
                 { "listO365Apps", "O365AppConnection"},
                 { "o365Calendar", "O365Calendar"},
@@ -38821,6 +38909,7 @@ namespace RubrikSecurityCloud.Types
                 { "vmwareMissedRecoverableRanges", "VmwareRecoverableRangeListResponse"},
                 { "vmwareRecoverableRanges", "VmwareRecoverableRangeListResponse"},
                 { "azureVNets", "VnetConnection"},
+                { "airGapStatus", "Void"},
                 { "bulkDeleteNasShares", "Void"},
                 { "bulkUpdateRansomwareInvestigationStatus", "Void"},
                 { "cancelThreatHunt", "Void"},
@@ -38884,7 +38973,6 @@ namespace RubrikSecurityCloud.Types
                 { "updateIntegration", "Void"},
                 { "updateIntegrations", "Void"},
                 { "updateNasShares", "Void"},
-                { "updateNutanixVm", "Void"},
                 { "updateO365AppPermissions", "Void"},
                 { "updateOrgSecurityPolicy", "Void"},
                 { "updateReplicationTarget", "Void"},
@@ -38946,6 +39034,7 @@ namespace RubrikSecurityCloud.Types
                 { "allAzureEncryptionKeys", "[AzureEncryptionKey]"},
                 { "allAzureExocomputeConfigsInAccount", "[AzureExocomputeConfigsInAccount]"},
                 { "allAzureKeyVaultsByRegion", "[AzureKeyVault]"},
+                { "allAzureRegionsWithAzDetails", "[AzureLocationDetailType]"},
                 { "allAzureManagedIdentities", "[AzureManagedIdentity]"},
                 { "allAzureNativeAvailabilitySetsByRegionFromAzure", "[AzureNativeAvailabilitySet]"},
                 { "allAzureDiskEncryptionSetsByRegion", "[AzureNativeDiskEncryptionSet]"},
@@ -39617,6 +39706,7 @@ namespace RubrikSecurityCloud.Types
                     "OauthConsentComplete",
                     "OauthConsentKickoff",
                     "Regions",
+                    "RegionsWithAzDetails",
                     "ResourceGroups",
                     "RestoreAdObjectsWithPasswords",
                     "SearchAdSnapshot",
@@ -39841,6 +39931,7 @@ namespace RubrikSecurityCloud.Types
                     "RemoveCdm",
                     "RemoveClusterNodes",
                     "ReplicationTargets",
+                    "Routes",
                     "TotpAckStatus",
                     "TypeList",
                     "UpdateClusterDefaultAddress",
@@ -39862,6 +39953,7 @@ namespace RubrikSecurityCloud.Types
                     "AddCrossAccountServiceConsumer",
                     "CreateCrossAccountPair",
                     "CreateCrossAccountRegOauthPayload",
+                    "CrossAccountClusters",
                     "DeleteCrossAccountPair",
                     }
                 },
@@ -40186,6 +40278,7 @@ namespace RubrikSecurityCloud.Types
                     "AddVmAppConsistentSpecs",
                     "AgentDeploymentSetting",
                     "AgentDeploymentSettings",
+                    "AirGapStatus",
                     "AllowedOrgAdminOperations",
                     "AnalyzerGroups",
                     "AnalyzerUsages",
@@ -40271,7 +40364,6 @@ namespace RubrikSecurityCloud.Types
                     "ExpireSnoozedDirectories",
                     "ExternalDeploymentName",
                     "FailedRestoreItemsInfo",
-                    "FailuresAndWarningsStats",
                     "FederatedLoginStatus",
                     "FileActivities",
                     "GenerateConfigProtectionRestoreForm",

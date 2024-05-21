@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nasApiCredentials")]
         public NasApiCredentialsInput? NasApiCredentials { get; set; }
 
+        //      C# -> System.Boolean? ShouldResetGeneratedNamespaceSmbCredentials
+        // GraphQL -> shouldResetGeneratedNamespaceSmbCredentials: Boolean (scalar)
+        [JsonProperty("shouldResetGeneratedNamespaceSmbCredentials")]
+        public System.Boolean? ShouldResetGeneratedNamespaceSmbCredentials { get; set; }
+
         //      C# -> FlashBladeSystemParametersInput? NasFlashBladeApiCredentials
         // GraphQL -> nasFlashBladeApiCredentials: FlashBladeSystemParametersInput (input)
         [JsonProperty("nasFlashBladeApiCredentials")]

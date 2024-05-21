@@ -15,6 +15,9 @@ Supported in v7.0+
 - nasApiCredentials: NasApiCredentialsInput
   - Supported in v7.0+
       The updated API credentials of the NAS system.
+- shouldResetGeneratedNamespaceSmbCredentials: System.Boolean
+  - Supported in v9.1+
+      Optional parameter that specifies whether to remove the system-generated (not user-supplied) SMB credentials in namespaces and recreate them. If this parameter is true, the system-generated SMB credentials in all namespaces are removed. In addition, when the NAS system does not have user-supplied (system level) SMB credentials, new SMB credentials are generated in each namespace that does not have user-supplied (namespace level) SMB credentials. The API credentials must be provided when this parameter is true.
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
   - Supported in v8.1+
 - smbCredentials: NasShareCredentialsInput

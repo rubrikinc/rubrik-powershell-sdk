@@ -1080,6 +1080,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? AirGapStatus
+        // GraphQL -> airGapStatus: Void (scalar)
+        public static string AirGapStatus_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "airGapStatus" + args + "\n";
+        }
+        public static string AirGapStatus_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AirGapStatus((System.String)fieldSpecObj);
+        }
+        public static string AirGapStatus(System.String fieldSpec)
+        {
+            return AirGapStatus_TypedFieldSpec(fieldSpec);
+        }
+        public static string AirGapStatus(object fieldSpecObj)
+        {
+            return AirGapStatus_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AirGapStatusFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? ArchiveCrawl
         // GraphQL -> archiveCrawl: String! (scalar)
         public static string ArchiveCrawl_TypedFieldSpec(System.String fieldSpec)
@@ -4029,35 +4058,6 @@ namespace RubrikSecurityCloud.Types
             return UpdateNasShares_ObjectFieldSpec(fieldSpecObj);
         }
         public static object UpdateNasSharesFieldSpec(ExplorationContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new ExplorationContext();
-            }
-            // there is no field spec for scalar types, but we still
-            // populate the fieldSpec so that caller can see the type 
-            return "FETCH" ;
-        }
-
-        //      C# -> System.String? UpdateNutanixVm
-        // GraphQL -> updateNutanixVm: Void (scalar)
-        public static string UpdateNutanixVm_TypedFieldSpec(System.String fieldSpec)
-        {
-            string args = "\n(\ninput: $input\n)";
-            return "updateNutanixVm" + args + "\n";
-        }
-        public static string UpdateNutanixVm_ObjectFieldSpec(object fieldSpecObj)
-        {
-            return UpdateNutanixVm((System.String)fieldSpecObj);
-        }
-        public static string UpdateNutanixVm(System.String fieldSpec)
-        {
-            return UpdateNutanixVm_TypedFieldSpec(fieldSpec);
-        }
-        public static string UpdateNutanixVm(object fieldSpecObj)
-        {
-            return UpdateNutanixVm_ObjectFieldSpec(fieldSpecObj);
-        }
-        public static object UpdateNutanixVmFieldSpec(ExplorationContext? ec=null)
         {
             if(ec==null) {
                 ec = new ExplorationContext();
@@ -20093,6 +20093,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new UpdateNutanixPrismCentralReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> NutanixVmDetail? UpdateNutanixVm
+        // GraphQL -> updateNutanixVm: NutanixVmDetail! (type)
+        public static string UpdateNutanixVm_TypedFieldSpec(NutanixVmDetail fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "updateNutanixVm" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec() +
+                    "}\n";
+        }
+        public static string UpdateNutanixVm_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return UpdateNutanixVm((NutanixVmDetail)fieldSpecObj);
+        }
+        public static string UpdateNutanixVm(NutanixVmDetail fieldSpec)
+        {
+            return UpdateNutanixVm_TypedFieldSpec(fieldSpec);
+        }
+        public static string UpdateNutanixVm(object fieldSpecObj)
+        {
+            return UpdateNutanixVm_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object UpdateNutanixVmFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new NutanixVmDetail() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

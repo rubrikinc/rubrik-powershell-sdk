@@ -306,6 +306,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RubrikEc2Instance")]
         RUBRIK_EC2_INSTANCE,
 
+        [EnumMember(Value = "SALESFORCE_METADATA")]
+        SALESFORCE_METADATA,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT")]
+        SALESFORCE_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_ORGANIZATION")]
+        SALESFORCE_ORGANIZATION,
+
         [EnumMember(Value = "SamlSso")]
         SAML_SSO,
 
