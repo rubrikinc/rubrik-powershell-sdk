@@ -66,13 +66,12 @@ function Get-RscMssqlDatabase {
     
     Process {
         Write-Debug "- Running Get-RscMssqlDatabase"
-
         #region Create Query
         switch($PSCmdlet.ParameterSetName){
             "List"{
                 $query = New-RscQueryMssql -Operation Databases -AddField Nodes.PhysicalPath
             }
-            "Name"{
+            { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
                 $query = New-RscQueryMssql -Op Databases `
                 -AddField Nodes.PhysicalPath, `
                     Nodes.PostBackupScript, `
@@ -81,12 +80,7 @@ function Get-RscMssqlDatabase {
                     Nodes.HostLogRetention, `
                     Nodes.LogBackupFrequencyInSeconds, `
                     Nodes.LogBackupRetentionInHours    
-            
-                $query.Var.filter = @()
-                $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
-                $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
-                $nameFilter.texts = $Name
-                $query.Var.filter += $nameFilter
+                    $query.Var.filter = @()
             }
             "Id"{
                 $query = New-RscQueryMssql -Operation Database 
@@ -96,6 +90,12 @@ function Get-RscMssqlDatabase {
             }
         }
         #endregion
+        if ($Name){
+            $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+            $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
+            $nameFilter.texts = $Name
+            $query.Var.filter += $nameFilter
+        }
 
         $results = $query.Invoke()   
                 
@@ -106,7 +106,7 @@ function Get-RscMssqlDatabase {
             "Id"{
                 $results
             }
-            "Name"{
+            { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
                 if ($RscMssqlInstance) {
                     $results = ($results.Nodes | Where-Object {$_.PhysicalPath.Fid -eq $RscMssqlInstance.id})
                     $results
