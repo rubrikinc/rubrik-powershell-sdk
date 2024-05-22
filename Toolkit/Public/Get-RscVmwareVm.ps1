@@ -38,10 +38,16 @@ function Get-RscVmwareVm {
         )]
         [Switch]$Detail,
         [Parameter(
+            Position = 0,
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
         [String]$Name,
+        [Parameter(
+            Mandatory = $false,
+            ParameterSetName = "Name"
+        )]
+        [switch]$Relic,
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $true,
@@ -101,13 +107,16 @@ function Get-RscVmwareVm {
                 $slaFilter.Texts = $Sla.id
                 $query.var.filter += $slaFilter
             }
+
+            if ($Relic.IsPresent) {
+                $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
+                $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
+                $relicFilter.Texts = $Relic
+                $query.var.filter += $relicFilter
+            }
+
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
-
-
-
-
-
     } 
 }
