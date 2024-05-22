@@ -5,6 +5,8 @@
 New Features:
   - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.
   - Get-RscVmwareVm - Added -Relic switch. Use -Relic:$false to filter out Relics. -Relic will return only Relics. No usage of -Relic will return all (default operation). -Name parameter is now position 0, so you don't have to specify -Name.
+  - Get-RscNutanixVm - New cmdlet to get Nutanix VMs
+  - Register-RscRubrikBackupService - New cmdlet to register RBS on VMs
 
 Fixes:
 
