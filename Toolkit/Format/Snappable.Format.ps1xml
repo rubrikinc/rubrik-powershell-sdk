@@ -21,7 +21,7 @@
                         <Label>Compliance Status</Label>
                     </TableColumnHeader>
                     <TableColumnHeader>
-                        <Label>Sla Domain</Label>
+                        <Label>SLA Domain</Label>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Forever Id (FID)</Label>
