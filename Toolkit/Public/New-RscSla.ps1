@@ -30,6 +30,10 @@ function New-RscSla
     [Parameter()]
     [RubrikSecurityCloud.Types.HourlySnapshotScheduleInput]$HourlySchedule,
 
+    # Daily Schedule object
+    [Parameter()]
+    [RubrikSecurityCloud.Types.DailySnapshotScheduleInput]$DailySchedule,
+
     # Weekly Schedule object
     [Parameter()]
     [RubrikSecurityCloud.Types.WeeklySnapshotScheduleInput]$WeeklySchedule,
@@ -61,6 +65,9 @@ function New-RscSla
         if ($HourlySchedule) {
             $query.var.input.SnapshotSchedule.Hourly = $HourlySchedule
         }
+        if ($DailySchedule) {
+            $query.var.input.SnapshotSchedule.Daily = $DailySchedule
+        }        
         if ($MonthlySchedule) {
             $query.var.input.SnapshotSchedule.Monthly = $MonthlySchedule
         }
