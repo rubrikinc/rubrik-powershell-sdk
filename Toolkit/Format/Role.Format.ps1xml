@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <ViewDefinitions>
+        <View>
+            <Name>RubrikSecurityCloudTypesRoleView</Name>
+            <ViewSelectedBy>
+                <TypeName>RubrikSecurityCloud.Types.Role</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader><Label>Name</Label><Width>35</Width><Alignment>Left</Alignment></TableColumnHeader>
+                    <TableColumnHeader><Label>Description</Label><Width>45</Width><Alignment>Left</Alignment></TableColumnHeader>
+                    <TableColumnHeader><Label>IsOrgAdmin</Label><Width>10</Width><Alignment>Left</Alignment></TableColumnHeader>
+                    <TableColumnHeader><Label>IsReadOnly</Label><Width>10</Width><Alignment>Left</Alignment></TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>Description</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>IsOrgAdmin</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>IsReadOnly</PropertyName></TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>

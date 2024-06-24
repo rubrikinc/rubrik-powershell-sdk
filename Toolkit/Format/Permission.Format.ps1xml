@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <ViewDefinitions>
+        <View>
+            <Name>RubrikSecurityCloudTypesPermissionView</Name>
+            <ViewSelectedBy>
+                <TypeName>RubrikSecurityCloud.Types.Permission</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader><Label>Operation</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>ObjectsForHierarchyTypes</Label></TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem><PropertyName>Operation</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>ObjectsForHierarchyTypes</PropertyName></TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
