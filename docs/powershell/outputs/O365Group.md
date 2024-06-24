@@ -13,6 +13,8 @@ O365 Groups from O365 hierarchy.
   - True, if the group is deleted in AD.
 - groupType: O365GroupType
   - The type of group.
+- groupSubType: O365GroupSubType
+  - The subtype of the group.
 - configuredGroupSpec: System.String
   - The specification for a configured group.
 - configuredGroupSpecification: O365ConfiguredGroupSpec
@@ -49,3 +51,7 @@ O365 Groups from O365 hierarchy.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

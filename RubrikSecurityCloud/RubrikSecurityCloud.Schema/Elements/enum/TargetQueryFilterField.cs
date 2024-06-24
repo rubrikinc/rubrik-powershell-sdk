@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LOCATION_ID")]
         LOCATION_ID,
 
+        [EnumMember(Value = "LOCATION_REDUNDANCY")]
+        LOCATION_REDUNDANCY,
+
         [EnumMember(Value = "LOCATION_REGION")]
         LOCATION_REGION,
 

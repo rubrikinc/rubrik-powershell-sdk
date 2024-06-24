@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 38
+    /// Create a new RscQuery object for any of the 39
     /// operations in the 'Office 365' API domain:
-    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
     /// </summary>
     /// <description>
     /// New-RscQueryO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 38 operations
+    /// There are 39 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
+    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, or UserObjects.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1225,6 +1225,90 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SharepointObjectsNew operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: SharepointObjectsNew
+    /// 
+    /// $query = New-RscQueryO365 -SharepointObjectsNew
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.objectTypeFilter = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.includeEntireHierarchy = $someBoolean
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: O365SharepointObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SharepointSite operation
     /// of the 'Office 365' API domain.
     /// <code>
@@ -1852,6 +1936,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SharepointLists",
                 "SharepointObjectList",
                 "SharepointObjects",
+                "SharepointObjectsNew",
                 "SharepointSite",
                 "SharepointSites",
                 "Site",
@@ -1954,6 +2039,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SharepointObjects":
                         this.ProcessRecord_SharepointObjects();
+                        break;
+                    case "SharepointObjectsNew":
+                        this.ProcessRecord_SharepointObjectsNew();
                         break;
                     case "SharepointSite":
                         this.ProcessRecord_SharepointSite();
@@ -2227,6 +2315,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SharepointObjects";
             // Create new graphql operation o365SharepointObjects
             InitQueryO365SharepointObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // o365SharepointObjectsNew.
+        internal void ProcessRecord_SharepointObjectsNew()
+        {
+            this._logger.name += " -SharepointObjectsNew";
+            // Create new graphql operation o365SharepointObjectsNew
+            InitQueryO365SharepointObjectsNew();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3415,6 +3512,98 @@ $query.Var.filter = @(
 		)
 }
 )
+# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // o365SharepointObjectsNew(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     objectTypeFilter: [String!]
+        //     includeEntireHierarchy: Boolean!
+        //     fid: UUID!
+        //   ): O365SharepointObjectConnection!
+        internal void InitQueryO365SharepointObjectsNew()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("objectTypeFilter", "[String!]"),
+                Tuple.Create("includeEntireHierarchy", "Boolean!"),
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryO365SharepointObjectsNew",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$objectTypeFilter: [String!],$includeEntireHierarchy: Boolean!,$fid: UUID!)",
+                "O365SharepointObjectConnection",
+                Query.O365SharepointObjectsNew_ObjectFieldSpec,
+                Query.O365SharepointObjectsNewFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.objectTypeFilter = @(
+	$someString
+)
+# REQUIRED
+$query.Var.includeEntireHierarchy = $someBoolean
 # REQUIRED
 $query.Var.fid = $someString"
             );

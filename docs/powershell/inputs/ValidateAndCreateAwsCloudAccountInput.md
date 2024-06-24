@@ -13,3 +13,5 @@ Input to validate and set up an AWS account.
   - Role customization options.
 - featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss
   - List of cloud account features with specific permissions groups to onboard. This list is a valid input only for customer-managed cluster users.
+- awsIamPair: AwsIamPairInput
+  - Details of IAM role to be used for data center role-based archival.

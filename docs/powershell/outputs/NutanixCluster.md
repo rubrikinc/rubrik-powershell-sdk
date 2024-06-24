@@ -15,6 +15,10 @@ Nutanix cluster details.
   - Nutanix cluster version.
 - clusterMetadata: NutanixClusterMetadata
   - Nutanix cluster metadata.
+- clusterNetworks: list of NutanixClusterNetworks
+  - Networks of the Nutanix cluster.
+- storageContainers: list of NutanixStorageContainers
+  - Storage containers of the Nutanix cluster.
 - id: System.String
   - Object ID.
 - connectionStatus: RefreshableObjectConnectionStatus
@@ -69,3 +73,5 @@ Nutanix cluster details.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

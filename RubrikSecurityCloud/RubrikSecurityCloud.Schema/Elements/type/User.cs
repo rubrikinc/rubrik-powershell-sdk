@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         public List<Org>? AllOrgs { get; set; }
 
+        //      C# -> List<RoleAssignment>? AssignedRoles
+        // GraphQL -> assignedRoles: [RoleAssignment!]! (type)
+        [JsonProperty("assignedRoles")]
+        public List<RoleAssignment>? AssignedRoles { get; set; }
+
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)
         [JsonProperty("emailConfig")]
@@ -126,6 +131,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? UnreadCount = null,
         System.String? Username = null,
         List<Org>? AllOrgs = null,
+        List<RoleAssignment>? AssignedRoles = null,
         List<EventDigest>? EmailConfig = null,
         EulaState? EulaState = null,
         LockoutState? LockoutState = null,
@@ -166,6 +172,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
+        }
+        if ( AssignedRoles != null ) {
+            this.AssignedRoles = AssignedRoles;
         }
         if ( EmailConfig != null ) {
             this.EmailConfig = EmailConfig;
@@ -298,6 +307,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allOrgs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RoleAssignment>? AssignedRoles
+        // GraphQL -> assignedRoles: [RoleAssignment!]! (type)
+        if (this.AssignedRoles != null) {
+            var fspec = this.AssignedRoles.AsFieldSpec(conf.Child("assignedRoles"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "assignedRoles" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -568,6 +589,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
         {
             this.AllOrgs = null;
+        }
+        //      C# -> List<RoleAssignment>? AssignedRoles
+        // GraphQL -> assignedRoles: [RoleAssignment!]! (type)
+        if (ec.Includes("assignedRoles",false))
+        {
+            if(this.AssignedRoles == null) {
+
+                this.AssignedRoles = new List<RoleAssignment>();
+                this.AssignedRoles.ApplyExploratoryFieldSpec(ec.NewChild("assignedRoles"));
+
+            } else {
+
+                this.AssignedRoles.ApplyExploratoryFieldSpec(ec.NewChild("assignedRoles"));
+
+            }
+        }
+        else if (this.AssignedRoles != null && ec.Excludes("assignedRoles",false))
+        {
+            this.AssignedRoles = null;
         }
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)

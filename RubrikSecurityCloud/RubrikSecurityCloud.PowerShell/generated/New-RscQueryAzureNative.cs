@@ -395,6 +395,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someAzureNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	orgFilter = @{
+    /// 		# REQUIRED
+    /// 		orgIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -988,6 +995,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	rbsStatusFilter = @{
     /// 		# REQUIRED
     /// 		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	orgFilter = @{
+    /// 		# REQUIRED
+    /// 		orgIds = @(
+    /// 			$someString
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -1665,6 +1679,13 @@ $query.Var.diskFilters = @{
 			$someAzureNativeFileIndexingStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
 		)
 	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			$someString
+		)
+	}
 }"
             );
         }
@@ -2203,6 +2224,13 @@ $query.Var.virtualMachineFilters = @{
 	rbsStatusFilter = @{
 		# REQUIRED
 		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			$someString
+		)
 	}
 }"
             );

@@ -134,6 +134,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        SecurityMetadata? SecurityMetadata { get; set; }
+
 
         #endregion
 

@@ -43,6 +43,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("objectTypeFilter", "HierarchyObjectTypeEnum!"),
                     Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("includeSecurityMetadata", "Boolean"),
                 };
             this.ObjectTypeDescendantConnection =
                 new RscGqlVars(null, objectTypeDescendantConnectionArgs, null, true);

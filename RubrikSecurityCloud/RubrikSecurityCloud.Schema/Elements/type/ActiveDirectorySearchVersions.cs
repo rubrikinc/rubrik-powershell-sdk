@@ -20,20 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ActiveDirectoryObjectType? ActiveDirectoryObjectType
-        // GraphQL -> activeDirectoryObjectType: ActiveDirectoryObjectType! (enum)
-        [JsonProperty("activeDirectoryObjectType")]
-        public ActiveDirectoryObjectType? ActiveDirectoryObjectType { get; set; }
-
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
         [JsonProperty("dn")]
         public System.String? Dn { get; set; }
-
-        //      C# -> System.Int32? Dnt
-        // GraphQL -> dnt: Int! (scalar)
-        [JsonProperty("dnt")]
-        public System.Int32? Dnt { get; set; }
 
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot! (type)
@@ -50,20 +40,12 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ActiveDirectorySearchVersions Set(
-        ActiveDirectoryObjectType? ActiveDirectoryObjectType = null,
         System.String? Dn = null,
-        System.Int32? Dnt = null,
         CdmSnapshot? Snapshot = null
     ) 
     {
-        if ( ActiveDirectoryObjectType != null ) {
-            this.ActiveDirectoryObjectType = ActiveDirectoryObjectType;
-        }
         if ( Dn != null ) {
             this.Dn = Dn;
-        }
-        if ( Dnt != null ) {
-            this.Dnt = Dnt;
         }
         if ( Snapshot != null ) {
             this.Snapshot = Snapshot;
@@ -82,15 +64,6 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> ActiveDirectoryObjectType? ActiveDirectoryObjectType
-        // GraphQL -> activeDirectoryObjectType: ActiveDirectoryObjectType! (enum)
-        if (this.ActiveDirectoryObjectType != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "activeDirectoryObjectType\n" ;
-            } else {
-                s += ind + "activeDirectoryObjectType\n" ;
-            }
-        }
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
         if (this.Dn != null) {
@@ -98,15 +71,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dn\n" ;
             } else {
                 s += ind + "dn\n" ;
-            }
-        }
-        //      C# -> System.Int32? Dnt
-        // GraphQL -> dnt: Int! (scalar)
-        if (this.Dnt != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "dnt\n" ;
-            } else {
-                s += ind + "dnt\n" ;
             }
         }
         //      C# -> CdmSnapshot? Snapshot
@@ -128,23 +92,6 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
-        //      C# -> ActiveDirectoryObjectType? ActiveDirectoryObjectType
-        // GraphQL -> activeDirectoryObjectType: ActiveDirectoryObjectType! (enum)
-        if (ec.Includes("activeDirectoryObjectType",true))
-        {
-            if(this.ActiveDirectoryObjectType == null) {
-
-                this.ActiveDirectoryObjectType = new ActiveDirectoryObjectType();
-
-            } else {
-
-
-            }
-        }
-        else if (this.ActiveDirectoryObjectType != null && ec.Excludes("activeDirectoryObjectType",true))
-        {
-            this.ActiveDirectoryObjectType = null;
-        }
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
         if (ec.Includes("dn",true))
@@ -161,23 +108,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.Dn != null && ec.Excludes("dn",true))
         {
             this.Dn = null;
-        }
-        //      C# -> System.Int32? Dnt
-        // GraphQL -> dnt: Int! (scalar)
-        if (ec.Includes("dnt",true))
-        {
-            if(this.Dnt == null) {
-
-                this.Dnt = Int32.MinValue;
-
-            } else {
-
-
-            }
-        }
-        else if (this.Dnt != null && ec.Excludes("dnt",true))
-        {
-            this.Dnt = null;
         }
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot! (type)

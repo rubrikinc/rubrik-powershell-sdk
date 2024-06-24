@@ -149,6 +149,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	forceDelete = $someBoolean
     /// 	# REQUIRED
     /// 	sourceClusterUuid = $someString
     /// 	# REQUIRED
@@ -532,6 +534,8 @@ $query.Var.input = @{
                 Mutation.DeleteReplicationPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	forceDelete = $someBoolean
 	# REQUIRED
 	sourceClusterUuid = $someString
 	# REQUIRED

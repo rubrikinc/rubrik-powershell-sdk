@@ -19,25 +19,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> SapHanaSystemDataPathSpecInput? DataPathSpec
-        // GraphQL -> dataPathSpec: SapHanaSystemDataPathSpecInput (input)
-        [JsonProperty("dataPathSpec")]
-        public SapHanaSystemDataPathSpecInput? DataPathSpec { get; set; }
-
-        //      C# -> SapHanaSslInfoInput? SslInfo
-        // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
-        [JsonProperty("sslInfo")]
-        public SapHanaSslInfoInput? SslInfo { get; set; }
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        [JsonProperty("azureFeatureId")]
+        public System.String? AzureFeatureId { get; set; }
 
         //      C# -> SapHanaSystemAuthTypeSpecInput? AuthTypeSpec
         // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpecInput (input)
         [JsonProperty("authTypeSpec")]
         public SapHanaSystemAuthTypeSpecInput? AuthTypeSpec { get; set; }
 
-        //      C# -> System.String? AzureFeatureId
-        // GraphQL -> azureFeatureId: String (scalar)
-        [JsonProperty("azureFeatureId")]
-        public System.String? AzureFeatureId { get; set; }
+        //      C# -> SapHanaSystemDataPathSpecInput? DataPathSpec
+        // GraphQL -> dataPathSpec: SapHanaSystemDataPathSpecInput (input)
+        [JsonProperty("dataPathSpec")]
+        public SapHanaSystemDataPathSpecInput? DataPathSpec { get; set; }
 
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!]! (scalar)
@@ -66,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sid")]
         public System.String? Sid { get; set; }
+
+        //      C# -> SapHanaSslInfoInput? SslInfo
+        // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
+        [JsonProperty("sslInfo")]
+        public SapHanaSslInfoInput? SslInfo { get; set; }
 
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

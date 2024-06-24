@@ -17,6 +17,8 @@ The node-level performance statistics of a Rubrik cluster.
   - Write Input/output throughput, in bytes per second.
 - usedMemoryStat: System.Int32
   - Memory used on the node, in percentage.
+- clusterPhysicalDataIngest: System.Int64
+  - Cluster-level physical data ingestion, in bytes per second.
 - time: DateTime
   - Time at which the performance metrics were retrieved.
 - clusterId: System.String

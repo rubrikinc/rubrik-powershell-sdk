@@ -31,3 +31,5 @@ Input for creating an Azure Reader Target.
   - Retrieval tier to use for retrieving data from archive storage.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
+- azureKeyVaultKey: AzureKeyVaultKeyIdentifierWithoutKeyVersionInput
+  - Azure Key Vault key used to encrypt the archival target.

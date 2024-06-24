@@ -10,3 +10,5 @@ Parameters for mail or folder search.
   - Parameters for using Lambda filters in the query.
 - archiveFolderAction: ArchiveFolderAction
   - Specifies actions for the in-place archive folder.
+- skipRifItems: System.Boolean
+  - Specifies whether to skip items in the Recoverable Items folder.

@@ -4,7 +4,8 @@
 Preview list of virtual machines of a proposed filter condition
 
 Supported in v7.0+
-Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh.
+v7.0-v9.1: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh.
+v9.2: Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh. It is not supported on Standalone Hosts.
 
 - There is a single argument of type PreviewFilterInput.
 - Returns VcenterAdvancedTagPreviewReply.
@@ -50,8 +51,8 @@ Retrieve HotAdd proxy virtual machines.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVcenterConnection.
 ### networks

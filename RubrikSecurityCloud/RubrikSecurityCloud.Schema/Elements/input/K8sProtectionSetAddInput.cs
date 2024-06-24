@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CreationType
+        // GraphQL -> creationType: String (scalar)
+        [JsonProperty("creationType")]
+        public System.String? CreationType { get; set; }
+
         //      C# -> System.String? KubernetesNamespace
         // GraphQL -> kubernetesNamespace: String (scalar)
         [JsonProperty("kubernetesNamespace")]

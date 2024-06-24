@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("contactFoldersToRestore")]
         public List<ContactFolderInfo>? ContactFoldersToRestore { get; set; }
 
+        //      C# -> System.Boolean? SkipRifItems
+        // GraphQL -> skipRifItems: Boolean (scalar)
+        [JsonProperty("skipRifItems")]
+        public System.Boolean? SkipRifItems { get; set; }
+
 
         #endregion
 

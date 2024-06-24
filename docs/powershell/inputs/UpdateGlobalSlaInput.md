@@ -20,7 +20,7 @@ Input to update SLA Domain.
 - backupWindows: list of BackupWindowInputs
   - Backup Window specifications for SLA Domain.
 - logConfig: LogConfig
-  - Log configuration of the SLA Domain.
+  - Log configuration of the SLA Domain. Deprecated: use objectSpecificConfigs instead.
 - objectSpecificConfigsInput: ObjectSpecificConfigsInput
   - Object-specific configuration of the SLA Domain.
 - shouldApplyToExistingSnapshots: ShouldApplyToExistingSnapshots

@@ -101,6 +101,7 @@ User audit object type.
 - Sla - SLA Domain type.
 - Blueprint - Blueprint type.
 - Ec2Instance - EC2 instance type.
+- NUTANIX_ERA - Nutanix Era type.
 - JIRA_PROJECT - Atlassian Jira project.
 - StorageArrayVolumeGroup - Storage array volume group type.
 - StorageSettings - Storage settings type.

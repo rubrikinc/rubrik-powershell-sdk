@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nativeId")]
         public System.String? NativeId { get; set; }
 
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        [JsonProperty("orgName")]
+        public System.String? OrgName { get; set; }
+
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
         [JsonProperty("seamlessFlowEnabled")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Message = null,
         System.String? NativeId = null,
+        System.String? OrgName = null,
         System.Boolean? SeamlessFlowEnabled = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NativeId != null ) {
             this.NativeId = NativeId;
+        }
+        if ( OrgName != null ) {
+            this.OrgName = OrgName;
         }
         if ( SeamlessFlowEnabled != null ) {
             this.SeamlessFlowEnabled = SeamlessFlowEnabled;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nativeId\n" ;
             } else {
                 s += ind + "nativeId\n" ;
+            }
+        }
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        if (this.OrgName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orgName\n" ;
+            } else {
+                s += ind + "orgName\n" ;
             }
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
@@ -245,6 +263,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NativeId != null && ec.Excludes("nativeId",true))
         {
             this.NativeId = null;
+        }
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        if (ec.Includes("orgName",true))
+        {
+            if(this.OrgName == null) {
+
+                this.OrgName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgName != null && ec.Excludes("orgName",true))
+        {
+            this.OrgName = null;
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)

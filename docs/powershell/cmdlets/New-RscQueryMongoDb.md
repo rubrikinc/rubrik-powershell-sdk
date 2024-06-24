@@ -23,8 +23,8 @@ Paginated list of MongoDB collections on NoSQL cluster.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongodbCollectionConnection.
 ### database
@@ -41,8 +41,8 @@ Paginated list of MongoDB databases on NoSQL cluster.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongodbDatabaseConnection.
 ### source
@@ -58,7 +58,7 @@ Paginated list of MongoDB sources on NoSQL cluster.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongodbSourceConnection.

@@ -47,7 +47,7 @@ Lists all valid replication source clusters.
 ### validtargets
 Lists all valid replication target clusters.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -55,4 +55,5 @@ Lists all valid replication target clusters.
     - sortBy - ListValidReplicationTargetsSortByField: Field to sort by for valid replication targets.
     - sortOrder - SortOrder: Sort order.
     - isCrossAccount - System.Boolean: Specification for Rubrik clusters to be retrieved - local or cross-account.
+    - validReplicationTargetFilter - ListValidReplicationTargetFilter: Filter to retrieve valid replication targets.
 - Returns ValidReplicationTargetConnection.

@@ -63,6 +63,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KUBERNETES_PROTECTION")]
         KUBERNETES_PROTECTION,
 
+        [EnumMember(Value = "LAMINAR_CROSS_ACCOUNT")]
+        LAMINAR_CROSS_ACCOUNT,
+
+        [EnumMember(Value = "LAMINAR_INTERNAL")]
+        LAMINAR_INTERNAL,
+
         [EnumMember(Value = "RDS_PROTECTION")]
         RDS_PROTECTION,
 

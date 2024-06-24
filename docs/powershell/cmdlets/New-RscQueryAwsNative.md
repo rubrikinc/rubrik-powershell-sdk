@@ -16,7 +16,7 @@ Paginated list of all AWS Native accounts.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeAccountSortFields: Sort fields for list of AWS accounts.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - accountFilters - AwsNativeAccountFilters
     - authorizedOperationFilter - Operation
     - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
@@ -40,7 +40,7 @@ Paginated list of all AWS EBS Volumes.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Filter for EBS volumes.
 - Returns AwsNativeEbsVolumeConnection.
 ### ebsvolumesbyname
@@ -52,7 +52,7 @@ Paginated list of all AWS EBS Volumes by name or substring of name.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - ebsVolumeName - System.String: The native name for the AWS EBS Volume object.
 - Returns AwsNativeEbsVolumeConnection.
 ### ec2instance
@@ -69,7 +69,7 @@ Paginated list of all AWS EC2 Instances.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
     - ec2InstanceFilters - AwsNativeEc2InstanceFilters: Filter for EC2 instances.
 - Returns AwsNativeEc2InstanceConnection.
@@ -82,7 +82,7 @@ Paginated list of all AWS EC2 Instances by name or substring of name.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - ec2InstanceName - System.String: Native name for the AWS EC2 Instance object.
 - Returns AwsNativeEc2InstanceConnection.
 ### isebsvolumesnapshotrestorable
@@ -128,7 +128,7 @@ Paginated list of AWS RDS Instances on AWS Native account.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Filter for RDS instances.
 - Returns AwsNativeRdsInstanceConnection.
 ### rdspointintimerestorewindow
@@ -148,7 +148,9 @@ Root of AWS native hierarchy.
 ### s3bucket
 Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - s3BucketRubrikId - System.String: Rubrik ID for the AWS S3 bucket object.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AwsNativeS3Bucket.
 ### validaterdsclusternameforexport
 Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.

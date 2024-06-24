@@ -27,6 +27,14 @@ Nutanix virtual machine details.
   - Virtual machine ID.
 - currentHostId: System.String
   - ID of the AHV host where virtual machine is located. This field will be set to null if not provided by Nutanix.
+- isBlueprintChild: System.Boolean
+  - Specifies whether the virtual machine belongs to a disaster recovery.
+- blueprintName: System.String
+  - Name of the Recovery Plan this Nutanix virtual machine belongs to.
+- blueprintId: System.String
+  - ID of the Recovery Plan this Nutanix virtual machine belongs to.
+- metadata: NutanixVmMetadata
+  - Metadata of the Nutanix virtual machine.
 - id: System.String
   - Object ID.
 - reportSnappable: Snappable
@@ -81,6 +89,8 @@ Nutanix virtual machine details.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cdmLink: System.String
   - A link to view the workload on the CDM cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

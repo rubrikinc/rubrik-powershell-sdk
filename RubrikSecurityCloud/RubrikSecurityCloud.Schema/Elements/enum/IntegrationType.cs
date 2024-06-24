@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DATA_LOSS_PREVENTION,
 
         [EnumMember(Value = "INTEGRATION_TYPE_UNSPECIFIED")]
-        INTEGRATION_TYPE_UNSPECIFIED
+        INTEGRATION_TYPE_UNSPECIFIED,
+
+        [EnumMember(Value = "SERVICENOW_ITSM")]
+        SERVICENOW_ITSM
 
 
     } // enum IntegrationType

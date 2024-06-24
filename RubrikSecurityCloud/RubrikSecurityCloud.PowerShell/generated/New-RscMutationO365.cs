@@ -560,6 +560,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -800,6 +802,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1333,6 +1337,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					FolderID = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			skipRifItems = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		calendarRestoreConfig = @{
@@ -1363,6 +1369,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					snapshotId = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			skipRifItems = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		contactsRestoreConfig = @{
@@ -1388,6 +1396,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					snapshotNum = $someInt
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			skipRifItems = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		inplaceRestoreConfig = @{
@@ -1466,6 +1476,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	channelInfoForFullRestore = @{
     /// 		# REQUIRED
     /// 		naturalId = $someString
+    /// 		# OPTIONAL
+    /// 		channelId = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# REQUIRED
@@ -1480,6 +1492,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			naturalId = $someString
+    /// 			# OPTIONAL
+    /// 			channelId = $someString
     /// 			# REQUIRED
     /// 			name = $someString
     /// 			# REQUIRED
@@ -2727,6 +2741,8 @@ $query.Var.exportConfig = @{
 		# REQUIRED
 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -2919,6 +2935,8 @@ $query.Var.restoreConfig = @{
 		# REQUIRED
 		nameCollisionRule = $someNameCollisionRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NameCollisionRule]) for enum values.
 	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
 }"
             );
         }
@@ -3444,6 +3462,8 @@ $query.Var.input = @{
 					FolderID = $someString
 				}
 			)
+			# OPTIONAL
+			skipRifItems = $someBoolean
 		}
 		# OPTIONAL
 		calendarRestoreConfig = @{
@@ -3474,6 +3494,8 @@ $query.Var.input = @{
 					snapshotId = $someString
 				}
 			)
+			# OPTIONAL
+			skipRifItems = $someBoolean
 		}
 		# OPTIONAL
 		contactsRestoreConfig = @{
@@ -3499,6 +3521,8 @@ $query.Var.input = @{
 					snapshotNum = $someInt
 				}
 			)
+			# OPTIONAL
+			skipRifItems = $someBoolean
 		}
 		# OPTIONAL
 		inplaceRestoreConfig = @{
@@ -3569,6 +3593,8 @@ $query.Var.input = @{
 	channelInfoForFullRestore = @{
 		# REQUIRED
 		naturalId = $someString
+		# OPTIONAL
+		channelId = $someString
 		# REQUIRED
 		name = $someString
 		# REQUIRED
@@ -3583,6 +3609,8 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			naturalId = $someString
+			# OPTIONAL
+			channelId = $someString
 			# REQUIRED
 			name = $someString
 			# REQUIRED

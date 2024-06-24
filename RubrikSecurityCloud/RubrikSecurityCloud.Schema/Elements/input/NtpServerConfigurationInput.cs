@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> NtpSymmKeyConfigurationInput? SymmetricKey
-        // GraphQL -> symmetricKey: NtpSymmKeyConfigurationInput (input)
-        [JsonProperty("symmetricKey")]
-        public NtpSymmKeyConfigurationInput? SymmetricKey { get; set; }
-
         //      C# -> System.String? Server
         // GraphQL -> server: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("server")]
         public System.String? Server { get; set; }
+
+        //      C# -> NtpSymmKeyConfigurationInput? SymmetricKey
+        // GraphQL -> symmetricKey: NtpSymmKeyConfigurationInput (input)
+        [JsonProperty("symmetricKey")]
+        public NtpSymmKeyConfigurationInput? SymmetricKey { get; set; }
 
 
         #endregion

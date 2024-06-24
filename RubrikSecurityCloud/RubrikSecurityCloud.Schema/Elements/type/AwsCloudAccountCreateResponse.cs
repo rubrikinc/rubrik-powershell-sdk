@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsRegions")]
         public List<AwsCloudAccountRegion>? AwsRegions { get; set; }
 
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String! (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
+
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
         [JsonProperty("cloudFormationUrl")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
 
     public AwsCloudAccountCreateResponse Set(
         List<AwsCloudAccountRegion>? AwsRegions = null,
+        System.String? AwsIamPairId = null,
         System.String? CloudFormationUrl = null,
         System.String? ExternalId = null,
         System.String? RoleArn = null,
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AwsRegions != null ) {
             this.AwsRegions = AwsRegions;
+        }
+        if ( AwsIamPairId != null ) {
+            this.AwsIamPairId = AwsIamPairId;
         }
         if ( CloudFormationUrl != null ) {
             this.CloudFormationUrl = CloudFormationUrl;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "awsRegions\n" ;
             } else {
                 s += ind + "awsRegions\n" ;
+            }
+        }
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String! (scalar)
+        if (this.AwsIamPairId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsIamPairId\n" ;
+            } else {
+                s += ind + "awsIamPairId\n" ;
             }
         }
         //      C# -> System.String? CloudFormationUrl
@@ -216,6 +234,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsRegions != null && ec.Excludes("awsRegions",true))
         {
             this.AwsRegions = null;
+        }
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String! (scalar)
+        if (ec.Includes("awsIamPairId",true))
+        {
+            if(this.AwsIamPairId == null) {
+
+                this.AwsIamPairId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsIamPairId != null && ec.Excludes("awsIamPairId",true))
+        {
+            this.AwsIamPairId = null;
         }
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)

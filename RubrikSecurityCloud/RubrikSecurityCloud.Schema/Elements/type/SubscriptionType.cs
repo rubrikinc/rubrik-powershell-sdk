@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("eventTypes")]
         public List<ActivityTypeEnum>? EventTypes { get; set; }
 
+        //      C# -> List<EventObjectType>? ObjectTypes
+        // GraphQL -> objectTypes: [EventObjectType!]! (enum)
+        [JsonProperty("objectTypes")]
+        public List<EventObjectType>? ObjectTypes { get; set; }
+
         //      C# -> System.Boolean? IsSubscribedToAllAudits
         // GraphQL -> isSubscribedToAllAudits: Boolean! (scalar)
         [JsonProperty("isSubscribedToAllAudits")]
@@ -39,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isSubscribedToAllEvents: Boolean! (scalar)
         [JsonProperty("isSubscribedToAllEvents")]
         public System.Boolean? IsSubscribedToAllEvents { get; set; }
+
+        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
+        // GraphQL -> isSubscribedToAllObjectTypes: Boolean! (scalar)
+        [JsonProperty("isSubscribedToAllObjectTypes")]
+        public System.Boolean? IsSubscribedToAllObjectTypes { get; set; }
 
 
         #endregion
@@ -52,8 +62,10 @@ namespace RubrikSecurityCloud.Types
     public SubscriptionType Set(
         List<UserAuditTypeEnum>? AuditTypes = null,
         List<ActivityTypeEnum>? EventTypes = null,
+        List<EventObjectType>? ObjectTypes = null,
         System.Boolean? IsSubscribedToAllAudits = null,
-        System.Boolean? IsSubscribedToAllEvents = null
+        System.Boolean? IsSubscribedToAllEvents = null,
+        System.Boolean? IsSubscribedToAllObjectTypes = null
     ) 
     {
         if ( AuditTypes != null ) {
@@ -62,11 +74,17 @@ namespace RubrikSecurityCloud.Types
         if ( EventTypes != null ) {
             this.EventTypes = EventTypes;
         }
+        if ( ObjectTypes != null ) {
+            this.ObjectTypes = ObjectTypes;
+        }
         if ( IsSubscribedToAllAudits != null ) {
             this.IsSubscribedToAllAudits = IsSubscribedToAllAudits;
         }
         if ( IsSubscribedToAllEvents != null ) {
             this.IsSubscribedToAllEvents = IsSubscribedToAllEvents;
+        }
+        if ( IsSubscribedToAllObjectTypes != null ) {
+            this.IsSubscribedToAllObjectTypes = IsSubscribedToAllObjectTypes;
         }
         return this;
     }
@@ -100,6 +118,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "eventTypes\n" ;
             }
         }
+        //      C# -> List<EventObjectType>? ObjectTypes
+        // GraphQL -> objectTypes: [EventObjectType!]! (enum)
+        if (this.ObjectTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectTypes\n" ;
+            } else {
+                s += ind + "objectTypes\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsSubscribedToAllAudits
         // GraphQL -> isSubscribedToAllAudits: Boolean! (scalar)
         if (this.IsSubscribedToAllAudits != null) {
@@ -116,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isSubscribedToAllEvents\n" ;
             } else {
                 s += ind + "isSubscribedToAllEvents\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
+        // GraphQL -> isSubscribedToAllObjectTypes: Boolean! (scalar)
+        if (this.IsSubscribedToAllObjectTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSubscribedToAllObjectTypes\n" ;
+            } else {
+                s += ind + "isSubscribedToAllObjectTypes\n" ;
             }
         }
         return s;
@@ -159,6 +195,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EventTypes = null;
         }
+        //      C# -> List<EventObjectType>? ObjectTypes
+        // GraphQL -> objectTypes: [EventObjectType!]! (enum)
+        if (ec.Includes("objectTypes",true))
+        {
+            if(this.ObjectTypes == null) {
+
+                this.ObjectTypes = new List<EventObjectType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectTypes != null && ec.Excludes("objectTypes",true))
+        {
+            this.ObjectTypes = null;
+        }
         //      C# -> System.Boolean? IsSubscribedToAllAudits
         // GraphQL -> isSubscribedToAllAudits: Boolean! (scalar)
         if (ec.Includes("isSubscribedToAllAudits",true))
@@ -192,6 +245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsSubscribedToAllEvents != null && ec.Excludes("isSubscribedToAllEvents",true))
         {
             this.IsSubscribedToAllEvents = null;
+        }
+        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
+        // GraphQL -> isSubscribedToAllObjectTypes: Boolean! (scalar)
+        if (ec.Includes("isSubscribedToAllObjectTypes",true))
+        {
+            if(this.IsSubscribedToAllObjectTypes == null) {
+
+                this.IsSubscribedToAllObjectTypes = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSubscribedToAllObjectTypes != null && ec.Excludes("isSubscribedToAllObjectTypes",true))
+        {
+            this.IsSubscribedToAllObjectTypes = null;
         }
     }
 

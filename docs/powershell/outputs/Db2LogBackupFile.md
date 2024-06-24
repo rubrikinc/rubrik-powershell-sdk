@@ -9,3 +9,11 @@ Backup file associated with the Db2 log back object.
   - The ID for the Db2 log back object.
 - endTime: DateTime
   - End time for log backup.
+- startTime: DateTime
+  - Start time for log backup.
+- logFileName: System.String
+  - Name of the log file.
+- chainNumber: System.String
+  - Chain number for the log backup.
+- partitionNumber: System.Int32
+  - Partition number for the log backup.

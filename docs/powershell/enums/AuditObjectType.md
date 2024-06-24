@@ -125,3 +125,4 @@ Represents all the object types for which we expect to see audits.
 - SALESFORCE_METADATA - Salesforce metadata.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - INTEL_FEED - Threat intel.
+- NUTANIX_ERA - Nutanix Era audit object.

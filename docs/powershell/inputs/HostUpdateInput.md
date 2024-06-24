@@ -9,8 +9,6 @@ Supported in v5.0+
   - Supported in v5.0+
 - mssqlCbtDriverInstalled: System.Boolean
   - When CBT is not enabled on the specified Windows host, set this property to false to instruct the Rubrik cluster to remove the CBT driver from a specified Windows host. Before using this property, disable CBT on the specified Windows host by setting the value of mssqlCbtEnabled to not enabled.
-- nasConfig: NasConfigInput
-  - Supported in v5.0+
 - oracleQueryUser: System.String
   - Supported in v5.0+
       Specifies the Oracle username for an account with query privileges. The account must have query privileges for a specified Oracle installation to enable Oracle discovery queries for that installation.
@@ -22,8 +20,6 @@ Supported in v5.0+
 - alias: System.String
   - Supported in v5.1+
       A user-specified string that returns this host in searches.
-- hdfsConfig: HdfsConfigInput
-  - Supported in v5.2-v9.1
 - isOracleHost: System.Boolean
   - Supported in v5.2+
       v5.2-v5.3: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
@@ -42,10 +38,14 @@ Supported in v5.0+
 - isRefreshPaused: System.Boolean
   - Supported in v9.0+
       A Boolean that specifies whether the host refresh is paused or not.
-- mssqlSddUserCredentials: SddUserCredentialsInput
-  - Supported in v9.2
-      The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
 - hostVfdEnabled: HostVfdInstallConfig
   - Supported in v5.0+
 - mssqlCbtEnabled: MssqlCbtStatusType
+  - Supported in v5.0+
+- hdfsConfig: HdfsConfigInput
+  - Supported in v5.2-v9.1
+- mssqlSddUserCredentials: SddUserCredentialsInput
+  - Supported in v9.2
+      The user credentials for querying SQL server instance on the host for Sensitive Data Discovery.
+- nasConfig: NasConfigInput
   - Supported in v5.0+

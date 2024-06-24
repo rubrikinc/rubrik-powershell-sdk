@@ -10,8 +10,6 @@
   - Specifies if Physical Host is an Oracle Host.
 - oracleUserDetails: OracleUserDetails
   - The Oracle User details of this Physical Host.
-- nasMigrationInfo: System.String
-  - Information pertaining to migration of the NAS host from Rubrik CDM to RSC.
 - nasVendorType: System.String
   - Specifies the NAS vendor, which can be ISILON, NETAPP, FLASHBLADE, or NUTANIX.
 - isChangelistEnabled: System.Boolean
@@ -24,6 +22,8 @@
   - The default CBT status of this Physical Host.
 - cbtStatus: System.String
   - The CBT status of this Physical Host.
+- nasMigrationInfo: System.String
+  - Information pertaining to switching the NAS host from Rubrik CDM to RSC.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. Currently for Volume Group use only.
 - descendantConnection: PhysicalHostDescendantTypeConnection
@@ -76,3 +76,5 @@
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

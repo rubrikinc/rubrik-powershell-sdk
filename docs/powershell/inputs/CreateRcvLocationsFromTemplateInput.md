@@ -17,3 +17,5 @@ Input for creating Rubrik Cloud Vault locations.
   - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
 - rsaKey: System.String
   - RSA key for the RCV location.
+- azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
+  - Azure Key Vault key to encrypt the archival target.

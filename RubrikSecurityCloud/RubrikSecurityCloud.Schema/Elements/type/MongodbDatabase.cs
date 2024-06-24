@@ -126,6 +126,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalPath")]
         public List<PathNode>? PhysicalPath { get; set; }
 
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        public CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -205,6 +215,8 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? LogicalPath = null,
         MongodbDatabasePhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
+        CompactSlaDomain? RscNativeObjectPendingSla = null,
+        SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null,
         MongodbSource? Source = null
     ) 
@@ -271,6 +283,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
+        }
+        if ( RscNativeObjectPendingSla != null ) {
+            this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -514,6 +532,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (this.RscNativeObjectPendingSla != null) {
+            var fspec = this.RscNativeObjectPendingSla.AsFieldSpec(conf.Child("rscNativeObjectPendingSla"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rscNativeObjectPendingSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -941,6 +983,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
         {
             this.PhysicalPath = null;
+        }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        if (ec.Includes("rscNativeObjectPendingSla",false))
+        {
+            if(this.RscNativeObjectPendingSla == null) {
+
+                this.RscNativeObjectPendingSla = new CompactSlaDomain();
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            } else {
+
+                this.RscNativeObjectPendingSla.ApplyExploratoryFieldSpec(ec.NewChild("rscNativeObjectPendingSla"));
+
+            }
+        }
+        else if (this.RscNativeObjectPendingSla != null && ec.Excludes("rscNativeObjectPendingSla",false))
+        {
+            this.RscNativeObjectPendingSla = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

@@ -9,5 +9,7 @@ Details of an AWS cloud account.
   - Name of cloud account.
 - seamlessFlowEnabled: System.Boolean
   - Whether seamless setup flow is enabled on cloud account.
+- orgName: System.String
+  - The AWS organization name with which you onboarded the AWS account.
 - cloudType: AwsCloudType
   - Cloud type (Standard/China) for the cloud account.

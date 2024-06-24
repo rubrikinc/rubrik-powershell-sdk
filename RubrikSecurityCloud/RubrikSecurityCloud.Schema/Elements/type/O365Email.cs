@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        [JsonProperty("hierarchyType")]
+        public ExchangeItemHierarchyType? HierarchyType { get; set; }
+
         //      C# -> System.String? From
         // GraphQL -> from: String (scalar)
         [JsonProperty("from")]
@@ -30,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> DateTime? LastModifiedDateTime
+        // GraphQL -> lastModifiedDateTime: DateTime (scalar)
+        [JsonProperty("lastModifiedDateTime")]
+        public DateTime? LastModifiedDateTime { get; set; }
 
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
@@ -76,8 +86,10 @@ namespace RubrikSecurityCloud.Types
     }
 
     public O365Email Set(
+        ExchangeItemHierarchyType? HierarchyType = null,
         System.String? From = null,
         System.String? Id = null,
+        DateTime? LastModifiedDateTime = null,
         System.String? ParentFolderId = null,
         DateTime? ReceivedDateTime = null,
         DateTime? SentDateTime = null,
@@ -87,11 +99,17 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? ToRecipients = null
     ) 
     {
+        if ( HierarchyType != null ) {
+            this.HierarchyType = HierarchyType;
+        }
         if ( From != null ) {
             this.From = From;
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( LastModifiedDateTime != null ) {
+            this.LastModifiedDateTime = LastModifiedDateTime;
         }
         if ( ParentFolderId != null ) {
             this.ParentFolderId = ParentFolderId;
@@ -128,6 +146,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        if (this.HierarchyType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hierarchyType\n" ;
+            } else {
+                s += ind + "hierarchyType\n" ;
+            }
+        }
         //      C# -> System.String? From
         // GraphQL -> from: String (scalar)
         if (this.From != null) {
@@ -144,6 +171,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> DateTime? LastModifiedDateTime
+        // GraphQL -> lastModifiedDateTime: DateTime (scalar)
+        if (this.LastModifiedDateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModifiedDateTime\n" ;
+            } else {
+                s += ind + "lastModifiedDateTime\n" ;
             }
         }
         //      C# -> System.String? ParentFolderId
@@ -216,6 +252,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        if (ec.Includes("hierarchyType",true))
+        {
+            if(this.HierarchyType == null) {
+
+                this.HierarchyType = new ExchangeItemHierarchyType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HierarchyType != null && ec.Excludes("hierarchyType",true))
+        {
+            this.HierarchyType = null;
+        }
         //      C# -> System.String? From
         // GraphQL -> from: String (scalar)
         if (ec.Includes("from",true))
@@ -249,6 +302,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> DateTime? LastModifiedDateTime
+        // GraphQL -> lastModifiedDateTime: DateTime (scalar)
+        if (ec.Includes("lastModifiedDateTime",true))
+        {
+            if(this.LastModifiedDateTime == null) {
+
+                this.LastModifiedDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModifiedDateTime != null && ec.Excludes("lastModifiedDateTime",true))
+        {
+            this.LastModifiedDateTime = null;
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)

@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bypassProxy")]
         public System.Boolean? BypassProxy { get; set; }
 
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
+
 
         #endregion
 

@@ -219,6 +219,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MssqlDatabase")]
         MSSQL_DATABASE,
 
+        [EnumMember(Value = "NUTANIX_ERA")]
+        NUTANIX_ERA,
+
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
         NUTANIX_PRISM_CENTRAL,
 

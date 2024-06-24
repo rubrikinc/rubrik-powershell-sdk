@@ -67,6 +67,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nonRubrikRecipientEmails")]
         public List<System.String>? NonRubrikRecipientEmails { get; set; }
 
+        //      C# -> System.String? TimeZone
+        // GraphQL -> timeZone: String (scalar)
+        [JsonProperty("timeZone")]
+        public System.String? TimeZone { get; set; }
+
         //      C# -> System.Boolean? UpdateCreator
         // GraphQL -> updateCreator: Boolean (scalar)
         [JsonProperty("updateCreator")]

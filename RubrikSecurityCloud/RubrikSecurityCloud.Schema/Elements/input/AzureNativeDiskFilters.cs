@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fileIndexingFilter")]
         public AzureNativeDiskFileIndexingFilter? FileIndexingFilter { get; set; }
 
+        //      C# -> OrgFilter? OrgFilter
+        // GraphQL -> orgFilter: OrgFilter (input)
+        [JsonProperty("orgFilter")]
+        public OrgFilter? OrgFilter { get; set; }
+
 
         #endregion
 

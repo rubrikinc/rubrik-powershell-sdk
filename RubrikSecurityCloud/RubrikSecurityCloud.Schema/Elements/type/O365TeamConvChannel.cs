@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("membershipType")]
         public ChannelMembershipType? MembershipType { get; set; }
 
+        //      C# -> System.String? ChannelId
+        // GraphQL -> channelId: String (scalar)
+        [JsonProperty("channelId")]
+        public System.String? ChannelId { get; set; }
+
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String! (scalar)
         [JsonProperty("folderId")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public O365TeamConvChannel Set(
         ChannelMembershipType? MembershipType = null,
+        System.String? ChannelId = null,
         System.String? FolderId = null,
         System.String? Name = null,
         System.String? NaturalId = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( MembershipType != null ) {
             this.MembershipType = MembershipType;
+        }
+        if ( ChannelId != null ) {
+            this.ChannelId = ChannelId;
         }
         if ( FolderId != null ) {
             this.FolderId = FolderId;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "membershipType\n" ;
             } else {
                 s += ind + "membershipType\n" ;
+            }
+        }
+        //      C# -> System.String? ChannelId
+        // GraphQL -> channelId: String (scalar)
+        if (this.ChannelId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "channelId\n" ;
+            } else {
+                s += ind + "channelId\n" ;
             }
         }
         //      C# -> System.String? FolderId
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MembershipType != null && ec.Excludes("membershipType",true))
         {
             this.MembershipType = null;
+        }
+        //      C# -> System.String? ChannelId
+        // GraphQL -> channelId: String (scalar)
+        if (ec.Includes("channelId",true))
+        {
+            if(this.ChannelId == null) {
+
+                this.ChannelId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelId != null && ec.Excludes("channelId",true))
+        {
+            this.ChannelId = null;
         }
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String! (scalar)

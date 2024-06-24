@@ -17,5 +17,7 @@ Cloud account features.
 - CLOUD_NATIVE_BLOB_PROTECTION - Cloud account feature is Cloud Native Blob Protection.
 - KUBERNETES_PROTECTION - Cloud account feature is Kubernetes Protection.
 - DATA_CENTER_ROLE_BASED_ARCHIVAL - Cloud account feature is Data Center Role Based Archival.
+- LAMINAR_CROSS_ACCOUNT - Cloud account feature is Laminar Cross Account.
+- LAMINAR_INTERNAL - Cloud account feature is Laminar Internal.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

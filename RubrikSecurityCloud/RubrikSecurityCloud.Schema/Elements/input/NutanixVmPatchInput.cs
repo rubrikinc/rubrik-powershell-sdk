@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPaused")]
         public System.Boolean? IsPaused { get; set; }
 
+        //      C# -> CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate (enum)
+        [JsonProperty("snapshotConsistencyMandate")]
+        public CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
+
         //      C# -> NutanixVirtualMachineScriptDetailInput? PostBackupScript
         // GraphQL -> postBackupScript: NutanixVirtualMachineScriptDetailInput (input)
         [JsonProperty("postBackupScript")]
@@ -48,11 +53,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> preBackupScript: NutanixVirtualMachineScriptDetailInput (input)
         [JsonProperty("preBackupScript")]
         public NutanixVirtualMachineScriptDetailInput? PreBackupScript { get; set; }
-
-        //      C# -> CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate
-        // GraphQL -> snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate (enum)
-        [JsonProperty("snapshotConsistencyMandate")]
-        public CdmNutanixSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
 
 
         #endregion

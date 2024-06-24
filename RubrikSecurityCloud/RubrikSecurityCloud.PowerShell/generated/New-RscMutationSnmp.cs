@@ -91,10 +91,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	snmpConfigV50 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# OPTIONAL
+    /// 		users = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -108,33 +120,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				port = $someInt
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		users = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV51 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
     /// 		# OPTIONAL
-    /// 		trapReceiverConfigs = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
-    /// 				# REQUIRED
-    /// 				address = $someString
-    /// 				# REQUIRED
-    /// 				port = $someInt
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
     /// 		users = @(
     /// 			$someString
     /// 		)
@@ -142,11 +133,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isEnabled = $someBoolean
     /// 		# REQUIRED
     /// 		snmpAgentPort = $someInt
+    /// 		# OPTIONAL
+    /// 		trapReceiverConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				user = $someString
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# REQUIRED
+    /// 				address = $someString
+    /// 				# REQUIRED
+    /// 				port = $someInt
+    /// 			}
+    /// 		)
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV52 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -171,15 +179,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV53 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -204,15 +212,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV60 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -237,15 +245,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV70 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -270,15 +278,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV80 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -303,15 +311,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV81 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -336,15 +344,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV90 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -369,15 +377,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV91 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -402,15 +410,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV92 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		snmpAgentPort = $someInt
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
@@ -435,15 +443,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 		)
-    /// 		# REQUIRED
-    /// 		isEnabled = $someBoolean
-    /// 		# REQUIRED
-    /// 		snmpAgentPort = $someInt
     /// 	}
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -530,10 +530,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.UpdateSnmpConfigFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	snmpConfigV50 = @{
 		# OPTIONAL
 		communityString = $someString
+		# OPTIONAL
+		users = @(
+			$someString
+		)
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -547,33 +559,12 @@ $query.Var.input = @{
 				port = $someInt
 			}
 		)
-		# OPTIONAL
-		users = @(
-			$someString
-		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV51 = @{
 		# OPTIONAL
 		communityString = $someString
 		# OPTIONAL
-		trapReceiverConfigs = @(
-			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
-				# REQUIRED
-				address = $someString
-				# REQUIRED
-				port = $someInt
-			}
-		)
-		# OPTIONAL
 		users = @(
 			$someString
 		)
@@ -581,11 +572,28 @@ $query.Var.input = @{
 		isEnabled = $someBoolean
 		# REQUIRED
 		snmpAgentPort = $someInt
+		# OPTIONAL
+		trapReceiverConfigs = @(
+			@{
+				# OPTIONAL
+				user = $someString
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# REQUIRED
+				address = $someString
+				# REQUIRED
+				port = $someInt
+			}
+		)
 	}
 	# OPTIONAL
 	snmpConfigV52 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -610,15 +618,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV53 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -643,15 +651,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV60 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -676,15 +684,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV70 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -709,15 +717,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV80 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -742,15 +750,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV81 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -775,15 +783,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV90 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -808,15 +816,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV91 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -841,15 +849,15 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
 	# OPTIONAL
 	snmpConfigV92 = @{
 		# OPTIONAL
 		communityString = $someString
+		# REQUIRED
+		isEnabled = $someBoolean
+		# REQUIRED
+		snmpAgentPort = $someInt
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
@@ -874,15 +882,7 @@ $query.Var.input = @{
 				username = $someString
 			}
 		)
-		# REQUIRED
-		isEnabled = $someBoolean
-		# REQUIRED
-		snmpAgentPort = $someInt
 	}
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	id = $someString
 }"
             );
         }

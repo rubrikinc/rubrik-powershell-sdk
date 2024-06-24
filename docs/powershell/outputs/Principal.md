@@ -7,3 +7,5 @@ LDAP principal.
 - name: System.String
 - email: System.String
 - description: System.String
+- authDomainName: System.String
+  - Name of the authentication domain.

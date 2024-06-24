@@ -15,6 +15,8 @@ Oracle live mount.
   - Indicates if mount is files only.
 - isInstantRecovered: System.Boolean
   - Indicates whether this mount was created during an instant recovery or live mount.
+- sourceDatabaseName: System.String
+  - Name of the source database that has been mounted.
 - targetOracleRac: OracleRac
   - Target Oracle RAC of the live mount. If the live mount target is an Oracle Host, this value will be null and the field targetOracleHost will be populated instead.
 - targetOracleHost: OracleHost

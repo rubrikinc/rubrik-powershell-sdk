@@ -441,6 +441,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	vcenterConfig = @{
     /// 		# OPTIONAL
+    /// 		id = $someString
+    /// 		# OPTIONAL
     /// 		connectionConfig = @{
     /// 			# OPTIONAL
     /// 			caCerts = $someString
@@ -451,8 +453,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
-    /// 		# OPTIONAL
-    /// 		id = $someString
     /// 	}
     /// }
     /// 
@@ -994,6 +994,8 @@ $query.Var.input = @{
 	# REQUIRED
 	vcenterConfig = @{
 		# OPTIONAL
+		id = $someString
+		# OPTIONAL
 		connectionConfig = @{
 			# OPTIONAL
 			caCerts = $someString
@@ -1004,8 +1006,6 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
-		# OPTIONAL
-		id = $someString
 	}
 }"
             );

@@ -1,8 +1,6 @@
 ### FilesetCreateInput
 Supported in v5.0+
 
-- arraySpec: FilesetArraySpecInput
-  - Supported in v5.0+
 - hostId: System.String
   - Supported in v5.0+
 - isPassthrough: System.Boolean
@@ -30,5 +28,7 @@ Supported in v5.0+
   - Specifies whether the fileset is managed by Rubrik Security Cloud.
 - isPolarisNasModel: System.Boolean
   - Specifies whether the fileset is created in Rubrik Security Cloud and is based on the new NAS model.
+- arraySpec: FilesetArraySpecInput
+  - Supported in v5.0+
 - templateId: System.String
   - Required. Supported in v5.0+

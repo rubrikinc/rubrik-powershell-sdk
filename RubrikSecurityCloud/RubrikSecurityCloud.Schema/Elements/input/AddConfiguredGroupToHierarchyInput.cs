@@ -45,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pdls")]
         public List<System.String>? Pdls { get; set; }
 
+        //      C# -> WorkloadLevelHierarchy? Workload
+        // GraphQL -> workload: WorkloadLevelHierarchy (enum)
+        [JsonProperty("workload")]
+        public WorkloadLevelHierarchy? Workload { get; set; }
+
+        //      C# -> List<GroupFilterAttribute>? GroupFilterAttributes
+        // GraphQL -> groupFilterAttributes: [GroupFilterAttribute!] (input)
+        [JsonProperty("groupFilterAttributes")]
+        public List<GroupFilterAttribute>? GroupFilterAttributes { get; set; }
+
 
         #endregion
 

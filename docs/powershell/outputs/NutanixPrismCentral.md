@@ -15,6 +15,8 @@ Nutanix Prism Central details.
   - Nutanix Prism Central version.
 - nutanixClusterIds: list of System.Strings
   - List of Nutanix Clusters that are protected as part of this Nutanix Prism Central.
+- isDrEnabled: System.Boolean
+  - Specifies whether Nutanix DR support is enabled for the Prism Central object.
 - id: System.String
   - Object ID.
 - connectionStatus: RefreshableObjectConnectionStatus
@@ -69,6 +71,8 @@ Nutanix Prism Central details.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - duplicateObjectsAbsoluteCount: System.Int32
   - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
 - duplicateObjects: list of CdmHierarchyObjects

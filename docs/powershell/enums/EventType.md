@@ -58,3 +58,4 @@ Enum representing all the possible event types.
 - THREAT_FEED - Threat feed event type.
 - THREAT_MONITORING - Threat monitoring event type.
 - SCHEDULE_RECOVERY - Orchestrated Application Recovery schedule-recovery event type.
+- TENANT_QUOTA - Tenant quota event type.

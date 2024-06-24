@@ -156,6 +156,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TENANT_OVERLAP")]
         TENANT_OVERLAP,
 
+        [EnumMember(Value = "TENANT_QUOTA")]
+        TENANT_QUOTA,
+
         [EnumMember(Value = "THREAT_FEED")]
         THREAT_FEED,
 

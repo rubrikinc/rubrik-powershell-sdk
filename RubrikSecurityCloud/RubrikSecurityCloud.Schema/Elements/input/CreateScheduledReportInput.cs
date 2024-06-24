@@ -72,6 +72,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updateCreator")]
         public System.Boolean? UpdateCreator { get; set; }
 
+        //      C# -> System.String? TimeZone
+        // GraphQL -> timeZone: String (scalar)
+        [JsonProperty("timeZone")]
+        public System.String? TimeZone { get; set; }
+
         //      C# -> List<WeekDay>? WeeklyDays
         // GraphQL -> weeklyDays: [WeekDay!] (enum)
         [JsonProperty("weeklyDays")]

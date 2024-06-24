@@ -48,6 +48,7 @@ Enum representing different type of activities.
 - ResourceOperations
 - Backup
 - Sync
+- TENANT_QUOTA - Activity representing tenant quota event type.
 - Hardware
 - TestFailover
 - Recovery

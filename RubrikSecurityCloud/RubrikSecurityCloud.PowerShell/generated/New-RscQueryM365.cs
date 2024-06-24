@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 7
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'Microsoft 365' API domain:
-    /// DayToDayModeBackupStats, DayToDayModeStats, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
+    /// DayToDayModeBackupStats, DayToDayModeStats, DirectoryObjectAttributes, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
     /// </summary>
     /// <description>
     /// New-RscQueryM365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 7 operations
+    /// There are 8 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: DayToDayModeBackupStats, DayToDayModeStats, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
+    /// one of: DayToDayModeBackupStats, DayToDayModeStats, DirectoryObjectAttributes, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, or Regions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -131,6 +131,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: DayToDayModeStats
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DirectoryObjectAttributes operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: DirectoryObjectAttributes
+    /// 
+    /// $query = New-RscQueryM365 -DirectoryObjectAttributes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	orgId = $someString
+    /// 	# REQUIRED
+    /// 	objectType = $someDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DirectoryObjectType]) for enum values.
+    /// 	# REQUIRED
+    /// 	attributeType = $someAttributeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	searchTextPrefix = $someString
+    /// 	# REQUIRED
+    /// 	maxResults = $someInt
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ListO365DirectoryObjectAttributesResp
     /// 
     /// 
     /// 
@@ -302,6 +341,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "DayToDayModeBackupStats",
                 "DayToDayModeStats",
+                "DirectoryObjectAttributes",
                 "OnboardingModeBackupStats",
                 "OnboardingModeStats",
                 "OrgBackupLocations",
@@ -327,6 +367,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DayToDayModeStats":
                         this.ProcessRecord_DayToDayModeStats();
+                        break;
+                    case "DirectoryObjectAttributes":
+                        this.ProcessRecord_DirectoryObjectAttributes();
                         break;
                     case "OnboardingModeBackupStats":
                         this.ProcessRecord_OnboardingModeBackupStats();
@@ -369,6 +412,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DayToDayModeStats";
             // Create new graphql operation m365DayToDayModeStats
             InitQueryM365DayToDayModeStats();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // m365DirectoryObjectAttributes.
+        internal void ProcessRecord_DirectoryObjectAttributes()
+        {
+            this._logger.name += " -DirectoryObjectAttributes";
+            // Create new graphql operation m365DirectoryObjectAttributes
+            InitQueryM365DirectoryObjectAttributes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -463,6 +515,37 @@ $query.Var.backupStatsTimeRange = $someBackupStatsTimeRange # Call [Enum]::GetVa
 $query.Var.orgId = $someString
 # REQUIRED
 $query.Var.dashboardWorkloadType = $someM365DashboardWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardWorkloadType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // m365DirectoryObjectAttributes(input: ListM365DirectoryObjectAttributesInput!): ListO365DirectoryObjectAttributesResp!
+        internal void InitQueryM365DirectoryObjectAttributes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ListM365DirectoryObjectAttributesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryM365DirectoryObjectAttributes",
+                "($input: ListM365DirectoryObjectAttributesInput!)",
+                "ListO365DirectoryObjectAttributesResp",
+                Query.M365DirectoryObjectAttributes_ObjectFieldSpec,
+                Query.M365DirectoryObjectAttributesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	orgId = $someString
+	# REQUIRED
+	objectType = $someDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DirectoryObjectType]) for enum values.
+	# REQUIRED
+	attributeType = $someAttributeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeType]) for enum values.
+	# OPTIONAL
+	searchTextPrefix = $someString
+	# REQUIRED
+	maxResults = $someInt
+}"
             );
         }
 

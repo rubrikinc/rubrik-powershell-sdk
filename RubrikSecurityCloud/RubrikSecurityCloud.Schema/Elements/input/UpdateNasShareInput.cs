@@ -29,15 +29,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exportPoint")]
         public System.String? ExportPoint { get; set; }
 
-        //      C# -> NasShareCredentialsInput? Credentials
-        // GraphQL -> credentials: NasShareCredentialsInput (input)
-        [JsonProperty("credentials")]
-        public NasShareCredentialsInput? Credentials { get; set; }
-
         //      C# -> System.String? NasSourceId
         // GraphQL -> nasSourceId: String (scalar)
         [JsonProperty("nasSourceId")]
         public System.String? NasSourceId { get; set; }
+
+        //      C# -> NasShareCredentialsInput? Credentials
+        // GraphQL -> credentials: NasShareCredentialsInput (input)
+        [JsonProperty("credentials")]
+        public NasShareCredentialsInput? Credentials { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

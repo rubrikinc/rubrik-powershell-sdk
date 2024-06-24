@@ -17,9 +17,9 @@ Describe -Name 'Verify correct import' -Fixture {
         Should -BeLikeExactly '*Disconnect-Rsc*'
     }
     # Arbitrary command that should always be available
-    It -Name 'Get-RscVsphereVm exists' -Test {
-        (Get-Command -Name Get-RscVsphereVm -ErrorAction SilentlyContinue) | Out-String |
-        Should -BeLikeExactly '*Get-RscVsphereVm*'
+    It -Name 'Get-RscVmwareVm exists' -Test {
+        (Get-Command -Name Get-RscVmwareVm -ErrorAction SilentlyContinue) | Out-String |
+        Should -BeLikeExactly '*Get-RscVmwareVm*'
     }
 
     # Make sure exported command list is the same on PowerShell 7 and PowerShell 5

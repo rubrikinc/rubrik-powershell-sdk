@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterMetadata")]
         public NutanixClusterMetadata? ClusterMetadata { get; set; }
 
+        //      C# -> List<NutanixClusterNetwork>? ClusterNetworks
+        // GraphQL -> clusterNetworks: [NutanixClusterNetwork!]! (type)
+        [JsonProperty("clusterNetworks")]
+        public List<NutanixClusterNetwork>? ClusterNetworks { get; set; }
+
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
         [JsonProperty("connectionStatus")]
@@ -186,10 +191,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
+
+        //      C# -> List<NutanixStorageContainer>? StorageContainers
+        // GraphQL -> storageContainers: [NutanixStorageContainer!]! (type)
+        [JsonProperty("storageContainers")]
+        public List<NutanixStorageContainer>? StorageContainers { get; set; }
 
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
@@ -262,6 +277,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         NutanixClusterMetadata? ClusterMetadata = null,
+        List<NutanixClusterNetwork>? ClusterNetworks = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         NutanixClusterDescendantTypeConnection? DescendantConnection = null,
@@ -272,7 +288,9 @@ namespace RubrikSecurityCloud.Types
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
-        SnapshotDistribution? SnapshotDistribution = null
+        SecurityMetadata? SecurityMetadata = null,
+        SnapshotDistribution? SnapshotDistribution = null,
+        List<NutanixStorageContainer>? StorageContainers = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -344,6 +362,9 @@ namespace RubrikSecurityCloud.Types
         if ( ClusterMetadata != null ) {
             this.ClusterMetadata = ClusterMetadata;
         }
+        if ( ClusterNetworks != null ) {
+            this.ClusterNetworks = ClusterNetworks;
+        }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
         }
@@ -374,8 +395,14 @@ namespace RubrikSecurityCloud.Types
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
         }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
+        }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( StorageContainers != null ) {
+            this.StorageContainers = StorageContainers;
         }
         return this;
     }
@@ -627,6 +654,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<NutanixClusterNetwork>? ClusterNetworks
+        // GraphQL -> clusterNetworks: [NutanixClusterNetwork!]! (type)
+        if (this.ClusterNetworks != null) {
+            var fspec = this.ClusterNetworks.AsFieldSpec(conf.Child("clusterNetworks"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterNetworks" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
         if (this.ConnectionStatus != null) {
@@ -747,6 +786,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
@@ -756,6 +807,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<NutanixStorageContainer>? StorageContainers
+        // GraphQL -> storageContainers: [NutanixStorageContainer!]! (type)
+        if (this.StorageContainers != null) {
+            var fspec = this.StorageContainers.AsFieldSpec(conf.Child("storageContainers"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageContainers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1193,6 +1256,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.ClusterMetadata = null;
         }
+        //      C# -> List<NutanixClusterNetwork>? ClusterNetworks
+        // GraphQL -> clusterNetworks: [NutanixClusterNetwork!]! (type)
+        if (ec.Includes("clusterNetworks",false))
+        {
+            if(this.ClusterNetworks == null) {
+
+                this.ClusterNetworks = new List<NutanixClusterNetwork>();
+                this.ClusterNetworks.ApplyExploratoryFieldSpec(ec.NewChild("clusterNetworks"));
+
+            } else {
+
+                this.ClusterNetworks.ApplyExploratoryFieldSpec(ec.NewChild("clusterNetworks"));
+
+            }
+        }
+        else if (this.ClusterNetworks != null && ec.Excludes("clusterNetworks",false))
+        {
+            this.ClusterNetworks = null;
+        }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
         if (ec.Includes("connectionStatus",false))
@@ -1383,6 +1465,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.PrimaryClusterLocation = null;
         }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
+        }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (ec.Includes("snapshotDistribution",false))
@@ -1401,6 +1502,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> List<NutanixStorageContainer>? StorageContainers
+        // GraphQL -> storageContainers: [NutanixStorageContainer!]! (type)
+        if (ec.Includes("storageContainers",false))
+        {
+            if(this.StorageContainers == null) {
+
+                this.StorageContainers = new List<NutanixStorageContainer>();
+                this.StorageContainers.ApplyExploratoryFieldSpec(ec.NewChild("storageContainers"));
+
+            } else {
+
+                this.StorageContainers.ApplyExploratoryFieldSpec(ec.NewChild("storageContainers"));
+
+            }
+        }
+        else if (this.StorageContainers != null && ec.Excludes("storageContainers",false))
+        {
+            this.StorageContainers = null;
         }
     }
 

@@ -73,6 +73,8 @@ Share fileset.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cdmLink: System.String
   - A link to view the workload on the CDM cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

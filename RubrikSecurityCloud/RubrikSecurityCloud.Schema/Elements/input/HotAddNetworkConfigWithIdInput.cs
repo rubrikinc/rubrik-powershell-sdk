@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> StaticIpInfoInput? StaticIpInfo
-        // GraphQL -> staticIpInfo: StaticIpInfoInput (input)
-        [JsonProperty("staticIpInfo")]
-        public StaticIpInfoInput? StaticIpInfo { get; set; }
-
         //      C# -> System.String? NetworkId
         // GraphQL -> networkId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("networkId")]
         public System.String? NetworkId { get; set; }
+
+        //      C# -> StaticIpInfoInput? StaticIpInfo
+        // GraphQL -> staticIpInfo: StaticIpInfoInput (input)
+        [JsonProperty("staticIpInfo")]
+        public StaticIpInfoInput? StaticIpInfo { get; set; }
 
 
         #endregion

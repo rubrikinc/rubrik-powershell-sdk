@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Cluster' API domain:
-    /// AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 16 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, RemoveCdm, RemoveClusterNodes, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AddClusterNodes, AddNodesToCloud, GenerateClusterRegistrationToken, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -419,6 +419,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ReleasePersistentExo operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: ReleasePersistentExo
+    /// 
+    /// $query = New-RscMutationCluster -ReleasePersistentExo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// 	# REQUIRED
+    /// 	exocomputeConfigId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RemoveCdm operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -495,6 +528,86 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RequestPersistentExo operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: RequestPersistentExo
+    /// 
+    /// $query = New-RscMutationCluster -RequestPersistentExo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// 	# REQUIRED
+    /// 	exocomputeConfigId = $someString
+    /// 	# OPTIONAL
+    /// 	durationInDays = $someInt
+    /// 	# OPTIONAL
+    /// 	azureSpecificClusterParams = @{
+    /// 		# OPTIONAL
+    /// 		nodeType = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsSpecificClusterParams = @{
+    /// 		# OPTIONAL
+    /// 		nodeKeypairName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RequestPersistentExoclusterReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SetMissingClusterStatus operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: SetMissingClusterStatus
+    /// 
+    /// $query = New-RscMutationCluster -SetMissingClusterStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	disconnectedState = $someMissingClusterDisconnectedState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterDisconnectedState]) for enum values.
+    /// 	# OPTIONAL
+    /// 	exclusionReason = $someString
+    /// 	# REQUIRED
+    /// 	uuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SetMissingClusterStatusReply
     /// 
     /// 
     /// 
@@ -594,6 +707,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	ntpServerConfigs = @(
     /// 		@{
+    /// 			# REQUIRED
+    /// 			server = $someString
     /// 			# OPTIONAL
     /// 			symmetricKey = @{
     /// 				# REQUIRED
@@ -603,8 +718,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				keyType = $someString
     /// 			}
-    /// 			# REQUIRED
-    /// 			server = $someString
     /// 		}
     /// 	)
     /// }
@@ -760,8 +873,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GenerateClusterRegistrationToken",
                 "RecoverCloud",
                 "RegisterCloud",
+                "ReleasePersistentExo",
                 "RemoveCdm",
                 "RemoveClusterNodes",
+                "RequestPersistentExo",
+                "SetMissingClusterStatus",
                 "UpdateClusterDefaultAddress",
                 "UpdateClusterLocation",
                 "UpdateClusterNtpServers",
@@ -798,11 +914,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RegisterCloud":
                         this.ProcessRecord_RegisterCloud();
                         break;
+                    case "ReleasePersistentExo":
+                        this.ProcessRecord_ReleasePersistentExo();
+                        break;
                     case "RemoveCdm":
                         this.ProcessRecord_RemoveCdm();
                         break;
                     case "RemoveClusterNodes":
                         this.ProcessRecord_RemoveClusterNodes();
+                        break;
+                    case "RequestPersistentExo":
+                        this.ProcessRecord_RequestPersistentExo();
+                        break;
+                    case "SetMissingClusterStatus":
+                        this.ProcessRecord_SetMissingClusterStatus();
                         break;
                     case "UpdateClusterDefaultAddress":
                         this.ProcessRecord_UpdateClusterDefaultAddress();
@@ -878,6 +1003,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // releasePersistentExoclusters.
+        internal void ProcessRecord_ReleasePersistentExo()
+        {
+            this._logger.name += " -ReleasePersistentExo";
+            // Create new graphql operation releasePersistentExoclusters
+            InitMutationReleasePersistentExoclusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // removeCdmCluster.
         internal void ProcessRecord_RemoveCdm()
         {
@@ -893,6 +1027,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RemoveClusterNodes";
             // Create new graphql operation removeClusterNodes
             InitMutationRemoveClusterNodes();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // requestPersistentExocluster.
+        internal void ProcessRecord_RequestPersistentExo()
+        {
+            this._logger.name += " -RequestPersistentExo";
+            // Create new graphql operation requestPersistentExocluster
+            InitMutationRequestPersistentExocluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setMissingClusterStatus.
+        internal void ProcessRecord_SetMissingClusterStatus()
+        {
+            this._logger.name += " -SetMissingClusterStatus";
+            // Create new graphql operation setMissingClusterStatus
+            InitMutationSetMissingClusterStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1253,6 +1405,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // releasePersistentExoclusters(input: ReleasePersistentExoclustersInput!): Void
+        internal void InitMutationReleasePersistentExoclusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ReleasePersistentExoclustersInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationReleasePersistentExoclusters",
+                "($input: ReleasePersistentExoclustersInput!)",
+                "System.String",
+                Mutation.ReleasePersistentExoclusters_ObjectFieldSpec,
+                Mutation.ReleasePersistentExoclustersFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+	# REQUIRED
+	exocomputeConfigId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long): Boolean!
         internal void InitMutationRemoveCdmCluster()
         {
@@ -1318,6 +1495,70 @@ $query.Var.input = @{
 			useQuickDrain = $someBoolean
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // requestPersistentExocluster(input: RequestPersistentExoclusterInput!): RequestPersistentExoclusterReply!
+        internal void InitMutationRequestPersistentExocluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RequestPersistentExoclusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRequestPersistentExocluster",
+                "($input: RequestPersistentExoclusterInput!)",
+                "RequestPersistentExoclusterReply",
+                Mutation.RequestPersistentExocluster_ObjectFieldSpec,
+                Mutation.RequestPersistentExoclusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+	# REQUIRED
+	exocomputeConfigId = $someString
+	# OPTIONAL
+	durationInDays = $someInt
+	# OPTIONAL
+	azureSpecificClusterParams = @{
+		# OPTIONAL
+		nodeType = $someString
+	}
+	# OPTIONAL
+	awsSpecificClusterParams = @{
+		# OPTIONAL
+		nodeKeypairName = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setMissingClusterStatus(input: SetMissingClusterStatusInput!): SetMissingClusterStatusReply!
+        internal void InitMutationSetMissingClusterStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetMissingClusterStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetMissingClusterStatus",
+                "($input: SetMissingClusterStatusInput!)",
+                "SetMissingClusterStatusReply",
+                Mutation.SetMissingClusterStatus_ObjectFieldSpec,
+                Mutation.SetMissingClusterStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	disconnectedState = $someMissingClusterDisconnectedState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterDisconnectedState]) for enum values.
+	# OPTIONAL
+	exclusionReason = $someString
+	# REQUIRED
+	uuid = $someString
 }"
             );
         }
@@ -1401,6 +1642,8 @@ $query.Var.input = @{
 	# REQUIRED
 	ntpServerConfigs = @(
 		@{
+			# REQUIRED
+			server = $someString
 			# OPTIONAL
 			symmetricKey = @{
 				# REQUIRED
@@ -1410,8 +1653,6 @@ $query.Var.input = @{
 				# REQUIRED
 				keyType = $someString
 			}
-			# REQUIRED
-			server = $someString
 		}
 	)
 }"

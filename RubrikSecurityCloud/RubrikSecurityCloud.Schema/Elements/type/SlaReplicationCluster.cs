@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("version")]
         public System.String? Version { get; set; }
 
+        //      C# -> DataLocationClusterInfo? ClusterInfo
+        // GraphQL -> clusterInfo: DataLocationClusterInfo! (union)
+        [JsonProperty("clusterInfo")]
+        public DataLocationClusterInfo? ClusterInfo { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public SlaReplicationCluster Set(
         System.String? Id = null,
         System.String? Name = null,
-        System.String? Version = null
+        System.String? Version = null,
+        DataLocationClusterInfo? ClusterInfo = null
     ) 
     {
         if ( Id != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Version != null ) {
             this.Version = Version;
+        }
+        if ( ClusterInfo != null ) {
+            this.ClusterInfo = ClusterInfo;
         }
         return this;
     }
@@ -98,6 +107,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "version\n" ;
             } else {
                 s += ind + "version\n" ;
+            }
+        }
+        //      C# -> DataLocationClusterInfo? ClusterInfo
+        // GraphQL -> clusterInfo: DataLocationClusterInfo! (union)
+        if (this.ClusterInfo != null) {
+            var fspec = this.ClusterInfo.AsFieldSpec(conf.Child("clusterInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -157,6 +178,30 @@ namespace RubrikSecurityCloud.Types
         else if (this.Version != null && ec.Excludes("version",true))
         {
             this.Version = null;
+        }
+        //      C# -> DataLocationClusterInfo? ClusterInfo
+        // GraphQL -> clusterInfo: DataLocationClusterInfo! (union)
+        if (ec.Includes("clusterInfo",false))
+        {
+            if(this.ClusterInfo == null) {
+
+                var impls = new List<DataLocationClusterInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
+                this.ClusterInfo = (DataLocationClusterInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<DataLocationClusterInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("clusterInfo"));
+                this.ClusterInfo = (DataLocationClusterInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.ClusterInfo != null && ec.Excludes("clusterInfo",false))
+        {
+            this.ClusterInfo = null;
         }
     }
 

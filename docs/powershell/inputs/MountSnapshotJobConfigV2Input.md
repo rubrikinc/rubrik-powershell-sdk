@@ -22,19 +22,19 @@ Supported in v5.1+
 - resourcePoolId: System.String
   - Supported in v6.0+
       ID of the resource pool where the new virtual machine will be mounted.
-- vNicBindings: list of VmwareVnicBindingInfoV2Inputs
-  - Supported in v6.0+
-      The network binding for vNIC of the virtual machine.
-- migrationConfig: RelocateMountConfigV2Input
-  - Supported in v8.1+
-      Configuration for migration.
 - shouldMigrateImmediately: System.Boolean
   - Supported in v8.1+
       Specifies whether to trigger migration immediately when the Live Mount succeeds.
+- folderId: System.String
+  - Supported in v9.1+
+      ID of the virtual machine folder where the new virtual machine will be mounted.
+- migrationConfig: RelocateMountConfigV2Input
+  - Supported in v8.1+
+      Configuration for migration.
 - mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input
   - 
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - 
-- folderId: System.String
-  - Supported in v9.1+
-      ID of the virtual machine folder where the new virtual machine will be mounted.
+- vNicBindings: list of VmwareVnicBindingInfoV2Inputs
+  - Supported in v6.0+
+      The network binding for vNIC of the virtual machine.

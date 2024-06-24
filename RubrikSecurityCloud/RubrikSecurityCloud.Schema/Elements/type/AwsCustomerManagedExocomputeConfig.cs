@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("healthCheckStatus")]
         public ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
 
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        [JsonProperty("latestExoclusterDetails")]
+        public ExocomputeClusterDetails? LatestExoclusterDetails { get; set; }
+
 
         #endregion
 
@@ -72,7 +77,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasPcr = null,
         System.String? Message = null,
         System.String? PcrUrl = null,
-        ExocomputeHealthCheckStatus? HealthCheckStatus = null
+        ExocomputeHealthCheckStatus? HealthCheckStatus = null,
+        ExocomputeClusterDetails? LatestExoclusterDetails = null
     ) 
     {
         if ( Region != null ) {
@@ -95,6 +101,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HealthCheckStatus != null ) {
             this.HealthCheckStatus = HealthCheckStatus;
+        }
+        if ( LatestExoclusterDetails != null ) {
+            this.LatestExoclusterDetails = LatestExoclusterDetails;
         }
         return this;
     }
@@ -173,6 +182,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "healthCheckStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        if (this.LatestExoclusterDetails != null) {
+            var fspec = this.LatestExoclusterDetails.AsFieldSpec(conf.Child("latestExoclusterDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestExoclusterDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -303,6 +324,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.HealthCheckStatus != null && ec.Excludes("healthCheckStatus",false))
         {
             this.HealthCheckStatus = null;
+        }
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        if (ec.Includes("latestExoclusterDetails",false))
+        {
+            if(this.LatestExoclusterDetails == null) {
+
+                this.LatestExoclusterDetails = new ExocomputeClusterDetails();
+                this.LatestExoclusterDetails.ApplyExploratoryFieldSpec(ec.NewChild("latestExoclusterDetails"));
+
+            } else {
+
+                this.LatestExoclusterDetails.ApplyExploratoryFieldSpec(ec.NewChild("latestExoclusterDetails"));
+
+            }
+        }
+        else if (this.LatestExoclusterDetails != null && ec.Excludes("latestExoclusterDetails",false))
+        {
+            this.LatestExoclusterDetails = null;
         }
     }
 

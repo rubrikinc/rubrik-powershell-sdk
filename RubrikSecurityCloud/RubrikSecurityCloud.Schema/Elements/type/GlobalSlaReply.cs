@@ -186,6 +186,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotSchedule")]
         public SnapshotSchedule? SnapshotSchedule { get; set; }
 
+        //      C# -> List<SlaDataLocationCluster>? SourceClusters
+        // GraphQL -> sourceClusters: [SlaDataLocationCluster!]! (type)
+        [JsonProperty("sourceClusters")]
+        public List<SlaDataLocationCluster>? SourceClusters { get; set; }
+
         //      C# -> SlaUpgradeInfo? UpgradeInfo
         // GraphQL -> upgradeInfo: SlaUpgradeInfo (type)
         [JsonProperty("upgradeInfo")]
@@ -234,6 +239,7 @@ namespace RubrikSecurityCloud.Types
         ReplicationSpec? ReplicationSpec = null,
         List<ReplicationSpecV2>? ReplicationSpecsV2 = null,
         SnapshotSchedule? SnapshotSchedule = null,
+        List<SlaDataLocationCluster>? SourceClusters = null,
         SlaUpgradeInfo? UpgradeInfo = null
     ) 
     {
@@ -335,6 +341,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotSchedule != null ) {
             this.SnapshotSchedule = SnapshotSchedule;
+        }
+        if ( SourceClusters != null ) {
+            this.SourceClusters = SourceClusters;
         }
         if ( UpgradeInfo != null ) {
             this.UpgradeInfo = UpgradeInfo;
@@ -698,6 +707,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<SlaDataLocationCluster>? SourceClusters
+        // GraphQL -> sourceClusters: [SlaDataLocationCluster!]! (type)
+        if (this.SourceClusters != null) {
+            var fspec = this.SourceClusters.AsFieldSpec(conf.Child("sourceClusters"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceClusters" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1314,6 +1335,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotSchedule != null && ec.Excludes("snapshotSchedule",false))
         {
             this.SnapshotSchedule = null;
+        }
+        //      C# -> List<SlaDataLocationCluster>? SourceClusters
+        // GraphQL -> sourceClusters: [SlaDataLocationCluster!]! (type)
+        if (ec.Includes("sourceClusters",false))
+        {
+            if(this.SourceClusters == null) {
+
+                this.SourceClusters = new List<SlaDataLocationCluster>();
+                this.SourceClusters.ApplyExploratoryFieldSpec(ec.NewChild("sourceClusters"));
+
+            } else {
+
+                this.SourceClusters.ApplyExploratoryFieldSpec(ec.NewChild("sourceClusters"));
+
+            }
+        }
+        else if (this.SourceClusters != null && ec.Excludes("sourceClusters",false))
+        {
+            this.SourceClusters = null;
         }
         //      C# -> SlaUpgradeInfo? UpgradeInfo
         // GraphQL -> upgradeInfo: SlaUpgradeInfo (type)

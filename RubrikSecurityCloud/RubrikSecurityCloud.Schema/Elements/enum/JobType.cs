@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_MOSAIC_STORAGE_LOCATION")]
         DELETE_MOSAIC_STORAGE_LOCATION,
 
+        [EnumMember(Value = "DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER")]
+        DISCOVERED_MSSQL_OBJECTS_NOTIFICATIONS_POLLER,
+
         [EnumMember(Value = "DISCOVERED_MSSQL_OBJECTS_SYNC_METRIC_POLLER")]
         DISCOVERED_MSSQL_OBJECTS_SYNC_METRIC_POLLER,
 
@@ -232,7 +235,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_SNAPSHOT,
 
         [EnumMember(Value = "VSPHERE_UNMOUNT")]
-        VSPHERE_UNMOUNT
+        VSPHERE_UNMOUNT,
+
+        [EnumMember(Value = "VSPHERE_VM_MAKE_PRIMARY")]
+        VSPHERE_VM_MAKE_PRIMARY
 
 
     } // enum JobType

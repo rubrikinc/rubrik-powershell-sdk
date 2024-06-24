@@ -328,6 +328,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// # OPTIONAL
     /// $query.Var.isCrossAccount = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.validReplicationTargetFilter = @{
+    /// 	# OPTIONAL
+    /// 	clusterUuidList = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	replicationTargetTypeList = @(
+    /// 		$someReplicationTargetsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationTargetsType]) for enum values.
+    /// 	)
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -688,6 +699,7 @@ $query.Var.isCrossAccount = $someBoolean"
         //     sortBy: ListValidReplicationTargetsSortByField
         //     sortOrder: SortOrder
         //     isCrossAccount: Boolean
+        //     validReplicationTargetFilter: ListValidReplicationTargetFilter
         //   ): ValidReplicationTargetConnection!
         internal void InitQueryAllValidReplicationTargets()
         {
@@ -699,12 +711,13 @@ $query.Var.isCrossAccount = $someBoolean"
                 Tuple.Create("sortBy", "ListValidReplicationTargetsSortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("isCrossAccount", "Boolean"),
+                Tuple.Create("validReplicationTargetFilter", "ListValidReplicationTargetFilter"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllValidReplicationTargets",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationTargetsSortByField,$sortOrder: SortOrder,$isCrossAccount: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: ListValidReplicationTargetsSortByField,$sortOrder: SortOrder,$isCrossAccount: Boolean,$validReplicationTargetFilter: ListValidReplicationTargetFilter)",
                 "ValidReplicationTargetConnection",
                 Query.AllValidReplicationTargets_ObjectFieldSpec,
                 Query.AllValidReplicationTargetsFieldSpec,
@@ -721,7 +734,18 @@ $query.Var.sortBy = $someListValidReplicationTargetsSortByField # Call [Enum]::G
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$query.Var.isCrossAccount = $someBoolean"
+$query.Var.isCrossAccount = $someBoolean
+# OPTIONAL
+$query.Var.validReplicationTargetFilter = @{
+	# OPTIONAL
+	clusterUuidList = @(
+		$someString
+	)
+	# OPTIONAL
+	replicationTargetTypeList = @(
+		$someReplicationTargetsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationTargetsType]) for enum values.
+	)
+}"
             );
         }
 

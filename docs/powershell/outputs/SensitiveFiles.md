@@ -9,3 +9,5 @@ Sensitive files for different risk categories.
   - Low-risk sensitive files.
 - totalFileCount: SummaryCount
   - Total sensitive files.
+- noRiskFileCount: SummaryCount
+  - No-risk sensitive files.

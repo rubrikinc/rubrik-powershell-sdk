@@ -136,6 +136,14 @@ Register the Rubrik Backup Service that is running on a specified host with the 
 
 - There is a single argument of type VsphereVmRegisterAgentInput.
 - Returns RequestSuccess.
+### registeragentwithorg
+Register Rubrik Backup Service
+
+Supported in v5.0+
+Register the Rubrik Backup Service that is running on a specified host with the specified Rubrik cluster.
+
+- There is a single argument of type VsphereVmRegisterAgentWithOrgInput.
+- Returns RequestSuccess.
 ### update
 Update VM
 

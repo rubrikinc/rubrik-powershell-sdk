@@ -23,3 +23,5 @@ Filters for list of Azure disks.
   - Filter by Exocompute connection status in the disk region.
 - fileIndexingFilter: AzureNativeDiskFileIndexingFilter
   - Filter disks where file indexing is enabled.
+- orgFilter: OrgFilter
+  - Filter by organization ID.

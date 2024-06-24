@@ -118,6 +118,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	azureKeyVaultKey = @{
+    /// 		# REQUIRED
+    /// 		kmsKeyVaultId = $someString
+    /// 		# REQUIRED
+    /// 		keyName = $someString
+    /// 		# REQUIRED
+    /// 		keyVersion = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -395,6 +404,15 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
+	# OPTIONAL
+	azureKeyVaultKey = @{
+		# REQUIRED
+		kmsKeyVaultId = $someString
+		# REQUIRED
+		keyName = $someString
+		# REQUIRED
+		keyVersion = $someString
+	}
 }"
             );
         }

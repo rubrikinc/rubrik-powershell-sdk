@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupId")]
         public System.String? BackupId { get; set; }
 
+        //      C# -> System.String? ChainNumber
+        // GraphQL -> chainNumber: String (scalar)
+        [JsonProperty("chainNumber")]
+        public System.String? ChainNumber { get; set; }
+
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
         [JsonProperty("destinationPath")]
@@ -39,6 +44,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> endTime: DateTime (scalar)
         [JsonProperty("endTime")]
         public DateTime? EndTime { get; set; }
+
+        //      C# -> System.String? LogFileName
+        // GraphQL -> logFileName: String (scalar)
+        [JsonProperty("logFileName")]
+        public System.String? LogFileName { get; set; }
+
+        //      C# -> System.Int32? PartitionNumber
+        // GraphQL -> partitionNumber: Int (scalar)
+        [JsonProperty("partitionNumber")]
+        public System.Int32? PartitionNumber { get; set; }
+
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        [JsonProperty("startTime")]
+        public DateTime? StartTime { get; set; }
 
 
         #endregion
@@ -52,8 +72,12 @@ namespace RubrikSecurityCloud.Types
     public Db2LogBackupFile Set(
         System.Int64? BackupFileSizeInBytes = null,
         System.String? BackupId = null,
+        System.String? ChainNumber = null,
         System.String? DestinationPath = null,
-        DateTime? EndTime = null
+        DateTime? EndTime = null,
+        System.String? LogFileName = null,
+        System.Int32? PartitionNumber = null,
+        DateTime? StartTime = null
     ) 
     {
         if ( BackupFileSizeInBytes != null ) {
@@ -62,11 +86,23 @@ namespace RubrikSecurityCloud.Types
         if ( BackupId != null ) {
             this.BackupId = BackupId;
         }
+        if ( ChainNumber != null ) {
+            this.ChainNumber = ChainNumber;
+        }
         if ( DestinationPath != null ) {
             this.DestinationPath = DestinationPath;
         }
         if ( EndTime != null ) {
             this.EndTime = EndTime;
+        }
+        if ( LogFileName != null ) {
+            this.LogFileName = LogFileName;
+        }
+        if ( PartitionNumber != null ) {
+            this.PartitionNumber = PartitionNumber;
+        }
+        if ( StartTime != null ) {
+            this.StartTime = StartTime;
         }
         return this;
     }
@@ -100,6 +136,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "backupId\n" ;
             }
         }
+        //      C# -> System.String? ChainNumber
+        // GraphQL -> chainNumber: String (scalar)
+        if (this.ChainNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "chainNumber\n" ;
+            } else {
+                s += ind + "chainNumber\n" ;
+            }
+        }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
         if (this.DestinationPath != null) {
@@ -116,6 +161,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "endTime\n" ;
             } else {
                 s += ind + "endTime\n" ;
+            }
+        }
+        //      C# -> System.String? LogFileName
+        // GraphQL -> logFileName: String (scalar)
+        if (this.LogFileName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logFileName\n" ;
+            } else {
+                s += ind + "logFileName\n" ;
+            }
+        }
+        //      C# -> System.Int32? PartitionNumber
+        // GraphQL -> partitionNumber: Int (scalar)
+        if (this.PartitionNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "partitionNumber\n" ;
+            } else {
+                s += ind + "partitionNumber\n" ;
+            }
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
             }
         }
         return s;
@@ -159,6 +231,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.BackupId = null;
         }
+        //      C# -> System.String? ChainNumber
+        // GraphQL -> chainNumber: String (scalar)
+        if (ec.Includes("chainNumber",true))
+        {
+            if(this.ChainNumber == null) {
+
+                this.ChainNumber = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChainNumber != null && ec.Excludes("chainNumber",true))
+        {
+            this.ChainNumber = null;
+        }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
         if (ec.Includes("destinationPath",true))
@@ -192,6 +281,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.EndTime != null && ec.Excludes("endTime",true))
         {
             this.EndTime = null;
+        }
+        //      C# -> System.String? LogFileName
+        // GraphQL -> logFileName: String (scalar)
+        if (ec.Includes("logFileName",true))
+        {
+            if(this.LogFileName == null) {
+
+                this.LogFileName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogFileName != null && ec.Excludes("logFileName",true))
+        {
+            this.LogFileName = null;
+        }
+        //      C# -> System.Int32? PartitionNumber
+        // GraphQL -> partitionNumber: Int (scalar)
+        if (ec.Includes("partitionNumber",true))
+        {
+            if(this.PartitionNumber == null) {
+
+                this.PartitionNumber = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PartitionNumber != null && ec.Excludes("partitionNumber",true))
+        {
+            this.PartitionNumber = null;
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (ec.Includes("startTime",true))
+        {
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
     }
 

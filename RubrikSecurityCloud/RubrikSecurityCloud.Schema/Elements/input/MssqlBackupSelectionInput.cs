@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> MssqlBackupType? BackupType
+        // GraphQL -> backupType: MssqlBackupType (enum)
+        [JsonProperty("backupType")]
+        public MssqlBackupType? BackupType { get; set; }
+
         //      C# -> MssqlRecoveryPointInput? EndPoint
         // GraphQL -> endPoint: MssqlRecoveryPointInput (input)
         [JsonProperty("endPoint")]
@@ -38,11 +43,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> startPoint: MssqlRecoveryPointInput (input)
         [JsonProperty("startPoint")]
         public MssqlRecoveryPointInput? StartPoint { get; set; }
-
-        //      C# -> MssqlBackupType? BackupType
-        // GraphQL -> backupType: MssqlBackupType (enum)
-        [JsonProperty("backupType")]
-        public MssqlBackupType? BackupType { get; set; }
 
 
         #endregion

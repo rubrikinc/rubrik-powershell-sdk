@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<FailoverClusterNodeOrderInput>? NodeOrders
-        // GraphQL -> nodeOrders: [FailoverClusterNodeOrderInput!] (input)
-        [JsonProperty("nodeOrders")]
-        public List<FailoverClusterNodeOrderInput>? NodeOrders { get; set; }
-
         //      C# -> List<System.String>? VirtualIps
         // GraphQL -> virtualIps: [String!] (scalar)
         [JsonProperty("virtualIps")]
@@ -33,6 +28,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vips: [String!] (scalar)
         [JsonProperty("vips")]
         public List<System.String>? Vips { get; set; }
+
+        //      C# -> List<FailoverClusterNodeOrderInput>? NodeOrders
+        // GraphQL -> nodeOrders: [FailoverClusterNodeOrderInput!] (input)
+        [JsonProperty("nodeOrders")]
+        public List<FailoverClusterNodeOrderInput>? NodeOrders { get; set; }
 
 
         #endregion

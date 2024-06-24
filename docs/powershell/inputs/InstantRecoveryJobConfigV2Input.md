@@ -19,16 +19,16 @@ Supported in v5.1+
 - resourcePoolId: System.String
   - Supported in v6.0+
       ID of the resource pool where the new virtual machine will be mounted.
-- vNicBindings: list of VmwareVnicBindingInfoV2Inputs
-  - Supported in v6.0+
-      The network binding for vNIC of the virtual machine.
+- shouldMigrateImmediately: System.Boolean
+  - Supported in v9.0+
+      Specifies whether to trigger datastore migration immediately when the Instant Recovery succeeds.
+- migrationConfig: RelocateMountConfigV2Input
+  - Supported in v9.0+
+      Configuration for datastore migration.
 - mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input
   - 
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - 
-- migrationConfig: RelocateMountConfigV2Input
-  - Supported in v9.0+
-      Configuration for datastore migration.
-- shouldMigrateImmediately: System.Boolean
-  - Supported in v9.0+
-      Specifies whether to trigger datastore migration immediately when the Instant Recovery succeeds.
+- vNicBindings: list of VmwareVnicBindingInfoV2Inputs
+  - Supported in v6.0+
+      The network binding for vNIC of the virtual machine.

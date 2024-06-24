@@ -69,3 +69,5 @@ Metadata for rendering an SLA Domain.
   - Specifies the owner organization of the SLA Domain.
 - archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
   - Upgrade information about the configured archival locations and cascading archival locations.
+- sourceClusters: list of SlaDataLocationClusters
+  - Source clusters configured in the SLA Domain.

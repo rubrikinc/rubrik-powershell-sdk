@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MosaicDatabaseManagementObjectInput? DestinationManagementObjects
-        // GraphQL -> destinationManagementObjects: MosaicDatabaseManagementObjectInput (input)
-        [JsonProperty("destinationManagementObjects")]
-        public MosaicDatabaseManagementObjectInput? DestinationManagementObjects { get; set; }
-
         //      C# -> System.String? DestinationSourceName
         // GraphQL -> destinationSourceName: String (scalar)
         [JsonProperty("destinationSourceName")]
@@ -68,6 +63,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceType: MosaicRetrieveRequestSourceType (enum)
         [JsonProperty("sourceType")]
         public MosaicRetrieveRequestSourceType? SourceType { get; set; }
+
+        //      C# -> MosaicDatabaseManagementObjectInput? DestinationManagementObjects
+        // GraphQL -> destinationManagementObjects: MosaicDatabaseManagementObjectInput (input)
+        [JsonProperty("destinationManagementObjects")]
+        public MosaicDatabaseManagementObjectInput? DestinationManagementObjects { get; set; }
 
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String! (scalar)

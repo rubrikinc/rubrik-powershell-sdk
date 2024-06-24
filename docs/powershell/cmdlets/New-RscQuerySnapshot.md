@@ -13,7 +13,7 @@ Returns a list files whose name is prefixed by the query in the given snapshot.
 ### closesttopointintime
 Details of the unexpired snapshot closest to the specified point in time for each provided workload ID.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - beforeTime - DateTime: Specifies the time at which or before which the snapshot was taken.
     - afterTime - DateTime: Specifies the time at which or after which the snapshot was taken.
     - snappableIds - list of System.Strings: Workload UUIDs.
@@ -21,6 +21,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
     - excludeQuarantined - System.Boolean: Specifies whether to exclude quarantined snapshots.
     - excludeAnomalous - System.Boolean: Specifies whether to exclude anomalous snapshots.
+    - getFullDetails - System.Boolean: Specifies whether to include full snapshot workload details.
 - Returns list of ClosestSnapshotSearchResults.
 ### emailsearch
 - There are 6 arguments.
@@ -138,7 +139,7 @@ Returns a list of snapshots for a workload.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - workloadId - System.String: The FID of the workload.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
@@ -153,7 +154,7 @@ Returns list of snapshots for a list of workloads.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - snappableIds - list of System.Strings: Workload UUIDs.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filter for snapshot connection.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - sortBy - SnapshotQuerySortByField: Sort snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.

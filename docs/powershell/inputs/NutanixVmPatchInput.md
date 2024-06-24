@@ -11,13 +11,13 @@ Supported in v5.0+
       v5.0-v5.3: Whether backup/archival/replication is paused for this VM
       v6.0-v8.0: Whether backup/archival/replication is paused for this VM.
       v8.1+: Specifies whether backup/archival/replication is paused for this virtual machine.
+- snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
+  - Supported in v5.0+
+      v5.0-v8.0: Consistency level mandated for this VM.
+      v8.1+: Consistency level mandated for this virtual machine.
 - postBackupScript: NutanixVirtualMachineScriptDetailInput
   - Supported in v6.0+
 - postSnapScript: NutanixVirtualMachineScriptDetailInput
   - Supported in v6.0+
 - preBackupScript: NutanixVirtualMachineScriptDetailInput
   - Supported in v6.0+
-- snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
-  - Supported in v5.0+
-      v5.0-v8.0: Consistency level mandated for this VM.
-      v8.1+: Consistency level mandated for this virtual machine.

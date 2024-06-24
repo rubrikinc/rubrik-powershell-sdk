@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_USER_NAME")]
         PRINCIPAL_USER_NAME,
 
+        [EnumMember(Value = "ROLE_NAME")]
+        ROLE_NAME,
+
         [EnumMember(Value = "USER_NAME")]
         USER_NAME,
 

@@ -9,3 +9,5 @@ Type of storage location.
 - GOOGLE - Google Cloud Platform type of archival location.
 - TAPE - Tape type of archival location.
 - GLACIER - Legacy glacier type of archival location.
+- AWS_SECRET_REGION_LCK - AWS secret region (LCK) type of archival location.
+- AWS_SECRET_REGION_DCA - AWS secret region (DCA) type of archival location.

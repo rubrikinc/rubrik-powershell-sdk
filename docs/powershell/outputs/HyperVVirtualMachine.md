@@ -43,6 +43,8 @@ Hyper-V virtual machine details.
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

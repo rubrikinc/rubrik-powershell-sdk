@@ -279,6 +279,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		datastoreName = $someString
+    /// 		# REQUIRED
+    /// 		hostIpAddress = $someString
+    /// 		# REQUIRED
+    /// 		hostPassword = $someString
+    /// 		# REQUIRED
+    /// 		hostUsername = $someString
     /// 		# OPTIONAL
     /// 		mountExportSnapshotJobCommonOptions = @{
     /// 			# OPTIONAL
@@ -292,14 +300,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			vmName = $someString
     /// 		}
-    /// 		# REQUIRED
-    /// 		datastoreName = $someString
-    /// 		# REQUIRED
-    /// 		hostIpAddress = $someString
-    /// 		# REQUIRED
-    /// 		hostPassword = $someString
-    /// 		# REQUIRED
-    /// 		hostUsername = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -708,6 +708,14 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		datastoreName = $someString
+		# REQUIRED
+		hostIpAddress = $someString
+		# REQUIRED
+		hostPassword = $someString
+		# REQUIRED
+		hostUsername = $someString
 		# OPTIONAL
 		mountExportSnapshotJobCommonOptions = @{
 			# OPTIONAL
@@ -721,14 +729,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			vmName = $someString
 		}
-		# REQUIRED
-		datastoreName = $someString
-		# REQUIRED
-		hostIpAddress = $someString
-		# REQUIRED
-		hostPassword = $someString
-		# REQUIRED
-		hostUsername = $someString
 	}
 	# REQUIRED
 	id = $someString

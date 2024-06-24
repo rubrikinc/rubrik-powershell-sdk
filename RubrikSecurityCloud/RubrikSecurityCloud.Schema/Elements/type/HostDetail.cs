@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlCbtDriverInstalled")]
         public System.Boolean? MssqlCbtDriverInstalled { get; set; }
 
+        //      C# -> System.String? MssqlSddUsername
+        // GraphQL -> mssqlSddUsername: String (scalar)
+        [JsonProperty("mssqlSddUsername")]
+        public System.String? MssqlSddUsername { get; set; }
+
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
         [JsonProperty("oracleQueryUser")]
@@ -105,6 +110,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRefreshPaused = null,
         System.Boolean? IsRelic = null,
         System.Boolean? MssqlCbtDriverInstalled = null,
+        System.String? MssqlSddUsername = null,
         System.String? OracleQueryUser = null,
         System.String? OracleSysDbaUser = null,
         HostSummary? HostSummary = null
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MssqlCbtDriverInstalled != null ) {
             this.MssqlCbtDriverInstalled = MssqlCbtDriverInstalled;
+        }
+        if ( MssqlSddUsername != null ) {
+            this.MssqlSddUsername = MssqlSddUsername;
         }
         if ( OracleQueryUser != null ) {
             this.OracleQueryUser = OracleQueryUser;
@@ -251,6 +260,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mssqlCbtDriverInstalled\n" ;
             } else {
                 s += ind + "mssqlCbtDriverInstalled\n" ;
+            }
+        }
+        //      C# -> System.String? MssqlSddUsername
+        // GraphQL -> mssqlSddUsername: String (scalar)
+        if (this.MssqlSddUsername != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mssqlSddUsername\n" ;
+            } else {
+                s += ind + "mssqlSddUsername\n" ;
             }
         }
         //      C# -> System.String? OracleQueryUser
@@ -459,6 +477,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlCbtDriverInstalled != null && ec.Excludes("mssqlCbtDriverInstalled",true))
         {
             this.MssqlCbtDriverInstalled = null;
+        }
+        //      C# -> System.String? MssqlSddUsername
+        // GraphQL -> mssqlSddUsername: String (scalar)
+        if (ec.Includes("mssqlSddUsername",true))
+        {
+            if(this.MssqlSddUsername == null) {
+
+                this.MssqlSddUsername = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MssqlSddUsername != null && ec.Excludes("mssqlSddUsername",true))
+        {
+            this.MssqlSddUsername = null;
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)

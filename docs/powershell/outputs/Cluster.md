@@ -13,6 +13,10 @@ A Rubrik CDM Cluster.
   - System status of the cluster. For Mosaic clusters and Rubrik clusters running CDM versions earlier than 5.0, this value is null.
 - pauseStatus: ClusterPauseStatus
   - Pause status of the cluster.
+- cyberEventLockdownMode: ClusterCyberEventLockdownMode
+  - Cyber Event Lockdown mode of the Rubrik cluster.
+- cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails
+  - Cyber Event Lockdown support case details.
 - eosDate: System.String
   - End of support date.
 - eosStatus: ClusterEosStatus
@@ -117,3 +121,5 @@ A Rubrik CDM Cluster.
   - CDM to RSC RBAC migration status for the current cluster.
 - rawAddress: System.String
   - The cluster's raw address.
+- isAirGapped: System.Boolean
+  - Air-gap status of the Rubrik cluster.

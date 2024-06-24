@@ -10,6 +10,8 @@ AWS Customer Managed Exocompute Configuration in a region.
   - Exocompute configuration region.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
+- latestExoclusterDetails: ExocomputeClusterDetails
+  - Details of the latest Exocompute cluster.
 - hasPcr: System.Boolean
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String

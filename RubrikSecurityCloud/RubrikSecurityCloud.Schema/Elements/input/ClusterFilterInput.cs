@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isInFatalOrDisconnectedState")]
         public System.Boolean? IsInFatalOrDisconnectedState { get; set; }
 
+        //      C# -> List<ClusterCyberEventLockdownMode>? CyberEventLockdownMode
+        // GraphQL -> cyberEventLockdownMode: [ClusterCyberEventLockdownMode!] (enum)
+        [JsonProperty("cyberEventLockdownMode")]
+        public List<ClusterCyberEventLockdownMode>? CyberEventLockdownMode { get; set; }
+
 
         #endregion
 

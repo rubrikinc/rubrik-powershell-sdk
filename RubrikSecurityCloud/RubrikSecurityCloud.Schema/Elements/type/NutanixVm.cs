@@ -76,6 +76,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? BlueprintId
+        // GraphQL -> blueprintId: String (scalar)
+        [JsonProperty("blueprintId")]
+        public System.String? BlueprintId { get; set; }
+
+        //      C# -> System.String? BlueprintName
+        // GraphQL -> blueprintName: String (scalar)
+        [JsonProperty("blueprintName")]
+        public System.String? BlueprintName { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -110,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isAgentRegistered: Boolean! (scalar)
         [JsonProperty("isAgentRegistered")]
         public System.Boolean? IsAgentRegistered { get; set; }
+
+        //      C# -> System.Boolean? IsBlueprintChild
+        // GraphQL -> isBlueprintChild: Boolean! (scalar)
+        [JsonProperty("isBlueprintChild")]
+        public System.Boolean? IsBlueprintChild { get; set; }
 
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -186,6 +201,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> NutanixVmMetadata? Metadata
+        // GraphQL -> metadata: NutanixVmMetadata (type)
+        [JsonProperty("metadata")]
+        public NutanixVmMetadata? Metadata { get; set; }
+
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
         [JsonProperty("missedSnapshotConnection")]
@@ -255,6 +275,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> reportSnappable: Snappable (type)
         [JsonProperty("reportSnappable")]
         public Snappable? ReportSnappable { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        public SecurityMetadata? SecurityMetadata { get; set; }
 
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
@@ -337,6 +362,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
+                    Tuple.Create("timezone", "Timezone"),
                 };
             this.SnapshotGroupByConnection =
                 new RscGqlVars(null, snapshotGroupByConnectionArgs, null, true);
@@ -346,6 +372,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
                     Tuple.Create("timezoneOffset", "Float"),
+                    Tuple.Create("timezone", "Timezone"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "CdmSnapshotGroupByEnum!"),
                 };
@@ -375,6 +402,8 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? BlueprintId = null,
+        System.String? BlueprintName = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? CurrentHostId = null,
@@ -382,6 +411,7 @@ namespace RubrikSecurityCloud.Types
         System.String? HypervisorType = null,
         System.String? Id = null,
         System.Boolean? IsAgentRegistered = null,
+        System.Boolean? IsBlueprintChild = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -397,6 +427,7 @@ namespace RubrikSecurityCloud.Types
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
+        NutanixVmMetadata? Metadata = null,
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
         CdmSnapshot? NewestArchivedSnapshot = null,
@@ -411,6 +442,7 @@ namespace RubrikSecurityCloud.Types
         NutanixBackupScript? PreBackupScript = null,
         DataLocation? PrimaryClusterLocation = null,
         Snappable? ReportSnappable = null,
+        SecurityMetadata? SecurityMetadata = null,
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
@@ -451,6 +483,12 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( BlueprintId != null ) {
+            this.BlueprintId = BlueprintId;
+        }
+        if ( BlueprintName != null ) {
+            this.BlueprintName = BlueprintName;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
@@ -471,6 +509,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAgentRegistered != null ) {
             this.IsAgentRegistered = IsAgentRegistered;
+        }
+        if ( IsBlueprintChild != null ) {
+            this.IsBlueprintChild = IsBlueprintChild;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -517,6 +558,9 @@ namespace RubrikSecurityCloud.Types
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
         }
+        if ( Metadata != null ) {
+            this.Metadata = Metadata;
+        }
         if ( MissedSnapshotConnection != null ) {
             this.MissedSnapshotConnection = MissedSnapshotConnection;
         }
@@ -558,6 +602,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReportSnappable != null ) {
             this.ReportSnappable = ReportSnappable;
+        }
+        if ( SecurityMetadata != null ) {
+            this.SecurityMetadata = SecurityMetadata;
         }
         if ( SnapshotConnection != null ) {
             this.SnapshotConnection = SnapshotConnection;
@@ -707,6 +754,24 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? BlueprintId
+        // GraphQL -> blueprintId: String (scalar)
+        if (this.BlueprintId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "blueprintId\n" ;
+            } else {
+                s += ind + "blueprintId\n" ;
+            }
+        }
+        //      C# -> System.String? BlueprintName
+        // GraphQL -> blueprintName: String (scalar)
+        if (this.BlueprintName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "blueprintName\n" ;
+            } else {
+                s += ind + "blueprintName\n" ;
+            }
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
@@ -768,6 +833,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAgentRegistered\n" ;
             } else {
                 s += ind + "isAgentRegistered\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsBlueprintChild
+        // GraphQL -> isBlueprintChild: Boolean! (scalar)
+        if (this.IsBlueprintChild != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isBlueprintChild\n" ;
+            } else {
+                s += ind + "isBlueprintChild\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -923,6 +997,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NutanixVmMetadata? Metadata
+        // GraphQL -> metadata: NutanixVmMetadata (type)
+        if (this.Metadata != null) {
+            var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1091,6 +1177,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "reportSnappable" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (this.SecurityMetadata != null) {
+            var fspec = this.SecurityMetadata.AsFieldSpec(conf.Child("securityMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1378,6 +1476,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = null;
         }
+        //      C# -> System.String? BlueprintId
+        // GraphQL -> blueprintId: String (scalar)
+        if (ec.Includes("blueprintId",true))
+        {
+            if(this.BlueprintId == null) {
+
+                this.BlueprintId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BlueprintId != null && ec.Excludes("blueprintId",true))
+        {
+            this.BlueprintId = null;
+        }
+        //      C# -> System.String? BlueprintName
+        // GraphQL -> blueprintName: String (scalar)
+        if (ec.Includes("blueprintName",true))
+        {
+            if(this.BlueprintName == null) {
+
+                this.BlueprintName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BlueprintName != null && ec.Excludes("blueprintName",true))
+        {
+            this.BlueprintName = null;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (ec.Includes("cdmId",true))
@@ -1496,6 +1628,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAgentRegistered != null && ec.Excludes("isAgentRegistered",true))
         {
             this.IsAgentRegistered = null;
+        }
+        //      C# -> System.Boolean? IsBlueprintChild
+        // GraphQL -> isBlueprintChild: Boolean! (scalar)
+        if (ec.Includes("isBlueprintChild",true))
+        {
+            if(this.IsBlueprintChild == null) {
+
+                this.IsBlueprintChild = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBlueprintChild != null && ec.Excludes("isBlueprintChild",true))
+        {
+            this.IsBlueprintChild = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -1766,6 +1915,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.LogicalPath = null;
         }
+        //      C# -> NutanixVmMetadata? Metadata
+        // GraphQL -> metadata: NutanixVmMetadata (type)
+        if (ec.Includes("metadata",false))
+        {
+            if(this.Metadata == null) {
+
+                this.Metadata = new NutanixVmMetadata();
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            } else {
+
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            }
+        }
+        else if (this.Metadata != null && ec.Excludes("metadata",false))
+        {
+            this.Metadata = null;
+        }
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
         if (ec.Includes("missedSnapshotConnection",false))
@@ -2031,6 +2199,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReportSnappable != null && ec.Excludes("reportSnappable",false))
         {
             this.ReportSnappable = null;
+        }
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        if (ec.Includes("securityMetadata",false))
+        {
+            if(this.SecurityMetadata == null) {
+
+                this.SecurityMetadata = new SecurityMetadata();
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            } else {
+
+                this.SecurityMetadata.ApplyExploratoryFieldSpec(ec.NewChild("securityMetadata"));
+
+            }
+        }
+        else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
+        {
+            this.SecurityMetadata = null;
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)

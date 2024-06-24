@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        [JsonProperty("hierarchyType")]
+        public ExchangeItemHierarchyType? HierarchyType { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -56,6 +61,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public O365Folder Set(
+        ExchangeItemHierarchyType? HierarchyType = null,
         System.String? Id = null,
         System.String? Name = null,
         System.String? ParentFolderId = null,
@@ -63,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         System.Int32? SnapshotNum = null
     ) 
     {
+        if ( HierarchyType != null ) {
+            this.HierarchyType = HierarchyType;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -92,6 +101,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        if (this.HierarchyType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hierarchyType\n" ;
+            } else {
+                s += ind + "hierarchyType\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -144,6 +162,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ExchangeItemHierarchyType? HierarchyType
+        // GraphQL -> hierarchyType: ExchangeItemHierarchyType! (enum)
+        if (ec.Includes("hierarchyType",true))
+        {
+            if(this.HierarchyType == null) {
+
+                this.HierarchyType = new ExchangeItemHierarchyType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HierarchyType != null && ec.Excludes("hierarchyType",true))
+        {
+            this.HierarchyType = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))

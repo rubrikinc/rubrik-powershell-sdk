@@ -18,5 +18,7 @@ Supported in v5.0+
 - scvmmVersion: System.String
   - Supported in v9.0+
   Version of SCVMM.
+- statusEnum: HostRbsConnectionStatus
+  - 
 - slaAssignable: SlaAssignable
   - 

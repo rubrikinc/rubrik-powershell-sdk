@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pendingSnapshotDeletion")]
         public PendingSnapshotDeletion? PendingSnapshotDeletion { get; set; }
 
+        //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
+        // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
+        [JsonProperty("postgresDbClusterAppMetadata")]
+        public KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata { get; set; }
+
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         [JsonProperty("replicationLocations")]
@@ -240,6 +245,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
         [JsonProperty("snapshotRetentionInfo")]
         public CdmSnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
+
+        //      C# -> List<SnapshotSubObject>? SubObjs
+        // GraphQL -> subObjs: [SnapshotSubObject!]! (type)
+        [JsonProperty("subObjs")]
+        public List<SnapshotSubObject>? SubObjs { get; set; }
 
         //      C# -> List<VappAppMetadata>? VappAppMetadata
         // GraphQL -> vappAppMetadata: [VappAppMetadata!] (type)
@@ -302,9 +312,11 @@ namespace RubrikSecurityCloud.Types
         ManagedVolumeAppMetadata? ManagedVolumeAppMetadata = null,
         MssqlAppMetadata? MssqlAppMetadata = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
+        KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata = null,
         List<DataLocation>? ReplicationLocations = null,
         SapHanaAppMetadata? SapHanaAppMetadata = null,
         CdmSnapshotRetentionInfo? SnapshotRetentionInfo = null,
+        List<SnapshotSubObject>? SubObjs = null,
         List<VappAppMetadata>? VappAppMetadata = null,
         VmwareAppMetadata? VmwareAppMetadata = null
     ) 
@@ -432,6 +444,9 @@ namespace RubrikSecurityCloud.Types
         if ( PendingSnapshotDeletion != null ) {
             this.PendingSnapshotDeletion = PendingSnapshotDeletion;
         }
+        if ( PostgresDbClusterAppMetadata != null ) {
+            this.PostgresDbClusterAppMetadata = PostgresDbClusterAppMetadata;
+        }
         if ( ReplicationLocations != null ) {
             this.ReplicationLocations = ReplicationLocations;
         }
@@ -440,6 +455,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotRetentionInfo != null ) {
             this.SnapshotRetentionInfo = SnapshotRetentionInfo;
+        }
+        if ( SubObjs != null ) {
+            this.SubObjs = SubObjs;
         }
         if ( VappAppMetadata != null ) {
             this.VappAppMetadata = VappAppMetadata;
@@ -884,6 +902,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
+        // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
+        if (this.PostgresDbClusterAppMetadata != null) {
+            var fspec = this.PostgresDbClusterAppMetadata.AsFieldSpec(conf.Child("postgresDbClusterAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "postgresDbClusterAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (this.ReplicationLocations != null) {
@@ -917,6 +947,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<SnapshotSubObject>? SubObjs
+        // GraphQL -> subObjs: [SnapshotSubObject!]! (type)
+        if (this.SubObjs != null) {
+            var fspec = this.SubObjs.AsFieldSpec(conf.Child("subObjs"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subObjs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1697,6 +1739,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.PendingSnapshotDeletion = null;
         }
+        //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
+        // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
+        if (ec.Includes("postgresDbClusterAppMetadata",false))
+        {
+            if(this.PostgresDbClusterAppMetadata == null) {
+
+                this.PostgresDbClusterAppMetadata = new KosmosWorkloadAppMetadata();
+                this.PostgresDbClusterAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("postgresDbClusterAppMetadata"));
+
+            } else {
+
+                this.PostgresDbClusterAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("postgresDbClusterAppMetadata"));
+
+            }
+        }
+        else if (this.PostgresDbClusterAppMetadata != null && ec.Excludes("postgresDbClusterAppMetadata",false))
+        {
+            this.PostgresDbClusterAppMetadata = null;
+        }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (ec.Includes("replicationLocations",false))
@@ -1753,6 +1814,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
         {
             this.SnapshotRetentionInfo = null;
+        }
+        //      C# -> List<SnapshotSubObject>? SubObjs
+        // GraphQL -> subObjs: [SnapshotSubObject!]! (type)
+        if (ec.Includes("subObjs",false))
+        {
+            if(this.SubObjs == null) {
+
+                this.SubObjs = new List<SnapshotSubObject>();
+                this.SubObjs.ApplyExploratoryFieldSpec(ec.NewChild("subObjs"));
+
+            } else {
+
+                this.SubObjs.ApplyExploratoryFieldSpec(ec.NewChild("subObjs"));
+
+            }
+        }
+        else if (this.SubObjs != null && ec.Excludes("subObjs",false))
+        {
+            this.SubObjs = null;
         }
         //      C# -> List<VappAppMetadata>? VappAppMetadata
         // GraphQL -> vappAppMetadata: [VappAppMetadata!] (type)

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 29
+    /// Create a new RscQuery object for any of the 30
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 29 operations
+    /// There are 30 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2KeyPairsByRegion, ExocomputeConfigs, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -869,6 +869,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SupportedEksVersions operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: SupportedEksVersions
+    /// 
+    /// $query = New-RscQueryAws -SupportedEksVersions
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SupportedRdsDatabaseInstanceClasses operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1175,6 +1202,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "S3BucketStateForRecovery",
                 "S3Buckets",
                 "S3BucketsDetails",
+                "SupportedEksVersions",
                 "SupportedRdsDatabaseInstanceClasses",
                 "TrustPolicy",
                 "ValidateCreateClusterInput",
@@ -1266,6 +1294,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "S3BucketsDetails":
                         this.ProcessRecord_S3BucketsDetails();
+                        break;
+                    case "SupportedEksVersions":
+                        this.ProcessRecord_SupportedEksVersions();
                         break;
                     case "SupportedRdsDatabaseInstanceClasses":
                         this.ProcessRecord_SupportedRdsDatabaseInstanceClasses();
@@ -1506,6 +1537,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -S3BucketsDetails";
             // Create new graphql operation allS3BucketsDetailsFromAws
             InitQueryAllS3BucketsDetailsFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allSupportedAwsEksVersions.
+        internal void ProcessRecord_SupportedEksVersions()
+        {
+            this._logger.name += " -SupportedEksVersions";
+            // Create new graphql operation allSupportedAwsEksVersions
+            InitQueryAllSupportedAwsEksVersions();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2207,6 +2247,24 @@ $query.Var.awsAccountRubrikId = $someString"
 $query.Var.awsAccountRubrikId = $someString
 # OPTIONAL
 $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allSupportedAwsEksVersions: [String!]!
+        internal void InitQueryAllSupportedAwsEksVersions()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllSupportedAwsEksVersions",
+                "",
+                "List<System.String>",
+                Query.AllSupportedAwsEksVersions_ObjectFieldSpec,
+                Query.AllSupportedAwsEksVersionsFieldSpec,
+                @""
             );
         }
 

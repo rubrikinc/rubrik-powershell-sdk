@@ -909,6 +909,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.s3BucketRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -2088,22 +2090,25 @@ $query.Var.rdsDatabaseRubrikId = $someString"
         }
 
         // Create new GraphQL Query:
-        // awsNativeS3Bucket(s3BucketRubrikId: UUID!): AwsNativeS3Bucket!
+        // awsNativeS3Bucket(s3BucketRubrikId: UUID!, includeSecurityMetadata: Boolean): AwsNativeS3Bucket!
         internal void InitQueryAwsNativeS3Bucket()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("s3BucketRubrikId", "UUID!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeS3Bucket",
-                "($s3BucketRubrikId: UUID!)",
+                "($s3BucketRubrikId: UUID!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeS3Bucket",
                 Query.AwsNativeS3Bucket_ObjectFieldSpec,
                 Query.AwsNativeS3BucketFieldSpec,
                 @"# REQUIRED
-$query.Var.s3BucketRubrikId = $someString"
+$query.Var.s3BucketRubrikId = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? OnboardingType
+        // GraphQL -> onboardingType: String (scalar)
+        [JsonProperty("onboardingType")]
+        public System.String? OnboardingType { get; set; }
+
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)
         [JsonProperty("region")]
@@ -60,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("transport")]
         public System.String? Transport { get; set; }
 
+        //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
+        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
+        [JsonProperty("kuprServerProxyConfig")]
+        public KuprServerProxyConfig? KuprServerProxyConfig { get; set; }
+
 
         #endregion
 
@@ -74,10 +84,12 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
+        System.String? OnboardingType = null,
         System.String? Region = null,
         System.String? Registry = null,
         System.String? Status = null,
-        System.String? Transport = null
+        System.String? Transport = null,
+        KuprServerProxyConfig? KuprServerProxyConfig = null
     ) 
     {
         if ( Distribution != null ) {
@@ -92,6 +104,9 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( OnboardingType != null ) {
+            this.OnboardingType = OnboardingType;
+        }
         if ( Region != null ) {
             this.Region = Region;
         }
@@ -103,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Transport != null ) {
             this.Transport = Transport;
+        }
+        if ( KuprServerProxyConfig != null ) {
+            this.KuprServerProxyConfig = KuprServerProxyConfig;
         }
         return this;
     }
@@ -154,6 +172,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.String? OnboardingType
+        // GraphQL -> onboardingType: String (scalar)
+        if (this.OnboardingType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onboardingType\n" ;
+            } else {
+                s += ind + "onboardingType\n" ;
+            }
+        }
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)
         if (this.Region != null) {
@@ -188,6 +215,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "transport\n" ;
             } else {
                 s += ind + "transport\n" ;
+            }
+        }
+        //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
+        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
+        if (this.KuprServerProxyConfig != null) {
+            var fspec = this.KuprServerProxyConfig.AsFieldSpec(conf.Child("kuprServerProxyConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "kuprServerProxyConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -265,6 +304,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.String? OnboardingType
+        // GraphQL -> onboardingType: String (scalar)
+        if (ec.Includes("onboardingType",true))
+        {
+            if(this.OnboardingType == null) {
+
+                this.OnboardingType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnboardingType != null && ec.Excludes("onboardingType",true))
+        {
+            this.OnboardingType = null;
+        }
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)
         if (ec.Includes("region",true))
@@ -332,6 +388,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Transport != null && ec.Excludes("transport",true))
         {
             this.Transport = null;
+        }
+        //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
+        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
+        if (ec.Includes("kuprServerProxyConfig",false))
+        {
+            if(this.KuprServerProxyConfig == null) {
+
+                this.KuprServerProxyConfig = new KuprServerProxyConfig();
+                this.KuprServerProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("kuprServerProxyConfig"));
+
+            } else {
+
+                this.KuprServerProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("kuprServerProxyConfig"));
+
+            }
+        }
+        else if (this.KuprServerProxyConfig != null && ec.Excludes("kuprServerProxyConfig",false))
+        {
+            this.KuprServerProxyConfig = null;
         }
     }
 

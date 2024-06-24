@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HostRbsConnectionStatus? RbsConnectionStatus
+        // GraphQL -> rbsConnectionStatus: HostRbsConnectionStatus (enum)
+        [JsonProperty("rbsConnectionStatus")]
+        public HostRbsConnectionStatus? RbsConnectionStatus { get; set; }
+
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         [JsonProperty("forceFull")]
@@ -40,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsPaused
+        // GraphQL -> isPaused: Boolean (scalar)
+        [JsonProperty("isPaused")]
+        public System.Boolean? IsPaused { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -55,10 +65,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("needsMigration")]
         public System.Boolean? NeedsMigration { get; set; }
 
+        //      C# -> System.String? OperatingSystem
+        // GraphQL -> operatingSystem: String (scalar)
+        [JsonProperty("operatingSystem")]
+        public System.String? OperatingSystem { get; set; }
+
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         [JsonProperty("snappable")]
         public CdmWorkload? Snappable { get; set; }
+
+        //      C# -> List<HostVolumeSummary>? Volumes
+        // GraphQL -> volumes: [HostVolumeSummary!]! (type)
+        [JsonProperty("volumes")]
+        public List<HostVolumeSummary>? Volumes { get; set; }
 
 
         #endregion
@@ -70,16 +90,23 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VolumeGroupSummary Set(
+        HostRbsConnectionStatus? RbsConnectionStatus = null,
         System.Boolean? ForceFull = null,
         System.String? HostId = null,
         System.String? Hostname = null,
         System.String? Id = null,
+        System.Boolean? IsPaused = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.Boolean? NeedsMigration = null,
-        CdmWorkload? Snappable = null
+        System.String? OperatingSystem = null,
+        CdmWorkload? Snappable = null,
+        List<HostVolumeSummary>? Volumes = null
     ) 
     {
+        if ( RbsConnectionStatus != null ) {
+            this.RbsConnectionStatus = RbsConnectionStatus;
+        }
         if ( ForceFull != null ) {
             this.ForceFull = ForceFull;
         }
@@ -92,6 +119,9 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsPaused != null ) {
+            this.IsPaused = IsPaused;
+        }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
@@ -101,8 +131,14 @@ namespace RubrikSecurityCloud.Types
         if ( NeedsMigration != null ) {
             this.NeedsMigration = NeedsMigration;
         }
+        if ( OperatingSystem != null ) {
+            this.OperatingSystem = OperatingSystem;
+        }
         if ( Snappable != null ) {
             this.Snappable = Snappable;
+        }
+        if ( Volumes != null ) {
+            this.Volumes = Volumes;
         }
         return this;
     }
@@ -118,6 +154,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HostRbsConnectionStatus? RbsConnectionStatus
+        // GraphQL -> rbsConnectionStatus: HostRbsConnectionStatus (enum)
+        if (this.RbsConnectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbsConnectionStatus\n" ;
+            } else {
+                s += ind + "rbsConnectionStatus\n" ;
+            }
+        }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         if (this.ForceFull != null) {
@@ -154,6 +199,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsPaused
+        // GraphQL -> isPaused: Boolean (scalar)
+        if (this.IsPaused != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPaused\n" ;
+            } else {
+                s += ind + "isPaused\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
@@ -181,6 +235,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "needsMigration\n" ;
             }
         }
+        //      C# -> System.String? OperatingSystem
+        // GraphQL -> operatingSystem: String (scalar)
+        if (this.OperatingSystem != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystem\n" ;
+            } else {
+                s += ind + "operatingSystem\n" ;
+            }
+        }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
@@ -193,6 +256,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<HostVolumeSummary>? Volumes
+        // GraphQL -> volumes: [HostVolumeSummary!]! (type)
+        if (this.Volumes != null) {
+            var fspec = this.Volumes.AsFieldSpec(conf.Child("volumes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "volumes" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -200,6 +275,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> HostRbsConnectionStatus? RbsConnectionStatus
+        // GraphQL -> rbsConnectionStatus: HostRbsConnectionStatus (enum)
+        if (ec.Includes("rbsConnectionStatus",true))
+        {
+            if(this.RbsConnectionStatus == null) {
+
+                this.RbsConnectionStatus = new HostRbsConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbsConnectionStatus != null && ec.Excludes("rbsConnectionStatus",true))
+        {
+            this.RbsConnectionStatus = null;
+        }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         if (ec.Includes("forceFull",true))
@@ -268,6 +360,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsPaused
+        // GraphQL -> isPaused: Boolean (scalar)
+        if (ec.Includes("isPaused",true))
+        {
+            if(this.IsPaused == null) {
+
+                this.IsPaused = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPaused != null && ec.Excludes("isPaused",true))
+        {
+            this.IsPaused = null;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (ec.Includes("isRelic",true))
@@ -319,6 +428,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.NeedsMigration = null;
         }
+        //      C# -> System.String? OperatingSystem
+        // GraphQL -> operatingSystem: String (scalar)
+        if (ec.Includes("operatingSystem",true))
+        {
+            if(this.OperatingSystem == null) {
+
+                this.OperatingSystem = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystem != null && ec.Excludes("operatingSystem",true))
+        {
+            this.OperatingSystem = null;
+        }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (ec.Includes("snappable",false))
@@ -337,6 +463,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Snappable != null && ec.Excludes("snappable",false))
         {
             this.Snappable = null;
+        }
+        //      C# -> List<HostVolumeSummary>? Volumes
+        // GraphQL -> volumes: [HostVolumeSummary!]! (type)
+        if (ec.Includes("volumes",false))
+        {
+            if(this.Volumes == null) {
+
+                this.Volumes = new List<HostVolumeSummary>();
+                this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+
+            } else {
+
+                this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+
+            }
+        }
+        else if (this.Volumes != null && ec.Excludes("volumes",false))
+        {
+            this.Volumes = null;
         }
     }
 

@@ -52,6 +52,7 @@ The list of object types for activities.
 - PolarisAccount - Specifies that the activity object type is RSC Account.
 - AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
 - AzureNativeVm - Specifies that the activity object type is Azure Native Virtual Machine.
+- ORGANIZATION - Specifies that the activity object type is Tenant Organization.
 - O365Team - Specifies that the activity object type is O365 Team.
 - CloudNativeVm - Specifies that the activity object type is Cloud Native Virtual Machine.
 - WindowsFileset - Specifies that the activity object type is Windows Fileset.
@@ -100,6 +101,7 @@ The list of object types for activities.
 - CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
 - Ec2Instance - Specifies that the activity object type is EC2 Instance.
+- NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
 - SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.

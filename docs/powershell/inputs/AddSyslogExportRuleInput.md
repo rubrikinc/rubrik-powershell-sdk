@@ -1,6 +1,8 @@
 ### AddSyslogExportRuleInput
 Input for adding a syslog export rule.
 
+- clusterUuid: System.String
+  - Required. UUID used to identify the cluster the request goes to.
 - syslogExportRuleV51: SyslogExportRuleInput
   - Syslog export rule.
 - syslogExportRuleV52: SyslogExportRuleFullInput
@@ -21,5 +23,3 @@ Input for adding a syslog export rule.
   - Syslog export rule.
 - syslogExportRuleV92: SyslogExportRuleFullInput
   - Syslog export rule.
-- clusterUuid: System.String
-  - Required. UUID used to identify the cluster the request goes to.

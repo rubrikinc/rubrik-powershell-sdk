@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming Release
+## Version 1.5
 
 New Features:
   - Get-RscWorkload cmdlet - Retrieves information about any supported workload type, with various filtering capabilities.

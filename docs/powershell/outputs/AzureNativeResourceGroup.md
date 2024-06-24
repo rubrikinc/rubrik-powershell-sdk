@@ -31,6 +31,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Azure Native Subscription of the Resource Group.
 - azureNativeVirtualMachines: AzureNativeVirtualMachineConnection
   - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - id: System.String
   - The FID of the hierarchy object.
 - name: System.String
@@ -59,3 +61,5 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - The number of descendant workloads of this object.
 - allOrgs: list of Orgs
   - The organizations to which this hierarchy object belongs.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.

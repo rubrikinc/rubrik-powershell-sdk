@@ -8,11 +8,11 @@ Supported in v8.1+
 - certificateId: System.String
   - Supported in v8.1+
       ID corresponding to the imported certificate.
-- smbCredentials: GenericNasSystemCredentialsInput
-  - Supported in v8.1+
-      Credentials to access SMB shares.
 - apiToken: System.String
   - Required. Supported in v8.1+
 - hasSmbSupport: System.Boolean
   - Required. Supported in v8.1+
       Specifies whether to enable SMB for this NAS system.
+- smbCredentials: GenericNasSystemCredentialsInput
+  - Supported in v8.1+
+      Credentials to access SMB shares.

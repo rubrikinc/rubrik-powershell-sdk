@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -88,6 +93,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        SecurityMetadata? SecurityMetadata { get; set; }
 
 
         #endregion

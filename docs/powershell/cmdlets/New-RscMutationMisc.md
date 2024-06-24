@@ -10,6 +10,11 @@ Add a Configured Group to the O365 hierarchy.
 
 - There is a single argument of type AddConfiguredGroupToHierarchyInput.
 - Returns AddConfiguredGroupToHierarchyReply.
+### addcustomintelfeed
+Add custom intel feed.
+
+- There is a single argument of type AddCustomIntelFeedInput.
+- Returns AddCustomIntelFeedReply.
 ### addinventoryworkloads
 Add account level inventory workloads.
 
@@ -141,6 +146,11 @@ Create a request to delete a mount. If there are volumes mounted on a target hos
 
 - There is a single argument of type DeleteVolumeGroupMountInput.
 - Returns AsyncRequestStatus.
+### deregisterprivatecontainerregistry
+Deregister the Private Container Registry (PCR) for an Exocompute account.
+
+- There is a single argument of type DeregisterPrivateContainerRegistryInput.
+- Returns System.String.
 ### disablesupportuseraccess
 Disables a Rubrik Support representative's access to the customer's account.
 
@@ -528,6 +538,11 @@ Unmount selected disks.
 ### updateaccountowner
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### updateadgroup
+Update the AD group display name, and it's filter attribute spec.
+
+- There is a single argument of type UpdateAdGroupInput.
+- Returns System.String.
 ### updateagentdeploymentsetting
 Change the Rubrik Backup Service deployment setting
 
@@ -536,11 +551,21 @@ Modify the global setting for automatic deployment of the Rubrik Backup Service 
 
 - There is a single argument of type UpdateVmAgentDeploymentSettingInput.
 - Returns AgentDeploymentSettings.
+### updateagentdeploymentsettinginbatch
+Change the Rubrik Backup Service deployment setting in batch.
+
+- There is a single argument of type UpdateAgentDeploymentSettingInBatchInput.
+- Returns UpdateAgentDeploymentSettingInBatchReply.
 ### updateauthdomainusershiddenstatus
 Update the hidden status for the given auth domain users.
 
 - There is a single argument of type UpdateAuthDomainUsersHiddenStatusInput.
 - Returns System.String.
+### updatebackupthrottlesetting
+Update backup throttle setting.
+
+- There is a single argument of type UpdateBackupThrottleSettingInput.
+- Returns UpdateBackupThrottleSettingReply.
 ### updatebaddiskledstatus
 Find bad disk of a node in the CDM cluster.
 
@@ -689,6 +714,14 @@ Validate KMS input provided on O365 subscription setup.
 
 - There is a single argument of type ValidateAndSaveCustomerKmsInfoInput.
 - Returns ValidateAndSaveCustomerKmsInfoReply.
+### vmmakeprimary
+Make this cluster the primary for agents on a set of VMs
+
+Supported in v5.3+
+Migrate the primary cluster with which the agent is able to communicate. For disaster recovery when migrating everything over from another cluster, the /host/make_primary endpoint can be used with the oldPrimaryClusterUuid parameter.
+
+- There is a single argument of type VmMakePrimaryInput.
+- Returns AsyncRequestStatus.
 ### warmsearchcache
 Warms the search cache for an O365 workload.
 

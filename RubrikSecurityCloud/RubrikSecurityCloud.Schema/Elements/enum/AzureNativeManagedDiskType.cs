@@ -18,11 +18,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NOT_SPECIFIED")]
         NOT_SPECIFIED,
 
+        [EnumMember(Value = "PREMIUMV2_LRS")]
+        PREMIUMV2_LRS,
+
         [EnumMember(Value = "PREMIUM_LRS")]
         PREMIUM_LRS,
 
+        [EnumMember(Value = "PREMIUM_ZRS")]
+        PREMIUM_ZRS,
+
         [EnumMember(Value = "STANDARDSSD_LRS")]
         STANDARDSSD_LRS,
+
+        [EnumMember(Value = "STANDARDSSD_ZRS")]
+        STANDARDSSD_ZRS,
 
         [EnumMember(Value = "STANDARD_LRS")]
         STANDARD_LRS,

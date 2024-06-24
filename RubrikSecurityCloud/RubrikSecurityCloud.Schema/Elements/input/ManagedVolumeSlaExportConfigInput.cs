@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ManagedVolumeExportConfigInput? ManagedVolumeExportConfig
-        // GraphQL -> managedVolumeExportConfig: ManagedVolumeExportConfigInput (input)
-        [JsonProperty("managedVolumeExportConfig")]
-        public ManagedVolumeExportConfigInput? ManagedVolumeExportConfig { get; set; }
-
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("hostMountPaths")]
         public List<System.String>? HostMountPaths { get; set; }
+
+        //      C# -> ManagedVolumeExportConfigInput? ManagedVolumeExportConfig
+        // GraphQL -> managedVolumeExportConfig: ManagedVolumeExportConfigInput (input)
+        [JsonProperty("managedVolumeExportConfig")]
+        public ManagedVolumeExportConfigInput? ManagedVolumeExportConfig { get; set; }
 
 
         #endregion

@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPROVE_TPR_REQUEST")]
         APPROVE_TPR_REQUEST,
 
+        [EnumMember(Value = "ASSIGN_KMS_KEY_VAULT")]
+        ASSIGN_KMS_KEY_VAULT,
+
         [EnumMember(Value = "CANCEL_RUNNING_ACTIVITY")]
         CANCEL_RUNNING_ACTIVITY,
 
@@ -225,6 +228,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_GUEST_OS_CREDENTIAL")]
         MANAGE_GUEST_OS_CREDENTIAL,
 
+        [EnumMember(Value = "MANAGE_KMS_KEY_VAULT")]
+        MANAGE_KMS_KEY_VAULT,
+
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
 
@@ -252,8 +258,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_SNMP")]
         MANAGE_SNMP,
 
+        [EnumMember(Value = "MANAGE_STORAGE_ENCRYPTION")]
+        MANAGE_STORAGE_ENCRYPTION,
+
         [EnumMember(Value = "MANAGE_SUPPORT_BUNDLE")]
         MANAGE_SUPPORT_BUNDLE,
+
+        [EnumMember(Value = "MANAGE_SUPPORT_TUNNEL")]
+        MANAGE_SUPPORT_TUNNEL,
 
         [EnumMember(Value = "MANAGE_SYSLOG")]
         MANAGE_SYSLOG,
@@ -413,6 +425,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_IP_ADDRESS_IN_AUDITS")]
         VIEW_IP_ADDRESS_IN_AUDITS,
+
+        [EnumMember(Value = "VIEW_KMS_KEY_VAULT")]
+        VIEW_KMS_KEY_VAULT,
 
         [EnumMember(Value = "VIEW_LICENSE_DASHBOARD")]
         VIEW_LICENSE_DASHBOARD,

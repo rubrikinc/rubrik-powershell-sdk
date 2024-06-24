@@ -24,16 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("communityString")]
         public System.String? CommunityString { get; set; }
 
-        //      C# -> List<SnmpTrapReceiverConfigInput>? TrapReceiverConfigs
-        // GraphQL -> trapReceiverConfigs: [SnmpTrapReceiverConfigInput!] (input)
-        [JsonProperty("trapReceiverConfigs")]
-        public List<SnmpTrapReceiverConfigInput>? TrapReceiverConfigs { get; set; }
-
-        //      C# -> List<SnmpUserConfigInput>? Users
-        // GraphQL -> users: [SnmpUserConfigInput!] (input)
-        [JsonProperty("users")]
-        public List<SnmpUserConfigInput>? Users { get; set; }
-
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         [Required]
@@ -47,6 +37,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snmpAgentPort")]
         public System.Int32? SnmpAgentPort { get; set; }
+
+        //      C# -> List<SnmpTrapReceiverConfigInput>? TrapReceiverConfigs
+        // GraphQL -> trapReceiverConfigs: [SnmpTrapReceiverConfigInput!] (input)
+        [JsonProperty("trapReceiverConfigs")]
+        public List<SnmpTrapReceiverConfigInput>? TrapReceiverConfigs { get; set; }
+
+        //      C# -> List<SnmpUserConfigInput>? Users
+        // GraphQL -> users: [SnmpUserConfigInput!] (input)
+        [JsonProperty("users")]
+        public List<SnmpUserConfigInput>? Users { get; set; }
 
 
         #endregion

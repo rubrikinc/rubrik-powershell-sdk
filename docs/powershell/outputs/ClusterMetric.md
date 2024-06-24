@@ -25,5 +25,7 @@ Metrics of a Rubrik cluster.
   - Ingested bytes for archived snapshots.
 - physicalArchivalStorage: System.Int64
   - Physical bytes for archived snapshots.
+- averageDailyGrowth: System.Int64
+  - Average storage growth per day, in bytes.
 - lastUpdateTime: DateTime
   - Time when the Rubrik cluster metrics was last updated.

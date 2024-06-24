@@ -7,4 +7,8 @@
 - receivedDateTime: DateTime
 - parentFolderId: System.String
 - snapshotNum: System.Int32
+- lastModifiedDateTime: DateTime
+  - The timestamp when the email was last modified.
 - snapshotId: System.String
+- hierarchyType: ExchangeItemHierarchyType
+  - Type of hierarchy for the specified email.

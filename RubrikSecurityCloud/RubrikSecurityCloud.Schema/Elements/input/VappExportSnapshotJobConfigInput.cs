@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> CreateNewVappParamsInput? NewVappParams
-        // GraphQL -> newVappParams: CreateNewVappParamsInput (input)
-        [JsonProperty("newVappParams")]
-        public CreateNewVappParamsInput? NewVappParams { get; set; }
-
         //      C# -> System.Boolean? ShouldPowerOnVappAfterExport
         // GraphQL -> shouldPowerOnVappAfterExport: Boolean (scalar)
         [JsonProperty("shouldPowerOnVappAfterExport")]
@@ -47,6 +42,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("networksToRestore")]
         public List<CreateVappNetworkParamsInput>? NetworksToRestore { get; set; }
+
+        //      C# -> CreateNewVappParamsInput? NewVappParams
+        // GraphQL -> newVappParams: CreateNewVappParamsInput (input)
+        [JsonProperty("newVappParams")]
+        public CreateNewVappParamsInput? NewVappParams { get; set; }
 
         //      C# -> List<VappVmRestoreSpecInput>? VmsToExport
         // GraphQL -> vmsToExport: [VappVmRestoreSpecInput!]! (input)

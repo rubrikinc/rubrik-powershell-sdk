@@ -377,6 +377,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			cdmClusterId = $someString
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isDrEnabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1102,6 +1104,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		isPaused = $someBoolean
     /// 		# OPTIONAL
+    /// 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
+    /// 		# OPTIONAL
     /// 		postBackupScript = @{
     /// 			# REQUIRED
     /// 			failureHandling = $someNutanixVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixVirtualMachineScriptDetailFailureHandling]) for enum values.
@@ -1128,8 +1132,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			timeoutMs = $someInt64
     /// 		}
-    /// 		# OPTIONAL
-    /// 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
     /// 	}
     /// }
     /// 
@@ -1775,6 +1777,8 @@ $query.Var.input = @{
 			cdmClusterId = $someString
 		}
 	)
+	# OPTIONAL
+	isDrEnabled = $someBoolean
 }"
             );
         }
@@ -2348,6 +2352,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		isPaused = $someBoolean
 		# OPTIONAL
+		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
+		# OPTIONAL
 		postBackupScript = @{
 			# REQUIRED
 			failureHandling = $someNutanixVirtualMachineScriptDetailFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixVirtualMachineScriptDetailFailureHandling]) for enum values.
@@ -2374,8 +2380,6 @@ $query.Var.input = @{
 			# REQUIRED
 			timeoutMs = $someInt64
 		}
-		# OPTIONAL
-		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
 	}
 }"
             );

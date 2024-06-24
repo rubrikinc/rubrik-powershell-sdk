@@ -228,6 +228,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_FILESET")]
         NAS_FILESET,
 
+        [EnumMember(Value = "NUTANIX_ERA")]
+        NUTANIX_ERA,
+
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
         NUTANIX_PRISM_CENTRAL,
 
@@ -272,6 +275,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OAUTH_TOKEN")]
         OAUTH_TOKEN,
+
+        [EnumMember(Value = "ORGANIZATION")]
+        ORGANIZATION,
 
         [EnumMember(Value = "ObjectProtection")]
         OBJECT_PROTECTION,

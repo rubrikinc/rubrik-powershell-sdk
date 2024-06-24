@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRIVATE")]
         PRIVATE,
 
+        [EnumMember(Value = "SHARED")]
+        SHARED,
+
         [EnumMember(Value = "STANDARD")]
         STANDARD
 

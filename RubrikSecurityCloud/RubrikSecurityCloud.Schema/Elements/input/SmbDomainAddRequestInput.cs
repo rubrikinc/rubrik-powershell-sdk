@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> SmbDomainJoinRequestInput? SmbDomainJoinRequest
-        // GraphQL -> smbDomainJoinRequest: SmbDomainJoinRequestInput (input)
-        [JsonProperty("smbDomainJoinRequest")]
-        public SmbDomainJoinRequestInput? SmbDomainJoinRequest { get; set; }
-
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> SmbDomainJoinRequestInput? SmbDomainJoinRequest
+        // GraphQL -> smbDomainJoinRequest: SmbDomainJoinRequestInput (input)
+        [JsonProperty("smbDomainJoinRequest")]
+        public SmbDomainJoinRequestInput? SmbDomainJoinRequest { get; set; }
 
 
         #endregion

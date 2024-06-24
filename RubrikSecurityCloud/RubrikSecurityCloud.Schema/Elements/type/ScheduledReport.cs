@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportId")]
         public System.Int32? ReportId { get; set; }
 
+        //      C# -> System.String? TimeZone
+        // GraphQL -> timeZone: String! (scalar)
+        [JsonProperty("timeZone")]
+        public System.String? TimeZone { get; set; }
+
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         [JsonProperty("title")]
@@ -115,6 +120,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? MonthlyTime = null,
         List<System.String>? RecipientEmails = null,
         System.Int32? ReportId = null,
+        System.String? TimeZone = null,
         System.String? Title = null,
         DateTime? WeeklyTime = null,
         User? Creator = null,
@@ -151,6 +157,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReportId != null ) {
             this.ReportId = ReportId;
+        }
+        if ( TimeZone != null ) {
+            this.TimeZone = TimeZone;
         }
         if ( Title != null ) {
             this.Title = Title;
@@ -269,6 +278,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "reportId\n" ;
             } else {
                 s += ind + "reportId\n" ;
+            }
+        }
+        //      C# -> System.String? TimeZone
+        // GraphQL -> timeZone: String! (scalar)
+        if (this.TimeZone != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "timeZone\n" ;
+            } else {
+                s += ind + "timeZone\n" ;
             }
         }
         //      C# -> System.String? Title
@@ -501,6 +519,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReportId != null && ec.Excludes("reportId",true))
         {
             this.ReportId = null;
+        }
+        //      C# -> System.String? TimeZone
+        // GraphQL -> timeZone: String! (scalar)
+        if (ec.Includes("timeZone",true))
+        {
+            if(this.TimeZone == null) {
+
+                this.TimeZone = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TimeZone != null && ec.Excludes("timeZone",true))
+        {
+            this.TimeZone = null;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)

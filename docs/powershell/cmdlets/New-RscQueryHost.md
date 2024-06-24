@@ -17,8 +17,8 @@ Get list of physical hosts.
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
     - hostRoot - HostRoot: Host root type.
     - isBulkPolicyAssignmentFlow - System.Boolean: Bulk policy assignment request.
@@ -37,7 +37,7 @@ Get all host shares.
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sort order of result.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HostShareConnection.

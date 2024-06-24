@@ -11,6 +11,8 @@ Replication specification.
   - Replication target mapping.
 - cluster: SlaReplicationCluster
   - Rubrik cluster used as the replication target.
+- replicationPairs: list of SlaReplicationPairs
+  - Datacenter replication pairs.
 - awsRegion: System.String
   - AWS region.
 - azureRegion: System.String

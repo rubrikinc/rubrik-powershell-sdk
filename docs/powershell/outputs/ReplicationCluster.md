@@ -11,3 +11,5 @@ Rubrik cluster details.
   - Specifies whether the Rubrik cluster is cross-account.
 - accountName: System.String
   - The account name that the Rubrik cluster is associated with.
+- isAirGapped: System.Boolean
+  - Air-gap status of the Rubrik cluster.

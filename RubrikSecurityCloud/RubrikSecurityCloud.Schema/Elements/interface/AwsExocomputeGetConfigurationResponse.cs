@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("healthCheckStatus")]
         ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
 
+        //      C# -> ExocomputeClusterDetails? LatestExoclusterDetails
+        // GraphQL -> latestExoclusterDetails: ExocomputeClusterDetails (type)
+        [JsonProperty("latestExoclusterDetails")]
+        ExocomputeClusterDetails? LatestExoclusterDetails { get; set; }
+
         //      C# -> System.Boolean? HasPcr
         // GraphQL -> hasPcr: Boolean! (scalar)
         [JsonProperty("hasPcr")]

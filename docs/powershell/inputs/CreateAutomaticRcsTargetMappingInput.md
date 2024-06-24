@@ -17,3 +17,5 @@ Input for creating RCS locations.
   - IP mapping for each Rubrik cluster.
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+- azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
+  - Azure Key Vault key to encrypt the archival target.

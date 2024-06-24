@@ -58,7 +58,7 @@ Retrieves a paginated list of all Azure Native Managed Disks.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeDiskSortFields: Sort fields for list of Azure disks.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - diskFilters - AzureNativeDiskFilters
 - Returns AzureNativeManagedDiskConnection.
 ### resourcegroup
@@ -75,7 +75,7 @@ Retrieves a paginated list of all Azure Native Resource Groups.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeCommonResourceGroupSortFields: Sort fields for listing Azure resource groups.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - commonResourceGroupFilters - AzureNativeCommonResourceGroupFilters: Filters for listing Azure resource groups.
     - protectedObjectTypes - list of WorkloadLevelHierarchys: List of protected object types.
     - azureNativeProtectionFeatures - list of AzureNativeProtectionFeatures: The type of Azure Native features that Polaris supports.
@@ -123,7 +123,7 @@ Retrieves a paginated list of all Azure Native Subscriptions.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeSubscriptionSortFields: Sort fields for list of Azure subscriptions.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - subscriptionFilters - AzureNativeSubscriptionFilters
     - authorizedOperationFilter - Operation: Filters according to the operation given.
     - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
@@ -157,7 +157,7 @@ Retrieves a paginated list of all Azure Virtual Machines (VMs).
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - sortBy - AzureNativeVirtualMachineSortFields: Sort fields for list of Azure virtual machines.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
     - virtualMachineFilters - AzureNativeVirtualMachineFilters
 - Returns AzureNativeVirtualMachineConnection.

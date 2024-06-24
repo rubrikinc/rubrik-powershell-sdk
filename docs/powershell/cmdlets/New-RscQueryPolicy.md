@@ -24,7 +24,7 @@ Returns detailed policy information.
     - policyId - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads used for filtering the query results.
     - sortBy - PolicyDetailsSortBy: Name of the column to sort result by.
-    - sortOrder - SortOrder: Sorting order for the results.
+    - sortOrder - SortOrder: Sort order of result.
     - clusterIdsFilter - list of System.Strings: List of Rubrik clusters for filtering results.
     - replicationFilter - list of System.Strings: List of replication types for filtering results.
     - searchObjectName - System.String: Object name to search.

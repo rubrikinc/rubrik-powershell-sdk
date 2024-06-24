@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<ManagedObjectType>? Workload
+        // GraphQL -> workload: [ManagedObjectType!] (enum)
+        [JsonProperty("workload")]
+        public List<ManagedObjectType>? Workload { get; set; }
+
         //      C# -> List<System.String>? Pdls
         // GraphQL -> pdls: [String!]! (scalar)
         [JsonProperty("pdls")]
@@ -29,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> wildcard: String! (scalar)
         [JsonProperty("wildcard")]
         public System.String? Wildcard { get; set; }
+
+        //      C# -> List<GroupFilterAttributeList>? FilterAttributes
+        // GraphQL -> filterAttributes: [GroupFilterAttributeList!]! (type)
+        [JsonProperty("filterAttributes")]
+        public List<GroupFilterAttributeList>? FilterAttributes { get; set; }
 
 
         #endregion
@@ -40,15 +50,23 @@ namespace RubrikSecurityCloud.Types
     }
 
     public O365ConfiguredGroupSpec Set(
+        List<ManagedObjectType>? Workload = null,
         List<System.String>? Pdls = null,
-        System.String? Wildcard = null
+        System.String? Wildcard = null,
+        List<GroupFilterAttributeList>? FilterAttributes = null
     ) 
     {
+        if ( Workload != null ) {
+            this.Workload = Workload;
+        }
         if ( Pdls != null ) {
             this.Pdls = Pdls;
         }
         if ( Wildcard != null ) {
             this.Wildcard = Wildcard;
+        }
+        if ( FilterAttributes != null ) {
+            this.FilterAttributes = FilterAttributes;
         }
         return this;
     }
@@ -64,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<ManagedObjectType>? Workload
+        // GraphQL -> workload: [ManagedObjectType!] (enum)
+        if (this.Workload != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "workload\n" ;
+            } else {
+                s += ind + "workload\n" ;
+            }
+        }
         //      C# -> List<System.String>? Pdls
         // GraphQL -> pdls: [String!]! (scalar)
         if (this.Pdls != null) {
@@ -82,6 +109,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "wildcard\n" ;
             }
         }
+        //      C# -> List<GroupFilterAttributeList>? FilterAttributes
+        // GraphQL -> filterAttributes: [GroupFilterAttributeList!]! (type)
+        if (this.FilterAttributes != null) {
+            var fspec = this.FilterAttributes.AsFieldSpec(conf.Child("filterAttributes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filterAttributes" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -89,6 +128,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<ManagedObjectType>? Workload
+        // GraphQL -> workload: [ManagedObjectType!] (enum)
+        if (ec.Includes("workload",true))
+        {
+            if(this.Workload == null) {
+
+                this.Workload = new List<ManagedObjectType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Workload != null && ec.Excludes("workload",true))
+        {
+            this.Workload = null;
+        }
         //      C# -> List<System.String>? Pdls
         // GraphQL -> pdls: [String!]! (scalar)
         if (ec.Includes("pdls",true))
@@ -122,6 +178,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Wildcard != null && ec.Excludes("wildcard",true))
         {
             this.Wildcard = null;
+        }
+        //      C# -> List<GroupFilterAttributeList>? FilterAttributes
+        // GraphQL -> filterAttributes: [GroupFilterAttributeList!]! (type)
+        if (ec.Includes("filterAttributes",false))
+        {
+            if(this.FilterAttributes == null) {
+
+                this.FilterAttributes = new List<GroupFilterAttributeList>();
+                this.FilterAttributes.ApplyExploratoryFieldSpec(ec.NewChild("filterAttributes"));
+
+            } else {
+
+                this.FilterAttributes.ApplyExploratoryFieldSpec(ec.NewChild("filterAttributes"));
+
+            }
+        }
+        else if (this.FilterAttributes != null && ec.Excludes("filterAttributes",false))
+        {
+            this.FilterAttributes = null;
         }
     }
 
