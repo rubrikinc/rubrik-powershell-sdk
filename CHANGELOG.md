@@ -12,8 +12,10 @@ New Features:
   - New-RscPermission - Creates new RSC Permission object
   - Merge-RscPermission - Merges an RSC Permission object into a Role object
   - Set-RscRole - Updates a Role in RSC with a Role object
+  - New-RscSla - Now accepts -DailySchedule as a parameter
 
 Fixes:
+  - Issue [#112](https://github.com/rubrikinc/rubrik-powershell-sdk/issues/112)
 
 Breaking Changes:
 
